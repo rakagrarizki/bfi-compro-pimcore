@@ -74,7 +74,7 @@ $this->extend('layout.html.php');
                                                    placeholder="Masukan nomor handphone Anda">
                                             <div class="error-wrap"></div>
                                         </div>
-                                        <div class="form-group">
+                                        <!--<div class="form-group">
                                             <label for="foto_ktp">Unggah Foto KTP</label>
                                             <label class="form-input">
                                                 <div class="file-upload">
@@ -91,7 +91,7 @@ $this->extend('layout.html.php');
 
 
 
-                                        </div>
+                                        </div>-->
                                     </div>
                                     <div class="button-area text-right next">
 
@@ -168,7 +168,7 @@ $this->extend('layout.html.php');
                                         <p class="text-center">Silahkan Masukan data bangunan Anda</p>
                                         <div class="form-group">
                                             <label for="merk_kendaraan">Status Sertifikat</label>
-                                            <select class="c-custom-select-trans formRequired" id="merk_kendaraan" name="merk_kendaraan">
+                                            <select class="c-custom-select-trans formRequired" id="status_sertificate" name="status_sertificate">
                                                 <option value=""> Pilih merk kendaraan</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
@@ -177,8 +177,8 @@ $this->extend('layout.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label for="model_kendaraan">Sertifikat Atas Nama</label>
-                                            <select class="c-custom-select-trans formRequired" id="model_kendaraan"
-                                                    name="model_kendaraan">
+                                            <select class="c-custom-select-trans formRequired" id="own_sertificate"
+                                                    name="own_sertificate">
                                                 <option value=""> Pilih Model Kendaraan</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>

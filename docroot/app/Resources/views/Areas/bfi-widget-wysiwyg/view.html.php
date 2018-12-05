@@ -1,0 +1,1 @@
+<?php echo $this->wysiwyg('value', ["customConfig" => "custom/ckeditor_config.js"]) ?>

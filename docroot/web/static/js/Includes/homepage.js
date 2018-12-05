@@ -505,40 +505,119 @@ $(function () {
         })
     }
 
-    //listbranch map - Andry
+//listbranch map - Andry
+ var locations = [
+     ['Jakarta', -6.21462, 106.84513],
+     ['Kebon Jeruk', -6.19257205, 106.76972549],
+     ['Bogor', -6.5962986, 106.7972421],
+     ['Gunung Sahari', -6.1611974, 106.84235412],
+     ['Tangerang', -6.1825501, 106.4711093]
+ ];
 
-    var locations = [
-        ['Jakarta', -6.21462, 106.84513],
-        ['Kebon Jeruk', -6.19257205, 106.76972549],
-        ['Bogor', -6.5962986, 106.7972421],
-        ['Gunung Sahari', -6.1611974, 106.84235412],
-        ['Tangerang', -6.1825501, 106.4711093]
-    ];
+ var map = new google.maps.Map(document.getElementById('map'), {
+     zoom: 10,
+     center: new google.maps.LatLng(-6.21462, 106.84513)
+ });
 
-    var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 10,
-        center: new google.maps.LatLng(-6.21462, 106.84513)
-    });
+ var infowindow = new google.maps.InfoWindow();
 
-    var infowindow = new google.maps.InfoWindow();
+ var marker, i, latLngGoogle, _radius;
 
-    var marker, i;
+ function listingLocationMarker(params){
+    for (i = 0; i < params.length; i++) {
+         marker = new google.maps.Marker({
+             position: new google.maps.LatLng(params[i][1], params[i][2]),
+             map: map
+         });
 
-    for (i = 0; i < locations.length; i++) {
-        marker = new google.maps.Marker({
-            position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-            map: map
-        });
+         google.maps.event.addListener(marker, 'click', (function(marker, i) {
+             return function() {
+                 infowindow.setContent(params[i][0]);
+                 infowindow.open(map, marker);
+             }
+         })(marker, i));
+     }
+ }
 
-        google.maps.event.addListener(marker, 'click', (function (marker, i) {
-            return function () {
-                infowindow.setContent(locations[i][0]);
-                infowindow.open(map, marker);
-            }
-        })(marker, i));
+ listingLocationMarker(locations);
+
+ //listbranch search autocomplete - Andry
+
+var input = document.getElementById('searchTextField');
+
+var cityCircle;
+var autocomplete = new google.maps.places.Autocomplete(input, {types: ["geocode"]});
+
+autocomplete.bindTo('bounds', map);
+
+google.maps.event.addListener(autocomplete, 'place_changed', function (event) {
+    infowindow.close();
+    var place = autocomplete.getPlace();
+
+    if (!place.geometry) {
+         // User entered the name of a Place that was not suggested and
+         // pressed the Enter key, or the Place Details request failed.
+         window.alert("No details available for input: '" + place.name + "'");
+         return;
+     }
+    
+     var latComplete = place.geometry.location.lat(),
+         lngComplete = place.geometry.location.lng();
+
+     var latLngComplete = new google.maps.LatLng(latComplete, lngComplete);
+
+     latLngGoogle = new google.maps.LatLng(parseFloat(latComplete), parseFloat(lngComplete));
+     _radius = (13 * 500);
+     marker.setVisible(false);
+
+     $.each(locations, function(id, value) {
+        console.log(value)
+
+         var latLngAPI = new google.maps.LatLng(parseFloat(value[1]), parseFloat(value[2]));
+
+         var distance_from_location = google.maps.geometry.spherical.computeDistanceBetween(latLngGoogle, latLngAPI);
+
+         if ((distance_from_location <= _radius)) {
+             console.log('ada')
+         }
+         else {
+            console.log('tidak ada');
+         }
+
+     })
+
+     CircleOption = {
+         strokeColor: '#0F2236',
+         strokeOpacity: 0.5,
+         strokeWeight: 2,
+         fillColor: '#0F2236',
+         fillOpacity: 0.15,
+         map: map,
+         radius: _radius,
+         center: latLngGoogle
+     };
+
+    if (cityCircle) {
+        cityCircle.setMap(null);
     }
 
+    cityCircle = new google.maps.Circle(CircleOption);
+     
+     // If the place has a geometry, then present it on a map.
+     if (place.geometry.viewport) {
+         map.fitBounds(place.geometry.viewport);
+     } else {
+         map.setCenter(place.geometry.location);
+         map.setZoom(20); // Why 17? Because it looks good.
+     }
 
+     var markerUser = new google.maps.Marker({
+             position: place.geometry.location,
+             map: map
+         });
+     //marker.setPosition(place.geometry.location);
+     marker.setVisible(true);
+ });
 
 
 
