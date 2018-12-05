@@ -63,7 +63,7 @@
     </div>
     <!-- CONTAINER -->
     <!-- FOOTER -->
-    <?= $this->inc("/id/shared/includes/footer") ?>
+    <?= $this->inc("/".$this->getLocale()."/shared/includes/footer") ?>
     <!-- FOOTER -->
 
 

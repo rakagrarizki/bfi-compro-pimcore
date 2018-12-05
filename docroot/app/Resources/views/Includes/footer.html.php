@@ -40,7 +40,7 @@ if($this->editmode) : ?>
             </div>
             <div class="col-md-4 footer-center">
                 <span>Customer Care <i class="fa fa-phone"></i> 1500018</span>
-                <label>Newslatter</label>
+                <label>Newsletter</label>
                 <form class="form-inline">
                     <div class="form-group">
                         <input type="password" class="form-control" id="email" placeholder="Your email here...">

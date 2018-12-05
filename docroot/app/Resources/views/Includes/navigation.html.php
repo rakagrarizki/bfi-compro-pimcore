@@ -1,4 +1,5 @@
 <!-- HEADER -->
+
 <nav id="site-header" class="navbar-fixed-top">
     <div class="header-top">
         <div class="container">
@@ -41,38 +42,60 @@
                 <div class="col-md-8 header-bottom-menu">
                     <div class="header-link-menu">
                         <ul class="nav">
-                            <li class="dropdown" id="produk"><a href="#" class="produk">Produk</a>
-                                <ul class="dropdown-content">
-                                    <div class="produk-hover container">
-                                        <div class="col-md-12">
-                                            <div class="col-md-6">
-                                                <li>
-                                                    <div class="label-title">Produk</div>
-                                                </li>
-                                                <li><a href="#">Pembiayaan Kendaraan Bermotor</a></li>
-                                                <li><a href="#">Pembiayaan Rumah & Ruko</a></li>
-                                                <li><a href="#">Lainnya</a></li>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <li>
-                                                    <div class="label-title">Layanan</div>
-                                                </li>
-                                                <li><a href="#">Cek Kontrak</a></li>
-                                                <li><a href="#">Cek Status Aplikasi</a></li>
-                                                <li><a href="#">Formulir Pengkinian Data Debitur</a></li>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </ul>
+                            <?php
+                            use Pimcore\Model\Document;
 
-                            </li>
-                            <li><a href="get-credit.html">Ajukan Kredit</a></li>
-                            <li><a href="#">Uber Milyaran</a></li>
+                            $listMenu = Document::getByPath("/".$this->getLocale()."/");
+                            $subPage = $this->navigation()->buildNavigation($this->document, $listMenu);
+
+                            if ($subPage) {
+                                foreach ($subPage as $page) {
+                                    $hasChildren = $page->hasPages();
+                                    if($hasChildren && strpos($page->getUri(), 'product') !== false){
+                                        ?>
+                                        <li class="dropdown <?php echo $page->getActive() ? 'active' : '' ?>" id="produk">
+                                            <a href="<?= $page->getHref() ?>" class="produk"><?= $page->getLabel() ?></a>
+                                            <ul class="dropdown-content">
+                                                <div class="produk-hover container">
+                                                    <div class="col-md-12">
+                                                        <div class="col-md-6">
+                                                            <li>
+                                                                <div class="label-title">Produk</div>
+                                                            </li>
+                                                            <?php foreach ($page->getPages() as $child) {  ?>
+                                                                <?php if(!$child->isVisible()) { continue; } ?>
+                                                                <?php if(!$child->getClass() == "product"){ continue; } ?>
+                                                                <li><a href="<?= $child->getHref() ?>"><?= $child->getLabel() ?></a></li>
+                                                            <?php } ?>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <li>
+                                                                <div class="label-title">Layanan</div>
+                                                            </li>
+                                                            <?php foreach ($page->getPages() as $child) {  ?>
+                                                                <?php if(!$child->isVisible()) { continue; } ?>
+                                                                <?php if(!$child->getClass() == "service"){ continue; } ?>
+                                                                <li><a href="<?= $child->getHref() ?>"><?= $child->getLabel() ?></a></li>
+                                                            <?php } ?>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </ul>
+                                        </li>
+                                        <?php
+                                    }else{
+                                        ?>
+                                        <li class="<?php echo $page->getActive() ? 'active' : '' ?>">
+                                            <a href="<?= $page->getHref() ?>">
+                                                <?= $page->getLabel() ?>
+                                            </a>
+                                        </li>
+                                        <?php
+                                    }
+                                }
+                            }
+                            ?>
                         </ul>
-
-
-
-
                     </div>
 
                 </div>
