@@ -36,8 +36,10 @@
     $this->headLink()->appendStylesheet('/static/css/plugins.min.css');
     $this->headLink()->appendStylesheet('/static/css/main.css');
 
-    if($this->editmode)
+    if($this->editmode){
         $this->headLink()->appendStylesheet('/static/css/editmode.css');
+    }
+
 
     $this->headLink()->appendStylesheet('/static/css/pages/homepage.css');
 
@@ -61,7 +63,7 @@
     </div>
     <!-- CONTAINER -->
     <!-- FOOTER -->
-    <?= $this->inc("/shared/includes/footer") ?>
+    <?= $this->inc("/id/shared/includes/footer") ?>
     <!-- FOOTER -->
 
 

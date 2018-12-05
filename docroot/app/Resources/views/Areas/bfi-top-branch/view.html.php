@@ -6,19 +6,27 @@
         <p class="text-center paragraf-title"><?= $this->textarea('text');?></p>
 
         <div class="row content-bfi">
-            <div class="col-md-4 thumbnail">
-                <img src="assets/images/logo-bfi.png">
-                <div class="thumbnail-caption">
-                    <h3>BFI Cengkareng</h3>
-                    <p>
-                        Sedayu Square Blok C-2 <br>
-                        Jl. Outer Ring Road <br>
-                        Cengkareng <br>
-                        Jakarta Barat
-                    </p>
-                    <a href="#" class="cta-location">lihat lokasi</a>
+            <?php
+            $i = 0;
+            foreach ($this->branch as $branch){
+                if($i>3){
+                    break;
+                }
+
+                ?>
+                <div class="col-md-4 thumbnail">
+                    <img src="/static/images/logo-bfi.png">
+                    <div class="thumbnail-caption">
+                        <h3><?= $branch->getName(); ?></h3>
+                        <p><?= $branch->getAddress(); ?></p>
+                        <a href="#" class="cta-location">lihat lokasi</a>
+                    </div>
                 </div>
-            </div>
+                <?php
+                $i++;
+            }
+            ?>
+
         </div>
 
         <div class="button-area text-center">

@@ -1,7 +1,7 @@
 <?php 
 
 /** 
-* Generated at: 2018-12-03T13:13:06+01:00
+* Generated at: 2018-12-04T10:15:18+01:00
 * Inheritance: no
 * Variants: no
 * Changed by: admin (2)
@@ -10,9 +10,9 @@
 
 Fields Summary: 
 - Slug [input]
+- Date [date]
 - localizedfields [localizedfields]
 -- Title [input]
--- Date [date]
 */ 
 
 
@@ -21,7 +21,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'blogArticle',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1543839184,
+   'modificationDate' => 1543914915,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -83,7 +83,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
@@ -93,6 +93,29 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'visibleSearch' => false,
           )),
           1 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Date::__set_state(array(
+             'fieldtype' => 'date',
+             'queryColumnType' => 'bigint(20)',
+             'columnType' => 'bigint(20)',
+             'phpdocType' => '\\Carbon\\Carbon',
+             'defaultValue' => NULL,
+             'useCurrentDate' => false,
+             'name' => 'Date',
+             'title' => 'Date',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+          )),
+          2 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\Localizedfields::__set_state(array(
              'fieldtype' => 'localizedfields',
              'phpdocType' => '\\Pimcore\\Model\\DataObject\\Localizedfield',
@@ -114,30 +137,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'mandatory' => false,
                  'noteditable' => false,
                  'index' => false,
-                 'locked' => NULL,
-                 'style' => '',
-                 'permissions' => NULL,
-                 'datatype' => 'data',
-                 'relationType' => false,
-                 'invisible' => false,
-                 'visibleGridView' => false,
-                 'visibleSearch' => false,
-              )),
-              1 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\Date::__set_state(array(
-                 'fieldtype' => 'date',
-                 'queryColumnType' => 'bigint(20)',
-                 'columnType' => 'bigint(20)',
-                 'phpdocType' => '\\Carbon\\Carbon',
-                 'defaultValue' => NULL,
-                 'useCurrentDate' => false,
-                 'name' => 'Date',
-                 'title' => 'Date',
-                 'tooltip' => '',
-                 'mandatory' => false,
-                 'noteditable' => false,
-                 'index' => false,
-                 'locked' => NULL,
+                 'locked' => false,
                  'style' => '',
                  'permissions' => NULL,
                  'datatype' => 'data',
@@ -151,20 +151,20 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'region' => NULL,
              'layout' => NULL,
              'title' => NULL,
-             'width' => NULL,
-             'height' => NULL,
+             'width' => '',
+             'height' => '',
              'maxTabs' => NULL,
              'labelWidth' => NULL,
              'hideLabelsWhenTabsReached' => NULL,
              'referencedFields' => 
             array (
             ),
-             'tooltip' => NULL,
-             'mandatory' => NULL,
-             'noteditable' => NULL,
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
              'index' => NULL,
-             'locked' => NULL,
-             'style' => NULL,
+             'locked' => false,
+             'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
              'columnType' => NULL,

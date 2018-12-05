@@ -7,8 +7,15 @@
  */
 
 namespace AppBundle\Document\Areabrick;
+use Pimcore\Model\DataObject\BranchOffice;
+use Pimcore\Model\Document\Tag\Area\Info;
 
 class BfiTopBranch extends AbstractAreabrick
 {
+    public function action(Info $info){
+        $branch = new BranchOffice\Listing();
+
+        $info->getView()->branch = $branch;
+    }
 
 }

@@ -29,11 +29,6 @@
             </div>
 
             <div class="row">
-                <div class="col-sm-4">Image - Founder</div>
-                <div class="col-sm-8"><?= $this->image('image-founder');?></div>
-            </div>
-
-            <div class="row">
                 <div class="col-sm-4">Founder</div>
                 <div class="col-sm-8"><?= $this->input("founder"); ?></div>
             </div>
@@ -41,6 +36,11 @@
             <div class="row">
                 <div class="col-sm-4">Position</div>
                 <div class="col-sm-8"><?= $this->input("position"); ?></div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-4">Image - Founder</div>
+                <div class="col-sm-8"><?= $this->image('image-founder');?></div>
             </div>
 
             <div class="row">

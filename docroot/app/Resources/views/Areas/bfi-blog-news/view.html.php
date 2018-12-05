@@ -7,39 +7,37 @@
             <?= $this->textarea('text');?>
         </p>
         <div class="row content-bfi">
-            <div class="col-md-6 thumbnail-infor">
-                <div class="thumbnail-body--content">
-                    <div class="thumbnail-image">
-                        <img src="assets/images/slide.jpg">
-                    </div>
-                    <div class="thumbnail-infomation">
-                        <p>Wed, 02-11-2018</p>
-                        <h3>The Financial Advice I Would Give Every 25 Year Old</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 thumbnail-infor">
-                <div class="thumbnail-body--content">
-                    <div class="thumbnail-image">
-                        <img src="https://www.digitalcare.org/wp-content/uploads/2016/11/Free-Desktop-Wallpaper-feature-696x465.jpg">
-                    </div>
-                    <div class="thumbnail-infomation">
-                        <p>Wed, 02-11-2018</p>
-                        <h3>The Financial Advice I Would Give Every 25 Year Old</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 thumbnail-infor">
-                <div class="thumbnail-body--content">
-                    <div class="thumbnail-image">
-                        <img src="https://www.digitalcare.org/wp-content/uploads/2016/11/Free-Desktop-Wallpaper-feature-696x465.jpg">
-                    </div>
-                    <div class="thumbnail-infomation">
-                        <p>Wed, 02-11-2018</p>
-                        <h3>The Financial Advice I Would Give Every 25 Year Old</h3>
+            <?php
+            $i = 0;
+            foreach ($this->blog as $blog){
+
+                if($i = 0){
+                    ?>
+                    <div class="col-md-6 thumbnail-infor">
+                    <?php
+                }else{
+                    ?>
+                        <div class="col-md-3 thumbnail-infor">
+                    <?php
+                }
+                ?>
+                    <div class="thumbnail-body--content">
+                        <div class="thumbnail-image">
+                            <img src="/assets/images/slide.jpg">
+                        </div>
+                        <div class="thumbnail-infomation">
+                            <p><?= $blog->getDate();?></p>
+                            <h3><?= $blog->getTitle();?></h3>
+                        </div>
                     </div>
                 </div>
-            </div>
+                <?php
+                if($i>3){
+                    break;
+                }
+                $i++;
+            }
+            ?>
         </div>
         <div class="row">
             <div class="button-area text-center">

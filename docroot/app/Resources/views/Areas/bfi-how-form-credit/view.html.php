@@ -22,7 +22,7 @@
                     <div class="col-md-5">
                         <div class="input-group inputform">
                             <select class="c-custom-select">
-                                <option value="" > Untuk Keperluan apa ?</option>
+                                <option value="0" > Untuk Keperluan apa ?</option>
                                 <?php while ($this->block("contentblock")->loop()) { ?>
                                     <option value="<?= $this->input('value'); ?>"><?= $this->input('text'); ?></option>
                                 <?php } ?>

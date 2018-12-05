@@ -1,13 +1,28 @@
+.pimcore_area_buttons .pimcore_area_buttons_inner{
+	z-index: 9999;
+}
+
+.navbar-fixed-top, .navbar-fixed-bottom {
+	position: inherit !important;;
+}
+
+.pimcore_area_edit_button {
+	z-index: 9999 !important;
+}
+/*
 .border-editmode {
     border: 2px solid black;
 }
 
 .pimcore_area_edit_button_widget .pimcore_area_edit_button {
-	z-index: 9;
+	z-index: 9999;
 }
 
 .pimcore_area_entry .pimcore_area_edit_button {
 	z-index: 9;
+}
+.pimcore_area_buttons {
+	z-index: 9999;
 }
 .pimcore_areablock_toolbar{
 	display: none;
@@ -18,4 +33,4 @@
 }
 .edit{
     margin-top :100px;
-}
+}*/

@@ -19,7 +19,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-4">value</div>
-                <div class="col-sm-8"><?= $this->input("text"); ?></div>
+                <div class="col-sm-8"><?= $this->input("value"); ?></div>
             </div>
         <?php } ?>
     </div>
