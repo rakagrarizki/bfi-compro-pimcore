@@ -57,19 +57,15 @@ class BranchController extends FrontendController
         }
 
         $file = new \SplFileObject(PIMCORE_TEMPORARY_DIRECTORY . "/branchdocument2.csv");
-        dump("aaa");
-        dump($file);
-        dump($file->eof());
-        exit;
 
-        while ($file->eof()) {
-            $data = $file->fgetcsv();
 
-            dump($data);
+        while (!$file->eof() && ($row = $file->fgetcsv(",")) && $row[0] !== null) {
 
-            //list($name, $address, $map) = $data;
+            list($name, $address, $map) = $row;
 
-            /*$key = \Pimcore\File::getValidFilename($name . "-" . $city);
+            $mapArray = explode(",",$map);
+
+            $key = \Pimcore\File::getValidFilename($name);
             $marketingOffice = new DataObject\BranchOffice();
             $marketingOffice->setParent($parent);
             $marketingOffice->setKey($key);
@@ -77,8 +73,8 @@ class BranchController extends FrontendController
             $marketingOffice->setName($name);
             $marketingOffice->setAddress($address);
             $map = new DataObject\Data\Geopoint();
-            $map->setLatitude($lat);
-            $map->setLongitude($long);
+            $map->setLatitude($mapArray[0]);
+            $map->setLongitude($mapArray[1]);
 
             $marketingOffice->setMap($map);
             try {
@@ -86,7 +82,7 @@ class BranchController extends FrontendController
                 echo "Succes save " . $name . "\n";
             } catch (\Exception $exception) {
                 echo "Failed save " . $name . " because " . $exception->getMessage() . "\n";
-            }*/
+            }
 
         }
         exit;
