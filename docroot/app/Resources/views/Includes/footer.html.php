@@ -23,6 +23,31 @@ if($this->editmode) : ?>
         </div>
     </div>
 
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col-lg-4">Career</div>
+                <div class="col-lg-8"><?=$this->link('career');?></div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">Contact Us</div>
+                <div class="col-lg-8"><?=$this->link('contact');?></div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">Our Branch</div>
+                <div class="col-lg-8"><?=$this->link('branch');?></div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">Term of Use</div>
+                <div class="col-lg-8"><?=$this->link('term');?></div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">Privacy Policy</div>
+                <div class="col-lg-8"><?=$this->link('privacy');?></div>
+            </div>
+        </div>
+    </div>
+
 <?php endif?>
 
 <!-- FOOTER -->
@@ -39,13 +64,13 @@ if($this->editmode) : ?>
                 </p>
             </div>
             <div class="col-md-4 footer-center">
-                <span>Customer Care <i class="fa fa-phone"></i> 1500018</span>
-                <label>Newsletter</label>
+                <span><?= $this->translate("customer-care") ?> <i class="fa fa-phone"></i> 1500018</span>
+                <label><?= $this->translate("Newsletter") ?></label>
                 <form class="form-inline">
                     <div class="form-group">
                         <input type="password" class="form-control" id="email" placeholder="Your email here...">
                     </div>
-                    <button type="submit" class="cta cta-primary">SUBMIT</button>
+                    <button type="submit" class="cta cta-primary"><?= $this->translate("submit") ?></button>
                 </form>
             </div>
             <div class="col-md-4 footer-right">
@@ -55,7 +80,7 @@ if($this->editmode) : ?>
                     <a href="<?=$this->link('instagram')!= "" ?$this->link('instagram')->getHref():'' ?>"><span class="fa fa-instagram"></span></a>
                     <a href="<?=$this->link('linkedin')!= "" ?$this->link('linkedin')->getHref():'' ?>"><span class="fa fa-linkedin"></span></a>
                 </div>
-                <span>BFI registered and supervised by:</span>
+                <span><?= $this->translate("text-pengawasan") ?>:</span>
                 <img src="/static/images/ojk-logo.png" class="img-ojk">
             </div>
         </div>
@@ -65,11 +90,11 @@ if($this->editmode) : ?>
     <div class="container">
         <span>&copy; <?php echo date("Y"); ?> - PT BFI Finance Indonesia Tbk</span>
         <ul class="nav-footer">
-            <li><a href="#">Career</a></li>
-            <li><a href="#">Contact Us</a></li>
-            <li><a href="#">Our Branch</a></li>
-            <li><a href="#">Term of Use</a></li>
-            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="<?=$this->link('career')->getHref();?>"><?= $this->translate("career") ?></a></li>
+            <li><a href="<?=$this->link('contact')->getHref();?>"><?= $this->translate("contact") ?></a></li>
+            <li><a href="<?=$this->link('branch')->getHref();?>"><?= $this->translate("branch") ?></a></li>
+            <li><a href="<?=$this->link('term')->getHref();?>"><?= $this->translate("term") ?></a></li>
+            <li><a href="<?=$this->link('privacy')->getHref();?>"><?= $this->translate("privacy") ?></a></li>
         </ul>
     </div>
 </div>

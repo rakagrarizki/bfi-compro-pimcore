@@ -5,23 +5,43 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-7 left-side-top no-padding">
-                    <a href="#">Personal</a>
-                    <a href="#">Corporate</a>
+                    <a href="/<?php echo $this->language ?>"><?= $this->translate("personal") ?></a>
+                    <a href="#"><?= $this->translate("corporate") ?></a>
                 </div>
                 <div class="col-md-5 right-side-top">
                     <div class="link-about-top">
-                        <a href="#">Tentang BFI</a>
-                        <a href="#">Blog</a>
+                        <a href="#"><?= $this->translate("contact-us") ?></a>
+                        <a href="#"><?= $this->translate("blog") ?></a>
                     </div>
 
                     <div class="link-log">
-                        <a href="#" class="login">Masuk</a>
-                        <a href="#" class="register">Daftar</a>
+                        <a href="#" class="login"><?= $this->translate("login") ?></a>
+                        <a href="#" class="register"><?= $this->translate("register") ?></a>
                     </div>
 
+                    <?php
+                    // this is an auto-generated language switcher, of course you can create your own
+                    $service = new \Pimcore\Model\Document\Service;
+                    $translations = $service->getTranslations($this->document);
+                    $links = [];
+                    foreach (\Pimcore\Tool::getValidLanguages() as $language) {
+                        $target = "/" . $language;
+                        if (isset($translations[$language])) {
+                            $localizedDocument = \Pimcore\Model\Document::getById($translations[$language]);
+                            if ($localizedDocument) {
+                                $target = $localizedDocument->getFullPath();
+                            }
+                        }
+                        $links[$language] = $target;
+                    }
+                    ?>
+
                     <div class="lang">
-                        <a href="#" class="idn">ID</a>
-                        <a href="#" class="eng">EN</a>
+                        <?php foreach ($links as $lang => $target) {
+                            ?>
+                            <a
+                                        href="<?php echo $target ?>"><?php echo $lang == 'en' ? 'EN' : 'ID' ?></a>
+                        <?php } ?>
                     </div>
                 </div>
 
@@ -60,7 +80,7 @@
                                                     <div class="col-md-12">
                                                         <div class="col-md-6">
                                                             <li>
-                                                                <div class="label-title">Produk</div>
+                                                                <div class="label-title"><?= $this->translate("produk") ?></div>
                                                             </li>
                                                             <?php foreach ($page->getPages() as $child) {  ?>
                                                                 <?php if(!$child->isVisible()) { continue; } ?>
@@ -70,7 +90,7 @@
                                                         </div>
                                                         <div class="col-md-6">
                                                             <li>
-                                                                <div class="label-title">Layanan</div>
+                                                                <div class="label-title"><?= $this->translate("layanan") ?></div>
                                                             </li>
                                                             <?php foreach ($page->getPages() as $child) {  ?>
                                                                 <?php if(!$child->isVisible()) { continue; } ?>

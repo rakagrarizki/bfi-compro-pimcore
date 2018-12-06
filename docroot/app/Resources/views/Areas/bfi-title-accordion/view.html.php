@@ -22,7 +22,7 @@
                                             <?= $this->input('title-accord');?></a>
                                     </h4>
                                 </div>
-                                <div id="<?php echo $unik."-".$a;?>" class="panel-collapse collapse in">
+                                <div id="<?php echo $unik."-".$a;?>" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <?php echo $this->areablock("Content-accord"); ?>
                                     </div>

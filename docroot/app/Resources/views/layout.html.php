@@ -73,3 +73,4 @@
     <?php $this->headScript()->prependFile('/static/js/Includes/homepage.js'); ?>
     <?php echo $this->headScript(); ?>
 </body>
+</html>
