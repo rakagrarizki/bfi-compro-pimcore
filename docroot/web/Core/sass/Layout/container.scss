@@ -1,0 +1,69 @@
+
+#site-container {
+    margin-top: 140px;
+    min-height: 56vh;
+
+    &.active {
+        margin-top: 0;
+    }
+
+    @include breakpoint (mobile) {
+        margin-top: 110px;
+    }
+}
+a {
+    &:hover {
+        text-decoration: none;
+    }
+}
+#credit {
+    background-color: #f1f1f1;
+    padding: 50px 0 60px;
+    h2 {
+        font-family: 'HelveticaNeue';
+        font-weight: 600;
+        
+        @include breakpoint(mobile){
+            font-size: 1.4em;
+            letter-spacing: 1px;
+        }
+        a {
+            margin-left: 40px;
+            font-family: 'HelveticaNeue';
+            font-weight: 600;
+            @include breakpoint(mobile){
+                display: block;
+                font-size: 14px;
+                margin: 10px auto 0;
+                width: 60%;
+                padding: 13px 15px;
+                &:before{
+                    right: 15px;
+                }
+            }
+        }
+    }
+    .credit-body {
+        width: 75%;
+        margin: auto;
+        @include breakpoint(mobile){
+            width: auto;
+        }
+    }
+}
+
+.title-wrapper {
+    font-family: 'HelveticaNeue';
+    font-weight: 600;
+    font-size: 2.5em;
+    @include breakpoint(mobile){
+        font-size: 1.8em;
+    }
+}
+.paragraf-title {
+    font-size: 1.45em;
+    font-family: 'HelveticaNeue';
+    @include breakpoint(mobile){
+        font-size: 1em;
+    }
+}

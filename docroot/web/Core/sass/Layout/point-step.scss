@@ -1,0 +1,46 @@
+.point-step {
+    position: relative;
+    background: #fff;
+
+    .sect-title {
+        h2, p {
+            color: #565656;
+        }
+    }
+
+    .sect-step {
+        margin: 70px 0;
+        text-align: center;
+
+        @include breakpoint(mobile) {
+            margin: 20px 0;
+        }
+
+        .sect-step__item {
+            margin: 0 20px;
+            display: inline-block;
+            vertical-align: top; 
+        }
+
+        p {
+            font-family: 'HelveticaNeue-Medium';
+            font-size: 1.250em;
+        }
+
+        img {
+            display: inline-block;
+            vertical-align: top;
+            height: 65px;
+            margin-bottom: 10px;
+        }
+    }
+
+    .btn-ajukan {
+        text-align: center;
+        margin-bottom: 30px;
+
+        .cta-orange {
+            text-transform: uppercase;
+        }
+    }
+}

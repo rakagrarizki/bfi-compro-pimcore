@@ -1,0 +1,94 @@
+.cont-cara {
+    left: 0;
+    right: 0;
+
+    .cara-kerja {
+        text-align: center;
+        margin-top: -50px;
+        margin-bottom: 50px;
+
+        .title-cara-kerja {
+            font-size: 3em;
+            font-family: 'HelveticaNeue';
+            font-weight: 600;
+            @include breakpoint(mobile) {
+                font-size: 2em;
+            }
+        }
+
+        .step-cara {
+            font-size: 1.5em;
+            font-family: 'HelveticaNeue';
+            @include breakpoint(mobile) {
+                font-size: 1.2em;
+            }
+        }
+
+        .list-step {
+            display: flex;
+            flex-wrap: nowrap;
+
+            li {
+                flex: 5;
+                list-style: none;
+                display: inline-block;
+                margin: 20px 50px;
+                text-align: center;
+
+                .img-step{
+                    padding: 20px;
+                    transition: all .5s ease-in-out;
+
+                }
+
+                &:hover {
+                    cursor: pointer;
+
+                    .img-step {
+                        padding: 30px;
+                        background-color: aliceblue;
+                        border-radius: 50%;
+                        transition: all .5s ease-in;        
+                    }
+                }
+
+                p {
+                    font-size: 1.2em;
+                    transform: translateY(20px);
+                }
+
+                span {
+                    &:before {
+                        font-size: 4em;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.cont-cara--mobile {
+    display: none;
+    @include breakpoint(mobile) {
+        display: block;
+        margin-top: -80px;
+    }
+}
+
+#slider-cara--kerja {
+
+    .list-slider {
+        padding: 0 50px;
+        > p {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+    }
+
+    > button {
+        display: none !important;
+    }
+    .slick-current.slick-active {
+
+    }
+}

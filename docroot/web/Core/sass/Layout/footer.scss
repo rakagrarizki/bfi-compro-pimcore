@@ -1,0 +1,150 @@
+footer {
+    background-color: #dddddd;
+    padding: 50px 0 30px;
+    color: #000;
+    .footer-left {
+        h3 {
+            font-family: 'HelveticaNeue';
+            margin: 10px 0;
+            font-weight: 600;
+            font-size: 1.4em;
+        }
+        p {
+            font-family: 'HelveticaNeue';
+            font-size: 1.1em;
+            color: #000;
+        }
+    }
+    .footer-center {
+        span {
+            font-family: 'HelveticaNeue';
+            display: block;
+            width: calc(100% - 80px);
+            background: $primary;
+            color: $light;
+            padding: 10px 15px;
+            margin-bottom: 10px;
+        }
+        label {
+            font-family: 'HelveticaNeue';
+            display: block;
+            font-size: 14px;
+            padding-top: 15px;
+        }
+        .form-inline {
+            height: 41px;
+            margin-bottom: 20px;
+            .form-group {
+                width: calc(100% - 40%);
+                height: 100%;
+                margin-right: 15px;
+                display: inline-block;
+            }
+            .form-control {
+                width: 100%;
+                height: 100%;
+                border: none;
+                font-family: 'HelveticaNeue';
+                border-bottom: 1px solid $primary;
+                border-radius: 0;
+                background: transparent;
+                box-shadow: none;
+            }
+        }
+    }
+
+    .footer-right {
+        .social-media{
+            margin-bottom: 20px;
+            > a {
+                margin-right: 10px;
+                > span {
+                    width: 40px;
+                    height: 40px;
+                    line-height: 40px;
+                    text-align: center;
+                    color: #fff;
+                    font-size: 1.3em;
+                    transition: all .2s ease-in-out;
+                    &.fa-facebook {
+                        background-color: #3a5795;
+                    }
+                    &.fa-twitter {
+                        background-color: #1d9ceb;
+                    }
+                    &.fa-instagram {
+                        background-color: #1d9ceb;
+                    }
+                    &.fa-linkedin {
+                        background-color: #0270ad;
+                    }
+                    &:hover {
+                        background-color: #fff;
+                        color: #000;
+                    }
+                }
+            }               
+        }
+        > span {
+            font-size: 15px;
+            font-family: 'HelveticaNeue';
+            @include breakpoint(mobile){
+                float: left;
+                width: 50%;
+            }
+        }
+        .img-ojk {
+            width: 115px;
+            display: block;
+            height: auto;
+            @include breakpoint(mobile){
+                float: left;
+                width: 30%;
+            }
+        }
+    }
+}
+
+.footer-bottom {
+    background-color: $primary;
+    padding: 20px 0;
+    font-family: 'HelveticaNeue';
+    span {
+        color: #fff;
+        font-family: 'HelveticaNeue';
+        font-weight: 600;
+        letter-spacing: .5px;
+        @include breakpoint(mobile){
+            font-family: $medium;
+            text-align: center;
+            display: block;
+        }
+    }
+    .container {
+        position: relative;
+    }
+    .nav-footer {
+        position: absolute;
+        list-style: none;
+        display: block;
+        right: 0; top: 0;
+        > li {
+            display: inline-block;
+            margin-right: 15px;
+            @include breakpoint(mobile){
+                margin-right: 10px;
+            }
+            a {
+                color: #fff;
+                @include breakpoint(mobile){
+                    font-size: 10px;
+                }
+            }
+        }
+        @include breakpoint(mobile){
+            position: relative;
+            text-align: center;
+            margin: 15px 0;
+        }
+    }
+}

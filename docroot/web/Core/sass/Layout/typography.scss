@@ -1,0 +1,26 @@
+.sect-title {
+    margin: auto;
+    width: 70%;
+    text-align: center;
+
+    h2 {
+        font-family: 'HelveticaNeue-Bold';
+        font-size: 2.250em;
+        color: #fff;
+    }
+
+    p {
+        font-family: 'HelveticaNeue';
+        font-size: 1.250em;
+        color: #fff;
+    }
+
+    &.middle-position {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        margin: auto;
+        transform: translateY(-50%);
+    }
+}
