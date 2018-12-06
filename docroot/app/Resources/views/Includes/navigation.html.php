@@ -71,6 +71,10 @@
                             if ($subPage) {
                                 foreach ($subPage as $page) {
                                     $hasChildren = $page->hasPages();
+
+                                    if(strpos($page->getUri(), 'branch-office') !== false){
+                                        continue;
+                                    }
                                     if($hasChildren && strpos($page->getUri(), 'product') !== false){
                                         ?>
                                         <li class="dropdown <?php echo $page->getActive() ? 'active' : '' ?>" id="produk">
