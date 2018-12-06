@@ -1,7 +1,7 @@
 <?php 
 
 /** 
-* Generated at: 2018-12-05T13:09:23+01:00
+* Generated at: 2018-12-06T15:16:37+01:00
 * Inheritance: no
 * Variants: no
 * Changed by: admin (2)
@@ -19,7 +19,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'City',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1544011761,
+   'modificationDate' => 1544105797,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -81,7 +81,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
@@ -123,10 +123,10 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'name' => 'Province',
              'title' => 'Province',
              'tooltip' => '',
-             'mandatory' => true,
+             'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
