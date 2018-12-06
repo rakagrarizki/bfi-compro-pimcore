@@ -51,7 +51,7 @@
 /vendor/
 
 # PhpStorm / IDEA
-.idea/
+/.idea/
 # NetBeans
 nbproject
 
