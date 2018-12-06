@@ -88,7 +88,7 @@
                                                             </li>
                                                             <?php foreach ($page->getPages() as $child) {  ?>
                                                                 <?php if(!$child->isVisible()) { continue; } ?>
-                                                                <?php if(!$child->getClass() == "product"){ continue; } ?>
+                                                                <?php if(!strpos($child->getUri(), 'product') !== false){ continue; } ?>
                                                                 <li><a href="<?= $child->getHref() ?>"><?= $child->getLabel() ?></a></li>
                                                             <?php } ?>
                                                         </div>
@@ -98,7 +98,7 @@
                                                             </li>
                                                             <?php foreach ($page->getPages() as $child) {  ?>
                                                                 <?php if(!$child->isVisible()) { continue; } ?>
-                                                                <?php if(!$child->getClass() == "service"){ continue; } ?>
+                                                                <?php if(!strpos($child->getUri(), 'service') !== false){ continue; } ?>
                                                                 <li><a href="<?= $child->getHref() ?>"><?= $child->getLabel() ?></a></li>
                                                             <?php } ?>
                                                         </div>
