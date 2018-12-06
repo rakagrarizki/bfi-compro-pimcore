@@ -1,0 +1,9 @@
+.content-bfi {
+    padding: 20px 40px 30px;
+    margin: 20px 0 0;
+
+    @include breakpoint(mobile){
+        padding: unset;
+        margin-bottom: 30px;
+    }
+}

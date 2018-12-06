@@ -1,0 +1,148 @@
+.slider-author {
+    position: relative;
+    height: 400px;
+
+    @include breakpoint(mobile) {
+        height: auto;
+    }
+
+    .row {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+
+        @include breakpoint(mobile) {
+            position: relative;
+            top: 0;
+            transform: unset;
+        }
+    }
+
+    .slider-author__wrapper {
+        .item-slide {
+            position: relative;
+            height: 400px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: top center;
+
+            @include breakpoint(mobile) {
+                height: auto;
+                padding: 50px 0;
+            }
+        
+
+            &::before {
+                position: absolute;
+                content: "";
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+            }
+        }
+
+        .img-wrap {
+            @include breakpoint(mobile) {
+                padding-bottom: 20px;
+            }
+        }
+
+        img {
+            width: 100%;
+
+            @include breakpoint(mobile) {
+                width: 30%;
+                margin: auto;
+            }
+        }
+
+        .text-wrapper {
+            width: 70%;
+
+            @include breakpoint(mobile) {
+                margin: auto;
+            }
+        }
+
+        .slick-dots {
+            bottom: 20px;
+            text-align: center;
+
+            @include breakpoint(mobile) {
+                text-align: left;
+                padding-left: 70px;
+            }
+            
+        }
+
+        .author {
+            margin-top: 30px;
+        }
+
+        h4 {
+            font-family: 'HelveticaNeue-Medium';
+            color: #fff;
+            font-size: 1.3em;
+
+            strong {
+                font-size: 1.1em;
+                font-weight: 600;
+                text-transform: uppercase;
+            }
+        }
+
+        p {
+            font-family: 'HelveticaNeue';
+            font-size: 1.250em;
+            color: #ffffff;
+        }
+    }
+
+    .slick-dots {
+        li {
+            width: 10px;
+            height: 8px;
+            background: #ffffff;
+            transition: all .3s ease-in-out;
+        }
+        .slick-active {
+            width: 40px;
+
+        }
+    }
+
+    .slick-arrow {
+        display: block;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 50px;
+        width: 50px;
+        background: #ffffff;
+        z-index: 9;
+        cursor: pointer;
+        padding: 10px 20px;
+    }
+
+    .fa-angle-left {
+        left: 30px;
+        color: #04559f;
+        font-size: 30px;
+
+        @include breakpoint(mobile) {
+            left: 0;
+        }
+    }
+
+    .fa-angle-right {
+        right: 30px;
+        color: #04559f;
+        font-size: 30px;
+
+        @include breakpoint(mobile) {
+            right: 0;
+        }
+    }
+
+}
