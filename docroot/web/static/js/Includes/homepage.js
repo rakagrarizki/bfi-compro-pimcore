@@ -1,4 +1,35 @@
 $(function () {
+
+    var credits = {
+        "angunan": {
+            "jenis_angunan": ""
+        },
+
+        "pemohon": {
+            "nama": "",
+            "email": "",
+            "no_handphone": ""
+        },
+
+        "tempat_tinggal": {
+            "provinsi": "",
+            "kota": "",
+            "kecamatan": "",
+            "kelurahan": "",
+            "kode_pos": "",
+            "alamat": ""
+        },
+
+        "kendaraan": {
+            "merk_kendaraan": "",
+            "model_kendaraan": "",
+            "tahun_kendaraan": "",
+            "status_pemilik": ""
+        }
+
+    }
+
+
     $("#herobanner").slick({
         slideToShow: 1,
         dots: true,
@@ -25,6 +56,9 @@ $(function () {
         nextArrow: '<i class="fa fa-angle-right next-arrow" aria-hidden="true"></i>'
     });
 
+    if ($('.biaya-agunan').length > 0) {
+        jcf.replaceAll();
+    }
 
 
     var customSelect = $('.c-custom-select-home');
@@ -79,6 +113,11 @@ $(function () {
         formNumber: {
             required: true,
             number: true
+        },
+
+        "checkbox[]": {
+            required: true,
+            minlength: 1
         },
 
         submitHandler: function (form) {
@@ -139,6 +178,78 @@ $(function () {
         $('#menu5').fadeOut();
     }
 
+    function showTab6() {
+        $('#menu6').fadeIn();
+    }
+
+    function hideTab6() {
+        $('#menu6').fadeOut();
+    }
+
+
+
+
+    function pushDataPemohon() {
+        var nama_lengkap = $('#nama_lengkap').val(),
+            email_pemohon = $('#email_pemohon').val(),
+            no_telepon = $('#no_handphone').val();
+
+        credits.pemohon.nama = nama_lengkap;
+        credits.pemohon.email = email_pemohon;
+        credits.pemohon.no_handphone = no_telepon;
+
+    }
+
+    function pushDataTempatTinggal() {
+        var provinsi = $('#provinsi').val(),
+            kota = $('#kota').val(),
+            kecamatan = $('#kecamatan').val(),
+            kelurahan = $('#kelurahan').val(),
+            kode_pos = $('#kode_pos').val(),
+            alamat = $('#alamat_lengkap').val();
+
+        credits.tempat_tinggal.provinsi = provinsi;
+        credits.tempat_tinggal.kota = kota;
+        credits.tempat_tinggal.kecamatan = kecamatan;
+        credits.tempat_tinggal.kelurahan = kelurahan;
+        credits.tempat_tinggal.kode_pos = kode_pos;
+        credits.tempat_tinggal.alamat = alamat;
+    }
+
+    function pushDataKendaraan() {
+        var merk_kendaraan = $('#merk_kendaraan').val(),
+            model_kendaraan = $('#model_kendaraan').val(),
+            tahun_kendaraan = $('#tahun_kendaraan').val(),
+            status_pemilik = $('#status_kep').val();
+
+        credits.kendaraan.merk_kendaraan = merk_kendaraan;
+        credits.kendaraan.model_kendaraan = model_kendaraan;
+        credits.kendaraan.tahun_kendaraan = tahun_kendaraan;
+        credits.kendaraan.status_pemilik = status_pemilik;
+    }
+
+    function setSummary() {
+        //data pemohon
+        $('#showFullName').html(credits.pemohon.nama);
+        $('#showEmail').html(credits.pemohon.email);
+        $('#showPhone').html(credits.pemohon.no_handphone);
+
+        //data tempat tinggal
+        $('#showProvinsi').html(credits.tempat_tinggal.provinsi);
+        $('#showKota').html(credits.tempat_tinggal.kota);
+        $('#showKecamatan').html(credits.tempat_tinggal.kecamatan);
+        $('#showKelurahan').html(credits.tempat_tinggal.kelurahan);
+        $('#showKodePos').html(credits.tempat_tinggal.kode_pos);
+
+        // data merk kendaraan
+
+        $('#showMerkKendaraan').html(credits.kendaraan.merk_kendaraan);
+        $('#showModelKendaraan').html(credits.kendaraan.model_kendaraan);
+        $('#showTahunKendaraan').html(credits.kendaraan.tahun_kendaraan);
+        $('#showStatusPemilik').html(credits.kendaraan.status_pemilik);
+    }
+
+
     $('#button1').on('click', function (e) {
         e.preventDefault();
 
@@ -146,6 +257,9 @@ $(function () {
             showTab2();
             hideTab1();
             $('.nav-item-2').addClass('active');
+
+            pushDataPemohon();
+
         }
     })
 
@@ -156,6 +270,9 @@ $(function () {
             showTab3();
             hideTab2();
             $('.nav-item-3').addClass('active');
+
+            pushDataTempatTinggal();
+
         }
     })
 
@@ -166,6 +283,9 @@ $(function () {
             showTab4();
             hideTab3();
             $('.nav-item-4').addClass('active');
+
+            pushDataKendaraan();
+
         }
     })
 
@@ -176,8 +296,21 @@ $(function () {
             showTab5();
             hideTab4();
             $('.nav-item-5').addClass('active');
+
+            setSummary();
         }
     })
+
+    $('#button5').on('click', function (e) {
+        e.preventDefault();
+
+        showTab6();
+        hideTab5();
+        $('.input-number:first-child').focus();
+        $('.horizontal-scroll').hide();
+
+    })
+
 
     // click tab
 
@@ -237,6 +370,24 @@ $(function () {
         showTab4();
     })
 
+    $('#btnDataPemohon').on('click', function (e) {
+        e.preventDefault();
+        $('.tab-pane').fadeOut();
+        showTab1();
+    })
+
+    $('#btnDataTempatTinggal').on('click', function (e) {
+        e.preventDefault();
+        $('.tab-pane').fadeOut();
+        showTab2();
+    })
+
+    $('#btnDataKendaraan').on('click', function () {
+        e.preventDefault();
+        $('.tab-pane').fadeOut();
+        showTab3();
+    })
+
     $('#chooseFile').bind('change', function () {
         var filename = $("#chooseFile").val();
         if (/^\s*$/.test(filename)) {
@@ -249,6 +400,22 @@ $(function () {
         }
     });
 
+
+    $('.input-number').keyup(function () {
+        if ($(this).val() > 0) {
+            $(this).next().focus();
+        }
+
+        else if ($(this).val() == 0) {
+            $(this).prev().focus();
+        }
+    })
+
+    $(".input-number").keypress(function (e) {
+        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+            return false;
+        }
+    });
 
 
     jQuery.validator.setDefaults({
@@ -505,120 +672,161 @@ $(function () {
         })
     }
 
-//listbranch map - Andry
- var locations = [
-     ['Jakarta', -6.21462, 106.84513],
-     ['Kebon Jeruk', -6.19257205, 106.76972549],
-     ['Bogor', -6.5962986, 106.7972421],
-     ['Gunung Sahari', -6.1611974, 106.84235412],
-     ['Tangerang', -6.1825501, 106.4711093]
- ];
+    if ($('#map').length) {
 
- var map = new google.maps.Map(document.getElementById('map'), {
-     zoom: 10,
-     center: new google.maps.LatLng(-6.21462, 106.84513)
- });
+        //listbranch map - Andry
+        var locations = [{
 
- var infowindow = new google.maps.InfoWindow();
+        }
+        ['Jakarta', -6.21462, 106.84513],
+        ['Kebon Jeruk', -6.19257205, 106.76972549],
+        ['Bogor', -6.5962986, 106.7972421],
+        ['Gunung Sahari', -6.1611974, 106.84235412],
+        ['Tangerang', -6.1825501, 106.4711093]
+        ];
 
- var marker, i, latLngGoogle, _radius;
+        var _marker = 'assets/images/icon/marker.png';
 
- function listingLocationMarker(params){
-    for (i = 0; i < params.length; i++) {
-         marker = new google.maps.Marker({
-             position: new google.maps.LatLng(params[i][1], params[i][2]),
-             map: map
-         });
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 10,
+            center: new google.maps.LatLng(-6.21462, 106.84513)
+        });
 
-         google.maps.event.addListener(marker, 'click', (function(marker, i) {
-             return function() {
-                 infowindow.setContent(params[i][0]);
-                 infowindow.open(map, marker);
-             }
-         })(marker, i));
-     }
- }
+        var infowindow = new google.maps.InfoWindow();
 
- listingLocationMarker(locations);
+        var marker, i, latLngGoogle, _radius;
 
- //listbranch search autocomplete - Andry
+        function listingLocationMarker(params) {
+            for (i = 0; i < params.length; i++) {
+                marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(params[i][1], params[i][2]),
+                    map: map,
+                    icon: _marker
+                });
 
-var input = document.getElementById('searchTextField');
+                google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                    return function () {
+                        infowindow.setContent(params[i][0]);
+                        infowindow.open(map, marker);
+                    }
+                })(marker, i));
+            }
+        }
 
-var cityCircle;
-var autocomplete = new google.maps.places.Autocomplete(input, {types: ["geocode"]});
+        listingLocationMarker(locations);
 
-autocomplete.bindTo('bounds', map);
+        //listbranch search autocomplete - Andry
 
-google.maps.event.addListener(autocomplete, 'place_changed', function (event) {
-    infowindow.close();
-    var place = autocomplete.getPlace();
+        var input = document.getElementById('searchTextField');
 
-    if (!place.geometry) {
-         // User entered the name of a Place that was not suggested and
-         // pressed the Enter key, or the Place Details request failed.
-         window.alert("No details available for input: '" + place.name + "'");
-         return;
-     }
-    
-     var latComplete = place.geometry.location.lat(),
-         lngComplete = place.geometry.location.lng();
+        var cityCircle;
+        var autocomplete = new google.maps.places.Autocomplete(input, { types: ["geocode"] });
 
-     var latLngComplete = new google.maps.LatLng(latComplete, lngComplete);
+        autocomplete.bindTo('bounds', map);
 
-     latLngGoogle = new google.maps.LatLng(parseFloat(latComplete), parseFloat(lngComplete));
-     _radius = (13 * 500);
-     marker.setVisible(false);
+        google.maps.event.addListener(autocomplete, 'place_changed', function (event) {
+            infowindow.close();
+            var place = autocomplete.getPlace();
 
-     $.each(locations, function(id, value) {
-        console.log(value)
+            if (!place.geometry) {
+                window.alert("No details available for input: '" + place.name + "'");
+                return;
+            }
 
-         var latLngAPI = new google.maps.LatLng(parseFloat(value[1]), parseFloat(value[2]));
+            var latComplete = place.geometry.location.lat(),
+                lngComplete = place.geometry.location.lng();
 
-         var distance_from_location = google.maps.geometry.spherical.computeDistanceBetween(latLngGoogle, latLngAPI);
+            var latLngComplete = new google.maps.LatLng(latComplete, lngComplete);
 
-         if ((distance_from_location <= _radius)) {
-             console.log('ada')
-         }
-         else {
-            console.log('tidak ada');
-         }
+            latLngGoogle = new google.maps.LatLng(parseFloat(latComplete), parseFloat(lngComplete));
+            _radius = (13 * 500);
 
-     })
+            $.each(locations, function (id, value) {
 
-     CircleOption = {
-         strokeColor: '#0F2236',
-         strokeOpacity: 0.5,
-         strokeWeight: 2,
-         fillColor: '#0F2236',
-         fillOpacity: 0.15,
-         map: map,
-         radius: _radius,
-         center: latLngGoogle
-     };
+                var latLngAPI = new google.maps.LatLng(parseFloat(value[1]), parseFloat(value[2]));
 
-    if (cityCircle) {
-        cityCircle.setMap(null);
+                var distance_from_location = google.maps.geometry.spherical.computeDistanceBetween(latLngGoogle, latLngAPI);
+
+                if ((distance_from_location <= _radius)) {
+                    console.log(place.name);
+                }
+                else {
+                    console.log('not found location');
+                }
+
+            })
+
+            CircleOption = {
+                strokeColor: '#0F2236',
+                strokeOpacity: 0.5,
+                strokeWeight: 2,
+                fillColor: '#0F2236',
+                fillOpacity: 0.15,
+                map: map,
+                radius: _radius,
+                center: latLngGoogle
+            };
+
+            if (cityCircle) {
+                cityCircle.setMap(null);
+            }
+
+            cityCircle = new google.maps.Circle(CircleOption);
+
+            // If the place has a geometry, then present it on a map.
+            if (place.geometry.viewport) {
+                map.fitBounds(place.geometry.viewport);
+            } else {
+                map.setCenter(place.geometry.location);
+                map.setZoom(20); // Why 17? Because it looks good.
+            }
+
+            var marker = new google.maps.Marker({
+                position: place.geometry.location,
+                map: map,
+                icon: _marker
+            });
+            //marker.setPosition(place.geometry.location);
+            marker.setVisible(true);
+        });
+
     }
 
-    cityCircle = new google.maps.Circle(CircleOption);
-     
-     // If the place has a geometry, then present it on a map.
-     if (place.geometry.viewport) {
-         map.fitBounds(place.geometry.viewport);
-     } else {
-         map.setCenter(place.geometry.location);
-         map.setZoom(20); // Why 17? Because it looks good.
-     }
+    function countDown() {
+        var count = 120;
+        var counter = setInterval(function timerDown() {
+            count = count - 1;
+            if (count === -1) {
+                clearInterval(counter);
+                return;
+            }
 
-     var markerUser = new google.maps.Marker({
-             position: place.geometry.location,
-             map: map
-         });
-     //marker.setPosition(place.geometry.location);
-     marker.setVisible(true);
- });
+            var seconds = count % 60,
+                minutes = Math.floor(count / 60),
+                hours = Math.floor(minutes / 60);
+            minutes %= 60;
+            hours %= 60;
 
+            if (minutes < 10) {
+
+                minutes = '0' + minutes;
+            }
+
+            if (hours < 10) {
+
+                hours = '0' + hours;
+            }
+
+            if (seconds < 10) {
+
+                seconds = '0' + seconds;
+            }
+            $('.countdown').html(minutes + ":" + seconds);
+        }, 1000)
+
+    }
+
+    countDown();
 
 
 })
