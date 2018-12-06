@@ -50,7 +50,7 @@ $this->extend('layout.html.php');
                                 </li>
                             </ul>
                         </nav>
-                        <form action="#" id="getCredit" method="POST" class="form-get--credit" role="form">
+                        <form action="/?controller=credit&action=submitrumah" id="getCredit" method="POST" class="form-get--credit" role="form">
                             <div class="tab-content">
                                 <div id="menu1" class="tab-pane fade in active form-group">
                                     <div class="form-body--credit">
