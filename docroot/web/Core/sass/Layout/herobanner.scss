@@ -15,15 +15,18 @@
             color: #565656;
         }
     }
+    
 
     .slide {
         height: 0;
         padding-bottom: 500px;
         position: relative;
         overflow: hidden;
+        background-size: cover;
+        background-repeat: no-repeat;
 
         @include breakpoint(mobile) {
-            padding-bottom: 450px;
+            padding-bottom: 355px;
         }
         .desc-slide {
             position: absolute;
@@ -33,11 +36,11 @@
             color: $white;
             z-index: 1;
 
-            
-
             h3 {
+                margin: 0;
                 font-family: 'HelveticaNeue';
                 font-weight: 600;
+                font-size: 1.3em;
                 @include breakpoint (mobile) {
                     font-size: 18px;
                 }

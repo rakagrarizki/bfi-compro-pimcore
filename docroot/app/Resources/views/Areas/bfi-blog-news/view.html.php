@@ -13,11 +13,11 @@
 
                 if($i = 0){
                     ?>
-                    <div class="col-md-6 thumbnail-infor">
+                    <div class="col-md-6 col-sm-12 col-xs-12 thumbnail-infor">
                     <?php
                 }else{
                     ?>
-                        <div class="col-md-3 thumbnail-infor">
+                        <div class="col-md-3 col-sm-6 col-xs-6 thumbnail-infor">
                     <?php
                 }
                 ?>
@@ -27,7 +27,7 @@
                         </div>
                         <div class="thumbnail-infomation">
                             <p><?= $blog->getDate();?></p>
-                            <h3><?= $blog->getTitle();?></h3>
+                            <h3><a href="#"><?= $blog->getTitle();?></a></h3>
                         </div>
                     </div>
                 </div>

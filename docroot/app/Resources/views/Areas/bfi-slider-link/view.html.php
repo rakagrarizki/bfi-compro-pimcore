@@ -1,9 +1,9 @@
 <div>
-    <div id="herobanner2" class="herobanner">
+    <div id="herobanner2" class="herobanner herobanner--secondary">
         <?php while ($this->block("contentblock")->loop()) { ?>
             <?php $asset = $this->image("image");?>
             <?php $assetFounder = $this->image("image-founder");?>
-            <div class="slide">
+            <div class="slide" style="background-image: url('<?= $asset->getImage()?>')">
                 <div class="slide-cont">
                     <div class="desc-slide2">
                         <div class="desc-cont container">
@@ -21,9 +21,8 @@
                             </div>
                         </div>
                     </div>
-                    <img src="<?= $asset->getImage()?>" class="img-responsive" alt="">
                     <div class="col-md-10 col-md-offset-1">
-                        <div class="tagar"><?= $this->input('hashtag');?></div>
+                        <div class="tagar hidden-xs"><?= $this->input('hashtag');?></div>
                     </div>
                 </div>
             </div>

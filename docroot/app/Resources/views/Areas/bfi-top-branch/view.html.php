@@ -14,7 +14,7 @@
                 }
 
                 ?>
-                <div class="col-md-4 thumbnail">
+                <div class="col-md-4 thumbnail thumbnail--branch">
                     <img src="/static/images/logo-bfi.png">
                     <div class="thumbnail-caption">
                         <h3><?= $branch->getName(); ?></h3>

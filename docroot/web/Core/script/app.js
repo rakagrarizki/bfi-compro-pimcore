@@ -17,20 +17,19 @@
 		infoArea.textContent = fileName;
 	}
 
-	var lastScrollTop = 0;
 
-	$(window).scroll(function (event) {
+	$(window).scroll(function () {
 
 		var st = $(this).scrollTop();
 
-		if (st > lastScrollTop) {
+		if (st >= 100) {
 			$('#site-header').addClass('active');
 			$('#site-container').addClass('active');
 
-		} 
+		}
 		else {
 			$('#site-header').removeClass('active');
-			$('#site-container').removeClass('active');	
+			$('#site-container').removeClass('active');
 		}
 
 		lastScrollTop = st;
@@ -718,6 +717,12 @@
 			prevArrow: false,
 			nextArrow: false
 		})
+
+		$('ul.list-step').slick({
+			dots: false,
+			prevArrow: false,
+			nextArrow: false
+		});
 	}
 
 	if ($('#map').length) {
