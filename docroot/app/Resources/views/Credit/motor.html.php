@@ -55,7 +55,7 @@ $this->extend('layout.html.php');
                                 </li>
                             </ul>
                         </nav>
-                        <form action="/?controller=credit&action=submitmotor" id="getCredit" method="POST" class="form-get--credit" role="form">
+                        <form action="#" id="getCredit" method="POST" class="form-get--credit" role="form">
                             <div class="tab-content">
                                 <div id="menu1" class="tab-pane fade in active form-group">
                                     <div class="form-body--credit">
@@ -539,10 +539,10 @@ $this->extend('layout.html.php');
                                                 <p id="showPhone"> <img src="assets/images/icon/pencil.png" alt=""></p>
                                             </div>
                                             <div class="otp-number__verify">
-                                                <input type="text" class="input-number formRequired" maxlength="1">
-                                                <input type="text" class="input-number formRequired" maxlength="1">
-                                                <input type="text" class="input-number formRequired" maxlength="1">
-                                                <input type="text" class="input-number formRequired" maxlength="1">
+                                                <input type="text" class="input-number formRequired" maxlength="1" name="otp1">
+                                                <input type="text" class="input-number formRequired" maxlength="1" name="otp2">
+                                                <input type="text" class="input-number formRequired" maxlength="1" name="otp3">
+                                                <input type="text" class="input-number formRequired" maxlength="1" name="otp4">
                                             </div>
                                             <div class="error-wrap"></div>
                                             <div class="otp-number__text">
