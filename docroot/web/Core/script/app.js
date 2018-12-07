@@ -38,6 +38,7 @@
 	var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 	var _marker = '/static/images/icon/marker.png';
 	var marker, i, latLngGoogle, _radius;
+	var infowindow = null;
 
 	var credits = {
 		"angunan": {
@@ -722,24 +723,11 @@
 		});
 	}
 
-	function buildHtmlLocation(params) {
-		var html = '<div class="col-md-12 parent-brachlist" data-lat="' + params.latitude + '"  data-lng="' + params.longitude + '">';
-		html += '<div class="wrapper-branchlist">';
-		html += '<div class="col-md-2 col-sm-2 col-xs-2 branchlist"><img class="icon-gedung-branchlist" src="/static/images/gedung.png"></div>';
-		html += '<div class="col-md-8 col-sm-8 col-xs-8 branchlist">';
-		html += '<p class="margin-bottom-10">' + params.name + '</p>';
-		html += '<p>' + params.address + '</p>';
-		html += '<a href="#" class="margin-top-20">PETUNJUK ARAH <i class="fa fa-angle-right arrowlink" aria-hidden="true"></i></a>';
-		html += '</div>';
-		html += '<div class="col-md-2 branchlist"><i class="fa fa-angle-right" aria-hidden="true"></i></div>';
-		html += '</div>';
-		html += '</div>';
-
-		$('.wrapper-parent-branchlist').addClass('active');
-		$('#branch').append(html);
-	}
+	var markers = [];
 
 	function listingLocation(params) {
+		var lastInfoWindow, lastMarker;
+
 		$.ajax({
 			type: 'GET',
 			url: params,
@@ -757,31 +745,33 @@
 								icon: _marker
 							});
 
-
-							var contentString = '<div class="col-md-12 parent-brachlist" data-lat="' + valListing.latitude + '"  data-lng="' + valListing.longitude + '">';
-								contentString += '<div class="wrapper-branchlist">';
-								contentString += '<div class="col-md-2 col-sm-2 col-xs-2 branchlist"><img class="icon-gedung-branchlist" src="/static/images/gedung.png"></div>';
-								contentString += '<div class="col-md-8 col-sm-8 col-xs-8 branchlist">';
-								contentString += '<p class="margin-bottom-10">' + valListing.name + '</p>';
-								contentString += '<p>' + valListing.address + '</p>';
-								contentString += '<a href="#" class="margin-top-20">PETUNJUK ARAH <i class="fa fa-angle-right arrowlink" aria-hidden="true"></i></a>';
-								contentString += '</div>';
-								contentString += '</div>';
-								contentString += '</div>';
-
-							var latLng = new google.maps.LatLng( valListing.latitude , valListing.longitude);
+							var contentString = '<div class="col-md-12 parent-brachlist" data-id="' + idListing + '" data-lat="' + valListing.latitude + '"  data-lng="' + valListing.longitude + '">';
+							contentString += '<div class="wrapper-branchlist">';
+							contentString += '<div class="col-md-2 col-sm-2 col-xs-2 branchlist"><img class="icon-gedung-branchlist" src="/static/images/gedung.png"></div>';
+							contentString += '<div class="col-md-8 col-sm-8 col-xs-8 branchlist">';
+							contentString += '<p class="title-branch margin-bottom-10">' + valListing.name + '</p>';
+							contentString += '<p class="desc-branch">' + valListing.address + '</p>';
+							contentString += '<a href="#" class="margin-top-20">PETUNJUK ARAH <i class="fa fa-angle-right arrowlink" aria-hidden="true"></i></a>';
+							contentString += '</div>';
+							contentString += '</div>';
+							contentString += '</div>';
 
 							infowindow = new google.maps.InfoWindow({
 								content: ''
 							});
 
-							marker.addListener('click', function () {
-								infowindow.setContent(contentString);
-								infowindow.open(map, marker);
-								infowindow.setPosition(latLng);
 
-							});
+							google.maps.event.addListener(marker, 'click', (function (marker, i) {
 
+								return function () {
+									infowindow.setContent(contentString);
+									infowindow.open(map, marker);
+								}
+
+							})(marker, i));
+
+
+							markers.push(marker);
 
 							google.maps.event.addListener(autocomplete, 'place_changed', function (event) {
 								var place = autocomplete.getPlace();
@@ -820,7 +810,7 @@
 									map.fitBounds(place.geometry.viewport);
 								} else {
 									map.setCenter(place.geometry.location);
-									map.setZoom(20);
+									map.setZoom(25);
 								}
 
 								var marker = new google.maps.Marker({
@@ -829,6 +819,7 @@
 									icon: _marker
 								});
 
+
 								if ((distance_from_location <= _radius)) {
 
 									setTimeout(function () {
@@ -836,7 +827,20 @@
 									}, 10);
 
 									setTimeout(function () {
-										buildHtmlLocation(valListing);
+										var html = '<div class="col-md-12 parent-brachlist" data-id="' + idListing + '" data-lat="' + valListing.latitude + '"  data-lng="' + valListing.longitude + '">';
+										html += '<div class="wrapper-branchlist">';
+										html += '<div class="col-md-2 col-sm-2 col-xs-2 branchlist"><img class="icon-gedung-branchlist" src="/static/images/gedung.png"></div>';
+										html += '<div class="col-md-8 col-sm-8 col-xs-8 branchlist">';
+										html += '<p class="title-branch margin-bottom-10">' + valListing.name + '</p>';
+										html += '<p class="desc-branch">' + valListing.address + '</p>';
+										html += '<a href="#" class="margin-top-20">PETUNJUK ARAH <i class="fa fa-angle-right arrowlink" aria-hidden="true"></i></a>';
+										html += '</div>';
+										html += '<div class="col-md-2 branchlist"><i class="fa fa-angle-right" aria-hidden="true"></i></div>';
+										html += '</div>';
+										html += '</div>';
+
+										$('.wrapper-parent-branchlist').addClass('active');
+										$('#branch').append(html);
 
 										if ($('.parent-brachlist').length > 2) {
 											$('.wrapper-parent-branchlist').css('height', 300);
@@ -849,7 +853,15 @@
 
 								}
 								else {
-									console.log('location not found');
+
+									var html = '<div class="col-md-12 parent-brachlist" data-id="' + idListing + '" data-lat="' + valListing.latitude + '"  data-lng="' + valListing.longitude + '">';
+										html += '<div class="wrapper-branchlist">';
+										html += '<p>Lokasi Tidak Ditemukan</p>';
+										html += '</div>';
+										html += '</div>';
+
+									$('#branch').html(html);
+									$('.wrapper-parent-branchlist').css('height', 'auto');
 								}
 							});
 						}
@@ -858,29 +870,30 @@
 			}
 		});
 
+		$(document).on('click', '.parent-brachlist', function () {
 
-		var map = new google.maps.Map(document.getElementById('map'), {
-			zoom: 10,
-			center: new google.maps.LatLng(-6.21462, 106.84513)
-		});
-
-		var infowindow = new google.maps.InfoWindow();
-
-		//listbranch search autocomplete - Andry
-
-		var input = document.getElementById('searchTextField');
-
-		var cityCircle;
-		var autocomplete = new google.maps.places.Autocomplete(input, { types: ["geocode"] });
-
-		autocomplete.bindTo('bounds', map);
-
-
+			var idMarker = $(this).data('id');
+			google.maps.event.trigger(markers[parseInt(idMarker)], 'click');
+		})
 	}
 
-	if ($('#map').length) {
 
-		//listbranch map - Andry
+	var map = new google.maps.Map(document.getElementById('map'), {
+		zoom: 10,
+		center: new google.maps.LatLng(-6.21462, 106.84513)
+	});
+
+	var input = document.getElementById('searchTextField');
+
+	var cityCircle;
+	var autocomplete = new google.maps.places.Autocomplete(input, { types: ["geocode"] });
+
+	autocomplete.bindTo('bounds', map);
+
+
+
+
+	if ($('#map').length) {
 
 		var base_url = '/branch/listJson';
 
