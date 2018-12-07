@@ -746,15 +746,15 @@
 							});
 
 							var contentString = '<div class="col-md-12 parent-brachlist" data-id="' + idListing + '" data-lat="' + valListing.latitude + '"  data-lng="' + valListing.longitude + '">';
-							contentString += '<div class="wrapper-branchlist">';
-							contentString += '<div class="col-md-2 col-sm-2 col-xs-2 branchlist"><img class="icon-gedung-branchlist" src="/static/images/gedung.png"></div>';
-							contentString += '<div class="col-md-8 col-sm-8 col-xs-8 branchlist">';
-							contentString += '<p class="title-branch margin-bottom-10">' + valListing.name + '</p>';
-							contentString += '<p class="desc-branch">' + valListing.address + '</p>';
-							contentString += '<a href="#" class="margin-top-20">PETUNJUK ARAH <i class="fa fa-angle-right arrowlink" aria-hidden="true"></i></a>';
-							contentString += '</div>';
-							contentString += '</div>';
-							contentString += '</div>';
+								contentString += '<div class="wrapper-branchlist">';
+								contentString += '<div class="col-md-2 col-sm-2 col-xs-2 branchlist"><img class="icon-gedung-branchlist" src="/static/images/gedung.png"></div>';
+								contentString += '<div class="col-md-8 col-sm-8 col-xs-8 branchlist">';
+								contentString += '<p class="title-branch margin-bottom-10">' + valListing.name + '</p>';
+								contentString += '<p class="desc-branch">' + valListing.address + '</p>';
+								contentString += '<a href="#" class="margin-top-20">PETUNJUK ARAH <i class="fa fa-angle-right arrowlink" aria-hidden="true"></i></a>';
+								contentString += '</div>';
+								contentString += '</div>';
+								contentString += '</div>';
 
 							infowindow = new google.maps.InfoWindow({
 								content: ''
