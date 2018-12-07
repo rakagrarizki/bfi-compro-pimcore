@@ -1,5 +1,4 @@
 <!-- HEADER -->
-
 <nav id="site-header" class="navbar-fixed-top">
     <div class="header-top">
         <div class="container">
@@ -82,26 +81,27 @@
                                             <ul class="dropdown-content">
                                                 <div class="produk-hover container">
                                                     <div class="col-md-12">
-                                                        <div class="col-md-6">
-                                                            <li>
-                                                                <div class="label-title"><?= $this->translate("produk") ?></div>
-                                                            </li>
-                                                            <?php foreach ($page->getPages() as $child) {  ?>
-                                                                <?php if(!$child->isVisible()) { continue; } ?>
-                                                                <?php if(strpos($child->getUri(), 'product') == false){ continue; } ?>
-                                                                <li><a href="<?= $child->getHref() ?>"><?= $child->getLabel() ?></a></li>
-                                                            <?php } ?>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <li>
-                                                                <div class="label-title"><?= $this->translate("layanan") ?></div>
-                                                            </li>
-                                                            <?php foreach ($page->getPages() as $child) {  ?>
-                                                                <?php if(!$child->isVisible()) { continue; } ?>
-                                                                <?php if(strpos($child->getUri(), 'service') == false){ continue; } ?>
-                                                                <li><a href="<?= $child->getHref() ?>"><?= $child->getLabel() ?></a></li>
-                                                            <?php } ?>
-                                                        </div>
+                                                        <?php
+                                                        foreach ($page->getPages() as $child) {
+                                                            ?>
+                                                            <div class="col-md-6">
+                                                                <li>
+                                                                    <div class="label-title"><?= $child->getLabel() ?></div>
+                                                                </li>
+                                                                <?php
+                                                                $hasGrandChildren = $child->hasPages();
+                                                                if($hasGrandChildren){
+                                                                    foreach($child->getPages() as $grandChild){
+                                                                        ?>
+                                                                        <li><a href="<?= $grandChild->getHref() ?>"><?= $grandChild->getLabel() ?></a></li>
+                                                                        <?php
+                                                                    }
+                                                                }
+                                                                ?>
+                                                            </div>
+                                                            <?php
+                                                        }
+                                                        ?>
                                                     </div>
                                                 </div>
                                             </ul>
