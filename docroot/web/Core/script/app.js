@@ -36,7 +36,7 @@
 	});
 
 	var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-	var _marker = 'assets/images/icon/marker.png';
+	var _marker = '/static/images/icon/marker.png';
 	var marker, i, latLngGoogle, _radius;
 
 	var credits = {
@@ -142,9 +142,6 @@
 			return false;
 		}
 	});
-
-
-
 
 	jQuery.validator.setDefaults({
 		debug: true,
@@ -725,17 +722,141 @@
 		});
 	}
 
-	if ($('#map').length) {
+	function buildHtmlLocation(params) {
+		var html = '<div class="col-md-12 parent-brachlist" data-lat="' + params.latitude + '"  data-lng="' + params.longitude + '">';
+		html += '<div class="wrapper-branchlist">';
+		html += '<div class="col-md-2 col-sm-2 col-xs-2 branchlist"><img class="icon-gedung-branchlist" src="/static/images/gedung.png"></div>';
+		html += '<div class="col-md-8 col-sm-8 col-xs-8 branchlist">';
+		html += '<p class="margin-bottom-10">' + params.name + '</p>';
+		html += '<p>' + params.address + '</p>';
+		html += '<a href="#" class="margin-top-20">PETUNJUK ARAH <i class="fa fa-angle-right arrowlink" aria-hidden="true"></i></a>';
+		html += '</div>';
+		html += '<div class="col-md-2 branchlist"><i class="fa fa-angle-right" aria-hidden="true"></i></div>';
+		html += '</div>';
+		html += '</div>';
 
-		//listbranch map - Andry
-		var locations = [
+		$('.wrapper-parent-branchlist').addClass('active');
+		$('#branch').append(html);
+	}
 
-			['Jakarta', -6.21462, 106.84513],
-			['Kebon Jeruk', -6.19257205, 106.76972549],
-			['Bogor', -6.5962986, 106.7972421],
-			['Gunung Sahari', -6.1611974, 106.84235412],
-			['Tangerang', -6.1825501, 106.4711093]
-		];
+	function listingLocation(params) {
+		$.ajax({
+			type: 'GET',
+			url: params,
+			dataType: 'json',
+			success: function (data) {
+				$.each(data, function (id, val) {
+					var listing = val.data;
+
+					$.each(listing, function (idListing, valListing) {
+						if (valListing.latitude != "" || valListing.longitude != "") {
+
+							marker = new google.maps.Marker({
+								position: new google.maps.LatLng(valListing.latitude, valListing.longitude),
+								map: map,
+								icon: _marker
+							});
+
+
+							var contentString = '<div class="col-md-12 parent-brachlist" data-lat="' + valListing.latitude + '"  data-lng="' + valListing.longitude + '">';
+								contentString += '<div class="wrapper-branchlist">';
+								contentString += '<div class="col-md-2 col-sm-2 col-xs-2 branchlist"><img class="icon-gedung-branchlist" src="/static/images/gedung.png"></div>';
+								contentString += '<div class="col-md-8 col-sm-8 col-xs-8 branchlist">';
+								contentString += '<p class="margin-bottom-10">' + valListing.name + '</p>';
+								contentString += '<p>' + valListing.address + '</p>';
+								contentString += '<a href="#" class="margin-top-20">PETUNJUK ARAH <i class="fa fa-angle-right arrowlink" aria-hidden="true"></i></a>';
+								contentString += '</div>';
+								contentString += '</div>';
+								contentString += '</div>';
+
+							var latLng = new google.maps.LatLng( valListing.latitude , valListing.longitude);
+
+							infowindow = new google.maps.InfoWindow({
+								content: ''
+							});
+
+							marker.addListener('click', function () {
+								infowindow.setContent(contentString);
+								infowindow.open(map, marker);
+								infowindow.setPosition(latLng);
+
+							});
+
+
+							google.maps.event.addListener(autocomplete, 'place_changed', function (event) {
+								var place = autocomplete.getPlace();
+
+								// if (!place.geometry) {
+								// 	window.alert("No details available for input: '" + place.name + "'");
+								// 	return;
+								// }
+
+								var latComplete = place.geometry.location.lat(),
+									lngComplete = place.geometry.location.lng();
+
+								_radius = (13 * 500);
+								latLngGoogle = new google.maps.LatLng(latComplete, lngComplete);
+								var latLngAPI = new google.maps.LatLng(parseFloat(valListing.latitude), parseFloat(valListing.longitude));
+								var distance_from_location = google.maps.geometry.spherical.computeDistanceBetween(latLngGoogle, latLngAPI);
+
+								CircleOption = {
+									strokeColor: '#0F2236',
+									strokeOpacity: 0.5,
+									strokeWeight: 2,
+									fillColor: '#0F2236',
+									fillOpacity: 0.15,
+									map: map,
+									radius: _radius,
+									center: latLngGoogle
+								};
+
+								if (cityCircle) {
+									cityCircle.setMap(null);
+								}
+
+								cityCircle = new google.maps.Circle(CircleOption);
+
+								if (place.geometry.viewport) {
+									map.fitBounds(place.geometry.viewport);
+								} else {
+									map.setCenter(place.geometry.location);
+									map.setZoom(20);
+								}
+
+								var marker = new google.maps.Marker({
+									position: place.geometry.location,
+									map: map,
+									icon: _marker
+								});
+
+								if ((distance_from_location <= _radius)) {
+
+									setTimeout(function () {
+										$('#branch').empty();
+									}, 10);
+
+									setTimeout(function () {
+										buildHtmlLocation(valListing);
+
+										if ($('.parent-brachlist').length > 2) {
+											$('.wrapper-parent-branchlist').css('height', 300);
+										}
+
+										else {
+											$('.wrapper-parent-branchlist').css('height', 'auto');
+										}
+									}, 100);
+
+								}
+								else {
+									console.log('location not found');
+								}
+							});
+						}
+					})
+				});
+			}
+		});
 
 
 		var map = new google.maps.Map(document.getElementById('map'), {
@@ -744,25 +865,6 @@
 		});
 
 		var infowindow = new google.maps.InfoWindow();
-
-		function listingLocationMarker(params) {
-			for (i = 0; i < params.length; i++) {
-				marker = new google.maps.Marker({
-					position: new google.maps.LatLng(params[i][1], params[i][2]),
-					map: map,
-					icon: _marker
-				});
-
-				google.maps.event.addListener(marker, 'click', (function (marker, i) {
-					return function () {
-						infowindow.setContent(params[i][0]);
-						infowindow.open(map, marker);
-					}
-				})(marker, i));
-			}
-		}
-
-		listingLocationMarker(locations);
 
 		//listbranch search autocomplete - Andry
 
@@ -773,71 +875,16 @@
 
 		autocomplete.bindTo('bounds', map);
 
-		google.maps.event.addListener(autocomplete, 'place_changed', function (event) {
-			infowindow.close();
-			var place = autocomplete.getPlace();
 
-			if (!place.geometry) {
-				window.alert("No details available for input: '" + place.name + "'");
-				return;
-			}
+	}
 
-			var latComplete = place.geometry.location.lat(),
-				lngComplete = place.geometry.location.lng();
+	if ($('#map').length) {
 
-			var latLngComplete = new google.maps.LatLng(latComplete, lngComplete);
+		//listbranch map - Andry
 
-			latLngGoogle = new google.maps.LatLng(parseFloat(latComplete), parseFloat(lngComplete));
-			_radius = (13 * 500);
+		var base_url = '/branch/listJson';
 
-			$.each(locations, function (id, value) {
-
-				var latLngAPI = new google.maps.LatLng(parseFloat(value[1]), parseFloat(value[2]));
-
-				var distance_from_location = google.maps.geometry.spherical.computeDistanceBetween(latLngGoogle, latLngAPI);
-
-				if ((distance_from_location <= _radius)) {
-					console.log(place.name);
-				}
-				else {
-					console.log('not found location');
-				}
-
-			})
-
-			CircleOption = {
-				strokeColor: '#0F2236',
-				strokeOpacity: 0.5,
-				strokeWeight: 2,
-				fillColor: '#0F2236',
-				fillOpacity: 0.15,
-				map: map,
-				radius: _radius,
-				center: latLngGoogle
-			};
-
-			if (cityCircle) {
-				cityCircle.setMap(null);
-			}
-
-			cityCircle = new google.maps.Circle(CircleOption);
-
-			// If the place has a geometry, then present it on a map.
-			if (place.geometry.viewport) {
-				map.fitBounds(place.geometry.viewport);
-			} else {
-				map.setCenter(place.geometry.location);
-				map.setZoom(20); // Why 17? Because it looks good.
-			}
-
-			var marker = new google.maps.Marker({
-				position: place.geometry.location,
-				map: map,
-				icon: _marker
-			});
-			//marker.setPosition(place.geometry.location);
-			marker.setVisible(true);
-		});
+		listingLocation(base_url);
 
 	}
 

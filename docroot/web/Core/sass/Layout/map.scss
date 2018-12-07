@@ -3,7 +3,7 @@
 }
 .map-wrapper {
 	position: relative;
-	height: 400px;
+	height: 500px;
 }
 .input-type-autocomplete {
 	position: absolute;
@@ -39,6 +39,11 @@
 			pointer-events: none;
 			font-size: 1.4em;
 			color: #CBCBCB;
+
+			@include breakpoint(mobile) {
+				right: 25px;
+			}
+
 			&.arrowlink {
 				position: relative;
 				right: 0;
@@ -54,11 +59,12 @@
 		background: #ffffff;
 		border: 1px solid #CBCBCB;
 		font-family: 'HelveticaNeue';
+		padding-right: 50px;
    }
 }
 .wrapper-parent-branchlist{
 	padding:0;
-	height:300px;
+	height: 0;
 	overflow-y:scroll;
 	direction: rtl;
 	border: 1px solid #CBCBCB;
@@ -83,7 +89,6 @@
 	}
 }
 .parent-brachlist{
-	height:150px;
 	background-color:white;
 	padding: 15px 0;
 	padding-bottom: 15px;
@@ -95,11 +100,19 @@
 			border-bottom: none;
 	   }
    }
+
+   a {
+	   	display: block;
+		font-family: 'HelveticaNeue';
+	   	font-weight: 600;
+   }
 }
 .wrapper-branchlist{
-	height:100%;
-	margin:0 15px;
-	border-bottom:1px solid #CBCBCB;
+	height: 100%;
+    margin: 0 15px;
+    border-bottom: 1px solid #CBCBCB;
+	overflow: hidden;
+	padding-bottom: 20px;
 }
 .branchlist{
 	height:100%;
