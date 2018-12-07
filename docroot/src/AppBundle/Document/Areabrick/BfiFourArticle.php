@@ -14,7 +14,9 @@ class BfiFourArticle extends AbstractAreabrick
 {
     public function action(Info $info){
         $blog = new BlogArticle\Listing();
-
+        $blog->setLimit(4);
+        $blog->setOrderKey("date");
+        $blog->setOrder("desc");
         $info->getView()->blog = $blog;
     }
 }
