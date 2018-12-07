@@ -7,13 +7,37 @@ use Symfony\Component\HttpFoundation\Request;
 use Pimcore\Model\WebsiteSetting;
 use AppBundle\Service\SendApi;
 use Pimcore\Bundle\AdminBundle\HttpFoundation\JsonResponse;
+
 class CreditController extends FrontendController
 {
     protected $sendAPI;
 
+    protected $randomNumber;
+
     public function __construct(SendApi $sendAPI)
     {
         $this->sendAPI = $sendAPI;
+        $this->randomNumber = rand(000001,999999);
+    }
+
+    public function mobilAction(Request $request)
+    {
+
+    }
+
+    public function motorAction(Request $request)
+    {
+
+    }
+
+    public function rumahAction(Request $request)
+    {
+
+    }
+
+    public function rukoAction(Request $request)
+    {
+
     }
 
     public function sendMobilAction(Request $request)
@@ -30,8 +54,8 @@ class CreditController extends FrontendController
         $param['Kelurahan'] = $request->get('kelurahan');
         $param['Kecamatan'] = $request->get('kecamatan');
         $param['CustDateOfBirth'] = date("Y-m-d");
-        $param['SubmissionID'] = "xxxxx";
-        $param['ListingID'] = "sssss";
+        $param['SubmissionID'] = "WEBBFI".date("Y").date("m").$this->randomNumber;
+        $param['ListingID'] = $this->randomNumber;
         $param['SellerName'] = WebsiteSetting::getByName('SELLER_NAME')->getData();
         $param['SellerNumber'] = WebsiteSetting::getByName('SELLER_NUMBER')->getData();
         $param['EmailSeller'] = WebsiteSetting::getByName('SELLER_EMAIL')->getData();
@@ -49,7 +73,7 @@ class CreditController extends FrontendController
         $url = WebsiteSetting::getByName('URL_CREDIT_MOBIL')->getData();
 
         try {
-            $this->sendAPI->sendDataCredit($url, $param);
+            $data = $this->sendAPI->sendDataCredit($url, $param);
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
@@ -57,10 +81,17 @@ class CreditController extends FrontendController
             ]);
         }
 
-        return new JsonResponse([
-            'success' => "1",
-            'message' => "Sukses"
-        ]);
+        if($data->code == 0){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses"
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
     }
 
     public function sendMotorAction(Request $request)
@@ -77,8 +108,8 @@ class CreditController extends FrontendController
         $param['Kelurahan'] = $request->get('kelurahan');
         $param['Kecamatan'] = $request->get('kecamatan');
         $param['CustDateOfBirth'] = date("Y-m-d");
-        $param['SubmissionID'] = "xxxxx";
-        $param['ListingID'] = "sssss";
+        $param['SubmissionID'] = "WEBBFI".date("Y").date("m").$this->randomNumber;
+        $param['ListingID'] = $this->randomNumber;
         $param['SellerName'] = WebsiteSetting::getByName('SELLER_NAME')->getData();
         $param['SellerNumber'] = WebsiteSetting::getByName('SELLER_NUMBER')->getData();
         $param['EmailSeller'] = WebsiteSetting::getByName('SELLER_EMAIL')->getData();
@@ -96,7 +127,7 @@ class CreditController extends FrontendController
         $url = WebsiteSetting::getByName('URL_CREDIT_MOTOR')->getData();
 
         try {
-            $this->sendAPI->sendDataCredit($url, $param);
+            $data = $this->sendAPI->sendDataCredit($url, $param);
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
@@ -104,10 +135,17 @@ class CreditController extends FrontendController
             ]);
         }
 
-        return new JsonResponse([
-            'success' => "1",
-            'message' => "Sukses"
-        ]);
+        if($data->code == 0){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses"
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
     }
 
     public function sendRumahAction(Request $request)
@@ -124,26 +162,26 @@ class CreditController extends FrontendController
         $param['Kelurahan'] = $request->get('kelurahan');
         $param['Kecamatan'] = $request->get('kecamatan');
         $param['CustDateOfBirth'] = date("Y-m-d");
-        $param['SubmissionID'] = "xxxxx";
-        $param['ListingID'] = "sssss";
+        $param['SubmissionID'] = "WEBBFI".date("Y").date("m").$this->randomNumber;
+        $param['ListingID'] = $this->randomNumber;
         $param['SellerName'] = WebsiteSetting::getByName('SELLER_NAME')->getData();
         $param['SellerNumber'] = WebsiteSetting::getByName('SELLER_NUMBER')->getData();
         $param['EmailSeller'] = WebsiteSetting::getByName('SELLER_EMAIL')->getData();
         $param['SellerAddress'] = WebsiteSetting::getByName('SELLER_ADDRESS')->getData();
 
-        $param['SertificateStatus'] = $request->get('model_kendaraan');
-        $param['OwnerSertificate'] = $request->get('tahun_kendaraan');
-        $param['AddressSertificate'] = $request->get('funding');
-        $param['ProvinsiSertificate'] = WebsiteSetting::getByName('LINK_IKLAN')->getData();
-        $param['KotaSertificate'] = "0";
-        $param['KecamatanSertificate'] = $request->get('merk_kendaraan');
-        $param['KelurahanSertificate'] = $request->get('jangka_waktu');
-        $param['KodeposSertificate'] = $request->get('installment');
+        $param['SertificateStatus'] = $request->get('status_sertificate');
+        $param['OwnerSertificate'] = $request->get('own_sertificate');
+        $param['AddressSertificate'] = $request->get('alamat_lengkap_sertificate');
+        $param['ProvinsiSertificate'] = $request->get('provinsi_sertificate');
+        $param['KotaSertificate'] = $request->get('kota_sertificate');
+        $param['KecamatanSertificate'] = $request->get('kecamatan_sertificate');
+        $param['KelurahanSertificate'] = $request->get('kelurahan_sertificate');
+        $param['KodeposSertificate'] = $request->get('kode_pos_sertificate');
 
         $url = WebsiteSetting::getByName('URL_CREDIT_RUMAH')->getData();
 
         try {
-            $this->sendAPI->sendDataCredit($url, $param);
+            $data = $this->sendAPI->sendDataCredit($url, $param);
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
@@ -151,10 +189,71 @@ class CreditController extends FrontendController
             ]);
         }
 
-        return new JsonResponse([
-            'success' => "1",
-            'message' => "Sukses"
-        ]);
+        if($data->code == 0){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses"
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+    }
+
+    public function sendOtpRequestAction(Request $request)
+    {
+        $nama_lengkap = $request->get('nama_lengkap');
+        $handphone = $request->get('no_handphone');
+
+        try {
+            $data = $this->sendAPI->requestOtp($handphone, $nama_lengkap);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Service Request Credit Down"
+            ]);
+        }
+
+        if($data->code == 1){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses"
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+    }
+
+    public function sendOtpValidateAction(Request $request)
+    {
+        $code = $request->get('otp1'). $request->get('otp2'). $request->get('otp3'). $request->get('otp4');
+        $handphone = $request->get('no_handphone');
+
+        try {
+           $data = $this->sendAPI->validateOtp($handphone, $code);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Service Request Credit Down"
+            ]);
+        }
+
+        if($data->code == 0){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses"
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
     }
 
 

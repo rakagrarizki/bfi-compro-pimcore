@@ -27,7 +27,7 @@ class SendApi
         $params["first_name"] = $name;
 
         $logger = new Logger('api-request-otp');
-        $logger->pushHandler(new StreamHandler(), Logger::DEBUG);
+        $logger->pushHandler(new StreamHandler(PIMCORE_LOG_DIRECTORY . DIRECTORY_SEPARATOR .date('d') . date('m') . date("Y") ."-api-request-otp.log"), Logger::DEBUG);
         $stack = HandlerStack::create();
         $stack->push(Middleware::log(
             $logger,
@@ -52,14 +52,14 @@ class SendApi
         return $this->getData($data);
     }
 
-    public function validateOtp($handphone, $name)
+    public function validateOtp($handphone, $code)
     {
         $url = WebsiteSetting::getByName('URL_VALIDATE_OTP')->getData();
         $params["phone_number"] = $handphone;
-        $params["first_name"] = $name;
+        $params["sms_code"] = $code;
 
         $logger = new Logger('api-validate-otp');
-        $logger->pushHandler(new StreamHandler(), Logger::DEBUG);
+        $logger->pushHandler(new StreamHandler(PIMCORE_LOG_DIRECTORY . DIRECTORY_SEPARATOR .date('d') . date('m') . date("Y") ."-api-validate.log"), Logger::DEBUG);
         $stack = HandlerStack::create();
         $stack->push(Middleware::log(
             $logger,
@@ -87,7 +87,7 @@ class SendApi
     public function sendDataCredit($url, $params)
     {
         $logger = new Logger('api-credit');
-        $logger->pushHandler(new StreamHandler(), Logger::DEBUG);
+        $logger->pushHandler(new StreamHandler(PIMCORE_LOG_DIRECTORY . DIRECTORY_SEPARATOR .date('d') . date('m') . date("Y") ."-api-credit.log"), Logger::DEBUG);
         $stack = HandlerStack::create();
         $stack->push(Middleware::log(
             $logger,

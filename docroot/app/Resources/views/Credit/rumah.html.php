@@ -1,3 +1,4 @@
+
 <?php
 /**
  * @var \Pimcore\Templating\PhpEngine $this
@@ -7,7 +8,6 @@
 
 $this->extend('layout.html.php');
 ?>
-
 <div id="myModal">
     <div class="form-dialog">
 
@@ -39,7 +39,7 @@ $this->extend('layout.html.php');
                                 <li class="nav-item-3 disabled">
                                     <a href="#" id="tab3">
                                         <span class="number">3</span>
-                                        <p>Data Kendaraan</p>
+                                        <p>Data Bangunan</p>
                                     </a>
                                 </li>
                                 <li class="nav-item-4 disabled">
@@ -50,7 +50,7 @@ $this->extend('layout.html.php');
                                 </li>
                             </ul>
                         </nav>
-                        <form action="/?controller=credit&action=submitrumah" id="getCredit" method="POST" class="form-get--credit" role="form">
+                        <form action="#" id="getCredit" method="POST" class="form-get--credit" role="form">
                             <div class="tab-content">
                                 <div id="menu1" class="tab-pane fade in active form-group">
                                     <div class="form-body--credit">
@@ -64,7 +64,7 @@ $this->extend('layout.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label for="email">Email</label>
-                                            <input type="email" class="form-control formRequired" name="email" id="email1"
+                                            <input type="email" class="form-control formRequired" name="email" id="email_pemohon"
                                                    placeholder="Masukan email Anda">
                                             <div class="error-wrap"></div>
                                         </div>
@@ -74,7 +74,7 @@ $this->extend('layout.html.php');
                                                    placeholder="Masukan nomor handphone Anda">
                                             <div class="error-wrap"></div>
                                         </div>
-                                        <!--<div class="form-group">
+                                        <!-- <div class="form-group">
                                             <label for="foto_ktp">Unggah Foto KTP</label>
                                             <label class="form-input">
                                                 <div class="file-upload">
@@ -88,10 +88,7 @@ $this->extend('layout.html.php');
                                             <p id="nama-file"></p>
                                             <div class="error-wrap"></div>
                                             <span>Pastikan foto KTP terlihat jelas (max. ukuran file adalah 1MB)</span>
-
-
-
-                                        </div>-->
+                                        </div> -->
                                     </div>
                                     <div class="button-area text-right next">
 
@@ -108,8 +105,8 @@ $this->extend('layout.html.php');
                                             <label for="provinsi">Provinsi</label>
                                             <select class="c-custom-select formRequired" id="provinsi" name="provinsi">
                                                 <option value=""> Pilih Provinsi</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
+                                                <option value="DKI Jakarta">DKI Jakarta</option>
+                                                <option value="Jawa Barat">Jawa Barat</option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
@@ -117,8 +114,8 @@ $this->extend('layout.html.php');
                                             <label for="kota">Kota</label>
                                             <select class="c-custom-select formRequired" id="kota" name="kota">
                                                 <option value=""> Pilih Kota</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
+                                                <option value="Jakarta Utara">Jakarta Utara</option>
+                                                <option value="Jakarta Selatan">Jakarta Selatan</option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
@@ -126,8 +123,8 @@ $this->extend('layout.html.php');
                                             <label for="kecamatan">Kecamatan</label>
                                             <select class="c-custom-select formRequired" id="kecamatan" name="kecamatan">
                                                 <option value=""> Pilih Kecamatan</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
+                                                <option value="Kebon Jeruk">Kebon Jeruk</option>
+                                                <option value="Kemanggisan">Kemanggisan</option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
@@ -135,8 +132,8 @@ $this->extend('layout.html.php');
                                             <label for="kelurahan">Kelurahan</label>
                                             <select class="c-custom-select formRequired" id="kelurahan" name="kelurahan">
                                                 <option value=""> Pilih Kelurahan</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
+                                                <option value="Kelurahan 1">Kelurahan 1</option>
+                                                <option value="Kelurahan 2">Kelurahan 2</option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
@@ -222,6 +219,12 @@ $this->extend('layout.html.php');
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
+                                            <label for="kode_pos">Kode Pos</label>
+                                            <input type="text" class="form-control formNumber" name="kode_pos_sertificate" id="kode_pos_sertificate"
+                                                   placeholder="Masukkan kode pos">
+                                            <div class="error-wrap"></div>
+                                        </div>
+                                        <div class="form-group">
                                             <label for="alamat_lengkap">Alamat Lengkap Rumah</label>
                                             <textarea class="form-control formRequired" name="alamat_lengkap_sertificate" id="alamat_lengkap_sertificate"
                                                       placeholder="Masukan alamat lengkap rumah"></textarea>
@@ -268,28 +271,28 @@ $this->extend('layout.html.php');
                                                     B. Data Pemohon
                                                 </p>
                                                 <div class="button-area text-right button-angsur">
-                                                    <button class="cta cta-primary cta-big cta-ubah" type="button">UBAH</button>
+                                                    <button id="btnDataPemohon" class="cta cta-primary cta-big cta-ubah" type="button">UBAH</button>
                                                 </div>
                                                 <table>
                                                     <tr>
                                                         <td>Nama Lengkap</td>
 
-                                                        <td class="nama_lengkap">Deborah T. Morris</td>
+                                                        <td id="showFullName" class="nama_lengkap"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>Email</td>
 
-                                                        <td class="email">deborahmorris@gmail.com</td>
+                                                        <td id="showEmail" class="email"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>No Handphone</td>
 
-                                                        <td class="email">02135464646</td>
+                                                        <td id="showPhone" class="email"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>Unggah Foto KTP</td>
 
-                                                        <td class="unggah">ktp.jpeg</td>
+                                                        <td class="unggah"></td>
                                                     </tr>
                                                 </table>
                                             </div>
@@ -301,28 +304,28 @@ $this->extend('layout.html.php');
                                                     C. Data Tempat Tinggal
                                                 </p>
                                                 <div class="button-area text-right button-angsur">
-                                                    <button class="cta cta-primary cta-big cta-ubah" type="button">UBAH</button>
+                                                    <button id="btnDataTempatTinggal" class="cta cta-primary cta-big cta-ubah" type="button">UBAH</button>
                                                 </div>
                                                 <table>
                                                     <tr>
                                                         <td>Provinsi</td>
 
-                                                        <td class="provinsi">DKI Jakarta</td>
+                                                        <td id="showProvinsi" class="provinsi"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>Kota</td>
 
-                                                        <td class="kota">Jakarta Barat</td>
+                                                        <td id="showKota" class="kota"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>Kecamatan</td>
 
-                                                        <td class="kecamatan">Kebon Jeruk</td>
+                                                        <td id="showKecamatan" class="kecamatan"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>Kode Pos</td>
 
-                                                        <td class="kodepos">11264</td>
+                                                        <td id="showKodePos" class="kodepos"></td>
                                                     </tr>
 
                                                 </table>
@@ -335,33 +338,71 @@ $this->extend('layout.html.php');
                                                     D. Data Bangunan
                                                 </p>
                                                 <div class="button-area text-right button-angsur">
-                                                    <button class="cta cta-primary cta-big cta-ubah" type="button">UBAH</button>
+                                                    <button id="btnDataKendaraan" class="cta cta-primary cta-big cta-ubah" type="button">UBAH</button>
                                                 </div>
                                                 <table>
                                                     <tr>
-                                                        <td>Merk Kendaraan</td>
+                                                        <td>Status Bangunan</td>
 
-                                                        <td class="merk_kendaraan">Daihatsu</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Model Kendaraan</td>
-
-                                                        <td class="model_kendaraaan">Ayla</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Tahun Kendaraan</td>
-
-                                                        <td class="tahun_kendaraan">2017</td>
+                                                        <td id="status_sertificate" class="status_sertificate"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>Status Kepemilikan</td>
 
-                                                        <td class="status">Milik Pribadi</td>
+                                                        <td id="own_sertificate" class="own_sertificate"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Provinsi</td>
+
+                                                        <td id="provinsi_sertificate" class="provinsi_sertificate"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Kota</td>
+
+                                                        <td id="kota_sertificate" class="kota_sertificate"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Kecamatan</td>
+
+                                                        <td id="kecamatan_sertificate" class="kecamatan_sertificate"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Kelurahan</td>
+
+                                                        <td id="kelurahan_sertificate" class="kelurahan_sertificate"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Kode Pos</td>
+
+                                                        <td id="kode_pos_sertificate" class="kode_pos_sertificate"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Alamat Bangunan</td>
+
+                                                        <td id="alamat_lengkap_sertificate" class="alamat_lengkap_sertificate"></td>
                                                     </tr>
 
                                                 </table>
                                             </div>
 
+                                        </div>
+                                        <div class="biaya-agunan">
+                                            <div class="form-group">
+                                                <input type="checkbox" id="agreement1" class="agreement">
+                                                <label for="agreement1" class="label-agreement">Anda bersedia menerima
+                                                    informasi lebih lanjut terkait
+                                                    pembiayaan melalui lelepon/sms/email</label>
+                                                <div class="error-wrap"></div>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="checkbox" id="agreement2" class="agreement">
+                                                <label for="agreement2" class="label-agreement">Lorem ipsum dolor sit
+                                                    amet, consectetur
+                                                    adipisicing elit. Odio reprehenderit iusto libero aliquid
+                                                    temporibus vero, optio eveniet et, adipisci natus rem enim sequi
+                                                    saepe expedita qui sunt exercitationem delectus. In?</label>
+                                                <div class="error-wrap"></div>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -375,6 +416,40 @@ $this->extend('layout.html.php');
                                     </div>
 
                                 </div>
+
+                                <div id="menu6" class="tab-pane slide-left">
+                                    <div class="form-body--credit">
+                                        <h2 class="text-center">Konfirmasi OTP</h2>
+                                        <p class="text-center">Silahkan Masukan 4-digit kode verifikasi yang telah
+                                            dikirimkan ke nomor hendphone Anda</p>
+
+                                        <div class="otp-number form-group">
+                                            <div class="otp-number__phone">
+                                                <p id="showPhone"> <img src="/static/images/icon/pencil.png" alt=""></p>
+                                            </div>
+                                            <div class="otp-number__verify">
+                                                <input type="text" class="input-number formRequired" maxlength="1" name="otp1">
+                                                <input type="text" class="input-number formRequired" maxlength="1" name="otp2">
+                                                <input type="text" class="input-number formRequired" maxlength="1" name="otp3">
+                                                <input type="text" class="input-number formRequired" maxlength="1" name="otp4">
+                                            </div>
+                                            <div class="error-wrap"></div>
+                                            <div class="otp-number__text">
+                                                <p>Tidak menerima 4-digit kode? <span class="countdown"></span> </p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+
+                                        <div class="button-area text-right next">
+                                            <button class="cta cta-primary cta-big cta-see buttonnext" id="button6"
+                                                    type="submit">VERIFIKASI</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+
                             </div>
                         </form>
                     </div>
