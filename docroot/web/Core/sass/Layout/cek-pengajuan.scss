@@ -6,6 +6,7 @@
 
     @include breakpoint(mobile) {
         transform: translateY(-175px);
+        margin-bottom: -85px;
     }
 
     .cek-pengajuan {

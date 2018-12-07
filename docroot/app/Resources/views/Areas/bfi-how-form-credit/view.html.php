@@ -30,7 +30,7 @@
                         </div>
                     </div>
                     <div class="col-md-1">
-                        <button class="btn-kotak btn-submit" type="submit"></button>
+                        <button class="btn-kotak btn-submit hidden-xs" type="submit"></button>
                     </div>
                 </div>
             </form>

@@ -32,6 +32,10 @@
         }
     }
 
+    &.thumbnail--branch {
+        margin-bottom: 50px;
+    }
+
     >img {
         width: 50px;
         margin: unset;
@@ -41,11 +45,12 @@
     &-caption {
         float: left;
         padding-left: 10px;
+        width: 80%;
 
         h3 {
             margin: 0 0 10px;
-            font-family: 'HelveticaNeue';
-            font-weight: 600;
+            font-family: 'HelveticaNeue-Bold';
+            font-weight: 800;
         }
 
         p {
@@ -58,10 +63,11 @@
             display: block;
             text-transform: uppercase;
             position: relative;
+            margin-top: 20px;
 
             &:after {
-                content: ">";
-                font-family: cursive;
+                font-family: 'FontAwesome';
+                content: "\f105";
                 margin-left: 10px;
                 font-size: 20px;
             }
@@ -70,7 +76,7 @@
 }
 
 .thumbnail-infor {
-    height: 300px;
+    height: 260px;
     overflow: hidden;
     position: relative;
 
@@ -80,6 +86,7 @@
     }
 
     .thumbnail-body--content {
+        height: 100%;
         margin-right: 10px;
         margin-left: 10px;
         box-shadow: 1px 2px 10px $grey-dark;
@@ -91,10 +98,9 @@
 
     &:first-child {
         .thumbnail-image {
-            padding-bottom: 36%;
 
             >img {
-                max-width: 100%;
+                height: 100%;
             }
         }
     }
@@ -103,9 +109,8 @@
         display: block;
         max-width: 100%;
         position: relative;
-        height: 0;
+        height: 150px;
         overflow: hidden;
-        padding-bottom: 65%;
 
         >img {
             max-width: 100%;
@@ -131,7 +136,7 @@
             font-family: 'HelveticaNeue';
             font-weight: 600;
             margin-top: 5px;
-            font-size: 1.1em;
+            font-size: 1.25em;
             @include breakpoint(mobile){
                 font-size: .9em;
                 line-height: 1.3;
