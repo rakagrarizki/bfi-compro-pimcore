@@ -3,11 +3,17 @@
 }
 
 .navbar-fixed-top, .navbar-fixed-bottom {
-	position: inherit !important;;
+	/*position: inherit !important;*/
 }
 
 .pimcore_area_edit_button {
 	z-index: 9999 !important;
+}
+
+.pimcore_area_buttons.top {
+	visibility: visible !important;
+	z-index: 99999;
+
 }
 /*
 .border-editmode {

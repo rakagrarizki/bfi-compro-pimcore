@@ -5,7 +5,7 @@
             <p class="step-cara"><?= $this->input('sub-title');?></p>
             <ul class="list-step">
                 <?php while ($this->block("contentblock")->loop()) { ?>
-                    <?php $asset = $this->image("image");?>
+                    <?php $asset = $this->image("image-step");?>
                     <li>
                         <div class="img-step">
                             <img src="<?= $asset->getImage()?>" class="img-responsive" alt="">

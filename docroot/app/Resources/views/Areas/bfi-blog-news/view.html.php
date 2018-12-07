@@ -23,7 +23,7 @@
                 ?>
                     <div class="thumbnail-body--content">
                         <div class="thumbnail-image">
-                            <img src="/assets/images/slide.jpg">
+                            <img src="<?= $blog->getImage();?>">
                         </div>
                         <div class="thumbnail-infomation">
                             <p><?= $blog->getDate();?></p>

@@ -15,8 +15,6 @@ class BfiTopBranch extends AbstractAreabrick
     public function action(Info $info){
         $branch = new BranchOffice\Listing();
         $branch->setLimit(3);
-        $branch->setOrderKey("date");
-        $branch->setOrder("desc");
 
         $info->getView()->branch = $branch;
     }
