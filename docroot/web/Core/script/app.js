@@ -144,80 +144,80 @@
 		}
 	});
 
-	jQuery.validator.setDefaults({
-		debug: true,
-		success: "valid"
-	});
+	// jQuery.validator.setDefaults({
+	// 	debug: true,
+	// 	success: "valid"
+	// });
 
-	$form = $(".form-get--credit");
-	$successMsg = $(".alert");
+	// $form = $(".form-get--credit");
+	// $successMsg = $(".alert");
 
 
-	$form.validate({
-		errorPlacement: function (error, element) {
-			if (!error) {
-				return true;
-			}
-		},
-		onfocusout: false,
-		onkeyup: false,
-		rules: {
-			nama_lengkap: {
-				required: true,
-				minlength: 5
-			},
-			email: {
-				required: true,
-				email: true
-			},
-			no_handphone: {
-				required: true,
-				number: true
-			},
-			file_upload: {
-				required: true,
-				accept: "image/jpeg, pdf"
-			},
-			provinsi: {
-				required: true
-			},
-			kota: {
-				required: true
-			},
-			kecamatan: {
-				required: true
-			},
-			kelurahan: {
-				required: true
-			},
-			kode_pos: {
-				required: true
-			},
-			alamat_lengkap: {
-				required: true
-			},
-			merk_kendaraan: {
-				required: true
-			},
-			model_kendaraan: {
-				required: true
-			},
-			tahun_kendaraan: {
-				required: true
-			},
-			status: {
-				required: true
-			},
-		},
-		messages: {
-			nama_lengkap: "Please specify your name",
-			provinsi: "Please input your province"
+	// $form.validate({
+	// 	errorPlacement: function (error, element) {
+	// 		if (!error) {
+	// 			return true;
+	// 		}
+	// 	},
+	// 	onfocusout: false,
+	// 	onkeyup: false,
+	// 	rules: {
+	// 		nama_lengkap: {
+	// 			required: true,
+	// 			minlength: 5
+	// 		},
+	// 		email: {
+	// 			required: true,
+	// 			email: true
+	// 		},
+	// 		no_handphone: {
+	// 			required: true,
+	// 			number: true
+	// 		},
+	// 		file_upload: {
+	// 			required: true,
+	// 			accept: "image/jpeg, pdf"
+	// 		},
+	// 		provinsi: {
+	// 			required: true
+	// 		},
+	// 		kota: {
+	// 			required: true
+	// 		},
+	// 		kecamatan: {
+	// 			required: true
+	// 		},
+	// 		kelurahan: {
+	// 			required: true
+	// 		},
+	// 		kode_pos: {
+	// 			required: true
+	// 		},
+	// 		alamat_lengkap: {
+	// 			required: true
+	// 		},
+	// 		merk_kendaraan: {
+	// 			required: true
+	// 		},
+	// 		model_kendaraan: {
+	// 			required: true
+	// 		},
+	// 		tahun_kendaraan: {
+	// 			required: true
+	// 		},
+	// 		status: {
+	// 			required: true
+	// 		},
+	// 	},
+	// 	messages: {
+	// 		nama_lengkap: "Please specify your name",
+	// 		provinsi: "Please input your province"
 
-		},
-		submitHandler: function () {
+	// 	},
+	// 	submitHandler: function () {
 
-		}
-	})
+	// 	}
+	// })
 
 	var inputTargets = [{
 		input: '#nama_lengkap',
@@ -402,9 +402,11 @@
 			number: true
 		},
 
-		"checkbox[]": {
+		formPhoneNumber: {
 			required: true,
-			minlength: 1
+			number: true,
+			maxlength: 12,
+			minlength: 9
 		},
 
 		submitHandler: function (form) {
@@ -412,25 +414,27 @@
 		}
 	});
 
-	function validateFormRequired(element) {
-		$(element).validate({
+	function validateFormRequired(elementParam) {
+		$(elementParam).validate({
 			errorPlacement: function (error, element) {
+				console.log(element)
 				element.closest('.form-group').find('.error-wrap').html(error);
-				setTimeout(function () {
-					$('label.error').addClass('show-error');
-				}, 200);
 			}
 		});
 	}
 
-	validateFormRequired($('#getCredit'));
+	function scrollToTop() {
+		$('html, body').animate({
+			scrollTop: 0
+		}, 400);
+	}
 
 	function showTab1() {
 		$('#menu1').fadeIn();
 	}
 
 	function hideTab1() {
-		$('#menu1').fadeOut();
+		$('#menu1').hide();
 	}
 
 	function showTab2() {
@@ -438,7 +442,7 @@
 	}
 
 	function hideTab2() {
-		$('#menu2').fadeOut();
+		$('#menu2').hide();
 	}
 
 	function showTab3() {
@@ -446,7 +450,7 @@
 	}
 
 	function hideTab3() {
-		$('#menu3').fadeOut();
+		$('#menu3').hide();
 	}
 
 	function showTab4() {
@@ -454,7 +458,7 @@
 	}
 
 	function hideTab4() {
-		$('#menu4').fadeOut();
+		$('#menu4').hide();
 	}
 
 	function showTab5() {
@@ -462,7 +466,7 @@
 	}
 
 	function hideTab5() {
-		$('#menu5').fadeOut();
+		$('#menu5').hide();
 	}
 
 	function showTab6() {
@@ -470,7 +474,7 @@
 	}
 
 	function hideTab6() {
-		$('#menu6').fadeOut();
+		$('#menu6').hide();
 	}
 
 	function pushDataPemohon() {
@@ -539,8 +543,9 @@
 			e.preventDefault();
 
 			if ($(this).closest('form').valid()) {
-				showTab2();
 				hideTab1();
+				showTab2();
+				scrollToTop();
 				$('.nav-item-2').addClass('active');
 
 				pushDataPemohon();
@@ -554,6 +559,7 @@
 			if ($(this).closest('form').valid()) {
 				showTab3();
 				hideTab2();
+				scrollToTop();
 				$('.nav-item-3').addClass('active');
 
 				pushDataTempatTinggal();
@@ -567,6 +573,7 @@
 			if ($(this).closest('form').valid()) {
 				showTab4();
 				hideTab3();
+				scrollToTop();
 				$('.nav-item-4').addClass('active');
 
 				pushDataKendaraan();
@@ -580,6 +587,7 @@
 			if ($(this).closest('form').valid()) {
 				showTab5();
 				hideTab4();
+				scrollToTop();
 				$('.nav-item-5').addClass('active');
 
 				setSummary();
@@ -591,6 +599,7 @@
 
 			showTab6();
 			hideTab5();
+			scrollToTop();
 			$('.input-number:first-child').focus();
 			$('.horizontal-scroll').hide();
 
@@ -633,24 +642,28 @@
 		$('#buttonback2').on('click', function (e) {
 			e.preventDefault();
 			$('.tab-pane').fadeOut();
+			scrollToTop();
 			showTab1();
 		})
 
 		$('#buttonback3').on('click', function (e) {
 			e.preventDefault();
 			$('.tab-pane').fadeOut();
+			scrollToTop();
 			showTab2();
 		})
 
 		$('#buttonback4').on('click', function (e) {
 			e.preventDefault();
 			$('.tab-pane').fadeOut();
+			scrollToTop();
 			showTab3();
 		})
 
 		$('#buttonback5').on('click', function (e) {
 			e.preventDefault();
 			$('.tab-pane').fadeOut();
+			scrollToTop();
 			showTab4();
 		})
 	}
@@ -723,11 +736,24 @@
 		});
 	}
 
+	function getCreditAjax() {
+		var urlAjax = 'https://www.getpostman.com/collections/63932825dfc82031d056';
+
+		$.ajax({
+			type: 'GET',
+			url: urlAjax,
+			dataType: 'json',
+			success: function(data) {
+				console.log(data);
+			}
+		})
+	}
+
+	//getCreditAjax();
+
 	var markers = [];
 
 	function listingLocation(params) {
-		var lastInfoWindow, lastMarker;
-
 		$.ajax({
 			type: 'GET',
 			url: params,
@@ -813,10 +839,9 @@
 									map.setZoom(25);
 								}
 
-								var marker = new google.maps.Marker({
+								marker = new google.maps.Marker({
 									position: place.geometry.location,
-									map: map,
-									icon: _marker
+									map: map
 								});
 
 
@@ -855,10 +880,10 @@
 								else {
 
 									var html = '<div class="col-md-12 parent-brachlist" data-id="' + idListing + '" data-lat="' + valListing.latitude + '"  data-lng="' + valListing.longitude + '">';
-										html += '<div class="wrapper-branchlist">';
-										html += '<p>Lokasi Tidak Ditemukan</p>';
-										html += '</div>';
-										html += '</div>';
+									html += '<div class="wrapper-branchlist">';
+									html += '<p>Lokasi Tidak Ditemukan</p>';
+									html += '</div>';
+									html += '</div>';
 
 									$('#branch').html(html);
 									$('.wrapper-parent-branchlist').css('height', 'auto');
@@ -877,23 +902,19 @@
 		})
 	}
 
-
-	var map = new google.maps.Map(document.getElementById('map'), {
-		zoom: 10,
-		center: new google.maps.LatLng(-6.21462, 106.84513)
-	});
-
-	var input = document.getElementById('searchTextField');
-
-	var cityCircle;
-	var autocomplete = new google.maps.places.Autocomplete(input, { types: ["geocode"] });
-
-	autocomplete.bindTo('bounds', map);
-
-
-
-
 	if ($('#map').length) {
+
+		var map = new google.maps.Map(document.getElementById('map'), {
+			zoom: 10,
+			center: new google.maps.LatLng(-6.21462, 106.84513)
+		});
+
+		var input = document.getElementById('searchTextField');
+
+		var cityCircle;
+		var autocomplete = new google.maps.places.Autocomplete(input, { types: ["geocode"] });
+
+		autocomplete.bindTo('bounds', map);
 
 		var base_url = '/branch/listJson';
 
@@ -935,10 +956,11 @@
 
 	}
 
+	validateFormRequired($('#getCredit'))
 	keyupOtpAction();
 	changeSumary();
 	stepAction();
-	tabAction();
+	//tabAction();
 	backAction();
 	countDown();
 
