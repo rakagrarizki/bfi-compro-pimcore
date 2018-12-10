@@ -81,7 +81,7 @@ class CreditController extends FrontendController
             ]);
         }
 
-        if($data->code == 0){
+        if($data->header->status == 200){
             return new JsonResponse([
                 'success' => "1",
                 'message' => "Sukses"
@@ -135,7 +135,7 @@ class CreditController extends FrontendController
             ]);
         }
 
-        if($data->code == 0){
+        if($data->header->status == 200){
             return new JsonResponse([
                 'success' => "1",
                 'message' => "Sukses"
@@ -189,7 +189,7 @@ class CreditController extends FrontendController
             ]);
         }
 
-        if($data->code == 0){
+        if($data->header->status == 200){
             return new JsonResponse([
                 'success' => "1",
                 'message' => "Sukses"
@@ -243,7 +243,7 @@ class CreditController extends FrontendController
             ]);
         }
 
-        if($data->code == 0){
+        if($data->code == 1){
             return new JsonResponse([
                 'success' => "1",
                 'message' => "Sukses"
