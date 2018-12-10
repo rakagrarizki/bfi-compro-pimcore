@@ -55,8 +55,10 @@ $this->extend('layout.html.php');
                             <div class="tab-content">
                                 <div id="menu1" class="tab-pane fade in active form-group">
                                     <div class="form-body--credit">
-                                        <h2 class="text-center">Data Pemohon</h2>
-                                        <p class="text-center">Silahkan Masukan data diri Anda</p>
+                                        <div class="text-head">
+                                            <h2 class="text-center">Data Pemohon</h2>
+                                            <p class="text-center">Silahkan Masukan data diri Anda</p>
+                                        </div>
                                         <div class="form-group">
                                             <label for="nama_lengkap">Nama Lengkap</label>
                                             <input type="text" class="form-control formRequired" name="nama_lengkap" id="nama_lengkap"
@@ -100,47 +102,37 @@ $this->extend('layout.html.php');
                                 </div>
                                 <div id="menu2" class="tab-pane slide-left form-group ">
                                     <div class="form-body--credit">
-                                        <h2 class="text-center">Data Tempat Tinggal</h2>
-                                        <p class="text-center">Silahkan Masukan data tempat tinggal Anda</p>
+                                        <div class="text-head">
+                                            <h2 class="text-center">Data Tempat Tinggal</h2>
+                                            <p class="text-center">Silahkan Masukan data tempat tinggal Anda</p>
+                                        </div>
                                         <div class="form-group">
                                             <label for="provinsi">Provinsi</label>
                                             <select class="c-custom-select formRequired" id="provinsi" name="provinsi">
-                                                <option value=""> Pilih Provinsi</option>
-                                                <option value="DKI Jakarta">DKI Jakarta</option>
-                                                <option value="Jawa Barat">Jawa Barat</option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
                                             <label for="kota">Kota</label>
                                             <select class="c-custom-select formRequired" id="kota" name="kota">
-                                                <option value=""> Pilih Kota</option>
-                                                <option value="Jakarta Utara">Jakarta Utara</option>
-                                                <option value="Jakarta Selatan">Jakarta Selatan</option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
                                             <label for="kecamatan">Kecamatan</label>
                                             <select class="c-custom-select formRequired" id="kecamatan" name="kecamatan">
-                                                <option value=""> Pilih Kecamatan</option>
-                                                <option value="Kebon Jeruk">Kebon Jeruk</option>
-                                                <option value="Kemanggisan">Kemanggisan</option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
                                             <label for="kelurahan">Kelurahan</label>
                                             <select class="c-custom-select formRequired" id="kelurahan" name="kelurahan">
-                                                <option value=""> Pilih Kelurahan</option>
-                                                <option value="Kelurahan 1">Kelurahan 1</option>
-                                                <option value="Kelurahan 2">Kelurahan 2</option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
                                             <label for="kode_pos">Kode Pos</label>
-                                            <input type="text" class="form-control formNumber" name="kode_pos" id="kode_pos"
+                                            <input type="text" class="form-control formNumber" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' name="kode_pos" id="kode_pos"
                                                    placeholder="Masukkan kode pos">
                                             <div class="error-wrap"></div>
                                         </div>
@@ -162,11 +154,13 @@ $this->extend('layout.html.php');
                                 </div>
                                 <div id="menu3" class="tab-pane slide-left">
                                     <div class="form-body--credit">
-                                        <h2 class="text-center">Data Bangunan</h2>
-                                        <p class="text-center">Silahkan Masukan data bangunan Anda</p>
+                                        <div class="text-head">
+                                            <h2 class="text-center">Data Bangunan</h2>
+                                            <p class="text-center">Silahkan Masukan data bangunan Anda</p>
+                                        </div>
                                         <div class="form-group">
                                             <label for="merk_kendaraan">Status Sertifikat</label>
-                                            <select class="c-custom-select-trans formRequired" id="status_sertificate" name="status_sertificate">
+                                            <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="status_sertificate" name="status_sertificate">
                                                 <option value=""> Pilih merk kendaraan</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
@@ -175,7 +169,7 @@ $this->extend('layout.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label for="model_kendaraan">Sertifikat Atas Nama</label>
-                                            <select class="c-custom-select-trans formRequired" id="own_sertificate"
+                                            <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="own_sertificate"
                                                     name="own_sertificate">
                                                 <option value=""> Pilih Model Kendaraan</option>
                                                 <option value="1">1</option>
@@ -185,7 +179,7 @@ $this->extend('layout.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label for="provinsi_sertificate">Provinsi</label>
-                                            <select class="c-custom-select formRequired" id="provinsi_sertificate" name="provinsi_sertificate">
+                                            <select class="c-custom-select formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="provinsi_sertificate" name="provinsi_sertificate">
                                                 <option value=""> Pilih Provinsi</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
@@ -194,7 +188,7 @@ $this->extend('layout.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label for="kota_sertificate">Kota</label>
-                                            <select class="c-custom-select formRequired" id="kota_sertificate" name="kota_sertificate">
+                                            <select class="c-custom-select formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="kota_sertificate" name="kota_sertificate">
                                                 <option value=""> Pilih Kota</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
@@ -203,7 +197,7 @@ $this->extend('layout.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label for="kecamatan_sertificate">Kecamatan</label>
-                                            <select class="c-custom-select formRequired" id="kecamatan_sertificate" name="kecamatan_sertificate">
+                                            <select class="c-custom-select formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="kecamatan_sertificate" name="kecamatan_sertificate">
                                                 <option value=""> Pilih Kecamatan</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
@@ -212,7 +206,7 @@ $this->extend('layout.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label for="kelurahan">Kelurahan</label>
-                                            <select class="c-custom-select formRequired" id="kelurahan_sertificate" name="kelurahan_sertificate">
+                                            <select class="c-custom-select formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="kelurahan_sertificate" name="kelurahan_sertificate">
                                                 <option value=""> Pilih Kelurahan</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
@@ -250,8 +244,10 @@ $this->extend('layout.html.php');
 
                                 <div id="menu4" class="tab-pane slide-left">
                                     <div class="form-body--credit-simulasi">
-                                        <h2 class="text-center">Konfirmasi Data</h2>
-                                        <p class="text-center">Pastikan data yang Anda masukkan sudah benar</p>
+                                        <div class="text-head">
+                                            <h2 class="text-center">Konfirmasi Data</h2>
+                                            <p class="text-center">Pastikan data yang Anda masukkan sudah benar</p>
+                                        </div>
                                         <div class="biaya-agunan">
                                             <div class="cont-agunan">
                                                 <p class="title-agunan">
@@ -387,7 +383,7 @@ $this->extend('layout.html.php');
                                             </div>
 
                                         </div>
-                                        <div class="biaya-agunan">
+                                        <!-- <div class="biaya-agunan">
                                             <div class="form-group">
                                                 <input type="checkbox" id="agreement1" class="agreement">
                                                 <label for="agreement1" class="label-agreement">Anda bersedia menerima
@@ -404,7 +400,7 @@ $this->extend('layout.html.php');
                                                     saepe expedita qui sunt exercitationem delectus. In?</label>
                                                 <div class="error-wrap"></div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
 
                                     <div class="button-area text-left back">
@@ -426,7 +422,7 @@ $this->extend('layout.html.php');
 
                                         <div class="otp-number form-group">
                                             <div class="otp-number__phone">
-                                                <p id="showPhone"> <img src="/static/images/icon/pencil.png" alt=""></p>
+                                                <p id="showPhone"> <span></span> <img src="/static/images/icon/pencil.png" alt=""></p>
                                             </div>
                                             <div class="otp-number__verify">
                                                 <input type="text" class="input-number formRequired" maxlength="1" name="otp1">
@@ -448,7 +444,16 @@ $this->extend('layout.html.php');
                                                     type="submit">VERIFIKASI</button>
                                         </div>
                                     </div>
+                                </div>
 
+                                <div id="success" class="success-wrapper">
+                                    <div class="img-wrap">
+                                        <img src="/static/images/icon/envalope.png" alt="">
+                                    </div>
+                                    <div class="text-wrap text-center">
+                                        <h3>Terima Kasih telah Menghubungi Kami!</h3>
+                                        <p>Agen BFI akan segera menghubungi Anda</p>
+                                    </div>
                                 </div>
 
                             </div>
@@ -457,6 +462,29 @@ $this->extend('layout.html.php');
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
+<div id="wrongOtp" class="modal modal--failed fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content text-center">
+            <div class="modal-body">
+                <p>OTP Salah, Silahkan masukan ulang OTP !</p>
+                <button type="button" class="cta cta-orange" data-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="failedOtp" class="modal modal--failed fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content text-center">
+            <div class="modal-body">
+                <p>Terjadi Kesalahan, Silahkan kirim ulang OTP !</p>
+                <button type="button" class="cta cta-orange" data-dismiss="modal">Ok</button>
+            </div>
+        </div>
     </div>
 </div>

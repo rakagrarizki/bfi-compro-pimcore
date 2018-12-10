@@ -113,37 +113,25 @@ $this->extend('layout.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label for="provinsi">Provinsi</label>
-                                            <select class="c-custom-select formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="provinsi" name="provinsi">
-                                                <option value=""> Pilih Provinsi</option>
-                                                <option value="DKI Jakarta">DKI Jakarta</option>
-                                                <option value="Jawa Barat">Jawa Barat</option>
+                                            <select class="c-custom-select formRequired" id="provinsi" name="provinsi">
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
                                             <label for="kota">Kota</label>
-                                            <select class="c-custom-select formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="kota" name="kota">
-                                                <option value=""> Pilih Kota</option>
-                                                <option value="Jakarta Utara">Jakarta Utara</option>
-                                                <option value="Jakarta Selatan">Jakarta Selatan</option>
+                                            <select class="c-custom-select formRequired" id="kota" name="kota">
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
                                             <label for="kecamatan">Kecamatan</label>
-                                            <select class="c-custom-select formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="kecamatan" name="kecamatan">
-                                                <option value=""> Pilih Kecamatan</option>
-                                                <option value="Kebon Jeruk">Kebon Jeruk</option>
-                                                <option value="Kemanggisan">Kemanggisan</option>
+                                            <select class="c-custom-select formRequired" id="kecamatan" name="kecamatan">
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
                                             <label for="kelurahan">Kelurahan</label>
-                                            <select class="c-custom-select formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="kelurahan" name="kelurahan">
-                                                <option value=""> Pilih Kelurahan</option>
-                                                <option value="Kelurahan 1">Kelurahan 1</option>
-                                                <option value="Kelurahan 2">Kelurahan 2</option>
+                                            <select class="c-custom-select formRequired" id="kelurahan" name="kelurahan">
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
@@ -550,7 +538,7 @@ $this->extend('layout.html.php');
 
                                         <div class="otp-number form-group">
                                             <div class="otp-number__phone">
-                                                <p id="showPhone"> <img src="assets/images/icon/pencil.png" alt=""></p>
+                                                <p id="showPhone"> <span></span> <img src="/static/images/icon/pencil.png" alt=""></p>
                                             </div>
                                             <div class="otp-number__verify">
                                                 <input type="text" class="input-number formRequired" maxlength="1" name="otp1">
@@ -572,7 +560,16 @@ $this->extend('layout.html.php');
                                                     type="submit">VERIFIKASI</button>
                                         </div>
                                     </div>
+                                </div>
 
+                                <div id="success" class="success-wrapper">
+                                    <div class="img-wrap">
+                                        <img src="/static/images/icon/envalope.png" alt="">
+                                    </div>
+                                    <div class="text-wrap text-center">
+                                        <h3>Terima Kasih telah Menghubungi Kami!</h3>
+                                        <p>Agen BFI akan segera menghubungi Anda</p>
+                                    </div>
                                 </div>
 
                             </div>
@@ -582,5 +579,30 @@ $this->extend('layout.html.php');
             </div>
         </div>
 
+    </div>
+</div>
+
+
+<div id="wrongOtp" class="modal modal--failed fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content text-center">
+            <div class="modal-body">
+                <p>OTP Salah, Silahkan masukan ulang OTP !</p>
+                <button type="button" class="cta cta-orange" data-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="failedOtp" class="modal modal--failed fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content text-center">
+            <div class="modal-body">
+                <p>Terjadi Kesalahan, Silahkan kirim ulang OTP !</p>
+                <button type="button" class="cta cta-orange" data-dismiss="modal">Ok</button>
+            </div>
+        </div>
     </div>
 </div>

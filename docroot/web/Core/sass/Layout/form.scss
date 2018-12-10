@@ -20,6 +20,31 @@
     .text-head {
         margin: 50px 0;
     }
+
+   
+}
+.success-wrapper {
+    display: none;
+    clear: both;
+    padding: 50px 0;
+
+    .img-wrap {
+        text-align: center;
+    }
+    img {
+        margin: auto;
+    }
+    h3 {
+        font-family: 'HelveticaNeue';
+        font-size: 2em;
+        font-weight: 600;
+        color: $grey-dark-color;
+    }
+
+    p {
+        font-family: 'HelveticaNeue';
+        font-size: 1.2em;
+    }
 }
 
 .tab-content>.tab-pane {
@@ -608,4 +633,67 @@
             font-weight: 600;
         }
     }
+}
+
+.modal {
+    &.modal--failed {
+        z-index: 99999;
+        .modal-body {
+            padding: 50px;
+        }
+        p {
+            font-family: 'HelveticaNeue';
+            font-size: 1.2em;
+            color: $grey-dark-color;
+        }
+
+        .cta-orange {
+            padding-right: 20px;
+            border-radius: 3px;
+            &::after {
+                content: '';
+            }
+        }
+        
+    }
+}
+
+.chosen-container {
+    width: 100% !important;
+}
+
+.chosen-container-active.chosen-with-drop .chosen-single {
+    background-image: unset;
+    box-shadow: none;
+}
+
+.chosen-container-active .chosen-single {
+    box-shadow: none;
+}
+
+.chosen-container-single .chosen-single {
+    border-radius: 0;
+    background: unset;
+    box-shadow: none;
+}
+
+.chosen-container-single .chosen-single {
+    height: auto;
+    padding: 17px 20px;
+    border: 1px solid #ccc;
+
+    &::after {
+        font-family: 'FontAwesome';
+        content: "\f107";
+        background: unset;
+        position: absolute;
+        right: 15px;
+        top: 17px;
+        font-size: 2em;
+    }
+}
+
+
+.chosen-container-single .chosen-single span {
+    font-size: 1.2em;
 }

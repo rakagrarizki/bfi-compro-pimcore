@@ -43,6 +43,7 @@ var paths = {
 
                     // FONT AWESOME CSS
                     path.join(__dirname, "bower_components/font-awesome/css/font-awesome.css"),
+                    path.join(__dirname, "bower_components/chosen/chosen.css"),
 
                     path.join(__dirname, "plugins/**/*.css"),
 
@@ -64,6 +65,7 @@ var paths = {
                     path.join(__dirname, "bower_components/jcf/dist/js/jcf.select.js"),
                     path.join(__dirname, "bower_components/slick-carousel/slick/slick.min.js"),
                     path.join(__dirname, "bower_components/jqueryvalidate/jquery.validate.js"),
+                    path.join(__dirname, "bower_components/chosen/chosen.jquery.js"),
                     path.join(__dirname, "plugins/**/*.js"),
                 ],
             app:

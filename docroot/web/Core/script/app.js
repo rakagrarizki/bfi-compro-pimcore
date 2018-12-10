@@ -69,6 +69,21 @@
 		}
 
 	}
+	var objCredits = {
+		nama_lengkap: "",
+		email: "",
+		alamat_lengkap: "",
+		no_handphone: "",
+		kota: "",
+		kecamatan: "",
+		kelurahan: "",
+		model_kendaraan: "",
+		tahun_kendaraan: "",
+		funding: "",
+		merk_kendaraan: "",
+		jangka_waktu: "",
+		installment: ""
+	}
 
 
 	$("#herobanner").slick({
@@ -561,6 +576,7 @@
 				showTab2();
 				scrollToTop();
 				$('.nav-item-2').addClass('active');
+				
 
 				pushDataPemohon();
 
@@ -575,6 +591,8 @@
 				hideTab2();
 				scrollToTop();
 				$('.nav-item-3').addClass('active');
+
+				
 
 				pushDataTempatTinggal();
 
@@ -616,9 +634,19 @@
 			scrollToTop();
 			$('.input-number:first-child').focus();
 			$('.horizontal-scroll').hide();
+			$('#showPhone span').html(credits.pemohon.no_handphone);
+
+			requestOtp(credits);
+
+		})
+
+		$('#button6').on('click', function (e) {
+			e.preventDefault();
 
 			sendOtp(credits);
+			sendDataCredits(credits);
 
+			console.log(objCredits);
 		})
 	}
 
@@ -674,13 +702,6 @@
 			$('.tab-pane').fadeOut();
 			scrollToTop();
 			showTab3();
-		})
-
-		$('#buttonback5').on('click', function (e) {
-			e.preventDefault();
-			$('.tab-pane').fadeOut();
-			scrollToTop();
-			showTab4();
 		})
 	}
 
@@ -752,12 +773,13 @@
 		});
 	}
 
-	function sendOtp(params) {
+	function requestOtp(params) {
 
-		var _url = '/otp/send-otp';
+		var _url = 'https://bfi.staging7.salt.id/otp/send-otp';
+		//var _url = '/otp/send-otp';
 
 		var _data = {
-			nama_lengkap: params.pemohon.nama_lengkap,
+			nama_lengkap: params.pemohon.nama,
 			no_handphone: params.pemohon.no_handphone
 		}
 
@@ -766,17 +788,272 @@
 			url: _url,
 			data: _data,
 			dataType: 'json',
+			error: function (data) {
+				console.log('error' + data);
+			},
+			fail: function (xhr, textStatus, error) {
+				console.log('request failed')
+			},
 			success: function (data) {
-				console.log(data);
+				if (data.success != "1") {
+					console.log('failed')
+				}
+
+				else {
+					console.log(data)
+				}
 			}
 		})
 	}
+
+	function sendOtp(params) {
+
+		var _url = 'https://bfi.staging7.salt.id/otp/validate-otp';
+		//var _url = '/otp/validate-otp';
+
+		var otp1Value = $('input[name=otp1]').val(),
+			otp2Value = $('input[name=otp2]').val(),
+			otp3Value = $('input[name=otp3]').val(),
+			otp4Value = $('input[name=otp1]').val();
+
+		var _data = {
+			no_handphone: params.pemohon.no_handphone,
+			otp1: otp1Value,
+			otp2: otp2Value,
+			otp3: otp3Value,
+			otp4: otp4Value
+		}
+
+		$.ajax({
+			type: 'POST',
+			url: _url,
+			data: _data,
+			dataType: 'json',
+			error: function (data) {
+				console.log('error' + data);
+			},
+			fail: function (xhr, textStatus, error) {
+				console.log('request failed')
+			},
+			success: function (data) {
+				if (data.success != "1") {
+					$('#wrongOtp').modal('show');
+
+				}
+				else {
+					$('.tab-pane').fadeOut();
+					showTab4();
+				}
+			}
+		})
+	}
+
+	function sendDataCredits(params) {
+
+		objCredits.nama_lengkap = params.pemohon.nama,
+		objCredits.email = params.pemohon.email,
+		objCredits.alamat_lengkap = params.tempat_tinggal.alamat,
+		objCredits.no_handphone = params.pemohon.no_handphone,
+		objCredits.kota = params.tempat_tinggal.kota,
+		objCredits.kecamatan = params.tempat_tinggal.kecamatan,
+		objCredits.kelurahan = params.tempat_tinggal.kelurahan,
+		objCredits.model_kendaraan = params.kendaraan.model_kendaraan,
+		objCredits.tahun_kendaraan = params.kendaraan.tahun_kendaraan,
+		objCredits.funding = 98000000,
+		objCredits.merk_kendaraan = params.kendaraan.merk_kendaraan,
+		objCredits.jangka_waktu = 36,
+		objCredits.installment = 3000000
+
+		var _url = '';
+		var type = $('#jenis_form').val().toLowerCase();
+
+		if (type == 'bpkb mobil') {
+			_url = 'https://bfi.staging7.salt.id/credit/send-mobil';
+			//_url = '/credit/send-mobil';
+		}
+
+		else if (type == 'bpkb motor') {
+			_url = 'https://bfi.staging7.salt.id/credit/send-motor';
+			//_url = '/credit/send-motor';
+		}
+
+		else if (type = 'surat bangunan') {
+			_url = 'https://bfi.staging7.salt.id/credit/send-rumah';
+			//_url = '/credit/send-rumah';
+		}
+
+		$.ajax({
+			type: 'POST',
+			url: _url,
+			data: objCredits,
+			dataType: 'json',
+			error: function (data) {
+				console.log('error' + data);
+			},
+
+			fail: function (xhr, textStatus, error) {
+				console.log('request failed')
+			},
+
+			success: function (data) {
+				if (data.success != "1") {
+					$('#failedOtp').modal('show');
+				}
+
+				else {
+					$('.tab-pane').hide();
+					$('#success').fadeIn();
+				}
+			}
+		})
+	}
+
+	function getProvinsi(element) {
+
+		jcf.destroy($('#provinsi'))
+
+		$.ajax({
+			type: 'GET',
+			url: '/service/provinsi/listJson',
+			dataType: 'json',
+			error: function (data) {
+				console.log('error' + data);
+			},
+
+			fail: function (xhr, textStatus, error) {
+				console.log('request failed')
+			},
+
+			success: function (dataObj) {
+				if(dataObj.success == true) {
+					$.each(dataObj.result.data, function(idPrivince, valProvince) {
+						if(valProvince.name != '') {
+							var elementOption = '<option value="'+ valProvince.name +'">'+ valProvince.name +'</option>';
+
+							$(element).append(elementOption);
+							
+							setTimeout(function() {
+								$(element).chosen();
+							}, 10);
+						}
+					})
+				}
+			}
+		})
+	}
+
+	function getCity(element) {
+		jcf.destroy($('#kota'))
+
+		$.ajax({
+			type: 'GET',
+			url: '/service/city/listJson',
+			dataType: 'json',
+			error: function (data) {
+				console.log('error' + data);
+			},
+
+			fail: function (xhr, textStatus, error) {
+				console.log('request failed')
+			},
+
+			success: function (dataObj) {
+				if(dataObj.success == true) {
+					$.each(dataObj.result.data, function(idPrivince, valProvince) {
+						if(valProvince.name != '') {
+							var elementOption = '<option value="'+ valProvince.name +'">'+ valProvince.name +'</option>';
+
+							$(element).append(elementOption);
+							
+							setTimeout(function() {
+								$(element).chosen();
+							}, 10);
+						}
+					})
+				}
+			}
+		})
+	}
+
+	function getKecamatan(element) {
+		jcf.destroy($('#kecamatan'))
+
+		$.ajax({
+			type: 'GET',
+			url: '/service/kecamatan/listJson',
+			dataType: 'json',
+			error: function (data) {
+				console.log('error' + data);
+			},
+
+			fail: function (xhr, textStatus, error) {
+				console.log('request failed')
+			},
+
+			success: function (dataObj) {
+				if(dataObj.success == true) {
+					$.each(dataObj.result.data, function(idPrivince, valProvince) {
+						if(valProvince.name != '') {
+							var elementOption = '<option value="'+ valProvince.name +'">'+ valProvince.name +'</option>';
+
+							$(element).append(elementOption);
+							
+							setTimeout(function() {
+								$(element).chosen();
+							}, 10);
+						}
+					})
+				}
+			}
+		})
+	}
+
+	function getKelurahan(element) {
+		jcf.destroy($('#kelurahan'))
+
+		$.ajax({
+			type: 'GET',
+			url: '/service/kelurahan/listJson',
+			dataType: 'json',
+			error: function (data) {
+				console.log('error' + data);
+			},
+
+			fail: function (xhr, textStatus, error) {
+				console.log('request failed')
+			},
+
+			success: function (dataObj) {
+				if(dataObj.success == true) {
+					$.each(dataObj.result.data, function(idPrivince, valProvince) {
+						if(valProvince.name != '') {
+							var elementOption = '<option value="'+ valProvince.name +'">'+ valProvince.name +'</option>';
+							$(element).append(elementOption);
+							
+							setTimeout(function() {
+								$(element).chosen();
+							}, 10);
+						}
+					})
+				}
+			}
+		})
+	}
+
+	getProvinsi($('#provinsi'));
+	getCity($('#kota'));
+	getKecamatan($('#kecamatan'));
+	getKelurahan($('#kelurahan'));
+	
 
 	function listingLocation(params) {
 		$.ajax({
 			type: 'GET',
 			url: params,
 			dataType: 'json',
+			error: function (data) {
+				console.log('error' + data);
+			},
 			success: function (data) {
 				$.each(data, function (id, val) {
 					var listing = val.data;
@@ -980,7 +1257,9 @@
 
 				seconds = '0' + seconds;
 			}
+
 			$('.countdown').html(minutes + ":" + seconds);
+
 		}, 1000)
 
 	}

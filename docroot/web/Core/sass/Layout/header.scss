@@ -2,6 +2,10 @@
     border-bottom: none;
     font-family: 'HelveticaNeue';
 
+    .navbar-fixed-top {
+        z-index: 99991;
+    }
+
     &.active {
         .header-bottom {
             height: 70px;
