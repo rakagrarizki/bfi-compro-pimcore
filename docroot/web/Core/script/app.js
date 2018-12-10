@@ -488,8 +488,11 @@
 	function pushDataPemohon() {
 		var nama_lengkap = $('#nama_lengkap').val(),
 			email_pemohon = $('#email_pemohon').val(),
-			no_telepon = $('#no_handphone').val();
+			no_telepon = $('#no_handphone').val(),
+			jenis_kredit = $('#jenis_form').val();
 
+
+		credits.angunan.jenis_angunan = jenis_kredit;
 		credits.pemohon.nama = nama_lengkap;
 		credits.pemohon.email = email_pemohon;
 		credits.pemohon.no_handphone = no_telepon;
@@ -526,6 +529,9 @@
 	}
 
 	function setSummary() {
+		// data tipe angunan
+		$('#showAngunan').html(credits.angunan.jenis_angunan);
+
 		//data pemohon
 		$('#showFullName').html(credits.pemohon.nama);
 		$('#showEmail').html(credits.pemohon.email);
