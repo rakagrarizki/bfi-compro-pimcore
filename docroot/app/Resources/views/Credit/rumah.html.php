@@ -51,6 +51,7 @@ $this->extend('layout.html.php');
                             </ul>
                         </nav>
                         <form action="#" id="getCredit" method="POST" class="form-get--credit" role="form">
+                            <input type="hidden" id="jenis_form" name="jenis_form" value="SURAT BANGUNAN">
                             <div class="tab-content">
                                 <div id="menu1" class="tab-pane fade in active form-group">
                                     <div class="form-body--credit">

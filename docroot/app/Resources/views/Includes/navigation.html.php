@@ -5,7 +5,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-7 left-side-top no-padding">
-                        <a href="/<?php echo $this->language ?>"><?= $this->translate("personal") ?></a>
+                        <a href="/<?php echo $this->getLocale() ?>"><?= $this->translate("personal") ?></a>
                         <a href="#"><?= $this->translate("corporate") ?></a>
                     </div>
                     <div class="col-md-5 right-side-top">
@@ -130,60 +130,7 @@
         </div>
     </div>
 
-    <!-- START Mobille -->
-    <div class="top-nav--mobille hidden-md">
-        <div class="container">
-            <div class="row top-nav">
-                <div class="col-xs-6">
-                    <a href="#" class="cta-top-nav active">Personal</a>
-                    <a href="#" class="cta-top-nav">Corporate</a>
-                </div>
-                <div class="col-xs-6 text-right">
-                    <a href="#" class="cta-top-nav active">ID</a>
-                    <a href="#" class="cta-top-nav">EN</a>
-                </div>
-            </div>
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-                    aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="close-bar">x</span>
-                </button>
-                <a class="navbar-brand" href="#">
-                    <img src="/static/images/logo-bfi.png" alt="logo-bfi" class="img-responsive">
-                </a>
-                <div class="button-area--nav">
-                    <a href="#" class="cta cta-light cta-see">AJUKAN KREDIT</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="navbar" class="navbar-collapse collapse collapse-mobile" aria-expanded="false">
-        <ul class="nav navbar-nav">
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Produk</a>
-                <ul class="dropdown-menu">
-                    <li><a href="#" class="title-dropdown">Produk</a></li>
-                    <li><a href="#">Pembiayaan Kendaraan Bermotor</a></li>
-                    <li><a href="#">Pembiayaan Rumah dan Ruko</a></li>
-                    <li><a href="#">Lainnya</a></li>
-                    <li><a href="#" class="title-dropdown">Layanan</a></li>
-                    <li><a href="#">Ajukan Kredit</a></li>
-                    <li><a href="#">Cek Kontrak</a></li>
-                    <li><a href="#">Cek Status Aplikasi</a></li>
-                    <li><a href="#">Formulir Pengkinian Data Debitur</a></li>
-                </ul>
-            </li>
-            <li class="active"><a href="#">Ajukan Kredit</a></li>
-            <li><a href="#">Uber Milyaran</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#" class="about">Tentang BFI</a></li>
-            <li><a href="#" class="about">Blog</a></li>
-        </ul>
-    </div>
-    <!-- END Mobile -->
+    <?php echo $this->template("Includes/mobile-navigation.html.php") ?>
+
 </nav>
 <!-- HEADER -->
