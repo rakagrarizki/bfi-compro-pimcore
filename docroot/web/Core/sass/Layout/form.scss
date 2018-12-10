@@ -1,5 +1,5 @@
 .form-body--credit {
-    width: calc(0.45 * 100%);
+    width: calc(0.35 * 100%);
     margin: auto;
 
     @include breakpoint(mobile){
@@ -16,6 +16,14 @@
     p {
         font-size: 18px;
     }
+
+    .text-head {
+        margin: 50px 0;
+    }
+}
+
+.tab-content>.tab-pane {
+    clear: both;
 }
 
 .form-get--credit {
@@ -29,6 +37,17 @@
         @include breakpoint(mobile){
             width: auto;
         }
+
+        h2 {
+            font-family: 'HelveticaNeue-Bold';
+            font-weight: 800;
+        }
+    
+        p {
+            font-family: 'HelveticaNeue';
+            font-size: 1.1em;
+        }
+
         .credit-simulasi{
             padding-bottom: 50px;
         }
@@ -249,6 +268,14 @@
             font-size: 16px;
             letter-spacing: 1px;
             display: block;
+            margin-bottom: 10px;
+
+            &.error {
+                margin: 10px 0;
+                font-family: 'HelveticaNeue-Light';
+                font-size: 1em;
+                color: #c50000;
+            }
 
             &:last-child {
                 font-size: 14px;
@@ -334,6 +361,7 @@
         }
 
         .jcf-select {
+            cursor: pointer;
             position: relative;
             display: block;
             width: 100%;
@@ -345,6 +373,12 @@
             cursor: pointer;
             margin: 0;
             border-radius: 2px;
+
+            .jcf-select-text {
+                font-family: 'HelveticaNeue';
+                cursor: pointer;
+                font-size: 1.3em;
+            }
 
             &.jcf-drop-active {
                 >.jcf-select-opener:before {
@@ -417,11 +451,6 @@
                 li {
                     &:first-child {
                         cursor: not-allowed;
-                        margin-top: 10px;
-                    }
-
-                    &:last-child {
-                        margin-bottom: 10px;
                     }
                 }
             }
@@ -429,6 +458,8 @@
 
         // Option style 
         .jcf-option {
+            font-family: 'HelveticaNeue';
+            font-weight: normal;
             display: block;
             cursor: pointer;
             padding: 10px 15px;

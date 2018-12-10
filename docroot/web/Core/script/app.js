@@ -38,6 +38,7 @@
 	var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 	var _marker = '/static/images/icon/marker.png';
 	var marker, i, latLngGoogle, _radius;
+	var infowindow = null;
 
 	var credits = {
 		"angunan": {
@@ -143,80 +144,80 @@
 		}
 	});
 
-	jQuery.validator.setDefaults({
-		debug: true,
-		success: "valid"
-	});
+	// jQuery.validator.setDefaults({
+	// 	debug: true,
+	// 	success: "valid"
+	// });
 
-	$form = $(".form-get--credit");
-	$successMsg = $(".alert");
+	// $form = $(".form-get--credit");
+	// $successMsg = $(".alert");
 
 
-	$form.validate({
-		errorPlacement: function (error, element) {
-			if (!error) {
-				return true;
-			}
-		},
-		onfocusout: false,
-		onkeyup: false,
-		rules: {
-			nama_lengkap: {
-				required: true,
-				minlength: 5
-			},
-			email: {
-				required: true,
-				email: true
-			},
-			no_handphone: {
-				required: true,
-				number: true
-			},
-			file_upload: {
-				required: true,
-				accept: "image/jpeg, pdf"
-			},
-			provinsi: {
-				required: true
-			},
-			kota: {
-				required: true
-			},
-			kecamatan: {
-				required: true
-			},
-			kelurahan: {
-				required: true
-			},
-			kode_pos: {
-				required: true
-			},
-			alamat_lengkap: {
-				required: true
-			},
-			merk_kendaraan: {
-				required: true
-			},
-			model_kendaraan: {
-				required: true
-			},
-			tahun_kendaraan: {
-				required: true
-			},
-			status: {
-				required: true
-			},
-		},
-		messages: {
-			nama_lengkap: "Please specify your name",
-			provinsi: "Please input your province"
+	// $form.validate({
+	// 	errorPlacement: function (error, element) {
+	// 		if (!error) {
+	// 			return true;
+	// 		}
+	// 	},
+	// 	onfocusout: false,
+	// 	onkeyup: false,
+	// 	rules: {
+	// 		nama_lengkap: {
+	// 			required: true,
+	// 			minlength: 5
+	// 		},
+	// 		email: {
+	// 			required: true,
+	// 			email: true
+	// 		},
+	// 		no_handphone: {
+	// 			required: true,
+	// 			number: true
+	// 		},
+	// 		file_upload: {
+	// 			required: true,
+	// 			accept: "image/jpeg, pdf"
+	// 		},
+	// 		provinsi: {
+	// 			required: true
+	// 		},
+	// 		kota: {
+	// 			required: true
+	// 		},
+	// 		kecamatan: {
+	// 			required: true
+	// 		},
+	// 		kelurahan: {
+	// 			required: true
+	// 		},
+	// 		kode_pos: {
+	// 			required: true
+	// 		},
+	// 		alamat_lengkap: {
+	// 			required: true
+	// 		},
+	// 		merk_kendaraan: {
+	// 			required: true
+	// 		},
+	// 		model_kendaraan: {
+	// 			required: true
+	// 		},
+	// 		tahun_kendaraan: {
+	// 			required: true
+	// 		},
+	// 		status: {
+	// 			required: true
+	// 		},
+	// 	},
+	// 	messages: {
+	// 		nama_lengkap: "Please specify your name",
+	// 		provinsi: "Please input your province"
 
-		},
-		submitHandler: function () {
+	// 	},
+	// 	submitHandler: function () {
 
-		}
-	})
+	// 	}
+	// })
 
 	var inputTargets = [{
 		input: '#nama_lengkap',
@@ -401,9 +402,11 @@
 			number: true
 		},
 
-		"checkbox[]": {
+		formPhoneNumber: {
 			required: true,
-			minlength: 1
+			number: true,
+			maxlength: 12,
+			minlength: 9
 		},
 
 		submitHandler: function (form) {
@@ -411,25 +414,27 @@
 		}
 	});
 
-	function validateFormRequired(element) {
-		$(element).validate({
+	function validateFormRequired(elementParam) {
+		$(elementParam).validate({
 			errorPlacement: function (error, element) {
+				console.log(element)
 				element.closest('.form-group').find('.error-wrap').html(error);
-				setTimeout(function () {
-					$('label.error').addClass('show-error');
-				}, 200);
 			}
 		});
 	}
 
-	validateFormRequired($('#getCredit'));
+	function scrollToTop() {
+		$('html, body').animate({
+			scrollTop: 0
+		}, 400);
+	}
 
 	function showTab1() {
 		$('#menu1').fadeIn();
 	}
 
 	function hideTab1() {
-		$('#menu1').fadeOut();
+		$('#menu1').hide();
 	}
 
 	function showTab2() {
@@ -437,7 +442,7 @@
 	}
 
 	function hideTab2() {
-		$('#menu2').fadeOut();
+		$('#menu2').hide();
 	}
 
 	function showTab3() {
@@ -445,7 +450,7 @@
 	}
 
 	function hideTab3() {
-		$('#menu3').fadeOut();
+		$('#menu3').hide();
 	}
 
 	function showTab4() {
@@ -453,7 +458,7 @@
 	}
 
 	function hideTab4() {
-		$('#menu4').fadeOut();
+		$('#menu4').hide();
 	}
 
 	function showTab5() {
@@ -461,7 +466,7 @@
 	}
 
 	function hideTab5() {
-		$('#menu5').fadeOut();
+		$('#menu5').hide();
 	}
 
 	function showTab6() {
@@ -469,7 +474,7 @@
 	}
 
 	function hideTab6() {
-		$('#menu6').fadeOut();
+		$('#menu6').hide();
 	}
 
 	function pushDataPemohon() {
@@ -538,8 +543,9 @@
 			e.preventDefault();
 
 			if ($(this).closest('form').valid()) {
-				showTab2();
 				hideTab1();
+				showTab2();
+				scrollToTop();
 				$('.nav-item-2').addClass('active');
 
 				pushDataPemohon();
@@ -553,6 +559,7 @@
 			if ($(this).closest('form').valid()) {
 				showTab3();
 				hideTab2();
+				scrollToTop();
 				$('.nav-item-3').addClass('active');
 
 				pushDataTempatTinggal();
@@ -566,6 +573,7 @@
 			if ($(this).closest('form').valid()) {
 				showTab4();
 				hideTab3();
+				scrollToTop();
 				$('.nav-item-4').addClass('active');
 
 				pushDataKendaraan();
@@ -579,6 +587,7 @@
 			if ($(this).closest('form').valid()) {
 				showTab5();
 				hideTab4();
+				scrollToTop();
 				$('.nav-item-5').addClass('active');
 
 				setSummary();
@@ -590,6 +599,7 @@
 
 			showTab6();
 			hideTab5();
+			scrollToTop();
 			$('.input-number:first-child').focus();
 			$('.horizontal-scroll').hide();
 
@@ -632,24 +642,28 @@
 		$('#buttonback2').on('click', function (e) {
 			e.preventDefault();
 			$('.tab-pane').fadeOut();
+			scrollToTop();
 			showTab1();
 		})
 
 		$('#buttonback3').on('click', function (e) {
 			e.preventDefault();
 			$('.tab-pane').fadeOut();
+			scrollToTop();
 			showTab2();
 		})
 
 		$('#buttonback4').on('click', function (e) {
 			e.preventDefault();
 			$('.tab-pane').fadeOut();
+			scrollToTop();
 			showTab3();
 		})
 
 		$('#buttonback5').on('click', function (e) {
 			e.preventDefault();
 			$('.tab-pane').fadeOut();
+			scrollToTop();
 			showTab4();
 		})
 	}
@@ -722,22 +736,22 @@
 		});
 	}
 
-	function buildHtmlLocation(params) {
-		var html = '<div class="col-md-12 parent-brachlist" data-lat="' + params.latitude + '"  data-lng="' + params.longitude + '">';
-		html += '<div class="wrapper-branchlist">';
-		html += '<div class="col-md-2 col-sm-2 col-xs-2 branchlist"><img class="icon-gedung-branchlist" src="/static/images/gedung.png"></div>';
-		html += '<div class="col-md-8 col-sm-8 col-xs-8 branchlist">';
-		html += '<p class="margin-bottom-10">' + params.name + '</p>';
-		html += '<p>' + params.address + '</p>';
-		html += '<a href="#" class="margin-top-20">PETUNJUK ARAH <i class="fa fa-angle-right arrowlink" aria-hidden="true"></i></a>';
-		html += '</div>';
-		html += '<div class="col-md-2 branchlist"><i class="fa fa-angle-right" aria-hidden="true"></i></div>';
-		html += '</div>';
-		html += '</div>';
+	function getCreditAjax() {
+		var urlAjax = 'https://www.getpostman.com/collections/63932825dfc82031d056';
 
-		$('.wrapper-parent-branchlist').addClass('active');
-		$('#branch').append(html);
+		$.ajax({
+			type: 'GET',
+			url: urlAjax,
+			dataType: 'json',
+			success: function(data) {
+				console.log(data);
+			}
+		})
 	}
+
+	//getCreditAjax();
+
+	var markers = [];
 
 	function listingLocation(params) {
 		$.ajax({
@@ -757,31 +771,33 @@
 								icon: _marker
 							});
 
-
-							var contentString = '<div class="col-md-12 parent-brachlist" data-lat="' + valListing.latitude + '"  data-lng="' + valListing.longitude + '">';
+							var contentString = '<div class="col-md-12 parent-brachlist" data-id="' + idListing + '" data-lat="' + valListing.latitude + '"  data-lng="' + valListing.longitude + '">';
 								contentString += '<div class="wrapper-branchlist">';
 								contentString += '<div class="col-md-2 col-sm-2 col-xs-2 branchlist"><img class="icon-gedung-branchlist" src="/static/images/gedung.png"></div>';
 								contentString += '<div class="col-md-8 col-sm-8 col-xs-8 branchlist">';
-								contentString += '<p class="margin-bottom-10">' + valListing.name + '</p>';
-								contentString += '<p>' + valListing.address + '</p>';
+								contentString += '<p class="title-branch margin-bottom-10">' + valListing.name + '</p>';
+								contentString += '<p class="desc-branch">' + valListing.address + '</p>';
 								contentString += '<a href="#" class="margin-top-20">PETUNJUK ARAH <i class="fa fa-angle-right arrowlink" aria-hidden="true"></i></a>';
 								contentString += '</div>';
 								contentString += '</div>';
 								contentString += '</div>';
 
-							var latLng = new google.maps.LatLng( valListing.latitude , valListing.longitude);
-
 							infowindow = new google.maps.InfoWindow({
 								content: ''
 							});
 
-							marker.addListener('click', function () {
-								infowindow.setContent(contentString);
-								infowindow.open(map, marker);
-								infowindow.setPosition(latLng);
 
-							});
+							google.maps.event.addListener(marker, 'click', (function (marker, i) {
 
+								return function () {
+									infowindow.setContent(contentString);
+									infowindow.open(map, marker);
+								}
+
+							})(marker, i));
+
+
+							markers.push(marker);
 
 							google.maps.event.addListener(autocomplete, 'place_changed', function (event) {
 								var place = autocomplete.getPlace();
@@ -820,14 +836,14 @@
 									map.fitBounds(place.geometry.viewport);
 								} else {
 									map.setCenter(place.geometry.location);
-									map.setZoom(20);
+									map.setZoom(25);
 								}
 
-								var marker = new google.maps.Marker({
+								marker = new google.maps.Marker({
 									position: place.geometry.location,
-									map: map,
-									icon: _marker
+									map: map
 								});
+
 
 								if ((distance_from_location <= _radius)) {
 
@@ -836,7 +852,20 @@
 									}, 10);
 
 									setTimeout(function () {
-										buildHtmlLocation(valListing);
+										var html = '<div class="col-md-12 parent-brachlist" data-id="' + idListing + '" data-lat="' + valListing.latitude + '"  data-lng="' + valListing.longitude + '">';
+										html += '<div class="wrapper-branchlist">';
+										html += '<div class="col-md-2 col-sm-2 col-xs-2 branchlist"><img class="icon-gedung-branchlist" src="/static/images/gedung.png"></div>';
+										html += '<div class="col-md-8 col-sm-8 col-xs-8 branchlist">';
+										html += '<p class="title-branch margin-bottom-10">' + valListing.name + '</p>';
+										html += '<p class="desc-branch">' + valListing.address + '</p>';
+										html += '<a href="#" class="margin-top-20">PETUNJUK ARAH <i class="fa fa-angle-right arrowlink" aria-hidden="true"></i></a>';
+										html += '</div>';
+										html += '<div class="col-md-2 branchlist"><i class="fa fa-angle-right" aria-hidden="true"></i></div>';
+										html += '</div>';
+										html += '</div>';
+
+										$('.wrapper-parent-branchlist').addClass('active');
+										$('#branch').append(html);
 
 										if ($('.parent-brachlist').length > 2) {
 											$('.wrapper-parent-branchlist').css('height', 300);
@@ -849,7 +878,15 @@
 
 								}
 								else {
-									console.log('location not found');
+
+									var html = '<div class="col-md-12 parent-brachlist" data-id="' + idListing + '" data-lat="' + valListing.latitude + '"  data-lng="' + valListing.longitude + '">';
+									html += '<div class="wrapper-branchlist">';
+									html += '<p>Lokasi Tidak Ditemukan</p>';
+									html += '</div>';
+									html += '</div>';
+
+									$('#branch').html(html);
+									$('.wrapper-parent-branchlist').css('height', 'auto');
 								}
 							});
 						}
@@ -858,15 +895,19 @@
 			}
 		});
 
+		$(document).on('click', '.parent-brachlist', function () {
+
+			var idMarker = $(this).data('id');
+			google.maps.event.trigger(markers[parseInt(idMarker)], 'click');
+		})
+	}
+
+	if ($('#map').length) {
 
 		var map = new google.maps.Map(document.getElementById('map'), {
 			zoom: 10,
 			center: new google.maps.LatLng(-6.21462, 106.84513)
 		});
-
-		var infowindow = new google.maps.InfoWindow();
-
-		//listbranch search autocomplete - Andry
 
 		var input = document.getElementById('searchTextField');
 
@@ -874,13 +915,6 @@
 		var autocomplete = new google.maps.places.Autocomplete(input, { types: ["geocode"] });
 
 		autocomplete.bindTo('bounds', map);
-
-
-	}
-
-	if ($('#map').length) {
-
-		//listbranch map - Andry
 
 		var base_url = '/branch/listJson';
 
@@ -922,10 +956,11 @@
 
 	}
 
+	validateFormRequired($('#getCredit'))
 	keyupOtpAction();
 	changeSumary();
 	stepAction();
-	tabAction();
+	//tabAction();
 	backAction();
 	countDown();
 
