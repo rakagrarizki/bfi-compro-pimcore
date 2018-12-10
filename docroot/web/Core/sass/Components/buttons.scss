@@ -31,6 +31,7 @@
         border: 1px solid $primary;
 
         &:hover {
+            color: $white;
             background-color: #0b4c75;
 
         }
@@ -48,6 +49,7 @@
             font-family: 'FontAwesome';
             content: "\f105";
             right: 15px;
+            top: 9px;
         }
 
         &:hover {

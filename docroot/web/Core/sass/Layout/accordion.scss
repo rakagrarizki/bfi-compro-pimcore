@@ -5,7 +5,7 @@
             width: 90%;
         }
         h2, p {
-            color: #565656;
+            color: $grey-dark-color;
         }
     }
 
@@ -36,12 +36,12 @@
 
         .panel-default {
             border-color: transparent;
-            border-bottom: 1px solid #cbcbcb;
+            border-bottom: 1px solid $grey-light-color;
 
             &.active {
                 h4 {
                     font-weight: 600;
-                    color: #04559F;
+                    color: $blue-dark-color;
                 }
 
                 >.panel-heading {
@@ -95,14 +95,14 @@
                 padding: 10px;
                 font-family: 'HelveticaNeue';
                 font-size: 1.2em;
-                color: #ffffff;
-                background: #04559f;
+                color: $white;
+                background: $blue-dark-color;
             }
 
             td {
                 font-family: 'HelveticaNeue';
                 padding: 10px 20px;
-                color: #565656;
+                color: $grey-dark-color;
                 font-size: 1.1em;
 
                 &:nth-child(2n), &:nth-child(3n) {
@@ -121,7 +121,7 @@
         .payment-wrap {
             width: 60%;
             margin-bottom: 20px;
-            border-bottom: 1px solid #cbcbcb;
+            border-bottom: 1px solid $grey-light-color;
 
             @include breakpoint(mobile) {
                 width: 100%;
@@ -136,7 +136,7 @@
         h4 {
             font-size: 1em;
             font-family: 'HelveticaNeue';
-            color: #04559F;
+            color: $blue-dark-color;
 
             @include breakpoint(mobile) {
                 text-align: left;

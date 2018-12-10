@@ -38,7 +38,7 @@
 			top: 15px;
 			pointer-events: none;
 			font-size: 1.4em;
-			color: #CBCBCB;
+			color: $grey-light-color;
 
 			@include breakpoint(mobile) {
 				right: 25px;
@@ -56,8 +56,8 @@
 		width: 100%;
 		outline: none;
 		padding: 15px 10px;
-		background: #ffffff;
-		border: 1px solid #CBCBCB;
+		background: $white;
+		border: 1px solid $grey-light-color;
 		font-family: 'HelveticaNeue';
 		padding-right: 50px;
    }
@@ -67,7 +67,7 @@
 	height: 0;
 	overflow-y:scroll;
 	direction: rtl;
-	border: 1px solid #CBCBCB;
+	border: 1px solid $grey-light-color;
 	border-top: none;
 
 	&::-webkit-scrollbar {
@@ -75,21 +75,21 @@
 	}
 
 	&::-webkit-scrollbar-track {
-		background: #ffffff;
+		background: $white;
 		border-radius: 25px;
 	}
 
 	&::-webkit-scrollbar-thumb {
-		background: #ffffff;
+		background: $white;
 		border-radius: 25px;
 	}
 
 	&::-webkit-scrollbar-thumb:hover {
-		background: #ffffff;
+		background: $white;
 	}
 }
 .parent-brachlist{
-	background-color:white;
+	background-color:$white;
 	padding: 15px 0;
 	padding-bottom: 15px;
 	direction: ltr;
@@ -110,7 +110,7 @@
 .wrapper-branchlist{
 	height: 100%;
     margin: 0 15px;
-    border-bottom: 1px solid #CBCBCB;
+    border-bottom: 1px solid $grey-light-color;
 	overflow: hidden;
 	padding-bottom: 20px;
 }
