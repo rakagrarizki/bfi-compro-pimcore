@@ -21,13 +21,3 @@ services:
     # AppBundle\EventListener\TestListener:
     #     tags:
     #         - { name: kernel.event_listener, event: pimcore.dataobject.preUpdate, method: onObjectPreUpdate }
-
-    # a sample templating helper
-    AppBundle\Templating\Helper\LanguageSwitcher:
-        # templating helpers need to be public as they
-        # are fetched from the container on demand
-        public: true
-        tags:
-            - { name: templating.helper, alias: languageSwitcher }
-
-

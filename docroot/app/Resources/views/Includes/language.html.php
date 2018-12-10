@@ -1,28 +1,6 @@
 <?php
-/**
- * @var \Pimcore\Templating\PhpEngine $this
- * @var \Pimcore\Templating\PhpEngine $view
- * @var \Pimcore\Templating\GlobalVariables $app
- */
-?>
-
-<?php
-/** @var \AppBundle\Templating\Helper\LanguageSwitcher $languageSwitcher */
-$languageSwitcher = $this->languageSwitcher();
-?>
-
-<div class="lang">
-    <?php foreach ($languageSwitcher->getLocalizedLinks($this->document) as $link => $text) {
-        ?>
-        <a href="<?php echo $link; ?>"><?php echo $text; ?></a>
-    <?php } ?>
-</div>
-
-
-
-<?php
 // this is an auto-generated language switcher, of course you can create your own
-/*$service = new \Pimcore\Model\Document\Service;
+$service = new \Pimcore\Model\Document\Service;
 $translations = $service->getTranslations($this->document);
 $links = [];
 foreach (\Pimcore\Tool::getValidLanguages() as $language) {
@@ -34,13 +12,13 @@ foreach (\Pimcore\Tool::getValidLanguages() as $language) {
         }
     }
     $links[$language] = $target;
-}*/
+}
 ?>
 
-<!--<div class="lang">
-    <?php /*foreach ($links as $lang => $target) {
-        */?>
-        <a href="<?php /*echo $target */?>"><?php /*echo $lang == 'en' ? 'EN' : 'ID' */?></a>
-    <?php /*} */?>
-</div>-->
+<div class="lang">
+    <?php foreach ($links as $lang => $target) {
+        ?>
+        <a href="<?php echo $target ?>"><?php echo $lang == 'en' ? 'EN' : 'ID' ?></a>
+    <?php } ?>
+</div>
 
