@@ -22,11 +22,17 @@
         }
     }
     if($this->document == '/'){
-        $this->headTitle()->set($this->document->getName());
+        $this->headTitle()->set($this->document->getTitle());
 
     }
 
+    if ($this->document->getDescription()) {
+        // use the manually set description if available
+        $this->headMeta()->appendName('description', $this->document->getDescription());
+    }
+
     echo $this->headTitle();
+    echo $this->headMeta();
     ?>
 
     <!-- Bootstrap -->
