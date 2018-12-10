@@ -611,6 +611,8 @@
 			$('.input-number:first-child').focus();
 			$('.horizontal-scroll').hide();
 
+			sendOtp(credits);
+
 		})
 	}
 
@@ -744,20 +746,25 @@
 		});
 	}
 
-	function getCreditAjax() {
-		var urlAjax = 'https://www.getpostman.com/collections/63932825dfc82031d056';
+	function sendOtp(params) {
+
+		var _url = '/otp/send-otp';
+
+		var _data = {
+			nama_lengkap: params.pemohon.nama_lengkap,
+			no_handphone: params.pemohon.no_handphone
+		}
 
 		$.ajax({
-			type: 'GET',
-			url: urlAjax,
-			dataType: 'json',
+			type: 'POST',
+			url: _url,
+			data: _data,
+			dataType: 'json',	
 			success: function(data) {
 				console.log(data);
 			}
 		})
 	}
-
-	//getCreditAjax();
 
 	function listingLocation(params) {
 		$.ajax({
@@ -916,6 +923,7 @@
 		});
 
 		var input = document.getElementById('searchTextField');
+		var cityCircle;
 
 		var autocomplete = new google.maps.places.Autocomplete(input, { types: ["geocode"] });
 
