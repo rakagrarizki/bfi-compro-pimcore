@@ -39,6 +39,7 @@
 	var _marker = '/static/images/icon/marker.png';
 	var marker, i, latLngGoogle, _radius;
 	var infowindow = null;
+	var markers = [];
 
 	var credits = {
 		"angunan": {
@@ -219,62 +220,62 @@
 	// 	}
 	// })
 
-	var inputTargets = [{
-		input: '#nama_lengkap',
-		target: '#button1'
-	}, {
-		input: '#email1',
-		target: '#button1'
-	},
-	{
-		input: '#no_handphone',
-		target: '#button1'
-	},
-	{
-		input: '#file_upload',
-		target: '#button1'
-	},
-	{
-		select: '#provinsi',
-		target: '#button2'
-	},
-	{
-		select: '#kota',
-		target: '#button2'
-	},
-	{
-		select: '#kecamatan',
-		target: '#button2'
-	},
-	{
-		select: '#kelurahan',
-		target: '#button2'
-	},
-	{
-		select: '#kode_pos',
-		target: '#button2'
-	},
-	{
-		select: '#alamat_lengkap',
-		target: '#button2'
-	},
-	{
-		trans: '#model_kendaraan',
-		target: '#button3'
-	},
-	{
-		trans: '#merk_kendaraan',
-		target: '#button3'
-	},
-	{
-		trans: '#tahun_kendaraan',
-		target: '#button3'
-	},
-	{
-		trans: '#status',
-		target: '#button3'
-	},
-	];
+	// var inputTargets = [{
+	// 	input: '#nama_lengkap',
+	// 	target: '#button1'
+	// }, {
+	// 	input: '#email1',
+	// 	target: '#button1'
+	// },
+	// {
+	// 	input: '#no_handphone',
+	// 	target: '#button1'
+	// },
+	// {
+	// 	input: '#file_upload',
+	// 	target: '#button1'
+	// },
+	// {
+	// 	select: '#provinsi',
+	// 	target: '#button2'
+	// },
+	// {
+	// 	select: '#kota',
+	// 	target: '#button2'
+	// },
+	// {
+	// 	select: '#kecamatan',
+	// 	target: '#button2'
+	// },
+	// {
+	// 	select: '#kelurahan',
+	// 	target: '#button2'
+	// },
+	// {
+	// 	select: '#kode_pos',
+	// 	target: '#button2'
+	// },
+	// {
+	// 	select: '#alamat_lengkap',
+	// 	target: '#button2'
+	// },
+	// {
+	// 	trans: '#model_kendaraan',
+	// 	target: '#button3'
+	// },
+	// {
+	// 	trans: '#merk_kendaraan',
+	// 	target: '#button3'
+	// },
+	// {
+	// 	trans: '#tahun_kendaraan',
+	// 	target: '#button3'
+	// },
+	// {
+	// 	trans: '#status',
+	// 	target: '#button3'
+	// },
+	// ];
 
 
 	// inputTargets.forEach(function (v) {
@@ -407,6 +408,13 @@
 			number: true,
 			maxlength: 12,
 			minlength: 9
+		},
+
+		formKodePos: {
+			required: true,
+			number: true,
+			maxlength: 5,
+			minlength: 5
 		},
 
 		submitHandler: function (form) {
@@ -751,8 +759,6 @@
 
 	//getCreditAjax();
 
-	var markers = [];
-
 	function listingLocation(params) {
 		$.ajax({
 			type: 'GET',
@@ -911,7 +917,6 @@
 
 		var input = document.getElementById('searchTextField');
 
-		var cityCircle;
 		var autocomplete = new google.maps.places.Autocomplete(input, { types: ["geocode"] });
 
 		autocomplete.bindTo('bounds', map);

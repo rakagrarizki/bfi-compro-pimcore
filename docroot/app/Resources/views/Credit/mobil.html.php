@@ -148,7 +148,7 @@ $this->extend('layout.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label for="kode_pos">Kode Pos</label>
-                                            <input type="text" class="form-control formNumber" name="kode_pos" id="kode_pos"
+                                            <input type="text" class="form-control formKodePos" name="kode_pos" id="kode_pos"
                                                    placeholder="Masukkan kode pos">
                                             <div class="error-wrap"></div>
                                         </div>

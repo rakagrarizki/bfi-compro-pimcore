@@ -174,7 +174,7 @@
                             left: 0;
                             display: none;
                             .produk-hover{
-                                background: white; 
+                                background: $white; 
                                 padding: 30px;
                                 &:before {
                                     content: '';
@@ -212,7 +212,7 @@
                                         line-height: 1.8;
                                         a {
                                             font-family: 'HelveticaNeue';
-                                            color: #565656;
+                                            color: $grey-dark-color;
                                             font-size: 1.2em;
                                             font-weight: 500;
                                         }
@@ -223,13 +223,8 @@
                         }
                     }
                 }
-
-
             }
-
         }
-
-
     }
 
     .top-nav--mobille {
@@ -237,7 +232,7 @@
         position: fixed;
         z-index: 9999;
         top: 0; right: 0; left: 0;
-        background-color: #ffffff;
+        background-color: $white;
         @include breakpoint(mobile){
             display: block;
         }
@@ -315,7 +310,7 @@
     }
 
     .collapse-mobile{
-        background-color: #ffffff;
+        background-color: $white;
         padding-top: 0;
         position: fixed;
         z-index: 999;

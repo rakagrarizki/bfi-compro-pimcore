@@ -12,7 +12,7 @@
         right: 0;
         top: 0;
         bottom: 0;
-        background: #04559F;
+        background: $white;
         opacity: .8;
     }
 
@@ -49,7 +49,7 @@
         font-family: 'HelveticaNeue';
         font-size: 2em;
         font-weight: 600;
-        color: #ffffff;
+        color: $grey-dark-color;
     }
 
     .cta {

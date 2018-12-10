@@ -134,7 +134,7 @@
                 &:last-child {
                     font-size: 14px;
                     margin: 5px 0 0;
-                    color: #c50000;
+                    color: $red-color;
 
                     
                 }
@@ -274,13 +274,13 @@
                 margin: 10px 0;
                 font-family: 'HelveticaNeue-Light';
                 font-size: 1em;
-                color: #c50000;
+                color: $red-color;
             }
 
             &:last-child {
                 font-size: 14px;
                 margin: 5px 0 0;
-                color: #c50000;
+                color: $red-color;
             }
         }
 
@@ -493,14 +493,14 @@
         height:40px;
         line-height:40px;
         text-align:left;
-        background:#FFFFFF;
+        background:$white;
         overflow:hidden;
         position:relative;
 
         .file-select-button {
             font-family: 'HelveticaNeue';
             background: #0069aa;
-            color: #fff;
+            color: $white;
             padding: 0 20px;
             display:inline-block;
             height: 40px;
@@ -539,7 +539,7 @@
                 line-height:40px;
                 margin-top:5px;
                 text-align:left;
-                background:#FFFFFF;
+                background:$white;
                 overflow:hidden;
                 position:relative;
 
@@ -594,7 +594,7 @@
             width: 50px;
             font-size: 1.2em;
             outline: none;
-            border-bottom: 2px solid #CBCBCB;
+            border-bottom: 2px solid $grey-light-color;
         }
     }
 

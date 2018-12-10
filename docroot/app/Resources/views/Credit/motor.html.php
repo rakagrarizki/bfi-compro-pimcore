@@ -59,8 +59,10 @@ $this->extend('layout.html.php');
                             <div class="tab-content">
                                 <div id="menu1" class="tab-pane fade in active form-group">
                                     <div class="form-body--credit">
-                                        <h2 class="text-center">Data Pemohon</h2>
-                                        <p class="text-center">Silahkan Masukan data diri Anda</p>
+                                        <div class="text-head">
+                                            <h2 class="text-center">Data Pemohon</h2>
+                                            <p class="text-center">Silahkan Masukan data diri Anda</p>
+                                        </div>
                                         <div class="form-group">
                                             <label for="nama_lengkap">Nama Lengkap</label>
                                             <input type="text" class="form-control formRequired" name="nama_lengkap" id="nama_lengkap"
@@ -104,11 +106,13 @@ $this->extend('layout.html.php');
                                 </div>
                                 <div id="menu2" class="tab-pane slide-left form-group ">
                                     <div class="form-body--credit">
-                                        <h2 class="text-center">Data Tempat Tinggal</h2>
-                                        <p class="text-center">Silahkan Masukan data tempat tinggal Anda</p>
+                                        <div class="text-head">
+                                            <h2 class="text-center">Data Tempat Tinggal</h2>
+                                            <p class="text-center">Silahkan Masukan data tempat tinggal Anda</p>
+                                        </div>
                                         <div class="form-group">
                                             <label for="provinsi">Provinsi</label>
-                                            <select class="c-custom-select formRequired" id="provinsi" name="provinsi">
+                                            <select class="c-custom-select formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="provinsi" name="provinsi">
                                                 <option value=""> Pilih Provinsi</option>
                                                 <option value="DKI Jakarta">DKI Jakarta</option>
                                                 <option value="Jawa Barat">Jawa Barat</option>
@@ -117,7 +121,7 @@ $this->extend('layout.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label for="kota">Kota</label>
-                                            <select class="c-custom-select formRequired" id="kota" name="kota">
+                                            <select class="c-custom-select formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="kota" name="kota">
                                                 <option value=""> Pilih Kota</option>
                                                 <option value="Jakarta Utara">Jakarta Utara</option>
                                                 <option value="Jakarta Selatan">Jakarta Selatan</option>
@@ -126,7 +130,7 @@ $this->extend('layout.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label for="kecamatan">Kecamatan</label>
-                                            <select class="c-custom-select formRequired" id="kecamatan" name="kecamatan">
+                                            <select class="c-custom-select formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="kecamatan" name="kecamatan">
                                                 <option value=""> Pilih Kecamatan</option>
                                                 <option value="Kebon Jeruk">Kebon Jeruk</option>
                                                 <option value="Kemanggisan">Kemanggisan</option>
@@ -135,7 +139,7 @@ $this->extend('layout.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label for="kelurahan">Kelurahan</label>
-                                            <select class="c-custom-select formRequired" id="kelurahan" name="kelurahan">
+                                            <select class="c-custom-select formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="kelurahan" name="kelurahan">
                                                 <option value=""> Pilih Kelurahan</option>
                                                 <option value="Kelurahan 1">Kelurahan 1</option>
                                                 <option value="Kelurahan 2">Kelurahan 2</option>
@@ -144,7 +148,7 @@ $this->extend('layout.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label for="kode_pos">Kode Pos</label>
-                                            <input type="text" class="form-control formNumber" name="kode_pos" id="kode_pos"
+                                            <input type="text" class="form-control formKodePos" name="kode_pos" id="kode_pos"
                                                    placeholder="Masukkan kode pos">
                                             <div class="error-wrap"></div>
                                         </div>
@@ -166,11 +170,13 @@ $this->extend('layout.html.php');
                                 </div>
                                 <div id="menu3" class="tab-pane slide-left">
                                     <div class="form-body--credit">
-                                        <h2 class="text-center">Data Kendaraan</h2>
-                                        <p class="text-center">Silahkan Masukan data kendaraan Anda</p>
+                                        <div class="text-head">
+                                            <h2 class="text-center">Data Kendaraan</h2>
+                                            <p class="text-center">Silahkan Masukan data kendaraan Anda</p>
+                                        </div>
                                         <div class="form-group">
                                             <label for="merk_kendaraan">Merk Kendaraan</label>
-                                            <select class="c-custom-select-trans formRequired" id="merk_kendaraan" name="merk_kendaraan">
+                                            <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="merk_kendaraan" name="merk_kendaraan">
                                                 <option value=""> Pilih merk kendaraan</option>
                                                 <option value="Yamaha">Yamaha</option>
                                                 <option value="Honda">Honda</option>
@@ -179,7 +185,7 @@ $this->extend('layout.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label for="model_kendaraan">Model Kendaraan</label>
-                                            <select class="c-custom-select-trans formRequired" id="model_kendaraan"
+                                            <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="model_kendaraan"
                                                     name="model_kendaraan">
                                                 <option value=""> Pilih Model Kendaraan</option>
                                                 <option value="Yamaha YZR1M">Yamaha YZR1M</option>
@@ -189,7 +195,7 @@ $this->extend('layout.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label for="tahun_kendaraan">Tahun Kendaraan</label>
-                                            <select class="c-custom-select-trans formRequired" id="tahun_kendaraan"
+                                            <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="tahun_kendaraan"
                                                     name="tahun_kendaraan">
                                                 <option value=""> Pilih tahun kendaraan</option>
                                                 <option value="2011">2011</option>
@@ -199,7 +205,7 @@ $this->extend('layout.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label for="status">Status Kepemilikan</label>
-                                            <select class="c-custom-select-trans formRequired" id="status_kep" name="status_kep">
+                                            <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="status_kep" name="status_kep">
                                                 <option value=""> Pilih Status Kepemilikan</option>
                                                 <option value="Hak Milik">Hak Milik</option>
                                             </select>
@@ -222,8 +228,11 @@ $this->extend('layout.html.php');
                                 </div>
                                 <div id="menu4" class="tab-pane slide-left">
                                     <div class="form-body--credit-simulasi">
-                                        <h2 class="text-center">Jumlah Pembiayaan</h2>
-                                        <p class="text-center">Hitung Jumlah Pembiayaan Anda</p>
+                                       
+                                       <div class="text-head">
+                                            <h2 class="text-center">Jumlah Pembiayaan</h2>
+                                            <p class="text-center">Hitung Jumlah Pembiayaan Anda</p>
+                                       </div>
 
                                         <div class="col-md-6">
                                             <div class="form-group inputsimulasi">
@@ -246,7 +255,7 @@ $this->extend('layout.html.php');
                                             </div>
                                             <div class="form-group inputsimulasi">
                                                 <label for="jangka warktu">Jangka Waktu</label>
-                                                <select class="c-custom-select-trans formRequired" id="jangka waktu"
+                                                <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="jangka waktu"
                                                         name="jangka-waktu">
                                                     <option value="12">12 Bulan</option>
                                                     <option value="24">24 Bulan</option>
@@ -270,7 +279,7 @@ $this->extend('layout.html.php');
                                                         <label for="tahun ke-1">Tahun ke - 1</label>
                                                     </div>
                                                     <div class="list-select">
-                                                        <select class="c-custom-select-trans formRequired" id="status"
+                                                        <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}'  id="status"
                                                                 name="status">
                                                             <option value="12">12 Bulan</option>
                                                             <option value="24">24 Bulan</option>
@@ -342,8 +351,12 @@ $this->extend('layout.html.php');
                                 </div>
                                 <div id="menu5" class="tab-pane slide-left">
                                     <div class="form-body--credit-simulasi">
-                                        <h2 class="text-center">Konfirmasi Data</h2>
-                                        <p class="text-center">Pastikan data yang Anda masukkan sudah benar</p>
+                                        
+                                        <div class="text-head">
+                                            <h2 class="text-center">Konfirmasi Data</h2>
+                                            <p class="text-center">Pastikan data yang Anda masukkan sudah benar</p>
+                                        </div>
+
                                         <div class="biaya-agunan">
                                             <div class="cont-agunan">
                                                 <p class="title-agunan">

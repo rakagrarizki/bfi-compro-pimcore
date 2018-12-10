@@ -1,8 +1,20 @@
 .three-box {
+    position: relative;
     padding: 40px 0;
     background-size: cover;
     background-position: top center;
     background-repeat: no-repeat;
+
+    &::after {
+        position: absolute;
+        content: "";
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background: #04559F;
+        opacity: .8;
+    }
 
     @include breakpoint(mobile) {
         padding: 40px 20px;
@@ -12,8 +24,9 @@
         position: relative;
         padding: 10px;
         height: 200px;
-        background: #ffffff;
+        background: $white;
         border: 1px solid transparent;
+        z-index: 9;
 
         @include breakpoint(mobile) {
             height: 180px;
@@ -24,7 +37,7 @@
             width: 50%;
             font-size: 1.5em;
             font-family: 'HelveticaNeue';
-            color: #04559F;
+            color: $blue-dark-color;
             font-weight: 600;
             line-height: 1.3;
 
@@ -35,7 +48,7 @@
 
         a {
             font-family: 'HelveticaNeue';
-            color: #565656;
+            color: $grey-dark-color;
             text-transform: uppercase;
             position: absolute;
             bottom: 0;
