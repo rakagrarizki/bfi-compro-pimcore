@@ -488,8 +488,11 @@
 	function pushDataPemohon() {
 		var nama_lengkap = $('#nama_lengkap').val(),
 			email_pemohon = $('#email_pemohon').val(),
-			no_telepon = $('#no_handphone').val();
+			no_telepon = $('#no_handphone').val(),
+			jenis_kredit = $('#jenis_form').val();
 
+
+		credits.angunan.jenis_angunan = jenis_kredit;
 		credits.pemohon.nama = nama_lengkap;
 		credits.pemohon.email = email_pemohon;
 		credits.pemohon.no_handphone = no_telepon;
@@ -526,6 +529,9 @@
 	}
 
 	function setSummary() {
+		// data tipe angunan
+		$('#showAngunan').html(credits.angunan.jenis_angunan);
+
 		//data pemohon
 		$('#showFullName').html(credits.pemohon.nama);
 		$('#showEmail').html(credits.pemohon.email);
@@ -610,6 +616,8 @@
 			scrollToTop();
 			$('.input-number:first-child').focus();
 			$('.horizontal-scroll').hide();
+
+			sendOtp(credits);
 
 		})
 	}
@@ -744,20 +752,25 @@
 		});
 	}
 
-	function getCreditAjax() {
-		var urlAjax = 'https://www.getpostman.com/collections/63932825dfc82031d056';
+	function sendOtp(params) {
+
+		var _url = '/otp/send-otp';
+
+		var _data = {
+			nama_lengkap: params.pemohon.nama_lengkap,
+			no_handphone: params.pemohon.no_handphone
+		}
 
 		$.ajax({
-			type: 'GET',
-			url: urlAjax,
-			dataType: 'json',
+			type: 'POST',
+			url: _url,
+			data: _data,
+			dataType: 'json',	
 			success: function(data) {
 				console.log(data);
 			}
 		})
 	}
-
-	//getCreditAjax();
 
 	function listingLocation(params) {
 		$.ajax({
@@ -916,6 +929,7 @@
 		});
 
 		var input = document.getElementById('searchTextField');
+		var cityCircle;
 
 		var autocomplete = new google.maps.places.Autocomplete(input, { types: ["geocode"] });
 

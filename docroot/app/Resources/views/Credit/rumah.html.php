@@ -261,7 +261,7 @@ $this->extend('layout.html.php');
                                                     <tr>
                                                         <td>Jenis Jaminan</td>
 
-                                                        <td class="jenis_jaminan">BPKB Mobil</td>
+                                                        <td id="showAngunan" class="jenis_jaminan"></td>
                                                     </tr>
                                                 </table>
                                             </div>
