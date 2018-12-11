@@ -266,6 +266,8 @@ class ServiceController extends FrontendController
     {
         $kel = new Kelurahan\Listing();
         $kel->delete();
-        exit;
+        return new JsonResponse([
+            'success' => true
+        ]);
     }
 }
