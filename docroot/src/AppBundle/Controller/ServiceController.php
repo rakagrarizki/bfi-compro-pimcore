@@ -256,4 +256,16 @@ class ServiceController extends FrontendController
         }
         exit;
     }
+
+    /**
+     * @Route("/service/kelurahan/delete")
+    @Method({"GET"})
+    @return \Symfony\Component\HttpFoundation\JsonResponse
+     */
+    public function kelurahanDeleteAction()
+    {
+        $kel = new Kelurahan\Listing();
+        $kel->delete();
+        exit;
+    }
 }
