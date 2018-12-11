@@ -21,6 +21,20 @@ class ServiceController extends FrontendController
     }
 
     /**
+     * @Route("/service/delete/kelurahan")
+    @Method({"GET"})
+    @return \Symfony\Component\HttpFoundation\JsonResponse
+     */
+    public function kelurahanDeleteAction()
+    {
+        $kel = new Kelurahan\Listing();
+        $kel->delete();
+        return new JsonResponse([
+            'success' => true
+        ]);
+    }
+
+    /**
      * @Route("/service/provinsi/listJson")
     @Method({"GET"})
     @return \Symfony\Component\HttpFoundation\JsonResponse
@@ -257,19 +271,5 @@ class ServiceController extends FrontendController
         exit;
     }
 
-    /**
-     * @Route("/service/kelurahan/delete")
-    @Method({"GET"})
-    @return \Symfony\Component\HttpFoundation\JsonResponse
-     */
-    public function kelurahanDeleteAction()
-    {
-        dump('aaa');
-        exit;
-        $kel = new Kelurahan\Listing();
-        $kel->delete();
-        return new JsonResponse([
-            'success' => true
-        ]);
-    }
+
 }
