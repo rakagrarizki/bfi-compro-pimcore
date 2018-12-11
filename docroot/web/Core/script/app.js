@@ -635,7 +635,7 @@
 			$('.input-number:first-child').focus();
 			$('.horizontal-scroll').hide();
 			$('#showPhone span').html(credits.pemohon.no_handphone);
-
+			countDown();
 			requestOtp(credits);
 
 		})
@@ -800,7 +800,7 @@
 				}
 
 				else {
-					console.log(data)
+					//console.log(data)
 				}
 			}
 		})
@@ -836,11 +836,12 @@
 				console.log('request failed')
 			},
 			success: function (data) {
-				if (data.success != "1") {
+				console.log(data.success)
+				if (data.success == 0) {
 					$('#wrongOtp').modal('show');
 
 				}
-				else {
+				else if(data.success == 1) {
 					$('.tab-pane').fadeOut();
 					showTab4();
 				}
@@ -896,14 +897,15 @@
 			},
 
 			success: function (data) {
-				if (data.success != "1") {
-					$('#failedOtp').modal('show');
-				}
+				//console.log(data)
+				// if (data.success == '0') {
+				// 	$('#failedOtp').modal('show');
+				// }
 
-				else {
-					$('.tab-pane').hide();
-					$('#success').fadeIn();
-				}
+				// else if(data.success == '1') {
+				// 	$('.tab-pane').hide();
+				// 	$('#success').fadeIn();
+				// }
 			}
 		})
 	}
@@ -980,7 +982,7 @@
 
 		$.ajax({
 			type: 'GET',
-			url: '/service/kecamatan/listJson',
+			url: '/service/city/listJson',
 			dataType: 'json',
 			error: function (data) {
 				console.log('error' + data);
@@ -1013,7 +1015,7 @@
 
 		$.ajax({
 			type: 'GET',
-			url: '/service/kelurahan/listJson',
+			url: '/service/city/listJson',
 			dataType: 'json',
 			error: function (data) {
 				console.log('error' + data);
@@ -1258,11 +1260,29 @@
 				seconds = '0' + seconds;
 			}
 
-			$('.countdown').html(minutes + ":" + seconds);
+			
+
+			if(minutes == 0 && seconds == 0) {
+				var reload = '<a href="#" class="countdown countdown--reload">Kirim Ulang</a>';
+				$('.otp-number__text p span').html(reload);
+
+				
+			}
+			else {
+				$('.countdown').html(minutes + ":" + seconds);
+			}
 
 		}, 1000)
 
 	}
+
+	$(document).on('click', '.countdown--reload', function(e) {
+		e.preventDefault();
+		countDown();
+		requestOtp(credits);
+		$('.countdown').removeClass('countdown--reload');
+	})
+	
 
 	validateFormRequired($('#getCredit'))
 	keyupOtpAction();
@@ -1271,5 +1291,6 @@
 	//tabAction();
 	backAction();
 	countDown();
+	
 
 })(jQuery);

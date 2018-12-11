@@ -629,8 +629,12 @@
             font-size: 1em;
         }
 
-        span {
+        .countdown {
             font-weight: 600;
+
+            &.countdown--reload {
+                color: $grey-dark-color;
+            }
         }
     }
 }
