@@ -264,6 +264,8 @@ class ServiceController extends FrontendController
      */
     public function kelurahanDeleteAction()
     {
+        dump('aaa');
+        exit;
         $kel = new Kelurahan\Listing();
         $kel->delete();
         return new JsonResponse([
