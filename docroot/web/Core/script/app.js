@@ -775,8 +775,8 @@
 
 	function requestOtp(params) {
 
-		var _url = 'https://bfi.staging7.salt.id/otp/send-otp';
-		//var _url = '/otp/send-otp';
+		//var _url = 'https://bfi.staging7.salt.id/otp/send-otp';
+		var _url = '/otp/send-otp';
 
 		var _data = {
 			nama_lengkap: params.pemohon.nama,
@@ -808,8 +808,8 @@
 
 	function sendOtp(params) {
 
-		var _url = 'https://bfi.staging7.salt.id/otp/validate-otp';
-		//var _url = '/otp/validate-otp';
+		//var _url = 'https://bfi.staging7.salt.id/otp/validate-otp';
+		var _url = '/otp/validate-otp';
 
 		var otp1Value = $('input[name=otp1]').val(),
 			otp2Value = $('input[name=otp2]').val(),
@@ -869,18 +869,18 @@
 		var type = $('#jenis_form').val().toLowerCase();
 
 		if (type == 'bpkb mobil') {
-			_url = 'https://bfi.staging7.salt.id/credit/send-mobil';
-			//_url = '/credit/send-mobil';
+			//_url = 'https://bfi.staging7.salt.id/credit/send-mobil';
+			_url = '/credit/send-mobil';
 		}
 
 		else if (type == 'bpkb motor') {
-			_url = 'https://bfi.staging7.salt.id/credit/send-motor';
-			//_url = '/credit/send-motor';
+			//_url = 'https://bfi.staging7.salt.id/credit/send-motor';
+			_url = '/credit/send-motor';
 		}
 
 		else if (type = 'surat bangunan') {
-			_url = 'https://bfi.staging7.salt.id/credit/send-rumah';
-			//_url = '/credit/send-rumah';
+			//_url = 'https://bfi.staging7.salt.id/credit/send-rumah';
+			_url = '/credit/send-rumah';
 		}
 
 		$.ajax({
