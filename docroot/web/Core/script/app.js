@@ -1262,7 +1262,7 @@
 
 			
 
-			if(minutes == 0 && seconds == 0) {
+			if(minutes == 00 && seconds == 00) {
 				var reload = '<a href="#" class="countdown countdown--reload">Kirim Ulang</a>';
 				$('.otp-number__text p span').html(reload);
 
@@ -1290,7 +1290,7 @@
 	stepAction();
 	//tabAction();
 	backAction();
-	countDown();
+	
 	
 
 })(jQuery);
