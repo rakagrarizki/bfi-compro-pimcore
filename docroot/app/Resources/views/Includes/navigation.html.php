@@ -1,5 +1,15 @@
 <!-- HEADER -->
+<?php
+/**
+ * @var \Pimcore\Templating\PhpEngine $this
+ * @var \Pimcore\Templating\PhpEngine $view
+ * @var \Pimcore\Templating\GlobalVariables $app
+ */
 
+use Pimcore\Model\Document;
+use Pimcore\Model\Document\Page;
+
+?>
 <nav id="site-header">
     <div class="navbar-fixed-top hidden-xs">
         <div class="header-top">
@@ -20,30 +30,8 @@
                             <a href="#" class="register"><?= $this->translate("register") ?></a>
                         </div>
 
-                        <?php
-                        // this is an auto-generated language switcher, of course you can create your own
-                        $service = new \Pimcore\Model\Document\Service;
-                        $translations = $service->getTranslations($this->document);
-                        $links = [];
-                        foreach (\Pimcore\Tool::getValidLanguages() as $language) {
-                            $target = "/" . $language;
-                            if (isset($translations[$language])) {
-                                $localizedDocument = \Pimcore\Model\Document::getById($translations[$language]);
-                                if ($localizedDocument) {
-                                    $target = $localizedDocument->getFullPath();
-                                }
-                            }
-                            $links[$language] = $target;
-                        }
-                        ?>
+                        <?php echo $this->template("Includes/language.html.php") ?>
 
-                        <div class="lang">
-                            <?php foreach ($links as $lang => $target) {
-                                ?>
-                                <a
-                                            href="<?php echo $target ?>"><?php echo $lang == 'en' ? 'EN' : 'ID' ?></a>
-                            <?php } ?>
-                        </div>
                     </div>
 
                 </div>
@@ -64,7 +52,6 @@
                         <div class="header-link-menu">
                             <ul class="nav">
                                 <?php
-                                use Pimcore\Model\Document;
 
                                 $listMenu = Document::getByPath("/".$this->getLocale()."/");
                                 $subPage = $this->navigation()->buildNavigation($this->document, $listMenu);

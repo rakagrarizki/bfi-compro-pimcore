@@ -62,7 +62,7 @@
 
 </head>
 <body>
-    <?php echo $this->template("Includes/navigation.html.php") ?>
+    <?php echo $this->template('Includes/navigation.html.php', ['documentInitiator' => $this->document->getId()]) ?>
 
     <div id="site-container">
         <?php $this->slots()->output('_content'); ?>
