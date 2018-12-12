@@ -1,7 +1,7 @@
 <?php 
 
 /** 
-* Generated at: 2018-12-12T09:24:35+01:00
+* Generated at: 2018-12-12T09:37:48+01:00
 * Inheritance: no
 * Variants: no
 * Changed by: admin (2)
@@ -19,7 +19,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'Kecamatan',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1544603074,
+   'modificationDate' => 1544603868,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -102,7 +102,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
               'type' => 'enum(\'document\',\'asset\',\'object\')',
             ),
              'phpdocType' => '\\Pimcore\\Model\\Document\\Page | \\Pimcore\\Model\\Document\\Snippet | \\Pimcore\\Model\\Document | \\Pimcore\\Model\\Asset | \\Pimcore\\Model\\DataObject\\AbstractObject',
-             'objectsAllowed' => false,
+             'objectsAllowed' => true,
              'assetsAllowed' => false,
              'assetTypes' => 
             array (
@@ -114,6 +114,10 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'lazyLoading' => true,
              'classes' => 
             array (
+              0 => 
+              array (
+                'classes' => 'City',
+              ),
             ),
              'pathFormatterClass' => '',
              'name' => 'City',
@@ -122,7 +126,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
