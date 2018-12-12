@@ -43,7 +43,7 @@ use Pimcore\Model\Document\Page;
                 <div class="row">
 
                     <div class="col-md-4 header-bottom-logo">
-                        <a href="#">
+                        <a href="<?php echo "/".$this->getLocale(); ?>">
                             <img src="/static/images/logo-bfi.png" class="img-responsive" alt="">
                         </a>
 

@@ -1,7 +1,7 @@
 <?php 
 
 /** 
-* Generated at: 2018-12-05T13:10:58+01:00
+* Generated at: 2018-12-12T09:38:00+01:00
 * Inheritance: no
 * Variants: no
 * Changed by: admin (2)
@@ -10,6 +10,7 @@
 
 Fields Summary: 
 - Name [input]
+- Kecamatan [href]
 */ 
 
 
@@ -18,7 +19,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'Kelurahan',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1544011856,
+   'modificationDate' => 1544603880,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -80,11 +81,56 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
              'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+          )),
+          1 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Href::__set_state(array(
+             'fieldtype' => 'href',
+             'width' => '',
+             'assetUploadPath' => '',
+             'relationType' => true,
+             'queryColumnType' => 
+            array (
+              'id' => 'int(11)',
+              'type' => 'enum(\'document\',\'asset\',\'object\')',
+            ),
+             'phpdocType' => '\\Pimcore\\Model\\Document\\Page | \\Pimcore\\Model\\Document\\Snippet | \\Pimcore\\Model\\Document | \\Pimcore\\Model\\Asset | \\Pimcore\\Model\\DataObject\\AbstractObject',
+             'objectsAllowed' => true,
+             'assetsAllowed' => false,
+             'assetTypes' => 
+            array (
+            ),
+             'documentsAllowed' => false,
+             'documentTypes' => 
+            array (
+            ),
+             'lazyLoading' => true,
+             'classes' => 
+            array (
+              0 => 
+              array (
+                'classes' => 'Kecamatan',
+              ),
+            ),
+             'pathFormatterClass' => '',
+             'name' => 'Kecamatan',
+             'title' => 'Kecamatan',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'columnType' => NULL,
              'invisible' => false,
              'visibleGridView' => false,
              'visibleSearch' => false,
