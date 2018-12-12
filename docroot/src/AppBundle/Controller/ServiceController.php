@@ -65,6 +65,14 @@ class ServiceController extends FrontendController
     public function cityListJsonAction(Request $request)
     {
         $id = $request->get('id');
+
+        if($id == null){
+            return new JsonResponse([
+                'success' => false,
+                'message' => "must include id"
+            ]);
+        }
+
         $data = new City\Listing();
         $data->setCondition('Province__id = '.$id);
         $maps = [];
@@ -90,6 +98,12 @@ class ServiceController extends FrontendController
     public function kecamatanListJsonAction(Request $request)
     {
         $id = $request->get('id');
+        if($id == null){
+            return new JsonResponse([
+                'success' => false,
+                'message' => "must include id"
+            ]);
+        }
         $data = new Kecamatan\Listing();
         $data->setCondition('City__id = '.$id);
         $maps = [];
@@ -115,6 +129,12 @@ class ServiceController extends FrontendController
     public function kelurahanListJsonAction(Request $request)
     {
         $id = $request->get('id');
+        if($id == null){
+            return new JsonResponse([
+                'success' => false,
+                'message' => "must include id"
+            ]);
+        }
         $data = new Kelurahan\Listing();
         $data->setCondition('Kecamatan__id = '.$id);
         $maps = [];
