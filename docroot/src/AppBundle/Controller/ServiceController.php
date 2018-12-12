@@ -41,11 +41,12 @@ class ServiceController extends FrontendController
      */
     public function provinsiListJsonAction()
     {
-        $branch = new Province\Listing();
+        $data = new Province\Listing();
         $maps = [];
-        if ($branch) {
-            foreach ($branch as $item) {
+        if ($data) {
+            foreach ($data as $item) {
                 $temp['name'] = $item->getName();
+                $temp['id'] = $item->getId();
                 $maps['data'][] = $temp;
             }
         }
@@ -61,13 +62,16 @@ class ServiceController extends FrontendController
     @Method({"GET"})
     @return \Symfony\Component\HttpFoundation\JsonResponse
      */
-    public function cityListJsonAction()
+    public function cityListJsonAction(Request $request)
     {
-        $branch = new City\Listing();
+        $id = $request->get('id');
+        $data = new City\Listing();
+        $data->setCondition('Province__id = '.$id);
         $maps = [];
-        if ($branch) {
-            foreach ($branch as $item) {
+        if ($data) {
+            foreach ($data as $item) {
                 $temp['name'] = $item->getName();
+                $temp['id'] = $item->getId();
                 $maps['data'][] = $temp;
             }
         }
@@ -83,13 +87,16 @@ class ServiceController extends FrontendController
     @Method({"GET"})
     @return \Symfony\Component\HttpFoundation\JsonResponse
      */
-    public function kecamatanListJsonAction()
+    public function kecamatanListJsonAction(Request $request)
     {
-        $branch = new Kecamatan\Listing();
+        $id = $request->get('id');
+        $data = new Kecamatan\Listing();
+        $data->setCondition('City__id = '.$id);
         $maps = [];
-        if ($branch) {
-            foreach ($branch as $item) {
+        if ($data) {
+            foreach ($data as $item) {
                 $temp['name'] = $item->getName();
+                $temp['id'] = $item->getId();
                 $maps['data'][] = $temp;
             }
         }
@@ -105,13 +112,16 @@ class ServiceController extends FrontendController
     @Method({"GET"})
     @return \Symfony\Component\HttpFoundation\JsonResponse
      */
-    public function kelurahanListJsonAction()
+    public function kelurahanListJsonAction(Request $request)
     {
-        $branch = new Kelurahan\Listing();
+        $id = $request->get('id');
+        $data = new Kelurahan\Listing();
+        $data->setCondition('Kecamatan__id = '.$id);
         $maps = [];
-        if ($branch) {
-            foreach ($branch as $item) {
+        if ($data) {
+            foreach ($data as $item) {
                 $temp['name'] = $item->getName();
+                $temp['id'] = $item->getId();
                 $maps['data'][] = $temp;
             }
         }
