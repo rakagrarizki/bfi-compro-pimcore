@@ -40,6 +40,27 @@ class CreditController extends FrontendController
 
     }
 
+    public function sendDataSimulatorAction(Request $request)
+    {
+        $param = [];
+        $param['Merk'] = $request->get('merk');
+        $param['City'] = $request->get('kota');
+        $param['Brand'] = $request->get('brand');
+        $param['Year'] = $request->get('tahun');
+
+        $data = [];
+        $data['funding'] = "100.000.000";
+        $data['installment'] = "12";
+        $data['asuransi_1'] = "all_risk";
+        $data['asuransi_2'] = "Total Lost";
+
+        return new JsonResponse([
+            'success' => "1",
+            'message' => "Sukses",
+            'data' => $data
+        ]);
+    }
+
     public function sendMobilAction(Request $request)
     {
         $param = [];
