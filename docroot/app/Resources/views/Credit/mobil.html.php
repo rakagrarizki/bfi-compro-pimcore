@@ -113,24 +113,29 @@ $this->extend('layout.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label for="provinsi">Provinsi</label>
-                                            <select class="c-custom-select formRequired" id="provinsi" name="provinsi"></select>
+                                            <select class="c-custom-select formRequired" id="provinsi" name="provinsi" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}'>
+                                                <option value="">Silahkan Pilih</option>
+                                            </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
                                             <label for="kota">Kota</label>
-                                            <select class="c-custom-select formRequired" id="kota" name="kota"> </select>
+                                            <select class="c-custom-select formRequired" id="kota" name="kota" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}'> 
+                                                <option value="">Silahkan Pilih</option>
+                                            </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
                                             <label for="kecamatan">Kecamatan</label>
-                                            <select class="c-custom-select formRequired" id="kecamatan" name="kecamatan">
-                                              
+                                            <select class="c-custom-select formRequired" id="kecamatan" name="kecamatan" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}'>
+                                                <option value="">Silahkan Pilih</option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
                                             <label for="kelurahan">Kelurahan</label>
-                                            <select class="c-custom-select formRequired" id="kelurahan" name="kelurahan">
+                                            <select class="c-custom-select formRequired" id="kelurahan" name="kelurahan" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}'>
+                                                <option value="">Silahkan Pilih</option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>

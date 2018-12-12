@@ -50,6 +50,7 @@
         }
 
         .left-side-top {
+            padding-left:110px;
             a {
                 padding-right: 10px;
             }
@@ -58,6 +59,8 @@
         .right-side-top {
             display: inline-flex;
             flex-wrap: nowrap;
+            margin-left:60px;
+            padding:0;
 
             .link-about-top {
                 a {
@@ -97,8 +100,9 @@
     }
 
     img {
-        width: 80px;
+        width: 70px;
         transition: all .3s ease-in-out;
+        margin-left:110px;
     }
 
     .header-bottom {
@@ -241,8 +245,8 @@
             display: block;
         }
         .top-nav {
-            height: 45px;
-            line-height: 45px;
+            height: 30px;
+            padding:5px 0;
             a {
                 margin-right: 15px;
                 color: $dark;
@@ -393,4 +397,3 @@
     }
 
 }
-

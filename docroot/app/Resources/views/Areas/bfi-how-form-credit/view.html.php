@@ -14,12 +14,11 @@
             <form action="#">
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="input-group inputform">
-                            <span class="input-group-addon" id="basic-addon1">Rp</span>
-                            <input type="text" class="form-control" placeholder="Berapa yang Anda Butuhkan ?" aria-describedby="basic-addon1">
+                        <div class="input-group">
+                            <div class="plaintext-cekpengajuan">Pilih jenis jaminan yang Anda ajukan</div>
                         </div>
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-5 col-xs-10">
                         <div class="input-group inputform">
                             <select class="c-custom-select-home">
                                 <option value="0" > Untuk Keperluan apa ?</option>
@@ -29,8 +28,8 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-md-1">
-                        <button class="btn-kotak btn-submit hidden-xs" type="submit"></button>
+                    <div class="col-md-1 col-xs-2 soloboxarrow-cekpengajuan">
+                        <button class="btn-kotak btn-submit" type="submit"></button>
                     </div>
                 </div>
             </form>
