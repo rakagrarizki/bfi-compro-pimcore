@@ -112,6 +112,34 @@ class SendApi
         return $this->getData($data);
     }
 
+    public function sendNewsletter($url, $params)
+    {
+        $logger = new Logger('api-newsletter');
+        $logger->pushHandler(new StreamHandler(PIMCORE_LOG_DIRECTORY . DIRECTORY_SEPARATOR .date('d') . date('m') . date("Y") ."-api-newsletter.log"), Logger::DEBUG);
+        $stack = HandlerStack::create();
+        $stack->push(Middleware::log(
+            $logger,
+            new MessageFormatter('{url} - {req_body} - {res_body}')
+        ));
+
+        $client = new Client([
+            "base_uri" => $url,
+            "verify" => false,
+            'handler' => $stack,
+        ]);
+
+        try {
+            $data = $client->request("POST", $url, [
+                "form_params" => $params
+            ]);
+
+        } catch (Exception $e) {
+            return json_decode($e->getMessage());
+        }
+
+        return $data;
+    }
+
     public function getData($data)
     {
         return json_decode($data->getBody());

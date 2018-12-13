@@ -9,6 +9,8 @@ use Pimcore\Model\DataObject\Kecamatan;
 use Pimcore\Model\DataObject\Kelurahan;
 use Pimcore\Model\DataObject\City;
 use Pimcore\Model\DataObject\Province;
+use Pimcore\Model\WebsiteSetting;
+use AppBundle\Service\SendApi;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Pimcore\Bundle\AdminBundle\HttpFoundation\JsonResponse;
@@ -18,6 +20,44 @@ class ServiceController extends FrontendController
     public function defaultAction(Request $request)
     {
 
+    }
+
+    public function registerNewsletterAction(Request $request)
+    {
+        $param = [];
+        $param["email"] = $request->get('email');
+        $url = WebsiteSetting::getByName('URL_NEWSLETTER')->getData();
+
+        $sendAPI = new SendApi();
+
+
+        try {
+            $data = $sendAPI->sendNewsletter($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Alamat Email sudah terdaftar / service tidak bisa diakses"
+            ]);
+        }
+
+        if($data == true){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses"
+            ]);
+        }
+
+        if($data->code == "413"){
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+
+        return new JsonResponse([
+            'success' => "0",
+            'message' => "Gagal"
+        ]);
     }
 
     /**
