@@ -4,13 +4,14 @@
 
     .cara-kerja {
         text-align: center;
-        margin-top: -50px;
-        margin-bottom: 50px;
+        margin-top: 15px;
+        margin-bottom: 85px;
 
         .title-cara-kerja {
             font-size: 3em;
             font-family: 'HelveticaNeue';
             font-weight: 600;
+            color:#04559F;
             @include breakpoint(mobile) {
                 font-size: 2em;
             }
@@ -38,6 +39,17 @@
                 .img-step{
                     padding: 20px;
                     transition: all .5s ease-in-out;
+
+                    img{
+                        display:inline-block;
+                        height:55px;
+                        width:55px;
+                        @include breakpoint(mobile) {
+                            display:block;
+                            height:auto;
+                            max-width:100%;
+                        }
+                    }
 
                 }
 

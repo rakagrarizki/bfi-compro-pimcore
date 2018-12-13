@@ -912,11 +912,9 @@
 
 	function getProvinsi(element) {
 
-		jcf.destroy($('#provinsi'))
-
 		$.ajax({
 			type: 'GET',
-			url: '/service/provinsi/listJson',
+			url: 'https://bfi.staging7.salt.id/service/provinsi/listJson',
 			dataType: 'json',
 			error: function (data) {
 				console.log('error' + data);
@@ -930,13 +928,10 @@
 				if(dataObj.success == true) {
 					$.each(dataObj.result.data, function(idPrivince, valProvince) {
 						if(valProvince.name != '') {
-							var elementOption = '<option value="'+ valProvince.name +'">'+ valProvince.name +'</option>';
+							var elementOption = '<option value="'+ valProvince.id +'">'+ valProvince.name +'</option>';
 
 							$(element).append(elementOption);
 							
-							setTimeout(function() {
-								$(element).chosen();
-							}, 10);
 						}
 					})
 				}
@@ -944,12 +939,48 @@
 		})
 	}
 
-	function getCity(element) {
-		jcf.destroy($('#kota'))
+	$('#provinsi').change(function() {
+
+		var id = this.value;
 
 		$.ajax({
 			type: 'GET',
-			url: '/service/city/listJson',
+			url: 'https://bfi.staging7.salt.id/service/city/listJson?id='+id,
+			dataType: 'json',
+			error: function (data) {
+				console.log('error' + data);
+			},
+
+			fail: function (xhr, textStatus, error) {
+				console.log('request failed')
+			},
+
+			success: function (dataObj) {
+				console.log(dataObj)
+				if(dataObj.success == true) {
+					$.each(dataObj.result.data, function(idCity, valCity) {
+						if(valCity.name != '') {
+							var elementOption = '<option value="'+ valCity.id +'">'+ valCity.name +'</option>';
+							$('#kota').empty();
+							
+							setTimeout(function() {
+								$("#kota").append(elementOption);
+							}, 50);
+							
+						}
+					})
+				}
+			}
+		})
+	})
+
+	$('#kota').change(function() {
+
+		var id = this.value;
+
+		$.ajax({
+			type: 'GET',
+			url: 'https://bfi.staging7.salt.id/service/kecamatan/listJson?id='+id,
 			dataType: 'json',
 			error: function (data) {
 				console.log('error' + data);
@@ -961,28 +992,31 @@
 
 			success: function (dataObj) {
 				if(dataObj.success == true) {
-					$.each(dataObj.result.data, function(idPrivince, valProvince) {
-						if(valProvince.name != '') {
-							var elementOption = '<option value="'+ valProvince.name +'">'+ valProvince.name +'</option>';
+					$.each(dataObj.result.data, function(idKec, valKec) {
+						if(valKec.name != '') {
+							
+							var elementOption = '<option value="'+ valKec.id +'">'+ valKec.name +'</option>';
 
-							$(element).append(elementOption);
+							$('#kecamatan').empty();
 							
 							setTimeout(function() {
-								$(element).chosen();
-							}, 10);
+								$("#kecamatan").append(elementOption);
+							}, 50);
+							
 						}
 					})
 				}
 			}
 		})
-	}
+	})
 
-	function getKecamatan(element) {
-		jcf.destroy($('#kecamatan'))
+	$('#kecamatan').change(function() {
+
+		var id = this.value;
 
 		$.ajax({
 			type: 'GET',
-			url: '/service/city/listJson',
+			url: 'https://bfi.staging7.salt.id/service/kelurahan/listJson?id='+id,
 			dataType: 'json',
 			error: function (data) {
 				console.log('error' + data);
@@ -994,59 +1028,25 @@
 
 			success: function (dataObj) {
 				if(dataObj.success == true) {
-					$.each(dataObj.result.data, function(idPrivince, valProvince) {
-						if(valProvince.name != '') {
-							var elementOption = '<option value="'+ valProvince.name +'">'+ valProvince.name +'</option>';
-
-							$(element).append(elementOption);
+					$.each(dataObj.result.data, function(idKel, valKel) {
+						if(valKel.name != '') {
+					
+							var elementOption = '<option value="'+ valKel.id +'">'+ valKel.name +'</option>';
+							$('#kelurahan').empty();
 							
 							setTimeout(function() {
-								$(element).chosen();
-							}, 10);
+								$("#kelurahan").append(elementOption);
+							}, 50)
+							
 						}
 					})
 				}
 			}
 		})
-	}
+	})
 
-	function getKelurahan(element) {
-		jcf.destroy($('#kelurahan'))
-
-		$.ajax({
-			type: 'GET',
-			url: '/service/city/listJson',
-			dataType: 'json',
-			error: function (data) {
-				console.log('error' + data);
-			},
-
-			fail: function (xhr, textStatus, error) {
-				console.log('request failed')
-			},
-
-			success: function (dataObj) {
-				if(dataObj.success == true) {
-					$.each(dataObj.result.data, function(idPrivince, valProvince) {
-						if(valProvince.name != '') {
-							var elementOption = '<option value="'+ valProvince.name +'">'+ valProvince.name +'</option>';
-							$(element).append(elementOption);
-							
-							setTimeout(function() {
-								$(element).chosen();
-							}, 10);
-						}
-					})
-				}
-			}
-		})
-	}
 
 	getProvinsi($('#provinsi'));
-	getCity($('#kota'));
-	getKecamatan($('#kecamatan'));
-	getKelurahan($('#kelurahan'));
-	
 
 	function listingLocation(params) {
 		$.ajax({

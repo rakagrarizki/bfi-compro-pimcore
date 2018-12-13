@@ -15,7 +15,7 @@ use Pimcore\Model\Document\Page;
         <div class="header-top">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-7 left-side-top no-padding">
+                    <div class="col-md-6 left-side-top">
                         <a href="/<?php echo $this->getLocale() ?>"><?= $this->translate("personal") ?></a>
                         <a href="#"><?= $this->translate("corporate") ?></a>
                     </div>

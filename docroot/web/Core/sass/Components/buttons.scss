@@ -40,7 +40,7 @@
     &-orange { 
         position: relative;
         font-family: 'HelveticaNeue';
-        background-color: #f9991c;
+        background-color: #F8991D;
         color: #fff;
         padding-right: 30px;
 
@@ -151,7 +151,7 @@
 
 .btn-kotak {
     padding: 0px 20px;
-    background: $blue;
+    background: #F8991D;
     width: 60px;
     height: 60px;
 
@@ -165,6 +165,7 @@
             font-size: 40px;
             top: 0px;
             left: 40px;
+            opacity:0.8;
         }
     }
 

@@ -5,8 +5,8 @@
     right: 0;
 
     @include breakpoint(mobile) {
-        transform: translateY(-175px);
-        margin-bottom: -85px;
+        transform: translateY(-40px);
+        margin-bottom: 50px;
     }
 
     .cek-pengajuan {
@@ -17,7 +17,37 @@
             padding: 25px 15px;
         }
 
+        .soloboxarrow-cekpengajuan{
+        
+            @include breakpoint(tablet) {
+                margin-left:-20px;
+            }
+            @include breakpoint(mobile) {
+                margin-left:-20px;
+            }
+        }
+
+        .input-group{
+            width:100%;
+            .plaintext-cekpengajuan{
+                height:60px;
+                padding: 20px;
+                font-weight: bold;
+                text-align: right;
+                position: relative;
+                width: 100%;
+                font-size: 18px;
+                @include breakpoint(mobile) {
+                    text-align: left;
+                }
+                @include breakpoint(tablet) {
+                    text-align: left;
+                }
+            }
+        }
+
         p {
+            color:#04559F;
             text-align: center;
             font-family: 'HelveticaNeue';
             font-weight: 600;
@@ -61,7 +91,7 @@
                 line-height: 40px;
                 padding-left: 15px;
                 padding-right: 15px;
-                border: 1px solid $grey-dark;
+                border: 0px solid $grey-dark;
                 cursor: pointer;
                 margin: 0;
                 border-radius: 2px;
@@ -93,6 +123,7 @@
                         position: absolute;
                         left: 5px;
                         top: 10px;
+                        opacity:0.3;
                     }
                 }
             }
@@ -103,6 +134,7 @@
                 
                 span {
                     font-family: 'HelveticaNeue';
+                    color:gray;
                 }
 
             }

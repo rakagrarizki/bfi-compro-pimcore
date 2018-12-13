@@ -27,7 +27,7 @@ use Pimcore\Model\Document;
             </a>
             <div class="button-area--nav">
                 <?php $credit = Document::getByPath("/".$this->getLocale()."/credit/"); ?>
-                <a href="<?php echo $credit->getHref();?>" class="cta cta-light cta-see"><?php echo $credit->getTitle();?></a>
+                <a href="<?php echo $credit->getHref();?>" class="cta cta-orange"><?php echo $credit->getTitle();?></a>
             </div>
         </div>
     </div>
