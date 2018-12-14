@@ -1339,6 +1339,20 @@
 		$(this).prev().prev().css("display","block");
 	});
 
+	$("#produk").hover(function() {
+		$(".header-link-menu").addClass("active");	  
+	});
+
+
+	$("#produk").hover(
+		  function() {
+		    $(".header-link-menu").addClass("active");
+		  }, function() {
+		    $(".header-link-menu").removeClass("active");
+		  }
+	);
+	//alert($("#produk").length);
+
 	validateFormRequired($('#getCredit'))
 	keyupOtpAction();
 	changeSumary();

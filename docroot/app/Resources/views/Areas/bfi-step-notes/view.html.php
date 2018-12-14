@@ -1,4 +1,4 @@
-<div class="container cont-cara hidden-xs">
+<div class="container cont-cara">
     <div class="row">
         <div class="cara-kerja">
             <p class="title-cara-kerja"><?= $this->input('title');?></p>
