@@ -1,7 +1,7 @@
 <?php 
 
 /** 
-* Generated at: 2018-12-05T13:08:47+01:00
+* Generated at: 2018-12-14T07:55:14+01:00
 * Inheritance: no
 * Variants: no
 * Changed by: admin (2)
@@ -10,6 +10,7 @@
 
 Fields Summary: 
 - Name [input]
+- Code [input]
 */ 
 
 
@@ -18,7 +19,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'Province',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1544011725,
+   'modificationDate' => 1544770512,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -76,6 +77,31 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'unique' => false,
              'name' => 'Name',
              'title' => 'Name',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+          )),
+          1 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+             'fieldtype' => 'input',
+             'width' => NULL,
+             'queryColumnType' => 'varchar',
+             'columnType' => 'varchar',
+             'columnLength' => 190,
+             'phpdocType' => 'string',
+             'regex' => '',
+             'unique' => false,
+             'name' => 'Code',
+             'title' => 'Code',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,

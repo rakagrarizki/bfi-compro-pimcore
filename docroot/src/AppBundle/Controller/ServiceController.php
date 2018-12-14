@@ -86,7 +86,7 @@ class ServiceController extends FrontendController
         if ($data) {
             foreach ($data as $item) {
                 $temp['name'] = $item->getName();
-                $temp['id'] = $item->getId();
+                $temp['id'] = $item->getCode();
                 $maps['data'][] = $temp;
             }
         }
@@ -213,14 +213,14 @@ class ServiceController extends FrontendController
             list($no, $name) = $row;
 
             $key = \Pimcore\File::getValidFilename($name);
-            $marketingOffice = new DataObject\Province();
-            $marketingOffice->setParent($parent);
-            $marketingOffice->setKey($key);
-            $marketingOffice->setPublished(true);
-            //$marketingOffice->setId($no);
-            $marketingOffice->setName($name);
+            $data = new DataObject\Province();
+            $data->setParent($parent);
+            $data->setKey($key);
+            $data->setPublished(true);
+            $data->setCode($no);
+            $data->setName($name);
             try {
-                $marketingOffice->save();
+                $data->save();
                 echo "Succes save " . $name . "\n";
             } catch (\Exception $exception) {
                 echo "Failed save " . $name . " because " . $exception->getMessage() . "\n";
@@ -251,13 +251,15 @@ class ServiceController extends FrontendController
             list($no, $no2, $name) = $row;
 
             $key = \Pimcore\File::getValidFilename($name);
-            $marketingOffice = new DataObject\City();
-            $marketingOffice->setParent($parent);
-            $marketingOffice->setKey($key);
-            $marketingOffice->setPublished(true);
-            $marketingOffice->setName($name);
+            $data = new DataObject\City();
+            $data->setParent($parent);
+            $data->setKey($key);
+            $data->setPublished(true);
+            $data->setName($name);
+            $data->setCode($no);
+            $data->setProvinceCode($no2);
             try {
-                $marketingOffice->save();
+                $data->save();
                 echo "Succes save " . $name . "\n";
             } catch (\Exception $exception) {
                 echo "Failed save " . $name . " because " . $exception->getMessage() . "\n";
@@ -288,13 +290,15 @@ class ServiceController extends FrontendController
             list($no, $no2, $name) = $row;
 
             $key = \Pimcore\File::getValidFilename($name);
-            $marketingOffice = new DataObject\Kecamatan();
-            $marketingOffice->setParent($parent);
-            $marketingOffice->setKey($key);
-            $marketingOffice->setPublished(true);
-            $marketingOffice->setName($name);
+            $data = new DataObject\Kecamatan();
+            $data->setParent($parent);
+            $data->setKey($key);
+            $data->setPublished(true);
+            $data->setName($name);
+            $data->setCode($no);
+            $data->setCityCode($no2);
             try {
-                $marketingOffice->save();
+                $data->save();
                 echo "Succes save " . $name . "\n";
             } catch (\Exception $exception) {
                 echo "Failed save " . $name . " because " . $exception->getMessage() . "\n";
@@ -325,13 +329,15 @@ class ServiceController extends FrontendController
             list($no, $no2, $name) = $row;
 
             $key = \Pimcore\File::getValidFilename($name);
-            $marketingOffice = new DataObject\Kelurahan();
-            $marketingOffice->setParent($parent);
-            $marketingOffice->setKey($key);
-            $marketingOffice->setPublished(true);
-            $marketingOffice->setName($name);
+            $data = new DataObject\Kelurahan();
+            $data->setParent($parent);
+            $data->setKey($key);
+            $data->setPublished(true);
+            $data->setName($name);
+            $data->setCode($no);
+            $data->setKecamatanCode($no2);
             try {
-                $marketingOffice->save();
+                $data->save();
                 echo "Succes save " . $name . "\n";
             } catch (\Exception $exception) {
                 echo "Failed save " . $name . " because " . $exception->getMessage() . "\n";
