@@ -21,6 +21,9 @@
 
     .slider-author__wrapper {
         .item-slide {
+            &-produk{
+                height:335px;
+            }
             position: relative;
             height: 400px;
             background-size: cover;
@@ -65,6 +68,20 @@
             @include breakpoint(mobile) {
                 padding-bottom: 20px;
             }
+            .img-produk{
+                width:200px;
+                height:200px;
+                margin-right:50px;
+
+                @include breakpoint(mobile) {
+                    margin-right:auto;
+                    margin-bottom:30px;
+                }
+                @include breakpoint(tablet) {
+                    margin-right:auto;
+                    margin-bottom:30px;
+                }
+            }
         }
 
         img {
@@ -74,6 +91,10 @@
                 width: 30%;
                 margin: auto;
             }
+        }
+
+        .text-wrapper-produk{
+            padding-left:35px;
         }
 
         .text-wrapper {
@@ -102,19 +123,23 @@
         h4 {
             font-family: 'HelveticaNeue-Medium';
             color: $white;
-            font-size: 1.3em;
+            font-size: 16px;
+            
 
             strong {
-                font-size: 1.1em;
+                font-size: 18px;
                 font-weight: 600;
                 text-transform: uppercase;
+                
             }
         }
 
         p {
             font-family: 'HelveticaNeue';
-            font-size: 1.250em;
+            font-size: 16px;
             color: $white;
+
+            
         }
     }
 

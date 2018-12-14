@@ -32,8 +32,8 @@
                     color: $grey-dark;
 
                     .icon {
-                        width: 200px;
-                        height: 170px;
+                        width: 186px;
+                        height: 165px;
                         padding: 10px;
                         border: 1px solid;
                         @include breakpoint(mobile){
@@ -41,11 +41,16 @@
                             height: auto;
                         }
 
+                        p{
+                            font-weight:bold;
+                            color: #9C9C9C;
+                        }
+
                         span {
                             margin-left: -20px;
 
                             &:before {
-                                color: $grey-dark;
+                                color: $primary;
                                 font-size: 6em;
                             }
                         }

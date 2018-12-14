@@ -25,31 +25,31 @@ $this->extend('layout.html.php');
                             <ul class="nav nav-tabs">
                                 <li class="nav-item-1 active">
                                     <a href="#" id="tab1">
-                                        <span class="number">1</span>
+                                        <span class="number"><i class="fa fa-check" aria-hidden="true"></i><b>1</b></span>
                                         <p>Data Pemohon</p>
                                     </a>
                                 </li>
                                 <li class="nav-item-2 disabled">
                                     <a href="#" id="tab2">
-                                        <span class="number">2</span>
+                                        <span class="number"><i class="fa fa-check" aria-hidden="true"></i><b>2</b></span>
                                         <p>Data Tempat Tinggal</p>
                                     </a>
                                 </li>
                                 <li class="nav-item-3 disabled">
                                     <a href="#" id="tab3">
-                                        <span class="number">3</span>
+                                        <span class="number"><i class="fa fa-check" aria-hidden="true"></i><b>3</b></span>
                                         <p>Data Kendaraan</p>
                                     </a>
                                 </li>
                                 <li class="nav-item-4 disabled">
                                     <a href="#" id="tab4">
-                                        <span class="number">4</span>
+                                        <span class="number"><i class="fa fa-check" aria-hidden="true"></i><b>4</b></span>
                                         <p>Jumlah Pembiayaan</p>
                                     </a>
                                 </li>
                                 <li class="nav-item-5 disabled">
                                     <a href="#" id="tab5">
-                                        <span class="number">5</span>
+                                        <span class="number"><i class="fa fa-check" aria-hidden="true"></i><b>5</b></span>
                                         <p>Konfirmasi Data</p>
                                     </a>
                                 </li>
@@ -367,7 +367,7 @@ $this->extend('layout.html.php');
                                                     B. Data Pemohon
                                                 </p>
                                                 <div class="button-area text-right button-angsur">
-                                                    <button id="btnDataPemohon" class="cta cta-primary cta-big cta-ubah" type="button">UBAH <i class="fa fa-pencil" aria-hidden="true"></i></button>
+                                                    <button id="btnDataPemohon" class="cta cta-primary cta-big cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"><b>UBAH</b></i></button>
                                                 </div>
                                                 <table>
                                                     <tr>
@@ -400,7 +400,7 @@ $this->extend('layout.html.php');
                                                     C. Data Tempat Tinggal
                                                 </p>
                                                 <div class="button-area text-right button-angsur">
-                                                    <button id="btnDataTempatTinggal" class="cta cta-primary cta-big cta-ubah" type="button">UBAH <i class="fa fa-pencil" aria-hidden="true"></i></button>
+                                                    <button id="btnDataTempatTinggal" class="cta cta-primary cta-big cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"><b>UBAH</b></i></button>
                                                 </div>
                                                 <table>
                                                     <tr>
@@ -434,7 +434,7 @@ $this->extend('layout.html.php');
                                                     D. Data Kendaraan
                                                 </p>
                                                 <div class="button-area text-right button-angsur">
-                                                    <button id="btnDataKendaraan" class="cta cta-primary cta-big cta-ubah" type="button">UBAH <i class="fa fa-pencil" aria-hidden="true"></i></button>
+                                                    <button id="btnDataKendaraan" class="cta cta-primary cta-big cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"><b>UBAH</b></i></button>
                                                 </div>
                                                 <table>
                                                     <tr>
@@ -468,7 +468,7 @@ $this->extend('layout.html.php');
                                                     E. Jumlah Pembiayaan
                                                 </p>
                                                 <div class="button-area text-right button-angsur">
-                                                    <button class="cta cta-primary cta-big cta-ubah" type="button">UBAH <i class="fa fa-pencil" aria-hidden="true"></i></button>
+                                                    <button class="cta cta-primary cta-big cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"><b>UBAH</b></i></button>
                                                 </div>
                                                 <table>
                                                     <tr>

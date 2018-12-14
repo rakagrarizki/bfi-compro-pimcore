@@ -18,14 +18,31 @@ a {
 }
 
 #informasi-inspiratif {
-    padding: 30px 0;
+    padding: 85px 0;
 }
 #credit {
+    background-image:url("/_default_upload_bucket/herobanner.jpg");
+    background-repeat:no-repeat;
     background-color: #f1f1f1;
     padding: 50px 0 60px;
+    position:relative;
+
+    &:before{
+        position: absolute;
+        content: "";
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background: #04559F;
+        opacity: .8;    
+    }
+
     h2 {
         font-family: 'HelveticaNeue';
         font-weight: 600;
+        color:white;
+        position:relative;
         
         @include breakpoint(mobile){
             font-size: 1.4em;
@@ -34,7 +51,9 @@ a {
         a {
             margin-left: 40px;
             font-family: 'HelveticaNeue';
-            font-weight: 600;
+            font-weight: normal;
+            background-color:transparent;
+            border:1px solid white;
             @include breakpoint(mobile){
                 display: block;
                 font-size: 14px;
@@ -59,7 +78,8 @@ a {
 .title-wrapper {
     font-family: 'HelveticaNeue';
     font-weight: 600;
-    font-size: 2.5em;
+    font-size: 37px;
+    color:#04559F;
     @include breakpoint(mobile){
         font-size: 1.8em;
     }
@@ -67,7 +87,17 @@ a {
 .paragraf-title {
     font-size: 1.45em;
     font-family: 'HelveticaNeue';
+    color:#565656;
     @include breakpoint(mobile){
         font-size: 1em;
+    }
+}
+
+#bfi-cabang{
+    .button-area.text-center{
+        a{
+            background-color:#F8991D;
+            border:1px solid #F8991D;
+        }
     }
 }

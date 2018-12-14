@@ -7,7 +7,7 @@
 }
 .input-type-autocomplete {
 	position: absolute;
-	top: 30px;
+	top: 60px;
 	left: 0;
 	right: 0;
 	z-index: 99;
@@ -25,6 +25,8 @@
 	}
 	.form-autocomplete {
 		position: relative;
+		width:480px;
+		height:60px;
 		
 
 		@include breakpoint(mobile) {
@@ -32,10 +34,18 @@
 			padding: 0 10px;
 		}
 
+		.branchlist{
+			i{
+				@include breakpoint(mobile) {
+					top:5px;
+				}
+			}
+		}
+
 		i {
 			position: absolute;
 			right: 15px;
-			top: 15px;
+			top: 20px;
 			pointer-events: none;
 			font-size: 1.4em;
 			color: $grey-light-color;
@@ -54,12 +64,14 @@
    }
 	input {
 		width: 100%;
+		height:100%;
 		outline: none;
 		padding: 15px 10px;
 		background: $white;
 		border: 1px solid $grey-light-color;
 		font-family: 'HelveticaNeue';
 		padding-right: 50px;
+		font-size:1.375em;
    }
 }
 .wrapper-parent-branchlist{
@@ -105,6 +117,12 @@
 	   	display: block;
 		font-family: 'HelveticaNeue';
 	   	font-weight: 600;
+	   	color:#565656;
+	   	font-size:0.875em;
+
+	   	@include breakpoint(mobile) {
+	   		display:none;
+	   	}
    }
 }
 .wrapper-branchlist{
@@ -120,6 +138,8 @@
 	&:first-child{
 		text-align:center;
    }
+
+
 }
 .icon-gedung-branchlist{
 	width:40px;
@@ -128,10 +148,19 @@
 .col-md-8.branchlist p{
 	margin:0;
 	font-family: 'HelveticaNeue';
+	font-size:0.875em;
+
+	@include breakpoint(mobile) {
+		font-size:1em;
+	}
 
 	&:nth-child(1){
-		font-size:1.3em;
+		font-size:1.250em;
 		font-weight:bold;
+		@include breakpoint(mobile) {
+			color:#04559F;
+			font-size:1.3em;
+		}
    }
 	&:nth-child(4){
 		font-size:14px;

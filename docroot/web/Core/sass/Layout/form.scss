@@ -10,11 +10,14 @@
 
     h2 {
         font-family: 'HelveticaNeue-Bold';
-        font-weight: 800;
+        font-weight: bold;
+        color:#04559F;
+        font-size:26px;
     }
 
     p {
         font-size: 18px;
+        color:#565656;
     }
 
     .text-head {
@@ -66,6 +69,7 @@
         h2 {
             font-family: 'HelveticaNeue-Bold';
             font-weight: 800;
+            color:#04559F;
         }
     
         p {
@@ -81,6 +85,13 @@
           
             position: relative;
             padding: 20px;
+
+            .cta-primary{
+                background-color: #F0F0F0;
+                border: 1px solid #F0F0F0;
+                font-size:14px;
+            }
+
             &:after{
                 content: '';
                 position: absolute;
@@ -139,11 +150,15 @@
             }
         }
         .form-group {
+            margin-bottom:35px;
             label {
                 font-family: 'HelveticaNeue';
                 font-size: 16px;
                 letter-spacing: 1px;
                 display: block;
+                position:relative;
+                padding:0;
+                font-size:18px;
 
                 &.label-agreement {
                     font-family: 'HelveticaNeue';
@@ -184,6 +199,10 @@
                         }
                         &:last-child{
                             width: 100%;
+                        }
+
+                        .jcf-select{
+                            width:100%;
                         }
                     }
                 }
@@ -274,8 +293,19 @@
             }
            .total-estimate{
                padding: 50px;
+               background-color: #f4f4f4;
+               margin-top: 10px;
+               text-align: center;
+               margin-bottom:25px;
                p{
                    line-height: 2;
+                   font-size:24px;
+
+                   &:last-child{
+                        color: #04559F;
+                        font-weight: bold;
+                        font-size: 42px;
+                   }
                }
                .title-angsuran{
                    font-size: 1.5em;
@@ -289,11 +319,17 @@
     }
 
     .form-group {
+        margin-bottom:35px;
         label {
-            font-size: 16px;
+            font-family: 'HelveticaNeue';
+            font-size: 12px;
             letter-spacing: 1px;
             display: block;
-            margin-bottom: 10px;
+            padding: 5px 15px;
+            position:absolute;
+            color:#04559F;
+            display:none;
+            z-index:999;
 
             &.error {
                 margin: 10px 0;
@@ -304,7 +340,7 @@
 
             &:last-child {
                 font-size: 14px;
-                margin: 5px 0 0;
+                margin: 0;
                 color: $red-color;
             }
         }
@@ -327,13 +363,23 @@
             line-height: inherit;
             height: 150px;
             resize: none;
+            padding-top:20px;
         }
 
         .form-control {
             line-height: 55px;
-            height: 55px;
+            height: 70px;
+            width:400px;
             font-size: 18px;
             border-radius: inherit;
+
+            @include breakpoint(mobile){
+                width:100%;
+            }
+
+             @include breakpoint(tablet){
+                width:100%;
+            }
 
             &::placeholder {
                 font-style: italic;
@@ -342,7 +388,7 @@
 
             &:focus {
                 box-shadow: none;
-                border-color: unset;
+                border-color: #F9991C;
                 outline: none;
             }
         }
@@ -389,11 +435,12 @@
             cursor: pointer;
             position: relative;
             display: block;
-            width: 100%;
+            width: 400px;
             height: 60px;
             line-height: 40px;
-            padding-left: 15px;
+            padding-left: 13px;
             padding-right: 15px;
+            padding-top:2px;
             border: 1px solid $grey-dark;
             cursor: pointer;
             margin: 0;
@@ -403,6 +450,7 @@
                 font-family: 'HelveticaNeue';
                 cursor: pointer;
                 font-size: 1.3em;
+                margin-left:0;
             }
 
             &.jcf-drop-active {
@@ -429,6 +477,28 @@
                     left: 5px;
                     top: 10px;
                 }
+            }
+
+            /* width */
+            ::-webkit-scrollbar {
+              width: 7px;
+            }
+
+            /* Track */
+            ::-webkit-scrollbar-track {
+              background: #f1f1f1; 
+              border-radius: 10px;
+            }
+             
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+              background: #04559F; 
+              border-radius: 10px;
+            }
+
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+              background: #04559F; 
             }
         }
 
@@ -487,13 +557,15 @@
             font-weight: normal;
             display: block;
             cursor: pointer;
-            padding: 10px 15px;
+            padding: 18px 15px;
             background: $white;
             font-size: 16px;
+            color:#565656;
+            height:50px;
 
             &:hover {
-                background: $primary;
-                color: #fff;
+                background: #F7F7F7;
+                color: #565656;
             }
 
             // Hide first option 
@@ -593,7 +665,8 @@
         margin: 20px auto;
         display: inline-block;
         padding: 15px 20px;
-        background: #f0f0f0;
+        background: white;
+        border:1px solid #E2E2E2;
         p {
             letter-spacing: 1px;
             margin: 0;
@@ -627,6 +700,11 @@
         p {
             font-family: 'HelveticaNeue';
             font-size: 1em;
+
+            span{
+                font-weight:bold;
+                color:#D8D8D8;
+            }
         }
 
         .countdown {
@@ -701,3 +779,20 @@
 .chosen-container-single .chosen-single span {
     font-size: 1.2em;
 }
+
+#ex6SliderVal{
+    width:340px;
+}
+
+.fa-pencil{
+    b{
+        margin-left:10px;
+        color:black;
+    }
+    &:before{
+        color:black;
+    }
+}
+
+
+

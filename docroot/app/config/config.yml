@@ -11,13 +11,13 @@ pimcore:
 #        case_insensitive: true
 
 #### REDIS CACHE
-    cache:
-        pools:
-            redis:
-                enabled: true
-                connection:
-                    server: localhost
-                    database: 14
+#    cache:
+#        pools:
+#            redis:
+#                enabled: true
+#                connection:
+#                    server: localhost
+#                    database: 14
 
 #### FEATURE FLAGS
 #    flags:

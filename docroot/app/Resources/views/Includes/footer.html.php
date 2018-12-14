@@ -70,7 +70,7 @@ if($this->editmode) : ?>
                     <div class="form-group">
                         <input type="password" class="form-control" id="email" placeholder="Your email here...">
                     </div>
-                    <button type="submit" class="cta cta-primary"><?= $this->translate("submit") ?></button>
+                    <button type="submit" class="cta cta-primary submitfoot"><?= $this->translate("submit") ?></button>
                 </form>
             </div>
             <div class="col-md-4 footer-right">

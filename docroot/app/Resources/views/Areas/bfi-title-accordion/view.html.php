@@ -5,7 +5,7 @@
             <p><?= $this->textarea('text'); ?></p>
         </div>
 
-        <div class="accordion__wrap">
+        <div class="accordion__wrap produk">
             <div class="container">
                 <div class="row">
                     <?php $a=1;?>
@@ -18,7 +18,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#<?php echo $unik;?>" href="#<?php echo $unik."-".$a;?>">
+                                        <a class="a-panelheading" data-toggle="collapse" data-parent="#<?php echo $unik;?>" href="#<?php echo $unik."-".$a;?>">
                                             <?= $this->input('title-accord');?></a>
                                     </h4>
                                 </div>

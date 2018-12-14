@@ -11,18 +11,21 @@
             $i = 0;
             foreach ($this->blog as $blog){
 
-                if($i = 0){
+                if($i == 0){
                     ?>
                     <div class="col-md-6 col-sm-12 col-xs-12 thumbnail-infor">
+                        <div class="thumbnail-body--content">
+                        <div class="thumbnail-image modif">
                     <?php
                 }else{
                     ?>
                         <div class="col-md-3 col-sm-6 col-xs-6 thumbnail-infor">
+                            <div class="thumbnail-body--content">
+                            <div class="thumbnail-image">
                     <?php
                 }
                 ?>
-                    <div class="thumbnail-body--content">
-                        <div class="thumbnail-image">
+                    
                             <img src="<?= $blog->getImage();?>">
                         </div>
                         <div class="thumbnail-infomation">

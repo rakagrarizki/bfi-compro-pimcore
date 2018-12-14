@@ -40,12 +40,17 @@
         width: 50px;
         margin: unset;
         float: left;
+
+        @include breakpoint(mobile){
+            display:none;
+        }
     }
 
     &-caption {
         float: left;
         padding-left: 10px;
         width: 80%;
+        height:130px;
 
         h3 {
             margin: 0 0 10px;
@@ -62,14 +67,30 @@
             font-weight: 600;
             display: block;
             text-transform: uppercase;
-            position: relative;
-            margin-top: 20px;
+            position: absolute;
+            bottom:0;
+            color:gray;
+
+            @include breakpoint(mobile){
+                bottom:35px;
+
+                &:before{
+                    content:"";
+                    height:1px;
+                    left:0;
+                    position:absolute;
+                    background-color:#dddddd;
+                    bottom:0;
+                    width:85%;
+                }
+            }
 
             &:after {
                 font-family: 'FontAwesome';
                 content: "\f105";
                 margin-left: 10px;
                 font-size: 20px;
+                opacity:0.5;
             }
         }
     }
@@ -100,7 +121,7 @@
         .thumbnail-image {
 
             >img {
-                height: 100%;
+                width: 100%;
             }
         }
     }
@@ -114,6 +135,12 @@
 
         >img {
             max-width: 100%;
+        }
+
+        &.modif{
+            >img{
+                max-width:none;
+            }
         }
     }
 

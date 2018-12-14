@@ -575,9 +575,10 @@
 				hideTab1();
 				showTab2();
 				scrollToTop();
+				$('.nav-item-1').removeClass('active');
+				$('.nav-item-1').addClass('done');
 				$('.nav-item-2').addClass('active');
 				
-
 				pushDataPemohon();
 
 			}
@@ -590,9 +591,9 @@
 				showTab3();
 				hideTab2();
 				scrollToTop();
+				$('.nav-item-2').removeClass('active');
+				$('.nav-item-2').addClass('done');
 				$('.nav-item-3').addClass('active');
-
-				
 
 				pushDataTempatTinggal();
 
@@ -606,6 +607,8 @@
 				showTab4();
 				hideTab3();
 				scrollToTop();
+				$('.nav-item-3').removeClass('active');
+				$('.nav-item-3').addClass('done');
 				$('.nav-item-4').addClass('active');
 
 				pushDataKendaraan();
@@ -620,6 +623,8 @@
 				showTab5();
 				hideTab4();
 				scrollToTop();
+				$('.nav-item-4').removeClass('active');
+				$('.nav-item-4').addClass('done');
 				$('.nav-item-5').addClass('active');
 
 				setSummary();
@@ -685,13 +690,22 @@
 	function backAction() {
 		$('#buttonback2').on('click', function (e) {
 			e.preventDefault();
+			$('.nav-item-2').removeClass('active');
+			$('.nav-item-1').removeClass('done');
+			$('.nav-item-1').addClass('active');
+
 			$('.tab-pane').fadeOut();
 			scrollToTop();
 			showTab1();
+
 		})
 
 		$('#buttonback3').on('click', function (e) {
 			e.preventDefault();
+			$('.nav-item-3').removeClass('active');
+			$('.nav-item-2').removeClass('done');
+			$('.nav-item-2').addClass('active');
+
 			$('.tab-pane').fadeOut();
 			scrollToTop();
 			showTab2();
@@ -699,6 +713,10 @@
 
 		$('#buttonback4').on('click', function (e) {
 			e.preventDefault();
+			$('.nav-item-4').removeClass('active');
+			$('.nav-item-3').removeClass('done');
+			$('.nav-item-3').addClass('active');
+
 			$('.tab-pane').fadeOut();
 			scrollToTop();
 			showTab3();
@@ -1114,8 +1132,8 @@
 									CircleOption = {
 										strokeColor: '#0F2236',
 										strokeOpacity: 0.5,
-										strokeWeight: 2,
-										fillColor: '#ff2626',
+										strokeWeight: 0.5,
+										fillColor: '#0069aa',
 										fillOpacity: 0.15,
 										map: map,
 										radius: _radius,
@@ -1204,8 +1222,10 @@
 
 		$(document).on('click', '.parent-brachlist', function () {
 
+			$(".parent-brachlist").css("background-color","white");
 			var idMarker = $(this).data('id');
 			google.maps.event.trigger(markers[parseInt(idMarker)], 'click');
+			$(this).css("background-color","#F7F7F7");
 		})
 	}
 
@@ -1215,6 +1235,12 @@
 			zoom: 10,
 			center: new google.maps.LatLng(-6.21462, 106.84513)
 		});
+
+		if (navigator.geolocation) {
+    		navigator.geolocation.getCurrentPosition(showPosition);
+  		} else {
+    		console.log("Geolocation is not supported by this browser.");
+  		}
 
 		var input = document.getElementById('searchTextField');
 		var searchBox = new google.maps.places.SearchBox(input);
@@ -1228,6 +1254,20 @@
 
 		listingLocation(base_url);
 
+	}
+
+	function showPosition(position) {
+	  	var lat = position.coords.latitude;
+	  	var lng = position.coords.longitude;
+	  	map.setCenter(new google.maps.LatLng(lat, lng));
+
+	  	var marker = new google.maps.Marker({
+		    position: new google.maps.LatLng(lat, lng),
+		    icon: '/static/images/icon/circled-dot.png'
+		});
+
+		marker.setMap(map);
+		map.setZoom(14);
 	}
 
 	function countDown() {
@@ -1282,7 +1322,22 @@
 		requestOtp(credits);
 		$('.countdown').removeClass('countdown--reload');
 	})
+
+	$(".form-control").on('focus',function(){
+		if($(this).attr("id") !== "ex6SliderVal"){
+			$(this).prev().css("display","block");	
+		}		
+	});
+
+	$(".form-control").on('focusout',function(){
+		if($(this).val() == ""){
+			$(this).prev().css("display","none");
+		};
+	});
 	
+	$(".jcf-select").click(function(){
+		$(this).prev().prev().css("display","block");
+	});
 
 	validateFormRequired($('#getCredit'))
 	keyupOtpAction();
