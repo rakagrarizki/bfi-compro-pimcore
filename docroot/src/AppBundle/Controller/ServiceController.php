@@ -5,8 +5,8 @@ namespace AppBundle\Controller;
 use Pimcore\Controller\FrontendController;
 use Symfony\Component\HttpFoundation\Request;
 use Pimcore\Model\DataObject;
-use Pimcore\Model\DataObject\Kecamatan;
-use Pimcore\Model\DataObject\Kelurahan;
+use Pimcore\Model\DataObject\Kecamatan as Kecamatan;
+use Pimcore\Model\DataObject\Kelurahan as Kelurahan;
 use Pimcore\Model\DataObject\City;
 use Pimcore\Model\DataObject\Province;
 use Pimcore\Model\WebsiteSetting;
@@ -290,13 +290,12 @@ class ServiceController extends FrontendController
             list($no, $no2, $name) = $row;
 
             $key = \Pimcore\File::getValidFilename($name."-".$no);
-            $data = new DataObject\Kecamatan();
-
-            $check = $data->getByCode($no);
+            $check = Kecamatan::getByCode($no, 1);
 
             if($check) {
                 echo "SKIP - SAVE $name\n\n";
             }else{
+                $data = new DataObject\Kecamatan();
                 $data->setParent($parent);
                 $data->setKey($key);
                 $data->setPublished(true);
@@ -336,12 +335,12 @@ class ServiceController extends FrontendController
             list($no, $no2, $name) = $row;
 
             $key = \Pimcore\File::getValidFilename($name."-".$no);
-            $data = new DataObject\Kelurahan();
-            $check = $data->getByCode($no);
+            $check = Kelurahan::getByCode($no, 1);
 
             if($check) {
                 echo "SKIP - SAVE $name\n\n";
             }else{
+                $data = new DataObject\Kelurahan();
                 $data->setParent($parent);
                 $data->setKey($key);
                 $data->setPublished(true);
