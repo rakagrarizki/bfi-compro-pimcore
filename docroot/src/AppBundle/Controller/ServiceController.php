@@ -145,7 +145,7 @@ class ServiceController extends FrontendController
             ]);
         }
         $data = new Kecamatan\Listing();
-        $data->setCondition('City__id = '.$id);
+        $data->setCondition('CityCode = '.$id);
         $maps = [];
         if ($data) {
             foreach ($data as $item) {
@@ -176,7 +176,7 @@ class ServiceController extends FrontendController
             ]);
         }
         $data = new Kelurahan\Listing();
-        $data->setCondition('Kecamatan__id = '.$id);
+        $data->setCondition('KecamatanCode = '.$id);
         $maps = [];
         if ($data) {
             foreach ($data as $item) {
