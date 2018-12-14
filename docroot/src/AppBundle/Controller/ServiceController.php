@@ -289,7 +289,7 @@ class ServiceController extends FrontendController
 
             list($no, $no2, $name) = $row;
 
-            $key = \Pimcore\File::getValidFilename($name);
+            $key = \Pimcore\File::getValidFilename($name."-".$no);
             $data = new DataObject\Kecamatan();
 
             $check = $data->getByCode($no);
@@ -335,7 +335,7 @@ class ServiceController extends FrontendController
 
             list($no, $no2, $name) = $row;
 
-            $key = \Pimcore\File::getValidFilename($name);
+            $key = \Pimcore\File::getValidFilename($name."-".$no);
             $data = new DataObject\Kelurahan();
             $check = $data->getByCode($no);
 
