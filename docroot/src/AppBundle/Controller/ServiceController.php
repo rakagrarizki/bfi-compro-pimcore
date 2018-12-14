@@ -114,12 +114,12 @@ class ServiceController extends FrontendController
         }
 
         $data = new City\Listing();
-        $data->setCondition('Province__id = '.$id);
+        $data->setCondition('ProvinceCode = '.$id);
         $maps = [];
         if ($data) {
             foreach ($data as $item) {
                 $temp['name'] = $item->getName();
-                $temp['id'] = $item->getId();
+                $temp['id'] = $item->getCode();
                 $maps['data'][] = $temp;
             }
         }
@@ -150,7 +150,7 @@ class ServiceController extends FrontendController
         if ($data) {
             foreach ($data as $item) {
                 $temp['name'] = $item->getName();
-                $temp['id'] = $item->getId();
+                $temp['id'] = $item->getCode();
                 $maps['data'][] = $temp;
             }
         }
@@ -181,7 +181,7 @@ class ServiceController extends FrontendController
         if ($data) {
             foreach ($data as $item) {
                 $temp['name'] = $item->getName();
-                $temp['id'] = $item->getId();
+                $temp['id'] = $item->getCode();
                 $maps['data'][] = $temp;
             }
         }
