@@ -5,8 +5,8 @@ namespace AppBundle\Controller;
 use Pimcore\Controller\FrontendController;
 use Symfony\Component\HttpFoundation\Request;
 use Pimcore\Model\DataObject;
-use Pimcore\Model\DataObject\Kecamatan;
-use Pimcore\Model\DataObject\Kelurahan;
+use Pimcore\Model\DataObject\Kecamatan as Kecamatan;
+use Pimcore\Model\DataObject\Kelurahan as Kelurahan;
 use Pimcore\Model\DataObject\City;
 use Pimcore\Model\DataObject\Province;
 use Pimcore\Model\WebsiteSetting;
@@ -86,7 +86,7 @@ class ServiceController extends FrontendController
         if ($data) {
             foreach ($data as $item) {
                 $temp['name'] = $item->getName();
-                $temp['id'] = $item->getId();
+                $temp['id'] = $item->getCode();
                 $maps['data'][] = $temp;
             }
         }
@@ -114,12 +114,12 @@ class ServiceController extends FrontendController
         }
 
         $data = new City\Listing();
-        $data->setCondition('Province__id = '.$id);
+        $data->setCondition('ProvinceCode = '.$id);
         $maps = [];
         if ($data) {
             foreach ($data as $item) {
                 $temp['name'] = $item->getName();
-                $temp['id'] = $item->getId();
+                $temp['id'] = $item->getCode();
                 $maps['data'][] = $temp;
             }
         }
@@ -145,12 +145,12 @@ class ServiceController extends FrontendController
             ]);
         }
         $data = new Kecamatan\Listing();
-        $data->setCondition('City__id = '.$id);
+        $data->setCondition('CityCode = '.$id);
         $maps = [];
         if ($data) {
             foreach ($data as $item) {
                 $temp['name'] = $item->getName();
-                $temp['id'] = $item->getId();
+                $temp['id'] = $item->getCode();
                 $maps['data'][] = $temp;
             }
         }
@@ -176,12 +176,12 @@ class ServiceController extends FrontendController
             ]);
         }
         $data = new Kelurahan\Listing();
-        $data->setCondition('Kecamatan__id = '.$id);
+        $data->setCondition('KecamatanCode = '.$id);
         $maps = [];
         if ($data) {
             foreach ($data as $item) {
                 $temp['name'] = $item->getName();
-                $temp['id'] = $item->getId();
+                $temp['id'] = $item->getCode();
                 $maps['data'][] = $temp;
             }
         }
@@ -213,14 +213,14 @@ class ServiceController extends FrontendController
             list($no, $name) = $row;
 
             $key = \Pimcore\File::getValidFilename($name);
-            $marketingOffice = new DataObject\Province();
-            $marketingOffice->setParent($parent);
-            $marketingOffice->setKey($key);
-            $marketingOffice->setPublished(true);
-            //$marketingOffice->setId($no);
-            $marketingOffice->setName($name);
+            $data = new DataObject\Province();
+            $data->setParent($parent);
+            $data->setKey($key);
+            $data->setPublished(true);
+            $data->setCode($no);
+            $data->setName($name);
             try {
-                $marketingOffice->save();
+                $data->save();
                 echo "Succes save " . $name . "\n";
             } catch (\Exception $exception) {
                 echo "Failed save " . $name . " because " . $exception->getMessage() . "\n";
@@ -251,13 +251,15 @@ class ServiceController extends FrontendController
             list($no, $no2, $name) = $row;
 
             $key = \Pimcore\File::getValidFilename($name);
-            $marketingOffice = new DataObject\City();
-            $marketingOffice->setParent($parent);
-            $marketingOffice->setKey($key);
-            $marketingOffice->setPublished(true);
-            $marketingOffice->setName($name);
+            $data = new DataObject\City();
+            $data->setParent($parent);
+            $data->setKey($key);
+            $data->setPublished(true);
+            $data->setName($name);
+            $data->setCode($no);
+            $data->setProvinceCode($no2);
             try {
-                $marketingOffice->save();
+                $data->save();
                 echo "Succes save " . $name . "\n";
             } catch (\Exception $exception) {
                 echo "Failed save " . $name . " because " . $exception->getMessage() . "\n";
@@ -287,17 +289,25 @@ class ServiceController extends FrontendController
 
             list($no, $no2, $name) = $row;
 
-            $key = \Pimcore\File::getValidFilename($name);
-            $marketingOffice = new DataObject\Kecamatan();
-            $marketingOffice->setParent($parent);
-            $marketingOffice->setKey($key);
-            $marketingOffice->setPublished(true);
-            $marketingOffice->setName($name);
-            try {
-                $marketingOffice->save();
-                echo "Succes save " . $name . "\n";
-            } catch (\Exception $exception) {
-                echo "Failed save " . $name . " because " . $exception->getMessage() . "\n";
+            $key = \Pimcore\File::getValidFilename($name."-".$no);
+            $check = Kecamatan::getByCode($no, 1);
+
+            if($check) {
+                echo "SKIP - SAVE $name\n\n";
+            }else{
+                $data = new DataObject\Kecamatan();
+                $data->setParent($parent);
+                $data->setKey($key);
+                $data->setPublished(true);
+                $data->setName($name);
+                $data->setCode($no);
+                $data->setCityCode($no2);
+                try {
+                    $data->save();
+                    echo "Succes save " . $name . "\n";
+                } catch (\Exception $exception) {
+                    echo "Failed save " . $name . " because " . $exception->getMessage() . "\n";
+                }
             }
 
         }
@@ -324,18 +334,27 @@ class ServiceController extends FrontendController
 
             list($no, $no2, $name) = $row;
 
-            $key = \Pimcore\File::getValidFilename($name);
-            $marketingOffice = new DataObject\Kelurahan();
-            $marketingOffice->setParent($parent);
-            $marketingOffice->setKey($key);
-            $marketingOffice->setPublished(true);
-            $marketingOffice->setName($name);
-            try {
-                $marketingOffice->save();
-                echo "Succes save " . $name . "\n";
-            } catch (\Exception $exception) {
-                echo "Failed save " . $name . " because " . $exception->getMessage() . "\n";
+            $key = \Pimcore\File::getValidFilename($name."-".$no);
+            $check = Kelurahan::getByCode($no, 1);
+
+            if($check) {
+                echo "SKIP - SAVE $name\n\n";
+            }else{
+                $data = new DataObject\Kelurahan();
+                $data->setParent($parent);
+                $data->setKey($key);
+                $data->setPublished(true);
+                $data->setName($name);
+                $data->setCode($no);
+                $data->setKecamatanCode($no2);
+                try {
+                    $data->save();
+                    echo "Succes save " . $name . "\n";
+                } catch (\Exception $exception) {
+                    echo "Failed save " . $name . " because " . $exception->getMessage() . "\n";
+                }
             }
+
 
         }
         exit;

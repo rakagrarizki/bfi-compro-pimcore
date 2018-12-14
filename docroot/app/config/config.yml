@@ -62,7 +62,8 @@ pimcore:
 
 #### SYMFONY OVERRIDES
 framework:
-
+    profiler:
+        collect: false
 #### USE SESSION HANDLER CONFIGURED IN php.ini
 #    session:
 #        handler_id: null
