@@ -291,17 +291,24 @@ class ServiceController extends FrontendController
 
             $key = \Pimcore\File::getValidFilename($name);
             $data = new DataObject\Kecamatan();
-            $data->setParent($parent);
-            $data->setKey($key);
-            $data->setPublished(true);
-            $data->setName($name);
-            $data->setCode($no);
-            $data->setCityCode($no2);
-            try {
-                $data->save();
-                echo "Succes save " . $name . "\n";
-            } catch (\Exception $exception) {
-                echo "Failed save " . $name . " because " . $exception->getMessage() . "\n";
+
+            $check = $data->getByCode($no);
+
+            if($check) {
+                echo "SKIP - SAVE $name\n\n";
+            }else{
+                $data->setParent($parent);
+                $data->setKey($key);
+                $data->setPublished(true);
+                $data->setName($name);
+                $data->setCode($no);
+                $data->setCityCode($no2);
+                try {
+                    $data->save();
+                    echo "Succes save " . $name . "\n";
+                } catch (\Exception $exception) {
+                    echo "Failed save " . $name . " because " . $exception->getMessage() . "\n";
+                }
             }
 
         }
@@ -330,18 +337,25 @@ class ServiceController extends FrontendController
 
             $key = \Pimcore\File::getValidFilename($name);
             $data = new DataObject\Kelurahan();
-            $data->setParent($parent);
-            $data->setKey($key);
-            $data->setPublished(true);
-            $data->setName($name);
-            $data->setCode($no);
-            $data->setKecamatanCode($no2);
-            try {
-                $data->save();
-                echo "Succes save " . $name . "\n";
-            } catch (\Exception $exception) {
-                echo "Failed save " . $name . " because " . $exception->getMessage() . "\n";
+            $check = $data->getByCode($no);
+
+            if($check) {
+                echo "SKIP - SAVE $name\n\n";
+            }else{
+                $data->setParent($parent);
+                $data->setKey($key);
+                $data->setPublished(true);
+                $data->setName($name);
+                $data->setCode($no);
+                $data->setKecamatanCode($no2);
+                try {
+                    $data->save();
+                    echo "Succes save " . $name . "\n";
+                } catch (\Exception $exception) {
+                    echo "Failed save " . $name . " because " . $exception->getMessage() . "\n";
+                }
             }
+
 
         }
         exit;
