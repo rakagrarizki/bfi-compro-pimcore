@@ -1,7 +1,7 @@
 <?php 
 
 /** 
-* Generated at: 2018-12-14T08:04:51+01:00
+* Generated at: 2018-12-17T10:06:14+01:00
 * Inheritance: no
 * Variants: no
 * Changed by: admin (2)
@@ -13,6 +13,7 @@ Fields Summary:
 - Kecamatan [href]
 - KecamatanCode [input]
 - Code [input]
+- PostCode [input]
 */ 
 
 
@@ -21,7 +22,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'Kelurahan',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1544771089,
+   'modificationDate' => 1545037558,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -174,6 +175,31 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'unique' => false,
              'name' => 'Code',
              'title' => 'Code',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+          )),
+          4 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+             'fieldtype' => 'input',
+             'width' => NULL,
+             'queryColumnType' => 'varchar',
+             'columnType' => 'varchar',
+             'columnLength' => 190,
+             'phpdocType' => 'string',
+             'regex' => '',
+             'unique' => false,
+             'name' => 'PostCode',
+             'title' => 'PostCode',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
