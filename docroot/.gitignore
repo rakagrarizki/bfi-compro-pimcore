@@ -60,3 +60,6 @@ nbproject
 /tools/
 /website/
 .temp
+
+.idea/
+.idea_modules/
