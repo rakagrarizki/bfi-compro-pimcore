@@ -29,7 +29,12 @@
                             <img src="<?= $blog->getImage();?>">
                         </div>
                         <div class="thumbnail-infomation">
-                            <p><?= $blog->getDate();?></p>
+                            <?php
+                            $timestampDate = \Carbon\Carbon::parse($blog->getDate());
+                            $dateUnix = $timestampDate->timestamp;
+                            $date = date("D, d-M'Y", $dateUnix);
+                            ?>
+                            <p><?= $date;?></p>
                             <h3><a href="#"><?= $blog->getTitle();?></a></h3>
                         </div>
                     </div>

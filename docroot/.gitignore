@@ -14,6 +14,7 @@
 /app/config/local/*
 !app/config/local/.gitkeep
 
+
 # pimcore legacy (remove this for your own development)
 !/legacy
 /legacy/*
@@ -29,6 +30,8 @@
 /var/config/system.php
 /var/config/debug-mode.php
 /var/config/maintenance.php
+/var/config/staticroutes.php
+/var/config/website-settings.php
 
 # project specific recommendations
 /var/config/tag-manager.php
