@@ -15,7 +15,7 @@ class ImportKelurahanCommand extends AbstractCommand
     {
         $this
             ->setName('importkelurahan:command')
-            ->setDescription('importkelurahan command');
+            ->setDescription('import kelurahan command');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)

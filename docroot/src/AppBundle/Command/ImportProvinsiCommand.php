@@ -15,7 +15,7 @@ class ImportProvinsiCommand extends AbstractCommand
     {
         $this
             ->setName('importprovinsi:command')
-            ->setDescription('importprovinsi command');
+            ->setDescription('import provinsi command');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)

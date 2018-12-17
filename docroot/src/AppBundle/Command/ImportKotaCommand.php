@@ -15,7 +15,7 @@ class ImportKotaCommand extends AbstractCommand
     {
         $this
             ->setName('importkota:command')
-            ->setDescription('importkota command');
+            ->setDescription('import kota command');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)

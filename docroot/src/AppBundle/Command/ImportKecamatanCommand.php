@@ -15,7 +15,7 @@ class ImportKecamatanCommand extends AbstractCommand
     {
         $this
             ->setName('importkecamatan:command')
-            ->setDescription('importkecamatan command');
+            ->setDescription('import kecamatan command');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
