@@ -16,7 +16,7 @@
             <?php } ?>
         </div>
 
-        <div class="btn-ajukan">
+        <div class="btn-ajukan margin-bottom-90 margin-top-70">
             <a href="<?= $this->link('url')->getHref(); ?>" class="cta cta-orange"><?= $this->link('url')->getText(); ?></a>
         </div>
 

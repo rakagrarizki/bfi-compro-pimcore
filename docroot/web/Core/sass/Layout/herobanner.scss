@@ -11,8 +11,16 @@
     }
 
     &.herobanner--static {
-        h2, p {
+        h2 {
             color: $white;
+            font-size:44px;
+            margin-bottom:30px;
+            font-weight:bold;
+        } 
+        p {
+            color: $white;
+            font-size:20px;
+            font-weight:normal;
         }
     }
 
@@ -256,6 +264,13 @@
     }
 
     .herobanner__noslider {
+        @include breakpoint(mobile){
+            height:auto;
+        }
+
+        @include breakpoint(tablet){
+            height:auto;
+        }
         position: relative;
         height: 365px;
 

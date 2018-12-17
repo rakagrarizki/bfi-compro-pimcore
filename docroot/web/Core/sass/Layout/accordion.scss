@@ -16,6 +16,22 @@
             padding: 0 15px;
         }
 
+        &.produk{
+            margin-top:85px;
+            margin-bottom:80px;
+
+            h4{
+                font-size:28px;
+
+                @include breakpoint(mobile) {
+                    font-size:24px;
+                }
+                @include breakpoint(tablet) {
+                    font-size:24px;
+                }
+            }
+        }
+
         h4 {
             font-size: 1.3em;
             font-family: 'HelveticaNeue';
@@ -23,6 +39,26 @@
 
         .panel {
             box-shadow: none;
+
+            &:last-child{
+                .panel-body {
+                    background-color:ghostwhite;
+                    padding-top:35px;
+
+                    .block-payment{
+                        text-align:center;
+
+                        .payment-wrap{
+                            width:90%;
+                            display:inline-block;
+
+                            h4, .block-payment__item{
+                                text-align:left;
+                            }
+                        }
+                    }
+                }
+            }
 
             .panel-body {
                 padding: 25px 15px;
@@ -66,7 +102,10 @@
                 position: relative;
                 display: block;
                 padding: 22px 15px;
-                
+
+                &.a-panelheading{
+                   padding-bottom:40px;         
+                }
 
                 &::after {
                     position: absolute;
@@ -74,7 +113,8 @@
                     font-family: "FontAwesome";
                     right: 15px;
                     top: 15px;
-                    font-size: 1.5em;
+                    font-size: 1.3em;
+                    opacity:0.4;
                 }
             }
         }

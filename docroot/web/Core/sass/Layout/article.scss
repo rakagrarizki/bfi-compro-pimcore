@@ -28,12 +28,14 @@
         a {
             text-decoration: none;
             color: #04559F;
+            font-weight:bold;
+            font-size:16px;
         }
 
         p {
-            font-size: 0.9em;
+            font-size: 10px;
             font-family: 'HelveticaNeue';
-            color: $grey-light-color;
+            color: #565656;
         }
 
         h4 {

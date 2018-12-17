@@ -45,7 +45,6 @@
                         height:55px;
                         width:55px;
                         @include breakpoint(mobile) {
-                            display:block;
                             height:auto;
                             max-width:100%;
                         }
