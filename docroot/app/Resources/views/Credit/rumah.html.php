@@ -61,7 +61,7 @@ $this->extend('layout.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label for="nama_lengkap">Nama Lengkap</label>
-                                            <input type="text" class="form-control formRequired" name="nama_lengkap" id="nama_lengkap"
+                                            <input type="text" class="form-control formRequired formAlphabet" name="nama_lengkap" id="nama_lengkap"
                                                    placeholder="Masukan nama lengkap Anda">
                                             <div class="error-wrap"></div>
                                         </div>
@@ -108,25 +108,29 @@ $this->extend('layout.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label for="provinsi">Provinsi</label>
-                                            <select class="c-custom-select formRequired" id="provinsi" name="provinsi">
+                                            <select class="c-custom-select formRequired" id="provinsi" name="provinsi"  data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' />
+                                                <option value="">Pilih Provinsi</option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
                                             <label for="kota">Kota</label>
-                                            <select class="c-custom-select formRequired" id="kota" name="kota">
+                                            <select class="c-custom-select formRequired" id="kota" name="kota"  data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' />
+                                                <option value="">Pilih Kota</option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
                                             <label for="kecamatan">Kecamatan</label>
-                                            <select class="c-custom-select formRequired" id="kecamatan" name="kecamatan">
+                                            <select class="c-custom-select formRequired" id="kecamatan" name="kecamatan"  data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' />
+                                                <option value="">Pilih Kecamatan</option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
                                             <label for="kelurahan">Kelurahan</label>
-                                            <select class="c-custom-select formRequired" id="kelurahan" name="kelurahan">
+                                            <select class="c-custom-select formRequired" id="kelurahan" name="kelurahan"  data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' />
+                                                <option value="">Pilih Kelurahan</option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
@@ -421,8 +425,8 @@ $this->extend('layout.html.php');
                                             dikirimkan ke nomor hendphone Anda</p>
 
                                         <div class="otp-number form-group">
-                                            <div class="otp-number__phone">
-                                                <p id="showPhone"> <span></span> <img src="/static/images/icon/pencil.png" alt=""></p>
+                                            <div class="otp-number__phone disabled">
+                                                <p id="showPhone"> <input type="text" id="otpPhone" disabled /> <img id="otpEditPhone" src="/static/images/icon/pencil.png" alt=""></p>
                                             </div>
                                             <div class="otp-number__verify">
                                                 <input type="text" class="input-number formRequired" maxlength="1" name="otp1">

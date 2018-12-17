@@ -117,11 +117,17 @@
                     font-size: 1.5em;
                     font-family: 'HelveticaNeue';
                     font-weight: 600;
+                    @include breakpoint(mobile){
+                        margin-right: 100px;
+                    }
                 }
                 .button-angsur{
                     position: absolute;
                     right: 0;
                     top: 20px;
+                    @include breakpoint(mobile){
+                        
+                    }
                 }
 
                 table{
@@ -319,7 +325,7 @@
     }
 
     .form-group {
-        margin-bottom:35px;
+        //margin-bottom:35px;
         label {
             font-family: 'HelveticaNeue';
             font-size: 12px;
@@ -336,6 +342,7 @@
                 font-family: 'HelveticaNeue-Light';
                 font-size: 1em;
                 color: $red-color;
+                position:relative;
             }
 
             &:last-child {
@@ -437,6 +444,7 @@
             display: block;
             width: 400px;
             height: 60px;
+            max-width: 100%;
             line-height: 40px;
             padding-left: 13px;
             padding-right: 15px;
@@ -667,12 +675,18 @@
         padding: 15px 20px;
         background: white;
         border:1px solid #E2E2E2;
+        &.disabled {
+            background: #F2F2F2
+        }
         p {
             letter-spacing: 1px;
             margin: 0;
             font-family: 'HelveticaNeue';
             font-size: 1.2em;
             color: #565656;
+            input {
+                outline: none;
+            }
         }
 
         img {
@@ -693,6 +707,10 @@
             font-size: 1.2em;
             outline: none;
             border-bottom: 2px solid $grey-light-color;
+
+            @include breakpoint(mobile){
+                width: calc( 20% - 30px )
+            }
         }
     }
 
@@ -715,6 +733,10 @@
             }
         }
     }
+}
+
+#otpEditPhone {
+    cursor: pointer;
 }
 
 .modal {
@@ -782,6 +804,9 @@
 
 #ex6SliderVal{
     width:340px;
+    @include breakpoint(mobile){
+        width: 100%;
+    }
 }
 
 .fa-pencil{

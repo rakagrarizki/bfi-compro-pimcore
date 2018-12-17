@@ -116,6 +116,17 @@
 
         @include breakpoint(mobile){
             margin-bottom:25px;
+            font-size: 13px;
+            height: 45px;
+            width: auto;
+            padding: 13px 28px 13px 28px;
+        }
+
+        @include breakpoint(small-mobile){
+            font-size: 12px;
+            height: 40px;
+            width: auto;
+            padding: 13px 25px 13px 25px;
         }
     }
 

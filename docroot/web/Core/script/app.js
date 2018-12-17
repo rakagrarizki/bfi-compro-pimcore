@@ -375,9 +375,35 @@
 
 	// With JQuery
 
-	$("#ex11").slider();
+	if($(".customslide").length>0) {
+		$(".customslide").slider()
+		$(".customslide").on('slide',function(evt){
+				var _elm = $(this)
+				var _parent = _elm.parents(".sliderGroup")
+				var _ifMoney = _parent.find(".c-input-trans")
+				var _ifMonth = _parent.find(".c-custom-select-trans")
+				var _thisVal = evt.value
 
-	$("#ex12").slider();
+				if(_ifMoney.length>0) {
+					var number_string = _thisVal.toString(),
+						sisa = number_string.length % 3,
+						rupiah = number_string.substr(0, sisa),
+						ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+					if (ribuan) {
+						separator = sisa ? '.' : '';
+						rupiah += separator + ribuan.join('.');
+					}
+					_ifMoney.val(rupiah)
+				} else if(_ifMonth.length>0) {
+					_ifMonth.val(parseInt(_thisVal))
+					var customFormInstance = jcf.getInstance(_ifMonth);
+					customFormInstance.refresh();
+				}
+			});
+	}
+
+	// $("#ex12").slider();
 
 
 	$("#ex11").on("slide", function (slideEvt) {
@@ -407,10 +433,18 @@
 		}
 	});
 
+	jQuery.validator.addMethod("accept", function(value, element, param) {
+		return value.match(new RegExp("." + param + "$"));
+	},"Please Enter Only Letters");
+
 	$.validator.addClassRules({
 
 		formRequired: {
 			required: true
+		},
+
+		formAlphabet: {
+			accept: "[a-zA-Z]+"
 		},
 
 		formNumber: {
@@ -521,6 +555,11 @@
 			kelurahan = $('#kelurahan').val(),
 			kode_pos = $('#kode_pos').val(),
 			alamat = $('#alamat_lengkap').val();
+		
+		provinsi = $("#provinsi option[value='"+ provinsi +"']").text();
+		kota = $("#kota option[value='"+ kota +"']").text();
+		kecamatan = $("#kecamatan option[value='"+ kecamatan +"']").text();
+		kelurahan = $("#kelurahan option[value='"+ kelurahan +"']").text();
 
 		credits.tempat_tinggal.provinsi = provinsi;
 		credits.tempat_tinggal.kota = kota;
@@ -639,7 +678,8 @@
 			scrollToTop();
 			$('.input-number:first-child').focus();
 			$('.horizontal-scroll').hide();
-			$('#showPhone span').html(credits.pemohon.no_handphone);
+			// $('#showPhone span').html(credits.pemohon.no_handphone);
+			$("#otpPhone").val(credits.pemohon.no_handphone)
 			countDown();
 			requestOtp(credits);
 
@@ -652,6 +692,16 @@
 			sendDataCredits(credits);
 
 			console.log(objCredits);
+		})
+
+		$("#otpEditPhone").on("click", function(e){
+			$("#otpPhone").prop('disabled', ! $("#otpPhone").prop('disabled'));
+			$(".otp-number__phone").toggleClass("disabled")
+		})
+		$("#otpPhone").change(function(){
+			$("#otpPhone").prop('disabled', ! $("#otpPhone").prop('disabled'));
+			$(".otp-number__phone").toggleClass("disabled")
+			credits.pemohon.no_handphone = $("#otpPhone").val()
 		})
 	}
 
@@ -740,6 +790,12 @@
 			e.preventDefault();
 			$('.tab-pane').fadeOut();
 			showTab3();
+		})
+
+		$('#btnJumlahPembiayaan').on('click', function () {
+			e.preventDefault();
+			$('.tab-pane').fadeOut();
+			showTab4();
 		})
 	}
 

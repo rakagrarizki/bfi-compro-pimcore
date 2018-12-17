@@ -108,8 +108,8 @@
 
     .thumbnail-body--content {
         height: 100%;
-        margin-right: 10px;
-        margin-left: 10px;
+        // margin-right: 10px;
+        // margin-left: 10px;
         box-shadow: 1px 2px 10px $grey-dark;
         border: 1px solid $grey-dark;
         @include breakpoint(mobile){
