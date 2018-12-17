@@ -8,7 +8,7 @@ build_staging:
   script:
     - .ci/build.sh
   only:
-    - development
+    - backend-dev
   allow_failure: true
 deploy_staging:
   stage: deploy
@@ -20,4 +20,4 @@ deploy_staging:
     name: staging
     url: http://bfi.staging7.salt.id
   only:
-    - development
+    - backend-dev
