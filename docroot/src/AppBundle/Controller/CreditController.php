@@ -253,8 +253,6 @@ class CreditController extends FrontendController
     public function sendOtpValidateAction(Request $request)
     {
         $code = $request->get('otp1'). $request->get('otp2'). $request->get('otp3'). $request->get('otp4');
-        dump($code);
-        exit;
         $handphone = $request->get('no_handphone');
 
         try {
