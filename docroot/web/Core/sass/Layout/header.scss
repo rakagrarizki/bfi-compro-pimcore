@@ -6,6 +6,19 @@
         z-index: 99991;
     }
 
+    .backtohome{
+        position:relative;
+        &:before{
+            content: '\f104';
+            font-family: FontAwesome;
+            position: absolute;
+            left: -15px;
+            top: -10px;
+            font-size: 25px;
+            opacity: 0.5;
+        }
+    }
+
     &.active {
         .header-bottom {
             height: 70px;
@@ -54,7 +67,7 @@
             a {
                 padding-right: 10px;
 
-                &:visited{
+                &:hover{
                         color:#04559F;
                     }
             }
@@ -71,7 +84,7 @@
                     font-family: 'HelveticaNeue';
                     padding-right: 30px;
 
-                    &:visited{
+                    &:hover{
                         color:#04559F;
                     }
                 }
@@ -82,7 +95,7 @@
 
                 a {
                     padding: 0 10px;
-                    &:visited{
+                    &:hover{
                         color:#04559F;
                     }
                     &.login:after {
@@ -105,7 +118,7 @@
                     font-family: 'HelveticaNeue';
                     padding: 0 5px;
 
-                     &:visited{
+                     &:hover{
                         color:#04559F;
                     }
                 }

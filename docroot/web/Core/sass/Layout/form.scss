@@ -61,7 +61,6 @@
     .form-body--credit-simulasi {
         width: calc(0.8 * 100%);
         margin: auto;
-        overflow: hidden;
         @include breakpoint(mobile){
             width: auto;
         }
@@ -325,7 +324,15 @@
     }
 
     .form-group {
+        position: relative;
         //margin-bottom:35px;
+
+        .c-custom-select.jcf-hidden{
+            &.error + span{
+                border:1px solid red;
+            }
+        }
+        
         label {
             font-family: 'HelveticaNeue';
             font-size: 12px;
@@ -397,6 +404,10 @@
                 box-shadow: none;
                 border-color: #F9991C;
                 outline: none;
+            }
+
+            &.error{
+                border-color:red;
             }
         }
 
