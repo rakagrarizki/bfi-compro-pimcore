@@ -66,6 +66,17 @@
 			"model_kendaraan": "",
 			"tahun_kendaraan": "",
 			"status_pemilik": ""
+		},
+
+		"data_bangunan": {
+			"status_sertifikat": "",
+			"sertifikat_atas_nama": "",
+			"provinsi": "",
+			"kota": "",
+			"kecamatan": "",
+			"kelurahan": "",
+			"kode_pos": "",
+			"alamat": ""
 		}
 
 	}
@@ -582,6 +593,29 @@
 		credits.kendaraan.status_pemilik = status_pemilik;
 	}
 
+	function pushDataBangunan() {
+		if ($('#status_sertificate').length > 0) {
+			var status_sertificate = $('#status_sertificate').val(),
+				own_sertificate = $('#own_sertificate').val(),
+				provinsi_sertificate = $('#provinsi_sertificate').val(),
+				kota_sertificate = $('#kota_sertificate').val(),
+				kecamatan_sertificate = $('#kecamatan_sertificate').val(),
+				kelurahan_sertificate = $('#kelurahan_sertificate').val(),
+				kode_pos_sertificate = $('#kode_pos_sertificate').val(),
+				alamat_lengkap_sertificate = $('#alamat_lengkap_sertificate').val();
+
+
+			credits.data_bangunan.status_sertifikat = status_sertificate;
+			credits.data_bangunan.sertifikat_atas_nama = own_sertificate;
+			credits.data_bangunan.provinsi = provinsi_sertificate;
+			credits.data_bangunan.kota = kota_sertificate;
+			credits.data_bangunan.kecamatan = kecamatan_sertificate;
+			credits.data_bangunan.kelurahan = kelurahan_sertificate;
+			credits.data_bangunan.kode_pos = kode_pos_sertificate;
+			credits.data_bangunan.alamat = alamat_lengkap_sertificate;
+		};
+	}
+
 	function setSummary() {
 		// data tipe angunan
 		$('#showAngunan').html(credits.angunan.jenis_angunan);
@@ -604,6 +638,18 @@
 		$('#showModelKendaraan').html(credits.kendaraan.model_kendaraan);
 		$('#showTahunKendaraan').html(credits.kendaraan.tahun_kendaraan);
 		$('#showStatusPemilik').html(credits.kendaraan.status_pemilik);
+
+		//data bangunan
+
+		$('#showStatus_sertificate').html(credits.data_bangunan.status_sertifikat);
+		$('#showOwn_sertificate').html(credits.data_bangunan.sertifikat_atas_nama);
+		$('#showProvinsi_sertificate').html(credits.data_bangunan.provinsi);
+		$('#showKota_sertificate').html(credits.data_bangunan.kota);
+		$('#showKecamatan_sertificate').html(credits.data_bangunan.kecamatan);
+		$('#showKelurahan_sertificate').html(credits.data_bangunan.kelurahan);
+		$('#showKode_pos_sertificate').html(credits.data_bangunan.kode_pos);
+		$('#showAlamat_lengkap_sertificate').html(credits.data_bangunan.alamat);
+
 	}
 
 	function stepAction() {
@@ -651,6 +697,22 @@
 				$('.nav-item-4').addClass('active');
 
 				pushDataKendaraan();
+			}
+		})
+
+		$('#button3rumah').on('click', function (e) {
+			e.preventDefault();
+
+			if ($(this).closest('form').valid()) {
+				showTab4();
+				hideTab3();
+				scrollToTop();
+				$('.nav-item-3').removeClass('active');
+				$('.nav-item-3').addClass('done');
+				$('.nav-item-4').addClass('active');
+
+				pushDataBangunan();
+				setSummary();
 
 			}
 		})
@@ -668,6 +730,22 @@
 
 				setSummary();
 			}
+		})
+
+		$('#button4rumah').on('click', function (e) {
+			e.preventDefault();
+
+			showTab5();
+			hideTab4();
+			scrollToTop();
+
+			$('.input-number:first-child').focus();
+			$('.horizontal-scroll').hide();
+			// $('#showPhone span').html(credits.pemohon.no_handphone);
+			$("#otpPhone").val(credits.pemohon.no_handphone)
+			countDown();
+			requestOtp(credits);
+			
 		})
 
 		$('#button5').on('click', function (e) {
@@ -770,6 +848,17 @@
 			$('.tab-pane').fadeOut();
 			scrollToTop();
 			showTab3();
+		})
+
+		$('#buttonback5').on('click', function (e) {
+			e.preventDefault();
+			$('.nav-item-5').removeClass('active');
+			$('.nav-item-4').removeClass('done');
+			$('.nav-item-4').addClass('active');
+
+			$('.tab-pane').fadeOut();
+			scrollToTop();
+			showTab4();
 		})
 	}
 
@@ -888,7 +977,7 @@
 		var otp1Value = $('input[name=otp1]').val(),
 			otp2Value = $('input[name=otp2]').val(),
 			otp3Value = $('input[name=otp3]').val(),
-			otp4Value = $('input[name=otp1]').val();
+			otp4Value = $('input[name=otp4]').val();
 
 		var _data = {
 			no_handphone: params.pemohon.no_handphone,

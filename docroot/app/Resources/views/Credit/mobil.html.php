@@ -221,7 +221,7 @@ $this->extend('layout.html.php');
 
                                 </div>
                                 <div id="menu4" class="tab-pane slide-left">
-                                    <div class="form-body--credit-simulasi">
+                                    <div class="form-body--credit-simulasi row">
                                         <div class="text-head">
                                             <h2 class="text-center">Jumlah Pembiayaan</h2>
                                             <p class="text-center">Hitung Jumlah Pembiayaan Anda</p>
@@ -501,7 +501,7 @@ $this->extend('layout.html.php');
                                                 </table>
                                             </div>
                                         </div>
-                                        <!-- <div class="biaya-agunan">
+                                        <div class="biaya-agunan">
                                             <div class="form-group">
                                                 <input type="checkbox" id="agreement1" class="agreement">
                                                 <label for="agreement1" class="label-agreement">Anda bersedia menerima
@@ -509,7 +509,7 @@ $this->extend('layout.html.php');
                                                     pembiayaan melalui lelepon/sms/email</label>
                                                 <div class="error-wrap"></div>
                                             </div>
-                                            <div class="form-group">
+                                            <!-- <div class="form-group">
                                                 <input type="checkbox" id="agreement2" class="agreement">
                                                 <label for="agreement2" class="label-agreement">Lorem ipsum dolor sit
                                                     amet, consectetur
@@ -517,8 +517,8 @@ $this->extend('layout.html.php');
                                                     temporibus vero, optio eveniet et, adipisci natus rem enim sequi
                                                     saepe expedita qui sunt exercitationem delectus. In?</label>
                                                 <div class="error-wrap"></div>
-                                            </div>
-                                        </div> -->
+                                            </div> -->
+                                        </div>
                                     </div>
 
                                     <div class="button-area text-left back">

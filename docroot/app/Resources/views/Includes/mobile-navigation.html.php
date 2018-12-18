@@ -8,6 +8,7 @@ use Pimcore\Model\Document;
             <div class="col-xs-8">
                 <a href="/<?php echo $this->getLocale() ?>" class="cta-top-nav active"><?= $this->translate("personal") ?></a>
                 <a href="#" class="cta-top-nav"><?= $this->translate("corporate") ?></a>
+                <a href="" class="backtohome">Kembali ke Beranda</a>
             </div>
             <div class="col-xs-4 text-right">
                 <?php echo $this->template("Includes/mobile-language.html.php") ?>
