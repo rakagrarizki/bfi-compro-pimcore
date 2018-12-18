@@ -27,7 +27,6 @@
 /var/classes/DataObject
 
 !/var/config
-/var/config/staticroutes.php
 /var/config/system.php
 /var/config/debug-mode.php
 /var/config/maintenance.php

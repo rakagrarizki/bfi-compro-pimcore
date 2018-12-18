@@ -23,7 +23,7 @@ class SendApi
     public function executeApi($name, $url, $params)
     {
         $logger = new Logger($name);
-        $logger->pushHandler(new StreamHandler(PIMCORE_LOG_DIRECTORY . DIRECTORY_SEPARATOR .date('d') . date('m') . date("Y") ."-".$name), Logger::DEBUG);
+        $logger->pushHandler(new StreamHandler(PIMCORE_LOG_DIRECTORY . DIRECTORY_SEPARATOR .date('d') . date('m') . date("Y") ."-".$name.".log"), Logger::DEBUG);
         $stack = HandlerStack::create();
         $stack->push(Middleware::log(
             $logger,
