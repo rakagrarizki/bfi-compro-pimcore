@@ -259,13 +259,13 @@
                         position: absolute;
                         width: 20px;
                         border-radius: 50%;
-                        background-color:$primary;
+                        background-color:#F8991D;
                     }
                 }
             }
 
             .slider-selection{
-                background: $primary;
+                background: #F8991D;
             }
 
 
@@ -464,6 +464,14 @@
             cursor: pointer;
             margin: 0;
             border-radius: 2px;
+
+            @include breakpoint(mobile){
+                width:100%;
+            }
+
+             @include breakpoint(tablet){
+                width:100%;
+            }
 
             .jcf-select-text {
                 font-family: 'HelveticaNeue';
