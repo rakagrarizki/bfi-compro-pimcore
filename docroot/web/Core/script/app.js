@@ -386,6 +386,16 @@
 
 	// With JQuery
 
+	$("#ex6SliderVal").on("keyup",function(){
+		var thisval = $(this).val();
+		$(this).parents(".sliderGroup").find(".customslide").slider('setValue',parseInt(thisval));
+	});
+
+	$(".sliderGroup .c-custom-select-trans").on("change",function(){
+		var thisval = $(this).val();
+		$(this).parents(".sliderGroup").find(".customslide").slider('setValue',parseInt(thisval));
+	});
+
 	if($(".customslide").length>0) {
 		$(".customslide").slider()
 		$(".customslide").on('slide',function(evt){

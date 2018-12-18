@@ -228,9 +228,9 @@ $this->extend('layout.html.php');
                                        </div>
 
                                         <div class="col-md-6">
-                                            <div class="form-group inputsimulasi">
+                                            <div class="form-group sliderGroup inputsimulasi">
                                                 <label for="jml-biaya">Jumlah Pembiayaan</label>
-                                                <div class="input-group sliderGroup inputform">
+                                                <div class="input-group inputform">
                                                     <span class="input-group-addon" id="basic-addon1">Rp</span>
                                                     <input type="text" id="ex6SliderVal" class="form-control formRequired c-input-trans"
                                                            aria-describedby="basic-addon1">
