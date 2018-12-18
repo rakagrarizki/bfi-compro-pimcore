@@ -27,10 +27,10 @@
 /var/classes/DataObject
 
 !/var/config
+/var/config/staticroutes.php
 /var/config/system.php
 /var/config/debug-mode.php
 /var/config/maintenance.php
-/var/config/staticroutes.php
 /var/config/website-settings.php
 
 # project specific recommendations
