@@ -122,9 +122,9 @@
     .header-bottom {
         background-color: #04559f;
         transition: all .3s ease-in-out;
-        height: 100px;
+        height: 90px;
         .header-bottom-logo {
-            height: 90px;
+            height: 80px;
             position: relative;
             display: block;
             padding: 0;
@@ -140,7 +140,7 @@
        
 
         .header-bottom-menu {
-            height: 100px;
+            height: 90px;
             transition: all .3s ease-in-out;
 
             .header-link-menu {
@@ -255,6 +255,7 @@
 
                                             &:hover{
                                                 color:#7AC143;
+                                                font-weight: bold;
                                             }
                                         }
                                     }
@@ -297,6 +298,11 @@
             background-color: $primary;
 
             > .navbar-toggle[aria-expanded="true"] {
+                line-height: 65px;
+                height: 60px;
+                padding: 0 15px;
+                margin: 0;
+                width: 55px;
                 .icon-bar {
                     background: $light;
                     display: none;
@@ -305,9 +311,9 @@
                     display: block;
                     font-size: 30px;
                     position: relative;
-                    top: -10px;
+                    top: -7px;
                     color: $light;
-                    left: 6px;
+                    // left: 6px;
                 }
             }
             > .navbar-toggle[aria-expanded="false"] {

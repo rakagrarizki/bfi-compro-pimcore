@@ -18,9 +18,11 @@ footer {
     }
     .footer-center {
         span {
+            font-size: 13px;
             font-family: 'HelveticaNeue';
             display: block;
-            width: calc(100% - 80px);
+            // width: calc(100% - 80px);
+            width: 60%;
             background: #404040;
             color: $light;
             padding: 10px 15px;

@@ -66,7 +66,7 @@ $this->extend('layout.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label for="nama_lengkap">Nama Lengkap</label>
-                                            <input type="text" class="form-control formRequired" name="nama_lengkap" id="nama_lengkap"
+                                            <input type="text" class="form-control formRequired formAlphabet" name="nama_lengkap" id="nama_lengkap"
                                                    placeholder="Masukan nama lengkap Anda">
                                             <div class="error-wrap"></div>
                                         </div>
@@ -113,25 +113,29 @@ $this->extend('layout.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label for="provinsi">Provinsi</label>
-                                            <select class="c-custom-select formRequired" id="provinsi" name="provinsi">
+                                            <select class="c-custom-select formRequired" id="provinsi" name="provinsi"  data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' />
+                                                <option value="">Pilih Provinsi</option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
                                             <label for="kota">Kota</label>
-                                            <select class="c-custom-select formRequired" id="kota" name="kota">
+                                            <select class="c-custom-select formRequired" id="kota" name="kota"  data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' />
+                                                <option value="">Pilih Kota</option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
                                             <label for="kecamatan">Kecamatan</label>
-                                            <select class="c-custom-select formRequired" id="kecamatan" name="kecamatan">
+                                            <select class="c-custom-select formRequired" id="kecamatan" name="kecamatan"  data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' />
+                                                <option value="">Pilih Kecamatan</option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
                                             <label for="kelurahan">Kelurahan</label>
-                                            <select class="c-custom-select formRequired" id="kelurahan" name="kelurahan">
+                                            <select class="c-custom-select formRequired" id="kelurahan" name="kelurahan"  data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' />
+                                                <option value="">Pilih Kelurahan</option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
@@ -226,23 +230,23 @@ $this->extend('layout.html.php');
                                         <div class="col-md-6">
                                             <div class="form-group inputsimulasi">
                                                 <label for="jml-biaya">Jumlah Pembiayaan</label>
-                                                <div class="input-group inputform">
+                                                <div class="input-group sliderGroup inputform">
                                                     <span class="input-group-addon" id="basic-addon1">Rp</span>
-                                                    <input type="text" id="ex6SliderVal" class="form-control formRequired"
+                                                    <input type="text" id="ex6SliderVal" class="form-control formRequired c-input-trans"
                                                            aria-describedby="basic-addon1">
 
                                                     <div class="error-wrap"></div>
 
                                                 </div>
                                                 <div class="slidecontainer ">
-                                                    <input id="ex11" type="text" data-slider-handle="custom"
+                                                    <input id="ex11" class="customslide" type="text" data-slider-handle="custom"
                                                            data-slider-min="10000000" data-slider-max="60000000"
                                                            data-slider-step="500000" data-slider-tooltip="hide" />
                                                     <div class="value-left valuemin"></div>
                                                     <div class="value-right valuemax"></div>
                                                 </div>
                                             </div>
-                                            <div class="form-group inputsimulasi">
+                                            <div class="form-group sliderGroup inputsimulasi">
                                                 <label for="jangka warktu">Jangka Waktu</label>
                                                 <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="jangka waktu"
                                                         name="jangka-waktu">
@@ -254,7 +258,7 @@ $this->extend('layout.html.php');
                                                 </select>
                                                 <div class="error-wrap"></div>
                                                 <div class="slidecontainer">
-                                                    <input id="ex12" type="text" data-slider-handle="custom"
+                                                    <input id="ex12" class="customslide" type="text" data-slider-handle="custom"
                                                            data-slider-min="12" data-slider-max="60" data-slider-step="12"
                                                            data-slider-tooltip="hide" />
                                                     <div class="value-left">12 Bulan</div>
@@ -467,7 +471,7 @@ $this->extend('layout.html.php');
                                                     E. Jumlah Pembiayaan
                                                 </p>
                                                 <div class="button-area text-right button-angsur">
-                                                    <button class="cta cta-primary cta-big cta-ubah" type="button">UBAH</button>
+                                                    <button id="btnJumlahPembiayaan" class="cta cta-primary cta-big cta-ubah" type="button">UBAH</button>
                                                 </div>
                                                 <table>
                                                     <tr>
@@ -537,8 +541,8 @@ $this->extend('layout.html.php');
                                             dikirimkan ke nomor hendphone Anda</p>
 
                                         <div class="otp-number form-group">
-                                            <div class="otp-number__phone">
-                                                <p id="showPhone"> <span></span> <img src="/static/images/icon/pencil.png" alt=""></p>
+                                            <div class="otp-number__phone disabled">
+                                                <p id="showPhone"> <input type="text" id="otpPhone" disabled /> <img id="otpEditPhone" src="/static/images/icon/pencil.png" alt=""></p>
                                             </div>
                                             <div class="otp-number__verify">
                                                 <input type="text" class="input-number formRequired" maxlength="1" name="otp1">

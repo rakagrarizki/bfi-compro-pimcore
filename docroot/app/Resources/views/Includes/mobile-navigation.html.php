@@ -5,11 +5,11 @@ use Pimcore\Model\Document;
 <div class="top-nav--mobille hidden-md">
     <div class="container">
         <div class="row top-nav">
-            <div class="col-xs-6">
+            <div class="col-xs-8">
                 <a href="/<?php echo $this->getLocale() ?>" class="cta-top-nav active"><?= $this->translate("personal") ?></a>
                 <a href="#" class="cta-top-nav"><?= $this->translate("corporate") ?></a>
             </div>
-            <div class="col-xs-6 text-right">
+            <div class="col-xs-4 text-right">
                 <?php echo $this->template("Includes/mobile-language.html.php") ?>
             </div>
         </div>
