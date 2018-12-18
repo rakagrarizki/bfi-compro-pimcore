@@ -43,22 +43,53 @@ class CreditController extends FrontendController
     public function sendDataSimulatorAction(Request $request)
     {
         $param = [];
-        $param['Merk'] = $request->get('merk');
-        $param['City'] = $request->get('kota');
-        $param['Brand'] = $request->get('brand');
-        $param['Year'] = $request->get('tahun');
+        $param['loan_type'] = $request->get('tipe');
+        $param['model'] = $request->get('merk');
+        $param['branch'] = $request->get('kota');
+        $param['brand_name'] = $request->get('brand');
+        $param['year'] = $request->get('tahun');
+
+        $url = WebsiteSetting::getByName('URL_GET_PRICE')->getData();
+
+        try {
+            $data = $this->sendAPI->getPriceCar($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Service Request Price Down"
+            ]);
+        }
+
+        if($data->header->status != 200){
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Service Request Price Down"
+            ]);
+        }
 
         $data = [];
-        $data['funding'] = "100.000.000";
-        $data['installment'] = "12";
-        $data['asuransi_1'] = "all_risk";
-        $data['asuransi_2'] = "Total Lost";
+        $data['maxPrice'] = $data->data->price;
+        $data['minPrice'] = "10000000";
+        $data['asuransi_1'] = "ALK";
+        $data['asuransi_2'] = "TLO";
 
         return new JsonResponse([
             'success' => "1",
             'message' => "Sukses",
             'data' => $data
         ]);
+    }
+
+    public function getLoanData(Request $request)
+    {
+        $param = [];
+        $param['loan_type'] = $request->get('tipe');
+        $param['model'] = $request->get('merk');
+        $param['branch'] = $request->get('kota');
+        $param['brand_name'] = $request->get('brand');
+        $param['year'] = $request->get('tahun');
+
+        $url = WebsiteSetting::getByName('URL_GET_LOAN')->getData();
     }
 
     public function sendMobilAction(Request $request)

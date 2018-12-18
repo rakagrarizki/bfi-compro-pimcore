@@ -20,14 +20,10 @@ use Pimcore\Model\WebsiteSetting;
 
 class SendApi
 {
-    public function requestOtp($handphone, $name)
+    public function executeApi($name, $url, $params)
     {
-        $url = WebsiteSetting::getByName('URL_REQUEST_OTP')->getData();
-        $params["phone_number"] = $handphone;
-        $params["first_name"] = $name;
-
-        $logger = new Logger('api-request-otp');
-        $logger->pushHandler(new StreamHandler(PIMCORE_LOG_DIRECTORY . DIRECTORY_SEPARATOR .date('d') . date('m') . date("Y") ."-api-request-otp.log"), Logger::DEBUG);
+        $logger = new Logger($name);
+        $logger->pushHandler(new StreamHandler(PIMCORE_LOG_DIRECTORY . DIRECTORY_SEPARATOR .date('d') . date('m') . date("Y") ."-".$name), Logger::DEBUG);
         $stack = HandlerStack::create();
         $stack->push(Middleware::log(
             $logger,
@@ -50,6 +46,15 @@ class SendApi
         }
 
         return $this->getData($data);
+    }
+
+    public function requestOtp($handphone, $name)
+    {
+        $url = WebsiteSetting::getByName('URL_REQUEST_OTP')->getData();
+        $params["phone_number"] = $handphone;
+        $params["first_name"] = $name;
+
+        return $this->executeApi('api-request-otp', $url, $params);
     }
 
     public function validateOtp($handphone, $code)
@@ -58,52 +63,33 @@ class SendApi
         $params["phone_number"] = $handphone;
         $params["sms_code"] = $code;
 
-        $logger = new Logger('api-validate-otp');
-        $logger->pushHandler(new StreamHandler(PIMCORE_LOG_DIRECTORY . DIRECTORY_SEPARATOR .date('d') . date('m') . date("Y") ."-api-validate.log"), Logger::DEBUG);
-        $stack = HandlerStack::create();
-        $stack->push(Middleware::log(
-            $logger,
-            new MessageFormatter('{url} - {req_body} - {res_body}')
-        ));
-
-        $client = new Client([
-            "base_uri" => $url,
-            "verify" => false,
-            'handler' => $stack,
-        ]);
-
-        try {
-            $data = $client->request("POST", $url, [
-                "form_params" => $params
-            ]);
-
-        } catch (Exception $e) {
-            return json_decode($e->getMessage());
-        }
-
-        return $this->getData($data);
+        return $this->executeApi('api-validate-otp', $url, $params);
     }
 
     public function sendDataCredit($url, $params)
     {
-        $logger = new Logger('api-credit');
-        $logger->pushHandler(new StreamHandler(PIMCORE_LOG_DIRECTORY . DIRECTORY_SEPARATOR .date('d') . date('m') . date("Y") ."-api-credit.log"), Logger::DEBUG);
-        $stack = HandlerStack::create();
-        $stack->push(Middleware::log(
-            $logger,
-            new MessageFormatter('{url} - {req_body} - {res_body}')
-        ));
+        return $this->executeApi('api-credit', $url, $params);
+    }
 
+    public function sendNewsletter($url, $params)
+    {
+        return $this->executeApi('api-newsletter', $url, $params);
+    }
+
+    public function getPriceCar($url, $params)
+    {
+        return $this->executeApi('api-price-car', $url, $params);
+    }
+
+    public function getBranch($url)
+    {
         $client = new Client([
             "base_uri" => $url,
-            "verify" => false,
-            'handler' => $stack,
+            "verify" => false
         ]);
 
         try {
-            $data = $client->request("POST", $url, [
-                "form_params" => $params
-            ]);
+            $data = $client->request("GET", $url);
 
         } catch (Exception $e) {
             return json_decode($e->getMessage());
@@ -112,32 +98,9 @@ class SendApi
         return $this->getData($data);
     }
 
-    public function sendNewsletter($url, $params)
+    public function getLoan($url, $params)
     {
-        $logger = new Logger('api-newsletter');
-        $logger->pushHandler(new StreamHandler(PIMCORE_LOG_DIRECTORY . DIRECTORY_SEPARATOR .date('d') . date('m') . date("Y") ."-api-newsletter.log"), Logger::DEBUG);
-        $stack = HandlerStack::create();
-        $stack->push(Middleware::log(
-            $logger,
-            new MessageFormatter('{url} - {req_body} - {res_body}')
-        ));
-
-        $client = new Client([
-            "base_uri" => $url,
-            "verify" => false,
-            'handler' => $stack,
-        ]);
-
-        try {
-            $data = $client->request("POST", $url, [
-                "form_params" => $params
-            ]);
-
-        } catch (Exception $e) {
-            return json_decode($e->getMessage());
-        }
-
-        return $data;
+        return $this->executeApi('api-loan', $url, $params);
     }
 
     public function getData($data)
