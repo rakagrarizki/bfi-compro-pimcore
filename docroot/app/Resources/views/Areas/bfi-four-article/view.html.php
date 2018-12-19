@@ -16,7 +16,12 @@
                                 <div class="article__post__img" style="background-image: url('https://dummyimage.com/600x400/000/ff')">
                                 </div>
                                 <div class="article__post__text">
-                                    <p><?= $blog->getDate();?></p>
+                                    <?php
+                                    $timestampDate = \Carbon\Carbon::parse($blog->getDate());
+                                    $dateUnix = $timestampDate->timestamp;
+                                    $date = date("D, d-M'Y", $dateUnix);
+                                    ?>
+                                    <p><?= $date;?></p>
 
                                     <h4><a href="#"><?= $blog->getTitle();?></a></h4>
                                 </div>
