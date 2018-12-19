@@ -1510,15 +1510,15 @@
 	);
 
 
-	var locationurlnow = window.location.pathname;
+	// var locationurlnow = window.location.pathname;
 
-	if(locationurlnow == "/"){
-		$("._EN").removeClass("active");
-		$("._ID").addClass("active");
-	}else{
-		$("._ID").removeClass("active");
-		$("._EN").addClass("active");
-	}
+	// if(locationurlnow == "/"){
+	// 	$("._EN").removeClass("active");
+	// 	$("._ID").addClass("active");
+	// }else{
+	// 	$("._ID").removeClass("active");
+	// 	$("._EN").addClass("active");
+	// }
 
 	validateFormRequired($('#getCredit'))
 	keyupOtpAction();
