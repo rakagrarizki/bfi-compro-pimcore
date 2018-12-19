@@ -207,12 +207,15 @@ class ServiceController extends FrontendController
         try {
             $data = $sendApi->getBranch($url);
         } catch (\Exception $e) {
-            $this->writeError("cannot connect api bfi ");
+            echo "gagal connect";
         }
 
         if($data->code != 1){
-            $this->writeError("something wroong / cannot connect api bfi");
+            echo "gagal connect";
         }
+
+        dump($data);
+
         exit;
     }
 }
