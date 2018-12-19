@@ -25,6 +25,11 @@ class CreditController extends FrontendController
 
     }
 
+    public function defaultAction(Request $request)
+    {
+
+    }
+
     public function motorAction(Request $request)
     {
 

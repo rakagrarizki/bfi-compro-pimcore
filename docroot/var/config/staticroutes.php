@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 return [
     1 => [
@@ -90,5 +90,23 @@ return [
         "legacy" => FALSE,
         "creationDate" => 1544186567,
         "modificationDate" => 1544186596
+    ],
+    7 => [
+        "id" => 7,
+        "name" => "Newsletter",
+        "pattern" => "/\\/register\\/newsletter/",
+        "reverse" => "/register/newsletter",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\ServiceController",
+        "action" => "registerNewsletter",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1545192991,
+        "modificationDate" => 1545193045
     ]
 ];

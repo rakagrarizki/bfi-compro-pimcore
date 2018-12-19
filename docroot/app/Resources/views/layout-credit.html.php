@@ -62,22 +62,22 @@
 
 </head>
 <body>
-    <?php echo $this->template('Includes/navigation.html.php', ['documentInitiator' => $this->document->getId()]) ?>
+<?php echo $this->template('Includes/navigation-credit.html.php', ['documentInitiator' => $this->document->getId()]) ?>
 
-    <div id="site-container">
-        <?php $this->slots()->output('_content'); ?>
-    </div>
-    <!-- CONTAINER -->
-    <!-- FOOTER -->
-    <?= $this->inc("/".$this->getLocale()."/shared/includes/footer") ?>
-    <!-- FOOTER -->
+<div id="site-container">
+    <?php $this->slots()->output('_content'); ?>
+</div>
+<!-- CONTAINER -->
+<!-- FOOTER -->
+<?= $this->inc("/".$this->getLocale()."/shared/includes/footer-credit") ?>
+<!-- FOOTER -->
 
-    <?php $this->headScript()->prependFile('/static/js/custom.js'); ?>
-    <?php $this->headScript()->prependFile('/static/js/app.min.js'); ?>
-    <?php $this->headScript()->prependFile('/static/js/plugins.min.js'); ?>
-    <?php $this->headScript()->prependFile('/static/js/vendor.min.js'); ?>
-    <!-- <script src="https://maps.google.com/maps/api/js?libraries=places,geometry&key=AIzaSyAd5-VfeP_L4EzX9HwrFsSP9ETaaAXEC3U&region=id&language=id&libraries=geometry,places&sensor=true"></script> -->
-    <?php $this->headScript()->prependFile('/static/js/Includes/homepage.js'); ?>
-    <?php echo $this->headScript(); ?>
+<?php $this->headScript()->prependFile('/static/js/custom.js'); ?>
+<?php $this->headScript()->prependFile('/static/js/app.min.js'); ?>
+<?php $this->headScript()->prependFile('/static/js/plugins.min.js'); ?>
+<?php $this->headScript()->prependFile('/static/js/vendor.min.js'); ?>
+<!-- <script src="https://maps.google.com/maps/api/js?libraries=places,geometry&key=AIzaSyAd5-VfeP_L4EzX9HwrFsSP9ETaaAXEC3U&region=id&language=id&libraries=geometry,places&sensor=true"></script> -->
+<?php $this->headScript()->prependFile('/static/js/Includes/homepage.js'); ?>
+<?php echo $this->headScript(); ?>
 </body>
 </html>
