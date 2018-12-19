@@ -28,6 +28,10 @@ footer {
             padding: 10px 15px;
             margin-bottom: 10px;
             border:1px solid white;
+
+            @include breakpoint(mobile){
+                width: 75%;
+            }
         }
         label {
             font-family: 'HelveticaNeue';

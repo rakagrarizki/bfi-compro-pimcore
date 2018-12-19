@@ -281,7 +281,7 @@ $this->extend('layout-credit.html.php');
                                                     B. Data Pemohon
                                                 </p>
                                                 <div class="button-area text-right button-angsur">
-                                                    <button id="btnDataPemohon" class="cta cta-primary cta-big cta-ubah" type="button">UBAH</button>
+                                                    <button id="btnDataPemohon" class="cta cta-primary cta-big cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"><b>UBAH</b></i></button>
                                                 </div>
                                                 <table>
                                                     <tr>
@@ -314,7 +314,7 @@ $this->extend('layout-credit.html.php');
                                                     C. Data Tempat Tinggal
                                                 </p>
                                                 <div class="button-area text-right button-angsur">
-                                                    <button id="btnDataTempatTinggal" class="cta cta-primary cta-big cta-ubah" type="button">UBAH</button>
+                                                    <button id="btnDataTempatTinggal" class="cta cta-primary cta-big cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"><b>UBAH</b></i></button>
                                                 </div>
                                                 <table>
                                                     <tr>
@@ -348,7 +348,7 @@ $this->extend('layout-credit.html.php');
                                                     D. Data Bangunan
                                                 </p>
                                                 <div class="button-area text-right button-angsur">
-                                                    <button id="btnDataKendaraan" class="cta cta-primary cta-big cta-ubah" type="button">UBAH</button>
+                                                    <button id="btnDataKendaraan" class="cta cta-primary cta-big cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"><b>UBAH</b></i></button>
                                                 </div>
                                                 <table>
                                                     <tr>

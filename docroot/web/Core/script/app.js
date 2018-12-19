@@ -1137,7 +1137,11 @@
 						if(valCity.name != '') {
 							var elementOption = '<option value="'+ valCity.id +'">'+ valCity.name +'</option>';
 							$('#kota').empty();
-							
+							$('#kota').next().find(".jcf-select-text").children("span").html("Pilih Kota");
+							$('#kecamatan').empty();
+							$('#kecamatan').next().find(".jcf-select-text").children("span").html("Pilih Kecamatan");
+							$('#kelurahan').empty();
+							$('#kelurahan').next().find(".jcf-select-text").children("span").html("Pilih Kelurahan");
 							setTimeout(function() {
 								$("#kota").append(elementOption);
 							}, 50);
@@ -1173,6 +1177,9 @@
 							var elementOption = '<option value="'+ valKec.id +'">'+ valKec.name +'</option>';
 
 							$('#kecamatan').empty();
+							$('#kecamatan').next().find(".jcf-select-text").children("span").html("Pilih Kecamatan");
+							$('#kelurahan').empty();
+							$('#kelurahan').next().find(".jcf-select-text").children("span").html("Pilih Kelurahan");
 							
 							setTimeout(function() {
 								$("#kecamatan").append(elementOption);
@@ -1208,6 +1215,7 @@
 					
 							var elementOption = '<option value="'+ valKel.id +'">'+ valKel.name +'</option>';
 							$('#kelurahan').empty();
+							$('#kelurahan').next().find(".jcf-select-text").children("span").html("Pilih Kelurahan");
 							
 							setTimeout(function() {
 								$("#kelurahan").append(elementOption);

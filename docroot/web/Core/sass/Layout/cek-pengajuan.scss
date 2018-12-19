@@ -85,9 +85,11 @@
                 font-size: 18px;
                 @include breakpoint(mobile) {
                     text-align: center;
+                    font-weight:normal;
                 }
                 @include breakpoint(tablet) {
                     text-align: center;
+                    font-weight:normal;
                 }
             }
         }
@@ -100,7 +102,7 @@
             font-size: 2em;
             margin-bottom: 30px;
             @include breakpoint(mobile) {
-                font-size: 1.35em;
+                font-size: 1.55em;
                 margin-bottom: 20px;
             }
         }
