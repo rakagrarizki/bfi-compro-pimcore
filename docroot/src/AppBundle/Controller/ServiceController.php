@@ -192,4 +192,27 @@ class ServiceController extends FrontendController
             'result' => $maps
         ]);
     }
+
+
+    /**
+     * @Route("/service/areacode/export")
+    @Method({"GET"})
+    @return \Symfony\Component\HttpFoundation\JsonResponse
+     */
+    public function areacodeExportAction()
+    {
+        $url = WebsiteSetting::getByName('URL_GET_BRANCH')->getData();
+
+        $sendApi = new SendApi();
+        try {
+            $data = $sendApi->getBranch($url);
+        } catch (\Exception $e) {
+            $this->writeError("cannot connect api bfi ");
+        }
+
+        if($data->code != 1){
+            $this->writeError("something wroong / cannot connect api bfi");
+        }
+        exit;
+    }
 }

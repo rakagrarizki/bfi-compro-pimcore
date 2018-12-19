@@ -13,7 +13,6 @@ foreach (\Pimcore\Tool::getValidLanguages() as $language) {
     }
     $links[$language] = $target;
 }
-dump($this->getLocale());
 ?>
 <div class="lang">
     <?php foreach ($links as $lang => $target) { ?>
