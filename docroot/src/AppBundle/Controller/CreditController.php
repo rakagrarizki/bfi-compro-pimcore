@@ -45,7 +45,7 @@ class CreditController extends FrontendController
 
     }
 
-    public function sendDataSimulatorAction(Request $request)
+    public function getPriceAction(Request $request)
     {
         $param = [];
         $param['loan_type'] = $request->get('tipe');
@@ -85,16 +85,44 @@ class CreditController extends FrontendController
         ]);
     }
 
-    public function getLoanData(Request $request)
+    public function sendLoanDataAction(Request $request)
     {
+
         $param = [];
-        $param['loan_type'] = $request->get('tipe');
+        $param['branch'] = $request->get('city');
+        $param['area_code'] = $request->get('area_code');
+        $param['vehicleType'] = $request->get('tipe');
+        $param['brandName'] = $request->get('brand');
         $param['model'] = $request->get('merk');
-        $param['branch'] = $request->get('kota');
-        $param['brand_name'] = $request->get('brand');
         $param['year'] = $request->get('tahun');
+        $param['funding'] = $request->get('funding');
+        $param['tenor'] = $request->get('tenor');
+        $param['asuransi'] = $request->get('asuransi');
+        $param['taksasi'] = $request->get('taksasi');
 
         $url = WebsiteSetting::getByName('URL_GET_LOAN')->getData();
+
+        try {
+            $data = $this->sendAPI->getLoan($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Service Send Loan Down"
+            ]);
+        }
+
+        if($data->code != 1){
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+
+        return new JsonResponse([
+            'success' => "1",
+            'message' => "Sukses",
+            'data' => $data->data
+        ]);
     }
 
     public function sendMobilAction(Request $request)
