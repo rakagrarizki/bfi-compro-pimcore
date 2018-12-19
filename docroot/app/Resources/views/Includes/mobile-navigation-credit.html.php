@@ -6,8 +6,6 @@ use Pimcore\Model\Document;
     <div class="container">
         <div class="row top-nav">
             <div class="col-xs-8">
-                <a href="/<?php echo $this->getLocale() ?>" class="cta-top-nav active"><?= $this->translate("personal") ?></a>
-                <a href="#" class="cta-top-nav"><?= $this->translate("corporate") ?></a>
                 <a href="/<?php echo $this->getLocale() ?>" class="backtohome"><?= $this->translate("backtohome
                 ") ?></a>
             </div>
