@@ -1,4 +1,3 @@
-
 <?php
 /**
  * @var \Pimcore\Templating\PhpEngine $this
@@ -6,7 +5,7 @@
  * @var \Pimcore\Templating\GlobalVariables $app
  */
 
-$this->extend('layout.html.php');
+$this->extend('layout-credit.html.php');
 ?>
 <div id="myModal">
     <div class="form-dialog">
