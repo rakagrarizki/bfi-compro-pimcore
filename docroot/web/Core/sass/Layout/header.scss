@@ -63,6 +63,7 @@
 
             &._personal{
                 color:#04559F;
+                font-weight:bold;
             }
         }
 
@@ -124,6 +125,22 @@
                 a {
                     font-family: 'HelveticaNeue';
                     padding: 0 5px;
+
+                    &._EN{
+                        color:grey;
+                        &.active{
+                            color:#04559F;
+                            font-weight:bold;
+                        }
+                    }
+
+                    &._ID{
+                        color:grey;
+                        &.active{
+                            color:#04559F;
+                            font-weight:bold;
+                        }
+                    }
 
                      &:hover{
                         color:#04559F!important;

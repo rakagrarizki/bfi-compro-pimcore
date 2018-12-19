@@ -1511,11 +1511,11 @@
 	var locationurlnow = window.location.pathname;
 
 	if(locationurlnow == "/"){
-		$("._EN").css("color","grey");
-		$("._ID").css("color","#04559F");
+		$("._EN").removeClass("active");
+		$("._ID").addClass("active");
 	}else{
-		$("._ID").css("color","grey");
-		$("._EN").css("color","#04559F");
+		$("._ID").removeClass("active");
+		$("._EN").addClass("active");
 	}
 
 	validateFormRequired($('#getCredit'))
