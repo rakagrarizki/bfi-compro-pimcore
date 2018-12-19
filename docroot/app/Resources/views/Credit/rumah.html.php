@@ -175,8 +175,8 @@ $this->extend('layout-credit.html.php');
                                             <label for="merk_kendaraan">Status Sertifikat</label>
                                             <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="status_sertificate" name="status_sertificate">
                                                 <option value=""> Pilih Status Sertifikat</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
+                                                <option value="HAK MILIK">SURAT HAK MILIK</option>
+                                                <option value="HAK GUNA BANGUNAN">SURAT HAK GUNA BANGUNAN</option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
@@ -185,8 +185,8 @@ $this->extend('layout-credit.html.php');
                                             <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="own_sertificate"
                                                     name="own_sertificate">
                                                 <option value=""> Pilih Sertifikat Atas Nama</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
+                                                <option value="PERORANGAN">PERORANGAN</option>
+                                                <option value="PERUSAHAAN">PERUSAHAAN</option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
@@ -240,13 +240,13 @@ $this->extend('layout-credit.html.php');
                                         </div>
 
                                     </div>
-                                    <div class="row">
-                                        <div class="button-area text-left back">
+                                    <div class="row padding-right-56 padding-left-30">
+                                        <div class="button-area text-left back padding-0">
                                             <button class="cta cta-primary cta-big cta-back buttonback" id="buttonback3"
                                                     type="button">SEBELUMNYA</button>
                                         </div>
 
-                                        <div class="button-area text-right next">
+                                        <div class="button-area text-right next padding-0 margin-right-0">
                                             <button class="cta cta-primary cta-big cta-see buttonnext" id="button3rumah"
                                                     type="button">SELANJUTNYA</button>
                                         </div>

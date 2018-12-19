@@ -207,13 +207,13 @@ $this->extend('layout-credit.html.php');
                                         </div>
 
                                     </div>
-                                    <div class="row">
-                                        <div class="button-area text-left back">
+                                    <div class="row padding-right-56 padding-left-30">
+                                        <div class="button-area text-left back padding-0">
                                             <button class="cta cta-primary cta-big cta-back buttonback" id="buttonback3"
                                                     type="button">SEBELUMNYA</button>
                                         </div>
 
-                                        <div class="button-area text-right next">
+                                        <div class="button-area text-right next padding-0 margin-right-0">
                                             <button class="cta cta-primary cta-big cta-see buttonnext" id="button3"
                                                     type="button">SELANJUTNYA</button>
                                         </div>
