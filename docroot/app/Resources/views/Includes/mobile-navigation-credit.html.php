@@ -22,7 +22,7 @@ use Pimcore\Model\Document;
                 <span class="icon-bar"></span>
                 <span class="close-bar">x</span>
             </button>
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="<?php echo "/".$this->getLocale(); ?>">
                 <img src="/static/images/logo-bfi.png" alt="logo-bfi" class="img-responsive">
             </a>
             <div class="button-area--nav">

@@ -16,19 +16,6 @@ use Pimcore\Model\Document\Page;
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 left-side-top">
-                        <?php
-/*                        if($this->document->getPath() != "/"){
-                            */?><!--
-                            <a href="/<?php /*echo $this->getLocale() */?>" class="backtohome"><?/*= $this->translate("backtohome") */?></a>
-                            <?php
-/*                        }else{
-                            */?>
-                            <a class="_personal" href="/<?php /*echo $this->getLocale() */?>"><?/*= $this->translate("personal") */?></a>
-                            <a class="_grup" href="#"><?/*= $this->translate("corporate") */?></a>
-                            --><?php
-/*                        }
-                        */?>
-
                         <a class="_personal" href="/<?php echo $this->getLocale() ?>"><?= $this->translate("personal") ?></a>
                         <a class="_grup" href="#"><?= $this->translate("corporate") ?></a>
                     </div>
