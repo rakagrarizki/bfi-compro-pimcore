@@ -108,5 +108,41 @@ return [
         "legacy" => FALSE,
         "creationDate" => 1545192991,
         "modificationDate" => 1545193045
+    ],
+    8 => [
+        "id" => 8,
+        "name" => "get price",
+        "pattern" => "/\\/credit\\/get-price/",
+        "reverse" => "/credit/get-price",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getPrice",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1545204832,
+        "modificationDate" => 1545204960
+    ],
+    9 => [
+        "id" => 9,
+        "name" => "get loan",
+        "pattern" => "/\\/credit\\/get-loan/",
+        "reverse" => "/credit/get-loan",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "sendLoanData",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1545204967,
+        "modificationDate" => 1545204998
     ]
 ];
