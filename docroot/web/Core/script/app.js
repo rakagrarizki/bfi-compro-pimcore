@@ -1513,9 +1513,11 @@
 	if(locationurlnow == "/"){
 		$("._EN").css("color","grey");
 		$("._ID").css("color","#04559F");
+		$("._ID").css("font-weight","bold");
 	}else{
 		$("._ID").css("color","grey");
 		$("._EN").css("color","#04559F");
+		$("._EN").css("font-weight","bold");
 	}
 
 	validateFormRequired($('#getCredit'))
