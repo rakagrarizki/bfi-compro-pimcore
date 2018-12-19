@@ -89,7 +89,7 @@ class SendApi
         ]);
 
         try {
-            $data = $client->request("GET", $url);
+            $data = $client->request("POST", $url);
 
         } catch (Exception $e) {
             return json_decode($e->getMessage());

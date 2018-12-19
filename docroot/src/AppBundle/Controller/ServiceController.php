@@ -192,30 +192,4 @@ class ServiceController extends FrontendController
             'result' => $maps
         ]);
     }
-
-
-    /**
-     * @Route("/service/areacode/export")
-    @Method({"GET"})
-    @return \Symfony\Component\HttpFoundation\JsonResponse
-     */
-    public function areacodeExportAction()
-    {
-        $url = WebsiteSetting::getByName('URL_GET_BRANCH')->getData();
-
-        $sendApi = new SendApi();
-        try {
-            $data = $sendApi->getBranch($url);
-        } catch (\Exception $e) {
-            echo "gagal connect";
-        }
-
-        if($data->code != 1){
-            echo "gagal connect";
-        }
-
-        dump($data);
-
-        exit;
-    }
 }
