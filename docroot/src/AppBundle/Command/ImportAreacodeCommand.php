@@ -36,20 +36,33 @@ class ImportAreacodeCommand extends AbstractCommand
         }
 
         foreach ($data->data as $branch){
-            $city = City::getByName(strtoupper($branch->branch), 1);
-            if($city){
-                $city->setAreaCode($branch->area_code);
-                try {
-                    $city->save();
-                    $this->dump("Succes save AreaCode " . strtoupper($branch->branch));
-                } catch (\Exception $exception) {
-                    $this->writeError("Failed save AreaCode " . strtoupper($branch->branch) . " because " . $exception->getMessage());
+
+            $nameKota = preg_replace("/(?:^|\W)KAB.(?:$|\W)/", "", strtoupper($branch->branch));
+            $nameKota = preg_replace("/(?:^|\W)KAB(?:$|\W)/", "", $nameKota);
+            $nameKota = str_replace('.', '', $nameKota);
+
+            if($nameKota != ""){
+                $data = new City\Listing();
+                $data->addConditionParam("Name LIKE ?", "%" . $nameKota . "%", "AND");
+                $data->setOrderKey("Name");
+                $data->setOrder("DESC");
+                $data->load();
+
+                if($data->getObjects()){
+                    foreach($data->getObjects() as $city){
+                        $city->setAreaCode($branch->area_code);
+
+                        try {
+                            $city->save();
+                            $this->dump("Succes save AreaCode " . strtoupper($nameKota));
+                        } catch (\Exception $exception) {
+                            $this->writeError("Failed save AreaCode " . strtoupper($nameKota) . " because " . $exception->getMessage());
+                        }
+                    }
+                }else{
+                    $this->writeError("Kota " . strtoupper($nameKota) . " Tidak ditemukan ");
                 }
-            }else{
-                $this->writeError("Kota Tidak ditemukan ");
             }
         }
-
-
     }
 }
