@@ -16,15 +16,11 @@ use Pimcore\Model\Document\Page;
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 left-side-top">
-<<<<<<< HEAD
+
                         <a class="_personal" href="/<?php echo $this->getLocale() ?>"><?= $this->translate("personal") ?></a>
                         <a class="_grup" href="#"><?= $this->translate("corporate") ?></a>
                         <a href="" class="backtohome">Kembali ke Beranda</a>
-=======
-                        <a href="/<?php echo $this->getLocale() ?>"><?= $this->translate("personal") ?></a>
-                        <a href="#"><?= $this->translate("corporate") ?></a>
-                        <a href="/<?php echo $this->getLocale() ?>" class="backtohome"><?= $this->translate("backtohome") ?></a>
->>>>>>> a20ffa7abc31308c39a0f4a16db18ae8ead911ce
+                       
                     </div>
                     <div class="col-md-5 right-side-top">
                         <div class="link-about-top">
