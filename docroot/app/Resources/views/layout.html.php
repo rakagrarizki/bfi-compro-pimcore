@@ -76,7 +76,6 @@
     <?php $this->headScript()->prependFile('/static/js/app.min.js'); ?>
     <?php $this->headScript()->prependFile('/static/js/plugins.min.js'); ?>
     <?php $this->headScript()->prependFile('/static/js/vendor.min.js'); ?>
-    <!-- <script src="https://maps.google.com/maps/api/js?libraries=places,geometry&key=AIzaSyAd5-VfeP_L4EzX9HwrFsSP9ETaaAXEC3U&region=id&language=id&libraries=geometry,places&sensor=true"></script> -->
     <?php $this->headScript()->prependFile('/static/js/Includes/homepage.js'); ?>
     <?php echo $this->headScript(); ?>
 </body>
