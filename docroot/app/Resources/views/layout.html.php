@@ -72,7 +72,7 @@
     <?= $this->inc("/".$this->getLocale()."/shared/includes/footer") ?>
     <!-- FOOTER -->
 
-
+    <?php $this->headScript()->prependFile('/static/js/custom.js'); ?>
     <?php $this->headScript()->prependFile('/static/js/app.min.js'); ?>
     <?php $this->headScript()->prependFile('/static/js/plugins.min.js'); ?>
     <?php $this->headScript()->prependFile('/static/js/vendor.min.js'); ?>

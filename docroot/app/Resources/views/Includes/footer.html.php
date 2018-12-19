@@ -50,6 +50,18 @@ if($this->editmode) : ?>
 
 <?php endif?>
 
+<div id="errorNewsletter" class="modal modal--failed fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content text-center">
+            <div class="modal-body">
+                <div class="body-text"></div>
+                <button type="button" class="cta cta-orange" data-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- FOOTER -->
 <footer>
     <div class="container">
@@ -66,11 +78,13 @@ if($this->editmode) : ?>
             <div class="col-md-4 footer-center">
                 <span><?= $this->translate("customer-care") ?> <i class="fa fa-phone"></i> 1500018</span>
                 <label><?= $this->translate("Newsletter") ?></label>
-                <form class="form-inline">
+                <form class="form-inline" id="sendNewsletter" action="javacript:void(0)"
+                      method="POST">
                     <div class="form-group">
-                        <input type="password" class="form-control" id="email" placeholder="Your email here...">
+                        <input type="text" class="form-control" id="email" name="email" placeholder="Your email here...">
                     </div>
-                    <button type="submit" class="cta cta-primary submitfoot"><?= $this->translate("submit") ?></button>
+                    <div id="ajax-loading"></div>
+                    <button type="submit" id="button-klik" class="cta cta-primary submitfoot"><?= $this->translate("submit") ?></button>
                 </form>
             </div>
             <div class="col-md-4 footer-right">
