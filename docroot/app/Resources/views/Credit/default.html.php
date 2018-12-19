@@ -5,6 +5,6 @@
  * @var \Pimcore\Templating\GlobalVariables $app
  */
 
-$this->extend('layout-credit.html.php');
+$this->extend('layout.html.php');
 ?>
 <?= $this->areablock('areaBlock');?>
