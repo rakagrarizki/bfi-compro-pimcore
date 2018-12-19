@@ -64,6 +64,16 @@
             &._personal{
                 color:#04559F;
                 font-weight:bold;
+                
+                @include breakpoint(mobile){
+                    text-transform:uppercase;
+                }
+            }
+
+            &._grup{
+                @include breakpoint(mobile){
+                    text-transform:uppercase;
+                }
             }
         }
 
@@ -325,6 +335,17 @@
                 &:last-child {
                     margin-right: 0;
                 }
+
+                &._personal{
+                    color:#04559F;
+                    font-weight:bold;
+                    
+                    
+                }
+
+                &._grup{
+                    
+                }
             }
             .active {
                 font-weight: bold;
@@ -375,6 +396,7 @@
                 margin: 12px 0px 12px 15px;
                 a {
                     font-size: 12px;
+                    text-transform: uppercase;
                     &:before {
                         right: 10px;
                     }

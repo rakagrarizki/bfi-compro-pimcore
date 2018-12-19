@@ -24,6 +24,11 @@
             a {
                 overflow: hidden;
                 border: none;
+
+                @include breakpoint(mobile){
+                    padding:10px 5px;
+                }
+
                 &:hover, &:focus {
                     background-color: transparent;
                     border: none;
@@ -53,6 +58,10 @@
                     color: #565656;
                     margin: 8px 0 0;
                     font-size:12px;
+
+                    @include breakpoint(mobile){
+                        width:auto;
+                    }
                 }
             }
 
