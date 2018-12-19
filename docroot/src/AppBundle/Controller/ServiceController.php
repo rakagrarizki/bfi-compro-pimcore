@@ -40,23 +40,26 @@ class ServiceController extends FrontendController
             ]);
         }
 
-        if($data == true){
-            return new JsonResponse([
-                'success' => "1",
-                'message' => "Sukses"
-            ]);
-        }
-
-        if($data->code == "413"){
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Gagal"
-            ]);
+        if(is_array($data))
+        {
+            if($data->code == "413"){
+                return new JsonResponse([
+                    'success' => "0",
+                    'message' => $data->message
+                ]);
+            }
+        }else{
+            if($data == true){
+                return new JsonResponse([
+                    'success' => "1",
+                    'message' => "Sukses"
+                ]);
+            }
         }
 
         return new JsonResponse([
             'success' => "0",
-            'message' => "Gagal"
+            'message' => "Gagal Mendaftarkan email newslettter"
         ]);
     }
 

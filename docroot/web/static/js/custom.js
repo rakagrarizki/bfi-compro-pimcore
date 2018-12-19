@@ -49,14 +49,14 @@ $(document).ready(function () {
                     },
                     success: function (data) {
 
-                        if (data.success == 0) {
+                        if (data.success == 1) {
                             RenderingErrorContent('<p>Email berhasil terdaftar</p>');
                             $("#ajax-loading").hide();
                             $("#button-klik").show();
                             $('#errorNewsletter').modal('show');
                         }
-                        else if(data.success == 1) {
-                            RenderingErrorContent('<p>Email Sudah terdaftar / salah</p>');
+                        else if(data.success == 0) {
+                            RenderingErrorContent('<p>' + data.message + '</p>');
                             $("#ajax-loading").hide();
                             $("#button-klik").show();
 
