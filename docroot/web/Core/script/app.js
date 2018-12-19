@@ -388,11 +388,13 @@
 
 	$("#ex6SliderVal").on("keyup",function(){
 		var thisval = $(this).val();
+		thisval = thisval.replace(/\./g,"");
 		$(this).parents(".sliderGroup").find(".customslide").slider('setValue',parseInt(thisval));
 	});
 
 	$(".sliderGroup .c-custom-select-trans").on("change",function(){
 		var thisval = $(this).val();
+		thisval = thisval.replace(".","");
 		$(this).parents(".sliderGroup").find(".customslide").slider('setValue',parseInt(thisval));
 	});
 
