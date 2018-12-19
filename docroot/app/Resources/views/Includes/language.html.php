@@ -18,7 +18,7 @@ foreach (\Pimcore\Tool::getValidLanguages() as $language) {
 <div class="lang">
     <?php foreach ($links as $lang => $target) {
         ?>
-        <a href="<?php echo $target ?>"><?php echo $lang == 'en' ? 'EN' : 'ID' ?></a>
+        <a class="<?php echo $lang == 'en' ? '_EN' : '_ID' ?>" href="<?php echo $target ?>"><?php echo $lang == 'en' ? 'EN' : 'ID' ?></a>
     <?php } ?>
 </div>
 

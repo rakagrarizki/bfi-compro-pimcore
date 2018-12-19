@@ -16,8 +16,8 @@ use Pimcore\Model\Document\Page;
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 left-side-top">
-                        <a href="/<?php echo $this->getLocale() ?>"><?= $this->translate("personal") ?></a>
-                        <a href="#"><?= $this->translate("corporate") ?></a>
+                        <a class="_personal" href="/<?php echo $this->getLocale() ?>"><?= $this->translate("personal") ?></a>
+                        <a class="_grup" href="#"><?= $this->translate("corporate") ?></a>
                         <a href="" class="backtohome">Kembali ke Beranda</a>
                     </div>
                     <div class="col-md-5 right-side-top">

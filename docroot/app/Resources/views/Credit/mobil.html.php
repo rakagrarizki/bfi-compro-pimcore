@@ -324,8 +324,11 @@ $this->extend('layout.html.php');
                                                     </table>
                                                 </div>
                                                 <div class="total-estimate">
-                                                    <p class="title-angsuran">Total Estimasi Angsuran Per Bulan</p>
+                                                    <p class="title-angsuran">Total Estimasi Angsuran Per Bulan*</p>
                                                     <p class="total">Rp 1.545.000</p>
+                                                    <p class="infotext">*Biaya angsuran dapat berubah sesuai dengan hasil survei</p>
+                                                    <button class="cta cta-primary cta-big" id="recalc"
+                                                        type="button">HITUNG ULANG</button>
                                                 </div>
                                             </div>
                                         </div>

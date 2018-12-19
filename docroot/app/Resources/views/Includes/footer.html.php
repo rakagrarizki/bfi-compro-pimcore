@@ -68,7 +68,7 @@ if($this->editmode) : ?>
                 <label><?= $this->translate("Newsletter") ?></label>
                 <form class="form-inline">
                     <div class="form-group">
-                        <input type="password" class="form-control" id="email" placeholder="Your email here...">
+                        <input type="text" class="form-control" id="email" placeholder="Your email here...">
                     </div>
                     <button type="submit" class="cta cta-primary submitfoot"><?= $this->translate("submit") ?></button>
                 </form>

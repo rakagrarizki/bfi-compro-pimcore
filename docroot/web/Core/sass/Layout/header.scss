@@ -60,6 +60,10 @@
 
         a {
             color: grey;
+
+            &._personal{
+                color:#04559F;
+            }
         }
 
         .left-side-top {
@@ -69,6 +73,7 @@
 
                 &:hover{
                         color:#04559F;
+                        font-weight:bold;
                     }
             }
         }
@@ -86,6 +91,7 @@
 
                     &:hover{
                         color:#04559F;
+                        font-weight:bold;
                     }
                 }
             }
@@ -95,6 +101,7 @@
 
                 a {
                     padding: 0 10px;
+                    font-weight:bold;
                     &:hover{
                         color:#04559F;
                     }
@@ -119,7 +126,8 @@
                     padding: 0 5px;
 
                      &:hover{
-                        color:#04559F;
+                        color:#04559F!important;
+                        font-weight:bold;
                     }
                 }
             }
@@ -222,7 +230,7 @@
                         ul {
                             width: 100%;
                             position: fixed;
-                            margin-top: 28px;
+                            margin-top: 18px;
                             left: 0;
                             display: none;
                             .produk-hover{

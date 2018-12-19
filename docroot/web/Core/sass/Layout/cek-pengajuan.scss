@@ -17,6 +17,44 @@
             padding: 25px 15px;
         }
 
+        ._parentboxkirikanan{
+            text-align:center;
+            width:100%;
+            ._boxkiri{
+                display:inline-block;
+            }
+
+            ._boxkanan{
+                display:inline-block;
+
+                ._boxkananchild1{
+                    display:inline-block;
+                }
+
+                ._boxkananchild2{
+                    display:inline-block;
+                    position:relative;
+
+                    @include breakpoint(mobile) {
+                        margin-left:0px;
+                    }
+
+                     @include breakpoint(tablet) {
+                        margin-left:0px;
+                    }
+
+                    .btn-submit{
+                        &:before{
+                            left:0;
+                            right:0;
+                            margin:auto;
+                            width:15px;
+                        }
+                    }
+                }
+            }
+        }
+
         .soloboxarrow-cekpengajuan{
         
             @include breakpoint(tablet) {
@@ -64,7 +102,7 @@
             box-shadow: 5px 5px 15px -5px $grey-dark;
             width: 100%;
             @include breakpoint(mobile) {
-                margin-bottom: 15px;
+                
             }
 
             .input-group-addon:first-child {
