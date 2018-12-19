@@ -22,5 +22,5 @@ foreach (\Pimcore\Tool::getValidLanguages() as $language) {
         $active = "";
     }
     ?>
-    <a href="<?php echo $target ?>" class="cta-top-nav <?= $active ?>"><?php echo $lang == 'en' ? 'EN' : 'ID' ?></a>
+    <a class="<?php echo $lang == 'en' ? '_EN' : '_ID' ?>" href="<?php echo $target ?>" class="cta-top-nav <?= $active ?>"><?php echo $lang == 'en' ? 'EN' : 'ID' ?></a>
 <?php } ?>

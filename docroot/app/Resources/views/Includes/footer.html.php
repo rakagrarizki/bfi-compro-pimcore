@@ -81,7 +81,11 @@ if($this->editmode) : ?>
                 <form class="form-inline" id="sendNewsletter" action="javacript:void(0)"
                       method="POST">
                     <div class="form-group">
+<<<<<<< HEAD
+                        <input type="text" class="form-control" id="email" placeholder="Your email here...">
+=======
                         <input type="text" class="form-control" id="email" name="email" placeholder="Your email here...">
+>>>>>>> a20ffa7abc31308c39a0f4a16db18ae8ead911ce
                     </div>
                     <div id="ajax-loading"></div>
                     <button type="submit" id="button-klik" class="cta cta-primary submitfoot"><?= $this->translate("submit") ?></button>

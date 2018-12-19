@@ -300,24 +300,27 @@
                padding: 50px;
                background-color: #f4f4f4;
                margin-top: 10px;
-               text-align: center;
+               text-align: left;
                margin-bottom:25px;
                p{
                    line-height: 2;
                    font-size:24px;
-
-                   &:last-child{
-                        color: #04559F;
-                        font-weight: bold;
-                        font-size: 42px;
-                   }
                }
                .title-angsuran{
                    font-size: 1.5em;
+                   margin-bottom:0;
                    
                }
                .total{
-                   font-size: 1.5em;
+                   color: #04559F;
+                   font-weight: bold;
+                   font-size: 42px;
+                   margin-bottom:0;
+               }
+
+               .infotext{
+                   margin-bottom:30px;
+                   font-size:12px;
                }
            }
         }

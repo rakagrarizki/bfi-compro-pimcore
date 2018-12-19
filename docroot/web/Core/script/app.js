@@ -1506,7 +1506,17 @@
 		    $(".header-link-menu").removeClass("active");
 		  }
 	);
-	//alert($("#produk").length);
+
+
+	var locationurlnow = window.location.pathname;
+
+	if(locationurlnow == "/"){
+		$("._EN").css("color","grey");
+		$("._ID").css("color","#04559F");
+	}else{
+		$("._ID").css("color","grey");
+		$("._EN").css("color","#04559F");
+	}
 
 	validateFormRequired($('#getCredit'))
 	keyupOtpAction();
