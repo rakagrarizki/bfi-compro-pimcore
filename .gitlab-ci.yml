@@ -3,21 +3,21 @@ stages:
   - deploy
 build_staging:
   before_script:
-    - chmod +x .ci/build.sh
+    - chmod +x .ci/build-development.sh
   stage: build
   script:
-    - .ci/build.sh
+    - .ci/build-development.sh
   only:
-    - backend-dev
+    - development
   allow_failure: true
 deploy_staging:
   stage: deploy
   before_script:
-    - chmod +x .ci/run.sh
+    - chmod +x .ci/run-development.sh
   script:
-    - .ci/run.sh
+    - .ci/run-development.sh
   environment:
     name: staging
     url: http://bfi.staging7.salt.id
   only:
-    - backend-dev
+    - development
