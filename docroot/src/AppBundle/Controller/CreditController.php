@@ -72,16 +72,16 @@ class CreditController extends FrontendController
             ]);
         }
 
-        $data = [];
-        $data['maxPrice'] = $data->data[0]->price;
-        $data['minPrice'] = "10000000";
-        $data['asuransi_1'] = "ALK";
-        $data['asuransi_2'] = "TLO";
+        $dataApi = [];
+        $dataApi['maxPrice'] = $data->data[0]->price;
+        $dataApi['minPrice'] = "10000000";
+        $dataApi['asuransi_1'] = "ALK";
+        $dataApi['asuransi_2'] = "TLO";
 
         return new JsonResponse([
             'success' => "1",
             'message' => "Sukses",
-            'data' => $data
+            'data' => $dataApi
         ]);
     }
 
