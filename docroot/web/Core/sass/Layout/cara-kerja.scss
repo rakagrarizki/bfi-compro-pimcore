@@ -7,6 +7,14 @@
         margin-top: 15px;
         margin-bottom: 85px;
 
+        a{
+            &:before{
+                @include breakpoint(mobile) {
+                    right:10px;
+                }   
+            }
+        }
+
         .title-cara-kerja {
             font-size: 3em;
             font-family: 'HelveticaNeue';

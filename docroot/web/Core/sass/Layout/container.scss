@@ -2,6 +2,7 @@
 #site-container {
     margin-top: 130px;
     min-height: 56vh;
+    overflow:hidden;
 
     &.active {
         margin-top: 0;
@@ -98,6 +99,25 @@ a {
         a{
             background-color:#F8991D;
             border:1px solid #F8991D;
+
+            &:before{
+                @include breakpoint(mobile) {
+                    right:10px;
+                }   
+            }
         }
     }
 }
+
+#informasi-inspiratif{
+    .button-area.text-center{
+        a{
+            &:before{
+                @include breakpoint(mobile) {
+                    right:10px;
+                }   
+            }
+        }
+    }
+}
+

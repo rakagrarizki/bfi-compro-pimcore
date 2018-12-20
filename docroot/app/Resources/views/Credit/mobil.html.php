@@ -56,7 +56,7 @@ $this->extend('layout-credit.html.php');
                             </ul>
                         </nav>
                         <form action="#" id="getCredit" method="POST" class="form-get--credit" role="form">
-                            <input type="hidden" id="jenis_form" name="jenis_form" value="BPKB MOBIL">
+                            <input type="hidden" id="jenis_form" name="jenis_form" value="MOBIL">
                             <div class="tab-content">
                                 <div id="menu1" class="tab-pane fade in active form-group">
                                     <div class="form-body--credit">
@@ -174,8 +174,7 @@ $this->extend('layout-credit.html.php');
                                             <label for="merk_kendaraan">Merk Kendaraan</label>
                                             <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="merk_kendaraan" name="merk_kendaraan">
                                                 <option value=""> Pilih merk kendaraan</option>
-                                                <option value="Yamaha">Yamaha</option>
-                                                <option value="Honda">Honda</option>
+                                                <option value="ALLNEWXENIA DVVTI10MT">ALLNEWXENIA DVVTI10MT</option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
@@ -184,8 +183,7 @@ $this->extend('layout-credit.html.php');
                                             <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="model_kendaraan"
                                                     name="model_kendaraan">
                                                 <option value=""> Pilih Model Kendaraan</option>
-                                                <option value="Yamaha YZR1M">Yamaha YZR1M</option>
-                                                <option value="Honda CBR 1000">Honda CBR 1000</option>
+                                                <option value="DAIHATSU">DAIHATSU</option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
@@ -195,7 +193,6 @@ $this->extend('layout-credit.html.php');
                                                     name="tahun_kendaraan">
                                                 <option value=""> Pilih tahun kendaraan</option>
                                                 <option value="2011">2011</option>
-                                                <option value="2012">2012</option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
@@ -277,11 +274,6 @@ $this->extend('layout-credit.html.php');
                                                     <div class="list-select">
                                                         <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="status"
                                                                 name="status">
-                                                            <option value="12">12 Bulan</option>
-                                                            <option value="24">24 Bulan</option>
-                                                            <option value="36">36 Bulan</option>
-                                                            <option value="48">48 Bulan</option>
-                                                            <option value="60">60 Bulan</option>
                                                         </select>
                                                     </div>
                                                     <div class="error-wrap"></div>
