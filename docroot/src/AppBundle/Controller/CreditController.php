@@ -48,11 +48,11 @@ class CreditController extends FrontendController
     public function getPriceAction(Request $request)
     {
         $param = [];
-        $param['loan_type'] = $request->get('tipe');
-        $param['model'] = $request->get('merk');
-        $param['branch'] = $request->get('kota');
-        $param['brand_name'] = $request->get('brand');
-        $param['year'] = $request->get('tahun');
+        $param['loan_type'] = (string)$request->get('tipe');
+        $param['model'] = (string)$request->get('merk');
+        $param['branch'] = (string)$request->get('kota');
+        $param['brand_name'] = (string)$request->get('brand');
+        $param['year'] = (string)$request->get('tahun');
 
         $url = WebsiteSetting::getByName('URL_GET_PRICE')->getData();
 
@@ -72,16 +72,16 @@ class CreditController extends FrontendController
             ]);
         }
 
-        $data = [];
-        $data['maxPrice'] = $data->data->price;
-        $data['minPrice'] = "10000000";
-        $data['asuransi_1'] = "ALK";
-        $data['asuransi_2'] = "TLO";
+        $dataApi = [];
+        $dataApi['maxPrice'] = $data->data[0]->price;
+        $dataApi['minPrice'] = "10000000";
+        $dataApi['asuransi_1'] = "ALK";
+        $dataApi['asuransi_2'] = "TLO";
 
         return new JsonResponse([
             'success' => "1",
             'message' => "Sukses",
-            'data' => $data
+            'data' => $dataApi
         ]);
     }
 
