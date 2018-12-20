@@ -263,6 +263,7 @@
                     width: 100%;
                     @include breakpoint(mobile){
                         margin: 0 10px 10px;
+                        width: 90%;
                     }
                 }
                 .value-left{
