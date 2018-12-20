@@ -132,6 +132,26 @@
         font-weight:bold;
         font-size:16px;
 
+        &.deactive{
+            display:none;
+        }
+
+        &.hidesavebutton{
+            display:none;
+
+            &.active{
+                display:inline-block;
+            }
+        }
+
+        &.hidesavebuttonhome{
+            display:none;
+
+             &.active{
+                display:inline-block;
+            }
+        }
+
         @include breakpoint(mobile){
             margin-bottom:25px;
             font-size: 13px;

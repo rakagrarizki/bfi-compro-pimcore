@@ -93,6 +93,14 @@
                 background-color: #F0F0F0;
                 border: 1px solid #F0F0F0;
                 font-size:14px;
+                width:140px;
+                height:50px;
+
+                b{
+                    color:black;
+                    opacity:0.8;
+                    margin-left:10px;
+                }
             }
 
             &:after{
@@ -841,12 +849,9 @@
 }
 
 .fa-pencil{
-    b{
-        margin-left:10px;
-        color:black;
-    }
     &:before{
         color:black;
+        opacity:0.5;
     }
 }
 
