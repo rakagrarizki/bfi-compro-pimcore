@@ -93,6 +93,23 @@
                 background-color: #F0F0F0;
                 border: 1px solid #F0F0F0;
                 font-size:14px;
+                width:140px;
+                height:50px;
+
+                @include breakpoint(mobile){
+                    width:40px;
+                    height:40px;
+                    padding:0;
+                }
+
+                b{
+                    color:black;
+                    opacity:0.8;
+                    margin-left:10px;
+                    @include breakpoint(mobile){
+                        display:none;
+                    }
+                }
             }
 
             &:after{
@@ -117,7 +134,7 @@
             .cont-agunan{
                 margin-bottom: 20px;
                 .title-agunan{
-                    font-size: 1.5em;
+                    font-size: 1.2em;
                     font-family: 'HelveticaNeue';
                     font-weight: 600;
                     @include breakpoint(mobile){
@@ -128,14 +145,16 @@
                     position: absolute;
                     right: 0;
                     top: 20px;
-                    @include breakpoint(mobile){
-                        
-                    }
                 }
 
                 table{
                     width: 100%;
                     font-size: 1.3em;
+
+
+                    @include breakpoint(mobile){
+                        font-size:0.8em;
+                    }
 
                    tbody{
                        tr{
@@ -244,6 +263,7 @@
                     width: 100%;
                     @include breakpoint(mobile){
                         margin: 0 10px 10px;
+                        width: 90%;
                     }
                 }
                 .value-left{
@@ -841,12 +861,9 @@
 }
 
 .fa-pencil{
-    b{
-        margin-left:10px;
-        color:black;
-    }
     &:before{
         color:black;
+        opacity:0.5;
     }
 }
 

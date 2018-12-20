@@ -227,6 +227,7 @@
                             padding: 10px 20px;
                             &:hover {
                                 background: none;
+                                color:#7AC143;
                             }
                             &.produk {
                                 &:after {
@@ -303,6 +304,11 @@
                                             font-weight: 500;
 
                                             &:hover{
+                                                color:#7AC143;
+                                                font-weight: bold;
+                                            }
+
+                                            &:active{
                                                 color:#7AC143;
                                                 font-weight: bold;
                                             }

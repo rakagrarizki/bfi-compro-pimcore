@@ -101,6 +101,7 @@ $this->extend('layout-credit.html.php');
                                     <div class="button-area text-right next">
 
                                         <button class="cta cta-primary cta-big cta-see buttonnext" id="button1" type="button">SELANJUTNYA</button>
+                                        <button class="cta cta-primary cta-big cta-see buttonnext hidesavebutton"  type="button">SIMPAN</button>
 
                                     </div>
 
@@ -158,6 +159,7 @@ $this->extend('layout-credit.html.php');
                                     </div>
                                     <div class="button-area text-right next">
                                         <button class="cta cta-primary cta-big cta-see buttonnext" id="button2" type="button">SELANJUTNYA</button>
+                                        <button class="cta cta-primary cta-big cta-see buttonnext hidesavebutton" type="button">SIMPAN</button>
                                     </div>
 
                                 </div>
@@ -215,6 +217,7 @@ $this->extend('layout-credit.html.php');
                                         <div class="button-area text-right next padding-0 margin-right-0">
                                             <button class="cta cta-primary cta-big cta-see buttonnext" id="button3"
                                                     type="button">SELANJUTNYA</button>
+                                            <button class="cta cta-primary cta-big cta-see buttonnext hidesavebutton" type="button">SIMPAN</button>
                                         </div>
                                     </div>
 
@@ -339,6 +342,7 @@ $this->extend('layout-credit.html.php');
 
                                     <div class="button-area text-right next">
                                         <button class="cta cta-primary cta-big cta-see buttonnext" id="button4" type="button">SELANJUTNYA</button>
+                                        <button class="cta cta-primary cta-big cta-see buttonnext hidesavebutton" type="button">SIMPAN</button>
                                     </div>
 
                                 </div>
@@ -370,7 +374,7 @@ $this->extend('layout-credit.html.php');
                                                     B. Data Pemohon
                                                 </p>
                                                 <div class="button-area text-right button-angsur">
-                                                    <button id="btnDataPemohon" class="cta cta-primary cta-big cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"><b>UBAH</b></i></button>
+                                                    <button id="btnDataPemohon" class="cta cta-primary cta-big cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"></i><b>UBAH</b></button>
                                                 </div>
                                                 <table>
                                                     <tr>
@@ -403,7 +407,7 @@ $this->extend('layout-credit.html.php');
                                                     C. Data Tempat Tinggal
                                                 </p>
                                                 <div class="button-area text-right button-angsur">
-                                                    <button id="btnDataTempatTinggal" class="cta cta-primary cta-big cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"><b>UBAH</b></i></button>
+                                                    <button id="btnDataTempatTinggal" class="cta cta-primary cta-big cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"></i><b>UBAH</b></button>
                                                 </div>
                                                 <table>
                                                     <tr>
@@ -437,7 +441,7 @@ $this->extend('layout-credit.html.php');
                                                     D. Data Kendaraan
                                                 </p>
                                                 <div class="button-area text-right button-angsur">
-                                                    <button id="btnDataKendaraan" class="cta cta-primary cta-big cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"><b>UBAH</b></i></button>
+                                                    <button id="btnDataKendaraan" class="cta cta-primary cta-big cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"></i><b>UBAH</b></button>
                                                 </div>
                                                 <table>
                                                     <tr>
@@ -471,7 +475,7 @@ $this->extend('layout-credit.html.php');
                                                     E. Jumlah Pembiayaan
                                                 </p>
                                                 <div class="button-area text-right button-angsur">
-                                                    <button id="btnJumlahPembiayaan" class="cta cta-primary cta-big cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"><b>UBAH</b></i></button>
+                                                    <button id="btnJumlahPembiayaan" class="cta cta-primary cta-big cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"></i><b>UBAH</b></button>
                                                 </div>
                                                 <table>
                                                     <tr>

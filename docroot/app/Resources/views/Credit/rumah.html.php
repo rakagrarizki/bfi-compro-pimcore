@@ -105,6 +105,7 @@ $this->extend('layout-credit.html.php');
                                     <div class="button-area text-right next">
 
                                         <button class="cta cta-primary cta-big cta-see buttonnext" id="button1" type="button">SELANJUTNYA</button>
+                                        <button class="cta cta-primary cta-big cta-see buttonnext hidesavebuttonhome" type="button">SIMPAN</button>
 
                                     </div>
 
@@ -162,6 +163,7 @@ $this->extend('layout-credit.html.php');
                                     </div>
                                     <div class="button-area text-right next">
                                         <button class="cta cta-primary cta-big cta-see buttonnext" id="button2" type="button">SELANJUTNYA</button>
+                                        <button class="cta cta-primary cta-big cta-see buttonnext hidesavebuttonhome" type="button">SIMPAN</button>
                                     </div>
 
                                 </div>
@@ -194,8 +196,6 @@ $this->extend('layout-credit.html.php');
                                             <label for="provinsi_sertificate">Provinsi</label>
                                             <select class="c-custom-select formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="provinsi_sertificate" name="provinsi_sertificate">
                                                 <option value=""> Pilih Provinsi</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
@@ -203,8 +203,6 @@ $this->extend('layout-credit.html.php');
                                             <label for="kota_sertificate">Kota</label>
                                             <select class="c-custom-select formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="kota_sertificate" name="kota_sertificate">
                                                 <option value=""> Pilih Kota</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
@@ -212,8 +210,6 @@ $this->extend('layout-credit.html.php');
                                             <label for="kecamatan_sertificate">Kecamatan</label>
                                             <select class="c-custom-select formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="kecamatan_sertificate" name="kecamatan_sertificate">
                                                 <option value=""> Pilih Kecamatan</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
@@ -221,8 +217,6 @@ $this->extend('layout-credit.html.php');
                                             <label for="kelurahan">Kelurahan</label>
                                             <select class="c-custom-select formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="kelurahan_sertificate" name="kelurahan_sertificate">
                                                 <option value=""> Pilih Kelurahan</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
@@ -249,6 +243,7 @@ $this->extend('layout-credit.html.php');
                                         <div class="button-area text-right next padding-0 margin-right-0">
                                             <button class="cta cta-primary cta-big cta-see buttonnext" id="button3rumah"
                                                     type="button">SELANJUTNYA</button>
+                                            <button class="cta cta-primary cta-big cta-see buttonnext hidesavebuttonhome" type="button">SIMPAN</button>
                                         </div>
                                     </div>
 
@@ -281,7 +276,7 @@ $this->extend('layout-credit.html.php');
                                                     B. Data Pemohon
                                                 </p>
                                                 <div class="button-area text-right button-angsur">
-                                                    <button id="btnDataPemohon" class="cta cta-primary cta-big cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"><b>UBAH</b></i></button>
+                                                    <button id="btnDataPemohon" class="cta cta-primary cta-big cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"></i><b>UBAH</b></button>
                                                 </div>
                                                 <table>
                                                     <tr>
@@ -314,7 +309,7 @@ $this->extend('layout-credit.html.php');
                                                     C. Data Tempat Tinggal
                                                 </p>
                                                 <div class="button-area text-right button-angsur">
-                                                    <button id="btnDataTempatTinggal" class="cta cta-primary cta-big cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"><b>UBAH</b></i></button>
+                                                    <button id="btnDataTempatTinggal" class="cta cta-primary cta-big cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"></i><b>UBAH</b></button>
                                                 </div>
                                                 <table>
                                                     <tr>
@@ -348,7 +343,7 @@ $this->extend('layout-credit.html.php');
                                                     D. Data Bangunan
                                                 </p>
                                                 <div class="button-area text-right button-angsur">
-                                                    <button id="btnDataKendaraan" class="cta cta-primary cta-big cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"><b>UBAH</b></i></button>
+                                                    <button id="btnDataBangunan" class="cta cta-primary cta-big cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"></i><b>UBAH</b></button>
                                                 </div>
                                                 <table>
                                                     <tr>
