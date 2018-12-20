@@ -1,0 +1,171 @@
+#map {
+	height: 100%;
+}
+.map-wrapper {
+	position: relative;
+	height: 500px;
+}
+.input-type-autocomplete {
+	position: absolute;
+	top: 60px;
+	left: 0;
+	right: 0;
+	z-index: 99;
+	width: 35%;
+	margin-left: 7%;
+
+	@include breakpoint(mobile) {
+		width: 100%;
+		margin-left: 0;
+	
+	}
+
+	>.container {
+		width: 100%;
+	}
+	.form-autocomplete {
+		position: relative;
+		width:480px;
+		height:60px;
+		
+
+		@include breakpoint(mobile) {
+			width: 100%;
+			padding: 0 10px;
+		}
+
+		.branchlist{
+			i{
+				@include breakpoint(mobile) {
+					top:5px;
+				}
+			}
+		}
+
+		i {
+			position: absolute;
+			right: 15px;
+			top: 20px;
+			pointer-events: none;
+			font-size: 1.4em;
+			color: $grey-light-color;
+
+			@include breakpoint(mobile) {
+				right: 25px;
+			}
+
+			&.arrowlink {
+				position: relative;
+				right: 0;
+				top: 2px;
+				margin-left: 10px;
+		   }
+	   }
+   }
+	input {
+		width: 100%;
+		height:100%;
+		outline: none;
+		padding: 15px 10px;
+		background: $white;
+		border: 1px solid $grey-light-color;
+		font-family: 'HelveticaNeue';
+		padding-right: 50px;
+		font-size:1.375em;
+   }
+}
+.wrapper-parent-branchlist{
+	padding:0;
+	height: 0;
+	overflow-y:scroll;
+	direction: rtl;
+	border: 1px solid $grey-light-color;
+	border-top: none;
+
+	&::-webkit-scrollbar {
+		width: 7px;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: $white;
+		border-radius: 25px;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: $white;
+		border-radius: 25px;
+	}
+
+	&::-webkit-scrollbar-thumb:hover {
+		background: $white;
+	}
+}
+.parent-brachlist{
+	background-color:$white;
+	padding: 15px 0;
+	padding-bottom: 15px;
+	direction: ltr;
+	cursor: pointer;
+	
+	&:last-child {
+		.wrapper-branchlist {
+			border-bottom: none;
+	   }
+   }
+
+   a {
+	   	display: block;
+		font-family: 'HelveticaNeue';
+	   	font-weight: 600;
+	   	color:#565656;
+	   	font-size:0.875em;
+
+	   	@include breakpoint(mobile) {
+	   		display:none;
+	   	}
+   }
+}
+.wrapper-branchlist{
+	height: 100%;
+    margin: 0 15px;
+    border-bottom: 1px solid $grey-light-color;
+	overflow: hidden;
+	padding-bottom: 20px;
+}
+.branchlist{
+	height:100%;
+	padding:0;
+	&:first-child{
+		text-align:center;
+   }
+
+
+}
+.icon-gedung-branchlist{
+	width:40px;
+	height:40px;
+}
+.col-md-8.branchlist p{
+	margin:0;
+	font-family: 'HelveticaNeue';
+	font-size:0.875em;
+
+	@include breakpoint(mobile) {
+		font-size:1em;
+	}
+
+	&:nth-child(1){
+		font-size:1.250em;
+		font-weight:bold;
+		@include breakpoint(mobile) {
+			color:#04559F;
+			font-size:1.3em;
+		}
+   }
+	&:nth-child(4){
+		font-size:14px;
+		text-decoration:underline;
+		margin-top:15px;
+		font-weight:bold;
+   }
+}

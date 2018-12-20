@@ -1,0 +1,205 @@
+.accordion {
+    .sect-title {
+
+        @include breakpoint(mobile) {
+            width: 90%;
+        }
+        h2, p {
+            color: $grey-dark-color;
+        }
+    }
+
+    .accordion__wrap {
+        margin: 30px 0;
+        
+        @include breakpoint(mobile) {
+            padding: 0 15px;
+        }
+
+        &.produk{
+            margin-top:85px;
+            margin-bottom:80px;
+
+            h4{
+                font-size:28px;
+
+                @include breakpoint(mobile) {
+                    font-size:24px;
+                }
+                @include breakpoint(tablet) {
+                    font-size:24px;
+                }
+            }
+        }
+
+        h4 {
+            font-size: 1.3em;
+            font-family: 'HelveticaNeue';
+        }
+
+        .panel {
+            box-shadow: none;
+
+            &:last-child{
+                .panel-body {
+                    background-color:ghostwhite;
+                    padding-top:35px;
+
+                    .block-payment{
+                        text-align:center;
+
+                        .payment-wrap{
+                            width:90%;
+                            display:inline-block;
+
+                            h4, .block-payment__item{
+                                text-align:left;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .panel-body {
+                padding: 25px 15px;
+            }
+
+            p {
+                font-family: 'HelveticaNeue';
+                font-size: 1.1em;
+            }
+        }
+
+        .panel-default {
+            border-color: transparent;
+            border-bottom: 1px solid $grey-light-color;
+
+            &.active {
+                h4 {
+                    font-weight: 600;
+                    color: $blue-dark-color;
+                }
+
+                >.panel-heading {
+                    a {
+                        &::after {
+                            content: "\f106";
+                        }
+                    }
+                }
+            }
+
+            a {
+                text-decoration: none;
+            }
+        }
+        .panel-default>.panel-heading {
+            background-color: transparent;
+            border-color: transparent;
+            padding: 0;
+            
+            a {
+                position: relative;
+                display: block;
+                padding: 22px 15px;
+
+                &.a-panelheading{
+                   padding-bottom:40px;         
+                }
+
+                &::after {
+                    position: absolute;
+                    content: '\f107';
+                    font-family: "FontAwesome";
+                    right: 15px;
+                    top: 15px;
+                    font-size: 1.3em;
+                    opacity:0.4;
+                }
+            }
+        }
+    }
+
+    .document-table {
+        padding: 0 20px;
+
+        @include breakpoint(mobile) {
+            padding: 0;
+            overflow:scroll;
+        }
+
+        table {
+            width: 100%;
+
+            th {
+                text-align: center;
+                padding: 10px;
+                font-family: 'HelveticaNeue';
+                font-size: 1.2em;
+                color: $white;
+                background: $blue-dark-color;
+            }
+
+            td {
+                font-family: 'HelveticaNeue';
+                padding: 10px 20px;
+                color: $grey-dark-color;
+                font-size: 1.1em;
+
+                &:nth-child(2n), &:nth-child(3n) {
+                    text-align: center;
+                }
+            }
+        }
+
+        tbody tr:nth-child(even){
+            background-color: #e8e8e8;
+        }
+    }
+
+    .block-payment {
+
+        .payment-wrap {
+            width: 60%;
+            margin-bottom: 20px;
+            border-bottom: 1px solid $grey-light-color;
+
+            @include breakpoint(mobile) {
+                width: 100%;
+                text-align: center;
+            }
+
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+
+        h4 {
+            font-size: 1em;
+            font-family: 'HelveticaNeue';
+            color: $blue-dark-color;
+
+            @include breakpoint(mobile) {
+                text-align: left;
+            }
+        }
+
+        .block-payment__item {
+            margin: 30px 20px;
+            
+        }
+
+        a {
+            position: relative;
+            margin: 0 10px 10px;
+            display: inline-block;
+            vertical-align: middle;
+
+            
+        }
+
+        img {
+            width: 130px;
+        }
+    }
+}
