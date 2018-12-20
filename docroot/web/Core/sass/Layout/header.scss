@@ -8,11 +8,12 @@
 
     .backtohome{
         position:relative;
+        padding-left:16px;
         &:before{
             content: '\f104';
             font-family: FontAwesome;
             position: absolute;
-            left: -15px;
+            left: -1px;
             top: -10px;
             font-size: 25px;
             opacity: 0.5;
@@ -78,7 +79,7 @@
         }
 
         .left-side-top {
-            padding-left:110px;
+            padding-left:112px;
             a {
                 padding-right: 10px;
 
