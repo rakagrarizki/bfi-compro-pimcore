@@ -37,6 +37,9 @@
 
                 ._boxkananchild1{
                     display:inline-block;
+                    @include breakpoint(mobile) {
+                        vertical-align:middle;
+                    }
                 }
 
                 ._boxkananchild2{
@@ -45,6 +48,8 @@
 
                     @include breakpoint(mobile) {
                         margin-left:0px;
+                        vertical-align:middle;
+                        font-size:0;
                     }
 
                      @include breakpoint(tablet) {
