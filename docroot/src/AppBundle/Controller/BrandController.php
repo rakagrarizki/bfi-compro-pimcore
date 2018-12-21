@@ -7,6 +7,8 @@ use Pimcore\Controller\FrontendController;
 use Pimcore\Model\DataObject\Brand;
 use Pimcore\Model\DataObject\BrandProduct;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 class BrandController extends FrontendController
 {
