@@ -399,7 +399,7 @@
 	});
 
 	if($(".customslide").length>0) {
-		$(".customslide").slider()
+		$(".customslide").slider();
 		$(".customslide").on('slide',function(evt){
 				var _elm = $(this)
 				var _parent = _elm.parents(".sliderGroup")
@@ -615,7 +615,7 @@
 				kelurahan_sertificate = $('#kelurahan_sertificate').val(),
 				kode_pos_sertificate = $('#kode_pos_sertificate').val(),
 				alamat_lengkap_sertificate = $('#alamat_lengkap_sertificate').val();
-				
+
 
 			provinsi_sertificate = $("#provinsi_sertificate option[value='"+ provinsi_sertificate +"']").text();
 			kota_sertificate = $("#kota_sertificate option[value='"+ kota_sertificate +"']").text();
@@ -775,6 +775,7 @@
 				$('.nav-item-4').addClass('active');
 
 				pushDataKendaraan();
+				getpriceminmax(credits);
 			}
 		})
 
@@ -1457,6 +1458,76 @@
 		getProvinsi($('#provinsi'),$('#provinsi_sertificate'));	
 	}else{
 		getProvinsi($('#provinsi'));	
+	}
+
+	//function get credit min max price dan asurasi list
+
+	function separatordot(o){
+		var bilangan = o;
+
+		var number_string = bilangan.toString(),
+			sisa = number_string.length % 3,
+			rupiah = number_string.substr(0, sisa),
+			ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+		if (ribuan) {
+			separator = sisa ? '.' : '';
+			rupiah += separator + ribuan.join('.');
+		}
+
+		return rupiah;
+	}
+
+	function getpriceminmax(params){
+		var _url = 'https://bfi.staging7.salt.id/credit/get-price';
+
+		var kota = params.tempat_tinggal.kota;
+
+		kota = kota.slice(5,kota.length);
+
+		var _data = {
+			tipe: params.angunan.jenis_angunan,
+			merk: params.kendaraan.merk_kendaraan,
+			brand: params.kendaraan.model_kendaraan,
+			kota: kota,
+			tahun: params.kendaraan.tahun_kendaraan
+		}
+		//alert(_data.tipe + "-" +_data.merk + "-" + _data.brand + "-" + _data.kota + "-" + _data.tahun);
+		$.ajax({
+			type: 'POST',
+			url: _url,
+			data: _data,
+			dataType: 'json',
+			error: function (data) {
+				console.log('error' + data);
+			},
+			fail: function (xhr, textStatus, error) {
+				console.log('request failed')
+			},
+			success: function (data) {
+
+				var value = $("#ex6SliderVal").parents(".sliderGroup").find(".customslide").data('slider').getValue();
+				
+				$("#ex6SliderVal").parents(".sliderGroup").find(".customslide").data('slider').options.max = data.data.maxPrice;
+				$("#ex6SliderVal").parents(".sliderGroup").find(".customslide").data('slider').options.min = data.data.minPrice;
+
+				//$("#ex6SliderVal").parents(".sliderGroup").find(".customslide").slider('setValue', value);
+
+				//$("#ex6SliderVal").parents(".sliderGroup").find(".customslide").refresh();
+
+				var minprice = separatordot(data.data.minPrice),
+					maxprice = separatordot(data.data.maxPrice);
+
+				$("#ex6SliderVal").val(minprice);
+				$(".valuemin").text(minprice);
+				$(".valuemax").text(maxprice);
+
+				var opsiasuransi = "<option value='"+data.data.asuransi_1+"'>"+data.data.asuransi_1+"</option>"+
+									"<option value='"+data.data.asuransi_2+"'>"+data.data.asuransi_2+"</option>";
+
+				$(".c-custom-select-trans[name='status']").append(opsiasuransi);
+			}
+		})
 	}
 	
 	function listingLocation(params) {
