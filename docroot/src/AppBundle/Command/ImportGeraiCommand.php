@@ -42,6 +42,7 @@ class ImportGeraiCommand extends AbstractCommand
             $marketingOffice->setPublished(true);
             $marketingOffice->setName($name);
             $marketingOffice->setAddress($address);
+            $marketingOffice->setIsGerai(true);
             $map = new DataObject\Data\Geopoint();
             $map->setLatitude($mapArray[0]);
             $map->setLongitude($mapArray[1]);
