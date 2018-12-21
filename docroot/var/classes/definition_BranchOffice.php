@@ -1,7 +1,7 @@
 <?php 
 
 /** 
-* Generated at: 2018-12-05T15:57:14+01:00
+* Generated at: 2018-12-21T10:34:37+01:00
 * Inheritance: no
 * Variants: no
 * Changed by: admin (2)
@@ -13,6 +13,7 @@ Fields Summary:
 - Address [textarea]
 - Telephone [input]
 - Map [geopoint]
+- IsGerai [checkbox]
 */ 
 
 
@@ -21,7 +22,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'BranchOffice',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1544021820,
+   'modificationDate' => 1545384874,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -131,7 +132,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
@@ -160,6 +161,28 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'mapType' => 'roadmap',
              'name' => 'Map',
              'title' => 'Map',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+          )),
+          4 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Checkbox::__set_state(array(
+             'fieldtype' => 'checkbox',
+             'defaultValue' => 0,
+             'queryColumnType' => 'tinyint(1)',
+             'columnType' => 'tinyint(1)',
+             'phpdocType' => 'boolean',
+             'name' => 'IsGerai',
+             'title' => 'IsGerai',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
