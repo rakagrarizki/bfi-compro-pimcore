@@ -1,0 +1,24 @@
+---
+- hosts: all
+  tasks:
+    - name: start nginx
+      service:
+        name: nginx
+        state: started
+      become: yes
+    - name: copy the nginx config file and restart nginx
+      copy:
+        src: /var/example/ansible/ubuntu/bfi-ansible.conf
+        dest: /etc/nginx/sites-available/bfi-ansible.conf
+      become: yes
+    - name: create symlink
+      file:
+        src: /etc/nginx/sites-available/bfi-ansible.conf
+        dest: /etc/nginx/sites-enabled/bfi-ansible
+        state: link
+      become: yes
+    - name: restart nginx
+      service:
+        name: nginx
+        state: restarted
+      become: yes

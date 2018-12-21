@@ -47,11 +47,14 @@ class CreditController extends FrontendController
 
     public function getPriceAction(Request $request)
     {
+        $nameKota = preg_replace("/(?:^|\W)KABUPATEN(?:$|\W)/", "", (string)$request->get('kota'));
+        $nameKota = preg_replace("/(?:^|\W)KOTA(?:$|\W)/", "", $nameKota);
+
         $param = [];
         $param['loan_type'] = (string)$request->get('tipe');
-        $param['model'] = (string)$request->get('merk');
-        $param['branch'] = (string)$request->get('kota');
-        $param['brand_name'] = (string)$request->get('brand');
+        $param['model'] = (string)$request->get('model_kendaraan');
+        $param['branch'] = $nameKota;
+        $param['brand_name'] = (string)$request->get('merk_kendaraan');
         $param['year'] = (string)$request->get('tahun');
 
         $url = WebsiteSetting::getByName('URL_GET_PRICE')->getData();
