@@ -1726,9 +1726,22 @@
 		$(document).on('click', '.parent-brachlist', function () {
 
 			$(".parent-brachlist").css("background-color","white");
-			var idMarker = $(this).data('id');
+			var idMarker = $(this).data('id'),
+				tembaklat = $(this).data('lat'),
+				tembaklng = $(this).data('lng');
+
 			google.maps.event.trigger(markers[parseInt(idMarker)], 'click');
 			$(this).css("background-color","#F7F7F7");
+
+			navigator.geolocation.getCurrentPosition(function(position) {
+				var pos = {
+		              lat: position.coords.latitude,
+		              lng: position.coords.longitude
+            	};
+            	
+            	var urlgoogle = "https://www.google.com/maps/dir/?api=1&origin="+pos.lat+","+pos.lng+"&destination="+tembaklat+","+tembaklng+"";
+            	window.open(urlgoogle,'_blank');
+			})
 		})
 	}
 
