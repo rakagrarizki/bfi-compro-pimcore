@@ -309,12 +309,23 @@
                 padding: 30px 50px;
                 background: $grey-light;
                 margin-top: 30px;
+
+                 @include breakpoint(mobile){
+                    padding: 30px 25px;
+                 }
                 .title-angsuran{
                     font-weight: bold;
                     font-size: 1.2em;
+                    @include breakpoint(mobile){
+                        font-size: 0.8em;
+                    }
                 }
                 table{
                     width: 100%;
+
+                    @include breakpoint(mobile){
+                        font-size: 0.7em;
+                    }
                     tr{
                         height: 25px;
                         td{
@@ -335,6 +346,11 @@
                margin-top: 10px;
                text-align: left;
                margin-bottom:25px;
+
+               @include breakpoint(mobile){
+                    text-align:center;
+               }
+
                p{
                    line-height: 2;
                    font-size:24px;
@@ -342,6 +358,10 @@
                .title-angsuran{
                    font-size: 1.5em;
                    margin-bottom:0;
+
+                   @include breakpoint(mobile){
+                        font-size: 0.8em;
+                   }
                    
                }
                .total{
@@ -349,11 +369,17 @@
                    font-weight: bold;
                    font-size: 42px;
                    margin-bottom:0;
+                   @include breakpoint(mobile){
+                        font-size: 2.2em;
+                   }
                }
 
                .infotext{
                    margin-bottom:30px;
                    font-size:12px;
+                   @include breakpoint(mobile){
+                        font-size: 0.8em;
+                   }
                }
            }
         }

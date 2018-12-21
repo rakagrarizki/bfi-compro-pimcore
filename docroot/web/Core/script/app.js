@@ -399,7 +399,7 @@
 	});
 
 	if($(".customslide").length>0) {
-		$(".customslide").slider();
+		$(".customslide").slider();	
 		$(".customslide").on('slide',function(evt){
 				var _elm = $(this)
 				var _parent = _elm.parents(".sliderGroup")
@@ -781,7 +781,7 @@
 				$('.nav-item-4').addClass('active');
 
 				pushDataKendaraan();
-				//getpriceminmax(credits);
+				getpriceminmax(credits);
 			}
 		})
 
@@ -1521,8 +1521,8 @@
 
 		var _data = {
 			tipe: params.angunan.jenis_angunan,
-			merk: params.kendaraan.merk_kendaraan,
-			brand: params.kendaraan.model_kendaraan,
+			model_kendaraan: params.kendaraan.merk_kendaraan,
+			merk_kendaraan: params.kendaraan.model_kendaraan,
 			kota: kota,
 			tahun: params.kendaraan.tahun_kendaraan
 		}
@@ -1539,18 +1539,23 @@
 				console.log('request failed')
 			},
 			success: function (data) {
+				var rawMinPrice = parseInt(data.data.minPrice),
+					rawMaxPrice = parseInt(data.data.maxPrice);
 
-				var value = $("#ex6SliderVal").parents(".sliderGroup").find(".customslide").data('slider').getValue();
+				// if($("#funding").length >0){
+				// 	$("#funding").slider({min:rawMinPrice, max:rawMaxPrice, step:100000});	
+				// }else{
+				// 	$("#ex11").slider({min:rawMinPrice, max:rawMaxPrice, step:100000});	
+				// }
 				
-				$("#ex6SliderVal").parents(".sliderGroup").find(".customslide").data('slider').options.max = data.data.maxPrice;
-				$("#ex6SliderVal").parents(".sliderGroup").find(".customslide").data('slider').options.min = data.data.minPrice;
+				$("#ex6SliderVal").parents(".sliderGroup").find(".customslide").data('slider').options.max = rawMaxPrice;
+				$("#ex6SliderVal").parents(".sliderGroup").find(".customslide").data('slider').options.min = rawMinPrice;
+				$("#ex6SliderVal").parents(".sliderGroup").find(".customslide").data('slider').options.step = 100000; 
 
-				//$("#ex6SliderVal").parents(".sliderGroup").find(".customslide").slider('setValue', value);
+				$("#ex6SliderVal").parents(".sliderGroup").find(".customslide").slider('setValue',rawMinPrice);
 
-				//$("#ex6SliderVal").parents(".sliderGroup").find(".customslide").refresh();
-
-				var minprice = separatordot(data.data.minPrice),
-					maxprice = separatordot(data.data.maxPrice);
+				var minprice = separatordot(rawMinPrice),
+					maxprice = separatordot(rawMaxPrice);
 
 				$("#ex6SliderVal").val(minprice);
 				$(".valuemin").text(minprice);
@@ -1587,7 +1592,7 @@
 
 							var contentString = '<div class="col-md-12 parent-brachlist" data-id="' + idListing + '" data-lat="' + valListing.latitude + '"  data-lng="' + valListing.longitude + '">';
 							contentString += '<div class="wrapper-branchlist">';
-							contentString += '<div class="col-md-2 col-sm-2 col-xs-2 branchlist"><img class="icon-gedung-branchlist" src="/static/images/gedung.png"></div>';
+							contentString += '<div class="col-md-2 col-sm-2 col-xs-2 branchlist"><img class="icon-gedung-branchlist" src="/static/images/icon/branch1.png"></div>';
 							contentString += '<div class="col-md-8 col-sm-8 col-xs-8 branchlist">';
 							contentString += '<p class="title-branch margin-bottom-10">' + valListing.name + '</p>';
 							contentString += '<p class="desc-branch">' + valListing.address + '</p>';
@@ -1674,7 +1679,7 @@
 										setTimeout(function () {
 											var html = '<div class="col-md-12 parent-brachlist" data-id="' + idListing + '" data-lat="' + valListing.latitude + '"  data-lng="' + valListing.longitude + '">';
 											html += '<div class="wrapper-branchlist">';
-											html += '<div class="col-md-2 col-sm-2 col-xs-2 branchlist"><img class="icon-gedung-branchlist" src="/static/images/gedung.png"></div>';
+											html += '<div class="col-md-2 col-sm-2 col-xs-2 branchlist"><img class="icon-gedung-branchlist" src="/static/images/icon/branch1.png"></div>';
 											html += '<div class="col-md-8 col-sm-8 col-xs-8 branchlist">';
 											html += '<p class="title-branch margin-bottom-10">' + valListing.name + '</p>';
 											html += '<p class="desc-branch">' + valListing.address + '</p>';

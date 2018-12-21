@@ -1,5 +1,5 @@
 body {
-    font-family: if(variable-exists(font_family), $font_default, 'Helvetica, Arial, sans-serif');
+    font-family:'HelveticaNeue';
 }
 
 @each $value in $align {
