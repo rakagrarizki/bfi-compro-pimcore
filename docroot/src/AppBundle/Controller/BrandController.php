@@ -2,16 +2,11 @@
 
 namespace AppBundle\Controller;
 
+use Pimcore\Bundle\AdminBundle\HttpFoundation\JsonResponse;
 use Pimcore\Controller\FrontendController;
-use Symfony\Component\HttpFoundation\Request;
-use Pimcore\Model\DataObject;
 use Pimcore\Model\DataObject\Brand;
 use Pimcore\Model\DataObject\BrandProduct;
-use Pimcore\Model\WebsiteSetting;
-use AppBundle\Service\SendApi;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Pimcore\Bundle\AdminBundle\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 
 class BrandController extends FrontendController
 {
@@ -72,11 +67,11 @@ class BrandController extends FrontendController
     }
 
     /**
-     * @Route("/brand/brandproduct/listJson")
+     * @Route("/brand/product/listJson")
     @Method({"GET"})
     @return \Symfony\Component\HttpFoundation\JsonResponse
      */
-    public function brandproductListJsonAction(Request $request)
+    public function productListJsonAction(Request $request)
     {
         $id = $request->get('id');
         if($id == null){
