@@ -2,18 +2,17 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Service\SendApi;
+use Pimcore\Bundle\AdminBundle\HttpFoundation\JsonResponse;
 use Pimcore\Controller\FrontendController;
-use Symfony\Component\HttpFoundation\Request;
-use Pimcore\Model\DataObject;
+use Pimcore\Model\DataObject\Brand;
+use Pimcore\Model\DataObject\BrandProduct;
+use Pimcore\Model\DataObject\City;
 use Pimcore\Model\DataObject\Kecamatan as Kecamatan;
 use Pimcore\Model\DataObject\Kelurahan as Kelurahan;
-use Pimcore\Model\DataObject\City;
 use Pimcore\Model\DataObject\Province;
 use Pimcore\Model\WebsiteSetting;
-use AppBundle\Service\SendApi;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Pimcore\Bundle\AdminBundle\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 
 class ServiceController extends FrontendController
 {
@@ -60,20 +59,6 @@ class ServiceController extends FrontendController
         return new JsonResponse([
             'success' => "0",
             'message' => "Gagal Mendaftarkan email newslettter"
-        ]);
-    }
-
-    /**
-     * @Route("/service/delete/kelurahan")
-    @Method({"GET"})
-    @return \Symfony\Component\HttpFoundation\JsonResponse
-     */
-    public function kelurahanDeleteAction()
-    {
-        $kel = new Kelurahan\Listing();
-        $kel->delete();
-        return new JsonResponse([
-            'success' => true
         ]);
     }
 
@@ -186,6 +171,85 @@ class ServiceController extends FrontendController
                 $temp['name'] = $item->getName();
                 $temp['id'] = $item->getCode();
                 $temp['postcode'] = $item->getPostCode();
+                $maps['data'][] = $temp;
+            }
+        }
+
+        return new JsonResponse([
+            'success' => true,
+            'result' => $maps
+        ]);
+    }
+
+    /**
+     * @Route("/service/brandmobil/listJson")
+    @Method({"GET"})
+    @return \Symfony\Component\HttpFoundation\JsonResponse
+     */
+    public function brandMobilListJsonAction()
+    {
+        $data = new Brand\Listing();
+        $maps = [];
+        if ($data) {
+            foreach ($data as $item) {
+                $temp['name'] = $item->getName();
+                $temp['id'] = $item->getCode();
+                $maps['data'][] = $temp;
+            }
+        }
+
+        return new JsonResponse([
+            'success' => true,
+            'result' => $maps
+        ]);
+    }
+
+    /**
+     * @Route("/service/brandmotor/listJson")
+    @Method({"GET"})
+    @return \Symfony\Component\HttpFoundation\JsonResponse
+     */
+    public function brandMotorListJsonAction()
+    {
+        $data = new Brand\Listing();
+        $id = "2";
+        $data->setCondition('Tipe = '.$id);
+        $maps = [];
+        if ($data) {
+            foreach ($data as $item) {
+                $temp['name'] = $item->getName();
+                $temp['id'] = $item->getId();
+                $maps['data'][] = $temp;
+            }
+        }
+
+        return new JsonResponse([
+            'success' => true,
+            'result' => $maps
+        ]);
+    }
+
+    /**
+     * @Route("/service/brandproduct/listJson")
+    @Method({"GET"})
+    @return \Symfony\Component\HttpFoundation\JsonResponse
+     */
+    public function brandproductListJsonAction(Request $request)
+    {
+        $id = $request->get('id');
+        if($id == null){
+            return new JsonResponse([
+                'success' => false,
+                'message' => "must include id"
+            ]);
+        }
+        $data = new BrandProduct\Listing();
+        $data->setCondition('Brand__id = '.$id);
+        $maps = [];
+        if ($data) {
+            foreach ($data as $item) {
+                $temp['name'] = $item->getName();
+                $temp['codeProduct'] = $item->getCodeProduct();
                 $maps['data'][] = $temp;
             }
         }
