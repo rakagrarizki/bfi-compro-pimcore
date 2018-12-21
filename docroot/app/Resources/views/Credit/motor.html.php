@@ -246,9 +246,7 @@ $this->extend('layout-credit.html.php');
 
                                                 </div>
                                                 <div class="slidecontainer ">
-                                                    <input id="ex11" class="customslide" type="text" data-slider-handle="custom"
-                                                           data-slider-min="10000000" data-slider-max="60000000"
-                                                           data-slider-step="500000" data-slider-tooltip="hide" />
+                                                    <input id="ex11" class="customslide" type="text" data-slider-handle="custom" data-slider-tooltip="hide" />
                                                     <div class="value-left valuemin"></div>
                                                     <div class="value-right valuemax"></div>
                                                 </div>
@@ -333,6 +331,8 @@ $this->extend('layout-credit.html.php');
                                                 <div class="total-estimate">
                                                     <p class="title-angsuran">Total Estimasi Angsuran Per Bulan</p>
                                                     <p class="total">Rp 1.545.000</p>
+                                                    <button class="cta cta-primary cta-big" id="recalc"
+                                                        type="button">HITUNG ULANG</button>
                                                 </div>
                                             </div>
                                         </div>

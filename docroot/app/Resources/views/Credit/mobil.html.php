@@ -243,9 +243,7 @@ $this->extend('layout-credit.html.php');
 
                                                 </div>
                                                 <div class="slidecontainer ">
-                                                    <input id="funding" class="customslide" type="text" data-slider-handle="custom"
-                                                           data-slider-min="10000000" data-slider-max="60000000"
-                                                           data-slider-step="500000" data-slider-tooltip="hide" />
+                                                    <input id="funding" class="customslide" type="text" data-slider-handle="custom" data-slider-tooltip="hide" />
                                                     <div class="value-left valuemin"></div>
                                                     <div class="value-right valuemax"></div>
                                                 </div>
@@ -278,7 +276,6 @@ $this->extend('layout-credit.html.php');
                                                     <div class="list-select">
                                                         <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="status"
                                                                 name="status">
-                                                                <option value="TLO">TLO</option>
                                                         </select>
                                                     </div>
                                                     <div class="error-wrap"></div>
