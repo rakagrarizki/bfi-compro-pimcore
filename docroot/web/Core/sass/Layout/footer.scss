@@ -23,14 +23,18 @@ footer {
             display: block;
             // width: calc(100% - 80px);
             width: 60%;
-            background: #404040;
+            background: #d88417;
             color: $light;
             padding: 10px 15px;
             margin-bottom: 10px;
-            border:1px solid white;
+            cursor:pointer;
 
             @include breakpoint(mobile){
                 width: 75%;
+            }
+
+            a{
+                color:white;
             }
         }
         label {
