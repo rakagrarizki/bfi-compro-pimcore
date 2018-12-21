@@ -1229,6 +1229,39 @@
 		})
 	}
 
+
+	function getmobil(element){
+		$.ajax({
+			type: 'GET',
+			url: 'https://bfi.staging7.salt.id/brand/mobil/listJson',
+			dataType: 'json',
+			error: function (data) {
+				console.log('error' + data);
+			},
+
+			fail: function (xhr, textStatus, error) {
+				console.log('request failed')
+			},
+
+			success: function (dataObj) {
+				if(dataObj.success == true) {
+					$.each(dataObj.result.data, function(idPrivince, valProvince) {
+						if(valProvince.name != '') {
+							var elementOption = '<option value="'+ valProvince.id +'">'+ valProvince.name +'</option>';
+
+							$(element).append(elementOption);
+							if(element2){
+								$(element2).append(elementOption);	
+							}
+						}
+					})
+				}
+			}
+		})
+	}
+
+
+
 	function getProvinsi(element,element2) {
 
 		$.ajax({
@@ -1672,6 +1705,13 @@
 
 									if ((distance_from_location <= _radius)) {
 
+										if(valListing.gerai){
+											var icondynamic = "/static/images/icon/Gerai.png";	
+										}else{
+											var icondynamic = "/static/images/icon/branch1.png";
+										}
+										 
+										$('#branch').removeClass("deactive");
 										setTimeout(function () {
 											$('#branch').empty();
 										}, 10);
@@ -1679,7 +1719,7 @@
 										setTimeout(function () {
 											var html = '<div class="col-md-12 parent-brachlist" data-id="' + idListing + '" data-lat="' + valListing.latitude + '"  data-lng="' + valListing.longitude + '">';
 											html += '<div class="wrapper-branchlist">';
-											html += '<div class="col-md-2 col-sm-2 col-xs-2 branchlist"><img class="icon-gedung-branchlist" src="/static/images/icon/branch1.png"></div>';
+											html += '<div class="col-md-2 col-sm-2 col-xs-2 branchlist"><img class="icon-gedung-branchlist" src="'+icondynamic+'"></div>';
 											html += '<div class="col-md-8 col-sm-8 col-xs-8 branchlist">';
 											html += '<p class="title-branch margin-bottom-10">' + valListing.name + '</p>';
 											html += '<p class="desc-branch">' + valListing.address + '</p>';
@@ -1741,6 +1781,10 @@
             	
             	var urlgoogle = "https://www.google.com/maps/dir/?api=1&origin="+pos.lat+","+pos.lng+"&destination="+tembaklat+","+tembaklng+"";
             	window.open(urlgoogle,'_blank');
+
+            	setTimeout(function () {
+					$('#branch').addClass("deactive");
+				}, 10);
 			})
 		})
 	}
@@ -1766,7 +1810,7 @@
 
 		autocomplete.bindTo('bounds', map);
 
-		var base_url = '/branch/listJson';
+		var base_url = 'https://bfi.staging7.salt.id/branch/listJson';
 
 		listingLocation(base_url);
 
