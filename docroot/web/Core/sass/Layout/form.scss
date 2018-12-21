@@ -13,6 +13,11 @@
         font-weight: bold;
         color:#04559F;
         font-size:26px;
+
+        &.text-center-edit{
+            display:none;
+            text-align:center;
+        }
     }
 
     p {
@@ -73,6 +78,11 @@
             font-family: 'HelveticaNeue-Bold';
             font-weight: 800;
             color:#04559F;
+
+            &.text-center-edit{
+                display:none;
+                text-align:center;
+            }
         }
     
         p {
