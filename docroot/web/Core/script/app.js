@@ -1706,7 +1706,7 @@
 									if ((distance_from_location <= _radius)) {
 
 										if(valListing.gerai){
-											var icondynamic = "/static/images/icon/Gerai.png";	
+											var icondynamic = "/static/images/icon/gerai.png";	
 										}else{
 											var icondynamic = "/static/images/icon/branch1.png";
 										}
