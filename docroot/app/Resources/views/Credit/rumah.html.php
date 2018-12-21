@@ -56,6 +56,7 @@ $this->extend('layout-credit.html.php');
                                     <div class="form-body--credit">
                                         <div class="text-head">
                                             <h2 class="text-center">Data Pemohon</h2>
+                                            <h2 class="text-center-edit">Ubah Data Pemohon</h2>
                                             <p class="text-center">Silahkan Masukan data diri Anda</p>
                                         </div>
                                         <div class="form-group">
@@ -114,6 +115,7 @@ $this->extend('layout-credit.html.php');
                                     <div class="form-body--credit">
                                         <div class="text-head">
                                             <h2 class="text-center">Data Tempat Tinggal</h2>
+                                            <h2 class="text-center-edit">Ubah Data Tempat Tinggal</h2>
                                             <p class="text-center">Silahkan Masukan data tempat tinggal Anda</p>
                                         </div>
                                         <div class="form-group">
@@ -171,6 +173,7 @@ $this->extend('layout-credit.html.php');
                                     <div class="form-body--credit">
                                         <div class="text-head">
                                             <h2 class="text-center">Data Bangunan</h2>
+                                            <h2 class="text-center-edit">Ubah Data Bangunan</h2>
                                             <p class="text-center">Silahkan Masukan data bangunan Anda</p>
                                         </div>
                                         <div class="form-group">
