@@ -694,6 +694,9 @@
 
 				$(".cta-primary").removeClass("deactive");
 				$(".hidesavebutton").removeClass("active");
+				$(".button-area").removeClass("center");
+				$(".text-head").children("h2[class='text-center']").css("display","block");
+				$(".text-head").children("h2[class='text-center-edit']").css("display","none");
 
 				pushDataPemohon();
 				pushDataTempatTinggal();
@@ -723,6 +726,9 @@
 
 				$(".cta-primary").removeClass("deactive");
 				$(".hidesavebuttonhome").removeClass("active");
+				$(".button-area").removeClass("center");
+				$(".text-head").children("h2[class='text-center']").css("display","block");
+				$(".text-head").children("h2[class='text-center-edit']").css("display","none");
 
 				pushDataPemohon();
 				pushDataTempatTinggal();
@@ -775,7 +781,7 @@
 				$('.nav-item-4').addClass('active');
 
 				pushDataKendaraan();
-				getpriceminmax(credits);
+				//getpriceminmax(credits);
 			}
 		})
 
@@ -951,6 +957,11 @@
 			}else{
 				$(".hidesavebuttonhome").addClass("active");
 			}
+
+			$(".button-area").addClass("center");
+
+			$(".text-head").children("h2[class='text-center']").css("display","none");
+			$(".text-head").children("h2[class='text-center-edit']").css("display","block");
 			
 			$('.nav-item-5').removeClass('active');
 			$('.nav-item-1').removeClass('done');
@@ -969,6 +980,11 @@
 				$(".hidesavebuttonhome").addClass("active");
 			}
 
+			$(".button-area").addClass("center");
+
+			$(".text-head").children("h2[class='text-center']").css("display","none");
+			$(".text-head").children("h2[class='text-center-edit']").css("display","block");
+
 			$('.nav-item-5').removeClass('active');
 			$('.nav-item-2').removeClass('done');
 			$('.nav-item-2').addClass('active');
@@ -980,6 +996,12 @@
 			e.preventDefault();
 			$(".cta-primary").addClass("deactive");
 			$(".hidesavebutton").addClass("active");
+
+			$(".button-area").addClass("center");
+
+			$(".text-head").children("h2[class='text-center']").css("display","none");
+			$(".text-head").children("h2[class='text-center-edit']").css("display","block");
+
 			$('.nav-item-5').removeClass('active');
 			$('.nav-item-3').removeClass('done');
 			$('.nav-item-3').addClass('active');
@@ -991,6 +1013,12 @@
 			e.preventDefault();
 			$(".cta-primary").addClass("deactive");
 			$(".hidesavebuttonhome").addClass("active");
+
+			$(".button-area").addClass("center");
+
+			$(".text-head").children("h2[class='text-center']").css("display","none");
+			$(".text-head").children("h2[class='text-center-edit']").css("display","block");
+
 			$('.nav-item-4').removeClass('active');
 			$('.nav-item-3').removeClass('done');
 			$('.nav-item-3').addClass('active');
@@ -1002,6 +1030,12 @@
 			e.preventDefault();
 			$(".cta-primary").addClass("deactive");
 			$(".hidesavebutton").addClass("active");
+
+			$(".button-area").addClass("center");
+
+			$(".text-head").children("h2[class='text-center']").css("display","none");
+			$(".text-head").children("h2[class='text-center-edit']").css("display","block");
+
 			$('.nav-item-5').removeClass('active');
 			$('.nav-item-4').removeClass('done');
 			$('.nav-item-4').addClass('active');
