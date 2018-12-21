@@ -63,6 +63,20 @@ class ServiceController extends FrontendController
     }
 
     /**
+     * @Route("/service/delete/kelurahan")
+    @Method({"GET"})
+    @return \Symfony\Component\HttpFoundation\JsonResponse
+     */
+    public function kelurahanDeleteAction()
+    {
+        $kel = new Kelurahan\Listing();
+        $kel->delete();
+        return new JsonResponse([
+            'success' => true
+        ]);
+    }
+
+    /**
      * @Route("/service/provinsi/listJson")
     @Method({"GET"})
     @return \Symfony\Component\HttpFoundation\JsonResponse
@@ -182,18 +196,20 @@ class ServiceController extends FrontendController
     }
 
     /**
-     * @Route("/service/brandmobil/listJson")
+     * @Route("/service/mobil/listJson")
     @Method({"GET"})
     @return \Symfony\Component\HttpFoundation\JsonResponse
      */
-    public function brandMobilListJsonAction()
+    public function mobilListJsonAction()
     {
+        $id = "1";
         $data = new Brand\Listing();
+        $data->setCondition('Tipe = '.$id);
         $maps = [];
         if ($data) {
             foreach ($data as $item) {
                 $temp['name'] = $item->getName();
-                $temp['id'] = $item->getCode();
+                $temp['id'] = $item->getId();
                 $maps['data'][] = $temp;
             }
         }
@@ -205,14 +221,15 @@ class ServiceController extends FrontendController
     }
 
     /**
-     * @Route("/service/brandmotor/listJson")
+     * @Route("/service/motor/listJson")
     @Method({"GET"})
     @return \Symfony\Component\HttpFoundation\JsonResponse
      */
-    public function brandMotorListJsonAction()
+    public function motorListJsonAction()
     {
-        $data = new Brand\Listing();
+
         $id = "2";
+        $data = new Brand\Listing();
         $data->setCondition('Tipe = '.$id);
         $maps = [];
         if ($data) {
