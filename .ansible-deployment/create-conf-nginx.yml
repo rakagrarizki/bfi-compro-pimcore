@@ -8,13 +8,13 @@
       become: yes
     - name: copy the nginx config file and restart nginx
       copy:
-        src: /var/example/ansible/ubuntu/bfi-ansible.conf
-        dest: /etc/nginx/sites-available/bfi-ansible.conf
+        src: /var/www/html/bfi/.ansible-deployment/bfi.conf
+        dest: /etc/nginx/sites-available/bfi.conf
       become: yes
     - name: create symlink
       file:
-        src: /etc/nginx/sites-available/bfi-ansible.conf
-        dest: /etc/nginx/sites-enabled/bfi-ansible
+        src: /etc/nginx/sites-available/bfi.conf
+        dest: /etc/nginx/sites-enabled/bfi
         state: link
       become: yes
     - name: restart nginx
