@@ -189,13 +189,11 @@ class ServiceController extends FrontendController
     public function brandMobilListJsonAction()
     {
         $data = new Brand\Listing();
-        $id = "1";
-        $data->setCondition('Tipe = '.$id);
         $maps = [];
         if ($data) {
             foreach ($data as $item) {
                 $temp['name'] = $item->getName();
-                $temp['id'] = $item->getId();
+                $temp['id'] = $item->getCode();
                 $maps['data'][] = $temp;
             }
         }
@@ -261,6 +259,4 @@ class ServiceController extends FrontendController
             'result' => $maps
         ]);
     }
-
-
 }
