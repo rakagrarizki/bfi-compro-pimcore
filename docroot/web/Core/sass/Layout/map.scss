@@ -4,7 +4,20 @@
 .map-wrapper {
 	position: relative;
 	height: 500px;
+	@include breakpoint(mobile) {
+		&.active{
+			&:before{
+				content:"";
+				height:100%;
+				width:100%;
+				position:absolute;
+				background-color:white;
+				z-index:99;
+			}
+		}
+	}
 }
+
 .input-type-autocomplete {
 	position: absolute;
 	top: 60px;
@@ -125,7 +138,7 @@
 	   	font-size:0.875em;
 
 	   	@include breakpoint(mobile) {
-	   		display:none;
+	   		display: inline-block;
 	   	}
    }
 }
@@ -135,6 +148,9 @@
     border-bottom: 1px solid $grey-light-color;
 	overflow: hidden;
 	padding-bottom: 20px;
+	@include breakpoint(mobile) {
+		
+	}
 }
 .branchlist{
 	height:100%;
@@ -146,8 +162,8 @@
 
 }
 .icon-gedung-branchlist{
-	width:40px;
-	height:40px;
+	width:30px;
+	height:30px;
 }
 .col-md-8.branchlist p{
 	margin:0;

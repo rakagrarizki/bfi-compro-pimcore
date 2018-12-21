@@ -8,6 +8,7 @@
 $this->extend('layout.html.php');
 ?>
 <?= $this->areablock('areaBlock');?>
+
 <div class="map-wrapper">
     <div id="map"></div>
     <div class="input-type-autocomplete">
@@ -22,5 +23,6 @@ $this->extend('layout.html.php');
         </div>
     </div>
 </div>
+
 
 <script src="https://maps.google.com/maps/api/js?libraries=places,geometry&key=AIzaSyAd5-VfeP_L4EzX9HwrFsSP9ETaaAXEC3U&region=id&language=id&libraries=geometry,places&sensor=true"></script>
