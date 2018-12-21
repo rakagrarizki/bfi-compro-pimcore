@@ -1601,6 +1601,8 @@
 			}
 		})
 	}
+
+
 	
 	function listingLocation(params) {
 		$.ajax({
@@ -1623,10 +1625,10 @@
 								icon: _marker
 							});
 
-							var contentString = '<div class="col-md-12 parent-brachlist" data-id="' + idListing + '" data-lat="' + valListing.latitude + '"  data-lng="' + valListing.longitude + '">';
+							var contentString = '<div class="col-md-12 parent-brachlist linkgoogle" data-id="' + idListing + '" data-lat="' + valListing.latitude + '"  data-lng="' + valListing.longitude + '">';
 							contentString += '<div class="wrapper-branchlist">';
 							contentString += '<div class="col-md-2 col-sm-2 col-xs-2 branchlist"><img class="icon-gedung-branchlist" src="/static/images/icon/branch1.png"></div>';
-							contentString += '<div class="col-md-8 col-sm-8 col-xs-8 branchlist">';
+							contentString += '<div class="col-md-8 col-sm-8 col-xs-8 branchlist margin-left-10">';
 							contentString += '<p class="title-branch margin-bottom-10">' + valListing.name + '</p>';
 							contentString += '<p class="desc-branch">' + valListing.address + '</p>';
 							contentString += '<a href="#" class="margin-top-20">PETUNJUK ARAH <i class="fa fa-angle-right arrowlink" aria-hidden="true"></i></a>';
@@ -1638,7 +1640,7 @@
 								content: ''
 							});
 
-
+							
 							google.maps.event.addListener(marker, 'click', (function (marker, i) {
 
 								return function () {
@@ -1712,12 +1714,13 @@
 										}
 										 
 										$('#branch').removeClass("deactive");
+										$(".map-wrapper").addClass("active");
 										setTimeout(function () {
 											$('#branch').empty();
 										}, 10);
 
 										setTimeout(function () {
-											var html = '<div class="col-md-12 parent-brachlist" data-id="' + idListing + '" data-lat="' + valListing.latitude + '"  data-lng="' + valListing.longitude + '">';
+											var html = '<div class="col-md-12 parent-brachlist notlinkgoogle" data-id="' + idListing + '" data-lat="' + valListing.latitude + '"  data-lng="' + valListing.longitude + '">';
 											html += '<div class="wrapper-branchlist">';
 											html += '<div class="col-md-2 col-sm-2 col-xs-2 branchlist"><img class="icon-gedung-branchlist" src="'+icondynamic+'"></div>';
 											html += '<div class="col-md-8 col-sm-8 col-xs-8 branchlist">';
@@ -1756,38 +1759,52 @@
 								});
 							})
 
-
+							google.maps.event.addListener(infowindow, 'domready', function() {
+								if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+ 									$(".gm-style-iw").parent().parent().parent().css("top",100+"%");
+									$(".gm-style-iw").children().css("display","table");
+								}
+							});
 						}
 					})
 				});
 			}
 		});
 
-		$(document).on('click', '.parent-brachlist', function () {
+		$(document).on('click', '.notlinkgoogle', function () {
 
 			$(".parent-brachlist").css("background-color","white");
-			var idMarker = $(this).data('id'),
-				tembaklat = $(this).data('lat'),
-				tembaklng = $(this).data('lng');
+			var idMarker = $(this).data('id');
 
 			google.maps.event.trigger(markers[parseInt(idMarker)], 'click');
+			
 			$(this).css("background-color","#F7F7F7");
 
-			navigator.geolocation.getCurrentPosition(function(position) {
-				var pos = {
-		              lat: position.coords.latitude,
-		              lng: position.coords.longitude
-            	};
-            	
-            	var urlgoogle = "https://www.google.com/maps/dir/?api=1&origin="+pos.lat+","+pos.lng+"&destination="+tembaklat+","+tembaklng+"";
-            	window.open(urlgoogle,'_blank');
+			setTimeout(function () {
+				$('#branch').addClass("deactive");
+			}, 10);
 
-            	setTimeout(function () {
-					$('#branch').addClass("deactive");
-				}, 10);
-			})
+			$(".map-wrapper").removeClass("active");
+			
 		})
 	}
+
+	$(document).on('click', '.linkgoogle', function () {
+
+			var tembaklat = $(this).data('lat'),
+				tembaklng = $(this).data('lng');
+
+			navigator.geolocation.getCurrentPosition(function(position) {
+					var pos = {
+			              lat: position.coords.latitude,
+			              lng: position.coords.longitude
+	            	};
+	            	
+	            	var urlgoogle = "https://www.google.com/maps/dir/?api=1&origin="+pos.lat+","+pos.lng+"&destination="+tembaklat+","+tembaklng+"";
+	            	window.open(urlgoogle,'_blank');
+				})
+	});
+
 
 	if ($('#map').length) {
 
