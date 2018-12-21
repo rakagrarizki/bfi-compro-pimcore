@@ -82,6 +82,10 @@
 	border: 1px solid $grey-light-color;
 	border-top: none;
 
+	&.deactive{
+		display:none;
+	}
+
 	&::-webkit-scrollbar {
 		width: 7px;
 	}
