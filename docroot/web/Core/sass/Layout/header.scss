@@ -278,7 +278,10 @@
                                 li {
                                     color: #565656;
                                     padding-bottom: 5px;
-                                    list-style-type:none;
+                                    list-style-type:none!important;
+                                    list-style:none!important;
+                                    list-style-position: outside;
+                                    overflow: hidden;
                                     .label-title{
                                         font-size: 1.2em;
                                         font-family: 'HelveticaNeue';
