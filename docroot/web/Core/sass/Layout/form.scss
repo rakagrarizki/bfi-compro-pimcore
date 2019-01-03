@@ -350,7 +350,7 @@
                margin-bottom:25px;
 
                @include breakpoint(mobile){
-                    text-align:center;
+                    
                }
 
                p{
@@ -918,4 +918,9 @@
     color:#555;
 }
 
+#recalc{
+    @include breakpoint(mobile){
+        width: 100%;
+    }
+}
 
