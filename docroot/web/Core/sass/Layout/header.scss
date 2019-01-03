@@ -33,7 +33,7 @@
                     padding-top: 15px;
                     transition: all .3s ease-in-out;
 
-                    #produk ul {
+                    #produk .dropdown-content.main{
                         margin-top: 12px;
                         transition: all .3s ease-in-out;
                     }
@@ -103,7 +103,7 @@
 
                     &:hover{
                         color:#04559F;
-                        font-weight:bold;
+                        text-shadow:1px 0px 0px #04559f;
                     }
                 }
             }
@@ -256,7 +256,7 @@
                     }
 
                     #produk {
-                        ul {
+                       .dropdown-content.main{
                             width: 100%;
                             position: fixed;
                             margin-top: 18px;
@@ -278,6 +278,7 @@
                                 li {
                                     color: #565656;
                                     padding-bottom: 5px;
+                                    list-style-type:none;
                                     .label-title{
                                         font-size: 1.2em;
                                         font-family: 'HelveticaNeue';
@@ -292,7 +293,7 @@
                                 transform: rotate(180deg);
                             }
 
-                            ul {
+                            .dropdown-content.main{
                                 display: block;
                                 .produk-hover{
                                     li {

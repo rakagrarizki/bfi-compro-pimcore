@@ -29,6 +29,11 @@
 
         </div>
 
+        <div class="jamoperasional">
+            <span>Jam operasional semua cabang BFI:</span>
+            <span><strong>Senin-Jumat</strong> 08.00-17.00 WIB, <strong>Sabtu</strong> 08.00-15.30 WIB</span>
+        </div>
+
         <div class="button-area text-center">
             <a href="<?= $this->link('url')->getHref(); ?>" class="cta cta-primary cta-big cta-see">SELENGKAPNYA</a>
         </div>

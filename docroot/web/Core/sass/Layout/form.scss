@@ -144,11 +144,12 @@
             .cont-agunan{
                 margin-bottom: 20px;
                 .title-agunan{
-                    font-size: 1.2em;
+                    font-size: 22px;
                     font-family: 'HelveticaNeue';
                     font-weight: 600;
                     @include breakpoint(mobile){
                         margin-right: 100px;
+                        font-size: 1.2em;
                     }
                 }
                 .button-angsur{
@@ -159,7 +160,7 @@
 
                 table{
                     width: 100%;
-                    font-size: 1.3em;
+                    font-size: 18px;
 
 
                     @include breakpoint(mobile){
@@ -172,6 +173,7 @@
                            td:first-child{
                                width: 30%;
                                position: relative;
+                               padding-left:28px;
                                @include breakpoint(mobile){
                                    width: 45%;
                                }
@@ -504,6 +506,11 @@
                 display: inline-block;
                 vertical-align: top;
 
+                span{
+                    border:3px solid lightgreen;
+                    border-width: 0 0 3px 3px;
+                }
+
                 &.jcf-checked span {
                     height: 10px;
                     width: 25px;
@@ -812,7 +819,7 @@
             font-weight: 600;
 
             &.countdown--reload {
-                color: $grey-dark-color;
+                color: #F8991D;
             }
         }
     }
@@ -903,5 +910,12 @@
     }
 }
 
+#kode_pos::placeholder{
+    color:#555;
+}
+
+#kode_pos_sertificate::placeholder{
+    color:#555;
+}
 
 

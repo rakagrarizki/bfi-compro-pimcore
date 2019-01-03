@@ -126,7 +126,7 @@
                 font-weight: normal;
                 opacity:0.9;
                 font-family: 'HelveticaNeue';
-                font-size: 3.2em;
+                font-size: 44px;
                 width: 70%;
                 margin-left: auto;
                 margin-right: auto;
@@ -315,20 +315,28 @@
 #herobanner2 {
 
     .slide-cont {
-        .img-people {
-            width: 80px;
-            float: left;
+        .bungkus-img-people{
+            width:60px;
+            height:60px;
+            overflow:hidden;
+            float:left;
             @include breakpoint(mobile){
-                width: 50px;
+                width:80px;
+                height:80px;
+            }
+        }
+        .img-people {
+            width: auto;
+            height:100%;
+            @include breakpoint(mobile){
+                width: auto;
             }
         }
 
         .cont-name {
             margin-left: 100px;
-            margin-top: 40px;
             @include breakpoint(mobile){
                 margin-left: 70px;
-                margin-top: 25px;
             }
 
             p {

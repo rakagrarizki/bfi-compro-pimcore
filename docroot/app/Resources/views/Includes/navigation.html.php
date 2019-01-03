@@ -68,13 +68,14 @@ use Pimcore\Model\Document\Page;
                                             ?>
                                             <li class="dropdown <?php echo $page->getActive() ? 'active' : '' ?>" id="produk">
                                                 <a href="<?= $page->getHref() ?>" class="produk"><?= $page->getLabel() ?></a>
-                                                <ul class="dropdown-content">
+                                                <div class="dropdown-content main">
                                                     <div class="produk-hover container">
                                                         <div class="col-md-12">
                                                             <?php
                                                             foreach ($page->getPages() as $child) {
                                                                 ?>
                                                                 <div class="col-md-6">
+                                                                  <ul>
                                                                     <li>
                                                                         <div class="label-title"><?= $child->getLabel() ?></div>
                                                                     </li>
@@ -88,13 +89,14 @@ use Pimcore\Model\Document\Page;
                                                                         }
                                                                     }
                                                                     ?>
+                                                                  </ul>
                                                                 </div>
                                                                 <?php
                                                             }
                                                             ?>
                                                         </div>
                                                     </div>
-                                                </ul>
+                                                </div>
                                             </li>
                                             <?php
                                         }else{

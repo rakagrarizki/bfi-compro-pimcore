@@ -39,7 +39,7 @@
 	.form-autocomplete {
 		position: relative;
 		width:480px;
-		height:60px;
+		height:80px;
 		
 
 		@include breakpoint(mobile) {
@@ -58,7 +58,7 @@
 		i {
 			position: absolute;
 			right: 15px;
-			top: 20px;
+			top: 30px;
 			pointer-events: none;
 			font-size: 1.4em;
 			color: $grey-light-color;
@@ -84,7 +84,7 @@
 		border: 1px solid $grey-light-color;
 		font-family: 'HelveticaNeue';
 		padding-right: 50px;
-		font-size:1.375em;
+		font-size:22px;
    }
 }
 .wrapper-parent-branchlist{
@@ -94,6 +94,10 @@
 	direction: rtl;
 	border: 1px solid $grey-light-color;
 	border-top: none;
+
+	@include breakpoint(mobile) {
+		border:none;
+	}
 
 	&.deactive{
 		display:none;
@@ -123,6 +127,55 @@
 	padding-bottom: 15px;
 	direction: ltr;
 	cursor: pointer;
+
+	&.infowindow{
+		.wrapper-branchlist{
+			width:230px;
+			height:100px;
+
+			@include breakpoint(mobile) {
+				width:auto;
+				height:100%;
+			}
+		}
+
+		.col-md-10.branchlist p{
+			margin:0;
+			font-family: 'HelveticaNeue';
+			font-size:12px;
+
+			@include breakpoint(mobile) {
+				font-size:1em;
+			}
+
+			&:nth-child(1){
+				font-size:18px;
+				font-weight:bold;
+				color:#04559f;
+				@include breakpoint(mobile) {
+					color:#04559F;
+					font-size:1.3em;
+				}
+		   }
+		   &:nth-child(4){
+				font-size:14px;
+				text-decoration:underline;
+				margin-top:15px;
+				font-weight:bold;
+		   }
+		}
+
+		.branchlist{
+			&:first-child{
+				text-align:left;
+   			}
+		}
+
+		a{
+			font-size:12px;
+			font-weight:bold;
+		}
+	}
 	
 	&:last-child {
 		.wrapper-branchlist {
@@ -135,7 +188,7 @@
 		font-family: 'HelveticaNeue';
 	   	font-weight: 600;
 	   	color:#565656;
-	   	font-size:0.875em;
+	   	font-size:14px;
 
 	   	@include breakpoint(mobile) {
 	   		display: inline-block;
@@ -164,18 +217,23 @@
 .icon-gedung-branchlist{
 	width:30px;
 	height:30px;
+
+	@include breakpoint(mobile) {
+		width:50px;
+		height:50px;
+	}	
 }
 .col-md-8.branchlist p{
 	margin:0;
 	font-family: 'HelveticaNeue';
-	font-size:0.875em;
+	font-size:14px;
 
 	@include breakpoint(mobile) {
 		font-size:1em;
 	}
 
 	&:nth-child(1){
-		font-size:1.250em;
+		font-size:20px;
 		font-weight:bold;
 		@include breakpoint(mobile) {
 			color:#04559F;
