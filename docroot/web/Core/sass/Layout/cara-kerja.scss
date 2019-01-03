@@ -34,11 +34,11 @@
         }
 
         .list-step {
-            display: flex;
+            display: block;
+            text-align:center;
             flex-wrap: nowrap;
 
             li {
-                flex: 5;
                 list-style: none;
                 display: inline-block;
                 margin: 20px 50px;

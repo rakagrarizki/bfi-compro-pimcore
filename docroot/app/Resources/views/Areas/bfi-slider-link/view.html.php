@@ -12,7 +12,7 @@
                                     <p class="title"><?= $this->input('title');?></p>
                                     <a href="<?= $this->link('url')->getHref(); ?>">LIHAT PRODUK</a>
                                     <p class="quotes"><?= $this->textarea('text');?></p>
-                                    <img src="<?= $assetFounder->getImage()?>" class="img-responsive img-people" alt="">
+                                    <div class="bungkus-img-people"><img src="<?= $assetFounder->getImage()?>" class="img-responsive img-people" alt=""></div>
                                     <div class="cont-name">
                                         <p class="name"><?= $this->input('founder');?></p>
                                         <p class="position"><?= $this->input('position');?></p>

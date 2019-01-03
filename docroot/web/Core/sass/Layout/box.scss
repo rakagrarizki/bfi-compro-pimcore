@@ -1,4 +1,7 @@
 .three-box {
+    .textalign-center{
+        text-align:center;
+    }
     position: relative;
     padding-top:60px;
     padding-bottom:40px;
@@ -44,6 +47,8 @@
         background: $white;
         border: 1px solid transparent;
         z-index: 9;
+        text-align:left;
+        display:inline-block;
 
         @include breakpoint(mobile) {
             height: 180px;

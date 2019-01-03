@@ -37,7 +37,8 @@
     }
 
     >img {
-        width: 50px;
+        width: 24px;
+        height:24px;
         margin: unset;
         float: left;
 
@@ -64,12 +65,14 @@
 
         a {
             font-family: 'HelveticaNeue';
-            font-weight: 600;
+            font-weight: bold;
             display: block;
             text-transform: uppercase;
             position: absolute;
             bottom:0;
             color:gray;
+            border-bottom:1px solid;
+            font-size:14px;
 
             @include breakpoint(mobile){
                 bottom:15px;

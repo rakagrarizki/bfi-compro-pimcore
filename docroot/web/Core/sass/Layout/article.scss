@@ -1,8 +1,8 @@
 .article {
-    padding: 40px 0;
+    padding: 70px 0;
 
     .sect-title {
-        width: 40%;
+        width: 41%;
         margin: auto;
 
         @include breakpoint(mobile) {
@@ -35,7 +35,7 @@
         p {
             font-size: 10px;
             font-family: 'HelveticaNeue';
-            color: #565656;
+            color: #F8991D;
         }
 
         h4 {
