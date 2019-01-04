@@ -27,7 +27,7 @@
                                             <option value=""> Untuk Keperluan apa ?</option>
                                             <?php
                                             while ($this->block("contentblock")->loop()) {
-                                                $url = $this->link('url')->isEmpty() ? $this->link('url')->getHref() : "";
+                                                $url = !$this->link('url')->isEmpty() ? $this->link('url')->getHref() : "";
                                                 ?>
                                                 <option value="<?= $url ?>"><?= $this->input('text'); ?></option>
                                             <?php } ?>
