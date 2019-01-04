@@ -14,6 +14,7 @@
                     </li>
                 <?php } ?>
             </ul>
+            <a href="/" class="cta cta-primary cta-big cta-see">SELENGKAPNYA</a>
         </div>
     </div>
 </div>
