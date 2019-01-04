@@ -67,7 +67,7 @@ $this->extend('layout-credit.html.php');
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="nama_lengkap">Nama Lengkap</label>
+                                            <label>Nama Lengkap</label>
                                             <input type="text" class="form-control formRequired formAlphabet" name="nama_lengkap" id="nama_lengkap"
                                                    placeholder="Masukan nama lengkap Anda">
                                             <div class="error-wrap"></div>
@@ -116,7 +116,7 @@ $this->extend('layout-credit.html.php');
                                             <p class="text-center">Silahkan Masukan data tempat tinggal Anda</p>
                                         </div>
                                         <div class="form-group">
-                                            <label for="provinsi">Provinsi</label>
+                                            <label>Provinsi</label>
                                             <select class="c-custom-select formRequired" id="provinsi" name="provinsi" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}'>
                                                 <option value="">Pilih Provinsi</option>
                                             </select>
