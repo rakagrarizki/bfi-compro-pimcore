@@ -14,7 +14,6 @@
                     </li>
                 <?php } ?>
             </ul>
-            <a href="<?= $this->link('url')->getHref(); ?>" class="cta cta-primary cta-big cta-see">SELENGKAPNYA</a>
         </div>
     </div>
 </div>
