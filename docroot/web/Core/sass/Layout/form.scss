@@ -226,6 +226,7 @@
                 .columnselect{
                     display: flex;
                     flex-wrap: nowrap;
+                    margin-bottom:10px;
                     .list-select{
                         &:first-child{
                             width: 150px;
