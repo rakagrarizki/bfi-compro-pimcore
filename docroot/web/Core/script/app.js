@@ -2029,7 +2029,7 @@
 
 				raw_select = '<div class="columnselect" ke="0">'+
                                                     '<div class="list-select">'+
-                                                        '<label for="tahun ke-1">Tahun ke - 1</label>'+
+                                                        '<label>Tahun ke - 1</label>'+
                                                     '</div>'+
                                                     '<div class="list-select">'+
                                                         '<select class="c-custom-select-trans formRequired opsiasuransi" data-jcf={"wrapNative": '+false+', "wrapNativeOnMobile": '+false+', "fakeDropInBody": '+false+', "useCustomScroll": '+false+'}'+
