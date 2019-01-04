@@ -10,7 +10,7 @@
 <div class="container pengajuan">
     <div class="row">
         <div class="cek-pengajuan">
-            <p class="title"><?= $this->input('title');?></p>
+            <p class="title"><?= $this->input('title'); ?></p>
             <form action="#">
                 <div class="row">
                     <div class="col-md-12">
@@ -23,16 +23,20 @@
                             <div class="_boxkanan">
                                 <div class="_boxkananchild1">
                                     <div class="input-group inputform">
-                                        <select class="c-custom-select-home">
-                                            <option value="0" > Untuk Keperluan apa ?</option>
-                                            <?php while ($this->block("contentblock")->loop()) { ?>
-                                                <option value="<?= $this->input('value'); ?>"><?= $this->input('text'); ?></option>
+                                        <select class="c-custom-select-home" id="sel-how-form-credit">
+                                            <option value=""> Untuk Keperluan apa ?</option>
+                                            <?php
+                                            while ($this->block("contentblock")->loop()) {
+                                                $url = $this->link('url')->isEmpty() ? $this->link('url')->getHref() : "";
+                                                ?>
+                                                <option value="<?= $url ?>"><?= $this->input('text'); ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="_boxkananchild2 soloboxarrow-cekpengajuan">
-                                    <button class="btn-kotak btn-submit" type="submit"></button>
+                                    <button disabled class="btn-kotak btn-submit btn-submit-how-form-credit"
+                                            type="submit"></button>
                                 </div>
                             </div>
                         </div>

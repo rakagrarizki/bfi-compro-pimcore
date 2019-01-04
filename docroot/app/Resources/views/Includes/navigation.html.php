@@ -10,14 +10,15 @@ use Pimcore\Model\Document;
 use Pimcore\Model\Document\Page;
 
 ?>
-<?php $pageCurrent = $this->getParam('page',1);?>
+<?php $pageCurrent = $this->getParam('page', 1); ?>
 <nav id="site-header">
     <div class="navbar-fixed-top hidden-xs">
         <div class="header-top">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 left-side-top">
-                        <a class="_personal" href="/<?php echo $this->getLocale() ?>"><?= $this->translate("personal") ?></a>
+                        <a class="_personal"
+                           href="/<?php echo $this->getLocale() ?>"><?= $this->translate("personal") ?></a>
                         <a class="_grup" href="#"><?= $this->translate("corporate") ?></a>
                     </div>
                     <div class="col-md-5 right-side-top">
@@ -44,7 +45,7 @@ use Pimcore\Model\Document\Page;
                 <div class="row">
 
                     <div class="col-md-4 header-bottom-logo">
-                        <a href="<?php echo "/".$this->getLocale(); ?>">
+                        <a href="<?php echo "/" . $this->getLocale(); ?>">
                             <img src="/static/images/logo-bfi.png" class="img-responsive" alt="">
                         </a>
 
@@ -54,20 +55,22 @@ use Pimcore\Model\Document\Page;
                             <ul class="nav">
                                 <?php
 
-                                $listMenu = Document::getByPath("/".$this->getLocale()."/");
+                                $listMenu = Document::getByPath("/" . $this->getLocale() . "/");
                                 $subPage = $this->navigation()->buildNavigation($this->document, $listMenu);
 
                                 if ($subPage) {
                                     foreach ($subPage as $page) {
                                         $hasChildren = $page->hasPages();
 
-                                        if(strpos($page->getUri(), 'branch-office') !== false){
+                                        if (strpos($page->getUri(), 'branch-office') !== false) {
                                             continue;
                                         }
-                                        if($hasChildren && strpos($page->getUri(), 'product') !== false){
+                                        if ($hasChildren && strpos($page->getUri(), '#product') !== false) {
                                             ?>
-                                            <li class="dropdown <?php echo $page->getActive() ? 'active' : '' ?>" id="produk">
-                                                <a href="<?= $page->getHref() ?>" class="produk"><?= $page->getLabel() ?></a>
+                                            <li class="dropdown <?php echo $page->getActive() ? 'active' : '' ?>"
+                                                id="produk">
+                                                <a href="#"
+                                                   class="produk"><?= $page->getLabel() ?></a>
                                                 <div class="dropdown-content main">
                                                     <div class="produk-hover container">
                                                         <div class="col-md-12">
@@ -75,21 +78,23 @@ use Pimcore\Model\Document\Page;
                                                             foreach ($page->getPages() as $child) {
                                                                 ?>
                                                                 <div class="col-md-6">
-                                                                  <ul>
-                                                                    <li>
-                                                                        <div class="label-title"><?= $child->getLabel() ?></div>
-                                                                    </li>
-                                                                    <?php
-                                                                    $hasGrandChildren = $child->hasPages();
-                                                                    if($hasGrandChildren){
-                                                                        foreach($child->getPages() as $grandChild){
-                                                                            ?>
-                                                                            <li class="<?=$grandChild == $pageCurrent ? 'active' : ''?>"><a href="<?= $grandChild->getHref() ?>"><?= $grandChild->getLabel() ?></a></li>
-                                                                            <?php
+                                                                    <ul>
+                                                                        <li>
+                                                                            <div class="label-title"><?= $child->getLabel() ?></div>
+                                                                        </li>
+                                                                        <?php
+                                                                        $hasGrandChildren = $child->hasPages();
+                                                                        if ($hasGrandChildren) {
+                                                                            foreach ($child->getPages() as $grandChild) {
+                                                                                ?>
+                                                                                <li class="<?= $grandChild == $pageCurrent ? 'active' : '' ?>">
+                                                                                    <a href="<?= $grandChild->getHref() ?>"><?= $grandChild->getLabel() ?></a>
+                                                                                </li>
+                                                                                <?php
+                                                                            }
                                                                         }
-                                                                    }
-                                                                    ?>
-                                                                  </ul>
+                                                                        ?>
+                                                                    </ul>
                                                                 </div>
                                                                 <?php
                                                             }
@@ -99,7 +104,7 @@ use Pimcore\Model\Document\Page;
                                                 </div>
                                             </li>
                                             <?php
-                                        }else{
+                                        } else {
                                             ?>
                                             <li class="<?php echo $page->getActive() ? 'active' : '' ?>">
                                                 <a href="<?= $page->getHref() ?>">
