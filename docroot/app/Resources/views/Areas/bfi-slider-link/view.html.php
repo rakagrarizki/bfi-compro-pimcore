@@ -3,7 +3,7 @@
         <?php while ($this->block("contentblock")->loop()) { ?>
             <?php $asset = $this->image("image");?>
             <?php $assetFounder = $this->image("image-founder");?>
-            <div class="slide" style="background-image: url('<?= $asset->getImage()?>')">
+            <div class="slide slidemodif" style="background-image: url('<?= $asset->getImage()?>')">
                 <div class="slide-cont">
                     <div class="desc-slide2">
                         <div class="desc-cont container">

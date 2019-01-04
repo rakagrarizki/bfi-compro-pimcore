@@ -66,7 +66,7 @@ $this->extend('layout-credit.html.php');
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="provinsi">Pekerjaan</label>
+                                            <label>Pekerjaan</label>
                                             <select class="c-custom-select formRequired" id="pekerjaan" name="pekerjaan"  data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' />
                                                 <option value="">Pilih pekerjaan Anda</option>
                                                 <option value="Karyawan">Karyawan</option>
@@ -119,28 +119,28 @@ $this->extend('layout-credit.html.php');
                                             <p class="text-center">Silahkan Masukan data tempat tinggal Anda</p>
                                         </div>
                                         <div class="form-group">
-                                            <label for="provinsi">Provinsi</label>
+                                            <label>Provinsi</label>
                                             <select class="c-custom-select formRequired" id="provinsi" name="provinsi"  data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' />
                                                 <option value="">Pilih Provinsi</option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="kota">Kota</label>
+                                            <label>Kota</label>
                                             <select class="c-custom-select formRequired" id="kota" name="kota"  data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' />
                                                 <option value="">Pilih Kota</option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="kecamatan">Kecamatan</label>
+                                            <label>Kecamatan</label>
                                             <select class="c-custom-select formRequired" id="kecamatan" name="kecamatan"  data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' />
                                                 <option value="">Pilih Kecamatan</option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="kelurahan">Kelurahan</label>
+                                            <label>Kelurahan</label>
                                             <select class="c-custom-select formRequired" id="kelurahan" name="kelurahan"  data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' />
                                                 <option value="">Pilih Kelurahan</option>
                                             </select>
@@ -177,7 +177,7 @@ $this->extend('layout-credit.html.php');
                                             <p class="text-center">Silahkan Masukan data bangunan Anda</p>
                                         </div>
                                         <div class="form-group">
-                                            <label for="merk_kendaraan">Status Sertifikat</label>
+                                            <label>Status Sertifikat</label>
                                             <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="status_sertificate" name="status_sertificate">
                                                 <option value=""> Pilih Status Sertifikat</option>
                                                 <option value="HAK MILIK">SURAT HAK MILIK</option>
@@ -186,7 +186,7 @@ $this->extend('layout-credit.html.php');
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="model_kendaraan">Sertifikat Atas Nama</label>
+                                            <label>Sertifikat Atas Nama</label>
                                             <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="own_sertificate"
                                                     name="own_sertificate">
                                                 <option value=""> Pilih Sertifikat Atas Nama</option>
@@ -196,28 +196,28 @@ $this->extend('layout-credit.html.php');
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="provinsi_sertificate">Provinsi</label>
+                                            <label>Provinsi</label>
                                             <select class="c-custom-select formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="provinsi_sertificate" name="provinsi_sertificate">
                                                 <option value=""> Pilih Provinsi</option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="kota_sertificate">Kota</label>
+                                            <label>Kota</label>
                                             <select class="c-custom-select formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="kota_sertificate" name="kota_sertificate">
                                                 <option value=""> Pilih Kota</option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="kecamatan_sertificate">Kecamatan</label>
+                                            <label>Kecamatan</label>
                                             <select class="c-custom-select formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="kecamatan_sertificate" name="kecamatan_sertificate">
                                                 <option value=""> Pilih Kecamatan</option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="kelurahan">Kelurahan</label>
+                                            <label>Kelurahan</label>
                                             <select class="c-custom-select formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="kelurahan_sertificate" name="kelurahan_sertificate">
                                                 <option value=""> Pilih Kelurahan</option>
                                             </select>

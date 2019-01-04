@@ -71,11 +71,15 @@
 
     .slide {
         height: 0;
-        padding-bottom: 500px;
+        padding-bottom: 505px;
         position: relative;
         overflow: hidden;
         background-size: cover;
         background-repeat: no-repeat;
+
+        &.slidemodif{
+
+        }
 
         &::after {
             position: absolute;
@@ -307,7 +311,7 @@
     .slick-dots {
         bottom: 100px;
         @include breakpoint (mobile) {
-            bottom: 45%;
+            bottom: 20%;
         }
     }
 }
@@ -336,7 +340,7 @@
         .cont-name {
             margin-left: 100px;
             @include breakpoint(mobile){
-                margin-left: 70px;
+                margin-left: 100px;
             }
 
             p {

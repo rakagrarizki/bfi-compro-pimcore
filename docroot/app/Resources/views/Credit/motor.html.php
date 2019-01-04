@@ -115,28 +115,28 @@ $this->extend('layout-credit.html.php');
                                             <p class="text-center">Silahkan Masukan data tempat tinggal Anda</p>
                                         </div>
                                         <div class="form-group">
-                                            <label for="provinsi">Provinsi</label>
+                                            <label>Provinsi</label>
                                             <select class="c-custom-select formRequired" id="provinsi" name="provinsi"  data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' />
                                                 <option value="">Pilih Provinsi</option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="kota">Kota</label>
+                                            <label>Kota</label>
                                             <select class="c-custom-select formRequired" id="kota" name="kota"  data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' />
                                                 <option value="">Pilih Kota</option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="kecamatan">Kecamatan</label>
+                                            <label>Kecamatan</label>
                                             <select class="c-custom-select formRequired" id="kecamatan" name="kecamatan"  data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' />
                                                 <option value="">Pilih Kecamatan</option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="kelurahan">Kelurahan</label>
+                                            <label>Kelurahan</label>
                                             <select class="c-custom-select formRequired" id="kelurahan" name="kelurahan"  data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' />
                                                 <option value="">Pilih Kelurahan</option>
                                             </select>
@@ -173,36 +173,31 @@ $this->extend('layout-credit.html.php');
                                             <p class="text-center">Silahkan Masukan data kendaraan Anda</p>
                                         </div>
                                         <div class="form-group">
-                                            <label for="merk_kendaraan">Merk Kendaraan</label>
+                                            <label>Merk Kendaraan</label>
                                             <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="merk_kendaraan" name="merk_kendaraan">
-                                                <option value=""> Pilih merk kendaraan</option>
-                                                <option value="Yamaha">Yamaha</option>
-                                                <option value="Honda">Honda</option>
+                                                <option value=""> Pilih Merk Kendaraan</option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="model_kendaraan">Model Kendaraan</label>
+                                            <label>Model Kendaraan</label>
                                             <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="model_kendaraan"
                                                     name="model_kendaraan">
                                                 <option value=""> Pilih Model Kendaraan</option>
-                                                <option value="Yamaha YZR1M">Yamaha YZR1M</option>
-                                                <option value="Honda CBR 1000">Honda CBR 1000</option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="tahun_kendaraan">Tahun Kendaraan</label>
+                                            <label>Tahun Kendaraan</label>
                                             <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="tahun_kendaraan"
                                                     name="tahun_kendaraan">
-                                                <option value=""> Pilih tahun kendaraan</option>
+                                                <option value=""> Pilih Tahun Kendaraan</option>
                                                 <option value="2011">2011</option>
-                                                <option value="2012">2012</option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="status">Status Kepemilikan</label>
+                                            <label>Status Kepemilikan</label>
                                             <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="status_kep" name="status_kep">
                                                 <option value=""> Pilih Status Kepemilikan</option>
                                                 <option value="Hak Milik">Hak Milik</option>
@@ -252,7 +247,7 @@ $this->extend('layout-credit.html.php');
                                                 </div>
                                             </div>
                                             <div class="form-group sliderGroup inputsimulasi">
-                                                <label for="jangka warktu">Jangka Waktu</label>
+                                                <label>Jangka Waktu</label>
                                                 <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="jangka waktu"
                                                         name="jangka-waktu">
                                                     <option value="12">12 Bulan</option>
@@ -270,26 +265,18 @@ $this->extend('layout-credit.html.php');
                                                     <div class="value-right">60 Bulan</div>
                                                 </div>
                                             </div>
-                                            <div class="form-group inputsimulasi">
+                                            <div class="form-group inputsimulasi asuransi">
                                                 <label>Asuransi</label>
-                                                <div class="columnselect">
+                                                <div class="columnselect" ke="0">
                                                     <div class="list-select">
-                                                        <label for="tahun ke-1">Tahun ke - 1</label>
+                                                        <label>Tahun ke - 1</label>
                                                     </div>
                                                     <div class="list-select">
-                                                        <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}'  id="status"
-                                                                name="status">
-                                                            <option value="12">12 Bulan</option>
-                                                            <option value="24">24 Bulan</option>
-                                                            <option value="36">36 Bulan</option>
-                                                            <option value="48">48 Bulan</option>
-                                                            <option value="60">60 Bulan</option>
-                                                        </select>
+                                                        <select class="c-custom-select-trans formRequired opsiasuransi" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}'
+                                                                name="status"></select>
                                                     </div>
                                                     <div class="error-wrap"></div>
                                                 </div>
-
-
                                             </div>
                                         </div>
                                         <div class="col-md-6">
