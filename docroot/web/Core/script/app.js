@@ -392,11 +392,40 @@
 		$(this).parents(".sliderGroup").find(".customslide").slider('setValue',parseInt(thisval));
 	});
 
+	var clone_asuransi,
+		raw_select,
+		asuransi_arr=[];
+
+	function newoptionAsuransi(thisval,raw_select){
+		$(".columnselect").remove();
+		var jumlah_loop = parseInt(thisval) / 12;
+		asuransi_arr=[];
+		
+		for(var i=1; i<=jumlah_loop; i++){
+			$(".form-group.inputsimulasi.asuransi").append(raw_select);
+			$(".columnselect[ke=0]").attr("ke",i);
+			$(".columnselect[ke="+i+"]").children().find("label").text("Tahun ke - "+i+"");
+			asuransi_arr[asuransi_arr.length] = $(".columnselect .c-custom-select-trans").val();	
+		}
+
+		jcf.replaceAll();
+
+		$(".columnselect .c-custom-select-trans").on("change",function(){
+			var rowke = $(this).parents(".columnselect").attr("ke");
+			asuransi_arr[rowke - 1] = $(this).val();
+			console.log(asuransi_arr);
+		});
+	};
+
 	$(".sliderGroup .c-custom-select-trans").on("change",function(){
 		var thisval = $(this).val();
 		thisval = thisval.replace(".","");
 		$(this).parents(".sliderGroup").find(".customslide").slider('setValue',parseInt(thisval));
+
+		//andry
+		newoptionAsuransi(thisval, raw_select);
 	});
+	
 
 	if($(".customslide").length>0) {
 		$(".customslide").slider();	
@@ -422,6 +451,8 @@
 					_ifMonth.val(parseInt(_thisVal))
 					var customFormInstance = jcf.getInstance(_ifMonth);
 					customFormInstance.refresh();
+
+					newoptionAsuransi(_thisVal, raw_select);
 				}
 			});
 	}
@@ -1372,14 +1403,38 @@
 
 			success: function (dataObj) {
 				if(dataObj.success == true) {
-					$.each(dataObj.result.data, function(idPrivince, valProvince) {
-						if(valProvince.name != '') {
-							var elementOption = '<option value="'+ valProvince.id +'">'+ valProvince.name +'</option>';
+					$.each(dataObj.result.data, function(idMobil, valMobil) {
+						if(valMobil.name != '') {
+							var elementOption = '<option value="'+ valMobil.id +'">'+ valMobil.name +'</option>';
 
 							$(element).append(elementOption);
-							if(element2){
-								$(element2).append(elementOption);	
-							}
+						}
+					})
+				}
+			}
+		})
+	}
+
+	function getmotor(element){
+		$.ajax({
+			type: 'GET',
+			url: 'https://bfi.staging7.salt.id/brand/motor/listJson',
+			dataType: 'json',
+			error: function (data) {
+				console.log('error' + data);
+			},
+
+			fail: function (xhr, textStatus, error) {
+				console.log('request failed')
+			},
+
+			success: function (dataObj) {
+				if(dataObj.success == true) {
+					$.each(dataObj.result.data, function(idMotor, valMotor) {
+						if(valMotor.name != '') {
+							var elementOption = '<option value="'+ valMotor.id +'">'+ valMotor.name +'</option>';
+
+							$(element).append(elementOption);
 						}
 					})
 				}
@@ -1405,7 +1460,7 @@
 
 			success: function (dataObj) {
 				if(dataObj.success == true) {
-					$.each(dataObj.result.data, function(idPrivince, valProvince) {
+					$.each(dataObj.result.data, function(idProvince, valProvince) {
 						if(valProvince.name != '') {
 							var elementOption = '<option value="'+ valProvince.id +'">'+ valProvince.name +'</option>';
 
@@ -1824,6 +1879,37 @@
 			$("#button3").css("background-color","#F8991D");
 			$("#button3").css("border-color","#F8991D");
 		}
+
+		var id = this.value;
+
+		$.ajax({
+			type: 'GET',
+			url: 'https://bfi.staging7.salt.id/brand/product/listJson?id='+id,
+			dataType: 'json',
+			error: function (data) {
+				console.log('error' + data);
+			},
+
+			fail: function (xhr, textStatus, error) {
+				console.log('request failed')
+			},
+
+			success: function (dataObj) {
+				console.log(dataObj)
+				if(dataObj.success == true) {
+					$.each(dataObj.result.data, function(idKendaraan, valKendaraan) {
+						if(valKendaraan.name != '') {
+							var elementOption = '<option value="'+ valKendaraan.codeProduct +'">'+ valKendaraan.name +'</option>';
+							$('#model_kendaraan').empty();
+							$('#model_kendaraan').next().find(".jcf-select-text").children("span").html("Pilih Model Kendaraan");
+							setTimeout(function() {
+								$("#model_kendaraan").append(elementOption);
+							}, 50);	
+						}
+					})
+				}
+			}
+		})
 	});
 
 	$('#model_kendaraan').change(function() {
@@ -1864,6 +1950,12 @@
 		}
 	});
 
+	if($('#jenis_form').val() == "MOBIL"){
+		getmobil($("#merk_kendaraan"));
+	}else if($('#jenis_form').val() == "MOTOR"){
+		getmotor($("#merk_kendaraan"));
+	}
+
 	//function get credit min max price dan asurasi list
 
 	function separatordot(o){
@@ -1891,8 +1983,8 @@
 
 		var _data = {
 			tipe: params.angunan.jenis_angunan,
-			model_kendaraan: params.kendaraan.merk_kendaraan,
-			merk_kendaraan: params.kendaraan.model_kendaraan,
+			model_kendaraan: params.kendaraan.model_kendaraan,
+			merk_kendaraan: params.kendaraan.merk_kendaraan,
 			kota: params.tempat_tinggal.kota,
 			tahun: params.kendaraan.tahun_kendaraan
 		}
@@ -1931,13 +2023,28 @@
 				$(".valuemin").text(minprice);
 				$(".valuemax").text(maxprice);
 
+
 				var opsiasuransi = "<option value='"+data.data.asuransi_1+"'>"+data.data.asuransi_1+"</option>"+
 									"<option value='"+data.data.asuransi_2+"'>"+data.data.asuransi_2+"</option>";
 
-				$(".c-custom-select-trans[name='status']").append(opsiasuransi);
+				raw_select = '<div class="columnselect" ke="0">'+
+                                                    '<div class="list-select">'+
+                                                        '<label for="tahun ke-1">Tahun ke - 1</label>'+
+                                                    '</div>'+
+                                                    '<div class="list-select">'+
+                                                        '<select class="c-custom-select-trans formRequired opsiasuransi" data-jcf={"wrapNative": '+false+', "wrapNativeOnMobile": '+false+', "fakeDropInBody": '+false+', "useCustomScroll": '+false+'}'+
+                                                                'name="status">'+opsiasuransi+'</select>'+
+                                                    '</div>'+
+                                                    '<div class="error-wrap"></div>'+
+                                                '</div>';
 
-				$(".c-custom-select-trans[name='status']").val(data.data.asuransi_1);
-				$(".c-custom-select-trans[name='status']").next().children().children().text(data.data.asuransi_1);
+                newoptionAsuransi(12, raw_select);
+				// $(".opsiasuransi").append(opsiasuransi);
+				// $(".opsiasuransi").val(data.data.asuransi_1);
+				// $(".opsiasuransi").next().children().children().text(data.data.asuransi_1);
+
+				//raw_select = "<select class='opsiasuransi'>"+opsiasuransi+"</select>";
+				//clone_asuransi = $(".columnselect").clone(true);
 			}
 		})
 	}

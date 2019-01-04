@@ -176,8 +176,7 @@ $this->extend('layout-credit.html.php');
                                         <div class="form-group">
                                             <label for="merk_kendaraan">Merk Kendaraan</label>
                                             <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="merk_kendaraan" name="merk_kendaraan">
-                                                <option value=""> Pilih merk kendaraan</option>
-                                                <option value="ALLNEWXENIA DVVTI10MT">ALLNEWXENIA DVVTI10MT</option>
+                                                <option value=""> Pilih Merk Kendaraan</option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
@@ -186,7 +185,6 @@ $this->extend('layout-credit.html.php');
                                             <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="model_kendaraan"
                                                     name="model_kendaraan">
                                                 <option value=""> Pilih Model Kendaraan</option>
-                                                <option value="DAIHATSU">DAIHATSU</option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
@@ -194,7 +192,7 @@ $this->extend('layout-credit.html.php');
                                             <label for="tahun_kendaraan">Tahun Kendaraan</label>
                                             <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="tahun_kendaraan"
                                                     name="tahun_kendaraan">
-                                                <option value=""> Pilih tahun kendaraan</option>
+                                                <option value=""> Pilih Tahun Kendaraan</option>
                                                 <option value="2011">2011</option>
                                             </select>
                                             <div class="error-wrap"></div>
@@ -267,21 +265,18 @@ $this->extend('layout-credit.html.php');
                                                     <div class="value-right">60 Bulan</div>
                                                 </div>
                                             </div>
-                                            <div class="form-group inputsimulasi">
+                                            <div class="form-group inputsimulasi asuransi">
                                                 <label>Asuransi</label>
-                                                <div class="columnselect">
+                                                <div class="columnselect" ke="0">
                                                     <div class="list-select">
                                                         <label for="tahun ke-1">Tahun ke - 1</label>
                                                     </div>
                                                     <div class="list-select">
-                                                        <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="status"
-                                                                name="status">
-                                                        </select>
+                                                        <select class="c-custom-select-trans formRequired opsiasuransi" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}'
+                                                                name="status"></select>
                                                     </div>
                                                     <div class="error-wrap"></div>
                                                 </div>
-
-
                                             </div>
                                         </div>
                                         <div class="col-md-6">

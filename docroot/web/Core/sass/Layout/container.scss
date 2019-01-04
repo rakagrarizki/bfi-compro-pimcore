@@ -1,9 +1,8 @@
-
 #site-container {
     margin-top: 130px;
     min-height: 56vh;
     overflow-x:hidden;
-    overflow-y:-webkit-paged-y;
+    overflow-y:auto;
 
     &.active {
         
@@ -37,7 +36,7 @@ a {
         top: 0;
         bottom: 0;
         background: #04559F;
-        opacity: .8;    
+        opacity: .7;    
     }
 
     h2 {
@@ -85,6 +84,11 @@ a {
     color:#04559F;
     margin-top:85px;
     padding:0 8%;
+
+    &.modif-top{
+        margin-top:0;
+    }
+
     @include breakpoint(mobile){
         font-size: 1.8em;
     }

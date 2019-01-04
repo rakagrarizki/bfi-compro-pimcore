@@ -75,7 +75,7 @@
             font-size:14px;
 
             @include breakpoint(mobile){
-                bottom:15px;
+                bottom:10px;
 
                 &:before{
                     content:"";
