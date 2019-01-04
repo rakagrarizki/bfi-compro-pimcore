@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
+<!--[if lt IE 7]>
+<html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html lang="en" class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
 <html class="no-js" lang="en">
 <!--<![endif]-->
@@ -9,19 +12,21 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/png" href="<?=\Pimcore\Tool::getHostUrl().'/static/images/favicon/favicon.png'?>"/>
-    <link rel="shortcut icon" type="image/png" href="<?=\Pimcore\Tool::getHostUrl().'/static/images/favicon/favicon.png'?>"/>
+    <link rel="shortcut icon" type="image/png"
+          href="<?= \Pimcore\Tool::getHostUrl() . '/static/images/favicon/favicon.png' ?>"/>
+    <link rel="shortcut icon" type="image/png"
+          href="<?= \Pimcore\Tool::getHostUrl() . '/static/images/favicon/favicon.png' ?>"/>
 
     <?php
 
-    if($this->document instanceof \Pimcore\Model\Document\Page){
+    if ($this->document instanceof \Pimcore\Model\Document\Page) {
         if ($this->document->getTitle()) {
             // use the manually set title if available
             $this->headTitle()->set($this->document->getTitle());
 
         }
     }
-    if($this->document == '/'){
+    if ($this->document == '/') {
         $this->headTitle()->set($this->document->getTitle());
 
     }
@@ -42,7 +47,7 @@
     $this->headLink()->appendStylesheet('/static/css/plugins.min.css');
     $this->headLink()->appendStylesheet('/static/css/main.css');
 
-    if($this->editmode){
+    if ($this->editmode) {
         $this->headLink()->appendStylesheet('/static/css/editmode.css');
     }
 
@@ -62,21 +67,21 @@
 
 </head>
 <body>
-    <?php echo $this->template('Includes/navigation.html.php', ['documentInitiator' => $this->document->getId()]) ?>
+<?php echo $this->template('Includes/navigation.html.php', ['documentInitiator' => $this->document->getId()]) ?>
 
-    <div id="site-container">
-        <?php $this->slots()->output('_content'); ?>
-    </div>
-    <!-- CONTAINER -->
-    <!-- FOOTER -->
-    <?= $this->inc("/".$this->getLocale()."/shared/includes/footer") ?>
-    <!-- FOOTER -->
+<div id="site-container">
+    <?php $this->slots()->output('_content'); ?>
+</div>
+<!-- CONTAINER -->
+<!-- FOOTER -->
+<?= $this->inc("/" . $this->getLocale() . "/shared/includes/footer") ?>
+<!-- FOOTER -->
+<?php $this->headScript()->prependFile('/static/js/Includes/homepage.js'); ?>
+<?php $this->headScript()->prependFile('/static/js/custom.js'); ?>
+<?php $this->headScript()->prependFile('/static/js/app.min.js'); ?>
+<?php $this->headScript()->prependFile('/static/js/plugins.min.js'); ?>
+<?php $this->headScript()->prependFile('/static/js/vendor.min.js'); ?>
 
-    <?php $this->headScript()->prependFile('/static/js/custom.js'); ?>
-    <?php $this->headScript()->prependFile('/static/js/app.min.js'); ?>
-    <?php $this->headScript()->prependFile('/static/js/plugins.min.js'); ?>
-    <?php $this->headScript()->prependFile('/static/js/vendor.min.js'); ?>
-    <?php $this->headScript()->prependFile('/static/js/Includes/homepage.js'); ?>
-    <?php echo $this->headScript(); ?>
+<?php echo $this->headScript(); ?>
 </body>
 </html>
