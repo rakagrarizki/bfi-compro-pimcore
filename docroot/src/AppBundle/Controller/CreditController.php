@@ -5,6 +5,8 @@ namespace AppBundle\Controller;
 use Pimcore\Controller\FrontendController;
 use Symfony\Component\HttpFoundation\Request;
 use Pimcore\Model\WebsiteSetting;
+use Pimcore\Model\DataObject;
+use Pimcore\Model\DataObject\Assurance;
 use AppBundle\Service\SendApi;
 use Pimcore\Bundle\AdminBundle\HttpFoundation\JsonResponse;
 
@@ -101,11 +103,20 @@ class CreditController extends FrontendController
             ]);
         }
 
+
+
         $dataApi = [];
         $dataApi['maxPrice'] = $data->data[0]->price;
         $dataApi['minPrice'] = "10000000";
-        $dataApi['asuransi_1'] = "ALK";
-        $dataApi['asuransi_2'] = "TLO";
+
+        $assurance = new Assurance\Listing();
+        if ($assurance) {
+            foreach ($assurance as $item) {
+                $temp['name'] = $item->getName();
+                $temp['code'] = $item->getCode();
+                $dataApi['asuransi'][] = $temp;
+            }
+        }
 
         return new JsonResponse([
             'success' => "1",
