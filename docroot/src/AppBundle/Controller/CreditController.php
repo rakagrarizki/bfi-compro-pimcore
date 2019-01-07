@@ -49,6 +49,7 @@ class CreditController extends FrontendController
 
     public function getBranchBfi($postCode)
     {
+        $value = null;
         $param = [];
         $param['post_code'] = $postCode;
 
@@ -57,20 +58,16 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getPriceCar($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Price Down"
-            ]);
+            return $value;
         }
 
         if($data->code != "1"){
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Price Down"
-            ]);
+            return $value;
         }
 
-        return $data->data;
+        $value = $data->data;
+
+        return $value;
     }
 
     public function getPriceAction(Request $request)
@@ -132,6 +129,14 @@ class CreditController extends FrontendController
     public function sendLoanDataAction(Request $request)
     {
         $data = $this->getBranchBfi((string)$request->get('post_code'));
+
+        if($data == null){
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Service Request Branch Down"
+            ]);
+        }
+
         $nameKota = $data[0]->branch;
         $areaCode = $data[0]->area_code;
 
