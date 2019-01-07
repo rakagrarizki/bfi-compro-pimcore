@@ -5,6 +5,8 @@ namespace AppBundle\Controller;
 use Pimcore\Controller\FrontendController;
 use Symfony\Component\HttpFoundation\Request;
 use Pimcore\Model\WebsiteSetting;
+use Pimcore\Model\DataObject;
+use Pimcore\Model\DataObject\Assurance;
 use AppBundle\Service\SendApi;
 use Pimcore\Bundle\AdminBundle\HttpFoundation\JsonResponse;
 
@@ -45,10 +47,33 @@ class CreditController extends FrontendController
 
     }
 
+    public function getBranchBfi($postCode)
+    {
+        $value = null;
+        $param = [];
+        $param['post_code'] = $postCode;
+
+        $url = WebsiteSetting::getByName('URL_GET_BRANCH')->getData();
+
+        try {
+            $data = $this->sendAPI->getPriceCar($url, $param);
+        } catch (\Exception $e) {
+            return $value;
+        }
+
+        if($data->code != "1"){
+            return $value;
+        }
+
+        $value = $data->data;
+
+        return $value;
+    }
+
     public function getPriceAction(Request $request)
     {
-        $nameKota = preg_replace("/(?:^|\W)KABUPATEN(?:$|\W)/", "", (string)$request->get('kota'));
-        $nameKota = preg_replace("/(?:^|\W)KOTA(?:$|\W)/", "", $nameKota);
+        $data = $this->getBranchBfi((string)$request->get('post_code'));
+        $nameKota = $data[0]->branch;
 
         $param = [];
         $param['loan_type'] = (string)$request->get('tipe');
@@ -76,10 +101,23 @@ class CreditController extends FrontendController
         }
 
         $dataApi = [];
-        $dataApi['maxPrice'] = $data->data[0]->price;
+        if($data->data[0]->price){
+            $price = $data->data[0]->price;
+        }else{
+            $price = "0";
+        }
+
+        $dataApi['maxPrice'] = $price;
         $dataApi['minPrice'] = "10000000";
-        $dataApi['asuransi_1'] = "ALK";
-        $dataApi['asuransi_2'] = "TLO";
+
+        $assurance = new Assurance\Listing();
+        if ($assurance) {
+            foreach ($assurance as $item) {
+                $temp['name'] = $item->getName();
+                $temp['code'] = $item->getCode();
+                $dataApi['asuransi'][] = $temp;
+            }
+        }
 
         return new JsonResponse([
             'success' => "1",
@@ -90,13 +128,24 @@ class CreditController extends FrontendController
 
     public function sendLoanDataAction(Request $request)
     {
+        $data = $this->getBranchBfi((string)$request->get('post_code'));
+
+        if($data == null){
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Service Request Branch Down"
+            ]);
+        }
+
+        $nameKota = $data[0]->branch;
+        $areaCode = $data[0]->area_code;
 
         $param = [];
-        $param['branch'] = $request->get('city');
-        $param['area_code'] = $request->get('area_code');
+        $param['branch'] = $nameKota;
+        $param['area_code'] = $areaCode;
         $param['vehicleType'] = $request->get('tipe');
-        $param['brandName'] = $request->get('brand');
-        $param['model'] = $request->get('merk');
+        $param['brandName'] = $request->get('merk_kendaraan');
+        $param['model'] = $request->get('model_kendaraan');
         $param['year'] = $request->get('tahun');
         $param['funding'] = $request->get('funding');
         $param['tenor'] = $request->get('tenor');
