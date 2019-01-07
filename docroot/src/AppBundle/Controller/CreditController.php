@@ -103,10 +103,14 @@ class CreditController extends FrontendController
             ]);
         }
 
-
-
         $dataApi = [];
-        $dataApi['maxPrice'] = $data->data[0]->price;
+        if($data->data[0]->price){
+            $price = $data->data[0]->price;
+        }else{
+            $price = "0";
+        }
+
+        $dataApi['maxPrice'] = $price;
         $dataApi['minPrice'] = "10000000";
 
         $assurance = new Assurance\Listing();
