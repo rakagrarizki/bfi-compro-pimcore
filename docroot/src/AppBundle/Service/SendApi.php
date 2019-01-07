@@ -81,6 +81,11 @@ class SendApi
         return $this->executeApi('api-price-car', $url, $params);
     }
 
+    public function getBranchName($url, $params)
+    {
+        return $this->executeApi('api-branch-name', $url, $params);
+    }
+
     public function getBranch($url)
     {
         $client = new Client([
