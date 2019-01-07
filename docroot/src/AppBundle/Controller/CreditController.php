@@ -45,10 +45,36 @@ class CreditController extends FrontendController
 
     }
 
+    public function getBranchBfi($postCode)
+    {
+        $param = [];
+        $param['post_code'] = $postCode;
+
+        $url = WebsiteSetting::getByName('URL_GET_BRANCH')->getData();
+
+        try {
+            $data = $this->sendAPI->getPriceCar($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Service Request Price Down"
+            ]);
+        }
+
+        if($data->code != "1"){
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Service Request Price Down"
+            ]);
+        }
+
+        return $data->data;
+    }
+
     public function getPriceAction(Request $request)
     {
-        $nameKota = preg_replace("/(?:^|\W)KABUPATEN(?:$|\W)/", "", (string)$request->get('kota'));
-        $nameKota = preg_replace("/(?:^|\W)KOTA(?:$|\W)/", "", $nameKota);
+        $data = $this->getBranchBfi((string)$request->get('post_code'));
+        $nameKota = $data[0]->branch;
 
         $param = [];
         $param['loan_type'] = (string)$request->get('tipe');
@@ -90,13 +116,16 @@ class CreditController extends FrontendController
 
     public function sendLoanDataAction(Request $request)
     {
+        $data = $this->getBranchBfi((string)$request->get('post_code'));
+        $nameKota = $data[0]->branch;
+        $areaCode = $data[0]->area_code;
 
         $param = [];
-        $param['branch'] = $request->get('city');
-        $param['area_code'] = $request->get('area_code');
+        $param['branch'] = $nameKota;
+        $param['area_code'] = $areaCode;
         $param['vehicleType'] = $request->get('tipe');
-        $param['brandName'] = $request->get('brand');
-        $param['model'] = $request->get('merk');
+        $param['brandName'] = $request->get('merk_kendaraan');
+        $param['model'] = $request->get('model_kendaraan');
         $param['year'] = $request->get('tahun');
         $param['funding'] = $request->get('funding');
         $param['tenor'] = $request->get('tenor');
