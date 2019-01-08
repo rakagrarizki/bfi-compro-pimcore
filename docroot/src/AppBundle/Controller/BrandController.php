@@ -86,6 +86,7 @@ class BrandController extends FrontendController
         if ($data->data) {
             foreach ($data->data as $item) {
                 $temp['name'] = $item->brand_name;
+                $temp['id'] = $item->brand_name;
                 $maps['data'][] = $temp;
             }
         }
