@@ -36,8 +36,8 @@
                 @include breakpoint(mobile){
                     flex: 1 0 21%;
                     margin: 15px -1px;
-                    min-width:100px;
-                    min-height:100px;
+                    min-width:auto;
+                    min-height:auto;
                 }
 
                 a {
