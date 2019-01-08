@@ -40,6 +40,10 @@
                     min-height:auto;
                 }
 
+                @media only screen and (max-width: 323px) {
+                    min-width:100px;
+                }
+
                 a {
                     text-align: center;
                     color: $grey-dark;
