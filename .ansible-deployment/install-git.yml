@@ -1,0 +1,13 @@
+---
+- hosts: all
+  tasks:
+    - name: Install GIT
+      apt:
+        name: git
+        state: latest
+      become: yes
+    - name: Install composer
+      apt:
+        name: composer
+        state: latest
+      become: yes
