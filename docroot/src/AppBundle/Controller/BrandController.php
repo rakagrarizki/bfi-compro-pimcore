@@ -7,65 +7,49 @@ use Pimcore\Controller\FrontendController;
 use Pimcore\Model\DataObject\Brand;
 use Pimcore\Model\DataObject\BrandProduct;
 use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Service\SendApi;
+use Pimcore\Model\WebsiteSetting;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 class BrandController extends FrontendController
 {
+    protected $sendAPI;
+
+    protected $randomNumber;
+
+    public function __construct(SendApi $sendAPI)
+    {
+        $this->sendAPI = $sendAPI;
+        $this->randomNumber = rand(000001,999999);
+    }
+
     public function defaultAction(Request $request)
     {
 
     }
 
-    /**
-     * @Route("/brand/mobil/listJson")
-    @Method({"GET"})
-    @return \Symfony\Component\HttpFoundation\JsonResponse
-     */
-    public function mobilListJsonAction()
+    public function getBranchBfi($postCode)
     {
-        $id = "1";
-        $data = new Brand\Listing();
-        $data->setCondition('Tipe = '.$id);
-        $maps = [];
-        if ($data) {
-            foreach ($data as $item) {
-                $temp['name'] = $item->getName();
-                $temp['id'] = $item->getId();
-                $maps['data'][] = $temp;
-            }
+        $value = null;
+        $param = [];
+        $param['post_code'] = $postCode;
+
+        $url = WebsiteSetting::getByName('URL_GET_BRANCH')->getData();
+
+        try {
+            $data = $this->sendAPI->getPriceCar($url, $param);
+        } catch (\Exception $e) {
+            return $value;
         }
 
-        return new JsonResponse([
-            'success' => true,
-            'result' => $maps
-        ]);
-    }
-
-    /**
-     * @Route("/brand/motor/listJson")
-    @Method({"GET"})
-    @return \Symfony\Component\HttpFoundation\JsonResponse
-     */
-    public function motorListJsonAction()
-    {
-
-        $id = "2";
-        $data = new Brand\Listing();
-        $data->setCondition('Tipe = '.$id);
-        $maps = [];
-        if ($data) {
-            foreach ($data as $item) {
-                $temp['name'] = $item->getName();
-                $temp['id'] = $item->getId();
-                $maps['data'][] = $temp;
-            }
+        if($data->code != "1"){
+            return $value;
         }
 
-        return new JsonResponse([
-            'success' => true,
-            'result' => $maps
-        ]);
+        $value = $data->data;
+
+        return $value;
     }
 
     /**
@@ -75,20 +59,81 @@ class BrandController extends FrontendController
      */
     public function productListJsonAction(Request $request)
     {
-        $id = $request->get('id');
-        if($id == null){
+        $data = $this->getBranchBfi((string)$request->get('post_code'));
+        $nameKota = $data[0]->branch;
+
+        $param = [];
+        $param['loan_type'] = (string)$request->get('tipe');
+        $param['branch'] = $nameKota;
+
+        $url = WebsiteSetting::getByName('URL_GET_CAR')->getData();
+
+        try {
+            $data = $this->sendAPI->getBrand($url, $param);
+        } catch (\Exception $e) {
             return new JsonResponse([
-                'success' => false,
-                'message' => "must include id"
+                'success' => "0",
+                'message' => "Service Request Car Down"
             ]);
         }
-        $data = new BrandProduct\Listing();
-        $data->setCondition('Brand__id = '.$id);
-        $maps = [];
-        if ($data) {
-            foreach ($data as $item) {
-                $temp['name'] = $item->getName();
-                $temp['codeProduct'] = $item->getCodeProduct();
+
+        if($data->header->status != 200){
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Service Request Car Down"
+            ]);
+        }
+        if ($data->data) {
+            foreach ($data->data as $item) {
+                $temp['name'] = $item->brand_name;
+                $maps['data'][] = $temp;
+            }
+        }
+
+        return new JsonResponse([
+            'success' => true,
+            'result' => $maps
+        ]);
+    }
+
+
+    /**
+     * @Route("/brand/detail/product/listJson")
+    @Method({"GET"})
+    @return \Symfony\Component\HttpFoundation\JsonResponse
+     */
+    public function detailListJsonAction(Request $request)
+    {
+        $data = $this->getBranchBfi((string)$request->get('post_code'));
+        $nameKota = $data[0]->branch;
+
+        $param = [];
+        $param['loan_type'] = (string)$request->get('tipe');
+        $param['branch'] = $nameKota;
+        $param['brand_name'] = (string)$request->get('brand');
+
+        $url = WebsiteSetting::getByName('URL_GET_CAR')->getData();
+
+        try {
+            $data = $this->sendAPI->getCodeProduct($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Service Request Car Down"
+            ]);
+        }
+
+        if($data->header->status != 200){
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Service Request Car Down"
+            ]);
+        }
+
+        if ($data->data) {
+            foreach ($data->data as $item) {
+                $temp['name'] = $item->model;
+                $temp['codeProduct'] = $item->model;
                 $maps['data'][] = $temp;
             }
         }

@@ -63,6 +63,7 @@
 
 		"kendaraan": {
 			"merk_kendaraan": "",
+			"merk_kendaraan_text": "",
 			"model_kendaraan": "",
 			"tahun_kendaraan": "",
 			"status_pemilik": ""
@@ -90,10 +91,10 @@
 		kelurahan: "",
 		model_kendaraan: "",
 		tahun_kendaraan: "",
-		funding: "",
+		funding: 0,
 		merk_kendaraan: "",
-		jangka_waktu: "",
-		installment: ""
+		jangka_waktu: 0,
+		installment: 0
 	}
 
 
@@ -625,12 +626,14 @@
 
 	function pushDataKendaraan() {
 		var merk_kendaraan = $('#merk_kendaraan').val(),
+			merk_kendaraan_text = $('#model_kendaraan').text(),
 			model_kendaraan = $('#model_kendaraan').val(),
 			tahun_kendaraan = $('#tahun_kendaraan').val(),
 			status_pemilik = $('#status_kep').val();
 
 
 		credits.kendaraan.merk_kendaraan = merk_kendaraan;
+		credits.kendaraan.merk_kendaraan_text = merk_kendaraan_text;
 		credits.kendaraan.model_kendaraan = model_kendaraan;
 		credits.kendaraan.tahun_kendaraan = tahun_kendaraan;
 		credits.kendaraan.status_pemilik = status_pemilik;
@@ -1984,8 +1987,9 @@
 		var _data = {
 			tipe: params.angunan.jenis_angunan,
 			model_kendaraan: params.kendaraan.model_kendaraan,
-			merk_kendaraan: params.kendaraan.merk_kendaraan,
+			merk_kendaraan: params.kendaraan.merk_kendaraan_text,
 			kota: params.tempat_tinggal.kota,
+			post_code: params.tempat_tinggal.kode_pos,
 			tahun: params.kendaraan.tahun_kendaraan
 		}
 		//alert(_data.tipe + "-" +_data.merk + "-" + _data.brand + "-" + _data.kota + "-" + _data.tahun);
@@ -2024,8 +2028,15 @@
 				$(".valuemax").text(maxprice);
 
 
-				var opsiasuransi = "<option value='"+data.data.asuransi_1+"'>"+data.data.asuransi_1+"</option>"+
-									"<option value='"+data.data.asuransi_2+"'>"+data.data.asuransi_2+"</option>";
+				// var opsiasuransi = "<option value='"+data.data.asuransi_1+"'>"+data.data.asuransi_1+"</option>"+
+				// 					"<option value='"+data.data.asuransi_2+"'>"+data.data.asuransi_2+"</option>";
+
+				var opsiasuransi = ""
+				$.each(data.data.asuransi, function(idx,opt) { 
+					opsiasuransi += "<option value='"+opt.code+"'>"+opt.name+"</option>"
+				})
+
+				// console.log("GGGG", data.data, opsiasuransi)
 
 				raw_select = '<div class="columnselect" ke="0">'+
                                                     '<div class="list-select">'+
@@ -2349,6 +2360,57 @@
 		}, 1000)
 
 	}
+
+	function calculatePremi() {
+		var _url = 'https://bfi.staging7.salt.id/credit/get-loan';
+		var _param = {
+			tipe: credits.angunan.jenis_angunan,
+			model_kendaraan: credits.kendaraan.model_kendaraan,
+			merk_kendaraan: credits.kendaraan.merk_kendaraan_text,
+			tahun: credits.kendaraan.tahun_kendaraan,
+			post_code: credits.tempat_tinggal.kode_pos,
+			funding: objCredits.funding,
+			tenor: objCredits.jangka_waktu,
+			asuransi: asuransi_arr.join("-"),
+			taksasi: objCredits.installment
+		}
+
+		$.ajax({
+			type: 'POST',
+			url: _url,
+			data: _param,
+			dataType: 'json',
+			error: function (data) {
+				console.log('error' + data);
+			},
+			fail: function (xhr, textStatus, error) {
+				console.log('request failed')
+			},
+			success: function (data) {
+
+				console.log("Calculator Result", data)
+
+			}
+		})
+	}
+
+	$("#ex6SliderVal").change(function(){
+		console.log(parseInt($(this).val()))
+		var _val = $(this).val()
+		var _reform = _val.replace(/[.]/g,"")
+		var _toInt = parseInt(_reform)
+		_toInt = (_toInt>0?_toInt:0)
+		objCredits.installment = _toInt
+	})
+
+	$("#jangka_waktu").change(function(){
+		objCredits.jangka_waktu = $(this).val()
+	})
+
+	$(document).on('click', '#recalc', function(e) {
+		e.preventDefault();
+		calculatePremi();
+	})
 
 	$(document).on('click', '.countdown--reload', function(e) {
 		e.preventDefault();
