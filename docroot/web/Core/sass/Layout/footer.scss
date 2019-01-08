@@ -135,7 +135,6 @@ footer {
         font-weight: 600;
         letter-spacing: .5px;
         @include breakpoint(mobile){
-            font-family: $medium;
             text-align: center;
             display: block;
         }
