@@ -339,6 +339,10 @@
                             &.currency{
                                 text-align: right;
                             }
+
+                            &.textsubcurrency{
+                                padding-left:20px;
+                            }
                         }
                     }
                 }
