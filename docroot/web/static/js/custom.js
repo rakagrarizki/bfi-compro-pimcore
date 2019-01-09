@@ -25,6 +25,7 @@ $(document).ready(function () {
             RenderingErrorContent('<p>Harap isi Email</p>');
 
             $('#errorNewsletter').modal('show');
+            $('body').css("padding-right",0);
         }else {
             if(!validateEmail(email)) {
                 RenderingErrorContent('<p>Format Email salah</p>');

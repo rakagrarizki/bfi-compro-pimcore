@@ -83,7 +83,7 @@ $this->extend('layout-credit.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label for="no_handphone">Nomor Handphone</label>
-                                            <input type="text" class="form-control formNumber" name="no_handphone" id="no_handphone"
+                                            <input type="text" class="form-control formPhoneNumber" name="no_handphone" id="no_handphone"
                                                    placeholder="Masukan nomor handphone Anda">
                                             <div class="error-wrap"></div>
                                         </div>

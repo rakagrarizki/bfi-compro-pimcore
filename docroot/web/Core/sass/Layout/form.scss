@@ -339,6 +339,10 @@
                             &.currency{
                                 text-align: right;
                             }
+
+                            &.textsubcurrency{
+                                padding-left:20px;
+                            }
                         }
                     }
                 }
@@ -446,7 +450,6 @@
         }
 
         .form-control {
-            line-height: 55px;
             height: 70px;
             width:400px;
             font-size: 18px;
@@ -508,7 +511,7 @@
                 vertical-align: top;
 
                 span{
-                    border:3px solid lightgreen;
+                    border-color:lightgreen!important;
                     border-width: 0 0 3px 3px;
                 }
 

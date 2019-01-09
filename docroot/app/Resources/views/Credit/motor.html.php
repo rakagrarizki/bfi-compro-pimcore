@@ -79,7 +79,7 @@ $this->extend('layout-credit.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label for="no_handphone">Nomor Handphone</label>
-                                            <input type="text" class="form-control formNumber" name="no_handphone" id="no_handphone"
+                                            <input type="text" class="form-control formPhoneNumber" name="no_handphone" id="no_handphone"
                                                    placeholder="Masukan nomor handphone Anda">
                                             <div class="error-wrap"></div>
                                         </div>
@@ -248,7 +248,7 @@ $this->extend('layout-credit.html.php');
                                             </div>
                                             <div class="form-group sliderGroup inputsimulasi">
                                                 <label>Jangka Waktu</label>
-                                                <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="jangka waktu"
+                                                <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="jangka_waktu"
                                                         name="jangka-waktu">
                                                     <option value="12">12 Bulan</option>
                                                     <option value="24">24 Bulan</option>
@@ -283,13 +283,13 @@ $this->extend('layout-credit.html.php');
                                             <div class="rincian">
                                                 <div class="rincian--content">
                                                     <p class="title-angsuran">Rincian Biaya Angsuran</p>
-                                                    <table>
+                                                    <table class="tableangsuran">
                                                         <tr>
                                                             <td>
                                                                 Angsuran Per Bulan *
                                                             </td>
-                                                            <td class="currency">
-                                                                Rp 1.200.000
+                                                            <td class="currency" tahun="0">
+                                                                Rp 0
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -298,26 +298,26 @@ $this->extend('layout-credit.html.php');
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td>
-                                                                Tahun ke-1 [All Risk*]
+                                                            <td class="textsubcurrency">
+                                                                Tahun ke-1 [All Risk Only*]
                                                             </td>
-                                                            <td class="currency">
-                                                                Rp 340.000
+                                                            <td class="currency" tahun="1">
+                                                                Rp 0
                                                             </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td>
+                                                       <!--  <tr>
+                                                            <td class="textsubcurrency">
                                                                 Tahun ke-2 [Total Cost Only*]
                                                             </td>
-                                                            <td class="currency">
+                                                            <td class="currency" tahun="2">
                                                                 Rp 205.000
                                                             </td>
-                                                        </tr>
+                                                        </tr> -->
                                                     </table>
                                                 </div>
                                                 <div class="total-estimate">
                                                     <p class="title-angsuran">Total Estimasi Angsuran Per Bulan</p>
-                                                    <p class="total">Rp 1.545.000</p>
+                                                    <p class="total">Rp 0</p>
                                                     <button class="cta cta-primary cta-big" id="recalc"
                                                         type="button">HITUNG ULANG</button>
                                                 </div>
@@ -468,23 +468,23 @@ $this->extend('layout-credit.html.php');
                                                 <div class="button-area text-right button-angsur">
                                                     <button id="btnJumlahPembiayaan" class="cta cta-primary cta-big cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"></i><b>UBAH</b></button>
                                                 </div>
-                                                <table>
+                                                <table class="tablebiaya">
                                                     <tr>
                                                         <td>Jumlah Pembiayaan</td>
 
-                                                        <td class="jml_biaya">Rp 22.500.000</td>
+                                                        <td class="jml_biaya"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>Jangka Waktu</td>
 
-                                                        <td class="jangka">24 Bulan</td>
+                                                        <td class="jangka"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>Angsuran per Bulan</td>
 
-                                                        <td class="angsuran">Rp 1.545.000</td>
+                                                        <td class="angsuran"></td>
                                                     </tr>
-                                                    <tr>
+                                                   <!--  <tr>
                                                         <td>Asuransi Tahun ke-1</td>
 
                                                         <td class="tahun1">All Risk</td>
@@ -493,8 +493,7 @@ $this->extend('layout-credit.html.php');
                                                         <td>Asuransi Tahun ke-2</td>
 
                                                         <td class="tahun1">Total Lost Only</td>
-                                                    </tr>
-
+                                                    </tr> -->
                                                 </table>
                                             </div>
                                         </div>

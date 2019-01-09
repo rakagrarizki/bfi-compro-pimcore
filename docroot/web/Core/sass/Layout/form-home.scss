@@ -16,6 +16,17 @@
             list-style: none;
             flex-wrap: nowrap;
             @include breakpoint(mobile){
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex; 
+                -webkit-box-orient: horizontal; 
+                -webkit-box-direction: normal; 
+                -webkit-flex-direction: row; 
+                -ms-flex-direction: row; 
+                flex-direction: row;
+                -webkit-flex-wrap: wrap;
+                -ms-flex-wrap: wrap;
                 flex-wrap: wrap;
             }
 
@@ -24,7 +35,13 @@
                 flex: 4;
                 @include breakpoint(mobile){
                     flex: 1 0 21%;
-                    margin: 15px 0;
+                    margin: 15px -1px;
+                    min-width:auto;
+                    min-height:auto;
+                }
+
+                @media only screen and (max-width: 323px) {
+                    min-width:100px;
                 }
 
                 a {
