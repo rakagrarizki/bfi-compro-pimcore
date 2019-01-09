@@ -207,19 +207,18 @@ $this->extend('layout-credit.html.php');
                                         </div>
 
                                     </div>
-                                    <div class="row padding-right-56 padding-left-30">
-                                        <div class="button-area text-left back padding-0">
-                                            <button class="cta cta-primary cta-big cta-back buttonback" id="buttonback3"
-                                                    type="button">SEBELUMNYA</button>
-                                        </div>
-
-                                        <div class="button-area text-right next padding-0 margin-right-0">
-                                            <button class="cta cta-primary cta-big cta-see buttonnext" id="button3"
-                                                    type="button">SELANJUTNYA</button>
-                                            <button class="cta cta-primary cta-big cta-see buttonnext hidesavebutton" type="button">SIMPAN</button>
-                                        </div>
+                                    
+                                    <div class="button-area text-left back">
+                                        <button class="cta cta-primary cta-big cta-back buttonback" id="buttonback3"
+                                                type="button">SEBELUMNYA</button>
                                     </div>
 
+                                    <div class="button-area text-right next">
+                                        <button class="cta cta-primary cta-big cta-see buttonnext" id="button3"
+                                                type="button">SELANJUTNYA</button>
+                                        <button class="cta cta-primary cta-big cta-see buttonnext hidesavebutton" type="button">SIMPAN</button>
+                                    </div>
+            
                                 </div>
                                 <div id="menu4" class="tab-pane slide-left">
                                     <div class="form-body--credit-simulasi row">
@@ -257,13 +256,13 @@ $this->extend('layout-credit.html.php');
                                                     <option value="60">60 Bulan</option>
                                                 </select>
                                                 <div class="error-wrap"></div>
-                                                <div class="slidecontainer">
+                                                <!-- <div class="slidecontainer">
                                                     <input id="installment" class="customslide" type="text" data-slider-handle="custom"
                                                            data-slider-min="12" data-slider-max="60" data-slider-step="12"
                                                            data-slider-tooltip="hide" />
                                                     <div class="value-left">12 Bulan</div>
                                                     <div class="value-right">60 Bulan</div>
-                                                </div>
+                                                </div> -->
                                             </div>
                                             <div class="form-group inputsimulasi asuransi">
                                                 <label>Asuransi</label>
@@ -320,7 +319,7 @@ $this->extend('layout-credit.html.php');
                                                     <p class="total">Rp 0</p>
                                                     <p class="infotext">*Biaya angsuran dapat berubah sesuai dengan hasil survei</p>
                                                     <button class="cta cta-primary cta-big" id="recalc"
-                                                        type="button">HITUNG ULANG</button>
+                                                        type="button">HITUNG</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -550,14 +549,13 @@ $this->extend('layout-credit.html.php');
                                         </div>
 
                                     </div>
-                                    <div class="row">
+                                    
 
-                                        <div class="button-area text-right next">
-                                            <button class="cta cta-primary cta-big cta-see buttonnext" id="button6"
-                                                    type="button">VERIFIKASI</button>
-                                        </div>
+                                    <div class="button-area text-right next">
+                                        <button class="cta cta-primary cta-big cta-see buttonnext" id="button6"
+                                                type="button">VERIFIKASI</button>
                                     </div>
-
+            
                                 </div>
 
                                 <div id="success" class="success-wrapper">
