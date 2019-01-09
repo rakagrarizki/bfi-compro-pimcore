@@ -399,7 +399,7 @@
         .prev {
             opacity: .6;
 
-            left: -50px;
+            left: 0px;
             position: absolute;
 
             &:before {
@@ -420,7 +420,7 @@
         .next {
             opacity: .6;
             padding: 0px 30px;
-            right: -50px;
+            right: 0px;
             position: absolute;
             @include breakpoint (mobile) {
                 right: 0;

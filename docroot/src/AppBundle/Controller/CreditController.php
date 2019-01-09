@@ -108,7 +108,12 @@ class CreditController extends FrontendController
         }
 
         $dataApi['maxPrice'] = $price;
-        $dataApi['minPrice'] = "10000000";
+        if($price == "0"){
+            $minPrice = "0";
+        }else{
+            $minPrice = "10000000";
+        }
+        $dataApi['minPrice'] = $minPrice;
 
         $assurance = new Assurance\Listing();
         if ($assurance) {

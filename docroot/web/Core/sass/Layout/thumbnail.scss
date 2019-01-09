@@ -74,6 +74,10 @@
             border-bottom:1px solid;
             font-size:14px;
 
+            &:hover{
+                color:#F8991D;
+            }
+
             @include breakpoint(mobile){
                 bottom:10px;
 

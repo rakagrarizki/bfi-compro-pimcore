@@ -639,6 +639,8 @@
             position: relative;
             top: 0px;
             border: 1px solid;
+            max-height:300px!important;
+            overflow:auto!important;
 
             ul {
                 list-style: none;

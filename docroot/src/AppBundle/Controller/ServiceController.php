@@ -185,7 +185,13 @@ class ServiceController extends FrontendController
             foreach ($data as $item) {
                 $temp['name'] = $item->getName();
                 $temp['id'] = $item->getCode();
-                $temp['postcode'] = $item->getPostCode();
+                if($item->getPostCode() == null)
+                {
+                    $postcode = "";
+                }else{
+                    $postcode = $item->getPostCode();
+                }
+                $temp['postcode'] = $postcode;
                 $maps['data'][] = $temp;
             }
         }

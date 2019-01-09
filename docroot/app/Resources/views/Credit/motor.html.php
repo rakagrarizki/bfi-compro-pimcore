@@ -206,18 +206,18 @@ $this->extend('layout-credit.html.php');
                                         </div>
 
                                     </div>
-                                    <div class="row padding-right-56 padding-left-30">
-                                        <div class="button-area text-left back padding-0">
-                                            <button class="cta cta-primary cta-big cta-back buttonback" id="buttonback3"
-                                                    type="button">SEBELUMNYA</button>
-                                        </div>
-
-                                        <div class="button-area text-right next padding-0 margin-right-0">
-                                            <button class="cta cta-primary cta-big cta-see buttonnext" id="button3"
-                                                    type="button">SELANJUTNYA</button>
-                                            <button class="cta cta-primary cta-big cta-see buttonnext hidesavebutton" type="button">SIMPAN</button>
-                                        </div>
+                                
+                                    <div class="button-area text-left back">
+                                        <button class="cta cta-primary cta-big cta-back buttonback" id="buttonback3"
+                                                type="button">SEBELUMNYA</button>
                                     </div>
+
+                                    <div class="button-area text-right next">
+                                        <button class="cta cta-primary cta-big cta-see buttonnext" id="button3"
+                                                type="button">SELANJUTNYA</button>
+                                        <button class="cta cta-primary cta-big cta-see buttonnext hidesavebutton" type="button">SIMPAN</button>
+                                    </div>
+                                    
 
                                 </div>
                                 <div id="menu4" class="tab-pane slide-left">
@@ -250,20 +250,25 @@ $this->extend('layout-credit.html.php');
                                                 <label>Jangka Waktu</label>
                                                 <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="jangka_waktu"
                                                         name="jangka-waktu">
+                                                    <option value="6">6 Bulan</option>
                                                     <option value="12">12 Bulan</option>
+                                                    <option value="18">18 Bulan</option>
                                                     <option value="24">24 Bulan</option>
+                                                    <option value="30">30 Bulan</option>
                                                     <option value="36">36 Bulan</option>
+                                                    <option value="42">42 Bulan</option>
                                                     <option value="48">48 Bulan</option>
+                                                    <option value="54">54 Bulan</option>
                                                     <option value="60">60 Bulan</option>
                                                 </select>
                                                 <div class="error-wrap"></div>
-                                                <div class="slidecontainer">
+                                                <!-- <div class="slidecontainer">
                                                     <input id="ex12" class="customslide" type="text" data-slider-handle="custom"
                                                            data-slider-min="12" data-slider-max="60" data-slider-step="12"
                                                            data-slider-tooltip="hide" />
                                                     <div class="value-left">12 Bulan</div>
                                                     <div class="value-right">60 Bulan</div>
-                                                </div>
+                                                </div> -->
                                             </div>
                                             <div class="form-group inputsimulasi asuransi">
                                                 <label>Asuransi</label>
@@ -319,7 +324,7 @@ $this->extend('layout-credit.html.php');
                                                     <p class="title-angsuran">Total Estimasi Angsuran Per Bulan</p>
                                                     <p class="total">Rp 0</p>
                                                     <button class="cta cta-primary cta-big" id="recalc"
-                                                        type="button">HITUNG ULANG</button>
+                                                        type="button">HITUNG</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -551,13 +556,13 @@ $this->extend('layout-credit.html.php');
                                         </div>
 
                                     </div>
-                                    <div class="row">
+                                    
 
-                                        <div class="button-area text-right next">
-                                            <button class="cta cta-primary cta-big cta-see buttonnext" id="button6"
-                                                    type="submit">VERIFIKASI</button>
-                                        </div>
+                                    <div class="button-area text-right next">
+                                        <button class="cta cta-primary cta-big cta-see buttonnext" id="button6"
+                                                type="submit">VERIFIKASI</button>
                                     </div>
+                                    
                                 </div>
 
                                 <div id="success" class="success-wrapper">
