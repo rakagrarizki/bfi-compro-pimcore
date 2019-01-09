@@ -1174,6 +1174,10 @@
 			scrollToTop();
 			showTab1();
 
+			if(isMobile){
+				$(".horizontal-scroll").scrollLeft(0);
+			}
+
 		})
 
 		$('#buttonback3').on('click', function (e) {
@@ -1185,6 +1189,11 @@
 			$('.tab-pane').fadeOut();
 			scrollToTop();
 			showTab2();
+
+			if(isMobile){
+				$(".horizontal-scroll").scrollLeft(80);
+			}
+			
 		})
 
 		$('#buttonback4').on('click', function (e) {
@@ -1196,6 +1205,11 @@
 			$('.tab-pane').fadeOut();
 			scrollToTop();
 			showTab3();
+
+			if(isMobile){
+				$(".horizontal-scroll").scrollLeft(260);
+			}
+			
 		})
 
 		$('#buttonback5').on('click', function (e) {
@@ -1207,6 +1221,10 @@
 			$('.tab-pane').fadeOut();
 			scrollToTop();
 			showTab4();
+
+			if(isMobile){
+				$(".horizontal-scroll").scrollLeft(340);
+			}
 		})
 	}
 
