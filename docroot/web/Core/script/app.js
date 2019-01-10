@@ -1114,10 +1114,13 @@
 		$('#button6').on('click', function (e) {
 			e.preventDefault();
 
+			// $('.tab-pane').hide();
+			// $('#success').fadeIn();
+
 			sendOtp(credits);
 			sendDataCredits(credits);
 
-			console.log(objCredits);
+			//console.log(objCredits);
 		})
 
 		$("#otpEditPhone").on("click", function(e){
@@ -1327,7 +1330,7 @@
 
 	function keyupOtpAction() {
 
-		$('.input-number').on('input', function () {
+		$('.input-number').on('keyup', function (e) {
 			// if ($(this).val() > 0) {
 			// 	$(this).next().focus();
 			// }
@@ -1335,13 +1338,36 @@
 			// else if ($(this).val() == 0) {
 			// 	$(this).prev().focus();
 			// }
-			$(this).next().focus();
+			if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+				return false;
+			}
+
+			if($(this).val() != ""){
+				$(this).next().focus();	
+			}
+
+			if(e.which == 8){
+				$(this).prev().focus();	
+			}
+						
 		})
 
 		$(".input-number").keypress(function (e) {
 			if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
 				return false;
 			}
+		});
+
+		$(".input-number").keydown(function (e) {
+			if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+				return false;
+			}
+			$(this).val("");
+			// if(e.which == 37){
+			// 	$(this).prev().focus();	
+			// }else if(e.which == 39){
+			// 	$(this).next().focus();
+			// }
 		});
 	}
 
@@ -1370,7 +1396,9 @@
 		$('ul.list-step').slick({
 			dots: false,
 			prevArrow: false,
-			nextArrow: false
+			nextArrow: false,
+			infinite:false,
+			slidesToShow:2.5
 		});
 	}
 

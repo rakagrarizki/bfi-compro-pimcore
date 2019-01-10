@@ -565,11 +565,15 @@ $this->extend('layout-credit.html.php');
 
                                 <div id="success" class="success-wrapper">
                                     <div class="img-wrap">
-                                        <img src="/static/images/icon/envalope.png" alt="">
+                                        <img class="icon-thank-page" src="/static/images/icon/m_thank_you.png" alt="">
                                     </div>
                                     <div class="text-wrap text-center">
                                         <h3>Terima Kasih telah Menghubungi Kami!</h3>
                                         <p>Agen BFI akan segera menghubungi Anda</p>
+                                    </div>
+                                    <div class="button-area text-center backtohome">
+                                        <button class="cta cta-primary cta-big cta-see buttonnext backtohome" id="button7"
+                                                type="button">KEMBALI KE BERANDA</button>
                                     </div>
                                 </div>
 

@@ -112,6 +112,13 @@
         width: 50%;
         margin: auto;
         padding-bottom:30px;
+        &.backtohome{
+            width:auto;
+
+            @include breakpoint(mobile){
+                width:auto;
+            }
+        }
         @include breakpoint(mobile){
             padding-left: 15px;
             padding-right: 15px;
@@ -136,6 +143,12 @@
         border:1px solid #F8991D;
         font-weight:bold;
         font-size:16px;
+
+        &.backtohome{
+            width:auto;
+            height:auto;
+            padding:13px 10px 13px 50px;
+        }
 
         &.deactive{
             display:none;
@@ -176,6 +189,22 @@
     .cta-see:before{
         right:12px;
         top:12px;
+    }
+
+    .cta-see.backtohome:before{
+        content:url('/static/images/icon/button_home.png');
+        position:absolute;
+        top:5px;
+        left:5px;
+        right:auto;
+
+        @include breakpoint(mobile){
+            top:2px;
+        }
+
+        &:hover{
+            right:auto;
+        }
     }
 
 }
