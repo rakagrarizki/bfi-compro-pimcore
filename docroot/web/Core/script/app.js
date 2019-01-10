@@ -1328,13 +1328,14 @@
 	function keyupOtpAction() {
 
 		$('.input-number').on('input', function () {
-			if ($(this).val() > 0) {
-				$(this).next().focus();
-			}
+			// if ($(this).val() > 0) {
+			// 	$(this).next().focus();
+			// }
 
-			else if ($(this).val() == 0) {
-				$(this).prev().focus();
-			}
+			// else if ($(this).val() == 0) {
+			// 	$(this).prev().focus();
+			// }
+			$(this).next().focus();
 		})
 
 		$(".input-number").keypress(function (e) {
@@ -1443,7 +1444,7 @@
 				}
 				else if(data.success == 1) {
 					$('.tab-pane').fadeOut();
-					showTab4();
+					//showTab4();
 				}
 			}
 		})
@@ -1497,15 +1498,15 @@
 			},
 
 			success: function (data) {
-				//console.log(data)
-				// if (data.success == '0') {
-				// 	$('#failedOtp').modal('show');
-				// }
+				console.log(data)
+				if (data.success == '0') {
+					$('#failedOtp').modal('show');
+				}
 
-				// else if(data.success == '1') {
-				// 	$('.tab-pane').hide();
-				// 	$('#success').fadeIn();
-				// }
+				else if(data.success == '1') {
+					$('.tab-pane').hide();
+					$('#success').fadeIn();
+				}
 			}
 		})
 	}
