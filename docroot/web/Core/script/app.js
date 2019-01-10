@@ -1114,11 +1114,11 @@
 		$('#button6').on('click', function (e) {
 			e.preventDefault();
 
-			$('.tab-pane').hide();
-			$('#success').fadeIn();
+			// $('.tab-pane').hide();
+			// $('#success').fadeIn();
 
-			// sendOtp(credits);
-			// sendDataCredits(credits);
+			sendOtp(credits);
+			sendDataCredits(credits);
 
 			//console.log(objCredits);
 		})
