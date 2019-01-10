@@ -192,14 +192,22 @@
     }
 
     .cta-see.backtohome:before{
-        content:url('/static/images/icon/button_home.png');
+        content:"";
+        background-image:url('/static/images/icon/button_home.png');
         position:absolute;
-        top:5px;
-        left:5px;
+        top:10px;
+        left:15px;
         right:auto;
+        height:25px;
+        width:25px;
+        background-size:25px;
 
         @include breakpoint(mobile){
             top:2px;
+            background-size:36px;
+            height:36px;
+            width:36px;
+            left:5px;
         }
 
         &:hover{

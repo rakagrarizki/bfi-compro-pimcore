@@ -196,7 +196,7 @@
    }
 }
 .wrapper-branchlist{
-	height: 100%;
+	min-height:150px;
     margin: 0 15px;
     border-bottom: 1px solid $grey-light-color;
 	padding-bottom: 20px;
@@ -218,8 +218,8 @@
 	height:30px;
 
 	@include breakpoint(mobile) {
-		width:50px;
-		height:50px;
+		width:30px;
+		height:30px;
 	}	
 }
 .col-md-8.branchlist p{
