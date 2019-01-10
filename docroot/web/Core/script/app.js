@@ -1118,7 +1118,6 @@
 			// $('#success').fadeIn();
 
 			sendOtp(credits);
-			sendDataCredits(credits);
 
 			//console.log(objCredits);
 		})
@@ -1472,6 +1471,7 @@
 				}
 				else if(data.success == 1) {
 					$('.tab-pane').fadeOut();
+					sendDataCredits(credits);
 					//showTab4();
 				}
 			}
