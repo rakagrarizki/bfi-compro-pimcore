@@ -1497,15 +1497,15 @@
 			},
 
 			success: function (data) {
-				//console.log(data)
-				// if (data.success == '0') {
-				// 	$('#failedOtp').modal('show');
-				// }
+				console.log(data)
+				if (data.success == '0') {
+					$('#failedOtp').modal('show');
+				}
 
-				// else if(data.success == '1') {
-				// 	$('.tab-pane').hide();
-				// 	$('#success').fadeIn();
-				// }
+				else if(data.success == '1') {
+					$('.tab-pane').hide();
+					$('#success').fadeIn();
+				}
 			}
 		})
 	}

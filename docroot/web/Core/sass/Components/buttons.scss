@@ -155,6 +155,10 @@
     width: 60px;
     height: 60px;
 
+    &.arrowbanner{
+        background:white;
+    }
+
     &.btn-submit {
         &:before {
             content: "\f105";
