@@ -42,6 +42,16 @@
 
     .img-wrap {
         text-align: center;
+
+        .icon-thank-page{
+            width:120px;
+            height:91px;
+
+            @include breakpoint(mobile){
+                width:220px;
+                height:152px;
+            }
+        }
     }
     img {
         margin: auto;

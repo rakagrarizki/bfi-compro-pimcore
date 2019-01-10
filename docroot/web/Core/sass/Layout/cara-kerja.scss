@@ -44,6 +44,10 @@
                 margin: 20px 50px;
                 text-align: center;
 
+                @include breakpoint(mobile) {
+                    margin: 20px 30px;
+                }
+
                 .img-step{
                     padding: 20px;
                     transition: all .5s ease-in-out;
@@ -74,6 +78,10 @@
                 p {
                     font-size: 1.2em;
                     //transform: translateY(20px);
+
+                    @include breakpoint(mobile) {
+                        font-size:1em;
+                    }
                 }
 
                 span {
