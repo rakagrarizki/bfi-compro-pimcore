@@ -575,8 +575,10 @@ $this->extend('layout-credit.html.php');
                                         <p>Agen BFI akan segera menghubungi Anda</p>
                                     </div>
                                     <div class="button-area text-center backtohome">
-                                        <button class="cta cta-primary cta-big cta-see buttonnext backtohome" id="button7"
+                                        <a href="/<?php echo $this->getLocale() ?>">
+                                            <button class="cta cta-primary cta-big cta-see buttonnext backtohome" id="button7"
                                                 type="button">KEMBALI KE BERANDA</button>
+                                        </a>
                                     </div>
                                 </div>
 
