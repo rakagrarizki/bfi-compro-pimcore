@@ -192,7 +192,12 @@ $this->extend('layout-credit.html.php');
                                             <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="tahun_kendaraan"
                                                     name="tahun_kendaraan">
                                                 <option value=""> Pilih Tahun Kendaraan</option>
-                                                <option value="2011">2011</option>
+                                                <?php
+                                                $tahunNow = date("Y");
+                                                for ($i = 2000; $i <= (int)$tahunNow; $i++) {
+                                                    echo '<option value="' . $i . '">' . $i . '</option>';
+                                                }
+                                                ?>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
