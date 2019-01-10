@@ -1114,11 +1114,11 @@
 		$('#button6').on('click', function (e) {
 			e.preventDefault();
 
-			// $('.tab-pane').hide();
-			// $('#success').fadeIn();
+			$('.tab-pane').hide();
+			$('#success').fadeIn();
 
-			sendOtp(credits);
-			sendDataCredits(credits);
+			// sendOtp(credits);
+			// sendDataCredits(credits);
 
 			//console.log(objCredits);
 		})
@@ -1331,20 +1331,20 @@
 	function keyupOtpAction() {
 
 		$('.input-number').on('keyup', function (e) {
-			// if ($(this).val() > 0) {
-			// 	$(this).next().focus();
-			// }
-
-			// else if ($(this).val() == 0) {
-			// 	$(this).prev().focus();
-			// }
-			if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
-				return false;
+			if ($(this).val() !== "") {
+				$(this).next().focus();
 			}
 
-			if($(this).val() != ""){
-				$(this).next().focus();	
+			else if ($(this).val() == "") {
+				//$(this).prev().focus();
 			}
+			// if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+			// 	return false;
+			// }
+
+			// if($(this).val() != ""){
+			// 	$(this).next().focus();	
+			// }
 
 			if(e.which == 8){
 				$(this).prev().focus();	
@@ -1358,17 +1358,17 @@
 			}
 		});
 
-		$(".input-number").keydown(function (e) {
-			if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
-				return false;
-			}
-			$(this).val("");
-			// if(e.which == 37){
-			// 	$(this).prev().focus();	
-			// }else if(e.which == 39){
-			// 	$(this).next().focus();
-			// }
-		});
+		// $(".input-number").keydown(function (e) {
+		// 	if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+		// 		return false;
+		// 	}
+		// 	$(this).val("");
+		// 	// if(e.which == 37){
+		// 	// 	$(this).prev().focus();	
+		// 	// }else if(e.which == 39){
+		// 	// 	$(this).next().focus();
+		// 	// }
+		// });
 	}
 
 
@@ -2596,36 +2596,44 @@
 
 				console.log("Calculator Result", data)
 
-				var angsuranFinal = separatordot(data.data.angsuranFinal),
-					angsuranTotal = separatordot(data.data.ntfMax);
+				var angsuranFinal = data.data.angsuranFinal, 
+					angsuranFinal_txt = separatordot(angsuranFinal),
+					insuranceCarTot = data.data.insuranceCarTotal,
+					insuranceCarTot_txt = separatordot(insuranceCarTot);
 
-				angsuranFinal = "Rp " + angsuranFinal;
-				angsuranTotal = "Rp " + angsuranTotal;
+				var totalbiaya = parseInt(angsuranFinal) * parseInt(_param.tenor) - parseInt(insuranceCarTot),
+					totalbiaya_txt = separatordot(totalbiaya);
 
-				$(".currency[tahun='0']").text(angsuranFinal);
-				$(".total").text(angsuranTotal);
+				angsuranFinal_txt = "Rp " + angsuranFinal_txt;
+				totalbiaya_txt = "Rp " + totalbiaya_txt;
+				insuranceCarTot_txt = "Rp " + insuranceCarTot_txt;
 
-				if($(".textsubcurrency").length > 0){
-					var start_delRow = 2;
-					for(var i=start_delRow; i<=$(".tableangsuran tr").length - 1; i++){
-						$(".tableangsuran tr:eq("+i+")").remove();
-						i--;
-					}
-				}
+				$(".currency[tahun='0']").text(totalbiaya_txt);
+				$(".currency[tahun='1']").text(insuranceCarTot_txt);
+				$(".total").text(angsuranFinal_txt);
+
+
+				// if($(".textsubcurrency").length > 0){
+				// 	var start_delRow = 2;
+				// 	for(var i=start_delRow; i<=$(".tableangsuran tr").length - 1; i++){
+				// 		$(".tableangsuran tr:eq("+i+")").remove();
+				// 		i--;
+				// 	}
+				// }
 				
-		        for(var i=0; i<=asuransi_arr.length - 1; i++){
-		        	//var txt_asuransi = $(".c-custom-select-trans.opsiasuransi option[value='"+ asuransi_arr[i] +"']").text();
-		        	var html_angsuran = '<tr>'+
-                                            '<td class="textsubcurrency">'+
-                                                'Tahun ke-'+(i+1)+' ['+asuransi_arr_txt[i]+'*]'+
-                                            '</td>'+
-                                            '<td class="currency" tahun="'+(i+1)+'">'+
-                                                'Rp 340.000'+
-                                            '</td>'+
-                                    	'</tr>';
+		  //       for(var i=0; i<=asuransi_arr.length - 1; i++){
+		  //       	//var txt_asuransi = $(".c-custom-select-trans.opsiasuransi option[value='"+ asuransi_arr[i] +"']").text();
+		  //       	var html_angsuran = '<tr>'+
+    //                                         '<td class="textsubcurrency">'+
+    //                                             'Tahun ke-'+(i+1)+' ['+asuransi_arr_txt[i]+'*]'+
+    //                                         '</td>'+
+    //                                         '<td class="currency" tahun="'+(i+1)+'">'+
+    //                                             'Rp 340.000'+
+    //                                         '</td>'+
+    //                                 	'</tr>';
 
-			       	$(".tableangsuran").append(html_angsuran);
-		        }	
+			 //       	$(".tableangsuran").append(html_angsuran);
+		  //       }	
 
 			}
 		})

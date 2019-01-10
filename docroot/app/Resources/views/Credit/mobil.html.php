@@ -290,25 +290,28 @@ $this->extend('layout-credit.html.php');
                                                     <table class="tableangsuran">
                                                         <tr>
                                                             <td>
-                                                                Angsuran Per Bulan *
+                                                                Total pembiayaan *
                                                             </td>
                                                             <td class="currency" tahun="0">
                                                                 Rp 0
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td colspan="2">
-                                                                Asuransi Per Bulan *
+                                                            <td>
+                                                                Total asuransi yang harus dibayarkan *
+                                                            </td>
+                                                            <td class="currency" tahun="1">
+                                                                Rp 0
                                                             </td>
                                                         </tr>
-                                                        <tr>
+                                                        <!-- <tr>
                                                             <td class="textsubcurrency">
                                                                 Tahun ke-1 [All Risk Only*]
                                                             </td>
                                                             <td class="currency" tahun="1">
                                                                 Rp 0
                                                             </td>
-                                                        </tr>
+                                                        </tr> -->
                                                         <!-- <tr>
                                                             <td class="textsubcurrency">
                                                                 Tahun ke-2 [Total Cost Only*]
