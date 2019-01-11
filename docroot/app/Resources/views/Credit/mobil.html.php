@@ -328,7 +328,7 @@ $this->extend('layout-credit.html.php');
                                                     <p class="total">Rp 0</p>
                                                     <p class="infotext">*Biaya angsuran dapat berubah sesuai dengan hasil survei</p>
                                                     <button class="cta cta-primary cta-big" id="recalc"
-                                                        type="button">HITUNG</button>
+                                                        type="button">HITUNG AGSURAN</button>
                                                 </div>
                                             </div>
                                         </div>
