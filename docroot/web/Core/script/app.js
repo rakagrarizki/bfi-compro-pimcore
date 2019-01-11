@@ -1263,9 +1263,9 @@
 			$(".text-head").children("h2[class='text-center']").css("display","none");
 			$(".text-head").children("h2[class='text-center-edit']").css("display","block");
 			
-			$('.nav-item-5').removeClass('active');
-			$('.nav-item-1').removeClass('done');
-			$('.nav-item-1').addClass('active');
+			// $('.nav-item-5').removeClass('active');
+			// $('.nav-item-1').removeClass('done');
+			// $('.nav-item-1').addClass('active');
 			$('.tab-pane').fadeOut();
 			showTab1();
 		})
@@ -1285,9 +1285,9 @@
 			$(".text-head").children("h2[class='text-center']").css("display","none");
 			$(".text-head").children("h2[class='text-center-edit']").css("display","block");
 
-			$('.nav-item-5').removeClass('active');
-			$('.nav-item-2').removeClass('done');
-			$('.nav-item-2').addClass('active');
+			// $('.nav-item-5').removeClass('active');
+			// $('.nav-item-2').removeClass('done');
+			// $('.nav-item-2').addClass('active');
 			$('.tab-pane').fadeOut();
 			showTab2();
 		})
@@ -1302,9 +1302,9 @@
 			$(".text-head").children("h2[class='text-center']").css("display","none");
 			$(".text-head").children("h2[class='text-center-edit']").css("display","block");
 
-			$('.nav-item-5').removeClass('active');
-			$('.nav-item-3').removeClass('done');
-			$('.nav-item-3').addClass('active');
+			// $('.nav-item-5').removeClass('active');
+			// $('.nav-item-3').removeClass('done');
+			// $('.nav-item-3').addClass('active');
 			$('.tab-pane').fadeOut();
 			showTab3();
 		})
@@ -1319,9 +1319,9 @@
 			$(".text-head").children("h2[class='text-center']").css("display","none");
 			$(".text-head").children("h2[class='text-center-edit']").css("display","block");
 
-			$('.nav-item-4').removeClass('active');
-			$('.nav-item-3').removeClass('done');
-			$('.nav-item-3').addClass('active');
+			// $('.nav-item-4').removeClass('active');
+			// $('.nav-item-3').removeClass('done');
+			// $('.nav-item-3').addClass('active');
 			$('.tab-pane').fadeOut();
 			showTab3();
 		})
@@ -1336,9 +1336,9 @@
 			$(".text-head").children("h2[class='text-center']").css("display","none");
 			$(".text-head").children("h2[class='text-center-edit']").css("display","block");
 
-			$('.nav-item-5').removeClass('active');
-			$('.nav-item-4').removeClass('done');
-			$('.nav-item-4').addClass('active');
+			// $('.nav-item-5').removeClass('active');
+			// $('.nav-item-4').removeClass('done');
+			// $('.nav-item-4').addClass('active');
 			$('.tab-pane').fadeOut();
 			showTab4();
 		})
