@@ -154,6 +154,14 @@
             display:none;
         }
 
+        &.absolutebutcalc{
+            display:inline-block;
+
+            &.active{
+                display:inline-block;
+            }
+        }
+
         &.hidesavebutton{
             display:none;
 
