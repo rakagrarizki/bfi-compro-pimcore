@@ -1,5 +1,5 @@
 <?php $asset = $this->image("image");?>
-<section id="credit" style="background-image:url('')">
+<section id="credit" style="background-image:url('<?= $asset->getImage()?>')">
     <div class="container">
         <div class="credit-body">
             <h2 class="text-center">
