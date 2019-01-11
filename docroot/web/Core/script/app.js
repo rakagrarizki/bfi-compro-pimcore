@@ -40,6 +40,7 @@
 	var marker, i, latLngGoogle, _radius;
 	var infowindow = null;
 	var markers = [];
+	var flag_sudahcalc = false;
 
 	var credits = {
 		"angunan": {
@@ -362,40 +363,42 @@
 
 	//Range Form,
 
-	var bilangan = 10000000;
+	// var bilangan = 10000000;
 
-	var number_string = bilangan.toString(),
-		sisa = number_string.length % 3,
-		rupiah = number_string.substr(0, sisa),
-		ribuan = number_string.substr(sisa).match(/\d{3}/g);
+	// var number_string = bilangan.toString(),
+	// 	sisa = number_string.length % 3,
+	// 	rupiah = number_string.substr(0, sisa),
+	// 	ribuan = number_string.substr(sisa).match(/\d{3}/g);
 
-	if (ribuan) {
-		separator = sisa ? '.' : '';
-		rupiah += separator + ribuan.join('.');
-	}
+	// if (ribuan) {
+	// 	separator = sisa ? '.' : '';
+	// 	rupiah += separator + ribuan.join('.');
+	// }
 
-	// $value = $(".slider-handle").attr("aria-valuenow");
+	// // $value = $(".slider-handle").attr("aria-valuenow");
 
-	// console.log($value);
+	// // console.log($value);
 
-	$("#ex6SliderVal").val(rupiah);
+	// $("#ex6SliderVal").val(rupiah);
 
-	$(".valuemin").text("Rp 10.000.000");
+	// $(".valuemin").text("Rp 10.000.000");
 
-	$(".valuemax").text("Rp 60.000.000");
+	// $(".valuemax").text("Rp 60.000.000");
 
 
 	// With JQuery
 	var post_val_inputan = 0;
 	$("#ex6SliderVal").on("input",function(){
 		var thisval = $(this).val(),
-			pricelimit = $(this).parent().next().children(".valuemax").text();
+			pricelimit = $(this).parent().next().children(".valuemax").text(),
+			pricelimitmin = $(this).parent().next().children(".valuemin").text();
 
 		thisval = thisval.replace(/\./g,"");
 		pricelimit = pricelimit.replace(/\./g,"");
+		pricelimitmin = pricelimitmin.replace(/\./g,"");
 		
 
-		if(parseInt(thisval) <= parseInt(pricelimit) && !isNaN(thisval)){
+		if(parseInt(thisval) <= parseInt(pricelimit) && !isNaN(thisval) && parseInt(thisval) >= parseInt(pricelimitmin)){
 			thisval = thisval;
 		}else{
 			thisval = post_val_inputan;
@@ -462,6 +465,9 @@
 
 		//andry
 		newoptionAsuransi(thisval, raw_select);
+		$('#button4').css("background-color","#dddddd");
+		$('#button4').css("border-color","#dddddd");
+		flag_sudahcalc = false;
 	});
 	
 
@@ -498,27 +504,31 @@
 					newoptionAsuransi(_thisVal, raw_select);
 					objCredits.jangka_waktu = parseInt(_thisVal);
 				}
+
+				$('#button4').css("background-color","#dddddd");
+				$('#button4').css("border-color","#dddddd");
+				flag_sudahcalc = false;
 			});
 	}
 
 	// $("#ex12").slider();
 
 
-	$("#ex11").on("slide", function (slideEvt) {
+	// $("#ex11").on("slide", function (slideEvt) {
 
-		var bilangan = slideEvt.value;
+	// 	var bilangan = slideEvt.value;
 
-		var number_string = bilangan.toString(),
-			sisa = number_string.length % 3,
-			rupiah = number_string.substr(0, sisa),
-			ribuan = number_string.substr(sisa).match(/\d{3}/g);
+	// 	var number_string = bilangan.toString(),
+	// 		sisa = number_string.length % 3,
+	// 		rupiah = number_string.substr(0, sisa),
+	// 		ribuan = number_string.substr(sisa).match(/\d{3}/g);
 
-		if (ribuan) {
-			separator = sisa ? '.' : '';
-			rupiah += separator + ribuan.join('.');
-		}
-		$("#ex6SliderVal").val(rupiah);
-	});
+	// 	if (ribuan) {
+	// 		separator = sisa ? '.' : '';
+	// 		rupiah += separator + ribuan.join('.');
+	// 	}
+	// 	$("#ex6SliderVal").val(rupiah);
+	// });
 
 
 	// js by jaya
@@ -790,6 +800,8 @@
 		$("#button3").css("border-color","#dddddd");
 		$("#button3rumah").css("background-color","#dddddd");
 		$("#button3rumah").css("border-color","#dddddd");
+		$('#button4').css("background-color","#dddddd");
+		$('#button4').css("border-color","#dddddd");
 		$("#kode_pos").css("background-color","#F4F4F4");
 		$("#kode_pos_sertificate").css("background-color","#F4F4F4");
 
@@ -1064,7 +1076,12 @@
 		$('#button4').on('click', function (e) {
 			e.preventDefault();
 
-			if ($(this).closest('form').valid()) {
+			var totalvalidate = $(".total").text();
+			totalvalidate = totalvalidate.replace("Rp","");
+			totalvalidate = totalvalidate.replace(" ","");
+			totalvalidate = totalvalidate.replace(/\./g,"");
+
+			if ($(this).closest('form').valid() && parseInt(totalvalidate) > 0 && flag_sudahcalc == true) {
 				showTab5();
 				hideTab4();
 				scrollToTop();
@@ -2708,6 +2725,9 @@
 		e.preventDefault();
 		$(this).text("HITUNG ULANG");
 		calculatePremi();
+		$('#button4').css("background-color","#F8991D");
+		$('#button4').css("border-color","#F8991D");
+		flag_sudahcalc = true;
 	})
 
 	$(document).on('click', '.countdown--reload', function(e) {
