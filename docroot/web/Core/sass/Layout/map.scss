@@ -132,8 +132,6 @@
 		.wrapper-branchlist{
 			width:230px;
 			height:100px;
-			min-height:auto;
-
 			@include breakpoint(mobile) {
 				width:auto;
 				height:100%;
@@ -197,14 +195,11 @@
    }
 }
 .wrapper-branchlist{
-	min-height:150px;
     margin: 0 15px;
     border-bottom: 1px solid $grey-light-color;
 	padding-bottom: 20px;
-	@include breakpoint(mobile) {
-		
-	}
 }
+
 .branchlist{
 	height:100%;
 	padding:0;
