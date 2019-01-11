@@ -2287,6 +2287,7 @@
 				// 					"<option value='"+data.data.asuransi_2+"'>"+data.data.asuransi_2+"</option>";
 
 				var opsiasuransi = ""
+				
 				$.each(data.data.asuransi, function(idx,opt) { 
 					opsiasuransi += "<option value='"+opt.code+"'>"+opt.name+"</option>"
 				})
