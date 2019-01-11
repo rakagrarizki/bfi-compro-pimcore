@@ -467,6 +467,8 @@
 		newoptionAsuransi(thisval, raw_select);
 		$('#button4').css("background-color","#dddddd");
 		$('#button4').css("border-color","#dddddd");
+		$('.hidesavebutton').css("background-color","#dddddd");
+		$('.hidesavebutton').css("border-color","#dddddd");
 		flag_sudahcalc = false;
 	});
 	
@@ -507,6 +509,8 @@
 
 				$('#button4').css("background-color","#dddddd");
 				$('#button4').css("border-color","#dddddd");
+				$('.hidesavebutton').css("background-color","#dddddd");
+				$('.hidesavebutton').css("border-color","#dddddd");
 				flag_sudahcalc = false;
 			});
 	}
@@ -923,8 +927,8 @@
 
 		$('.hidesavebutton').on('click', function (e) {
 			e.preventDefault();
-
-			if ($(this).closest('form').valid()) {
+			
+			if ($(this).closest('form').valid() && flag_sudahcalc == true) {
 				showTab5();
 				hideTab1();
 				hideTab2();
@@ -953,6 +957,7 @@
 				pushDataKendaraan();
 				setSummary();
 			}
+			
 		});
 
 		$('.hidesavebuttonhome').on('click', function (e) {
@@ -2740,6 +2745,8 @@
 		calculatePremi();
 		$('#button4').css("background-color","#F8991D");
 		$('#button4').css("border-color","#F8991D");
+		$('.hidesavebutton').css("background-color","#F8991D");
+		$('.hidesavebutton').css("border-color","#F8991D");
 		flag_sudahcalc = true;
 	})
 

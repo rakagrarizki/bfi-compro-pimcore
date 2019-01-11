@@ -332,7 +332,7 @@ $this->extend('layout-credit.html.php');
                                                 <div class="total-estimate">
                                                     <p class="title-angsuran">Total Estimasi Angsuran Per Bulan</p>
                                                     <p class="total">Rp 0</p>
-                                                    <button class="cta cta-primary cta-big" id="recalc"
+                                                    <button class="cta cta-primary cta-big absolutebutcalc" id="recalc"
                                                         type="button">HITUNG AGSURAN</button>
                                                 </div>
                                             </div>
