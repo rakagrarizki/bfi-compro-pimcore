@@ -1656,6 +1656,12 @@
 	$('#model_kendaraan').next().css("background-color","#F4F4F4");
 	$('#model_kendaraan').next().find(".jcf-select-opener").css("background-color","#F4F4F4");
 
+	$('#alamat_lengkap').attr("disabled","disabled");
+	$('#alamat_lengkap').css("background-color","#F4F4F4");
+
+	$('#alamat_lengkap_sertificate').attr("disabled","disabled");
+	$('#alamat_lengkap_sertificate').css("background-color","#F4F4F4");
+
 	// $('#tahun_kendaraan').attr("disabled","disabled");
 	// $('#tahun_kendaraan').next().css("background-color","#dddddd");
 	// $('#tahun_kendaraan').next().find(".jcf-select-opener").css("background-color","#dddddd");
@@ -1681,6 +1687,9 @@
 		$('#kelurahan').attr("disabled","disabled");
 		$('#kelurahan').next().css("background-color","#F4F4F4");
 		$('#kelurahan').next().find(".jcf-select-opener").css("background-color","#F4F4F4");
+
+		$('#alamat_lengkap').attr("disabled","disabled");
+		$('#alamat_lengkap').css("background-color","#F4F4F4");
 
 		if($("#kode_pos").val() == "" || $(this).val() == null || $("#alamat_lengkap").val() == "" || $("#kota").val() == null || $("#kecamatan").val() == null || $("#kelurahan").val() == null){
 			$("#button2").css("background-color","#dddddd");
@@ -1716,6 +1725,7 @@
 							$('#kecamatan').next().find(".jcf-select-text").children("span").html("Pilih Kecamatan");
 							$('#kelurahan').empty();
 							$('#kelurahan').next().find(".jcf-select-text").children("span").html("Pilih Kelurahan");
+							$('#alamat_lengkap').val("");
 							setTimeout(function() {
 								$("#kota").append(elementOption);
 							}, 50);
@@ -1742,6 +1752,9 @@
 		$('#kelurahan_sertificate').attr("disabled","disabled");
 		$('#kelurahan_sertificate').next().css("background-color","#F4F4F4");
 		$('#kelurahan_sertificate').next().find(".jcf-select-opener").css("background-color","#F4F4F4");
+
+		$('#alamat_lengkap_sertificate').attr("disabled","disabled");
+		$('#alamat_lengkap_sertificate').css("background-color","#F4F4F4");
 
 		if($("#status_sertificate").val() == "" || $("#own_sertificate").val() == "" || $("#kode_pos_sertificate").val() == "" || $(this).val() == null || $("#alamat_lengkap_sertificate").val() == "" || $("#kota_sertificate").val() == null || $("#kecamatan_sertificate").val() == null || $("#kelurahan_sertificate").val() == null){
 			$("#button3rumah").css("background-color","#dddddd");
@@ -1777,6 +1790,7 @@
 							$('#kecamatan_sertificate').next().find(".jcf-select-text").children("span").html("Pilih Kecamatan");
 							$('#kelurahan_sertificate').empty();
 							$('#kelurahan_sertificate').next().find(".jcf-select-text").children("span").html("Pilih Kelurahan");
+							$('#alamat_lengkap_sertificate').val("");
 							setTimeout(function() {
 								$("#kota_sertificate").append(elementOption);
 							}, 50);
@@ -1799,6 +1813,9 @@
 		$('#kelurahan').attr("disabled","disabled");
 		$('#kelurahan').next().css("background-color","#F4F4F4");
 		$('#kelurahan').next().find(".jcf-select-opener").css("background-color","#F4F4F4");
+
+		$('#alamat_lengkap').attr("disabled","disabled");
+		$('#alamat_lengkap').css("background-color","#F4F4F4");
 
 		if($("#kode_pos").val() == "" || $(this).val() == null || $("#alamat_lengkap").val() == "" || $("#provinsi").val() == null || $("#kecamatan").val() == null || $("#kelurahan").val() == null){
 			$("#button2").css("background-color","#dddddd");
@@ -1833,7 +1850,8 @@
 							$('#kecamatan').next().find(".jcf-select-text").children("span").html("Pilih Kecamatan");
 							$('#kelurahan').empty();
 							$('#kelurahan').next().find(".jcf-select-text").children("span").html("Pilih Kelurahan");
-							
+							$('#alamat_lengkap').val("");
+
 							setTimeout(function() {
 								$("#kecamatan").append(elementOption);
 							}, 50);
@@ -1856,6 +1874,9 @@
 		$('#kelurahan_sertificate').attr("disabled","disabled");
 		$('#kelurahan_sertificate').next().css("background-color","#F4F4F4");
 		$('#kelurahan_sertificate').next().find(".jcf-select-opener").css("background-color","#F4F4F4");
+
+		$('#alamat_lengkap_sertificate').attr("disabled","disabled");
+		$('#alamat_lengkap_sertificate').css("background-color","#F4F4F4");
 
 		if($("#status_sertificate").val() == "" || $("#own_sertificate").val() == "" || $("#kode_pos_sertificate").val() == "" || $(this).val() == null || $("#alamat_lengkap_sertificate").val() == "" || $("#provinsi_sertificate").val() == null || $("#kecamatan_sertificate").val() == null || $("#kelurahan_sertificate").val() == null){
 			$("#button3rumah").css("background-color","#dddddd");
@@ -1890,6 +1911,7 @@
 							$('#kecamatan_sertificate').next().find(".jcf-select-text").children("span").html("Pilih Kecamatan");
 							$('#kelurahan_sertificate').empty();
 							$('#kelurahan_sertificate').next().find(".jcf-select-text").children("span").html("Pilih Kelurahan");
+							$('#alamat_lengkap_sertificate').val("");
 							
 							setTimeout(function() {
 								$("#kecamatan_sertificate").append(elementOption);
@@ -1909,6 +1931,9 @@
 		$('#kelurahan').removeAttr("disabled");
 		$('#kelurahan').next().css("background-color","white");
 		$('#kelurahan').next().find(".jcf-select-opener").css("background-color","white");
+
+		$('#alamat_lengkap').attr("disabled","disabled");
+		$('#alamat_lengkap').css("background-color","#F4F4F4");
 
 		if($("#kode_pos").val() == "" || $(this).val() == null || $("#alamat_lengkap").val() == "" || $("#provinsi").val() == null || $("#kota").val() == null || $("#kelurahan").val() == null){
 			$("#button2").css("background-color","#dddddd");
@@ -1940,7 +1965,8 @@
 							var elementOption = '<option value="'+ valKel.id +'" postcode='+valKel.postcode+'>'+ valKel.name +'</option>';
 							$('#kelurahan').empty();
 							$('#kelurahan').next().find(".jcf-select-text").children("span").html("Pilih Kelurahan");
-				
+							$('#alamat_lengkap').val("");
+
 							setTimeout(function() {
 								$("#kelurahan").append(elementOption);
 							}, 50)
@@ -1959,6 +1985,9 @@
 		$('#kelurahan_sertificate').removeAttr("disabled");
 		$('#kelurahan_sertificate').next().css("background-color","white");
 		$('#kelurahan_sertificate').next().find(".jcf-select-opener").css("background-color","white");
+
+		$('#alamat_lengkap_sertificate').attr("disabled","disabled");
+		$('#alamat_lengkap_sertificate').css("background-color","#F4F4F4");
 
 		if($("#status_sertificate").val() == "" || $("#own_sertificate").val() == "" || $("#kode_pos_sertificate").val() == "" || $(this).val() == null || $("#alamat_lengkap_sertificate").val() == "" || $("#kota_sertificate").val() == null || $("#provinsi_sertificate").val() == null || $("#kelurahan_sertificate").val() == null){
 			$("#button3rumah").css("background-color","#dddddd");
@@ -1990,6 +2019,7 @@
 							var elementOption = '<option value="'+ valKel.id +'" postcode='+valKel.postcode+'>'+ valKel.name +'</option>';
 							$('#kelurahan_sertificate').empty();
 							$('#kelurahan_sertificate').next().find(".jcf-select-text").children("span").html("Pilih Kelurahan");
+							$('#alamat_lengkap_sertificate').val("");
 
 							setTimeout(function() {
 								$("#kelurahan_sertificate").append(elementOption);
@@ -2003,6 +2033,9 @@
 	})
 
 	$('#kelurahan').change(function() {
+
+		$('#alamat_lengkap').removeAttr("disabled");
+		$('#alamat_lengkap').css("background-color","white");
 
 		var postcodeGen = $(this).children("option[value='"+$(this).val()+"']").attr("postcode");
 	
@@ -2023,6 +2056,10 @@
 	})
 
 	$('#kelurahan_sertificate').change(function() {
+
+
+		$('#alamat_lengkap_sertificate').removeAttr("disabled");
+		$('#alamat_lengkap_sertificate').css("background-color","white");
 
 		var postcodeGen = $(this).children("option[value='"+$(this).val()+"']").attr("postcode");
 	
