@@ -111,7 +111,11 @@ class CreditController extends FrontendController
         if($price == "0"){
             $minPrice = "0";
         }else{
-            $minPrice = "10000000";
+            if((string)$request->get('tipe') == "MOBIL"){
+                $minPrice = "10000000";
+            }else{
+                $minPrice = "1000000";
+            }
         }
         $dataApi['minPrice'] = $minPrice;
 
