@@ -42,6 +42,11 @@
 
     .img-wrap {
         text-align: center;
+
+        .icon-thank-page{
+            width:120px;
+            height:91px;
+        }
     }
     img {
         margin: auto;
@@ -309,12 +314,12 @@
 
         .rincian{
             .rincian--content{
-                padding: 30px 50px;
+                padding: 30px 15px;
                 background: $grey-light;
                 margin-top: 30px;
 
                  @include breakpoint(mobile){
-                    padding: 30px 25px;
+                    padding: 30px 15px;
                  }
                 .title-angsuran{
                     font-weight: bold;

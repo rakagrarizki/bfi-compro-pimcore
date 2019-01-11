@@ -294,27 +294,30 @@ $this->extend('layout-credit.html.php');
                                                 <div class="rincian--content">
                                                     <p class="title-angsuran">Rincian Biaya Angsuran</p>
                                                     <table class="tableangsuran">
-                                                        <tr>
+                                                         <tr>
                                                             <td>
-                                                                Angsuran Per Bulan *
+                                                                Total pembiayaan *
                                                             </td>
                                                             <td class="currency" tahun="0">
                                                                 Rp 0
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td colspan="2">
-                                                                Asuransi Per Bulan *
+                                                            <td>
+                                                                Total asuransi yang harus dibayarkan *
+                                                            </td>
+                                                            <td class="currency" tahun="1">
+                                                                Rp 0
                                                             </td>
                                                         </tr>
-                                                        <tr>
+                                                       <!--  <tr>
                                                             <td class="textsubcurrency">
                                                                 Tahun ke-1 [All Risk Only*]
                                                             </td>
                                                             <td class="currency" tahun="1">
                                                                 Rp 0
                                                             </td>
-                                                        </tr>
+                                                        </tr> -->
                                                        <!--  <tr>
                                                             <td class="textsubcurrency">
                                                                 Tahun ke-2 [Total Cost Only*]
@@ -572,11 +575,17 @@ $this->extend('layout-credit.html.php');
 
                                 <div id="success" class="success-wrapper">
                                     <div class="img-wrap">
-                                        <img src="/static/images/icon/envalope.png" alt="">
+                                        <img class="icon-thank-page" src="/static/images/icon/m_thank_you.png" alt="">
                                     </div>
                                     <div class="text-wrap text-center">
                                         <h3>Terima Kasih telah Menghubungi Kami!</h3>
                                         <p>Agen BFI akan segera menghubungi Anda</p>
+                                    </div>
+                                    <div class="button-area text-center backtohome">
+                                        <a href="/<?php echo $this->getLocale() ?>">
+                                            <button class="cta cta-primary cta-big cta-see buttonnext backtohome" id="button7"
+                                                type="button">KEMBALI KE BERANDA</button>
+                                        </a>
                                     </div>
                                 </div>
 

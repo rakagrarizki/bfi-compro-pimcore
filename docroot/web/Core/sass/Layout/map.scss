@@ -132,7 +132,6 @@
 		.wrapper-branchlist{
 			width:230px;
 			height:100px;
-
 			@include breakpoint(mobile) {
 				width:auto;
 				height:100%;
@@ -196,14 +195,11 @@
    }
 }
 .wrapper-branchlist{
-	height: 100%;
     margin: 0 15px;
     border-bottom: 1px solid $grey-light-color;
 	padding-bottom: 20px;
-	@include breakpoint(mobile) {
-		
-	}
 }
+
 .branchlist{
 	height:100%;
 	padding:0;
@@ -218,8 +214,8 @@
 	height:30px;
 
 	@include breakpoint(mobile) {
-		width:50px;
-		height:50px;
+		width:30px;
+		height:30px;
 	}	
 }
 .col-md-8.branchlist p{
@@ -245,4 +241,28 @@
 		margin-top:15px;
 		font-weight:bold;
    }
+}
+
+.container-map-arrowback{
+	width:80px;
+	height:80px;
+	background-color:white;
+	margin:0 10px;
+	display:none;
+
+	&:before{
+		content:"";
+		background-image:url('/static/images/icon/backbrancharrow.png');
+		background-size:30px;
+		width:30px;
+		height:30px;
+		content:"";
+        position:absolute;
+        top:25px;
+        left:35px;
+	}
+
+	&.active{
+		display:block;
+	}
 }

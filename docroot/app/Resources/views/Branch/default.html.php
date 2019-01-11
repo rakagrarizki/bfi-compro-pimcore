@@ -19,6 +19,9 @@ $this->extend('layout-branch.html.php');
                     <i class="fa fa-search" aria-hidden="true"></i>
                     <div id="branch" class="col-md-12 wrapper-parent-branchlist"></div>
                 </div>
+                <div class="container-map-arrowback">
+                    
+                </div>
             </div>
         </div>
     </div>

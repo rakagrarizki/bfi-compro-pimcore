@@ -790,8 +790,8 @@
 		$("#button3").css("border-color","#dddddd");
 		$("#button3rumah").css("background-color","#dddddd");
 		$("#button3rumah").css("border-color","#dddddd");
-		$("#kode_pos").css("background-color","#dddddd");
-		$("#kode_pos_sertificate").css("background-color","#dddddd");
+		$("#kode_pos").css("background-color","#F4F4F4");
+		$("#kode_pos_sertificate").css("background-color","#F4F4F4");
 
 		if($("#pekerjaan").length == 0){
 			$("#nama_lengkap").on('keyup',function(e){
@@ -1114,10 +1114,12 @@
 		$('#button6').on('click', function (e) {
 			e.preventDefault();
 
-			sendOtp(credits);
-			sendDataCredits(credits);
+			// $('.tab-pane').hide();
+			// $('#success').fadeIn();
 
-			console.log(objCredits);
+			sendOtp(credits);
+
+			//console.log(objCredits);
 		})
 
 		$("#otpEditPhone").on("click", function(e){
@@ -1327,15 +1329,26 @@
 
 	function keyupOtpAction() {
 
-		$('.input-number').on('input', function () {
-			// if ($(this).val() > 0) {
-			// 	$(this).next().focus();
+		$('.input-number').on('keyup', function (e) {
+			if ($(this).val() !== "") {
+				$(this).next().focus();
+			}
+
+			else if ($(this).val() == "") {
+				//$(this).prev().focus();
+			}
+			// if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+			// 	return false;
 			// }
 
-			// else if ($(this).val() == 0) {
-			// 	$(this).prev().focus();
+			// if($(this).val() != ""){
+			// 	$(this).next().focus();	
 			// }
-			$(this).next().focus();
+
+			if(e.which == 8){
+				$(this).prev().focus();	
+			}
+						
 		})
 
 		$(".input-number").keypress(function (e) {
@@ -1343,6 +1356,18 @@
 				return false;
 			}
 		});
+
+		// $(".input-number").keydown(function (e) {
+		// 	if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+		// 		return false;
+		// 	}
+		// 	$(this).val("");
+		// 	// if(e.which == 37){
+		// 	// 	$(this).prev().focus();	
+		// 	// }else if(e.which == 39){
+		// 	// 	$(this).next().focus();
+		// 	// }
+		// });
 	}
 
 
@@ -1370,7 +1395,9 @@
 		$('ul.list-step').slick({
 			dots: false,
 			prevArrow: false,
-			nextArrow: false
+			nextArrow: false,
+			infinite:false,
+			slidesToShow:2.5
 		});
 	}
 
@@ -1444,6 +1471,7 @@
 				}
 				else if(data.success == 1) {
 					$('.tab-pane').fadeOut();
+					sendDataCredits(credits);
 					//showTab4();
 				}
 			}
@@ -1601,32 +1629,32 @@
 	}
 
 	$('#kota').attr("disabled","disabled");
-	$('#kota').next().css("background-color","#dddddd");
-	$('#kota').next().find(".jcf-select-opener").css("background-color","#dddddd");
+	$('#kota').next().css("background-color","#F4F4F4");
+	$('#kota').next().find(".jcf-select-opener").css("background-color","#F4F4F4");
 
 	$('#kota_sertificate').attr("disabled","disabled");
-	$('#kota_sertificate').next().css("background-color","#dddddd");
-	$('#kota_sertificate').next().find(".jcf-select-opener").css("background-color","#dddddd");
+	$('#kota_sertificate').next().css("background-color","#F4F4F4");
+	$('#kota_sertificate').next().find(".jcf-select-opener").css("background-color","#F4F4F4");
 
 	$('#kecamatan').attr("disabled","disabled");
-	$('#kecamatan').next().css("background-color","#dddddd");
-	$('#kecamatan').next().find(".jcf-select-opener").css("background-color","#dddddd");
+	$('#kecamatan').next().css("background-color","#F4F4F4");
+	$('#kecamatan').next().find(".jcf-select-opener").css("background-color","#F4F4F4");
 
 	$('#kecamatan_sertificate').attr("disabled","disabled");
-	$('#kecamatan_sertificate').next().css("background-color","#dddddd");
-	$('#kecamatan_sertificate').next().find(".jcf-select-opener").css("background-color","#dddddd");
+	$('#kecamatan_sertificate').next().css("background-color","#F4F4F4");
+	$('#kecamatan_sertificate').next().find(".jcf-select-opener").css("background-color","#F4F4F4");
 
 	$('#kelurahan').attr("disabled","disabled");
-	$('#kelurahan').next().css("background-color","#dddddd");
-	$('#kelurahan').next().find(".jcf-select-opener").css("background-color","#dddddd");
+	$('#kelurahan').next().css("background-color","#F4F4F4");
+	$('#kelurahan').next().find(".jcf-select-opener").css("background-color","#F4F4F4");
 
 	$('#kelurahan_sertificate').attr("disabled","disabled");
-	$('#kelurahan_sertificate').next().css("background-color","#dddddd");
-	$('#kelurahan_sertificate').next().find(".jcf-select-opener").css("background-color","#dddddd");
+	$('#kelurahan_sertificate').next().css("background-color","#F4F4F4");
+	$('#kelurahan_sertificate').next().find(".jcf-select-opener").css("background-color","#F4F4F4");
 
 	$('#model_kendaraan').attr("disabled","disabled");
-	$('#model_kendaraan').next().css("background-color","#dddddd");
-	$('#model_kendaraan').next().find(".jcf-select-opener").css("background-color","#dddddd");
+	$('#model_kendaraan').next().css("background-color","#F4F4F4");
+	$('#model_kendaraan').next().find(".jcf-select-opener").css("background-color","#F4F4F4");
 
 	// $('#tahun_kendaraan').attr("disabled","disabled");
 	// $('#tahun_kendaraan').next().css("background-color","#dddddd");
@@ -1647,12 +1675,12 @@
 		$('#kota').next().find(".jcf-select-opener").css("background-color","white");
 
 		$('#kecamatan').attr("disabled","disabled");
-		$('#kecamatan').next().css("background-color","#dddddd");
-		$('#kecamatan').next().find(".jcf-select-opener").css("background-color","#dddddd");
+		$('#kecamatan').next().css("background-color","#F4F4F4");
+		$('#kecamatan').next().find(".jcf-select-opener").css("background-color","#F4F4F4");
 
 		$('#kelurahan').attr("disabled","disabled");
-		$('#kelurahan').next().css("background-color","#dddddd");
-		$('#kelurahan').next().find(".jcf-select-opener").css("background-color","#dddddd");
+		$('#kelurahan').next().css("background-color","#F4F4F4");
+		$('#kelurahan').next().find(".jcf-select-opener").css("background-color","#F4F4F4");
 
 		if($("#kode_pos").val() == "" || $(this).val() == null || $("#alamat_lengkap").val() == "" || $("#kota").val() == null || $("#kecamatan").val() == null || $("#kelurahan").val() == null){
 			$("#button2").css("background-color","#dddddd");
@@ -1708,12 +1736,12 @@
 		$('#kota_sertificate').next().find(".jcf-select-opener").css("background-color","white");
 
 		$('#kecamatan_sertificate').attr("disabled","disabled");
-		$('#kecamatan_sertificate').next().css("background-color","#dddddd");
-		$('#kecamatan_sertificate').next().find(".jcf-select-opener").css("background-color","#dddddd");
+		$('#kecamatan_sertificate').next().css("background-color","#F4F4F4");
+		$('#kecamatan_sertificate').next().find(".jcf-select-opener").css("background-color","#F4F4F4");
 
 		$('#kelurahan_sertificate').attr("disabled","disabled");
-		$('#kelurahan_sertificate').next().css("background-color","#dddddd");
-		$('#kelurahan_sertificate').next().find(".jcf-select-opener").css("background-color","#dddddd");
+		$('#kelurahan_sertificate').next().css("background-color","#F4F4F4");
+		$('#kelurahan_sertificate').next().find(".jcf-select-opener").css("background-color","#F4F4F4");
 
 		if($("#status_sertificate").val() == "" || $("#own_sertificate").val() == "" || $("#kode_pos_sertificate").val() == "" || $(this).val() == null || $("#alamat_lengkap_sertificate").val() == "" || $("#kota_sertificate").val() == null || $("#kecamatan_sertificate").val() == null || $("#kelurahan_sertificate").val() == null){
 			$("#button3rumah").css("background-color","#dddddd");
@@ -1769,8 +1797,8 @@
 		$('#kecamatan').next().find(".jcf-select-opener").css("background-color","white");
 
 		$('#kelurahan').attr("disabled","disabled");
-		$('#kelurahan').next().css("background-color","#dddddd");
-		$('#kelurahan').next().find(".jcf-select-opener").css("background-color","#dddddd");
+		$('#kelurahan').next().css("background-color","#F4F4F4");
+		$('#kelurahan').next().find(".jcf-select-opener").css("background-color","#F4F4F4");
 
 		if($("#kode_pos").val() == "" || $(this).val() == null || $("#alamat_lengkap").val() == "" || $("#provinsi").val() == null || $("#kecamatan").val() == null || $("#kelurahan").val() == null){
 			$("#button2").css("background-color","#dddddd");
@@ -1826,8 +1854,8 @@
 		$('#kecamatan_sertificate').next().find(".jcf-select-opener").css("background-color","white");
 
 		$('#kelurahan_sertificate').attr("disabled","disabled");
-		$('#kelurahan_sertificate').next().css("background-color","#dddddd");
-		$('#kelurahan_sertificate').next().find(".jcf-select-opener").css("background-color","#dddddd");
+		$('#kelurahan_sertificate').next().css("background-color","#F4F4F4");
+		$('#kelurahan_sertificate').next().find(".jcf-select-opener").css("background-color","#F4F4F4");
 
 		if($("#status_sertificate").val() == "" || $("#own_sertificate").val() == "" || $("#kode_pos_sertificate").val() == "" || $(this).val() == null || $("#alamat_lengkap_sertificate").val() == "" || $("#provinsi_sertificate").val() == null || $("#kecamatan_sertificate").val() == null || $("#kelurahan_sertificate").val() == null){
 			$("#button3rumah").css("background-color","#dddddd");
@@ -2269,11 +2297,13 @@
 
 							var contentString = '<div class="col-md-12 parent-brachlist linkgoogle infowindow" data-id="' + idListing + '" data-lat="' + valListing.latitude + '"  data-lng="' + valListing.longitude + '">';
 							contentString += '<div class="wrapper-branchlist">';
+							contentString += '<div class="row">';
 							contentString += '<div class="col-md-2 col-sm-4 col-xs-4 branchlist"><img class="icon-gedung-branchlist" src="'+icondynamic+'"></div>';
 							contentString += '<div class="col-md-10 col-sm-8 col-xs-8 branchlist">';
 							contentString += '<p class="title-branch margin-bottom-10">' + valListing.name + '</p>';
 							contentString += '<p class="desc-branch">' + valListing.address + '</p>';
 							contentString += '<a href="#" class="margin-top-20">PETUNJUK ARAH <i class="fa fa-angle-right arrowlink" aria-hidden="true"></i></a>';
+							contentString += '</div>';
 							contentString += '</div>';
 							contentString += '</div>';
 							contentString += '</div>';
@@ -2368,6 +2398,7 @@
 										setTimeout(function () {
 											var html = '<div class="col-md-12 parent-brachlist notlinkgoogle" data-id="' + idListing + '" data-lat="' + valListing.latitude + '"  data-lng="' + valListing.longitude + '">';
 											html += '<div class="wrapper-branchlist">';
+											html += '<div class="row">';
 											html += '<div class="col-md-2 col-sm-2 col-xs-2 branchlist"><img class="icon-gedung-branchlist" src="'+icondynamic+'"></div>';
 											html += '<div class="col-md-8 col-sm-8 col-xs-8 branchlist">';
 											html += '<p class="title-branch margin-bottom-10">' + valListing.name + '</p>';
@@ -2375,6 +2406,7 @@
 											html += '<a href="#" class="margin-top-20">PETUNJUK ARAH <i class="fa fa-angle-right arrowlink" aria-hidden="true"></i></a>';
 											html += '</div>';
 											html += '<div class="col-md-2 branchlist"><i class="fa fa-angle-right" aria-hidden="true"></i></div>';
+											html += '</div>';
 											html += '</div>';
 											html += '</div>';
 
@@ -2431,8 +2463,19 @@
 			}, 10);
 
 			$(".map-wrapper").removeClass("active");
+
+			if(isMobile){
+				$(".container-map-arrowback").addClass("active");
+				$(".form-autocomplete").css("display","none");
+			}
 			
 		})
+
+		$(".container-map-arrowback").click(function(){
+			$(this).removeClass("active");
+			$(".form-autocomplete").css("display","block");
+			google.maps.event.trigger(searchBox, 'places_changed');
+		});
 	}
 
 	$(document).on('click', '.linkgoogle', function () {
@@ -2568,36 +2611,44 @@
 
 				console.log("Calculator Result", data)
 
-				var angsuranFinal = separatordot(data.data.angsuranFinal),
-					angsuranTotal = separatordot(data.data.ntfMax);
+				var angsuranFinal = data.data.angsuranFinal, 
+					angsuranFinal_txt = separatordot(angsuranFinal),
+					insuranceCarTot = data.data.insuranceCarTotal,
+					insuranceCarTot_txt = separatordot(insuranceCarTot);
 
-				angsuranFinal = "Rp " + angsuranFinal;
-				angsuranTotal = "Rp " + angsuranTotal;
+				var totalbiaya = parseInt(angsuranFinal) * parseInt(_param.tenor) - parseInt(insuranceCarTot),
+					totalbiaya_txt = separatordot(totalbiaya);
 
-				$(".currency[tahun='0']").text(angsuranFinal);
-				$(".total").text(angsuranTotal);
+				angsuranFinal_txt = "Rp " + angsuranFinal_txt;
+				totalbiaya_txt = "Rp " + totalbiaya_txt;
+				insuranceCarTot_txt = "Rp " + insuranceCarTot_txt;
 
-				if($(".textsubcurrency").length > 0){
-					var start_delRow = 2;
-					for(var i=start_delRow; i<=$(".tableangsuran tr").length - 1; i++){
-						$(".tableangsuran tr:eq("+i+")").remove();
-						i--;
-					}
-				}
+				$(".currency[tahun='0']").text(totalbiaya_txt);
+				$(".currency[tahun='1']").text(insuranceCarTot_txt);
+				$(".total").text(angsuranFinal_txt);
+
+
+				// if($(".textsubcurrency").length > 0){
+				// 	var start_delRow = 2;
+				// 	for(var i=start_delRow; i<=$(".tableangsuran tr").length - 1; i++){
+				// 		$(".tableangsuran tr:eq("+i+")").remove();
+				// 		i--;
+				// 	}
+				// }
 				
-		        for(var i=0; i<=asuransi_arr.length - 1; i++){
-		        	//var txt_asuransi = $(".c-custom-select-trans.opsiasuransi option[value='"+ asuransi_arr[i] +"']").text();
-		        	var html_angsuran = '<tr>'+
-                                            '<td class="textsubcurrency">'+
-                                                'Tahun ke-'+(i+1)+' ['+asuransi_arr_txt[i]+'*]'+
-                                            '</td>'+
-                                            '<td class="currency" tahun="'+(i+1)+'">'+
-                                                'Rp 340.000'+
-                                            '</td>'+
-                                    	'</tr>';
+		  //       for(var i=0; i<=asuransi_arr.length - 1; i++){
+		  //       	//var txt_asuransi = $(".c-custom-select-trans.opsiasuransi option[value='"+ asuransi_arr[i] +"']").text();
+		  //       	var html_angsuran = '<tr>'+
+    //                                         '<td class="textsubcurrency">'+
+    //                                             'Tahun ke-'+(i+1)+' ['+asuransi_arr_txt[i]+'*]'+
+    //                                         '</td>'+
+    //                                         '<td class="currency" tahun="'+(i+1)+'">'+
+    //                                             'Rp 340.000'+
+    //                                         '</td>'+
+    //                                 	'</tr>';
 
-			       	$(".tableangsuran").append(html_angsuran);
-		        }	
+			 //       	$(".tableangsuran").append(html_angsuran);
+		  //       }	
 
 			}
 		})
