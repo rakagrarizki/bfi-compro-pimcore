@@ -207,6 +207,7 @@ $this->extend('layout-credit.html.php');
                                             <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="status_kep" name="status_kep">
                                                 <option value=""> Pilih Status Kepemilikan</option>
                                                 <option value="Hak Milik">Hak Milik</option>
+                                                <option value="Hak Milik Orang Lain">Hak Milik Orang Lain</option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
