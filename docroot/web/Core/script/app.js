@@ -398,7 +398,7 @@
 		pricelimitmin = pricelimitmin.replace(/\./g,"");
 		
 
-		if(parseInt(thisval) <= parseInt(pricelimit) && !isNaN(thisval) && parseInt(thisval) >= parseInt(pricelimitmin)){
+		if(parseInt(thisval) <= parseInt(pricelimit) && !isNaN(thisval)){
 			thisval = thisval;
 		}else{
 			thisval = post_val_inputan;
