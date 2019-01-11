@@ -11,7 +11,8 @@
 
     .cek-pengajuan {
         padding: 30px 100px;
-        background: $grey-light;
+        background: white;
+        box-shadow:1px 1px 1px rgba(4, 85, 159, 0.5);
         @include breakpoint(mobile) {
             margin: 0 15px;
             padding: 25px 15px;

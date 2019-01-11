@@ -1679,13 +1679,13 @@
 	$('#alamat_lengkap_sertificate').attr("disabled","disabled");
 	$('#alamat_lengkap_sertificate').css("background-color","#F4F4F4");
 
-	// $('#tahun_kendaraan').attr("disabled","disabled");
-	// $('#tahun_kendaraan').next().css("background-color","#dddddd");
-	// $('#tahun_kendaraan').next().find(".jcf-select-opener").css("background-color","#dddddd");
+	$('#tahun_kendaraan').attr("disabled","disabled");
+	$('#tahun_kendaraan').next().css("background-color","#F4F4F4");
+	$('#tahun_kendaraan').next().find(".jcf-select-opener").css("background-color","#F4F4F4");
 
-	// $('#status_kep').attr("disabled","disabled");
-	// $('#status_kep').next().css("background-color","#dddddd");
-	// $('#status_kep').next().find(".jcf-select-opener").css("background-color","#dddddd");
+	$('#status_kep').attr("disabled","disabled");
+	$('#status_kep').next().css("background-color","#F4F4F4");
+	$('#status_kep').next().find(".jcf-select-opener").css("background-color","#F4F4F4");
 
 
 	
@@ -2131,6 +2131,14 @@
 		$('#model_kendaraan').next().css("background-color","white");
 		$('#model_kendaraan').next().find(".jcf-select-opener").css("background-color","white");
 
+		$('#tahun_kendaraan').attr("disabled","disabled");
+		$('#tahun_kendaraan').next().css("background-color","#F4F4F4");
+		$('#tahun_kendaraan').next().find(".jcf-select-opener").css("background-color","#F4F4F4");
+
+		$('#status_kep').attr("disabled","disabled");
+		$('#status_kep').next().css("background-color","#F4F4F4");
+		$('#status_kep').next().find(".jcf-select-opener").css("background-color","#F4F4F4");
+
 		if($("#model_kendaraan").val() == "" || $(this).val() == "" || $("#tahun_kendaraan").val() == "" || $("#status_kep").val() == ""){
 			$("#button3").css("background-color","#dddddd");
 			$("#button3").css("border-color","#dddddd");
@@ -2176,9 +2184,13 @@
 	});
 
 	$('#model_kendaraan').change(function() {
-		// $('#tahun_kendaraan').removeAttr("disabled");
-		// $('#tahun_kendaraan').next().css("background-color","white");
-		// $('#tahun_kendaraan').next().find(".jcf-select-opener").css("background-color","white");
+		$('#tahun_kendaraan').removeAttr("disabled");
+		$('#tahun_kendaraan').next().css("background-color","white");
+		$('#tahun_kendaraan').next().find(".jcf-select-opener").css("background-color","white");
+
+		$('#status_kep').attr("disabled","disabled");
+		$('#status_kep').next().css("background-color","#F4F4F4");
+		$('#status_kep').next().find(".jcf-select-opener").css("background-color","#F4F4F4");
 
 		if($("#merk_kendaraan").val() == "" || $(this).val() == "" || $("#tahun_kendaraan").val() == "" || $("#status_kep").val() == ""){
 			$("#button3").css("background-color","#dddddd");
@@ -2190,9 +2202,9 @@
 	});
 
 	$('#tahun_kendaraan').change(function() {
-		// $('#status_kep').removeAttr("disabled");
-		// $('#status_kep').next().css("background-color","white");
-		// $('#status_kep').next().find(".jcf-select-opener").css("background-color","white");
+		$('#status_kep').removeAttr("disabled");
+		$('#status_kep').next().css("background-color","white");
+		$('#status_kep').next().find(".jcf-select-opener").css("background-color","white");
 
 		if($("#model_kendaraan").val() == "" || $(this).val() == "" || $("#merk_kendaraan").val() == "" || $("#status_kep").val() == ""){
 			$("#button3").css("background-color","#dddddd");
@@ -2287,7 +2299,7 @@
 				// 					"<option value='"+data.data.asuransi_2+"'>"+data.data.asuransi_2+"</option>";
 
 				var opsiasuransi = ""
-				
+
 				$.each(data.data.asuransi, function(idx,opt) { 
 					opsiasuransi += "<option value='"+opt.code+"'>"+opt.name+"</option>"
 				})
