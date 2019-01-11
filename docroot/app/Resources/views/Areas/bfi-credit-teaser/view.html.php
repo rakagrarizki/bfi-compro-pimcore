@@ -8,7 +8,7 @@
                         <div class="credit--icon col-md-3">
                             <a href="<?= $this->link('url-mobil')->getHref(); ?>">
                                 <div class="icon">
-                                    <span class="flaticon-car"></span>
+                                    <img class="imggetcredit" src=""></img>
                                     <p>BPKB Mobil</p>
                                 </div>
                             </a>
@@ -16,7 +16,7 @@
                         <div class="credit--icon col-md-3">
                             <a href="<?= $this->link('url-motor')->getHref(); ?>">
                                 <div class="icon">
-                                    <span class="flaticon-scooter"></span>
+                                    <img class="imggetcredit" src=""></img>
                                     <p>BPKB Motor</p>
                                 </div>
 
@@ -25,7 +25,7 @@
                         <div class="credit--icon col-md-3">
                             <a href="<?= $this->link('url-rumah')->getHref(); ?>">
                                 <div class="icon">
-                                    <span class="flaticon-house"></span>
+                                    <img class="imggetcredit" src=""></img>
                                     <p>Sertifikat Rumah</p>
                                 </div>
 
@@ -34,7 +34,7 @@
                         <div class="credit--icon col-md-3">
                             <a href="<?= $this->link('url-ruko')->getHref(); ?>">
                                 <div class="icon">
-                                    <span class="flaticon-urban"></span>
+                                    <img class="imggetcredit" src=""></img>
                                     <p>Sertifikat Ruko</p>
                                 </div>
                             </a>
