@@ -337,7 +337,6 @@ $this->extend('layout-credit.html.php');
                                                 </div>
                                             </div>
                                         </div>
-
                                     </div>
 
                                     <div class="button-area text-left back">
