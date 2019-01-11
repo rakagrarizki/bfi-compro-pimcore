@@ -7,7 +7,7 @@
                 <?php while ($this->block("contentblock-2")->loop()) { ?>
                     <?php $asset = $this->image("image");?>
                     
-                        <div class="col-md-4 col-sm-6"><a href="<?= $this->link('url')->getHref(); ?>"><img src="<?= $asset->getImage()?>" alt=""></a></div>
+                        <div class="col-md-3 col-xs-6"><a href="<?= $this->link('url')->getHref(); ?>"><img src="<?= $asset->getImage()?>" alt=""></a></div>
                    
                 <?php } ?>
                 </div>
