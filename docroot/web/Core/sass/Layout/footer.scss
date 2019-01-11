@@ -135,7 +135,7 @@ footer {
         font-weight: 600;
         letter-spacing: .5px;
         @include breakpoint(mobile){
-            text-align: center;
+            text-align: left;
             display: block;
         }
     }
@@ -162,7 +162,7 @@ footer {
         }
         @include breakpoint(mobile){
             position: relative;
-            text-align: center;
+            text-align: left;
             margin: 15px 0;
         }
     }

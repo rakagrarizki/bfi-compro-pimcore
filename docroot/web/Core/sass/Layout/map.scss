@@ -242,3 +242,27 @@
 		font-weight:bold;
    }
 }
+
+.container-map-arrowback{
+	width:80px;
+	height:80px;
+	background-color:white;
+	margin:0 10px;
+	display:none;
+
+	&:before{
+		content:"";
+		background-image:url('/static/images/icon/backbrancharrow.png');
+		background-size:30px;
+		width:30px;
+		height:30px;
+		content:"";
+        position:absolute;
+        top:25px;
+        left:35px;
+	}
+
+	&.active{
+		display:block;
+	}
+}
