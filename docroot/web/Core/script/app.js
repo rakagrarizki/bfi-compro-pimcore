@@ -455,6 +455,12 @@
 			var rowke = $(this).parents(".columnselect").attr("ke");
 			asuransi_arr[rowke - 1] = $(this).val();
 			asuransi_arr_txt[rowke - 1] = $(this).next().children().children().text();
+
+			$('#button4').css("background-color","#dddddd");
+			$('#button4').css("border-color","#dddddd");
+			$('.hidesavebutton').css("background-color","#dddddd");
+			$('.hidesavebutton').css("border-color","#dddddd");
+			flag_sudahcalc = false;
 		});
 	};
 
