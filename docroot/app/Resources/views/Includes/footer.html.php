@@ -48,6 +48,11 @@ if($this->editmode) : ?>
         </div>
     </div>
 
+    <div class="row">
+        <div class="col-sm-4">Image OJK</div>
+        <div class="col-sm-8"><?= $this->image('ojk-image');?></div>
+    </div>
+
 <?php endif?>
 
 <div id="errorNewsletter" class="modal modal--failed fade" role="dialog">
@@ -95,7 +100,8 @@ if($this->editmode) : ?>
                     <a href="<?=$this->link('linkedin')!= "" ?$this->link('linkedin')->getHref():'' ?>"><span class="fa fa-linkedin"></span></a>
                 </div>
                 <span><?= $this->translate("text-pengawasan") ?>:</span>
-                <img src="/static/images/ojk-logo.png" class="img-ojk">
+                <?php $asset = $this->image("ojk-image");?>
+                <img src="<?= $asset->getImage()?>" class="img-ojk">
             </div>
         </div>
     </div>
