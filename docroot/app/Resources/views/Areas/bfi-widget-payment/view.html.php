@@ -5,7 +5,9 @@
             <div class="block-payment__item">
                 <?php while ($this->block("contentblock-2")->loop()) { ?>
                     <?php $asset = $this->image("image");?>
-                    <a href="<?= $this->link('url')->getHref(); ?>"><img src="<?= $asset->getImage()?>" alt=""></a>
+                    <div class="row">
+                        <div class="col-md-4 col-sm-6"><a href="<?= $this->link('url')->getHref(); ?>"><img src="<?= $asset->getImage()?>" alt=""></a></div>
+                    </div>
                 <?php } ?>
             </div>
         </div>
