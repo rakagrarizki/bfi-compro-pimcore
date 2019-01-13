@@ -1,0 +1,58 @@
+---
+- hosts: all
+  tasks:
+    - name: Install GIT
+      apt:
+        name: git
+        state: latest
+      become: yes
+    - name: Install composer
+      apt:
+        name: composer
+        state: latest
+      become: yes
+    - name: Install Nginx web server
+      apt:
+        name: nginx
+        state: latest
+      become: yes
+    - name: Install Redis server
+      apt:
+        name: redis-server
+        state: latest
+      become: yes
+    - name: add PHP 7.1 repository ondrej
+      apt_repository:
+        repo: ppa:ondrej/php
+        state: present
+    - name: install PHP 7.1 ondrej
+      apt:
+        name: php7.1,php7.1-gd,php7.1-imap,php7.1-cgi,php-pear,mcrypt,imagemagick,libruby,php7.1-curl,php7.1-intl,php7.1-pspell,php7.1-recode,php7.1-sqlite3,php7.1-tidy,php7.1-xmlrpc,php7.1-xsl,memcached,php-memcache,php-imagick,php-gettext,php7.1-cli,php7.1-common,php7.1-json,php7.1-opcache,php7.1-mysql,php7.1-mbstring,php7.1-mcrypt,php7.1-zip,php7.1-fpm
+        state: latest
+      become: yes
+    - name: start nginx
+      service:
+        name: nginx
+        state: started
+      become: yes
+    - name: copy the nginx config file and restart nginx
+      copy:
+        src: /var/www/html/bfi/.ansible-deployment/bfi.conf
+        dest: /etc/nginx/sites-available/bfi.conf
+      become: yes
+    - name: create symlink
+      file:
+        src: /etc/nginx/sites-available/bfi.conf
+        dest: /etc/nginx/sites-enabled/bfi
+      state: link
+      become: yes
+    - name: restart nginx
+      service:
+        name: nginx
+        state: restarted
+      become: yes
+    - git:
+      repo: https://github.com/php/ansible-examples.git
+        dest: /src/ansible-examples
+        refspec: '+refs/pull/*:refs/heads/*'
+      become: yes

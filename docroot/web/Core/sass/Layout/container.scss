@@ -1,0 +1,141 @@
+#site-container {
+    margin-top: 130px;
+    min-height: 56vh;
+
+    &.active {
+        
+    }
+
+    @include breakpoint (mobile) {
+        margin-top: 95px;
+    }
+}
+a {
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+#informasi-inspiratif {
+    padding: 0px 0;
+}
+#credit {
+    background-repeat:no-repeat;
+    background-color: #f1f1f1;
+    padding: 50px 0 60px;
+    position:relative;
+
+    &:before{
+        position: absolute;
+        content: "";
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        opacity: .7;    
+    }
+
+    h2 {
+        font-family: 'HelveticaNeue';
+        font-weight: 600;
+        color:white;
+        position:relative;
+        font-size:36px;
+        
+        @include breakpoint(mobile){
+            font-size: 1.4em;
+            letter-spacing: 1px;
+        }
+        a {
+            margin-left: 40px;
+            margin-top:15px;
+            font-family: 'HelveticaNeue';
+            font-weight: normal;
+            background-color:transparent;
+            border:1px solid white;
+            @include breakpoint(mobile){
+                display: block;
+                font-size: 14px;
+                margin: 10px auto 0;
+                width: 60%;
+                padding: 13px 15px;
+                &:before{
+                    right: 15px;
+                }
+            }
+        }
+    }
+    .credit-body {
+        width: 75%;
+        margin: auto;
+        @include breakpoint(mobile){
+            width: auto;
+        }
+    }
+}
+
+.title-wrapper {
+    font-family: 'HelveticaNeue';
+    font-weight: 600;
+    font-size: 37px;
+    color:#04559F;
+    margin-top:85px;
+    padding:0 8%;
+
+    &.modif-top{
+        margin-top:0;
+    }
+
+    @include breakpoint(mobile){
+        font-size: 1.8em;
+    }
+}
+.paragraf-title {
+    font-size: 1.45em;
+    font-family: 'HelveticaNeue';
+    color:#565656;
+    @include breakpoint(mobile){
+        font-size: 1em;
+    }
+}
+
+#bfi-cabang{
+    .button-area.text-center{
+        a{
+            background-color:#F8991D;
+            border:1px solid #F8991D;
+
+            &:before{
+                @include breakpoint(mobile) {
+                    right:10px;
+                }   
+            }
+        }
+    }
+}
+
+#informasi-inspiratif{
+    .button-area.text-center{
+        a{
+            &:before{
+                @include breakpoint(mobile) {
+                    right:10px;
+                }   
+            }
+        }
+    }
+}
+
+.jamoperasional{
+    text-align:center;
+    margin-bottom:50px;
+    margin-top:20px;
+
+    span{
+        display:block;
+    }
+
+    strong{
+        color:#04559F;
+    }
+}

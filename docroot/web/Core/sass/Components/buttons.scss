@@ -1,0 +1,190 @@
+.cta {
+    font-size: 14px;
+    padding: 10px 20px;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    text-align: center;
+    font-family: 'HelveticaNeue';
+    transition: all cubic-bezier(0.455, 0.03, 0.515, 0.955) .3s;
+    letter-spacing: 1px;
+
+    &.disabled {
+        cursor: not-allowed;
+        opacity: .65;
+        box-shadow: none;
+        background-color: #a7a7a7;
+        border-color: #a7a7a7;
+        &:before {
+            content: '';
+        }
+        &:hover {
+            background-color: #a7a7a7;
+            border-color: #a7a7a7;
+            color: #ffffff;
+        }
+    }
+
+    &-primary {
+        background-color: $primary;
+        color: #ffffff;
+        border: 1px solid $primary;
+
+        &:hover {
+            color: $white;
+            background-color: #0b4c75;
+
+        }
+    }
+    
+    &-orange { 
+        position: relative;
+        font-family: 'HelveticaNeue';
+        background-color: #F8991D;
+        color: #fff;
+        padding-right: 30px;
+
+        &::after {
+            position: absolute;
+            font-family: 'FontAwesome';
+            content: "\f105";
+            right: 15px;
+            top: 9px;
+        }
+
+        &:hover {
+            background-color: #d88417;
+            color: #fff;
+        }
+    }
+
+    &-light { 
+        background-color: $light;
+        color: #000000;
+        border: 1px solid $light;
+
+        &:hover {
+            background-color: $primary;
+            color: $light;
+            border: 1px solid $primary;
+        }
+    }
+
+    &-dark {
+        background-color: $dark;
+        color: #ffffff;
+        border: 1px solid $dark;
+
+        &:hover {
+            background-color: $light;
+            color: $dark;
+            border: 1px solid $dark;
+        }
+    }
+
+    &-transparant {
+        background-color: transparant;
+        color: $dark;
+        border: 1px solid $dark;
+
+        &:hover {
+            background-color: $dark;
+            color: $light;
+            border: 1px solid $dark;
+        }
+    }
+
+    &-see {
+        &:before {
+            content: '\f105';
+            font-family: FontAwesome;
+            position: absolute;
+            right: 30px;
+            transition: all cubic-bezier(0.455, 0.03, 0.515, 0.955) .5s;
+
+        }
+
+        &:hover {
+            &:before {
+                right: 20px;
+            }
+        }
+
+    }
+
+    &-back {
+        &:before {
+            content: '\f104';
+            font-family: FontAwesome;
+            position: absolute;
+            left: 15px;
+            transition: all cubic-bezier(0.455, 0.03, 0.515, 0.955) .5s;
+
+        }
+
+        &:hover {
+            &:before {
+                left: 20px;
+            }
+        }
+
+    }
+
+    &:hover, &:focus {
+        text-decoration: none;
+    }
+
+    &-small {
+        padding: 7px 10px;
+        font-size: 12px;
+    }
+
+    &-big {
+        font-size: 16px;
+        padding: 13px 50px;
+        @include breakpoint(mobile){
+            font-size: 14px;
+            padding: 10px 30px;
+        }
+    }
+}
+
+.btn-kotak {
+    padding: 0px 20px;
+    background: #F8991D;
+    width: 60px;
+    height: 60px;
+
+    &.arrowbanner{
+        background:white;
+    }
+
+    &.btn-submit {
+        &:before {
+            content: "\f105";
+            font-family: FontAwesome;
+            color: $white;
+            position: absolute;
+            // padding: 20px;
+            font-size: 40px;
+            top: 0px;
+            left: 40px;
+            opacity:0.5;
+        }
+    }
+
+
+}
+
+.button-area {
+    padding-bottom: 50px;
+}
+
+.next{
+    position: relative;
+    float: right;
+}
+
+.back{
+    float: left;
+}

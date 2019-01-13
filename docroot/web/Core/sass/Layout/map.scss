@@ -1,0 +1,268 @@
+#map {
+	height: 100%;
+}
+.map-wrapper {
+	position: relative;
+	height: 500px;
+	@include breakpoint(mobile) {
+		&.active{
+			&:before{
+				content:"";
+				height:100%;
+				width:100%;
+				position:absolute;
+				background-color:white;
+				z-index:99;
+			}
+		}
+	}
+}
+
+.input-type-autocomplete {
+	position: absolute;
+	top: 60px;
+	left: 0;
+	right: 0;
+	z-index: 99;
+	width: 35%;
+	margin-left: 7%;
+
+	@include breakpoint(mobile) {
+		width: 100%;
+		margin-left: 0;
+	
+	}
+
+	>.container {
+		width: 100%;
+	}
+	.form-autocomplete {
+		position: relative;
+		width:480px;
+		height:80px;
+		
+
+		@include breakpoint(mobile) {
+			width: 100%;
+			padding: 0 10px;
+		}
+
+		.branchlist{
+			i{
+				@include breakpoint(mobile) {
+					top:5px;
+				}
+			}
+		}
+
+		i {
+			position: absolute;
+			right: 15px;
+			top: 30px;
+			pointer-events: none;
+			font-size: 1.4em;
+			color: $grey-light-color;
+
+			@include breakpoint(mobile) {
+				right: 25px;
+			}
+
+			&.arrowlink {
+				position: relative;
+				right: 0;
+				top: 2px;
+				margin-left: 10px;
+		   }
+	   }
+   }
+	input {
+		width: 100%;
+		height:100%;
+		outline: none;
+		padding: 15px 10px;
+		background: $white;
+		border: 1px solid $grey-light-color;
+		font-family: 'HelveticaNeue';
+		padding-right: 50px;
+		font-size:22px;
+   }
+}
+.wrapper-parent-branchlist{
+	padding:0;
+	height: 0;
+	overflow-y:scroll;
+	direction: rtl;
+	border: 1px solid $grey-light-color;
+	border-top: none;
+
+	@include breakpoint(mobile) {
+		border:none;
+	}
+
+	&.deactive{
+		display:none;
+	}
+
+	&::-webkit-scrollbar {
+		width: 7px;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: $white;
+		border-radius: 25px;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: $white;
+		border-radius: 25px;
+	}
+
+	&::-webkit-scrollbar-thumb:hover {
+		background: $white;
+	}
+}
+.parent-brachlist{
+	background-color:$white;
+	padding: 15px 0;
+	padding-bottom: 15px;
+	direction: ltr;
+	cursor: pointer;
+
+	&.infowindow{
+		.wrapper-branchlist{
+			width:230px;
+			height:100px;
+			@include breakpoint(mobile) {
+				width:auto;
+				height:100%;
+			}
+		}
+
+		.col-md-10.branchlist p{
+			margin:0;
+			font-family: 'HelveticaNeue';
+			font-size:12px;
+
+			@include breakpoint(mobile) {
+				font-size:1em;
+			}
+
+			&:nth-child(1){
+				font-size:18px;
+				font-weight:bold;
+				color:#04559f;
+				@include breakpoint(mobile) {
+					color:#04559F;
+					font-size:1.3em;
+				}
+		   }
+		   &:nth-child(4){
+				font-size:14px;
+				text-decoration:underline;
+				margin-top:15px;
+				font-weight:bold;
+		   }
+		}
+
+		.branchlist{
+			&:first-child{
+				text-align:left;
+   			}
+		}
+
+		a{
+			font-size:12px;
+			font-weight:bold;
+		}
+	}
+	
+	&:last-child {
+		.wrapper-branchlist {
+			border-bottom: none;
+	   }
+   }
+
+   a {
+	   	display: block;
+		font-family: 'HelveticaNeue';
+	   	font-weight: 600;
+	   	color:#565656;
+	   	font-size:14px;
+
+	   	@include breakpoint(mobile) {
+	   		display: inline-block;
+	   	}
+   }
+}
+.wrapper-branchlist{
+    margin: 0 15px;
+    border-bottom: 1px solid $grey-light-color;
+	padding-bottom: 20px;
+}
+
+.branchlist{
+	height:100%;
+	padding:0;
+	&:first-child{
+		text-align:center;
+   }
+
+
+}
+.icon-gedung-branchlist{
+	width:30px;
+	height:30px;
+
+	@include breakpoint(mobile) {
+		width:30px;
+		height:30px;
+	}	
+}
+.col-md-8.branchlist p{
+	margin:0;
+	font-family: 'HelveticaNeue';
+	font-size:14px;
+
+	@include breakpoint(mobile) {
+		font-size:1em;
+	}
+
+	&:nth-child(1){
+		font-size:20px;
+		font-weight:bold;
+		@include breakpoint(mobile) {
+			color:#04559F;
+			font-size:1.3em;
+		}
+   }
+	&:nth-child(4){
+		font-size:14px;
+		text-decoration:underline;
+		margin-top:15px;
+		font-weight:bold;
+   }
+}
+
+.container-map-arrowback{
+	width:80px;
+	height:80px;
+	background-color:white;
+	margin:0 10px;
+	display:none;
+
+	&:before{
+		content:"";
+		background-image:url('/static/images/icon/backbrancharrow.png');
+		background-size:30px;
+		width:30px;
+		height:30px;
+		content:"";
+        position:absolute;
+        top:25px;
+        left:35px;
+	}
+
+	&.active{
+		display:block;
+	}
+}
