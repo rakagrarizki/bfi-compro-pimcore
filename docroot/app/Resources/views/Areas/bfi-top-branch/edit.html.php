@@ -21,6 +21,14 @@
             <div class="col-sm-8"><?= $this->link("url"); ?></div>
         </div>
     </div>
+    <div class="col-sm-12">
+        <div class="row">
+            <div class="col-sm-4">Alamat Jam Kantor</div>
+            <div class="col-sm-8"><?php echo $this->wysiwyg("value", [
+                    "placeholder" => "value",
+                ]); ?></div>
+        </div>
+    </div>
 </div>
 
 
