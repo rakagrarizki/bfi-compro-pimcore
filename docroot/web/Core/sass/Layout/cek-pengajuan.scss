@@ -11,7 +11,8 @@
 
     .cek-pengajuan {
         padding: 30px 100px;
-        background: $grey-light;
+        background: white;
+        box-shadow:5px 5px 5px rgba(4, 85, 159, 0.05);
         @include breakpoint(mobile) {
             margin: 0 15px;
             padding: 25px 15px;
@@ -238,7 +239,7 @@
                 background: $white;
 
                 &:hover {
-                    background: gray;
+                    background:#F7F7F7;
                 }
 
                 // Hide first option 

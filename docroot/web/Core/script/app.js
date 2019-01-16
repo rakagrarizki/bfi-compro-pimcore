@@ -397,15 +397,15 @@
 		pricelimit = pricelimit.replace(/\./g,"");
 		pricelimitmin = pricelimitmin.replace(/\./g,"");
 		
-
-		if(parseInt(thisval) <= parseInt(pricelimit) && !isNaN(thisval) && parseInt(thisval) >= parseInt(pricelimitmin)){
-			thisval = thisval;
-		}else{
-			thisval = post_val_inputan;
+		if(thisval !== ""){
+			if(parseInt(thisval) <= parseInt(pricelimit) && !isNaN(thisval)){
+				thisval = thisval;
+			}else{
+				thisval = post_val_inputan;
+			}
+			post_val_inputan = thisval;	
 		}
-
-		post_val_inputan = thisval;
-
+		
 		$(this).parents(".sliderGroup").find(".customslide").slider('setValue',parseInt(thisval));
 			
 		var number_string = thisval.toString(),
@@ -455,6 +455,12 @@
 			var rowke = $(this).parents(".columnselect").attr("ke");
 			asuransi_arr[rowke - 1] = $(this).val();
 			asuransi_arr_txt[rowke - 1] = $(this).next().children().children().text();
+
+			$('#button4').css("background-color","#dddddd");
+			$('#button4').css("border-color","#dddddd");
+			$('.hidesavebutton').css("background-color","#dddddd");
+			$('.hidesavebutton').css("border-color","#dddddd");
+			flag_sudahcalc = false;
 		});
 	};
 
@@ -467,6 +473,8 @@
 		newoptionAsuransi(thisval, raw_select);
 		$('#button4').css("background-color","#dddddd");
 		$('#button4').css("border-color","#dddddd");
+		$('.hidesavebutton').css("background-color","#dddddd");
+		$('.hidesavebutton').css("border-color","#dddddd");
 		flag_sudahcalc = false;
 	});
 	
@@ -507,6 +515,8 @@
 
 				$('#button4').css("background-color","#dddddd");
 				$('#button4').css("border-color","#dddddd");
+				$('.hidesavebutton').css("background-color","#dddddd");
+				$('.hidesavebutton').css("border-color","#dddddd");
 				flag_sudahcalc = false;
 			});
 	}
@@ -923,8 +933,8 @@
 
 		$('.hidesavebutton').on('click', function (e) {
 			e.preventDefault();
-
-			if ($(this).closest('form').valid()) {
+			
+			if ($(this).closest('form').valid() && flag_sudahcalc == true) {
 				showTab5();
 				hideTab1();
 				hideTab2();
@@ -953,6 +963,7 @@
 				pushDataKendaraan();
 				setSummary();
 			}
+			
 		});
 
 		$('.hidesavebuttonhome').on('click', function (e) {
@@ -1263,9 +1274,9 @@
 			$(".text-head").children("h2[class='text-center']").css("display","none");
 			$(".text-head").children("h2[class='text-center-edit']").css("display","block");
 			
-			$('.nav-item-5').removeClass('active');
-			$('.nav-item-1').removeClass('done');
-			$('.nav-item-1').addClass('active');
+			// $('.nav-item-5').removeClass('active');
+			// $('.nav-item-1').removeClass('done');
+			// $('.nav-item-1').addClass('active');
 			$('.tab-pane').fadeOut();
 			showTab1();
 		})
@@ -1285,9 +1296,9 @@
 			$(".text-head").children("h2[class='text-center']").css("display","none");
 			$(".text-head").children("h2[class='text-center-edit']").css("display","block");
 
-			$('.nav-item-5').removeClass('active');
-			$('.nav-item-2').removeClass('done');
-			$('.nav-item-2').addClass('active');
+			// $('.nav-item-5').removeClass('active');
+			// $('.nav-item-2').removeClass('done');
+			// $('.nav-item-2').addClass('active');
 			$('.tab-pane').fadeOut();
 			showTab2();
 		})
@@ -1302,9 +1313,9 @@
 			$(".text-head").children("h2[class='text-center']").css("display","none");
 			$(".text-head").children("h2[class='text-center-edit']").css("display","block");
 
-			$('.nav-item-5').removeClass('active');
-			$('.nav-item-3').removeClass('done');
-			$('.nav-item-3').addClass('active');
+			// $('.nav-item-5').removeClass('active');
+			// $('.nav-item-3').removeClass('done');
+			// $('.nav-item-3').addClass('active');
 			$('.tab-pane').fadeOut();
 			showTab3();
 		})
@@ -1319,9 +1330,9 @@
 			$(".text-head").children("h2[class='text-center']").css("display","none");
 			$(".text-head").children("h2[class='text-center-edit']").css("display","block");
 
-			$('.nav-item-4').removeClass('active');
-			$('.nav-item-3').removeClass('done');
-			$('.nav-item-3').addClass('active');
+			// $('.nav-item-4').removeClass('active');
+			// $('.nav-item-3').removeClass('done');
+			// $('.nav-item-3').addClass('active');
 			$('.tab-pane').fadeOut();
 			showTab3();
 		})
@@ -1336,9 +1347,9 @@
 			$(".text-head").children("h2[class='text-center']").css("display","none");
 			$(".text-head").children("h2[class='text-center-edit']").css("display","block");
 
-			$('.nav-item-5').removeClass('active');
-			$('.nav-item-4').removeClass('done');
-			$('.nav-item-4').addClass('active');
+			// $('.nav-item-5').removeClass('active');
+			// $('.nav-item-4').removeClass('done');
+			// $('.nav-item-4').addClass('active');
 			$('.tab-pane').fadeOut();
 			showTab4();
 		})
@@ -1679,13 +1690,13 @@
 	$('#alamat_lengkap_sertificate').attr("disabled","disabled");
 	$('#alamat_lengkap_sertificate').css("background-color","#F4F4F4");
 
-	// $('#tahun_kendaraan').attr("disabled","disabled");
-	// $('#tahun_kendaraan').next().css("background-color","#dddddd");
-	// $('#tahun_kendaraan').next().find(".jcf-select-opener").css("background-color","#dddddd");
+	$('#tahun_kendaraan').attr("disabled","disabled");
+	$('#tahun_kendaraan').next().css("background-color","#F4F4F4");
+	$('#tahun_kendaraan').next().find(".jcf-select-opener").css("background-color","#F4F4F4");
 
-	// $('#status_kep').attr("disabled","disabled");
-	// $('#status_kep').next().css("background-color","#dddddd");
-	// $('#status_kep').next().find(".jcf-select-opener").css("background-color","#dddddd");
+	$('#status_kep').attr("disabled","disabled");
+	$('#status_kep').next().css("background-color","#F4F4F4");
+	$('#status_kep').next().find(".jcf-select-opener").css("background-color","#F4F4F4");
 
 
 	
@@ -2131,6 +2142,14 @@
 		$('#model_kendaraan').next().css("background-color","white");
 		$('#model_kendaraan').next().find(".jcf-select-opener").css("background-color","white");
 
+		$('#tahun_kendaraan').attr("disabled","disabled");
+		$('#tahun_kendaraan').next().css("background-color","#F4F4F4");
+		$('#tahun_kendaraan').next().find(".jcf-select-opener").css("background-color","#F4F4F4");
+
+		$('#status_kep').attr("disabled","disabled");
+		$('#status_kep').next().css("background-color","#F4F4F4");
+		$('#status_kep').next().find(".jcf-select-opener").css("background-color","#F4F4F4");
+
 		if($("#model_kendaraan").val() == "" || $(this).val() == "" || $("#tahun_kendaraan").val() == "" || $("#status_kep").val() == ""){
 			$("#button3").css("background-color","#dddddd");
 			$("#button3").css("border-color","#dddddd");
@@ -2176,9 +2195,13 @@
 	});
 
 	$('#model_kendaraan').change(function() {
-		// $('#tahun_kendaraan').removeAttr("disabled");
-		// $('#tahun_kendaraan').next().css("background-color","white");
-		// $('#tahun_kendaraan').next().find(".jcf-select-opener").css("background-color","white");
+		$('#tahun_kendaraan').removeAttr("disabled");
+		$('#tahun_kendaraan').next().css("background-color","white");
+		$('#tahun_kendaraan').next().find(".jcf-select-opener").css("background-color","white");
+
+		$('#status_kep').attr("disabled","disabled");
+		$('#status_kep').next().css("background-color","#F4F4F4");
+		$('#status_kep').next().find(".jcf-select-opener").css("background-color","#F4F4F4");
 
 		if($("#merk_kendaraan").val() == "" || $(this).val() == "" || $("#tahun_kendaraan").val() == "" || $("#status_kep").val() == ""){
 			$("#button3").css("background-color","#dddddd");
@@ -2190,9 +2213,9 @@
 	});
 
 	$('#tahun_kendaraan').change(function() {
-		// $('#status_kep').removeAttr("disabled");
-		// $('#status_kep').next().css("background-color","white");
-		// $('#status_kep').next().find(".jcf-select-opener").css("background-color","white");
+		$('#status_kep').removeAttr("disabled");
+		$('#status_kep').next().css("background-color","white");
+		$('#status_kep').next().find(".jcf-select-opener").css("background-color","white");
 
 		if($("#model_kendaraan").val() == "" || $(this).val() == "" || $("#merk_kendaraan").val() == "" || $("#status_kep").val() == ""){
 			$("#button3").css("background-color","#dddddd");
@@ -2287,7 +2310,7 @@
 				// 					"<option value='"+data.data.asuransi_2+"'>"+data.data.asuransi_2+"</option>";
 
 				var opsiasuransi = ""
-				
+
 				$.each(data.data.asuransi, function(idx,opt) { 
 					opsiasuransi += "<option value='"+opt.code+"'>"+opt.name+"</option>"
 				})
@@ -2728,6 +2751,8 @@
 		calculatePremi();
 		$('#button4').css("background-color","#F8991D");
 		$('#button4').css("border-color","#F8991D");
+		$('.hidesavebutton').css("background-color","#F8991D");
+		$('.hidesavebutton').css("border-color","#F8991D");
 		flag_sudahcalc = true;
 	})
 

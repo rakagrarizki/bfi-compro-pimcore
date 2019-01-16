@@ -327,8 +327,8 @@ $this->extend('layout-credit.html.php');
                                                     <p class="title-angsuran">Total Estimasi Angsuran Per Bulan*</p>
                                                     <p class="total">Rp 0</p>
                                                     <p class="infotext">*Biaya angsuran dapat berubah sesuai dengan hasil survei</p>
-                                                    <button class="cta cta-primary cta-big" id="recalc"
-                                                        type="button">HITUNG AGSURAN</button>
+                                                    <button class="cta cta-primary cta-big absolutebutcalc" id="recalc"
+                                                        type="button">HITUNG ANGSURAN</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -543,7 +543,7 @@ $this->extend('layout-credit.html.php');
 
                                         <div class="otp-number form-group">
                                             <div class="otp-number__phone disabled">
-                                                <p id="showPhone"> <input type="text" id="otpPhone" disabled /> <img id="otpEditPhone" src="/static/images/icon/pencil.png" alt=""></p>
+                                                <p id="showPhone"> <input type="text" id="otpPhone" disabled /> <img id="otpEditPhone" src="/static/images/icon/pencils.png" alt=""></p>
                                             </div>
                                             <div class="otp-number__verify">
                                                 <input type="text" class="input-number formRequired" maxlength="1" name="otp1">
