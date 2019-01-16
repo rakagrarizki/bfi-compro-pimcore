@@ -543,7 +543,7 @@ $this->extend('layout-credit.html.php');
 
                                         <div class="otp-number form-group">
                                             <div class="otp-number__phone disabled">
-                                                <p id="showPhone"> <input type="text" id="otpPhone" disabled /> <img id="otpEditPhone" src="/static/images/icon/pencil.png" alt=""></p>
+                                                <p id="showPhone"> <input type="text" id="otpPhone" disabled /> <img id="otpEditPhone" src="/static/images/icon/pencils.png" alt=""></p>
                                             </div>
                                             <div class="otp-number__verify">
                                                 <input type="text" class="input-number formRequired" maxlength="1" name="otp1">
