@@ -282,9 +282,14 @@
                 padding-left: 10px;
                 margin-left:-10px;
                 margin-right:-10px;
+                width:420px;
+
+                @include breakpoint(mobile){
+                    width:auto;
+                }
        
                 .slider-horizontal{   
-                    width: 92%;
+                    width: 100%;
                     @include breakpoint(mobile){
                         margin: 0 0px 10px;
                         width: 100%;
