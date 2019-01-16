@@ -387,6 +387,12 @@
 
 
 	// With JQuery
+	$("#ex6SliderVal").on("keydown",function(e){
+		if($(this).val() == 0 && e.which !== 8){
+			$(this).val("");
+		}
+	});
+
 	var post_val_inputan = 0;
 	$("#ex6SliderVal").on("input",function(){
 		var thisval = $(this).val(),
@@ -398,12 +404,18 @@
 		pricelimitmin = pricelimitmin.replace(/\./g,"");
 		
 		if(thisval !== ""){
-			if(parseInt(thisval) <= parseInt(pricelimit) && !isNaN(thisval)){
+			if(isNaN(thisval)){
+				return false;
+			}
+
+			if(parseInt(thisval) <= parseInt(pricelimit)){
 				thisval = thisval;
 			}else{
 				thisval = post_val_inputan;
 			}
 			post_val_inputan = thisval;	
+		}else{
+			thisval = 0;
 		}
 		
 		$(this).parents(".sliderGroup").find(".customslide").slider('setValue',parseInt(thisval));

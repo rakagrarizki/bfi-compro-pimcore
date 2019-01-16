@@ -572,6 +572,7 @@
             }
 
             &.jcf-drop-active {
+                border:1px solid #F9991C!important;
                 >.jcf-select-opener:before {
                     transform: rotate(180deg);
                 }
@@ -945,5 +946,9 @@
     @include breakpoint(mobile){
         width: 100%;
     }
+}
+
+#basic-addon1{
+    display:table-cell!important;
 }
 
