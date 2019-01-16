@@ -117,6 +117,7 @@
 
             @include breakpoint(mobile){
                 width:auto;
+                padding-bottom:30px;
             }
         }
         @include breakpoint(mobile){

@@ -155,6 +155,7 @@
                     width:195px;
                 }
                 &.jcf-drop-active {
+                    border:1px solid #F9991C!important;
                     >.jcf-select-opener:before {
                         transform: rotate(180deg);
                     }
