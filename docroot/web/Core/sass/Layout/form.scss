@@ -238,7 +238,7 @@
                             display: flex;
                             align-items: center;
                             label{
-                                color: $grey-dark;
+                                color:#565656;
                                 font-size: 1em;
                             }
                         }
@@ -276,9 +276,10 @@
                 overflow: hidden;
                 padding-right: 10px;
                 padding-left: 10px;
+                margin-left:-10px;
        
                 .slider-horizontal{   
-                    width: 100%;
+                    width: 94%;
                     @include breakpoint(mobile){
                         margin: 0 10px 10px;
                         width: 90%;
