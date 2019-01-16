@@ -27,7 +27,7 @@ if($this->editmode) : ?>
     </div>
 
 <?php endif?>
-<div class="footer-bottom">
+<div class="footer-bottom footer-credit">
     <div class="container">
         <span>&copy; <?php echo date("Y"); ?> - PT BFI Finance Indonesia Tbk</span>
         <ul class="nav-footer">
