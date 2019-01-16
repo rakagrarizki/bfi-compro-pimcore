@@ -397,15 +397,15 @@
 		pricelimit = pricelimit.replace(/\./g,"");
 		pricelimitmin = pricelimitmin.replace(/\./g,"");
 		
-
-		if(parseInt(thisval) <= parseInt(pricelimit) && !isNaN(thisval)){
-			thisval = thisval;
-		}else{
-			thisval = post_val_inputan;
+		if(thisval !== ""){
+			if(parseInt(thisval) <= parseInt(pricelimit) && !isNaN(thisval)){
+				thisval = thisval;
+			}else{
+				thisval = post_val_inputan;
+			}
+			post_val_inputan = thisval;	
 		}
-
-		post_val_inputan = thisval;
-
+		
 		$(this).parents(".sliderGroup").find(".customslide").slider('setValue',parseInt(thisval));
 			
 		var number_string = thisval.toString(),
