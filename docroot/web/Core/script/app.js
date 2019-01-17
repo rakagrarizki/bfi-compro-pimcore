@@ -581,6 +581,10 @@
 		
 	},"Please input price more than min price");
 
+	jQuery.validator.addMethod("emailCust", function(value, element, param) {
+		return param.test( value );
+	},"Please enter a valid email address.");
+
 	$.validator.addClassRules({
 
 		formRequired: {
@@ -589,6 +593,10 @@
 
 		formAlphabet: {
 			accept: "[a-zA-Z]+"
+		},
+
+		formEmail: {
+			emailCust: /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/
 		},
 
 		formNumber: {
@@ -608,6 +616,10 @@
 			number: true,
 			maxlength: 5,
 			minlength: 5
+		},
+
+		formAddress: {
+			minlength:10
 		},
 
 		submitHandler: function (form) {

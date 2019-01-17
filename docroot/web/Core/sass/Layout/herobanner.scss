@@ -378,7 +378,11 @@
 
     .slick-dots {
         bottom: 30px;
-        width: 38%;
+        width: 100%;
+
+        @include breakpoint (mobile) {
+            bottom:15px;
+        }
     }
 }
 
@@ -403,6 +407,10 @@
             left: 0px;
             position: absolute;
 
+            &.bawah{
+                top:30px;
+            }
+
             &:before {
                 content: "\f104";
                 font-family: FontAwesome;
@@ -423,6 +431,9 @@
             padding: 0px 30px;
             right: 0px;
             position: absolute;
+             &.bawah{
+                top:30px;
+            }
             @include breakpoint (mobile) {
                 right: 0;
             }
