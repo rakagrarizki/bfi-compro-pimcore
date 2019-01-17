@@ -31,11 +31,11 @@
     <div class="container navigation">
         <div class="row">
             <div class="slick-nav">
-                <div class="prev prev-2 btn-kotak arrowbanner"></div>
+                <div class="prev prev-2 btn-kotak arrowbanner bawah"></div>
 
             </div>
             <div class="slick-nav">
-                <div class="next next-2 btn-kotak arrowbanner"></div>
+                <div class="next next-2 btn-kotak arrowbanner bawah"></div>
             </div>
         </div>
     </div>
