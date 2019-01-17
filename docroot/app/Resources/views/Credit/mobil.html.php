@@ -223,7 +223,7 @@ $this->extend('layout-credit.html.php');
                                                 type="button"><?= $this->translate('next')?></button>
                                         <button class="cta cta-primary cta-big cta-see buttonnext hidesavebutton" type="button"><?= $this->translate('save')?></button>
                                     </div>
-            
+
                                 </div>
                                 <div id="menu4" class="tab-pane slide-left">
                                     <div class="form-body--credit-simulasi row">
@@ -238,7 +238,7 @@ $this->extend('layout-credit.html.php');
                                                 <label for="jml-biaya"><?= $this->translate('label-data-funding')?></label>
                                                 <div class="input-group inputform">
                                                     <span class="input-group-addon" id="basic-addon1">Rp</span>
-                                                    <input type="text" id="ex6SliderVal" class="form-control formRequired formPrice c-input-trans"
+                                                    <input type="text" id="ex6SliderVal" class="form-control formRequired c-input-trans"
                                                            aria-describedby="basic-addon1">
 
                                                     <div class="error-wrap"></div>
@@ -555,13 +555,13 @@ $this->extend('layout-credit.html.php');
                                         </div>
 
                                     </div>
-                                    
+
 
                                     <div class="button-area text-right next">
                                         <button class="cta cta-primary cta-big cta-see buttonnext" id="button6"
                                                 type="button"><?= $this->translate('verifikasi')?></button>
                                     </div>
-            
+
                                 </div>
 
                                 <div id="success" class="success-wrapper">
@@ -575,7 +575,7 @@ $this->extend('layout-credit.html.php');
                                     <div class="button-area text-center backtohome">
                                         <a href="/<?php echo $this->getLocale() ?>">
                                             <button class="cta cta-primary cta-big cta-see buttonnext backtohome" id="button7"
-                                                type="button"><?= $this->translate('backtohome')?></button>
+                                                    type="button"><?= $this->translate('backtohome')?></button>
                                         </a>
                                     </div>
                                 </div>

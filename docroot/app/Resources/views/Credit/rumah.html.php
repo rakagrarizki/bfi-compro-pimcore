@@ -248,7 +248,7 @@ $this->extend('layout-credit.html.php');
                                                 type="button"><?= $this->translate('next')?></button>
                                         <button class="cta cta-primary cta-big cta-see buttonnext hidesavebuttonhome" type="button"><?= $this->translate('save')?></button>
                                     </div>
-                                    
+
                                 </div>
 
                                 <div id="menu4" class="tab-pane slide-left">
@@ -440,13 +440,13 @@ $this->extend('layout-credit.html.php');
                                         </div>
 
                                     </div>
-                                    
+
 
                                     <div class="button-area text-right next">
                                         <button class="cta cta-primary cta-big cta-see buttonnext" id="button6"
                                                 type="submit"><?= $this->translate('verifikasi')?></button>
                                     </div>
-                                    
+
                                 </div>
 
                                 <div id="success" class="success-wrapper">
@@ -460,7 +460,7 @@ $this->extend('layout-credit.html.php');
                                     <div class="button-area text-center backtohome">
                                         <a href="/<?php echo $this->getLocale() ?>">
                                             <button class="cta cta-primary cta-big cta-see buttonnext backtohome" id="button7"
-                                                type="button"><?= $this->translate('backtohome')?></button>
+                                                    type="button"><?= $this->translate('backtohome')?></button>
                                         </a>
                                     </div>
                                 </div>
