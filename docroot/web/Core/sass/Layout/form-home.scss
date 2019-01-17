@@ -5,6 +5,17 @@
         padding: 20px 15px;
     }
 
+    @include breakpoint(desktop){
+        &.modif{
+            position: absolute;
+            height: 380px;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            padding: 20px 50px 20px;
+        }
+    }
+
     .list-credit {
         padding: 40px 60px 80px 60px;
         @include breakpoint(mobile){

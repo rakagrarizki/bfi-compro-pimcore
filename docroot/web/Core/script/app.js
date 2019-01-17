@@ -387,8 +387,13 @@
 
 
 	// With JQuery
+	if(!isMobile){
+		var heightmodif = parseInt($(window).height()) - 190;
+		$("#site-container").css("min-height",heightmodif + "px");
+	}
+
 	$("#ex6SliderVal").on("keydown",function(e){
-		if($(this).val() == 0 && e.which !== 8){
+		if($(this).val() == 0){
 			$(this).val("");
 		}
 	});
@@ -405,17 +410,15 @@
 		
 		if(thisval !== ""){
 			if(isNaN(thisval)){
-				return false;
-			}
-
-			if(parseInt(thisval) <= parseInt(pricelimit)){
-				thisval = thisval;
+				thisval = "";
 			}else{
-				thisval = post_val_inputan;
+				if(parseInt(thisval) <= parseInt(pricelimit)){
+					thisval = thisval;
+				}else{
+					thisval = post_val_inputan;
+				}
+				post_val_inputan = thisval;	
 			}
-			post_val_inputan = thisval;	
-		}else{
-			thisval = 0;
 		}
 		
 		$(this).parents(".sliderGroup").find(".customslide").slider('setValue',parseInt(thisval));
@@ -564,8 +567,19 @@
 	});
 
 	jQuery.validator.addMethod("accept", function(value, element, param) {
+		//console.log(value.match(new RegExp("." + param + "$")));
 		return value.match(new RegExp("." + param + "$"));
 	},"Please Enter Only Letters");
+
+	jQuery.validator.addMethod("minPrice", function(value, element, param) {
+		var thisval = value.replace(/\./g,"");
+		if(parseInt(thisval) < param){
+			return false;
+		}else{
+			return true;
+		}
+		
+	},"Please input price more than min price");
 
 	$.validator.addClassRules({
 
@@ -600,6 +614,8 @@
 			form.submit();
 		}
 	});
+
+	console.log($.validator.classRuleSettings);
 
 	function validateFormRequired(elementParam) {
 		$(elementParam).validate({
@@ -2346,6 +2362,13 @@
                 objCredits.jangka_waktu = 12;
 
                 post_val_inputan = rawMinPrice;
+
+                $.validator.addClassRules({
+					formPrice: {
+						minPrice:rawMinPrice,
+						required:true
+					}
+				});
 				// $(".opsiasuransi").append(opsiasuransi);
 				// $(".opsiasuransi").val(data.data.asuransi_1);
 				// $(".opsiasuransi").next().children().children().text(data.data.asuransi_1);
