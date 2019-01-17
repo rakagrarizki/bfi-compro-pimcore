@@ -26,31 +26,31 @@ $this->extend('layout-credit.html.php');
                                 <li class="nav-item-1 active">
                                     <a href="#" id="tab1">
                                         <span class="number"><i class="fa fa-check" aria-hidden="true"></i><b>1</b></span>
-                                        <p>Data Pemohon</p>
+                                        <p><?= $this->translate('data-name')?></p>
                                     </a>
                                 </li>
                                 <li class="nav-item-2 disabled">
                                     <a href="#" id="tab2">
                                         <span class="number"><i class="fa fa-check" aria-hidden="true"></i><b>2</b></span>
-                                        <p>Data Tempat Tinggal</p>
+                                        <p><?= $this->translate('data-place')?></p>
                                     </a>
                                 </li>
                                 <li class="nav-item-3 disabled">
                                     <a href="#" id="tab3">
                                         <span class="number"><i class="fa fa-check" aria-hidden="true"></i><b>3</b></span>
-                                        <p>Data Kendaraan</p>
+                                        <p><?= $this->translate('data-vehicle')?></p>
                                     </a>
                                 </li>
                                 <li class="nav-item-4 disabled">
                                     <a href="#" id="tab4">
                                         <span class="number"><i class="fa fa-check" aria-hidden="true"></i><b>4</b></span>
-                                        <p>Jumlah Pembiayaan</p>
+                                        <p><?= $this->translate('data-funding')?></p>
                                     </a>
                                 </li>
                                 <li class="nav-item-5 disabled">
                                     <a href="#" id="tab5">
                                         <span class="number"><i class="fa fa-check" aria-hidden="true"></i><b>5</b></span>
-                                        <p>Konfirmasi Data</p>
+                                        <p><?= $this->translate('data-confirmation')?></p>
                                     </a>
                                 </li>
                             </ul>
@@ -61,26 +61,26 @@ $this->extend('layout-credit.html.php');
                                 <div id="menu1" class="tab-pane fade in active form-group">
                                     <div class="form-body--credit">
                                         <div class="text-head">
-                                            <h2 class="text-center">Data Pemohon</h2>
-                                            <h2 class="text-center-edit">Ubah Data Pemohon</h2>
-                                            <p class="text-center">Silahkan Masukan data diri Anda</p>
+                                            <h2 class="text-center"><?= $this->translate('data-name')?></h2>
+                                            <h2 class="text-center-edit"><?= $this->translate('change-data-name')?></h2>
+                                            <p class="text-center"><?= $this->translate('input-data-name')?></p>
                                         </div>
                                         <div class="form-group">
-                                            <label for="nama_lengkap">Nama Lengkap</label>
+                                            <label for="nama_lengkap"><?= $this->translate('form-name')?></label>
                                             <input type="text" class="form-control formRequired formAlphabet" name="nama_lengkap" id="nama_lengkap"
-                                                   placeholder="Masukan nama lengkap Anda">
+                                                   placeholder="<?= $this->translate('placeholder-name')?>">
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="email">Email</label>
+                                            <label for="email"><?= $this->translate('form-email')?></label>
                                             <input type="email" class="form-control formRequired" name="email" id="email_pemohon"
-                                                   placeholder="Masukan email Anda">
+                                                   placeholder="<?= $this->translate('placeholder-email')?>">
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="no_handphone">Nomor Handphone</label>
+                                            <label for="no_handphone"><?= $this->translate('form-hp')?></label>
                                             <input type="text" class="form-control formPhoneNumber" name="no_handphone" id="no_handphone"
-                                                   placeholder="Masukan nomor handphone Anda">
+                                                   placeholder="<?= $this->translate('placeholder-hp')?>">
                                             <div class="error-wrap"></div>
                                         </div>
                                         <!-- <div class="form-group">
@@ -101,8 +101,8 @@ $this->extend('layout-credit.html.php');
                                     </div>
                                     <div class="button-area text-right next">
 
-                                        <button class="cta cta-primary cta-big cta-see buttonnext" id="button1" type="button">SELANJUTNYA</button>
-                                        <button class="cta cta-primary cta-big cta-see buttonnext hidesavebutton"  type="button">SIMPAN</button>
+                                        <button class="cta cta-primary cta-big cta-see buttonnext" id="button1" type="button"><?= $this->translate('next')?></button>
+                                        <button class="cta cta-primary cta-big cta-see buttonnext hidesavebutton"  type="button"><?= $this->translate('save')?></button>
 
                                     </div>
 
@@ -110,88 +110,88 @@ $this->extend('layout-credit.html.php');
                                 <div id="menu2" class="tab-pane slide-left form-group ">
                                     <div class="form-body--credit">
                                         <div class="text-head">
-                                            <h2 class="text-center">Data Tempat Tinggal</h2>
-                                            <h2 class="text-center-edit">Ubah Data Tempat Tinggal</h2>
-                                            <p class="text-center">Silahkan Masukan data tempat tinggal Anda</p>
+                                            <h2 class="text-center"><?= $this->translate('data-place')?></h2>
+                                            <h2 class="text-center-edit"><?= $this->translate('change-data-place')?></h2>
+                                            <p class="text-center"><?= $this->translate('input-data-place')?></p>
                                         </div>
                                         <div class="form-group">
-                                            <label>Provinsi</label>
+                                            <label><?= $this->translate('label-provinsi')?></label>
                                             <select class="c-custom-select formRequired" id="provinsi" name="provinsi"  data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' />
-                                            <option value="">Pilih Provinsi</option>
+                                            <option value=""><?= $this->translate('choose-provinsi')?></option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
-                                            <label>Kota</label>
+                                            <label><?= $this->translate('label-kota')?></label>
                                             <select class="c-custom-select formRequired" id="kota" name="kota"  data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' />
-                                            <option value="">Pilih Kota</option>
+                                            <option value=""><?= $this->translate('choose-kota')?></option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
-                                            <label>Kecamatan</label>
+                                            <label><?= $this->translate('label-kecamatan')?></label>
                                             <select class="c-custom-select formRequired" id="kecamatan" name="kecamatan"  data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' />
-                                            <option value="">Pilih Kecamatan</option>
+                                            <option value=""><?= $this->translate('choose-kecamatan')?></option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
-                                            <label>Kelurahan</label>
+                                            <label><?= $this->translate('label-kelurahan')?></label>
                                             <select class="c-custom-select formRequired" id="kelurahan" name="kelurahan"  data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' />
-                                            <option value="">Pilih Kelurahan</option>
+                                            <option value=""><?= $this->translate('choose-kelurahan')?></option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="kode_pos">Kode Pos</label>
+                                            <label for="kode_pos"><?= $this->translate('label-postcode')?></label>
                                             <input type="text" class="form-control formKodePos" name="kode_pos" id="kode_pos"
-                                                   placeholder="Masukkan kode pos">
+                                                   placeholder="<?= $this->translate('placeholder-postcode')?>">
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="alamat_lengkap">Alamat Lengkap Rumah</label>
+                                            <label for="alamat_lengkap"><?= $this->translate('label-place')?></label>
                                             <textarea class="form-control formRequired" name="alamat_lengkap" id="alamat_lengkap"
-                                                      placeholder="Masukan alamat lengkap rumah"></textarea>
+                                                      placeholder="<?= $this->translate('placeholder-place')?>"></textarea>
                                             <div class="error-wrap"></div>
                                         </div>
                                     </div>
                                     <div class="button-area text-left back">
                                         <button class="cta cta-primary cta-big cta-back buttonback" id="buttonback2"
-                                                type="button">SEBELUMNYA</button>
+                                                type="button"><?= $this->translate('before')?></button>
                                     </div>
                                     <div class="button-area text-right next">
-                                        <button class="cta cta-primary cta-big cta-see buttonnext" id="button2" type="button">SELANJUTNYA</button>
-                                        <button class="cta cta-primary cta-big cta-see buttonnext hidesavebutton" type="button">SIMPAN</button>
+                                        <button class="cta cta-primary cta-big cta-see buttonnext" id="button2" type="button"><?= $this->translate('next')?></button>
+                                        <button class="cta cta-primary cta-big cta-see buttonnext hidesavebutton" type="button"><?= $this->translate('save')?></button>
                                     </div>
 
                                 </div>
                                 <div id="menu3" class="tab-pane slide-left">
                                     <div class="form-body--credit">
                                         <div class="text-head">
-                                            <h2 class="text-center">Data Kendaraan</h2>
-                                            <h2 class="text-center-edit">Ubah Data Kendaraan</h2>
-                                            <p class="text-center">Silahkan Masukan data kendaraan Anda</p>
+                                            <h2 class="text-center"><?= $this->translate('data-vehicle')?></h2>
+                                            <h2 class="text-center-edit"><?= $this->translate('change-data-vehicle')?></h2>
+                                            <p class="text-center"><?= $this->translate('input-data-vehicle')?></p>
                                         </div>
                                         <div class="form-group">
-                                            <label>Merk Kendaraan</label>
+                                            <label><?= $this->translate('label-merk')?></label>
                                             <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="merk_kendaraan" name="merk_kendaraan">
-                                                <option value=""> Pilih Merk Kendaraan</option>
+                                                <option value=""> <?= $this->translate('placeholder-merk')?></option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
-                                            <label>Model Kendaraan</label>
+                                            <label><?= $this->translate('label-model')?></label>
                                             <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="model_kendaraan"
                                                     name="model_kendaraan">
-                                                <option value=""> Pilih Model Kendaraan</option>
+                                                <option value=""> <?= $this->translate('placeholder-model')?></option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
-                                            <label>Tahun Kendaraan</label>
+                                            <label><?= $this->translate('label-tahun')?></label>
                                             <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="tahun_kendaraan"
                                                     name="tahun_kendaraan">
-                                                <option value=""> Pilih Tahun Kendaraan</option>
+                                                <option value=""> <?= $this->translate('placeholder-tahun')?></option>
                                                 <?php
                                                 $tahunNow = date("Y");
                                                 for ($i = 2000; $i <= (int)$tahunNow; $i++) {
@@ -202,11 +202,11 @@ $this->extend('layout-credit.html.php');
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
-                                            <label>Status Kepemilikan</label>
+                                            <label><?= $this->translate('label-status')?></label>
                                             <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="status_kep" name="status_kep">
-                                                <option value=""> Pilih Status Kepemilikan</option>
-                                                <option value="Hak Milik">Hak Milik</option>
-                                                <option value="Hak Milik Orang Lain">Hak Milik Orang Lain</option>
+                                                <option value=""> <?= $this->translate('placeholder-status')?></option>
+                                                <option value="Hak Milik"><?= $this->translate('placeholder-status-self')?></option>
+                                                <option value="Hak Milik Orang Lain"><?= $this->translate('placeholder-status-other')?></option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
@@ -215,13 +215,13 @@ $this->extend('layout-credit.html.php');
 
                                     <div class="button-area text-left back">
                                         <button class="cta cta-primary cta-big cta-back buttonback" id="buttonback3"
-                                                type="button">SEBELUMNYA</button>
+                                                type="button"><?= $this->translate('before')?></button>
                                     </div>
 
                                     <div class="button-area text-right next">
                                         <button class="cta cta-primary cta-big cta-see buttonnext" id="button3"
-                                                type="button">SELANJUTNYA</button>
-                                        <button class="cta cta-primary cta-big cta-see buttonnext hidesavebutton" type="button">SIMPAN</button>
+                                                type="button"><?= $this->translate('next')?></button>
+                                        <button class="cta cta-primary cta-big cta-see buttonnext hidesavebutton" type="button"><?= $this->translate('save')?></button>
                                     </div>
 
 
@@ -230,14 +230,14 @@ $this->extend('layout-credit.html.php');
                                     <div class="form-body--credit-simulasi row">
 
                                         <div class="text-head">
-                                            <h2 class="text-center">Jumlah Pembiayaan</h2>
-                                            <h2 class="text-center-edit">Ubah Jumlah Pembiayaan</h2>
-                                            <p class="text-center">Hitung Jumlah Pembiayaan Anda</p>
+                                            <h2 class="text-center"><?= $this->translate('data-funding')?></h2>
+                                            <h2 class="text-center-edit"><?= $this->translate('change-data-funding')?></h2>
+                                            <p class="text-center"><?= $this->translate('input-data-funding')?></p>
                                         </div>
 
                                         <div class="col-md-6">
                                             <div class="form-group sliderGroup inputsimulasi">
-                                                <label for="jml-biaya">Jumlah Pembiayaan</label>
+                                                <label for="jml-biaya"><?= $this->translate('label-data-funding')?></label>
                                                 <div class="input-group inputform">
                                                     <span class="input-group-addon" id="basic-addon1">Rp</span>
                                                     <input type="text" id="ex6SliderVal" class="form-control formRequired c-input-trans"
@@ -253,19 +253,16 @@ $this->extend('layout-credit.html.php');
                                                 </div>
                                             </div>
                                             <div class="form-group sliderGroup inputsimulasi">
-                                                <label>Jangka Waktu</label>
+                                                <label><?= $this->translate('label-funding-year')?></label>
                                                 <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="jangka_waktu"
                                                         name="jangka-waktu">
-                                                    <option value="6">6 Bulan</option>
-                                                    <option value="12">12 Bulan</option>
-                                                    <option value="18">18 Bulan</option>
-                                                    <option value="24">24 Bulan</option>
-                                                    <option value="30">30 Bulan</option>
-                                                    <option value="36">36 Bulan</option>
-                                                    <option value="42">42 Bulan</option>
-                                                    <option value="48">48 Bulan</option>
-                                                    <option value="54">54 Bulan</option>
-                                                    <option value="60">60 Bulan</option>
+                                                    <?php
+                                                    for ($i = 6 ; $i <= 60; $i++) {
+                                                        if($i % 6 == 0){
+                                                            echo '<option value="' . $i . '">' . $i . ' ' .$this->translate('label-month') .'</option>';
+                                                        }
+                                                    }
+                                                    ?>
                                                 </select>
                                                 <div class="error-wrap"></div>
                                                 <!-- <div class="slidecontainer">
@@ -277,10 +274,10 @@ $this->extend('layout-credit.html.php');
                                                 </div> -->
                                             </div>
                                             <div class="form-group inputsimulasi asuransi">
-                                                <label>Asuransi</label>
+                                                <label><?= $this->translate('label-asuransi')?></label>
                                                 <div class="columnselect" ke="0">
                                                     <div class="list-select">
-                                                        <label>Tahun ke - 1</label>
+                                                        <label><?= $this->translate('label-next-year')?> ke - 1</label>
                                                     </div>
                                                     <div class="list-select">
                                                         <select class="c-custom-select-trans formRequired opsiasuransi" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}'
@@ -293,11 +290,11 @@ $this->extend('layout-credit.html.php');
                                         <div class="col-md-6">
                                             <div class="rincian">
                                                 <div class="rincian--content">
-                                                    <p class="title-angsuran">Rincian Biaya Angsuran</p>
+                                                    <p class="title-angsuran"><?= $this->translate('label-rincian')?></p>
                                                     <table class="tableangsuran">
                                                         <tr>
                                                             <td>
-                                                                Total pembiayaan *
+                                                                <?= $this->translate('label-total')?> *
                                                             </td>
                                                             <td class="currency" tahun="0">
                                                                 Rp 0
@@ -305,7 +302,7 @@ $this->extend('layout-credit.html.php');
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                Total asuransi yang harus dibayarkan *
+                                                                <?= $this->translate('label-total-asuransi')?> *
                                                             </td>
                                                             <td class="currency" tahun="1">
                                                                 Rp 0
@@ -330,10 +327,11 @@ $this->extend('layout-credit.html.php');
                                                     </table>
                                                 </div>
                                                 <div class="total-estimate">
-                                                    <p class="title-angsuran">Total Estimasi Angsuran Per Bulan</p>
+                                                    <p class="title-angsuran"><?= $this->translate('label-estimate')?></p>
                                                     <p class="total">Rp 0</p>
+                                                    <p class="infotext">*<?= $this->translate('text-estimate')?></p>
                                                     <button class="cta cta-primary cta-big absolutebutcalc" id="recalc"
-                                                            type="button">HITUNG ANGSURAN</button>
+                                                            type="button"><?= $this->translate('hitung')?></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -341,12 +339,12 @@ $this->extend('layout-credit.html.php');
 
                                     <div class="button-area text-left back">
                                         <button class="cta cta-primary cta-big cta-back buttonback" id="buttonback4"
-                                                type="button">SEBELUMNYA</button>
+                                                type="button"><?= $this->translate('before')?></button>
                                     </div>
 
                                     <div class="button-area text-right next">
-                                        <button class="cta cta-primary cta-big cta-see buttonnext" id="button4" type="button">SELANJUTNYA</button>
-                                        <button class="cta cta-primary cta-big cta-see buttonnext hidesavebutton" type="button">SIMPAN</button>
+                                        <button class="cta cta-primary cta-big cta-see buttonnext" id="button4" type="button"><?= $this->translate('next')?></button>
+                                        <button class="cta cta-primary cta-big cta-see buttonnext hidesavebutton" type="button"><?= $this->translate('save')?></button>
                                     </div>
 
                                 </div>
@@ -354,18 +352,18 @@ $this->extend('layout-credit.html.php');
                                     <div class="form-body--credit-simulasi">
 
                                         <div class="text-head">
-                                            <h2 class="text-center">Konfirmasi Data</h2>
-                                            <p class="text-center">Pastikan data yang Anda masukkan sudah benar</p>
+                                            <h2 class="text-center"><?= $this->translate('label-confirmation')?></h2>
+                                            <p class="text-center"><?= $this->translate('text-confirmation')?></p>
                                         </div>
 
                                         <div class="biaya-agunan">
                                             <div class="cont-agunan">
                                                 <p class="title-agunan">
-                                                    A. Pembiayaan Agunan
+                                                    A. <?= $this->translate('label-angunan')?>
                                                 </p>
                                                 <table>
                                                     <tr>
-                                                        <td>Jenis Jaminan</td>
+                                                        <td><?= $this->translate('label-jenis')?></td>
 
                                                         <td id="showAngunan" class="jenis_jaminan"></td>
                                                     </tr>
@@ -375,32 +373,32 @@ $this->extend('layout-credit.html.php');
                                         <div class="biaya-agunan">
                                             <div class="cont-agunan">
                                                 <p class="title-agunan">
-                                                    B. Data Pemohon
+                                                    B. <?= $this->translate('data-name')?>
                                                 </p>
                                                 <div class="button-area text-right button-angsur">
                                                     <button id="btnDataPemohon" class="cta cta-primary cta-big cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"></i><b>UBAH</b></button>
                                                 </div>
                                                 <table>
                                                     <tr>
-                                                        <td>Nama Lengkap</td>
+                                                        <td><?= $this->translate('fullname')?></td>
 
                                                         <td id="showFullName" class="nama_lengkap"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Email</td>
+                                                        <td><?= $this->translate('email')?></td>
 
                                                         <td id="showEmail" class="email"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td>No Handphone</td>
+                                                        <td><?= $this->translate('handphone')?></td>
 
                                                         <td id="showPhone" class="email"></td>
                                                     </tr>
-                                                    <tr>
-                                                        <td>Unggah Foto KTP</td>
+                                                    <!--<tr>
+                                                        <td><?/*= $this->translate('upload-ktp')*/?></td>
 
                                                         <td class="unggah"></td>
-                                                    </tr>
+                                                    </tr>-->
                                                 </table>
                                             </div>
 
@@ -408,29 +406,29 @@ $this->extend('layout-credit.html.php');
                                         <div class="biaya-agunan">
                                             <div class="cont-agunan">
                                                 <p class="title-agunan">
-                                                    C. Data Tempat Tinggal
+                                                    C. <?= $this->translate('data-place')?>
                                                 </p>
                                                 <div class="button-area text-right button-angsur">
                                                     <button id="btnDataTempatTinggal" class="cta cta-primary cta-big cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"></i><b>UBAH</b></button>
                                                 </div>
                                                 <table>
                                                     <tr>
-                                                        <td>Provinsi</td>
+                                                        <td><?= $this->translate('provinsi')?></td>
 
                                                         <td id="showProvinsi" class="provinsi"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Kota</td>
+                                                        <td><?= $this->translate('kota')?></td>
 
                                                         <td id="showKota" class="kota"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Kecamatan</td>
+                                                        <td><?= $this->translate('kecamatan')?></td>
 
                                                         <td id="showKecamatan" class="kecamatan"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Kode Pos</td>
+                                                        <td><?= $this->translate('postcode')?></td>
 
                                                         <td id="showKodePos" class="kodepos"></td>
                                                     </tr>
@@ -442,29 +440,29 @@ $this->extend('layout-credit.html.php');
                                         <div class="biaya-agunan">
                                             <div class="cont-agunan">
                                                 <p class="title-agunan">
-                                                    D. Data Kendaraan
+                                                    D. <?= $this->translate('data-vehicle')?>
                                                 </p>
                                                 <div class="button-area text-right button-angsur">
                                                     <button id="btnDataKendaraan" class="cta cta-primary cta-big cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"></i><b>UBAH</b></button>
                                                 </div>
                                                 <table>
                                                     <tr>
-                                                        <td>Merk Kendaraan</td>
+                                                        <td><?= $this->translate('merk-kendaraan')?></td>
 
                                                         <td id="showMerkKendaraan" class="merk_kendaraan"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Model Kendaraan</td>
+                                                        <td><?= $this->translate('model-kendaraan')?></td>
 
                                                         <td id="showModelKendaraan" class="model_kendaraaan"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Tahun Kendaraan</td>
+                                                        <td><?= $this->translate('year-kendaraan')?></td>
 
                                                         <td id="showTahunKendaraan" class="tahun_kendaraan"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Status Kepemilikan</td>
+                                                        <td><?= $this->translate('status-kendaraan')?></td>
 
                                                         <td id="showStatusPemilik" class="status"></td>
                                                     </tr>
@@ -476,24 +474,24 @@ $this->extend('layout-credit.html.php');
                                         <div class="biaya-agunan">
                                             <div class="cont-agunan">
                                                 <p class="title-agunan">
-                                                    E. Jumlah Pembiayaan
+                                                    E. <?= $this->translate('data-funding')?>
                                                 </p>
                                                 <div class="button-area text-right button-angsur">
                                                     <button id="btnJumlahPembiayaan" class="cta cta-primary cta-big cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"></i><b>UBAH</b></button>
                                                 </div>
                                                 <table class="tablebiaya">
                                                     <tr>
-                                                        <td>Jumlah Pembiayaan</td>
+                                                        <td><?= $this->translate('data-funding')?></td>
 
                                                         <td class="jml_biaya"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Jangka Waktu</td>
+                                                        <td><?= $this->translate('periode')?></td>
 
                                                         <td class="jangka"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Angsuran per Bulan</td>
+                                                        <td><?= $this->translate('installment')?></td>
 
                                                         <td class="angsuran"></td>
                                                     </tr>
@@ -513,9 +511,7 @@ $this->extend('layout-credit.html.php');
                                         <div class="biaya-agunan">
                                             <div class="form-group">
                                                 <input type="checkbox" id="agreement1" class="agreement">
-                                                <label for="agreement1" class="label-agreement">Anda bersedia menerima
-                                                    informasi lebih lanjut terkait
-                                                    pembiayaan melalui lelepon/sms/email</label>
+                                                <label for="agreement1" class="label-agreement"><?= $this->translate('term-condition')?></label>
                                                 <div class="error-wrap"></div>
                                             </div>
                                             <!-- <div class="form-group">
@@ -532,20 +528,19 @@ $this->extend('layout-credit.html.php');
 
                                     <div class="button-area text-left back">
                                         <button class="cta cta-primary cta-big cta-back buttonback" id="buttonback5"
-                                                type="button">SEBELUMNYA</button>
+                                                type="button"><?= $this->translate('before')?></button>
                                     </div>
 
                                     <div class="button-area text-right next">
-                                        <button class="cta cta-primary cta-big cta-see buttonnext" id="button5" type="button">SELANJUTNYA</button>
+                                        <button class="cta cta-primary cta-big cta-see buttonnext" id="button5" type="button"><?= $this->translate('next')?></button>
                                     </div>
 
                                 </div>
 
                                 <div id="menu6" class="tab-pane slide-left">
                                     <div class="form-body--credit">
-                                        <h2 class="text-center">Konfirmasi OTP</h2>
-                                        <p class="text-center">Silahkan Masukan 4-digit kode verifikasi yang telah
-                                            dikirimkan ke nomor hendphone Anda</p>
+                                        <h2 class="text-center"><?= $this->translate('confirmation-otp')?></h2>
+                                        <p class="text-center"><?= $this->translate('text-confirmation-otp')?></p>
 
                                         <div class="otp-number form-group">
                                             <div class="otp-number__phone disabled">
@@ -559,7 +554,7 @@ $this->extend('layout-credit.html.php');
                                             </div>
                                             <div class="error-wrap"></div>
                                             <div class="otp-number__text">
-                                                <p>Tidak menerima 4-digit kode? <span class="countdown"></span> </p>
+                                                <p><?= $this->translate('dont-get-otp')?> <span class="countdown"></span> </p>
                                             </div>
                                         </div>
 
@@ -568,7 +563,7 @@ $this->extend('layout-credit.html.php');
 
                                     <div class="button-area text-right next">
                                         <button class="cta cta-primary cta-big cta-see buttonnext" id="button6"
-                                                type="submit">VERIFIKASI</button>
+                                                type="submit"><?= $this->translate('verifikasi')?></button>
                                     </div>
 
                                 </div>
@@ -578,13 +573,13 @@ $this->extend('layout-credit.html.php');
                                         <img class="icon-thank-page" src="/static/images/icon/m_thank_you.png" alt="">
                                     </div>
                                     <div class="text-wrap text-center">
-                                        <h3>Terima Kasih telah Menghubungi Kami!</h3>
-                                        <p>Agen BFI akan segera menghubungi Anda</p>
+                                        <h3><?= $this->translate('tq-text-1')?></h3>
+                                        <p><?= $this->translate('tq-text-2')?></p>
                                     </div>
                                     <div class="button-area text-center backtohome">
                                         <a href="/<?php echo $this->getLocale() ?>">
                                             <button class="cta cta-primary cta-big cta-see buttonnext backtohome" id="button7"
-                                                    type="button">KEMBALI KE BERANDA</button>
+                                                    type="button"><?= $this->translate('backtohome')?></button>
                                         </a>
                                     </div>
                                 </div>
@@ -605,7 +600,7 @@ $this->extend('layout-credit.html.php');
         <!-- Modal content-->
         <div class="modal-content text-center">
             <div class="modal-body">
-                <p>OTP Salah, Silahkan masukan ulang OTP !</p>
+                <p><?= $this->translate('wrong-otp')?></p>
                 <button type="button" class="cta cta-orange" data-dismiss="modal">Ok</button>
             </div>
         </div>
@@ -617,7 +612,7 @@ $this->extend('layout-credit.html.php');
         <!-- Modal content-->
         <div class="modal-content text-center">
             <div class="modal-body">
-                <p>Terjadi Kesalahan, Silahkan kirim ulang OTP !</p>
+                <p><?= $this->translate('wrong-server')?></p>
                 <button type="button" class="cta cta-orange" data-dismiss="modal">Ok</button>
             </div>
         </div>
