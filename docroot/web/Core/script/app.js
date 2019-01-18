@@ -2623,31 +2623,31 @@
 	});
 
 
+	var getlong,
+		getlat;
+
 	if ($('#map').length) {
 
 		function getUrlVars() {
 		    var vars = {};
+		    //var testing = 'https://bfi.staging7.salt.id/id/branch-office?longitude=98,495277&latitude=3,611302';
 		    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
 		        vars[key] = value;
 		    });
 		    return vars;
 		}
 
-		var getlong = getUrlVars()["longitude"];
-		var getlat = getUrlVars()["latitude"];
-
-		if(!getlong && !getlat){
-			getlong = 106.84513;
-			getlat = -6.21462;
-		}
+		getlong = getUrlVars()["longitude"];
+		getlat = getUrlVars()["latitude"];
 
 		var map = new google.maps.Map(document.getElementById('map'), {
 			zoom: 10,
-			center: new google.maps.LatLng(getlat, getlong)
+			center: new google.maps.LatLng(-6.21462, 106.84513)
 		});
 
+	
 		if (navigator.geolocation) {
-    		navigator.geolocation.getCurrentPosition(showPosition);
+			navigator.geolocation.getCurrentPosition(showPosition);
   		} else {
     		console.log("Geolocation is not supported by this browser.");
   		}
@@ -2669,7 +2669,14 @@
 	function showPosition(position) {
 	  	var lat = position.coords.latitude;
 	  	var lng = position.coords.longitude;
-	  	map.setCenter(new google.maps.LatLng(lat, lng));
+
+	  	if(!getlong && !getlat){
+	  		map.setCenter(new google.maps.LatLng(lat, lng));
+	  	}else{
+			var getlatInput = getlat.replace(",",".");
+	  		var getlongInput = getlong.replace(",",".");
+	  		map.setCenter(new google.maps.LatLng(getlatInput, getlongInput));
+	  	}
 
 	  	var marker = new google.maps.Marker({
 		    position: new google.maps.LatLng(lat, lng),
