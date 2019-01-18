@@ -14,8 +14,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png"
           href="<?= \Pimcore\Tool::getHostUrl() . '/static/images/favicon/favicon.png' ?>"/>
-    <link rel="shortcut icon" type="image/png"
-          href="<?= \Pimcore\Tool::getHostUrl() . '/static/images/favicon/favicon.png' ?>"/>
+    <link rel="shortcut icon" type="image/x-icon"
+          href="<?= \Pimcore\Tool::getHostUrl() . '/static/images/favicon/favicon.ico' ?>" />
 
     <?php
 
