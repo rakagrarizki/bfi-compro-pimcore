@@ -19,7 +19,7 @@
                     <div class="thumbnail-caption">
                         <h3><?= $branch->getName(); ?></h3>
                         <p><?= $branch->getAddress(); ?></p>
-                        <a href="#" class="cta-location"><?= $this->translate("seeLocation") ?></a>
+                        <a href="/<?= $this->getLocale() ?>/branch-office?latitude=<?= $branch->getMap() ? $branch->getMap()->getLongitude() : '' ?>latitude=<?= $branch->getMap() ? $branch->getMap()->getLatitude() : '' ?>" class="cta-location"><?= $this->translate("seeLocation") ?></a>
                     </div>
                 </div>
                 <?php
