@@ -390,6 +390,7 @@
 	if(!isMobile){
 		var heightmodif = parseInt($(window).height()) - 190;
 		$("#site-container").css("min-height",heightmodif + "px");
+		$(".map-wrapper").css("min-height",heightmodif + "px");
 	}
 
 	$("#ex6SliderVal").on("keydown",function(e){
@@ -2402,11 +2403,14 @@
 				console.log('error' + data);
 			},
 			success: function (data) {
+				var dataraw = [];
 				$.each(data, function (id, val) {
+
 					var listing = val.data;
 
 					$.each(listing, function (idListing, valListing) {
-						if (valListing.latitude != "" || valListing.longitude != "") {
+						dataraw[dataraw.length] = valListing;
+						// if (valListing.latitude != "" || valListing.longitude != "") {
 
 							marker = new google.maps.Marker({
 								position: new google.maps.LatLng(valListing.latitude, valListing.longitude),
@@ -2454,123 +2458,120 @@
 
 							markers.push(marker);
 
-							searchBox.addListener('places_changed', function (event) {
-								var place = searchBox.getPlaces();
-
-								$.each(place, function (idPlace, valPlace) {
-
-									var latComplete = valPlace.geometry.location.lat(),
-										lngComplete = valPlace.geometry.location.lng();
-
-
-									_radius = (13 * 500);
-									latLngGoogle = new google.maps.LatLng(latComplete, lngComplete);
-									var latLngAPI = new google.maps.LatLng(parseFloat(valListing.latitude), parseFloat(valListing.longitude));
-									var distance_from_location = google.maps.geometry.spherical.computeDistanceBetween(latLngGoogle, latLngAPI);
-
-									CircleOption = {
-										strokeColor: '#0F2236',
-										strokeOpacity: 0.5,
-										strokeWeight: 0.5,
-										fillColor: '#0069aa',
-										fillOpacity: 0.15,
-										map: map,
-										radius: _radius,
-										center: latLngGoogle
-									};
-
-									if (cityCircle) {
-										cityCircle.setMap(null);
-									}
-
-									cityCircle = new google.maps.Circle(CircleOption);
-
-									if (valPlace.geometry.viewport) {
-										map.setCenter(valPlace.geometry.location);
-										map.setZoom(11);
-									} else {
-										map.setCenter(valPlace.geometry.location);
-										map.setZoom(25);
-									}
-
-									var newMarker = null;
-
-									newMarker = marker;
-
-									marker = new google.maps.Marker({
-										map: map,
-										position: valPlace.geometry.location,
-										icon: {
-											path: google.maps.SymbolPath.CIRCLE,
-											scale: 0
-										}
-									});
-
-									if ((distance_from_location <= _radius)) {
-
-										if(valListing.gerai){
-											var icondynamic = "/static/images/icon/gerai.png";	
-										}else{
-											var icondynamic = "/static/images/icon/branch1.png";
-										}
-										 
-										$('#branch').removeClass("deactive");
-										$(".map-wrapper").addClass("active");
-										setTimeout(function () {
-											$('#branch').empty();
-										}, 10);
-
-										setTimeout(function () {
-											var html = '<div class="col-md-12 parent-brachlist notlinkgoogle" data-id="' + idListing + '" data-lat="' + valListing.latitude + '"  data-lng="' + valListing.longitude + '">';
-											html += '<div class="wrapper-branchlist">';
-											html += '<div class="row">';
-											html += '<div class="col-md-2 col-sm-2 col-xs-2 branchlist"><img class="icon-gedung-branchlist" src="'+icondynamic+'"></div>';
-											html += '<div class="col-md-8 col-sm-8 col-xs-8 branchlist">';
-											html += '<p class="title-branch margin-bottom-10">' + valListing.name + '</p>';
-											html += '<p class="desc-branch">' + valListing.address + '</p>';
-											html += '<a href="#" class="margin-top-20">PETUNJUK ARAH <i class="fa fa-angle-right arrowlink" aria-hidden="true"></i></a>';
-											html += '</div>';
-											html += '<div class="col-md-2 branchlist"><i class="fa fa-angle-right" aria-hidden="true"></i></div>';
-											html += '</div>';
-											html += '</div>';
-											html += '</div>';
-
-											$('.wrapper-parent-branchlist').addClass('active');
-											$('#branch').append(html);
-
-											if ($('.parent-brachlist').length > 2) {
-												$('.wrapper-parent-branchlist').css('height', 300);
-											}
-
-											else {
-												$('.wrapper-parent-branchlist').css('height', 'auto');
-											}
-										}, 100);
-
-									}
-									else {
-
-										var html = '<div class="col-md-12 parent-brachlist" data-id="' + idListing + '" data-lat="' + valListing.latitude + '"  data-lng="' + valListing.longitude + '">';
-										html += '<div class="wrapper-branchlist">';
-										html += '<p>Lokasi Tidak Ditemukan</p>';
-										html += '</div>';
-										html += '</div>';
-
-										$('#branch').html(html);
-										$('.wrapper-parent-branchlist').css('height', 'auto');
-									}
-								});
-							})
-
 							google.maps.event.addListener(infowindow, 'domready', function() {
 								if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
  									$(".gm-style-iw").parent().parent().parent().css("top",100+"%");
 									$(".gm-style-iw").children().css("display","table");
 								}
 							});
-						}
+						// }
 					})
 				});
+				//console.log(dataraw.length + " " + markers.length);
+				searchBox.addListener('places_changed', function (event) {
+					var place = searchBox.getPlaces();
+					
+					$.each(place, function (idPlace, valPlace) {
+						var latComplete = valPlace.geometry.location.lat(),
+							lngComplete = valPlace.geometry.location.lng();
+
+						_radius = (13 * 500);
+						$('#branch').empty();
+
+						for(var i=0; i<=dataraw.length - 1; i++){
+							latLngGoogle = new google.maps.LatLng(latComplete, lngComplete);
+							var latLngAPI = new google.maps.LatLng(parseFloat(dataraw[i].latitude), parseFloat(dataraw[i].longitude));
+							var distance_from_location = google.maps.geometry.spherical.computeDistanceBetween(latLngGoogle, latLngAPI);
+
+							CircleOption = {
+								strokeColor: '#0F2236',
+								strokeOpacity: 0.5,
+								strokeWeight: 0.5,
+								fillColor: '#0069aa',
+								fillOpacity: 0.15,
+								map: map,
+								radius: _radius,
+								center: latLngGoogle
+							};
+
+							if (cityCircle) {
+								cityCircle.setMap(null);
+							}
+
+							cityCircle = new google.maps.Circle(CircleOption);
+
+							if (valPlace.geometry.viewport) {
+								map.setCenter(valPlace.geometry.location);
+								map.setZoom(11);
+							} else {
+								map.setCenter(valPlace.geometry.location);
+								map.setZoom(25);
+							}
+
+							var newMarker = null;
+
+							newMarker = marker;
+
+							marker = new google.maps.Marker({
+								map: map,
+								position: valPlace.geometry.location,
+								icon: {
+									path: google.maps.SymbolPath.CIRCLE,
+									scale: 0
+								}
+							});
+
+							if ((distance_from_location <= _radius)) {
+
+								if(dataraw[i].gerai){
+									var icondynamic = "/static/images/icon/gerai.png";	
+								}else{
+									var icondynamic = "/static/images/icon/branch1.png";
+								}
+								 
+								$('#branch').removeClass("deactive");
+								$(".map-wrapper").addClass("active");
+								
+									
+								var html = '<div class="col-md-12 parent-brachlist notlinkgoogle" data-id="' + i + '" data-lat="' + dataraw[i].latitude + '"  data-lng="' + dataraw[i].longitude + '">';
+								html += '<div class="wrapper-branchlist">';
+								html += '<div class="row">';
+								html += '<div class="col-md-2 col-sm-2 col-xs-2 branchlist"><img class="icon-gedung-branchlist" src="'+icondynamic+'"></div>';
+								html += '<div class="col-md-8 col-sm-8 col-xs-8 branchlist">';
+								html += '<p class="title-branch margin-bottom-10">' + dataraw[i].name + '</p>';
+								html += '<p class="desc-branch">' + dataraw[i].address + '</p>';
+								html += '<a href="#" class="margin-top-20">PETUNJUK ARAH <i class="fa fa-angle-right arrowlink" aria-hidden="true"></i></a>';
+								html += '</div>';
+								html += '<div class="col-md-2 branchlist"><i class="fa fa-angle-right" aria-hidden="true"></i></div>';
+								html += '</div>';
+								html += '</div>';
+								html += '</div>';
+
+								$('.wrapper-parent-branchlist').addClass('active');
+								$('#branch').append(html);
+
+								if ($('.parent-brachlist').length > 2) {
+									$('.wrapper-parent-branchlist').css('height', 300);
+								}
+								else {
+									$('.wrapper-parent-branchlist').css('height', 'auto');
+								}
+
+							}
+							// else {
+
+							// 	var html = '<div class="col-md-12 parent-brachlist" data-id="' + i + '" data-lat="' + dataraw[i].latitude + '"  data-lng="' + dataraw[i].longitude + '">';
+							// 	html += '<div class="wrapper-branchlist">';
+							// 	html += '<p>Lokasi Tidak Ditemukan</p>';
+							// 	html += '</div>';
+							// 	html += '</div>';
+
+							// 	$('#branch').html(html);
+							// 	$('.wrapper-parent-branchlist').css('height', 'auto');
+							// }
+						}
+					});
+				})
 			}
 		});
 
@@ -2578,6 +2579,8 @@
 
 			$(".parent-brachlist").css("background-color","white");
 			var idMarker = $(this).data('id');
+
+			console.log(idMarker);
 			
 			google.maps.event.trigger(markers[parseInt(idMarker)], 'click');
 			
@@ -2622,9 +2625,25 @@
 
 	if ($('#map').length) {
 
+		function getUrlVars() {
+		    var vars = {};
+		    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+		        vars[key] = value;
+		    });
+		    return vars;
+		}
+
+		var getlong = getUrlVars()["longitude"];
+		var getlat = getUrlVars()["latitude"];
+
+		if(!getlong && !getlat){
+			getlong = 106.84513;
+			getlat = -6.21462;
+		}
+
 		var map = new google.maps.Map(document.getElementById('map'), {
 			zoom: 10,
-			center: new google.maps.LatLng(-6.21462, 106.84513)
+			center: new google.maps.LatLng(getlat, getlong)
 		});
 
 		if (navigator.geolocation) {
