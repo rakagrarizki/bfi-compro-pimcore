@@ -23,6 +23,7 @@
             width:100%;
             ._boxkiri{
                 display:inline-block;
+                vertical-align:middle;
 
                 @include breakpoint(mobile) {
                     width:100%;
@@ -31,6 +32,7 @@
 
             ._boxkanan{
                 display:inline-block;
+                vertical-align:middle;
 
                 @include breakpoint(mobile) {
                     width:100%;
@@ -38,6 +40,7 @@
 
                 ._boxkananchild1{
                     display:inline-block;
+                    vertical-align:middle;
                     
                     @include breakpoint(mobile) {
                         vertical-align:middle;
@@ -47,6 +50,8 @@
                 ._boxkananchild2{
                     display:inline-block;
                     position:relative;
+                    vertical-align:middle;
+                    font-size:0;
 
                     @include breakpoint(mobile) {
                         margin-left:0px;
