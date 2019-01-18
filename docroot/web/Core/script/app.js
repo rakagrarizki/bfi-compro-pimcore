@@ -2467,7 +2467,7 @@
 						// }
 					})
 				});
-				//console.log(dataraw.length + " " + markers.length);
+				//console.log(markers[0]);
 				searchBox.addListener('places_changed', function (event) {
 					var place = searchBox.getPlaces();
 					
