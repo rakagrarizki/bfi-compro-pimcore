@@ -8,7 +8,6 @@
 
 use Pimcore\Model\Document;
 use Pimcore\Model\Document\Page;
-
 ?>
 <?php $pageCurrent = $this->getParam('page', 1); ?>
 <nav id="site-header">
@@ -87,7 +86,7 @@ use Pimcore\Model\Document\Page;
                                                                         if ($hasGrandChildren) {
                                                                             foreach ($child->getPages() as $grandChild) {
                                                                                 ?>
-                                                                                <li class="<?= $grandChild == $pageCurrent ? 'active' : '' ?>">
+                                                                                <li class="<?php echo $grandChild->getActive() ? 'active' : '' ?>">
                                                                                     <a href="<?= $grandChild->getHref() ?>"><?= $grandChild->getLabel() ?></a>
                                                                                 </li>
                                                                                 <?php
