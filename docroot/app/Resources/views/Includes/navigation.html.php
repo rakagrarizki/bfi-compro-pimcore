@@ -66,10 +66,10 @@ use Pimcore\Model\Document\Page;
                                         }
                                         if ($hasChildren && strpos($page->getUri(), '#product') !== false) {
                                             ?>
-                                            <li class="dropdown <?php echo $page->getActive() ? 'active' : '' ?>"
+                                            <li class="dropdown"
                                                 id="produk">
                                                 <a href="#"
-                                                   class="produk"><?= $page->getLabel() ?></a>
+                                                   class="<?php echo $page->getActive() ? 'active' : '' ?> produk"><?= $page->getLabel() ?></a>
                                                 <div class="dropdown-content main">
                                                     <div class="produk-hover container">
                                                         <div class="col-md-12">
@@ -86,8 +86,8 @@ use Pimcore\Model\Document\Page;
                                                                         if ($hasGrandChildren) {
                                                                             foreach ($child->getPages() as $grandChild) {
                                                                                 ?>
-                                                                                <li class="<?php echo $grandChild->getActive() ? 'active' : '' ?>">
-                                                                                    <a href="<?= $grandChild->getHref() ?>"><?= $grandChild->getLabel() ?></a>
+                                                                                <li>
+                                                                                    <a class="<?php echo $grandChild->getActive() ? 'active' : '' ?>" href="<?= $grandChild->getHref() ?>"><?= $grandChild->getLabel() ?></a>
                                                                                 </li>
                                                                                 <?php
                                                                             }
