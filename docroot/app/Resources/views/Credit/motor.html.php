@@ -73,7 +73,7 @@ $this->extend('layout-credit.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label for="email"><?= $this->translate('form-email')?></label>
-                                            <input type="email" class="form-control formRequired" name="email" id="email_pemohon"
+                                            <input type="email" class="form-control formRequired formEmail" name="email" id="email_pemohon"
                                                    placeholder="<?= $this->translate('placeholder-email')?>">
                                             <div class="error-wrap"></div>
                                         </div>
@@ -150,7 +150,7 @@ $this->extend('layout-credit.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label for="alamat_lengkap"><?= $this->translate('label-place')?></label>
-                                            <textarea class="form-control formRequired" name="alamat_lengkap" id="alamat_lengkap"
+                                            <textarea class="form-control formRequired formAddress" name="alamat_lengkap" id="alamat_lengkap"
                                                       placeholder="<?= $this->translate('placeholder-place')?>"></textarea>
                                             <div class="error-wrap"></div>
                                         </div>
@@ -240,7 +240,7 @@ $this->extend('layout-credit.html.php');
                                                 <label for="jml-biaya"><?= $this->translate('label-data-funding')?></label>
                                                 <div class="input-group inputform">
                                                     <span class="input-group-addon" id="basic-addon1">Rp</span>
-                                                    <input type="text" id="ex6SliderVal" class="form-control formRequired c-input-trans"
+                                                    <input type="text" id="ex6SliderVal" class="form-control formRequired formPrice c-input-trans"
                                                            aria-describedby="basic-addon1">
 
                                                     <div class="error-wrap"></div>
