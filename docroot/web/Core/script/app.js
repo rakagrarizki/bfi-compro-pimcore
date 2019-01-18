@@ -387,6 +387,10 @@
 
 
 	// With JQuery
+	function htmlEntities(str) {
+        return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
 	if(!isMobile){
 		var heightmodif = parseInt($(window).height()) - 190;
 		$("#site-container").css("min-height",heightmodif + "px");
@@ -1476,8 +1480,8 @@
 		var _url = '/otp/send-otp';
 
 		var _data = {
-			nama_lengkap: params.pemohon.nama,
-			no_handphone: params.pemohon.no_handphone
+			nama_lengkap: htmlEntities(params.pemohon.nama),
+			no_handphone: htmlEntities(params.pemohon.no_handphone)
 		}
 
 		$.ajax({
@@ -1514,11 +1518,11 @@
 			otp4Value = $('input[name=otp4]').val();
 
 		var _data = {
-			no_handphone: params.pemohon.no_handphone,
-			otp1: otp1Value,
-			otp2: otp2Value,
-			otp3: otp3Value,
-			otp4: otp4Value
+			no_handphone: htmlEntities(params.pemohon.no_handphone),
+			otp1: htmlEntities(otp1Value),
+			otp2: htmlEntities(otp2Value),
+			otp3: htmlEntities(otp3Value),
+			otp4: htmlEntities(otp4Value)
 		}
 
 		$.ajax({
@@ -1549,17 +1553,17 @@
 
 	function sendDataCredits(params) {
 
-		objCredits.nama_lengkap = params.pemohon.nama,
-		objCredits.email = params.pemohon.email,
-		objCredits.alamat_lengkap = params.tempat_tinggal.alamat,
-		objCredits.no_handphone = params.pemohon.no_handphone,
-		objCredits.kota = params.tempat_tinggal.kota,
-		objCredits.kecamatan = params.tempat_tinggal.kecamatan,
-		objCredits.kelurahan = params.tempat_tinggal.kelurahan,
-		objCredits.model_kendaraan = params.kendaraan.model_kendaraan,
-		objCredits.tahun_kendaraan = params.kendaraan.tahun_kendaraan,
+		objCredits.nama_lengkap = htmlEntities(params.pemohon.nama),
+		objCredits.email = htmlEntities(params.pemohon.email),
+		objCredits.alamat_lengkap = htmlEntities(params.tempat_tinggal.alamat),
+		objCredits.no_handphone = htmlEntities(params.pemohon.no_handphone),
+		objCredits.kota = htmlEntities(params.tempat_tinggal.kota),
+		objCredits.kecamatan = htmlEntities(params.tempat_tinggal.kecamatan),
+		objCredits.kelurahan = htmlEntities(params.tempat_tinggal.kelurahan),
+		objCredits.model_kendaraan = htmlEntities(params.kendaraan.model_kendaraan),
+		objCredits.tahun_kendaraan = htmlEntities(params.kendaraan.tahun_kendaraan),
 		objCredits.funding = 98000000,
-		objCredits.merk_kendaraan = params.kendaraan.merk_kendaraan,
+		objCredits.merk_kendaraan = htmlEntities(params.kendaraan.merk_kendaraan),
 		objCredits.jangka_waktu = 36,
 		objCredits.installment = 3000000
 
@@ -2303,11 +2307,11 @@
 		//kota = kota.slice(5,kota.length);
 
 		var _data = {
-			tipe: params.angunan.jenis_angunan,
-			model_kendaraan: params.kendaraan.model_kendaraan,
-			merk_kendaraan: params.kendaraan.merk_kendaraan_text,
-			post_code: params.tempat_tinggal.kode_pos,
-			tahun: params.kendaraan.tahun_kendaraan
+			tipe: htmlEntities(params.angunan.jenis_angunan),
+			model_kendaraan: htmlEntities(params.kendaraan.model_kendaraan),
+			merk_kendaraan: htmlEntities(params.kendaraan.merk_kendaraan_text),
+			post_code: htmlEntities(params.tempat_tinggal.kode_pos),
+			tahun: htmlEntities(params.kendaraan.tahun_kendaraan)
 		}
 		//alert(_data.tipe + "-" +_data.model_kendaraan + "-" + _data.merk_kendaraan + "-" + _data.post_code + "-" + _data.tahun);
 		$.ajax({
@@ -2736,15 +2740,15 @@
 	function calculatePremi() {
 		var _url = 'https://bfi.staging7.salt.id/credit/get-loan';
 		var _param = {
-			tipe: credits.angunan.jenis_angunan,
-			model_kendaraan: credits.kendaraan.model_kendaraan,
-			merk_kendaraan: credits.kendaraan.merk_kendaraan_text,
-			tahun: credits.kendaraan.tahun_kendaraan,
-			post_code: credits.tempat_tinggal.kode_pos,
-			funding: objCredits.funding,
-			tenor: objCredits.jangka_waktu,
-			asuransi: asuransi_arr.join("-"),
-			taksasi: objCredits.installment
+			tipe: htmlEntities(credits.angunan.jenis_angunan),
+			model_kendaraan: htmlEntities(credits.kendaraan.model_kendaraan),
+			merk_kendaraan: htmlEntities(credits.kendaraan.merk_kendaraan_text),
+			tahun: htmlEntities(credits.kendaraan.tahun_kendaraan),
+			post_code: htmlEntities(credits.tempat_tinggal.kode_pos),
+			funding: htmlEntities(objCredits.funding),
+			tenor: htmlEntities(objCredits.jangka_waktu),
+			asuransi: htmlEntities(asuransi_arr.join("-")),
+			taksasi: htmlEntities(objCredits.installment)
 		}
 		console.log(_param);
 		$.ajax({
