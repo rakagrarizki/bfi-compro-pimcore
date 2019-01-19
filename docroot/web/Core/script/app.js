@@ -387,9 +387,14 @@
 
 
 	// With JQuery
+	function htmlEntities(str) {
+        return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
 	if(!isMobile){
 		var heightmodif = parseInt($(window).height()) - 190;
 		$("#site-container").css("min-height",heightmodif + "px");
+		$(".map-wrapper").css("min-height",heightmodif + "px");
 	}
 
 	$("#ex6SliderVal").on("keydown",function(e){
@@ -1475,8 +1480,8 @@
 		var _url = '/otp/send-otp';
 
 		var _data = {
-			nama_lengkap: params.pemohon.nama,
-			no_handphone: params.pemohon.no_handphone
+			nama_lengkap: htmlEntities(params.pemohon.nama),
+			no_handphone: htmlEntities(params.pemohon.no_handphone)
 		}
 
 		$.ajax({
@@ -1513,11 +1518,11 @@
 			otp4Value = $('input[name=otp4]').val();
 
 		var _data = {
-			no_handphone: params.pemohon.no_handphone,
-			otp1: otp1Value,
-			otp2: otp2Value,
-			otp3: otp3Value,
-			otp4: otp4Value
+			no_handphone: htmlEntities(params.pemohon.no_handphone),
+			otp1: htmlEntities(otp1Value),
+			otp2: htmlEntities(otp2Value),
+			otp3: htmlEntities(otp3Value),
+			otp4: htmlEntities(otp4Value)
 		}
 
 		$.ajax({
@@ -1548,17 +1553,17 @@
 
 	function sendDataCredits(params) {
 
-		objCredits.nama_lengkap = params.pemohon.nama,
-		objCredits.email = params.pemohon.email,
-		objCredits.alamat_lengkap = params.tempat_tinggal.alamat,
-		objCredits.no_handphone = params.pemohon.no_handphone,
-		objCredits.kota = params.tempat_tinggal.kota,
-		objCredits.kecamatan = params.tempat_tinggal.kecamatan,
-		objCredits.kelurahan = params.tempat_tinggal.kelurahan,
-		objCredits.model_kendaraan = params.kendaraan.model_kendaraan,
-		objCredits.tahun_kendaraan = params.kendaraan.tahun_kendaraan,
+		objCredits.nama_lengkap = htmlEntities(params.pemohon.nama),
+		objCredits.email = htmlEntities(params.pemohon.email),
+		objCredits.alamat_lengkap = htmlEntities(params.tempat_tinggal.alamat),
+		objCredits.no_handphone = htmlEntities(params.pemohon.no_handphone),
+		objCredits.kota = htmlEntities(params.tempat_tinggal.kota),
+		objCredits.kecamatan = htmlEntities(params.tempat_tinggal.kecamatan),
+		objCredits.kelurahan = htmlEntities(params.tempat_tinggal.kelurahan),
+		objCredits.model_kendaraan = htmlEntities(params.kendaraan.model_kendaraan),
+		objCredits.tahun_kendaraan = htmlEntities(params.kendaraan.tahun_kendaraan),
 		objCredits.funding = 98000000,
-		objCredits.merk_kendaraan = params.kendaraan.merk_kendaraan,
+		objCredits.merk_kendaraan = htmlEntities(params.kendaraan.merk_kendaraan),
 		objCredits.jangka_waktu = 36,
 		objCredits.installment = 3000000
 
@@ -2302,11 +2307,11 @@
 		//kota = kota.slice(5,kota.length);
 
 		var _data = {
-			tipe: params.angunan.jenis_angunan,
-			model_kendaraan: params.kendaraan.model_kendaraan,
-			merk_kendaraan: params.kendaraan.merk_kendaraan_text,
-			post_code: params.tempat_tinggal.kode_pos,
-			tahun: params.kendaraan.tahun_kendaraan
+			tipe: htmlEntities(params.angunan.jenis_angunan),
+			model_kendaraan: htmlEntities(params.kendaraan.model_kendaraan),
+			merk_kendaraan: htmlEntities(params.kendaraan.merk_kendaraan_text),
+			post_code: htmlEntities(params.tempat_tinggal.kode_pos),
+			tahun: htmlEntities(params.kendaraan.tahun_kendaraan)
 		}
 		//alert(_data.tipe + "-" +_data.model_kendaraan + "-" + _data.merk_kendaraan + "-" + _data.post_code + "-" + _data.tahun);
 		$.ajax({
@@ -2402,11 +2407,14 @@
 				console.log('error' + data);
 			},
 			success: function (data) {
+				var dataraw = [];
 				$.each(data, function (id, val) {
+
 					var listing = val.data;
 
 					$.each(listing, function (idListing, valListing) {
-						if (valListing.latitude != "" || valListing.longitude != "") {
+						dataraw[dataraw.length] = valListing;
+						// if (valListing.latitude != "" || valListing.longitude != "") {
 
 							marker = new google.maps.Marker({
 								position: new google.maps.LatLng(valListing.latitude, valListing.longitude),
@@ -2454,123 +2462,120 @@
 
 							markers.push(marker);
 
-							searchBox.addListener('places_changed', function (event) {
-								var place = searchBox.getPlaces();
-
-								$.each(place, function (idPlace, valPlace) {
-
-									var latComplete = valPlace.geometry.location.lat(),
-										lngComplete = valPlace.geometry.location.lng();
-
-
-									_radius = (13 * 500);
-									latLngGoogle = new google.maps.LatLng(latComplete, lngComplete);
-									var latLngAPI = new google.maps.LatLng(parseFloat(valListing.latitude), parseFloat(valListing.longitude));
-									var distance_from_location = google.maps.geometry.spherical.computeDistanceBetween(latLngGoogle, latLngAPI);
-
-									CircleOption = {
-										strokeColor: '#0F2236',
-										strokeOpacity: 0.5,
-										strokeWeight: 0.5,
-										fillColor: '#0069aa',
-										fillOpacity: 0.15,
-										map: map,
-										radius: _radius,
-										center: latLngGoogle
-									};
-
-									if (cityCircle) {
-										cityCircle.setMap(null);
-									}
-
-									cityCircle = new google.maps.Circle(CircleOption);
-
-									if (valPlace.geometry.viewport) {
-										map.setCenter(valPlace.geometry.location);
-										map.setZoom(11);
-									} else {
-										map.setCenter(valPlace.geometry.location);
-										map.setZoom(25);
-									}
-
-									var newMarker = null;
-
-									newMarker = marker;
-
-									marker = new google.maps.Marker({
-										map: map,
-										position: valPlace.geometry.location,
-										icon: {
-											path: google.maps.SymbolPath.CIRCLE,
-											scale: 0
-										}
-									});
-
-									if ((distance_from_location <= _radius)) {
-
-										if(valListing.gerai){
-											var icondynamic = "/static/images/icon/gerai.png";	
-										}else{
-											var icondynamic = "/static/images/icon/branch1.png";
-										}
-										 
-										$('#branch').removeClass("deactive");
-										$(".map-wrapper").addClass("active");
-										setTimeout(function () {
-											$('#branch').empty();
-										}, 10);
-
-										setTimeout(function () {
-											var html = '<div class="col-md-12 parent-brachlist notlinkgoogle" data-id="' + idListing + '" data-lat="' + valListing.latitude + '"  data-lng="' + valListing.longitude + '">';
-											html += '<div class="wrapper-branchlist">';
-											html += '<div class="row">';
-											html += '<div class="col-md-2 col-sm-2 col-xs-2 branchlist"><img class="icon-gedung-branchlist" src="'+icondynamic+'"></div>';
-											html += '<div class="col-md-8 col-sm-8 col-xs-8 branchlist">';
-											html += '<p class="title-branch margin-bottom-10">' + valListing.name + '</p>';
-											html += '<p class="desc-branch">' + valListing.address + '</p>';
-											html += '<a href="#" class="margin-top-20">PETUNJUK ARAH <i class="fa fa-angle-right arrowlink" aria-hidden="true"></i></a>';
-											html += '</div>';
-											html += '<div class="col-md-2 branchlist"><i class="fa fa-angle-right" aria-hidden="true"></i></div>';
-											html += '</div>';
-											html += '</div>';
-											html += '</div>';
-
-											$('.wrapper-parent-branchlist').addClass('active');
-											$('#branch').append(html);
-
-											if ($('.parent-brachlist').length > 2) {
-												$('.wrapper-parent-branchlist').css('height', 300);
-											}
-
-											else {
-												$('.wrapper-parent-branchlist').css('height', 'auto');
-											}
-										}, 100);
-
-									}
-									else {
-
-										var html = '<div class="col-md-12 parent-brachlist" data-id="' + idListing + '" data-lat="' + valListing.latitude + '"  data-lng="' + valListing.longitude + '">';
-										html += '<div class="wrapper-branchlist">';
-										html += '<p>Lokasi Tidak Ditemukan</p>';
-										html += '</div>';
-										html += '</div>';
-
-										$('#branch').html(html);
-										$('.wrapper-parent-branchlist').css('height', 'auto');
-									}
-								});
-							})
-
 							google.maps.event.addListener(infowindow, 'domready', function() {
 								if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
  									$(".gm-style-iw").parent().parent().parent().css("top",100+"%");
 									$(".gm-style-iw").children().css("display","table");
 								}
 							});
-						}
+						// }
 					})
 				});
+				//console.log(markers[0]);
+				searchBox.addListener('places_changed', function (event) {
+					var place = searchBox.getPlaces();
+					
+					$.each(place, function (idPlace, valPlace) {
+						var latComplete = valPlace.geometry.location.lat(),
+							lngComplete = valPlace.geometry.location.lng();
+
+						_radius = (13 * 500);
+						$('#branch').empty();
+
+						for(var i=0; i<=dataraw.length - 1; i++){
+							latLngGoogle = new google.maps.LatLng(latComplete, lngComplete);
+							var latLngAPI = new google.maps.LatLng(parseFloat(dataraw[i].latitude), parseFloat(dataraw[i].longitude));
+							var distance_from_location = google.maps.geometry.spherical.computeDistanceBetween(latLngGoogle, latLngAPI);
+
+							CircleOption = {
+								strokeColor: '#0F2236',
+								strokeOpacity: 0.5,
+								strokeWeight: 0.5,
+								fillColor: '#0069aa',
+								fillOpacity: 0.15,
+								map: map,
+								radius: _radius,
+								center: latLngGoogle
+							};
+
+							if (cityCircle) {
+								cityCircle.setMap(null);
+							}
+
+							cityCircle = new google.maps.Circle(CircleOption);
+
+							if (valPlace.geometry.viewport) {
+								map.setCenter(valPlace.geometry.location);
+								map.setZoom(11);
+							} else {
+								map.setCenter(valPlace.geometry.location);
+								map.setZoom(25);
+							}
+
+							var newMarker = null;
+
+							newMarker = marker;
+
+							marker = new google.maps.Marker({
+								map: map,
+								position: valPlace.geometry.location,
+								icon: {
+									path: google.maps.SymbolPath.CIRCLE,
+									scale: 0
+								}
+							});
+
+							if ((distance_from_location <= _radius)) {
+
+								if(dataraw[i].gerai){
+									var icondynamic = "/static/images/icon/gerai.png";	
+								}else{
+									var icondynamic = "/static/images/icon/branch1.png";
+								}
+								 
+								$('#branch').removeClass("deactive");
+								$(".map-wrapper").addClass("active");
+								
+									
+								var html = '<div class="col-md-12 parent-brachlist notlinkgoogle" data-id="' + i + '" data-lat="' + dataraw[i].latitude + '"  data-lng="' + dataraw[i].longitude + '">';
+								html += '<div class="wrapper-branchlist">';
+								html += '<div class="row">';
+								html += '<div class="col-md-2 col-sm-2 col-xs-2 branchlist"><img class="icon-gedung-branchlist" src="'+icondynamic+'"></div>';
+								html += '<div class="col-md-8 col-sm-8 col-xs-8 branchlist">';
+								html += '<p class="title-branch margin-bottom-10">' + dataraw[i].name + '</p>';
+								html += '<p class="desc-branch">' + dataraw[i].address + '</p>';
+								html += '<a href="#" class="margin-top-20">PETUNJUK ARAH <i class="fa fa-angle-right arrowlink" aria-hidden="true"></i></a>';
+								html += '</div>';
+								html += '<div class="col-md-2 branchlist"><i class="fa fa-angle-right" aria-hidden="true"></i></div>';
+								html += '</div>';
+								html += '</div>';
+								html += '</div>';
+
+								$('.wrapper-parent-branchlist').addClass('active');
+								$('#branch').append(html);
+
+								if ($('.parent-brachlist').length > 2) {
+									$('.wrapper-parent-branchlist').css('height', 300);
+								}
+								else {
+									$('.wrapper-parent-branchlist').css('height', 'auto');
+								}
+
+							}
+							// else {
+
+							// 	var html = '<div class="col-md-12 parent-brachlist" data-id="' + i + '" data-lat="' + dataraw[i].latitude + '"  data-lng="' + dataraw[i].longitude + '">';
+							// 	html += '<div class="wrapper-branchlist">';
+							// 	html += '<p>Lokasi Tidak Ditemukan</p>';
+							// 	html += '</div>';
+							// 	html += '</div>';
+
+							// 	$('#branch').html(html);
+							// 	$('.wrapper-parent-branchlist').css('height', 'auto');
+							// }
+						}
+					});
+				})
 			}
 		});
 
@@ -2578,6 +2583,8 @@
 
 			$(".parent-brachlist").css("background-color","white");
 			var idMarker = $(this).data('id');
+
+			console.log(idMarker);
 			
 			google.maps.event.trigger(markers[parseInt(idMarker)], 'click');
 			
@@ -2620,15 +2627,31 @@
 	});
 
 
+	var getlong,
+		getlat;
+
 	if ($('#map').length) {
+
+		function getUrlVars() {
+		    var vars = {};
+		    //var testing = 'https://bfi.staging7.salt.id/id/branch-office?longitude=98,495277&latitude=3,611302';
+		    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+		        vars[key] = value;
+		    });
+		    return vars;
+		}
+
+		getlong = getUrlVars()["longitude"];
+		getlat = getUrlVars()["latitude"];
 
 		var map = new google.maps.Map(document.getElementById('map'), {
 			zoom: 10,
 			center: new google.maps.LatLng(-6.21462, 106.84513)
 		});
 
+	
 		if (navigator.geolocation) {
-    		navigator.geolocation.getCurrentPosition(showPosition);
+			navigator.geolocation.getCurrentPosition(showPosition);
   		} else {
     		console.log("Geolocation is not supported by this browser.");
   		}
@@ -2650,7 +2673,14 @@
 	function showPosition(position) {
 	  	var lat = position.coords.latitude;
 	  	var lng = position.coords.longitude;
-	  	map.setCenter(new google.maps.LatLng(lat, lng));
+
+	  	if(!getlong && !getlat){
+	  		map.setCenter(new google.maps.LatLng(lat, lng));
+	  	}else{
+			var getlatInput = getlat.replace(",",".");
+	  		var getlongInput = getlong.replace(",",".");
+	  		map.setCenter(new google.maps.LatLng(getlatInput, getlongInput));
+	  	}
 
 	  	var marker = new google.maps.Marker({
 		    position: new google.maps.LatLng(lat, lng),
@@ -2710,15 +2740,15 @@
 	function calculatePremi() {
 		var _url = 'https://bfi.staging7.salt.id/credit/get-loan';
 		var _param = {
-			tipe: credits.angunan.jenis_angunan,
-			model_kendaraan: credits.kendaraan.model_kendaraan,
-			merk_kendaraan: credits.kendaraan.merk_kendaraan_text,
-			tahun: credits.kendaraan.tahun_kendaraan,
-			post_code: credits.tempat_tinggal.kode_pos,
-			funding: objCredits.funding,
-			tenor: objCredits.jangka_waktu,
-			asuransi: asuransi_arr.join("-"),
-			taksasi: objCredits.installment
+			tipe: htmlEntities(credits.angunan.jenis_angunan),
+			model_kendaraan: htmlEntities(credits.kendaraan.model_kendaraan),
+			merk_kendaraan: htmlEntities(credits.kendaraan.merk_kendaraan_text),
+			tahun: htmlEntities(credits.kendaraan.tahun_kendaraan),
+			post_code: htmlEntities(credits.tempat_tinggal.kode_pos),
+			funding: htmlEntities(objCredits.funding),
+			tenor: htmlEntities(objCredits.jangka_waktu),
+			asuransi: htmlEntities(asuransi_arr.join("-")),
+			taksasi: htmlEntities(objCredits.installment)
 		}
 		console.log(_param);
 		$.ajax({
