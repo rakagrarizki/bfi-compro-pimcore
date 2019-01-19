@@ -41,10 +41,10 @@ $this->extend('layout-credit.html.php');
                                         <p><?= $this->translate('data-bangunan')?></p>
                                     </a>
                                 </li>
-                                <li class="nav-item-5 disabled">
-                                    <a href="#" id="tab5">
-                                        <span class="number"><i class="fa fa-check" aria-hidden="true"></i><b>5</b></span>
-                                        <p><?= $this->translate('data-confirmation')?></p>
+                                <li class="nav-item-4 disabled">
+                                    <a href="#" id="tab4">
+                                        <span class="number"><i class="fa fa-check" aria-hidden="true"></i><b>4</b></span>
+                                        <p><?= $this->translate('data-confirmation')?>a</p>
                                     </a>
                                 </li>
                             </ul>
@@ -106,7 +106,7 @@ $this->extend('layout-credit.html.php');
                                     <div class="button-area text-right next">
 
                                         <button class="cta cta-primary cta-big cta-see buttonnext" id="button1" type="button"><?= $this->translate('next')?></button>
-                                        <button class="cta cta-primary cta-big cta-see buttonnext hidesavebutton"  type="button"><?= $this->translate('save')?></button>
+                                        <button class="cta cta-primary cta-big cta-see buttonnext hidesavebuttonhome" type="button"><?= $this->translate('save')?></button>
 
                                     </div>
 
@@ -165,7 +165,7 @@ $this->extend('layout-credit.html.php');
                                     </div>
                                     <div class="button-area text-right next">
                                         <button class="cta cta-primary cta-big cta-see buttonnext" id="button2" type="button"><?= $this->translate('next')?></button>
-                                        <button class="cta cta-primary cta-big cta-see buttonnext hidesavebutton" type="button"><?= $this->translate('save')?></button>
+                                        <button class="cta cta-primary cta-big cta-see buttonnext hidesavebuttonhome" type="button"><?= $this->translate('save')?></button>
                                     </div>
 
                                 </div>
@@ -264,7 +264,7 @@ $this->extend('layout-credit.html.php');
                                                 </p>
                                                 <table>
                                                     <tr>
-                                                        <td><?= $this->translate('label-jenis')?></td>
+                                                        <td><?= $this->translate('label-jenis')?><</td>
 
                                                         <td id="showAngunan" class="jenis_jaminan"></td>
                                                     </tr>
@@ -277,7 +277,7 @@ $this->extend('layout-credit.html.php');
                                                     B. <?= $this->translate('data-name')?>
                                                 </p>
                                                 <div class="button-area text-right button-angsur">
-                                                    <button id="btnDataPemohon" class="cta cta-primary cta-big cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"></i><b>UBAH</b></button>
+                                                    <button id="btnDataPemohon" class="cta cta-primary cta-big cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"></i><b><?= $this->translate('ubah')?></b></button>
                                                 </div>
                                                 <table>
                                                     <tr>
@@ -296,7 +296,7 @@ $this->extend('layout-credit.html.php');
                                                         <td id="showPhone" class="email"></td>
                                                     </tr>
                                                     <!--<tr>
-                                                        <td><?/*= $this->translate('upload-ktp')*/?></td>
+                                                        <td>Unggah Foto KTP</td>
 
                                                         <td class="unggah"></td>
                                                     </tr>-->
@@ -310,7 +310,7 @@ $this->extend('layout-credit.html.php');
                                                     C. <?= $this->translate('data-place')?>
                                                 </p>
                                                 <div class="button-area text-right button-angsur">
-                                                    <button id="btnDataTempatTinggal" class="cta cta-primary cta-big cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"></i><b>UBAH</b></button>
+                                                    <button id="btnDataTempatTinggal" class="cta cta-primary cta-big cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"></i><b><?= $this->translate('ubah')?></b></button>
                                                 </div>
                                                 <table>
                                                     <tr>
@@ -344,7 +344,7 @@ $this->extend('layout-credit.html.php');
                                                     D. <?= $this->translate('data-bangunan')?>
                                                 </p>
                                                 <div class="button-area text-right button-angsur">
-                                                    <button id="btnDataBangunan" class="cta cta-primary cta-big cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"></i><b>UBAH</b></button>
+                                                    <button id="btnDataBangunan" class="cta cta-primary cta-big cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"></i><b><?= $this->translate('ubah')?></b></button>
                                                 </div>
                                                 <table>
                                                     <tr>
@@ -421,7 +421,6 @@ $this->extend('layout-credit.html.php');
                                     <div class="form-body--credit">
                                         <h2 class="text-center"><?= $this->translate('confirmation-otp')?></h2>
                                         <p class="text-center"><?= $this->translate('text-confirmation-otp')?></p>
-
 
                                         <div class="otp-number form-group">
                                             <div class="otp-number__phone disabled">

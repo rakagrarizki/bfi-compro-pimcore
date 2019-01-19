@@ -124,14 +124,15 @@ $this->extend('layout-credit.html.php');
                                         <div class="form-group">
                                             <label><?= $this->translate('label-kota')?></label>
                                             <select class="c-custom-select formRequired" id="kota" name="kota"  data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' />
-                                            <option value=""><?= $this->translate('choose-kota')?></option>
+                                            <option value=""><option value=""><?= $this->translate('choose-kota')?></option></option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
+
                                             <label><?= $this->translate('label-kecamatan')?></label>
                                             <select class="c-custom-select formRequired" id="kecamatan" name="kecamatan"  data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' />
-                                            <option value=""><?= $this->translate('choose-kecamatan')?></option>
+                                            <<option value=""><?= $this->translate('choose-kecamatan')?></option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
@@ -150,7 +151,7 @@ $this->extend('layout-credit.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label for="alamat_lengkap"><?= $this->translate('label-place')?></label>
-                                            <textarea class="form-control formRequired formAddress" name="alamat_lengkap" id="alamat_lengkap"
+                                            <textarea class="form-control formRequired" name="alamat_lengkap" id="alamat_lengkap"
                                                       placeholder="<?= $this->translate('placeholder-place')?>"></textarea>
                                             <div class="error-wrap"></div>
                                         </div>
@@ -240,7 +241,7 @@ $this->extend('layout-credit.html.php');
                                                 <label for="jml-biaya"><?= $this->translate('label-data-funding')?></label>
                                                 <div class="input-group inputform">
                                                     <span class="input-group-addon" id="basic-addon1">Rp</span>
-                                                    <input type="text" id="ex6SliderVal" class="form-control formRequired formPrice c-input-trans"
+                                                    <input type="text" id="ex6SliderVal" class="form-control formRequired c-input-trans"
                                                            aria-describedby="basic-addon1">
 
                                                     <div class="error-wrap"></div>
@@ -277,7 +278,7 @@ $this->extend('layout-credit.html.php');
                                                 <label><?= $this->translate('label-asuransi')?></label>
                                                 <div class="columnselect" ke="0">
                                                     <div class="list-select">
-                                                        <label><?= $this->translate('label-next-year')?> ke - 1</label>
+                                                        <label><?= $this->translate('label-next-year')?> - 1</label>
                                                     </div>
                                                     <div class="list-select">
                                                         <select class="c-custom-select-trans formRequired opsiasuransi" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}'
@@ -376,7 +377,7 @@ $this->extend('layout-credit.html.php');
                                                     B. <?= $this->translate('data-name')?>
                                                 </p>
                                                 <div class="button-area text-right button-angsur">
-                                                    <button id="btnDataPemohon" class="cta cta-primary cta-big cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"></i><b>UBAH</b></button>
+                                                    <button id="btnDataPemohon" class="cta cta-primary cta-big cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"></i><b><?= $this->translate('ubah')?></b></button>
                                                 </div>
                                                 <table>
                                                     <tr>
@@ -409,7 +410,7 @@ $this->extend('layout-credit.html.php');
                                                     C. <?= $this->translate('data-place')?>
                                                 </p>
                                                 <div class="button-area text-right button-angsur">
-                                                    <button id="btnDataTempatTinggal" class="cta cta-primary cta-big cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"></i><b>UBAH</b></button>
+                                                    <button id="btnDataTempatTinggal" class="cta cta-primary cta-big cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"></i><b><?= $this->translate('ubah')?></b></button>
                                                 </div>
                                                 <table>
                                                     <tr>
@@ -443,7 +444,7 @@ $this->extend('layout-credit.html.php');
                                                     D. <?= $this->translate('data-vehicle')?>
                                                 </p>
                                                 <div class="button-area text-right button-angsur">
-                                                    <button id="btnDataKendaraan" class="cta cta-primary cta-big cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"></i><b>UBAH</b></button>
+                                                    <button id="btnDataKendaraan" class="cta cta-primary cta-big cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"></i><b><?= $this->translate('ubah')?></b></button>
                                                 </div>
                                                 <table>
                                                     <tr>
@@ -477,7 +478,7 @@ $this->extend('layout-credit.html.php');
                                                     E. <?= $this->translate('data-funding')?>
                                                 </p>
                                                 <div class="button-area text-right button-angsur">
-                                                    <button id="btnJumlahPembiayaan" class="cta cta-primary cta-big cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"></i><b>UBAH</b></button>
+                                                    <button id="btnJumlahPembiayaan" class="cta cta-primary cta-big cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"></i><b><?= $this->translate('ubah')?></b></button>
                                                 </div>
                                                 <table class="tablebiaya">
                                                     <tr>
