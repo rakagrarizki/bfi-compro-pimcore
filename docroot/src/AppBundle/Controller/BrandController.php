@@ -21,7 +21,7 @@ class BrandController extends FrontendController
     public function __construct(SendApi $sendAPI)
     {
         $this->sendAPI = $sendAPI;
-        $this->randomNumber = rand(000001,999999);
+        $this->randomNumber = rand(000001, 999999);
     }
 
     public function defaultAction(Request $request)
@@ -43,7 +43,7 @@ class BrandController extends FrontendController
             return $value;
         }
 
-        if($data->code != "1"){
+        if ($data->code != "1") {
             return $value;
         }
 
@@ -54,8 +54,8 @@ class BrandController extends FrontendController
 
     /**
      * @Route("/brand/product/listJson")
-    @Method({"GET"})
-    @return \Symfony\Component\HttpFoundation\JsonResponse
+     * @Method({"GET"})
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
      */
     public function productListJsonAction(Request $request)
     {
@@ -77,7 +77,7 @@ class BrandController extends FrontendController
             ]);
         }
 
-        if($data->header->status != 200){
+        if ($data->header->status != 200) {
             return new JsonResponse([
                 'success' => "0",
                 'message' => "Service Request Car Down"
@@ -100,8 +100,8 @@ class BrandController extends FrontendController
 
     /**
      * @Route("/brand/detail/product/listJson")
-    @Method({"GET"})
-    @return \Symfony\Component\HttpFoundation\JsonResponse
+     * @Method({"GET"})
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
      */
     public function detailListJsonAction(Request $request)
     {
@@ -124,7 +124,7 @@ class BrandController extends FrontendController
             ]);
         }
 
-        if($data->header->status != 200){
+        if ($data->header->status != 200) {
             return new JsonResponse([
                 'success' => "0",
                 'message' => "Service Request Car Down"
@@ -147,8 +147,8 @@ class BrandController extends FrontendController
 
     /**
      * @Route("/brand/year/product/listJson")
-    @Method({"GET"})
-    @return \Symfony\Component\HttpFoundation\JsonResponse
+     * @Method({"GET"})
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
      */
     public function yearListJsonAction(Request $request)
     {
@@ -172,7 +172,7 @@ class BrandController extends FrontendController
             ]);
         }
 
-        if($data->header->status != 200){
+        if ($data->header->status != 200) {
             return new JsonResponse([
                 'success' => "0",
                 'message' => "Service Request Car Down"
