@@ -2219,7 +2219,6 @@
             },
 
             success: function (dataObj) {
-                console.log(dataObj)
                 if (dataObj.success == true) {
                     $.each(dataObj.result.data, function (idKendaraan, valKendaraan) {
                         if (valKendaraan.name != '') {
@@ -2244,6 +2243,40 @@
         $('#status_kep').attr("disabled", "disabled");
         $('#status_kep').next().css("background-color", "#F4F4F4");
         $('#status_kep').next().find(".jcf-select-opener").css("background-color", "#F4F4F4");
+        var post_code_attr = credits.tempat_tinggal.kode_pos,
+            tipe_attr = credits.angunan.jenis_angunan,
+            brand_attr = $('#merk_kendaraan').val(),
+            model = $(this).val();
+        $.ajax({
+            type: 'GET',
+            url: '/brand/year/product/listJson?post_code=' + post_code_attr + '' +
+                '&tipe=' + tipe_attr + '&brand=' + brand_attr + '&model=' + model,
+            dataType: 'json',
+            error: function (data) {
+                console.log('error' + data);
+            },
+
+            fail: function (xhr, textStatus, error) {
+                console.log('request failed')
+            },
+
+            success: function (dataObj) {
+                if (dataObj.success == true) {
+                    if (dataObj.result.data) {
+                        $.each(dataObj.result.data, function (index, dataYear) {
+                            if (dataYear.year != '') {
+                                var elementOption = '<option value="' + dataYear.year + '">' + dataYear.year + '</option>';
+                                $('#tahun_kendaraan').empty();
+                                $('#tahun_kendaraan').next().find(".jcf-select-text").children("span").html("Pilih tahun kendaraan");
+                                setTimeout(function () {
+                                    $('#tahun_kendaraan').append(elementOption);
+                                }, 50);
+                            }
+                        })
+                    }
+                }
+            }
+        })
 
         if ($("#merk_kendaraan").val() == "" || $(this).val() == "" || $("#tahun_kendaraan").val() == "" || $("#status_kep").val() == "") {
             $("#button3").css("background-color", "#dddddd");
