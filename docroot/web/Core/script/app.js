@@ -612,7 +612,7 @@
         formPhoneNumber: {
             required: true,
             number: true,
-            maxlength: 12,
+            maxlength: 13,
             minlength: 9
         },
 
