@@ -145,5 +145,52 @@ class BrandController extends FrontendController
         ]);
     }
 
+    /**
+     * @Route("/brand/year/product/listJson")
+    @Method({"GET"})
+    @return \Symfony\Component\HttpFoundation\JsonResponse
+     */
+    public function yearListJsonAction(Request $request)
+    {
+        $data = $this->getBranchBfi((string)$request->get('post_code'));
+        $nameKota = $data[0]->branch;
+
+        $param = [];
+        $param['loan_type'] = (string)$request->get('tipe');
+        $param['branch'] = $nameKota;
+        $param['brand_name'] = (string)$request->get('brand');
+        $param['model'] = (string)$request->get('model');
+
+        $url = WebsiteSetting::getByName('URL_GET_CAR')->getData();
+
+        try {
+            $data = $this->sendAPI->getCodeProduct($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Service Request Car Down"
+            ]);
+        }
+
+        if($data->header->status != 200){
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Service Request Car Down"
+            ]);
+        }
+
+        if ($data->data) {
+            foreach ($data->data as $item) {
+                $temp['year'] = $item->year;
+                $maps['data'][] = $temp;
+            }
+        }
+
+        return new JsonResponse([
+            'success' => true,
+            'result' => $maps
+        ]);
+    }
+
 
 }
