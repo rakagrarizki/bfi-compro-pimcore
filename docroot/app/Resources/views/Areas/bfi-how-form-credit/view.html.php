@@ -17,14 +17,14 @@
                         <div class="_parentboxkirikanan">
                             <div class="_boxkiri">
                                 <div class="input-group">
-                                    <div class="plaintext-cekpengajuan">Pilih jenis jaminan yang Anda ajukan</div>
+                                    <div class="plaintext-cekpengajuan"><?= $this->translate('collateralInfo')?></div>
                                 </div>
                             </div>
                             <div class="_boxkanan">
                                 <div class="_boxkananchild1">
                                     <div class="input-group inputform">
                                         <select class="c-custom-select-home" id="sel-how-form-credit">
-                                            <option value=""> Untuk Keperluan apa ?</option>
+                                            <option value=""> <?= $this->translate('collateralInfo2')?></option>
                                             <?php
                                             while ($this->block("contentblock")->loop()) {
                                                 $url = !$this->link('url')->isEmpty() ? $this->link('url')->getHref() : "";

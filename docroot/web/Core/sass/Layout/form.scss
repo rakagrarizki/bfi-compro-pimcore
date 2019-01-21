@@ -238,7 +238,7 @@
                             display: flex;
                             align-items: center;
                             label{
-                                color: $grey-dark;
+                                color:#565656;
                                 font-size: 1em;
                             }
                         }
@@ -247,7 +247,11 @@
                         }
 
                         .jcf-select{
-                            width:100%;
+                            width:250px;
+
+                             @include breakpoint(mobile){
+                                width:100%;
+                             }
                         }
                     }
                 }
@@ -276,12 +280,19 @@
                 overflow: hidden;
                 padding-right: 10px;
                 padding-left: 10px;
+                margin-left:-10px;
+                margin-right:-10px;
+                width:420px;
+
+                @include breakpoint(mobile){
+                    width:auto;
+                }
        
                 .slider-horizontal{   
                     width: 100%;
                     @include breakpoint(mobile){
-                        margin: 0 10px 10px;
-                        width: 90%;
+                        margin: 0 0px 10px;
+                        width: 100%;
                     }
                 }
                 .value-left{
@@ -516,7 +527,7 @@
                 vertical-align: top;
 
                 span{
-                    border-color:lightgreen!important;
+                    border-color:#7AC143!important;
                     border-width: 0 0 3px 3px;
                 }
 
@@ -561,6 +572,7 @@
             }
 
             &.jcf-drop-active {
+                border:1px solid #F9991C!important;
                 >.jcf-select-opener:before {
                     transform: rotate(180deg);
                 }
@@ -775,9 +787,10 @@
         display: inline-block;
         padding: 15px 20px;
         background: white;
-        border:1px solid #E2E2E2;
+        border:1px solid #F8991D;
         &.disabled {
-            background: #F2F2F2
+            background:white;
+            border:1px solid #E2E2E2;
         }
         p {
             letter-spacing: 1px;
@@ -933,5 +946,15 @@
     @include breakpoint(mobile){
         width: 100%;
     }
+}
+
+#basic-addon1{
+    display:table-cell!important;
+}
+
+#ex6SliderVal-error{
+    position: absolute;
+    width: 100%;
+    bottom: -21px;
 }
 

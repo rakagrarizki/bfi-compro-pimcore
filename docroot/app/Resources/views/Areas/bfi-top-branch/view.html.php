@@ -19,7 +19,7 @@
                     <div class="thumbnail-caption">
                         <h3><?= $branch->getName(); ?></h3>
                         <p><?= $branch->getAddress(); ?></p>
-                        <a href="#" class="cta-location">lihat lokasi</a>
+                        <a href="/<?= $this->getLocale() ?>/branch-office?longitude=<?= $branch->getMap() ? $branch->getMap()->getLongitude() : '' ?>&latitude=<?= $branch->getMap() ? $branch->getMap()->getLatitude() : '' ?>" class="cta-location"><?= $this->translate("seeLocation") ?></a>
                     </div>
                 </div>
                 <?php
@@ -30,12 +30,11 @@
         </div>
 
         <div class="jamoperasional">
-            <span>Jam operasional semua cabang BFI:</span>
-            <span><strong>Senin-Jumat</strong> 08.00-17.00 WIB, <strong>Sabtu</strong> 08.00-15.30 WIB</span>
+            <?php echo $this->wysiwyg('value', ["customConfig" => "custom/ckeditor_config.js"]) ?>
         </div>
 
         <div class="button-area text-center">
-            <a href="<?= $this->link('url')->getHref(); ?>" class="cta cta-primary cta-big cta-see">SELENGKAPNYA</a>
+            <a href="<?= $this->link('url')->getHref(); ?>" class="cta cta-primary cta-big cta-see"><?= $this->translate("more") ?></a>
         </div>
 
     </div>
