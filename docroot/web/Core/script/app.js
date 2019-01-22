@@ -1634,8 +1634,10 @@
                     $.each(dataObj.result.data, function (idMobilmotor, valMobilmotor) {
                         if (valMobilmotor.name != '') {
                             var elementOption = '<option value="' + valMobilmotor.id + '">' + valMobilmotor.name + '</option>';
-
-                            $(element).append(elementOption);
+                            $('#merk').empty();
+                            setTimeout(function () {
+                                $(element).append(elementOption);
+                            },50);
                         }
                     })
                 }
@@ -1689,11 +1691,13 @@
                     $.each(dataObj.result.data, function (idProvince, valProvince) {
                         if (valProvince.name != '') {
                             var elementOption = '<option value="' + valProvince.id + '">' + valProvince.name + '</option>';
-
-                            $(element).append(elementOption);
-                            if (element2) {
-                                $(element2).append(elementOption);
-                            }
+                            $('#provinsi').empty();
+                            setTimeout(function () {
+                                $(element).append(elementOption);
+                                if (element2) {
+                                    $(element2).append(elementOption);
+                                }
+                            },50);
                         }
                     })
                 }
