@@ -103,22 +103,26 @@
 		display:none;
 	}
 
-	&::-webkit-scrollbar {
+	/* width */
+	::-webkit-scrollbar {
 		width: 7px;
 	}
 
-	&::-webkit-scrollbar-track {
-		background: $white;
-		border-radius: 25px;
+	/* Track */
+	::-webkit-scrollbar-track {
+		background: #f1f1f1; 
+		border-radius: 10px;
+	}
+	   
+	/* Handle */
+	::-webkit-scrollbar-thumb {
+		background: #04559F; 
+		border-radius: 10px;
 	}
 
-	&::-webkit-scrollbar-thumb {
-		background: $white;
-		border-radius: 25px;
-	}
-
-	&::-webkit-scrollbar-thumb:hover {
-		background: $white;
+	/* Handle on hover */
+	::-webkit-scrollbar-thumb:hover {
+		background: #04559F; 
 	}
 }
 .parent-brachlist{
