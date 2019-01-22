@@ -424,7 +424,11 @@ $this->extend('layout-credit.html.php');
 
                                                         <td id="showKodePos" class="kodepos"></td>
                                                     </tr>
+                                                    <tr>
+                                                        <td><?= $this->translate('address')?></td>
 
+                                                        <td id="showAddress" class="address"></td>
+                                                    </tr>
                                                 </table>
                                             </div>
 

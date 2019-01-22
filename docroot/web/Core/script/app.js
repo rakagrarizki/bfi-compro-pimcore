@@ -796,6 +796,8 @@
         $('#showKecamatan').html(credits.tempat_tinggal.kecamatan);
         $('#showKelurahan').html(credits.tempat_tinggal.kelurahan);
         $('#showKodePos').html(credits.tempat_tinggal.kode_pos);
+        $('#showAddress').html(credits.tempat_tinggal.alamat);
+
 
         // data merk kendaraan
 
@@ -1617,7 +1619,7 @@
 
         $.ajax({
             type: 'GET',
-            url: 'https://bfi.staging7.salt.id/brand/product/listJson?post_code=' + post_code_attr + '&tipe=' + tipe_attr,
+            url: '/brand/product/listJson?post_code=' + post_code_attr + '&tipe=' + tipe_attr,
             dataType: 'json',
             error: function (data) {
                 console.log('error' + data);
@@ -1672,7 +1674,7 @@
 
         $.ajax({
             type: 'GET',
-            url: 'https://bfi.staging7.salt.id/service/provinsi/listJson',
+            url: '/service/provinsi/listJson',
             dataType: 'json',
             error: function (data) {
                 console.log('error' + data);
@@ -1773,7 +1775,7 @@
 
         $.ajax({
             type: 'GET',
-            url: 'https://bfi.staging7.salt.id/service/city/listJson?id=' + id,
+            url: '/service/city/listJson?id=' + id,
             dataType: 'json',
             error: function (data) {
                 console.log('error' + data);
@@ -1838,7 +1840,7 @@
 
         $.ajax({
             type: 'GET',
-            url: 'https://bfi.staging7.salt.id/service/city/listJson?id=' + id,
+            url: '/service/city/listJson?id=' + id,
             dataType: 'json',
             error: function (data) {
                 console.log('error' + data);
@@ -1899,7 +1901,7 @@
 
         $.ajax({
             type: 'GET',
-            url: 'https://bfi.staging7.salt.id/service/kecamatan/listJson?id=' + id,
+            url: '/service/kecamatan/listJson?id=' + id,
             dataType: 'json',
             error: function (data) {
                 console.log('error' + data);
@@ -1960,7 +1962,7 @@
 
         $.ajax({
             type: 'GET',
-            url: 'https://bfi.staging7.salt.id/service/kecamatan/listJson?id=' + id,
+            url: '/service/kecamatan/listJson?id=' + id,
             dataType: 'json',
             error: function (data) {
                 console.log('error' + data);
@@ -2017,7 +2019,7 @@
 
         $.ajax({
             type: 'GET',
-            url: 'https://bfi.staging7.salt.id/service/kelurahan/listJson?id=' + id,
+            url: '/service/kelurahan/listJson?id=' + id,
             dataType: 'json',
             error: function (data) {
                 console.log('error' + data);
@@ -2071,7 +2073,7 @@
 
         $.ajax({
             type: 'GET',
-            url: 'https://bfi.staging7.salt.id/service/kelurahan/listJson?id=' + id,
+            url: '/service/kelurahan/listJson?id=' + id,
             dataType: 'json',
             error: function (data) {
                 console.log('error' + data);
@@ -2330,7 +2332,7 @@
     }
 
     function getpriceminmax(params) {
-        var _url = 'https://bfi.staging7.salt.id/credit/get-price';
+        var _url = '/credit/get-price';
 
         //var kota = params.tempat_tinggal.kota;
 
@@ -2693,7 +2695,7 @@
 
         autocomplete.bindTo('bounds', map);
 
-        var base_url = 'https://bfi.staging7.salt.id/branch/listJson';
+        var base_url = '/branch/listJson';
 
         listingLocation(base_url);
 
@@ -2766,7 +2768,7 @@
     }
 
     function calculatePremi() {
-        var _url = 'https://bfi.staging7.salt.id/credit/get-loan';
+        var _url = '/credit/get-loan';
         var _param = {
             tipe: htmlEntities(credits.angunan.jenis_angunan),
             model_kendaraan: htmlEntities(credits.kendaraan.model_kendaraan),
@@ -2796,10 +2798,10 @@
 
                 var angsuranFinal = data.data.angsuranFinal,
                     angsuranFinal_txt = separatordot(angsuranFinal),
-                    insuranceCarTot = data.data.insuranceCarTotal,
+                    insuranceCarTot = data.data.insuranceCarTotal / parseInt(_param.tenor),
                     insuranceCarTot_txt = separatordot(insuranceCarTot);
 
-                var totalbiaya = parseInt(angsuranFinal) * parseInt(_param.tenor) - parseInt(insuranceCarTot),
+                var totalbiaya = (parseInt(angsuranFinal) * parseInt(_param.tenor) - parseInt(insuranceCarTot)) / parseInt(_param.tenor),
                     totalbiaya_txt = separatordot(totalbiaya);
 
                 angsuranFinal_txt = "Rp " + angsuranFinal_txt;
