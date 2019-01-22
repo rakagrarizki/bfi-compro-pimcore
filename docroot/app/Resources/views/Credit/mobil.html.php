@@ -67,7 +67,7 @@ $this->extend('layout-credit.html.php');
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="nama_lengkap"><?= $this->translate('data-name')?></label>
+                                            <label for="nama_lengkap"><?= $this->translate('form-name')?></label>
                                             <input type="text" class="form-control formRequired formAlphabet" name="nama_lengkap" id="nama_lengkap"
                                                    placeholder="<?= $this->translate('placeholder-name')?>">
                                             <div class="error-wrap"></div>
@@ -424,7 +424,11 @@ $this->extend('layout-credit.html.php');
 
                                                         <td id="showKodePos" class="kodepos"></td>
                                                     </tr>
+                                                    <tr>
+                                                        <td><?= $this->translate('address')?></td>
 
+                                                        <td id="showAddress" class="address"></td>
+                                                    </tr>
                                                 </table>
                                             </div>
 
