@@ -25,7 +25,7 @@ class ServiceController extends FrontendController
     public function registerNewsletterAction(Request $request)
     {
         $param = [];
-        $param["email"] = $request->get('email');
+        $param["email"] = htmlentities($request->get('email'));
         $url = WebsiteSetting::getByName('URL_NEWSLETTER')->getData();
 
         $sendAPI = new SendApi();
@@ -107,7 +107,7 @@ class ServiceController extends FrontendController
      */
     public function cityListJsonAction(Request $request)
     {
-        $id = $request->get('id');
+        $id = htmlentities($request->get('id'));
 
         if($id == null){
             return new JsonResponse([
@@ -140,7 +140,7 @@ class ServiceController extends FrontendController
      */
     public function kecamatanListJsonAction(Request $request)
     {
-        $id = $request->get('id');
+        $id = htmlentities($request->get('id'));
         if($id == null){
             return new JsonResponse([
                 'success' => false,
@@ -171,7 +171,7 @@ class ServiceController extends FrontendController
      */
     public function kelurahanListJsonAction(Request $request)
     {
-        $id = $request->get('id');
+        $id = htmlentities($request->get('id'));
         if($id == null){
             return new JsonResponse([
                 'success' => false,
