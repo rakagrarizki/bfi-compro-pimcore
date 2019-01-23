@@ -44,7 +44,7 @@ $this->extend('layout-credit.html.php');
                                 <li class="nav-item-4 disabled">
                                     <a href="#" id="tab4">
                                         <span class="number"><i class="fa fa-check" aria-hidden="true"></i><b>4</b></span>
-                                        <p><?= $this->translate('data-confirmation')?>a</p>
+                                        <p><?= $this->translate('data-confirmation')?></p>
                                     </a>
                                 </li>
                             </ul>
@@ -264,7 +264,7 @@ $this->extend('layout-credit.html.php');
                                                 </p>
                                                 <table>
                                                     <tr>
-                                                        <td><?= $this->translate('label-jenis')?><</td>
+                                                        <td><?= $this->translate('label-jenis')?></td>
 
                                                         <td id="showAngunan" class="jenis_jaminan"></td>
                                                     </tr>
