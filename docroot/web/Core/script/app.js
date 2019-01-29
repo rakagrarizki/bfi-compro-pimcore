@@ -2849,7 +2849,8 @@
         var _reform = _val.replace(/[.]/g, "")
         var _toInt = parseInt(_reform)
         _toInt = (_toInt > 0 ? _toInt : 0)
-        objCredits.installment = _toInt
+        objCredits.installment = _toInt;
+        objCredits.funding = _toInt;
     })
 
     $("#jangka_waktu").change(function () {
