@@ -158,8 +158,11 @@ class CreditController extends FrontendController
         $param['year'] = htmlentities($request->get('tahun'));
         $param['funding'] = htmlentities($request->get('funding'));
         $param['tenor'] = htmlentities($request->get('tenor'));
-        $param['asuransi'] = htmlentities($request->get('asuransi'));
-        $param['taksasi'] = htmlentities($request->get('taksasi'));
+
+        if($request->get('tipe') == "MOBIL"){
+            $param['asuransi'] = htmlentities($request->get('asuransi'));
+            $param['taksasi'] = htmlentities($request->get('taksasi'));
+        }
 
         $url = WebsiteSetting::getByName('URL_GET_LOAN')->getData();
 
