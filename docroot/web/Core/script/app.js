@@ -523,6 +523,7 @@
                 var _toInt = parseInt(_thisVal);
                 _toInt = (_toInt > 0 ? _toInt : 0);
                 objCredits.installment = _toInt;
+                objCredits.funding = _toInt;
 
             } else if (_ifMonth.length > 0) {
                 _ifMonth.val(parseInt(_thisVal))
@@ -2849,7 +2850,8 @@
         var _reform = _val.replace(/[.]/g, "")
         var _toInt = parseInt(_reform)
         _toInt = (_toInt > 0 ? _toInt : 0)
-        objCredits.installment = _toInt
+        objCredits.installment = _toInt;
+
     })
 
     $("#jangka_waktu").change(function () {
