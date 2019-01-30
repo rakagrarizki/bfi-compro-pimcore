@@ -85,6 +85,8 @@ class ServiceController extends FrontendController
     public function provinsiListJsonAction()
     {
         $data = new Province\Listing();
+        $data->setOrderKey("Name");
+        $data->setOrder("ASC");
         $maps = [];
         if ($data) {
             foreach ($data as $item) {
