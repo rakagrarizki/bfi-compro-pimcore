@@ -452,7 +452,7 @@
         if ($("#jenis_form").val() == "MOBIL") {
             var jumlah_loop = parseInt(thisval) / 12;
         } else if ($("#jenis_form").val() == "MOTOR") {
-            var jumlah_loop = parseInt(thisval) / 6;
+            var jumlah_loop = Math.ceil(parseInt(thisval) / 12) ;
         }
 
         asuransi_arr = [];
@@ -1633,13 +1633,17 @@
             success: function (dataObj) {
                 if (dataObj.success == true) {
                     $.each(dataObj.result.data, function (idMobilmotor, valMobilmotor) {
-                        if (valMobilmotor.name != '') {
-                            var elementOption = '<option value="' + valMobilmotor.id + '">' + valMobilmotor.name + '</option>';
-                            $('#merk').empty();
-                            setTimeout(function () {
-                                $(element).append(elementOption);
-                            },50);
+                        // console.log(valMobilmotor);
+                        if ($('#merk_kendaraan option').length <= 1) {
+                            if (valMobilmotor.name != '') {
+                                var elementOption = '<option value="' + valMobilmotor.id + '">' + valMobilmotor.name + '</option>';
+                                $('#merk').empty();
+                                setTimeout(function () {
+                                    $(element).append(elementOption);
+                                },50);
+                            }
                         }
+                        
                     })
                 }
             }
@@ -2352,7 +2356,7 @@
             post_code: htmlEntities(params.tempat_tinggal.kode_pos),
             tahun: htmlEntities(params.kendaraan.tahun_kendaraan)
         }
-        //alert(_data.tipe + "-" +_data.model_kendaraan + "-" + _data.merk_kendaraan + "-" + _data.post_code + "-" + _data.tahun);
+        alert(_data.tipe + "-" +_data.model_kendaraan + "-" + _data.merk_kendaraan + "-" + _data.post_code + "-" + _data.tahun);
         $.ajax({
             type: 'POST',
             url: _url,
