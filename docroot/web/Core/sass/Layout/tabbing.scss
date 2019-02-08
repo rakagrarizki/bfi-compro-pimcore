@@ -15,7 +15,7 @@
         border: none;
         justify-content: center;
         @include breakpoint(mobile){
-            display: inherit;
+            display: inherit; 
             width: auto;
             flex-flow: unset;
             white-space: nowrap;

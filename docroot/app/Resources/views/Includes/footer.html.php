@@ -82,7 +82,7 @@ if($this->editmode) : ?>
             </div>
             <div class="col-md-4 footer-center">
                 <span><a href="tel:1500018"><?= $this->translate("customer-care") ?> <i class="fa fa-phone"></i> 1500018</a></span>
-                <label><?= $this->translate("Newsletter") ?></label>
+                <label><?= $this->translate("Newsletter") ?></label> 
                 <form class="form-inline" id="sendNewsletter" action="javacript:void(0)"
                       method="POST">
                     <div class="form-group">
