@@ -1734,6 +1734,8 @@
     $('#model_kendaraan').next().css("background-color", "#F4F4F4");
     $('#model_kendaraan').next().find(".jcf-select-opener").css("background-color", "#F4F4F4");
 
+    $('#kode_pos').attr("disabled", "disabled");
+
     $('#alamat_lengkap').attr("disabled", "disabled");
     $('#alamat_lengkap').css("background-color", "#F4F4F4");
 

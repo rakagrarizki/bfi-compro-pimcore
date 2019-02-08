@@ -124,7 +124,7 @@ $this->extend('layout-credit.html.php');
                                         <div class="form-group">
                                             <label><?= $this->translate('label-kota')?></label>
                                             <select class="c-custom-select formRequired" id="kota" name="kota"  data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' />
-                                            <option value=""><option value=""><?= $this->translate('choose-kota')?></option></option>
+                                            <option value=""><?= $this->translate('choose-kota')?></option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
@@ -132,7 +132,7 @@ $this->extend('layout-credit.html.php');
 
                                             <label><?= $this->translate('label-kecamatan')?></label>
                                             <select class="c-custom-select formRequired" id="kecamatan" name="kecamatan"  data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' />
-                                            <<option value=""><?= $this->translate('choose-kecamatan')?></option>
+                                            <option value=""><?= $this->translate('choose-kecamatan')?></option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
