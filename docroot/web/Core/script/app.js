@@ -2356,7 +2356,7 @@
             post_code: htmlEntities(params.tempat_tinggal.kode_pos),
             tahun: htmlEntities(params.kendaraan.tahun_kendaraan)
         }
-        alert(_data.tipe + "-" +_data.model_kendaraan + "-" + _data.merk_kendaraan + "-" + _data.post_code + "-" + _data.tahun);
+        // alert(_data.tipe + "-" +_data.model_kendaraan + "-" + _data.merk_kendaraan + "-" + _data.post_code + "-" + _data.tahun);
         $.ajax({
             type: 'POST',
             url: _url,
