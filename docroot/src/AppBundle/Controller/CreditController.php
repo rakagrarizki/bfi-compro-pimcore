@@ -362,7 +362,7 @@ class CreditController extends FrontendController
         $timenow = time();
         if($dataReceive){
             $diff = $timenow - $dataReceive;
-            if($diff > 60){
+            if($diff > 120){
                 $send = true;
             }else{
                 $send = false;
@@ -395,7 +395,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "error wait for 1 minute to send it back"
+                'message' => "error wait for 2 minute to send it back"
             ]);
         }
     }
