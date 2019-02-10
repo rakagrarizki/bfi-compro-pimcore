@@ -364,7 +364,7 @@ class CreditController extends FrontendController
             $diff = $timenow - $dateSend;
             if($diff >= 600){
                 $send = true;
-
+                $redis->hSet($handphone, 'attempt-hit', 0);
             }else{
                 if($attempts < 3){
                     $send = true;
