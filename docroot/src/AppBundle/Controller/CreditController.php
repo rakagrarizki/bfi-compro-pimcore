@@ -360,22 +360,22 @@ class CreditController extends FrontendController
         $dateSend = $redis->hGet($handphone, "time-send");
         $attempts = $redis->hGet($handphone, "attempt-hit");
         $timenow = time();
+
+        $clear = false;
         if($attempts){
             $diff = $timenow - $dateSend;
             if($diff >= 600){
                 $send = true;
-                $redis->hSet($handphone, 'attempt-hit', 0);
+                $clear = true;
             }else{
                 if($attempts < 3){
                     $send = true;
                 }else{
                     $send = false;
                 }
-                $newAttempts = $attempts + 1;
-                $redis->hSet($handphone, 'attempt-hit', $newAttempts);
             }
         }else{
-            $redis->hSet($handphone, 'attempt-hit', 0);
+            $clear = true;
             $send = true;
         }
 
@@ -394,6 +394,12 @@ class CreditController extends FrontendController
                 'success' => "0",
                 'message' => "Service Request Credit Down"
             ]);
+        }
+
+        if($clear){
+            $redis->hSet($handphone, 'attempt-hit', 1);
+        }else{
+            $redis->hSet($handphone, 'attempt-hit', $attempts + 1);
         }
 
         if($data->code != 1){
