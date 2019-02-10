@@ -362,7 +362,7 @@ class CreditController extends FrontendController
         $timenow = time();
         if($dataReceive){
             $diff = $timenow - $dataReceive;
-            if($diff > 120){
+            if($diff > 600){
                 $send = true;
             }else{
                 $send = false;
