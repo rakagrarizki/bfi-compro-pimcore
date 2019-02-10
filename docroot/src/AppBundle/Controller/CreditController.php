@@ -359,19 +359,23 @@ class CreditController extends FrontendController
         $redis = new \Credis_Client("localhost", 6379, null, '', 1);
         $dateSend = $redis->hGet($handphone, "time-send");
         $attempts = $redis->hGet($handphone, "attempt-hit");
-
         $timenow = time();
         if($attempts){
             $diff = $timenow - $dateSend;
-            if($diff >= 600 && $attempts >= 3){
+            if($diff >= 600){
                 $send = true;
-                $redis->hSet($handphone, 'attempt-hit', 0);
+
             }else{
-                $send = false;
+                if($attempts < 3){
+                    $send = true;
+                }else{
+                    $send = false;
+                }
+                $newAttempts = $attempts + 1;
+                $redis->hSet($handphone, 'attempt-hit', $newAttempts);
             }
-            $newAttempts = $attempts + 1;
         }else{
-            $newAttempts = 1;
+            $redis->hSet($handphone, 'attempt-hit', 0);
             $send = true;
         }
 
@@ -385,7 +389,6 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->requestOtp($handphone, $nama_lengkap);
             $redis->hSet($handphone, 'time-send', time());
-            $redis->hSet($handphone, 'attempt-hit', $newAttempts);
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
