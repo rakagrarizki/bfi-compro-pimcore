@@ -72,15 +72,15 @@ class CreditController extends FrontendController
 
     public function getPriceAction(Request $request)
     {
-        $data = $this->getBranchBfi((string)htmlentities($request->get('post_code')));
+        $data = $this->getBranchBfi((string)htmlentities(addslashes($request->get('post_code'))));
         $nameKota = $data[0]->branch;
 
         $param = [];
-        $param['loan_type'] = (string)htmlentities($request->get('tipe'));
-        $param['model'] = (string)htmlentities($request->get('model_kendaraan'));
+        $param['loan_type'] = (string)htmlentities(addslashes($request->get('tipe')));
+        $param['model'] = (string)htmlentities(addslashes($request->get('model_kendaraan')));
         $param['branch'] = $nameKota;
-        $param['brand_name'] = (string)htmlentities($request->get('merk_kendaraan'));
-        $param['year'] = (string)htmlentities($request->get('tahun'));
+        $param['brand_name'] = (string)htmlentities(addslashes($request->get('merk_kendaraan')));
+        $param['year'] = (string)htmlentities(addslashes($request->get('tahun')));
 
         $url = WebsiteSetting::getByName('URL_GET_PRICE')->getData();
 
@@ -137,7 +137,7 @@ class CreditController extends FrontendController
 
     public function sendLoanDataAction(Request $request)
     {
-        $data = $this->getBranchBfi((string)htmlentities($request->get('post_code')));
+        $data = $this->getBranchBfi((string)htmlentities(addslashes($request->get('post_code'))));
 
         if($data == null){
             return new JsonResponse([
@@ -152,16 +152,16 @@ class CreditController extends FrontendController
         $param = [];
         $param['branch'] = $nameKota;
         $param['area_code'] = $areaCode;
-        $param['vehicleType'] = htmlentities($request->get('tipe'));
-        $param['brandName'] = htmlentities($request->get('merk_kendaraan'));
-        $param['model'] = htmlentities($request->get('model_kendaraan'));
-        $param['year'] = htmlentities($request->get('tahun'));
-        $param['funding'] = htmlentities($request->get('funding'));
-        $param['tenor'] = htmlentities($request->get('tenor'));
+        $param['vehicleType'] = htmlentities(addslashes($request->get('tipe')));
+        $param['brandName'] = htmlentities(addslashes($request->get('merk_kendaraan')));
+        $param['model'] = htmlentities(addslashes($request->get('model_kendaraan')));
+        $param['year'] = htmlentities(addslashes($request->get('tahun')));
+        $param['funding'] = htmlentities(addslashes($request->get('funding')));
+        $param['tenor'] = htmlentities(addslashes($request->get('tenor')));
 
         if($request->get('tipe') == "MOBIL"){
-            $param['asuransi'] = htmlentities($request->get('asuransi'));
-            $param['taksasi'] = htmlentities($request->get('taksasi'));
+            $param['asuransi'] = htmlentities(addslashes($request->get('asuransi')));
+            $param['taksasi'] = htmlentities(addslashes($request->get('taksasi')));
         }
 
         $url = WebsiteSetting::getByName('URL_GET_LOAN')->getData();
@@ -194,14 +194,14 @@ class CreditController extends FrontendController
         $param = [];
         $param['PartnerID'] = WebsiteSetting::getByName('PARTNER_ID')->getData();
         $param['Datetime'] = date("Y-M-d")."T".date("H:i:s");
-        $param['CustomerName'] = htmlentities($request->get('nama_lengkap'));
-        $param['EmailCustomer'] = htmlentities($request->get('email'));
-        $param['CustomerAddress'] = htmlentities($request->get('alamat_lengkap'));
-        $param['CustomerNumber1'] = htmlentities($request->get('no_handphone'));
-        $param['CustomerNumber2'] = htmlentities($request->get('no_handphone'));
-        $param['City'] = htmlentities($request->get('kota'));
-        $param['Kelurahan'] = htmlentities($request->get('kelurahan'));
-        $param['Kecamatan'] = htmlentities($request->get('kecamatan'));
+        $param['CustomerName'] = htmlentities(addslashes($request->get('nama_lengkap')));
+        $param['EmailCustomer'] = htmlentities(addslashes($request->get('email')));
+        $param['CustomerAddress'] = htmlentities(addslashes($request->get('alamat_lengkap')));
+        $param['CustomerNumber1'] = htmlentities(addslashes($request->get('no_handphone')));
+        $param['CustomerNumber2'] = htmlentities(addslashes($request->get('no_handphone')));
+        $param['City'] = htmlentities(addslashes($request->get('kota')));
+        $param['Kelurahan'] = htmlentities(addslashes($request->get('kelurahan')));
+        $param['Kecamatan'] = htmlentities(addslashes($request->get('kecamatan')));
         $param['CustDateOfBirth'] = date("Y-m-d");
         $param['SubmissionID'] = "WEBBFI".date("Y").date("m").$this->randomNumber;
         $param['ListingID'] = $this->randomNumber;
@@ -210,14 +210,14 @@ class CreditController extends FrontendController
         $param['EmailSeller'] = WebsiteSetting::getByName('SELLER_EMAIL')->getData();
         $param['SellerAddress'] = WebsiteSetting::getByName('SELLER_ADDRESS')->getData();
         $param['Product'] = "MOBIL";
-        $param['VehicleType'] = htmlentities($request->get('model_kendaraan'));
-        $param['Year'] = htmlentities($request->get('tahun_kendaraan'));
-        $param['Funding'] = htmlentities($request->get('funding'));
+        $param['VehicleType'] = htmlentities(addslashes($request->get('model_kendaraan')));
+        $param['Year'] = htmlentities(addslashes($request->get('tahun_kendaraan')));
+        $param['Funding'] = htmlentities(addslashes($request->get('funding')));
         $param['LinkIklan'] = WebsiteSetting::getByName('LINK_IKLAN')->getData();
         $param['MonthlyIncome'] = "0";
-        $param['Brand'] = htmlentities($request->get('merk_kendaraan'));
-        $param['Tenor'] = htmlentities($request->get('jangka_waktu'));
-        $param['Installment'] = htmlentities($request->get('installment'));
+        $param['Brand'] = htmlentities(addslashes($request->get('merk_kendaraan')));
+        $param['Tenor'] = htmlentities(addslashes($request->get('jangka_waktu')));
+        $param['Installment'] = htmlentities(addslashes($request->get('installment')));
 
         $url = WebsiteSetting::getByName('URL_CREDIT_MOBIL')->getData();
 
@@ -248,14 +248,14 @@ class CreditController extends FrontendController
         $param = [];
         $param['PartnerID'] = WebsiteSetting::getByName('PARTNER_ID')->getData();
         $param['Datetime'] = date("Y-M-d")."T".date("H:i:s");
-        $param['CustomerName'] = htmlentities($request->get('nama_lengkap'));
-        $param['EmailCustomer'] = htmlentities($request->get('email'));
-        $param['CustomerAddress'] = htmlentities($request->get('alamat_lengkap'));
-        $param['CustomerNumber1'] = htmlentities($request->get('no_handphone'));
-        $param['CustomerNumber2'] = htmlentities($request->get('no_handphone'));
-        $param['City'] = htmlentities($request->get('kota'));
-        $param['Kelurahan'] = htmlentities($request->get('kelurahan'));
-        $param['Kecamatan'] = htmlentities($request->get('kecamatan'));
+        $param['CustomerName'] = htmlentities(addslashes($request->get('nama_lengkap')));
+        $param['EmailCustomer'] = htmlentities(addslashes($request->get('email')));
+        $param['CustomerAddress'] = htmlentities(addslashes($request->get('alamat_lengkap')));
+        $param['CustomerNumber1'] = htmlentities(addslashes($request->get('no_handphone')));
+        $param['CustomerNumber2'] = htmlentities(addslashes($request->get('no_handphone')));
+        $param['City'] = htmlentities(addslashes($request->get('kota')));
+        $param['Kelurahan'] = htmlentities(addslashes($request->get('kelurahan')));
+        $param['Kecamatan'] = htmlentities(addslashes($request->get('kecamatan')));
         $param['CustDateOfBirth'] = date("Y-m-d");
         $param['SubmissionID'] = "WEBBFI".date("Y").date("m").$this->randomNumber;
         $param['ListingID'] = $this->randomNumber;
@@ -264,14 +264,14 @@ class CreditController extends FrontendController
         $param['EmailSeller'] = WebsiteSetting::getByName('SELLER_EMAIL')->getData();
         $param['SellerAddress'] = WebsiteSetting::getByName('SELLER_ADDRESS')->getData();
         $param['Product'] = "MOTOR";
-        $param['VehicleType'] = htmlentities($request->get('model_kendaraan'));
-        $param['Year'] = htmlentities($request->get('tahun_kendaraan'));
-        $param['Funding'] = htmlentities($request->get('funding'));
+        $param['VehicleType'] = htmlentities(addslashes($request->get('model_kendaraan')));
+        $param['Year'] = htmlentities(addslashes($request->get('tahun_kendaraan')));
+        $param['Funding'] = htmlentities(addslashes($request->get('funding')));
         $param['LinkIklan'] = WebsiteSetting::getByName('LINK_IKLAN')->getData();
         $param['MonthlyIncome'] = "0";
-        $param['Brand'] = htmlentities($request->get('merk_kendaraan'));
-        $param['Tenor'] = htmlentities($request->get('jangka_waktu'));
-        $param['Installment'] = htmlentities($request->get('installment'));
+        $param['Brand'] = htmlentities(addslashes($request->get('merk_kendaraan')));
+        $param['Tenor'] = htmlentities(addslashes($request->get('jangka_waktu')));
+        $param['Installment'] = htmlentities(addslashes($request->get('installment')));
 
         $url = WebsiteSetting::getByName('URL_CREDIT_MOTOR')->getData();
 
@@ -302,14 +302,14 @@ class CreditController extends FrontendController
         $param = [];
         $param['PartnerID'] = WebsiteSetting::getByName('PARTNER_ID')->getData();
         $param['Datetime'] = date("Y-M-d")."T".date("H:i:s");
-        $param['CustomerName'] = htmlentities($request->get('nama_lengkap'));
-        $param['EmailCustomer'] = htmlentities($request->get('email'));
-        $param['CustomerAddress'] = htmlentities($request->get('alamat_lengkap'));
-        $param['CustomerNumber1'] = htmlentities($request->get('no_handphone'));
-        $param['CustomerNumber2'] = htmlentities($request->get('no_handphone'));
-        $param['City'] = htmlentities($request->get('kota'));
-        $param['Kelurahan'] = htmlentities($request->get('kelurahan'));
-        $param['Kecamatan'] = htmlentities($request->get('kecamatan'));
+        $param['CustomerName'] = htmlentities(addslashes($request->get('nama_lengkap')));
+        $param['EmailCustomer'] = htmlentities(addslashes($request->get('email')));
+        $param['CustomerAddress'] = htmlentities(addslashes($request->get('alamat_lengkap')));
+        $param['CustomerNumber1'] = htmlentities(addslashes($request->get('no_handphone')));
+        $param['CustomerNumber2'] = htmlentities(addslashes($request->get('no_handphone')));
+        $param['City'] = htmlentities(addslashes($request->get('kota')));
+        $param['Kelurahan'] = htmlentities(addslashes($request->get('kelurahan')));
+        $param['Kecamatan'] = htmlentities(addslashes($request->get('kecamatan')));
         $param['CustDateOfBirth'] = date("Y-m-d");
         $param['SubmissionID'] = "WEBBFI".date("Y").date("m").$this->randomNumber;
         $param['ListingID'] = $this->randomNumber;
@@ -318,14 +318,14 @@ class CreditController extends FrontendController
         $param['EmailSeller'] = WebsiteSetting::getByName('SELLER_EMAIL')->getData();
         $param['SellerAddress'] = WebsiteSetting::getByName('SELLER_ADDRESS')->getData();
 
-        $param['SertificateStatus'] = htmlentities($request->get('status_sertificate'));
-        $param['OwnerSertificate'] = htmlentities($request->get('own_sertificate'));
-        $param['AddressSertificate'] = htmlentities($request->get('alamat_lengkap_sertificate'));
-        $param['ProvinsiSertificate'] = htmlentities($request->get('provinsi_sertificate'));
-        $param['KotaSertificate'] = htmlentities($request->get('kota_sertificate'));
-        $param['KecamatanSertificate'] = htmlentities($request->get('kecamatan_sertificate'));
-        $param['KelurahanSertificate'] = htmlentities($request->get('kelurahan_sertificate'));
-        $param['KodeposSertificate'] = htmlentities($request->get('kode_pos_sertificate'));
+        $param['SertificateStatus'] = htmlentities(addslashes($request->get('status_sertificate')));
+        $param['OwnerSertificate'] = htmlentities(addslashes($request->get('own_sertificate')));
+        $param['AddressSertificate'] = htmlentities(addslashes($request->get('alamat_lengkap_sertificate')));
+        $param['ProvinsiSertificate'] = htmlentities(addslashes($request->get('provinsi_sertificate')));
+        $param['KotaSertificate'] = htmlentities(addslashes($request->get('kota_sertificate')));
+        $param['KecamatanSertificate'] = htmlentities(addslashes($request->get('kecamatan_sertificate')));
+        $param['KelurahanSertificate'] = htmlentities(addslashes($request->get('kelurahan_sertificate')));
+        $param['KodeposSertificate'] = htmlentities(addslashes($request->get('kode_pos_sertificate')));
 
         $url = WebsiteSetting::getByName('URL_CREDIT_RUMAH')->getData();
 
@@ -353,34 +353,56 @@ class CreditController extends FrontendController
 
     public function sendOtpRequestAction(Request $request)
     {
-        $nama_lengkap = htmlentities($request->get('nama_lengkap'));
-        $handphone = htmlentities($request->get('no_handphone'));
+        $nama_lengkap = htmlentities(addslashes($request->get('nama_lengkap')));
+        $handphone = htmlentities(addslashes($request->get('no_handphone')));
 
-        try {
-            $data = $this->sendAPI->requestOtp($handphone, $nama_lengkap);
-        } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Credit Down"
-            ]);
+        $redis = new \Credis_Client("localhost", 6379, null, '', 1);
+        $dataReceive = $redis->hGet($handphone, "time-send");
+
+        $timenow = time();
+        if($dataReceive){
+            $diff = $timenow - $dataReceive;
+            if($diff > 60){
+                $send = true;
+            }else{
+                $send = false;
+            }
+        }else{
+            $send = true;
         }
 
-        if($data->code == 1){
-            return new JsonResponse([
-                'success' => "1",
-                'message' => "Sukses"
-            ]);
+        if($send){
+            try {
+                $data = $this->sendAPI->requestOtp($handphone, $nama_lengkap);
+            } catch (\Exception $e) {
+                return new JsonResponse([
+                    'success' => "0",
+                    'message' => "Service Request Credit Down"
+                ]);
+            }
+            if($data->code == 1){
+               $redis->hSet($handphone, 'time-send', time());
+                return new JsonResponse([
+                    'success' => "1",
+                    'message' => "Sukses"
+                ]);
+            }else{
+                return new JsonResponse([
+                    'success' => "0",
+                    'message' => "Gagal"
+                ]);
+            }
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => "error wait for 1 minute to send it back"
             ]);
         }
     }
 
     public function sendOtpValidateAction(Request $request)
     {
-        $code = htmlentities($request->get('otp1')). htmlentities($request->get('otp2')). htmlentities($request->get('otp3')). htmlentities($request->get('otp4'));
+        $code = htmlentities(addslashes($request->get('otp1'))). htmlentities(addslashes($request->get('otp2'))). htmlentities(addslashes($request->get('otp3'))). htmlentities(addslashes($request->get('otp4')));
         $handphone = htmlentities($request->get('no_handphone'));
 
         try {
