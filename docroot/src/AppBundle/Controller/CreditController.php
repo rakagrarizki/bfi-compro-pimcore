@@ -357,47 +357,54 @@ class CreditController extends FrontendController
         $handphone = htmlentities(addslashes($request->get('no_handphone')));
 
         $redis = new \Credis_Client("localhost", 6379, null, '', 1);
-        $dataReceive = $redis->hGet($handphone, "time-send");
+        $dateSend = $redis->hGet($handphone, "time-send");
+        $attempts = $redis->hGet($handphone, "attempt-hit");
 
         $timenow = time();
-        if($dataReceive){
-            $diff = $timenow - $dataReceive;
-            if($diff > 600){
+        if($attempts){
+            $diff = $timenow - $dateSend;
+            if($diff >= 600 && $attempts >= 3){
                 $send = true;
+                $redis->hSet($handphone, 'attempt-hit', 0);
             }else{
                 $send = false;
             }
+            $newAttempts = $attempts + 1;
         }else{
+            $newAttempts = 1;
             $send = true;
         }
 
-        if($send){
-            try {
-                $data = $this->sendAPI->requestOtp($handphone, $nama_lengkap);
-            } catch (\Exception $e) {
-                return new JsonResponse([
-                    'success' => "0",
-                    'message' => "Service Request Credit Down"
-                ]);
-            }
-            if($data->code == 1){
-               $redis->hSet($handphone, 'time-send', time());
-                return new JsonResponse([
-                    'success' => "1",
-                    'message' => "Sukses"
-                ]);
-            }else{
-                return new JsonResponse([
-                    'success' => "0",
-                    'message' => "Gagal"
-                ]);
-            }
-        }else{
+        if(!$send){
             return new JsonResponse([
                 'success' => "0",
-                'message' => "error wait for 2 minute to send it back"
+                'message' => "error multiple request otp"
             ]);
         }
+
+        try {
+            $data = $this->sendAPI->requestOtp($handphone, $nama_lengkap);
+            $redis->hSet($handphone, 'time-send', time());
+            $redis->hSet($handphone, 'attempt-hit', $newAttempts);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Service Request Credit Down"
+            ]);
+        }
+
+        if($data->code != 1){
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+
+        return new JsonResponse([
+            'success' => "1",
+            'message' => "Sukses"
+        ]);
+
     }
 
     public function sendOtpValidateAction(Request $request)
