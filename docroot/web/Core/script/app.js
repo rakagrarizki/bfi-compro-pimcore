@@ -452,7 +452,7 @@
         if ($("#jenis_form").val() == "MOBIL") {
             var jumlah_loop = parseInt(thisval) / 12;
         } else if ($("#jenis_form").val() == "MOTOR") {
-            var jumlah_loop = parseInt(thisval) / 6;
+            var jumlah_loop = Math.ceil(parseInt(thisval) / 12) ;
         }
 
         asuransi_arr = [];
@@ -705,10 +705,10 @@
             jenis_kredit = $('#jenis_form').val();
 
 
-        credits.angunan.jenis_angunan = jenis_kredit;
-        credits.pemohon.nama = nama_lengkap;
-        credits.pemohon.email = email_pemohon;
-        credits.pemohon.no_handphone = no_telepon;
+        credits.angunan.jenis_angunan = htmlEntities(jenis_kredit);
+        credits.pemohon.nama = htmlEntities(nama_lengkap);
+        credits.pemohon.email = htmlEntities(email_pemohon);
+        credits.pemohon.no_handphone = htmlEntities(no_telepon);
 
     }
 
@@ -725,12 +725,12 @@
         kecamatan = $("#kecamatan option[value='" + kecamatan + "']").text();
         kelurahan = $("#kelurahan option[value='" + kelurahan + "']").text();
 
-        credits.tempat_tinggal.provinsi = provinsi;
-        credits.tempat_tinggal.kota = kota;
-        credits.tempat_tinggal.kecamatan = kecamatan;
-        credits.tempat_tinggal.kelurahan = kelurahan;
-        credits.tempat_tinggal.kode_pos = kode_pos;
-        credits.tempat_tinggal.alamat = alamat;
+        credits.tempat_tinggal.provinsi = htmlEntities(provinsi);
+        credits.tempat_tinggal.kota = htmlEntities(kota);
+        credits.tempat_tinggal.kecamatan = htmlEntities(kecamatan);
+        credits.tempat_tinggal.kelurahan = htmlEntities(kelurahan);
+        credits.tempat_tinggal.kode_pos = htmlEntities(kode_pos);
+        credits.tempat_tinggal.alamat = htmlEntities(alamat);
     }
 
     function pushDataKendaraan() {
@@ -744,12 +744,12 @@
             model_kendaraan_text = $("#model_kendaraan option[value='" + model_kendaraan + "']").text();
 
 
-        credits.kendaraan.merk_kendaraan = merk_kendaraan;
-        credits.kendaraan.merk_kendaraan_text = merk_kendaraan_text;
-        credits.kendaraan.model_kendaraan = model_kendaraan;
-        credits.kendaraan.model_kendaraan_text = model_kendaraan_text;
-        credits.kendaraan.tahun_kendaraan = tahun_kendaraan;
-        credits.kendaraan.status_pemilik = status_pemilik;
+        credits.kendaraan.merk_kendaraan = htmlEntities(merk_kendaraan);
+        credits.kendaraan.merk_kendaraan_text = htmlEntities(merk_kendaraan_text);
+        credits.kendaraan.model_kendaraan = htmlEntities(model_kendaraan);
+        credits.kendaraan.model_kendaraan_text = htmlEntities(model_kendaraan_text);
+        credits.kendaraan.tahun_kendaraan = htmlEntities(tahun_kendaraan);
+        credits.kendaraan.status_pemilik = htmlEntities(status_pemilik);
     }
 
     function pushDataBangunan() {
@@ -770,14 +770,14 @@
             kelurahan_sertificate = $("#kelurahan_sertificate option[value='" + kelurahan_sertificate + "']").text();
 
 
-            credits.data_bangunan.status_sertifikat = status_sertificate;
-            credits.data_bangunan.sertifikat_atas_nama = own_sertificate;
-            credits.data_bangunan.provinsi = provinsi_sertificate;
-            credits.data_bangunan.kota = kota_sertificate;
-            credits.data_bangunan.kecamatan = kecamatan_sertificate;
-            credits.data_bangunan.kelurahan = kelurahan_sertificate;
-            credits.data_bangunan.kode_pos = kode_pos_sertificate;
-            credits.data_bangunan.alamat = alamat_lengkap_sertificate;
+            credits.data_bangunan.status_sertifikat = htmlEntities(status_sertificate);
+            credits.data_bangunan.sertifikat_atas_nama = htmlEntities(own_sertificate);
+            credits.data_bangunan.provinsi = htmlEntities(provinsi_sertificate);
+            credits.data_bangunan.kota = htmlEntities(kota_sertificate);
+            credits.data_bangunan.kecamatan = htmlEntities(kecamatan_sertificate);
+            credits.data_bangunan.kelurahan = htmlEntities(kelurahan_sertificate);
+            credits.data_bangunan.kode_pos = htmlEntities(kode_pos_sertificate);
+            credits.data_bangunan.alamat = htmlEntities(alamat_lengkap_sertificate);
         }
         ;
     }
@@ -1633,13 +1633,17 @@
             success: function (dataObj) {
                 if (dataObj.success == true) {
                     $.each(dataObj.result.data, function (idMobilmotor, valMobilmotor) {
-                        if (valMobilmotor.name != '') {
-                            var elementOption = '<option value="' + valMobilmotor.id + '">' + valMobilmotor.name + '</option>';
-                            $('#merk').empty();
-                            setTimeout(function () {
-                                $(element).append(elementOption);
-                            },50);
+                        // console.log(valMobilmotor);
+                        if ($('#merk_kendaraan option').length <= 1) {
+                            if (valMobilmotor.name != '') {
+                                var elementOption = '<option value="' + valMobilmotor.id + '">' + valMobilmotor.name + '</option>';
+                                $('#merk').empty();
+                                setTimeout(function () {
+                                    $(element).append(elementOption);
+                                },50);
+                            }
                         }
+                        
                     })
                 }
             }
@@ -1733,6 +1737,8 @@
     $('#model_kendaraan').attr("disabled", "disabled");
     $('#model_kendaraan').next().css("background-color", "#F4F4F4");
     $('#model_kendaraan').next().find(".jcf-select-opener").css("background-color", "#F4F4F4");
+
+    $('#kode_pos').attr("disabled", "disabled");
 
     $('#alamat_lengkap').attr("disabled", "disabled");
     $('#alamat_lengkap').css("background-color", "#F4F4F4");
@@ -2350,7 +2356,7 @@
             post_code: htmlEntities(params.tempat_tinggal.kode_pos),
             tahun: htmlEntities(params.kendaraan.tahun_kendaraan)
         }
-        //alert(_data.tipe + "-" +_data.model_kendaraan + "-" + _data.merk_kendaraan + "-" + _data.post_code + "-" + _data.tahun);
+        // alert(_data.tipe + "-" +_data.model_kendaraan + "-" + _data.merk_kendaraan + "-" + _data.post_code + "-" + _data.tahun);
         $.ajax({
             type: 'POST',
             url: _url,

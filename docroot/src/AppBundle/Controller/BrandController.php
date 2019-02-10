@@ -59,11 +59,11 @@ class BrandController extends FrontendController
      */
     public function productListJsonAction(Request $request)
     {
-        $data = $this->getBranchBfi((string)htmlentities($request->get('post_code')));
+        $data = $this->getBranchBfi((string)htmlentities(addslashes($request->get('post_code'))));
         $nameKota = $data[0]->branch;
 
         $param = [];
-        $param['loan_type'] = (string)htmlentities($request->get('tipe'));
+        $param['loan_type'] = (string)htmlentities(addslashes($request->get('tipe')));
         $param['branch'] = $nameKota;
 
         $url = WebsiteSetting::getByName('URL_GET_CAR')->getData();
@@ -105,13 +105,13 @@ class BrandController extends FrontendController
      */
     public function detailListJsonAction(Request $request)
     {
-        $data = $this->getBranchBfi((string)htmlentities($request->get('post_code')));
+        $data = $this->getBranchBfi((string)htmlentities(addslashes($request->get('post_code'))));
         $nameKota = $data[0]->branch;
 
         $param = [];
-        $param['loan_type'] = (string)htmlentities($request->get('tipe'));
+        $param['loan_type'] = (string)htmlentities(addslashes($request->get('tipe')));
         $param['branch'] = $nameKota;
-        $param['brand_name'] = (string)htmlentities($request->get('brand'));
+        $param['brand_name'] = (string)htmlentities(addslashes($request->get('brand')));
 
         $url = WebsiteSetting::getByName('URL_GET_CAR')->getData();
 
@@ -152,14 +152,14 @@ class BrandController extends FrontendController
      */
     public function yearListJsonAction(Request $request)
     {
-        $data = $this->getBranchBfi((string)htmlentities($request->get('post_code')));
+        $data = $this->getBranchBfi((string)htmlentities(addslashes($request->get('post_code'))));
         $nameKota = $data[0]->branch;
 
         $param = [];
-        $param['loan_type'] = (string)htmlentities($request->get('tipe'));
+        $param['loan_type'] = (string)htmlentities(addslashes($request->get('tipe')));
         $param['branch'] = $nameKota;
-        $param['brand_name'] = (string)htmlentities($request->get('brand'));
-        $param['model'] = (string)htmlentities($request->get('model'));
+        $param['brand_name'] = (string)htmlentities(addslashes($request->get('brand')));
+        $param['model'] = (string)htmlentities(addslashes($request->get('model')));
 
         $url = WebsiteSetting::getByName('URL_GET_CAR')->getData();
 

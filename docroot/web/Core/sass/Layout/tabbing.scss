@@ -13,14 +13,15 @@
         display: inline-flex;
         flex-flow: row wrap;
         border: none;
+        justify-content: center;
         @include breakpoint(mobile){
-            display: inherit;
+            display: inherit; 
             width: auto;
             flex-flow: unset;
             white-space: nowrap;
         }
         > li{
-            flex: 5;
+            // flex: 5;
             @include breakpoint(mobile){
                 display: inline-block;
                 float: unset;
@@ -73,7 +74,13 @@
                     }
                 }
             }
-
+            &.done {
+                a {
+                    span {
+                        background-color: $orange-color;
+                    }
+                }
+            }
             &.active {
                 a {
                     &:hover {
@@ -125,9 +132,9 @@
             padding-right: 15px;
             width: 45%;
             padding-bottom: 0;
-            &.next {
-                margin-right: 32px;
-            }
+            // &.next {
+            //    margin-right: 32px;
+            // }
         }
 
         &.center{
