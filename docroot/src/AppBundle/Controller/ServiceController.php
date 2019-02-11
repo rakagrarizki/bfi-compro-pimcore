@@ -120,6 +120,8 @@ class ServiceController extends FrontendController
 
         $data = new City\Listing();
         $data->setCondition('ProvinceCode = '.$id);
+        $data->setOrderKey("Name");
+        $data->setOrder("ASC");
         $maps = [];
         if ($data) {
             foreach ($data as $item) {
@@ -151,6 +153,8 @@ class ServiceController extends FrontendController
         }
         $data = new Kecamatan\Listing();
         $data->setCondition('CityCode = '.$id);
+        $data->setOrderKey("Name");
+        $data->setOrder("ASC");
         $maps = [];
         if ($data) {
             foreach ($data as $item) {
@@ -182,6 +186,8 @@ class ServiceController extends FrontendController
         }
         $data = new Kelurahan\Listing();
         $data->setCondition('KecamatanCode = '.$id);
+        $data->setOrderKey("Name");
+        $data->setOrder("ASC");
         $maps = [];
         if ($data) {
             foreach ($data as $item) {
