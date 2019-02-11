@@ -24,7 +24,6 @@
                                 <div class="_boxkananchild1">
                                     <div class="input-group inputform">
                                         <select class="c-custom-select-home" id="sel-how-form-credit">
-                                            <option value=""> <?= $this->translate('collateralInfo2')?></option>
                                             <?php
                                             while ($this->block("contentblock")->loop()) {
                                                 $url = !$this->link('url')->isEmpty() ? $this->link('url')->getHref() : "";
