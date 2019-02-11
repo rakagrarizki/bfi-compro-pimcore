@@ -463,6 +463,15 @@
             height: 150px;
             resize: none;
             padding-top:20px;
+            &::placeholder {
+                color: black;
+                opacity: 0.7; /* Firefox */
+                &:after {     
+                    content:"123123123";
+                    color:red;
+                    opacity: 1;
+               }
+            }
         }
 
         .form-control {
