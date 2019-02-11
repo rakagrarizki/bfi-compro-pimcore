@@ -1,5 +1,5 @@
 .form-body--credit {
-    width: calc(0.35 * 100%);
+    width: calc(0.422 * 100%);
     margin: auto;
 
     @include breakpoint(mobile){
@@ -73,7 +73,7 @@
     font-family: 'HelveticaNeue';
 
     .form-body--credit-simulasi {
-        width: calc(0.8 * 100%);
+        width: 100%;
         margin: auto;
         @include breakpoint(mobile){
             width: auto;
@@ -233,8 +233,9 @@
                     flex-wrap: nowrap;
                     margin-bottom:10px;
                     .list-select{
+                        width: 65%;
                         &:first-child{
-                            width: 150px;
+                            width: 35%;
                             display: flex;
                             align-items: center;
                             label{
@@ -422,7 +423,6 @@
             font-family: 'HelveticaNeue';
             font-size: 12px;
             letter-spacing: 1px;
-            display: block;
             padding: 5px 15px;
             position:absolute;
             color:#04559F;
@@ -463,6 +463,15 @@
             height: 150px;
             resize: none;
             padding-top:20px;
+            &::placeholder {
+                color: black;
+                opacity: 0.7; /* Firefox */
+                &:after {     
+                    content:"123123123";
+                    color:red;
+                    opacity: 1;
+               }
+            }
         }
 
         .form-control {

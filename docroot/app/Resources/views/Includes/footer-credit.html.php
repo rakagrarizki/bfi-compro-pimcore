@@ -34,8 +34,6 @@ if($this->editmode) : ?>
             <li><a href="<?=$this->link('career')->getHref();?>"><?= $this->translate("career") ?></a></li>
             <li><a href="<?=$this->link('contact')->getHref();?>"><?= $this->translate("contact") ?></a></li>
             <li><a href="<?=$this->link('branch')->getHref();?>"><?= $this->translate("branch") ?></a></li>
-            <li><a href="<?=$this->link('term')->getHref();?>"><?= $this->translate("term") ?></a></li>
-            <li><a href="<?=$this->link('privacy')->getHref();?>"><?= $this->translate("privacy") ?></a></li>
         </ul>
     </div>
 </div>
