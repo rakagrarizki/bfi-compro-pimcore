@@ -152,7 +152,7 @@ $this->extend('layout-credit.html.php');
                                         <div class="form-group">
                                             <label for="alamat_lengkap"><?= $this->translate('label-place')?></label>
                                             <textarea class="form-control formRequired" name="alamat_lengkap" id="alamat_lengkap"
-                                                      placeholder="<?= $this->translate('placeholder-place')?>"></textarea>
+                                                      placeholder="<?= $this->translate('placeholder-place')?> Contoh: Jalan Rajawali 1 Blok A no.11 RT 01 RW 02"></textarea>
                                             <div class="error-wrap"></div>
                                         </div>
                                     </div>
