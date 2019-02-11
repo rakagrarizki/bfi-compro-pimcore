@@ -464,7 +464,7 @@
             $(".columnselect[ke=" + i + "]").children().find("label").text("Tahun ke - " + i + "");
             asuransi_arr[asuransi_arr.length] = $(".columnselect .c-custom-select-trans").val();
         }
-
+        
         jcf.replaceAll();
 
         $.each($(".columnselect .c-custom-select-trans"), function (i, o) {
@@ -659,6 +659,7 @@
     }
 
     function showTab2() {
+        $('.nav-item-1').removeClass('disabled');
         $('#menu2').fadeIn();
     }
 
@@ -667,6 +668,7 @@
     }
 
     function showTab3() {
+        $('.nav-item-2').removeClass('disabled');
         $('#menu3').fadeIn();
     }
 
@@ -675,6 +677,7 @@
     }
 
     function showTab4() {
+        $('.nav-item-3').removeClass('disabled');
         $('#menu4').fadeIn();
     }
 
@@ -683,6 +686,7 @@
     }
 
     function showTab5() {
+        $('.nav-item-4').removeClass('disabled');
         $('#menu5').fadeIn();
     }
 
@@ -691,11 +695,22 @@
     }
 
     function showTab6() {
+        $('.nav-item-5').removeClass('disabled');
         $('#menu6').fadeIn();
     }
 
     function hideTab6() {
         $('#menu6').hide();
+    }
+
+    function hideCurrentTab(){
+        $(".form-get--credit .tab-content .tab-pane:visible").hide();
+        $('.nav-item-1').removeClass('active');
+        $('.nav-item-2').removeClass('active');
+        $('.nav-item-3').removeClass('active');
+        $('.nav-item-4').removeClass('active');
+        $('.nav-item-5').removeClass('active');
+        
     }
 
     function pushDataPemohon() {
@@ -1055,7 +1070,14 @@
                 $('.nav-item-1').removeClass('active');
                 $('.nav-item-1').addClass('done');
                 $('.nav-item-2').addClass('active');
-
+                if ($('.nav-item-1').hasClass("done")){
+                    $('.nav-item-1').on('click', function (e) {
+                        e.preventDefault();
+                        hideCurrentTab();
+                        showTab1();
+                        $('.nav-item-1').addClass('active');
+                    })
+                }
                 pushDataPemohon();
 
                 if (isMobile) {
@@ -1075,6 +1097,14 @@
                 $('.nav-item-2').removeClass('active');
                 $('.nav-item-2').addClass('done');
                 $('.nav-item-3').addClass('active');
+                if ($('.nav-item-2').hasClass("done")){
+                    $('.nav-item-2').on('click', function (e) {
+                        e.preventDefault();
+                        hideCurrentTab();
+                        showTab2();
+                        $('.nav-item-2').addClass('active');
+                    })
+                }
 
                 pushDataTempatTinggal();
 
@@ -1090,6 +1120,12 @@
 
         $('#button3').on('click', function (e) {
             e.preventDefault();
+            $("#jangka_waktu").each(function() { 
+                this.selectedIndex = 0 
+            });
+            $(".currency[tahun='0']").text("Rp " + 0);
+            $(".currency[tahun='1']").text("Rp " + 0);
+            $(".total").text("Rp " + 0);
 
             if ($(this).closest('form').valid()) {
                 showTab4();
@@ -1098,6 +1134,14 @@
                 $('.nav-item-3').removeClass('active');
                 $('.nav-item-3').addClass('done');
                 $('.nav-item-4').addClass('active');
+                if ($('.nav-item-3').hasClass("done")){
+                    $('.nav-item-3').on('click', function (e) {
+                        e.preventDefault();
+                        hideCurrentTab();
+                        showTab3();
+                        $('.nav-item-3').addClass('active');
+                    })
+                }
 
                 pushDataKendaraan();
                 getpriceminmax(credits);
@@ -1120,7 +1164,15 @@
                 $('.nav-item-3').removeClass('active');
                 $('.nav-item-3').addClass('done');
                 $('.nav-item-4').addClass('active');
-
+                if ($('.nav-item-3').hasClass("done")){
+                    $('.nav-item-3').on('click', function (e) {
+                        e.preventDefault();
+                        hideCurrentTab();
+                        showTab3();
+                        $('.nav-item-3').addClass('active');
+                    })
+                }
+                
                 pushDataBangunan();
                 setSummary();
 
@@ -1146,6 +1198,14 @@
                 $('.nav-item-4').removeClass('active');
                 $('.nav-item-4').addClass('done');
                 $('.nav-item-5').addClass('active');
+                if ($('.nav-item-4').hasClass("done")){
+                    $('.nav-item-4').on('click', function (e) {
+                        e.preventDefault();
+                        hideCurrentTab();
+                        showTab4();
+                        $('.nav-item-4').addClass('active');
+                    })
+                }
 
                 setSummary();
 
@@ -1177,6 +1237,7 @@
             showTab6();
             hideTab5();
             scrollToTop();
+            
             $('.input-number:first-child').focus();
             $('.horizontal-scroll').hide();
             // $('#showPhone span').html(credits.pemohon.no_handphone);
@@ -1633,17 +1694,16 @@
             success: function (dataObj) {
                 if (dataObj.success == true) {
                     $.each(dataObj.result.data, function (idMobilmotor, valMobilmotor) {
-                        // console.log(valMobilmotor);
-                        if ($('#merk_kendaraan option').length <= 1) {
-                            if (valMobilmotor.name != '') {
-                                var elementOption = '<option value="' + valMobilmotor.id + '">' + valMobilmotor.name + '</option>';
-                                $('#merk').empty();
-                                setTimeout(function () {
-                                    $(element).append(elementOption);
-                                },50);
-                            }
+                        if ($('#merk_kendaraan option').length > 1) {
+                            $('#merk_kendaraan option:not(:first)').remove();
                         }
-                        
+                        if (valMobilmotor.name != '') {
+                            var elementOption = '<option value="' + valMobilmotor.id + '">' + valMobilmotor.name + '</option>';
+                            $('#merk').empty();
+                            setTimeout(function () {
+                                $(element).append(elementOption);
+                            },50);
+                        }
                     })
                 }
             }
@@ -1737,8 +1797,6 @@
     $('#model_kendaraan').attr("disabled", "disabled");
     $('#model_kendaraan').next().css("background-color", "#F4F4F4");
     $('#model_kendaraan').next().find(".jcf-select-opener").css("background-color", "#F4F4F4");
-
-    $('#kode_pos').attr("disabled", "disabled");
 
     $('#alamat_lengkap').attr("disabled", "disabled");
     $('#alamat_lengkap').css("background-color", "#F4F4F4");
@@ -2327,7 +2385,7 @@
     //function get credit min max price dan asurasi list
 
     function separatordot(o) {
-        var bilangan = o;
+        var bilangan = Math.ceil(o);
 
         var number_string = bilangan.toString(),
             sisa = number_string.length % 3,
@@ -2814,7 +2872,7 @@
 
                 var totalbiaya = (parseInt(angsuranFinal) * parseInt(_param.tenor) - parseInt(insuranceCarTot)) / parseInt(_param.tenor),
                     totalbiaya_txt = separatordot(totalbiaya);
-
+                
                 angsuranFinal_txt = "Rp " + angsuranFinal_txt;
                 totalbiaya_txt = "Rp " + totalbiaya_txt;
                 insuranceCarTot_txt = "Rp " + insuranceCarTot_txt;
