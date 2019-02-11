@@ -710,7 +710,6 @@
         $('.nav-item-3').removeClass('active');
         $('.nav-item-4').removeClass('active');
         $('.nav-item-5').removeClass('active');
-        
     }
 
     function pushDataPemohon() {
@@ -2942,19 +2941,37 @@
 
     $(".form-control").on('focus', function () {
         if ($(this).attr("id") !== "ex6SliderVal") {
-            $(this).prev().css("display", "block");
+            $(this).prev().css({
+                'display' : 'block',
+                'padding' : '15px 15px 5px'
+            });
+            $(this).css({
+                'padding-top' : '35px',
+                'padding-bottom' : '15px'
+            });
         }
     });
 
     $(".form-control").on('focusout', function () {
         if ($(this).val() == "") {
             $(this).prev().css("display", "none");
+            $(this).css({
+                'padding-top' : '20px',
+                'padding-bottom' : '20px'
+            });
         }
         ;
     });
 
     $(".jcf-select").click(function () {
-        $(this).prev().prev().css("display", "block");
+        
+        $(this).prev().prev().css({
+            'display' : 'block',
+            'padding' : '12px 15px 5px'
+        });
+        $(this).css({
+            'padding-top' : '8px',
+        });
     });
 
     // $("#produk").hover(function() {
