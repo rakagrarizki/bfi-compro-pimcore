@@ -89,12 +89,20 @@ a {
     @include breakpoint(mobile){
         font-size: 1.8em;
     }
+
+    @include breakpoint(tablet){
+        font-size: 1.8em;
+    }
 }
 .paragraf-title {
     font-size: 1.45em;
     font-family: 'HelveticaNeue';
     color:#565656;
     @include breakpoint(mobile){
+        font-size: 1em;
+    }
+
+    @include breakpoint(tablet){
         font-size: 1em;
     }
 }
