@@ -95,7 +95,9 @@
             flex-wrap: nowrap;
             margin-left:65px;
             padding:0;
-
+            @include breakpoint(tablet){
+                margin-left: 30px;
+            }
             .link-about-top {
                 a {
                     font-family: 'HelveticaNeue';

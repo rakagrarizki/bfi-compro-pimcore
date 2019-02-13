@@ -2215,6 +2215,14 @@
 
         if (postcodeGen !== 'null') {
             $("#kode_pos").val(postcodeGen);
+            $("#kode_pos").prev().css({
+                'display' : 'block',
+                'padding' : '15px 15px 5px'
+            });
+            $("#kode_pos").css({
+                'padding-top' : '35px',
+                'padding-bottom' : '15px'
+            });
         } else {
             $("#kode_pos").val("");
         }
@@ -2239,6 +2247,14 @@
 
         if (postcodeGen !== 'null') {
             $("#kode_pos_sertificate").val(postcodeGen);
+            $("#kode_pos_sertificate").prev().css({
+                'display' : 'block',
+                'padding' : '15px 15px 5px'
+            });
+            $("#kode_pos_sertificate").css({
+                'padding-top' : '35px',
+                'padding-bottom' : '15px'
+            });
         } else {
             $("#kode_pos_sertificate").val("");
         }

@@ -15,10 +15,10 @@ use Pimcore\Model\Document\Page;
         <div class="header-top">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6 left-side-top">
+                    <div class="col-md-6 col-sm-6 left-side-top">
                         <a href="/<?php echo $this->getLocale() ?>" class="backtohome"><?= $this->translate("backtohome") ?></a>
                     </div>
-                    <div class="col-md-5 right-side-top">
+                    <div class="col-md-5 col-sm-5 right-side-top">
                         <?php echo $this->template("Includes/language.html.php") ?>
                     </div>
 
@@ -29,7 +29,7 @@ use Pimcore\Model\Document\Page;
         <div class="header-bottom">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-4 header-bottom-logo">
+                    <div class="col-md-4 col-sm-4 header-bottom-logo">
                         <a href="<?php echo "/".$this->getLocale(); ?>">
                             <img src="/static/images/logo-bfi.png" class="img-responsive" alt="">
                         </a>

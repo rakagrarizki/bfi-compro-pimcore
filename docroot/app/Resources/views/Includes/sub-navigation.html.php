@@ -23,13 +23,13 @@ if($this->editmode) : ?>
 <div class="header-top">
     <div class="container">
         <div class="row">
-            <div class="col-md-6 left-side-top">
+            <div class="col-md-6 col-sm-6 left-side-top">
                 <a class="_personal"
                    href="/<?php echo $this->getLocale() ?>"><?= $this->translate("personal") ?></a>
                 <a class="_grup" target="<?=$this->link('corporate')!= "" ?$this->link('corporate')->getTarget():'' ?>" href="<?=$this->link('corporate')!= "" ?$this->link('corporate')->getHref():'' ?>">
                     <?= $this->translate("corporate") ?></a>
             </div>
-            <div class="col-md-5 right-side-top">
+            <div class="col-md-5 col-sm-5 right-side-top">
                 <div class="link-about-top">
                     <a target="<?=$this->link('contact-us')!= "" ?$this->link('contact-us')->getTarget():'' ?>" href="<?=$this->link('contact-us')!= "" ?$this->link('contact-us')->getHref():'' ?>">
                         <?= $this->translate("contact-us") ?></a>
