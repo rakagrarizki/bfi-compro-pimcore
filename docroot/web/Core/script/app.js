@@ -43,6 +43,10 @@
     var flag_sudahcalc = false;
     var status_edit = false;
     var change_addres = false;
+    var step1Done = false;
+    var step2Done = false;
+    var step3Done = false;
+    var step4Done = false;
 
     var credits = {
         "angunan": {
@@ -1099,6 +1103,7 @@
                 hideTab1();
                 showTab2();
                 scrollToTop();
+                step1Done = true;
                 $('.nav-item-1').removeClass('active');
                 $('.nav-item-1').addClass('done');
                 $('.nav-item-2').addClass('active');
@@ -1126,6 +1131,7 @@
                 showTab3();
                 hideTab2();
                 scrollToTop();
+                step2Done = true;
                 $('.nav-item-2').removeClass('active');
                 $('.nav-item-2').addClass('done');
                 $('.nav-item-3').addClass('active');
@@ -1148,6 +1154,7 @@
                 if (isMobile) {
                     $(".horizontal-scroll").scrollLeft(260);
                 }
+                
             }
         })
 
@@ -1158,6 +1165,7 @@
                 showTab4();
                 hideTab3();
                 scrollToTop();
+                step3Done = true;
                 $('.nav-item-3').removeClass('active');
                 $('.nav-item-3').addClass('done');
                 $('.nav-item-4').addClass('active');
@@ -1198,6 +1206,7 @@
                 showTab4();
                 hideTab3();
                 scrollToTop();
+                step3Done = true;
                 $('.nav-item-3').removeClass('active');
                 $('.nav-item-3').addClass('done');
                 $('.nav-item-4').addClass('active');
@@ -1234,6 +1243,7 @@
                 showTab5();
                 hideTab4();
                 scrollToTop();
+                step4Done = true;
                 $('.nav-item-4').removeClass('active');
                 $('.nav-item-4').addClass('done');
                 $('.nav-item-5').addClass('active');
@@ -1346,7 +1356,9 @@
         $('#buttonback2').on('click', function (e) {
             e.preventDefault();
             $('.nav-item-2').removeClass('active');
-            $('.nav-item-1').removeClass('done');
+            if(!step1Done){
+                $('.nav-item-1').removeClass('done');
+            } 
             $('.nav-item-1').addClass('active');
 
             $('.tab-pane').fadeOut();
@@ -1362,7 +1374,9 @@
         $('#buttonback3').on('click', function (e) {
             e.preventDefault();
             $('.nav-item-3').removeClass('active');
-            $('.nav-item-2').removeClass('done');
+            if(!step2Done){
+                $('.nav-item-2').removeClass('done');
+            }
             $('.nav-item-2').addClass('active');
 
             $('.tab-pane').fadeOut();
@@ -1378,7 +1392,9 @@
         $('#buttonback4').on('click', function (e) {
             e.preventDefault();
             $('.nav-item-4').removeClass('active');
-            $('.nav-item-3').removeClass('done');
+            if(!step3Done){
+                $('.nav-item-3').removeClass('done');
+            }
             $('.nav-item-3').addClass('active');
 
             $('.tab-pane').fadeOut();
@@ -1394,7 +1410,9 @@
         $('#buttonback5').on('click', function (e) {
             e.preventDefault();
             $('.nav-item-5').removeClass('active');
-            $('.nav-item-4').removeClass('done');
+            if(!step4Done){
+                $('.nav-item-4').removeClass('done');
+            }
             $('.nav-item-4').addClass('active');
 
             $('.tab-pane').fadeOut();
@@ -1839,6 +1857,20 @@
         showDefaultButton();
         change_addres = true;
 
+        // status_edit = true;
+        if($('.nav-item-2').hasClass("done")){
+            $('.nav-item-2').removeClass("done");
+            $('.nav-item-2').addClass("disabled");
+        }
+        if($('.nav-item-3').hasClass("done")){
+            $('.nav-item-3').removeClass("done");
+            $('.nav-item-3').addClass("disabled");
+        }
+        if($('.nav-item-4').hasClass("done")){
+            $('.nav-item-4').removeClass("done");
+            $('.nav-item-4').addClass("disabled");
+        }
+
         $("#kode_pos").val("");
 
         $('#kota').removeAttr("disabled");
@@ -1904,6 +1936,19 @@
 
     $('#provinsi_sertificate').change(function () {
         showDefaultButton();
+
+        if($('.nav-item-2').hasClass("done")){
+            $('.nav-item-2').removeClass("done");
+            $('.nav-item-2').addClass("disabled");
+        }
+        if($('.nav-item-3').hasClass("done")){
+            $('.nav-item-3').removeClass("done");
+            $('.nav-item-3').addClass("disabled");
+        }
+        if($('.nav-item-4').hasClass("done")){
+            $('.nav-item-4').removeClass("done");
+            $('.nav-item-4').addClass("disabled");
+        }
 
         $("#kode_pos_sertificate").val("");
 
@@ -1972,6 +2017,18 @@
         showDefaultButton();
         change_addres = true;
 
+        if($('.nav-item-2').hasClass("done")){
+            $('.nav-item-2').removeClass("done");
+            $('.nav-item-2').addClass("disabled");
+        }
+        if($('.nav-item-3').hasClass("done")){
+            $('.nav-item-3').removeClass("done");
+            $('.nav-item-3').addClass("disabled");
+        }
+        if($('.nav-item-4').hasClass("done")){
+            $('.nav-item-4').removeClass("done");
+            $('.nav-item-4').addClass("disabled");
+        }
         $("#kode_pos").val("");
 
         $('#kecamatan').removeAttr("disabled");
@@ -2033,7 +2090,18 @@
 
     $('#kota_sertificate').change(function () {
         showDefaultButton();
-
+        if($('.nav-item-2').hasClass("done")){
+            $('.nav-item-2').removeClass("done");
+            $('.nav-item-2').addClass("disabled");
+        }
+        if($('.nav-item-3').hasClass("done")){
+            $('.nav-item-3').removeClass("done");
+            $('.nav-item-3').addClass("disabled");
+        }
+        if($('.nav-item-4').hasClass("done")){
+            $('.nav-item-4').removeClass("done");
+            $('.nav-item-4').addClass("disabled");
+        }
         $("#kode_pos_sertificate").val("");
 
         $('#kecamatan_sertificate').removeAttr("disabled");
@@ -2097,6 +2165,18 @@
         showDefaultButton();
         change_addres = true;
 
+        if($('.nav-item-2').hasClass("done")){
+            $('.nav-item-2').removeClass("done");
+            $('.nav-item-2').addClass("disabled");
+        }
+        if($('.nav-item-3').hasClass("done")){
+            $('.nav-item-3').removeClass("done");
+            $('.nav-item-3').addClass("disabled");
+        }
+        if($('.nav-item-4').hasClass("done")){
+            $('.nav-item-4').removeClass("done");
+            $('.nav-item-4').addClass("disabled");
+        }
         $("#kode_pos").val("");
 
         $('#kelurahan').removeAttr("disabled");
@@ -2151,7 +2231,18 @@
 
     $('#kecamatan_sertificate').change(function () {
         showDefaultButton();
-
+        if($('.nav-item-2').hasClass("done")){
+            $('.nav-item-2').removeClass("done");
+            $('.nav-item-2').addClass("disabled");
+        }
+        if($('.nav-item-3').hasClass("done")){
+            $('.nav-item-3').removeClass("done");
+            $('.nav-item-3').addClass("disabled");
+        }
+        if($('.nav-item-4').hasClass("done")){
+            $('.nav-item-4').removeClass("done");
+            $('.nav-item-4').addClass("disabled");
+        }
         $("#kode_pos_sertificate").val("");
 
         $('#kelurahan_sertificate').removeAttr("disabled");
@@ -2207,7 +2298,18 @@
     $('#kelurahan').change(function () {
         showDefaultButton();
         change_addres = true;
-
+        if($('.nav-item-2').hasClass("done")){
+            $('.nav-item-2').removeClass("done");
+            $('.nav-item-2').addClass("disabled");
+        }
+        if($('.nav-item-3').hasClass("done")){
+            $('.nav-item-3').removeClass("done");
+            $('.nav-item-3').addClass("disabled");
+        }
+        if($('.nav-item-4').hasClass("done")){
+            $('.nav-item-4').removeClass("done");
+            $('.nav-item-4').addClass("disabled");
+        }
         $('#alamat_lengkap').removeAttr("disabled");
         $('#alamat_lengkap').css("background-color", "white");
 
@@ -2239,7 +2341,18 @@
 
     $('#kelurahan_sertificate').change(function () {
         showDefaultButton();
-
+        if($('.nav-item-2').hasClass("done")){
+            $('.nav-item-2').removeClass("done");
+            $('.nav-item-2').addClass("disabled");
+        }
+        if($('.nav-item-3').hasClass("done")){
+            $('.nav-item-3').removeClass("done");
+            $('.nav-item-3').addClass("disabled");
+        }
+        if($('.nav-item-4').hasClass("done")){
+            $('.nav-item-4').removeClass("done");
+            $('.nav-item-4').addClass("disabled");
+        }
         $('#alamat_lengkap_sertificate').removeAttr("disabled");
         $('#alamat_lengkap_sertificate').css("background-color", "white");
 
@@ -2303,6 +2416,14 @@
 
     $('#merk_kendaraan').change(function () {
         showDefaultButton();
+        if($('.nav-item-3').hasClass("done")){
+            $('.nav-item-3').removeClass("done");
+            $('.nav-item-3').addClass("disabled");
+        }
+        if($('.nav-item-4').hasClass("done")){
+            $('.nav-item-4').removeClass("done");
+            $('.nav-item-4').addClass("disabled");
+        }
         $('#model_kendaraan').removeAttr("disabled");
         $('#model_kendaraan').next().css("background-color", "white");
         $('#model_kendaraan').next().find(".jcf-select-opener").css("background-color", "white");
@@ -2359,6 +2480,14 @@
 
     $('#model_kendaraan').change(function () {
         showDefaultButton();
+        if($('.nav-item-3').hasClass("done")){
+            $('.nav-item-3').removeClass("done");
+            $('.nav-item-3').addClass("disabled");
+        }
+        if($('.nav-item-4').hasClass("done")){
+            $('.nav-item-4').removeClass("done");
+            $('.nav-item-4').addClass("disabled");
+        }
         $('#tahun_kendaraan').removeAttr("disabled");
         $('#tahun_kendaraan').next().css("background-color", "white");
         $('#tahun_kendaraan').next().find(".jcf-select-opener").css("background-color", "white");
@@ -2416,6 +2545,14 @@
 
     $('#tahun_kendaraan').change(function () {
         showDefaultButton();
+        if($('.nav-item-3').hasClass("done")){
+            $('.nav-item-3').removeClass("done");
+            $('.nav-item-3').addClass("disabled");
+        }
+        if($('.nav-item-4').hasClass("done")){
+            $('.nav-item-4').removeClass("done");
+            $('.nav-item-4').addClass("disabled");
+        }
         $('#status_kep').removeAttr("disabled");
         $('#status_kep').next().css("background-color", "white");
         $('#status_kep').next().find(".jcf-select-opener").css("background-color", "white");
@@ -2431,6 +2568,14 @@
 
     $('#status_kep').change(function () {
         showDefaultButton();
+        if($('.nav-item-3').hasClass("done")){
+            $('.nav-item-3').removeClass("done");
+            $('.nav-item-3').addClass("disabled");
+        }
+        if($('.nav-item-4').hasClass("done")){
+            $('.nav-item-4').removeClass("done");
+            $('.nav-item-4').addClass("disabled");
+        }
         if ($("#model_kendaraan").val() == "" || $(this).val() == "" || $("#tahun_kendaraan").val() == "" || $("#merk_kendaraan").val() == "") {
             $("#button3").css("background-color", "#dddddd");
             $("#button3").css("border-color", "#dddddd");
@@ -3023,14 +3168,15 @@
     });
 
     $(".jcf-select").click(function () {
-        
-        $(this).prev().prev().css({
-            'display' : 'block',
-            'padding' : '12px 15px 5px'
-        });
-        $(this).css({
-            'padding-top' : '8px',
-        });
+        if ($(this).prev().attr("id") !== "jangka_waktu") {
+            $(this).prev().prev().css({
+                'display' : 'block',
+                'padding' : '12px 15px 5px'
+            });
+            $(this).css({
+                'padding-top' : '8px',
+            });
+        }
     });
 
     // $("#produk").hover(function() {
