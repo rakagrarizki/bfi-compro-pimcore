@@ -7,6 +7,12 @@
         padding-left: 15px;
         padding-right: 15px;
     }
+    @include breakpoint(wide){
+        width: calc(0.52 * 100%); 
+    } 
+    @include breakpoint(desktop){
+        width: calc(0.42 * 100%); 
+    } 
 
     h2 {
         font-family: 'HelveticaNeue-Bold';
@@ -288,6 +294,15 @@
                 @include breakpoint(mobile){
                     width:auto;
                 }
+                @include breakpoint(tablet){
+                    width:auto;
+                }
+                @include breakpoint(wide){
+                    width:auto;
+                }
+                @include breakpoint(desktop){
+                    width:420px;
+                }
        
                 .slider-horizontal{   
                     width: 100%;
@@ -476,19 +491,11 @@
 
         .form-control {
             height: 70px;
-            width:400px;
+            width:100%;
             font-size: 18px;
             border-radius: inherit;
             padding-top:20px;
             padding-bottom:20px;
-
-            @include breakpoint(mobile){
-                width:100%;
-            }
-
-             @include breakpoint(tablet){
-                width:100%;
-            }
 
             &::placeholder {
                 font-style: italic;
@@ -834,6 +841,9 @@
             @include breakpoint(mobile){
                 width: calc( 20% - 30px )
             }
+            @include breakpoint(tablet){
+                width: 40px;
+            }
         }
     }
 
@@ -929,6 +939,15 @@
     width:340px;
     @include breakpoint(mobile){
         width: 100%;
+    }
+    @include breakpoint(tablet){
+        width: 100%;
+    }
+    @include breakpoint(wide){
+        width: 100%;
+    }
+    @include breakpoint(desktop){
+        width: 340px;
     }
 }
 

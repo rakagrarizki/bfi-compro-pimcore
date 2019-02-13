@@ -73,7 +73,9 @@
             color:gray;
             border-bottom:1px solid;
             font-size:14px;
-
+            @include breakpoint(tablet){
+                bottom:unset;
+            }
             &:hover{
                 color:#F8991D;
             }

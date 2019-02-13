@@ -57,6 +57,7 @@
         }
 
         @include breakpoint(tablet) {
+            width: 100%;
             text-align:left;
         }
 
