@@ -568,7 +568,7 @@ $this->extend('layout-credit.html.php');
 
                                     <div class="button-area text-right next">
                                         <button class="cta cta-primary cta-big cta-see buttonnext" id="button6"
-                                                type="submit"><?= $this->translate('verifikasi')?></button>
+                                                type="button"><?= $this->translate('verifikasi')?></button>
                                     </div>
 
                                 </div>
