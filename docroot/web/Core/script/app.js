@@ -17,6 +17,13 @@
         infoArea.textContent = fileName;
     }
 
+    // console.log($( window ).height());
+    // console.log($(document).height());
+
+    
+    
+
+
 
     $(window).scroll(function () {
 
@@ -47,6 +54,37 @@
     var step2Done = false;
     var step3Done = false;
     var step4Done = false;
+
+    // SET HEIGHT CONTAINER WHEN CONTAINER SMALLER THAN DOCUMENT
+
+    // console.log(isMobile);
+    
+        var _docHeight = $(window).height();
+        var _siteContainer = $("#site-container").height();
+        if ($(".navbar-fixed-top").height() > 0){
+            var _marginTop = 130;
+        } else if ($(".top-nav--mobille").height() > 0) {
+            var _marginTop = 90;
+        }
+        var _marginTop = 130;
+        var _footerHeight = 80;
+        var _cleanDocHeight = _docHeight - _marginTop - _footerHeight;
+
+        
+        if (_siteContainer < _cleanDocHeight) {
+            console.log(_cleanDocHeight);
+            $("#site-container").css({
+                'min-height' : _cleanDocHeight,
+            });
+            if ($('#map').length) {
+                $(".map-wrapper").css({
+                    'height' : _cleanDocHeight,
+                });
+            }
+        }
+    
+    
+    // CLOSE 
 
     var credits = {
         "angunan": {
@@ -1113,6 +1151,13 @@
                         hideCurrentTab();
                         showTab1();
                         $('.nav-item-1').addClass('active');
+                        if ($('.nav-item-1').hasClass('active')){
+                            hideTab2();
+                            hideTab3();
+                            hideTab4();
+                            hideTab5();
+                            hideTab6();
+                        }
                     })
                 }
                 pushDataPemohon();
@@ -1141,6 +1186,13 @@
                         hideCurrentTab();
                         showTab2();
                         $('.nav-item-2').addClass('active');
+                        if ($('.nav-item-2').hasClass('active')){
+                            hideTab1();
+                            hideTab3();
+                            hideTab4();
+                            hideTab5();
+                            hideTab6();
+                        }
                     })
                 }
 
@@ -1175,6 +1227,13 @@
                         hideCurrentTab();
                         showTab3();
                         $('.nav-item-3').addClass('active');
+                        if ($('.nav-item-3').hasClass('active')){
+                            hideTab1();
+                            hideTab2();
+                            hideTab4();
+                            hideTab5();
+                            hideTab6();
+                        }
                     })
                 }
 
@@ -1216,6 +1275,13 @@
                         hideCurrentTab();
                         showTab3();
                         $('.nav-item-3').addClass('active');
+                        if ($('.nav-item-3').hasClass('active')){
+                            hideTab1();
+                            hideTab2();
+                            hideTab4();
+                            hideTab5();
+                            hideTab6();
+                        }
                     })
                 }
                 
@@ -1253,6 +1319,13 @@
                         hideCurrentTab();
                         showTab4();
                         $('.nav-item-4').addClass('active');
+                        if ($('.nav-item-4').hasClass('active')){
+                            hideTab1();
+                            hideTab2();
+                            hideTab3();
+                            hideTab5();
+                            hideTab6();
+                        }
                     })
                 }
 
@@ -1937,10 +2010,6 @@
     $('#provinsi_sertificate').change(function () {
         showDefaultButton();
 
-        if($('.nav-item-2').hasClass("done")){
-            $('.nav-item-2').removeClass("done");
-            $('.nav-item-2').addClass("disabled");
-        }
         if($('.nav-item-3').hasClass("done")){
             $('.nav-item-3').removeClass("done");
             $('.nav-item-3').addClass("disabled");
@@ -2090,10 +2159,7 @@
 
     $('#kota_sertificate').change(function () {
         showDefaultButton();
-        if($('.nav-item-2').hasClass("done")){
-            $('.nav-item-2').removeClass("done");
-            $('.nav-item-2').addClass("disabled");
-        }
+
         if($('.nav-item-3').hasClass("done")){
             $('.nav-item-3').removeClass("done");
             $('.nav-item-3').addClass("disabled");
@@ -2231,10 +2297,7 @@
 
     $('#kecamatan_sertificate').change(function () {
         showDefaultButton();
-        if($('.nav-item-2').hasClass("done")){
-            $('.nav-item-2').removeClass("done");
-            $('.nav-item-2').addClass("disabled");
-        }
+
         if($('.nav-item-3').hasClass("done")){
             $('.nav-item-3').removeClass("done");
             $('.nav-item-3').addClass("disabled");
@@ -2341,10 +2404,7 @@
 
     $('#kelurahan_sertificate').change(function () {
         showDefaultButton();
-        if($('.nav-item-2').hasClass("done")){
-            $('.nav-item-2').removeClass("done");
-            $('.nav-item-2').addClass("disabled");
-        }
+
         if($('.nav-item-3').hasClass("done")){
             $('.nav-item-3').removeClass("done");
             $('.nav-item-3').addClass("disabled");
@@ -2730,12 +2790,12 @@
                         } else {
                             var icondynamic = "/static/images/icon/branch1.png";
                         }
-                        console.log(valListing);
+
                         var contentString = '<div class="col-md-12 parent-brachlist linkgoogle infowindow" data-id="' + idListing + '" data-lat="' + valListing.latitude + '"  data-lng="' + valListing.longitude + '">';
                         contentString += '<div class="wrapper-branchlist">';
                         contentString += '<div class="row">';
-                        contentString += '<div class="col-md-2 col-sm-4 col-xs-4 branchlist"><img class="icon-gedung-branchlist" src="' + icondynamic + '"></div>';
-                        contentString += '<div class="col-md-10 col-sm-8 col-xs-8 branchlist">';
+                        contentString += '<div class="col-md-2 col-sm-2 col-xs-4 branchlist"><img class="icon-gedung-branchlist" src="' + icondynamic + '"></div>';
+                        contentString += '<div class="col-md-10 col-sm-9 col-xs-8 branchlist">';
                         contentString += '<p class="title-branch margin-bottom-10">' + valListing.name + '</p>';
                         contentString += '<p class="desc-branch">' + valListing.address + '</p>';
                         contentString += '<a href="#" class="margin-top-20">PETUNJUK ARAH <i class="fa fa-angle-right arrowlink" aria-hidden="true"></i></a>';
@@ -3218,6 +3278,6 @@
     stepAction();
     //tabAction();
     backAction();
-
+    
 
 })(jQuery);
