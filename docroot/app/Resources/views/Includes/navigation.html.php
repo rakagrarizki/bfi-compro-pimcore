@@ -18,13 +18,12 @@ use Pimcore\Model\Document\Page;
             <div class="container">
                 <div class="row">
 
-                    <div class="col-md-4 col-sm-4 header-bottom-logo">
+                    <div class="col-md-3 col-sm-4 header-bottom-logo">
                         <a href="<?php echo "/" . $this->getLocale(); ?>">
                             <img src="/static/images/logo-bfi.png" class="img-responsive" alt="">
                         </a>
-
                     </div>
-                    <div class="col-md-8 col-sm-8 header-bottom-menu">
+                    <div class="col-md-9 col-sm-8 header-bottom-menu">
                         <div class="header-link-menu">
                             <ul class="nav">
                                 <?php

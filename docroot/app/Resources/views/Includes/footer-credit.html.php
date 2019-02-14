@@ -40,7 +40,6 @@ if($this->editmode) : ?>
                     <li><a href="<?=$this->link('branch')->getHref();?>"><?= $this->translate("branch") ?></a></li>
                 </ul>
             </div>
-            
         </div>
     </div>
 </div>
