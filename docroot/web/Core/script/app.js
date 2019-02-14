@@ -2730,7 +2730,7 @@
                         } else {
                             var icondynamic = "/static/images/icon/branch1.png";
                         }
-
+                        console.log(valListing);
                         var contentString = '<div class="col-md-12 parent-brachlist linkgoogle infowindow" data-id="' + idListing + '" data-lat="' + valListing.latitude + '"  data-lng="' + valListing.longitude + '">';
                         contentString += '<div class="wrapper-branchlist">';
                         contentString += '<div class="row">';
@@ -3052,6 +3052,15 @@
             asuransi: htmlEntities(asuransi_arr.join("-")),
             taksasi: htmlEntities(objCredits.installment)
         }
+        if (_param.funding == 0 ) {
+            if ($("#jenis_form").val() == "MOBIL") {
+                _param.funding = 10000000;
+            } else if ($("#jenis_form").val() == "MOTOR") {
+                _param.funding = 1000000; 
+            }
+        }
+        console.log(_param.funding);
+        
         console.log(_param);
         $.ajax({
             type: 'POST',
