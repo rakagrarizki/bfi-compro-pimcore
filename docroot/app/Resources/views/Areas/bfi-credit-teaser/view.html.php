@@ -10,7 +10,7 @@
                             <a href="<?= $this->link('url-mobil')->getHref(); ?>">
                                 <div class="icon">
                                     <img class="imggetcredit" src="<?= $assetMobil->getImage()?>" alt="">
-                                    <p>BPKB Mobil</p>
+                                    <p><?= $this->link("title-mobil"); ?></p>
                                 </div>
                             </a>
                         </div>
@@ -19,7 +19,7 @@
                             <a href="<?= $this->link('url-motor')->getHref(); ?>">
                                 <div class="icon">
                                     <img class="imggetcredit" src="<?= $assetMotor->getImage()?>" alt="">
-                                    <p>BPKB Motor</p>
+                                    <p><?= $this->link("title-motor"); ?></p>
                                 </div>
 
                             </a>
@@ -29,7 +29,7 @@
                             <a href="<?= $this->link('url-rumah')->getHref(); ?>">
                                 <div class="icon">
                                     <img class="imggetcredit" src="<?= $assetRumah->getImage()?>" alt="">
-                                    <p>Sertifikat Rumah</p>
+                                    <p><?= $this->link("title-rumah"); ?></p>
                                 </div>
 
                             </a>
@@ -39,7 +39,7 @@
                             <a href="<?= $this->link('url-ruko')->getHref(); ?>">
                                 <div class="icon">
                                     <img class="imggetcredit" src="<?= $assetRuko->getImage()?>" alt="">
-                                    <p>Sertifikat Ruko</p>
+                                    <p><?= $this->link("title-ruko"); ?></p>
                                 </div>
                             </a>
                         </div>
