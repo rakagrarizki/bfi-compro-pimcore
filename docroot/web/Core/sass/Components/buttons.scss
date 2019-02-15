@@ -158,6 +158,12 @@
     &.arrowbanner{
         background:white;
     }
+    &.no-mobile{
+        @include breakpoint(mobile){
+            display: none;
+        }
+        
+    }
 
     &.btn-submit {
         &:before {
@@ -172,8 +178,34 @@
             opacity:0.5;
         }
     }
+}
 
+.btn-blok {
+    padding: 0px 20px;
+    background: #F8991D;
+    width: 100%;
+    height: 60px;
+    margin-top: 20px;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    color: white;
+    &.arrowbanner{
+        background:white;
+    }
 
+    &.btn-submit {
+        &:after {
+            content: "\f105";
+            font-family: FontAwesome;
+            color: $white;
+            // padding: 20px;
+            font-size: 29px;
+            opacity:0.5;
+            margin-left: 15px;
+            margin-top: -4px;
+        }
+    }
 }
 
 .button-area {

@@ -20,7 +20,7 @@
                                     <div class="plaintext-cekpengajuan"><?= $this->translate('collateralInfo')?></div>
                                 </div>
                             </div>
-                            <div class="_boxkanan">
+                            <div class="_boxkanan row">
                                 <div class="_boxkananchild1">
                                     <div class="input-group inputform">
                                         <select class="c-custom-select-home" id="sel-how-form-credit">
@@ -34,8 +34,12 @@
                                     </div>
                                 </div>
                                 <div class="_boxkananchild2 soloboxarrow-cekpengajuan">
-                                    <button disabled class="btn-kotak btn-submit btn-submit-how-form-credit"
+                                    <button disabled class="btn-kotak no-mobile btn-submit btn-submit-how-form-credit"
                                             type="submit"></button>
+                                </div>
+                                <div class="_boxkananchildmobile2">
+                                <button disabled class="btn-blok btn-submit btn-submit-how-form-credit"
+                                            type="submit">AJUKAN SEKARANG</button>
                                 </div>
                             </div>
                         </div>
