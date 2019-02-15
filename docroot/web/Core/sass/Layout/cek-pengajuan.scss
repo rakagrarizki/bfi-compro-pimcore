@@ -44,6 +44,12 @@
                     
                     @include breakpoint(mobile) {
                         vertical-align:middle;
+                        width:100%;
+                    }
+                    .jcf-select {
+                        @include breakpoint(mobile) {
+                            width:100%;
+                        }
                     }
                 }
 
@@ -57,6 +63,7 @@
                         margin-left:0px;
                         vertical-align:middle;
                         font-size:0;
+                        display: none;
                     }
 
                      @include breakpoint(tablet) {
@@ -70,6 +77,20 @@
                             margin:auto;
                             width:15px;
                         }
+                    }
+                }
+                ._boxkananchildmobile2 {
+                    @include breakpoint(mobile) {
+                        display: block !important;
+                    }
+                    @include breakpoint(tablet) {
+                        display: none;
+                    }
+                    @include breakpoint(wide) {
+                        display: none;
+                    }
+                    @include breakpoint(desktop) {
+                        display: none;
                     }
                 }
             }
