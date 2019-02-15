@@ -20,6 +20,10 @@
             <div class="col-sm-4">link rumah</div>
             <div class="col-sm-8"><?= $this->link("url-rumah"); ?></div>
         </div>
+		<div class="row">
+            <div class="col-sm-4">title rumah</div>
+            <div class="col-sm-8"><?= $this->link("title-rumah"); ?></div>
+        </div>
         <div class="row">
             <div class="col-sm-4">Image Rumah</div>
             <div class="col-sm-8"><?= $this->image('image-rumah');?></div>
@@ -27,6 +31,10 @@
         <div class="row">
             <div class="col-sm-4">link ruko</div>
             <div class="col-sm-8"><?= $this->link("url-ruko"); ?></div>
+        </div>
+		<div class="row">
+            <div class="col-sm-4">title Ruko</div>
+            <div class="col-sm-8"><?= $this->link("title-ruko"); ?></div>
         </div>
         <div class="row">
             <div class="col-sm-4">Image Ruko</div>
@@ -36,6 +44,10 @@
             <div class="col-sm-4">link mobil</div>
             <div class="col-sm-8"><?= $this->link("url-mobil"); ?></div>
         </div>
+		<div class="row">
+            <div class="col-sm-4">title mobil</div>
+            <div class="col-sm-8"><?= $this->link("title-mobil"); ?></div>
+        </div>
         <div class="row">
             <div class="col-sm-4">Image Mobil</div>
             <div class="col-sm-8"><?= $this->image('image-mobil');?></div>
@@ -43,6 +55,10 @@
         <div class="row">
             <div class="col-sm-4">link motor</div>
             <div class="col-sm-8"><?= $this->link("url-motor"); ?></div>
+        </div>
+		<div class="row">
+            <div class="col-sm-4">title mobil</div>
+            <div class="col-sm-8"><?= $this->link("title-motor"); ?></div>
         </div>
         <div class="row">
             <div class="col-sm-4">Image Motor</div>
