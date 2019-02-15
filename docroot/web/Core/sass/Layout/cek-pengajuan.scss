@@ -46,6 +46,11 @@
                         vertical-align:middle;
                         width:100%;
                     }
+                    .jcf-select {
+                        @include breakpoint(mobile) {
+                            width:100%;
+                        }
+                    }
                 }
 
                 ._boxkananchild2{
