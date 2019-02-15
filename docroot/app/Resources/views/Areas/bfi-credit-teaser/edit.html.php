@@ -22,7 +22,7 @@
         </div>
 		<div class="row">
             <div class="col-sm-4">title rumah</div>
-            <div class="col-sm-8"><?= $this->link("title-rumah"); ?></div>
+            <div class="col-sm-8"><?= $this->input("title-rumah"); ?></div>
         </div>
         <div class="row">
             <div class="col-sm-4">Image Rumah</div>
@@ -34,7 +34,7 @@
         </div>
 		<div class="row">
             <div class="col-sm-4">title Ruko</div>
-            <div class="col-sm-8"><?= $this->link("title-ruko"); ?></div>
+            <div class="col-sm-8"><?= $this->input("title-ruko"); ?></div>
         </div>
         <div class="row">
             <div class="col-sm-4">Image Ruko</div>
@@ -46,7 +46,7 @@
         </div>
 		<div class="row">
             <div class="col-sm-4">title mobil</div>
-            <div class="col-sm-8"><?= $this->link("title-mobil"); ?></div>
+            <div class="col-sm-8"><?= $this->input("title-mobil"); ?></div>
         </div>
         <div class="row">
             <div class="col-sm-4">Image Mobil</div>
@@ -58,7 +58,7 @@
         </div>
 		<div class="row">
             <div class="col-sm-4">title mobil</div>
-            <div class="col-sm-8"><?= $this->link("title-motor"); ?></div>
+            <div class="col-sm-8"><?= $this->input("title-motor"); ?></div>
         </div>
         <div class="row">
             <div class="col-sm-4">Image Motor</div>
