@@ -81,7 +81,7 @@
             .desc-slide2 {
                 margin: 0;
                 @include breakpoint(mobile){
-                    margin: 0;
+                    margin: 0 !important;
                 }
                 @include breakpoint(tablet){
                     margin: 0 50px;
