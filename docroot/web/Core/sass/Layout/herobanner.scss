@@ -78,9 +78,16 @@
         background-repeat: no-repeat;
 
         &.slidemodif{
-           .desc-slide2 {
-               margin: 0 50px;
-           }
+            .desc-slide2 {
+                margin: 0;
+                @include breakpoint(mobile){
+                    margin: 0;
+                }
+                @include breakpoint(tablet){
+                    margin: 0 50px;
+                }
+                
+            }
         }
 
         &::after {
