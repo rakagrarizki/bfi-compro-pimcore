@@ -1,6 +1,6 @@
 #site-container {
     margin-top: 130px;
-    min-height: 56vh;
+    min-height: 575px;
 
     &.active {
         
@@ -79,7 +79,7 @@ a {
     font-weight: 600;
     font-size: 37px;
     color:#04559F;
-    margin-top:85px;
+    margin-top:60px;
     padding:0 8%;
 
     &.modif-top{
@@ -89,12 +89,20 @@ a {
     @include breakpoint(mobile){
         font-size: 1.8em;
     }
+
+    @include breakpoint(tablet){
+        font-size: 1.8em;
+    }
 }
 .paragraf-title {
     font-size: 1.45em;
     font-family: 'HelveticaNeue';
     color:#565656;
     @include breakpoint(mobile){
+        font-size: 1em;
+    }
+
+    @include breakpoint(tablet){
         font-size: 1em;
     }
 }

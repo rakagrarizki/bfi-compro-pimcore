@@ -152,7 +152,7 @@ $this->extend('layout-credit.html.php');
                                         <div class="form-group">
                                             <label for="alamat_lengkap"><?= $this->translate('label-place')?></label>
                                             <textarea class="form-control formRequired" name="alamat_lengkap" id="alamat_lengkap"
-                                                      placeholder="<?= $this->translate('placeholder-place')?>"></textarea>
+                                                      placeholder="<?= $this->translate('placeholder-place')?> Contoh: Jalan Rajawali 1 Blok A no.11 RT 01 RW 02"></textarea>
                                             <div class="error-wrap"></div>
                                         </div>
                                     </div>
@@ -200,8 +200,8 @@ $this->extend('layout-credit.html.php');
                                             <label><?= $this->translate('label-status')?></label>
                                             <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="status_kep" name="status_kep">
                                                 <option value=""> <?= $this->translate('placeholder-status')?></option>
-                                                <option value="Hak Milik"><?= $this->translate('placeholder-status-self')?></option>
-                                                <option value="Hak Milik Orang Lain"><?= $this->translate('placeholder-status-other')?></option>
+                                                <option value="<?= strtoupper($this->translate('placeholder-status-self')) ?>"><?= $this->translate('placeholder-status-self')?></option>
+                                                <option value="<?= strtoupper($this->translate('placeholder-status-other')) ?>"><?= $this->translate('placeholder-status-other')?></option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>

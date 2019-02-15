@@ -12,44 +12,17 @@ use Pimcore\Model\Document\Page;
 <?php $pageCurrent = $this->getParam('page', 1); ?>
 <nav id="site-header">
     <div class="navbar-fixed-top hidden-xs">
-        <div class="header-top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 left-side-top">
-                        <a class="_personal"
-                           href="/<?php echo $this->getLocale() ?>"><?= $this->translate("personal") ?></a>
-                        <a class="_grup" href="#"><?= $this->translate("corporate") ?></a>
-                    </div>
-                    <div class="col-md-5 right-side-top">
-                        <div class="link-about-top">
-                            <a href="#"><?= $this->translate("contact-us") ?></a>
-                            <a href="#"><?= $this->translate("blog") ?></a>
-                        </div>
-
-                        <!--<div class="link-log">
-                            <a href="#" class="login"><?/*= $this->translate("login") */?></a>
-                            <a href="#" class="register"><?/*= $this->translate("register") */?></a>
-                        </div>-->
-
-                        <?php echo $this->template("Includes/language.html.php") ?>
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
+        <?= $this->inc("/" . $this->getLocale() . "/shared/includes/sub-navigation") ?>
         <div class="header-bottom">
             <div class="container">
                 <div class="row">
 
-                    <div class="col-md-4 header-bottom-logo">
+                    <div class="col-md-3 col-sm-4 header-bottom-logo">
                         <a href="<?php echo "/" . $this->getLocale(); ?>">
                             <img src="/static/images/logo-bfi.png" class="img-responsive" alt="">
                         </a>
-
                     </div>
-                    <div class="col-md-8 header-bottom-menu">
+                    <div class="col-md-9 col-sm-8 header-bottom-menu">
                         <div class="header-link-menu">
                             <ul class="nav">
                                 <?php

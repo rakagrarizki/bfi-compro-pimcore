@@ -69,9 +69,9 @@ $this->extend('layout-credit.html.php');
                                             <label><?= $this->translate('form-work')?></label>
                                             <select class="c-custom-select formRequired" id="pekerjaan" name="pekerjaan"  data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' />
                                             <option value=""><?= $this->translate('placeholder-work')?></option>
-                                            <option value="Karyawan"><?= $this->translate('work1')?></option>
-                                            <option value="Pengusaha"><?= $this->translate('work2')?></option>
-                                            <option value="Professional"><?= $this->translate('work3')?></option>
+                                            <option value="<?= strtoupper($this->translate('work1')) ?>"><?= $this->translate('work1')?></option>
+                                            <option value="<?= strtoupper($this->translate('work2')) ?>"><?= $this->translate('work2')?></option>
+                                            <option value="<?= strtoupper($this->translate('work3')) ?>"><?= $this->translate('work3')?></option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
@@ -155,7 +155,7 @@ $this->extend('layout-credit.html.php');
                                         <div class="form-group">
                                             <label for="alamat_lengkap"><?= $this->translate('label-place')?></label>
                                             <textarea class="form-control formRequired formAddress" name="alamat_lengkap" id="alamat_lengkap"
-                                                      placeholder="<?= $this->translate('placeholder-place')?>"></textarea>
+                                                      placeholder="<?= $this->translate('placeholder-place')?> Contoh: Jalan Rajawali 1 Blok A no.11 RT 01 RW 02"></textarea>
                                             <div class="error-wrap"></div>
                                         </div>
                                     </div>
@@ -180,8 +180,8 @@ $this->extend('layout-credit.html.php');
                                             <label><?= $this->translate('label-status-bangunan')?></label>
                                             <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="status_sertificate" name="status_sertificate">
                                                 <option value=""> <?= $this->translate('placeholder-bangunan')?></option>
-                                                <option value="HAK MILIK"><?= $this->translate('surat-bangunan-1')?></option>
-                                                <option value="HAK GUNA BANGUNAN"><?= $this->translate('surat-bangunan-2')?></option>
+                                                <option value="<?= strtoupper($this->translate('surat-bangunan-1')) ?>"><?= $this->translate('surat-bangunan-1')?></option>
+                                                <option value="<?= strtoupper($this->translate('surat-bangunan-2')) ?>"><?= $this->translate('surat-bangunan-2')?></option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
@@ -190,8 +190,8 @@ $this->extend('layout-credit.html.php');
                                             <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="own_sertificate"
                                                     name="own_sertificate">
                                                 <option value=""> <?= $this->translate('placeholder-sertifikat')?></option>
-                                                <option value="PERORANGAN"><?= $this->translate('sertifikat-1')?></option>
-                                                <option value="PERUSAHAAN"><?= $this->translate('sertifikat-2')?></option>
+                                                <option value="<?= strtoupper($this->translate('sertifikat-1')) ?>"><?= $this->translate('sertifikat-1')?></option>
+                                                <option value="<?= strtoupper($this->translate('sertifikat-2')) ?>"><?= $this->translate('sertifikat-2')?></option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
@@ -447,7 +447,7 @@ $this->extend('layout-credit.html.php');
 
                                     <div class="button-area text-right next">
                                         <button class="cta cta-primary cta-big cta-see buttonnext" id="button6"
-                                                type="submit"><?= $this->translate('verifikasi')?></button>
+                                                type="button"><?= $this->translate('verifikasi')?></button>
                                     </div>
 
                                 </div>

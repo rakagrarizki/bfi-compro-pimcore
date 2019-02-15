@@ -5,7 +5,7 @@
             <div class="row">
                 <?php while ($this->block("contentblock")->loop()) { ?>
                     <?php $asset = $this->image("image");?>
-                    <div class="col-md-4 textalign-center">
+                    <div class="col-md-4 col-sm-4 textalign-center">
                         <div class="three-box__item">
                             <h4><?= $this->input('title');?></h4>
 
