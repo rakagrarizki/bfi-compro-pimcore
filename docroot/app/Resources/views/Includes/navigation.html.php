@@ -13,7 +13,6 @@ use Pimcore\Model\Document\Page;
 <nav id="site-header">
     <div class="navbar-fixed-top hidden-xs">
         <?= $this->inc("/" . $this->getLocale() . "/shared/includes/sub-navigation") ?>
-
         <div class="header-bottom">
             <div class="container">
                 <div class="row">
