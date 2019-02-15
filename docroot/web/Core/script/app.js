@@ -1963,6 +1963,7 @@
         if(changeDataTempatTinggal){
             $('.nav-item-2').addClass("active")
             $('.nav-item-3').addClass("disabled").off('click');
+            $('.nav-item-4').removeClass("active");
             $('.nav-item-4').addClass("disabled").off('click');
             $('.nav-item-5').removeClass("active");
             $('.nav-item-5').addClass("disabled").off('click');
@@ -2046,6 +2047,12 @@
         if($('.nav-item-4').hasClass("done")){
             $('.nav-item-4').removeClass("done");
             $('.nav-item-4').addClass("disabled");
+        }
+
+        if(changeDataBangunan){
+            $('.nav-item-3').addClass("active")
+            $('.nav-item-4').removeClass("active");
+            $('.nav-item-4').addClass("disabled").off('click');
         }
 
         
@@ -2133,6 +2140,7 @@
         if(changeDataTempatTinggal){
             $('.nav-item-2').addClass("active")
             $('.nav-item-3').addClass("disabled").off('click');
+            $('.nav-item-4').removeClass("active");
             $('.nav-item-4').addClass("disabled").off('click');
             $('.nav-item-5').removeClass("active");
             $('.nav-item-5').addClass("disabled").off('click');
@@ -2206,6 +2214,12 @@
         if($('.nav-item-4').hasClass("done")){
             $('.nav-item-4').removeClass("done");
             $('.nav-item-4').addClass("disabled");
+        }
+        if(changeDataBangunan){
+            $('.nav-item-2').addClass("active")
+            $('.nav-item-3').addClass("disabled").off('click');
+            $('.nav-item-4').removeClass("active");
+            $('.nav-item-4').addClass("disabled").off('click');
         }
         $("#kode_pos_sertificate").val("");
 
@@ -2286,6 +2300,7 @@
         if(changeDataTempatTinggal){
             $('.nav-item-2').addClass("active")
             $('.nav-item-3').addClass("disabled").off('click');
+            $('.nav-item-4').removeClass("active");
             $('.nav-item-4').addClass("disabled").off('click');
             $('.nav-item-5').removeClass("active");
             $('.nav-item-5').addClass("disabled").off('click');
@@ -2352,6 +2367,12 @@
         if($('.nav-item-4').hasClass("done")){
             $('.nav-item-4').removeClass("done");
             $('.nav-item-4').addClass("disabled");
+        }
+        if(changeDataBangunan){
+            $('.nav-item-2').addClass("active")
+            $('.nav-item-3').addClass("disabled").off('click');
+            $('.nav-item-4').removeClass("active");
+            $('.nav-item-4').addClass("disabled").off('click');
         }
         $("#kode_pos_sertificate").val("");
 
@@ -2424,6 +2445,7 @@
         if(changeDataTempatTinggal){
             $('.nav-item-2').addClass("active")
             $('.nav-item-3').addClass("disabled").off('click');
+            $('.nav-item-4').removeClass("active");
             $('.nav-item-4').addClass("disabled").off('click');
             $('.nav-item-5').removeClass("active");
             $('.nav-item-5').addClass("disabled").off('click');
@@ -2476,6 +2498,7 @@
         if(changeDataTempatTinggal){
             $('.nav-item-2').addClass("active")
             $('.nav-item-3').addClass("disabled").off('click');
+            $('.nav-item-4').removeClass("active");
             $('.nav-item-4').addClass("disabled").off('click');
             $('.nav-item-5').removeClass("active");
             $('.nav-item-5').addClass("disabled").off('click');
@@ -2512,6 +2535,7 @@
         if(changeDataTempatTinggal){
             $('.nav-item-2').addClass("active")
             $('.nav-item-3').addClass("disabled").off('click');
+            $('.nav-item-4').removeClass("active");
             $('.nav-item-4').addClass("disabled").off('click');
             $('.nav-item-5').removeClass("active");
             $('.nav-item-5').addClass("disabled").off('click');
@@ -2540,6 +2564,11 @@
         if($('.nav-item-4').hasClass("done")){
             $('.nav-item-4').removeClass("done");
             $('.nav-item-4').addClass("disabled");
+        }
+        if(changeDataBangunan){
+            $('.nav-item-3').addClass("active")
+            $('.nav-item-4').removeClass("active");
+            $('.nav-item-4').addClass("disabled").off('click');
         }
         $('#alamat_lengkap_sertificate').removeAttr("disabled");
         $('#alamat_lengkap_sertificate').css("background-color", "white");
@@ -2570,8 +2599,15 @@
 
     })
 
+    
     $('#status_sertificate').change(function () {
         showDefaultButton();
+
+        if(changeDataBangunan){
+            $('.nav-item-3').addClass("active")
+            $('.nav-item-4').removeClass("active");
+            $('.nav-item-4').addClass("disabled").off('click');
+        }
 
         if ($("#kelurahan_sertificate").val() == null || $("#own_sertificate").val() == "" || $("#kode_pos_sertificate").val() == "" || $(this).val() == "" || $("#alamat_lengkap_sertificate").val() == "" || $("#kota_sertificate").val() == null || $("#kecamatan_sertificate").val() == null || $("#provinsi_sertificate").val() == null) {
             $("#button3rumah").css("background-color", "#dddddd");
@@ -2585,7 +2621,11 @@
 
     $('#own_sertificate').change(function () {
         showDefaultButton();
-
+        if(changeDataBangunan){
+            $('.nav-item-3').addClass("active")
+            $('.nav-item-4').removeClass("active");
+            $('.nav-item-4').addClass("disabled").off('click');
+        }
         if ($("#status_sertificate").val() == "" || $("#kelurahan_sertificate").val() == null || $("#kode_pos_sertificate").val() == "" || $(this).val() == "" || $("#alamat_lengkap_sertificate").val() == "" || $("#kota_sertificate").val() == null || $("#kecamatan_sertificate").val() == null || $("#provinsi_sertificate").val() == null) {
             $("#button3rumah").css("background-color", "#dddddd");
             $("#button3rumah").css("border-color", "#dddddd");
