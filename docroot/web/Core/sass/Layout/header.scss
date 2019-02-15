@@ -291,9 +291,15 @@
                                     border-left: 20px solid transparent;
                                     border-right: 20px solid transparent;
                                     border-bottom: 15px solid $white;
-                                    transform: translate(430px, -40px);
+                                    transform: translate(435px, -40px);
                                     @include breakpoint(tablet){
                                         transform: translate(304px, -40px);
+                                    }
+                                    @include breakpoint(wide){
+                                        transform: translate(387px, -40px);
+                                    }
+                                    @include breakpoint(desktop){
+                                        transform: translate(435px, -40px);
                                     }
                                 }
                                 li {
