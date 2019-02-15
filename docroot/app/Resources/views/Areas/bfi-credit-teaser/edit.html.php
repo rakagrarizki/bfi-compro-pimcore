@@ -57,7 +57,7 @@
             <div class="col-sm-8"><?= $this->link("url-motor"); ?></div>
         </div>
 		<div class="row">
-            <div class="col-sm-4">title mobil</div>
+            <div class="col-sm-4">title motor</div>
             <div class="col-sm-8"><?= $this->input("title-motor"); ?></div>
         </div>
         <div class="row">
