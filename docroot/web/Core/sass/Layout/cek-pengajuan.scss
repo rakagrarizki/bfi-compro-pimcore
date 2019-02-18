@@ -63,7 +63,6 @@
                         margin-left:0px;
                         vertical-align:middle;
                         font-size:0;
-                        display: none;
                     }
 
                      @include breakpoint(tablet) {
@@ -79,20 +78,7 @@
                         }
                     }
                 }
-                ._boxkananchildmobile2 {
-                    @include breakpoint(mobile) {
-                        display: block !important;
-                    }
-                    @include breakpoint(tablet) {
-                        display: none;
-                    }
-                    @include breakpoint(wide) {
-                        display: none;
-                    }
-                    @include breakpoint(desktop) {
-                        display: none;
-                    }
-                }
+
             }
         }
 
@@ -163,7 +149,9 @@
             // Main Select Box
             .jcf-select {
                 position: relative;
-                display: block;
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 width: 400px;
                 height: 60px;
                 line-height: 40px;
@@ -210,9 +198,10 @@
             }
 
             .jcf-select-text {
-                line-height: 60px;
+                line-height: 20px;
                 font-size: 16px;
-                
+                white-space: normal;
+                word-break: break-word;
                 span {
                     font-family: 'HelveticaNeue';
                     color:gray;
@@ -260,6 +249,8 @@
 
             // Option style 
             .jcf-option {
+                white-space: normal;
+                word-break: break-word;
                 display: block;
                 cursor: pointer;
                 padding: 15px;
