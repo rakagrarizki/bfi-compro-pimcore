@@ -78,7 +78,7 @@
 
         
         if (_siteContainer < _cleanDocHeight) {
-            console.log(_cleanDocHeight);
+            // console.log(_cleanDocHeight);
             $("#site-container").css({
                 'min-height' : _cleanDocHeight,
             });
@@ -3316,9 +3316,7 @@
                 _param.funding = 1000000; 
             }
         }
-        console.log(_param.funding);
-        
-        console.log(_param);
+
         $.ajax({
             type: 'POST',
             url: _url,

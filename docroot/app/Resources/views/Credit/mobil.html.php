@@ -250,7 +250,7 @@ $this->extend('layout-credit.html.php');
                                                 <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="jangka_waktu"
                                                         name="jangka-waktu">
                                                     <?php
-                                                    for ($i = 12 ; $i <= 60; $i++) {
+                                                    for ($i = 12 ; $i <= 48; $i++) {
                                                         if($i % 12 == 0){
                                                             echo '<option value="' . $i . '">' . $i . ' ' .$this->translate('label-month') .'</option>';
                                                         }
