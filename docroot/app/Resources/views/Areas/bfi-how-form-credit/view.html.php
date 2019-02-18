@@ -33,11 +33,11 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="_boxkananchild2 soloboxarrow-cekpengajuan">
+                                <div class="_boxkananchild2 hidden-xs soloboxarrow-cekpengajuan">
                                     <button disabled class="btn-kotak no-mobile btn-submit btn-submit-how-form-credit"
                                             type="submit"></button>
                                 </div>
-                                <div class="_boxkananchildmobile2">
+                                <div class="_boxkananchildmobile2 visible-xs">
                                 <button disabled class="btn-blok btn-submit btn-submit-how-form-credit"
                                             type="submit">AJUKAN SEKARANG</button>
                                 </div>
