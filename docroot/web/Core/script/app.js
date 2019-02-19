@@ -3456,6 +3456,12 @@
         }
     );
 
+    // placeholder cek pengajuan
+
+    if ($('.cek-pengajuan').length) {
+        var placeholder = $('.cek-pengajuan').find("#sel-how-form-credit").data("placeholder");
+        $('.cek-pengajuan').find(".jcf-select-text").children("span").text(placeholder);
+    }
 
     // var locationurlnow = window.location.pathname;
 
