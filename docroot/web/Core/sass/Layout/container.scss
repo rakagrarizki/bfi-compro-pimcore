@@ -39,16 +39,25 @@ a {
         font-family: 'HelveticaNeue';
         font-weight: 600;
         color:white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         position:relative;
         font-size:36px;
-        
         @include breakpoint(mobile){
             font-size: 1.4em;
             letter-spacing: 1px;
+            flex-direction: column;
+        }
+        @include breakpoint(tablet){
+            flex-direction: column;
+        }
+        @include breakpoint(wide){
+            flex-direction: column;
         }
         a {
             margin-left: 40px;
-            margin-top:15px;
+            // margin-top:15px;
             font-family: 'HelveticaNeue';
             font-weight: normal;
             background-color:transparent;
@@ -56,12 +65,20 @@ a {
             @include breakpoint(mobile){
                 display: block;
                 font-size: 14px;
-                margin: 10px auto 0;
+                margin: 0;
                 width: 60%;
                 padding: 13px 15px;
                 &:before{
                     right: 15px;
                 }
+            }
+            @include breakpoint(tablet){
+                margin-left: 0;
+                margin-top: 10px;
+            }
+            @include breakpoint(wide){
+                margin-left: 0;
+                margin-top: 10px;
             }
         }
     }

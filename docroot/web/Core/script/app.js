@@ -3459,9 +3459,14 @@
     // placeholder cek pengajuan
 
     if ($('.cek-pengajuan').length) {
-        var placeholder = $('.cek-pengajuan').find("#sel-how-form-credit").data("placeholder");
-        $('.cek-pengajuan').find(".jcf-select-text").children("span").text(placeholder);
+        var placeholder = $("#sel-how-form-credit").data("placeholder");
+        $('.cek-pengajuan').find(".jcf-select-text").children("span").html(placeholder);
     }
+    $("#sel-how-form-credit").on('change', function (e) {
+        $(".jcf-select-text").children("span").html($(this).find("option:selected").text());
+    })
+
+    
 
     // var locationurlnow = window.location.pathname;
 
