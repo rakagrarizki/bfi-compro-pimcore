@@ -53,7 +53,7 @@ a {
             flex-direction: column;
         }
         @include breakpoint(wide){
-            flex-direction: column;
+            flex-direction: row;
         }
         a {
             margin-left: 40px;
@@ -73,10 +73,6 @@ a {
                 }
             }
             @include breakpoint(tablet){
-                margin-left: 0;
-                margin-top: 10px;
-            }
-            @include breakpoint(wide){
                 margin-left: 0;
                 margin-top: 10px;
             }
