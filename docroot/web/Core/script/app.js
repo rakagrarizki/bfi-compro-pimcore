@@ -852,7 +852,7 @@
 
     function setSummary() {
         // data tipe angunan
-        $('#showAngunan').html(credits.angunan.jenis_angunan);
+        // $('#showAngunan').html(credits.angunan.jenis_angunan);
 
         //data pemohon
         $('#showFullName').html(credits.pemohon.nama);

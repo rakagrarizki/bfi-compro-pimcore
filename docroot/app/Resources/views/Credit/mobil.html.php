@@ -357,7 +357,7 @@ $this->extend('layout-credit.html.php');
                                                     <tr>
                                                         <td><?= $this->translate('label-jenis')?></td>
 
-                                                        <td id="showAngunan" class="jenis_jaminan"></td>
+                                                        <td id="showAngunan" class="jenis_jaminan"><?= $this->translate('jenis-jaminan-mobil')?></td>
                                                     </tr>
                                                 </table>
                                             </div>
