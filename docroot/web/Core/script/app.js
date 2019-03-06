@@ -1822,8 +1822,9 @@
                         }
                         if (valMobilmotor.name != '') {
                             var elementOption = '<option value="' + valMobilmotor.id + '">' + valMobilmotor.name + '</option>';
+                            var merk_kendaraan_placeholder = $('#merk_kendaraan').attr('placeholder');
                             $('#merk_kendaraan').empty();
-                            $('#merk_kendaraan').next().find(".jcf-select-text").children("span").html("Pilih Merk Kendaraan");
+                            $('#merk_kendaraan').next().find(".jcf-select-text").children("span").html(merk_kendaraan_placeholder);
                             setTimeout(function () {
                                 $(element).append(elementOption);
                             },50);
@@ -1884,8 +1885,9 @@
                     $.each(dataObj.result.data, function (idProvince, valProvince) {
                         if (valProvince.name != '') {
                             var elementOption = '<option value="' + valProvince.id + '">' + valProvince.name + '</option>';
+                            var provinsi_placeholder = $('#provinsi').attr('placeholder');
                             $('#provinsi').empty();
-                            $('#provinsi').next().find(".jcf-select-text").children("span").html("Pilih Provinsi");
+                            $('#provinsi').next().find(".jcf-select-text").children("span").html(provinsi_placeholder);
                             setTimeout(function () {
                                 $(element).append(elementOption);
                                 if (element2) {
@@ -2017,12 +2019,15 @@
                     $.each(dataObj.result.data, function (idCity, valCity) {
                         if (valCity.name != '') {
                             var elementOption = '<option value="' + valCity.id + '">' + valCity.name + '</option>';
+                            var kota_placeholder = $('#kota').attr('placeholder');
+                            var kecamatan_placeholder = $('#kecamatan').attr('placeholder');
+                            var kelurahan_placeholder = $('#kelurahan').attr('placeholder');
                             $('#kota').empty();
-                            $('#kota').next().find(".jcf-select-text").children("span").html("Pilih Kota");
+                            $('#kota').next().find(".jcf-select-text").children("span").html(kota_placeholder);
                             $('#kecamatan').empty();
-                            $('#kecamatan').next().find(".jcf-select-text").children("span").html("Pilih Kecamatan");
+                            $('#kecamatan').next().find(".jcf-select-text").children("span").html(kecamatan_placeholder);
                             $('#kelurahan').empty();
-                            $('#kelurahan').next().find(".jcf-select-text").children("span").html("Pilih Kelurahan");
+                            $('#kelurahan').next().find(".jcf-select-text").children("span").html(kelurahan_placeholder);
                             $('#alamat_lengkap').val("");
                             setTimeout(function () {
                                 $("#kota").append(elementOption);
@@ -2102,12 +2107,15 @@
                     $.each(dataObj.result.data, function (idCity, valCity) {
                         if (valCity.name != '') {
                             var elementOption = '<option value="' + valCity.id + '">' + valCity.name + '</option>';
+                            var kota_placeholder = $('#kota_sertificate').attr('placeholder');
+                            var kecamatan_placeholder = $('#kecamatan_sertificate').attr('placeholder');
+                            var kelurahan_placeholder = $('#kelurahan_sertificate').attr('placeholder');
                             $('#kota_sertificate').empty();
-                            $('#kota_sertificate').next().find(".jcf-select-text").children("span").html("Pilih Kota");
+                            $('#kota_sertificate').next().find(".jcf-select-text").children("span").html(kota_placeholder);
                             $('#kecamatan_sertificate').empty();
-                            $('#kecamatan_sertificate').next().find(".jcf-select-text").children("span").html("Pilih Kecamatan");
+                            $('#kecamatan_sertificate').next().find(".jcf-select-text").children("span").html(kecamatan_placeholder);
                             $('#kelurahan_sertificate').empty();
-                            $('#kelurahan_sertificate').next().find(".jcf-select-text").children("span").html("Pilih Kelurahan");
+                            $('#kelurahan_sertificate').next().find(".jcf-select-text").children("span").html(kelurahan_placeholder);
                             $('#alamat_lengkap_sertificate').val("");
                             setTimeout(function () {
                                 $("#kota_sertificate").append(elementOption);
@@ -2186,11 +2194,12 @@
                         if (valKec.name != '') {
 
                             var elementOption = '<option value="' + valKec.id + '">' + valKec.name + '</option>';
-
+                            var kecamatan_placeholder = $('#kecamatan').attr('placeholder');
+                            var kelurahan_placeholder = $('#kelurahan').attr('placeholder');
                             $('#kecamatan').empty();
-                            $('#kecamatan').next().find(".jcf-select-text").children("span").html("Pilih Kecamatan");
+                            $('#kecamatan').next().find(".jcf-select-text").children("span").html(kecamatan_placeholder);
                             $('#kelurahan').empty();
-                            $('#kelurahan').next().find(".jcf-select-text").children("span").html("Pilih Kelurahan");
+                            $('#kelurahan').next().find(".jcf-select-text").children("span").html(kelurahan_placeholder);
                             $('#alamat_lengkap').val("");
 
                             setTimeout(function () {
@@ -2262,11 +2271,12 @@
                         if (valKec.name != '') {
 
                             var elementOption = '<option value="' + valKec.id + '">' + valKec.name + '</option>';
-
+                            var kecamatan_placeholder = $('#kecamatan_sertificate').attr('placeholder');
+                            var kelurahan_placeholder = $('#kelurahan_sertificate').attr('placeholder');
                             $('#kecamatan_sertificate').empty();
-                            $('#kecamatan_sertificate').next().find(".jcf-select-text").children("span").html("Pilih Kecamatan");
+                            $('#kecamatan_sertificate').next().find(".jcf-select-text").children("span").html(kecamatan_placeholder);
                             $('#kelurahan_sertificate').empty();
-                            $('#kelurahan_sertificate').next().find(".jcf-select-text").children("span").html("Pilih Kelurahan");
+                            $('#kelurahan_sertificate').next().find(".jcf-select-text").children("span").html(kelurahan_placeholder);
                             $('#alamat_lengkap_sertificate').val("");
 
                             setTimeout(function () {
@@ -2342,8 +2352,9 @@
                         if (valKel.name != '') {
 
                             var elementOption = '<option value="' + valKel.id + '" postcode=' + valKel.postcode + '>' + valKel.name + '</option>';
+                            var kelurahan_placeholder = $('#kelurahan').attr('placeholder');
                             $('#kelurahan').empty();
-                            $('#kelurahan').next().find(".jcf-select-text").children("span").html("Pilih Kelurahan");
+                            $('#kelurahan').next().find(".jcf-select-text").children("span").html(kelurahan_placeholder);
                             $('#alamat_lengkap').val("");
 
                             setTimeout(function () {
@@ -2411,8 +2422,9 @@
                         if (valKel.name != '') {
 
                             var elementOption = '<option value="' + valKel.id + '" postcode=' + valKel.postcode + '>' + valKel.name + '</option>';
+                            var kelurahan_placeholder = $('#kelurahan_sertificate').attr('placeholder');
                             $('#kelurahan_sertificate').empty();
-                            $('#kelurahan_sertificate').next().find(".jcf-select-text").children("span").html("Pilih Kelurahan");
+                            $('#kelurahan_sertificate').next().find(".jcf-select-text").children("span").html(kelurahan_placeholder);
                             $('#alamat_lengkap_sertificate').val("");
 
                             setTimeout(function () {
@@ -2693,10 +2705,12 @@
                     $.each(dataObj.result.data, function (idKendaraan, valKendaraan) {
                         if (valKendaraan.name != '') {
                             var elementOption = '<option value="' + valKendaraan.codeProduct + '">' + valKendaraan.name + '</option>';
+                            var model_kendaraan_placeholder = $('#model_kendaraan').attr('placeholder');
+                            var tahun_kendaraan_placeholder = $('#tahun_kendaraan').attr('placeholder');
                             $('#model_kendaraan').empty();
-                            $('#model_kendaraan').next().find(".jcf-select-text").children("span").html("Pilih Model Kendaraan");
+                            $('#model_kendaraan').next().find(".jcf-select-text").children("span").html(model_kendaraan_placeholder);
                             $('#tahun_kendaraan').empty();
-                            $('#tahun_kendaraan').next().find(".jcf-select-text").children("span").html("Pilih Tahun Kendaraan");
+                            $('#tahun_kendaraan').next().find(".jcf-select-text").children("span").html(tahun_kendaraan_placeholder);
                             $('#status_kep').val("");
                             var customFormInstance = jcf.getInstance($('#status_kep'));
                             customFormInstance.refresh();
@@ -2761,8 +2775,9 @@
                         $.each(dataObj.result.data, function (index, dataYear) {
                             if (dataYear.year != '') {
                                 var elementOption = '<option value="' + dataYear.year + '">' + dataYear.year + '</option>';
+                                var tahun_kendaraan_placeholder = $('#tahun_kendaraan').attr('placeholder');
                                 $('#tahun_kendaraan').empty();
-                                $('#tahun_kendaraan').next().find(".jcf-select-text").children("span").html("Pilih Tahun Kendaraan");
+                                $('#tahun_kendaraan').next().find(".jcf-select-text").children("span").html(tahun_kendaraan_placeholder);
                                 $('#status_kep').val("");
                                 var customFormInstance = jcf.getInstance($('#status_kep'));
                                 customFormInstance.refresh();
