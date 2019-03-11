@@ -67,8 +67,7 @@ $this->extend('layout-credit.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label><?= $this->translate('form-work')?></label>
-                                            <select class="c-custom-select formRequired" id="pekerjaan" name="pekerjaan"  data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' />
-                                            <option value=""><?= $this->translate('placeholder-work')?></option>
+                                            <select class="c-custom-select formRequired" id="pekerjaan" name="pekerjaan" placeholder="<?= $this->translate('placeholder-work')?>"  data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' />
                                             <option value="<?= strtoupper($this->translate('work1')) ?>"><?= $this->translate('work1')?></option>
                                             <option value="<?= strtoupper($this->translate('work2')) ?>"><?= $this->translate('work2')?></option>
                                             <option value="<?= strtoupper($this->translate('work3')) ?>"><?= $this->translate('work3')?></option>

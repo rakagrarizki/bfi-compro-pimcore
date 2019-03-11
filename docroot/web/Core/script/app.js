@@ -3529,7 +3529,8 @@
     $("#sel-how-form-credit").on('change', function (e) {
         $(".jcf-select-text").children("span").html($(this).find("option:selected").text());
     })
-    // placeholder status kepemilikan form mobil/motor 
+
+    // placeholder status kepemilikan form mobil/motor
     var status_kep_placeholder = $('#status_kep').attr('placeholder');
     $('#status_kep').next().find(".jcf-select-text").children("span").html(status_kep_placeholder);
     // placeholder pekerjaan form rumah
