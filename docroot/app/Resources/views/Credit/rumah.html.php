@@ -67,8 +67,7 @@ $this->extend('layout-credit.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label><?= $this->translate('form-work')?></label>
-                                            <select class="c-custom-select formRequired" id="pekerjaan" name="pekerjaan"  data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' />
-                                            <option value=""><?= $this->translate('placeholder-work')?></option>
+                                            <select class="c-custom-select formRequired" id="pekerjaan" name="pekerjaan" placeholder="<?= $this->translate('placeholder-work')?>"  data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' />
                                             <option value="<?= strtoupper($this->translate('work1')) ?>"><?= $this->translate('work1')?></option>
                                             <option value="<?= strtoupper($this->translate('work2')) ?>"><?= $this->translate('work2')?></option>
                                             <option value="<?= strtoupper($this->translate('work3')) ?>"><?= $this->translate('work3')?></option>
@@ -178,8 +177,7 @@ $this->extend('layout-credit.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label><?= $this->translate('label-status-bangunan')?></label>
-                                            <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="status_sertificate" name="status_sertificate">
-                                                <option value=""> <?= $this->translate('placeholder-bangunan')?></option>
+                                            <select class="c-custom-select-trans formRequired" placeholder="<?= $this->translate('placeholder-bangunan')?>" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="status_sertificate" name="status_sertificate">
                                                 <option value="<?= strtoupper($this->translate('surat-bangunan-1')) ?>"><?= $this->translate('surat-bangunan-1')?></option>
                                                 <option value="<?= strtoupper($this->translate('surat-bangunan-2')) ?>"><?= $this->translate('surat-bangunan-2')?></option>
                                             </select>
@@ -187,9 +185,8 @@ $this->extend('layout-credit.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label><?= $this->translate('label-status-sertifikat')?></label>
-                                            <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="own_sertificate"
+                                            <select class="c-custom-select-trans formRequired" placeholder="<?= $this->translate('placeholder-sertifikat')?>" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="own_sertificate"
                                                     name="own_sertificate">
-                                                <option value=""> <?= $this->translate('placeholder-sertifikat')?></option>
                                                 <option value="<?= strtoupper($this->translate('sertifikat-1')) ?>"><?= $this->translate('sertifikat-1')?></option>
                                                 <option value="<?= strtoupper($this->translate('sertifikat-2')) ?>"><?= $this->translate('sertifikat-2')?></option>
                                             </select>
