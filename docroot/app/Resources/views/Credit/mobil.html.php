@@ -198,10 +198,10 @@ $this->extend('layout-credit.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label><?= $this->translate('label-status')?></label>
-                                            <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="status_kep" name="status_kep">
-                                                <option value=""> <?= $this->translate('placeholder-status')?></option>
-                                                <option value="<?= strtoupper($this->translate('placeholder-status-self')) ?>"><?= $this->translate('placeholder-status-self')?></option>
-                                                <option value="<?= strtoupper($this->translate('placeholder-status-other')) ?>"><?= $this->translate('placeholder-status-other')?></option>
+                                            <select class="c-custom-select-trans formRequired" placeholder="<?= $this->translate('placeholder-status')?>" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="status_kep" name="status_kep">
+                                                
+                                                <option value="<?= strtoupper($this->translate('placeholder-status-self')) ?>"><?= $this->translate('placeholder-status-self') ?></option>
+                                                <option value="<?= strtoupper($this->translate('placeholder-status-other')) ?>"><?= $this->translate('placeholder-status-other') ?></option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>

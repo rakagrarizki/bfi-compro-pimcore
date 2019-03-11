@@ -1019,6 +1019,7 @@
             });
 
             $("#pekerjaan").on('change', function (e) {
+                $('#pekerjaan').next().find(".jcf-select-text").children("span").html($(this).find(":selected").text());
                 if ($("#email_pemohon").val() == "" || $(this).val() == "" || $("#nama_lengkap").val() == "" || $("#no_handphone") == "") {
                     $("#button1").css("background-color", "#dddddd");
                     $("#button1").css("border-color", "#dddddd");
@@ -2638,7 +2639,7 @@
     
     $('#status_sertificate').change(function () {
         showDefaultButton();
-
+        $('#status_sertificate').next().find(".jcf-select-text").children("span").html($(this).find(":selected").text());
         if(changeDataBangunan){
             $('.nav-item-3').addClass("active")
             $('.nav-item-4').removeClass("active");
@@ -2657,6 +2658,7 @@
 
     $('#own_sertificate').change(function () {
         showDefaultButton();
+        $('#own_sertificate').next().find(".jcf-select-text").children("span").html($(this).find(":selected").text());
         if(changeDataBangunan){
             $('.nav-item-3').addClass("active")
             $('.nav-item-4').removeClass("active");
@@ -2732,26 +2734,27 @@
                             var elementOption = '<option value="' + valKendaraan.codeProduct + '">' + valKendaraan.name + '</option>';
                             
                             
-                            $('#model_kendaraan').empty();
-                            var model_kendaraan_placeholder = $('#model_kendaraan').attr('placeholder');
-                            $('#model_kendaraan').next().find(".jcf-select-text").children("span").html(model_kendaraan_placeholder);
-                           
-                            $('#tahun_kendaraan').empty();
-                            var tahun_kendaraan_placeholder = $('#tahun_kendaraan').attr('placeholder');
-                            $('#tahun_kendaraan').next().find(".jcf-select-text").children("span").html(tahun_kendaraan_placeholder);
-
-                            $('#status_kep').val("");
-                            var customFormInstance = jcf.getInstance($('#status_kep'));
-                            customFormInstance.refresh();
-                            // $('#status_kep').empty();
-                            // var status_kep_placeholder = $('#status_kep').attr('placeholder');
-                            // $('#status_kep').next().find(".jcf-select-text").children("span").html(status_kep_placeholder);
-                            $('#status_kep').next().removeClass("jcf-disabled");
+                            
                             setTimeout(function () {
                                 $("#model_kendaraan").append(elementOption);
                             }, 50);
                         }
                     })
+                    $('#model_kendaraan').empty();
+                    var model_kendaraan_placeholder = $('#model_kendaraan').attr('placeholder');
+                    $('#model_kendaraan').next().find(".jcf-select-text").children("span").html(model_kendaraan_placeholder);
+                    
+                    $('#tahun_kendaraan').empty();
+                    var tahun_kendaraan_placeholder = $('#tahun_kendaraan').attr('placeholder');
+                    $('#tahun_kendaraan').next().find(".jcf-select-text").children("span").html(tahun_kendaraan_placeholder);
+
+                    // $('#status_kep').val("");
+                    // var customFormInstance = jcf.getInstance($('#status_kep'));
+                    // customFormInstance.refresh();
+                    // $('#status_kep').empty();
+                    var status_kep_placeholder = $('#status_kep').attr('placeholder');
+                    $('#status_kep').next().find(".jcf-select-text").children("span").html(status_kep_placeholder);
+                    $('#status_kep').next().removeClass("jcf-disabled");
                 }
             }
         })
@@ -2808,22 +2811,29 @@
                             if (dataYear.year != '') {
                                 var elementOption = '<option value="' + dataYear.year + '">' + dataYear.year + '</option>';
                               
-                                $('#tahun_kendaraan').empty();
-                                var tahun_kendaraan_placeholder = $('#tahun_kendaraan').attr('placeholder');
-                                $('#tahun_kendaraan').next().find(".jcf-select-text").children("span").html(tahun_kendaraan_placeholder);
+                            
                                 
-                                $('#status_kep').val("");
-                                var customFormInstance = jcf.getInstance($('#status_kep'));
-                                customFormInstance.refresh();
-                                // $('#status_kep').empty();
-                                // var status_kep_placeholder = $('#status_kep').attr('placeholder');
-                                // $('#status_kep').next().find(".jcf-select-text").children("span").html(status_kep_placeholder);
-                                $('#status_kep').next().removeClass("jcf-disabled");
                                 setTimeout(function () {
                                     $('#tahun_kendaraan').append(elementOption);
                                 }, 50);
                             }
                         })
+                        $('#tahun_kendaraan').empty();
+                        var tahun_kendaraan_placeholder = $('#tahun_kendaraan').attr('placeholder');
+                        $('#tahun_kendaraan').next().find(".jcf-select-text").children("span").html(tahun_kendaraan_placeholder);
+                        
+                        // $('#status_kep').val("");
+                        // var customFormInstance = jcf.getInstance($('#status_kep'));
+                        // customFormInstance.refresh();
+                        // $('#status_kep').empty();
+                        
+                        // var status_self = $('#status_kep').data('status-self');
+                        // var status_other = $('#status_kep').data('status-other');
+                        // var injectStatusKep = ['<option value="' + status_self.toUpperCase() + '">' + status_self + '</option>', '<option value="' + status_other.toUpperCase() + '">' + status_other + '</option>'];
+                        // $('#status_kep').append(injectStatusKep);
+                        var status_kep_placeholder = $('#status_kep').attr('placeholder');
+                        $('#status_kep').next().find(".jcf-select-text").children("span").html(status_kep_placeholder);
+                        // $('#status_kep').next().removeClass("jcf-disabled");
                     }
                 }
             }
@@ -2871,7 +2881,8 @@
     $('#status_kep').change(function () {
         showDefaultButton();
         // console.log('click');
-
+        // alert();
+        $('#status_kep').next().find(".jcf-select-text").children("span").html($(this).find(":selected").text());
         if($('.nav-item-3').hasClass("done")){
             $('.nav-item-3').removeClass("done");
             $('.nav-item-3').addClass("disabled");
@@ -3511,7 +3522,6 @@
     );
 
     // placeholder cek pengajuan
-
     if ($('.cek-pengajuan').length) {
         var placeholder = $("#sel-how-form-credit").data("placeholder");
         $('.cek-pengajuan').find(".jcf-select-text").children("span").html(placeholder);
@@ -3519,8 +3529,18 @@
     $("#sel-how-form-credit").on('change', function (e) {
         $(".jcf-select-text").children("span").html($(this).find("option:selected").text());
     })
-
-    
+    // placeholder status kepemilikan form mobil/motor
+    var status_kep_placeholder = $('#status_kep').attr('placeholder');
+    $('#status_kep').next().find(".jcf-select-text").children("span").html(status_kep_placeholder);
+    // placeholder pekerjaan form rumah
+    var pekerjaan_placeholder = $('#pekerjaan').attr('placeholder');
+    $('#pekerjaan').next().find(".jcf-select-text").children("span").html(pekerjaan_placeholder);
+    // placeholder status sertifikat form rumah
+    var status_certificate_placeholder = $('#status_sertificate').attr('placeholder');
+    $('#status_sertificate').next().find(".jcf-select-text").children("span").html(status_certificate_placeholder);
+    // placeholder status kepemilikan form rumah
+    var own_sertificate_placeholder = $('#own_sertificate').attr('placeholder');
+    $('#own_sertificate').next().find(".jcf-select-text").children("span").html(own_sertificate_placeholder);
 
     // var locationurlnow = window.location.pathname;
 
