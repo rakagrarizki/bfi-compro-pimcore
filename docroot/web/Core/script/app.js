@@ -1019,7 +1019,7 @@
 
 
         $("#kode_pos").on('keyup', function (e) {
-            if ($("#alamat_lengkap").val() == "" || $(this).val() == "" || $("#provinsi").val() == null || $("#kota").val() == null || $("#kecamatan").val() == null || $("#kelurahan").val() == null) {
+            if ($("#alamat_lengkap").val() == "" || $(this).val() == "" || $("#provinsi").val() == "" || $("#kota").val() == "" || $("#kecamatan").val() == "" || $("#kelurahan").val() == "") {
                 disableButton("#button2");
             } else {
                 enableButton("#button2");
@@ -1038,7 +1038,7 @@
         });
 
         $("#alamat_lengkap").on('keyup', function (e) {
-            if ($("#kode_pos").val() == "" || $(this).val() == "" || $("#provinsi").val() == null || $("#kota").val() == null || $("#kecamatan").val() == null || $("#kelurahan").val() == null) {
+            if ($("#kode_pos").val() == "" || $(this).val() == "" || $("#provinsi").val() == "" || $("#kota").val() == "" || $("#kecamatan").val() == "" || $("#kelurahan").val() == "") {
                 disableButton("#button2");
             } else {
                 enableButton("#button2");
@@ -1048,7 +1048,7 @@
         });
 
         $("#alamat_lengkap_sertificate").on('keyup', function (e) {
-            if ($("#status_sertificate").val() == "" || $("#own_sertificate").val() == "" || $("#kota_sertificate").val() == null || $(this).val() == "" || $("#kode_pos_sertificate").val() == "" || $("#provinsi_sertificate").val() == null || $("#kecamatan_sertificate").val() == null || $("#kelurahan_sertificate").val() == null) {
+            if ($("#status_sertificate").val() == "" || $("#own_sertificate").val() == "" || $("#kota_sertificate").val() == "" || $(this).val() == "" || $("#kode_pos_sertificate").val() == "" || $("#provinsi_sertificate").val() == null || $("#kecamatan_sertificate").val() == null || $("#kelurahan_sertificate").val() == null) {
                 disableButton("#button3rumah");
             } else {
                 enableButton("#button3rumah");
@@ -2154,7 +2154,7 @@
         $('#alamat_lengkap').attr("disabled", "disabled");
         $('#alamat_lengkap').css("background-color", "#F4F4F4");
 
-        if ($("#kode_pos").val() == "" || $(this).val() == null || $("#alamat_lengkap").val() == "" || $("#provinsi").val() == null || $("#kecamatan").val() == null || $("#kelurahan").val() == null) {
+        if ($("#kode_pos").val() == "" || $(this).val() == "" || $("#alamat_lengkap").val() == "" || $("#provinsi").val() == "" || $("#kecamatan").val() == "" || $("#kelurahan").val() == "") {
             disableButton("#button2");
         } else {
             enableButton("#button2");
@@ -2316,7 +2316,7 @@
         $('#alamat_lengkap').attr("disabled", "disabled");
         $('#alamat_lengkap').css("background-color", "#F4F4F4");
 
-        if ($("#kode_pos").val() == "" || $(this).val() == null || $("#alamat_lengkap").val() == "" || $("#provinsi").val() == null || $("#kota").val() == null || $("#kelurahan").val() == null) {
+        if ($("#kode_pos").val() == "" || $(this).val() == "" || $("#alamat_lengkap").val() == "" || $("#provinsi").val() == "" || $("#kota").val() == "" || $("#kelurahan").val() == "") {
             disableButton("#button2");
         } else {
             enableButton("#button2");
@@ -2475,7 +2475,7 @@
             $("#kode_pos").val("");
         }
 
-        if ($("#kode_pos").val() == "" || $(this).val() == null || $("#alamat_lengkap").val() == "" || $("#provinsi").val() == null || $("#kota").val() == null || $("#kecamatan").val() == null) {
+        if ($("#kode_pos").val() == "" || $(this).val() == "" || $("#alamat_lengkap").val() == "" || $("#provinsi").val() == "" || $("#kota").val() == "" || $("#kecamatan").val() == "") {
             disableButton("#button2");
         } else {
             enableButton("#button2");
@@ -2510,7 +2510,7 @@
         $('#alamat_lengkap').removeAttr("disabled");
         $('#alamat_lengkap').css("background-color", "white");
 
-        if ($("#kode_pos").val() == "" || $(this).val() == null || $("#alamat_lengkap").val() == "" || $("#provinsi").val() == null || $("#kota").val() == null || $("#kecamatan").val() == null) {
+        if ($("#kode_pos").val() == "" || $(this).val() == "" || $("#alamat_lengkap").val() == "" || $("#provinsi").val() == "" || $("#kota").val() == "" || $("#kecamatan").val() == "") {
             disableButton("#button2");
         } else {
             enableButton("#button2");
@@ -2545,7 +2545,7 @@
         $('#alamat_lengkap').removeAttr("disabled");
         $('#alamat_lengkap').css("background-color", "white");
 
-        if ($("#kode_pos").val() == "" || $(this).val() == null || $("#alamat_lengkap").val() == "" || $("#provinsi").val() == null || $("#kota").val() == null || $("#kecamatan").val() == null) {
+        if ($("#kode_pos").val() == "" || $(this).val() == "" || $("#alamat_lengkap").val() == "" || $("#provinsi").val() == "" || $("#kota").val() == "" || $("#kecamatan").val() == "") {
             disableButton("#button2");
         } else {
             enableButton("#button2");
