@@ -1889,6 +1889,9 @@
                             var provinsi_placeholder = $('#provinsi').attr('placeholder');
                             $('#provinsi').empty();
                             $('#provinsi').next().find(".jcf-select-text").children("span").html(provinsi_placeholder);
+                            var provinsi_sertificate_placeholder = $('#provinsi_sertificate').attr('placeholder');
+                            $('#provinsi_sertificate').empty();
+                            $('#provinsi_sertificate').next().find(".jcf-select-text").children("span").html(provinsi_sertificate_placeholder);
                             setTimeout(function () {
                                 $(element).append(elementOption);
                                 if (element2) {
