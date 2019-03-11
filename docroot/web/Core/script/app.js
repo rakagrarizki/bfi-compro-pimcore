@@ -944,9 +944,9 @@
     }
 
     function enableButton(button){
-        $("#button1").css("background-color", "#F8991D");
-        $("#button1").css("border-color", "#F8991D");
-        $("#button1").removeAttr("disabled");
+        $(button).css("background-color", "#F8991D");
+        $(button).css("border-color", "#F8991D");
+        $(button).removeAttr("disabled");
     }
 
     function stepAction() {
