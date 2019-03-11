@@ -10,7 +10,6 @@
                             <div class="row">
                                 <div class="col-md-10 col-md-offset-1">
                                     <p class="title"><?= $this->input('title');?></p>
-                                    <a href="<?= $this->link('url')->getHref(); ?>">LIHAT PRODUK</a>
                                     <p class="quotes"><?= $this->textarea('text');?></p>
                                     <div class="bungkus-img-people"><img src="<?= $assetFounder->getImage()?>" class="img-responsive img-people" alt=""></div>
                                     <div class="cont-name">

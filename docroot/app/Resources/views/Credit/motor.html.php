@@ -123,22 +123,22 @@ $this->extend('layout-credit.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label><?= $this->translate('label-kota')?></label>
-                                            <select class="c-custom-select formRequired" id="kota" name="kota"  data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' />
-                                            <option value=""><option value=""><?= $this->translate('choose-kota')?></option></option>
+                                            <select class="c-custom-select formRequired" id="kota" name="kota" placeholder="<?= $this->translate('choose-kota')?>" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' />
+                                            <option value=""><?= $this->translate('choose-kota')?></option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
 
                                             <label><?= $this->translate('label-kecamatan')?></label>
-                                            <select class="c-custom-select formRequired" id="kecamatan" name="kecamatan"  data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' />
-                                            <<option value=""><?= $this->translate('choose-kecamatan')?></option>
+                                            <select class="c-custom-select formRequired" id="kecamatan" name="kecamatan" placeholder="<?= $this->translate('choose-kecamatan')?>"  data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' />
+                                            <option value=""><?= $this->translate('choose-kecamatan')?></option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
                                             <label><?= $this->translate('label-kelurahan')?></label>
-                                            <select class="c-custom-select formRequired" id="kelurahan" name="kelurahan"  data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' />
+                                            <select class="c-custom-select formRequired" id="kelurahan" name="kelurahan" placeholder="<?= $this->translate('choose-kelurahan')?>"  data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' />
                                             <option value=""><?= $this->translate('choose-kelurahan')?></option>
                                             </select>
                                             <div class="error-wrap"></div>
@@ -152,7 +152,7 @@ $this->extend('layout-credit.html.php');
                                         <div class="form-group">
                                             <label for="alamat_lengkap"><?= $this->translate('label-place')?></label>
                                             <textarea class="form-control formRequired" name="alamat_lengkap" id="alamat_lengkap"
-                                                      placeholder="<?= $this->translate('placeholder-place')?>"></textarea>
+                                                      placeholder="<?= $this->translate('placeholder-place')?>, Contoh: Jalan Rajawali 1 Blok A no.11 RT 01 RW 02"></textarea>
                                             <div class="error-wrap"></div>
                                         </div>
                                     </div>
@@ -175,14 +175,14 @@ $this->extend('layout-credit.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label><?= $this->translate('label-merk')?></label>
-                                            <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="merk_kendaraan" name="merk_kendaraan">
+                                            <select class="c-custom-select-trans formRequired" placeholder="<?= $this->translate('placeholder-merk')?>" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="merk_kendaraan" name="merk_kendaraan">
                                                 <option value=""> <?= $this->translate('placeholder-merk')?></option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
                                             <label><?= $this->translate('label-model')?></label>
-                                            <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="model_kendaraan"
+                                            <select class="c-custom-select-trans formRequired" placeholder="<?= $this->translate('placeholder-model')?>" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="model_kendaraan"
                                                     name="model_kendaraan">
                                                 <option value=""> <?= $this->translate('placeholder-model')?></option>
                                             </select>
@@ -190,7 +190,7 @@ $this->extend('layout-credit.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label><?= $this->translate('label-tahun')?></label>
-                                            <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="tahun_kendaraan"
+                                            <select class="c-custom-select-trans formRequired" placeholder="<?= $this->translate('placeholder-tahun')?>" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="tahun_kendaraan"
                                                     name="tahun_kendaraan">
                                                 <option value=""> <?= $this->translate('placeholder-tahun')?></option>
                                                 <?php
@@ -204,10 +204,10 @@ $this->extend('layout-credit.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label><?= $this->translate('label-status')?></label>
-                                            <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="status_kep" name="status_kep">
+                                            <select class="c-custom-select-trans formRequired" placeholder="<?= $this->translate('placeholder-status')?>" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="status_kep" name="status_kep">
                                                 <option value=""> <?= $this->translate('placeholder-status')?></option>
-                                                <option value="Hak Milik"><?= $this->translate('placeholder-status-self')?></option>
-                                                <option value="Hak Milik Orang Lain"><?= $this->translate('placeholder-status-other')?></option>
+                                                <option value="<?= strtoupper($this->translate('placeholder-status-self')) ?>"><?= $this->translate('placeholder-status-self')?></option>
+                                                <option value="<?= strtoupper($this->translate('placeholder-status-other')) ?>"><?= $this->translate('placeholder-status-other')?></option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
@@ -258,7 +258,7 @@ $this->extend('layout-credit.html.php');
                                                 <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="jangka_waktu"
                                                         name="jangka-waktu">
                                                     <?php
-                                                    for ($i = 6 ; $i <= 60; $i++) {
+                                                    for ($i = 6 ; $i <= 24; $i++) {
                                                         if($i % 6 == 0){
                                                             echo '<option value="' . $i . '">' . $i . ' ' .$this->translate('label-month') .'</option>';
                                                         }
@@ -366,7 +366,7 @@ $this->extend('layout-credit.html.php');
                                                     <tr>
                                                         <td><?= $this->translate('label-jenis')?></td>
 
-                                                        <td id="showAngunan" class="jenis_jaminan"></td>
+                                                        <td id="showAngunan" class="jenis_jaminan"><?= $this->translate('jenis-jaminan-motor')?></td>
                                                     </tr>
                                                 </table>
                                             </div>
@@ -568,7 +568,7 @@ $this->extend('layout-credit.html.php');
 
                                     <div class="button-area text-right next">
                                         <button class="cta cta-primary cta-big cta-see buttonnext" id="button6"
-                                                type="submit"><?= $this->translate('verifikasi')?></button>
+                                                type="button"><?= $this->translate('verifikasi')?></button>
                                     </div>
 
                                 </div>

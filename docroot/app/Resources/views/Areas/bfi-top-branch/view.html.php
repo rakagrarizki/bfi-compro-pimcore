@@ -13,11 +13,18 @@
                     break;
                 }
 
+                $name = $branch->getName();
+                if($this->getLocale() == 'en'){
+                    if (strpos($branch->getName(), 'Cabang') !== false) {
+                       $name =  str_replace("Cabang","Outlet",$branch->getName());
+                    }
+                }
+
                 ?>
                 <div class="col-md-4 thumbnail thumbnail--branch">
                     <img src="/static/images/icon/branch1.png">
                     <div class="thumbnail-caption">
-                        <h3><?= $branch->getName(); ?></h3>
+                        <h3><?= $name; ?></h3>
                         <p><?= $branch->getAddress(); ?></p>
                         <a href="/<?= $this->getLocale() ?>/branch-office?longitude=<?= $branch->getMap() ? $branch->getMap()->getLongitude() : '' ?>&latitude=<?= $branch->getMap() ? $branch->getMap()->getLatitude() : '' ?>" class="cta-location"><?= $this->translate("seeLocation") ?></a>
                     </div>

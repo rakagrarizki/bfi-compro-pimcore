@@ -127,7 +127,7 @@ footer {
 .footer-bottom {
     background-color:#404040;
     border-top:1px solid #4E4E4E;
-    padding: 20px 0;
+    padding: 20px 0 40px 0;
     font-family: 'HelveticaNeue';
 
     &.footer-credit{
@@ -163,6 +163,10 @@ footer {
             margin-right: 15px;
             @include breakpoint(mobile){
                 margin-right: 10px;
+                float: left !important;
+            }
+            @include breakpoint(tablet){
+                float: right;
             }
             a {
                 color: #9A9A9A;

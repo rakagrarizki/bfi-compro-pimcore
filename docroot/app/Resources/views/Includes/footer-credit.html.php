@@ -29,14 +29,18 @@ if($this->editmode) : ?>
 <?php endif?>
 <div class="footer-bottom">
     <div class="container">
-        <span>&copy; <?php echo date("Y"); ?> - PT BFI Finance Indonesia Tbk</span>
-        <ul class="nav-footer">
-            <li><a href="<?=$this->link('career')->getHref();?>"><?= $this->translate("career") ?></a></li>
-            <li><a href="<?=$this->link('contact')->getHref();?>"><?= $this->translate("contact") ?></a></li>
-            <li><a href="<?=$this->link('branch')->getHref();?>"><?= $this->translate("branch") ?></a></li>
-            <li><a href="<?=$this->link('term')->getHref();?>"><?= $this->translate("term") ?></a></li>
-            <li><a href="<?=$this->link('privacy')->getHref();?>"><?= $this->translate("privacy") ?></a></li>
-        </ul>
+        <div class="row">
+            <div class="col-sm-5">
+                <span>&copy; <?php echo date("Y"); ?> - PT BFI Finance Indonesia Tbk</span>
+            </div>
+            <div class="col-sm-7">
+                <ul class="nav-footer">
+                    <li><a href="<?=$this->link('career')->getHref();?>"><?= $this->translate("career") ?></a></li>
+                    <li><a href="<?=$this->link('contact')->getHref();?>"><?= $this->translate("contact") ?></a></li>
+                    <li><a href="<?=$this->link('branch')->getHref();?>"><?= $this->translate("branch") ?></a></li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
 

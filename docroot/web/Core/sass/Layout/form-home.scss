@@ -5,6 +5,10 @@
         padding: 20px 15px;
     }
 
+    @include breakpoint(tablet){
+        padding: 20px 15px;
+    }
+
     @include breakpoint(desktop){
         &.modif{
             position: absolute;
@@ -22,12 +26,31 @@
         @include breakpoint(mobile){
             padding: 0;
         }
+
+        @include breakpoint(tablet){
+            padding: 0;
+        }
         
         .list-credit--icon {
             display: flex;
             list-style: none;
             flex-wrap: nowrap;
             @include breakpoint(mobile){
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex; 
+                -webkit-box-orient: horizontal; 
+                -webkit-box-direction: normal; 
+                -webkit-flex-direction: row; 
+                -ms-flex-direction: row; 
+                flex-direction: row;
+                -webkit-flex-wrap: wrap;
+                -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+            }
+
+            @include breakpoint(tablet){
                 display: -webkit-box;
                 display: -webkit-flex;
                 display: -ms-flexbox;
@@ -52,6 +75,13 @@
                     min-height:auto;
                 }
 
+                @include breakpoint(tablet){
+                    flex: 1 0 21%;
+                    margin: 15px -1px;
+                    min-width:auto;
+                    min-height:auto;
+                }
+
                 @media only screen and (max-width: 323px) {
                     min-width:100px;
                 }
@@ -70,6 +100,11 @@
                             height: auto;
                         }
 
+                        @include breakpoint(tablet){
+                            width: 100%;
+                            height: auto;
+                        }
+
                         .imggetcredit{
                             vertical-align: middle;
                             margin-bottom: 20px;
@@ -80,12 +115,21 @@
                                 width:80px;
                                 height:80px;
                             }
+
+                            @include breakpoint(tablet){
+                                width:80px;
+                                height:80px;
+                            }
                         }
 
                         p{
                             font-weight:bold;
                             color: #9C9C9C;
                             @include breakpoint(mobile){
+                                height:40px;
+                            }
+
+                            @include breakpoint(tablet){
                                 height:40px;
                             }
                         }

@@ -44,6 +44,12 @@
                     
                     @include breakpoint(mobile) {
                         vertical-align:middle;
+                        width:100%;
+                    }
+                    .jcf-select {
+                        @include breakpoint(mobile) {
+                            width:100%;
+                        }
                     }
                 }
 
@@ -72,6 +78,7 @@
                         }
                     }
                 }
+
             }
         }
 
@@ -142,7 +149,9 @@
             // Main Select Box
             .jcf-select {
                 position: relative;
-                display: block;
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 width: 400px;
                 height: 60px;
                 line-height: 40px;
@@ -189,9 +198,10 @@
             }
 
             .jcf-select-text {
-                line-height: 60px;
+                line-height: 20px;
                 font-size: 16px;
-                
+                white-space: normal;
+                word-break: break-word;
                 span {
                     font-family: 'HelveticaNeue';
                     color:gray;
@@ -239,6 +249,8 @@
 
             // Option style 
             .jcf-option {
+                white-space: normal;
+                word-break: break-word;
                 display: block;
                 cursor: pointer;
                 padding: 15px;

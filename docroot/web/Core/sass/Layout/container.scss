@@ -1,6 +1,6 @@
 #site-container {
     margin-top: 130px;
-    min-height: 56vh;
+    min-height: 575px;
 
     &.active {
         
@@ -39,16 +39,25 @@ a {
         font-family: 'HelveticaNeue';
         font-weight: 600;
         color:white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         position:relative;
         font-size:36px;
-        
         @include breakpoint(mobile){
             font-size: 1.4em;
             letter-spacing: 1px;
+            flex-direction: column;
+        }
+        @include breakpoint(tablet){
+            flex-direction: column;
+        }
+        @include breakpoint(wide){
+            flex-direction: row;
         }
         a {
             margin-left: 40px;
-            margin-top:15px;
+            // margin-top:15px;
             font-family: 'HelveticaNeue';
             font-weight: normal;
             background-color:transparent;
@@ -56,12 +65,16 @@ a {
             @include breakpoint(mobile){
                 display: block;
                 font-size: 14px;
-                margin: 10px auto 0;
+                margin: 0;
                 width: 60%;
                 padding: 13px 15px;
                 &:before{
                     right: 15px;
                 }
+            }
+            @include breakpoint(tablet){
+                margin-left: 0;
+                margin-top: 10px;
             }
         }
     }
@@ -79,7 +92,7 @@ a {
     font-weight: 600;
     font-size: 37px;
     color:#04559F;
-    margin-top:85px;
+    margin-top:60px;
     padding:0 8%;
 
     &.modif-top{
@@ -89,12 +102,20 @@ a {
     @include breakpoint(mobile){
         font-size: 1.8em;
     }
+
+    @include breakpoint(tablet){
+        font-size: 1.8em;
+    }
 }
 .paragraf-title {
     font-size: 1.45em;
     font-family: 'HelveticaNeue';
     color:#565656;
     @include breakpoint(mobile){
+        font-size: 1em;
+    }
+
+    @include breakpoint(tablet){
         font-size: 1em;
     }
 }
