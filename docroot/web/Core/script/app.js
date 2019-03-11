@@ -940,13 +940,13 @@
     function disableButton(button){
         $(button).css("background-color", "#dddddd");
         $(button).css("border-color", "#dddddd");
-        $(button).prop('disabled', true);
+        $(button).attr("disabled", 'disabled');
     }
 
     function enableButton(button){
         $("#button1").css("background-color", "#F8991D");
         $("#button1").css("border-color", "#F8991D");
-        $("#button1").prop('disabled', false);
+        $("#button1").removeAttr("disabled");
     }
 
     function stepAction() {
@@ -3408,10 +3408,8 @@
         e.preventDefault();
         $(this).text("HITUNG ULANG");
         calculatePremi();
-        $('#button4').css("background-color", "#F8991D");
-        $('#button4').css("border-color", "#F8991D");
-        $('.hidesavebutton').css("background-color", "#F8991D");
-        $('.hidesavebutton').css("border-color", "#F8991D");
+        enableButton('#button4');
+        enableButton('.hidesavebutton');
         flag_sudahcalc = true;
     })
 
