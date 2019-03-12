@@ -526,10 +526,8 @@
             asuransi_arr[rowke - 1] = $(this).val();
             asuransi_arr_txt[rowke - 1] = $(this).next().children().children().text();
 
-            $('#button4').css("background-color", "#dddddd");
-            $('#button4').css("border-color", "#dddddd");
-            $('.hidesavebutton').css("background-color", "#dddddd");
-            $('.hidesavebutton').css("border-color", "#dddddd");
+            disableButton("#button4");
+            disableButton(".hidesavebutton");
             flag_sudahcalc = false;
         });
     };
@@ -541,10 +539,8 @@
 
         //andry
         newoptionAsuransi(thisval, raw_select);
-        $('#button4').css("background-color", "#dddddd");
-        $('#button4').css("border-color", "#dddddd");
-        $('.hidesavebutton').css("background-color", "#dddddd");
-        $('.hidesavebutton').css("border-color", "#dddddd");
+        disableButton("#button4");
+        disableButton(".hidesavebutton");
         flag_sudahcalc = false;
     });
 
@@ -588,10 +584,8 @@
                 objCredits.jangka_waktu = parseInt(_thisVal);
             }
 
-            $('#button4').css("background-color", "#dddddd");
-            $('#button4').css("border-color", "#dddddd");
-            $('.hidesavebutton').css("background-color", "#dddddd");
-            $('.hidesavebutton').css("border-color", "#dddddd");
+            disableButton("#button4");
+            disableButton(".hidesavebutton");
             flag_sudahcalc = false;
         });
     }
@@ -943,100 +937,92 @@
         $(".button-area").addClass("center");
     }
 
+    function disableButton(button){
+        $(button).css("background-color", "#dddddd");
+        $(button).css("border-color", "#dddddd");
+        $(button).attr("disabled", 'disabled');
+    }
+
+    function enableButton(button){
+        $(button).css("background-color", "#F8991D");
+        $(button).css("border-color", "#F8991D");
+        $(button).removeAttr("disabled");
+    }
+
     function stepAction() {
-        $("#button1").css("background-color", "#dddddd");
-        $("#button1").css("border-color", "#dddddd");
-        $("#button2").css("background-color", "#dddddd");
-        $("#button2").css("border-color", "#dddddd");
-        $("#button3").css("background-color", "#dddddd");
-        $("#button3").css("border-color", "#dddddd");
-        $("#button3rumah").css("background-color", "#dddddd");
-        $("#button3rumah").css("border-color", "#dddddd");
-        $('#button4').css("background-color", "#dddddd");
-        $('#button4').css("border-color", "#dddddd");
+        disableButton("#button1");
+        disableButton("#button2");
+        disableButton("#button3");
+        disableButton("#button3rumah");
+        disableButton("#button4");
         $("#kode_pos").css("background-color", "#F4F4F4");
         $("#kode_pos_sertificate").css("background-color", "#F4F4F4");
 
         if ($("#pekerjaan").length == 0) {
             $("#nama_lengkap").on('keyup', function (e) {
                 if ($("#email_pemohon").val() == "" || $(this).val() == "" || $("#no_handphone").val() == "") {
-                    $("#button1").css("background-color", "#dddddd");
-                    $("#button1").css("border-color", "#dddddd");
+                    disableButton("#button1");
                 } else {
-                    $("#button1").css("background-color", "#F8991D");
-                    $("#button1").css("border-color", "#F8991D");
+                    enableButton("#button1");
                 }
             });
 
             $("#email_pemohon").on('keyup', function (e) {
                 if ($("#nama_lengkap").val() == "" || $(this).val() == "" || $("#no_handphone").val() == "") {
-                    $("#button1").css("background-color", "#dddddd");
-                    $("#button1").css("border-color", "#dddddd");
+                    disableButton("#button1");
                 } else {
-                    $("#button1").css("background-color", "#F8991D");
-                    $("#button1").css("border-color", "#F8991D");
+                    enableButton("#button1");
                 }
             });
 
             $("#no_handphone").on('keyup', function (e) {
                 if ($("#email_pemohon").val() == "" || $(this).val() == "" || $("#nama_lengkap").val() == "") {
-                    $("#button1").css("background-color", "#dddddd");
-                    $("#button1").css("border-color", "#dddddd");
+                    disableButton("#button1");
                 } else {
-                    $("#button1").css("background-color", "#F8991D");
-                    $("#button1").css("border-color", "#F8991D");
+                    enableButton("#button1");
                 }
             });
         } else {
             $("#nama_lengkap").on('keyup', function (e) {
                 if ($("#email_pemohon").val() == "" || $(this).val() == "" || $("#no_handphone").val() == "" || $("#pekerjaan").val() == "") {
-                    $("#button1").css("background-color", "#dddddd");
-                    $("#button1").css("border-color", "#dddddd");
+                    disableButton("#button1");
                 } else {
-                    $("#button1").css("background-color", "#F8991D");
-                    $("#button1").css("border-color", "#F8991D");
+                    enableButton("#button1");
                 }
             });
 
             $("#email_pemohon").on('keyup', function (e) {
                 if ($("#nama_lengkap").val() == "" || $(this).val() == "" || $("#no_handphone").val() == "" || $("#pekerjaan").val() == "") {
-                    $("#button1").css("background-color", "#dddddd");
-                    $("#button1").css("border-color", "#dddddd");
+                    disableButton("#button1");
                 } else {
-                    $("#button1").css("background-color", "#F8991D");
-                    $("#button1").css("border-color", "#F8991D");
+                    enableButton("#button1");
                 }
             });
 
             $("#no_handphone").on('keyup', function (e) {
                 if ($("#email_pemohon").val() == "" || $(this).val() == "" || $("#nama_lengkap").val() == "" || $("#pekerjaan").val() == "") {
-                    $("#button1").css("background-color", "#dddddd");
-                    $("#button1").css("border-color", "#dddddd");
+                    disableButton("#button1");
                 } else {
-                    $("#button1").css("background-color", "#F8991D");
-                    $("#button1").css("border-color", "#F8991D");
+                    enableButton("#button1");
                 }
             });
 
             $("#pekerjaan").on('change', function (e) {
+                $('#pekerjaan').next().find(".jcf-select-text").children("span").html($(this).find(":selected").text());
                 if ($("#email_pemohon").val() == "" || $(this).val() == "" || $("#nama_lengkap").val() == "" || $("#no_handphone") == "") {
-                    $("#button1").css("background-color", "#dddddd");
-                    $("#button1").css("border-color", "#dddddd");
+                    disableButton("#button1");
                 } else {
-                    $("#button1").css("background-color", "#F8991D");
-                    $("#button1").css("border-color", "#F8991D");
+                    enableButton("#button1");
                 }
             });
         }
 
 
         $("#kode_pos").on('keyup', function (e) {
-            if ($("#alamat_lengkap").val() == "" || $(this).val() == "" || $("#provinsi").val() == null || $("#kota").val() == null || $("#kecamatan").val() == null || $("#kelurahan").val() == null) {
-                $("#button2").css("background-color", "#dddddd");
-                $("#button2").css("border-color", "#dddddd");
+            if ($("#alamat_lengkap").val() == "" || $(this).val() == "" || $("#provinsi").val() == "" || $("#kota").val() == "" || $("#kecamatan").val() == "" || $("#kelurahan").val() == "") {
+                disableButton("#button2");
             } else {
-                $("#button2").css("background-color", "#F8991D");
-                $("#button2").css("border-color", "#F8991D");
+                enableButton("#button2");
             }
             showDefaultButton();
             change_addres = true;
@@ -1044,34 +1030,28 @@
 
         $("#kode_pos_sertificate").on('keyup', function (e) {
             if ($("#status_sertificate").val() == "" || $("#own_sertificate").val() == "" || $("#kota_sertificate").val() == null || $(this).val() == "" || $("#alamat_lengkap_sertificate").val() == "" || $("#provinsi_sertificate").val() == null || $("#kecamatan_sertificate").val() == null || $("#kelurahan_sertificate").val() == null) {
-                $("#button3rumah").css("background-color", "#dddddd");
-                $("#button3rumah").css("border-color", "#dddddd");
+                disableButton("#button3rumah");
             } else {
-                $("#button3rumah").css("background-color", "#F8991D");
-                $("#button3rumah").css("border-color", "#F8991D");
+                enableButton("#button3rumah");
             }
             showDefaultButton();
         });
 
         $("#alamat_lengkap").on('keyup', function (e) {
-            if ($("#kode_pos").val() == "" || $(this).val() == "" || $("#provinsi").val() == null || $("#kota").val() == null || $("#kecamatan").val() == null || $("#kelurahan").val() == null) {
-                $("#button2").css("background-color", "#dddddd");
-                $("#button2").css("border-color", "#dddddd");
+            if ($("#kode_pos").val() == "" || $(this).val() == "" || $("#provinsi").val() == "" || $("#kota").val() == "" || $("#kecamatan").val() == "" || $("#kelurahan").val() == "") {
+                disableButton("#button2");
             } else {
-                $("#button2").css("background-color", "#F8991D");
-                $("#button2").css("border-color", "#F8991D");
+                enableButton("#button2");
             }
             showDefaultButton();
             change_addres = true;
         });
 
         $("#alamat_lengkap_sertificate").on('keyup', function (e) {
-            if ($("#status_sertificate").val() == "" || $("#own_sertificate").val() == "" || $("#kota_sertificate").val() == null || $(this).val() == "" || $("#kode_pos_sertificate").val() == "" || $("#provinsi_sertificate").val() == null || $("#kecamatan_sertificate").val() == null || $("#kelurahan_sertificate").val() == null) {
-                $("#button3rumah").css("background-color", "#dddddd");
-                $("#button3rumah").css("border-color", "#dddddd");
+            if ($("#status_sertificate").val() == "" || $("#own_sertificate").val() == "" || $("#kota_sertificate").val() == "" || $(this).val() == "" || $("#kode_pos_sertificate").val() == "" || $("#provinsi_sertificate").val() == null || $("#kecamatan_sertificate").val() == null || $("#kelurahan_sertificate").val() == null) {
+                disableButton("#button3rumah");
             } else {
-                $("#button3rumah").css("background-color", "#F8991D");
-                $("#button3rumah").css("border-color", "#F8991D");
+                enableButton("#button3rumah");
             }
             showDefaultButton();
         });
@@ -1253,8 +1233,7 @@
                     $(".currency[tahun='1']").text("Rp " + 0);
                     $(".total").text("Rp " + 0);
                     getpriceminmax(credits);
-                    $('#button4').css("background-color", "#dddddd");
-                    $('#button4').css("border-color", "#dddddd");
+                    disableButton("#button4");
                     status_edit = false;
                 }
                 
@@ -1888,6 +1867,9 @@
                             var provinsi_placeholder = $('#provinsi').attr('placeholder');
                             $('#provinsi').empty();
                             $('#provinsi').next().find(".jcf-select-text").children("span").html(provinsi_placeholder);
+                            var provinsi_sertificate_placeholder = $('#provinsi_sertificate').attr('placeholder');
+                            $('#provinsi_sertificate').empty();
+                            $('#provinsi_sertificate').next().find(".jcf-select-text").children("span").html(provinsi_sertificate_placeholder);
                             setTimeout(function () {
                                 $(element).append(elementOption);
                                 if (element2) {
@@ -1943,11 +1925,9 @@
     $('#status_kep').next().css("background-color", "#F4F4F4");
     $('#status_kep').next().find(".jcf-select-opener").css("background-color", "#F4F4F4");
 
-
     $('#provinsi').change(function () {
         showDefaultButton();
         change_addres = true;
-
         if($('.nav-item-2').hasClass("done")){
             $('.nav-item-2').removeClass("done");
             $('.nav-item-2').addClass("disabled");
@@ -1990,11 +1970,9 @@
         $('#alamat_lengkap').css("background-color", "#F4F4F4");
 
         if ($("#kode_pos").val() == "" || $(this).val() == null || $("#alamat_lengkap").val() == "" || $("#kota").val() == null || $("#kecamatan").val() == null || $("#kelurahan").val() == null) {
-            $("#button2").css("background-color", "#dddddd");
-            $("#button2").css("border-color", "#dddddd");
+            disableButton("#button2");
         } else {
-            $("#button2").css("background-color", "#F8991D");
-            $("#button2").css("border-color", "#F8991D");
+            enableButton("#button2");
         }
 
         
@@ -2015,24 +1993,29 @@
 
             success: function (dataObj) {
                 console.log(dataObj)
+                
                 if (dataObj.success == true) {
                     $.each(dataObj.result.data, function (idCity, valCity) {
                         if (valCity.name != '') {
-                            var elementOption = '<option value="' + valCity.id + '">' + valCity.name + '</option>';
+                            var elementOption = '<option value="' + valCity.id + '">' + valCity.name + '</option>';                            $('#kota').empty();
                             var kota_placeholder = $('#kota').attr('placeholder');
-                            var kecamatan_placeholder = $('#kecamatan').attr('placeholder');
-                            var kelurahan_placeholder = $('#kelurahan').attr('placeholder');
-                            $('#kota').empty();
                             $('#kota').next().find(".jcf-select-text").children("span").html(kota_placeholder);
+
                             $('#kecamatan').empty();
+                            var kecamatan_placeholder = $('#kecamatan').attr('placeholder');
                             $('#kecamatan').next().find(".jcf-select-text").children("span").html(kecamatan_placeholder);
+                            
                             $('#kelurahan').empty();
+                            var kelurahan_placeholder = $('#kelurahan').attr('placeholder');
                             $('#kelurahan').next().find(".jcf-select-text").children("span").html(kelurahan_placeholder);
+                            
+                            $('#kode_pos').val("");
                             $('#alamat_lengkap').val("");
+                             
                             setTimeout(function () {
                                 $("#kota").append(elementOption);
                             }, 50);
-
+                            
                         }
                     })
                 }
@@ -2080,11 +2063,9 @@
         $('#alamat_lengkap_sertificate').css("background-color", "#F4F4F4");
 
         if ($("#status_sertificate").val() == "" || $("#own_sertificate").val() == "" || $("#kode_pos_sertificate").val() == "" || $(this).val() == null || $("#alamat_lengkap_sertificate").val() == "" || $("#kota_sertificate").val() == null || $("#kecamatan_sertificate").val() == null || $("#kelurahan_sertificate").val() == null) {
-            $("#button3rumah").css("background-color", "#dddddd");
-            $("#button3rumah").css("border-color", "#dddddd");
+            disableButton("#button3rumah");
         } else {
-            $("#button3rumah").css("background-color", "#F8991D");
-            $("#button3rumah").css("border-color", "#F8991D");
+            enableButton("#button3rumah");
         }
 
         var id = this.value;
@@ -2107,15 +2088,22 @@
                     $.each(dataObj.result.data, function (idCity, valCity) {
                         if (valCity.name != '') {
                             var elementOption = '<option value="' + valCity.id + '">' + valCity.name + '</option>';
-                            var kota_placeholder = $('#kota_sertificate').attr('placeholder');
-                            var kecamatan_placeholder = $('#kecamatan_sertificate').attr('placeholder');
-                            var kelurahan_placeholder = $('#kelurahan_sertificate').attr('placeholder');
+                            
+                            
+                            
                             $('#kota_sertificate').empty();
-                            $('#kota_sertificate').next().find(".jcf-select-text").children("span").html(kota_placeholder);
+                            var kota_sertificate_placeholder = $('#kota_sertificate').attr('placeholder');
+                            $('#kota_sertificate').next().find(".jcf-select-text").children("span").html(kota_sertificate_placeholder);
+                            
                             $('#kecamatan_sertificate').empty();
-                            $('#kecamatan_sertificate').next().find(".jcf-select-text").children("span").html(kecamatan_placeholder);
+                            var kecamatan_sertificate_placeholder = $('#kecamatan_sertificate').attr('placeholder');
+                            $('#kecamatan_sertificate').next().find(".jcf-select-text").children("span").html(kecamatan_sertificate_placeholder);
+                            
                             $('#kelurahan_sertificate').empty();
-                            $('#kelurahan_sertificate').next().find(".jcf-select-text").children("span").html(kelurahan_placeholder);
+                            var kelurahan_sertificate_placeholder = $('#kelurahan_sertificate').attr('placeholder');
+                            $('#kelurahan_sertificate').next().find(".jcf-select-text").children("span").html(kelurahan_sertificate_placeholder);
+                            
+                            $('#kode_pos_sertificate').val("");
                             $('#alamat_lengkap_sertificate').val("");
                             setTimeout(function () {
                                 $("#kota_sertificate").append(elementOption);
@@ -2166,12 +2154,10 @@
         $('#alamat_lengkap').attr("disabled", "disabled");
         $('#alamat_lengkap').css("background-color", "#F4F4F4");
 
-        if ($("#kode_pos").val() == "" || $(this).val() == null || $("#alamat_lengkap").val() == "" || $("#provinsi").val() == null || $("#kecamatan").val() == null || $("#kelurahan").val() == null) {
-            $("#button2").css("background-color", "#dddddd");
-            $("#button2").css("border-color", "#dddddd");
+        if ($("#kode_pos").val() == "" || $(this).val() == "" || $("#alamat_lengkap").val() == "" || $("#provinsi").val() == "" || $("#kecamatan").val() == "" || $("#kelurahan").val() == "") {
+            disableButton("#button2");
         } else {
-            $("#button2").css("background-color", "#F8991D");
-            $("#button2").css("border-color", "#F8991D");
+            enableButton("#button2");
         }
 
         var id = this.value;
@@ -2194,12 +2180,16 @@
                         if (valKec.name != '') {
 
                             var elementOption = '<option value="' + valKec.id + '">' + valKec.name + '</option>';
-                            var kecamatan_placeholder = $('#kecamatan').attr('placeholder');
-                            var kelurahan_placeholder = $('#kelurahan').attr('placeholder');
+
                             $('#kecamatan').empty();
+                            var kecamatan_placeholder = $('#kecamatan').attr('placeholder');
                             $('#kecamatan').next().find(".jcf-select-text").children("span").html(kecamatan_placeholder);
+                            
                             $('#kelurahan').empty();
+                            var kelurahan_placeholder = $('#kelurahan').attr('placeholder');
                             $('#kelurahan').next().find(".jcf-select-text").children("span").html(kelurahan_placeholder);
+                            
+                            $('#kode_pos').val("");
                             $('#alamat_lengkap').val("");
 
                             setTimeout(function () {
@@ -2244,11 +2234,9 @@
         $('#alamat_lengkap_sertificate').css("background-color", "#F4F4F4");
 
         if ($("#status_sertificate").val() == "" || $("#own_sertificate").val() == "" || $("#kode_pos_sertificate").val() == "" || $(this).val() == null || $("#alamat_lengkap_sertificate").val() == "" || $("#provinsi_sertificate").val() == null || $("#kecamatan_sertificate").val() == null || $("#kelurahan_sertificate").val() == null) {
-            $("#button3rumah").css("background-color", "#dddddd");
-            $("#button3rumah").css("border-color", "#dddddd");
+            disableButton("#button3rumah");
         } else {
-            $("#button3rumah").css("background-color", "#F8991D");
-            $("#button3rumah").css("border-color", "#F8991D");
+            enableButton("#button3rumah");
         }
 
         var id = this.value;
@@ -2271,12 +2259,16 @@
                         if (valKec.name != '') {
 
                             var elementOption = '<option value="' + valKec.id + '">' + valKec.name + '</option>';
-                            var kecamatan_placeholder = $('#kecamatan_sertificate').attr('placeholder');
-                            var kelurahan_placeholder = $('#kelurahan_sertificate').attr('placeholder');
+                           
                             $('#kecamatan_sertificate').empty();
-                            $('#kecamatan_sertificate').next().find(".jcf-select-text").children("span").html(kecamatan_placeholder);
+                            var kecamatan_sertificate_placeholder = $('#kecamatan_sertificate').attr('placeholder');
+                            $('#kecamatan_sertificate').next().find(".jcf-select-text").children("span").html(kecamatan_sertificate_placeholder);
+                            
                             $('#kelurahan_sertificate').empty();
-                            $('#kelurahan_sertificate').next().find(".jcf-select-text").children("span").html(kelurahan_placeholder);
+                            var kelurahan_sertificate_placeholder = $('#kelurahan_sertificate').attr('placeholder');
+                            $('#kelurahan_sertificate').next().find(".jcf-select-text").children("span").html(kelurahan_sertificate_placeholder);
+                            
+                            $('#kode_pos_sertificate').val("");
                             $('#alamat_lengkap_sertificate').val("");
 
                             setTimeout(function () {
@@ -2324,12 +2316,10 @@
         $('#alamat_lengkap').attr("disabled", "disabled");
         $('#alamat_lengkap').css("background-color", "#F4F4F4");
 
-        if ($("#kode_pos").val() == "" || $(this).val() == null || $("#alamat_lengkap").val() == "" || $("#provinsi").val() == null || $("#kota").val() == null || $("#kelurahan").val() == null) {
-            $("#button2").css("background-color", "#dddddd");
-            $("#button2").css("border-color", "#dddddd");
+        if ($("#kode_pos").val() == "" || $(this).val() == "" || $("#alamat_lengkap").val() == "" || $("#provinsi").val() == "" || $("#kota").val() == "" || $("#kelurahan").val() == "") {
+            disableButton("#button2");
         } else {
-            $("#button2").css("background-color", "#F8991D");
-            $("#button2").css("border-color", "#F8991D");
+            enableButton("#button2");
         }
 
         var id = this.value;
@@ -2352,9 +2342,12 @@
                         if (valKel.name != '') {
 
                             var elementOption = '<option value="' + valKel.id + '" postcode=' + valKel.postcode + '>' + valKel.name + '</option>';
-                            var kelurahan_placeholder = $('#kelurahan').attr('placeholder');
+
                             $('#kelurahan').empty();
+                            var kelurahan_placeholder = $('#kelurahan').attr('placeholder');
                             $('#kelurahan').next().find(".jcf-select-text").children("span").html(kelurahan_placeholder);
+                            
+                            $('#kode_pos').val("");
                             $('#alamat_lengkap').val("");
 
                             setTimeout(function () {
@@ -2395,11 +2388,9 @@
         $('#alamat_lengkap_sertificate').css("background-color", "#F4F4F4");
 
         if ($("#status_sertificate").val() == "" || $("#own_sertificate").val() == "" || $("#kode_pos_sertificate").val() == "" || $(this).val() == null || $("#alamat_lengkap_sertificate").val() == "" || $("#kota_sertificate").val() == null || $("#provinsi_sertificate").val() == null || $("#kelurahan_sertificate").val() == null) {
-            $("#button3rumah").css("background-color", "#dddddd");
-            $("#button3rumah").css("border-color", "#dddddd");
+            disableButton("#button3rumah");
         } else {
-            $("#button3rumah").css("background-color", "#F8991D");
-            $("#button3rumah").css("border-color", "#F8991D");
+            enableButton("#button3rumah");
         }
 
         var id = this.value;
@@ -2422,9 +2413,12 @@
                         if (valKel.name != '') {
 
                             var elementOption = '<option value="' + valKel.id + '" postcode=' + valKel.postcode + '>' + valKel.name + '</option>';
-                            var kelurahan_placeholder = $('#kelurahan_sertificate').attr('placeholder');
+
                             $('#kelurahan_sertificate').empty();
-                            $('#kelurahan_sertificate').next().find(".jcf-select-text").children("span").html(kelurahan_placeholder);
+                            var kelurahan_sertificate_placeholder = $('#kelurahan_sertificate').attr('placeholder');
+                            $('#kelurahan_sertificate').next().find(".jcf-select-text").children("span").html(kelurahan_sertificate_placeholder);
+                            
+                            $('#kode_pos_sertificate').val("");
                             $('#alamat_lengkap_sertificate').val("");
 
                             setTimeout(function () {
@@ -2481,12 +2475,10 @@
             $("#kode_pos").val("");
         }
 
-        if ($("#kode_pos").val() == "" || $(this).val() == null || $("#alamat_lengkap").val() == "" || $("#provinsi").val() == null || $("#kota").val() == null || $("#kecamatan").val() == null) {
-            $("#button2").css("background-color", "#dddddd");
-            $("#button2").css("border-color", "#dddddd");
+        if ($("#kode_pos").val() == "" || $(this).val() == "" || $("#alamat_lengkap").val() == "" || $("#provinsi").val() == "" || $("#kota").val() == "" || $("#kecamatan").val() == "") {
+            disableButton("#button2");
         } else {
-            $("#button2").css("background-color", "#F8991D");
-            $("#button2").css("border-color", "#F8991D");
+            enableButton("#button2");
         }
 
     })
@@ -2518,12 +2510,10 @@
         $('#alamat_lengkap').removeAttr("disabled");
         $('#alamat_lengkap').css("background-color", "white");
 
-        if ($("#kode_pos").val() == "" || $(this).val() == null || $("#alamat_lengkap").val() == "" || $("#provinsi").val() == null || $("#kota").val() == null || $("#kecamatan").val() == null) {
-            $("#button2").css("background-color", "#dddddd");
-            $("#button2").css("border-color", "#dddddd");
+        if ($("#kode_pos").val() == "" || $(this).val() == "" || $("#alamat_lengkap").val() == "" || $("#provinsi").val() == "" || $("#kota").val() == "" || $("#kecamatan").val() == "") {
+            disableButton("#button2");
         } else {
-            $("#button2").css("background-color", "#F8991D");
-            $("#button2").css("border-color", "#F8991D");
+            enableButton("#button2");
         }
 
     })
@@ -2555,12 +2545,10 @@
         $('#alamat_lengkap').removeAttr("disabled");
         $('#alamat_lengkap').css("background-color", "white");
 
-        if ($("#kode_pos").val() == "" || $(this).val() == null || $("#alamat_lengkap").val() == "" || $("#provinsi").val() == null || $("#kota").val() == null || $("#kecamatan").val() == null) {
-            $("#button2").css("background-color", "#dddddd");
-            $("#button2").css("border-color", "#dddddd");
+        if ($("#kode_pos").val() == "" || $(this).val() == "" || $("#alamat_lengkap").val() == "" || $("#provinsi").val() == "" || $("#kota").val() == "" || $("#kecamatan").val() == "") {
+            disableButton("#button2");
         } else {
-            $("#button2").css("background-color", "#F8991D");
-            $("#button2").css("border-color", "#F8991D");
+            enableButton("#button2");
         }
 
     })
@@ -2602,11 +2590,9 @@
         }
 
         if ($("#status_sertificate").val() == "" || $("#own_sertificate").val() == "" || $("#kode_pos_sertificate").val() == "" || $(this).val() == null || $("#alamat_lengkap_sertificate").val() == "" || $("#kota_sertificate").val() == null || $("#kecamatan_sertificate").val() == null || $("#provinsi_sertificate").val() == null) {
-            $("#button3rumah").css("background-color", "#dddddd");
-            $("#button3rumah").css("border-color", "#dddddd");
+            disableButton("#button3rumah");
         } else {
-            $("#button3rumah").css("background-color", "#F8991D");
-            $("#button3rumah").css("border-color", "#F8991D");
+            enableButton("#button3rumah");
         }
 
     })
@@ -2614,7 +2600,7 @@
     
     $('#status_sertificate').change(function () {
         showDefaultButton();
-
+        $('#status_sertificate').next().find(".jcf-select-text").children("span").html($(this).find(":selected").text());
         if(changeDataBangunan){
             $('.nav-item-3').addClass("active")
             $('.nav-item-4').removeClass("active");
@@ -2622,28 +2608,25 @@
         }
 
         if ($("#kelurahan_sertificate").val() == null || $("#own_sertificate").val() == "" || $("#kode_pos_sertificate").val() == "" || $(this).val() == "" || $("#alamat_lengkap_sertificate").val() == "" || $("#kota_sertificate").val() == null || $("#kecamatan_sertificate").val() == null || $("#provinsi_sertificate").val() == null) {
-            $("#button3rumah").css("background-color", "#dddddd");
-            $("#button3rumah").css("border-color", "#dddddd");
+            disableButton("#button3rumah");
         } else {
-            $("#button3rumah").css("background-color", "#F8991D");
-            $("#button3rumah").css("border-color", "#F8991D");
+            enableButton("#button3rumah");
         }
 
     })
 
     $('#own_sertificate').change(function () {
         showDefaultButton();
+        $('#own_sertificate').next().find(".jcf-select-text").children("span").html($(this).find(":selected").text());
         if(changeDataBangunan){
             $('.nav-item-3').addClass("active")
             $('.nav-item-4').removeClass("active");
             $('.nav-item-4').addClass("disabled").off('click');
         }
         if ($("#status_sertificate").val() == "" || $("#kelurahan_sertificate").val() == null || $("#kode_pos_sertificate").val() == "" || $(this).val() == "" || $("#alamat_lengkap_sertificate").val() == "" || $("#kota_sertificate").val() == null || $("#kecamatan_sertificate").val() == null || $("#provinsi_sertificate").val() == null) {
-            $("#button3rumah").css("background-color", "#dddddd");
-            $("#button3rumah").css("border-color", "#dddddd");
+            disableButton("#button3rumah");
         } else {
-            $("#button3rumah").css("background-color", "#F8991D");
-            $("#button3rumah").css("border-color", "#F8991D");
+            enableButton("#button3rumah");
         }
 
     })
@@ -2656,6 +2639,7 @@
 
     $('#merk_kendaraan').change(function () {
         showDefaultButton();
+
         if($('.nav-item-3').hasClass("done")){
             $('.nav-item-3').removeClass("done");
             $('.nav-item-3').addClass("disabled");
@@ -2705,26 +2689,33 @@
                     $.each(dataObj.result.data, function (idKendaraan, valKendaraan) {
                         if (valKendaraan.name != '') {
                             var elementOption = '<option value="' + valKendaraan.codeProduct + '">' + valKendaraan.name + '</option>';
-                            var model_kendaraan_placeholder = $('#model_kendaraan').attr('placeholder');
-                            var tahun_kendaraan_placeholder = $('#tahun_kendaraan').attr('placeholder');
-                            $('#model_kendaraan').empty();
-                            $('#model_kendaraan').next().find(".jcf-select-text").children("span").html(model_kendaraan_placeholder);
-                            $('#tahun_kendaraan').empty();
-                            $('#tahun_kendaraan').next().find(".jcf-select-text").children("span").html(tahun_kendaraan_placeholder);
-                            $('#status_kep').val("");
-                            var customFormInstance = jcf.getInstance($('#status_kep'));
-                            customFormInstance.refresh();
-                            $('#status_kep').next().removeClass("jcf-disabled");
+                            
+                            
+                            
                             setTimeout(function () {
                                 $("#model_kendaraan").append(elementOption);
                             }, 50);
                         }
                     })
+                    $('#model_kendaraan').empty();
+                    var model_kendaraan_placeholder = $('#model_kendaraan').attr('placeholder');
+                    $('#model_kendaraan').next().find(".jcf-select-text").children("span").html(model_kendaraan_placeholder);
+                    
+                    $('#tahun_kendaraan').empty();
+                    var tahun_kendaraan_placeholder = $('#tahun_kendaraan').attr('placeholder');
+                    $('#tahun_kendaraan').next().find(".jcf-select-text").children("span").html(tahun_kendaraan_placeholder);
+
+                    // $('#status_kep').val("");
+                    // var customFormInstance = jcf.getInstance($('#status_kep'));
+                    // customFormInstance.refresh();
+                    // $('#status_kep').empty();
+                    var status_kep_placeholder = $('#status_kep').attr('placeholder');
+                    $('#status_kep').next().find(".jcf-select-text").children("span").html(status_kep_placeholder);
+                    $('#status_kep').next().removeClass("jcf-disabled");
                 }
             }
         })
-        $("#button3").css("background-color", "#dddddd");
-        $("#button3").css("border-color", "#dddddd");
+        disableButton("#button3");
     });
 
     $('#model_kendaraan').change(function () {
@@ -2775,29 +2766,39 @@
                         $.each(dataObj.result.data, function (index, dataYear) {
                             if (dataYear.year != '') {
                                 var elementOption = '<option value="' + dataYear.year + '">' + dataYear.year + '</option>';
-                                var tahun_kendaraan_placeholder = $('#tahun_kendaraan').attr('placeholder');
-                                $('#tahun_kendaraan').empty();
-                                $('#tahun_kendaraan').next().find(".jcf-select-text").children("span").html(tahun_kendaraan_placeholder);
-                                $('#status_kep').val("");
-                                var customFormInstance = jcf.getInstance($('#status_kep'));
-                                customFormInstance.refresh();
-                                $('#status_kep').next().removeClass("jcf-disabled");
+                              
+                            
+                                
                                 setTimeout(function () {
                                     $('#tahun_kendaraan').append(elementOption);
                                 }, 50);
                             }
                         })
+                        $('#tahun_kendaraan').empty();
+                        var tahun_kendaraan_placeholder = $('#tahun_kendaraan').attr('placeholder');
+                        $('#tahun_kendaraan').next().find(".jcf-select-text").children("span").html(tahun_kendaraan_placeholder);
+                        
+                        // $('#status_kep').val("");
+                        // var customFormInstance = jcf.getInstance($('#status_kep'));
+                        // customFormInstance.refresh();
+                        // $('#status_kep').empty();
+                        
+                        // var status_self = $('#status_kep').data('status-self');
+                        // var status_other = $('#status_kep').data('status-other');
+                        // var injectStatusKep = ['<option value="' + status_self.toUpperCase() + '">' + status_self + '</option>', '<option value="' + status_other.toUpperCase() + '">' + status_other + '</option>'];
+                        // $('#status_kep').append(injectStatusKep);
+                        var status_kep_placeholder = $('#status_kep').attr('placeholder');
+                        $('#status_kep').next().find(".jcf-select-text").children("span").html(status_kep_placeholder);
+                        // $('#status_kep').next().removeClass("jcf-disabled");
                     }
                 }
             }
         })
 
         if ($("#merk_kendaraan").val() == "" || $(this).val() == "" || $("#tahun_kendaraan").val() == "" || $("#status_kep").val() == "") {
-            $("#button3").css("background-color", "#dddddd");
-            $("#button3").css("border-color", "#dddddd");
+            disableButton("#button3");
         } else {
-            $("#button3").css("background-color", "#F8991D");
-            $("#button3").css("border-color", "#F8991D");
+            enableButton("#button3");
         }
     });
 
@@ -2823,16 +2824,17 @@
         $('#status_kep').next().find(".jcf-select-opener").css("background-color", "white");
 
         if ($("#model_kendaraan").val() == "" || $(this).val() == "" || $("#merk_kendaraan").val() == "" || $("#status_kep").val() == "") {
-            $("#button3").css("background-color", "#dddddd");
-            $("#button3").css("border-color", "#dddddd");
+            disableButton("#button3");
         } else {
-            $("#button3").css("background-color", "#F8991D");
-            $("#button3").css("border-color", "#F8991D");
+            enableButton("#button3");
         }
     });
 
     $('#status_kep').change(function () {
         showDefaultButton();
+        // console.log('click');
+        // alert();
+        $('#status_kep').next().find(".jcf-select-text").children("span").html($(this).find(":selected").text());
         if($('.nav-item-3').hasClass("done")){
             $('.nav-item-3').removeClass("done");
             $('.nav-item-3').addClass("disabled");
@@ -2849,11 +2851,9 @@
             $('.nav-item-5').addClass("disabled").off('click');
         }
         if ($("#model_kendaraan").val() == "" || $(this).val() == "" || $("#tahun_kendaraan").val() == "" || $("#merk_kendaraan").val() == "") {
-            $("#button3").css("background-color", "#dddddd");
-            $("#button3").css("border-color", "#dddddd");
+            disableButton("#button3");
         } else {
-            $("#button3").css("background-color", "#F8991D");
-            $("#button3").css("border-color", "#F8991D");
+            enableButton("#button3");
         }
     });
 
@@ -3408,10 +3408,8 @@
         e.preventDefault();
         $(this).text("HITUNG ULANG");
         calculatePremi();
-        $('#button4').css("background-color", "#F8991D");
-        $('#button4').css("border-color", "#F8991D");
-        $('.hidesavebutton').css("background-color", "#F8991D");
-        $('.hidesavebutton').css("border-color", "#F8991D");
+        enableButton('#button4');
+        enableButton('.hidesavebutton');
         flag_sudahcalc = true;
     })
 
@@ -3472,7 +3470,6 @@
     );
 
     // placeholder cek pengajuan
-
     if ($('.cek-pengajuan').length) {
         var placeholder = $("#sel-how-form-credit").data("placeholder");
         $('.cek-pengajuan').find(".jcf-select-text").children("span").html(placeholder);
@@ -3481,7 +3478,18 @@
         $(".jcf-select-text").children("span").html($(this).find("option:selected").text());
     })
 
-    
+    // placeholder status kepemilikan form mobil/motor
+    var status_kep_placeholder = $('#status_kep').attr('placeholder');
+    $('#status_kep').next().find(".jcf-select-text").children("span").html(status_kep_placeholder);
+    // placeholder pekerjaan form rumah
+    var pekerjaan_placeholder = $('#pekerjaan').attr('placeholder');
+    $('#pekerjaan').next().find(".jcf-select-text").children("span").html(pekerjaan_placeholder);
+    // placeholder status sertifikat form rumah
+    var status_certificate_placeholder = $('#status_sertificate').attr('placeholder');
+    $('#status_sertificate').next().find(".jcf-select-text").children("span").html(status_certificate_placeholder);
+    // placeholder status kepemilikan form rumah
+    var own_sertificate_placeholder = $('#own_sertificate').attr('placeholder');
+    $('#own_sertificate').next().find(".jcf-select-text").children("span").html(own_sertificate_placeholder);
 
     // var locationurlnow = window.location.pathname;
 

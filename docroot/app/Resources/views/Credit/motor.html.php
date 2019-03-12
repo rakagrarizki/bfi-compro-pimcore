@@ -123,7 +123,7 @@ $this->extend('layout-credit.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label><?= $this->translate('label-kota')?></label>
-                                            <select class="c-custom-select formRequired" id="kota" name="kota"  data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' />
+                                            <select class="c-custom-select formRequired" id="kota" name="kota" placeholder="<?= $this->translate('choose-kota')?>" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' />
                                             <option value=""><?= $this->translate('choose-kota')?></option>
                                             </select>
                                             <div class="error-wrap"></div>
@@ -131,14 +131,14 @@ $this->extend('layout-credit.html.php');
                                         <div class="form-group">
 
                                             <label><?= $this->translate('label-kecamatan')?></label>
-                                            <select class="c-custom-select formRequired" id="kecamatan" name="kecamatan"  data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' />
+                                            <select class="c-custom-select formRequired" id="kecamatan" name="kecamatan" placeholder="<?= $this->translate('choose-kecamatan')?>"  data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' />
                                             <option value=""><?= $this->translate('choose-kecamatan')?></option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
                                             <label><?= $this->translate('label-kelurahan')?></label>
-                                            <select class="c-custom-select formRequired" id="kelurahan" name="kelurahan"  data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' />
+                                            <select class="c-custom-select formRequired" id="kelurahan" name="kelurahan" placeholder="<?= $this->translate('choose-kelurahan')?>"  data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' />
                                             <option value=""><?= $this->translate('choose-kelurahan')?></option>
                                             </select>
                                             <div class="error-wrap"></div>
@@ -175,14 +175,14 @@ $this->extend('layout-credit.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label><?= $this->translate('label-merk')?></label>
-                                            <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="merk_kendaraan" name="merk_kendaraan">
+                                            <select class="c-custom-select-trans formRequired" placeholder="<?= $this->translate('placeholder-merk')?>" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="merk_kendaraan" name="merk_kendaraan">
                                                 <option value=""> <?= $this->translate('placeholder-merk')?></option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
                                             <label><?= $this->translate('label-model')?></label>
-                                            <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="model_kendaraan"
+                                            <select class="c-custom-select-trans formRequired" placeholder="<?= $this->translate('placeholder-model')?>" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="model_kendaraan"
                                                     name="model_kendaraan">
                                                 <option value=""> <?= $this->translate('placeholder-model')?></option>
                                             </select>
@@ -190,7 +190,7 @@ $this->extend('layout-credit.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label><?= $this->translate('label-tahun')?></label>
-                                            <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="tahun_kendaraan"
+                                            <select class="c-custom-select-trans formRequired" placeholder="<?= $this->translate('placeholder-tahun')?>" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="tahun_kendaraan"
                                                     name="tahun_kendaraan">
                                                 <option value=""> <?= $this->translate('placeholder-tahun')?></option>
                                                 <?php
@@ -204,8 +204,7 @@ $this->extend('layout-credit.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label><?= $this->translate('label-status')?></label>
-                                            <select class="c-custom-select-trans formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="status_kep" name="status_kep">
-                                                <option value=""> <?= $this->translate('placeholder-status')?></option>
+                                            <select class="c-custom-select-trans formRequired" placeholder="<?= $this->translate('placeholder-status')?>" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="status_kep" name="status_kep">
                                                 <option value="<?= strtoupper($this->translate('placeholder-status-self')) ?>"><?= $this->translate('placeholder-status-self')?></option>
                                                 <option value="<?= strtoupper($this->translate('placeholder-status-other')) ?>"><?= $this->translate('placeholder-status-other')?></option>
                                             </select>
