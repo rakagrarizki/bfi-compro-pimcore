@@ -115,28 +115,28 @@ $this->extend('layout-credit.html.php');
                                             <p class="text-center"><?= $this->translate('input-data-place')?></p>
                                         </div>
                                         <div class="form-group">
-                                            <label><?= $this->translate('label-provinsi')?></label>
+                                            <label class="label-select"><?= $this->translate('label-provinsi')?></label>
                                             <select class="form-control formRequired" id="provinsi" name="provinsi" placeholder="<?= $this->translate('choose-provinsi')?>" />
                                                 <option value=""><?= $this->translate('choose-provinsi')?></option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
-                                            <label><?= $this->translate('label-kota')?></label>
+                                            <label class="label-select"><?= $this->translate('label-kota')?></label>
                                             <select class="form-control formRequired" id="kota" name="kota" placeholder="<?= $this->translate('choose-kota')?>" />
                                                 <option value=""><?= $this->translate('choose-kota')?></option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
-                                            <label><?= $this->translate('label-kecamatan')?></label>
+                                            <label class="label-select"><?= $this->translate('label-kecamatan')?></label>
                                             <select class="form-control formRequired" id="kecamatan" name="kecamatan" placeholder="<?= $this->translate('choose-kecamatan')?>" />
                                                 <option value=""><?= $this->translate('choose-kecamatan')?></option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
-                                            <label><?= $this->translate('label-kelurahan')?></label>
+                                            <label class="label-select"><?= $this->translate('label-kelurahan')?></label>
                                             <select class="form-control formRequired" id="kelurahan" name="kelurahan" placeholder="<?= $this->translate('choose-kelurahan')?>" />
                                                 <option value=""><?= $this->translate('choose-kelurahan')?></option>
                                             </select>
@@ -173,23 +173,23 @@ $this->extend('layout-credit.html.php');
                                             <p class="text-center"><?= $this->translate('input-data-vehicle')?></p>
                                         </div>
                                         <div class="form-group">
-                                            <label><?= $this->translate('label-merk')?></label>
-                                            <select class="c-custom-select-trans form-control formRequired" placeholder="<?= $this->translate('placeholder-merk')?>" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="merk_kendaraan" name="merk_kendaraan">
+                                            <label class="label-select"><?= $this->translate('label-merk')?></label>
+                                            <select class="c-custom-select-trans form-control formRequired" placeholder="<?= $this->translate('placeholder-merk')?>" id="merk_kendaraan" name="merk_kendaraan">
                                                 <option value=""> <?= $this->translate('placeholder-merk')?></option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
-                                            <label><?= $this->translate('label-model')?></label>
-                                            <select class="c-custom-select-trans form-control formRequired" placeholder="<?= $this->translate('placeholder-model')?>" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="model_kendaraan"
+                                            <label class="label-select"><?= $this->translate('label-model')?></label>
+                                            <select class="c-custom-select-trans form-control formRequired" placeholder="<?= $this->translate('placeholder-model')?>" id="model_kendaraan"
                                                     name="model_kendaraan">
                                                 <option value=""> <?= $this->translate('placeholder-model')?></option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
-                                            <label><?= $this->translate('label-tahun')?></label>
-                                            <select class="c-custom-select-trans form-control formRequired" placeholder="<?= $this->translate('placeholder-tahun')?>" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="tahun_kendaraan"
+                                            <label class="label-select"><?= $this->translate('label-tahun')?></label>
+                                            <select class="c-custom-select-trans form-control formRequired" placeholder="<?= $this->translate('placeholder-tahun')?>" id="tahun_kendaraan"
                                                     name="tahun_kendaraan">
                                                 <option value=""> <?= $this->translate('placeholder-tahun')?></option>
                                                 <?php
@@ -202,8 +202,8 @@ $this->extend('layout-credit.html.php');
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
-                                            <label><?= $this->translate('label-status')?></label>
-                                            <select class="c-custom-select-trans form-control formRequired" placeholder="<?= $this->translate('placeholder-status')?>" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="status_kep" name="status_kep">
+                                            <label class="label-select"><?= $this->translate('label-status')?></label>
+                                            <select class="c-custom-select-trans form-control formRequired" placeholder="<?= $this->translate('placeholder-status')?>" id="status_kep" name="status_kep">
                                                 <option value="<?= strtoupper($this->translate('placeholder-status-self')) ?>"><?= $this->translate('placeholder-status-self')?></option>
                                                 <option value="<?= strtoupper($this->translate('placeholder-status-other')) ?>"><?= $this->translate('placeholder-status-other')?></option>
                                             </select>
@@ -253,7 +253,7 @@ $this->extend('layout-credit.html.php');
                                             </div>
                                             <div class="form-group sliderGroup inputsimulasi">
                                                 <label><?= $this->translate('label-funding-year')?></label>
-                                                <select class="c-custom-select-trans form-control formRequired" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}' id="jangka_waktu"
+                                                <select class="c-custom-select-trans form-control formRequired" id="jangka_waktu"
                                                         name="jangka-waktu">
                                                     <?php
                                                     for ($i = 6 ; $i <= 24; $i++) {
@@ -279,7 +279,7 @@ $this->extend('layout-credit.html.php');
                                                         <label><?= $this->translate('label-next-year')?> - 1</label>
                                                     </div>
                                                     <div class="list-select">
-                                                        <select class="c-custom-select-trans form-control formRequired opsiasuransi" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}'
+                                                        <select class="c-custom-select-trans form-control formRequired opsiasuransi"
                                                                 name="status"></select>
                                                     </div>
                                                     <div class="error-wrap"></div>

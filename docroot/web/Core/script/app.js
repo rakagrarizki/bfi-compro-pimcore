@@ -1,144 +1,4 @@
 (function ($) {
-    function autocomplete(input, options) {
-        var currentFocus;
-        
-        /*execute a function when someone writes in the text field:*/
-        // input.addEventListener("click", function(e) {
-        //     var a, b, i;
-        //     /*close any already open lists of autocompleted values*/
-        //     closeAllLists();
-        //     currentFocus = -1;
-        //     /*create a DIV element that will contain the items (values):*/
-        //     // a = document.createElement("div");
-        //     // a.setAttribute("id", this.id + "autocomplete-list");
-        //     // a.setAttribute("class", "autocomplete-items");
-        //     // console.log(a);
-        //     /*append the DIV element as a child of the autocomplete container:*/
-        //     // this.parentNode.appendChild(a);
-        //     $(this).parent().append("<div id='" + this.id + "autocomplete-list' class='autocomplete-items'></div>");
-            
-        //     /*for each item in the array...*/
-        //     for (i = 0; i < options.length; i++) {
-        //         $(this.id + "autocomplete-list").append("<div id='"+options[i].id+"'>" + options[i].name
-        //         +"<input type='hidden' value='" + options[i].id + "' alt='"+options[i].name+"'>");
-        //         console.log(options[i]);
-        //         $( "#"+options[i].id ).click(function() {
-        //             console.log($( "#"+options[i].id ).find("input"));
-        //             input.value = $( "#"+options[i].id ).find("input").alt;
-        //             closeAllLists();
-        //         });
-        //     }
-        // });
-
-        /*execute a function when someone writes in the text field:*/
-        input.addEventListener("input", function(e) {
-            var a, b, i, val = this.value;
-            /*close any already open lists of autocompleted values*/
-            closeAllLists();
-            if (!val) { return false;}
-            currentFocus = -1;
-            /*create a DIV element that will contain the items (values):*/
-            a = document.createElement("div");
-            a.setAttribute("id", this.id + "autocomplete-list");
-            a.setAttribute("class", "autocomplete-items");
-            /*append the DIV element as a child of the autocomplete container:*/
-            this.parentNode.appendChild(a);
-            /*for each item in the array...*/
-            for (i = 0; i < options.length; i++) {
-                /*check if the item starts with the same letters as the text field value:*/
-                
-                if (options[i].name.substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-                    /*create a DIV element for each matching element:*/
-                    b = document.createElement("div");
-                    /*make the matching letters bold:*/
-                    b.innerHTML = "<strong>" + options[i].name.substr(0, val.length) + "</strong>";
-                    b.innerHTML += options[i].name.substr(val.length);
-                    /*insert a input field that will hold the current array item's value:*/
-                    b.innerHTML += "<input type='hidden' value='" + options[i].name + "' alt='"+options[i].id+"'>";
-                    /*execute a function when someone clicks on the item value (DIV element):*/
-                    b.addEventListener("click", function(e) {
-                        /*insert the value for the autocomplete text field:*/
-                        input.value = this.getElementsByTagName("input")[0].value;
-                        input.setAttribute("alt",this.getElementsByTagName("input")[0].alt);
-                        /*close the list of autocompleted values,
-                        (or any other open lists of autocompleted values:*/
-                        closeAllLists();
-                    });
-                    a.appendChild(b);
-                }
-            }
-        });
-
-        /*execute a function presses a key on the keyboard:*/
-        input.addEventListener("keydown", function(e) {
-            var x = document.getElementById(this.id + "autocomplete-list");
-            if (x) x = x.getElementsByTagName("div");
-            if (e.keyCode == 40) {
-                /*If the arrow DOWN key is pressed,
-                increase the currentFocus variable:*/
-                currentFocus++;
-                /*and and make the current item more visible:*/
-                addActive(x);
-            } else if (e.keyCode == 38) { //up
-                /*If the arrow UP key is pressed,
-                decrease the currentFocus variable:*/
-                currentFocus--;
-                /*and and make the current item more visible:*/
-                addActive(x);
-            } else if (e.keyCode == 13) {
-                /*If the ENTER key is pressed, prevent the form from being submitted,*/
-                e.preventDefault();
-                if (currentFocus > -1) {
-                    /*and simulate a click on the "active" item:*/
-                    if (x) x[currentFocus].click();
-                }
-            }
-        });
-        function addActive(x) {
-            /*a function to classify an item as "active":*/
-            if (!x) return false;
-            /*start by removing the "active" class on all items:*/
-            removeActive(x);
-            if (currentFocus >= x.length) currentFocus = 0;
-            if (currentFocus < 0) currentFocus = (x.length - 1);
-            /*add class "autocomplete-active":*/
-            x[currentFocus].classList.add("autocomplete-active");
-        }
-        function removeActive(x) {
-            /*a function to remove the "active" class from all autocomplete items:*/
-            for (var i = 0; i < x.length; i++) {
-                x[i].classList.remove("autocomplete-active");
-            }
-        }
-        function closeAllLists(elmnt) {
-            /*close all autocomplete lists in the document,
-            except the one passed as an argument:*/
-            var x = document.getElementsByClassName("autocomplete-items");
-            for (var i = 0; i < x.length; i++) {
-                if (elmnt != x[i] && elmnt != input) {
-                    x[i].parentNode.removeChild(x[i]);
-                }
-            }
-        }
-        /*execute a function when someone clicks in the document:*/
-        document.addEventListener("click", function (e) {
-            closeAllLists(e.target);
-        });
-    }
-      
-    var data = [
-        {
-            "name" : "Afghanistan",
-            "id" : 1
-        },
-        {
-            "name" :"Albania",
-            "id" : 2
-        }
-    ];
-    
-    autocomplete(document.getElementById("nama_lengkap"), data);
-
     var input = document.getElementById('file_upload');
     var infoArea = document.getElementById('nama-file');
 
@@ -209,7 +69,6 @@
         var _footerHeight = 80;
         var _cleanDocHeight = _docHeight - _marginTop - _footerHeight;
 
-        
         if (_siteContainer < _cleanDocHeight) {
             // console.log(_cleanDocHeight);
             $("#site-container").css({
@@ -1887,6 +1746,16 @@
 
 
     function getmobilormotor(element, params) {
+        var dataKendaraan = [];
+
+        var merk_kendaraan_placeholder = $('#merk_kendaraan').attr('placeholder');
+
+        dataKendaraan.push({
+            id: "", 
+            text: merk_kendaraan_placeholder
+        });
+        $('#merk_kendaraan').empty();
+
         var post_code_attr = params.tempat_tinggal.kode_pos,
             tipe_attr = params.angunan.jenis_angunan;
 
@@ -1904,16 +1773,6 @@
 
             success: function (dataObj) {
                 if (dataObj.success == true) {
-                    var dataKendaraan = [];
-
-                    var merk_kendaraan_placeholder = $('#merk_kendaraan').attr('placeholder');
-
-                    dataKendaraan.push({
-                        id: "", 
-                        text: merk_kendaraan_placeholder
-                    });
-                    $('#merk_kendaraan').empty();
-
                     $.each(dataObj.result.data, function (idMobilmotor, valMobilmotor) {
                         if ($('#merk_kendaraan option').length > 1) {
                             $('#merk_kendaraan option:not(:first)').remove();
@@ -1970,6 +1829,18 @@
     // }
 
     function getProvinsi(element, element2) {
+        var dataProvince = [];
+
+        var provinsi_placeholder = $('#provinsi').attr('placeholder');
+
+        dataProvince.push({
+            id: "", 
+            text: provinsi_placeholder
+        });
+        $('#provinsi').empty();
+
+        $('#provinsi_sertificate').empty();
+
         $.ajax({
             type: 'GET',
             url: '/service/provinsi/listJson',
@@ -1983,7 +1854,6 @@
             },
 
             success: function (dataObj) {
-                    
                 if (dataObj.success == true) {
                     // $('#provinsi').autocomplete({
                     //     nameProperty: 'name',
@@ -1991,17 +1861,6 @@
                     //     valueField: '#hidden-provinsi',
                     //     dataSource: dataObj.result.data
                     // });
-                    var dataProvince = [];
-
-                    var provinsi_placeholder = $('#provinsi').attr('placeholder');
-
-                    dataProvince.push({
-                        id: "", 
-                        text: provinsi_placeholder
-                    });
-                    $('#provinsi').empty();
-
-                    $('#provinsi_sertificate').empty();
                     $.each(dataObj.result.data, function (idProvince, valProvince) {
                         if (valProvince.name != '') {
                             // var elementOption = '<option value="' + valProvince.id + '">' + valProvince.name + '</option>';
@@ -2125,6 +1984,27 @@
         } else {
             enableButton("#button2");
         }
+        
+        var dataCity = [];
+                    
+        var kota_placeholder = $('#kota').attr('placeholder');
+
+        dataCity.push({
+            id: "", 
+            text: kota_placeholder
+        });
+        $('#kota').empty();
+                 
+        var kecamatan_placeholder = $('#kecamatan').attr('placeholder');
+        $('#kecamatan').empty();
+        $('#kecamatan').parent().find(".select2-selection").children(".select2-selection__rendered").html(kecamatan_placeholder);
+        
+        var kelurahan_placeholder = $('#kelurahan').attr('placeholder');
+        $('#kelurahan').empty();
+        $('#kelurahan').parent().find(".select2-selection").children(".select2-selection__rendered").html(kelurahan_placeholder);
+
+        $('#kode_pos').val("");
+        $('#alamat_lengkap').val("");
 
         var id = this.value;
 
@@ -2142,26 +2022,6 @@
 
             success: function (dataObj) {
                 if (dataObj.success == true) {
-                    var dataCity = [];
-                    
-                    var kota_placeholder = $('#kota').attr('placeholder');
-    
-                    dataCity.push({
-                        id: "", 
-                        text: kota_placeholder
-                    });
-                    $('#kota').empty();
-                             
-                    var kecamatan_placeholder = $('#kecamatan').attr('placeholder');
-                    $('#kecamatan').empty();
-                    $('#kecamatan').parent().find(".select2-selection").children(".select2-selection__rendered").html(kecamatan_placeholder);
-                    
-                    var kelurahan_placeholder = $('#kelurahan').attr('placeholder');
-                    $('#kelurahan').empty();
-                    $('#kelurahan').parent().find(".select2-selection").children(".select2-selection__rendered").html(kelurahan_placeholder);
-    
-                    $('#kode_pos').val("");
-                    $('#alamat_lengkap').val("");
                     $.each(dataObj.result.data, function (idCity, valCity) {
                         if (valCity.name != '') {
                             // var elementOption = '<option value="' + valCity.id + '">' + valCity.name + '</option>';
@@ -2226,6 +2086,27 @@
             enableButton("#button3rumah");
         }
 
+        var dataCity = [];
+        
+        var kota_placeholder = $('#kota_sertificate').attr('placeholder');
+
+        dataCity.push({
+            id: "", 
+            text: kota_placeholder
+        });
+        $('#kota_sertificate').empty();
+        
+        var kecamatan_sertificate_placeholder = $('#kecamatan_sertificate').attr('placeholder');
+        $('#kecamatan_sertificate').empty();
+        $('#kecamatan_sertificate').parent().find(".select2-selection").children(".select2-selection__rendered").html(kecamatan_sertificate_placeholder);
+        
+        var kelurahan_sertificate_placeholder = $('#kelurahan_sertificate').attr('placeholder');
+        $('#kelurahan_sertificate').empty();
+        $('#kelurahan_sertificate').parent().find(".select2-selection").children(".select2-selection__rendered").html(kelurahan_sertificate_placeholder);
+        
+        $('#kode_pos_sertificate').val("");
+        $('#alamat_lengkap_sertificate').val("");
+
         var id = this.value;
 
         $.ajax({
@@ -2242,26 +2123,6 @@
 
             success: function (dataObj) {
                 if (dataObj.success == true) {
-                    var dataCity = [];
-                    
-                    var kota_placeholder = $('#kota_sertificate').attr('placeholder');
-    
-                    dataCity.push({
-                        id: "", 
-                        text: kota_placeholder
-                    });
-                    $('#kota_sertificate').empty();
-                    
-                    var kecamatan_sertificate_placeholder = $('#kecamatan_sertificate').attr('placeholder');
-                    $('#kecamatan_sertificate').empty();
-                    $('#kecamatan_sertificate').parent().find(".select2-selection").children(".select2-selection__rendered").html(kecamatan_sertificate_placeholder);
-                    
-                    var kelurahan_sertificate_placeholder = $('#kelurahan_sertificate').attr('placeholder');
-                    $('#kelurahan_sertificate').empty();
-                    $('#kelurahan_sertificate').parent().find(".select2-selection").children(".select2-selection__rendered").html(kelurahan_sertificate_placeholder);
-                    
-                    $('#kode_pos_sertificate').val("");
-                    $('#alamat_lengkap_sertificate').val("");
                     $.each(dataObj.result.data, function (idCity, valCity) {
                         if (valCity.name != '') {
                             // var elementOption = '<option value="' + valCity.id + '">' + valCity.name + '</option>';
@@ -2327,6 +2188,23 @@
         } else {
             enableButton("#button2");
         }
+        
+        var dataKec = [];
+                    
+        var kecamatan_placeholder = $('#kecamatan').attr('placeholder');
+
+        dataKec.push({
+            id: "", 
+            text: kecamatan_placeholder
+        });
+        $('#kecamatan').empty();
+        
+        var kelurahan_placeholder = $('#kelurahan').attr('placeholder');
+        $('#kelurahan').empty();
+        $('#kelurahan').parent().find(".select2-selection").children(".select2-selection__rendered").html(kelurahan_placeholder);
+        
+        $('#kode_pos').val("");
+        $('#alamat_lengkap').val("");
 
         var id = this.value;
 
@@ -2344,23 +2222,6 @@
 
             success: function (dataObj) {
                 if (dataObj.success == true) {
-                    var dataKec = [];
-                    
-                    var kecamatan_placeholder = $('#kecamatan').attr('placeholder');
-    
-                    dataKec.push({
-                        id: "", 
-                        text: kecamatan_placeholder
-                    });
-                    $('#kecamatan').empty();
-                    
-                    var kelurahan_placeholder = $('#kelurahan').attr('placeholder');
-                    $('#kelurahan').empty();
-                    $('#kelurahan').parent().find(".select2-selection").children(".select2-selection__rendered").html(kelurahan_placeholder);
-                    
-                    $('#kode_pos').val("");
-                    $('#alamat_lengkap').val("");
-                    // autocomplete(document.getElementById("kecamatan"), dataObj.result.data);
                     $.each(dataObj.result.data, function (idKec, valKec) {
                         if (valKec.name != '') {
 
@@ -2419,6 +2280,23 @@
         } else {
             enableButton("#button3rumah");
         }
+        
+        var dataKec = [];
+                    
+        var kecamatan_sertificate_placeholder = $('#kecamatan_sertificate').attr('placeholder');
+
+        dataKec.push({
+            id: "", 
+            text: kecamatan_sertificate_placeholder
+        });
+        $('#kecamatan_sertificate').empty();
+        
+        var kelurahan_sertificate_placeholder = $('#kelurahan_sertificate').attr('placeholder');
+        $('#kelurahan_sertificate').empty();
+        $('#kelurahan_sertificate').parent().find(".select2-selection").children(".select2-selection__rendered").html(kelurahan_sertificate_placeholder);
+        
+        $('#kode_pos_sertificate').val("");
+        $('#alamat_lengkap_sertificate').val("");
 
         var id = this.value;
 
@@ -2436,23 +2314,6 @@
 
             success: function (dataObj) {
                 if (dataObj.success == true) {
-                    var dataKec = [];
-                    
-                    var kecamatan_sertificate_placeholder = $('#kecamatan_sertificate').attr('placeholder');
-    
-                    dataKec.push({
-                        id: "", 
-                        text: kecamatan_sertificate_placeholder
-                    });
-                    $('#kecamatan_sertificate').empty();
-                    
-                    var kelurahan_sertificate_placeholder = $('#kelurahan_sertificate').attr('placeholder');
-                    $('#kelurahan_sertificate').empty();
-                    $('#kelurahan_sertificate').parent().find(".select2-selection").children(".select2-selection__rendered").html(kelurahan_sertificate_placeholder);
-                    
-                    $('#kode_pos_sertificate').val("");
-                    $('#alamat_lengkap_sertificate').val("");
-                    // autocomplete(document.getElementById("kecamatan_sertificate"), dataObj.result.data);
                     $.each(dataObj.result.data, function (idKec, valKec) {
                         if (valKec.name != '') {
 
@@ -2515,6 +2376,19 @@
         } else {
             enableButton("#button2");
         }
+        
+        var dataKel = [];
+                    
+        var kelurahan_placeholder = $('#kelurahan').attr('placeholder');
+
+        dataKel.push({
+            id: "", 
+            text: kelurahan_placeholder
+        });
+        $('#kelurahan').empty();
+        
+        $('#kode_pos').val("");
+        $('#alamat_lengkap').val("");
 
         var id = this.value;
 
@@ -2532,19 +2406,6 @@
 
             success: function (dataObj) {
                 if (dataObj.success == true) {
-                    var dataKel = [];
-                    
-                    var kelurahan_placeholder = $('#kelurahan').attr('placeholder');
-    
-                    dataKel.push({
-                        id: "", 
-                        text: kelurahan_placeholder
-                    });
-                    $('#kelurahan').empty();
-                    
-                    $('#kode_pos').val("");
-                    $('#alamat_lengkap').val("");
-                    // autocomplete(document.getElementById("kelurahan"), dataObj.result.data);
                     $.each(dataObj.result.data, function (idKel, valKel) {
                         if (valKel.name != '') {
 
@@ -2611,6 +2472,19 @@
         } else {
             enableButton("#button3rumah");
         }
+        
+        var dataKel = [];
+                    
+        var kelurahan_sertificate_placeholder = $('#kelurahan_sertificate').attr('placeholder');
+
+        dataKel.push({
+            id: "", 
+            text: kelurahan_sertificate_placeholder
+        });
+        $('#kelurahan_sertificate').empty();
+        
+        $('#kode_pos_sertificate').val("");
+        $('#alamat_lengkap_sertificate').val("");
 
         var id = this.value;
 
@@ -2628,19 +2502,6 @@
 
             success: function (dataObj) {
                 if (dataObj.success == true) {
-                    var dataKel = [];
-                    
-                    var kelurahan_sertificate_placeholder = $('#kelurahan_sertificate').attr('placeholder');
-    
-                    dataKel.push({
-                        id: "", 
-                        text: kelurahan_sertificate_placeholder
-                    });
-                    $('#kelurahan_sertificate').empty();
-                    
-                    $('#kode_pos_sertificate').val("");
-                    $('#alamat_lengkap_sertificate').val("");
-                    // autocomplete(document.getElementById("kelurahan_sertificate"), dataObj.result.data);
                     $.each(dataObj.result.data, function (idKel, valKel) {
                         if (valKel.name != '') {
 
@@ -2912,6 +2773,24 @@
         $('#status_kep').next().css("background-color", "#F4F4F4");
         // $('#status_kep').next().find(".jcf-select-opener").css("background-color", "#F4F4F4");
 
+        var dataModel = [];
+
+        var model_kendaraan_placeholder = $('#model_kendaraan').attr('placeholder');
+
+        dataModel.push({
+            id: "", 
+            text: model_kendaraan_placeholder
+        });
+        $('#merk_kendaraan').empty();
+
+        var tahun_kendaraan_placeholder = $('#tahun_kendaraan').attr('placeholder');
+        $('#tahun_kendaraan').empty();
+        $('#tahun_kendaraan').parent().find(".select2-selection").children(".select2-selection__rendered").html(tahun_kendaraan_placeholder);
+
+        var status_kep_placeholder = $('#status_kep').attr('placeholder');
+        $('#status_kep').empty();
+        $('#status_kep').parent().find(".select2-selection").children(".select2-selection__rendered").html(status_kep_placeholder);
+
         //var id = this.value;
         var post_code_attr = credits.tempat_tinggal.kode_pos,
             tipe_attr = credits.angunan.jenis_angunan,
@@ -2931,24 +2810,6 @@
 
             success: function (dataObj) {
                 if (dataObj.success == true) {
-                    var dataModel = [];
-
-                    var model_kendaraan_placeholder = $('#model_kendaraan').attr('placeholder');
-
-                    dataModel.push({
-                        id: "", 
-                        text: model_kendaraan_placeholder
-                    });
-                    $('#merk_kendaraan').empty();
-
-                    var tahun_kendaraan_placeholder = $('#tahun_kendaraan').attr('placeholder');
-                    $('#tahun_kendaraan').empty();
-                    $('#tahun_kendaraan').parent().find(".select2-selection").children(".select2-selection__rendered").html(tahun_kendaraan_placeholder);
-
-                    var status_kep_placeholder = $('#status_kep').attr('placeholder');
-                    $('#status_kep').empty();
-                    $('#status_kep').parent().find(".select2-selection").children(".select2-selection__rendered").html(status_kep_placeholder);
-
                     $.each(dataObj.result.data, function (idKendaraan, valKendaraan) {
                         if (valKendaraan.name != '') {
                             dataModel.push({
@@ -3002,10 +2863,26 @@
         $('#status_kep').attr("disabled", "disabled");
         $('#status_kep').next().css("background-color", "#F4F4F4");
         // $('#status_kep').next().find(".jcf-select-opener").css("background-color", "#F4F4F4");
+        
+        var dataTahun = [];
+
+        var tahun_kendaraan_placeholder = $('#tahun_kendaraan').attr('placeholder');
+
+        dataTahun.push({
+            id: "", 
+            text: tahun_kendaraan_placeholder
+        });
+        $('#tahun_kendaraan').empty();
+
+        var status_kep_placeholder = $('#status_kep').attr('placeholder');
+        // $('#status_kep').empty();
+        $('#status_kep').parent().find(".select2-selection").children(".select2-selection__rendered").html(status_kep_placeholder);
+
         var post_code_attr = credits.tempat_tinggal.kode_pos,
             tipe_attr = credits.angunan.jenis_angunan,
             brand_attr = $('#merk_kendaraan').val(),
             model = $(this).val();
+
         $.ajax({
             type: 'GET',
             url: '/brand/year/product/listJson?post_code=' + post_code_attr + '' +
@@ -3021,20 +2898,6 @@
 
             success: function (dataObj) {
                 if (dataObj.success == true) {
-                    var dataTahun = [];
-
-                    var tahun_kendaraan_placeholder = $('#tahun_kendaraan').attr('placeholder');
-
-                    dataTahun.push({
-                        id: "", 
-                        text: tahun_kendaraan_placeholder
-                    });
-                    $('#tahun_kendaraan').empty();
-
-                    var status_kep_placeholder = $('#status_kep').attr('placeholder');
-                    // $('#status_kep').empty();
-                    $('#status_kep').parent().find(".select2-selection").children(".select2-selection__rendered").html(status_kep_placeholder);
-
                     if (dataObj.result.data) {
                         $.each(dataObj.result.data, function (index, dataYear) {
                             if (dataYear.year != '') {
@@ -3694,7 +3557,7 @@
         $('.countdown').removeClass('countdown--reload');
     })
 
-    $(".form-control").on('focus', function () {
+    $("input.form-control").on('focus', function () {
         if ($(this).attr("id") !== "ex6SliderVal") {
             $(this).prev().css({
                 'display' : 'block',
@@ -3707,7 +3570,7 @@
         }
     });
 
-    $(".form-control").on('focusout', function () {
+    $("input.form-control").on('focusout', function () {
         if ($(this).val() == "") {
             $(this).prev().css("display", "none");
             $(this).css({
@@ -3715,10 +3578,9 @@
                 'padding-bottom' : '20px'
             });
         }
-        ;
     });
 
-    $(".jcf-select").click(function () {
+    $(".select2").click(function () {
         if (($(this).prev().attr("id") !== "jangka_waktu") && ($(this).prev().attr("id") !== "sel-how-form-credit")) {
             $(this).prev().prev().css({
                 'display' : 'block',
@@ -3746,10 +3608,10 @@
     // placeholder cek pengajuan
     if ($('.cek-pengajuan').length) {
         var placeholder = $("#sel-how-form-credit").data("placeholder");
-        $('.cek-pengajuan').find(".jcf-select-text").children("span").html(placeholder);
+        $('.cek-pengajuan').parent().find(".select2-selection").children(".select2-selection__rendered").html(placeholder);
     }
     $("#sel-how-form-credit").on('change', function (e) {
-        $(".jcf-select-text").children("span").html($(this).find("option:selected").text());
+        $(".select2-selection").children(".select2-selection__rendered").html($(this).find("option:selected").text());
     })
 
     // placeholder status kepemilikan form mobil/motor
