@@ -67,7 +67,8 @@ $this->extend('layout-credit.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label class="label-select"><?= $this->translate('form-work')?></label>
-                                            <select class="form-control formRequired" id="pekerjaan" name="pekerjaan" placeholder="<?= $this->translate('placeholder-work')?>"  />
+                                            <select class="form-control formRequired" id="pekerjaan" name="pekerjaan"
+                                                    placeholder="<?= $this->translate('placeholder-work')?>" />
                                                 <option value=""><?= $this->translate('placeholder-work')?></option>
                                                 <option value="<?= strtoupper($this->translate('work1')) ?>"><?= $this->translate('work1')?></option>
                                                 <option value="<?= strtoupper($this->translate('work2')) ?>"><?= $this->translate('work2')?></option>
@@ -120,28 +121,32 @@ $this->extend('layout-credit.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label class="label-select"><?= $this->translate('label-provinsi')?></label>
-                                            <select class="form-control formRequired" id="provinsi" name="provinsi" placeholder="<?= $this->translate('choose-provinsi')?>"  />
+                                            <select class="form-control formRequired" id="provinsi" name="provinsi"
+                                                    placeholder="<?= $this->translate('choose-provinsi')?>" multiple="multiple" />
                                             <option value=""><?= $this->translate('choose-provinsi')?></option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
                                             <label class="label-select"><?= $this->translate('label-kota')?></label>
-                                            <select class="form-control formRequired" id="kota" name="kota" placeholder="<?= $this->translate('choose-kota')?>"  />
+                                            <select class="form-control formRequired" id="kota" name="kota"
+                                                    placeholder="<?= $this->translate('choose-kota')?>" multiple="multiple" />
                                             <option value=""><?= $this->translate('choose-kota')?></option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
                                             <label class="label-select"><?= $this->translate('label-kecamatan')?></label>
-                                            <select class="form-control formRequired" id="kecamatan" name="kecamatan" placeholder="<?= $this->translate('choose-kecamatan')?>"  />
+                                            <select class="form-control formRequired" id="kecamatan" name="kecamatan"
+                                                    placeholder="<?= $this->translate('choose-kecamatan')?>" multiple="multiple" />
                                             <option value=""><?= $this->translate('choose-kecamatan')?></option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
                                             <label class="label-select"><?= $this->translate('label-kelurahan')?></label>
-                                            <select class="form-control formRequired" id="kelurahan" name="kelurahan" placeholder="<?= $this->translate('choose-kelurahan')?>"  />
+                                            <select class="form-control formRequired" id="kelurahan" name="kelurahan"
+                                                    placeholder="<?= $this->translate('choose-kelurahan')?>" multiple="multiple" />
                                             <option value=""><?= $this->translate('choose-kelurahan')?></option>
                                             </select>
                                             <div class="error-wrap"></div>
@@ -178,7 +183,9 @@ $this->extend('layout-credit.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label class="label-select"><?= $this->translate('label-status-bangunan')?></label>
-                                            <select class="c-custom-select-trans form-control formRequired" placeholder="<?= $this->translate('placeholder-bangunan')?>" id="status_sertificate" name="status_sertificate">
+                                            <select class="c-custom-select-trans form-control formRequired"
+                                                    placeholder="<?= $this->translate('placeholder-bangunan')?>" id="status_sertificate"
+                                                    name="status_sertificate">
                                                 <option value=""><?= $this->translate('placeholder-bangunan')?></option>
                                                 <option value="<?= strtoupper($this->translate('surat-bangunan-1')) ?>"><?= $this->translate('surat-bangunan-1')?></option>
                                                 <option value="<?= strtoupper($this->translate('surat-bangunan-2')) ?>"><?= $this->translate('surat-bangunan-2')?></option>
@@ -187,7 +194,8 @@ $this->extend('layout-credit.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label class="label-select"><?= $this->translate('label-status-sertifikat')?></label>
-                                            <select class="c-custom-select-trans form-control formRequired" placeholder="<?= $this->translate('placeholder-sertifikat')?>" id="own_sertificate"
+                                            <select class="c-custom-select-trans form-control formRequired"
+                                                    placeholder="<?= $this->translate('placeholder-sertifikat')?>" id="own_sertificate"
                                                     name="own_sertificate">
                                                 <option value=""><?= $this->translate('placeholder-sertifikat')?></option>
                                                 <option value="<?= strtoupper($this->translate('sertifikat-1')) ?>"><?= $this->translate('sertifikat-1')?></option>
@@ -197,28 +205,32 @@ $this->extend('layout-credit.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label class="label-select"><?= $this->translate('label-provinsi')?></label>
-                                            <select class="form-control formRequired" id="provinsi_sertificate" name="provinsi_sertificate" placeholder="<?= $this->translate('choose-provinsi')?>">
+                                            <select class="form-control formRequired" id="provinsi_sertificate" name="provinsi_sertificate"
+                                                    placeholder="<?= $this->translate('choose-provinsi')?>" multiple="multiple" />
                                                 <option value=""><?= $this->translate('choose-provinsi')?></option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
                                             <label class="label-select"><?= $this->translate('label-kota')?></label>
-                                            <select class="form-control formRequired" id="kota_sertificate" name="kota_sertificate" placeholder="<?= $this->translate('choose-kota')?>">
+                                            <select class="form-control formRequired" id="kota_sertificate" name="kota_sertificate"
+                                                    placeholder="<?= $this->translate('choose-kota')?>" multiple="multiple" />
                                                 <option value=""><?= $this->translate('choose-kota')?></option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
                                             <label class="label-select"><?= $this->translate('label-kecamatan')?></label>
-                                            <select class="form-control formRequired" id="kecamatan_sertificate" name="kecamatan_sertificate" placeholder="<?= $this->translate('choose-kecamatan')?>">
+                                            <select class="form-control formRequired" id="kecamatan_sertificate" name="kecamatan_sertificate"
+                                                    placeholder="<?= $this->translate('choose-kecamatan')?>" multiple="multiple" />
                                                 <option value=""><?= $this->translate('choose-kecamatan')?></option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
                                             <label class="label-select"><?= $this->translate('label-kelurahan')?></label>
-                                            <select class="form-control formRequired" id="kelurahan_sertificate" name="kelurahan_sertificate" placeholder="<?= $this->translate('choose-kelurahan')?>">
+                                            <select class="form-control formRequired" id="kelurahan_sertificate" name="kelurahan_sertificate"
+                                                    placeholder="<?= $this->translate('choose-kelurahan')?>" multiple="multiple" />
                                                 <option value=""><?= $this->translate('choose-kelurahan')?></option>
                                             </select>
                                             <div class="error-wrap"></div>
