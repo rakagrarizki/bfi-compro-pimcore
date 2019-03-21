@@ -3466,7 +3466,7 @@
         $('.countdown').removeClass('countdown--reload');
     })
 
-    $("input.form-control").on('focus', function () {
+    $(".form-control").on('focus', function () {
         if ($(this).attr("id") !== "ex6SliderVal") {
             $(this).prev().css({
                 'display' : 'block',
@@ -3479,7 +3479,7 @@
         }
     });
 
-    $("input.form-control").on('focusout', function () {
+    $(".form-control").on('focusout', function () {
         if ($(this).val() == "") {
             $(this).prev().css("display", "none");
             $(this).css({
@@ -3488,17 +3488,12 @@
             });
         }
     });
-
-    $(".select2").click(function () {
-        if (($(this).prev().attr("id") !== "jangka_waktu") && ($(this).prev().attr("id") !== "sel-how-form-credit")) {
-            $(this).prev().prev().css({
-                'display' : 'block',
-                'padding' : '12px 15px 5px'
-            });
-            $(this).css({
-                'padding-top' : '8px',
-            });
-        }
+    
+    $(document).on('focus', '.select2', function (e) {
+        $(this).parent().find("label").css({
+            'display' : 'block',
+            'padding' : '12px 15px'
+        });
     });
 
     // $("#produk").hover(function() {
