@@ -444,11 +444,6 @@
             display:none;
             z-index:1;
 
-            &.label-select{
-                display: block !important;
-                padding: 15px;
-            }
-
             &.error {
                 margin: 10px 0;
                 font-family: 'HelveticaNeue-Light';
