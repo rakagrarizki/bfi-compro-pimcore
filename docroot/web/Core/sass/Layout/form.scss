@@ -460,7 +460,7 @@
         }
 
         select.form-control {
-            line-height: 84px;
+            line-height: 1;
             position: relative;
             padding-top: unset;
             padding-bottom: unset;
@@ -534,6 +534,8 @@
             display: block;
             margin-top: 5px;
             font-size: 12px;
+            top: calc(100% - 5px) !important;
+            width: 100%;
 
             &.jcf-checkbox {
                 display: inline-block;

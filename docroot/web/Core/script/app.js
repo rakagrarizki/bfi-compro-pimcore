@@ -1789,6 +1789,7 @@
                     })
                     $('#merk_kendaraan').select2({
                         placeholder: merk_kendaraan_placeholder,
+                        dropdownParent: $('#merk_kendaraan').parent(),
                         data: dataKendaraan
                     });
                 }
@@ -1860,11 +1861,13 @@
                     })
                     $('#provinsi').select2({
                         placeholder: provinsi_placeholder,
+                        dropdownParent: $('#provinsi').parent(),
                         data: dataProvince
                     });
                     if (element2) {
                         $('#provinsi_sertificate').select2({
                             placeholder: provinsi_placeholder,
+                            dropdownParent: $('#provinsi_sertificate').parent(),
                             data: dataProvince
                         });
                     }
@@ -2008,6 +2011,7 @@
                     })
                     $('#kota').select2({
                         placeholder: kota_placeholder,
+                        dropdownParent: $('#kota').parent(),
                         data: dataCity
                     });
                 }
@@ -2101,6 +2105,7 @@
                     })
                     $('#kota_sertificate').select2({
                         placeholder: kota_placeholder,
+                        dropdownParent: $('#kota_sertificate').parent(),
                         data: dataCity
                     });
                 }
@@ -2191,6 +2196,7 @@
                     })
                     $('#kecamatan').select2({
                         placeholder: kecamatan_placeholder,
+                        dropdownParent: $('#kecamatan').parent(),
                         data: dataKec
                     });
                 }
@@ -2273,6 +2279,7 @@
                     })
                     $('#kecamatan_sertificate').select2({
                         placeholder: kecamatan_sertificate_placeholder,
+                        dropdownParent: $('#kecamatan_sertificate').parent(),
                         data: dataKec
                     });
                 }
@@ -2368,6 +2375,7 @@
                     $('#kelurahan').select2({
                         placeholder: kelurahan_placeholder,
                         templateSelection: formatState,
+                        dropdownParent: $('#kelurahan').parent(),
                         data: dataKel
                     });
                 }
@@ -2455,6 +2463,7 @@
                     $('#kelurahan_sertificate').select2({
                         placeholder: kelurahan_sertificate_placeholder,
                         templateSelection: formatState,
+                        dropdownParent: $('#kelurahan_sertificate').parent(),
                         data: dataKel
                     });
                 }
@@ -2742,6 +2751,7 @@
 
                     $('#model_kendaraan').select2({
                         placeholder: model_kendaraan_placeholder,
+                        dropdownParent: $('#model_kendaraan').parent(),
                         data: dataModel
                     });
 
@@ -2823,6 +2833,7 @@
 
                         $('#tahun_kendaraan').select2({
                             placeholder: tahun_kendaraan_placeholder,
+                            dropdownParent: $('#tahun_kendaraan').parent(),
                             data: dataTahun
                         });
                         
