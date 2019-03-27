@@ -62,7 +62,7 @@ var paths = {
                     path.join(__dirname, "bower_components/jcf/dist/js/jcf.js"),
                     path.join(__dirname, "bower_components/jcf/dist/js/jcf.radio.js"),
                     path.join(__dirname, "bower_components/jcf/dist/js/jcf.checkbox.js"),
-                    path.join(__dirname, "bower_components/jcf/dist/js/jcf.select.js"),
+                    // path.join(__dirname, "bower_components/jcf/dist/js/jcf.select.js"),
                     path.join(__dirname, "bower_components/slick-carousel/slick/slick.min.js"),
                     path.join(__dirname, "bower_components/jqueryvalidate/jquery.validate.js"),
                     path.join(__dirname, "bower_components/chosen/chosen.jquery.js"),

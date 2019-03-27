@@ -460,17 +460,14 @@
         }
 
         select.form-control {
-            line-height: 45px;
+            line-height: 1;
             position: relative;
+            padding-top: unset;
+            padding-bottom: unset;
+        }
 
-            &:before {
-                content: "\f107";
-                font-family: "FontAwesome";
-                font-size: 2.5em;
-                position: absolute;
-                left: 5px;
-                top: 10px;
-            }
+        select.form-control[multiple] {
+            padding-top: 32px;
         }
 
         textarea.form-control {
@@ -537,6 +534,8 @@
             display: block;
             margin-top: 5px;
             font-size: 12px;
+            top: calc(100% - 5px) !important;
+            width: 100%;
 
             &.jcf-checkbox {
                 display: inline-block;
@@ -985,4 +984,3 @@
     width: 100%;
     bottom: -21px;
 }
-
