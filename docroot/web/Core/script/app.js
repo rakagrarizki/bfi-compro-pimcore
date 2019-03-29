@@ -1775,7 +1775,7 @@
             },
 
             success: function (dataObj) {
-                if (dataObj.success == true) {
+                if (dataObj.success == true && dataObj.result !== null) {
                     $.each(dataObj.result.data, function (idMobilmotor, valMobilmotor) {
                         if ($('#merk_kendaraan option').length > 1) {
                             $('#merk_kendaraan option:not(:first)').remove();
@@ -2711,7 +2711,7 @@
 
         var model_kendaraan_placeholder = $('#model_kendaraan').attr('placeholder');
 
-        $('#merk_kendaraan').empty();
+        // $('#merk_kendaraan').empty();
 
         var tahun_kendaraan_placeholder = $('#tahun_kendaraan').attr('placeholder');
         $('#tahun_kendaraan').empty();
@@ -2724,7 +2724,9 @@
         //var id = this.value;
         var post_code_attr = credits.tempat_tinggal.kode_pos,
             tipe_attr = credits.angunan.jenis_angunan,
-            brand_attr = $(this).next().children().children().text();
+            brand_attr = $(this).val()[0];
+
+            // console.log(brand_attr, $(this).val())
 
         $.ajax({
             type: 'GET',
@@ -2739,7 +2741,7 @@
             },
 
             success: function (dataObj) {
-                if (dataObj.success == true) {
+                if (dataObj.success == true && dataObj.result !== null) {
                     $.each(dataObj.result.data, function (idKendaraan, valKendaraan) {
                         if (valKendaraan.name != '') {
                             dataModel.push({
