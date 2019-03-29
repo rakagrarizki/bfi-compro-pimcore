@@ -2710,6 +2710,8 @@
         var dataModel = [];
 
         var model_kendaraan_placeholder = $('#model_kendaraan').attr('placeholder');
+        $('#model_kendaraan').empty();
+        $('#model_kendaraan').parent().find(".select2-selection").children(".select2-selection__rendered").html(model_kendaraan_placeholder);
 
         // $('#merk_kendaraan').empty();
 
@@ -2862,6 +2864,7 @@
     });
 
     $('#tahun_kendaraan').change(function () {
+        var dataStatus = [];
         showDefaultButton();
         if($('.nav-item-3').hasClass("done")){
             $('.nav-item-3').removeClass("done");
@@ -2878,9 +2881,25 @@
             $('.nav-item-5').removeClass("active");
             $('.nav-item-5').addClass("disabled").off('click');
         }
+        var statusSelf = $("#status_kep").data("status-self");
+        var statusOther = $("#status_kep").data("status-other");
+        dataStatus.push({
+            id: statusSelf, 
+            text: statusSelf
+        });
+        dataStatus.push({
+            id: statusOther, 
+            text: statusOther
+        });
         $('#status_kep').removeAttr("disabled");
         $('#status_kep').next().css("background-color", "white");
         // $('#status_kep').next().find(".jcf-select-opener").css("background-color", "white");
+        $('#status_kep').select2({
+            placeholder: status_kep_placeholder,
+            dropdownParent: $('#status_kep').parent(),
+            data: dataStatus
+            
+        });
 
         if ($("#model_kendaraan").val() == "" || $(this).val() == "" || $("#merk_kendaraan").val() == "" || $("#status_kep").val() == "") {
             disableButton("#button3");

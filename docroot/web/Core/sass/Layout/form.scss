@@ -468,6 +468,7 @@
 
         select.form-control[multiple] {
             padding-top: 32px;
+            overflow: hidden;
         }
 
         textarea.form-control {
