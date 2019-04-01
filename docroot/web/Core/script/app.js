@@ -1775,7 +1775,7 @@
             },
 
             success: function (dataObj) {
-                if (dataObj.success == true) {
+                if (dataObj.success == true && dataObj.result !== null) {
                     $.each(dataObj.result.data, function (idMobilmotor, valMobilmotor) {
                         if ($('#merk_kendaraan option').length > 1) {
                             $('#merk_kendaraan option:not(:first)').remove();
@@ -2710,8 +2710,10 @@
         var dataModel = [];
 
         var model_kendaraan_placeholder = $('#model_kendaraan').attr('placeholder');
+        $('#model_kendaraan').empty();
+        $('#model_kendaraan').parent().find(".select2-selection").children(".select2-selection__rendered").html(model_kendaraan_placeholder);
 
-        $('#merk_kendaraan').empty();
+        // $('#merk_kendaraan').empty();
 
         var tahun_kendaraan_placeholder = $('#tahun_kendaraan').attr('placeholder');
         $('#tahun_kendaraan').empty();
@@ -2724,7 +2726,9 @@
         //var id = this.value;
         var post_code_attr = credits.tempat_tinggal.kode_pos,
             tipe_attr = credits.angunan.jenis_angunan,
-            brand_attr = $(this).next().children().children().text();
+            brand_attr = $(this).val()[0];
+
+            // console.log(brand_attr, $(this).val())
 
         $.ajax({
             type: 'GET',
@@ -2739,7 +2743,7 @@
             },
 
             success: function (dataObj) {
-                if (dataObj.success == true) {
+                if (dataObj.success == true && dataObj.result !== null) {
                     $.each(dataObj.result.data, function (idKendaraan, valKendaraan) {
                         if (valKendaraan.name != '') {
                             dataModel.push({
@@ -2860,6 +2864,7 @@
     });
 
     $('#tahun_kendaraan').change(function () {
+        var dataStatus = [];
         showDefaultButton();
         if($('.nav-item-3').hasClass("done")){
             $('.nav-item-3').removeClass("done");
@@ -2876,9 +2881,25 @@
             $('.nav-item-5').removeClass("active");
             $('.nav-item-5').addClass("disabled").off('click');
         }
+        var statusSelf = $("#status_kep").data("status-self");
+        var statusOther = $("#status_kep").data("status-other");
+        dataStatus.push({
+            id: statusSelf, 
+            text: statusSelf
+        });
+        dataStatus.push({
+            id: statusOther, 
+            text: statusOther
+        });
         $('#status_kep').removeAttr("disabled");
         $('#status_kep').next().css("background-color", "white");
         // $('#status_kep').next().find(".jcf-select-opener").css("background-color", "white");
+        $('#status_kep').select2({
+            placeholder: status_kep_placeholder,
+            dropdownParent: $('#status_kep').parent(),
+            data: dataStatus
+            
+        });
 
         if ($("#model_kendaraan").val() == "" || $(this).val() == "" || $("#merk_kendaraan").val() == "" || $("#status_kep").val() == "") {
             disableButton("#button3");
