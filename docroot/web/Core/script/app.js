@@ -1,4 +1,6 @@
 (function ($) {
+    $('select.form-control').select2();
+
     $('.panel-collapse').on('shown.bs.collapse', function (e) {
         var $panel = $(this).closest('.panel');
         $('html,body').animate({
@@ -493,13 +495,13 @@
         jcf.replaceAll();
 
         $.each($(".columnselect .c-custom-select-trans"), function (i, o) {
-            asuransi_arr_txt[asuransi_arr_txt.length] = $(o).next().children().children().text();
+            asuransi_arr_txt[asuransi_arr_txt.length] = $(o).find("option:selected").text();
         })
 
         $(".columnselect .c-custom-select-trans").on("change", function () {
             var rowke = $(this).parents(".columnselect").attr("ke");
             asuransi_arr[rowke - 1] = $(this).val();
-            asuransi_arr_txt[rowke - 1] = $(this).next().children().children().text();
+            asuransi_arr_txt[rowke - 1] = $(this).find("option:selected").text();
 
             disableButton("#button4");
             disableButton(".hidesavebutton");
