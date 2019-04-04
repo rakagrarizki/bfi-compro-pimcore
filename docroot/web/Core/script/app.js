@@ -2711,17 +2711,17 @@
 
         var model_kendaraan_placeholder = $('#model_kendaraan').attr('placeholder');
         $('#model_kendaraan').empty();
-        $('#model_kendaraan').parent().find(".select2-selection").children(".select2-selection__rendered").html(model_kendaraan_placeholder);
+        $('#model_kendaraan').append("<option value='' disabled>"+model_kendaraan_placeholder+"</option>");
 
         // $('#merk_kendaraan').empty();
 
         var tahun_kendaraan_placeholder = $('#tahun_kendaraan').attr('placeholder');
         $('#tahun_kendaraan').empty();
-        $('#tahun_kendaraan').parent().find(".select2-selection").children(".select2-selection__rendered").html(tahun_kendaraan_placeholder);
+        $('#tahun_kendaraan').append("<option value='' disabled>"+tahun_kendaraan_placeholder+"</option>");
 
         var status_kep_placeholder = $('#status_kep').attr('placeholder');
         $('#status_kep').empty();
-        $('#status_kep').parent().find(".select2-selection").children(".select2-selection__rendered").html(status_kep_placeholder);
+        $('#status_kep').append("<option value='' disabled>"+status_kep_placeholder+"</option>");
 
         //var id = this.value;
         var post_code_attr = credits.tempat_tinggal.kode_pos,
