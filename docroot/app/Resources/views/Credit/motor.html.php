@@ -118,7 +118,7 @@ $this->extend('layout-credit.html.php');
                                             <label><?= $this->translate('label-provinsi')?></label>
                                             <select class="form-control formRequired" id="provinsi" name="provinsi"
                                                     placeholder="<?= $this->translate('choose-provinsi')?>" multiple="multiple" />
-                                                <option value="" disabled><?= $this->translate('choose-provinsi')?></option>
+                                                <option value="" disabled selected><?= $this->translate('choose-provinsi')?></option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
@@ -126,7 +126,7 @@ $this->extend('layout-credit.html.php');
                                             <label><?= $this->translate('label-kota')?></label>
                                             <select class="form-control formRequired" id="kota" name="kota"
                                                     placeholder="<?= $this->translate('choose-kota')?>" multiple="multiple" />
-                                                <option value="" disabled><?= $this->translate('choose-kota')?></option>
+                                                <option value="" disabled selected><?= $this->translate('choose-kota')?></option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
@@ -134,7 +134,7 @@ $this->extend('layout-credit.html.php');
                                             <label><?= $this->translate('label-kecamatan')?></label>
                                             <select class="form-control formRequired" id="kecamatan" name="kecamatan"
                                                     placeholder="<?= $this->translate('choose-kecamatan')?>" multiple="multiple" />
-                                                <option value="" disabled><?= $this->translate('choose-kecamatan')?></option>
+                                                <option value="" disabled selected><?= $this->translate('choose-kecamatan')?></option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
@@ -142,7 +142,7 @@ $this->extend('layout-credit.html.php');
                                             <label><?= $this->translate('label-kelurahan')?></label>
                                             <select class="form-control formRequired" id="kelurahan" name="kelurahan"
                                                     placeholder="<?= $this->translate('choose-kelurahan')?>" multiple="multiple" />
-                                                <option value="" disabled><?= $this->translate('choose-kelurahan')?></option>
+                                                <option value="" disabled selected><?= $this->translate('choose-kelurahan')?></option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
@@ -181,7 +181,7 @@ $this->extend('layout-credit.html.php');
                                             <select class="c-custom-select-trans form-control formRequired"
                                                     placeholder="<?= $this->translate('placeholder-merk')?>" id="merk_kendaraan"
                                                     name="merk_kendaraan" multiple="multiple">
-                                                <option value="" disabled> <?= $this->translate('placeholder-merk')?></option>
+                                                <option value="" disabled selected> <?= $this->translate('placeholder-merk')?></option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
@@ -190,7 +190,7 @@ $this->extend('layout-credit.html.php');
                                             <select class="c-custom-select-trans form-control formRequired"
                                                     placeholder="<?= $this->translate('placeholder-model')?>" id="model_kendaraan"
                                                     name="model_kendaraan" multiple="multiple">
-                                                <option value="" disabled> <?= $this->translate('placeholder-model')?></option>
+                                                <option value="" disabled selected> <?= $this->translate('placeholder-model')?></option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
@@ -199,7 +199,7 @@ $this->extend('layout-credit.html.php');
                                             <select class="c-custom-select-trans form-control formRequired"
                                                     placeholder="<?= $this->translate('placeholder-tahun')?>" id="tahun_kendaraan"
                                                     name="tahun_kendaraan" multiple="multiple">
-                                                <option value="" disabled> <?= $this->translate('placeholder-tahun')?></option>
+                                                <option value="" disabled selected> <?= $this->translate('placeholder-tahun')?></option>
                                                 <?php
                                                 $tahunNow = date("Y");
                                                 for ($i = 2000; $i <= (int)$tahunNow; $i++) {
@@ -215,7 +215,7 @@ $this->extend('layout-credit.html.php');
                                             <select class="c-custom-select-trans form-control formRequired" 
                                                     placeholder="<?= $this->translate('placeholder-status')?>" id="status_kep" 
                                                     name="status_kep" multiple="multiple" data-status-self="<?= $this->translate('placeholder-status-self')?>" data-status-other="<?=$this->translate('placeholder-status-other');?>">
-                                                <option value="" disabled> <?= $this->translate('placeholder-status')?></option>
+                                                <option value="" disabled selected> <?= $this->translate('placeholder-status')?></option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
