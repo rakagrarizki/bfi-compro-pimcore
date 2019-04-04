@@ -464,6 +464,12 @@
             position: relative;
             padding-top: unset;
             padding-bottom: unset;
+
+            option{
+                &:checked{
+                    background: #eee -webkit-linear-gradient(bottom, #eee 0%, #eee 100%);
+                }
+            }
         }
 
         select.form-control[multiple] {

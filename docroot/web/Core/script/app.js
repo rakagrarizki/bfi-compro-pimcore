@@ -1756,6 +1756,7 @@
         var dataKendaraan = [];
 
         var merk_kendaraan_placeholder = $('#merk_kendaraan').attr('placeholder');
+        var model_kendaraan_placeholder = $('#model_kendaraan').attr('placeholder');
 
         $('#merk_kendaraan').empty();
 
@@ -1791,6 +1792,10 @@
                         placeholder: merk_kendaraan_placeholder,
                         dropdownParent: $('#merk_kendaraan').parent(),
                         data: dataKendaraan
+                    });
+                    $('#model_kendaraan').select2({
+                        placeholder: model_kendaraan_placeholder,
+                        dropdownParent: $('#model_kendaraan').parent()
                     });
                 }
             }
@@ -2711,9 +2716,6 @@
 
         var model_kendaraan_placeholder = $('#model_kendaraan').attr('placeholder');
         $('#model_kendaraan').empty();
-        $('#model_kendaraan').append("<option value='' disabled selected>"+model_kendaraan_placeholder+"</option>");
-
-        // $('#merk_kendaraan').empty();
 
         var tahun_kendaraan_placeholder = $('#tahun_kendaraan').attr('placeholder');
         $('#tahun_kendaraan').empty();
@@ -2802,8 +2804,8 @@
         $('#tahun_kendaraan').empty();
 
         var status_kep_placeholder = $('#status_kep').attr('placeholder');
-        // $('#status_kep').empty();
-        $('#status_kep').parent().find(".select2-selection").children(".select2-selection__rendered").html(status_kep_placeholder);
+        $('#status_kep').empty();
+        $('#status_kep').append("<option value='' disabled selected>"+status_kep_placeholder+"</option>");
 
         var post_code_attr = credits.tempat_tinggal.kode_pos,
             tipe_attr = credits.angunan.jenis_angunan,
@@ -2893,7 +2895,7 @@
         });
         $('#status_kep').removeAttr("disabled");
         $('#status_kep').next().css("background-color", "white");
-        // $('#status_kep').next().find(".jcf-select-opener").css("background-color", "white");
+        $('#status_kep').empty();
         $('#status_kep').select2({
             placeholder: status_kep_placeholder,
             dropdownParent: $('#status_kep').parent(),
