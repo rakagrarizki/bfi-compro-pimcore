@@ -464,6 +464,12 @@
             position: relative;
             padding-top: unset;
             padding-bottom: unset;
+
+            option{
+                &:checked{
+                    background: #eee -webkit-linear-gradient(bottom, #eee 0%, #eee 100%);
+                }
+            }
         }
 
         select.form-control[multiple] {
@@ -541,6 +547,7 @@
             &.jcf-checkbox {
                 display: inline-block;
                 vertical-align: top;
+                width: 16px;
 
                 span{
                     border-color:#7AC143!important;
