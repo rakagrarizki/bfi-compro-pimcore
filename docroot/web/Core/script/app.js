@@ -1876,6 +1876,13 @@
                             data: dataProvince
                         });
                     }
+                    
+                    $("#provinsi").parent().find(".select2-search__field").css({
+                        "width" : "100%"
+                    });
+                    $("#provinsi_sertificate").parent().find(".select2-search__field").css({
+                        "width" : "100%"
+                    });
                 }
             }
         })
@@ -1981,11 +1988,9 @@
                  
         var kecamatan_placeholder = $('#kecamatan').attr('placeholder');
         $('#kecamatan').empty();
-        $('#kecamatan').parent().find(".select2-selection").children(".select2-selection__rendered").html(kecamatan_placeholder);
         
         var kelurahan_placeholder = $('#kelurahan').attr('placeholder');
         $('#kelurahan').empty();
-        $('#kelurahan').parent().find(".select2-selection").children(".select2-selection__rendered").html(kelurahan_placeholder);
 
         $('#kode_pos').val("");
         $('#alamat_lengkap').val("");
@@ -2018,6 +2023,14 @@
                         placeholder: kota_placeholder,
                         dropdownParent: $('#kota').parent(),
                         data: dataCity
+                    });
+                    $('#kecamatan').select2({
+                        placeholder: kecamatan_placeholder,
+                        dropdownParent: $('#kecamatan').parent()
+                    });
+                    $('#kelurahan').select2({
+                        placeholder: kelurahan_placeholder,
+                        dropdownParent: $('#kelurahan').parent()
                     });
                 }
             }
@@ -2075,11 +2088,9 @@
         
         var kecamatan_sertificate_placeholder = $('#kecamatan_sertificate').attr('placeholder');
         $('#kecamatan_sertificate').empty();
-        $('#kecamatan_sertificate').parent().find(".select2-selection").children(".select2-selection__rendered").html(kecamatan_sertificate_placeholder);
         
         var kelurahan_sertificate_placeholder = $('#kelurahan_sertificate').attr('placeholder');
         $('#kelurahan_sertificate').empty();
-        $('#kelurahan_sertificate').parent().find(".select2-selection").children(".select2-selection__rendered").html(kelurahan_sertificate_placeholder);
         
         $('#kode_pos_sertificate').val("");
         $('#alamat_lengkap_sertificate').val("");
@@ -2112,6 +2123,14 @@
                         placeholder: kota_placeholder,
                         dropdownParent: $('#kota_sertificate').parent(),
                         data: dataCity
+                    });
+                    $('#kecamatan_sertificate').select2({
+                        placeholder: kecamatan_sertificate_placeholder,
+                        dropdownParent: $('#kecamatan_sertificate').parent()
+                    });
+                    $('#kelurahan_sertificate').select2({
+                        placeholder: kelurahan_sertificate_placeholder,
+                        dropdownParent: $('#kelurahan_sertificate').parent()
                     });
                 }
             }
@@ -2460,7 +2479,7 @@
                             return state.text;
                         }
                         var $state = $(
-                            '<span class="selected-kelurahan" postcode="'+state.postcode+'">' + state.text + '</span>'
+                            '<span class="selected-kelurahan_sertificate" postcode="'+state.postcode+'">' + state.text + '</span>'
                         );
                         return $state;
                     };
@@ -2599,7 +2618,7 @@
     })
     
 
-    $('#kelurahan_sertificate').change(function () {
+    $("#kelurahan_sertificate").on("select2:select", function (e) {
         showDefaultButton();
 
         if($('.nav-item-3').hasClass("done")){
@@ -2618,7 +2637,7 @@
         $('#alamat_lengkap_sertificate').removeAttr("disabled");
         $('#alamat_lengkap_sertificate').css("background-color", "white");
 
-        var postcodeGen = $(this).parent().find(".selected-kelurahan").attr("postcode");
+        var postcodeGen = $(this).parent().find(".selected-kelurahan_sertificate").attr("postcode");
 
         if (postcodeGen !== 'null') {
             $("#kode_pos_sertificate").val(postcodeGen);
@@ -2900,7 +2919,6 @@
             placeholder: status_kep_placeholder,
             dropdownParent: $('#status_kep').parent(),
             data: dataStatus
-            
         });
 
         if ($("#model_kendaraan").val() == "" || $(this).val() == "" || $("#merk_kendaraan").val() == "" || $("#status_kep").val() == "") {

@@ -119,7 +119,6 @@ $this->extend('layout-credit.html.php');
                                             <label><?= $this->translate('label-provinsi')?></label>
                                             <select class="form-control formRequired" id="provinsi" name="provinsi"
                                                     placeholder="<?= $this->translate('choose-provinsi')?>" multiple="multiple">
-                                                <option value="" class="placeholder" disabled selected><?= $this->translate('choose-provinsi')?></option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
