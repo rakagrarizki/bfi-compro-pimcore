@@ -1,6 +1,13 @@
 $(document).ready(function () {
     let btnSubmitFormCredit = $('.btn-submit-how-form-credit');
     let selFormCredit = $('#sel-how-form-credit');
+    
+    selFormCredit.on('focus', function () {
+        $(this).css({
+            'padding-top' : '15px',
+            'padding-bottom' : '15px'
+        });
+    });
 
     selFormCredit.change(() => {
         let selVal = $(this).val();
