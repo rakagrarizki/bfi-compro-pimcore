@@ -1983,8 +1983,7 @@
         var dataCity = [];
                     
         var kota_placeholder = $('#kota').attr('placeholder');
-
-        $('#kota').empty();
+        $('#kota').html("<option></option>");
                  
         var kecamatan_placeholder = $('#kecamatan').attr('placeholder');
         $('#kecamatan').empty();
