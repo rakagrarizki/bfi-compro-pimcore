@@ -145,6 +145,12 @@
                 font-family: 'HelveticaNeue';
             }
 
+            .select-center{
+                text-align-last: center;
+                -ms-text-align-last: center;
+                -moz-text-align-last: center;
+            }
+
             // Main Select Box
             .jcf-select {
                 position: relative;
