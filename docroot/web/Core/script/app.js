@@ -1837,8 +1837,13 @@
         var dataProvince = [];
 
         var provinsi_placeholder = $('#provinsi').attr('placeholder');
-
         $('#provinsi').empty();
+                    
+        var kota_placeholder = $('#kota').attr('placeholder');
+                 
+        var kecamatan_placeholder = $('#kecamatan').attr('placeholder');
+        
+        var kelurahan_placeholder = $('#kelurahan').attr('placeholder');
 
         $('#provinsi_sertificate').empty();
 
@@ -1877,10 +1882,19 @@
                         });
                     }
                     
-                    $("#provinsi").parent().find(".select2-search__field").css({
-                        "width" : "100%"
+                    $('#kota').select2({
+                        placeholder: kota_placeholder,
+                        dropdownParent: $('#kota').parent()
                     });
-                    $("#provinsi_sertificate").parent().find(".select2-search__field").css({
+                    $('#kecamatan').select2({
+                        placeholder: kecamatan_placeholder,
+                        dropdownParent: $('#kecamatan').parent()
+                    });
+                    $('#kelurahan').select2({
+                        placeholder: kelurahan_placeholder,
+                        dropdownParent: $('#kelurahan').parent()
+                    });
+                    $(".select2-search__field").css({
                         "width" : "100%"
                     });
                 }
@@ -1983,7 +1997,7 @@
         var dataCity = [];
                     
         var kota_placeholder = $('#kota').attr('placeholder');
-        $('#kota').html("<option></option>");
+        $('#kota').empty();
                  
         var kecamatan_placeholder = $('#kecamatan').attr('placeholder');
         $('#kecamatan').empty();
@@ -2022,14 +2036,6 @@
                         placeholder: kota_placeholder,
                         dropdownParent: $('#kota').parent(),
                         data: dataCity
-                    });
-                    $('#kecamatan').select2({
-                        placeholder: kecamatan_placeholder,
-                        dropdownParent: $('#kecamatan').parent()
-                    });
-                    $('#kelurahan').select2({
-                        placeholder: kelurahan_placeholder,
-                        dropdownParent: $('#kelurahan').parent()
                     });
                 }
             }
@@ -2188,7 +2194,6 @@
         
         var kelurahan_placeholder = $('#kelurahan').attr('placeholder');
         $('#kelurahan').empty();
-        $('#kelurahan').parent().find(".select2-selection").children(".select2-selection__rendered").html(kelurahan_placeholder);
         
         $('#kode_pos').val("");
         $('#alamat_lengkap').val("");
