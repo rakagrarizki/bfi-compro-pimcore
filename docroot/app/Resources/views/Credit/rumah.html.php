@@ -416,7 +416,7 @@ $this->extend('layout-credit.html.php');
                                             </div>
                                             <div class="form-group">
                                                 <input type="checkbox" id="agreement2" class="agreement">
-                                                <label for="agreement1" class="label-agreement"><?= $this->translate('term-condition-2')?></label>
+                                                <label for="agreement2" class="label-agreement"><?= $this->translate('term-condition-2')?></label>
                                                 <div class="error-wrap"></div>
                                             </div>
                                         </div>

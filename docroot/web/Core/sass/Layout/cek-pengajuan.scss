@@ -140,10 +140,31 @@
             }
 
             .form-control:last-child {
-                padding: 25px;
                 height: 60px;
                 border-radius: 2px;
                 font-family: 'HelveticaNeue';
+            }
+
+            .select-center{
+                text-align-last: center;
+                -ms-text-align-last: center;
+                -moz-text-align-last: center;
+            }
+
+            .select2-selection--multiple{
+                padding-top: 12px;
+            }
+
+            .select2-search.select2-search--inline{
+                width: 100%;
+
+                .select2-search__field{
+                    text-align: center;
+                }
+            }
+            
+            .select2-selection__choice{
+                text-align: center;
             }
 
             // Main Select Box
@@ -151,7 +172,7 @@
                 position: relative;
                 display: flex;
                 align-items: center;
-                justify-content: center; 
+                justify-content: center;
                 width: 400px;
                 height: 60px;
                 line-height: 40px;

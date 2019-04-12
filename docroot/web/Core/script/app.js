@@ -1756,9 +1756,11 @@
         var dataKendaraan = [];
 
         var merk_kendaraan_placeholder = $('#merk_kendaraan').attr('placeholder');
-        var model_kendaraan_placeholder = $('#model_kendaraan').attr('placeholder');
-
         $('#merk_kendaraan').empty();
+        
+        var model_kendaraan_placeholder = $('#model_kendaraan').attr('placeholder');
+        var tahun_kendaraan_placeholder = $('#tahun_kendaraan').attr('placeholder');
+        var status_kep_placeholder = $('#status_kep').attr('placeholder');
 
         var post_code_attr = params.tempat_tinggal.kode_pos,
             tipe_attr = params.angunan.jenis_angunan;
@@ -1793,10 +1795,18 @@
                         dropdownParent: $('#merk_kendaraan').parent(),
                         data: dataKendaraan
                     });
+
+                    // Adding Placeholder - Start
                     $('#model_kendaraan').select2({
-                        placeholder: model_kendaraan_placeholder,
-                        dropdownParent: $('#model_kendaraan').parent()
+                        placeholder: model_kendaraan_placeholder
                     });
+                    $('#tahun_kendaraan').select2({
+                        placeholder: tahun_kendaraan_placeholder
+                    });
+                    $('#status_kep').select2({
+                        placeholder: status_kep_placeholder
+                    });
+                    // Adding Placeholder - End
                 }
             }
         })
@@ -1837,8 +1847,13 @@
         var dataProvince = [];
 
         var provinsi_placeholder = $('#provinsi').attr('placeholder');
-
         $('#provinsi').empty();
+                    
+        var kota_placeholder = $('#kota').attr('placeholder');
+                 
+        var kecamatan_placeholder = $('#kecamatan').attr('placeholder');
+        
+        var kelurahan_placeholder = $('#kelurahan').attr('placeholder');
 
         $('#provinsi_sertificate').empty();
 
@@ -1876,6 +1891,32 @@
                             data: dataProvince
                         });
                     }
+                    
+                    // Adding Placeholder - Start
+                    $('#kota').select2({
+                        placeholder: kota_placeholder
+                    });
+                    $('#kecamatan').select2({
+                        placeholder: kecamatan_placeholder
+                    });
+                    $('#kelurahan').select2({
+                        placeholder: kelurahan_placeholder
+                    });
+                    
+                    $('#kota_sertificate').select2({
+                        placeholder: kota_placeholder
+                    });
+                    $('#kecamatan_sertificate').select2({
+                        placeholder: kecamatan_placeholder
+                    });
+                    $('#kelurahan_sertificate').select2({
+                        placeholder: kelurahan_placeholder
+                    });
+                    // Adding Placeholder - End
+
+                    $(".select2-search__field").css({
+                        "width" : "100%"
+                    });
                 }
             }
         })
@@ -1976,16 +2017,11 @@
         var dataCity = [];
                     
         var kota_placeholder = $('#kota').attr('placeholder');
-
         $('#kota').empty();
                  
-        var kecamatan_placeholder = $('#kecamatan').attr('placeholder');
         $('#kecamatan').empty();
-        $('#kecamatan').parent().find(".select2-selection").children(".select2-selection__rendered").html(kecamatan_placeholder);
         
-        var kelurahan_placeholder = $('#kelurahan').attr('placeholder');
         $('#kelurahan').empty();
-        $('#kelurahan').parent().find(".select2-selection").children(".select2-selection__rendered").html(kelurahan_placeholder);
 
         $('#kode_pos').val("");
         $('#alamat_lengkap').val("");
@@ -2070,16 +2106,11 @@
         var dataCity = [];
         
         var kota_placeholder = $('#kota_sertificate').attr('placeholder');
-
         $('#kota_sertificate').empty();
         
-        var kecamatan_sertificate_placeholder = $('#kecamatan_sertificate').attr('placeholder');
         $('#kecamatan_sertificate').empty();
-        $('#kecamatan_sertificate').parent().find(".select2-selection").children(".select2-selection__rendered").html(kecamatan_sertificate_placeholder);
         
-        var kelurahan_sertificate_placeholder = $('#kelurahan_sertificate').attr('placeholder');
         $('#kelurahan_sertificate').empty();
-        $('#kelurahan_sertificate').parent().find(".select2-selection").children(".select2-selection__rendered").html(kelurahan_sertificate_placeholder);
         
         $('#kode_pos_sertificate').val("");
         $('#alamat_lengkap_sertificate').val("");
@@ -2165,12 +2196,9 @@
         var dataKec = [];
                     
         var kecamatan_placeholder = $('#kecamatan').attr('placeholder');
-
         $('#kecamatan').empty();
         
-        var kelurahan_placeholder = $('#kelurahan').attr('placeholder');
         $('#kelurahan').empty();
-        $('#kelurahan').parent().find(".select2-selection").children(".select2-selection__rendered").html(kelurahan_placeholder);
         
         $('#kode_pos').val("");
         $('#alamat_lengkap').val("");
@@ -2248,12 +2276,9 @@
         var dataKec = [];
                     
         var kecamatan_sertificate_placeholder = $('#kecamatan_sertificate').attr('placeholder');
-
         $('#kecamatan_sertificate').empty();
         
-        var kelurahan_sertificate_placeholder = $('#kelurahan_sertificate').attr('placeholder');
         $('#kelurahan_sertificate').empty();
-        $('#kelurahan_sertificate').parent().find(".select2-selection").children(".select2-selection__rendered").html(kelurahan_sertificate_placeholder);
         
         $('#kode_pos_sertificate').val("");
         $('#alamat_lengkap_sertificate').val("");
@@ -2423,7 +2448,6 @@
         var dataKel = [];
                     
         var kelurahan_sertificate_placeholder = $('#kelurahan_sertificate').attr('placeholder');
-
         $('#kelurahan_sertificate').empty();
         
         $('#kode_pos_sertificate').val("");
@@ -2460,7 +2484,7 @@
                             return state.text;
                         }
                         var $state = $(
-                            '<span class="selected-kelurahan" postcode="'+state.postcode+'">' + state.text + '</span>'
+                            '<span class="selected-kelurahan_sertificate" postcode="'+state.postcode+'">' + state.text + '</span>'
                         );
                         return $state;
                     };
@@ -2599,7 +2623,7 @@
     })
     
 
-    $('#kelurahan_sertificate').change(function () {
+    $("#kelurahan_sertificate").on("select2:select", function (e) {
         showDefaultButton();
 
         if($('.nav-item-3').hasClass("done")){
@@ -2618,7 +2642,7 @@
         $('#alamat_lengkap_sertificate').removeAttr("disabled");
         $('#alamat_lengkap_sertificate').css("background-color", "white");
 
-        var postcodeGen = $(this).parent().find(".selected-kelurahan").attr("postcode");
+        var postcodeGen = $(this).parent().find(".selected-kelurahan_sertificate").attr("postcode");
 
         if (postcodeGen !== 'null') {
             $("#kode_pos_sertificate").val(postcodeGen);
@@ -2900,7 +2924,6 @@
             placeholder: status_kep_placeholder,
             dropdownParent: $('#status_kep').parent(),
             data: dataStatus
-            
         });
 
         if ($("#model_kendaraan").val() == "" || $(this).val() == "" || $("#merk_kendaraan").val() == "" || $("#status_kep").val() == "") {
