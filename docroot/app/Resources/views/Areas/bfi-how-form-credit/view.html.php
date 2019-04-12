@@ -24,7 +24,7 @@
                                 <div class="_boxkananchild1">
                                     <div class="input-group inputform">
                                         <select class="c-custom-select-home form-control" id="sel-how-form-credit"
-                                            data-placeholder="<?= $this->translate('collateralInfo2')?>" multiple>
+                                            data-placeholder="<?= $this->translate('collateralInfo2')?>" multiple="multiple">
                                             <?php
                                             while ($this->block("contentblock")->loop()) {
                                                 $url = !$this->link('url')->isEmpty() ? $this->link('url')->getHref() : "";
