@@ -422,27 +422,27 @@ $this->extend('layout-credit.html.php');
                                                 </div>
                                                 <table>
                                                     <tr>
-                                                        <td><?= $this->translate('provinsi')?></td>
+                                                        <td class="short"><?= $this->translate('provinsi')?></td>
 
                                                         <td id="showProvinsi" class="provinsi"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td><?= $this->translate('kota')?></td>
+                                                        <td class="short"><?= $this->translate('kota')?></td>
 
                                                         <td id="showKota" class="kota"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td><?= $this->translate('kecamatan')?></td>
+                                                        <td class="short"><?= $this->translate('kecamatan')?></td>
 
                                                         <td id="showKecamatan" class="kecamatan"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td><?= $this->translate('postcode')?></td>
+                                                        <td class="short"><?= $this->translate('postcode')?></td>
 
                                                         <td id="showKodePos" class="kodepos"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td><?= $this->translate('address')?></td>
+                                                        <td class="short"><?= $this->translate('address')?></td>
 
                                                         <td id="showAddress" class="address"></td>
                                                     </tr>
@@ -460,22 +460,22 @@ $this->extend('layout-credit.html.php');
                                                 </div>
                                                 <table>
                                                     <tr>
-                                                        <td><?= $this->translate('merk-kendaraan')?></td>
+                                                        <td class="medium"><?= $this->translate('merk-kendaraan')?></td>
 
                                                         <td id="showMerkKendaraan" class="merk_kendaraan"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td><?= $this->translate('model-kendaraan')?></td>
+                                                        <td class="medium"><?= $this->translate('model-kendaraan')?></td>
 
                                                         <td id="showModelKendaraan" class="model_kendaraaan"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td><?= $this->translate('year-kendaraan')?></td>
+                                                        <td class="medium"><?= $this->translate('year-kendaraan')?></td>
 
                                                         <td id="showTahunKendaraan" class="tahun_kendaraan"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td><?= $this->translate('status-kendaraan')?></td>
+                                                        <td class="medium"><?= $this->translate('status-kendaraan')?></td>
 
                                                         <td id="showStatusPemilik" class="status"></td>
                                                     </tr>
@@ -494,17 +494,17 @@ $this->extend('layout-credit.html.php');
                                                 </div>
                                                 <table class="tablebiaya">
                                                     <tr>
-                                                        <td><?= $this->translate('data-funding')?></td>
+                                                        <td class="long"><?= $this->translate('data-funding')?></td>
 
                                                         <td class="jml_biaya"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td><?= $this->translate('periode')?></td>
+                                                        <td class="long"><?= $this->translate('periode')?></td>
 
                                                         <td class="jangka"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td><?= $this->translate('installment')?></td>
+                                                        <td class="long"><?= $this->translate('installment')?></td>
 
                                                         <td class="angsuran"></td>
                                                     </tr>
@@ -575,7 +575,7 @@ $this->extend('layout-credit.html.php');
 
 
                                     <div class="button-area text-right next">
-                                        <button class="cta cta-primary cta-big cta-see buttonnext" id="button6"
+                                        <button class="cta cta-primary cta-big cta-see btn-verifikasi buttonnext" id="button6"
                                                 type="button"><?= $this->translate('verifikasi')?></button>
                                     </div>
 

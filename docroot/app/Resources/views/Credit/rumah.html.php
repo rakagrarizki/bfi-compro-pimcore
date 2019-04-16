@@ -326,27 +326,27 @@ $this->extend('layout-credit.html.php');
                                                 </div>
                                                 <table>
                                                     <tr>
-                                                        <td><?= $this->translate('provinsi')?></td>
+                                                        <td class="short"><?= $this->translate('provinsi')?></td>
 
                                                         <td id="showProvinsi" class="provinsi"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td><?= $this->translate('kota')?></td>
+                                                        <td class="short"><?= $this->translate('kota')?></td>
 
                                                         <td id="showKota" class="kota"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td><?= $this->translate('kecamatan')?></td>
+                                                        <td class="short"><?= $this->translate('kecamatan')?></td>
 
                                                         <td id="showKecamatan" class="kecamatan"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td><?= $this->translate('postcode')?></td>
+                                                        <td class="short"><?= $this->translate('postcode')?></td>
 
                                                         <td id="showKodePos" class="kodepos"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td><?= $this->translate('address')?></td>
+                                                        <td class="short"><?= $this->translate('address')?></td>
 
                                                         <td id="showAddress" class="address"></td>
                                                     </tr>
@@ -364,42 +364,42 @@ $this->extend('layout-credit.html.php');
                                                 </div>
                                                 <table>
                                                     <tr>
-                                                        <td><?= $this->translate('label-status-bangunan')?></td>
+                                                        <td class="short"><?= $this->translate('label-status-bangunan')?></td>
 
                                                         <td id="showStatus_sertificate" class="status_sertificate"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td><?= $this->translate('label-status-sertifikat')?></td>
+                                                        <td class="short"><?= $this->translate('label-status-sertifikat')?></td>
 
                                                         <td id="showOwn_sertificate" class="own_sertificate"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td><?= $this->translate('provinsi')?></td>
+                                                        <td class="short"><?= $this->translate('provinsi')?></td>
 
                                                         <td id="showProvinsi_sertificate" class="provinsi_sertificate"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td><?= $this->translate('kota')?></td>
+                                                        <td class="short"><?= $this->translate('kota')?></td>
 
                                                         <td id="showKota_sertificate" class="kota_sertificate"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td><?= $this->translate('kecamatan')?></td>
+                                                        <td class="short"><?= $this->translate('kecamatan')?></td>
 
                                                         <td id="showKecamatan_sertificate" class="kecamatan_sertificate"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td><?= $this->translate('kelurahan')?></td>
+                                                        <td class="short"><?= $this->translate('kelurahan')?></td>
 
                                                         <td id="showKelurahan_sertificate" class="kelurahan_sertificate"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td><?= $this->translate('postcode')?></td>
+                                                        <td class="short"><?= $this->translate('postcode')?></td>
 
                                                         <td id="showKode_pos_sertificate" class="kode_pos_sertificate"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td><?= $this->translate('address')?></td>
+                                                        <td class="short"><?= $this->translate('address')?></td>
 
                                                         <td id="showAlamat_lengkap_sertificate" class="alamat_lengkap_sertificate"></td>
                                                     </tr>
@@ -458,7 +458,7 @@ $this->extend('layout-credit.html.php');
 
 
                                     <div class="button-area text-right next">
-                                        <button class="cta cta-primary cta-big cta-see buttonnext" id="button6"
+                                        <button class="cta cta-primary cta-big cta-see btn-verifikasi buttonnext" id="button6"
                                                 type="button"><?= $this->translate('verifikasi')?></button>
                                     </div>
 

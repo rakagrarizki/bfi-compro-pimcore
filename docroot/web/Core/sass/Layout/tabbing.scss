@@ -202,6 +202,18 @@
             }
         }
 
+        &.btn-verifikasi{
+            font-size: 12px;
+            height: unset;
+            width: auto;
+            padding: 15px 30px;
+            text-transform: uppercase;
+            
+            &.cta-see:before{
+                top:15px;
+            }
+        }
+
         @include breakpoint(mobile){
             margin-bottom:25px;
             font-size: 13px;

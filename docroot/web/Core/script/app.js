@@ -3233,7 +3233,7 @@
                                 $('#branch').append(html);
 
                                 if ($('.parent-brachlist').length > 2) {
-                                    $('.wrapper-parent-branchlist').css('height', 300);
+                                    $('.wrapper-parent-branchlist').css('height', 400);
                                 }
                                 else {
                                     $('.wrapper-parent-branchlist').css('height', 'auto');

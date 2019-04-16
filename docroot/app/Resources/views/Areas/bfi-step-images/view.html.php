@@ -1,7 +1,7 @@
 <div>
     <div id="ajukan-sekarang" class="point-step">
         <div class="sect-title text-center">
-            <h2><?= $this->input('title');?></h2>
+            <p class="title"><?= $this->input('title');?></p>
             <p><?= $this->input('text'); ?></p>
         </div>
         <div class="sect-step">
