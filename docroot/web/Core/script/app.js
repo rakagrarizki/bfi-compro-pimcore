@@ -6,6 +6,10 @@
         }, 500); 
     });
 
+    $("#jangka_waktu").select2({
+        dropdownParent: $('#jangka_waktu').parent()
+    });
+
     var input = document.getElementById('file_upload');
     var infoArea = document.getElementById('nama-file');
 
@@ -488,9 +492,11 @@
             $(".columnselect[ke=0]").attr("ke", i);
             $(".columnselect[ke=" + i + "]").children().find("label").text("Tahun ke - " + i + "");
             asuransi_arr[asuransi_arr.length] = $(".columnselect .c-custom-select-trans").val();
-        }
         
-        jcf.replaceAll();
+            $(".columnselect[ke=" + i + "]").find(".opsiasuransi").select2({
+                dropdownParent: $(".columnselect[ke=" + i + "]").find(".opsiasuransi").parent()
+            });
+        }
 
         $.each($(".columnselect .c-custom-select-trans"), function (i, o) {
             asuransi_arr_txt[asuransi_arr_txt.length] = $(o).find("option:selected").text();
@@ -509,7 +515,6 @@
 
     $(".sliderGroup .c-custom-select-trans").on("change", function () {
         var thisval = $(this).val();
-        thisval = thisval.replace(".", "");
         $(this).parents(".sliderGroup").find(".customslide").slider('setValue', parseInt(thisval));
 
         //andry
@@ -1917,6 +1922,9 @@
                     $(".select2-search__field").css({
                         "width" : "100%"
                     });
+                    $(".select2-container").css({
+                        "width" : "100%"
+                    });
                 }
             }
         })
@@ -3036,7 +3044,11 @@
                 var opsiasuransi = ""
 
                 $.each(data.data.asuransi, function (idx, opt) {
-                    opsiasuransi += "<option value='" + opt.code + "'>" + opt.name + "</option>"
+                    if(opt.name == "All Risk Only"){
+                        opsiasuransi += "<option value='" + opt.code + "' selected>" + opt.name + "</option>"
+                    }else{
+                        opsiasuransi += "<option value='" + opt.code + "'>" + opt.name + "</option>"
+                    }
                 })
 
                 // console.log("GGGG", data.data, opsiasuransi)
@@ -3047,12 +3059,15 @@
                     '</div>' +
                     '<div class="list-select">' +
                     '<select class="c-custom-select-trans form-control formRequired opsiasuransi"' +
-                    'name="status">' + opsiasuransi + '</select>' +
+                    'name="status" multiple="multiple">' + opsiasuransi + '</select>' +
                     '</div>' +
                     '<div class="error-wrap"></div>' +
                     '</div>';
 
                 newoptionAsuransi(12, raw_select);
+                $(".columnselect[ke=1]").find(".opsiasuransi").select2({
+                    dropdownParent: $(".columnselect[ke=1]").find(".opsiasuransi").parent()
+                });
 
                 objCredits.installment = rawMinPrice;
                 objCredits.jangka_waktu = 12;
@@ -3109,7 +3124,7 @@
                         var contentString = '<div class="col-md-12 parent-brachlist linkgoogle infowindow" data-id="' + idListing + '" data-lat="' + valListing.latitude + '"  data-lng="' + valListing.longitude + '">';
                         contentString += '<div class="wrapper-branchlist">';
                         contentString += '<div class="row">';
-                        contentString += '<div class="col-md-2 col-sm-2 col-xs-4 branchlist"><img class="icon-gedung-branchlist" src="' + icondynamic + '"></div>';
+                        contentString += '<div class="col-md-2 col-sm-2 col-xs-2 branchlist"><img class="icon-gedung-branchlist" src="' + icondynamic + '"></div>';
                         contentString += '<div class="col-md-10 col-sm-9 col-xs-8 branchlist">';
                         contentString += '<p class="title-branch margin-bottom-10">' + valListing.name + '</p>';
                         contentString += '<p class="desc-branch">' + valListing.address + '</p>';
@@ -3523,7 +3538,7 @@
         $('.countdown').removeClass('countdown--reload');
     })
 
-    $(".form-control").on('focus', function () {
+    $("input.form-control").on('focus', function () {
         if ($(this).attr("id") !== "ex6SliderVal") {
             $(this).prev().css({
                 'display' : 'block',

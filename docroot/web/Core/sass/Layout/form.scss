@@ -318,7 +318,7 @@
                     width:auto;
                 }
                 @include breakpoint(desktop){
-                    width:420px;
+                    width:auto;
                 }
        
                 .slider-horizontal{   
@@ -554,6 +554,11 @@
             font-size: 16px;
             margin-left: 15px;
             font-weight: bold;
+        }
+
+        >.columnselect>.list-select>span{
+            display: unset;
+            top: calc(100% - 5px) !important;
         }
 
         >span {
@@ -973,7 +978,7 @@
         width: 100%;
     }
     @include breakpoint(desktop){
-        width: 340px;
+        width: 100%;
     }
 }
 
@@ -1010,4 +1015,23 @@
     position: absolute;
     width: 100%;
     bottom: -21px;
+}
+
+.select2-selection{
+    position: relative;
+}
+
+.select2-selection:after{
+    position: absolute;
+    content: '\f107';
+    font-family: "FontAwesome";
+    right: 15px;
+    top: 2px;
+    font-size: 2.5em;
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+select::-ms-expand {
+    display: none;
 }

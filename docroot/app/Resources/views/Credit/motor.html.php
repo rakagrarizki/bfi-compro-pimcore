@@ -268,7 +268,11 @@ $this->extend('layout-credit.html.php');
                                                     <?php
                                                     for ($i = 6 ; $i <= 24; $i++) {
                                                         if($i % 6 == 0){
-                                                            echo '<option value="' . $i . '">' . $i . ' ' .$this->translate('label-month') .'</option>';
+                                                            if($i == 12){
+                                                                echo '<option value="' . $i . '" selected>' . $i . ' ' .$this->translate('label-month') .'</option>';
+                                                            }else{
+                                                                echo '<option value="' . $i . '">' . $i . ' ' .$this->translate('label-month') .'</option>';
+                                                            }
                                                         }
                                                     }
                                                     ?>
