@@ -497,6 +497,16 @@
                 dropdownParent: $(".columnselect[ke=" + i + "]").find(".opsiasuransi").parent()
             });
         }
+        
+        $(".opsiasuransi").change(function () {
+            var opsi = $(this).val();
+        
+            if(opsi.length == 0){
+                $(this).val("ARK").trigger("change");
+            }else if(opsi.length > 1){
+                $(this).val(opsi[opsi.length-1]).trigger("change");
+            }
+        })
 
         $.each($(".columnselect .c-custom-select-trans"), function (i, o) {
             asuransi_arr_txt[asuransi_arr_txt.length] = $(o).find("option:selected").text();
@@ -3516,7 +3526,14 @@
     })
 
     $("#jangka_waktu").change(function () {
-        objCredits.jangka_waktu = $(this).val()
+        var jangkaWaktu = $("#jangka_waktu").val();
+    
+        if(jangkaWaktu.length == 0){
+            $("#jangka_waktu").val(12).trigger("change");
+        }else if(jangkaWaktu.length > 1){
+            $("#jangka_waktu").val(jangkaWaktu[jangkaWaktu.length-1]).trigger("change");
+        }
+        objCredits.jangka_waktu = $(this).val();
     })
 
     $(document).on('click', '#recalc', function (e) {
