@@ -3065,9 +3065,6 @@
                     '</div>';
 
                 newoptionAsuransi(12, raw_select);
-                $(".columnselect[ke=1]").find(".opsiasuransi").select2({
-                    dropdownParent: $(".columnselect[ke=1]").find(".opsiasuransi").parent()
-                });
 
                 objCredits.installment = rawMinPrice;
                 objCredits.jangka_waktu = 12;
@@ -3551,7 +3548,7 @@
         }
     });
 
-    $(".form-control").on('focusout', function () {
+    $("input.form-control").on('focusout', function () {
         if ($(this).val() == "") {
             $(this).prev().css("display", "none");
             $(this).css({
