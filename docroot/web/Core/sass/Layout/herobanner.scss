@@ -121,7 +121,7 @@
             margin-top:30px;
 
             @include breakpoint (mobile) {
-                margin-top:0;
+                margin-top:32px;
             }
 
             h3 {
@@ -321,7 +321,7 @@
     .slick-dots {
         bottom: 100px;
         @include breakpoint (mobile) {
-            bottom: 20%;
+            bottom: 15%;
         }
     }
 }
@@ -403,7 +403,7 @@
         display: block;
 
         @include breakpoint (mobile) {
-            display: none;
+            // display: none;
         }
 
         &:hover {
@@ -412,7 +412,6 @@
 
         .prev {
             opacity: .6;
-
             left: 0px;
             position: absolute;
 
@@ -425,8 +424,12 @@
                 font-family: FontAwesome;
                 color: #04559F;
                 position: absolute;
-                // padding: 20px;
                 font-size: 40px;
+                right: 25px;
+                
+                @include breakpoint (mobile) {
+                    font-size: 30px;
+                }
             }
 
             &:hover {
@@ -437,7 +440,6 @@
 
         .next {
             opacity: .6;
-            padding: 0px 30px;
             right: 0px;
             position: absolute;
              &.bawah{
@@ -452,10 +454,12 @@
                 font-family: FontAwesome;
                 color: #04559F;
                 position: absolute;
-                // padding: 20px;
                 font-size: 40px;
                 left: 25px;
-
+                
+                @include breakpoint (mobile) {
+                    font-size: 30px;
+                }
             }
 
             &:hover {
