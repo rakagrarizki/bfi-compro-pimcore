@@ -6,6 +6,10 @@
         }, 500); 
     });
 
+    $("#jangka_waktu").select2({
+        dropdownParent: $('#jangka_waktu').parent()
+    });
+
     var input = document.getElementById('file_upload');
     var infoArea = document.getElementById('nama-file');
 
@@ -488,9 +492,21 @@
             $(".columnselect[ke=0]").attr("ke", i);
             $(".columnselect[ke=" + i + "]").children().find("label").text("Tahun ke - " + i + "");
             asuransi_arr[asuransi_arr.length] = $(".columnselect .c-custom-select-trans").val();
+        
+            $(".columnselect[ke=" + i + "]").find(".opsiasuransi").select2({
+                dropdownParent: $(".columnselect[ke=" + i + "]").find(".opsiasuransi").parent()
+            });
         }
         
-        jcf.replaceAll();
+        $(".opsiasuransi").change(function () {
+            var opsi = $(this).val();
+        
+            if(opsi.length == 0){
+                $(this).val("ARK").trigger("change");
+            }else if(opsi.length > 1){
+                $(this).val(opsi[opsi.length-1]).trigger("change");
+            }
+        })
 
         $.each($(".columnselect .c-custom-select-trans"), function (i, o) {
             asuransi_arr_txt[asuransi_arr_txt.length] = $(o).find("option:selected").text();
@@ -509,7 +525,6 @@
 
     $(".sliderGroup .c-custom-select-trans").on("change", function () {
         var thisval = $(this).val();
-        thisval = thisval.replace(".", "");
         $(this).parents(".sliderGroup").find(".customslide").slider('setValue', parseInt(thisval));
 
         //andry
@@ -1917,6 +1932,9 @@
                     $(".select2-search__field").css({
                         "width" : "100%"
                     });
+                    $(".select2-container").css({
+                        "width" : "100%"
+                    });
                 }
             }
         })
@@ -3036,7 +3054,11 @@
                 var opsiasuransi = ""
 
                 $.each(data.data.asuransi, function (idx, opt) {
-                    opsiasuransi += "<option value='" + opt.code + "'>" + opt.name + "</option>"
+                    if(opt.name == "All Risk Only"){
+                        opsiasuransi += "<option value='" + opt.code + "' selected>" + opt.name + "</option>"
+                    }else{
+                        opsiasuransi += "<option value='" + opt.code + "'>" + opt.name + "</option>"
+                    }
                 })
 
                 // console.log("GGGG", data.data, opsiasuransi)
@@ -3047,7 +3069,7 @@
                     '</div>' +
                     '<div class="list-select">' +
                     '<select class="c-custom-select-trans form-control formRequired opsiasuransi"' +
-                    'name="status">' + opsiasuransi + '</select>' +
+                    'name="status" multiple="multiple">' + opsiasuransi + '</select>' +
                     '</div>' +
                     '<div class="error-wrap"></div>' +
                     '</div>';
@@ -3109,7 +3131,7 @@
                         var contentString = '<div class="col-md-12 parent-brachlist linkgoogle infowindow" data-id="' + idListing + '" data-lat="' + valListing.latitude + '"  data-lng="' + valListing.longitude + '">';
                         contentString += '<div class="wrapper-branchlist">';
                         contentString += '<div class="row">';
-                        contentString += '<div class="col-md-2 col-sm-2 col-xs-4 branchlist"><img class="icon-gedung-branchlist" src="' + icondynamic + '"></div>';
+                        contentString += '<div class="col-md-2 col-sm-2 col-xs-2 branchlist"><img class="icon-gedung-branchlist" src="' + icondynamic + '"></div>';
                         contentString += '<div class="col-md-10 col-sm-9 col-xs-8 branchlist">';
                         contentString += '<p class="title-branch margin-bottom-10">' + valListing.name + '</p>';
                         contentString += '<p class="desc-branch">' + valListing.address + '</p>';
@@ -3233,7 +3255,7 @@
                                 $('#branch').append(html);
 
                                 if ($('.parent-brachlist').length > 2) {
-                                    $('.wrapper-parent-branchlist').css('height', 300);
+                                    $('.wrapper-parent-branchlist').css('height', 400);
                                 }
                                 else {
                                     $('.wrapper-parent-branchlist').css('height', 'auto');
@@ -3504,7 +3526,14 @@
     })
 
     $("#jangka_waktu").change(function () {
-        objCredits.jangka_waktu = $(this).val()
+        var jangkaWaktu = $("#jangka_waktu").val();
+    
+        if(jangkaWaktu.length == 0){
+            $("#jangka_waktu").val(12).trigger("change");
+        }else if(jangkaWaktu.length > 1){
+            $("#jangka_waktu").val(jangkaWaktu[jangkaWaktu.length-1]).trigger("change");
+        }
+        objCredits.jangka_waktu = $(this).val();
     })
 
     $(document).on('click', '#recalc', function (e) {
@@ -3523,7 +3552,7 @@
         $('.countdown').removeClass('countdown--reload');
     })
 
-    $(".form-control").on('focus', function () {
+    $("input.form-control").on('focus', function () {
         if ($(this).attr("id") !== "ex6SliderVal") {
             $(this).prev().css({
                 'display' : 'block',
@@ -3536,7 +3565,7 @@
         }
     });
 
-    $(".form-control").on('focusout', function () {
+    $("input.form-control").on('focusout', function () {
         if ($(this).val() == "") {
             $(this).prev().css("display", "none");
             $(this).css({

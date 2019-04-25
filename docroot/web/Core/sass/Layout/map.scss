@@ -3,7 +3,7 @@
 }
 .map-wrapper {
 	position: relative;
-	height: 500px;
+	height: 575px;
 	@include breakpoint(mobile) {
 		&.active{
 			&:before{
@@ -254,6 +254,11 @@
 	margin:0 10px;
 	display:none;
 
+	@include breakpoint(mobile) {
+		width:60px;
+		height:60px;
+	}
+
 	&:before{
 		content:"";
 		background-image:url('/static/images/icon/backbrancharrow.png');
@@ -264,9 +269,39 @@
         position:absolute;
         top:25px;
         left:35px;
+
+		@include breakpoint(mobile) {
+			top:15px;
+			left:25px;
+		}
 	}
 
 	&.active{
 		display:block;
+	}
+}
+
+@include breakpoint(mobile) {
+	.gm-style{
+		.gm-style-iw-c{
+			position: fixed !important;
+			top: 280px !important;
+			max-width: unset !important;
+			width: 98% !important;
+		}
+
+		.gm-style-iw-d{
+			max-width: unset !important;
+		}
+	}
+
+	.gm-bundled-control{
+		.gm-svpc{
+			top: -240px !important;
+		}
+
+		.gmnoprint{
+			top: -180px !important;
+		}
 	}
 }
