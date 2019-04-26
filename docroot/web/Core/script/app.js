@@ -1216,8 +1216,8 @@
                 pushDataKendaraan();
 
                 if(status_edit){
-                    $("#jangka_waktu").each(function() { 
-                        this.selectedIndex = 0 
+                    $("#jangka_waktu").each(function() {
+                        this.selectedIndex = 0
                     });
                     $(".currency[tahun='0']").text("Rp " + 0);
                     $(".currency[tahun='1']").text("Rp " + 0);
@@ -3525,11 +3525,13 @@
 
     })
 
+    var defaultJangkaWaktu = $("#jangka_waktu").val()[0];
+
     $("#jangka_waktu").change(function () {
         var jangkaWaktu = $("#jangka_waktu").val();
     
         if(jangkaWaktu.length == 0){
-            $("#jangka_waktu").val(12).trigger("change");
+            $("#jangka_waktu").val(defaultJangkaWaktu).trigger("change");
         }else if(jangkaWaktu.length > 1){
             $("#jangka_waktu").val(jangkaWaktu[jangkaWaktu.length-1]).trigger("change");
         }
