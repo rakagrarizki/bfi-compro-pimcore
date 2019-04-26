@@ -6,10 +6,6 @@
         }, 500); 
     });
 
-    $("#jangka_waktu").select2({
-        dropdownParent: $('#jangka_waktu').parent()
-    });
-
     var input = document.getElementById('file_upload');
     var infoArea = document.getElementById('nama-file');
 
@@ -3525,18 +3521,24 @@
 
     })
 
-    var defaultJangkaWaktu = $("#jangka_waktu").val()[0];
+    if($("#jangka_waktu").length){
+        var defaultJangkaWaktu = $("#jangka_waktu").val()[0];
+        
+        $("#jangka_waktu").select2({
+            dropdownParent: $('#jangka_waktu').parent()
+        });
 
-    $("#jangka_waktu").change(function () {
-        var jangkaWaktu = $("#jangka_waktu").val();
-    
-        if(jangkaWaktu.length == 0){
-            $("#jangka_waktu").val(defaultJangkaWaktu).trigger("change");
-        }else if(jangkaWaktu.length > 1){
-            $("#jangka_waktu").val(jangkaWaktu[jangkaWaktu.length-1]).trigger("change");
-        }
-        objCredits.jangka_waktu = $(this).val();
-    })
+        $("#jangka_waktu").change(function () {
+            var jangkaWaktu = $("#jangka_waktu").val();
+        
+            if(jangkaWaktu.length == 0){
+                $("#jangka_waktu").val(defaultJangkaWaktu).trigger("change");
+            }else if(jangkaWaktu.length > 1){
+                $("#jangka_waktu").val(jangkaWaktu[jangkaWaktu.length-1]).trigger("change");
+            }
+            objCredits.jangka_waktu = $(this).val();
+        })
+    }
 
     $(document).on('click', '#recalc', function (e) {
         e.preventDefault();
