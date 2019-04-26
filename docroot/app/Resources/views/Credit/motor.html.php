@@ -264,7 +264,7 @@ $this->extend('layout-credit.html.php');
                                             <div class="form-group sliderGroup inputsimulasi">
                                                 <label><?= $this->translate('label-funding-year')?></label>
                                                 <select class="c-custom-select-trans form-control formRequired" id="jangka_waktu"
-                                                        name="jangka-waktu">
+                                                        name="jangka-waktu" multiple="multiple">
                                                     <?php
                                                     for ($i = 6 ; $i <= 24; $i++) {
                                                         if($i % 6 == 0){
