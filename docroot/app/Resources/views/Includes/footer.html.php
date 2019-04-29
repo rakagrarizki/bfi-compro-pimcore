@@ -97,6 +97,7 @@ if($this->editmode) : ?>
                     <a target="<?=$this->link('facebook')!= "" ?$this->link('facebook')->getTarget():'' ?>" href="<?=$this->link('facebook')!= "" ?$this->link('facebook')->getHref():'' ?>"><span class="fa fa-facebook"></span></a>
                     <a target="<?=$this->link('twitter')!= "" ?$this->link('twitter')->getTarget():'' ?>" href="<?=$this->link('twitter')!= "" ?$this->link('twitter')->getHref():'' ?>"><span class="fa fa-twitter"></span></a>
                     <a target="<?=$this->link('instagram')!= "" ?$this->link('instagram')->getTarget():'' ?>" href="<?=$this->link('instagram')!= "" ?$this->link('instagram')->getHref():'' ?>"><span class="fa fa-instagram"></span></a>
+                    <a target="<?=$this->link('youtube')!= "" ?$this->link('youtube')->getTarget():'' ?>" href="<?=$this->link('youtube')!= "" ?$this->link('youtube')->getHref():'' ?>"><span class="fa fa-youtube-square"></span></a>
                     <a target="<?=$this->link('linkedin')!= "" ?$this->link('linkedin')->getTarget():'' ?>" href="<?=$this->link('linkedin')!= "" ?$this->link('linkedin')->getHref():'' ?>"><span class="fa fa-linkedin"></span></a>
                 </div>
                 <span><?= $this->translate("text-pengawasan") ?>:</span>
