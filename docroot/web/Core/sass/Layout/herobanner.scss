@@ -124,13 +124,21 @@
                 margin-top:32px;
             }
 
+            .desc-cont {
+                text-align: right;
+            }
+
             h3 {
                 margin: 0px 0 0 0;
                 font-family: 'HelveticaNeue';
                 font-weight: bold;
                 font-size: 1.3em;
+                width: 85%;
+                margin-left: auto;
+                margin-right: auto;
                 @include breakpoint (mobile) {
-                    font-size: 16pt;
+                    font-size: 12pt;
+                    width: 100%;
                     margin: -85px 0 0 0;
                 }
             }
@@ -140,11 +148,11 @@
                 opacity:0.9;
                 font-family: 'HelveticaNeue';
                 font-size: 44px;
-                width: 70%;
+                width: 85%;
                 margin-left: auto;
                 margin-right: auto;
                 @include breakpoint (mobile) {
-                    font-size: 30pt;
+                    font-size: 20pt;
                     width: 100%;
                     margin: 10px 0;
                 }
