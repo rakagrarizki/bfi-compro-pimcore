@@ -16,11 +16,19 @@
             font-size:44px;
             margin-bottom:30px;
             font-weight:bold;
+            
+            @include breakpoint(mobile){
+                font-size:22pt;
+            }
         } 
         p {
             color: $white;
             font-size:20px;
             font-weight:normal;
+            
+            @include breakpoint(mobile){
+                font-size:12pt;
+            }
         }
     }
 
@@ -141,13 +149,16 @@
                     width: 100%;
                     margin: -85px 0 0 0;
                 }
+                @include breakpoint (big-screen) {
+                    width: 61%;
+                }
             }
 
             h1 {
                 font-weight: normal;
                 opacity:0.9;
                 font-family: 'HelveticaNeue';
-                font-size: 44px;
+                font-size: 40px;
                 width: 85%;
                 margin-left: auto;
                 margin-right: auto;
@@ -155,6 +166,10 @@
                     font-size: 20pt;
                     width: 100%;
                     margin: 10px 0;
+                }
+                @include breakpoint (big-screen) {
+                    font-size: 44px;
+                    width: 61%;
                 }
             }
         }
@@ -320,6 +335,23 @@
             
         }
         
+        .sect-title{
+            text-align: right;
+
+            @include breakpoint(mobile){
+                width: 60%;
+                left: 48px;
+            }
+
+            @include breakpoint(wide){
+                width: 50%;
+                left: 400px;
+            }
+
+            @include breakpoint(desktop){
+                left: 600px;
+            }
+        }
     }
 
 

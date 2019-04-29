@@ -63,6 +63,7 @@ $position: top right bottom left;
 
 // media-query
 $media-query:
+    (big-screen, (min-width: 1800px)),
     (laptop, (min-width: 1366px)),
     (desktop, (min-width: 1200px)),
     (wide, (min-width: 992px)),
