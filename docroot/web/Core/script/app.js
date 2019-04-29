@@ -1928,9 +1928,6 @@
                     $(".select2-search__field").css({
                         "width" : "100%"
                     });
-                    $(".select2-container").css({
-                        "width" : "100%"
-                    });
                 }
             }
         })
