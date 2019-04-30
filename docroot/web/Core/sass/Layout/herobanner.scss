@@ -345,11 +345,15 @@
 
             @include breakpoint(wide){
                 width: 50%;
-                left: 400px;
+                left: 288px;
             }
 
             @include breakpoint(desktop){
-                left: 600px;
+                left: 400px;
+            }
+
+            @include breakpoint(big-screen){
+                left: 240px;
             }
         }
     }
