@@ -16,11 +16,19 @@
             font-size:44px;
             margin-bottom:30px;
             font-weight:bold;
+            
+            @include breakpoint(mobile){
+                font-size:22pt;
+            }
         } 
         p {
             color: $white;
             font-size:20px;
             font-weight:normal;
+            
+            @include breakpoint(mobile){
+                font-size:12pt;
+            }
         }
     }
 
@@ -124,14 +132,25 @@
                 margin-top:32px;
             }
 
+            .desc-cont {
+                text-align: right;
+            }
+
             h3 {
                 margin: 0px 0 0 0;
                 font-family: 'HelveticaNeue';
                 font-weight: bold;
                 font-size: 1.3em;
+                width: 85%;
+                margin-left: auto;
+                margin-right: auto;
                 @include breakpoint (mobile) {
-                    font-size: 16pt;
+                    font-size: 12pt;
+                    width: 100%;
                     margin: -85px 0 0 0;
+                }
+                @include breakpoint (big-screen) {
+                    width: 61%;
                 }
             }
 
@@ -139,14 +158,18 @@
                 font-weight: normal;
                 opacity:0.9;
                 font-family: 'HelveticaNeue';
-                font-size: 44px;
-                width: 70%;
+                font-size: 40px;
+                width: 85%;
                 margin-left: auto;
                 margin-right: auto;
                 @include breakpoint (mobile) {
-                    font-size: 30pt;
+                    font-size: 20pt;
                     width: 100%;
                     margin: 10px 0;
+                }
+                @include breakpoint (big-screen) {
+                    font-size: 44px;
+                    width: 61%;
                 }
             }
         }
@@ -312,6 +335,27 @@
             
         }
         
+        .sect-title{
+            text-align: right;
+
+            @include breakpoint(mobile){
+                width: 60%;
+                left: 48px;
+            }
+
+            @include breakpoint(wide){
+                width: 50%;
+                left: 288px;
+            }
+
+            @include breakpoint(desktop){
+                left: 400px;
+            }
+
+            @include breakpoint(big-screen){
+                left: 240px;
+            }
+        }
     }
 
 

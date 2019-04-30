@@ -6,7 +6,7 @@
             <div class="slide hidden-xs" style="background-image: url('<?= $asset->getImage()?>')">
                 <div class="slide-cont">
                     <div class="desc-slide">
-                        <div class="desc-cont container">
+                        <div class="col-sm-6 col-lg-5 col-sm-offset-5 desc-cont container">
                             <h3><?= $this->input('title');?></h3>
                             <h1><?= $this->input('text'); ?></h1>
                         </div>
@@ -16,7 +16,7 @@
             <div class="slide visible-xs" style="background-image: url('<?= $assetMobile->getImage()?>')">
                 <div class="slide-cont">
                     <div class="desc-slide">
-                        <div class="desc-cont container">
+                        <div class="col-xs-6 col-xs-offset-5 desc-cont container">
                             <h3><?= $this->input('title');?></h3>
                             <h1><?= $this->input('text'); ?></h1>
                         </div>
