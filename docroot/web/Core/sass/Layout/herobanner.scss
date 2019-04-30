@@ -18,7 +18,7 @@
             font-weight:bold;
             
             @include breakpoint(mobile){
-                font-size:22pt;
+                font-size:18pt;
             }
         } 
         p {
@@ -134,6 +134,25 @@
 
             .desc-cont {
                 text-align: right;
+                
+                @include breakpoint (mobile) {
+                    width: 47%;
+                    margin-left: 43.5%;
+                }
+                
+                @include breakpoint (wide) {
+                    width: 465px;
+                    margin-left: 48%;
+                }
+                
+                @include breakpoint (desktop) {
+                    margin-left: 54.5%;
+                }
+                
+                @include breakpoint (big-screen) {
+                    width: 50%;
+                    margin-left: 35%;
+                }
             }
 
             h3 {
@@ -339,21 +358,21 @@
             text-align: right;
 
             @include breakpoint(mobile){
-                width: 60%;
-                left: 48px;
+                width: 45%;
+                left: 14%;
             }
 
             @include breakpoint(wide){
-                width: 50%;
-                left: 288px;
+                width: 465px;
+                left: 32%;
             }
 
             @include breakpoint(desktop){
-                left: 400px;
+                left: 35%;
             }
 
             @include breakpoint(big-screen){
-                left: 240px;
+                left: 25.5%;
             }
         }
     }
