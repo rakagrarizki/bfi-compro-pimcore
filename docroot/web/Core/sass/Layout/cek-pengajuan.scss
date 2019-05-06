@@ -12,69 +12,72 @@
     .cek-pengajuan {
         padding: 30px 100px;
         background: white;
-        box-shadow:5px 5px 5px rgba(4, 85, 159, 0.05);
+        box-shadow: 5px 5px 5px rgba(4, 85, 159, 0.05);
+
         @include breakpoint(mobile) {
             margin: 0 15px;
             padding: 25px 15px;
         }
 
-        ._parentboxkirikanan{
-            text-align:center;
-            width:100%;
-            ._boxkiri{
-                display:inline-block;
-                vertical-align:middle;
+        ._parentboxkirikanan {
+            text-align: center;
+            width: 100%;
+
+            ._boxkiri {
+                display: inline-block;
+                vertical-align: middle;
 
                 @include breakpoint(mobile) {
-                    width:100%;
+                    width: 100%;
                 }
             }
 
-            ._boxkanan{
-                display:inline-block;
-                vertical-align:middle;
+            ._boxkanan {
+                display: inline-block;
+                vertical-align: middle;
 
                 @include breakpoint(mobile) {
-                    width:100%;
+                    width: 100%;
                 }
 
-                ._boxkananchild1{
-                    display:inline-block;
-                    vertical-align:middle;
-                    
+                ._boxkananchild1 {
+                    display: inline-block;
+                    vertical-align: middle;
+
                     @include breakpoint(mobile) {
-                        vertical-align:middle;
-                        width:100%;
+                        vertical-align: middle;
+                        width: 100%;
                     }
+
                     .jcf-select {
                         @include breakpoint(mobile) {
-                            width:100%;
+                            width: 100%;
                         }
                     }
                 }
 
-                ._boxkananchild2{
-                    display:inline-block;
-                    position:relative;
-                    vertical-align:middle;
-                    font-size:0;
+                ._boxkananchild2 {
+                    display: inline-block;
+                    position: relative;
+                    vertical-align: middle;
+                    font-size: 0;
 
                     @include breakpoint(mobile) {
-                        margin-left:0px;
-                        vertical-align:middle;
-                        font-size:0;
+                        margin-left: 0px;
+                        vertical-align: middle;
+                        font-size: 0;
                     }
 
-                     @include breakpoint(tablet) {
-                        margin-left:0px;
+                    @include breakpoint(tablet) {
+                        margin-left: 0px;
                     }
 
-                    .btn-submit{
-                        &:before{
-                            left:0;
-                            right:0;
-                            margin:auto;
-                            width:15px;
+                    .btn-submit {
+                        &:before {
+                            left: 0;
+                            right: 0;
+                            margin: auto;
+                            width: 15px;
                         }
                     }
                 }
@@ -82,19 +85,21 @@
             }
         }
 
-        .soloboxarrow-cekpengajuan{
-        
+        .soloboxarrow-cekpengajuan {
+
             @include breakpoint(tablet) {
-                margin-left:-20px;
+                margin-left: -20px;
             }
+
             @include breakpoint(mobile) {
-                margin-left:-20px;
+                margin-left: -20px;
             }
         }
 
-        .input-group{
-            width:100%;
-            .plaintext-cekpengajuan{
+        .input-group {
+            width: 100%;
+
+            .plaintext-cekpengajuan {
                 // height:60px;
                 padding: 20px;
                 font-weight: bold;
@@ -102,24 +107,27 @@
                 position: relative;
                 width: 100%;
                 font-size: 18px;
+
                 @include breakpoint(mobile) {
                     text-align: center;
-                    font-weight:normal;
+                    font-weight: normal;
                 }
+
                 @include breakpoint(tablet) {
                     text-align: center;
-                    font-weight:normal;
+                    font-weight: normal;
                 }
             }
         }
 
         p {
-            color:#04559F;
+            color: #04559F;
             text-align: center;
             font-family: 'HelveticaNeue';
             font-weight: 600;
             font-size: 2em;
             margin-bottom: 30px;
+
             @include breakpoint(mobile) {
                 font-size: 1.55em;
                 margin-bottom: 20px;
@@ -145,25 +153,37 @@
                 font-family: 'HelveticaNeue';
             }
 
-            .select-center{
+            .select-center {
                 text-align-last: center;
                 -ms-text-align-last: center;
                 -moz-text-align-last: center;
             }
 
-            .select2-selection--multiple{
+            .select2-container {
+                width: 200px !important;
+
+                @include breakpoint(tablet) {
+                    width: 400px !important;
+                }
+                
+                @include breakpoint(mobile) {
+                    width: 100% !important;
+                }
+            }
+
+            .select2-selection--multiple {
                 padding-top: 12px;
             }
 
-            .select2-search.select2-search--inline{
+            .select2-search.select2-search--inline {
                 width: 100%;
 
-                .select2-search__field{
+                .select2-search__field {
                     text-align: center;
                 }
             }
-            
-            .select2-selection__choice{
+
+            .select2-selection__choice {
                 text-align: center;
             }
 
@@ -184,13 +204,16 @@
                 border-radius: 2px;
 
                 @include breakpoint(mobile) {
-                    width:100%;
+                    width: 100%;
                 }
-                @media screen and (max-width: 370px){
-                    width:195px;
+
+                @media screen and (max-width: 370px) {
+                    width: 195px;
                 }
+
                 &.jcf-drop-active {
-                    border:1px solid #F9991C!important;
+                    border: 1px solid #F9991C !important;
+
                     >.jcf-select-opener:before {
                         transform: rotate(180deg);
                     }
@@ -213,7 +236,7 @@
                         position: absolute;
                         left: 5px;
                         top: 10px;
-                        opacity:0.3;
+                        opacity: 0.3;
                     }
                 }
             }
@@ -223,9 +246,10 @@
                 font-size: 16px;
                 white-space: normal;
                 word-break: break-word;
+
                 span {
                     font-family: 'HelveticaNeue';
-                    color:gray;
+                    color: gray;
                 }
 
             }
@@ -278,7 +302,7 @@
                 background: $white;
 
                 &:hover {
-                    background:#F7F7F7;
+                    background: #F7F7F7;
                 }
 
                 // Hide first option 
@@ -306,9 +330,6 @@
                 max-height: 100%;
                 border-radius: 8px;
             }
-
-
-
         }
     }
 }
