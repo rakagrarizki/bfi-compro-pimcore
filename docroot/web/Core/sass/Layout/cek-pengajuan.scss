@@ -154,13 +154,17 @@
             }
 
             .select-center {
-                text-align-last: center;
-                -ms-text-align-last: center;
-                -moz-text-align-last: center;
+                // text-align-last: center;
+                // -ms-text-align-last: center;
+                // -moz-text-align-last: center;
+                text-align-last: left;
+                -ms-text-align-last: left;
+                -moz-text-align-last: left;
             }
 
             .select2-container {
                 width: 200px !important;
+                text-align: left;
 
                 @include breakpoint(tablet) {
                     width: 400px !important;
@@ -179,12 +183,14 @@
                 width: 100%;
 
                 .select2-search__field {
-                    text-align: center;
+                    // text-align: center;
+                    text-align: left;
                 }
             }
 
             .select2-selection__choice {
-                text-align: center;
+                // text-align: center;
+                text-align: left;
             }
 
             // Main Select Box
