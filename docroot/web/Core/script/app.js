@@ -3627,4 +3627,10 @@
     backAction();
 
 
+    // CLEAR NEWSLETTER
+    $('.news-ok').on('click', function(){
+        $('#sendNewsletter .form-control').val('');
+    });
+
+
 })(jQuery);

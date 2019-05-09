@@ -573,6 +573,10 @@
             top: calc(100% - 5px) !important;
             width: 100%;
 
+            &.select2-container {
+                width: 100% !important;
+            }
+
             &.jcf-checkbox {
                 display: inline-block;
                 vertical-align: top;

@@ -61,7 +61,7 @@ if($this->editmode) : ?>
         <div class="modal-content text-center">
             <div class="modal-body">
                 <div class="body-text"></div>
-                <button type="button" class="cta cta-orange" data-dismiss="modal">Ok</button>
+                <button type="button" class="cta cta-orange news-ok" data-dismiss="modal">Ok</button>
             </div>
         </div>
     </div>
