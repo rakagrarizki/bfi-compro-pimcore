@@ -1607,7 +1607,11 @@
         $('.sect-step').slick({
             dots: false,
             prevArrow: false,
-            nextArrow: false
+            nextArrow: false,
+            
+            centerMode: true,
+            centerPadding: '80px',
+            slidesToShow: 1
         })
 
         $('ul.list-step').slick({
