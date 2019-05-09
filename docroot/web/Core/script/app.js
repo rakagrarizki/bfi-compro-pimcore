@@ -3516,13 +3516,13 @@
         });
 
         $("#jangka_waktu").change(function() {
-            var jangkaWaktu = $("#jangka_waktu").val();
+            // var jangkaWaktu = $("#jangka_waktu").val();
 
-            if (jangkaWaktu.length == 0) {
-                $("#jangka_waktu").val(defaultJangkaWaktu).trigger("change");
-            } else if (jangkaWaktu.length > 1) {
-                $("#jangka_waktu").val(jangkaWaktu[jangkaWaktu.length - 1]).trigger("change");
-            }
+            // if (jangkaWaktu.length == 0) {
+            //     $("#jangka_waktu").val(defaultJangkaWaktu).trigger("change");
+            // } else if (jangkaWaktu.length > 1) {
+            //     $("#jangka_waktu").val(jangkaWaktu[jangkaWaktu.length - 1]).trigger("change");
+            // }
             objCredits.jangka_waktu = $(this).val();
         })
     }
