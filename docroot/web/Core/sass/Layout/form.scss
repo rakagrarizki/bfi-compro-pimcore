@@ -752,6 +752,25 @@
         }
 
     }
+
+    .select-wrapper {
+        position: relative;
+
+        &:after {
+            position: absolute;
+            content: '\f107';
+            font-family: "FontAwesome";
+            right: 15px;
+            top: 2px;
+            font-size: 2.9rem;
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        select {
+            cursor: pointer;
+        }
+    }
 }
 
 .file-upload{
@@ -1037,7 +1056,7 @@
     right: 15px;
     top: 2px;
     font-size: 2.5em;
-    opacity: 0.4;
+    opacity: 0;
     pointer-events: none;
 }
 
