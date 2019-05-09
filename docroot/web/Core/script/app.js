@@ -1608,10 +1608,10 @@
             dots: false,
             prevArrow: false,
             nextArrow: false,
-            
+            infinite: false,
+            slidesToShow: 2.5,
             centerMode: true,
             centerPadding: '80px',
-            slidesToShow: 1
         })
 
         $('ul.list-step').slick({
