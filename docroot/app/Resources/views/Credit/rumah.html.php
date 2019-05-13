@@ -411,12 +411,12 @@ $this->extend('layout-credit.html.php');
                                         <div class="biaya-agunan">
                                             <div class="form-group">
                                                 <input type="checkbox" id="agreement1" class="agreement">
-                                                <label for="agreement1" class="label-agreement"><?= $this->translate('term-condition')?></label>
+                                                <label for="agreement1" class="label-agreement agreement1"><?= $this->translate('term-condition')?></label>
                                                 <div class="error-wrap"></div>
                                             </div>
                                             <div class="form-group">
                                                 <input type="checkbox" id="agreement2" class="agreement">
-                                                <label for="agreement2" class="label-agreement"><?= $this->translate('term-condition-2')?></label>
+                                                <label for="agreement2" class="label-agreement agreement2"><?= $this->translate('term-condition-2')?></label>
                                                 <div class="error-wrap"></div>
                                             </div>
                                         </div>

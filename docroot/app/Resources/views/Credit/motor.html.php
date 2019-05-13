@@ -209,16 +209,6 @@ $this->extend('layout-credit.html.php');
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
-                                        <div class="form-group">
-
-                                            <label><?= $this->translate('label-status')?></label>
-                                            <select class="c-custom-select-trans form-control formRequired" 
-                                                    placeholder="<?= $this->translate('placeholder-status')?>" id="status_kep" 
-                                                    name="status_kep" multiple="multiple" data-status-self="<?= $this->translate('placeholder-status-self')?>" data-status-other="<?=$this->translate('placeholder-status-other');?>">
-                                                <option value="" disabled selected> <?= $this->translate('placeholder-status')?></option>
-                                            </select>
-                                            <div class="error-wrap"></div>
-                                        </div>
 
                                     </div>
 
@@ -264,7 +254,7 @@ $this->extend('layout-credit.html.php');
                                             <div class="form-group sliderGroup inputsimulasi">
                                                 <label><?= $this->translate('label-funding-year')?></label>
                                                 <select class="c-custom-select-trans form-control formRequired" id="jangka_waktu"
-                                                        name="jangka-waktu" multiple="multiple">
+                                                        name="jangka-waktu">
                                                     <?php
                                                     for ($i = 6 ; $i <= 24; $i++) {
                                                         if($i % 6 == 0){
@@ -278,26 +268,6 @@ $this->extend('layout-credit.html.php');
                                                     ?>
                                                 </select>
                                                 <div class="error-wrap"></div>
-                                                <!-- <div class="slidecontainer">
-                                                    <input id="ex12" class="customslide" type="text" data-slider-handle="custom"
-                                                           data-slider-min="12" data-slider-max="60" data-slider-step="12"
-                                                           data-slider-tooltip="hide" />
-                                                    <div class="value-left">12 Bulan</div>
-                                                    <div class="value-right">60 Bulan</div>
-                                                </div> -->
-                                            </div>
-                                            <div class="form-group inputsimulasi asuransi">
-                                                <label><?= $this->translate('label-asuransi')?></label>
-                                                <div class="columnselect" ke="0">
-                                                    <div class="list-select">
-                                                        <label><?= $this->translate('label-next-year')?> - 1</label>
-                                                    </div>
-                                                    <div class="list-select">
-                                                        <select class="c-custom-select-trans form-control formRequired opsiasuransi"
-                                                                name="status"></select>
-                                                    </div>
-                                                    <div class="error-wrap"></div>
-                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -313,14 +283,14 @@ $this->extend('layout-credit.html.php');
                                                                 Rp 0
                                                             </td>
                                                         </tr>
-                                                        <tr>
+                                                        <!-- <tr>
                                                             <td>
-                                                                <?= $this->translate('label-total-asuransi')?> *
+                                                                <?php //echo $this->translate('label-total-asuransi')?> *
                                                             </td>
                                                             <td class="currency" tahun="1">
                                                                 Rp 0
                                                             </td>
-                                                        </tr>
+                                                        </tr> -->
                                                         <!--  <tr>
                                                              <td class="textsubcurrency">
                                                                  Tahun ke-1 [All Risk Only*]
