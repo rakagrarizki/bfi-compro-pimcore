@@ -151,14 +151,18 @@
         slideToShow: 1,
         dots: true,
         prevArrow: $(".prev-1"),
-        nextArrow: $(".next-1")
+        nextArrow: $(".next-1"),
+        autoplay: true,
+        autoplaySpeed: 5000
     })
 
     $("#herobanner2").slick({
         slideToShow: 1,
         dots: true,
         prevArrow: $(".prev-2"),
-        nextArrow: $(".next-2")
+        nextArrow: $(".next-2"),
+        autoplay: true,
+        autoplaySpeed: 5000
     })
 
     $("#slider-cara--kerja").slick({
@@ -939,6 +943,7 @@
         disableButton("#button3");
         disableButton("#button3rumah");
         disableButton("#button4");
+        disableButton("#button4rumah");
         $("#kode_pos").css("background-color", "#F4F4F4");
         $("#kode_pos_sertificate").css("background-color", "#F4F4F4");
 
@@ -1001,7 +1006,6 @@
             });
         }
 
-
         $("#kode_pos").on('keyup', function(e) {
             if ($("#alamat_lengkap").val() == "" || $(this).val() == "" || $("#provinsi").val() == "" || $("#kota").val() == "" || $("#kecamatan").val() == "" || $("#kelurahan").val() == "") {
                 disableButton("#button2");
@@ -1039,6 +1043,27 @@
             }
             showDefaultButton();
         });
+
+        $('.biaya-agunan .form-group').on('click', function(){
+            setTimeout(function(){ 
+                if ($('input#agreement1').parent().hasClass('jcf-checked') && $('input#agreement2').parent().hasClass('jcf-checked')) {
+                    enableButton("#button4rumah");
+                } else {
+                    disableButton("#button4rumah");
+                }
+             }, 500);
+        })
+
+        // $('.biaya-agunan .label-agreement').each(function(){
+        //     $(this).on('click', function(){
+        //         if ($('.agreement1').hasClass('jcf-label-active') && $('.agreement2').hasClass('jcf-label-active')) {
+        //             enableButton("#button4rumah");
+        //         } else {
+        //             disableButton("#button4rumah");
+        //         }
+        //         showDefaultButton();
+        //     })
+        // })
 
 
         $('.hidesavebutton').on('click', function(e) {
@@ -2685,6 +2710,8 @@
 
     })
 
+
+
     $('#own_sertificate').change(function() {
         showDefaultButton();
         $('#own_sertificate').parent().find(".select2-selection").children(".select2-selection__rendered").html($(this).find(":selected").text());
@@ -3508,24 +3535,24 @@
 
     })
 
-    if ($("#jangka_waktu").length) {
-        var defaultJangkaWaktu = $("#jangka_waktu").val()[0];
+    // if ($("#jangka_waktu").length) {
+    //     var defaultJangkaWaktu = $("#jangka_waktu").val()[0];
 
-        $("#jangka_waktu").select2({
-            dropdownParent: $('#jangka_waktu').parent()
-        });
+    //     $("#jangka_waktu").select2({
+    //         dropdownParent: $('#jangka_waktu').parent()
+    //     });
 
-        $("#jangka_waktu").change(function() {
-            var jangkaWaktu = $("#jangka_waktu").val();
+    //     $("#jangka_waktu").change(function() {
+    //         var jangkaWaktu = $("#jangka_waktu").val();
 
-            if (jangkaWaktu.length == 0) {
-                $("#jangka_waktu").val(defaultJangkaWaktu).trigger("change");
-            } else if (jangkaWaktu.length > 1) {
-                $("#jangka_waktu").val(jangkaWaktu[jangkaWaktu.length - 1]).trigger("change");
-            }
-            objCredits.jangka_waktu = $(this).val();
-        })
-    }
+    //         if (jangkaWaktu.length == 0) {
+    //             $("#jangka_waktu").val(defaultJangkaWaktu).trigger("change");
+    //         } else if (jangkaWaktu.length > 1) {
+    //             $("#jangka_waktu").val(jangkaWaktu[jangkaWaktu.length - 1]).trigger("change");
+    //         }
+    //         objCredits.jangka_waktu = $(this).val();
+    //     })
+    // }
 
     $(document).on('click', '#recalc', function(e) {
         e.preventDefault();
@@ -3628,7 +3655,7 @@
 
 
     // CLEAR NEWSLETTER
-    $('.news-ok').on('click', function(){
+    $('.news-ok').on('click', function() {
         $('#sendNewsletter .form-control').val('');
     });
 
@@ -3636,6 +3663,40 @@
     $(document).ready(function() {
         $('.form-get--credit .form-group > select').parent().addClass('select-wrapper');
     });
+
+    // PHONE NUMBER formPhoneNumber
+    $('.formPhoneNumber').focus(function () {
+        if ($.trim($(this).val()) == "") {
+            $(this).val("0");
+        }
+    });
+
+    $(".formPhoneNumber").on("keydown", function (e) {
+        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+            return false;
+        }
+        if (($(this).get(0).selectionStart == 0 && (e.keyCode < 35 || e.keyCode > 40))
+            || ($(this).get(0).selectionStart == 1 && e.keyCode == 8)) {
+            return false;
+        }
+    });
+    //$('.formPhoneNumber').keypress(function (e) {
+    //    if (this.value.length == 1 && e.which == 48) {
+    //        return false;
+    //    }
+    //});
+    $('.formPhoneNumber').on('input propertychange paste', function (e) {
+        var reg = /^00+/gi;
+        var reg2 = /^[+62]+/gi;
+        if (this.value.match(reg)) {
+            this.value = this.value.replace(reg, '0');
+        }
+    });
+
+    $(".formPhoneNumber").bind("contextmenu", function (e) {
+        e.preventDefault();
+    });
+
 
 
 })(jQuery);
