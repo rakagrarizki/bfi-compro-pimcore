@@ -151,14 +151,18 @@
         slideToShow: 1,
         dots: true,
         prevArrow: $(".prev-1"),
-        nextArrow: $(".next-1")
+        nextArrow: $(".next-1"),
+        autoplay: true,
+        autoplaySpeed: 5000
     })
 
     $("#herobanner2").slick({
         slideToShow: 1,
         dots: true,
         prevArrow: $(".prev-2"),
-        nextArrow: $(".next-2")
+        nextArrow: $(".next-2"),
+        autoplay: true,
+        autoplaySpeed: 5000
     })
 
     $("#slider-cara--kerja").slick({
