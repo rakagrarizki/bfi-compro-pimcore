@@ -200,6 +200,9 @@ $this->extend('layout-credit.html.php');
                                                 <option value="" disabled selected><?= $this->translate('placeholder-sertifikat')?></option>
                                                 <option value="<?= strtoupper($this->translate('sertifikat-1')) ?>"><?= $this->translate('sertifikat-1')?></option>
                                                 <option value="<?= strtoupper($this->translate('sertifikat-2')) ?>"><?= $this->translate('sertifikat-2')?></option>
+                                                <option value="<?= strtoupper($this->translate('sertifikat-3')) ?>"><?= $this->translate('sertifikat-3')?></option>
+                                                <option value="<?= strtoupper($this->translate('sertifikat-4')) ?>"><?= $this->translate('sertifikat-4')?></option>
+                                                <option value="<?= strtoupper($this->translate('sertifikat-5')) ?>"><?= $this->translate('sertifikat-5')?></option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
