@@ -18,8 +18,12 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-4">Image</div>
-            <div class="col-sm-8"><?= $this->image('image');?></div>
+            <div class="col-sm-4">Desktop Image</div>
+            <div class="col-sm-8"><?= $this->image('image'); ?></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">Mobile Image</div>
+            <div class="col-sm-8"><?= $this->image('mobileImage'); ?></div>
         </div>
     </div>
 </div>
