@@ -255,15 +255,18 @@ $this->extend('layout-credit.html.php');
                                             <div class="form-group sliderGroup inputsimulasi">
                                                 <label><?= $this->translate('label-funding-year')?></label>
                                                 <select class="c-custom-select-trans form-control formRequired" id="jangka_waktu"
-                                                        name="jangka-waktu" multiple="multiple">
+                                                        name="jangka-waktu">
                                                     <?php
                                                     for ($i = 12 ; $i <= 48; $i++) {
+                                                        // if($i % 12 == 0){
+                                                        //     if($i == 12){
+                                                        //         echo '<option value="' . $i . '" selected>' . $i . ' ' .$this->translate('label-month') .'</option>';
+                                                        //     }else{
+                                                        //         echo '<option value="' . $i . '">' . $i . ' ' .$this->translate('label-month') .'</option>';
+                                                        //     }
+                                                        // }
                                                         if($i % 12 == 0){
-                                                            if($i == 12){
-                                                                echo '<option value="' . $i . '" selected>' . $i . ' ' .$this->translate('label-month') .'</option>';
-                                                            }else{
-                                                                echo '<option value="' . $i . '">' . $i . ' ' .$this->translate('label-month') .'</option>';
-                                                            }
+                                                            echo '<option value="' . $i . '">' . $i . ' ' .$this->translate('label-month') .'</option>';
                                                         }
                                                     }
                                                     ?>
