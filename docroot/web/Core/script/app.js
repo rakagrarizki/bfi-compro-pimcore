@@ -3072,10 +3072,22 @@
                     '<div class="error-wrap"></div>' +
                     '</div>';
 
-                newoptionAsuransi(12, raw_select);
+                // newoptionAsuransi(12, raw_select);
 
-                objCredits.installment = rawMinPrice;
-                objCredits.jangka_waktu = 12;
+                // objCredits.installment = rawMinPrice;
+                // objCredits.jangka_waktu = 12;
+
+                if ($("#jenis_form").val() == "MOBIL") {
+                    newoptionAsuransi(12, raw_select);
+
+                    objCredits.installment = rawMinPrice;
+                    objCredits.jangka_waktu = 12;
+                } else if ($("#jenis_form").val() == "MOTOR") {
+                    newoptionAsuransi(6, raw_select);
+
+                    objCredits.installment = rawMinPrice;
+                    objCredits.jangka_waktu = 6;
+                }
 
                 post_val_inputan = rawMinPrice;
 
