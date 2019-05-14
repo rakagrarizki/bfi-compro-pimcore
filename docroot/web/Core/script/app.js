@@ -1044,27 +1044,15 @@
             showDefaultButton();
         });
 
-        $('.biaya-agunan .form-group').on('click', function(){
-            setTimeout(function(){ 
+        $('.biaya-agunan .form-group').on('click', function() {
+            setTimeout(function() {
                 if ($('input#agreement1').parent().hasClass('jcf-checked') && $('input#agreement2').parent().hasClass('jcf-checked')) {
                     enableButton("#button4rumah");
                 } else {
                     disableButton("#button4rumah");
                 }
-             }, 500);
+            }, 500);
         })
-
-        // $('.biaya-agunan .label-agreement').each(function(){
-        //     $(this).on('click', function(){
-        //         if ($('.agreement1').hasClass('jcf-label-active') && $('.agreement2').hasClass('jcf-label-active')) {
-        //             enableButton("#button4rumah");
-        //         } else {
-        //             disableButton("#button4rumah");
-        //         }
-        //         showDefaultButton();
-        //     })
-        // })
-
 
         $('.hidesavebutton').on('click', function(e) {
             e.preventDefault();
@@ -3554,6 +3542,10 @@
     //     })
     // }
 
+    $("#jangka_waktu").change(function() {
+        objCredits.jangka_waktu = $(this).val();
+    })
+
     $(document).on('click', '#recalc', function(e) {
         e.preventDefault();
         $(this).text("HITUNG ULANG");
@@ -3665,18 +3657,18 @@
     });
 
     // PHONE NUMBER formPhoneNumber
-    $('.formPhoneNumber').focus(function () {
+    $('.formPhoneNumber').focus(function() {
         if ($.trim($(this).val()) == "") {
             $(this).val("0");
         }
     });
 
-    $(".formPhoneNumber").on("keydown", function (e) {
+    $(".formPhoneNumber").on("keydown", function(e) {
         if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
             return false;
         }
-        if (($(this).get(0).selectionStart == 0 && (e.keyCode < 35 || e.keyCode > 40))
-            || ($(this).get(0).selectionStart == 1 && e.keyCode == 8)) {
+        if (($(this).get(0).selectionStart == 0 && (e.keyCode < 35 || e.keyCode > 40)) ||
+            ($(this).get(0).selectionStart == 1 && e.keyCode == 8)) {
             return false;
         }
     });
@@ -3685,7 +3677,7 @@
     //        return false;
     //    }
     //});
-    $('.formPhoneNumber').on('input propertychange paste', function (e) {
+    $('.formPhoneNumber').on('input propertychange paste', function(e) {
         var reg = /^00+/gi;
         var reg2 = /^[+62]+/gi;
         if (this.value.match(reg)) {
@@ -3693,7 +3685,7 @@
         }
     });
 
-    $(".formPhoneNumber").bind("contextmenu", function (e) {
+    $(".formPhoneNumber").bind("contextmenu", function(e) {
         e.preventDefault();
     });
 

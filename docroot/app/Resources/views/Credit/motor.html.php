@@ -257,17 +257,33 @@ $this->extend('layout-credit.html.php');
                                                         name="jangka-waktu">
                                                     <?php
                                                     for ($i = 6 ; $i <= 24; $i++) {
+                                                        // if($i % 6 == 0){
+                                                        //     if($i == 6){
+                                                        //         echo '<option value="' . $i . '" selected>' . $i . ' ' .$this->translate('label-month') .'</option>';
+                                                        //     }else{
+                                                        //         echo '<option value="' . $i . '">' . $i . ' ' .$this->translate('label-month') .'</option>';
+                                                        //     }
+                                                        // }
                                                         if($i % 6 == 0){
-                                                            if($i == 6){
-                                                                echo '<option value="' . $i . '" selected>' . $i . ' ' .$this->translate('label-month') .'</option>';
-                                                            }else{
-                                                                echo '<option value="' . $i . '">' . $i . ' ' .$this->translate('label-month') .'</option>';
-                                                            }
+                                                            echo '<option value="' . $i . '">' . $i . ' ' .$this->translate('label-month') .'</option>';
                                                         }
                                                     }
                                                     ?>
                                                 </select>
                                                 <div class="error-wrap"></div>
+                                            </div>
+                                            <div class="form-group inputsimulasi asuransi hidden">
+                                                <label><?= $this->translate('label-asuransi')?></label>
+                                                <div class="columnselect" ke="0">
+                                                    <div class="list-select">
+                                                        <label><?= $this->translate('label-next-year')?> - 1</label>
+                                                    </div>
+                                                    <div class="list-select">
+                                                        <select class="c-custom-select-trans form-control formRequired opsiasuransi"
+                                                                name="status"></select>
+                                                    </div>
+                                                    <div class="error-wrap"></div>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -283,14 +299,14 @@ $this->extend('layout-credit.html.php');
                                                                 Rp 0
                                                             </td>
                                                         </tr>
-                                                        <!-- <tr>
+                                                        <tr class="hidden">
                                                             <td>
-                                                                <?php //echo $this->translate('label-total-asuransi')?> *
+                                                                <?= $this->translate('label-total-asuransi')?> *
                                                             </td>
                                                             <td class="currency" tahun="1">
                                                                 Rp 0
                                                             </td>
-                                                        </tr> -->
+                                                        </tr>
                                                         <!--  <tr>
                                                              <td class="textsubcurrency">
                                                                  Tahun ke-1 [All Risk Only*]

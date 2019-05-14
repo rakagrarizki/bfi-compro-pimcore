@@ -258,12 +258,15 @@ $this->extend('layout-credit.html.php');
                                                         name="jangka-waktu">
                                                     <?php
                                                     for ($i = 12 ; $i <= 48; $i++) {
+                                                        // if($i % 12 == 0){
+                                                        //     if($i == 12){
+                                                        //         echo '<option value="' . $i . '" selected>' . $i . ' ' .$this->translate('label-month') .'</option>';
+                                                        //     }else{
+                                                        //         echo '<option value="' . $i . '">' . $i . ' ' .$this->translate('label-month') .'</option>';
+                                                        //     }
+                                                        // }
                                                         if($i % 12 == 0){
-                                                            if($i == 12){
-                                                                echo '<option value="' . $i . '" selected>' . $i . ' ' .$this->translate('label-month') .'</option>';
-                                                            }else{
-                                                                echo '<option value="' . $i . '">' . $i . ' ' .$this->translate('label-month') .'</option>';
-                                                            }
+                                                            echo '<option value="' . $i . '">' . $i . ' ' .$this->translate('label-month') .'</option>';
                                                         }
                                                     }
                                                     ?>
