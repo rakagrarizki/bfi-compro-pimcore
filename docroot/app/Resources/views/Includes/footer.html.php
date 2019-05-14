@@ -17,6 +17,10 @@ if($this->editmode) : ?>
                 <div class="col-lg-8"><?=$this->link('instagram');?></div>
             </div>
             <div class="row">
+                <div class="col-lg-4">Youtube</div>
+                <div class="col-lg-8"><?=$this->link('youtube');?></div>
+            </div>
+            <div class="row">
                 <div class="col-lg-4">LinkedIn</div>
                 <div class="col-lg-8"><?=$this->link('linkedin');?></div>
             </div>
