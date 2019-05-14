@@ -35,16 +35,16 @@
 
     &.herobanner--secondary {
         .slide {
-            &:after {
-                position: absolute;
-                content: "";
-                right: 0;
-                left: 0;
-                top: 0;
-                bottom: 0;
-                background: $white;
-                opacity: .8;
-            }
+            // &:after {
+            //     position: absolute;
+            //     content: "";
+            //     right: 0;
+            //     left: 0;
+            //     top: 0;
+            //     bottom: 0;
+            //     background: $white;
+            //     opacity: .8;
+            // }
 
             p {
                 font-family: 'HelveticaNeue';
@@ -54,6 +54,10 @@
                     color: $blue-dark-color;
                     font-weight: 600;
                     margin-bottom: 30px;
+
+                    @include breakpoint(mobile) {
+                        font-size: 1.8em;
+                    }
                 }
 
                 &.quotes,
@@ -84,6 +88,7 @@
         padding-bottom: 505px;
         position: relative;
         overflow: hidden;
+        background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
 
@@ -91,12 +96,12 @@
             .desc-slide2 {
                 margin: 0;
 
-                @include breakpoint(mobile) {
-                    margin: 0 !important;
-                }
-
                 @include breakpoint(tablet) {
                     margin: 0 50px;
+                }
+
+                @include breakpoint(mobile) {
+                    margin: 0 !important;
                 }
 
             }
@@ -141,9 +146,13 @@
                 text-align: right;
                 color: $primary;
 
-                @include breakpoint (mobile) {
-                    width: 47%;
-                    margin-left: 43.5%;
+                @include breakpoint (big-screen) {
+                    width: 50%;
+                    margin-left: 35%;
+                }
+
+                @include breakpoint (desktop) {
+                    margin-left: 54.5%;
                 }
 
                 @include breakpoint (wide) {
@@ -151,13 +160,9 @@
                     margin-left: 48%;
                 }
 
-                @include breakpoint (desktop) {
-                    margin-left: 54.5%;
-                }
-
-                @include breakpoint (big-screen) {
-                    width: 50%;
-                    margin-left: 35%;
+                @include breakpoint (mobile) {
+                    width: 47%;
+                    margin-left: 43.5%;
                 }
             }
 
@@ -170,14 +175,14 @@
                 margin-left: auto;
                 margin-right: auto;
 
+                @include breakpoint (big-screen) {
+                    width: 61%;
+                }
+
                 @include breakpoint (mobile) {
                     font-size: 12pt;
                     width: 100%;
                     margin: -85px 0 0 0;
-                }
-
-                @include breakpoint (big-screen) {
-                    width: 61%;
                 }
             }
 
@@ -190,15 +195,15 @@
                 margin-left: auto;
                 margin-right: auto;
 
+                @include breakpoint (big-screen) {
+                    font-size: 44px;
+                    width: 61%;
+                }
+
                 @include breakpoint (mobile) {
                     font-size: 20pt;
                     width: 100%;
                     margin: 10px 0;
-                }
-
-                @include breakpoint (big-screen) {
-                    font-size: 44px;
-                    width: 61%;
                 }
             }
         }
@@ -271,14 +276,16 @@
             }
 
             .quotes {
-                margin-top: 70px;
+                margin-top: 50px;
+                margin-bottom: 40px;
                 font-size: 20px;
-                width: 80%;
+                width: 50%;
 
                 @include breakpoint(mobile) {
                     width: auto;
                     font-size: 1em;
-                    margin-top: 40px;
+                    margin-top: 30px;
+                    margin-bottom: 30px;
                 }
 
                 &:before {
@@ -382,9 +389,12 @@
             text-align: right;
             color: $primary;
 
-            @include breakpoint(mobile) {
-                width: 45%;
-                left: 14%;
+            @include breakpoint(big-screen) {
+                left: 25.5%;
+            }
+
+            @include breakpoint(desktop) {
+                left: 35%;
             }
 
             @include breakpoint(wide) {
@@ -392,12 +402,9 @@
                 left: 32%;
             }
 
-            @include breakpoint(desktop) {
-                left: 35%;
-            }
-
-            @include breakpoint(big-screen) {
-                left: 25.5%;
+            @include breakpoint(mobile) {
+                width: 45%;
+                left: 14%;
             }
         }
     }
