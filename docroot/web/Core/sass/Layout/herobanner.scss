@@ -145,44 +145,47 @@
             .desc-cont {
                 text-align: right;
                 color: $primary;
+                width: 50%;
+                position: relative;
+                left: 50%;
 
-                @include breakpoint (big-screen) {
-                    width: 50%;
-                    margin-left: 35%;
-                }
+                // @include breakpoint (big-screen) {
+                //     width: 50%;
+                //     margin-left: 35%;
+                // }
 
-                @include breakpoint (desktop) {
-                    margin-left: 54.5%;
-                }
+                // @include breakpoint (desktop) {
+                //     margin-left: 54.5%;
+                // }
 
-                @include breakpoint (wide) {
-                    width: 465px;
-                    margin-left: 48%;
-                }
+                // @include breakpoint (wide) {
+                //     width: 465px;
+                //     margin-left: 48%;
+                // }
 
-                @include breakpoint (mobile) {
-                    width: 47%;
-                    margin-left: 43.5%;
-                }
+                // @include breakpoint (mobile) {
+                //     width: 47%;
+                //     margin-left: 43.5%;
+                // }
             }
 
             h3 {
-                margin: 0px 0 0 0;
+                margin: 0;
                 font-family: 'HelveticaNeue';
                 font-weight: bold;
                 font-size: 1.3em;
-                width: 85%;
-                margin-left: auto;
-                margin-right: auto;
+                // width: 85%;
+                // margin-left: auto;
+                // margin-right: auto;
 
                 @include breakpoint (big-screen) {
-                    width: 61%;
+                    // width: 61%;
                 }
 
                 @include breakpoint (mobile) {
                     font-size: 12pt;
-                    width: 100%;
-                    margin: -85px 0 0 0;
+                    // width: 100%;
+                    // margin: -85px 0 0 0;
                 }
             }
 
@@ -191,18 +194,18 @@
                 opacity: 0.9;
                 font-family: 'HelveticaNeue';
                 font-size: 40px;
-                width: 85%;
-                margin-left: auto;
-                margin-right: auto;
+                // width: 85%;
+                // margin-left: auto;
+                // margin-right: auto;
 
                 @include breakpoint (big-screen) {
                     font-size: 44px;
-                    width: 61%;
+                    // width: 61%;
                 }
 
                 @include breakpoint (mobile) {
                     font-size: 20pt;
-                    width: 100%;
+                    // width: 100%;
                     margin: 10px 0;
                 }
             }
