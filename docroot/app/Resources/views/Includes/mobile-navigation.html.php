@@ -7,11 +7,8 @@ use Pimcore\Model\Document;
 <div class="top-nav--mobille hidden-md">
     <div class="container">
         <div class="row top-nav">
-            <div class="col-xs-8">
-                <a class="_personal" href="/<?php echo $this->getLocale() ?>"
-                   class="cta-top-nav active"><?= $this->translate("personal") ?></a>
-                <a class="_grup" href="#" class="cta-top-nav"><?= $this->translate("corporate") ?></a>
-            </div>
+            
+            <?= $this->inc("/" . $this->getLocale() . "/shared/includes/sub-navigation-mobile") ?>
             <div class="col-xs-4 text-right">
                 <?php echo $this->template("Includes/mobile-language.html.php") ?>
             </div>
