@@ -80,7 +80,7 @@
         }
 
         .left-side-top {
-            padding-left: 112px;
+            // padding-left: 112px;
 
             a {
                 padding-right: 10px;
@@ -93,16 +93,18 @@
         }
 
         .right-side-top {
-            display: inline-flex;
-            flex-wrap: nowrap;
-            margin-left: 65px;
-            padding: 0;
+            // display: inline-flex;
+            // flex-wrap: nowrap;
+            // margin-left: 65px;
+            // padding: 0;
 
-            @include breakpoint(tablet) {
-                margin-left: 30px;
-            }
+            // @include breakpoint(tablet) {
+            //     margin-left: 30px;
+            // }
 
             .link-about-top {
+                float: left;
+
                 a {
                     font-family: 'HelveticaNeue';
                     padding-right: 30px;
@@ -137,9 +139,7 @@
             }
 
             .lang {
-                position: absolute;
-                right: 75px;
-                margin-right: 0;
+                float: right;
 
                 a {
                     font-family: 'HelveticaNeue';
@@ -172,11 +172,11 @@
         }
     }
 
-    img {
-        width: 70px;
-        transition: all .3s ease-in-out;
-        margin-left: 110px;
-    }
+    // img {
+    //     width: 70px;
+    //     transition: all .3s ease-in-out;
+    //     margin-left: 110px;
+    // }
 
     .header-bottom {
         background-color: #04559f;
@@ -184,20 +184,25 @@
         height: 90px;
 
         .header-bottom-logo {
-            height: 80px;
-            position: relative;
-            display: block;
-            padding: 0;
-            margin-top: 10px;
-            transition: all .3s ease-in-out;
+            height: 70px;
+            // position: relative;
+            // display: block;
+            // padding: 0;
+            // margin-top: 10px;
+            // transition: all .3s ease-in-out;
 
             a {
-                position: absolute;
-                top: 0;
-                bottom: 0;
-                left: 0;
-                right: 0;
+                // position: absolute;
+                // top: 0;
+                // bottom: 0;
+                // left: 0;
+                // right: 0;
+                display: block;
+                margin-top: 10px;
 
+                img {
+                    max-height: 70px;
+                }
             }
         }
 
@@ -271,7 +276,7 @@
 
                         @include breakpoint(wide) {
                             &:first-child {
-                                padding-left: 105px;
+                                // padding-left: 105px;
 
                                 >a {
                                     padding: 10px 20px 10px 0;
