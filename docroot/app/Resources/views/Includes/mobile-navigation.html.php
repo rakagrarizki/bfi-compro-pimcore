@@ -90,8 +90,7 @@ use Pimcore\Model\Document;
         }
         ?>
         <li role="separator" class="divider"></li>
-        <li><a href="#" class="about"><?= $this->translate("contact-us") ?></a></li>
-        <li><a href="#" class="about"><?= $this->translate("blog") ?></a></li>
+        <?= $this->inc("/" . $this->getLocale() . "/shared/includes/sub-navigation-burger") ?>
     </ul>
 </div>
 <!-- END Mobile -->
