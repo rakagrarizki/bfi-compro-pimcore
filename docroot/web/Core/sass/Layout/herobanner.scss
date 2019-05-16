@@ -149,6 +149,10 @@
                 position: relative;
                 left: 50%;
 
+                @include breakpoint(mobile) {
+                    left: calc(50% - 30px);
+                }
+
                 // @include breakpoint (big-screen) {
                 //     width: 50%;
                 //     margin-left: 35%;
