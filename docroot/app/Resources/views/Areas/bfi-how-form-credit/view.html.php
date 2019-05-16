@@ -40,7 +40,7 @@
                                 </div>
                                 <div class="_boxkananchildmobile2 visible-xs">
                                 <button disabled class="btn-blok btn-submit btn-submit-how-form-credit"
-                                            type="submit">AJUKAN SEKARANG</button>
+                                            type="submit"><?= $this->translate('ajukan-sekarang'); ?></button>
                                 </div>
                             </div>
                         </div>

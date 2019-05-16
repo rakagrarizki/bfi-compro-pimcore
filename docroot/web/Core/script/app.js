@@ -651,7 +651,7 @@
             required: true,
             number: true,
             maxlength: 13,
-            minlength: 9
+            minlength: 10
         },
 
         formKodePos: {
@@ -662,7 +662,7 @@
         },
 
         formAddress: {
-            minlength: 10
+            minlength: 15
         },
 
         submitHandler: function(form) {
@@ -3684,11 +3684,13 @@
             return false;
         }
     });
+
     //$('.formPhoneNumber').keypress(function (e) {
     //    if (this.value.length == 1 && e.which == 48) {
     //        return false;
     //    }
     //});
+
     $('.formPhoneNumber').on('input propertychange paste', function(e) {
         var reg = /^00+/gi;
         var reg2 = /^[+62]+/gi;
@@ -3699,6 +3701,17 @@
 
     $(".formPhoneNumber").bind("contextmenu", function(e) {
         e.preventDefault();
+    });
+
+    $("#nama_lengkap").on("keydown", function(e) {
+        var regex = new RegExp("^[a-zA-Z\s\b]+$");
+        var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        if (regex.test(str)) {
+            return true;
+        } else {
+            e.preventDefault();
+            return false;
+        }
     });
 
     // SELECT2
