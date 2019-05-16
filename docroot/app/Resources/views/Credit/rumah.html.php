@@ -84,7 +84,7 @@ $this->extend('layout-credit.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label for="no_handphone"><?= $this->translate('form-hp')?></label>
-                                            <input type="text" class="form-control formPhoneNumber" name="no_handphone" id="no_handphone"
+                                            <input type="text" class="form-control formPhoneNumber" name="no_handphone" id="no_handphone" maxlength="13"
                                                    placeholder="<?= $this->translate('placeholder-hp')?>">
                                             <div class="error-wrap"></div>
                                         </div>

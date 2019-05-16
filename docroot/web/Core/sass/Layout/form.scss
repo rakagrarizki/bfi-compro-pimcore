@@ -560,8 +560,29 @@
             padding-top: 20px;
 
             &::placeholder {
-                color: black;
-                opacity: 0.7;
+                color: #aaa;
+
+                /* Firefox */
+                &:after {
+                    content: "123123123";
+                    color: red;
+                    opacity: 1;
+                }
+            }
+
+            &:-ms-input-placeholder {
+                color: #aaa;
+
+                /* Firefox */
+                &:after {
+                    content: "123123123";
+                    color: red;
+                    opacity: 1;
+                }
+            }
+
+            &::-ms-input-placeholder {
+                color: #aaa;
 
                 /* Firefox */
                 &:after {
@@ -582,7 +603,20 @@
 
             &::placeholder {
                 font-style: italic;
-                color: #dddddd;
+                color: #aaa;
+                opacity: 1;
+            }
+
+            &:-ms-input-placeholder {
+                font-style: italic;
+                color: #aaa;
+                opacity: 1;
+            }
+
+            &::-ms-input-placeholder {
+                font-style: italic;
+                color: #aaa;
+                opacity: 1;
             }
 
             &:focus {
@@ -1090,11 +1124,11 @@
 }
 
 #kode_pos::placeholder {
-    color: #555;
+    color: #aaa;
 }
 
 #kode_pos_sertificate::placeholder {
-    color: #555;
+    color: #aaa;
 }
 
 #recalc {
