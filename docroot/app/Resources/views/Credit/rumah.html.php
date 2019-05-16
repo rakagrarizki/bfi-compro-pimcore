@@ -68,7 +68,7 @@ $this->extend('layout-credit.html.php');
                                         <div class="form-group">
                                             <label><?= $this->translate('form-work')?></label>
                                             <select class="form-control formRequired" id="pekerjaan" name="pekerjaan"
-                                                    placeholder="<?= $this->translate('placeholder-work')?>" />
+                                                    placeholder="<?= $this->translate('placeholder-work')?>" multiple="multiple" />
                                                 <option value="" disabled selected><?= $this->translate('placeholder-work')?></option>
                                                 <option value="<?= strtoupper($this->translate('work1')) ?>"><?= $this->translate('work1')?></option>
                                                 <option value="<?= strtoupper($this->translate('work2')) ?>"><?= $this->translate('work2')?></option>
@@ -185,7 +185,7 @@ $this->extend('layout-credit.html.php');
                                             <label><?= $this->translate('label-status-bangunan')?></label>
                                             <select class="c-custom-select-trans form-control formRequired"
                                                     placeholder="<?= $this->translate('placeholder-bangunan')?>" id="status_sertificate"
-                                                    name="status_sertificate">
+                                                    name="status_sertificate" multiple="multiple">
                                                 <option value="" disabled selected><?= $this->translate('placeholder-bangunan')?></option>
                                                 <option value="<?= strtoupper($this->translate('surat-bangunan-1')) ?>"><?= $this->translate('surat-bangunan-1')?></option>
                                                 <option value="<?= strtoupper($this->translate('surat-bangunan-2')) ?>"><?= $this->translate('surat-bangunan-2')?></option>
@@ -196,7 +196,7 @@ $this->extend('layout-credit.html.php');
                                             <label><?= $this->translate('label-status-sertifikat')?></label>
                                             <select class="c-custom-select-trans form-control formRequired"
                                                     placeholder="<?= $this->translate('placeholder-sertifikat')?>" id="own_sertificate"
-                                                    name="own_sertificate">
+                                                    name="own_sertificate" multiple="multiple">
                                                 <option value="" disabled selected><?= $this->translate('placeholder-sertifikat')?></option>
                                                 <option value="<?= strtoupper($this->translate('sertifikat-1')) ?>"><?= $this->translate('sertifikat-1')?></option>
                                                 <option value="<?= strtoupper($this->translate('sertifikat-2')) ?>"><?= $this->translate('sertifikat-2')?></option>
@@ -329,27 +329,27 @@ $this->extend('layout-credit.html.php');
                                                 </div>
                                                 <table>
                                                     <tr>
-                                                        <td class="short"><?= $this->translate('provinsi')?></td>
+                                                        <td><?= $this->translate('provinsi')?></td>
 
                                                         <td id="showProvinsi" class="provinsi"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="short"><?= $this->translate('kota')?></td>
+                                                        <td><?= $this->translate('kota')?></td>
 
                                                         <td id="showKota" class="kota"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="short"><?= $this->translate('kecamatan')?></td>
+                                                        <td><?= $this->translate('kecamatan')?></td>
 
                                                         <td id="showKecamatan" class="kecamatan"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="short"><?= $this->translate('postcode')?></td>
+                                                        <td><?= $this->translate('postcode')?></td>
 
                                                         <td id="showKodePos" class="kodepos"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="short"><?= $this->translate('address')?></td>
+                                                        <td><?= $this->translate('address')?></td>
 
                                                         <td id="showAddress" class="address"></td>
                                                     </tr>
@@ -367,42 +367,42 @@ $this->extend('layout-credit.html.php');
                                                 </div>
                                                 <table>
                                                     <tr>
-                                                        <td class="short"><?= $this->translate('label-status-bangunan')?></td>
+                                                        <td><?= $this->translate('label-status-bangunan')?></td>
 
                                                         <td id="showStatus_sertificate" class="status_sertificate"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="short"><?= $this->translate('label-status-sertifikat')?></td>
+                                                        <td><?= $this->translate('label-status-sertifikat')?></td>
 
                                                         <td id="showOwn_sertificate" class="own_sertificate"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="short"><?= $this->translate('provinsi')?></td>
+                                                        <td><?= $this->translate('provinsi')?></td>
 
                                                         <td id="showProvinsi_sertificate" class="provinsi_sertificate"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="short"><?= $this->translate('kota')?></td>
+                                                        <td><?= $this->translate('kota')?></td>
 
                                                         <td id="showKota_sertificate" class="kota_sertificate"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="short"><?= $this->translate('kecamatan')?></td>
+                                                        <td><?= $this->translate('kecamatan')?></td>
 
                                                         <td id="showKecamatan_sertificate" class="kecamatan_sertificate"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="short"><?= $this->translate('kelurahan')?></td>
+                                                        <td><?= $this->translate('kelurahan')?></td>
 
                                                         <td id="showKelurahan_sertificate" class="kelurahan_sertificate"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="short"><?= $this->translate('postcode')?></td>
+                                                        <td><?= $this->translate('postcode')?></td>
 
                                                         <td id="showKode_pos_sertificate" class="kode_pos_sertificate"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="short"><?= $this->translate('address')?></td>
+                                                        <td><?= $this->translate('address')?></td>
 
                                                         <td id="showAlamat_lengkap_sertificate" class="alamat_lengkap_sertificate"></td>
                                                     </tr>
@@ -413,7 +413,7 @@ $this->extend('layout-credit.html.php');
                                         </div>
                                         <div class="biaya-agunan">
                                             <div class="form-group">
-                                                <input type="checkbox" id="agreement1" class="agreement">
+                                                <input type="checkbox" id="agreement1" class="agreement" checked>
                                                 <label for="agreement1" class="label-agreement agreement1"><?= $this->translate('term-condition')?></label>
                                                 <div class="error-wrap"></div>
                                             </div>

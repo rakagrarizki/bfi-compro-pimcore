@@ -3701,6 +3701,59 @@
         e.preventDefault();
     });
 
+    // SELECT2
+    var pekerjaan_placeholder = $('#pekerjaan').attr('placeholder');
+    $('#pekerjaan').select2({
+        placeholder: pekerjaan_placeholder,
+        dropdownParent: $('#pekerjaan').parent()
+    });
+    var status_sertificate_placeholder = $('#status_sertificate').attr('placeholder');
+    $('#status_sertificate').select2({
+        placeholder: status_sertificate_placeholder,
+        dropdownParent: $('#status_sertificate').parent()
+    });
+    var own_sertificate_placeholder = $('#own_sertificate').attr('placeholder');
+    $('#own_sertificate').select2({
+        placeholder: own_sertificate_placeholder,
+        dropdownParent: $('#own_sertificate').parent()
+    });
 
+    // SAME HEIGHT
+    // Get Highest Dom
+    var res = function() {
+        if ($('#bfi-cabang .thumbnail--branch .thumbnail-caption h3').length > 0) {
+            $('#bfi-cabang').each(function() {
+                $(this).find(".thumbnail-caption h3").height("auto");
+                cH = getHighestDOM($(this).find(".thumbnail-caption h3"));
+                $(this).find(".thumbnail-caption h3").height(cH);
+            });
+        }
+        if ($('#bfi-cabang .thumbnail--branch .thumbnail-caption p').length > 0) {
+            $('#bfi-cabang').each(function() {
+                $(this).find(".thumbnail-caption p").height("auto");
+                cH = getHighestDOM($(this).find(".thumbnail-caption p"));
+                $(this).find(".thumbnail-caption p").height(cH);
+            });
+        }
+    };
+
+    function getHighestDOM(dom) {
+        var highest_height = 0;
+
+        dom.each(function(index, val) {
+            if (highest_height <= $(val).height()) {
+                highest_height = $(val).height();
+            }
+        });
+        return highest_height;
+    }
+
+    $(window).resize(function() {
+        res();
+    });
+
+    $(document).ready(function(e) {
+        res();
+    });
 
 })(jQuery);
