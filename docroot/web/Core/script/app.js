@@ -40,6 +40,9 @@
         lastScrollTop = st;
     });
 
+    var tahunke = $('#tahunke').val();
+    console.log('tahun ke ' + tahunke);
+
     var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     var _marker = '/static/images/icon/marker.png';
     var _markerActive = '/static/images/icon/branch_active.png';
@@ -489,7 +492,7 @@
         for (var i = 1; i <= jumlah_loop; i++) {
             $(".form-group.inputsimulasi.asuransi").append(raw_select);
             $(".columnselect[ke=0]").attr("ke", i);
-            $(".columnselect[ke=" + i + "]").children().find("label").text("Tahun ke - " + i + "");
+            $(".columnselect[ke=" + i + "]").children().find("label").text(+ tahunke + " - " + i + "");
             asuransi_arr[asuransi_arr.length] = $(".columnselect .c-custom-select-trans").val();
 
             $(".columnselect[ke=" + i + "]").find(".opsiasuransi").select2({
@@ -651,7 +654,7 @@
             required: true,
             number: true,
             maxlength: 13,
-            minlength: 10
+            minlength: 9
         },
 
         formKodePos: {
@@ -944,6 +947,7 @@
         disableButton("#button3rumah");
         disableButton("#button4");
         disableButton("#button4rumah");
+        disableButton("#button5");
         $("#kode_pos").css("background-color", "#F4F4F4");
         $("#kode_pos_sertificate").css("background-color", "#F4F4F4");
 
@@ -1050,6 +1054,16 @@
                     enableButton("#button4rumah");
                 } else {
                     disableButton("#button4rumah");
+                }
+            }, 500);
+        })
+        
+        $('.biaya-agunan .form-group').on('click', function() {
+            setTimeout(function() {
+                if ($('input#agreement1').parent().hasClass('jcf-checked')) {
+                    enableButton("#button5");
+                } else {
+                    disableButton("#button5");
                 }
             }, 500);
         })
@@ -3063,7 +3077,7 @@
 
                 raw_select = '<div class="columnselect" ke="0">' +
                     '<div class="list-select">' +
-                    '<label>Tahun ke - 1</label>' +
+                    '<label>'+ tahunke +' - 1</label>' +
                     '</div>' +
                     '<div class="list-select">' +
                     '<select class="c-custom-select-trans form-control formRequired opsiasuransi"' +
@@ -3704,12 +3718,11 @@
     });
 
     $("#nama_lengkap").on("keydown", function(e) {
-        var regex = new RegExp("^[a-zA-Z\s\b]+$");
+        var regex = new RegExp("^[a-zA-Z\s\b\.\'\\ ]+$");
         var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
         if (regex.test(str)) {
             return true;
         } else {
-            e.preventDefault();
             return false;
         }
     });
