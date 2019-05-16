@@ -258,13 +258,6 @@ $this->extend('layout-credit.html.php');
                                                         name="jangka-waktu">
                                                     <?php
                                                     for ($i = 12 ; $i <= 48; $i++) {
-                                                        // if($i % 12 == 0){
-                                                        //     if($i == 12){
-                                                        //         echo '<option value="' . $i . '" selected>' . $i . ' ' .$this->translate('label-month') .'</option>';
-                                                        //     }else{
-                                                        //         echo '<option value="' . $i . '">' . $i . ' ' .$this->translate('label-month') .'</option>';
-                                                        //     }
-                                                        // }
                                                         if($i % 12 == 0){
                                                             echo '<option value="' . $i . '">' . $i . ' ' .$this->translate('label-month') .'</option>';
                                                         }
@@ -280,11 +273,12 @@ $this->extend('layout-credit.html.php');
                                                     <div class="value-right">60 Bulan</div>
                                                 </div> -->
                                             </div>
+                                            <input type="hidden" id="tahunke" value="<?= $this->translate('label-next-year')?>">
                                             <div class="form-group inputsimulasi asuransi">
                                                 <label><?= $this->translate('label-asuransi')?></label>
                                                 <div class="columnselect" ke="0">
                                                     <div class="list-select">
-                                                        <label><?= $this->translate('label-next-year')?> ke - 1</label>
+                                                        <label><?= $this->translate('label-next-year')?> - 1</label>
                                                     </div>
                                                     <div class="list-select">
                                                         <select class="c-custom-select-trans form-control formRequired opsiasuransi"
@@ -419,27 +413,27 @@ $this->extend('layout-credit.html.php');
                                                 </div>
                                                 <table>
                                                     <tr>
-                                                        <td class="short"><?= $this->translate('provinsi')?></td>
+                                                        <td><?= $this->translate('provinsi')?></td>
 
                                                         <td id="showProvinsi" class="provinsi"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="short"><?= $this->translate('kota')?></td>
+                                                        <td><?= $this->translate('kota')?></td>
 
                                                         <td id="showKota" class="kota"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="short"><?= $this->translate('kecamatan')?></td>
+                                                        <td><?= $this->translate('kecamatan')?></td>
 
                                                         <td id="showKecamatan" class="kecamatan"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="short"><?= $this->translate('postcode')?></td>
+                                                        <td><?= $this->translate('postcode')?></td>
 
                                                         <td id="showKodePos" class="kodepos"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="short"><?= $this->translate('address')?></td>
+                                                        <td><?= $this->translate('address')?></td>
 
                                                         <td id="showAddress" class="address"></td>
                                                     </tr>
