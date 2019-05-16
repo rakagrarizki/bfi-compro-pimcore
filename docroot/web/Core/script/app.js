@@ -40,9 +40,6 @@
         lastScrollTop = st;
     });
 
-    var tahunke = $('#tahunke').val();
-    console.log('tahun ke ' + tahunke);
-
     var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     var _marker = '/static/images/icon/marker.png';
     var _markerActive = '/static/images/icon/branch_active.png';
@@ -488,6 +485,9 @@
 
         asuransi_arr = [];
         asuransi_arr_txt = [];
+
+        var tahunke = $('#tahunke').val();
+        console.log('tahun ke ' + tahunke);
 
         for (var i = 1; i <= jumlah_loop; i++) {
             $(".form-group.inputsimulasi.asuransi").append(raw_select);
@@ -3074,6 +3074,9 @@
                 })
 
                 // console.log("GGGG", data.data, opsiasuransi)
+
+                var tahunke = $('#tahunke').val();
+                console.log('tahun ke ' + tahunke);
 
                 raw_select = '<div class="columnselect" ke="0">' +
                     '<div class="list-select">' +

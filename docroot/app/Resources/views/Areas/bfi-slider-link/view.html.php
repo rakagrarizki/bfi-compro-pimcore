@@ -29,7 +29,8 @@
                 </div>
 
                 <!-- mobile -->
-                <div class="slide slidemodif visible-xs" style="background-image: url('<?= $asset->getImage()?>')">
+                <?php $assetMobile = $this->image('mobile-image');?>
+                <div class="slide slidemodif visible-xs" style="background-image: url('<?= $assetMobile->getImage()?>')">
                     <div class="slide-cont">
                         <div class="desc-slide2">
                             <div class="desc-cont container">
