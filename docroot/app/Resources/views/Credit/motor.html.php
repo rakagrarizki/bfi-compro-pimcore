@@ -79,7 +79,7 @@ $this->extend('layout-credit.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label for="no_handphone"><?= $this->translate('form-hp')?></label>
-                                            <input type="text" class="form-control formPhoneNumber" name="no_handphone" id="no_handphone"
+                                            <input type="text" class="form-control formPhoneNumber" name="no_handphone" id="no_handphone" maxlength="13"
                                                    placeholder="<?= $this->translate('placeholder-hp')?>">
                                             <div class="error-wrap"></div>
                                         </div>
@@ -154,7 +154,7 @@ $this->extend('layout-credit.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label for="alamat_lengkap"><?= $this->translate('label-place')?></label>
-                                            <textarea class="form-control formRequired" name="alamat_lengkap" id="alamat_lengkap"
+                                            <textarea class="form-control formRequired formAddress" name="alamat_lengkap" id="alamat_lengkap"
                                                       placeholder="<?= $this->translate('placeholder-place')?>, Contoh: Jalan Rajawali 1 Blok A no.11 RT 01 RW 02"></textarea>
                                             <div class="error-wrap"></div>
                                         </div>
