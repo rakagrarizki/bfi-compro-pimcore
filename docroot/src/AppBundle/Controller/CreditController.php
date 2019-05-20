@@ -355,11 +355,20 @@ class CreditController extends FrontendController
     {
         $nama_lengkap = htmlentities(addslashes($request->get('nama_lengkap')));
         $handphone = htmlentities(addslashes($request->get('no_handphone')));
+        $limitTime = WebsiteSetting::getByName('LIMIT_TIME')->getData();
+        $limit = $limitTime * 3600;
+
 
         $redis = new \Credis_Client("localhost", 6379, null, '', 1);
         $dateSend = $redis->hGet($handphone, "time-send");
         $attempts = $redis->hGet($handphone, "attempt-hit");
         $timenow = time();
+        /*$a = "attemp =".$attempts;
+
+        return new JsonResponse([
+            'success' => "0",
+            'message' => $a
+        ]);*/
 
         $clear = false;
         if($attempts){
@@ -371,6 +380,7 @@ class CreditController extends FrontendController
                 if($attempts < 3){
                     $send = true;
                 }else{
+                    $redis->setEx($handphone,$limit,"expiry");
                     $send = false;
                 }
             }
