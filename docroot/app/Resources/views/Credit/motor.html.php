@@ -209,6 +209,15 @@ $this->extend('layout-credit.html.php');
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
+                                        <div class="form-group">
+                                            <label><?= $this->translate('label-status')?></label>
+                                            <select class="c-custom-select-trans form-control formRequired" 
+                                                    placeholder="<?= $this->translate('placeholder-status')?>" id="status_kep" 
+                                                    name="status_kep" multiple="multiple" data-status-self="<?= $this->translate('placeholder-status-self')?>" data-status-other="<?=$this->translate('placeholder-status-other');?>">
+                                                <option value="" disabled selected> <?= $this->translate('placeholder-status')?></option>
+                                            </select>
+                                            <div class="error-wrap"></div>
+                                        </div>
 
                                     </div>
 
@@ -257,13 +266,6 @@ $this->extend('layout-credit.html.php');
                                                         name="jangka-waktu">
                                                     <?php
                                                     for ($i = 6 ; $i <= 24; $i++) {
-                                                        // if($i % 6 == 0){
-                                                        //     if($i == 6){
-                                                        //         echo '<option value="' . $i . '" selected>' . $i . ' ' .$this->translate('label-month') .'</option>';
-                                                        //     }else{
-                                                        //         echo '<option value="' . $i . '">' . $i . ' ' .$this->translate('label-month') .'</option>';
-                                                        //     }
-                                                        // }
                                                         if($i % 6 == 0){
                                                             echo '<option value="' . $i . '">' . $i . ' ' .$this->translate('label-month') .'</option>';
                                                         }
@@ -412,27 +414,27 @@ $this->extend('layout-credit.html.php');
                                                 </div>
                                                 <table>
                                                     <tr>
-                                                        <td class="short"><?= $this->translate('provinsi')?></td>
+                                                        <td><?= $this->translate('provinsi')?></td>
 
                                                         <td id="showProvinsi" class="provinsi"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="short"><?= $this->translate('kota')?></td>
+                                                        <td><?= $this->translate('kota')?></td>
 
                                                         <td id="showKota" class="kota"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="short"><?= $this->translate('kecamatan')?></td>
+                                                        <td><?= $this->translate('kecamatan')?></td>
 
                                                         <td id="showKecamatan" class="kecamatan"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="short"><?= $this->translate('postcode')?></td>
+                                                        <td><?= $this->translate('postcode')?></td>
 
                                                         <td id="showKodePos" class="kodepos"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="short"><?= $this->translate('address')?></td>
+                                                        <td><?= $this->translate('address')?></td>
 
                                                         <td id="showAddress" class="address"></td>
                                                     </tr>
