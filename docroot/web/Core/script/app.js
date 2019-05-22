@@ -492,7 +492,7 @@
         for (var i = 1; i <= jumlah_loop; i++) {
             $(".form-group.inputsimulasi.asuransi").append(raw_select);
             $(".columnselect[ke=0]").attr("ke", i);
-            $(".columnselect[ke=" + i + "]").children().find("label").text(+ tahunke + " - " + i + "");
+            $(".columnselect[ke=" + i + "]").children().find("label").text("" + tahunke + " - " + i + "");
             asuransi_arr[asuransi_arr.length] = $(".columnselect .c-custom-select-trans").val();
 
             $(".columnselect[ke=" + i + "]").find(".opsiasuransi").select2({
@@ -3728,6 +3728,14 @@
         } else {
             return false;
         }
+    });
+
+    $("#nama_lengkap").each(function(index) {
+        $(this).focusout(function() {
+            var text = $(this).val();      
+            text = $.trim(text);
+            $(this).val(text);
+        });
     });
 
     // SELECT2

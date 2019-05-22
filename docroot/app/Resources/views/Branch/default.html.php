@@ -15,7 +15,7 @@ $this->extend('layout-branch.html.php');
         <div class="container">
             <div class="row">
                 <div class="form-autocomplete">
-                    <input type="text" id="searchTextField" class="form-autocomplete__input" placeholder="Masukan kota/daerah dekat Anda">
+                    <input type="text" id="searchTextField" class="form-autocomplete__input" placeholder="<?= $this->translate('placeholder-branch'); ?>">
                     <i class="fa fa-search" aria-hidden="true"></i>
                     <div id="branch" class="col-md-12 wrapper-parent-branchlist"></div>
                 </div>
