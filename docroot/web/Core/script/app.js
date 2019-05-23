@@ -3693,7 +3693,7 @@
     });
 
     $(".formPhoneNumber").on("keydown", function(e) {
-        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+        if (e.which != 8 && e.which != 0 && e.which != 144 && (e.which < 48 || e.which > 57) && (e.which < 96 || e.which > 105)) {
             return false;
         }
         if (($(this).get(0).selectionStart == 0 && (e.keyCode < 35 || e.keyCode > 40)) ||
@@ -3702,17 +3702,13 @@
         }
     });
 
-    //$('.formPhoneNumber').keypress(function (e) {
-    //    if (this.value.length == 1 && e.which == 48) {
-    //        return false;
-    //    }
-    //});
-
     $('.formPhoneNumber').on('input propertychange paste', function(e) {
         var reg = /^00+/gi;
         var reg2 = /^[+62]+/gi;
         if (this.value.match(reg)) {
             this.value = this.value.replace(reg, '0');
+        } if (this.value.match(reg2)) {
+            this.value = this.value.replace(reg2, '0');
         }
     });
 

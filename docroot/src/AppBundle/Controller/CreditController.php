@@ -161,7 +161,13 @@ class CreditController extends FrontendController
 
         if($request->get('tipe') == "MOBIL"){
             $param['asuransi'] = htmlentities(addslashes($request->get('asuransi')));
-            $param['taksasi'] = htmlentities(addslashes($request->get('taksasi')));
+            //$param['taksasi'] = htmlentities(addslashes($request->get('taksasi')));
+        }
+        $bpkb = htmlentities(addslashes($request->get('status_kep')));
+        if($bpkb == "Milik Pribadi"){
+            $param['bpkb'] = "true";
+        } else{
+            $param['bpkb'] = "false";
         }
 
         $url = WebsiteSetting::getByName('URL_GET_LOAN')->getData();
@@ -392,7 +398,7 @@ class CreditController extends FrontendController
         if(!$send){
             return new JsonResponse([
                 'success' => "0",
-                'message' => "error multiple request otp"
+                'message' => "error multiple request otp",
             ]);
         }
 
@@ -432,7 +438,7 @@ class CreditController extends FrontendController
         $handphone = htmlentities(addslashes($request->get('no_handphone')));
 
         try {
-           $data = $this->sendAPI->validateOtp($handphone, $code);
+            $data = $this->sendAPI->validateOtp($handphone, $code);
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
@@ -451,6 +457,66 @@ class CreditController extends FrontendController
                 'message' => "Gagal"
             ]);
         }
+    }
+
+    public function getTenorAction(Request $request)
+    {
+        $param['loan_type'] = (string)htmlentities(addslashes($request->get('tipe')));
+        $url = WebsiteSetting::getByName('URL_GET_TENOR')->getData();
+
+        try {
+            $data = $this->sendAPI->getTenor($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Service Request Tenor Down"
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+
+    }
+
+    public function getInsuranceAction(Request $request)
+    {
+        $param['loan_type'] = (string)htmlentities(addslashes($request->get('tipe')));
+        $param['otr_price'] = htmlentities(addslashes($request->get('taksasi')));
+        $param['tenor'] = htmlentities(addslashes($request->get('tenor')));
+        $url = WebsiteSetting::getByName('URL_GET_INSURANCE')->getData();
+
+        try {
+            $data = $this->sendAPI->getTenor($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Service Request Insurance Down"
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+
     }
 
 
