@@ -122,4 +122,16 @@ class SendApi
     {
         return json_decode($data->getBody());
     }
+
+    public function getTenor($url, $params)
+    {
+        return $this->executeApi('api-tenor', $url, $params);
+
+    }
+
+    public function getInsurance($url, $params)
+    {
+        return $this->executeApi('api-insurance', $url, $params);
+
+    }
 }
