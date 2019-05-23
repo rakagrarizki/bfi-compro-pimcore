@@ -144,5 +144,41 @@ return [
         "legacy" => FALSE,
         "creationDate" => 1545204967,
         "modificationDate" => 1545204998
+    ],
+    10 => [
+        "id" => 10,
+        "name" => "get tenor",
+        "pattern" => "/\\/credit\\/get-tenor/",
+        "reverse" => "/credit/get-tenor",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getTenor",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1558600070,
+        "modificationDate" => 1558600112
+    ],
+    11 => [
+        "id" => 11,
+        "name" => "get insurance",
+        "pattern" => "/\\/credit\\/get-insurance/",
+        "reverse" => "/credit/get-insurance",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getInsurance",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1558604619,
+        "modificationDate" => 1558604652
     ]
 ];
