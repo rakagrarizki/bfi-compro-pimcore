@@ -146,7 +146,6 @@
         installment: 0
     }
 
-
     $("#herobanner").slick({
         slideToShow: 1,
         dots: true,
@@ -181,238 +180,12 @@
         jcf.replaceAll();
     }
 
-
-    // var customSelect = $('.c-custom-select-home');
-
-    // Options for custom Select
-    // jcf.setOptions('Select', {
-    //     wrapNative: false,
-    //     wrapNativeOnMobile: false,
-    //     fakeDropInBody: false,
-    //     maxVisibleItems: 5
-    // });
-
-    // jcf.replace(customSelect);
-
     $(".nav-tabs>li").on("click", function(e) {
         if ($(this).hasClass("disabled")) {
             e.preventDefault();
             return false;
         }
     });
-
-    // jQuery.validator.setDefaults({
-    // 	debug: true,
-    // 	success: "valid"
-    // });
-
-    // $form = $(".form-get--credit");
-    // $successMsg = $(".alert");
-
-
-    // $form.validate({
-    // 	errorPlacement: function (error, element) {
-    // 		if (!error) {
-    // 			return true;
-    // 		}
-    // 	},
-    // 	onfocusout: false,
-    // 	onkeyup: false,
-    // 	rules: {
-    // 		nama_lengkap: {
-    // 			required: true,
-    // 			minlength: 5
-    // 		},
-    // 		email: {
-    // 			required: true,
-    // 			email: true
-    // 		},
-    // 		no_handphone: {
-    // 			required: true,
-    // 			number: true
-    // 		},
-    // 		file_upload: {
-    // 			required: true,
-    // 			accept: "image/jpeg, pdf"
-    // 		},
-    // 		provinsi: {
-    // 			required: true
-    // 		},
-    // 		kota: {
-    // 			required: true
-    // 		},
-    // 		kecamatan: {
-    // 			required: true
-    // 		},
-    // 		kelurahan: {
-    // 			required: true
-    // 		},
-    // 		kode_pos: {
-    // 			required: true
-    // 		},
-    // 		alamat_lengkap: {
-    // 			required: true
-    // 		},
-    // 		merk_kendaraan: {
-    // 			required: true
-    // 		},
-    // 		model_kendaraan: {
-    // 			required: true
-    // 		},
-    // 		tahun_kendaraan: {
-    // 			required: true
-    // 		},
-    // 		status: {
-    // 			required: true
-    // 		},
-    // 	},
-    // 	messages: {
-    // 		nama_lengkap: "Please specify your name",
-    // 		provinsi: "Please input your province"
-
-    // 	},
-    // 	submitHandler: function () {
-
-    // 	}
-    // })
-
-    // var inputTargets = [{
-    // 	input: '#nama_lengkap',
-    // 	target: '#button1'
-    // }, {
-    // 	input: '#email1',
-    // 	target: '#button1'
-    // },
-    // {
-    // 	input: '#no_handphone',
-    // 	target: '#button1'
-    // },
-    // {
-    // 	input: '#file_upload',
-    // 	target: '#button1'
-    // },
-    // {
-    // 	select: '#provinsi',
-    // 	target: '#button2'
-    // },
-    // {
-    // 	select: '#kota',
-    // 	target: '#button2'
-    // },
-    // {
-    // 	select: '#kecamatan',
-    // 	target: '#button2'
-    // },
-    // {
-    // 	select: '#kelurahan',
-    // 	target: '#button2'
-    // },
-    // {
-    // 	select: '#kode_pos',
-    // 	target: '#button2'
-    // },
-    // {
-    // 	select: '#alamat_lengkap',
-    // 	target: '#button2'
-    // },
-    // {
-    // 	trans: '#model_kendaraan',
-    // 	target: '#button3'
-    // },
-    // {
-    // 	trans: '#merk_kendaraan',
-    // 	target: '#button3'
-    // },
-    // {
-    // 	trans: '#tahun_kendaraan',
-    // 	target: '#button3'
-    // },
-    // {
-    // 	trans: '#status',
-    // 	target: '#button3'
-    // },
-    // ];
-
-
-    // inputTargets.forEach(function (v) {
-
-
-    //     $(v.input).bind("input change", function (e) {
-
-    //         if ($("#nama_lengkap, #email1, #no_handphone, #file_upload").valid()) {
-
-    //             $("#button1").removeClass("disabled").addClass("done");
-    //         } else {
-    //             $("#button1").addClass("disabled");
-    //         }
-
-    //     });
-
-    //     $(v.select).bind("change input", function () {
-    //         if ($("#provinsi, #kota, #kecamatan, #kelurahan, #kode_pos, #alamat_lengkap").valid()) {
-    //             $("#button2").removeClass("disabled");
-    //         } else {
-    //             $("#button2").addClass("disabled");
-    //         }
-    //     });
-
-    //     $(v.trans).bind("change", function () {
-    //         if ($("#merk_kendaraan, #model_kendaraan, #tahun_kendaraan, #status").valid()) {
-    //             $("#button3").removeClass("disabled");
-    //         } else {
-    //             $("#button3").addClass("disabled");
-    //         }
-    //     });
-
-
-    // })
-
-    // $(".buttonnext").click(function () {
-    //     $idnext = $(this).parent(".button-area").parent(".tab-pane").next(".tab-pane");
-    //     $getidnext = $idnext.attr("id");
-
-
-    //     $('a[href="#' + $getidnext + '"]').parent("li").removeClass("disabled");
-
-    //     $id = $(this).parent(".button-area").parent(".tab-pane").next(".tab-pane");
-    //     $getid = $id.attr("id");
-
-    //     $('a[href="#' + $getid + '"]').click();
-
-    // })
-
-    // $(".buttonback").click(function () {
-    //     $id = $(this).parent(".button-area").parent(".tab-pane").prev();
-    //     $getid = $id.attr("id");
-
-    //     $('a[href="#' + $getid + '"]').click();
-
-    // })
-
-    //Range Form,
-
-    // var bilangan = 10000000;
-
-    // var number_string = bilangan.toString(),
-    // 	sisa = number_string.length % 3,
-    // 	rupiah = number_string.substr(0, sisa),
-    // 	ribuan = number_string.substr(sisa).match(/\d{3}/g);
-
-    // if (ribuan) {
-    // 	separator = sisa ? '.' : '';
-    // 	rupiah += separator + ribuan.join('.');
-    // }
-
-    // // $value = $(".slider-handle").attr("aria-valuenow");
-
-    // // console.log($value);
-
-    // $("#ex6SliderVal").val(rupiah);
-
-    // $(".valuemin").text("Rp 10.000.000");
-
-    // $(".valuemax").text("Rp 60.000.000");
-
 
     // With JQuery
     function htmlEntities(str) {
@@ -477,52 +250,56 @@
     function newoptionAsuransi(thisval, raw_select) {
         $(".columnselect").remove();
 
-        if ($("#jenis_form").val() == "MOBIL") {
-            var jumlah_loop = parseInt(thisval) / 12;
-        } else if ($("#jenis_form").val() == "MOTOR") {
-            var jumlah_loop = Math.ceil(parseInt(thisval) / 12);
-        }
+        // if ($("#jenis_form").val() == "MOBIL") {
+        //     var jumlah_loop = parseInt(thisval) / 12;
+        // } else if ($("#jenis_form").val() == "MOTOR") {
+        //     var jumlah_loop = Math.ceil(parseInt(thisval) / 12);
+        // }
 
         asuransi_arr = [];
         asuransi_arr_txt = [];
 
-        var tahunke = $('#tahunke').val();
-        console.log('tahun ke ' + tahunke);
+        // var tahunke = $('#tahunke').val();
+        // console.log('tahun ke ' + tahunke);
 
-        for (var i = 1; i <= jumlah_loop; i++) {
-            $(".form-group.inputsimulasi.asuransi").append(raw_select);
-            $(".columnselect[ke=0]").attr("ke", i);
-            $(".columnselect[ke=" + i + "]").children().find("label").text("" + tahunke + " - " + i + "");
-            asuransi_arr[asuransi_arr.length] = $(".columnselect .c-custom-select-trans").val();
+        // for (var i = 1; i <= jumlah_loop; i++) {
+        //     $(".form-group.inputsimulasi.asuransi").append(raw_select);
+        //     $(".columnselect[ke=0]").attr("ke", i);
+        //     $(".columnselect[ke=" + i + "]").children().find("label").text("" + tahunke + " - " + i + "");
+        //     asuransi_arr[asuransi_arr.length] = $(".columnselect .c-custom-select-trans").val();
 
-            $(".columnselect[ke=" + i + "]").find(".opsiasuransi").select2({
-                dropdownParent: $(".columnselect[ke=" + i + "]").find(".opsiasuransi").parent()
-            });
+        //     $(".columnselect[ke=" + i + "]").find(".opsiasuransi").select2({
+        //         dropdownParent: $(".columnselect[ke=" + i + "]").find(".opsiasuransi").parent()
+        //     });
+        // }
+
+        if ($("#jenis_form").val() == "MOBIL") {
+            getInsurance();
         }
 
-        $(".opsiasuransi").change(function() {
-            var opsi = $(this).val();
+        // $(".opsiasuransi").change(function() {
+        //     var opsi = $(this).val();
 
-            if (opsi.length == 0) {
-                $(this).val("ARK").trigger("change");
-            } else if (opsi.length > 1) {
-                $(this).val(opsi[opsi.length - 1]).trigger("change");
-            }
-        })
+        //     if (opsi.length == 0) {
+        //         $(this).val("ARK").trigger("change");
+        //     } else if (opsi.length > 1) {
+        //         $(this).val(opsi[opsi.length - 1]).trigger("change");
+        //     }
+        // })
 
-        $.each($(".columnselect .c-custom-select-trans"), function(i, o) {
-            asuransi_arr_txt[asuransi_arr_txt.length] = $(o).find("option:selected").text();
-        })
+        // $.each($(".columnselect .c-custom-select-trans"), function(i, o) {
+        //     asuransi_arr_txt[asuransi_arr_txt.length] = $(o).find("option:selected").text();
+        // })
 
-        $(".columnselect .c-custom-select-trans").on("change", function() {
-            var rowke = $(this).parents(".columnselect").attr("ke");
-            asuransi_arr[rowke - 1] = $(this).val();
-            asuransi_arr_txt[rowke - 1] = $(this).find("option:selected").text();
+        // $(".columnselect .c-custom-select-trans").on("change", function() {
+        //     var rowke = $(this).parents(".columnselect").attr("ke");
+        //     asuransi_arr[rowke - 1] = $(this).val();
+        //     asuransi_arr_txt[rowke - 1] = $(this).find("option:selected").text();
 
-            disableButton("#button4");
-            disableButton(".hidesavebutton");
-            flag_sudahcalc = false;
-        });
+        //     disableButton("#button4");
+        //     disableButton(".hidesavebutton");
+        //     flag_sudahcalc = false;
+        // });
     };
 
     $(".sliderGroup .c-custom-select-trans").on("change", function() {
@@ -581,26 +358,6 @@
             flag_sudahcalc = false;
         });
     }
-
-    // $("#ex12").slider();
-
-
-    // $("#ex11").on("slide", function (slideEvt) {
-
-    // 	var bilangan = slideEvt.value;
-
-    // 	var number_string = bilangan.toString(),
-    // 		sisa = number_string.length % 3,
-    // 		rupiah = number_string.substr(0, sisa),
-    // 		ribuan = number_string.substr(sisa).match(/\d{3}/g);
-
-    // 	if (ribuan) {
-    // 		separator = sisa ? '.' : '';
-    // 		rupiah += separator + ribuan.join('.');
-    // 	}
-    // 	$("#ex6SliderVal").val(rupiah);
-    // });
-
 
     // js by jaya
 
@@ -793,10 +550,8 @@
             tahun_kendaraan = $('#tahun_kendaraan').val(),
             status_pemilik = $('#status_kep').val();
 
-
         var merk_kendaraan_text = $("#merk_kendaraan option[value='" + merk_kendaraan + "']").text(),
             model_kendaraan_text = $("#model_kendaraan option[value='" + model_kendaraan + "']").text();
-
 
         credits.kendaraan.merk_kendaraan = htmlEntities(merk_kendaraan);
         credits.kendaraan.merk_kendaraan_text = htmlEntities(merk_kendaraan_text);
@@ -852,16 +607,13 @@
         $('#showKodePos').html(credits.tempat_tinggal.kode_pos);
         $('#showAddress').html(credits.tempat_tinggal.alamat);
 
-
         // data merk kendaraan
-
         $('#showMerkKendaraan').html(credits.kendaraan.merk_kendaraan_text);
         $('#showModelKendaraan').html(credits.kendaraan.model_kendaraan_text);
         $('#showTahunKendaraan').html(credits.kendaraan.tahun_kendaraan);
         $('#showStatusPemilik').html(credits.kendaraan.status_pemilik);
 
         //data bangunan
-
         $('#showStatus_sertificate').html(credits.data_bangunan.status_sertifikat);
         $('#showOwn_sertificate').html(credits.data_bangunan.sertifikat_atas_nama);
         $('#showProvinsi_sertificate').html(credits.data_bangunan.provinsi);
@@ -1110,7 +862,6 @@
                 hideTab2();
                 hideTab3();
 
-
                 scrollToTop();
                 $('.nav-item-1').removeClass('active');
                 $('.nav-item-1').addClass('done');
@@ -1235,6 +986,8 @@
                 }
 
                 pushDataKendaraan();
+                $('#jangka_waktu').empty();
+                getTenor();
 
                 if (status_edit) {
                     $("#jangka_waktu").each(function() {
@@ -1603,18 +1356,6 @@
                 return false;
             }
         });
-
-        // $(".input-number").keydown(function (e) {
-        // 	if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
-        // 		return false;
-        // 	}
-        // 	$(this).val("");
-        // 	// if(e.which == 37){
-        // 	// 	$(this).prev().focus();
-        // 	// }else if(e.which == 39){
-        // 	// 	$(this).next().focus();
-        // 	// }
-        // });
     }
 
 
@@ -1636,9 +1377,7 @@
             prevArrow: false,
             nextArrow: false,
             infinite: false,
-            slidesToShow: 2.5,
-            // centerMode: true,
-            // centerPadding: '80px',
+            slidesToShow: 2.5
         })
 
         $('ul.list-step').slick({
@@ -1727,18 +1466,18 @@
     function sendDataCredits(params) {
 
         objCredits.nama_lengkap = htmlEntities(params.pemohon.nama),
-            objCredits.email = htmlEntities(params.pemohon.email),
-            objCredits.alamat_lengkap = htmlEntities(params.tempat_tinggal.alamat),
-            objCredits.no_handphone = htmlEntities(params.pemohon.no_handphone),
-            objCredits.kota = htmlEntities(params.tempat_tinggal.kota),
-            objCredits.kecamatan = htmlEntities(params.tempat_tinggal.kecamatan),
-            objCredits.kelurahan = htmlEntities(params.tempat_tinggal.kelurahan),
-            objCredits.model_kendaraan = htmlEntities(params.kendaraan.model_kendaraan),
-            objCredits.tahun_kendaraan = htmlEntities(params.kendaraan.tahun_kendaraan),
-            objCredits.funding = 98000000,
-            objCredits.merk_kendaraan = htmlEntities(params.kendaraan.merk_kendaraan),
-            objCredits.jangka_waktu = 36,
-            objCredits.installment = 3000000
+        objCredits.email = htmlEntities(params.pemohon.email),
+        objCredits.alamat_lengkap = htmlEntities(params.tempat_tinggal.alamat),
+        objCredits.no_handphone = htmlEntities(params.pemohon.no_handphone),
+        objCredits.kota = htmlEntities(params.tempat_tinggal.kota),
+        objCredits.kecamatan = htmlEntities(params.tempat_tinggal.kecamatan),
+        objCredits.kelurahan = htmlEntities(params.tempat_tinggal.kelurahan),
+        objCredits.model_kendaraan = htmlEntities(params.kendaraan.model_kendaraan),
+        objCredits.tahun_kendaraan = htmlEntities(params.kendaraan.tahun_kendaraan),
+        objCredits.funding = 98000000,
+        objCredits.merk_kendaraan = htmlEntities(params.kendaraan.merk_kendaraan),
+        objCredits.jangka_waktu = 36,
+        objCredits.installment = 3000000
 
         var _url = '';
         var type = $('#jenis_form').val().toLowerCase();
@@ -1778,7 +1517,6 @@
             }
         })
     }
-
 
     function getmobilormotor(element, params) {
         var dataKendaraan = [];
@@ -2579,7 +2317,6 @@
         }
     });
 
-
     $('#kode_pos').change(function() {
         showDefaultButton();
         change_addres = true;
@@ -2650,7 +2387,6 @@
 
     })
 
-
     $("#kelurahan_sertificate").on("select2:select", function(e) {
         showDefaultButton();
 
@@ -2694,7 +2430,6 @@
 
     })
 
-
     $('#status_sertificate').change(function() {
         showDefaultButton();
         $('#status_sertificate').parent().find(".select2-selection").children(".select2-selection__rendered").html($(this).find(":selected").text());
@@ -2711,8 +2446,6 @@
         }
 
     })
-
-
 
     $('#own_sertificate').change(function() {
         showDefaultButton();
@@ -3020,7 +2753,8 @@
             model_kendaraan: htmlEntities(params.kendaraan.model_kendaraan),
             merk_kendaraan: htmlEntities(params.kendaraan.merk_kendaraan_text),
             post_code: htmlEntities(params.tempat_tinggal.kode_pos),
-            tahun: htmlEntities(params.kendaraan.tahun_kendaraan)
+            tahun: htmlEntities(params.kendaraan.tahun_kendaraan),
+            status_kep: htmlEntities(params.kendaraan.status_pemilik)
         }
         // alert(_data.tipe + "-" +_data.model_kendaraan + "-" + _data.merk_kendaraan + "-" + _data.post_code + "-" + _data.tahun);
         $.ajax({
@@ -3076,7 +2810,7 @@
                 // console.log("GGGG", data.data, opsiasuransi)
 
                 var tahunke = $('#tahunke').val();
-                console.log('tahun ke ' + tahunke);
+                // console.log('tahun ke ' + tahunke);
 
                 raw_select = '<div class="columnselect" ke="0">' +
                     '<div class="list-select">' +
@@ -3474,6 +3208,7 @@
             funding: htmlEntities(objCredits.funding),
             tenor: htmlEntities(objCredits.jangka_waktu),
             asuransi: htmlEntities(asuransi_arr.join("-")),
+            status_kep: htmlEntities(credits.kendaraan.status_pemilik),
             taksasi: htmlEntities(objCredits.installment)
         }
         if (_param.funding == 0) {
@@ -3537,6 +3272,144 @@
 
                 //       	$(".tableangsuran").append(html_angsuran);
                 //       }
+
+            }
+        })
+    }
+
+    function getTenor() {
+        var _url = '/credit/get-tenor';
+        var _param = {
+            tipe: htmlEntities($("#jenis_form").val()),
+        }
+
+        console.log(_param);
+
+        $.ajax({
+            type: 'POST',
+            url: _url,
+            data: _param,
+            dataType: 'json',
+            error: function(data) {
+                console.log('error' + data);
+            },
+            fail: function(xhr, textStatus, error) {
+                console.log('request failed')
+            },
+            success: function(data) {
+                console.log("Tenor Result", data);
+                $.each(data.data, function(index, value) {
+                    var tenor = value.tenor;
+                    var tenor_text = value.text;
+                    // console.log(tenor_text, tenor)
+                    $('#jangka_waktu').append($('<option>', {
+                        value: tenor,
+                        text: tenor_text
+                    }));
+
+                    $('#jangka_waktu option:first-child').attr('selected','selected');
+                })
+                
+            }
+        })
+    }
+    if($("#jangka_waktu").length){
+        if ($("#jenis_form").val() == "MOBIL") {
+            getInsurance();
+        }
+    }
+
+    function getInsurance() {
+        var _url = '/credit/get-insurance';
+        var _param = {
+            tipe: htmlEntities($("#jenis_form").val()),
+            tenor: htmlEntities($("#jangka_waktu").val()),
+            taksasi: htmlEntities($("#ex6SliderVal").val())
+        }
+
+        console.log(_param);
+
+        $.ajax({
+            type: 'POST',
+            url: _url,
+            data: _param,
+            dataType: 'json',
+            error: function(data) {
+                console.log('error' + data);
+            },
+            fail: function(xhr, textStatus, error) {
+                console.log('request failed')
+            },
+            success: function(data) {
+               // console.log("Asuransi Result", data);
+                // console.log("asuransi = "+ data.data.insurance_list);
+                var asu_ransi = ""
+                var jumlah_loop = data.data.count;
+                
+                $.each(data.data.insurance_list, function(index, value) {
+                    var asuransi = value;
+                    
+                    $.each(value.list, function(i, item) {
+                        // var list_asuransi = item.asuransi;
+                        if (item.text == "All Risk Only") {
+                            asu_ransi += "<option value='" + item.asuransi + "' selected>" + item.text + "</option>"
+                        } else {
+                            asu_ransi += "<option value='" + item.asuransi + "'>" + item.text + "</option>"
+                        }
+                        if (item.text == "All Risk Only" && item.isonly == true) {
+                            $('.columnselect[ke=1] .opsiasuransi').attr("disabled", "disabled");
+                            $('.columnselect[ke=1] .opsiasuransi').next().css("background-color", "#F4F4F4");
+                        }
+                    })
+
+                });
+
+                // if ($("#jenis_form").val() == "MOBIL") {
+                //     var jumlah_loop = parseInt(thisval) / 12;
+                // } else if ($("#jenis_form").val() == "MOTOR") {
+                //     var jumlah_loop = Math.ceil(parseInt(thisval) / 12);
+                // }
+        
+                asuransi_arr = [];
+                asuransi_arr_txt = [];
+        
+                var tahunke = $('#tahunke').val();
+               
+                for (var i = 1; i <= jumlah_loop; i++) {
+                    
+                    $(".form-group.inputsimulasi.asuransi").append(raw_select);
+                    $(".columnselect[ke=0]").attr("ke", i);
+                    $(".columnselect[ke=" + i + "]").children().find("label").text("" + tahunke + " - " + i + "");
+                    asuransi_arr[asuransi_arr.length] = $(".columnselect .c-custom-select-trans").val();
+        
+                    $(".columnselect[ke=" + i + "]").find(".opsiasuransi").select2({
+                        dropdownParent: $(".columnselect[ke=" + i + "]").find(".opsiasuransi").parent()
+                    });
+                }
+
+                $(".opsiasuransi").change(function() {
+                    var opsi = $(this).val();
+        
+                    if (opsi.length == 0) {
+                        $(this).val("ARK").trigger("change");
+                    } else if (opsi.length > 1) {
+                        $(this).val(opsi[opsi.length - 1]).trigger("change");
+                    }
+                })
+        
+                $.each($(".columnselect .c-custom-select-trans"), function(i, o) {
+                    asuransi_arr_txt[asuransi_arr_txt.length] = $(o).find("option:selected").text();
+                })
+        
+                $(".columnselect .c-custom-select-trans").on("change", function() {
+                    var rowke = $(this).parents(".columnselect").attr("ke");
+                    asuransi_arr[rowke - 1] = $(this).val();
+                    asuransi_arr_txt[rowke - 1] = $(this).find("option:selected").text();
+        
+                    disableButton("#button4");
+                    disableButton(".hidesavebutton");
+                    flag_sudahcalc = false;
+                });
 
             }
         })
