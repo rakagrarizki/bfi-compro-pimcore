@@ -265,11 +265,11 @@ $this->extend('layout-credit.html.php');
                                                 <select class="c-custom-select-trans form-control formRequired" id="jangka_waktu"
                                                         name="jangka-waktu">
                                                     <?php
-                                                    for ($i = 6 ; $i <= 24; $i++) {
-                                                        if($i % 6 == 0){
-                                                            echo '<option value="' . $i . '">' . $i . ' ' .$this->translate('label-month') .'</option>';
-                                                        }
-                                                    }
+                                                    // for ($i = 6 ; $i <= 24; $i++) {
+                                                    //     if($i % 6 == 0){
+                                                    //         echo '<option value="' . $i . '">' . $i . ' ' .$this->translate('label-month') .'</option>';
+                                                    //     }
+                                                    // }
                                                     ?>
                                                 </select>
                                                 <div class="error-wrap"></div>
