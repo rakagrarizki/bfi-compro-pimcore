@@ -496,7 +496,7 @@ class CreditController extends FrontendController
         $url = WebsiteSetting::getByName('URL_GET_INSURANCE')->getData();
 
         try {
-            $data = $this->sendAPI->getTenor($url, $param);
+            $data = $this->sendAPI->getInsurance($url, $param);
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
