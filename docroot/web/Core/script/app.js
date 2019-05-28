@@ -2769,10 +2769,11 @@
                 console.log('request failed')
             },
             success: function(data) {
-                var rawMinPrice = parseInt(data.data.minPrice),
-                    rawMaxPrice = parseInt(data.data.maxPrice);
+                var rawMinPrice = parseInt(data.data.price_min),
+                    rawMaxPrice = parseInt(data.data.price_max),
+                    otr_price = parseInt(data.data.otr_price);
 
-                //console.log(data);
+                console.log(otr_price);
 
                 // if($("#funding").length >0){
                 // 	$("#funding").slider({min:rawMinPrice, max:rawMaxPrice, step:100000});
@@ -2792,6 +2793,7 @@
                 $("#ex6SliderVal").val(minprice);
                 $(".valuemin").text(minprice);
                 $(".valuemax").text(maxprice);
+                $("#otr").val(otr_price);
 
 
                 // var opsiasuransi = "<option value='"+data.data.asuransi_1+"'>"+data.data.asuransi_1+"</option>"+
@@ -3361,7 +3363,6 @@
                             $('.columnselect[ke=1] .opsiasuransi').next().css("background-color", "#F4F4F4");
                         }
                     })
-
                 });
 
                 // if ($("#jenis_form").val() == "MOBIL") {

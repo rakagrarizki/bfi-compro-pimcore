@@ -100,24 +100,24 @@ class CreditController extends FrontendController
             ]);
         }
 
-        $dataApi = [];
-        if($data->data[0]->price){
-            $price = $data->data[0]->price;
-        }else{
-            $price = "0";
-        }
+        // $dataApi = [];
+        // if($data->data[0]->price){
+        //     $price = $data->data[0]->price;
+        // }else{
+        //     $price = "0";
+        // }
 
-        $dataApi['maxPrice'] = $price;
-        if($price == "0"){
-            $minPrice = "0";
-        }else{
-            if((string)$request->get('tipe') == "MOBIL"){
-                $minPrice = "10000000";
-            }else{
-                $minPrice = "1000000";
-            }
-        }
-        $dataApi['minPrice'] = $minPrice;
+        // $dataApi['maxPrice'] = $price;
+        // if($price == "0"){
+        //     $minPrice = "0";
+        // }else{
+        //     if((string)$request->get('tipe') == "MOBIL"){
+        //         $minPrice = "10000000";
+        //     }else{
+        //         $minPrice = "1000000";
+        //     }
+        // }
+        // $dataApi['minPrice'] = $minPrice;
 
         $assurance = new Assurance\Listing();
         if ($assurance) {
@@ -131,7 +131,7 @@ class CreditController extends FrontendController
         return new JsonResponse([
             'success' => "1",
             'message' => "Sukses",
-            'data' => $dataApi
+            'data' => $data->data
         ]);
     }
 
