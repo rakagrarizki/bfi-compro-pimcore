@@ -3350,18 +3350,20 @@
                 
                 $.each(data.data.insurance_list, function(index, value) {
                     var asuransi = value;
+                   
                     
                     $.each(value.list, function(i, item) {
                         // var list_asuransi = item.asuransi;
-                        if (item.text == "All Risk Only") {
+                        console.log(item.asuransi);
+                        if (item.asuransi == "ARK") {
                             asu_ransi += "<option value='" + item.asuransi + "' selected>" + item.text + "</option>"
                         } else {
                             asu_ransi += "<option value='" + item.asuransi + "'>" + item.text + "</option>"
                         }
-                        if (item.text == "All Risk Only" && item.isonly == true) {
-                            $('.columnselect[ke=1] .opsiasuransi').attr("disabled", "disabled");
-                            $('.columnselect[ke=1] .opsiasuransi').next().css("background-color", "#F4F4F4");
-                        }
+                        // if (item.text == "All Risk Only" && item.isonly == true) {
+                        //     $('.columnselect[ke=1] .opsiasuransi').attr("disabled", "disabled");
+                        //     $('.columnselect[ke=1] .opsiasuransi').next().css("background-color", "#F4F4F4");
+                        // }
                     })
                 });
 
