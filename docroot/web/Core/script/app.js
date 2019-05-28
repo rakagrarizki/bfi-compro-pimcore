@@ -250,56 +250,114 @@
     function newoptionAsuransi(thisval, raw_select) {
         $(".columnselect").remove();
 
-        // if ($("#jenis_form").val() == "MOBIL") {
-        //     var jumlah_loop = parseInt(thisval) / 12;
-        // } else if ($("#jenis_form").val() == "MOTOR") {
-        //     var jumlah_loop = Math.ceil(parseInt(thisval) / 12);
-        // }
-
-        asuransi_arr = [];
-        asuransi_arr_txt = [];
-
-        // var tahunke = $('#tahunke').val();
-        // console.log('tahun ke ' + tahunke);
-
-        // for (var i = 1; i <= jumlah_loop; i++) {
-        //     $(".form-group.inputsimulasi.asuransi").append(raw_select);
-        //     $(".columnselect[ke=0]").attr("ke", i);
-        //     $(".columnselect[ke=" + i + "]").children().find("label").text("" + tahunke + " - " + i + "");
-        //     asuransi_arr[asuransi_arr.length] = $(".columnselect .c-custom-select-trans").val();
-
-        //     $(".columnselect[ke=" + i + "]").find(".opsiasuransi").select2({
-        //         dropdownParent: $(".columnselect[ke=" + i + "]").find(".opsiasuransi").parent()
-        //     });
-        // }
-
-        if ($("#jenis_form").val() == "MOBIL") {
-            getInsurance();
+        var _url = '/credit/get-insurance';
+        var _param = {
+            tipe: htmlEntities($("#jenis_form").val()),
+            tenor: htmlEntities($("#jangka_waktu").val()),
+            otr_price: htmlEntities($("#otr").val())
         }
 
-        // $(".opsiasuransi").change(function() {
-        //     var opsi = $(this).val();
+        // console.log(_param);
 
-        //     if (opsi.length == 0) {
-        //         $(this).val("ARK").trigger("change");
-        //     } else if (opsi.length > 1) {
-        //         $(this).val(opsi[opsi.length - 1]).trigger("change");
-        //     }
-        // })
+        $.ajax({
+            type: 'POST',
+            url: _url,
+            data: _param,
+            dataType: 'json',
+            error: function(data) {
+                console.log('error' + data);
+            },
+            fail: function(xhr, textStatus, error) {
+                console.log('request failed')
+            },
+            success: function(data) {
+                // console.log("Asuransi Result", data);
+                // console.log("asuransi = "+ data.data.insurance_list);
+                
+                var jumlah_loop = data.data.count;
 
-        // $.each($(".columnselect .c-custom-select-trans"), function(i, o) {
-        //     asuransi_arr_txt[asuransi_arr_txt.length] = $(o).find("option:selected").text();
-        // })
+                asuransi_arr = [];
+                asuransi_arr_txt = [];
 
-        // $(".columnselect .c-custom-select-trans").on("change", function() {
-        //     var rowke = $(this).parents(".columnselect").attr("ke");
-        //     asuransi_arr[rowke - 1] = $(this).val();
-        //     asuransi_arr_txt[rowke - 1] = $(this).find("option:selected").text();
+                var tahunke = $('#tahunke').val();
+                var isonly = false;
+                var asu_ransi = "";
 
-        //     disableButton("#button4");
-        //     disableButton(".hidesavebutton");
-        //     flag_sudahcalc = false;
-        // });
+                $.each(data.data.insurance_list, function(index, value) {
+                    var asuransi = value;
+                    asu_ransi = "";
+
+                    $.each(value.list, function(i, item) {
+                        // var list_asuransi = item.asuransi;
+                        // console.log(item.asuransi);
+                        if (item.asuransi == "ARK") {
+                            asu_ransi += "<option value='" + item.asuransi + "' selected>" + item.text + "</option>"
+                        } else {
+                            asu_ransi += "<option value='" + item.asuransi + "'>" + item.text + "</option>"
+                        }
+                        if (item.asuransi == "ARK" && item.isonly == true) {
+                            isonly = item.isonly;
+                        }
+                    })
+                });
+
+                raw_select = '<div class="columnselect" ke="0">' +
+                    '<div class="list-select">' +
+                    '<label>' + tahunke + ' - 1</label>' +
+                    '</div>' +
+                    '<div class="list-select select-wrapper">' +
+                    '<select class="c-custom-select-trans form-control formRequired opsiasuransi"' +
+                    'name="status" multiple="multiple">' + asu_ransi + '</select>' +
+                    '</div>' +
+                    '<div class="error-wrap"></div>' +
+                    '</div>';
+
+                for (var i = 1; i <= jumlah_loop; i++) {
+
+                    $(".form-group.inputsimulasi.asuransi").append(raw_select);
+                    $(".columnselect[ke=0]").attr("ke", i);
+                    $(".columnselect[ke=" + i + "]").children().find("label").text("" + tahunke + " - " + i + "");
+                    asuransi_arr[asuransi_arr.length] = $(".columnselect .c-custom-select-trans").val();
+
+                    $(".columnselect[ke=" + i + "]").find(".opsiasuransi").select2({
+                        dropdownParent: $(".columnselect[ke=" + i + "]").find(".opsiasuransi").parent()
+                    });
+                    
+                }
+                if (isonly == true) {
+                    $('.columnselect[ke=1] .opsiasuransi').attr("disabled", "disabled");
+                    $('.columnselect[ke=1] .opsiasuransi').next().css("background-color", "#F4F4F4");
+                }
+
+                // console.log(asu_ransi)
+
+                // console.log(raw_select);
+                $(".opsiasuransi").change(function() {
+                    var opsi = $(this).val();
+
+                    if (opsi.length == 0) {
+                        $(this).val("ARK").trigger("change");
+                    } else if (opsi.length > 1) {
+                        $(this).val(opsi[opsi.length - 1]).trigger("change");
+                    }
+                })
+
+                $.each($(".columnselect .c-custom-select-trans"), function(i, o) {
+                    asuransi_arr_txt[asuransi_arr_txt.length] = $(o).find("option:selected").text();
+                })
+
+                $(".columnselect .c-custom-select-trans").on("change", function() {
+                    var rowke = $(this).parents(".columnselect").attr("ke");
+                    asuransi_arr[rowke - 1] = $(this).val();
+                    asuransi_arr_txt[rowke - 1] = $(this).find("option:selected").text();
+
+                    disableButton("#button4");
+                    disableButton(".hidesavebutton");
+                    flag_sudahcalc = false;
+                });
+
+            }
+        })
     };
 
     $(".sliderGroup .c-custom-select-trans").on("change", function() {
@@ -809,7 +867,7 @@
                 }
             }, 500);
         })
-        
+
         $('.biaya-agunan .form-group').on('click', function() {
             setTimeout(function() {
                 if ($('input#agreement1').parent().hasClass('jcf-checked')) {
@@ -1450,7 +1508,7 @@
                 console.log('request failed')
             },
             success: function(data) {
-                console.log(data.success)
+                // console.log(data.success)
                 if (data.success == 0) {
                     $('#wrongOtp').modal('show');
 
@@ -1466,18 +1524,18 @@
     function sendDataCredits(params) {
 
         objCredits.nama_lengkap = htmlEntities(params.pemohon.nama),
-        objCredits.email = htmlEntities(params.pemohon.email),
-        objCredits.alamat_lengkap = htmlEntities(params.tempat_tinggal.alamat),
-        objCredits.no_handphone = htmlEntities(params.pemohon.no_handphone),
-        objCredits.kota = htmlEntities(params.tempat_tinggal.kota),
-        objCredits.kecamatan = htmlEntities(params.tempat_tinggal.kecamatan),
-        objCredits.kelurahan = htmlEntities(params.tempat_tinggal.kelurahan),
-        objCredits.model_kendaraan = htmlEntities(params.kendaraan.model_kendaraan),
-        objCredits.tahun_kendaraan = htmlEntities(params.kendaraan.tahun_kendaraan),
-        objCredits.funding = 98000000,
-        objCredits.merk_kendaraan = htmlEntities(params.kendaraan.merk_kendaraan),
-        objCredits.jangka_waktu = 36,
-        objCredits.installment = 3000000
+            objCredits.email = htmlEntities(params.pemohon.email),
+            objCredits.alamat_lengkap = htmlEntities(params.tempat_tinggal.alamat),
+            objCredits.no_handphone = htmlEntities(params.pemohon.no_handphone),
+            objCredits.kota = htmlEntities(params.tempat_tinggal.kota),
+            objCredits.kecamatan = htmlEntities(params.tempat_tinggal.kecamatan),
+            objCredits.kelurahan = htmlEntities(params.tempat_tinggal.kelurahan),
+            objCredits.model_kendaraan = htmlEntities(params.kendaraan.model_kendaraan),
+            objCredits.tahun_kendaraan = htmlEntities(params.kendaraan.tahun_kendaraan),
+            objCredits.funding = 98000000,
+            objCredits.merk_kendaraan = htmlEntities(params.kendaraan.merk_kendaraan),
+            objCredits.jangka_waktu = 36,
+            objCredits.installment = 3000000
 
         var _url = '';
         var type = $('#jenis_form').val().toLowerCase();
@@ -1507,7 +1565,7 @@
             },
 
             success: function(data) {
-                console.log(data)
+                // console.log(data)
                 if (data.success == '0') {
                     $('#failedOtp').modal('show');
                 } else if (data.success == '1') {
@@ -2799,33 +2857,35 @@
                 // var opsiasuransi = "<option value='"+data.data.asuransi_1+"'>"+data.data.asuransi_1+"</option>"+
                 // 					"<option value='"+data.data.asuransi_2+"'>"+data.data.asuransi_2+"</option>";
 
-                var opsiasuransi = ""
+                // var opsiasuransi = ""
 
-                $.each(data.data.asuransi, function(idx, opt) {
-                    if (opt.name == "All Risk Only") {
-                        opsiasuransi += "<option value='" + opt.code + "' selected>" + opt.name + "</option>"
-                    } else {
-                        opsiasuransi += "<option value='" + opt.code + "'>" + opt.name + "</option>"
-                    }
-                })
+                // $.each(data.data.asuransi, function(idx, opt) {
+                //     if (opt.name == "All Risk Only") {
+                //         opsiasuransi += "<option value='" + opt.code + "' selected>" + opt.name + "</option>"
+                //     } else {
+                //         opsiasuransi += "<option value='" + opt.code + "'>" + opt.name + "</option>"
+                //     }
+                // })
 
                 // console.log("GGGG", data.data, opsiasuransi)
 
-                var tahunke = $('#tahunke').val();
+                // var tahunke = $('#tahunke').val();
                 // console.log('tahun ke ' + tahunke);
 
-                raw_select = '<div class="columnselect" ke="0">' +
-                    '<div class="list-select">' +
-                    '<label>'+ tahunke +' - 1</label>' +
-                    '</div>' +
-                    '<div class="list-select">' +
-                    '<select class="c-custom-select-trans form-control formRequired opsiasuransi"' +
-                    'name="status" multiple="multiple">' + opsiasuransi + '</select>' +
-                    '</div>' +
-                    '<div class="error-wrap"></div>' +
-                    '</div>';
+                // raw_select = '<div class="columnselect" ke="0">' +
+                //     '<div class="list-select">' +
+                //     '<label>'+ tahunke +' - 1</label>' +
+                //     '</div>' +
+                //     '<div class="list-select">' +
+                //     '<select class="c-custom-select-trans form-control formRequired opsiasuransi"' +
+                //     'name="status" multiple="multiple">' + opsiasuransi + '</select>' +
+                //     '</div>' +
+                //     '<div class="error-wrap"></div>' +
+                //     '</div>';
 
                 // newoptionAsuransi(12, raw_select);
+
+                // console.log(opsiasuransi);
 
                 // objCredits.installment = rawMinPrice;
                 // objCredits.jangka_waktu = 12;
@@ -3234,7 +3294,7 @@
             },
             success: function(data) {
 
-                console.log("Calculator Result", data)
+                // console.log("Calculator Result", data)
 
                 var angsuranFinal = data.data.angsuranFinal,
                     angsuranFinal_txt = separatordot(angsuranFinal),
@@ -3285,7 +3345,7 @@
             tipe: htmlEntities($("#jenis_form").val()),
         }
 
-        console.log(_param);
+        // console.log(_param);
 
         $.ajax({
             type: 'POST',
@@ -3299,7 +3359,7 @@
                 console.log('request failed')
             },
             success: function(data) {
-                console.log("Tenor Result", data);
+                // console.log("Tenor Result", data);
                 $.each(data.data, function(index, value) {
                     var tenor = value.tenor;
                     var tenor_text = value.text;
@@ -3309,112 +3369,17 @@
                         text: tenor_text
                     }));
 
-                    $('#jangka_waktu option:first-child').attr('selected','selected');
+                    $('#jangka_waktu option:first-child').attr('selected', 'selected');
                 })
-                
-            }
-        })
-    }
-    if($("#jangka_waktu").length){
-        if ($("#jenis_form").val() == "MOBIL") {
-            getInsurance();
-        }
-    }
-
-    function getInsurance() {
-        var _url = '/credit/get-insurance';
-        var _param = {
-            tipe: htmlEntities($("#jenis_form").val()),
-            tenor: htmlEntities($("#jangka_waktu").val()),
-            otr_price: htmlEntities($("#otr").val())
-        }
-
-        console.log(_param);
-
-        $.ajax({
-            type: 'POST',
-            url: _url,
-            data: _param,
-            dataType: 'json',
-            error: function(data) {
-                console.log('error' + data);
-            },
-            fail: function(xhr, textStatus, error) {
-                console.log('request failed')
-            },
-            success: function(data) {
-               // console.log("Asuransi Result", data);
-                // console.log("asuransi = "+ data.data.insurance_list);
-                var asu_ransi = ""
-                var jumlah_loop = data.data.count;
-                
-                $.each(data.data.insurance_list, function(index, value) {
-                    var asuransi = value;
-                    
-                    $.each(value.list, function(i, item) {
-                        // var list_asuransi = item.asuransi;
-                        if (item.text == "All Risk Only") {
-                            asu_ransi += "<option value='" + item.asuransi + "' selected>" + item.text + "</option>"
-                        } else {
-                            asu_ransi += "<option value='" + item.asuransi + "'>" + item.text + "</option>"
-                        }
-                        if (item.text == "All Risk Only" && item.isonly == true) {
-                            $('.columnselect[ke=1] .opsiasuransi').attr("disabled", "disabled");
-                            $('.columnselect[ke=1] .opsiasuransi').next().css("background-color", "#F4F4F4");
-                        }
-                    })
-                });
-
-                // if ($("#jenis_form").val() == "MOBIL") {
-                //     var jumlah_loop = parseInt(thisval) / 12;
-                // } else if ($("#jenis_form").val() == "MOTOR") {
-                //     var jumlah_loop = Math.ceil(parseInt(thisval) / 12);
-                // }
-        
-                asuransi_arr = [];
-                asuransi_arr_txt = [];
-        
-                var tahunke = $('#tahunke').val();
-               
-                for (var i = 1; i <= jumlah_loop; i++) {
-                    
-                    $(".form-group.inputsimulasi.asuransi").append(raw_select);
-                    $(".columnselect[ke=0]").attr("ke", i);
-                    $(".columnselect[ke=" + i + "]").children().find("label").text("" + tahunke + " - " + i + "");
-                    asuransi_arr[asuransi_arr.length] = $(".columnselect .c-custom-select-trans").val();
-        
-                    $(".columnselect[ke=" + i + "]").find(".opsiasuransi").select2({
-                        dropdownParent: $(".columnselect[ke=" + i + "]").find(".opsiasuransi").parent()
-                    });
-                }
-
-                $(".opsiasuransi").change(function() {
-                    var opsi = $(this).val();
-        
-                    if (opsi.length == 0) {
-                        $(this).val("ARK").trigger("change");
-                    } else if (opsi.length > 1) {
-                        $(this).val(opsi[opsi.length - 1]).trigger("change");
-                    }
-                })
-        
-                $.each($(".columnselect .c-custom-select-trans"), function(i, o) {
-                    asuransi_arr_txt[asuransi_arr_txt.length] = $(o).find("option:selected").text();
-                })
-        
-                $(".columnselect .c-custom-select-trans").on("change", function() {
-                    var rowke = $(this).parents(".columnselect").attr("ke");
-                    asuransi_arr[rowke - 1] = $(this).val();
-                    asuransi_arr_txt[rowke - 1] = $(this).find("option:selected").text();
-        
-                    disableButton("#button4");
-                    disableButton(".hidesavebutton");
-                    flag_sudahcalc = false;
-                });
 
             }
         })
     }
+    // if($("#jangka_waktu").length){
+    //     if ($("#jenis_form").val() == "MOBIL") {
+    //         getInsurance();
+    //     }
+    // }
 
     $("#ex6SliderVal").change(function() {
         console.log(parseInt($(this).val()))
@@ -3557,6 +3522,7 @@
     // SELECT WRAPPER
     $(document).ready(function() {
         $('.form-get--credit .form-group > select').parent().addClass('select-wrapper');
+        $('.form-get--credit .inputsimulasi .columnselect .list-select select').parent().addClass('select-wrapper');
     });
 
     // PHONE NUMBER formPhoneNumber
@@ -3581,7 +3547,8 @@
         var reg2 = /^[+62]+/gi;
         if (this.value.match(reg)) {
             this.value = this.value.replace(reg, '0');
-        } if (this.value.match(reg2)) {
+        }
+        if (this.value.match(reg2)) {
             this.value = this.value.replace(reg2, '0');
         }
     });
@@ -3602,7 +3569,7 @@
 
     $("#nama_lengkap").each(function(index) {
         $(this).focusout(function() {
-            var text = $(this).val();      
+            var text = $(this).val();
             text = $.trim(text);
             $(this).val(text);
         });
