@@ -250,6 +250,7 @@ $this->extend('layout-credit.html.php');
                                                     <input id="funding" class="customslide" type="text" data-slider-handle="custom" data-slider-tooltip="hide" />
                                                     <div class="value-left valuemin"></div>
                                                     <div class="value-right valuemax"></div>
+                                                    <input type="hidden" id="otr">
                                                 </div>
                                             </div>
                                             <div class="form-group sliderGroup inputsimulasi">
