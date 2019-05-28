@@ -3326,7 +3326,7 @@
         var _param = {
             tipe: htmlEntities($("#jenis_form").val()),
             tenor: htmlEntities($("#jangka_waktu").val()),
-            taksasi: htmlEntities($("#ex6SliderVal").val())
+            otr_price: htmlEntities($("#otr").val())
         }
 
         console.log(_param);

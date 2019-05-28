@@ -491,7 +491,7 @@ class CreditController extends FrontendController
     public function getInsuranceAction(Request $request)
     {
         $param['loan_type'] = (string)htmlentities(addslashes($request->get('tipe')));
-        $param['otr_price'] = htmlentities(addslashes($request->get('taksasi')));
+        $param['otr_price'] = htmlentities(addslashes($request->get('otr_price')));
         $param['tenor'] = htmlentities(addslashes($request->get('tenor')));
         $url = WebsiteSetting::getByName('URL_GET_INSURANCE')->getData();
 
