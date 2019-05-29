@@ -89,8 +89,11 @@ if($this->editmode) : ?>
                 <label><?= $this->translate("Newsletter") ?></label> 
                 <form class="form-inline" id="sendNewsletter" action="/register/newsletter"
                       method="POST">
+
                     <div class="form-group">
                         <input type="text" class="form-control" id="email" name="email" placeholder="<?= $this->translate("email-input") ?>">
+                        <input type="hidden" name="lang" id="lang" value="<?= $this->getLocale(); ?>">
+
                     </div>
                     <div id="ajax-loading"></div>
                     <button type="submit" id="button-klik" class="cta cta-primary submitfoot"><?= $this->translate("submit") ?></button>

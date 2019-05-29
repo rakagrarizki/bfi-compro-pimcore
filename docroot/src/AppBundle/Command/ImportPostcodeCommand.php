@@ -9,7 +9,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Pimcore\Model\DataObject;
 use Pimcore\Model\DataObject\Kelurahan as Kelurahan;
 
-class ImportPostCodeCommand extends AbstractCommand
+class ImportPostcodeCommand extends AbstractCommand
 {
     protected function configure()
     {

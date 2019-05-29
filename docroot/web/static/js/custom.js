@@ -19,16 +19,31 @@ $(document).ready(function () {
 
         //var email = $('#email').val();
         var email = document.forms['sendNewsletter']['email'].value;
+        var lang = document.forms['sendNewsletter']['lang'].value;
         $('#email').text(email);
+        var inputError = "";
+        var wrongFormat = "";
+        var emailExist = "";
+
+        if(lang === "en"){
+            inputError = "Please Input Email";
+            wrongFormat = "Invalid Email Format";
+            emailExist =  "Email Successfully Registered";
+        }else {
+            inputError = "Harap isi Email";
+            wrongFormat = "Format Email Salah";
+            emailExist = "Email Berhasil Terdaftar";
+        }
+
 
         if(email == ''){
-            RenderingErrorContent('<p>Harap isi Email</p>');
+            RenderingErrorContent('<p>'+inputError+'</p>');
 
             $('#errorNewsletter').modal('show');
             $('body').css("padding-right",0);
         }else {
             if(!validateEmail(email)) {
-                RenderingErrorContent('<p>Format Email salah</p>');
+                RenderingErrorContent('<p>'+wrongFormat+'</p>');
 
                 $('#errorNewsletter').modal('show');
             }
@@ -39,7 +54,8 @@ $(document).ready(function () {
                     method: "POST",
                     url: "/register/newsletter",
                     data: {
-                        email: htmlEntities(email)
+                        email: htmlEntities(email),
+                        lang: htmlEntities(lang)
                     },
                     dataType: 'json',
                     error: function (data) {
@@ -51,7 +67,7 @@ $(document).ready(function () {
                     success: function (data) {
 
                         if (data.success == 1) {
-                            RenderingErrorContent('<p>Email berhasil terdaftar</p>');
+                            RenderingErrorContent('<p>'+emailExist+'</p>');
                             $("#ajax-loading").hide();
                             $("#button-klik").show();
                             $('#errorNewsletter').modal('show');
