@@ -14,6 +14,7 @@ use AppBundle\Service\SendApi;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Pimcore\Bundle\AdminBundle\HttpFoundation\JsonResponse;
+use Symfony\Component\Translation\TranslatorInterface;
 
 class ServiceController extends FrontendController
 {
@@ -22,11 +23,17 @@ class ServiceController extends FrontendController
 
     }
 
-    public function registerNewsletterAction(Request $request)
+    public function registerNewsletterAction(TranslatorInterface $translator, Request $request)
     {
+        $lang = htmlentities($request->get('lang'));
         $param = [];
         $param["email"] = htmlentities($request->get('email'));
+
         $url = WebsiteSetting::getByName('URL_NEWSLETTER')->getData();
+
+        if($lang == "en"){
+            $request->setLocale("en");
+        }
 
         $sendAPI = new SendApi();
 
@@ -36,7 +43,7 @@ class ServiceController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Alamat Email sudah terdaftar / service tidak bisa diakses"
+                'message' => $translator->trans("email-had-been-registered"),
             ]);
         }
 
@@ -52,14 +59,14 @@ class ServiceController extends FrontendController
             if($data == true){
                 return new JsonResponse([
                     'success' => "1",
-                    'message' => "Sukses"
+                    'message' => $translator->trans("email-success")
                 ]);
             }
         }
 
         return new JsonResponse([
             'success' => "0",
-            'message' => "Gagal Mendaftarkan email newslettter"
+            'message' => $translator->trans("email-failed")
         ]);
     }
 
