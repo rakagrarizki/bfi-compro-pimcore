@@ -32,18 +32,26 @@ class ServiceController extends FrontendController
         $url = WebsiteSetting::getByName('URL_NEWSLETTER')->getData();
 
         if($lang == "en"){
-            $request->setLocale("en");
+            $emailRegistered = 'Your Email Address had been Registered / Service down';
+            $emailSuccess = 'Success';
+            $emailFailed = 'Failed to Register your Email Address to Newsletter';
+        } else {
+            $emailRegistered = 'Alamat Email sudah terdaftar / service tidak bisa diakses';
+            $emailSuccess = 'Sukses';
+            $emailFailed = 'Gagal Mendaftarkan email newslettter';
         }
+//        $translation = $translator->trans("email",[],'',$lang);
 
+//        $request->setLocale($lang);
+//        dump($this->get("translator")->trans("email-had-been-registered"));exit;
         $sendAPI = new SendApi();
-
 
         try {
             $data = $sendAPI->sendNewsletter($url, $param);
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $translator->trans("email-had-been-registered"),
+                'message' => $emailRegistered
             ]);
         }
 
@@ -59,14 +67,14 @@ class ServiceController extends FrontendController
             if($data == true){
                 return new JsonResponse([
                     'success' => "1",
-                    'message' => $translator->trans("email-success")
+                    'message' => $emailSuccess
                 ]);
             }
         }
 
         return new JsonResponse([
             'success' => "0",
-            'message' => $translator->trans("email-failed")
+            'message' => $emailFailed
         ]);
     }
 
