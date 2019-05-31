@@ -3261,6 +3261,10 @@
 
     function calculatePremi() {
         var _url = '/credit/get-loan';
+        // var _val = $('#ex6SliderVal').val()
+        // var _reform = _val.replace(/[.]/g, "")
+        // var _toInt = parseInt(_reform)
+        // _toInt = (_toInt > 0 ? _toInt : 0)
         var _param = {
             tipe: htmlEntities(credits.angunan.jenis_angunan),
             model_kendaraan: htmlEntities(credits.kendaraan.model_kendaraan),
@@ -3387,8 +3391,9 @@
         var _reform = _val.replace(/[.]/g, "")
         var _toInt = parseInt(_reform)
         _toInt = (_toInt > 0 ? _toInt : 0)
-        objCredits.installment = _toInt;
+        objCredits.funding = _toInt;
 
+        console.log(_toInt);
     })
 
     // if ($("#jangka_waktu").length) {
