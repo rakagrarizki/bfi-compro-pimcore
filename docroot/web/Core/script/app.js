@@ -325,8 +325,8 @@
                     
                 }
                 if (isonly == true) {
-                    $('.columnselect[ke=1] .opsiasuransi').attr("disabled", "disabled");
-                    $('.columnselect[ke=1] .opsiasuransi').next().css("background-color", "#F4F4F4");
+                    $('.columnselect .opsiasuransi').attr("disabled", "disabled");
+                    $('.columnselect .opsiasuransi').next().css("background-color", "#F4F4F4");
                 }
 
                 // console.log(asu_ransi)
