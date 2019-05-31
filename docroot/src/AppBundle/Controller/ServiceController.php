@@ -14,6 +14,7 @@ use AppBundle\Service\SendApi;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Pimcore\Bundle\AdminBundle\HttpFoundation\JsonResponse;
+use Symfony\Component\Translation\TranslatorInterface;
 
 class ServiceController extends FrontendController
 {
@@ -22,21 +23,35 @@ class ServiceController extends FrontendController
 
     }
 
-    public function registerNewsletterAction(Request $request)
+    public function registerNewsletterAction(TranslatorInterface $translator, Request $request)
     {
+        $lang = htmlentities($request->get('lang'));
         $param = [];
         $param["email"] = htmlentities($request->get('email'));
+
         $url = WebsiteSetting::getByName('URL_NEWSLETTER')->getData();
 
-        $sendAPI = new SendApi();
+        if($lang == "en"){
+            $emailRegistered = 'Your Email Address had been Registered / Service down';
+            $emailSuccess = 'Success';
+            $emailFailed = 'Failed to Register your Email Address to Newsletter';
+        } else {
+            $emailRegistered = 'Alamat Email sudah terdaftar / service tidak bisa diakses';
+            $emailSuccess = 'Sukses';
+            $emailFailed = 'Gagal Mendaftarkan email newslettter';
+        }
+//        $translation = $translator->trans("email",[],'',$lang);
 
+//        $request->setLocale($lang);
+//        dump($this->get("translator")->trans("email-had-been-registered"));exit;
+        $sendAPI = new SendApi();
 
         try {
             $data = $sendAPI->sendNewsletter($url, $param);
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Alamat Email sudah terdaftar / service tidak bisa diakses"
+                'message' => $emailRegistered
             ]);
         }
 
@@ -52,14 +67,14 @@ class ServiceController extends FrontendController
             if($data == true){
                 return new JsonResponse([
                     'success' => "1",
-                    'message' => "Sukses"
+                    'message' => $emailSuccess
                 ]);
             }
         }
 
         return new JsonResponse([
             'success' => "0",
-            'message' => "Gagal Mendaftarkan email newslettter"
+            'message' => $emailFailed
         ]);
     }
 
