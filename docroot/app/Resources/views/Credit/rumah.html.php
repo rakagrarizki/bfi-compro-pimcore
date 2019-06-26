@@ -84,7 +84,7 @@ $this->extend('layout-credit.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label for="no_handphone"><?= $this->translate('form-hp')?></label>
-                                            <input type="text" class="form-control formPhoneNumber" name="no_handphone" id="no_handphone" maxlength="13"
+                                            <input type="tel" class="form-control formPhoneNumber" name="no_handphone" id="no_handphone" maxlength="13"
                                                    placeholder="<?= $this->translate('placeholder-hp')?>">
                                             <div class="error-wrap"></div>
                                         </div>
@@ -153,7 +153,7 @@ $this->extend('layout-credit.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label for="kode_pos"><?= $this->translate('label-postcode')?></label>
-                                            <input type="text" class="form-control formKodePos" name="kode_pos" id="kode_pos"
+                                            <input type="text" pattern="\d*" class="form-control formKodePos" name="kode_pos" id="kode_pos"
                                                    placeholder="<?= $this->translate('placeholder-postcode')?>">
                                             <div class="error-wrap"></div>
                                         </div>
@@ -240,7 +240,7 @@ $this->extend('layout-credit.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label for="kode_pos"><?= $this->translate('label-postcode')?></label>
-                                            <input type="text" class="form-control formKodePos" name="kode_pos_sertificate" id="kode_pos_sertificate"
+                                            <input type="text" pattern="\d*" class="form-control formKodePos" name="kode_pos_sertificate" id="kode_pos_sertificate"
                                                    placeholder="<?= $this->translate('placeholder-postcode')?>">
                                             <div class="error-wrap"></div>
                                         </div>
