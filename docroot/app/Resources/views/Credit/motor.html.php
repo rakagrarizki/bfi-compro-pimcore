@@ -79,7 +79,7 @@ $this->extend('layout-credit.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label for="no_handphone"><?= $this->translate('form-hp')?></label>
-                                            <input type="text" class="form-control formPhoneNumber" name="no_handphone" id="no_handphone" maxlength="13"
+                                            <input type="tel" pattern="\d*" class="form-control formPhoneNumber" name="no_handphone" id="no_handphone" maxlength="13"
                                                    placeholder="<?= $this->translate('placeholder-hp')?>">
                                             <div class="error-wrap"></div>
                                         </div>
@@ -248,14 +248,14 @@ $this->extend('layout-credit.html.php');
                                                 <label for="jml-biaya"><?= $this->translate('label-data-funding')?></label>
                                                 <div class="input-group inputform">
                                                     <span class="input-group-addon" id="basic-addon1">Rp</span>
-                                                    <input type="text" id="ex6SliderVal" class="form-control formRequired c-input-trans"
+                                                    <input type="tel" pattern="\d*" id="ex6SliderVal" class="form-control formRequired c-input-trans"
                                                            aria-describedby="basic-addon1">
 
                                                     <div class="error-wrap"></div>
 
                                                 </div>
                                                 <div class="slidecontainer ">
-                                                    <input id="ex11" class="customslide" type="text" data-slider-handle="custom" data-slider-tooltip="hide" />
+                                                    <input id="ex11" class="customslide" type="tel" pattern="\d*" data-slider-handle="custom" data-slider-tooltip="hide" />
                                                     <div class="value-left valuemin"></div>
                                                     <div class="value-right valuemax"></div>
                                                 </div>
@@ -549,13 +549,13 @@ $this->extend('layout-credit.html.php');
 
                                         <div class="otp-number form-group">
                                             <div class="otp-number__phone disabled">
-                                                <p id="showPhone"> <input type="text" id="otpPhone" disabled /> <img id="otpEditPhone" src="/static/images/icon/pencils.png" alt=""></p>
+                                                <p id="showPhone"> <input type="tel" pattern="\d*" id="otpPhone" disabled /> <img id="otpEditPhone" src="/static/images/icon/pencils.png" alt=""></p>
                                             </div>
                                             <div class="otp-number__verify">
-                                                <input type="text" class="input-number formRequired" maxlength="1" name="otp1">
-                                                <input type="text" class="input-number formRequired" maxlength="1" name="otp2">
-                                                <input type="text" class="input-number formRequired" maxlength="1" name="otp3">
-                                                <input type="text" class="input-number formRequired" maxlength="1" name="otp4">
+                                                <input type="tel" pattern="\d*" class="input-number formRequired" maxlength="1" name="otp1">
+                                                <input type="tel" pattern="\d*" class="input-number formRequired" maxlength="1" name="otp2">
+                                                <input type="tel" pattern="\d*" class="input-number formRequired" maxlength="1" name="otp3">
+                                                <input type="tel" pattern="\d*" class="input-number formRequired" maxlength="1" name="otp4">
                                             </div>
                                             <div class="error-wrap"></div>
                                             <div class="otp-number__text">
