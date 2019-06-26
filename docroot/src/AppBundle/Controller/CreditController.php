@@ -462,6 +462,7 @@ class CreditController extends FrontendController
     public function getTenorAction(Request $request)
     {
         $param['loan_type'] = (string)htmlentities(addslashes($request->get('tipe')));
+        $param['funding'] = (string)htmlentities(addslashes($request->get('funding')));;
         $url = WebsiteSetting::getByName('URL_GET_TENOR')->getData();
 
         try {
