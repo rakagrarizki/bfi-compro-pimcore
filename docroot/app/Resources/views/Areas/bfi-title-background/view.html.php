@@ -18,5 +18,10 @@
                 <p><?= $this->input('text'); ?></p>
             </div>
         </div>
+        <?php if(!$this->link("link")->isEmpty()) :?>
+        <div class="button">
+            <a href="<?= $this->link("link")->getHref();?>"><?= $this->link("link")->getText();?></a>
+        </div>
+        <?php endif;?>
     </div>
 </div>
