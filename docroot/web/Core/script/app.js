@@ -1044,8 +1044,8 @@
                 }
 
                 pushDataKendaraan();
-                $('#jangka_waktu').empty();
-                getTenor();
+                // $('#jangka_waktu').empty();
+                // getTenor();
 
                 if (status_edit) {
                     $("#jangka_waktu").each(function() {
@@ -2918,6 +2918,9 @@
                 //clone_asuransi = $(".columnselect").clone(true);
             }
         })
+
+        $('#jangka_waktu').empty();
+        getTenor();
     }
 
 
@@ -3394,7 +3397,24 @@
         objCredits.funding = _toInt;
 
         console.log(_toInt);
+        $('#jangka_waktu').empty();
+        getTenor();
     })
+
+    previousVal = "";
+    function InputChangeListener() {
+        if ($('#jangka_waktu').val() != previousVal) {
+            previousVal = $('#jangka_waktu').val();
+            $('#jangka_waktu').change();
+        }
+    }
+
+    setInterval(InputChangeListener, 500);
+
+    $('#ex6SliderVal').parents(".sliderGroup").find(".customslide").slider().on('slideStop', function(ev){
+        $('#jangka_waktu').empty();
+        getTenor();
+    });
 
     // if ($("#jangka_waktu").length) {
     //     var defaultJangkaWaktu = $("#jangka_waktu").val()[0];
