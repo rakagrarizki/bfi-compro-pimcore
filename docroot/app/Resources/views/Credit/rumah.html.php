@@ -153,7 +153,7 @@ $this->extend('layout-credit.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label for="kode_pos"><?= $this->translate('label-postcode')?></label>
-                                            <input type="text" pattern="\d*" class="form-control formKodePos" name="kode_pos" id="kode_pos"
+                                            <input type="text" class="form-control formKodePos" name="kode_pos" id="kode_pos"
                                                    placeholder="<?= $this->translate('placeholder-postcode')?>">
                                             <div class="error-wrap"></div>
                                         </div>
@@ -240,7 +240,7 @@ $this->extend('layout-credit.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label for="kode_pos"><?= $this->translate('label-postcode')?></label>
-                                            <input type="text" pattern="\d*" class="form-control formKodePos" name="kode_pos_sertificate" id="kode_pos_sertificate"
+                                            <input type="text" class="form-control formKodePos" name="kode_pos_sertificate" id="kode_pos_sertificate"
                                                    placeholder="<?= $this->translate('placeholder-postcode')?>">
                                             <div class="error-wrap"></div>
                                         </div>
@@ -443,13 +443,13 @@ $this->extend('layout-credit.html.php');
 
                                         <div class="otp-number form-group">
                                             <div class="otp-number__phone disabled">
-                                                <p id="showPhone"> <input type="text" id="otpPhone" disabled /> <img id="otpEditPhone" src="/static/images/icon/pencils.png" alt=""></p>
+                                                <p id="showPhone"> <input type="tel" pattern="\d*" id="otpPhone" disabled /> <img id="otpEditPhone" src="/static/images/icon/pencils.png" alt=""></p>
                                             </div>
                                             <div class="otp-number__verify">
-                                                <input type="text" class="input-number formRequired" maxlength="1" name="otp1">
-                                                <input type="text" class="input-number formRequired" maxlength="1" name="otp2">
-                                                <input type="text" class="input-number formRequired" maxlength="1" name="otp3">
-                                                <input type="text" class="input-number formRequired" maxlength="1" name="otp4">
+                                                <input type="tel" pattern="\d*" class="input-number formRequired" maxlength="1" name="otp1">
+                                                <input type="tel" pattern="\d*" class="input-number formRequired" maxlength="1" name="otp2">
+                                                <input type="tel" pattern="\d*" class="input-number formRequired" maxlength="1" name="otp3">
+                                                <input type="tel" pattern="\d*" class="input-number formRequired" maxlength="1" name="otp4">
                                             </div>
                                             <div class="error-wrap"></div>
                                             <div class="otp-number__text">
