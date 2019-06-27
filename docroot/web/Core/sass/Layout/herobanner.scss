@@ -413,6 +413,28 @@
                 width: 45%;
                 left: 14%;
             }
+
+            .button {
+                a {
+                    display: block;
+                    position: relative;
+                    padding-right: 20px;
+
+                    &:after {
+                        display: block;
+                        font-family: 'FontAwesome';
+                        content: "\f105";
+                        right: 0;
+                        top: 2px;
+                        transform: rotate(90deg);
+                        position: absolute;
+                        width: 16px;
+                        height: 16px;
+                        text-align: center;
+                        line-height: 16px;
+                    }
+                }
+            }
         }
     }
 

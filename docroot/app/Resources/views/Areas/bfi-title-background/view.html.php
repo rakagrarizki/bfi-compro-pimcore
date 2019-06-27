@@ -9,6 +9,11 @@
             <div class="sect-title middle-position">
                 <h2><?= $this->input('title'); ?></h2>
                 <p><?= $this->input('text'); ?></p>
+                <?php if(!$this->link("link")->isEmpty()) :?>
+                <div class="button">
+                    <a href="javscript:void(0)" data-key="<?= $this->link("link")->getHref();?>"><?= $this->link("link")->getText();?></a>
+                </div>
+                <?php endif;?>
             </div>
         </div>
         <div class="herobanner__noslider visible-xs"
@@ -16,12 +21,12 @@
             <div class="sect-title middle-position">
                 <h2><?= $this->input('title'); ?></h2>
                 <p><?= $this->input('text'); ?></p>
+                <?php if(!$this->link("link")->isEmpty()) :?>
+                <div class="button">
+                    <a href="javscript:void(0)" data-key="<?= $this->link("link")->getHref();?>"><?= $this->link("link")->getText();?></a>
+                </div>
+                <?php endif;?>
             </div>
         </div>
-        <?php if(!$this->link("link")->isEmpty()) :?>
-        <div class="button">
-            <a href="<?= $this->link("link")->getHref();?>"><?= $this->link("link")->getText();?></a>
-        </div>
-        <?php endif;?>
     </div>
 </div>

@@ -6,6 +6,19 @@
         }, 500);
     });
 
+    $(document).ready(function() {
+        $(".sect-title .button a").click(function() {
+            var aid = $(this).data("key");
+            $('html,body').animate({
+                scrollTop: $(aid).offset().top - 80
+            }, 'slow');
+
+            var idAccor = $(aid).find('.panel-group .panel-default:first-child .panel-collapse').attr('id');
+            // console.log(idAccor);
+            $('#'+idAccor).collapse('toggle');
+        });
+    });
+
     var input = document.getElementById('file_upload');
     var infoArea = document.getElementById('nama-file');
 
@@ -1062,6 +1075,8 @@
                 if (isMobile) {
                     $(".horizontal-scroll").scrollLeft(340);
                 }
+
+                // console.log($("#ex6SliderVal").val())
             }
         })
 
@@ -3350,6 +3365,7 @@
         var _url = '/credit/get-tenor';
         var _param = {
             tipe: htmlEntities($("#jenis_form").val()),
+            funding: htmlEntities(objCredits.funding),
         }
 
         // console.log(_param);
