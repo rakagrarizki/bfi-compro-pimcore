@@ -359,8 +359,8 @@ class CreditController extends FrontendController
 
     public function sendOtpRequestAction(Request $request)
     {
-        $nama_lengkap = htmlentities(addslashes($request->get('nama_lengkap')));
-        $handphone = htmlentities(addslashes($request->get('no_handphone')));
+        //$nama_lengkap = htmlentities(addslashes($request->get('nama_lengkap')));
+        $handphone = htmlentities(addslashes($request->get('phone_number')));
         $limitTime = WebsiteSetting::getByName('LIMIT_TIME')->getData();
         $limit = $limitTime * 3600;
 
@@ -403,7 +403,7 @@ class CreditController extends FrontendController
         }
 
         try {
-            $data = $this->sendAPI->requestOtp($handphone, $nama_lengkap);
+            $data = $this->sendAPI->requestOtp($handphone);
             $redis->hSet($handphone, 'time-send', time());
         } catch (\Exception $e) {
             return new JsonResponse([
@@ -418,7 +418,9 @@ class CreditController extends FrontendController
             $redis->hSet($handphone, 'attempt-hit', $attempts + 1);
         }
 
-        if($data->code != 1){
+
+
+        if($data->header->status != 200){
             return new JsonResponse([
                 'success' => "0",
                 'message' => "Gagal"
@@ -435,7 +437,7 @@ class CreditController extends FrontendController
     public function sendOtpValidateAction(Request $request)
     {
         $code = htmlentities(addslashes($request->get('otp1'))). htmlentities(addslashes($request->get('otp2'))). htmlentities(addslashes($request->get('otp3'))). htmlentities(addslashes($request->get('otp4')));
-        $handphone = htmlentities(addslashes($request->get('no_handphone')));
+        $handphone = htmlentities(addslashes($request->get('phone_number')));
 
         try {
             $data = $this->sendAPI->validateOtp($handphone, $code);
@@ -446,7 +448,7 @@ class CreditController extends FrontendController
             ]);
         }
 
-        if($data->code == 1){
+        if($data->header->status == 200){
             return new JsonResponse([
                 'success' => "1",
                 'message' => "Sukses"
@@ -461,8 +463,8 @@ class CreditController extends FrontendController
 
     public function getTenorAction(Request $request)
     {
-        $param['loan_type'] = (string)htmlentities(addslashes($request->get('tipe')));
-        $param['funding'] = (string)htmlentities(addslashes($request->get('funding')));;
+        $param['submission_id'] = (string)htmlentities(addslashes($request->get('submission_id')));
+
         $url = WebsiteSetting::getByName('URL_GET_TENOR')->getData();
 
         try {
@@ -491,8 +493,7 @@ class CreditController extends FrontendController
 
     public function getInsuranceAction(Request $request)
     {
-        $param['loan_type'] = (string)htmlentities(addslashes($request->get('tipe')));
-        $param['otr_price'] = htmlentities(addslashes($request->get('otr_price')));
+        $param['submission_id'] = (string)htmlentities(addslashes($request->get('submission_id')));
         $param['tenor'] = htmlentities(addslashes($request->get('tenor')));
         $url = WebsiteSetting::getByName('URL_GET_INSURANCE')->getData();
 
@@ -999,6 +1000,398 @@ class CreditController extends FrontendController
 
         try {
             $data = $this->sendAPI->saveCarLeads6($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+    }
+
+    // Motorcycle
+
+    public function getMotorcycleTypeAction(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_GET_MOTORCYCLE_TYPE')->getData();
+
+
+        try {
+            $data = $this->sendAPI->getMotorcycle($url);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+    }
+
+    public function getMotorcycleBrandAction(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_GET_MOTORCYCLE_BRANDS')->getData();
+
+
+        try {
+            $data = $this->sendAPI->getMotorcycleBrand($url);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+    }
+
+    public function getMotorcycleModelAction(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_GET_MOTORCYCLE_MODELS')->getData();
+        $param["type_id"] = htmlentities(addslashes($request->get('type_id')));
+        $param["brand_id"] = htmlentities(addslashes($request->get('brand_id')));
+
+        try {
+            $data = $this->sendAPI->getMotorcycleModel($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+    }
+
+    public function getMotorcycleYearAction(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_GET_MOTORCYCLE_YEAR')->getData();
+        $param["model_id"] = htmlentities(addslashes($request->get('model_id')));
+
+
+        try {
+            $data = $this->sendAPI->getMotorcycleYear($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+    }
+
+    public function getMotorcycleFundingAction(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_GET_MOTORCYCLE_FUNDING')->getData();
+        $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+
+
+        try {
+            $data = $this->sendAPI->getMotorcycleFunding($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+    }
+
+    public function getMotorcycleTenorAction(Request $request)
+    {
+        $param['submission_id'] = (string)htmlentities(addslashes($request->get('submission_id')));
+
+        $url = WebsiteSetting::getByName('URL_GET_MOTORCYCLE_TENOR')->getData();
+
+        try {
+            $data = $this->sendAPI->getMotorcycleTenor($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Service Request Tenor Down"
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+
+    }
+
+    public function getMotorcycleCalculateAction(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_MOTORCYCLE_CALCULATE')->getData();
+        $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+        $param["funding"] = htmlentities(addslashes($request->get('funding')));
+        $param["tenor"] = htmlentities(addslashes($request->get('tenor')));
+
+
+        try {
+            $data = $this->sendAPI->getMotorcycleCalculate($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+    }
+
+    public function saveMotorcycleLeads1Action(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_SAVE_MOTORCYCLE_LEADS_1')->getData();
+        $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+        $param["name"] = htmlentities(addslashes($request->get('name')));
+        $param["email"] = htmlentities(addslashes($request->get('email')));
+        $param["phone_number"] =htmlentities(addslashes($request->get('phone_number')));
+
+
+        try {
+            $data = $this->sendAPI->saveMotorcycleLeads1($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+    }
+
+    public function saveMotorcycleLeads2Action(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_SAVE_MOTORCYCLE_LEADS_2')->getData();
+        $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+        $param["province_id"] = htmlentities(addslashes($request->get('province_id')));
+        $param["city_id"] = htmlentities(addslashes($request->get('city_id')));
+        $param["district_id"] = htmlentities(addslashes($request->get('district_id')));
+        $param["subdistrict_id"] = htmlentities(addslashes($request->get('subdistrict_id')));
+        $param["zipcode_id"] = htmlentities(addslashes($request->get('zipcode_id')));
+        $param["address"] = htmlentities(addslashes($request->get('address')));
+
+
+        try {
+            $data = $this->sendAPI->saveMotorcycleLeads2($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+    }
+
+    public function saveMotorcycleLeads3Action(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_SAVE_MOTORCYCLE_LEADS_3')->getData();
+        $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+        $param["motorcycle_type_id"] = htmlentities(addslashes($request->get('motorcycle_type_id')));
+        $param["motorcycle_brand_id"] = htmlentities(addslashes($request->get('motorcycle_brand_id')));
+        $param["motorcycle_model_id"] = htmlentities(addslashes($request->get('motorcycle_model_id')));
+        $param["motorcycle_year_id"] = htmlentities(addslashes($request->get('motorcycle_year_id')));
+        $param["bpkb_atas_nama"] = htmlentities(addslashes($request->get('bpkb_atas_nama')));
+
+
+
+        try {
+            $data = $this->sendAPI->saveMotorcycleLeads3($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+    }
+
+    public function saveMotorcycleLeads4Action(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_SAVE_MOTORCYCLE_LEADS_4')->getData();
+        $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+
+        try {
+            $data = $this->sendAPI->saveMotorcycleLeads4($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+    }
+
+    public function saveMotorcycleLeads5Action(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_SAVE_MOTORCYCLE_LEADS_5')->getData();
+        $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+
+        try {
+            $data = $this->sendAPI->saveMotorcycleLeads5($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+    }
+
+    public function saveMotorcycleLeads6Action(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_SAVE_MOTORCYCLE_LEADS_6')->getData();
+        $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+
+        try {
+            $data = $this->sendAPI->saveMotorcycleLeads6($url, $param);
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
