@@ -27,7 +27,8 @@ class ServiceController extends FrontendController
     {
         $lang = htmlentities($request->get('lang'));
         $param = [];
-        $param["email"] = htmlentities($request->get('email'));
+        $param["submission_id"] = htmlentities($request->get('submission_id'));
+        $param["is_news_letter"] = htmlentities($request->get('is_news_letter'));
 
         $url = WebsiteSetting::getByName('URL_NEWSLETTER')->getData();
 
@@ -224,6 +225,6 @@ class ServiceController extends FrontendController
             'result' => $maps
         ]);
     }
-    
-    
+
+
 }

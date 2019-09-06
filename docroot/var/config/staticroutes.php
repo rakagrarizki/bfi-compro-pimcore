@@ -486,5 +486,239 @@ return [
         "legacy" => FALSE,
         "creationDate" => 1567594158,
         "modificationDate" => 1567594183
+    ],
+    29 => [
+        "id" => 29,
+        "name" => "get motorcycle type",
+        "pattern" => "/\\/credit\\/get-motorcycle-type/",
+        "reverse" => "/credit/get-motorcycle-type",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getMotorcycleType",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567669031,
+        "modificationDate" => 1567669086
+    ],
+    30 => [
+        "id" => 30,
+        "name" => "get motorcycle brand",
+        "pattern" => "/\\/credit\\/get-motorcycle-brand/",
+        "reverse" => "/credit/get-motorcycle-brand",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getMotorcycleBrand",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567669088,
+        "modificationDate" => 1567669122
+    ],
+    31 => [
+        "id" => 31,
+        "name" => "get motorcycle model",
+        "pattern" => "/\\/credit\\/get-motorcycle-model/",
+        "reverse" => "/credit/get-motorcycle-model",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getMotorcycleModel",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567669121,
+        "modificationDate" => 1567669160
+    ],
+    32 => [
+        "id" => 32,
+        "name" => "get motorcycle year",
+        "pattern" => "/\\/credit\\/get-motorcycle-year/",
+        "reverse" => "/credit/get-motorcycle-year",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getMotorcycleYear",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567669159,
+        "modificationDate" => 1567669205
+    ],
+    33 => [
+        "id" => 33,
+        "name" => "get motorcycle funding",
+        "pattern" => "/\\/credit\\/get-motorcycle-funding/",
+        "reverse" => "/credit/get-motorcycle-funding",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getMotorcycleFunding",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567669234,
+        "modificationDate" => 1567669277
+    ],
+    34 => [
+        "id" => 34,
+        "name" => "get motorcycle tenor",
+        "pattern" => "/\\/credit\\/get-motorcycle-tenor/",
+        "reverse" => "/credit/get-motorcycle-tenor",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getMotorcycleTenor",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567669283,
+        "modificationDate" => 1567669319
+    ],
+    35 => [
+        "id" => 35,
+        "name" => "get motorcycle calculate",
+        "pattern" => "/\\/credit\\/get-motorcycle-calculate/",
+        "reverse" => "/credit/get-motorcycle-calculate",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getMotorcycleCalculate",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567673469,
+        "modificationDate" => 1567674056
+    ],
+    36 => [
+        "id" => 36,
+        "name" => "save motorcycle leads 1",
+        "pattern" => "/\\/credit\\/save-motorcycle-leads1/",
+        "reverse" => "/credit/save-motorcycle-leads1",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "saveMotorcycleLeads1",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567674484,
+        "modificationDate" => 1567674525
+    ],
+    37 => [
+        "id" => 37,
+        "name" => "save motorcycle leads 2",
+        "pattern" => "/\\/credit\\/save-motorcycle-leads2/",
+        "reverse" => "/credit/save-motorcycle-leads2",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "saveMotorcycleLeads2",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567674593,
+        "modificationDate" => 1567674616
+    ],
+    38 => [
+        "id" => 38,
+        "name" => "save motorcycle leads 3",
+        "pattern" => "/\\/credit\\/save-motorcycle-leads3/",
+        "reverse" => "/credit/save-motorcycle-leads3",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "saveMotorcycleLeads3",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567674634,
+        "modificationDate" => 1567674656
+    ],
+    39 => [
+        "id" => 39,
+        "name" => "save motorcycle leads 4",
+        "pattern" => "/\\/credit\\/save-motorcycle-leads4/",
+        "reverse" => "/credit/save-motorcycle-leads4",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "saveMotorcycleLeads4",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567674656,
+        "modificationDate" => 1567674885
+    ],
+    40 => [
+        "id" => 40,
+        "name" => "save motorcycle leads 5",
+        "pattern" => "/\\/credit\\/save-motorcycle-leads5/",
+        "reverse" => "/credit/save-motorcycle-leads5",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "saveMotorcycleLeads5",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567674888,
+        "modificationDate" => 1567674961
+    ],
+    41 => [
+        "id" => 41,
+        "name" => "save motorcycle leads 6",
+        "pattern" => "/\\/credit\\/save-motorcycle-leads6/",
+        "reverse" => "/credit/save-motorcycle-leads6",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "saveMotorcycleLeads6",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567675157,
+        "modificationDate" => 1567675200
     ]
 ];

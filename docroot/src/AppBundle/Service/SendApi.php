@@ -52,11 +52,11 @@ class SendApi
         return $this->getData($data);
     }
 
-    public function requestOtp($handphone, $name)
+    public function requestOtp($handphone)
     {
         $url = WebsiteSetting::getByName('URL_REQUEST_OTP')->getData();
         $params["phone_number"] = $handphone;
-        $params["first_name"] = $name;
+        //$params["first_name"] = $name;
 
         return $this->executeApi('api-request-otp', $url, $params,"POST");
     }
@@ -65,7 +65,7 @@ class SendApi
     {
         $url = WebsiteSetting::getByName('URL_VALIDATE_OTP')->getData();
         $params["phone_number"] = $handphone;
-        $params["sms_code"] = $code;
+        $params["otp_code"] = $code;
 
         return $this->executeApi('api-validate-otp', $url, $params,"POST");
     }
@@ -219,5 +219,70 @@ class SendApi
 
         return $this->executeApi('api-save-car-leads6', $url,$params,"POST");
     }
+
+    public function getMotorcycle($url){
+
+        return $this->executeApi('api-motorcycle-type', $url,[],"GET");
+    }
+
+    public function getMotorcycleBrand($url){
+
+        return $this->executeApi('api-motorcycle-brand', $url,[],"GET");
+    }
+
+    public function getMotorcycleModel($url, $params){
+
+        return $this->executeApi('api-motorcycle-model', $url,$params,"POST");
+    }
+
+    public function getMotorcycleYear($url, $params){
+
+        return $this->executeApi('api-motorcycle-year', $url,$params,"POST");
+    }
+
+    public function getMotorcycleFunding($url, $params){
+
+        return $this->executeApi('api-motorcycle-funding', $url,$params,"POST");
+    }
+
+    public function getMotorcycleTenor($url, $params){
+
+        return $this->executeApi('api-motorcycle-funding', $url,$params,"POST");
+    }
+    public function getMotorcycleCalculate($url, $params){
+
+        return $this->executeApi('api-motorcycle-calculate', $url,$params,"POST");
+    }
+
+    public function saveMotorcycleLeads1($url, $params){
+
+        return $this->executeApi('api-save-motorcycle-leads1', $url,$params,"POST");
+    }
+
+    public function saveMotorcycleLeads2($url, $params){
+
+        return $this->executeApi('api-save-motorcycle-leads2', $url,$params,"POST");
+    }
+
+    public function saveMotorcycleLeads3($url, $params){
+
+        return $this->executeApi('api-save-motorcycle-leads3', $url,$params,"POST");
+    }
+
+    public function saveMotorcycleLeads4($url, $params){
+
+        return $this->executeApi('api-save-motorcycle-leads4', $url,$params,"POST");
+    }
+
+    public function saveMotorcycleLeads5($url, $params){
+
+        return $this->executeApi('api-save-motorcycle-leads5', $url,$params,"POST");
+    }
+    public function saveMotorcycleLeads6($url, $params){
+
+        return $this->executeApi('api-save-motorcycle-leads6', $url,$params,"POST");
+    }
+
+
 
 }

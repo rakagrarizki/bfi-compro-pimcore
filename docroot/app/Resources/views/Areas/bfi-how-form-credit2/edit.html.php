@@ -31,6 +31,7 @@
                 <div class="row">
                     <div class="col-sm-4">value</div>
                     <div class="col-sm-8"><?= $this->input("value1"); ?></div>
+                </div>
                 <div class="row">
                     <div class="col-sm-4">url</div>
                     <div class="col-sm-8"><?= $this->link("url"); ?></div>
