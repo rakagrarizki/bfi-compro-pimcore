@@ -247,7 +247,7 @@ class SendApi
 
     public function getMotorcycleTenor($url, $params){
 
-        return $this->executeApi('api-motorcycle-funding', $url,$params,"POST");
+        return $this->executeApi('api-motorcycle-tenor', $url,$params,"POST");
     }
     public function getMotorcycleCalculate($url, $params){
 
@@ -281,6 +281,68 @@ class SendApi
     public function saveMotorcycleLeads6($url, $params){
 
         return $this->executeApi('api-save-motorcycle-leads6', $url,$params,"POST");
+    }
+
+    public function getProfession($url){
+
+        return $this->executeApi('api-pbf-prosession', $url,[],"GET");
+    }
+
+    public function getPbfCertificateType($url){
+
+        return $this->executeApi('api-get-list-pbf-certificate-type', $url,[],"GET");
+    }
+
+    public function getPbfCertificateOnBehalf($url){
+
+        return $this->executeApi('api-get-list-pbf-certificate-on-behalf', $url,[],"GET");
+    }
+
+    public function getPbfPropertyType($url){
+
+        return $this->executeApi('api-get-list-pbf-property-type', $url,[],"GET");
+    }
+
+    public function getPbfFunding($url, $params){
+
+        return $this->executeApi('api-pbf-funding', $url,$params,"POST");
+    }
+    public function getPbfTenor($url, $params){
+
+        return $this->executeApi('api-pbf-tenor', $url,$params,"POST");
+    }
+    public function getPbfCalculate($url, $params){
+
+        return $this->executeApi('api-pbf-calculate', $url,$params,"POST");
+    }
+
+    public function savePbfLeads1($url, $params){
+
+        return $this->executeApi('api-save-pbf-leads1', $url,$params,"POST");
+    }
+
+    public function savePbfLeads2($url, $params){
+
+        return $this->executeApi('api-save-pbf-leads2', $url,$params,"POST");
+    }
+
+    public function savePbfLeads3($url, $params){
+
+        return $this->executeApi('api-save-pbf-leads3', $url,$params,"POST");
+    }
+
+    public function savePbfLeads4($url, $params){
+
+        return $this->executeApi('api-save-pbf-leads4', $url,$params,"POST");
+    }
+
+    public function savePbfLeads5($url, $params){
+
+        return $this->executeApi('api-save-pbf-leads5', $url,$params,"POST");
+    }
+    public function savePbfLeads6($url, $params){
+
+        return $this->executeApi('api-save-pbf-leads6', $url,$params,"POST");
     }
 
 
