@@ -720,5 +720,257 @@ return [
         "legacy" => FALSE,
         "creationDate" => 1567675157,
         "modificationDate" => 1567675200
+    ],
+    42 => [
+        "id" => 42,
+        "name" => "get pbf profession",
+        "pattern" => "/\\/credit\\/get-pbf-profession/",
+        "reverse" => "/credit/get-pbf-profession",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getPbfProfession",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568022954,
+        "modificationDate" => 1568023037
+    ],
+    43 => [
+        "id" => 43,
+        "name" => "get pbf certificate type",
+        "pattern" => "/\\/credit\\/get-pbf-certificate-type/",
+        "reverse" => "/credit/get-pbf-certificate-type",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getPbfCertificateType",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568023038,
+        "modificationDate" => 1568023080
+    ],
+    44 => [
+        "id" => 44,
+        "name" => "get pbf certificate on behalf",
+        "pattern" => "/\\/credit\\/get-pbf-certificate-on-behalf/",
+        "reverse" => "/credit/get-pbf-certificate-on-behalf",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getPbfCertificateOnBehalf",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568024655,
+        "modificationDate" => 1568024697
+    ],
+    45 => [
+        "id" => 45,
+        "name" => "get pbf property type",
+        "pattern" => "/\\/credit\\/get-pbf-property-type/",
+        "reverse" => "/credit/get-pbf-property-type",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getPbfPropertyType",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568024911,
+        "modificationDate" => 1568025029
+    ],
+    46 => [
+        "id" => 46,
+        "name" => "get pbf funding",
+        "pattern" => "/\\/credit\\/get-pbf-funding/",
+        "reverse" => "/credit/get-pbf-funding",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getPbfFunding",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568025062,
+        "modificationDate" => 1568025097
+    ],
+    47 => [
+        "id" => 47,
+        "name" => "get pbf tenor",
+        "pattern" => "/\\/credit\\/get-pbf-tenor/",
+        "reverse" => "/credit/get-pbf-tenor",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getPbfTenor",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568025106,
+        "modificationDate" => 1568025137
+    ],
+    48 => [
+        "id" => 48,
+        "name" => "get pbf funding",
+        "pattern" => "/\\/credit\\/get-pbf-funding/",
+        "reverse" => "/credit/get-pbf-funding",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getPbfFunding",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568025137,
+        "modificationDate" => 1568026063
+    ],
+    49 => [
+        "id" => 49,
+        "name" => "pbf calculate",
+        "pattern" => "/\\/credit\\/pbf-calculate/",
+        "reverse" => "/credit/pbf-calculate",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getPbfCalculate",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568025769,
+        "modificationDate" => 1568026265
+    ],
+    50 => [
+        "id" => 50,
+        "name" => "save pbf leads 1",
+        "pattern" => "/\\/credit\\/save-pbf-leads1/",
+        "reverse" => "/credit/save-pbf-leads1",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "savePbfLeads1",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568025769,
+        "modificationDate" => 1568025803
+    ],
+    51 => [
+        "id" => 51,
+        "name" => "save pbf leads 2",
+        "pattern" => "/\\/credit\\/save-pbf-leads2/",
+        "reverse" => "/credit/save-pbf-leads2",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "savePbfLeads2",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568025769,
+        "modificationDate" => 1568025803
+    ],
+    53 => [
+        "id" => 53,
+        "name" => "save pbf leads 3",
+        "pattern" => "/\\/credit\\/save-pbf-leads3/",
+        "reverse" => "/credit/save-pbf-leads3",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "savePbfLeads3",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568025769,
+        "modificationDate" => 1568025803
+    ],
+    54 => [
+        "id" => 54,
+        "name" => "save pbf leads 4",
+        "pattern" => "/\\/credit\\/save-pbf-leads4/",
+        "reverse" => "/credit/save-pbf-leads4",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "savePbfLeads4",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568025769,
+        "modificationDate" => 1568025803
+    ],
+    55 => [
+        "id" => 55,
+        "name" => "save pbf leads 5",
+        "pattern" => "/\\/credit\\/save-pbf-leads5/",
+        "reverse" => "/credit/save-pbf-leads5",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "savePbfLeads5",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568025769,
+        "modificationDate" => 1568025803
+    ],
+    56 => [
+        "id" => 56,
+        "name" => "save pbf leads 6",
+        "pattern" => "/\\/credit\\/save-pbf-leads6/",
+        "reverse" => "/credit/save-pbf-leads6",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "savePbfLeads6",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568025769,
+        "modificationDate" => 1568025803
     ]
 ];

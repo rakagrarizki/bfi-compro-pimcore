@@ -1412,4 +1412,407 @@ class CreditController extends FrontendController
             ]);
         }
     }
+
+    // PBF
+
+    public function getPbfProfessionAction(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_GET_PROFESSION')->getData();
+
+
+        try {
+            $data = $this->sendAPI->getProfession($url);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+    }
+
+    public function getPbfCertificateTypeAction(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_GET_LIST_PBF_CERTIFICATE_TYPE')->getData();
+
+
+        try {
+            $data = $this->sendAPI->getPbfCertificateType($url);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+    }
+
+    public function getPbfCertificateOnBehalfAction(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_GET_LIST_PBF_CERTIFICATE_ON_BEHALF')->getData();
+
+
+        try {
+            $data = $this->sendAPI->getPbfCertificateOnBehalf($url);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+    }
+    public function getPbfPropertyTypeAction(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_GET_LIST_PBF_PROPERTY_TYPE')->getData();
+
+
+        try {
+            $data = $this->sendAPI->getPbfPropertyType($url);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+    }
+
+
+
+    public function getPbfFundingAction(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_GET_PBF_FUNDING')->getData();
+        $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+        $param["estimasi_harga"] = htmlentities(addslashes($request->get('estimasi_harga')));
+
+
+        try {
+            $data = $this->sendAPI->getPbfFunding($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+    }
+
+    public function getPbfTenorAction(Request $request)
+    {
+        $param['submission_id'] = (string)htmlentities(addslashes($request->get('submission_id')));
+
+        $url = WebsiteSetting::getByName('URL_GET_PBF_TENOR_LIST')->getData();
+
+        try {
+            $data = $this->sendAPI->getPbfTenor($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Service Request Tenor Down"
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+
+    }
+
+    public function getPbfCalculateAction(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_PBF_CALCULATE')->getData();
+        $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+        $param["funding"] = htmlentities(addslashes($request->get('funding')));
+        $param["tenor"] = htmlentities(addslashes($request->get('tenor')));
+
+
+        try {
+            $data = $this->sendAPI->getPbfCalculate($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+    }
+
+    public function savePbfLeads1Action(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_SAVE_PBF_LEADS_STEP_1')->getData();
+        $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+        $param["name"] = htmlentities(addslashes($request->get('name')));
+        $param["dob"] = htmlentities(addslashes($request->get('dob')));
+        $param["profession_id"] = htmlentities(addslashes($request->get('profession_id')));
+        $param["salary"] = htmlentities(addslashes($request->get('salary')));
+        $param["email"] = htmlentities(addslashes($request->get('email')));
+        $param["phone_number"] =htmlentities(addslashes($request->get('phone_number')));
+        $param["path_ktp"] =htmlentities(addslashes($request->get('path_ktp')));
+
+
+        try {
+            $data = $this->sendAPI->savePbfLeads1($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+    }
+
+    public function savePbfLeads2Action(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_SAVE_PBF_LEADS_STEP_2')->getData();
+        $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+        $param["province_id"] = htmlentities(addslashes($request->get('province_id')));
+        $param["city_id"] = htmlentities(addslashes($request->get('city_id')));
+        $param["district_id"] = htmlentities(addslashes($request->get('district_id')));
+        $param["subdistrict_id"] = htmlentities(addslashes($request->get('subdistrict_id')));
+        $param["zipcode_id"] = htmlentities(addslashes($request->get('zipcode_id')));
+        $param["address"] = htmlentities(addslashes($request->get('address')));
+
+
+        try {
+            $data = $this->sendAPI->savePbfLeads2($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+    }
+
+    public function savePbfLeads3Action(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_SAVE_PBF_LEADS_STEP_3')->getData();
+        $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+        $param["province_id"] = htmlentities(addslashes($request->get('province_id')));
+        $param["city_id"] = htmlentities(addslashes($request->get('city_id')));
+        $param["district_id"] = htmlentities(addslashes($request->get('district_id')));
+        $param["subdistrict_id"] = htmlentities(addslashes($request->get('subdistrict_id')));
+        $param["zipcode_id"] = htmlentities(addslashes($request->get('zipcode_id')));
+        $param["address"] = htmlentities(addslashes($request->get('address')));
+        $param["certificate_type_id"] = htmlentities(addslashes($request->get('certificate_type_id')));
+        $param["certificate_on_behalf_id"] = htmlentities(addslashes($request->get('certificate_on_behalf_id')));
+        $param["property_type_id"] = htmlentities(addslashes($request->get('property_type_id')));
+        $param["is_dihuni"] = htmlentities(addslashes($request->get('is_dihuni')));
+
+
+
+
+        try {
+            $data = $this->sendAPI->savePbfLeads3($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+    }
+
+    public function savePbfLeads4Action(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_SAVE_PBF_LEADS_STEP_4')->getData();
+        $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+
+        try {
+            $data = $this->sendAPI->savePbfLeads4($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+    }
+
+    public function savePbfLeads5Action(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_SAVE_PBF_LEADS_STEP_5')->getData();
+        $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+
+        try {
+            $data = $this->sendAPI->savePbfLeads5($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+    }
+
+    public function savePbfLeads6Action(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_SAVE_PBF_LEADS_STEP_6')->getData();
+        $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+        $param["is_news_letter"] = htmlentities(addslashes($request->get('is_news_letter')));
+
+        try {
+            $data = $this->sendAPI->savePbfLeads6($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+    }
 }
