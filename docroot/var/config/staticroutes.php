@@ -829,24 +829,6 @@ return [
         "creationDate" => 1568025106,
         "modificationDate" => 1568025137
     ],
-    48 => [
-        "id" => 48,
-        "name" => "get pbf funding",
-        "pattern" => "/\\/credit\\/get-pbf-funding/",
-        "reverse" => "/credit/get-pbf-funding",
-        "module" => "AppBundle",
-        "controller" => "@AppBundle\\Controller\\CreditController",
-        "action" => "getPbfFunding",
-        "variables" => "",
-        "defaults" => NULL,
-        "siteId" => [
-
-        ],
-        "priority" => 0,
-        "legacy" => FALSE,
-        "creationDate" => 1568025137,
-        "modificationDate" => 1568026063
-    ],
     49 => [
         "id" => 49,
         "name" => "pbf calculate",
@@ -928,14 +910,14 @@ return [
         "controller" => "@AppBundle\\Controller\\CreditController",
         "action" => "savePbfLeads4",
         "variables" => NULL,
-        "defaults" => NULL,
+        "defaults" => "",
         "siteId" => [
 
         ],
         "priority" => 0,
         "legacy" => FALSE,
         "creationDate" => 1568025769,
-        "modificationDate" => 1568025803
+        "modificationDate" => 1568274640
     ],
     55 => [
         "id" => 55,
@@ -945,7 +927,7 @@ return [
         "module" => "AppBundle",
         "controller" => "@AppBundle\\Controller\\CreditController",
         "action" => "savePbfLeads5",
-        "variables" => NULL,
+        "variables" => "",
         "defaults" => NULL,
         "siteId" => [
 
@@ -953,7 +935,7 @@ return [
         "priority" => 0,
         "legacy" => FALSE,
         "creationDate" => 1568025769,
-        "modificationDate" => 1568025803
+        "modificationDate" => 1568349717
     ],
     56 => [
         "id" => 56,
@@ -972,5 +954,41 @@ return [
         "legacy" => FALSE,
         "creationDate" => 1568025769,
         "modificationDate" => 1568025803
+    ],
+    57 => [
+        "id" => 57,
+        "name" => "detail promo",
+        "pattern" => "/\\/(en|id)\\/promo\\/([0-9a-zA-Z_-]+)\$/",
+        "reverse" => "/%lang/promo/%slug",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\PromoController",
+        "action" => "detail",
+        "variables" => "lang,slug",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568274517,
+        "modificationDate" => 1568274638
+    ],
+    58 => [
+        "id" => 58,
+        "name" => "detail blog",
+        "pattern" => "/\\/(en|id)\\/blog\\/([0-9a-zA-Z_-]+)\$/",
+        "reverse" => "/%lang/blog/%slug",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\BlogController",
+        "action" => "detail",
+        "variables" => "lang,slug",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568349681,
+        "modificationDate" => 1568349716
     ]
 ];
