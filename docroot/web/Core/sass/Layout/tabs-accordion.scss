@@ -1,0 +1,77 @@
+.tabs-accor {
+    .nav-tabs {
+        border-bottom: none;
+        padding-bottom: 5px;
+        position: relative;
+        display: inline-block;
+        width: 100%;
+
+        @include breakpoint(mobile) {
+            overflow-x: auto;
+            overflow-y: hidden;
+            display: -webkit-box;
+            display: -moz-box;
+        }
+
+        &:after {
+            content: '';
+            width: 100%;
+            height: 1px;
+            background-color: rgba($grey-dark-color, .3);
+            position: absolute;
+            left: 0;
+            bottom: 4px;
+        }
+
+        >li {
+            margin: 0;
+            width: 25%;
+
+            @include breakpoint(mobile) {
+                min-width: 180px;
+                float: none;
+            }
+
+            >a {
+                margin: 0;
+                border: none;
+                border-radius: 0;
+                text-align: center;
+                position: relative;
+                font-family: HelveticaNeue-Medium;
+                font-size: 16px;
+                color: rgba($grey-dark-color, .5);
+            }
+
+            &.active {
+                >a {
+                    font-family: HelveticaNeue-Bold;
+                    color: $blue;
+
+                    &:after {
+                        content: '';
+                        width: 100%;
+                        height: 5px;
+                        background-color: $blue;
+                        position: absolute;
+                        left: 0;
+                        bottom: -3px;
+                    }
+
+                    &:hover,
+                    &:focus {
+                        border: none;
+                    }
+                }
+            }
+        }
+    }
+
+    .accordion {
+        .accordion__wrap {
+            &.produk {
+                margin-top: 20px;
+            }
+        }
+    }
+}
