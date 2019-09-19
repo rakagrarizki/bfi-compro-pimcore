@@ -13,7 +13,7 @@
             <div class="col-sm-8"><?= $this->input("title"); ?></div>
         </div>
         <div class="row">
-            <div class="col-sm-4">Image</div>
+            <div class="col-sm-4">Description</div>
             <div class="col-sm-8"><?php echo $this->wysiwyg("description", [
                     "placeholder" => "description",
                 ]); ?></div>
