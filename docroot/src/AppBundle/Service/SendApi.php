@@ -70,6 +70,10 @@ class SendApi
         return $this->executeApi('api-validate-otp', $url, $params,"POST");
     }
 
+    public function register($url, $params){
+        return $this->executeApi('register', $url, $params,"POST");
+    }
+
     public function sendDataCredit($url, $params)
     {
         return $this->executeApi('api-credit', $url, $params,"POST");
@@ -120,6 +124,16 @@ class SendApi
     public function getLoan($url, $params)
     {
         return $this->executeApi('api-loan', $url, $params,"POST");
+    }
+
+    public function getProductCategory($url){
+
+        return $this->executeApi('api-product-category', $url,[],"GET");
+    }
+
+    public function getProduct($url, $params){
+
+        return $this->executeApi('api-product', $url,$params,"POST");
     }
 
     public function getData($data)

@@ -963,7 +963,7 @@ return [
         "module" => "AppBundle",
         "controller" => "@AppBundle\\Controller\\CreditController",
         "action" => "savePbfLeads6",
-        "variables" => NULL,
+        "variables" => "",
         "defaults" => NULL,
         "siteId" => [
 
@@ -971,6 +971,60 @@ return [
         "priority" => 0,
         "legacy" => FALSE,
         "creationDate" => 1568025769,
-        "modificationDate" => 1568025803
+        "modificationDate" => 1568718000
+    ],
+    57 => [
+        "id" => 57,
+        "name" => "get product category",
+        "pattern" => "/\\/simulation\\/get-product-category/",
+        "reverse" => "/simulation/get-product-category",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\SimulationController",
+        "action" => "getProductCategory",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568710912,
+        "modificationDate" => 1568710977
+    ],
+    58 => [
+        "id" => 58,
+        "name" => "get product",
+        "pattern" => "/\\/simulation\\/get-product/",
+        "reverse" => "/simulation/get-product",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\SimulationController",
+        "action" => "getProduct",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568710976,
+        "modificationDate" => 1568711009
+    ],
+    60 => [
+        "id" => 60,
+        "name" => "register",
+        "pattern" => "/\\/register/",
+        "reverse" => "/register",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\RegisterController",
+        "action" => "register",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568717942,
+        "modificationDate" => 1568717997
     ]
 ];
