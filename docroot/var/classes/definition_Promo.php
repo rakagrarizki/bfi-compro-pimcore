@@ -1,7 +1,7 @@
 <?php 
 
 /** 
-* Generated at: 2019-09-13T06:07:10+02:00
+* Generated at: 2019-09-12T06:55:30+02:00
 * Inheritance: no
 * Variants: no
 * Changed by: admin (2)
@@ -10,21 +10,23 @@
 
 Fields Summary: 
 - Slug [input]
-- BlogCategory [href]
-- Date [date]
+- PromoCategory [href]
 - localizedfields [localizedfields]
 -- Title [input]
+-- Description [input]
 -- Content [wysiwyg]
+- PromoStartDate [date]
+- PromoEndDate [date]
 - Image [image]
 */ 
 
 
 return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
-   'id' => '1',
-   'name' => 'BlogArticle',
+   'id' => '10',
+   'name' => 'Promo',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1568347628,
+   'modificationDate' => 1568264129,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -60,12 +62,12 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
          'name' => 'Layout',
          'type' => NULL,
          'region' => NULL,
-         'title' => NULL,
+         'title' => '',
          'width' => NULL,
          'height' => NULL,
          'collapsible' => false,
          'collapsed' => false,
-         'bodyStyle' => NULL,
+         'bodyStyle' => '',
          'datatype' => 'layout',
          'permissions' => NULL,
          'childs' => 
@@ -81,12 +83,12 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'regex' => '',
              'unique' => false,
              'name' => 'Slug',
-             'title' => 'slug',
+             'title' => 'Slug',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => false,
+             'locked' => NULL,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
@@ -121,12 +123,12 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
             array (
               0 => 
               array (
-                'classes' => 'BlogCategory',
+                'classes' => 'PromoCategory',
               ),
             ),
              'pathFormatterClass' => '',
-             'name' => 'BlogCategory',
-             'title' => 'BlogCategory',
+             'name' => 'PromoCategory',
+             'title' => 'PromoCategory',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
@@ -141,29 +143,6 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'visibleSearch' => false,
           )),
           2 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Date::__set_state(array(
-             'fieldtype' => 'date',
-             'queryColumnType' => 'bigint(20)',
-             'columnType' => 'bigint(20)',
-             'phpdocType' => '\\Carbon\\Carbon',
-             'defaultValue' => NULL,
-             'useCurrentDate' => false,
-             'name' => 'Date',
-             'title' => 'Date',
-             'tooltip' => '',
-             'mandatory' => false,
-             'noteditable' => false,
-             'index' => false,
-             'locked' => false,
-             'style' => '',
-             'permissions' => NULL,
-             'datatype' => 'data',
-             'relationType' => false,
-             'invisible' => false,
-             'visibleGridView' => false,
-             'visibleSearch' => false,
-          )),
-          3 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\Localizedfields::__set_state(array(
              'fieldtype' => 'localizedfields',
              'phpdocType' => '\\Pimcore\\Model\\DataObject\\Localizedfield',
@@ -180,12 +159,12 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'regex' => '',
                  'unique' => false,
                  'name' => 'Title',
-                 'title' => 'title',
+                 'title' => 'Title',
                  'tooltip' => '',
                  'mandatory' => false,
                  'noteditable' => false,
                  'index' => false,
-                 'locked' => false,
+                 'locked' => NULL,
                  'style' => '',
                  'permissions' => NULL,
                  'datatype' => 'data',
@@ -195,6 +174,31 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'visibleSearch' => false,
               )),
               1 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                 'fieldtype' => 'input',
+                 'width' => NULL,
+                 'queryColumnType' => 'varchar',
+                 'columnType' => 'varchar',
+                 'columnLength' => 190,
+                 'phpdocType' => 'string',
+                 'regex' => '',
+                 'unique' => false,
+                 'name' => 'Description',
+                 'title' => 'Description',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => NULL,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+              )),
+              2 => 
               Pimcore\Model\DataObject\ClassDefinition\Data\Wysiwyg::__set_state(array(
                  'fieldtype' => 'wysiwyg',
                  'width' => '',
@@ -209,7 +213,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'mandatory' => false,
                  'noteditable' => false,
                  'index' => false,
-                 'locked' => false,
+                 'locked' => NULL,
                  'style' => '',
                  'permissions' => NULL,
                  'datatype' => 'data',
@@ -222,7 +226,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'name' => 'localizedfields',
              'region' => NULL,
              'layout' => NULL,
-             'title' => NULL,
+             'title' => '',
              'width' => '',
              'height' => '',
              'maxTabs' => NULL,
@@ -231,12 +235,12 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'referencedFields' => 
             array (
             ),
-             'tooltip' => '',
-             'mandatory' => false,
-             'noteditable' => false,
+             'tooltip' => NULL,
+             'mandatory' => NULL,
+             'noteditable' => NULL,
              'index' => NULL,
-             'locked' => false,
-             'style' => '',
+             'locked' => NULL,
+             'style' => NULL,
              'permissions' => NULL,
              'datatype' => 'data',
              'columnType' => NULL,
@@ -246,7 +250,53 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'visibleGridView' => true,
              'visibleSearch' => true,
           )),
+          3 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Date::__set_state(array(
+             'fieldtype' => 'date',
+             'queryColumnType' => 'bigint(20)',
+             'columnType' => 'bigint(20)',
+             'phpdocType' => '\\Carbon\\Carbon',
+             'defaultValue' => NULL,
+             'useCurrentDate' => false,
+             'name' => 'PromoStartDate',
+             'title' => 'PromoStartDate',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => NULL,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+          )),
           4 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Date::__set_state(array(
+             'fieldtype' => 'date',
+             'queryColumnType' => 'bigint(20)',
+             'columnType' => 'bigint(20)',
+             'phpdocType' => '\\Carbon\\Carbon',
+             'defaultValue' => NULL,
+             'useCurrentDate' => false,
+             'name' => 'PromoEndDate',
+             'title' => 'PromoEndDate',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => NULL,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+          )),
+          5 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\Image::__set_state(array(
              'fieldtype' => 'image',
              'width' => '',
@@ -261,7 +311,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => false,
+             'locked' => NULL,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
