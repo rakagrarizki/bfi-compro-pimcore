@@ -22,30 +22,68 @@ class SimulationController extends FrontendController
         $this->randomNumber = rand(000001,999999);
     }
 
-    public function mobilAction(Request $request)
-    {
-
-    }
-
     public function defaultAction(Request $request)
     {
 
     }
 
-    public function motorAction(Request $request)
-    {
+    public function getProductCategoryAction (Request $request) {
 
+        $url = WebsiteSetting::getByName('URL_GET_PRODUCT_CATEGORY')->getData();
+
+
+        try {
+            $data = $this->sendAPI->getProductCategory($url);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
     }
 
-    public function rumahAction(Request $request)
-    {
+    public function getProductAction (Request $request) {
 
+        $url = WebsiteSetting::getByName('URL_GET_PRODUCT')->getData();
+        $param["category_id"] = htmlentities(addslashes($request->get('category_id')));
+
+        try {
+            $data = $this->sendAPI->getProductCategory($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
     }
 
-    public function rukoAction(Request $request)
-    {
 
-    }
 
 
 

@@ -55,14 +55,31 @@ use Pimcore\Model\Document\Page;
                                                                             <div class="label-title"><?= $child->getLabel() ?></div>
                                                                         </li>
                                                                         <?php
+
                                                                         $hasGrandChildren = $child->hasPages();
+
                                                                         if ($hasGrandChildren) {
                                                                             foreach ($child->getPages() as $grandChild) {
                                                                                 ?>
+                                                                                <?php if($grandChild->getDocumentType() == "link"):?>
                                                                                 <li>
                                                                                     <a class="<?php echo $grandChild->getActive() ? 'active' : '' ?>" href="<?= $grandChild->getHref() ?>"><?= $grandChild->getLabel() ?></a>
                                                                                 </li>
+                                                                                <?php else :?>
+                                                                                    <li>
+                                                                                        <div class="label-title"><?= $grandChild->getLabel(); ?></div>
+                                                                                    </li>
+                                                                                <?php endif?>
                                                                                 <?php
+                                                                                $hasGreatGrandChild = $grandChild->hasPages();
+                                                                                if($hasGreatGrandChild) {
+                                                                                    foreach($grandChild->getPages() as $greatGrandChild){
+                                                                                ?>
+                                                                                        <li>
+                                                                                            <a class="<?php echo $greatGrandChild->getActive() ? 'active' : '' ?>" href="<?= $greatGrandChild->getHref() ?>"><?= $greatGrandChild->getLabel() ?></a>
+                                                                                        </li>
+                                                                                <?php }
+                                                                                }
                                                                             }
                                                                         }
                                                                         ?>

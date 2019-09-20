@@ -14,7 +14,7 @@
         </div>
         <?php while($this->block("contentblock")->loop()) { ?>
             <div class="row">
-                <div class="col-sm-4">Title</div>
+                <div class="col-sm-4">Misi</div>
                 <div class="col-sm-8"><?= $this->input("input-misi"); ?></div>
             </div>
 
