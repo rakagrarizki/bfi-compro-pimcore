@@ -41,6 +41,56 @@
         adaptiveHeight: true
     });
 
+    // BLOG/PROMO
+    $('.bp-select').select2({
+        minimumResultsForSearch: Infinity
+    });
+
+    // SAME HEIGHT
+    // Get Highest Dom
+    var res = function() {
+        if ($('#bfi-cabang .thumbnail--branch .thumbnail-caption h3').length > 0) {
+            $('#bfi-cabang').each(function() {
+                $(this).find(".thumbnail-caption h3").height("auto");
+                cH = getHighestDOM($(this).find(".thumbnail-caption h3"));
+                $(this).find(".thumbnail-caption h3").height(cH);
+            });
+        }
+        if ($('#bfi-cabang .thumbnail--branch .thumbnail-caption p').length > 0) {
+            $('#bfi-cabang').each(function() {
+                $(this).find(".thumbnail-caption p").height("auto");
+                cH = getHighestDOM($(this).find(".thumbnail-caption p"));
+                $(this).find(".thumbnail-caption p").height(cH);
+            });
+        }
+        if ($('.blog-promo .card-item .title').length > 0) {
+            $('.blog-promo .card-item').each(function() {
+                $(this).find(".title").height("auto");
+                cH = getHighestDOM($(this).find(".title"));
+                $(this).find(".title").height(cH);
+            });
+        }
+    };
+
+    function getHighestDOM(dom) {
+        var highest_height = 0;
+
+        dom.each(function(index, val) {
+            if (highest_height <= $(val).height()) {
+                highest_height = $(val).height();
+            }
+        });
+        return highest_height;
+    }
+
+    $(window).resize(function() {
+        res();
+    });
+
+    $(document).ready(function(e) {
+        res();
+    });
+
     var input = document.getElementById('file_upload');
     var infoArea = document.getElementById('nama-file');
 
@@ -3653,44 +3703,6 @@
     $('#own_sertificate').select2({
         placeholder: own_sertificate_placeholder,
         dropdownParent: $('#own_sertificate').parent()
-    });
-
-    // SAME HEIGHT
-    // Get Highest Dom
-    var res = function() {
-        if ($('#bfi-cabang .thumbnail--branch .thumbnail-caption h3').length > 0) {
-            $('#bfi-cabang').each(function() {
-                $(this).find(".thumbnail-caption h3").height("auto");
-                cH = getHighestDOM($(this).find(".thumbnail-caption h3"));
-                $(this).find(".thumbnail-caption h3").height(cH);
-            });
-        }
-        if ($('#bfi-cabang .thumbnail--branch .thumbnail-caption p').length > 0) {
-            $('#bfi-cabang').each(function() {
-                $(this).find(".thumbnail-caption p").height("auto");
-                cH = getHighestDOM($(this).find(".thumbnail-caption p"));
-                $(this).find(".thumbnail-caption p").height(cH);
-            });
-        }
-    };
-
-    function getHighestDOM(dom) {
-        var highest_height = 0;
-
-        dom.each(function(index, val) {
-            if (highest_height <= $(val).height()) {
-                highest_height = $(val).height();
-            }
-        });
-        return highest_height;
-    }
-
-    $(window).resize(function() {
-        res();
-    });
-
-    $(document).ready(function(e) {
-        res();
     });
 
 })(jQuery);
