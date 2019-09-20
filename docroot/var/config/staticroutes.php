@@ -1026,5 +1026,41 @@ return [
         "legacy" => FALSE,
         "creationDate" => 1568717942,
         "modificationDate" => 1568717997
+    ],	
+   61 => [
+        "id" => 61,
+        "name" => "detail blog",
+        "pattern" => "/\\/(en|id)\\/blog\\/([0-9a-zA-Z_-]+)\$/",
+        "reverse" => "/%lang/blog/%slug",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\BlogController",
+        "action" => "detail",
+        "variables" => "lang,slug",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568710976,
+        "modificationDate" => 1568711009
+    ],
+    62 => [
+        "id" => 62,
+        "name" => "detail promo",
+        "pattern" => "/\\/(en|id)\\/promo\\/([0-9a-zA-Z_-]+)\$/",
+        "reverse" => "/%lang/promo/%slug",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\PromoController",
+        "action" => "detail",
+        "variables" => "lang,slug",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568710976,
+        "modificationDate" => 1568711009
     ]
 ];

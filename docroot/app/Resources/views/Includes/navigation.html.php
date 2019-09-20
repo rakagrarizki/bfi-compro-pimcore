@@ -61,7 +61,7 @@ use Pimcore\Model\Document\Page;
                                                                         if ($hasGrandChildren) {
                                                                             foreach ($child->getPages() as $grandChild) {
                                                                                 ?>
-                                                                                <?php if($grandChild->getDocumentType() == "link"):?>
+                                                                                <?php if($grandChild->getDocumentType() != "link"):?>
                                                                                 <li>
                                                                                     <a class="<?php echo $grandChild->getActive() ? 'active' : '' ?>" href="<?= $grandChild->getHref() ?>"><?= $grandChild->getLabel() ?></a>
                                                                                 </li>
