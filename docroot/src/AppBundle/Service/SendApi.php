@@ -359,6 +359,88 @@ class SendApi
         return $this->executeApi('api-save-pbf-leads6', $url,$params,"POST");
     }
 
+    //Leisure
+    public function getLeisurePackage($url){
+
+        return $this->executeApi('api-get-leisure-package', $url,[],"GET");
+    }
+    public function getLeisureTenor($url){
+
+        return $this->executeApi('api-get-leisure-tenor', $url,[],"GET");
+    }
+    public function leisureCalculator($url, $params){
+
+        return $this->executeApi('api-leisure-calculator', $url,$params,"POST");
+    }
+
+    public function saveLeisureLeads1($url, $params){
+
+        return $this->executeApi('api-save-leisure-leads1', $url,$params,"POST");
+    }
+
+    public function saveLeisureLeads2($url, $params){
+
+        return $this->executeApi('api-save-leisure-leads2', $url,$params,"POST");
+    }
+
+    public function saveLeisureLeads3($url, $params){
+
+        return $this->executeApi('api-save-leisure-leads3', $url,$params,"POST");
+    }
+
+    public function saveLeisureLeads4($url, $params){
+
+        return $this->executeApi('api-save-leisure-leads4', $url,$params,"POST");
+    }
+
+    public function saveLeisureLeads5($url, $params){
+
+        return $this->executeApi('api-save-leisure-leads5', $url,$params,"POST");
+    }
+
+    //Education
+    public function getEduPackage($url){
+
+        return $this->executeApi('api-get-edu-package', $url,[],"GET");
+    }
+    public function getEduTenor($url){
+
+        return $this->executeApi('api-get-edu-tenor', $url,[],"GET");
+    }
+    public function getEduProvisionPackage($url, $params){
+
+        return $this->executeApi('api-edu-provision-package', $url,$params,"POST");
+    }
+    public function eduCalculator($url, $params){
+
+        return $this->executeApi('api-edu-calculator', $url,$params,"POST");
+    }
+
+    public function saveEduLeads1($url, $params){
+
+        return $this->executeApi('api-save-edu-leads1', $url,$params,"POST");
+    }
+
+    public function saveEduLeads2($url, $params){
+
+        return $this->executeApi('api-save-edu-leads2', $url,$params,"POST");
+    }
+
+    public function saveEduLeads3($url, $params){
+
+        return $this->executeApi('api-save-edu-leads3', $url,$params,"POST");
+    }
+
+    public function saveEduLeads4($url, $params){
+
+        return $this->executeApi('api-save-edu-leads4', $url,$params,"POST");
+    }
+
+    public function saveEduLeads5($url, $params){
+
+        return $this->executeApi('api-save-edu-leads5', $url,$params,"POST");
+    }
+
 
 
 }

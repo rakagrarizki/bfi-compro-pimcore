@@ -61,7 +61,7 @@ class SimulationController extends FrontendController
         $param["category_id"] = htmlentities(addslashes($request->get('category_id')));
 
         try {
-            $data = $this->sendAPI->getProductCategory($url, $param);
+            $data = $this->sendAPI->getProduct($url, $param);
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",

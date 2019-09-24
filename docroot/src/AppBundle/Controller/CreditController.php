@@ -1815,4 +1815,511 @@ class CreditController extends FrontendController
             ]);
         }
     }
+
+    public function getLeisurePackageAction(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_GET_LEISURE_PACKAGE')->getData();
+
+
+        try {
+            $data = $this->sendAPI->getLeisurePackage($url);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+    }
+
+    public function getLeisureTenorAction(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_GET_LEISURE_TENOR_LIST')->getData();
+
+
+        try {
+            $data = $this->sendAPI->getLeisureTenor($url);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+    }
+    public function leisureCalculatorAction(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_LEISURE_CALCULATOR')->getData();
+        $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+        $param["leisure_package_id"] = htmlentities(addslashes($request->get('leisure_package_id')));
+        $param["down_payment"] = htmlentities(addslashes($request->get('down_payment')));
+        $param["tenor"] = htmlentities(addslashes($request->get('tenor')));
+        $param["pocket_money"] = htmlentities(addslashes($request->get('pocket_money')));
+
+        try {
+            $data = $this->sendAPI->leisureCalculator($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+    }
+
+    public function saveLeisureLeads1Action(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_SAVE_LEISURE_LEADS_STEP_1')->getData();
+        $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+        $param["name"] = htmlentities(addslashes($request->get('name')));
+        $param["email"] = htmlentities(addslashes($request->get('email')));
+        $param["phone_number"] =htmlentities(addslashes($request->get('phone_number')));
+
+
+        try {
+            $data = $this->sendAPI->saveLeisureLeads1($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+    }
+
+    public function saveLeisureLeads2Action(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_SAVE_LEISURE_LEADS_STEP_2')->getData();
+        $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+        $param["province_id"] = htmlentities(addslashes($request->get('province_id')));
+        $param["city_id"] = htmlentities(addslashes($request->get('city_id')));
+        $param["district_id"] = htmlentities(addslashes($request->get('district_id')));
+        $param["subdistrict_id"] = htmlentities(addslashes($request->get('subdistrict_id')));
+        $param["zipcode_id"] = htmlentities(addslashes($request->get('zipcode_id')));
+        $param["address"] = htmlentities(addslashes($request->get('address')));
+
+
+        try {
+            $data = $this->sendAPI->saveLeisureLeads2($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+    }
+
+    public function saveLeisureLeads3Action(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_SAVE_LEISURE_LEADS_STEP_3')->getData();
+            $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+
+        try {
+            $data = $this->sendAPI->saveLeisureLeads3($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+    }
+
+    public function saveLeisureLeads4Action(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_SAVE_LEISURE_LEADS_STEP_4')->getData();
+        $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+
+        try {
+            $data = $this->sendAPI->saveLeisureLeads4($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+    }
+
+    public function saveLeisureLeads5Action(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_SAVE_LEISURE_LEADS_STEP_5')->getData();
+        $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+
+        try {
+            $data = $this->sendAPI->saveLeisureLeads5($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+    }
+
+    public function getEduPackageAction(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_GET_EDU_PACKAGE')->getData();
+
+
+        try {
+            $data = $this->sendAPI->getEduPackage($url);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+    }
+
+    public function getEduTenorAction(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_GET_EDU_TENOR_LIST')->getData();
+
+
+        try {
+            $data = $this->sendAPI->getEduTenor($url);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+    }
+    public function eduProvisionPackageAction(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_EDU_PROVISION_PACKAGE')->getData();
+        $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+        $param["edu_package_price"] = htmlentities(addslashes($request->get('edu_package_price')));
+        $param["tenor"] = htmlentities(addslashes($request->get('tenor')));
+
+
+        try {
+            $data = $this->sendAPI->getEduProvisionPackage($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+    }
+    public function eduCalculatorAction(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_EDU_CALCULATOR')->getData();
+        $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+        $param["edu_package_price"] = htmlentities(addslashes($request->get('edu_package_price')));
+        $param["down_payment"] = htmlentities(addslashes($request->get('down_payment')));
+        $param["tenor"] = htmlentities(addslashes($request->get('tenor')));
+
+
+        try {
+            $data = $this->sendAPI->eduCalculator($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+    }
+
+    public function saveEduLeads1Action(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_SAVE_EDU_LEADS_STEP_1')->getData();
+        $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+        $param["name"] = htmlentities(addslashes($request->get('name')));
+        $param["email"] = htmlentities(addslashes($request->get('email')));
+        $param["phone_number"] =htmlentities(addslashes($request->get('phone_number')));
+        $param["path_ktp"] =htmlentities(addslashes($request->get('path_ktp')));
+
+
+        try {
+            $data = $this->sendAPI->saveEduLeads1($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+    }
+
+    public function saveEduLeads2Action(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_SAVE_EDU_LEADS_STEP_2')->getData();
+        $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+        $param["province_id"] = htmlentities(addslashes($request->get('province_id')));
+        $param["city_id"] = htmlentities(addslashes($request->get('city_id')));
+        $param["district_id"] = htmlentities(addslashes($request->get('district_id')));
+        $param["subdistrict_id"] = htmlentities(addslashes($request->get('subdistrict_id')));
+        $param["zipcode_id"] = htmlentities(addslashes($request->get('zipcode_id')));
+        $param["address"] = htmlentities(addslashes($request->get('address')));
+
+
+        try {
+            $data = $this->sendAPI->saveEduLeads2($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+    }
+
+    public function saveEduLeads3Action(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_SAVE_EDU_LEADS_STEP_3')->getData();
+        $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+
+        try {
+            $data = $this->sendAPI->saveEduLeads3($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+    }
+
+    public function saveEduLeads4Action(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_SAVE_EDU_LEADS_STEP_4')->getData();
+        $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+
+        try {
+            $data = $this->sendAPI->saveEduLeads4($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+    }
+
+    public function saveEduLeads5Action(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_SAVE_EDU_LEADS_STEP_5')->getData();
+        $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+
+        try {
+            $data = $this->sendAPI->saveEduLeads5($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+    }
 }

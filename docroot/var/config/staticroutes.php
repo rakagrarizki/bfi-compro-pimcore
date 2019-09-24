@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 return [
     1 => [
@@ -1026,7 +1026,7 @@ return [
         "legacy" => FALSE,
         "creationDate" => 1568717942,
         "modificationDate" => 1568717997
-    ],	
+    ],
    61 => [
         "id" => 61,
         "name" => "detail blog",
@@ -1062,5 +1062,311 @@ return [
         "legacy" => FALSE,
         "creationDate" => 1568710976,
         "modificationDate" => 1568711009
+    ],
+    63 => [
+        "id" => 63,
+        "name" => "get leisure tenor",
+        "pattern" => "/\\/credit\\/get-leisure-tenor/",
+        "reverse" => "/credit/get-leisure-tenor",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getLeisureTenor",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568025106,
+        "modificationDate" => 1568025137
+    ],
+    64 => [
+        "id" => 64,
+        "name" => "get leisure package",
+        "pattern" => "/\\/credit\\/get-leisure-package/",
+        "reverse" => "/credit/get-leisure-package",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getLeisurePackage",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568025137,
+        "modificationDate" => 1568026063
+    ],
+    65 => [
+        "id" => 65,
+        "name" => "leisure calculator",
+        "pattern" => "/\\/credit\\/leisure-calculator/",
+        "reverse" => "/credit/leisure-calculator",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "leisureCalculator",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568025769,
+        "modificationDate" => 1568026265
+    ],
+    66 => [
+        "id" => 66,
+        "name" => "save Leisure leads 1",
+        "pattern" => "/\\/credit\\/save-leisure-leads1/",
+        "reverse" => "/credit/save-leisure-leads1",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "saveLeisureLeads1",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568025769,
+        "modificationDate" => 1568025803
+    ],
+    67 => [
+        "id" => 67,
+        "name" => "save Leisure leads 2",
+        "pattern" => "/\\/credit\\/save-leisure-leads2/",
+        "reverse" => "/credit/save-leisure-leads2",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "saveLeisureLeads2",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568025769,
+        "modificationDate" => 1568025803
+    ],
+    68 => [
+        "id" => 68,
+        "name" => "save Leisure leads 3",
+        "pattern" => "/\\/credit\\/save-leisure-leads3/",
+        "reverse" => "/credit/save-leisure-leads3",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "saveLeisureLeads3",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568025769,
+        "modificationDate" => 1568025803
+    ],
+    69 => [
+        "id" => 69,
+        "name" => "save Leisure leads 4",
+        "pattern" => "/\\/credit\\/save-leisure-leads4/",
+        "reverse" => "/credit/save-leisure-leads4",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "saveLeisureLeads4",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568025769,
+        "modificationDate" => 1568025803
+    ],
+    70 => [
+        "id" => 70,
+        "name" => "save Leisure leads 5",
+        "pattern" => "/\\/credit\\/save-leisure-leads5/",
+        "reverse" => "/credit/save-leisure-leads5",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "saveLeisureLeads5",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568025769,
+        "modificationDate" => 1568025803
+    ],
+    71 => [
+        "id" => 71,
+        "name" => "get Edu tenor",
+        "pattern" => "/\\/credit\\/get-edu-tenor/",
+        "reverse" => "/credit/get-edu-tenor",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getEduTenor",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568025106,
+        "modificationDate" => 1568025137
+    ],
+    72 => [
+        "id" => 72,
+        "name" => "get edu package",
+        "pattern" => "/\\/credit\\/get-edu-package/",
+        "reverse" => "/credit/get-edu-package",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getEduPackage",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568025137,
+        "modificationDate" => 1568026063
+    ],
+    73 => [
+        "id" => 73,
+        "name" => "edu calculator",
+        "pattern" => "/\\/credit\\/edu-calculator/",
+        "reverse" => "/credit/edu-calculator",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "eduCalculator",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568025769,
+        "modificationDate" => 1568026265
+    ],
+    74 => [
+        "id" => 74,
+        "name" => "save edu leads 1",
+        "pattern" => "/\\/credit\\/save-edu-leads1/",
+        "reverse" => "/credit/save-edu-leads1",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "saveEduLeads1",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568025769,
+        "modificationDate" => 1568025803
+    ],
+    75 => [
+        "id" => 75,
+        "name" => "save edu leads 2",
+        "pattern" => "/\\/credit\\/save-edu-leads2/",
+        "reverse" => "/credit/save-edu-leads2",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "saveEduLeads2",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568025769,
+        "modificationDate" => 1568025803
+    ],
+    76 => [
+        "id" => 76,
+        "name" => "save edu leads 3",
+        "pattern" => "/\\/credit\\/save-edu-leads3/",
+        "reverse" => "/credit/save-edu-leads3",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "saveEduLeads3",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568025769,
+        "modificationDate" => 1568025803
+    ],
+    77 => [
+        "id" => 77,
+        "name" => "save edu leads 4",
+        "pattern" => "/\\/credit\\/save-edu-leads4/",
+        "reverse" => "/credit/save-edu-leads4",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "saveEduLeads4",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568025769,
+        "modificationDate" => 1568025803
+    ],
+    78 => [
+        "id" => 78,
+        "name" => "save edu leads 5",
+        "pattern" => "/\\/credit\\/save-edu-leads5/",
+        "reverse" => "/credit/save-edu-leads5",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "saveEduLeads5",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568025769,
+        "modificationDate" => 1568025803
+    ],
+    79 => [
+        "id" => 79,
+        "name" => "get edu provision package",
+        "pattern" => "/\\/credit\\/get-edu-provision-package/",
+        "reverse" => "/credit/get-edu-provision-package",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "eduProvisionPackage",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568025769,
+        "modificationDate" => 1568025803
     ]
 ];
