@@ -29,7 +29,7 @@ $lang = $this->getLocale();
                             <div class="_boxkananchild1">
                                 <div class="input-group inputform">
                                     <select class="c-custom-select-home form-control bp-select" id="category"  onchange="this.form.submit()" name="category">
-                                        <option value="" <?php echo ($this->getParam("category") == "") ? "selected" : ""; ?>><?= $this->t("all-blog");?></option>
+                                        <option value="" <?php echo ($this->getParam("category") == "") ? "selected" : ""; ?>><?= $this->t("all-promo");?></option>
                                         <?php foreach ($this->promoCategories as $category):?>
                                         <option value="<?= $category->getId()?>" <?php echo ($this->getParam("category") == $category->getId()) ? "selected" : ""; ?>><?= $category->getName();?></option>
                                         <?php endforeach ?>
@@ -41,8 +41,9 @@ $lang = $this->getLocale();
                 </form>
             </div>
         </div>
+        <?php if (count($this->paginator) > 0) { ?>
         <div class="list-card">
-        <?php foreach($this->promos as $promo) : ?>
+        <?php foreach($this->paginator as $promo) : ?>
             <a href="<?= '/'.$lang.'/promo/'.$promo->getSlug();?>" class="card-item">
                 <picture>
                     <img src="<?= $promo->getImage();?>" alt="">
@@ -58,23 +59,13 @@ $lang = $this->getLocale();
             </a>
         <?php endforeach;?>
         </div>
+        <?php }?>
 
-        <nav aria-label="Page navigation">
-            <ul class="pagination">
-                <li>
-                    <a href="javascript:void(0)" aria-label="Previous">
-                        <i class="fa fa-angle-left"></i>
-                    </a>
-                </li>
-                <li class="active"><a href="javascript:void(0)">1</a></li>
-                <li><a href="javascript:void(0)">2</a></li>
-                <li><a href="javascript:void(0)">3</a></li>
-                <li>
-                    <a href="javascript:void(0)" aria-label="Next">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
-                </li>
-            </ul>
-        </nav>
+        <?php if(count($this->paginator) > 1): ?>
+            <?= $this->render("Includes/paging.html.php", get_object_vars($this->paginator->getPages("Sliding")), [
+                'urlprefix' => $this->document->getFullPath() . '?page=', // just example (this parameter could be used in paging.php to construct the URL)
+                'appendQueryString' => true // just example (this parameter could be used in paging.php to construct the URL)
+            ]); ?>
+        <?php endif;?>
     </div>
 </div>
