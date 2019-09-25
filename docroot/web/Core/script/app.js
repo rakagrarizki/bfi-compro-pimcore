@@ -1770,7 +1770,8 @@
 
         $.ajax({
             type: 'GET',
-            url: '/service/provinsi/listJson',
+            // url: '/service/provinsi/listJson',
+            url: '/credit/get-province',
             dataType: 'json',
             error: function(data) {
                 console.log('error' + data);
@@ -1781,12 +1782,12 @@
             },
 
             success: function(dataObj) {
-                if (dataObj.success == true) {
-                    $.each(dataObj.result.data, function(idProvince, valProvince) {
-                        if (valProvince.name != '') {
+                if (dataObj.message === 'Sukses') {
+                    $.each(dataObj.data, function(idProvince, valProvince) {
+                        if (valProvince.desc != '') {
                             dataProvince.push({
                                 id: valProvince.id,
-                                text: valProvince.name
+                                text: valProvince.desc
                             });
                         }
                     })
@@ -1876,6 +1877,7 @@
     // $('#status_kep').next().find(".jcf-select-opener").css("background-color", "#F4F4F4");
 
     $('#provinsi').change(function() {
+        // console.log('#provinsi change working...');
         showDefaultButton();
         change_addres = true;
         if ($('.nav-item-2').hasClass("done")) {
@@ -1938,13 +1940,16 @@
         $('#alamat_lengkap').val("");
 
         var id = this.value;
+        var params_getCity = { "province_id": id }
 
         $.ajax({
-            type: 'GET',
-            url: '/service/city/listJson?id=' + id,
+            type: 'POST',
+            // url: '/service/city/listJson?id=' + id,
+            url: '/credit/get-city',
+            data: params_getCity,
             dataType: 'json',
             error: function(data) {
-                console.log('error' + data);
+                console.log('[GET city]error' + data);
             },
 
             fail: function(xhr, textStatus, error) {
@@ -1952,12 +1957,12 @@
             },
 
             success: function(dataObj) {
-                if (dataObj.success == true) {
-                    $.each(dataObj.result.data, function(idCity, valCity) {
-                        if (valCity.name != '') {
+                if (dataObj.message === "Sukses") {
+                    $.each(dataObj.data, function(idCity, valCity) {
+                        if (valCity.desc != '') {
                             dataCity.push({
                                 id: valCity.id,
-                                text: valCity.name
+                                text: valCity.desc
                             });
                         }
                     })
@@ -2027,10 +2032,13 @@
         $('#alamat_lengkap_sertificate').val("");
 
         var id = this.value;
+        var params_getCity = { "province_id": id }
 
         $.ajax({
             type: 'GET',
-            url: '/service/city/listJson?id=' + id,
+            // url: '/service/city/listJson?id=' + id,
+            url: '/credit/get-city',
+            data: params_getCity,
             dataType: 'json',
             error: function(data) {
                 console.log('error' + data);
@@ -2041,12 +2049,12 @@
             },
 
             success: function(dataObj) {
-                if (dataObj.success == true) {
+                if (dataObj.message === "Sukses") {
                     $.each(dataObj.result.data, function(idCity, valCity) {
-                        if (valCity.name != '') {
+                        if (valCity.desc != '') {
                             dataCity.push({
                                 id: valCity.id,
-                                text: valCity.name
+                                text: valCity.desc
                             });
                         }
                     })
@@ -2115,10 +2123,13 @@
         $('#alamat_lengkap').val("");
 
         var id = this.value;
+        var param_getKecamatan = { "city_id": id };
 
         $.ajax({
-            type: 'GET',
-            url: '/service/kecamatan/listJson?id=' + id,
+            type: 'POST',
+            // url: '/service/kecamatan/listJson?id=' + id,
+            url: '/credit/get-district',
+            data: param_getKecamatan,
             dataType: 'json',
             error: function(data) {
                 console.log('error' + data);
@@ -2129,12 +2140,13 @@
             },
 
             success: function(dataObj) {
-                if (dataObj.success == true) {
-                    $.each(dataObj.result.data, function(idKec, valKec) {
-                        if (valKec.name != '') {
+                // console.log("(OK)[onChange Kota]dataObj: ", dataObj);
+                if (dataObj.message === "Sukses") {
+                    $.each(dataObj.data, function(idKec, valKec) {
+                        if (valKec.desc != '') {
                             dataKec.push({
                                 id: valKec.id,
-                                text: valKec.name
+                                text: valKec.desc
                             });
                         }
                     })
@@ -2278,11 +2290,14 @@
         $('#alamat_lengkap').val("");
 
         var id = this.value;
+        var params_getSubdistrict = { "district_id": id }
 
         $.ajax({
-            type: 'GET',
-            url: '/service/kelurahan/listJson?id=' + id,
+            type: 'POST',
+            // url: '/service/kelurahan/listJson?id=' + id,
+            url: '/credit/get-subdistrict',
             dataType: 'json',
+            data: params_getSubdistrict,
             error: function(data) {
                 console.log('error' + data);
             },
@@ -2292,13 +2307,14 @@
             },
 
             success: function(dataObj) {
-                if (dataObj.success == true) {
-                    $.each(dataObj.result.data, function(idKel, valKel) {
-                        if (valKel.name != '') {
+                // console.log("[onChange kecamatan]dataObj: ", dataObj);
+                if (dataObj.message === "Sukses") {
+                    $.each(dataObj.data, function(idKel, valKel) {
+                        if (valKel.desc != '') {
                             dataKel.push({
                                 id: valKel.id,
-                                text: valKel.name,
-                                postcode: valKel.postcode
+                                text: valKel.desc,
+                                // postcode: valKel.postcode
                             });
                         }
                     })
@@ -2412,6 +2428,7 @@
     })
 
     $("#kelurahan").on("select2:select", function(e) {
+        console.log("===#kelurahan select ganti2");
         showDefaultButton();
         change_addres = true;
         if ($('.nav-item-2').hasClass("done")) {
@@ -2438,8 +2455,13 @@
         $('#alamat_lengkap').removeAttr("disabled");
         $('#alamat_lengkap').css("background-color", "white");
 
+
+
         // var postcodeGen = $(this).children("option[value='" + $(this).val() + "']").attr("postcode");
-        var postcodeGen = $(this).parent().find(".selected-kelurahan").attr("postcode");
+        // var postcodeGen = $(this).parent().find(".selected-kelurahan").attr("id");
+        
+        var postcodeGen = $(this).parent().find(".selected-kelurahan");
+        console.log("====postcodeGen: ", postcodeGen);
 
         if (postcodeGen !== 'null') {
             $("#kode_pos").val(postcodeGen);
