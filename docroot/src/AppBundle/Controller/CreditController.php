@@ -809,7 +809,7 @@ class CreditController extends FrontendController
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["funding"] = htmlentities(addslashes($request->get('funding')));
         $param["tenor"] = htmlentities(addslashes($request->get('tenor')));
-        $param["insurance"] = htmlentities($request->get('insurance'));
+        $param["insurance"] = $request->get('insurance');
 
 
         try {
