@@ -53,7 +53,7 @@ $lang = $this->getLocale();
                     <h2 class="title"><?= $blog->getTitle();?></h2>
                     <div class="dateview">
                         <span class="date"><?= $blog->getDate();?></span>
-                        <span class="view"><i class="fa fa-eye"></i> 1.234</span>
+                        <span class="view"><i class="fa fa-eye"></i> <?= $blog->getViews(); ?></span>
                     </div>
                 </div>
             </a>
