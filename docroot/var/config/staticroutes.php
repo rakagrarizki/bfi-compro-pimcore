@@ -1368,5 +1368,275 @@ return [
         "legacy" => FALSE,
         "creationDate" => 1568025769,
         "modificationDate" => 1568025803
-    ]
+    ],
+    80 => [
+        "id" => 80,
+        "name" => "get machinery services",
+        "pattern" => "/\\/credit\\/get-machinery-services/",
+        "reverse" => "/credit/get-machinery-services",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getMachineryServices",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568025769,
+        "modificationDate" => 1568025803
+    ],
+   81 => [
+        "id" => 81,
+        "name" => "get machinery industry",
+        "pattern" => "/\\/credit\\/get-machinery-industry/",
+        "reverse" => "/credit/get-machinery-industry",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getMachineryIndustry",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568025769,
+        "modificationDate" => 1568025803
+    ],
+   82 => [
+        "id" => 82,
+        "name" => "get machinery type",
+        "pattern" => "/\\/credit\\/get-machinery-type/",
+        "reverse" => "/credit/get-machinery-type",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getMachineryType",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568025769,
+        "modificationDate" => 1568025803
+    ],
+   83 => [
+        "id" => 83,
+        "name" => "get machinery brand",
+        "pattern" => "/\\/credit\\/get-machinery-brand/",
+        "reverse" => "/credit/get-machinery-brand",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getMachineryBrand",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568025769,
+        "modificationDate" => 1568025803
+    ],
+   84 => [
+        "id" => 84,
+        "name" => "get machinery model",
+        "pattern" => "/\\/credit\\/get-machinery-model/",
+        "reverse" => "/credit/get-machinery-model",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getMachineryModel",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568025769,
+        "modificationDate" => 1568025803
+    ],
+   85 => [
+        "id" => 85,
+        "name" => "get machinery year",
+        "pattern" => "/\\/credit\\/get-machinery-year/",
+        "reverse" => "/credit/get-machinery-year",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getMachineryYear",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568025769,
+        "modificationDate" => 1568025803
+    ],
+   86 => [
+        "id" => 86,
+        "name" => "get machinery funding",
+        "pattern" => "/\\/credit\\/get-machinery-funding/",
+        "reverse" => "/credit/get-machinery-funding",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getMachineryFunding",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568025769,
+        "modificationDate" => 1568025803
+    ],
+   87 => [
+        "id" => 87,
+        "name" => "get machinery tenor",
+        "pattern" => "/\\/credit\\/get-machinery-tenor/",
+        "reverse" => "/credit/get-machinery-tenor",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getMachineryTenor",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568025769,
+        "modificationDate" => 1568025803
+    ],
+   88 => [
+        "id" => 88,
+        "name" => "machinery calculate",
+        "pattern" => "/\\/credit\\/machinery-calculate/",
+        "reverse" => "/credit/machinery-calculate",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getMachineryCalculate",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568025769,
+        "modificationDate" => 1568025803
+    ],
+    89 => [
+        "id" => 89,
+        "name" => "save machinery leads 1",
+        "pattern" => "/\\/credit\\/save-machinery-leads1/",
+        "reverse" => "/credit/save-machinery-leads1",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "saveMachineryLeads1",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567594158,
+        "modificationDate" => 1567594183
+    ],
+    90 => [
+        "id" => 90,
+        "name" => "save machinery leads 2",
+        "pattern" => "/\\/credit\\/save-machinery-leads2/",
+        "reverse" => "/credit/save-machinery-leads2",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "saveMachineryLeads2",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567594158,
+        "modificationDate" => 1567594183
+    ],
+    91 => [
+        "id" => 91,
+        "name" => "save machinery leads 3",
+        "pattern" => "/\\/credit\\/save-machinery-leads3/",
+        "reverse" => "/credit/save-machinery-leads3",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "saveMachineryLeads3",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567594158,
+        "modificationDate" => 1567594183
+    ],
+    92 => [
+        "id" => 92,
+        "name" => "save machinery leads 4",
+        "pattern" => "/\\/credit\\/save-machinery-leads4/",
+        "reverse" => "/credit/save-machinery-leads4",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "saveMachineryLeads4",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567594158,
+        "modificationDate" => 1567594183
+    ],
+    93 => [
+        "id" => 93,
+        "name" => "save machinery leads 5",
+        "pattern" => "/\\/credit\\/save-machinery-leads5/",
+        "reverse" => "/credit/save-machinery-leads5",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "saveMachineryLeads5",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567594158,
+        "modificationDate" => 1567594183
+    ],
+    94 => [
+        "id" => 94,
+        "name" => "save machinery leads 6",
+        "pattern" => "/\\/credit\\/save-machinery-leads6/",
+        "reverse" => "/credit/save-machinery-leads6",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "saveMachineryLeads6",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567594158,
+        "modificationDate" => 1567594183
+    ],
 ];

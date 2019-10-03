@@ -14,7 +14,7 @@ $lang = $this->getLocale();
         <article class="sect-title text-center">
             <h2 class="margin-top-10"><?= $this->t("blog-title");?></h2>
             <p><?= $this->t("blog-text1");?></p>
-            <p><?= $this->t("blog-text2");?></p>
+            <p><?php //echo $this->t("blog-text2");?></p>
         </article>
         <div class="pengajuan">
             <div class="cek-pengajuan">
@@ -41,8 +41,9 @@ $lang = $this->getLocale();
                 </form>
             </div>
         </div>
+        <?php if (count($this->paginator) > 0) { ?>
         <div class="list-card">
-        <?php foreach($this->blogs as $blog) : ?>
+        <?php foreach($this->paginator as $blog) : ?>
             <a href="<?= '/'.$lang.'/blog/'.$blog->getSlug();?>" class="card-item">
                 <picture>
                     <img src="<?= $blog->getImage();?>" alt="">
@@ -52,29 +53,19 @@ $lang = $this->getLocale();
                     <h2 class="title"><?= $blog->getTitle();?></h2>
                     <div class="dateview">
                         <span class="date"><?= $blog->getDate();?></span>
-                        <span class="view"><i class="fa fa-eye"></i> 1.234</span>
+                        <span class="view"><i class="fa fa-eye"></i> <?= $blog->getViews(); ?></span>
                     </div>
                 </div>
             </a>
         <?php endforeach;?>
         </div>
+        <?php }?>
 
-        <nav aria-label="Page navigation">
-            <ul class="pagination">
-                <li>
-                    <a href="javascript:void(0)" aria-label="Previous">
-                        <i class="fa fa-angle-left"></i>
-                    </a>
-                </li>
-                <li class="active"><a href="javascript:void(0)">1</a></li>
-                <li><a href="javascript:void(0)">2</a></li>
-                <li><a href="javascript:void(0)">3</a></li>
-                <li>
-                    <a href="javascript:void(0)" aria-label="Next">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
-                </li>
-            </ul>
-        </nav>
+        <?php if(count($this->paginator) > 1): ?>
+            <?= $this->render("Includes/paging.html.php", get_object_vars($this->paginator->getPages("Sliding")), [
+                'urlprefix' => $this->document->getFullPath() . '?page=', // just example (this parameter could be used in paging.php to construct the URL)
+                'appendQueryString' => true // just example (this parameter could be used in paging.php to construct the URL)
+            ]); ?>
+        <?php endif;?>
     </div>
 </div>
