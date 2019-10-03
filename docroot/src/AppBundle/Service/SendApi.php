@@ -54,7 +54,8 @@ class SendApi
 
     public function requestOtp($handphone)
     {
-        $url = WebsiteSetting::getByName('URL_REQUEST_OTP')->getData();
+        $host = WebsiteSetting::getByName("HOST")->getData();
+        $url = $host.WebsiteSetting::getByName('URL_REQUEST_OTP')->getData();
         $params["phone_number"] = $handphone;
         //$params["first_name"] = $name;
 
@@ -63,7 +64,8 @@ class SendApi
 
     public function validateOtp($handphone, $code)
     {
-        $url = WebsiteSetting::getByName('URL_VALIDATE_OTP')->getData();
+        $host = WebsiteSetting::getByName("HOST")->getData();
+        $url = $host. WebsiteSetting::getByName('URL_VALIDATE_OTP')->getData();
         $params["phone_number"] = $handphone;
         $params["otp_code"] = $code;
 
