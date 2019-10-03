@@ -329,17 +329,35 @@
 
     var clone_asuransi,
         raw_select,
+        list_asuransi = [],
         asuransi_arr = [],
         asuransi_arr_txt = [];
 
     function newoptionAsuransi(thisval, raw_select) {
         $(".columnselect").remove();
 
-        var _url = '/credit/get-insurance';
+        var _url = '';
+        // var _param = {
+        //     tipe: htmlEntities($("#jenis_form").val()),
+        //     tenor: htmlEntities($("#jangka_waktu").val()),
+        //     otr_price: htmlEntities($("#otr").val())
+        // }
         var _param = {
-            tipe: htmlEntities($("#jenis_form").val()),
-            tenor: htmlEntities($("#jangka_waktu").val()),
-            otr_price: htmlEntities($("#otr").val())
+          submission_id: submission_id,
+          tenor: htmlEntities($("#jangka_waktu").val()),
+          funding: htmlEntities($("#otr").val())
+        }
+
+        switch(credits.angunan.jenis_angunan) {
+          case 'MOBIL':
+            _url = '/credit/get-insurance';
+            break;
+          case 'MOTOR':
+            _url = '/credit/get-motorcycle-calculate';
+            break;
+          case 'SURAT BANGUNAN':
+            _url = '/credit/pbf-calculate';
+            break;
         }
 
         // console.log(_param);
@@ -363,6 +381,7 @@
 
                 var jumlah_loop = data.data.count;
 
+                list_asuransi = [];
                 asuransi_arr = [];
                 asuransi_arr_txt = [];
 
@@ -373,41 +392,65 @@
                 $.each(data.data.insurance_list, function(index, value) {
                     var asuransi = value;
                     asu_ransi = "";
+                    list_asuransi[index] = [];
 
-                    $.each(value.list, function(i, item) {
+                    $.each(value[index], function(i, item) {
                         // var list_asuransi = item.asuransi;
                         // console.log(item.asuransi);
-                        if (item.asuransi == "ARK") {
-                            asu_ransi += "<option value='" + item.asuransi + "' selected>" + item.text + "</option>"
-                        } else {
-                            asu_ransi += "<option value='" + item.asuransi + "'>" + item.text + "</option>"
+                        var dataAsuransi = {
+                          id: item.id,
+                          text: item.desc,
+                          selected: false
                         }
-                        if (item.asuransi == "ARK" && item.isonly == true) {
-                            isonly = item.isonly;
+                        if (item.desc == "All Risk") {
+                            // asu_ransi += "<option value='" + item.id + "' selected>" + item.desc + "</option>"
+                            dataAsuransi.selected = true;
+                        } else {
+                            // asu_ransi += "<option value='" + item.id + "'>" + item.desc + "</option>"
+                            dataAsuransi.selected = false;
+                        }
+                        list_asuransi[index].push(dataAsuransi);
+                        if (item.desc == "All Risk" && item.is_only == true) {
+                            isonly = item.is_only;
                         }
                     })
                 });
 
-                raw_select = '<div class="columnselect" ke="0">' +
+                // var raw_select = '<div class="columnselect" id="$0">' +
+                //     '<div class="list-select">' +
+                //     '<label>$1</label>' +
+                //     '</div>' +
+                //     '<div class="list-select select-wrapper">' +
+                //     '<select class="c-custom-select-trans form-control formRequired opsiasuransi"' +
+                //     'name="status" multiple="multiple">' + asu_ransi + '</select>' +
+                //     '</div>' +
+                //     '<div class="error-wrap"></div>' +
+                //     '</div>';
+
+                $(".form-group.inputsimulasi.asuransi").find(".columnselect").remove();
+                for (var i = 1; i <= jumlah_loop; i++) {
+                    var _template = '<div class="columnselect" id="tahun'+i+'" data-index="'+ i +'">' +
                     '<div class="list-select">' +
-                    '<label>' + tahunke + ' - 1</label>' +
+                    '<label>' + tahunke + ' - ' + i + '</label>' +
                     '</div>' +
                     '<div class="list-select select-wrapper">' +
                     '<select class="c-custom-select-trans form-control formRequired opsiasuransi"' +
-                    'name="status" multiple="multiple">' + asu_ransi + '</select>' +
+                    'name="status" multiple="multiple"></select>' +
                     '</div>' +
                     '<div class="error-wrap"></div>' +
                     '</div>';
 
-                for (var i = 1; i <= jumlah_loop; i++) {
+                    // _template.replace("$0", "tahun"+i);
+                    // _template.replace("$1", tahunke + " - " + i);
+                    // asuransi_arr[asuransi_arr.length] = $(".columnselect .c-custom-select-trans").val();
+                    $(".form-group.inputsimulasi.asuransi").append(_template);
+                    // $(".columnselect[ke=0]").attr("ke", i);
+                    // $(".columnselect[ke=" + i + "]").children().find("label").text("" + tahunke + " - " + i + "");
 
-                    $(".form-group.inputsimulasi.asuransi").append(raw_select);
-                    $(".columnselect[ke=0]").attr("ke", i);
-                    $(".columnselect[ke=" + i + "]").children().find("label").text("" + tahunke + " - " + i + "");
-                    asuransi_arr[asuransi_arr.length] = $(".columnselect .c-custom-select-trans").val();
-
-                    $(".columnselect[ke=" + i + "]").find(".opsiasuransi").select2({
-                        dropdownParent: $(".columnselect[ke=" + i + "]").find(".opsiasuransi").parent()
+                    asuransi_arr[asuransi_arr.length] = $("#tahun" + i + " .c-custom-select-trans").val();
+                    $("#tahun" + i + " .opsiasuransi").select2({
+                        dropdownParent: $("#tahun" + i + " .select-wrapper"),
+                        data: list_asuransi[i-1]
                     });
 
                 }
@@ -420,22 +463,23 @@
 
                 // console.log(raw_select);
                 $(".opsiasuransi").change(function() {
-                    var opsi = $(this).val();
+                    // var opsi = $(this).val();
 
-                    if (opsi.length == 0) {
-                        $(this).val("ARK").trigger("change");
-                    } else if (opsi.length > 1) {
-                        $(this).val(opsi[opsi.length - 1]).trigger("change");
-                    }
+                    // if (opsi.length == 0) {
+                    //     $(this).val("ARK").trigger("change");
+                    // } else if (opsi.length > 1) {
+                    //     $(this).val(opsi[opsi.length - 1]).trigger("change");
+                    // }
                 })
 
                 $.each($(".columnselect .c-custom-select-trans"), function(i, o) {
+                    asuransi_arr[asuransi_arr_txt.length] = $(o).val()[0];
                     asuransi_arr_txt[asuransi_arr_txt.length] = $(o).find("option:selected").text();
                 })
 
                 $(".columnselect .c-custom-select-trans").on("change", function() {
-                    var rowke = $(this).parents(".columnselect").attr("ke");
-                    asuransi_arr[rowke - 1] = $(this).val();
+                    var rowke = $(this).parents(".columnselect").data("index");
+                    asuransi_arr[rowke - 1] = $(this).val()[0];
                     asuransi_arr_txt[rowke - 1] = $(this).find("option:selected").text();
 
                     disableButton("#button4");
@@ -736,7 +780,7 @@
             kota = $('#kota').val(),
             kecamatan = $('#kecamatan').val(),
             kelurahan = $('#kelurahan').val(),
-            kode_pos = $('#kode_pos').val(),
+            kode_pos = $('#kode_pos').data('value'),
             alamat = $('#alamat_lengkap').val();
 
         var _data = {
@@ -2690,6 +2734,7 @@
 
                 if (postcodeGen !== 'null') {
                     $("#kode_pos").val(postcodeGen);
+                    $("#kode_pos").data("value", dataObj.data[0].id);
                     $("#kode_pos").prev().css({
                         'display': 'block',
                         'padding': '15px 15px 5px'
@@ -2700,6 +2745,7 @@
                     });
                 } else {
                     $("#kode_pos").val("");
+                    $("#kode_pos").data("value", "");
                 }
 
                 if ($("#kode_pos").val() == "" || $(this).val() == "" || $("#alamat_lengkap").val() == "" || $("#provinsi").val() == "" || $("#kota").val() == "" || $("#kecamatan").val() == "") {
@@ -3213,9 +3259,9 @@
                 console.log('request failed')
             },
             success: function(data) {
-                var rawMinPrice = parseInt(data.data.price_min),
-                    rawMaxPrice = parseInt(data.data.price_max),
-                    otr_price = parseInt(data.data.otr_price);
+                var rawMinPrice = parseInt(data.data.minimum_funding),
+                    rawMaxPrice = parseInt(data.data.maximum_funding),
+                    otr_price = parseInt(data.data.minimum_funding);
 
                 console.log(otr_price);
 
@@ -3302,11 +3348,11 @@
 
                 //raw_select = "<select class='opsiasuransi'>"+opsiasuransi+"</select>";
                 //clone_asuransi = $(".columnselect").clone(true);
+
+                $('#jangka_waktu').empty();
+                getTenor();
             }
         })
-
-        $('#jangka_waktu').empty();
-        getTenor();
     }
 
 
@@ -3649,23 +3695,46 @@
     }
 
     function calculatePremi() {
-        var _url = '/credit/get-loan';
+        var _url = '';
         // var _val = $('#ex6SliderVal').val()
         // var _reform = _val.replace(/[.]/g, "")
         // var _toInt = parseInt(_reform)
         // _toInt = (_toInt > 0 ? _toInt : 0)
+        // var _param = {
+        //     tipe: htmlEntities(credits.angunan.jenis_angunan),
+        //     model_kendaraan: htmlEntities(credits.kendaraan.model_kendaraan),
+        //     merk_kendaraan: htmlEntities(credits.kendaraan.merk_kendaraan_text),
+        //     tahun: htmlEntities(credits.kendaraan.tahun_kendaraan),
+        //     post_code: htmlEntities(credits.tempat_tinggal.kode_pos),
+        //     funding: htmlEntities(objCredits.funding),
+        //     tenor: htmlEntities(objCredits.jangka_waktu),
+        //     asuransi: htmlEntities(asuransi_arr.join("-")),
+        //     status_kep: htmlEntities(credits.kendaraan.status_pemilik),
+        //     taksasi: htmlEntities(objCredits.installment)
+        // }
+
         var _param = {
-            tipe: htmlEntities(credits.angunan.jenis_angunan),
-            model_kendaraan: htmlEntities(credits.kendaraan.model_kendaraan),
-            merk_kendaraan: htmlEntities(credits.kendaraan.merk_kendaraan_text),
-            tahun: htmlEntities(credits.kendaraan.tahun_kendaraan),
-            post_code: htmlEntities(credits.tempat_tinggal.kode_pos),
-            funding: htmlEntities(objCredits.funding),
-            tenor: htmlEntities(objCredits.jangka_waktu),
-            asuransi: htmlEntities(asuransi_arr.join("-")),
-            status_kep: htmlEntities(credits.kendaraan.status_pemilik),
-            taksasi: htmlEntities(objCredits.installment)
+          submission_id: submission_id,
+          funding: htmlEntities(objCredits.funding),
+          tenor: htmlEntities(objCredits.jangka_waktu),
+          insurance: asuransi_arr
         }
+
+        console.log("CALC",_param);
+
+        // console.log(brand_attr, $(this).val())
+        switch(credits.angunan.jenis_angunan) {
+          case 'MOBIL':
+            _url = '/credit/get-car-calculate';
+            break;
+          case 'MOTOR':
+            _url = '/credit/get-motorcycle-calculate';
+            break;
+          case 'SURAT BANGUNAN':
+            _url = '/credit/pbf-calculate';
+            break;
+        }
+
         if (_param.funding == 0) {
             if ($("#jenis_form").val() == "MOBIL") {
                 _param.funding = 10000000;
@@ -3771,15 +3840,15 @@
                 // console.log("Tenor Result", data);
                 $.each(data.data, function(index, value) {
                     var tenor = value.tenor;
-                    var tenor_text = value.text;
+                    var tenor_text = value.desc;
                     // console.log(tenor_text, tenor)
                     $('#jangka_waktu').append($('<option>', {
                         value: tenor,
                         text: tenor_text
                     }));
-
-                    $('#jangka_waktu option:first-child').attr('selected', 'selected');
                 })
+
+                $('#jangka_waktu option:first-child').attr('selected', 'selected');
 
             }
         })
