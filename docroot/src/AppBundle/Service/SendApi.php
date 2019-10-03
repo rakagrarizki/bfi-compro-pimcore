@@ -441,6 +441,74 @@ class SendApi
         return $this->executeApi('api-save-edu-leads5', $url,$params,"POST");
     }
 
+    //Education
+    public function getMachineryServices($url){
+
+        return $this->executeApi('api-get-machinery-services', $url,[],"GET");
+    }
+    public function getMachineryIndustry($url){
+
+        return $this->executeApi('api-get-machinery-industry', $url,[],"GET");
+    }
+    public function getMachineryType($url){
+
+        return $this->executeApi('api-get-machinery-type', $url,[],"GET");
+    }
+    public function getMachineryBrand($url){
+
+        return $this->executeApi('api-get-machinery_brand', $url,[],"GET");
+    }
+    public function getMachineryModel($url, $params){
+
+        return $this->executeApi('api-edu-machinery-model', $url,$params,"POST");
+    }
+    public function getMachineryYear($url, $params){
+
+        return $this->executeApi('api-edu-machinery-year', $url,$params,"POST");
+    }
+    public function getMachineryFunding($url, $params){
+
+        return $this->executeApi('api-edu-machinery-funding', $url,$params,"POST");
+    }
+    public function getMachineryTenor($url){
+
+        return $this->executeApi('api-get-machinery-tenor', $url,[],"GET");
+    }
+
+    public function machineryCalculate($url, $params){
+
+        return $this->executeApi('api-machinery-calculator', $url,$params,"POST");
+    }
+
+    public function saveMachineryLeads1($url, $params){
+
+        return $this->executeApi('api-save-machinery-leads1', $url,$params,"POST");
+    }
+
+    public function saveMachineryLeads2($url, $params){
+
+        return $this->executeApi('api-save-machinery-leads2', $url,$params,"POST");
+    }
+
+    public function saveMachineryLeads3($url, $params){
+
+        return $this->executeApi('api-save-machinery-leads3', $url,$params,"POST");
+    }
+
+    public function saveMachineryLeads4($url, $params){
+
+        return $this->executeApi('api-save-machinery-leads4', $url,$params,"POST");
+    }
+
+    public function saveMachineryLeads5($url, $params){
+
+        return $this->executeApi('api-save-machinery-leads5', $url,$params,"POST");
+    }
+    public function saveMachineryLeads6($url, $params){
+
+        return $this->executeApi('api-save-machinery-leads6', $url,$params,"POST");
+    }
+
 
 
 }
