@@ -829,7 +829,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Car Calculate Down"
             ]);
         }
 
