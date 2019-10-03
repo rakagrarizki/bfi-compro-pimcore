@@ -184,7 +184,7 @@ class CreditController extends FrontendController
         if($data->code != 1){
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
 
@@ -244,7 +244,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -298,7 +298,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -352,7 +352,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -423,7 +423,7 @@ class CreditController extends FrontendController
         if($data->header->status != 200){
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
 
@@ -456,7 +456,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -485,7 +485,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
 
@@ -515,7 +515,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
 
@@ -530,7 +530,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Province Down"
             ]);
         }
 
@@ -543,7 +543,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -558,7 +558,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request City Down"
             ]);
         }
 
@@ -571,7 +571,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -586,7 +586,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request District Down"
             ]);
         }
 
@@ -599,7 +599,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -614,7 +614,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request SubDistrict Down"
             ]);
         }
 
@@ -627,7 +627,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -642,7 +642,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Zipcode Down"
             ]);
         }
 
@@ -655,7 +655,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -670,7 +670,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Car Type Down"
             ]);
         }
 
@@ -683,7 +683,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -698,7 +698,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Car Brand Down"
             ]);
         }
 
@@ -711,7 +711,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -727,7 +727,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Car Model Down"
             ]);
         }
 
@@ -740,7 +740,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -756,7 +756,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Car Year Down"
             ]);
         }
 
@@ -769,7 +769,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -785,7 +785,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Car Funding Down"
             ]);
         }
 
@@ -798,7 +798,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -817,7 +817,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Car Calculate Down"
             ]);
         }
 
@@ -830,7 +830,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -849,7 +849,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Save Car Leads 1 Down"
             ]);
         }
 
@@ -862,7 +862,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -884,7 +884,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Save car Leads 2 Down"
             ]);
         }
 
@@ -897,7 +897,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -919,7 +919,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Save Car Leads 3 Down"
             ]);
         }
 
@@ -932,7 +932,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -947,7 +947,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Save Car leads 4 Down"
             ]);
         }
 
@@ -960,7 +960,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -975,7 +975,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Save Car Leads 5 Down"
             ]);
         }
 
@@ -988,7 +988,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -1003,7 +1003,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Save Car leads 6 Down"
             ]);
         }
 
@@ -1016,7 +1016,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -1033,7 +1033,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Motorcycle Type Down"
             ]);
         }
 
@@ -1046,7 +1046,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -1061,7 +1061,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Motorcycle Brand Down"
             ]);
         }
 
@@ -1074,7 +1074,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -1090,7 +1090,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Motorcycle Model Down"
             ]);
         }
 
@@ -1103,7 +1103,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -1119,7 +1119,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Motorcycle Year Down"
             ]);
         }
 
@@ -1132,7 +1132,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -1148,7 +1148,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Motorcycle Funding Down"
             ]);
         }
 
@@ -1161,7 +1161,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -1190,7 +1190,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
 
@@ -1209,7 +1209,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Motorcycle Calculate Down"
             ]);
         }
 
@@ -1222,7 +1222,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -1241,7 +1241,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Save Motorcycle Leads 1 Down"
             ]);
         }
 
@@ -1254,7 +1254,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -1276,7 +1276,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Save Motorcycle Leads 2 Down"
             ]);
         }
 
@@ -1289,7 +1289,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -1311,7 +1311,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Save Motorcycle Leads 3 Down"
             ]);
         }
 
@@ -1324,7 +1324,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -1339,7 +1339,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Save Motorcycle Leads 4 Request Down"
             ]);
         }
 
@@ -1352,7 +1352,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -1367,7 +1367,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Save Motorcycle Leads 5 Down"
             ]);
         }
 
@@ -1380,7 +1380,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -1395,7 +1395,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Save Motorcycle Leads 6 Down"
             ]);
         }
 
@@ -1408,7 +1408,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -1425,7 +1425,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request PBF Profession Down"
             ]);
         }
 
@@ -1438,7 +1438,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -1453,7 +1453,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Pbf Certificate Type Down"
             ]);
         }
 
@@ -1466,7 +1466,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -1481,7 +1481,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request PBF Certificate on Behalf Down"
             ]);
         }
 
@@ -1494,7 +1494,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -1508,7 +1508,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Pbf Property type Down"
             ]);
         }
 
@@ -1521,7 +1521,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -1540,7 +1540,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Pbf Funding Down"
             ]);
         }
 
@@ -1553,7 +1553,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -1582,7 +1582,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
 
@@ -1601,7 +1601,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Pbf Calculate Down"
             ]);
         }
 
@@ -1614,7 +1614,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -1637,7 +1637,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Save Pbf Leads 1 Down"
             ]);
         }
 
@@ -1650,7 +1650,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -1672,7 +1672,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Save Pbf Leads 2 Down"
             ]);
         }
 
@@ -1685,7 +1685,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -1713,7 +1713,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Save Pbf Leads 3 Down"
             ]);
         }
 
@@ -1726,7 +1726,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -1741,7 +1741,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Save Pbf Leads 4 Down"
             ]);
         }
 
@@ -1754,7 +1754,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -1769,7 +1769,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Save Pbf Leads 5 Down"
             ]);
         }
 
@@ -1782,7 +1782,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -1798,7 +1798,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Save Pbf Leads 6 Down"
             ]);
         }
 
@@ -1811,7 +1811,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -1826,7 +1826,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Leisure Package Down"
             ]);
         }
 
@@ -1839,7 +1839,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -1854,7 +1854,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Tenor Down"
             ]);
         }
 
@@ -1867,7 +1867,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -1885,7 +1885,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Leisure Calculator Down"
             ]);
         }
 
@@ -1898,7 +1898,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -1917,7 +1917,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Save Leisure Leads 1 Down"
             ]);
         }
 
@@ -1930,7 +1930,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -1952,7 +1952,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Save Leisure Leads 2 Down"
             ]);
         }
 
@@ -1965,7 +1965,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -1980,7 +1980,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Save Leisure Leads 3 Down"
             ]);
         }
 
@@ -1993,7 +1993,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -2008,7 +2008,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Save Leisure Leads 4 Down"
             ]);
         }
 
@@ -2021,7 +2021,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -2036,7 +2036,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Save Leisure Leads 5 Down"
             ]);
         }
 
@@ -2049,7 +2049,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -2064,7 +2064,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Edu Package Down"
             ]);
         }
 
@@ -2077,7 +2077,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -2092,7 +2092,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Tenor Down"
             ]);
         }
 
@@ -2105,7 +2105,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -2122,7 +2122,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Edu Provision Package Down"
             ]);
         }
 
@@ -2135,7 +2135,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -2153,7 +2153,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Edu calculator Down"
             ]);
         }
 
@@ -2166,7 +2166,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -2186,7 +2186,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Save Edu Leads 1 Down"
             ]);
         }
 
@@ -2199,7 +2199,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -2221,7 +2221,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Save Edu Leads 2 Down"
             ]);
         }
 
@@ -2234,7 +2234,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -2249,7 +2249,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Save Edu Leads 3 Down"
             ]);
         }
 
@@ -2262,7 +2262,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -2277,7 +2277,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Save Edu Leads 4 Down"
             ]);
         }
 
@@ -2290,7 +2290,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
@@ -2305,7 +2305,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $e->getMessage()
+                'message' => "Service Request Save Edu Leads 5 Down"
             ]);
         }
 
@@ -2318,7 +2318,7 @@ class CreditController extends FrontendController
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
         }
     }
