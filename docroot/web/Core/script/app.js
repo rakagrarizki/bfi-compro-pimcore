@@ -3717,10 +3717,9 @@
           submission_id: submission_id,
           funding: htmlEntities(objCredits.funding),
           tenor: htmlEntities(objCredits.jangka_waktu),
-          insurance: asuransi_arr
+          insurance: asuransi_arr.join(",")
         }
 
-        console.log("CALC",_param);
 
         // console.log(brand_attr, $(this).val())
         switch(credits.angunan.jenis_angunan) {
