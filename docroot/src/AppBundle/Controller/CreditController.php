@@ -732,11 +732,19 @@ class CreditController extends FrontendController
         }
 
         if($data->header->status == 200){
-            return new JsonResponse([
-                'success' => "1",
-                'message' => "Sukses",
-                'data' => $data->data
-            ]);
+            if(count($data->data) > 0) {
+                return new JsonResponse([
+                    'success' => "1",
+                    'message' => "Sukses",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => "0",
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+
         }else{
             return new JsonResponse([
                 'success' => "0",
@@ -809,7 +817,11 @@ class CreditController extends FrontendController
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["funding"] = htmlentities(addslashes($request->get('funding')));
         $param["tenor"] = htmlentities(addslashes($request->get('tenor')));
-        $param["insurance"] = $request->get('insurance');
+        $insurance = htmlentities($request->get('insurance'));
+        //$ins = "F8D301F8-7045-4DA9-9EB8-EC8DE6E92855, F8D301F8-7045-4DA9-9EB8-EC8DE6E9285, F8D301F8-7045-4DA9-9EB8-EC8DE6E92855";
+        $insurance_arr = explode(",",$insurance);
+
+        $param["insurance"]= $insurance_arr;
 
 
         try {
@@ -817,7 +829,7 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Service Request Car Calculate Down"
+                'message' => $e->getMessage()
             ]);
         }
 
@@ -1095,11 +1107,19 @@ class CreditController extends FrontendController
         }
 
         if($data->header->status == 200){
-            return new JsonResponse([
-                'success' => "1",
-                'message' => "Sukses",
-                'data' => $data->data
-            ]);
+            if(count($data->data) > 0){
+                return new JsonResponse([
+                    'success' => "1",
+                    'message' => "Sukses",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => "0",
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+
         }else{
             return new JsonResponse([
                 'success' => "0",
@@ -2322,4 +2342,480 @@ class CreditController extends FrontendController
             ]);
         }
     }
+
+    public function getMachineryServicesAction(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_GET_MACHINERY_SERVICES')->getData();
+
+
+        try {
+            $data = $this->sendAPI->getMachineryServices($url);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Service Request Machinery Services Down"
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $this->get("translator")->trans("api-error")
+            ]);
+        }
+    }
+    public function getMachineryIndustryAction(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_GET_MACHINERY_INDUSTRY')->getData();
+
+
+        try {
+            $data = $this->sendAPI->getMachineryIndustry($url);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Service Request Machinery Industry Down"
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $this->get("translator")->trans("api-error")
+            ]);
+        }
+    }
+    public function getMachineryTypeAction(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_GET_MACHINERY_TYPE')->getData();
+
+
+        try {
+            $data = $this->sendAPI->getMachineryType($url);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Service Request Machinery Type Down"
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $this->get("translator")->trans("api-error")
+            ]);
+        }
+    }
+    public function getMachineryBrandAction(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_GET_MACHINERY_BRAND')->getData();
+
+
+        try {
+            $data = $this->sendAPI->getMachineryBrand($url);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Service Request Machinery Brand Down"
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $this->get("translator")->trans("api-error")
+            ]);
+        }
+    }
+
+    public function getMachineryModelAction(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_GET_MACHINERY_MODEL')->getData();
+        $param["machinery_brand_id"] = htmlentities(addslashes($request->get('machinery_brand_id')));
+        $param["machinery_type_id"] = htmlentities(addslashes($request->get('machinery_type_id')));
+
+        try {
+            $data = $this->sendAPI->getMachineryModel($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Service Request Machinery Model Down"
+            ]);
+        }
+
+        if($data->header->status == 200){
+            if(count($data->data) > 0){
+                return new JsonResponse([
+                    'success' => "1",
+                    'message' => "Sukses",
+                    'data' => $data->data
+                ]);
+            }else {
+                return new JsonResponse([
+                    'success' => "0",
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $this->get("translator")->trans("api-error")
+            ]);
+        }
+    }
+    public function getMachineryYearAction(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_GET_MACHINERY_YEAR')->getData();
+        $param["machinery_model_id"] = htmlentities(addslashes($request->get('machinery_model_id')));
+
+
+        try {
+            $data = $this->sendAPI->getMachineryYear($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Service Request Machinery Year Down"
+            ]);
+        }
+
+        if($data->header->status == 200){
+            if(count($data->data) > 0){
+                return new JsonResponse([
+                    'success' => "1",
+                    'message' => "Sukses",
+                    'data' => $data->data
+                ]);
+            }else {
+                return new JsonResponse([
+                    'success' => "0",
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $this->get("translator")->trans("api-error")
+            ]);
+        }
+    }
+    public function getMachineryFundingAction(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_GET_MACHINERY_FUNDING')->getData();
+        $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+
+
+        try {
+            $data = $this->sendAPI->getMachineryFunding($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Service Request Machinery Year Down"
+            ]);
+        }
+
+        if($data->header->status == 200){
+            if(count($data->data) > 0){
+                return new JsonResponse([
+                    'success' => "1",
+                    'message' => "Sukses",
+                    'data' => $data->data
+                ]);
+            }else {
+                return new JsonResponse([
+                    'success' => "0",
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $this->get("translator")->trans("api-error")
+            ]);
+        }
+    }
+
+    public function getMachineryTenorAction(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_GET_MACHINERY_TENOR_LIST')->getData();
+
+
+        try {
+            $data = $this->sendAPI->getMachineryTenor($url);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Service Request Tenor Down"
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $this->get("translator")->trans("api-error")
+            ]);
+        }
+    }
+    public function getMachineryCalculateAction(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_GET_MACHINERY_FUNDING')->getData();
+        $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+        $param["funding"] = htmlentities(addslashes($request->get('funding')));
+        $param["down_payment"] = htmlentities(addslashes($request->get('down_payment')));
+        $param["tenor"] = htmlentities(addslashes($request->get('tenor')));
+
+
+        try {
+            $data = $this->sendAPI->machineryCalculate($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Service Request Machinery Calculate Down"
+            ]);
+        }
+
+        if($data->header->status == 200){
+            if(count($data->data) > 0){
+                return new JsonResponse([
+                    'success' => "1",
+                    'message' => "Sukses",
+                    'data' => $data->data
+                ]);
+            }else {
+                return new JsonResponse([
+                    'success' => "0",
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $this->get("translator")->trans("api-error")
+            ]);
+        }
+    }
+
+    public function saveMachineryLeads1Action(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_SAVE_MACHINERY_LEADS_STEP_1')->getData();
+        $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+        $param["name"] = htmlentities(addslashes($request->get('name')));
+        $param["email"] = htmlentities(addslashes($request->get('email')));
+        $param["phone_number"] =htmlentities(addslashes($request->get('phone_number')));
+
+
+        try {
+            $data = $this->sendAPI->saveMachineryLeads1($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Service Request Save Machinery Leads 1 Down"
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $this->get("translator")->trans("api-error")
+            ]);
+        }
+    }
+
+    public function saveMachineryLeads2Action(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_SAVE_MACHINERY_LEADS_STEP_2')->getData();
+        $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+        $param["province_id"] = htmlentities(addslashes($request->get('province_id')));
+        $param["city_id"] = htmlentities(addslashes($request->get('city_id')));
+        $param["district_id"] = htmlentities(addslashes($request->get('district_id')));
+        $param["subdistrict_id"] = htmlentities(addslashes($request->get('subdistrict_id')));
+        $param["zipcode_id"] = htmlentities(addslashes($request->get('zipcode_id')));
+        $param["address"] = htmlentities(addslashes($request->get('address')));
+
+
+        try {
+            $data = $this->sendAPI->saveMachineryLeads2($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Service Request Save Machinery Leads 2 Down"
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $this->get("translator")->trans("api-error")
+            ]);
+        }
+    }
+
+    public function saveMachineryLeads3Action(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_SAVE_MACHINERY_LEADS_STEP_3')->getData();
+        $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+        $param["machinery_service_id"] = htmlentities(addslashes($request->get('machinery_service_id')));
+        $param["machinery_industry_id"] = htmlentities(addslashes($request->get('machinery_industry_id')));
+        $param["machinery_type_id"] = htmlentities(addslashes($request->get('machinery_type_id')));
+        $param["machinery_brand_id"] = htmlentities(addslashes($request->get('machinery_brand_id')));
+        $param["machinery_model_id"] = htmlentities(addslashes($request->get('machinery_model_id')));
+        $param["machinery_year_id"] = htmlentities(addslashes($request->get('machinery_year_id')));
+        $param["machinery_total"] = htmlentities(addslashes($request->get('machinery_total')));
+        $param["estimated_price"] = htmlentities(addslashes($request->get('estimated_price')));
+
+
+
+        try {
+            $data = $this->sendAPI->saveMachineryLeads3($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Service Request Save Machinery Leads 3 Down"
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $this->get("translator")->trans("api-error")
+            ]);
+        }
+    }
+
+    public function saveMachineryLeads4Action(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_SAVE_MACHINERY_LEADS_STEP_4')->getData();
+        $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+
+        try {
+            $data = $this->sendAPI->saveMachineryLeads4($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Service Request Save Machinery leads 4 Down"
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $this->get("translator")->trans("api-error")
+            ]);
+        }
+    }
+
+    public function saveMachineryLeads5Action(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_SAVE_MACHINERY_LEADS_STEP_5')->getData();
+        $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+
+        try {
+            $data = $this->sendAPI->saveMachineryLeads5($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Service Request Save Machinery Leads 5 Down"
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $this->get("translator")->trans("api-error")
+            ]);
+        }
+    }
+
+    public function saveMachineryLeads6Action(Request $request){
+
+        $url = WebsiteSetting::getByName('URL_SAVE_MACHINERY_LEADS_STEP_6')->getData();
+        $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+
+        try {
+            $data = $this->sendAPI->saveMachineryLeads6($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Service Request Save Machinery leads 6 Down"
+            ]);
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $this->get("translator")->trans("api-error")
+            ]);
+        }
+    }
+
+
 }
