@@ -42,7 +42,7 @@ class SendApi
 
         try {
             $data = $client->request($method, $url, [
-                "form_params" => $params
+                "json" => $params
             ]);
 
         } catch (Exception $e) {
