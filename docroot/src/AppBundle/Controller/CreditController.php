@@ -8,6 +8,7 @@ use Pimcore\Model\WebsiteSetting;
 use Pimcore\Model\DataObject;
 use Pimcore\Model\DataObject\Assurance;
 use AppBundle\Service\SendApi;
+use AppBundle\Service\SendApiDummy;
 use Pimcore\Bundle\AdminBundle\HttpFoundation\JsonResponse;
 
 class CreditController extends FrontendController
@@ -16,10 +17,16 @@ class CreditController extends FrontendController
 
     protected $randomNumber;
 
-    public function __construct(SendApi $sendAPI)
+    public function __construct(SendApi $sendAPI, sendApiDummy $sendApiDummy)
     {
-        $this->sendAPI = $sendAPI;
-        $this->randomNumber = rand(000001,999999);
+        if(ENV != "dev"){
+            $this->sendAPI = $sendAPI;
+            $this->randomNumber = rand(000001,999999);
+        } else {
+            $this->sendAPI = $sendApiDummy;
+            $this->randomNumber = rand(000001,999999);
+        }
+
     }
 
     public function mobilAction(Request $request)
@@ -422,10 +429,11 @@ class CreditController extends FrontendController
             $data = $this->sendAPI->requestOtp($handphone);
             $redis->hSet($handphone, 'time-send', time());
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Credit Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Credit Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($clear){
@@ -458,10 +466,7 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->validateOtp($handphone, $code);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Credit Down"
-            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -487,10 +492,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getTenor($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Tenor Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Tenor Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -518,10 +524,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getInsurance($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Insurance Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Insurance Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -547,10 +554,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getProvince($url);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Province Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Province Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -576,10 +584,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getCity($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request City Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request City Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -605,10 +614,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getDistrict($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request District Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request District Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -634,10 +644,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getSubdistrict($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request SubDistrict Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request SubDistrict Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -663,10 +674,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getZipcode($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Zipcode Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Zipcode Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -692,10 +704,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getCar($url);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Car Type Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Car Type Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -721,10 +734,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getCarBrand($url);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Car Brand Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Car Brand Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -751,24 +765,25 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getCarModel($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Car Model Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Car Model Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
-            if(count($data->data) > 0) {
+            if($data->data != []) {
                 return new JsonResponse([
                     'success' => "1",
                     'message' => "Sukses",
                     'data' => $data->data
                 ]);
             } else {
-                return new JsonResponse([
-                    'success' => "0",
-                    'message' => $this->get("translator")->trans("api-error")
-                ]);
+//                return new JsonResponse([
+//                    'success' => "0",
+//                    'message' => $this->get("translator")->trans("api-error")
+//                ]);
             }
 
         }else{
@@ -789,10 +804,10 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getCarYear($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Car Year Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Car Year Down"
+//            ]);
         }
 
         if($data->header->status == 200){
@@ -820,10 +835,10 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getCarFunding($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Car Funding Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Car Funding Down"
+//            ]);
         }
 
         if($data->header->status == 200){
@@ -857,10 +872,10 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getCarCalculate($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => $e->getMessage()
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => $e->getMessage()
+//            ]);
         }
 
         if($data->header->status == 200){
@@ -890,10 +905,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->saveCarLeads1($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Car Leads 1 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Car Leads 1 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -926,10 +942,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->saveCarLeads2($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save car Leads 2 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save car Leads 2 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -962,10 +979,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->saveCarLeads3($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Car Leads 3 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Car Leads 3 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -991,10 +1009,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->saveCarLeads4($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Car leads 4 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Car leads 4 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1020,10 +1039,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->saveCarLeads5($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Car Leads 5 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Car Leads 5 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1049,10 +1069,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->saveCarLeads6($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Car leads 6 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Car leads 6 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1080,10 +1101,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getMotorcycle($url);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Motorcycle Type Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Motorcycle Type Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1109,10 +1131,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getMotorcycleBrand($url);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Motorcycle Brand Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Motorcycle Brand Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1139,14 +1162,15 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getMotorcycleModel($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Motorcycle Model Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Motorcycle Model Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
-            if(count($data->data) > 0){
+            if($data->data != []){
                 return new JsonResponse([
                     'success' => "1",
                     'message' => "Sukses",
@@ -1177,10 +1201,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getMotorcycleYear($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Motorcycle Year Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Motorcycle Year Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1207,10 +1232,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getMotorcycleFunding($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Motorcycle Funding Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Motorcycle Funding Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1237,10 +1263,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getMotorcycleTenor($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Tenor Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Tenor Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1270,10 +1297,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getMotorcycleCalculate($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Motorcycle Calculate Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Motorcycle Calculate Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1303,10 +1331,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->saveMotorcycleLeads1($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Motorcycle Leads 1 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Motorcycle Leads 1 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1339,10 +1368,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->saveMotorcycleLeads2($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Motorcycle Leads 2 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Motorcycle Leads 2 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1375,10 +1405,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->saveMotorcycleLeads3($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Motorcycle Leads 3 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Motorcycle Leads 3 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1404,10 +1435,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->saveMotorcycleLeads4($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Save Motorcycle Leads 4 Request Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Save Motorcycle Leads 4 Request Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1433,10 +1465,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->saveMotorcycleLeads5($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Motorcycle Leads 5 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Motorcycle Leads 5 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1462,10 +1495,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->saveMotorcycleLeads6($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Motorcycle Leads 6 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Motorcycle Leads 6 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1493,10 +1527,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getProfession($url);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request PBF Profession Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request PBF Profession Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1522,10 +1557,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getPbfCertificateType($url);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Pbf Certificate Type Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Pbf Certificate Type Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1551,10 +1587,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getPbfCertificateOnBehalf($url);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request PBF Certificate on Behalf Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request PBF Certificate on Behalf Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1579,10 +1616,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getPbfPropertyType($url);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Pbf Property type Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Pbf Property type Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1612,10 +1650,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getPbfFunding($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Pbf Funding Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Pbf Funding Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1642,10 +1681,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getPbfTenor($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Tenor Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Tenor Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1675,10 +1715,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getPbfCalculate($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Pbf Calculate Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Pbf Calculate Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1712,10 +1753,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->savePbfLeads1($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Pbf Leads 1 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Pbf Leads 1 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1748,10 +1790,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->savePbfLeads2($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Pbf Leads 2 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Pbf Leads 2 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1790,10 +1833,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->savePbfLeads3($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Pbf Leads 3 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Pbf Leads 3 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1819,10 +1863,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->savePbfLeads4($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Pbf Leads 4 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Pbf Leads 4 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1848,10 +1893,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->savePbfLeads5($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Pbf Leads 5 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Pbf Leads 5 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1878,10 +1924,12 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->savePbfLeads6($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Pbf Leads 6 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Pbf Leads 6 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
+
         }
 
         if($data->header->status == 200){
@@ -1907,10 +1955,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getLeisurePackage($url);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Leisure Package Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Leisure Package Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1936,10 +1985,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getLeisureTenor($url);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Tenor Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Tenor Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1968,10 +2018,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->leisureCalculator($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Leisure Calculator Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Leisure Calculator Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -2001,10 +2052,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->saveLeisureLeads1($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Leisure Leads 1 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Leisure Leads 1 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -2037,10 +2089,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->saveLeisureLeads2($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Leisure Leads 2 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Leisure Leads 2 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -2066,10 +2119,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->saveLeisureLeads3($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Leisure Leads 3 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Leisure Leads 3 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -2095,10 +2149,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->saveLeisureLeads4($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Leisure Leads 4 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Leisure Leads 4 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -2124,10 +2179,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->saveLeisureLeads5($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Leisure Leads 5 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Leisure Leads 5 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -2153,10 +2209,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getEduPackage($url);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Edu Package Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Edu Package Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -2182,10 +2239,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getEduTenor($url);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Tenor Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Tenor Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -2213,10 +2271,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getEduProvisionPackage($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Edu Provision Package Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Edu Provision Package Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -2245,10 +2304,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->eduCalculator($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Edu calculator Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Edu calculator Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -2279,10 +2339,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->saveEduLeads1($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Edu Leads 1 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Edu Leads 1 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -2315,10 +2376,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->saveEduLeads2($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Edu Leads 2 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Edu Leads 2 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -2344,10 +2406,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->saveEduLeads3($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Edu Leads 3 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Edu Leads 3 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -2373,10 +2436,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->saveEduLeads4($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Edu Leads 4 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Edu Leads 4 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -2402,10 +2466,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->saveEduLeads5($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Edu Leads 5 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Edu Leads 5 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -2431,10 +2496,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getMachineryServices($url);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Machinery Services Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Machinery Services Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -2459,10 +2525,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getMachineryIndustry($url);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Machinery Industry Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Machinery Industry Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -2487,10 +2554,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getMachineryType($url);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Machinery Type Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Machinery Type Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -2515,10 +2583,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getMachineryBrand($url);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Machinery Brand Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Machinery Brand Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -2545,14 +2614,15 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getMachineryModel($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Machinery Model Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Machinery Model Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
-            if(count($data->data) > 0){
+            if($data->data != []){
                 return new JsonResponse([
                     'success' => "1",
                     'message' => "Sukses",
@@ -2582,14 +2652,15 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getMachineryYear($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Machinery Year Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Machinery Year Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
-            if(count($data->data) > 0){
+            if($data->data != []){
                 return new JsonResponse([
                     'success' => "1",
                     'message' => "Sukses",
@@ -2619,14 +2690,15 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getMachineryFunding($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Machinery Year Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Machinery Year Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
-            if(count($data->data) > 0){
+            if($data->data != []){
                 return new JsonResponse([
                     'success' => "1",
                     'message' => "Sukses",
@@ -2656,10 +2728,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getMachineryTenor($url);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Tenor Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Tenor Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -2688,14 +2761,15 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->machineryCalculate($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Machinery Calculate Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Machinery Calculate Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
-            if(count($data->data) > 0){
+            if($data->data != []){
                 return new JsonResponse([
                     'success' => "1",
                     'message' => "Sukses",
@@ -2729,10 +2803,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->saveCarLeads1($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Car Leads 1 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Car Leads 1 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -2765,10 +2840,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->saveMachineryLeads2($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save car Leads 2 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save car Leads 2 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -2804,10 +2880,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->saveMachineryLeads3($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Machinery Leads 3 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Machinery Leads 3 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -2833,10 +2910,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->saveMachineryLeads4($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Car leads 4 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Car leads 4 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -2862,10 +2940,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->saveMachineryLeads5($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Car Leads 5 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Car Leads 5 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -2891,10 +2970,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->saveMachineryLeads6($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Machinery leads 6 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Machinery leads 6 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
