@@ -39,13 +39,6 @@ class PromoController extends FrontendController
         $promo = Promo::getBySlug($slug,["limit"=>1]);
         $this->view->promo = $promo;
 
-        if($promo->getPromoCategory()){
-            $relatedPromos = new Promo\Listing();
-            $relatedPromos->addConditionParam("PromoCategory__id = ?",$promo->getPromoCategory()->getId(),"AND");
-            $relatedPromos->addConditionParam("oo_id != ?", $promo->getId(),"AND");
-            $relatedPromos->load();
-            $this->view->relatedPromos = $relatedPromos;
-        }
 
 
     }
