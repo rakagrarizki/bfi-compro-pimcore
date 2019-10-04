@@ -47,6 +47,21 @@ class CreditController extends FrontendController
 
     }
 
+    public function eduAction(Request $request)
+    {
+
+    }
+
+    public function leisureAction(Request $request)
+    {
+
+    }
+
+    public function mesinAction(Request $request)
+    {
+
+    }
+
     public function getBranchBfi($postCode)
     {
         $value = null;
