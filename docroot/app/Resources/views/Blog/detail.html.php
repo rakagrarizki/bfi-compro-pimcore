@@ -38,7 +38,7 @@ $urlTwitter = " https://twitter.com/share?text=$titleshare&url=$fixedurl&wrap_li
                 <img src="<?= $blog->getImage();?>" alt="">
             </picture>
             <div class="article-content">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo nulla perspiciatis placeat repudiandae laborum aspernatur quo, consequatur eos, mollitia pariatur deleniti quod debitis nesciunt culpa perferendis dolores veritatis labore ratione.
+
                 <?= $blog->getContent();?>
             </div>
             <div class="share">
@@ -48,7 +48,7 @@ $urlTwitter = " https://twitter.com/share?text=$titleshare&url=$fixedurl&wrap_li
                 <a href="javscript:void(0)" class="share-cp" id="copy"><i class="fa fa-chain"></i></a>
             </div>
             <div class="sumber">
-                <span>Sumber:</span> <a href="javscript:void(0)">Lorem</a>, <a href="javscript:void(0)">Ipsum</a>, <a href="javscript:void(0)">Dolor</a>
+                <span><?= $this->t("source")?>:</span> <a href="javscript:void(0)">Lorem</a>, <a href="javscript:void(0)">Ipsum</a>, <a href="javscript:void(0)">Dolor</a>
             </div>
         </article>
     </div>

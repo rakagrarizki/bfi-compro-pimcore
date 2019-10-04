@@ -462,15 +462,15 @@ class SendApi
     }
     public function getMachineryModel($url, $params){
 
-        return $this->executeApi('api-edu-machinery-model', $url,$params,"POST");
+        return $this->executeApi('api-machinery-model', $url,$params,"POST");
     }
     public function getMachineryYear($url, $params){
 
-        return $this->executeApi('api-edu-machinery-year', $url,$params,"POST");
+        return $this->executeApi('api-machinery-year', $url,$params,"POST");
     }
     public function getMachineryFunding($url, $params){
 
-        return $this->executeApi('api-edu-machinery-funding', $url,$params,"POST");
+        return $this->executeApi('api-machinery-funding', $url,$params,"POST");
     }
     public function getMachineryTenor($url){
 
