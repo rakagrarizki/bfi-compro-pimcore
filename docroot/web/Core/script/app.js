@@ -3753,13 +3753,14 @@
             fail: function(xhr, textStatus, error) {
                 console.log('request failed')
             },
-            success: function(data) {
+            success: function(result) {
 
                 // console.log("Calculator Result", data)
 
-                var angsuranFinal = data.data.angsuranFinal,
+                var angsuranFinal = result.data.monthly_installment_est_total,
                     angsuranFinal_txt = separatordot(angsuranFinal),
-                    insuranceCarTot = data.data.insuranceCarTotal / parseInt(_param.tenor),
+                    // insuranceCarTot = result.data.monthly_insurance / parseInt(_param.tenor),
+                    insuranceCarTot = result.data.monthly_insurance,
                     insuranceCarTot_txt = separatordot(insuranceCarTot);
 
                 var totalbiaya = (parseInt(angsuranFinal) * parseInt(_param.tenor) - parseInt(insuranceCarTot)) / parseInt(_param.tenor),
