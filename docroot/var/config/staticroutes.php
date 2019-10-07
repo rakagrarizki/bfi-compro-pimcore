@@ -1639,4 +1639,22 @@ return [
         "creationDate" => 1567594158,
         "modificationDate" => 1567594183
     ],
+    95 => [
+        "id" => 95,
+        "name" => "get leisure provision package",
+        "pattern" => "/\\/credit\\/get-leisure-provision-package/",
+        "reverse" => "/credit/get-leisure-provision-package",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getLeisureProvisionPackage",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567594158,
+        "modificationDate" => 1567594183
+    ],
 ];

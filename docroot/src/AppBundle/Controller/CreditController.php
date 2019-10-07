@@ -560,7 +560,7 @@ class CreditController extends FrontendController
 //            ]);
             throw new \Exception('Something went wrong!');
         }
-
+        //sdump($data->header->status);exit;
         if($data->header->status == 200){
             return new JsonResponse([
                 'success' => "1",
@@ -2005,12 +2005,45 @@ class CreditController extends FrontendController
             ]);
         }
     }
+
+    public function getLeisureProvisionPackageAction(Request $request){
+
+        $host = WebsiteSetting::getByName("HOST")->getData();
+        $url = $host . WebsiteSetting::getByName('url_GET_LEISURE_PROVISION_PACKAGE')->getData();
+        $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+        $param["leisure_package_price"] = htmlentities(addslashes($request->get('leisure_package_price')));
+        $param["tenor"] = htmlentities(addslashes($request->get('tenor')));
+
+
+        try {
+            $data = $this->sendAPI->getLeisureProvisionPackage($url, $param);
+        } catch (\Exception $e) {
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Leisure Calculator Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $this->get("translator")->trans("api-error")
+            ]);
+        }
+    }
     public function leisureCalculatorAction(Request $request){
 
          $host = WebsiteSetting::getByName("HOST")->getData();
         $url = $host . WebsiteSetting::getByName('URL_LEISURE_CALCULATOR')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
-        $param["leisure_package_id"] = htmlentities(addslashes($request->get('leisure_package_id')));
+        $param["leisure_package_price"] = htmlentities(addslashes($request->get('leisure_package_price')));
         $param["down_payment"] = htmlentities(addslashes($request->get('down_payment')));
         $param["tenor"] = htmlentities(addslashes($request->get('tenor')));
         $param["pocket_money"] = htmlentities(addslashes($request->get('pocket_money')));
