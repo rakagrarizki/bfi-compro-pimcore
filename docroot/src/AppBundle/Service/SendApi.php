@@ -370,6 +370,10 @@ class SendApi
 
         return $this->executeApi('api-get-leisure-tenor', $url,[],"GET");
     }
+    public function getLeisureProvisionPackage($url,$params){
+
+        return $this->executeApi('api-get-leisure-provision-package', $url,$params,"GET");
+    }
     public function leisureCalculator($url, $params){
 
         return $this->executeApi('api-leisure-calculator', $url,$params,"POST");
