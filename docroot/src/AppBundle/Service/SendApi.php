@@ -515,6 +515,67 @@ class SendApi
         return $this->executeApi('api-save-machinery-leads6', $url,$params,"POST");
     }
 
+    //peluang bisnis
+    public function getListProductIsAgent($url){
+
+        return $this->executeApi('api-get-list-product-is-agent', $url,[],"GET");
+    }
+
+    public function getListEducation($url){
+
+        return $this->executeApi('api-get-list-education', $url,[],"GET");
+    }
+    public function getListMaritalStatus($url){
+
+        return $this->executeApi('api-get-list-marital-status', $url,[],"GET");
+    }
+    public function getListPekerjaan($url){
+
+        return $this->executeApi('api-get-list-pekerjaan', $url,[],"GET");
+    }
+    public function getListBank($url){
+
+        return $this->executeApi('api-get-list-bank', $url,[],"GET");
+    }
+    public function getListWaktuKerja($url){
+
+        return $this->executeApi('api-get-list-waktu-kerja', $url,[],"GET");
+    }
+    public function getListSellingChannel($url){
+
+        return $this->executeApi('api-get-list-selling-channel', $url,[],"GET");
+    }
+
+    public function saveAgentCandidateStep1($url, $params){
+
+        return $this->executeApi('api-save-agent-candidate1', $url,$params,"POST");
+    }
+    public function saveAgentCandidateStep1AfterOtp($url, $params){
+
+        return $this->executeApi('api-save-agent-candidate1-after-otp', $url,$params,"POST");
+    }
+
+    public function saveAgentCandidateStep2($url, $params){
+
+        return $this->executeApi('api-save-agent-candidate2', $url,$params,"POST");
+    }
+
+    public function saveAgentCandidateStep3($url, $params){
+
+        return $this->executeApi('api-save-agent-candidate3', $url,$params,"POST");
+    }
+
+    public function saveAgentCandidateStep4($url, $params){
+
+        return $this->executeApi('api-save-machinery-leads4', $url,$params,"POST");
+    }
+
+    public function saveAgentCandidateStep5($url, $params){
+
+        return $this->executeApi('api-save-agent-candidate5', $url,$params,"POST");
+    }
+
+
 
 
 }

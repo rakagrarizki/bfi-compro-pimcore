@@ -1027,7 +1027,7 @@ return [
         "creationDate" => 1568717942,
         "modificationDate" => 1568717997
     ],
-   61 => [
+    61 => [
         "id" => 61,
         "name" => "detail blog",
         "pattern" => "/\\/(en|id)\\/blog\\/([0-9a-zA-Z_-]+)\$/",
@@ -1387,7 +1387,7 @@ return [
         "creationDate" => 1568025769,
         "modificationDate" => 1568025803
     ],
-   81 => [
+    81 => [
         "id" => 81,
         "name" => "get machinery industry",
         "pattern" => "/\\/credit\\/get-machinery-industry/",
@@ -1405,7 +1405,7 @@ return [
         "creationDate" => 1568025769,
         "modificationDate" => 1568025803
     ],
-   82 => [
+    82 => [
         "id" => 82,
         "name" => "get machinery type",
         "pattern" => "/\\/credit\\/get-machinery-type/",
@@ -1423,7 +1423,7 @@ return [
         "creationDate" => 1568025769,
         "modificationDate" => 1568025803
     ],
-   83 => [
+    83 => [
         "id" => 83,
         "name" => "get machinery brand",
         "pattern" => "/\\/credit\\/get-machinery-brand/",
@@ -1441,7 +1441,7 @@ return [
         "creationDate" => 1568025769,
         "modificationDate" => 1568025803
     ],
-   84 => [
+    84 => [
         "id" => 84,
         "name" => "get machinery model",
         "pattern" => "/\\/credit\\/get-machinery-model/",
@@ -1459,7 +1459,7 @@ return [
         "creationDate" => 1568025769,
         "modificationDate" => 1568025803
     ],
-   85 => [
+    85 => [
         "id" => 85,
         "name" => "get machinery year",
         "pattern" => "/\\/credit\\/get-machinery-year/",
@@ -1477,7 +1477,7 @@ return [
         "creationDate" => 1568025769,
         "modificationDate" => 1568025803
     ],
-   86 => [
+    86 => [
         "id" => 86,
         "name" => "get machinery funding",
         "pattern" => "/\\/credit\\/get-machinery-funding/",
@@ -1495,7 +1495,7 @@ return [
         "creationDate" => 1568025769,
         "modificationDate" => 1568025803
     ],
-   87 => [
+    87 => [
         "id" => 87,
         "name" => "get machinery tenor",
         "pattern" => "/\\/credit\\/get-machinery-tenor/",
@@ -1513,7 +1513,7 @@ return [
         "creationDate" => 1568025769,
         "modificationDate" => 1568025803
     ],
-   88 => [
+    88 => [
         "id" => 88,
         "name" => "machinery calculate",
         "pattern" => "/\\/credit\\/machinery-calculate/",
@@ -1657,4 +1657,238 @@ return [
         "creationDate" => 1567594158,
         "modificationDate" => 1567594183
     ],
+    96 => [
+        "id" => 96,
+        "name" => "get list education",
+        "pattern" => "/\\/agent\\/get-list-education/",
+        "reverse" => "/agent/get-list-education",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\AgentController",
+        "action" => "getListEducation",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567594158,
+        "modificationDate" => 1567594183
+    ],
+    97 => [
+        "id" => 97,
+        "name" => "get list marital status",
+        "pattern" => "/\\/agent\\/get-list-marital-status/",
+        "reverse" => "/agent/get-list-marital-status",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\AgentController",
+        "action" => "getListMaritalStatus",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567594158,
+        "modificationDate" => 1567594183
+    ],
+    98 => [
+        "id" => 98,
+        "name" => "get list pekerjaan",
+        "pattern" => "/\\/agent\\/get-list-pekerjaan/",
+        "reverse" => "/agent/get-list-pekerjaan",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\AgentController",
+        "action" => "getListPekerjaan",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567594158,
+        "modificationDate" => 1567594183
+    ],
+    99 => [
+        "id" => 99,
+        "name" => "get list bank",
+        "pattern" => "/\\/agent\\/get-list-bank/",
+        "reverse" => "/agent/get-list-bank",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\AgentController",
+        "action" => "getListBank",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567594158,
+        "modificationDate" => 1567594183
+    ],
+    100 => [
+        "id" => 100,
+        "name" => "get list waktu kerja",
+        "pattern" => "/\\/agent\\/get-list-waktu-kerja/",
+        "reverse" => "/agent/get-list-waktu-kerja",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\AgentController",
+        "action" => "getListWaktuKerja",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567594158,
+        "modificationDate" => 1567594183
+    ],
+    101 => [
+        "id" => 101,
+        "name" => "get list selling channel",
+        "pattern" => "/\\/agent\\/get-list-selling-channel/",
+        "reverse" => "/agent/get-list-selling-channel",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\AgentController",
+        "action" => "getListSellingChannel",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567594158,
+        "modificationDate" => 1567594183
+    ],
+    102 => [
+        "id" => 102,
+        "name" => "save agent candidate step 1",
+        "pattern" => "/\\/agent\\/save-agent-candidate-step1/",
+        "reverse" => "/agent/save-agent-candidate-step-1",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\AgentController",
+        "action" => "saveAgentCandidateStep1",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567594158,
+        "modificationDate" => 1567594183
+    ],
+    103 => [
+        "id" => 103,
+        "name" => "save agent candidate step 1 after otp",
+        "pattern" => "/\\/agent\\/save-agent-candidate-step1-after-otp/",
+        "reverse" => "/agent/save-agent-candidate-step1-after-otp",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\AgentController",
+        "action" => "saveAgentCandidateStep1AfterOtp",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567594158,
+        "modificationDate" => 1570508283
+    ],
+    104 => [
+        "id" => 104,
+        "name" => "save agent candidate step 2",
+        "pattern" => "/\\/agent\\/save-agent-candidate-step2/",
+        "reverse" => "/agent/save-agent-candidate-step-2",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\AgentController",
+        "action" => "saveAgentCandidateStep2",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567594158,
+        "modificationDate" => 1567594183
+    ],
+    105 => [
+        "id" => 105,
+        "name" => "save agent candidate step 3",
+        "pattern" => "/\\/agent\\/save-agent-candidate-step3/",
+        "reverse" => "/agent/save-agent-candidate-step-3",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\AgentController",
+        "action" => "saveAgentCandidateStep3",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567594158,
+        "modificationDate" => 1567594183
+    ],
+    106 => [
+        "id" => 106,
+        "name" => "save agent candidate step 4",
+        "pattern" => "/\\/agent\\/save-agent-candidate-step4/",
+        "reverse" => "/agent/save-agent-candidate-step-4",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\AgentController",
+        "action" => "saveAgentCandidateStep4",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567594158,
+        "modificationDate" => 1567594183
+    ],
+    107 => [
+        "id" => 107,
+        "name" => "save agent candidate step 5",
+        "pattern" => "/\\/agent\\/save-agent-candidate-step5/",
+        "reverse" => "/agent/save-agent-candidate-step-5",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\AgentController",
+        "action" => "saveAgentCandidateStep5",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567594158,
+        "modificationDate" => 1567594183
+    ],
+    108 => [
+        "id" => 108,
+        "name" => "get list product is agent",
+        "pattern" => "/\\/agent\\/get-list-product-is-agent/",
+        "reverse" => "/agent/get-list-product-is-agent",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\AgentController",
+        "action" => "getListProductIsAgent",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567594158,
+        "modificationDate" => 1567594183
+    ]
 ];
