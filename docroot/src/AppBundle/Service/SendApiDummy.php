@@ -1576,6 +1576,285 @@ class SendApiDummy
         return $decode;
     }
 
+    //peluang bisnis
+    public function getListProductIsAgent($url){
+        $data = [
+            'header' => [
+                "status" => "200",
+                "message" => "success to fetch data"
+            ],
+            'status' => "success",
+            'data' => [
+                [
+                    "id"=> "5B79398F-6824-41DC-8946-9F52C4E211D8",
+                    "desc"=> "Jaminan BPKB Mobil"
+                ],
+                [
+                    "id"=> "1E691FAA-AB73-49F7-8C64-D28BD8FCF5AB",
+                    "desc"=> "Jaminan BPKB Motor"
+                ],
+                [
+                    "id"=> "10F304D4-0E87-4F13-B8C5-7E65AB0F929B",
+                    "desc"=> "Jaminan Sertifikat Rumah / Ruko"
+                ]
+            ]
+        ];
+        $result = json_encode($data);
+        $decode = json_decode($result);
+    }
+
+    public function getListEducation($url){
+
+        $data = [
+            'header' => [
+                "status" => "200",
+                "message" => "success to fetch data"
+            ],
+            'status' => "success",
+            'data' => [
+                [
+                    "id"=> "2F93AC2C-DD8A-402B-8878-BE97B5AD347E",
+                    "desc"=> "S1"
+                ],
+                [
+                    "id"=> "D6A53AB3-7B17-4225-8EF5-C089FAB7CABF",
+                    "desc"=> "S2"
+                ],
+                [
+                    "id"=> "C889C6B2-3461-460A-A4AE-44B64FABE26E",
+                    "desc"=> "S3"
+                ]
+            ]
+        ];
+        $result = json_encode($data);
+        $decode = json_decode($result);
+    }
+    public function getListMaritalStatus($url){
+
+        $data = [
+            'header' => [
+                "status" => "200",
+                "message" => "success to fetch data"
+            ],
+            'status' => "success",
+            'data' => [
+                [
+                    "id"=> "7B411D89-4BD7-4B98-814A-682A1172B227",
+                    "desc"=> "LAJANG"
+                ],
+                [
+                    "id"=> "806298C5-9387-48DD-A8D4-58C23BC94C6E",
+                    "desc"=> "MENIKAH"
+                ],
+
+            ]
+        ];
+        $result = json_encode($data);
+        $decode = json_decode($result);
+    }
+    public function getListPekerjaan($url){
+
+        $data = [
+            'header' => [
+                "status" => "200",
+                "message" => "success to fetch data"
+            ],
+            'status' => "success",
+            'data' => [
+                [
+                    "id"=> "35393163-071A-4537-A2B3-5F60D7047A33",
+                    "desc"=> "Karyawan"
+                ],
+                [
+                    "id"=> "D1D7B26E-505F-4CE7-AD61-D77B115055FD",
+                    "desc"=> "Wiraswasta"
+                ],
+                [
+                    "id"=> "D64A3DB3-B26E-4BA0-B4E1-74191D6189DA",
+                    "desc"=> "Pengusaha"
+                ]
+            ]
+        ];
+        $result = json_encode($data);
+        $decode = json_decode($result);
+    }
+    public function getListBank($url){
+
+        $data = [
+            'header' => [
+                "status" => "200",
+                "message" => "success to fetch data"
+            ],
+            'status' => "success",
+            'data' => [
+                [
+                    "id"=> "FA400063-DA44-4C0A-A50F-8AE027DE2692",
+                    "desc"=> "Bank BCA"
+                ],
+                [
+                    "id"=> "FB527B5C-CC9C-4370-856D-8D8D714658B7",
+                    "desc"=> "Bank Mandiri"
+                ],
+                [
+                    "id"=> "A164B123-576B-4BE8-B6FD-201C650ACEB1",
+                    "desc"=> "Bank BNI"
+                ]
+            ]
+        ];
+        $result = json_encode($data);
+        $decode = json_decode($result);
+    }
+    public function getListWaktuKerja($url){
+
+        $data = [
+            'header' => [
+                "status" => "200",
+                "message" => "success to fetch data"
+            ],
+            'status' => "success",
+            'data' => [
+                [
+                    "id"=> "29F2F2A0-29E5-4FA2-880D-781613C032C9",
+                    "desc"=> "Part Time"
+                ],
+                [
+                    "id"=> "2CFD3E33-B5BD-4B0F-B82D-ECAAB0B2C928",
+                    "desc"=> "Full Time"
+                ],
+
+            ]
+        ];
+        $result = json_encode($data);
+        $decode = json_decode($result);
+    }
+    public function getListSellingChannel($url){
+
+        $data = [
+            'header' => [
+                "status" => "200",
+                "message" => "success to fetch data"
+            ],
+            'status' => "success",
+            'data' => [
+                [
+                    "id"=> "6BF38D36-CFB8-4B2F-A54E-553AB73F0396",
+                    "desc"=> "Database"
+                ],
+                [
+                    "id"=> "ABC14B49-F139-41C7-ACE1-F62D04890D14",
+                    "desc"=> "Tele Marketing"
+                ],
+                [
+                    "id"=> "B2C82DBD-1B2C-404C-9A26-58A3DAAEEB3E",
+                    "desc"=> "Website / E-Commerce"
+                ]
+            ]
+        ];
+        $result = json_encode($data);
+        $decode = json_decode($result);
+    }
+
+    public function saveAgentCandidateStep1($url, $params){
+
+        $data = [
+            'header' => [
+                "status" => "200",
+                "message" => "success to fetch data"
+            ],
+            'status' => "success",
+            'data' => [ "submission_id"=> "3DC14A0D-726C-4979-8306-DC0064626172"]
+
+        ];
+        $result = json_encode($data);
+        $decode = json_decode($result);
+
+        return $decode;
+    }
+    public function saveAgentCandidateStep1AfterOtp($url, $params){
+
+        $data = [
+            'header' => [
+                "status" => "200",
+                "message" => "success to fetch data"
+            ],
+            'status' => "success",
+            'data' => [ "submission_id"=> "3DC14A0D-726C-4979-8306-DC0064626172"]
+
+        ];
+        $result = json_encode($data);
+        $decode = json_decode($result);
+
+        return $decode;
+    }
+
+    public function saveAgentCandidateStep2($url, $params){
+
+        $data = [
+            'header' => [
+                "status" => "200",
+                "message" => "success to fetch data"
+            ],
+            'status' => "success",
+            'data' => [ "submission_id"=> "3DC14A0D-726C-4979-8306-DC0064626172"]
+
+        ];
+        $result = json_encode($data);
+        $decode = json_decode($result);
+
+        return $decode;
+    }
+
+    public function saveAgentCandidateStep3($url, $params){
+
+        $data = [
+            'header' => [
+                "status" => "200",
+                "message" => "success to fetch data"
+            ],
+            'status' => "success",
+            'data' => [ "submission_id"=> "3DC14A0D-726C-4979-8306-DC0064626172"]
+
+        ];
+        $result = json_encode($data);
+        $decode = json_decode($result);
+
+        return $decode;
+    }
+
+    public function saveAgentCandidateStep4($url, $params){
+
+        $data = [
+            'header' => [
+                "status" => "200",
+                "message" => "success to fetch data"
+            ],
+            'status' => "success",
+            'data' => [ "submission_id"=> "3DC14A0D-726C-4979-8306-DC0064626172"]
+
+        ];
+        $result = json_encode($data);
+        $decode = json_decode($result);
+
+        return $decode;
+    }
+
+    public function saveAgentCandidateStep5($url, $params){
+
+        $data = [
+            'header' => [
+                "status" => "200",
+                "message" => "success to fetch data"
+            ],
+            'status' => "success",
+            'data' => [ "submission_id"=> "3DC14A0D-726C-4979-8306-DC0064626172"]
+
+        ];
+        $result = json_encode($data);
+        $decode = json_decode($result);
+
+        return $decode;
+    }
+
 
 
 }
