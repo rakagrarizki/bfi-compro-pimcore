@@ -30,8 +30,7 @@ class ServiceController extends FrontendController
         $param["submission_id"] = htmlentities($request->get('submission_id'));
         $param["is_news_letter"] = htmlentities($request->get('is_news_letter'));
 
-        $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host. WebsiteSetting::getByName('URL_NEWSLETTER')->getData();
+        $url = HOST . WebsiteSetting::getByName('URL_NEWSLETTER')->getData();
 
         if($lang == "en"){
             $emailRegistered = 'Your Email Address had been Registered / Service down';

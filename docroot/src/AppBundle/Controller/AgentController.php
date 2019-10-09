@@ -33,8 +33,7 @@ class AgentController extends FrontendController
 
     public function getListProductIsAgentAction(Request $request){
 
-        $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_LIST_PRODUCT_AGENT')->getData();
+        $url = HOST . WebsiteSetting::getByName('URL_GET_LIST_PRODUCT_AGENT')->getData();
 
 
         try {
@@ -62,8 +61,7 @@ class AgentController extends FrontendController
     }
     public function getListEducationAction(Request $request){
 
-        $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_LIST_EDUCATION')->getData();
+        $url = HOST . WebsiteSetting::getByName('URL_GET_LIST_EDUCATION')->getData();
 
 
         try {
@@ -91,8 +89,7 @@ class AgentController extends FrontendController
     }
     public function getListMaritalStatusAction(Request $request){
 
-        $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_LIST_MARITAL_STATUS')->getData();
+        $url = HOST . WebsiteSetting::getByName('URL_GET_LIST_MARITAL_STATUS')->getData();
 
 
         try {
@@ -120,8 +117,7 @@ class AgentController extends FrontendController
     }
     public function getListPekerjaanAction(Request $request){
 
-        $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_LIST_PEKERJAAN')->getData();
+        $url = HOST . WebsiteSetting::getByName('URL_GET_LIST_PEKERJAAN')->getData();
 
 
         try {
@@ -149,8 +145,7 @@ class AgentController extends FrontendController
     }
     public function getListBankAction(Request $request){
 
-        $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_LIST_BANK')->getData();
+        $url = HOST . WebsiteSetting::getByName('URL_GET_LIST_BANK')->getData();
 
 
         try {
@@ -178,8 +173,7 @@ class AgentController extends FrontendController
     }
     public function getListWaktuKerjaAction(Request $request){
 
-        $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_LIST_WAKTU_KERJA')->getData();
+        $url = HOST . WebsiteSetting::getByName('URL_GET_LIST_WAKTU_KERJA')->getData();
 
 
         try {
@@ -207,8 +201,7 @@ class AgentController extends FrontendController
     }
     public function getListSellingChannelAction(Request $request){
 
-        $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_LIST_SELLING_CHANNEL')->getData();
+        $url = HOST . WebsiteSetting::getByName('URL_GET_LIST_SELLING_CHANNEL')->getData();
 
 
         try {
@@ -237,8 +230,7 @@ class AgentController extends FrontendController
 
     public function saveAgentCandidateStep1Action(Request $request){
 
-        $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('SAVE_AGENT_CANDIDATE_STEP_1')->getData();
+        $url = HOST . WebsiteSetting::getByName('SAVE_AGENT_CANDIDATE_STEP_1')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["collateral_type_id"] = htmlentities(addslashes($request->get('collateral_type_id')));
         $param["name"] = htmlentities(addslashes($request->get('name')));
@@ -271,8 +263,7 @@ class AgentController extends FrontendController
     }
     public function saveAgentCandidateStep1AfterOtpAction(Request $request){
 
-        $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('SAVE_AGENT_CANDIDATE_STEP_1_AFTER_OTP')->getData();
+        $url = HOST . WebsiteSetting::getByName('SAVE_AGENT_CANDIDATE_STEP_1_AFTER_OTP')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
 
         $param["name"] = htmlentities(addslashes($request->get('name')));
@@ -314,8 +305,7 @@ class AgentController extends FrontendController
     }
     public function saveAgentCandidateStep2Action(Request $request){
 
-        $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('SAVE_AGENT_CANDIDATE_STEP_2')->getData();
+        $url = HOST . WebsiteSetting::getByName('SAVE_AGENT_CANDIDATE_STEP_2')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["province_id"] = htmlentities(addslashes($request->get('province_id')));
         $param["city_id"] = htmlentities(addslashes($request->get('city_id')));
@@ -351,8 +341,7 @@ class AgentController extends FrontendController
     }
     public function saveAgentCandidateStep3Action(Request $request){
 
-        $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('SAVE_AGENT_CANDIDATE_STEP_3')->getData();
+        $url = HOST . WebsiteSetting::getByName('SAVE_AGENT_CANDIDATE_STEP_3')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["bank_id"] = htmlentities(addslashes($request->get('bank_id')));
         $param["account_number"] = htmlentities(addslashes($request->get('account_number')));
@@ -383,8 +372,7 @@ class AgentController extends FrontendController
     }
     public function saveAgentCandidateStep4Action(Request $request){
 
-        $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('SAVE_AGENT_CANDIDATE_STEP_4')->getData();
+        $url = HOST . WebsiteSetting::getByName('SAVE_AGENT_CANDIDATE_STEP_4')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["is_paham_financing"] = htmlentities(addslashes($request->get('is_paham_financing')));
         $param["id_waktu_kerja"] = htmlentities(addslashes($request->get('id_waktu_kerja')));
@@ -421,8 +409,7 @@ class AgentController extends FrontendController
     }
     public function saveAgentCandidateStep5Action(Request $request){
 
-        $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('SAVE_AGENT_CANDIDATE_STEP_5')->getData();
+        $url = HOST . WebsiteSetting::getByName('SAVE_AGENT_CANDIDATE_STEP_5')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["is_patuh"] = htmlentities(addslashes($request->get('is_patuh')));
 

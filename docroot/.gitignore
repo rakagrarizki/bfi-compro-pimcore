@@ -30,7 +30,7 @@
 /var/config/system.php
 /var/config/debug-mode.php
 /var/config/maintenance.php
-/var/config/website-settings.php
+!/var/config/website-settings.php
 
 # project specific recommendations
 /var/config/tag-manager.php

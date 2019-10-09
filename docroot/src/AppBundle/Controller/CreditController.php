@@ -486,8 +486,7 @@ class CreditController extends FrontendController
     {
         $param['submission_id'] = (string)htmlentities(addslashes($request->get('submission_id')));
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_TENOR')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_TENOR')->getData();
 
         try {
             $data = $this->sendAPI->getTenor($url, $param);
@@ -518,8 +517,7 @@ class CreditController extends FrontendController
     {
         $param['submission_id'] = (string)htmlentities(addslashes($request->get('submission_id')));
         $param['tenor'] = htmlentities(addslashes($request->get('tenor')));
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_INSURANCE')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_INSURANCE')->getData();
 
         try {
             $data = $this->sendAPI->getInsurance($url, $param);
@@ -548,8 +546,7 @@ class CreditController extends FrontendController
 
     public function getProvinceAction(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_LIST_PROVINCE')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_LIST_PROVINCE')->getData();
 
         try {
             $data = $this->sendAPI->getProvince($url);
@@ -577,8 +574,7 @@ class CreditController extends FrontendController
 
     public function getCityAction(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_LIST_CITY')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_LIST_CITY')->getData();
         $param["province_id"] = htmlentities(addslashes($request->get('province_id')));
 
         try {
@@ -607,8 +603,7 @@ class CreditController extends FrontendController
 
     public function getDistrictAction(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_LIST_DISTRICT')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_LIST_DISTRICT')->getData();
         $param["city_id"] = htmlentities(addslashes($request->get('city_id')));
 
         try {
@@ -637,8 +632,7 @@ class CreditController extends FrontendController
 
     public function getSubdistrictAction(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_LIST_SUBDISTRICT')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_LIST_SUBDISTRICT')->getData();
         $param["district_id"] = htmlentities(addslashes($request->get('district_id')));
 
         try {
@@ -667,8 +661,7 @@ class CreditController extends FrontendController
 
     public function getZipcodeAction(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_ZIPCODE')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_ZIPCODE')->getData();
         $param["subdistrict_id"] = htmlentities(addslashes($request->get('subdistrict_id')));
 
         try {
@@ -697,8 +690,7 @@ class CreditController extends FrontendController
 
     public function getCarTypeAction(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_CAR')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_CAR')->getData();
 
 
         try {
@@ -727,8 +719,7 @@ class CreditController extends FrontendController
 
     public function getCarBrandAction(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_CAR_BRAND')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_CAR_BRAND')->getData();
 
 
         try {
@@ -757,8 +748,7 @@ class CreditController extends FrontendController
 
     public function getCarModelAction(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_CAR_MODEL')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_CAR_MODEL')->getData();
         $param["type_id"] = htmlentities(addslashes($request->get('type_id')));
         $param["brand_id"] = htmlentities(addslashes($request->get('brand_id')));
 
@@ -796,8 +786,7 @@ class CreditController extends FrontendController
 
     public function getCarYearAction(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_CAR_YEAR')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_CAR_YEAR')->getData();
         $param["model_id"] = htmlentities(addslashes($request->get('model_id')));
 
 
@@ -827,8 +816,7 @@ class CreditController extends FrontendController
     public function getCarFundingAction(Request $request){
 
          $host = WebsiteSetting::getByName("HOST")->getData();
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . $host . WebsiteSetting::getByName('URL_GET_CAR_FUNDING')->getData();
+         $url = HOST . $host . WebsiteSetting::getByName('URL_GET_CAR_FUNDING')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
 
 
@@ -857,8 +845,7 @@ class CreditController extends FrontendController
 
     public function getCarCalculateAction(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_CAR_CALCULATE')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_CAR_CALCULATE')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["funding"] = htmlentities(addslashes($request->get('funding')));
         $param["tenor"] = htmlentities(addslashes($request->get('tenor')));
@@ -894,8 +881,7 @@ class CreditController extends FrontendController
 
     public function saveCarLeads1Action(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_SAVE_CAR_LEADS_1')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_SAVE_CAR_LEADS_1')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["name"] = htmlentities(addslashes($request->get('name')));
         $param["email"] = htmlentities(addslashes($request->get('email')));
@@ -928,8 +914,7 @@ class CreditController extends FrontendController
 
     public function saveCarLeads2Action(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_SAVE_CAR_LEADS_2')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_SAVE_CAR_LEADS_2')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["province_id"] = htmlentities(addslashes($request->get('province_id')));
         $param["city_id"] = htmlentities(addslashes($request->get('city_id')));
@@ -965,8 +950,7 @@ class CreditController extends FrontendController
 
     public function saveCarLeads3Action(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_SAVE_CAR_LEADS_3')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_SAVE_CAR_LEADS_3')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["car_type_id"] = htmlentities(addslashes($request->get('car_type_id')));
         $param["car_brand_id"] = htmlentities(addslashes($request->get('car_brand_id')));
@@ -1002,8 +986,7 @@ class CreditController extends FrontendController
 
     public function saveCarLeads4Action(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_SAVE_CAR_LEADS_4')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_SAVE_CAR_LEADS_4')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
 
         try {
@@ -1032,8 +1015,7 @@ class CreditController extends FrontendController
 
     public function saveCarLeads5Action(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_SAVE_CAR_LEADS_5')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_SAVE_CAR_LEADS_5')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
 
         try {
@@ -1062,8 +1044,7 @@ class CreditController extends FrontendController
 
     public function saveCarLeads6Action(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_SAVE_CAR_LEADS_6')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_SAVE_CAR_LEADS_6')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
 
         try {
@@ -1094,8 +1075,7 @@ class CreditController extends FrontendController
 
     public function getMotorcycleTypeAction(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_MOTORCYCLE_TYPE')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_MOTORCYCLE_TYPE')->getData();
 
 
         try {
@@ -1124,8 +1104,7 @@ class CreditController extends FrontendController
 
     public function getMotorcycleBrandAction(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_MOTORCYCLE_BRANDS')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_MOTORCYCLE_BRANDS')->getData();
 
 
         try {
@@ -1154,8 +1133,7 @@ class CreditController extends FrontendController
 
     public function getMotorcycleModelAction(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_MOTORCYCLE_MODELS')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_MOTORCYCLE_MODELS')->getData();
         $param["type_id"] = htmlentities(addslashes($request->get('type_id')));
         $param["brand_id"] = htmlentities(addslashes($request->get('brand_id')));
 
@@ -1193,8 +1171,7 @@ class CreditController extends FrontendController
 
     public function getMotorcycleYearAction(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_MOTORCYCLE_YEAR')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_MOTORCYCLE_YEAR')->getData();
         $param["model_id"] = htmlentities(addslashes($request->get('model_id')));
 
 
@@ -1224,8 +1201,7 @@ class CreditController extends FrontendController
 
     public function getMotorcycleFundingAction(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_MOTORCYCLE_FUNDING')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_MOTORCYCLE_FUNDING')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
 
 
@@ -1257,8 +1233,7 @@ class CreditController extends FrontendController
     {
         $param['submission_id'] = (string)htmlentities(addslashes($request->get('submission_id')));
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_MOTORCYCLE_TENOR')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_MOTORCYCLE_TENOR')->getData();
 
         try {
             $data = $this->sendAPI->getMotorcycleTenor($url, $param);
@@ -1287,8 +1262,7 @@ class CreditController extends FrontendController
 
     public function getMotorcycleCalculateAction(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_MOTORCYCLE_CALCULATE')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_MOTORCYCLE_CALCULATE')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["funding"] = htmlentities(addslashes($request->get('funding')));
         $param["tenor"] = htmlentities(addslashes($request->get('tenor')));
@@ -1320,8 +1294,7 @@ class CreditController extends FrontendController
 
     public function saveMotorcycleLeads1Action(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_SAVE_MOTORCYCLE_LEADS_1')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_MOTORCYCLE_LEADS_1')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["name"] = htmlentities(addslashes($request->get('name')));
         $param["email"] = htmlentities(addslashes($request->get('email')));
@@ -1354,8 +1327,7 @@ class CreditController extends FrontendController
 
     public function saveMotorcycleLeads2Action(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_SAVE_MOTORCYCLE_LEADS_2')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_MOTORCYCLE_LEADS_2')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["province_id"] = htmlentities(addslashes($request->get('province_id')));
         $param["city_id"] = htmlentities(addslashes($request->get('city_id')));
@@ -1391,8 +1363,7 @@ class CreditController extends FrontendController
 
     public function saveMotorcycleLeads3Action(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_SAVE_MOTORCYCLE_LEADS_3')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_MOTORCYCLE_LEADS_3')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["motorcycle_type_id"] = htmlentities(addslashes($request->get('motorcycle_type_id')));
         $param["motorcycle_brand_id"] = htmlentities(addslashes($request->get('motorcycle_brand_id')));
@@ -1428,8 +1399,7 @@ class CreditController extends FrontendController
 
     public function saveMotorcycleLeads4Action(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_SAVE_MOTORCYCLE_LEADS_4')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_MOTORCYCLE_LEADS_4')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
 
         try {
@@ -1458,8 +1428,7 @@ class CreditController extends FrontendController
 
     public function saveMotorcycleLeads5Action(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_SAVE_MOTORCYCLE_LEADS_5')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_MOTORCYCLE_LEADS_5')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
 
         try {
@@ -1488,8 +1457,7 @@ class CreditController extends FrontendController
 
     public function saveMotorcycleLeads6Action(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_SAVE_MOTORCYCLE_LEADS_6')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_MOTORCYCLE_LEADS_6')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
 
         try {
@@ -1520,8 +1488,7 @@ class CreditController extends FrontendController
 
     public function getPbfProfessionAction(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_PROFESSION')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_PROFESSION')->getData();
 
 
         try {
@@ -1550,8 +1517,7 @@ class CreditController extends FrontendController
 
     public function getPbfCertificateTypeAction(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_LIST_PBF_CERTIFICATE_TYPE')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_LIST_PBF_CERTIFICATE_TYPE')->getData();
 
 
         try {
@@ -1580,8 +1546,7 @@ class CreditController extends FrontendController
 
     public function getPbfCertificateOnBehalfAction(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_LIST_PBF_CERTIFICATE_ON_BEHALF')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_LIST_PBF_CERTIFICATE_ON_BEHALF')->getData();
 
 
         try {
@@ -1609,8 +1574,7 @@ class CreditController extends FrontendController
     }
     public function getPbfPropertyTypeAction(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_LIST_PBF_PROPERTY_TYPE')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_LIST_PBF_PROPERTY_TYPE')->getData();
 
 
         try {
@@ -1641,8 +1605,7 @@ class CreditController extends FrontendController
 
     public function getPbfFundingAction(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_PBF_FUNDING')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_PBF_FUNDING')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["estimasi_harga"] = htmlentities(addslashes($request->get('estimasi_harga')));
 
@@ -1675,8 +1638,7 @@ class CreditController extends FrontendController
     {
         $param['submission_id'] = (string)htmlentities(addslashes($request->get('submission_id')));
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_PBF_TENOR_LIST')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_PBF_TENOR_LIST')->getData();
 
         try {
             $data = $this->sendAPI->getPbfTenor($url, $param);
@@ -1705,8 +1667,7 @@ class CreditController extends FrontendController
 
     public function getPbfCalculateAction(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_PBF_CALCULATE')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_PBF_CALCULATE')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["funding"] = htmlentities(addslashes($request->get('funding')));
         $param["tenor"] = htmlentities(addslashes($request->get('tenor')));
@@ -1738,8 +1699,7 @@ class CreditController extends FrontendController
 
     public function savePbfLeads1Action(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_SAVE_PBF_LEADS_STEP_1')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_PBF_LEADS_STEP_1')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["name"] = htmlentities(addslashes($request->get('name')));
         $param["dob"] = htmlentities(addslashes($request->get('dob')));
@@ -1776,8 +1736,7 @@ class CreditController extends FrontendController
 
     public function savePbfLeads2Action(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_SAVE_PBF_LEADS_STEP_2')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_PBF_LEADS_STEP_2')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["province_id"] = htmlentities(addslashes($request->get('province_id')));
         $param["city_id"] = htmlentities(addslashes($request->get('city_id')));
@@ -1813,8 +1772,7 @@ class CreditController extends FrontendController
 
     public function savePbfLeads3Action(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_SAVE_PBF_LEADS_STEP_3')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_PBF_LEADS_STEP_3')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["province_id"] = htmlentities(addslashes($request->get('province_id')));
         $param["city_id"] = htmlentities(addslashes($request->get('city_id')));
@@ -1856,8 +1814,7 @@ class CreditController extends FrontendController
 
     public function savePbfLeads4Action(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_SAVE_PBF_LEADS_STEP_4')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_PBF_LEADS_STEP_4')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
 
         try {
@@ -1886,8 +1843,7 @@ class CreditController extends FrontendController
 
     public function savePbfLeads5Action(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_SAVE_PBF_LEADS_STEP_5')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_PBF_LEADS_STEP_5')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
 
         try {
@@ -1916,8 +1872,7 @@ class CreditController extends FrontendController
 
     public function savePbfLeads6Action(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_SAVE_PBF_LEADS_STEP_6')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_PBF_LEADS_STEP_6')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["is_news_letter"] = htmlentities(addslashes($request->get('is_news_letter')));
 
@@ -1948,8 +1903,7 @@ class CreditController extends FrontendController
 
     public function getLeisurePackageAction(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_LEISURE_PACKAGE')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_LEISURE_PACKAGE')->getData();
 
 
         try {
@@ -1978,8 +1932,7 @@ class CreditController extends FrontendController
 
     public function getLeisureTenorAction(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_LEISURE_TENOR_LIST')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_LEISURE_TENOR_LIST')->getData();
 
 
         try {
@@ -2008,8 +1961,7 @@ class CreditController extends FrontendController
 
     public function getLeisureProvisionPackageAction(Request $request){
 
-        $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('url_GET_LEISURE_PROVISION_PACKAGE')->getData();
+        $url = HOST . WebsiteSetting::getByName('url_GET_LEISURE_PROVISION_PACKAGE')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["leisure_package_price"] = htmlentities(addslashes($request->get('leisure_package_price')));
         $param["tenor"] = htmlentities(addslashes($request->get('tenor')));
@@ -2040,8 +1992,7 @@ class CreditController extends FrontendController
     }
     public function leisureCalculatorAction(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_LEISURE_CALCULATOR')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_LEISURE_CALCULATOR')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["leisure_package_price"] = htmlentities(addslashes($request->get('leisure_package_price')));
         $param["down_payment"] = htmlentities(addslashes($request->get('down_payment')));
@@ -2074,8 +2025,7 @@ class CreditController extends FrontendController
 
     public function saveLeisureLeads1Action(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_SAVE_LEISURE_LEADS_STEP_1')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_LEISURE_LEADS_STEP_1')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["name"] = htmlentities(addslashes($request->get('name')));
         $param["email"] = htmlentities(addslashes($request->get('email')));
@@ -2108,8 +2058,7 @@ class CreditController extends FrontendController
 
     public function saveLeisureLeads2Action(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_SAVE_LEISURE_LEADS_STEP_2')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_LEISURE_LEADS_STEP_2')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["province_id"] = htmlentities(addslashes($request->get('province_id')));
         $param["city_id"] = htmlentities(addslashes($request->get('city_id')));
@@ -2145,8 +2094,7 @@ class CreditController extends FrontendController
 
     public function saveLeisureLeads3Action(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_SAVE_LEISURE_LEADS_STEP_3')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_LEISURE_LEADS_STEP_3')->getData();
             $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
 
         try {
@@ -2175,8 +2123,7 @@ class CreditController extends FrontendController
 
     public function saveLeisureLeads4Action(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_SAVE_LEISURE_LEADS_STEP_4')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_LEISURE_LEADS_STEP_4')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
 
         try {
@@ -2205,8 +2152,7 @@ class CreditController extends FrontendController
 
     public function saveLeisureLeads5Action(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_SAVE_LEISURE_LEADS_STEP_5')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_LEISURE_LEADS_STEP_5')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
 
         try {
@@ -2235,8 +2181,7 @@ class CreditController extends FrontendController
 
     public function getEduPackageAction(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_EDU_PACKAGE')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_EDU_PACKAGE')->getData();
 
 
         try {
@@ -2265,8 +2210,7 @@ class CreditController extends FrontendController
 
     public function getEduTenorAction(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_EDU_TENOR_LIST')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_EDU_TENOR_LIST')->getData();
 
 
         try {
@@ -2294,8 +2238,7 @@ class CreditController extends FrontendController
     }
     public function eduProvisionPackageAction(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_EDU_PROVISION_PACKAGE')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_EDU_PROVISION_PACKAGE')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["edu_package_price"] = htmlentities(addslashes($request->get('edu_package_price')));
         $param["tenor"] = htmlentities(addslashes($request->get('tenor')));
@@ -2326,8 +2269,7 @@ class CreditController extends FrontendController
     }
     public function eduCalculatorAction(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_EDU_CALCULATOR')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_EDU_CALCULATOR')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["edu_package_price"] = htmlentities(addslashes($request->get('edu_package_price')));
         $param["down_payment"] = htmlentities(addslashes($request->get('down_payment')));
@@ -2360,8 +2302,7 @@ class CreditController extends FrontendController
 
     public function saveEduLeads1Action(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_SAVE_EDU_LEADS_STEP_1')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_EDU_LEADS_STEP_1')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["name"] = htmlentities(addslashes($request->get('name')));
         $param["email"] = htmlentities(addslashes($request->get('email')));
@@ -2395,8 +2336,7 @@ class CreditController extends FrontendController
 
     public function saveEduLeads2Action(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_SAVE_EDU_LEADS_STEP_2')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_EDU_LEADS_STEP_2')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["province_id"] = htmlentities(addslashes($request->get('province_id')));
         $param["city_id"] = htmlentities(addslashes($request->get('city_id')));
@@ -2432,8 +2372,7 @@ class CreditController extends FrontendController
 
     public function saveEduLeads3Action(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_SAVE_EDU_LEADS_STEP_3')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_EDU_LEADS_STEP_3')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
 
         try {
@@ -2462,8 +2401,7 @@ class CreditController extends FrontendController
 
     public function saveEduLeads4Action(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_SAVE_EDU_LEADS_STEP_4')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_EDU_LEADS_STEP_4')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
 
         try {
@@ -2492,8 +2430,7 @@ class CreditController extends FrontendController
 
     public function saveEduLeads5Action(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_SAVE_EDU_LEADS_STEP_5')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_EDU_LEADS_STEP_5')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
 
         try {
@@ -2522,8 +2459,7 @@ class CreditController extends FrontendController
 
     public function getMachineryServicesAction(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_MACHINERY_SERVICES')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_MACHINERY_SERVICES')->getData();
 
 
         try {
@@ -2551,8 +2487,7 @@ class CreditController extends FrontendController
     }
     public function getMachineryIndustryAction(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_MACHINERY_INDUSTRY')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_MACHINERY_INDUSTRY')->getData();
 
 
         try {
@@ -2580,8 +2515,7 @@ class CreditController extends FrontendController
     }
     public function getMachineryTypeAction(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_MACHINERY_TYPE')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_MACHINERY_TYPE')->getData();
 
 
         try {
@@ -2609,8 +2543,7 @@ class CreditController extends FrontendController
     }
     public function getMachineryBrandAction(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_MACHINERY_BRAND')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_MACHINERY_BRAND')->getData();
 
 
         try {
@@ -2639,8 +2572,7 @@ class CreditController extends FrontendController
 
     public function getMachineryModelAction(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_MACHINERY_MODEL')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_MACHINERY_MODEL')->getData();
         $param["machinery_brand_id"] = htmlentities(addslashes($request->get('machinery_brand_id')));
         $param["machinery_type_id"] = htmlentities(addslashes($request->get('machinery_type_id')));
 
@@ -2677,8 +2609,7 @@ class CreditController extends FrontendController
     }
     public function getMachineryYearAction(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_MACHINERY_YEAR')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_MACHINERY_YEAR')->getData();
         $param["machinery_model_id"] = htmlentities(addslashes($request->get('machinery_model_id')));
 
 
@@ -2715,8 +2646,7 @@ class CreditController extends FrontendController
     }
     public function getMachineryFundingAction(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_MACHINERY_FUNDING')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_MACHINERY_FUNDING')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
 
 
@@ -2754,8 +2684,7 @@ class CreditController extends FrontendController
 
     public function getMachineryTenorAction(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_MACHINERY_TENOR_LIST')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_MACHINERY_TENOR_LIST')->getData();
 
 
         try {
@@ -2783,8 +2712,7 @@ class CreditController extends FrontendController
     }
     public function getMachineryCalculateAction(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_MACHINERY_FUNDING')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_MACHINERY_FUNDING')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["funding"] = htmlentities(addslashes($request->get('funding')));
         $param["down_payment"] = htmlentities(addslashes($request->get('down_payment')));
@@ -2825,8 +2753,7 @@ class CreditController extends FrontendController
 
     public function saveMachineryLeads1Action(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_SAVE_MACHINERY_LEADS_STEP_1')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_MACHINERY_LEADS_STEP_1')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["name"] = htmlentities(addslashes($request->get('name')));
         $param["email"] = htmlentities(addslashes($request->get('email')));
@@ -2859,8 +2786,7 @@ class CreditController extends FrontendController
 
     public function saveMachineryLeads2Action(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_SAVE_MACHINERY_LEADS_STEP_2')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_MACHINERY_LEADS_STEP_2')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["province_id"] = htmlentities(addslashes($request->get('province_id')));
         $param["city_id"] = htmlentities(addslashes($request->get('city_id')));
@@ -2896,8 +2822,7 @@ class CreditController extends FrontendController
 
     public function saveMachineryLeads3Action(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_SAVE_MACHINERY_LEADS_STEP_3')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_MACHINERY_LEADS_STEP_3')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["machinery_service_id"] = htmlentities(addslashes($request->get('machinery_service_id')));
         $param["machinery_industry_id"] = htmlentities(addslashes($request->get('machinery_industry_id')));
@@ -2936,8 +2861,7 @@ class CreditController extends FrontendController
 
     public function saveMachineryLeads4Action(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_SAVE_MACHINERY_LEADS_STEP_4')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_MACHINERY_LEADS_STEP_4')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
 
         try {
@@ -2966,8 +2890,7 @@ class CreditController extends FrontendController
 
     public function saveMachineryLeads5Action(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_SAVE_MACHINERY_LEADS_STEP_5')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_MACHINERY_LEADS_STEP_5')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
 
         try {
@@ -2996,8 +2919,7 @@ class CreditController extends FrontendController
 
     public function saveMachineryLeads6Action(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_SAVE_MACHINERY_LEADS_STEP_6')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_MACHINERY_LEADS_STEP_6')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
 
         try {
