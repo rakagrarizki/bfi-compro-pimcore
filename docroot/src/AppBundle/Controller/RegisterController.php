@@ -27,8 +27,7 @@ class RegisterController extends FrontendController
     }
 
     public function registerAction(Request $request){
-        $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host. WebsiteSetting::getByName('URL_REGISTER')->getData();
+        $url = HOST . WebsiteSetting::getByName('URL_REGISTER')->getData();
         $param["full_name"] = htmlentities(addslashes($request->get('full_name')));
         $param["email"] = htmlentities(addslashes($request->get('email')));
         $param["phone_number"] =htmlentities(addslashes($request->get('phone_number')));
