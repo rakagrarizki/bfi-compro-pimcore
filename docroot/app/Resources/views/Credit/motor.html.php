@@ -1,4 +1,4 @@
-<?php
+`<?php
 /**
  * @var \Pimcore\Templating\PhpEngine $this
  * @var \Pimcore\Templating\PhpEngine $view
@@ -6,6 +6,7 @@
  */
 
 $this->extend('layout-credit.html.php');
+// echo $this->headScript()->prependFile('/static/js/Includes/homepage1.js');
 ?>
 <div id="myModal">
     <div class="form-dialog">
@@ -631,4 +632,4 @@ $this->extend('layout-credit.html.php');
             </div>
         </div>
     </div>
-</div>
+</div>`

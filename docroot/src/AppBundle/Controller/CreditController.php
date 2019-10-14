@@ -859,10 +859,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->saveCarLeads1($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Car Leads 1 Down"
-            ]);
+            // return new JsonResponse([
+            //     'success' => "0",
+            //     'message' => "Service Request Save Car Leads 1 Down"
+            // ]);
+            throw new \Exception("Something Went Wrong");
         }
 
         if($data->header->status == 200){
