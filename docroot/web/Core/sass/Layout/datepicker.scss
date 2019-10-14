@@ -1,0 +1,49 @@
+.ui-datepicker {
+
+  .ui-datepicker-header {
+    background: transparent;
+    border: 0;
+    box-shadow: unset;
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: 0; left: -2.8px;
+      width: calc( 100% + 7px );
+      border-bottom: 1px #ccc solid;
+    }
+
+    .ui-corner-all { display: none; }
+    .ui-datepicker-title { 
+      margin: 0;
+      overflow: hidden; 
+
+      select {
+        position: relative;
+        background: transparent url("/static/images/downarrow.png") right center no-repeat;
+        padding: 5px 30px 5px 5px;
+        outline: none;
+      }
+    }
+
+    .ui-datepicker-month { float: left; margin-left: 10px; width: auto; }
+    .ui-datepicker-year { float: right; margin-right: 10px; width: auto; }
+  }
+
+  table.ui-datepicker-calendar {
+    .ui-state-default {
+      border: 0 !important;
+      background: transparent;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      text-align: center;
+      line-height: 30px;
+      padding: 0;
+
+      &.ui-state-highlight {
+        background: #ccc;
+      }
+    }
+  }
+
+}
