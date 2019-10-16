@@ -54,7 +54,8 @@ class SendApi
 
     public function requestOtp($handphone)
     {
-        $url = WebsiteSetting::getByName('URL_REQUEST_OTP')->getData();
+        $host = WebsiteSetting::getByName("HOST")->getData();
+        $url = $host.WebsiteSetting::getByName('URL_REQUEST_OTP')->getData();
         $params["phone_number"] = $handphone;
         //$params["first_name"] = $name;
 
@@ -63,7 +64,8 @@ class SendApi
 
     public function validateOtp($handphone, $code)
     {
-        $url = WebsiteSetting::getByName('URL_VALIDATE_OTP')->getData();
+        $host = WebsiteSetting::getByName("HOST")->getData();
+        $url = $host. WebsiteSetting::getByName('URL_VALIDATE_OTP')->getData();
         $params["phone_number"] = $handphone;
         $params["otp_code"] = $code;
 
@@ -368,6 +370,10 @@ class SendApi
 
         return $this->executeApi('api-get-leisure-tenor', $url,[],"GET");
     }
+    public function getLeisureProvisionPackage($url,$params){
+
+        return $this->executeApi('api-get-leisure-provision-package', $url,$params,"GET");
+    }
     public function leisureCalculator($url, $params){
 
         return $this->executeApi('api-leisure-calculator', $url,$params,"POST");
@@ -460,15 +466,15 @@ class SendApi
     }
     public function getMachineryModel($url, $params){
 
-        return $this->executeApi('api-edu-machinery-model', $url,$params,"POST");
+        return $this->executeApi('api-machinery-model', $url,$params,"POST");
     }
     public function getMachineryYear($url, $params){
 
-        return $this->executeApi('api-edu-machinery-year', $url,$params,"POST");
+        return $this->executeApi('api-machinery-year', $url,$params,"POST");
     }
     public function getMachineryFunding($url, $params){
 
-        return $this->executeApi('api-edu-machinery-funding', $url,$params,"POST");
+        return $this->executeApi('api-machinery-funding', $url,$params,"POST");
     }
     public function getMachineryTenor($url){
 
@@ -508,6 +514,67 @@ class SendApi
 
         return $this->executeApi('api-save-machinery-leads6', $url,$params,"POST");
     }
+
+    //peluang bisnis
+    public function getListProductIsAgent($url){
+
+        return $this->executeApi('api-get-list-product-is-agent', $url,[],"GET");
+    }
+
+    public function getListEducation($url){
+
+        return $this->executeApi('api-get-list-education', $url,[],"GET");
+    }
+    public function getListMaritalStatus($url){
+
+        return $this->executeApi('api-get-list-marital-status', $url,[],"GET");
+    }
+    public function getListPekerjaan($url){
+
+        return $this->executeApi('api-get-list-pekerjaan', $url,[],"GET");
+    }
+    public function getListBank($url){
+
+        return $this->executeApi('api-get-list-bank', $url,[],"GET");
+    }
+    public function getListWaktuKerja($url){
+
+        return $this->executeApi('api-get-list-waktu-kerja', $url,[],"GET");
+    }
+    public function getListSellingChannel($url){
+
+        return $this->executeApi('api-get-list-selling-channel', $url,[],"GET");
+    }
+
+    public function saveAgentCandidateStep1($url, $params){
+
+        return $this->executeApi('api-save-agent-candidate1', $url,$params,"POST");
+    }
+    public function saveAgentCandidateStep1AfterOtp($url, $params){
+
+        return $this->executeApi('api-save-agent-candidate1-after-otp', $url,$params,"POST");
+    }
+
+    public function saveAgentCandidateStep2($url, $params){
+
+        return $this->executeApi('api-save-agent-candidate2', $url,$params,"POST");
+    }
+
+    public function saveAgentCandidateStep3($url, $params){
+
+        return $this->executeApi('api-save-agent-candidate3', $url,$params,"POST");
+    }
+
+    public function saveAgentCandidateStep4($url, $params){
+
+        return $this->executeApi('api-save-machinery-leads4', $url,$params,"POST");
+    }
+
+    public function saveAgentCandidateStep5($url, $params){
+
+        return $this->executeApi('api-save-agent-candidate5', $url,$params,"POST");
+    }
+
 
 
 

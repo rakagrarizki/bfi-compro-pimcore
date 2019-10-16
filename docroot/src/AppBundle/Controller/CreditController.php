@@ -8,6 +8,7 @@ use Pimcore\Model\WebsiteSetting;
 use Pimcore\Model\DataObject;
 use Pimcore\Model\DataObject\Assurance;
 use AppBundle\Service\SendApi;
+use AppBundle\Service\SendApiDummy;
 use Pimcore\Bundle\AdminBundle\HttpFoundation\JsonResponse;
 
 class CreditController extends FrontendController
@@ -16,10 +17,16 @@ class CreditController extends FrontendController
 
     protected $randomNumber;
 
-    public function __construct(SendApi $sendAPI)
+    public function __construct(SendApi $sendAPI, sendApiDummy $sendApiDummy)
     {
-        $this->sendAPI = $sendAPI;
-        $this->randomNumber = rand(000001,999999);
+        if(ENV != "dev"){
+            $this->sendAPI = $sendAPI;
+            $this->randomNumber = rand(000001,999999);
+        } else {
+            $this->sendAPI = $sendApiDummy;
+            $this->randomNumber = rand(000001,999999);
+        }
+
     }
 
     public function mobilAction(Request $request)
@@ -43,6 +50,21 @@ class CreditController extends FrontendController
     }
 
     public function rukoAction(Request $request)
+    {
+
+    }
+
+    public function eduAction(Request $request)
+    {
+
+    }
+
+    public function leisureAction(Request $request)
+    {
+
+    }
+
+    public function mesinAction(Request $request)
     {
 
     }
@@ -279,7 +301,8 @@ class CreditController extends FrontendController
         $param['Tenor'] = htmlentities(addslashes($request->get('jangka_waktu')));
         $param['Installment'] = htmlentities(addslashes($request->get('installment')));
 
-        $url = WebsiteSetting::getByName('URL_CREDIT_MOTOR')->getData();
+
+        $url =  WebsiteSetting::getByName('URL_CREDIT_MOTOR')->getData();
 
         try {
             $data = $this->sendAPI->sendDataCredit($url, $param);
@@ -406,10 +429,11 @@ class CreditController extends FrontendController
             $data = $this->sendAPI->requestOtp($handphone);
             $redis->hSet($handphone, 'time-send', time());
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Credit Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Credit Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($clear){
@@ -442,10 +466,7 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->validateOtp($handphone, $code);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Credit Down"
-            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -465,15 +486,16 @@ class CreditController extends FrontendController
     {
         $param['submission_id'] = (string)htmlentities(addslashes($request->get('submission_id')));
 
-        $url = WebsiteSetting::getByName('URL_GET_TENOR')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_TENOR')->getData();
 
         try {
             $data = $this->sendAPI->getTenor($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Tenor Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Tenor Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -495,15 +517,16 @@ class CreditController extends FrontendController
     {
         $param['submission_id'] = (string)htmlentities(addslashes($request->get('submission_id')));
         $param['tenor'] = htmlentities(addslashes($request->get('tenor')));
-        $url = WebsiteSetting::getByName('URL_GET_INSURANCE')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_INSURANCE')->getData();
 
         try {
             $data = $this->sendAPI->getInsurance($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Insurance Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Insurance Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -523,17 +546,18 @@ class CreditController extends FrontendController
 
     public function getProvinceAction(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_GET_LIST_PROVINCE')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_LIST_PROVINCE')->getData();
 
         try {
             $data = $this->sendAPI->getProvince($url);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Province Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Province Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
-
+        //sdump($data->header->status);exit;
         if($data->header->status == 200){
             return new JsonResponse([
                 'success' => "1",
@@ -550,16 +574,17 @@ class CreditController extends FrontendController
 
     public function getCityAction(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_GET_LIST_CITY')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_LIST_CITY')->getData();
         $param["province_id"] = htmlentities(addslashes($request->get('province_id')));
 
         try {
             $data = $this->sendAPI->getCity($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request City Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request City Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -578,16 +603,17 @@ class CreditController extends FrontendController
 
     public function getDistrictAction(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_GET_LIST_DISTRICT')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_LIST_DISTRICT')->getData();
         $param["city_id"] = htmlentities(addslashes($request->get('city_id')));
 
         try {
             $data = $this->sendAPI->getDistrict($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request District Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request District Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -606,16 +632,17 @@ class CreditController extends FrontendController
 
     public function getSubdistrictAction(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_GET_LIST_SUBDISTRICT')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_LIST_SUBDISTRICT')->getData();
         $param["district_id"] = htmlentities(addslashes($request->get('district_id')));
 
         try {
             $data = $this->sendAPI->getSubdistrict($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request SubDistrict Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request SubDistrict Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -634,16 +661,17 @@ class CreditController extends FrontendController
 
     public function getZipcodeAction(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_GET_ZIPCODE')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_ZIPCODE')->getData();
         $param["subdistrict_id"] = htmlentities(addslashes($request->get('subdistrict_id')));
 
         try {
             $data = $this->sendAPI->getZipcode($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Zipcode Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Zipcode Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -662,16 +690,17 @@ class CreditController extends FrontendController
 
     public function getCarTypeAction(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_GET_CAR')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_CAR')->getData();
 
 
         try {
             $data = $this->sendAPI->getCar($url);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Car Type Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Car Type Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -690,16 +719,17 @@ class CreditController extends FrontendController
 
     public function getCarBrandAction(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_GET_CAR_BRAND')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_CAR_BRAND')->getData();
 
 
         try {
             $data = $this->sendAPI->getCarBrand($url);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Car Brand Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Car Brand Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -718,31 +748,32 @@ class CreditController extends FrontendController
 
     public function getCarModelAction(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_GET_CAR_MODEL')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_CAR_MODEL')->getData();
         $param["type_id"] = htmlentities(addslashes($request->get('type_id')));
         $param["brand_id"] = htmlentities(addslashes($request->get('brand_id')));
 
         try {
             $data = $this->sendAPI->getCarModel($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Car Model Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Car Model Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
-            if(count($data->data) > 0) {
+            if($data->data != []) {
                 return new JsonResponse([
                     'success' => "1",
                     'message' => "Sukses",
                     'data' => $data->data
                 ]);
             } else {
-                return new JsonResponse([
-                    'success' => "0",
-                    'message' => $this->get("translator")->trans("api-error")
-                ]);
+//                return new JsonResponse([
+//                    'success' => "0",
+//                    'message' => $this->get("translator")->trans("api-error")
+//                ]);
             }
 
         }else{
@@ -755,17 +786,17 @@ class CreditController extends FrontendController
 
     public function getCarYearAction(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_GET_CAR_YEAR')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_CAR_YEAR')->getData();
         $param["model_id"] = htmlentities(addslashes($request->get('model_id')));
 
 
         try {
             $data = $this->sendAPI->getCarYear($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Car Year Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Car Year Down"
+//            ]);
         }
 
         if($data->header->status == 200){
@@ -784,17 +815,18 @@ class CreditController extends FrontendController
 
     public function getCarFundingAction(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_GET_CAR_FUNDING')->getData();
+         $host = WebsiteSetting::getByName("HOST")->getData();
+         $url = HOST . $host . WebsiteSetting::getByName('URL_GET_CAR_FUNDING')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
 
 
         try {
             $data = $this->sendAPI->getCarFunding($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Car Funding Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Car Funding Down"
+//            ]);
         }
 
         if($data->header->status == 200){
@@ -813,7 +845,7 @@ class CreditController extends FrontendController
 
     public function getCarCalculateAction(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_GET_CAR_CALCULATE')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_CAR_CALCULATE')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["funding"] = htmlentities(addslashes($request->get('funding')));
         $param["tenor"] = htmlentities(addslashes($request->get('tenor')));
@@ -827,10 +859,10 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getCarCalculate($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Car Calculate Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => $e->getMessage()
+//            ]);
         }
 
         if($data->header->status == 200){
@@ -849,7 +881,7 @@ class CreditController extends FrontendController
 
     public function saveCarLeads1Action(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_GET_SAVE_CAR_LEADS_1')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_SAVE_CAR_LEADS_1')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["name"] = htmlentities(addslashes($request->get('name')));
         $param["email"] = htmlentities(addslashes($request->get('email')));
@@ -859,11 +891,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->saveCarLeads1($url, $param);
         } catch (\Exception $e) {
-            // return new JsonResponse([
-            //     'success' => "0",
-            //     'message' => "Service Request Save Car Leads 1 Down"
-            // ]);
-            throw new \Exception("Something Went Wrong");
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Car Leads 1 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -882,7 +914,7 @@ class CreditController extends FrontendController
 
     public function saveCarLeads2Action(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_GET_SAVE_CAR_LEADS_2')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_SAVE_CAR_LEADS_2')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["province_id"] = htmlentities(addslashes($request->get('province_id')));
         $param["city_id"] = htmlentities(addslashes($request->get('city_id')));
@@ -895,10 +927,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->saveCarLeads2($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save car Leads 2 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save car Leads 2 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -917,7 +950,7 @@ class CreditController extends FrontendController
 
     public function saveCarLeads3Action(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_GET_SAVE_CAR_LEADS_3')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_SAVE_CAR_LEADS_3')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["car_type_id"] = htmlentities(addslashes($request->get('car_type_id')));
         $param["car_brand_id"] = htmlentities(addslashes($request->get('car_brand_id')));
@@ -930,10 +963,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->saveCarLeads3($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Car Leads 3 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Car Leads 3 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -952,16 +986,17 @@ class CreditController extends FrontendController
 
     public function saveCarLeads4Action(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_GET_SAVE_CAR_LEADS_4')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_SAVE_CAR_LEADS_4')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
 
         try {
             $data = $this->sendAPI->saveCarLeads4($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Car leads 4 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Car leads 4 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -980,16 +1015,17 @@ class CreditController extends FrontendController
 
     public function saveCarLeads5Action(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_GET_SAVE_CAR_LEADS_5')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_SAVE_CAR_LEADS_5')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
 
         try {
             $data = $this->sendAPI->saveCarLeads5($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Car Leads 5 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Car Leads 5 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1008,16 +1044,17 @@ class CreditController extends FrontendController
 
     public function saveCarLeads6Action(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_GET_SAVE_CAR_LEADS_6')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_SAVE_CAR_LEADS_6')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
 
         try {
             $data = $this->sendAPI->saveCarLeads6($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Car leads 6 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Car leads 6 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1038,16 +1075,17 @@ class CreditController extends FrontendController
 
     public function getMotorcycleTypeAction(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_GET_MOTORCYCLE_TYPE')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_MOTORCYCLE_TYPE')->getData();
 
 
         try {
             $data = $this->sendAPI->getMotorcycle($url);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Motorcycle Type Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Motorcycle Type Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1066,16 +1104,17 @@ class CreditController extends FrontendController
 
     public function getMotorcycleBrandAction(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_GET_MOTORCYCLE_BRANDS')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_MOTORCYCLE_BRANDS')->getData();
 
 
         try {
             $data = $this->sendAPI->getMotorcycleBrand($url);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Motorcycle Brand Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Motorcycle Brand Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1094,21 +1133,22 @@ class CreditController extends FrontendController
 
     public function getMotorcycleModelAction(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_GET_MOTORCYCLE_MODELS')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_MOTORCYCLE_MODELS')->getData();
         $param["type_id"] = htmlentities(addslashes($request->get('type_id')));
         $param["brand_id"] = htmlentities(addslashes($request->get('brand_id')));
 
         try {
             $data = $this->sendAPI->getMotorcycleModel($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Motorcycle Model Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Motorcycle Model Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
-            if(count($data->data) > 0){
+            if($data->data != []){
                 return new JsonResponse([
                     'success' => "1",
                     'message' => "Sukses",
@@ -1131,17 +1171,18 @@ class CreditController extends FrontendController
 
     public function getMotorcycleYearAction(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_GET_MOTORCYCLE_YEAR')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_MOTORCYCLE_YEAR')->getData();
         $param["model_id"] = htmlentities(addslashes($request->get('model_id')));
 
 
         try {
             $data = $this->sendAPI->getMotorcycleYear($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Motorcycle Year Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Motorcycle Year Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1160,17 +1201,18 @@ class CreditController extends FrontendController
 
     public function getMotorcycleFundingAction(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_GET_MOTORCYCLE_FUNDING')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_MOTORCYCLE_FUNDING')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
 
 
         try {
             $data = $this->sendAPI->getMotorcycleFunding($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Motorcycle Funding Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Motorcycle Funding Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1191,15 +1233,16 @@ class CreditController extends FrontendController
     {
         $param['submission_id'] = (string)htmlentities(addslashes($request->get('submission_id')));
 
-        $url = WebsiteSetting::getByName('URL_GET_MOTORCYCLE_TENOR')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_MOTORCYCLE_TENOR')->getData();
 
         try {
             $data = $this->sendAPI->getMotorcycleTenor($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Tenor Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Tenor Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1219,7 +1262,7 @@ class CreditController extends FrontendController
 
     public function getMotorcycleCalculateAction(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_MOTORCYCLE_CALCULATE')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_MOTORCYCLE_CALCULATE')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["funding"] = htmlentities(addslashes($request->get('funding')));
         $param["tenor"] = htmlentities(addslashes($request->get('tenor')));
@@ -1228,10 +1271,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getMotorcycleCalculate($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Motorcycle Calculate Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Motorcycle Calculate Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1250,7 +1294,7 @@ class CreditController extends FrontendController
 
     public function saveMotorcycleLeads1Action(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_SAVE_MOTORCYCLE_LEADS_1')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_MOTORCYCLE_LEADS_1')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["name"] = htmlentities(addslashes($request->get('name')));
         $param["email"] = htmlentities(addslashes($request->get('email')));
@@ -1260,10 +1304,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->saveMotorcycleLeads1($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Motorcycle Leads 1 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Motorcycle Leads 1 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1282,7 +1327,7 @@ class CreditController extends FrontendController
 
     public function saveMotorcycleLeads2Action(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_SAVE_MOTORCYCLE_LEADS_2')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_MOTORCYCLE_LEADS_2')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["province_id"] = htmlentities(addslashes($request->get('province_id')));
         $param["city_id"] = htmlentities(addslashes($request->get('city_id')));
@@ -1295,10 +1340,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->saveMotorcycleLeads2($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Motorcycle Leads 2 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Motorcycle Leads 2 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1317,7 +1363,7 @@ class CreditController extends FrontendController
 
     public function saveMotorcycleLeads3Action(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_SAVE_MOTORCYCLE_LEADS_3')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_MOTORCYCLE_LEADS_3')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["motorcycle_type_id"] = htmlentities(addslashes($request->get('motorcycle_type_id')));
         $param["motorcycle_brand_id"] = htmlentities(addslashes($request->get('motorcycle_brand_id')));
@@ -1330,10 +1376,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->saveMotorcycleLeads3($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Motorcycle Leads 3 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Motorcycle Leads 3 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1352,16 +1399,17 @@ class CreditController extends FrontendController
 
     public function saveMotorcycleLeads4Action(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_SAVE_MOTORCYCLE_LEADS_4')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_MOTORCYCLE_LEADS_4')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
 
         try {
             $data = $this->sendAPI->saveMotorcycleLeads4($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Save Motorcycle Leads 4 Request Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Save Motorcycle Leads 4 Request Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1380,16 +1428,17 @@ class CreditController extends FrontendController
 
     public function saveMotorcycleLeads5Action(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_SAVE_MOTORCYCLE_LEADS_5')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_MOTORCYCLE_LEADS_5')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
 
         try {
             $data = $this->sendAPI->saveMotorcycleLeads5($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Motorcycle Leads 5 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Motorcycle Leads 5 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1408,16 +1457,17 @@ class CreditController extends FrontendController
 
     public function saveMotorcycleLeads6Action(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_SAVE_MOTORCYCLE_LEADS_6')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_MOTORCYCLE_LEADS_6')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
 
         try {
             $data = $this->sendAPI->saveMotorcycleLeads6($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Motorcycle Leads 6 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Motorcycle Leads 6 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1438,16 +1488,17 @@ class CreditController extends FrontendController
 
     public function getPbfProfessionAction(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_GET_PROFESSION')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_PROFESSION')->getData();
 
 
         try {
             $data = $this->sendAPI->getProfession($url);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request PBF Profession Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request PBF Profession Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1466,16 +1517,17 @@ class CreditController extends FrontendController
 
     public function getPbfCertificateTypeAction(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_GET_LIST_PBF_CERTIFICATE_TYPE')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_LIST_PBF_CERTIFICATE_TYPE')->getData();
 
 
         try {
             $data = $this->sendAPI->getPbfCertificateType($url);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Pbf Certificate Type Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Pbf Certificate Type Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1494,16 +1546,17 @@ class CreditController extends FrontendController
 
     public function getPbfCertificateOnBehalfAction(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_GET_LIST_PBF_CERTIFICATE_ON_BEHALF')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_LIST_PBF_CERTIFICATE_ON_BEHALF')->getData();
 
 
         try {
             $data = $this->sendAPI->getPbfCertificateOnBehalf($url);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request PBF Certificate on Behalf Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request PBF Certificate on Behalf Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1521,16 +1574,17 @@ class CreditController extends FrontendController
     }
     public function getPbfPropertyTypeAction(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_GET_LIST_PBF_PROPERTY_TYPE')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_LIST_PBF_PROPERTY_TYPE')->getData();
 
 
         try {
             $data = $this->sendAPI->getPbfPropertyType($url);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Pbf Property type Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Pbf Property type Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1551,7 +1605,7 @@ class CreditController extends FrontendController
 
     public function getPbfFundingAction(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_GET_PBF_FUNDING')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_PBF_FUNDING')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["estimasi_harga"] = htmlentities(addslashes($request->get('estimasi_harga')));
 
@@ -1559,10 +1613,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getPbfFunding($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Pbf Funding Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Pbf Funding Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1583,15 +1638,16 @@ class CreditController extends FrontendController
     {
         $param['submission_id'] = (string)htmlentities(addslashes($request->get('submission_id')));
 
-        $url = WebsiteSetting::getByName('URL_GET_PBF_TENOR_LIST')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_PBF_TENOR_LIST')->getData();
 
         try {
             $data = $this->sendAPI->getPbfTenor($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Tenor Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Tenor Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1611,7 +1667,7 @@ class CreditController extends FrontendController
 
     public function getPbfCalculateAction(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_PBF_CALCULATE')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_PBF_CALCULATE')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["funding"] = htmlentities(addslashes($request->get('funding')));
         $param["tenor"] = htmlentities(addslashes($request->get('tenor')));
@@ -1620,10 +1676,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getPbfCalculate($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Pbf Calculate Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Pbf Calculate Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1642,7 +1699,7 @@ class CreditController extends FrontendController
 
     public function savePbfLeads1Action(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_SAVE_PBF_LEADS_STEP_1')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_PBF_LEADS_STEP_1')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["name"] = htmlentities(addslashes($request->get('name')));
         $param["dob"] = htmlentities(addslashes($request->get('dob')));
@@ -1656,10 +1713,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->savePbfLeads1($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Pbf Leads 1 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Pbf Leads 1 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1678,7 +1736,7 @@ class CreditController extends FrontendController
 
     public function savePbfLeads2Action(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_SAVE_PBF_LEADS_STEP_2')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_PBF_LEADS_STEP_2')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["province_id"] = htmlentities(addslashes($request->get('province_id')));
         $param["city_id"] = htmlentities(addslashes($request->get('city_id')));
@@ -1691,10 +1749,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->savePbfLeads2($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Pbf Leads 2 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Pbf Leads 2 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1713,7 +1772,7 @@ class CreditController extends FrontendController
 
     public function savePbfLeads3Action(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_SAVE_PBF_LEADS_STEP_3')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_PBF_LEADS_STEP_3')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["province_id"] = htmlentities(addslashes($request->get('province_id')));
         $param["city_id"] = htmlentities(addslashes($request->get('city_id')));
@@ -1732,10 +1791,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->savePbfLeads3($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Pbf Leads 3 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Pbf Leads 3 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1754,16 +1814,17 @@ class CreditController extends FrontendController
 
     public function savePbfLeads4Action(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_SAVE_PBF_LEADS_STEP_4')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_PBF_LEADS_STEP_4')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
 
         try {
             $data = $this->sendAPI->savePbfLeads4($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Pbf Leads 4 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Pbf Leads 4 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1782,16 +1843,17 @@ class CreditController extends FrontendController
 
     public function savePbfLeads5Action(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_SAVE_PBF_LEADS_STEP_5')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_PBF_LEADS_STEP_5')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
 
         try {
             $data = $this->sendAPI->savePbfLeads5($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Pbf Leads 5 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Pbf Leads 5 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1810,17 +1872,19 @@ class CreditController extends FrontendController
 
     public function savePbfLeads6Action(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_SAVE_PBF_LEADS_STEP_6')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_PBF_LEADS_STEP_6')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["is_news_letter"] = htmlentities(addslashes($request->get('is_news_letter')));
 
         try {
             $data = $this->sendAPI->savePbfLeads6($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Pbf Leads 6 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Pbf Leads 6 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
+
         }
 
         if($data->header->status == 200){
@@ -1839,16 +1903,17 @@ class CreditController extends FrontendController
 
     public function getLeisurePackageAction(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_GET_LEISURE_PACKAGE')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_LEISURE_PACKAGE')->getData();
 
 
         try {
             $data = $this->sendAPI->getLeisurePackage($url);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Leisure Package Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Leisure Package Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1867,16 +1932,49 @@ class CreditController extends FrontendController
 
     public function getLeisureTenorAction(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_GET_LEISURE_TENOR_LIST')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_LEISURE_TENOR_LIST')->getData();
 
 
         try {
             $data = $this->sendAPI->getLeisureTenor($url);
         } catch (\Exception $e) {
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Tenor Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Service Request Tenor Down"
+                'message' => $this->get("translator")->trans("api-error")
             ]);
+        }
+    }
+
+    public function getLeisureProvisionPackageAction(Request $request){
+
+        $url = HOST . WebsiteSetting::getByName('url_GET_LEISURE_PROVISION_PACKAGE')->getData();
+        $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+        $param["leisure_package_price"] = htmlentities(addslashes($request->get('leisure_package_price')));
+        $param["tenor"] = htmlentities(addslashes($request->get('tenor')));
+
+
+        try {
+            $data = $this->sendAPI->getLeisureProvisionPackage($url, $param);
+        } catch (\Exception $e) {
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Leisure Calculator Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1894,9 +1992,9 @@ class CreditController extends FrontendController
     }
     public function leisureCalculatorAction(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_LEISURE_CALCULATOR')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_LEISURE_CALCULATOR')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
-        $param["leisure_package_id"] = htmlentities(addslashes($request->get('leisure_package_id')));
+        $param["leisure_package_price"] = htmlentities(addslashes($request->get('leisure_package_price')));
         $param["down_payment"] = htmlentities(addslashes($request->get('down_payment')));
         $param["tenor"] = htmlentities(addslashes($request->get('tenor')));
         $param["pocket_money"] = htmlentities(addslashes($request->get('pocket_money')));
@@ -1904,10 +2002,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->leisureCalculator($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Leisure Calculator Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Leisure Calculator Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1926,7 +2025,7 @@ class CreditController extends FrontendController
 
     public function saveLeisureLeads1Action(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_SAVE_LEISURE_LEADS_STEP_1')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_LEISURE_LEADS_STEP_1')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["name"] = htmlentities(addslashes($request->get('name')));
         $param["email"] = htmlentities(addslashes($request->get('email')));
@@ -1936,10 +2035,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->saveLeisureLeads1($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Leisure Leads 1 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Leisure Leads 1 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1958,7 +2058,7 @@ class CreditController extends FrontendController
 
     public function saveLeisureLeads2Action(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_SAVE_LEISURE_LEADS_STEP_2')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_LEISURE_LEADS_STEP_2')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["province_id"] = htmlentities(addslashes($request->get('province_id')));
         $param["city_id"] = htmlentities(addslashes($request->get('city_id')));
@@ -1971,10 +2071,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->saveLeisureLeads2($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Leisure Leads 2 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Leisure Leads 2 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -1993,16 +2094,17 @@ class CreditController extends FrontendController
 
     public function saveLeisureLeads3Action(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_SAVE_LEISURE_LEADS_STEP_3')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_LEISURE_LEADS_STEP_3')->getData();
             $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
 
         try {
             $data = $this->sendAPI->saveLeisureLeads3($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Leisure Leads 3 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Leisure Leads 3 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -2021,16 +2123,17 @@ class CreditController extends FrontendController
 
     public function saveLeisureLeads4Action(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_SAVE_LEISURE_LEADS_STEP_4')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_LEISURE_LEADS_STEP_4')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
 
         try {
             $data = $this->sendAPI->saveLeisureLeads4($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Leisure Leads 4 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Leisure Leads 4 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -2049,16 +2152,17 @@ class CreditController extends FrontendController
 
     public function saveLeisureLeads5Action(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_SAVE_LEISURE_LEADS_STEP_5')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_LEISURE_LEADS_STEP_5')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
 
         try {
             $data = $this->sendAPI->saveLeisureLeads5($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Leisure Leads 5 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Leisure Leads 5 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -2077,16 +2181,17 @@ class CreditController extends FrontendController
 
     public function getEduPackageAction(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_GET_EDU_PACKAGE')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_EDU_PACKAGE')->getData();
 
 
         try {
             $data = $this->sendAPI->getEduPackage($url);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Edu Package Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Edu Package Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -2105,16 +2210,17 @@ class CreditController extends FrontendController
 
     public function getEduTenorAction(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_GET_EDU_TENOR_LIST')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_EDU_TENOR_LIST')->getData();
 
 
         try {
             $data = $this->sendAPI->getEduTenor($url);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Tenor Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Tenor Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -2132,7 +2238,7 @@ class CreditController extends FrontendController
     }
     public function eduProvisionPackageAction(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_EDU_PROVISION_PACKAGE')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_EDU_PROVISION_PACKAGE')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["edu_package_price"] = htmlentities(addslashes($request->get('edu_package_price')));
         $param["tenor"] = htmlentities(addslashes($request->get('tenor')));
@@ -2141,10 +2247,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getEduProvisionPackage($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Edu Provision Package Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Edu Provision Package Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -2162,7 +2269,7 @@ class CreditController extends FrontendController
     }
     public function eduCalculatorAction(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_EDU_CALCULATOR')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_EDU_CALCULATOR')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["edu_package_price"] = htmlentities(addslashes($request->get('edu_package_price')));
         $param["down_payment"] = htmlentities(addslashes($request->get('down_payment')));
@@ -2172,10 +2279,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->eduCalculator($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Edu calculator Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Edu calculator Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -2194,7 +2302,7 @@ class CreditController extends FrontendController
 
     public function saveEduLeads1Action(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_SAVE_EDU_LEADS_STEP_1')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_EDU_LEADS_STEP_1')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["name"] = htmlentities(addslashes($request->get('name')));
         $param["email"] = htmlentities(addslashes($request->get('email')));
@@ -2205,10 +2313,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->saveEduLeads1($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Edu Leads 1 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Edu Leads 1 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -2227,7 +2336,7 @@ class CreditController extends FrontendController
 
     public function saveEduLeads2Action(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_SAVE_EDU_LEADS_STEP_2')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_EDU_LEADS_STEP_2')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["province_id"] = htmlentities(addslashes($request->get('province_id')));
         $param["city_id"] = htmlentities(addslashes($request->get('city_id')));
@@ -2240,10 +2349,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->saveEduLeads2($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Edu Leads 2 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Edu Leads 2 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -2262,16 +2372,17 @@ class CreditController extends FrontendController
 
     public function saveEduLeads3Action(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_SAVE_EDU_LEADS_STEP_3')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_EDU_LEADS_STEP_3')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
 
         try {
             $data = $this->sendAPI->saveEduLeads3($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Edu Leads 3 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Edu Leads 3 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -2290,16 +2401,17 @@ class CreditController extends FrontendController
 
     public function saveEduLeads4Action(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_SAVE_EDU_LEADS_STEP_4')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_EDU_LEADS_STEP_4')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
 
         try {
             $data = $this->sendAPI->saveEduLeads4($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Edu Leads 4 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Edu Leads 4 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -2318,16 +2430,17 @@ class CreditController extends FrontendController
 
     public function saveEduLeads5Action(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_SAVE_EDU_LEADS_STEP_5')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_EDU_LEADS_STEP_5')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
 
         try {
             $data = $this->sendAPI->saveEduLeads5($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Edu Leads 5 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Edu Leads 5 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -2346,16 +2459,17 @@ class CreditController extends FrontendController
 
     public function getMachineryServicesAction(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_GET_MACHINERY_SERVICES')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_MACHINERY_SERVICES')->getData();
 
 
         try {
             $data = $this->sendAPI->getMachineryServices($url);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Machinery Services Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Machinery Services Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -2373,16 +2487,17 @@ class CreditController extends FrontendController
     }
     public function getMachineryIndustryAction(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_GET_MACHINERY_INDUSTRY')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_MACHINERY_INDUSTRY')->getData();
 
 
         try {
             $data = $this->sendAPI->getMachineryIndustry($url);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Machinery Industry Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Machinery Industry Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -2400,16 +2515,17 @@ class CreditController extends FrontendController
     }
     public function getMachineryTypeAction(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_GET_MACHINERY_TYPE')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_MACHINERY_TYPE')->getData();
 
 
         try {
             $data = $this->sendAPI->getMachineryType($url);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Machinery Type Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Machinery Type Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -2427,16 +2543,17 @@ class CreditController extends FrontendController
     }
     public function getMachineryBrandAction(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_GET_MACHINERY_BRAND')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_MACHINERY_BRAND')->getData();
 
 
         try {
             $data = $this->sendAPI->getMachineryBrand($url);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Machinery Brand Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Machinery Brand Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -2455,21 +2572,22 @@ class CreditController extends FrontendController
 
     public function getMachineryModelAction(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_GET_MACHINERY_MODEL')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_MACHINERY_MODEL')->getData();
         $param["machinery_brand_id"] = htmlentities(addslashes($request->get('machinery_brand_id')));
         $param["machinery_type_id"] = htmlentities(addslashes($request->get('machinery_type_id')));
 
         try {
             $data = $this->sendAPI->getMachineryModel($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Machinery Model Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Machinery Model Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
-            if(count($data->data) > 0){
+            if($data->data != []){
                 return new JsonResponse([
                     'success' => "1",
                     'message' => "Sukses",
@@ -2491,21 +2609,22 @@ class CreditController extends FrontendController
     }
     public function getMachineryYearAction(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_GET_MACHINERY_YEAR')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_MACHINERY_YEAR')->getData();
         $param["machinery_model_id"] = htmlentities(addslashes($request->get('machinery_model_id')));
 
 
         try {
             $data = $this->sendAPI->getMachineryYear($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Machinery Year Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Machinery Year Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
-            if(count($data->data) > 0){
+            if($data->data != []){
                 return new JsonResponse([
                     'success' => "1",
                     'message' => "Sukses",
@@ -2527,21 +2646,22 @@ class CreditController extends FrontendController
     }
     public function getMachineryFundingAction(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_GET_MACHINERY_FUNDING')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_MACHINERY_FUNDING')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
 
 
         try {
             $data = $this->sendAPI->getMachineryFunding($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Machinery Year Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Machinery Year Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
-            if(count($data->data) > 0){
+            if($data->data != []){
                 return new JsonResponse([
                     'success' => "1",
                     'message' => "Sukses",
@@ -2564,16 +2684,17 @@ class CreditController extends FrontendController
 
     public function getMachineryTenorAction(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_GET_MACHINERY_TENOR_LIST')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_MACHINERY_TENOR_LIST')->getData();
 
 
         try {
             $data = $this->sendAPI->getMachineryTenor($url);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Tenor Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Tenor Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -2591,7 +2712,7 @@ class CreditController extends FrontendController
     }
     public function getMachineryCalculateAction(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_GET_MACHINERY_FUNDING')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_GET_MACHINERY_FUNDING')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["funding"] = htmlentities(addslashes($request->get('funding')));
         $param["down_payment"] = htmlentities(addslashes($request->get('down_payment')));
@@ -2601,14 +2722,15 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->machineryCalculate($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Machinery Calculate Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Machinery Calculate Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
-            if(count($data->data) > 0){
+            if($data->data != []){
                 return new JsonResponse([
                     'success' => "1",
                     'message' => "Sukses",
@@ -2631,7 +2753,7 @@ class CreditController extends FrontendController
 
     public function saveMachineryLeads1Action(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_SAVE_MACHINERY_LEADS_STEP_1')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_MACHINERY_LEADS_STEP_1')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["name"] = htmlentities(addslashes($request->get('name')));
         $param["email"] = htmlentities(addslashes($request->get('email')));
@@ -2639,12 +2761,13 @@ class CreditController extends FrontendController
 
 
         try {
-            $data = $this->sendAPI->saveMachineryLeads1($url, $param);
+            $data = $this->sendAPI->saveCarLeads1($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Machinery Leads 1 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Car Leads 1 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -2663,7 +2786,7 @@ class CreditController extends FrontendController
 
     public function saveMachineryLeads2Action(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_SAVE_MACHINERY_LEADS_STEP_2')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_MACHINERY_LEADS_STEP_2')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["province_id"] = htmlentities(addslashes($request->get('province_id')));
         $param["city_id"] = htmlentities(addslashes($request->get('city_id')));
@@ -2676,10 +2799,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->saveMachineryLeads2($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Machinery Leads 2 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save car Leads 2 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -2698,7 +2822,7 @@ class CreditController extends FrontendController
 
     public function saveMachineryLeads3Action(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_SAVE_MACHINERY_LEADS_STEP_3')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_MACHINERY_LEADS_STEP_3')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["machinery_service_id"] = htmlentities(addslashes($request->get('machinery_service_id')));
         $param["machinery_industry_id"] = htmlentities(addslashes($request->get('machinery_industry_id')));
@@ -2714,10 +2838,11 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->saveMachineryLeads3($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Machinery Leads 3 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Machinery Leads 3 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -2736,16 +2861,17 @@ class CreditController extends FrontendController
 
     public function saveMachineryLeads4Action(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_SAVE_MACHINERY_LEADS_STEP_4')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_MACHINERY_LEADS_STEP_4')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
 
         try {
             $data = $this->sendAPI->saveMachineryLeads4($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Machinery leads 4 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Car leads 4 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -2764,16 +2890,17 @@ class CreditController extends FrontendController
 
     public function saveMachineryLeads5Action(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_SAVE_MACHINERY_LEADS_STEP_5')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_MACHINERY_LEADS_STEP_5')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
 
         try {
             $data = $this->sendAPI->saveMachineryLeads5($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Machinery Leads 5 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Car Leads 5 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){
@@ -2792,16 +2919,17 @@ class CreditController extends FrontendController
 
     public function saveMachineryLeads6Action(Request $request){
 
-        $url = WebsiteSetting::getByName('URL_SAVE_MACHINERY_LEADS_STEP_6')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_SAVE_MACHINERY_LEADS_STEP_6')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
 
         try {
             $data = $this->sendAPI->saveMachineryLeads6($url, $param);
         } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Service Request Save Machinery leads 6 Down"
-            ]);
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Machinery leads 6 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
         }
 
         if($data->header->status == 200){

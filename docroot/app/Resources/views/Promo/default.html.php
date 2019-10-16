@@ -49,10 +49,10 @@ $lang = $this->getLocale();
                     <img src="<?= $promo->getImage();?>" alt="">
                 </picture>
                 <div class="caption">
-                    <h3 class="tag">Enterpreneur</h3>
+                    <h3 class="tag"><?= $promo->getPromoCategory() ? $promo->getPromoCategory()->getName(): "";?></h3>
                     <h2 class="title"><?= $promo->getTitle();?></h2>
                     <div class="dateview periode">
-                        <div>Periode Promo : </div>
+                        <div><?= $this->t("period-promo"); ?> : </div>
                         <?= $promo->getPromoStartDate();?> - <?= $promo->getPromoEndDate();?>
                     </div>
                 </div>
