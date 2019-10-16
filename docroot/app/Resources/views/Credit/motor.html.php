@@ -1,4 +1,4 @@
-<?php
+`<?php
 /**
  * @var \Pimcore\Templating\PhpEngine $this
  * @var \Pimcore\Templating\PhpEngine $view
@@ -6,6 +6,7 @@
  */
 
 $this->extend('layout-credit.html.php');
+// echo $this->headScript()->prependFile('/static/js/Includes/homepage1.js');
 ?>
 <div id="myModal">
     <div class="form-dialog">
@@ -177,6 +178,15 @@ $this->extend('layout-credit.html.php');
                                             <p class="text-center"><?= $this->translate('input-data-vehicle')?></p>
                                         </div>
                                         <div class="form-group">
+                                            <label><?= $this->translate('label-type')?></label>
+                                            <select class="c-custom-select-trans form-control formRequired"
+                                                    placeholder="<?= $this->translate('placeholder-type')?>" id="type_kendaraan"
+                                                    name="type_kendaraan" multiple="multiple">
+                                                <option value="" disabled selected> <?= $this->translate('placeholder-type')?></option>
+                                            </select>
+                                            <div class="error-wrap"></div>
+                                        </div>
+                                        <div class="form-group">
                                             <label><?= $this->translate('label-merk')?></label>
                                             <select class="c-custom-select-trans form-control formRequired"
                                                     placeholder="<?= $this->translate('placeholder-merk')?>" id="merk_kendaraan"
@@ -211,8 +221,8 @@ $this->extend('layout-credit.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label><?= $this->translate('label-status')?></label>
-                                            <select class="c-custom-select-trans form-control formRequired" 
-                                                    placeholder="<?= $this->translate('placeholder-status')?>" id="status_kep" 
+                                            <select class="c-custom-select-trans form-control formRequired"
+                                                    placeholder="<?= $this->translate('placeholder-status')?>" id="status_kep"
                                                     name="status_kep" multiple="multiple" data-status-self="<?= $this->translate('placeholder-status-self')?>" data-status-other="<?=$this->translate('placeholder-status-other');?>">
                                                 <option value="" disabled selected> <?= $this->translate('placeholder-status')?></option>
                                             </select>
@@ -622,4 +632,4 @@ $this->extend('layout-credit.html.php');
             </div>
         </div>
     </div>
-</div>
+</div>`
