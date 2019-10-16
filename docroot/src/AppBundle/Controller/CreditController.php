@@ -2030,6 +2030,7 @@ class CreditController extends FrontendController
         $param["name"] = htmlentities(addslashes($request->get('name')));
         $param["email"] = htmlentities(addslashes($request->get('email')));
         $param["phone_number"] =htmlentities(addslashes($request->get('phone_number')));
+        $param["path_ktp"]= htmlentities(addslashes($request->get('path_ktp')));
 
 
         try {
