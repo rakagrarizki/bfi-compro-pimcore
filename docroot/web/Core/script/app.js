@@ -628,10 +628,24 @@
       filesize: 1000   //max size 1MB
     },
 
+    minDownPayment: {
+      required: true,
+      minDp: 10
+    },
+
     submitHandler: function (form) {
       form.submit();
     }
   });
+
+  jQuery.validator.addMethod("minDp", function (value, element, param) {
+    var thisval = parseInt(value.replace(/\./g, ""));
+    var payment = parseInt($("#ex7SliderVal").val().replace(/\./g, ""));
+    var minPayment = payment * (param / 100);
+    console.log("DP ", payment, thisval, minPayment);
+    return (minPayment <= thisval ? true : false);
+    // return false
+  }, "Minimal 10% from payment.");
 
   jQuery.validator.addMethod("acceptAlphabet", function (value, element, param) {
     //console.log(value.match(new RegExp("." + param + "$")));
