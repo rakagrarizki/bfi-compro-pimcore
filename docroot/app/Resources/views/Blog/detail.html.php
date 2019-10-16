@@ -48,7 +48,7 @@ $urlTwitter = " https://twitter.com/share?text=$titleshare&url=$fixedurl&wrap_li
                 <a href="javscript:void(0)" class="share-cp" id="copy"><i class="fa fa-chain"></i></a>
             </div>
             <div class="sumber">
-                <span><?= $this->t("source")?>:</span> <a href="javscript:void(0)">Lorem</a>, <a href="javscript:void(0)">Ipsum</a>, <a href="javscript:void(0)">Dolor</a>
+                <span><?= $this->t("source")?>:</span> <?= $blog->getSource();?>
             </div>
         </article>
     </div>
@@ -57,8 +57,8 @@ $urlTwitter = " https://twitter.com/share?text=$titleshare&url=$fixedurl&wrap_li
     <?php if($relatedBlogs):?>
     <div class="container related">
         <article class="sect-title text-center">
-            <h2 class="margin-top-10"><?= $this->t("related-promo");?></h2>
-            <p>Lorem Ipsum</p>
+            <h2 class="margin-top-10"><?= $this->t("related-blog");?></h2>
+            <p><?= $this->t("related-blog-description");?></p>
         </article>
         <div class="list-card">
         <?php foreach($relatedBlogs as $relatedBlog) :?>
