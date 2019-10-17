@@ -30,6 +30,17 @@
         @include breakpoint(tablet){
             padding: 0;
         }
+
+        h3 {
+          font-family: 'HelveticaNeue';
+          font-weight: 600;
+          font-size: 20px;
+          color: #04559F;
+          margin-top: 20px;
+          padding: 0 15px;
+          text-align: left;
+          margin-bottom: 0;
+        }
         
         .list-credit--icon {
             display: flex;

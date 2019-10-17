@@ -30,7 +30,7 @@
 
     if ($(".formatRibuan").length > 0) {
       $(".formatRibuan").keyup(function () {
-        console.log($(this).val())
+        // console.log($(this).val())
         $(this).val(formatRupiah($(this).val(), ""));
       })
     }
