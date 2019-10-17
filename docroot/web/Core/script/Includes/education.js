@@ -185,6 +185,9 @@ var isValidOtp = false;
       if (currentIndex > newIndex) {
         return true;
       }
+      if ($(".actions > ul li a[href$='next']").parent().hasClass("inactive")) {
+        // return false;
+      }
       // console.log("isEdit", isEdit);
       if (isEdit) {
         isEdit = false;

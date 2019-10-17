@@ -16,6 +16,34 @@ function retryAjax(_this, xhr) {
   }
 }
 
+function postOTP(url, data) {
+  var _ret;
+  $.ajax({
+    type: 'POST',
+    url: url,
+    data: data,
+    dataType: 'json',
+    // tryCount: 0,
+    // retryLimit: retryLimit,
+    async: false,
+    error: function (xhr, textStatus, errorThrown) {
+      // retryAjax(this, xhr);
+    },
+    fail: function (xhr, textStatus, error) {
+      // retryAjax(this, xhr);
+    },
+    success: function (result) {
+      // console.log("RESULT", result);
+      if (result.success === "1") {
+        _ret = result;
+      } else {
+        // console.log('error' + result.message);
+      }
+    }
+  })
+  return _ret;
+}
+
 function postData(url, data) {
   var _ret;
   $.ajax({
@@ -150,11 +178,11 @@ function requestOTP(cb) {
   var _data = {
     phone_number: $('#no_handphone').val().toString()
   }
-  postData("/otp/send-otp", _data);
+  postOTP("/otp/send-otp", _data);
   cb();
 }
 
-var otpTimeout = 5;
+var otpTimeout = 90;
 var otpTimeRemain = 0;
 function startOtp() {
   otpTimeRemain = otpTimeout;
@@ -191,14 +219,14 @@ function otpVerified() {
     phone_number: no_handphone,
     otp_code: otp1Value + otp2Value + otp3Value + otp4Value
   }
-  var verifiedOtp = postData("/otp/validate-otp", _data);
+  var verifiedOtp = postOTP("/otp/validate-otp", _data);
   console.log(verifiedOtp);
 }
 
 (function ($) {
 
   $(document).on("click", "#otp-resend", otpResend);
-  $(document).on("click", "otp-verification", otpVerified)
+  $(document).on("click", "#otp-verification", otpVerified)
 
   $(document).on('click', '.countdown--reload', function (e) {
     e.preventDefault();
