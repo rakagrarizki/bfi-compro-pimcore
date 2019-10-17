@@ -106,27 +106,43 @@ function getProvince() {
 }
 
 function getCity(provinceId) {
-  var url = "/credit/get-city";
-  var data = { "province_id": provinceId };
-  return transformData(postData(url, data).data);
+  if (provinceId) {
+    var url = "/credit/get-city";
+    var data = { "province_id": provinceId };
+    return transformData(postData(url, data).data);
+  } else {
+    return false;
+  }
 }
 
 function getDistrict(cityId) {
-  var url = "/credit/get-district";
-  var data = { "city_id": cityId };
-  return transformData(postData(url, data).data);
+  if (cityId) {
+    var url = "/credit/get-district";
+    var data = { "city_id": cityId };
+    return transformData(postData(url, data).data);
+  } else {
+    return false;
+  }
 }
 
 function getSubdistrict(districtId) {
-  var url = "/credit/get-subdistrict";
-  var data = { "district_id": districtId };
-  return transformData(postData(url, data).data);
+  if (districtId) {
+    var url = "/credit/get-subdistrict";
+    var data = { "district_id": districtId };
+    return transformData(postData(url, data).data);
+  } else {
+    return false;
+  }
 }
 
 function getZipcode(subdistrictId) {
-  var url = "/credit/get-zipcode";
-  var data = { "subdistrict_id": subdistrictId };
-  return postData(url, data).data;
+  if (subdistrictId) {
+    var url = "/credit/get-zipcode";
+    var data = { "subdistrict_id": subdistrictId };
+    return postData(url, data).data;
+  } else {
+    return false;
+  }
 }
 
 function transformData(data) {
@@ -158,6 +174,7 @@ function separatordot(o) {
 
 function showOtp() {
   $(".wizard .steps, .wizard .actions").hide();
+  $("#otp-success").hide();
   $("#step-summary").hide();
   $("#step-otp").show();
   showOtpWait();
@@ -172,6 +189,12 @@ function showOtpWait() {
 function showOtpResend() {
   $(".otp-number__text .otp-resend").show();
   $(".otp-number__text .otp-wait").hide();
+}
+
+function showSuccessOtp() {
+  $("#otp-success").show();
+  $("#step-summary").hide();
+  $("#step-otp").hide();
 }
 
 function requestOTP(cb) {
@@ -220,7 +243,21 @@ function otpVerified() {
     otp_code: otp1Value + otp2Value + otp3Value + otp4Value
   }
   var verifiedOtp = postOTP("/otp/validate-otp", _data);
-  console.log(verifiedOtp);
+  if (verifiedOtp.success === "1") {
+    successOTP();
+  } else {
+    $('#wrongOtp').modal('show');
+  }
+}
+
+function successOTP() {
+  var _data = getDataRegister();
+  var register = postData("/register", _data);
+  if (register.success === "1") {
+    showSuccessOtp();
+  } else {
+    $('#failedOtp').modal('show');
+  }
 }
 
 (function ($) {

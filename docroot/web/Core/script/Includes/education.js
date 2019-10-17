@@ -159,6 +159,16 @@ function editStep(idx) {
   goToStep(idx);
 }
 
+function getDataRegister() {
+  var _data = {
+    "submission_id": submission_id,
+    "full_name": $('#nama_lengkap').val().toString(),
+    "email": $('#email_pemohon').val().toString(),
+    "phone_number": $('#no_handphone').val().toString()
+  }
+  return _data;
+}
+
 var isValidOtp = false;
 (function ($) {
 
@@ -186,7 +196,7 @@ var isValidOtp = false;
         return true;
       }
       if ($(".actions > ul li a[href$='next']").parent().hasClass("inactive")) {
-        // return false;
+        return false;
       }
       // console.log("isEdit", isEdit);
       if (isEdit) {
@@ -199,8 +209,8 @@ var isValidOtp = false;
         }
       }
       form.validate().settings.ignore = ":disabled,:hidden";
-      // return sendLeadData();
-      return true;
+      return sendLeadData();
+      // return true;
     },
     onStepChanged: function (event, currentIndex, priorIndex) {
       // Used to skip the "Warning" step if the user is old enough.

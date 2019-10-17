@@ -178,11 +178,11 @@ $this->extend('layout-credit.html.php');
                                             <p class="text-center"><?= $this->translate('input-data-vehicle')?></p>
                                         </div>
                                         <div class="form-group">
-                                            <label><?= $this->translate('label-type')?></label>
+                                            <label><?= $this->translate('label-type-motor')?></label>
                                             <select class="c-custom-select-trans form-control formRequired"
-                                                    placeholder="<?= $this->translate('placeholder-type')?>" id="type_kendaraan"
+                                                    placeholder="<?= $this->translate('placeholder-type-motor')?>" id="type_kendaraan"
                                                     name="type_kendaraan" multiple="multiple">
-                                                <option value="" disabled selected> <?= $this->translate('placeholder-type')?></option>
+                                                <option value="" disabled selected> <?= $this->translate('placeholder-type-motor')?></option>
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
