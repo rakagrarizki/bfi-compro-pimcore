@@ -453,7 +453,8 @@ class CreditController extends FrontendController
 
         return new JsonResponse([
             'success' => "1",
-            'message' => "Sukses"
+            'message' => "Sukses",
+            'data' => $data->data
         ]);
 
     }
@@ -462,6 +463,7 @@ class CreditController extends FrontendController
     {
         $code = htmlentities(addslashes($request->get('otp1'))). htmlentities(addslashes($request->get('otp2'))). htmlentities(addslashes($request->get('otp3'))). htmlentities(addslashes($request->get('otp4')));
         $handphone = htmlentities(addslashes($request->get('phone_number')));
+        $code = htmlentities(addslashes($request->get('otp_code')));
 
         try {
             $data = $this->sendAPI->validateOtp($handphone, $code);
@@ -516,7 +518,7 @@ class CreditController extends FrontendController
     public function getInsuranceAction(Request $request)
     {
         $param['submission_id'] = (string)htmlentities(addslashes($request->get('submission_id')));
-        $param['tenor'] = htmlentities(addslashes($request->get('tenor')));
+        $param['tenor'] = (int)htmlentities(addslashes($request->get('tenor')));
          $url = HOST . WebsiteSetting::getByName('URL_GET_INSURANCE')->getData();
 
         try {
@@ -847,8 +849,8 @@ class CreditController extends FrontendController
 
          $url = HOST . WebsiteSetting::getByName('URL_GET_CAR_CALCULATE')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
-        $param["funding"] = htmlentities(addslashes($request->get('funding')));
-        $param["tenor"] = htmlentities(addslashes($request->get('tenor')));
+        $param["funding"] = (int)htmlentities(addslashes($request->get('funding')));
+        $param["tenor"] = (int)htmlentities(addslashes($request->get('tenor')));
         $insurance = htmlentities($request->get('insurance'));
         //$ins = "F8D301F8-7045-4DA9-9EB8-EC8DE6E92855, F8D301F8-7045-4DA9-9EB8-EC8DE6E9285, F8D301F8-7045-4DA9-9EB8-EC8DE6E92855";
         $insurance_arr = explode(",",$insurance);
@@ -1264,8 +1266,8 @@ class CreditController extends FrontendController
 
          $url = HOST . WebsiteSetting::getByName('URL_MOTORCYCLE_CALCULATE')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
-        $param["funding"] = htmlentities(addslashes($request->get('funding')));
-        $param["tenor"] = htmlentities(addslashes($request->get('tenor')));
+        $param["funding"] = (int)htmlentities(addslashes($request->get('funding')));
+        $param["tenor"] = (int)htmlentities(addslashes($request->get('tenor')));
 
 
         try {
@@ -1607,7 +1609,7 @@ class CreditController extends FrontendController
 
          $url = HOST . WebsiteSetting::getByName('URL_GET_PBF_FUNDING')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
-        $param["estimasi_harga"] = htmlentities(addslashes($request->get('estimasi_harga')));
+        $param["estimasi_harga"] = (int)htmlentities(addslashes($request->get('estimasi_harga')));
 
 
         try {
@@ -1669,8 +1671,8 @@ class CreditController extends FrontendController
 
          $url = HOST . WebsiteSetting::getByName('URL_PBF_CALCULATE')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
-        $param["funding"] = htmlentities(addslashes($request->get('funding')));
-        $param["tenor"] = htmlentities(addslashes($request->get('tenor')));
+        $param["funding"] = (int)htmlentities(addslashes($request->get('funding')));
+        $param["tenor"] = (int)htmlentities(addslashes($request->get('tenor')));
 
 
         try {
@@ -1963,8 +1965,8 @@ class CreditController extends FrontendController
 
         $url = HOST . WebsiteSetting::getByName('url_GET_LEISURE_PROVISION_PACKAGE')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
-        $param["leisure_package_price"] = htmlentities(addslashes($request->get('leisure_package_price')));
-        $param["tenor"] = htmlentities(addslashes($request->get('tenor')));
+        $param["leisure_package_price"] = (int)htmlentities(addslashes($request->get('leisure_package_price')));
+        $param["tenor"] = (int)htmlentities(addslashes($request->get('tenor')));
 
 
         try {
@@ -1994,10 +1996,10 @@ class CreditController extends FrontendController
 
          $url = HOST . WebsiteSetting::getByName('URL_LEISURE_CALCULATOR')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
-        $param["leisure_package_price"] = htmlentities(addslashes($request->get('leisure_package_price')));
-        $param["down_payment"] = htmlentities(addslashes($request->get('down_payment')));
-        $param["tenor"] = htmlentities(addslashes($request->get('tenor')));
-        $param["pocket_money"] = htmlentities(addslashes($request->get('pocket_money')));
+        $param["leisure_package_price"] = (int)htmlentities(addslashes($request->get('leisure_package_price')));
+        $param["down_payment"] = (int)htmlentities(addslashes($request->get('down_payment')));
+        $param["tenor"] = (int)htmlentities(addslashes($request->get('tenor')));
+        $param["pocket_money"] = (int)htmlentities(addslashes($request->get('pocket_money')));
 
         try {
             $data = $this->sendAPI->leisureCalculator($url, $param);
@@ -2241,8 +2243,8 @@ class CreditController extends FrontendController
 
          $url = HOST . WebsiteSetting::getByName('URL_EDU_PROVISION_PACKAGE')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
-        $param["edu_package_price"] = htmlentities(addslashes($request->get('edu_package_price')));
-        $param["tenor"] = htmlentities(addslashes($request->get('tenor')));
+        $param["edu_package_price"] = (int)htmlentities(addslashes($request->get('edu_package_price')));
+        $param["tenor"] = (int)htmlentities(addslashes($request->get('tenor')));
 
 
         try {
@@ -2272,9 +2274,9 @@ class CreditController extends FrontendController
 
          $url = HOST . WebsiteSetting::getByName('URL_EDU_CALCULATOR')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
-        $param["edu_package_price"] = htmlentities(addslashes($request->get('edu_package_price')));
-        $param["down_payment"] = htmlentities(addslashes($request->get('down_payment')));
-        $param["tenor"] = htmlentities(addslashes($request->get('tenor')));
+        $param["edu_package_price"] = (int)htmlentities(addslashes($request->get('edu_package_price')));
+        $param["down_payment"] = (int)htmlentities(addslashes($request->get('down_payment')));
+        $param["tenor"] = (int)htmlentities(addslashes($request->get('tenor')));
 
 
         try {
@@ -2715,9 +2717,9 @@ class CreditController extends FrontendController
 
          $url = HOST . WebsiteSetting::getByName('URL_MACHINERY_CALCULATE')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
-        $param["funding"] = htmlentities(addslashes($request->get('funding')));
-        $param["down_payment"] = htmlentities(addslashes($request->get('down_payment')));
-        $param["tenor"] = htmlentities(addslashes($request->get('tenor')));
+        $param["funding"] = (int)htmlentities(addslashes($request->get('funding')));
+        $param["down_payment"] = (int)htmlentities(addslashes($request->get('down_payment')));
+        $param["tenor"] = (int)htmlentities(addslashes($request->get('tenor')));
 
 
         try {
@@ -2831,8 +2833,8 @@ class CreditController extends FrontendController
         $param["machinery_brand_id"] = htmlentities(addslashes($request->get('machinery_brand_id')));
         $param["machinery_model_id"] = htmlentities(addslashes($request->get('machinery_model_id')));
         $param["machinery_year_id"] = htmlentities(addslashes($request->get('machinery_year_id')));
-        $param["machinery_total"] = htmlentities(addslashes($request->get('machinery_total')));
-        $param["estimated_price"] = htmlentities(addslashes($request->get('estimated_price')));
+        $param["machinery_total"] = (int)htmlentities(addslashes($request->get('machinery_total')));
+        $param["estimated_price"] = (int)htmlentities(addslashes($request->get('estimated_price')));
 
 
 
