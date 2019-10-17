@@ -1,7 +1,8 @@
 var form, submission_id;
 var formGroup = [];
-formGroup[0] = ["#nama_lengkap", "#email_pemohon", "#no_handphone", "#ktp"]
-formGroup[1] = ["#provinsi", "#kota", "#kecamatan", "#kelurahan", "#kode_pos", "#alamat_lengkap"]
+formGroup[0] = ["#nama_lengkap", "#email_pemohon", "#no_handphone", "#ktp"];
+formGroup[1] = ["#provinsi", "#kota", "#kecamatan", "#kelurahan", "#kode_pos", "#alamat_lengkap"];
+formGroup[2] = ["#ex7SliderVal", "#down_payment", "#jangka_waktu","#pocket_money"];
 
 function isValidStep() {
   var currentStep = form.steps("getCurrentIndex");
@@ -65,6 +66,12 @@ function sendLeadData() {
           "address": $("#alamat_lengkap").val()
         }
         break;
+      case 2:
+        _url = "/credit/save-leisure-leads3";
+        _data = {
+          "submission_id": submission_id
+        }
+        break;
     }
     var sendData = postData(_url, _data);
     if (currentStep === 0) {
@@ -92,7 +99,7 @@ function initCalculate() {
   $("#ex7SliderVal").parents(".sliderGroup").find(".calcslide").data('slider').options.min = rawMinPrice;
   $("#ex7SliderVal").parents(".sliderGroup").find(".calcslide").data('slider').options.step = 100000;
   $('#ex7SliderVal').parents(".sliderGroup").find(".calcslide").slider().on('slideStop', function (ev) {
-    $("#down_payment").val(parseInt($("#ex7SliderVal").val().replace(/[.]/g, ""),10)/10 );
+    $("#down_payment").val((parseInt($("#ex7SliderVal").val().replace(/[.]/g, ""),10)/10).toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
   });
 
   $("#ex7SliderVal").parents(".sliderGroup").find(".calcslide").slider('setValue', rawMinPrice);
@@ -124,9 +131,54 @@ function getDataTenor() {
   });
 }
 
+function initSummary() {
+  // PERSONAL
+  $("#showFullName").text($("#nama_lengkap").val());
+  $("#showEmail").text($("#email_pemohon").val());
+  $("#showPhone").text($("#no_handphone").val());
 
+  // ADDRESS
+  $("#showProvinsi").text(getText("#provinsi"));
+  $("#showKota").text(getText("#kota"));
+  $("#showKecamatan").text(getText("#kecamatan"));
+  $("#showKelurahan").text(getText("#kelurahan"));
+  $("#showKodePos").text($("#kode_pos").val());
+  $("#showAddress").text($("#alamat_lengkap").val());
+
+  // FUNDING
+  $("#summary-jangka-waktu").text($("#jangka_waktu").val() + " Bulan");
+  $("#summary-downpayment").text("Rp. " + $("#down_payment").val());
+}
+
+function getText(elm) {
+  var _elm = $(elm);
+  return _elm.find('option[value="' + _elm.val() + '"]').text();
+}
+
+function goToStep(idx) {
+  form.steps("setStep", idx);
+}
+
+var isEdit = false;
+function editStep(idx) {
+  isEdit = true;
+  goToStep(idx);
+}
+
+function getDataRegister() {
+  var _data = {
+    "submission_id": submission_id,
+    "full_name": $('#nama_lengkap').val().toString(),
+    "email": $('#email_pemohon').val().toString(),
+    "phone_number": $('#no_handphone').val().toString()
+  }
+  return _data;
+}
+
+var isValidOtp = false;
 (function ($) {
 
+  $("#step-otp").hide();
   form = $("#getCredit").show();
 
   form.steps({
@@ -158,11 +210,23 @@ function getDataTenor() {
       checkValid();
       if (currentIndex > priorIndex && currentIndex === 2) {
         initCalculate();
+      }else if (currentIndex > priorIndex && currentIndex === 3) {
+        initSummary();
       }
     },
     onFinishing: function (event, currentIndex) {
-      form.validate().settings.ignore = ":disabled";
-      return form.valid();
+      if (!isValidOtp) {
+        showOtp();
+        var dataNews = {
+          "submission_id": submission_id,
+          "is_news_letter": $('#agreement1').is(":checked")
+        }
+        var post = postData("/register/newsletter", dataNews);
+        return false;
+      } else {
+        form.validate().settings.ignore = ":disabled";
+        return form.valid();
+      }
     },
     onFinished: function (event, currentIndex) {
       alert("Submitted!");
@@ -257,6 +321,9 @@ function getDataTenor() {
         $("#lifeInsurance").text(post.data.life_insurance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
         $("#administrativeCode").text(post.data.admin_fee.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
         $("#totalMonthly").text(post.data.monthly_installment_est_total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+        $("#summary-angsuran-bulanan").text('Rp. '+post.data.monthly_installment_est_total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+        $("#summary-total-pembiayaan").text('Rp. '+post.data.total_funding.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+        $("#summary-harga-paket-pendidikan").text('Rp. '+$("#ex7SliderVal").val());
     }
   });
 

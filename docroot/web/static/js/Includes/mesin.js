@@ -2,6 +2,8 @@ var form, submission_id;
 var formGroup = [];
 formGroup[0] = ["#nama_lengkap", "#email_pemohon", "#no_handphone"]
 formGroup[1] = ["#provinsi", "#kota", "#kecamatan", "#kelurahan", "#kode_pos", "#alamat_lengkap"]
+formGroup[2] = ["#layanan", "#industri", "#type", "#machine_qty", "#brand", "#model", "#year", "#machine_estimated"]
+formGroup[3] = ["#machine_estimated", "#machine_estimated", "#machine_estimated"]
 
 function isValidStep() {
   var currentStep = form.steps("getCurrentIndex");
@@ -35,7 +37,7 @@ function setService(){
     var selElm = $('#layanan');
     var dataArr = getService();
     console.log("CITY", dataArr)
-    selElm.empty();
+    // selElm.empty();
     selElm.select2({
       placeholder: selElm.attr('placeholder'),
       dropdownParent: selElm.parent(),
@@ -54,7 +56,7 @@ function setIndustry(){
     var selElm = $('#industri');
     var dataArr = getIndustry();
     console.log("CITY", dataArr)
-    selElm.empty();
+    // selElm.empty();
     selElm.select2({
       placeholder: selElm.attr('placeholder'),
       dropdownParent: selElm.parent(),
@@ -73,7 +75,7 @@ function setType(){
     var selElm = $('#type');
     var dataArr = getType();
     console.log("CITY", dataArr)
-    selElm.empty();
+    // selElm.empty();
     selElm.select2({
       placeholder: selElm.attr('placeholder'),
       dropdownParent: selElm.parent(),
@@ -92,7 +94,7 @@ function setBrand(){
     var selElm = $('#brand');
     var dataArr = getBrand();
     console.log("CITY", dataArr)
-    selElm.empty();
+    // selElm.empty();
     selElm.select2({
       placeholder: selElm.attr('placeholder'),
       dropdownParent: selElm.parent(),
@@ -172,6 +174,12 @@ function sendLeadData() {
           "estimated_price": $("#machine_estimated").val().replace(/[.]/g, "")
         }
         break;
+      case 3:
+        _url = "/credit/save-machinery-leads4";
+        _data = {
+          "submission_id": submission_id
+        }
+        break;
     }
     var sendData = postData(_url, _data);
     if (currentStep === 0) {
@@ -234,8 +242,63 @@ function getDataTenor() {
   });
 }
 
+function initSummary() {
+  // PERSONAL
+  $("#showFullName").text($("#nama_lengkap").val());
+  $("#showEmail").text($("#email_pemohon").val());
+  $("#showPhone").text($("#no_handphone").val());
+
+  // ADDRESS
+  $("#showProvinsi").text(getText("#provinsi"));
+  $("#showKota").text(getText("#kota"));
+  $("#showKecamatan").text(getText("#kecamatan"));
+  $("#showKelurahan").text(getText("#kelurahan"));
+  $("#showKodePos").text($("#kode_pos").val());
+  $("#showAddress").text($("#alamat_lengkap").val());
+
+  // Machine data
+  $("#summary-service-mesin").text(getText("#layanan"));
+  $("#summary-industri").text(getText("#industri"));
+  $("#summary-mesin-type").text(getText("#type"));
+  $("#summary-machine-qty").text($("#machine_qty").val());
+  $("#summary-mesin-brand").text(getText("#brand"));
+  $("#summary-estimated-price").text($("#machine_estimated").val());
+
+  // FUNDING
+  $("#summary-jangka-waktu").text($("#jangka_waktu").val() + " Bulan");
+  $("#summary-total-pembiayaan").text("Rp. " + $("#ex7SliderVal").val());
+}
+
+function getText(elm) {
+  var _elm = $(elm);
+  return _elm.find('option[value="' + _elm.val() + '"]').text();
+}
+
+function goToStep(idx) {
+  form.steps("setStep", idx);
+}
+
+var isEdit = false;
+function editStep(idx) {
+  isEdit = true;
+  goToStep(idx);
+}
+
+function getDataRegister() {
+  var _data = {
+    "submission_id": submission_id,
+    "full_name": $('#nama_lengkap').val().toString(),
+    "email": $('#email_pemohon').val().toString(),
+    "phone_number": $('#no_handphone').val().toString()
+  }
+  return _data;
+}
+
+var isValidOtp = false;
+
 (function ($) {
 
+  $("#step-otp").hide();
   form = $("#getCredit").show();
 
   form.steps({
@@ -266,12 +329,25 @@ function getDataTenor() {
       // Used to skip the "Warning" step if the user is old enough.
       checkValid();
       if (currentIndex > priorIndex && currentIndex === 3) {
+        nextButton("inactive");
         initCalculate();
+      }else if (currentIndex > priorIndex && currentIndex === 4) {
+        initSummary();
       }
     },
     onFinishing: function (event, currentIndex) {
-      form.validate().settings.ignore = ":disabled";
-      return form.valid();
+      if (!isValidOtp) {
+        showOtp();
+        var dataNews = {
+          "submission_id": submission_id,
+          "is_news_letter": $('#agreement1').is(":checked")
+        }
+        var post = postData("/register/newsletter", dataNews);
+        return false;
+      } else {
+        form.validate().settings.ignore = ":disabled";
+        return form.valid();
+      }
     },
     onFinished: function (event, currentIndex) {
       alert("Submitted!");
@@ -378,10 +454,11 @@ function getDataTenor() {
   });
 
   $("#recalc").click(function (e) {
+    nextButton("inactive");
     e.preventDefault();
-    var edu_package_price = $("#ex7SliderVal").val().replace(/[.]/g, "");
-    var tenor = $("#jangka_waktu").val()[0];
-    var down_payment = $("#down_payment").val().replace(/[.]/g, "");
+    var edu_package_price = parseInt($("#ex7SliderVal").val().replace(/[.]/g, ""),10);
+    var tenor = parseInt($("#jangka_waktu").val()[0],10);
+    var down_payment = parseInt($("#down_payment").val().replace(/[.]/g, ""),10);
     var _data = {
       "submission_id": submission_id,
       "funding": edu_package_price,
@@ -390,7 +467,10 @@ function getDataTenor() {
     }
     var post = postData("/credit/machinery-calculate", _data);
     if (post.success === "1") {
-      console.log("CALC", post)
+      // console.log("CALC", post)
+      nextButton("active");
+      $("#permonth-estimation").text(post.data.monthly_installment_est_total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+      $("#summary-angsuran-bulanan").text(post.data.monthly_installment_est_total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
     }
   });
 
