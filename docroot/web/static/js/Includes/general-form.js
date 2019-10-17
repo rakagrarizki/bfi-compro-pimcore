@@ -146,18 +146,27 @@ function showOtpResend() {
   $(".otp-number__text .otp-wait").hide();
 }
 
+function requestOTP(cb) {
+  var _data = {
+    phone_number: $('#no_handphone').val().toString()
+  }
+  postData("/otp/send-otp", _data);
+  cb();
+}
+
 var otpTimeout = 5;
 var otpTimeRemain = 0;
 function startOtp() {
   otpTimeRemain = otpTimeout;
-  otpCountDown()
+  requestOTP(otpCountDown);
 }
 
 function otpCountDown() {
   var timeElm = $("#otp-counter");
+  timeElm.text(otpTimeRemain + " detik");
   setTimeout(function () {
-    timeElm.text(otpTimeRemain + " detik");
     otpTimeRemain--
+    timeElm.text(otpTimeRemain + " detik");
     if (otpTimeRemain >= 0) {
       otpCountDown();
     } else {
@@ -166,14 +175,30 @@ function otpCountDown() {
   }, 1000);
 }
 
-function otpTimeout() {
-  showOtpWait();
+function otpResend() {
   startOtp();
+  showOtpWait();
+}
+
+function otpVerified() {
+  var otp1Value = $('input[name=otp1]').val().toString(),
+    otp2Value = $('input[name=otp2]').val().toString(),
+    otp3Value = $('input[name=otp3]').val().toString(),
+    otp4Value = $('input[name=otp4]').val().toString(),
+    no_handphone = $('#no_handphone').val().toString();
+
+  var _data = {
+    phone_number: no_handphone,
+    otp_code: otp1Value + otp2Value + otp3Value + otp4Value
+  }
+  var verifiedOtp = postData("/otp/validate-otp", _data);
+  console.log(verifiedOtp);
 }
 
 (function ($) {
 
-  $(document).on("click", "#otp-resend", function () { otpTimeout() });
+  $(document).on("click", "#otp-resend", otpResend);
+  $(document).on("click", "otp-verification", otpVerified)
 
   $(document).on('click', '.countdown--reload', function (e) {
     e.preventDefault();

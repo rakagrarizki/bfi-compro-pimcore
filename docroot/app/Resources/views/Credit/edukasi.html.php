@@ -368,7 +368,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                       <label for="agreement1" class="label-agreement"><?= $this->translate('term-condition')?></label>
                       <div class="error-wrap"></div>
                   </div>
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                       <input type="checkbox" id="agreement2" class="agreement">
                       <label for="agreement2" class="label-agreement">Lorem ipsum dolor sit
                           amet, consectetur
@@ -376,7 +376,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                           temporibus vero, optio eveniet et, adipisci natus rem enim sequi
                           saepe expedita qui sunt exercitationem delectus. In?</label>
                       <div class="error-wrap"></div>
-                  </div>
+                  </div> -->
               </div>
           </div>
           <div id="step-otp" class="form-body--credit">

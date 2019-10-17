@@ -196,8 +196,8 @@ var isValidOtp = false;
         }
       }
       form.validate().settings.ignore = ":disabled,:hidden";
-      return sendLeadData();
-      // return true;
+      // return sendLeadData();
+      return true;
     },
     onStepChanged: function (event, currentIndex, priorIndex) {
       // Used to skip the "Warning" step if the user is old enough.
