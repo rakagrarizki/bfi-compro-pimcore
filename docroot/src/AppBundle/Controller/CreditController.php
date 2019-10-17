@@ -2030,6 +2030,7 @@ class CreditController extends FrontendController
         $param["name"] = htmlentities(addslashes($request->get('name')));
         $param["email"] = htmlentities(addslashes($request->get('email')));
         $param["phone_number"] =htmlentities(addslashes($request->get('phone_number')));
+        $param["path_ktp"]= htmlentities(addslashes($request->get('path_ktp')));
 
 
         try {
@@ -2712,7 +2713,7 @@ class CreditController extends FrontendController
     }
     public function getMachineryCalculateAction(Request $request){
 
-         $url = HOST . WebsiteSetting::getByName('URL_GET_MACHINERY_FUNDING')->getData();
+         $url = HOST . WebsiteSetting::getByName('URL_MACHINERY_CALCULATE')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["funding"] = htmlentities(addslashes($request->get('funding')));
         $param["down_payment"] = htmlentities(addslashes($request->get('down_payment')));

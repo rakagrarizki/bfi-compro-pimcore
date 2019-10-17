@@ -1,7 +1,7 @@
 <?php 
 
 /** 
-* Generated at: 2019-10-02T06:07:38+02:00
+* Generated at: 2019-10-16T10:04:33+02:00
 * Inheritance: no
 * Variants: no
 * Changed by: admin (2)
@@ -17,6 +17,7 @@ Fields Summary:
 -- Content [wysiwyg]
 - Image [image]
 - Views [numeric]
+- Source [input]
 */ 
 
 
@@ -25,7 +26,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'BlogArticle',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1569989255,
+   'modificationDate' => 1571213068,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -288,6 +289,31 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'decimalPrecision' => NULL,
              'name' => 'Views',
              'title' => 'Views',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+          )),
+          6 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+             'fieldtype' => 'input',
+             'width' => NULL,
+             'queryColumnType' => 'varchar',
+             'columnType' => 'varchar',
+             'columnLength' => 190,
+             'phpdocType' => 'string',
+             'regex' => '',
+             'unique' => false,
+             'name' => 'Source',
+             'title' => 'Source',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
