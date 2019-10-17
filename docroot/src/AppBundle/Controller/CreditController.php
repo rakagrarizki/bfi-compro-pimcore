@@ -461,7 +461,7 @@ class CreditController extends FrontendController
 
     public function sendOtpValidateAction(Request $request)
     {
-        $code = htmlentities(addslashes($request->get('otp1'))). htmlentities(addslashes($request->get('otp2'))). htmlentities(addslashes($request->get('otp3'))). htmlentities(addslashes($request->get('otp4')));
+        //$code = htmlentities(addslashes($request->get('otp1'))). htmlentities(addslashes($request->get('otp2'))). htmlentities(addslashes($request->get('otp3'))). htmlentities(addslashes($request->get('otp4')));
         $handphone = htmlentities(addslashes($request->get('phone_number')));
         $code = htmlentities(addslashes($request->get('otp_code')));
 
