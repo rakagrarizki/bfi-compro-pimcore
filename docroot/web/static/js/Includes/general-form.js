@@ -128,7 +128,52 @@ function separatordot(o) {
   return rupiah;
 }
 
+function showOtp() {
+  $(".wizard .steps, .wizard .actions").hide();
+  $("#step-summary").hide();
+  $("#step-otp").show();
+  showOtpWait();
+  startOtp();
+}
+
+function showOtpWait() {
+  $(".otp-number__text .otp-resend").hide();
+  $(".otp-number__text .otp-wait").show();
+}
+
+function showOtpResend() {
+  $(".otp-number__text .otp-resend").show();
+  $(".otp-number__text .otp-wait").hide();
+}
+
+var otpTimeout = 5;
+var otpTimeRemain = 0;
+function startOtp() {
+  otpTimeRemain = otpTimeout;
+  otpCountDown()
+}
+
+function otpCountDown() {
+  var timeElm = $("#otp-counter");
+  setTimeout(function () {
+    timeElm.text(otpTimeRemain + " detik");
+    otpTimeRemain--
+    if (otpTimeRemain >= 0) {
+      otpCountDown();
+    } else {
+      showOtpResend();
+    }
+  }, 1000);
+}
+
+function otpTimeout() {
+  showOtpWait();
+  startOtp();
+}
+
 (function ($) {
+
+  $(document).on("click", "#otp-resend", function () { otpTimeout() });
 
   $(document).on('click', '.countdown--reload', function (e) {
     e.preventDefault();
@@ -329,5 +374,24 @@ function separatordot(o) {
 
     });
   }
+
+  $('.otp-number__verify input[type="tel"]').on("keyup", function () {
+    console.log(this.value.length, this.maxLength)
+    if (this.value.length == this.maxLength) {
+      var $next = $(this).next('.input-number');
+      if ($next.length) {
+        $(this).next('.input-number').focus();
+      } else {
+        $(this).blur();
+      }
+    } else {
+      var $prev = $(this).prev('.input-number');
+      if ($prev.length) {
+        $(this).prev('.input-number').focus();
+      } else {
+        $(this).blur();
+      }
+    }
+  });
 
 })(jQuery);
