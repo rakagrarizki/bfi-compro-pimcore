@@ -4,12 +4,12 @@ function retryAjax(_this, xhr) {
   if (xhr.status == 500) {
     _this.tryCount++;
     if (_this.tryCount <= _this.retryLimit) {
-      console.log("TRY " + _this.tryCount);
+      // console.log("TRY " + _this.tryCount);
       //try again
       $.ajax(_this);
       return;
     } else {
-      console.log("LAST TRY");
+      // console.log("LAST TRY");
       // _this.url = '/credit/save-car-leads1';
       return;
     }
@@ -33,11 +33,11 @@ function postData(url, data) {
       retryAjax(this, xhr);
     },
     success: function (result) {
-      console.log("RESULT", result);
+      // console.log("RESULT", result);
       if (result.success === "1") {
         _ret = result;
       } else {
-        console.log('error' + result.message);
+        // console.log('error' + result.message);
       }
     }
   })
