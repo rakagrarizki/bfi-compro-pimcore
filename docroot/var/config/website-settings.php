@@ -166,10 +166,10 @@ return [
         "name" => "LIMIT_TIME",
         "language" => "",
         "type" => "text",
-        "data" => "1",
+        "data" => "0.05",
         "siteId" => 0,
         "creationDate" => 0,
-        "modificationDate" => 1571296715
+        "modificationDate" => 1571296860
     ],
     18 => [
         "id" => 18,
