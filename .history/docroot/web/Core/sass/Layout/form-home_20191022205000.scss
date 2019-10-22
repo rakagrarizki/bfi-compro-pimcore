@@ -1,0 +1,172 @@
+.cont-credit {
+    text-align: center;
+    padding: 90px 50px 50px;
+    @include breakpoint(mobile){
+        padding: 20px 15px;
+    }
+
+    @include breakpoint(tablet){
+        padding: 20px 15px;
+    }
+
+    @include breakpoint(desktop){
+        &.modif{
+            position: absolute;
+            height: 380px;
+            width: 1200px;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            padding: 20px 100px 20px;
+        }
+    }
+
+    .list-credit {
+        padding: 40px 60px 80px 60px;
+        @include breakpoint(mobile){
+            padding: 0;
+        }
+
+        @include breakpoint(tablet){
+            padding: 0;
+        }
+
+        h3 {
+          font-family: 'HelveticaNeue';
+          font-weight: 600;
+          font-size: 20px;
+          color: #04559F;
+          margin-top: 20px;
+          padding: 0 15px;
+          text-align: left;
+          margin-bottom: 20px;
+        }
+        
+        .list-credit--icon {
+            display: flex;
+            list-style: none;
+            flex-wrap: nowrap;
+            @include breakpoint(mobile){
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex; 
+                -webkit-box-orient: horizontal; 
+                -webkit-box-direction: normal; 
+                -webkit-flex-direction: row; 
+                -ms-flex-direction: row; 
+                flex-direction: row;
+                -webkit-flex-wrap: wrap;
+                -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+            }
+
+            @include breakpoint(tablet){
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex; 
+                -webkit-box-orient: horizontal; 
+                -webkit-box-direction: normal; 
+                -webkit-flex-direction: row; 
+                -ms-flex-direction: row; 
+                flex-direction: row;
+                -webkit-flex-wrap: wrap;
+                -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+            }
+
+
+            .credit--icon {
+                flex: 4;
+                @include breakpoint(mobile){
+                    flex: 1 0 21%;
+                    margin: 15px -1px;
+                    min-width:auto;
+                    min-height:auto;
+                }
+
+                @include breakpoint(tablet){
+                    flex: 1 0 21%;
+                    margin: 15px -1px;
+                    min-width:auto;
+                    min-height:auto;
+                }
+
+                @media only screen and (max-width: 323px) {
+                    min-width:100px;
+                }
+
+                a {
+                    text-align: center;
+                    color: $grey-dark;
+
+                    .icon {
+                        width: 186px;
+                        height: 165px;
+                        padding: 10px;
+                        border: 1px solid;
+                        @include breakpoint(mobile){
+                            width: 100%;
+                            height: auto;
+                        }
+
+                        @include breakpoint(tablet){
+                            width: 100%;
+                            height: auto;
+                        }
+
+                        .imggetcredit{
+                            vertical-align: middle;
+                            margin-bottom: 20px;
+                            width: 90px;
+                            margin-top: 10px;
+                            height: 90px;
+                            @include breakpoint(mobile){
+                                width:80px;
+                                height:80px;
+                            }
+
+                            @include breakpoint(tablet){
+                                width:80px;
+                                height:80px;
+                            }
+                        }
+
+                        p{
+                            font-weight:bold;
+                            color: #9C9C9C;
+                            @include breakpoint(mobile){
+                                height:40px;
+                            }
+
+                            @include breakpoint(tablet){
+                                height:40px;
+                            }
+                        }
+
+                        span {
+                            margin-left: -20px;
+
+                            &:before {
+                                color: $primary;
+                                font-size: 6em;
+                            }
+                        }
+                    }
+                    &:hover{
+                        color: $primary;
+                        .icon{
+                            box-shadow: 2px 2px 10px $grey-dark;
+                            span{
+                                &:before{
+                                    color: $primary;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
