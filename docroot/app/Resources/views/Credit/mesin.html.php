@@ -26,7 +26,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
           </div>
 
           <div class="form-group">
-              <div>
+              <div class="title-input">
                   <?= $this->translate('appicant-position')?>
               </div>
               <label for="nama_lengkap"><?= $this->translate('form-name')?></label>
@@ -127,17 +127,18 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
         </fieldset>
 
         <!-- STEP 3 -->
-        <h3><?= $this->translate('machine-data')?></h3>
-        <fieldset class="form-body--credit">
+        <h3><?= $this->translate('data-mesin-alat')?></h3>
+        <fieldset class="form-body--credit machine-data">
           <div class="text-head">
-              <h2 class="text-center"><?= $this->translate('data-place')?></h2>
+              <h2 class="text-center"><?= $this->translate('data-mesin-alat')?></h2>
               <h2 class="text-center-edit"><?= $this->translate('change-data-place')?></h2>
-              <p class="text-center"><?= $this->translate('input-data-place')?></p>
+              <p class="text-center"><?= $this->translate('input-data-mesin')?></p>
           </div>
           <div class="form-group">
               <label><?= $this->translate('layanan')?></label>
               <select class="form-control formRequired" id="layanan" name="layanan"
                       placeholder="<?= $this->translate('choose-layanan')?>" multiple="multiple">
+                  <option value="" class="placeholder" disabled selected><?= $this->translate('choose-layanan')?></option>
               </select>
               <div class="error-wrap"></div>
           </div>
@@ -145,6 +146,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
               <label><?= $this->translate('industri')?></label>
               <select class="form-control formRequired" id="industri" name="industri"
                       placeholder="<?= $this->translate('choose-industri')?>" multiple="multiple">
+                  <option value="" class="placeholder" disabled selected><?= $this->translate('choose-industri')?></option>
               </select>
               <div class="error-wrap"></div>
           </div>
@@ -152,6 +154,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
               <label><?= $this->translate('type')?></label>
               <select class="form-control formRequired" id="type" name="type"
                       placeholder="<?= $this->translate('choose-type')?>" multiple="multiple">
+                  <option value="" class="placeholder" disabled selected><?= $this->translate('choose-type')?></option>
               </select>
               <div class="error-wrap"></div>
           </div>
@@ -165,6 +168,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
               <label><?= $this->translate('brand')?></label>
               <select class="form-control formRequired" id="brand" name="brand"
                       placeholder="<?= $this->translate('choose-brand')?>" multiple="multiple">
+                  <option value="" class="placeholder" disabled selected><?= $this->translate('choose-brand')?></option>
               </select>
               <div class="error-wrap"></div>
           </div>
@@ -172,6 +176,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
               <label><?= $this->translate('model')?></label>
               <select class="form-control formRequired" id="model" name="model" disabled
                       placeholder="<?= $this->translate('choose-model')?>" multiple="multiple">
+                  <option value="" class="placeholder" disabled selected><?= $this->translate('choose-model')?></option>
               </select>
               <div class="error-wrap"></div>
           </div>
@@ -179,6 +184,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
               <label><?= $this->translate('year')?></label>
               <select class="form-control formRequired" id="year" name="year" disabled
                       placeholder="<?= $this->translate('choose-year')?>" multiple="multiple">
+                  <option value="" class="placeholder" disabled selected><?= $this->translate('choose-year')?></option>
               </select>
               <div class="error-wrap"></div>
           </div>
@@ -192,7 +198,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
 
         <!-- STEP 4 -->
         <h3><?= $this->translate('data-funding')?></h3>
-        <fieldset>
+        <fieldset class="machine-funding">
           <div class="form-body--credit-simulasi row">
               <div class="text-head">
                   <h2 class="text-center"><?= $this->translate('data-funding')?></h2>
@@ -218,11 +224,11 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                           <input type="hidden" id="otr">
                       </div>
                   </div>
-                  <div class="form-group inputsimulasi">
+                  <div class="form-group inputsimulasi mesin-down-payment">
                       <label for="jml-biaya"><?= $this->translate('label-edu-downpayment')?></label>
                       <div class="input-group inputform">
                           <span class="input-group-addon">Rp</span>
-                          <input type="text" id="down_payment" name="down_payment" class="form-control minDownPayment formatRibuan">
+                          <input type="text" id="down_payment" name="down_payment" class="form-control minDownPaymentMachine formatRibuan">
                       </div>
                       <small><?= $this->translate('label-edu-downpayment-note')?></small>
                       <div class="error-wrap"></div>
@@ -241,7 +247,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                   <div class="rincian">
                       <div class="total-estimate">
                           <p class="title-angsuran"><?= $this->translate('label-estimate')?></p>
-                          <p class="total">Rp 0</p>
+                          <p class="total">Rp <span id="permonth-estimation">0</span></p>
                           <p class="infotext">*<?= $this->translate('text-estimate')?></p>
                           <button class="cta cta-primary cta-big absolutebutcalc" id="recalc"
                                   type="button"><?= $this->translate('hitung')?></button>
@@ -254,7 +260,211 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
 
         <!-- STEP 5 -->
         <h3><?= $this->translate('data-confirmation')?></h3>
-        <fieldset class="form-body--credit">
+        <fieldset>
+          <div id="step-summary" class="form-body--credit-simulasi">
+              <div class="text-head">
+                  <h2 class="text-center"><?= $this->translate('label-confirmation')?></h2>
+                  <p class="text-center"><?= $this->translate('text-confirmation')?></p>
+              </div>
+              <div class="biaya-agunan-mesin">
+                  <div class="cont-agunan">
+                      <p class="title-agunan">
+                          A. <?= $this->translate('data-name')?>
+                      </p>
+                      <div class="button-area text-right button-angsur">
+                          <button id="btnDataPemohon" onclick="editStep(0)" class="cta cta-primary cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"></i><b><?= $this->translate('ubah')?></b></button>
+                      </div>
+                      <table>
+                          <tr>
+                              <td><?= $this->translate('fullname')?></td>
+
+                              <td id="showFullName" class="nama_lengkap"></td>
+                          </tr>
+                          <tr>
+                              <td><?= $this->translate('email')?></td>
+
+                              <td id="showEmail" class="email"></td>
+                          </tr>
+                          <tr>
+                              <td><?= $this->translate('handphone')?></td>
+
+                              <td id="showPhone" class="email"></td>
+                          </tr>
+                          <!-- <tr>
+                              <td>Unggah Foto KTP</td>
+
+                              <td class="unggah"></td>
+                          </tr> -->
+                      </table>
+                  </div>
+
+              </div>
+              <div class="biaya-agunan-mesin">
+                  <div class="cont-agunan">
+                      <p class="title-agunan">
+                          B. <?= $this->translate('data-place')?>
+                      </p>
+                      <div class="button-area text-right button-angsur">
+                          <button id="btnDataTempatTinggal" onclick="editStep(1)" class="cta cta-primary cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"></i><b><?= $this->translate('ubah')?></b></button>
+                      </div>
+                      <table>
+                          <tr>
+                              <td><?= $this->translate('provinsi')?></td>
+
+                              <td id="showProvinsi" class="provinsi"></td>
+                          </tr>
+                          <tr>
+                              <td><?= $this->translate('kota')?></td>
+
+                              <td id="showKota" class="kota"></td>
+                          </tr>
+                          <tr>
+                              <td><?= $this->translate('kecamatan')?></td>
+
+                              <td id="showKecamatan" class="kecamatan"></td>
+                          </tr>
+                          <tr>
+                              <td><?= $this->translate('kelurahan')?></td>
+
+                              <td id="showKelurahan" class="kelurahan"></td>
+                          </tr>
+                          <tr>
+                              <td><?= $this->translate('postcode')?></td>
+
+                              <td id="showKodePos" class="kodepos"></td>
+                          </tr>
+                          <tr>
+                              <td><?= $this->translate('address')?></td>
+
+                              <td id="showAddress" class="address"></td>
+                          </tr>
+                      </table>
+                  </div>
+
+              </div>
+              <div class="biaya-agunan-mesin">
+                  <div class="cont-agunan">
+                      <p class="title-agunan">
+                          C. <?= $this->translate('data-mesin')?>
+                      </p>
+                      <div class="button-area text-right button-angsur">
+                          <button id="btnJumlahPembiayaan" onclick="editStep(2)" class="cta cta-primary cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"></i><b><?= $this->translate('ubah')?></b></button>
+                      </div>
+                      <table class="tablebiaya">
+                          <tr>
+                              <td class="long"><?= $this->translate('service')?></td>
+
+                              <td id="summary-service-mesin"></td>
+                          </tr>
+                          <tr>
+                              <td class="long"><?= $this->translate('label-industri')?></td>
+
+                              <td id="summary-industri"></td>
+                          </tr>
+                          <tr>
+                              <td class="long separate-column"><?= $this->translate('label-mesin-type')?></td>
+
+                              <td id="summary-mesin-type"></td>
+                          </tr>
+                          <tr>
+                              <td class="long"><?= $this->translate('label-machine-qty')?></td>
+
+                              <td id="summary-machine-qty"></td>
+                          </tr>
+                          <tr>
+                              <td class="long"><?= $this->translate('label-mesin-brand')?></td>
+
+                              <td id="summary-mesin-brand"></td>
+                          </tr>
+                          <tr>
+                              <td class="long"><?= $this->translate('label-estimated-price')?></td>
+
+                              <td id="summary-estimated-price"></td>
+                          </tr>
+                      </table>
+                  </div>
+              </div>
+              <div class="biaya-agunan-mesin">
+                  <div class="cont-agunan">
+                      <p class="title-agunan">
+                          D. <?= $this->translate('data-funding')?>
+                      </p>
+                      <div class="button-area text-right button-angsur">
+                          <button id="btnJumlahPembiayaan" onclick="editStep(2)" class="cta cta-primary cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"></i><b><?= $this->translate('ubah')?></b></button>
+                      </div>
+                      <table class="tablebiaya">
+                          <tr>
+                              <td class="long"><?= $this->translate('label-travel-total-pembiayaan')?></td>
+
+                              <td id="summary-total-pembiayaan"></td>
+                          </tr>
+                          <tr>
+                              <td class="long"><?= $this->translate('label-travel-angsuran-bulanan')?></td>
+
+                              <td id="summary-angsuran-bulanan"></td>
+                          </tr>
+                          <tr>
+                              <td class="long"><?= $this->translate('label-travel-jangka-waktu')?></td>
+
+                              <td id="summary-jangka-waktu"></td>
+                          </tr>
+                      </table>
+                  </div>
+              </div>
+              <div class="biaya-agunan-mesin">
+                  <div class="form-group">
+                      <input type="checkbox" id="agreement1" name="agreement1" class="agreement">
+                      <label for="agreement1" class="label-agreement"><?= $this->translate('term-condition')?></label>
+                      <div class="error-wrap"></div>
+                  </div>
+                  <!-- <div class="form-group">
+                      <input type="checkbox" id="agreement2" class="agreement">
+                      <label for="agreement2" class="label-agreement">Lorem ipsum dolor sit
+                          amet, consectetur
+                          adipisicing elit. Odio reprehenderit iusto libero aliquid
+                          temporibus vero, optio eveniet et, adipisci natus rem enim sequi
+                          saepe expedita qui sunt exercitationem delectus. In?</label>
+                      <div class="error-wrap"></div>
+                  </div> -->
+              </div>
+          </div>
+          <div id="step-otp" class="form-body--credit">
+            <h2 class="text-center"><?= $this->translate('confirmation-otp')?></h2>
+            <p class="text-center"><?= $this->translate('text-confirmation-otp')?></p>
+
+            <div class="otp-number form-group">
+                <div class="otp-number__verify">
+                    <input type="tel" pattern="\d*" placeholder="0" class="input-number" maxlength="1" name="otp1">
+                    <input type="tel" pattern="\d*" placeholder="0" class="input-number" maxlength="1" name="otp2">
+                    <input type="tel" pattern="\d*" placeholder="0" class="input-number" maxlength="1" name="otp3">
+                    <input type="tel" pattern="\d*" placeholder="0" class="input-number" maxlength="1" name="otp4">
+                </div>
+                <div class="error-wrap"></div>
+                <div class="otp-number__text">
+                    <p class="otp-wait"><?= $this->translate('wait-otp')?> <span id="otp-counter" class="countdown"></span> </p>
+                    <p class="otp-resend"><?= $this->translate('dont-get-otp')?> <span id="otp-resend" class="countdown">Resend</span></p>
+                </div>
+                <div class="otp-button margin-top-50">
+                  <button class="cta cta-primary cta-big cta-see btn-verifikasi buttonnext" id="otp-verification" type="button"><?= $this->translate('verifikasi')?></button>
+                </div>
+            </div>
+          </div>
+
+          <div id="otp-success" class="success-wrapper">
+              <div class="img-wrap">
+                  <img class="icon-thank-page" src="/static/images/icon/m_thank_you.png" alt="">
+              </div>
+              <div class="text-wrap text-center">
+                  <h3><?= $this->translate('tq-text-1')?></h3>
+                  <p><?= $this->translate('tq-text-2')?></p>
+              </div>
+              <div class="button-area text-center backtohome">
+                  <a href="/<?php echo $this->getLocale() ?>">
+                      <button class="cta cta-primary cta-big cta-see buttonnext backtohome" id="button7"
+                              type="button"><?= $this->translate('backtohome')?></button>
+                  </a>
+              </div>
+          </div>
         </fieldset>
 
     </form>
