@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <div class="cont-credit">
+        <div class="cont-credit modif">
             <h2 class="title-wrapper"><?= $this->input("title"); ?></h2>
             <p class="paragraf-title"><?= $this->textarea('text');?></p>
             <br />
