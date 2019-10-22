@@ -1,7 +1,9 @@
 var form, submission_id;
 var formGroup = [];
-formGroup[0] = ["#nama_lengkap", "#email_pemohon", "#no_handphone", "#ktp"]
-formGroup[1] = ["#provinsi", "#kota", "#kecamatan", "#kelurahan", "#kode_pos", "#alamat_lengkap"]
+formGroup[0] = ["#nama_lengkap", "#email_pemohon", "#no_handphone", "#ktp"];
+formGroup[1] = ["#provinsi", "#kota", "#kecamatan", "#kelurahan", "#kode_pos", "#alamat_lengkap"];
+formGroup[2] = ["#ex7SliderVal", "#down_payment", "#jangka_waktu"];
+
 
 function isValidStep() {
   var currentStep = form.steps("getCurrentIndex");
@@ -65,6 +67,12 @@ function sendLeadData() {
           "address": $("#alamat_lengkap").val()
         }
         break;
+      case 2:
+        _url = "/credit/save-edu-leads3";
+        _data = {
+          "submission_id": submission_id
+        }
+        break;
     }
     var sendData = postData(_url, _data);
     if (currentStep === 0) {
@@ -107,22 +115,64 @@ function getDataTenor() {
   var selElm = $("#jangka_waktu");
   var ret = getData("/credit/get-edu-tenor", {});
   var dataArr = [];
-  $.each(ret.data, function (idx, item) {
-    dataArr.push({
-      id: item.tenor,
-      text: item.desc
-    });
-  })
   selElm.empty();
-  selElm.select2({
-    placeholder: selElm.attr('placeholder'),
-    dropdownParent: selElm.parent(),
-    data: dataArr
-  });
+  $.each(ret.data, function (idx, item) {
+    selElm.append($('<option>', {
+      value: item.tenor,
+      text: item.desc
+    }));
+  })
+  selElm.find('option:first-child').attr('selected', 'selected');
 }
 
+function initSummary() {
+  // PERSONAL
+  $("#showFullName").text($("#nama_lengkap").val());
+  $("#showEmail").text($("#email_pemohon").val());
+  $("#showPhone").text($("#no_handphone").val());
+
+  // ADDRESS
+  $("#showProvinsi").text(getText("#provinsi"));
+  $("#showKota").text(getText("#kota"));
+  $("#showKecamatan").text(getText("#kecamatan"));
+  $("#showKelurahan").text(getText("#kelurahan"));
+  $("#showKodePos").text($("#kode_pos").val());
+  $("#showAddress").text($("#alamat_lengkap").val());
+
+  // FUNDING
+  $("#summary-jangka-waktu").text($("#jangka_waktu").val() + " Bulan");
+  $("#summary-downpayment").text("Rp. " + $("#down_payment").val());
+}
+
+function getText(elm) {
+  var _elm = $(elm);
+  return _elm.find('option[value="' + _elm.val() + '"]').text();
+}
+
+function goToStep(idx) {
+  form.steps("setStep", idx);
+}
+
+var isEdit = false;
+function editStep(idx) {
+  isEdit = true;
+  goToStep(idx);
+}
+
+function getDataRegister() {
+  var _data = {
+    "submission_id": submission_id,
+    "full_name": $('#nama_lengkap').val().toString(),
+    "email": $('#email_pemohon').val().toString(),
+    "phone_number": $('#no_handphone').val().toString()
+  }
+  return _data;
+}
+
+var isValidOtp = false;
 (function ($) {
 
+  $("#step-otp").hide();
   form = $("#getCredit").show();
 
   form.steps({
@@ -145,9 +195,22 @@ function getDataTenor() {
       if (currentIndex > newIndex) {
         return true;
       }
+      if ($(".actions > ul li a[href$='next']").parent().hasClass("inactive")) {
+        return false;
+      }
+      // console.log("isEdit", isEdit);
+      if (isEdit) {
+        isEdit = false;
+        // console.log("edited");
+        if (currentIndex === 0) {
+          // console.log("go to summary");
+          goToStep(3);
+          return false;
+        }
+      }
       form.validate().settings.ignore = ":disabled,:hidden";
       return sendLeadData();
-      // return form.valid();
+      // return true;
     },
     onStepChanged: function (event, currentIndex, priorIndex) {
       // Used to skip the "Warning" step if the user is old enough.
@@ -155,10 +218,21 @@ function getDataTenor() {
       if (currentIndex > priorIndex && currentIndex === 2) {
         initCalculate();
       }
+      if (currentIndex > priorIndex && currentIndex === 3) {
+        initSummary();
+      }
+      // if (currentIndex > priorIndex && currentIndex === 3) {
+      //   initCalculate();
+      // }
     },
     onFinishing: function (event, currentIndex) {
-      form.validate().settings.ignore = ":disabled";
-      return form.valid();
+      if (!isValidOtp) {
+        showOtp()
+        return false;
+      } else {
+        form.validate().settings.ignore = ":disabled";
+        return form.valid();
+      }
     },
     onFinished: function (event, currentIndex) {
       alert("Submitted!");
@@ -168,10 +242,11 @@ function getDataTenor() {
   $(document).on('change', 'input[type="hidden"]', checkValid);
   $(document).on('focusout keyup', 'input, textarea, select', checkValid);
 
+
   $("#provinsi").change(function () {
     var selElm = $('#kota');
     var dataArr = getCity($(this).val()[0]);
-    console.log("CITY", dataArr)
+    // console.log("CITY", dataArr)
     selElm.empty();
     selElm.select2({
       placeholder: selElm.attr('placeholder'),
@@ -184,7 +259,7 @@ function getDataTenor() {
   $("#kota").change(function () {
     var selElm = $('#kecamatan');
     var dataArr = getDistrict($(this).val()[0]);
-    console.log("CITY", dataArr)
+    // console.log("CITY", dataArr)
     selElm.empty();
     selElm.select2({
       placeholder: selElm.attr('placeholder'),
@@ -197,7 +272,7 @@ function getDataTenor() {
   $("#kecamatan").change(function () {
     var selElm = $('#kelurahan');
     var dataArr = getSubdistrict($(this).val()[0]);
-    console.log("CITY", dataArr)
+    // console.log("CITY", dataArr)
     selElm.empty();
     selElm.select2({
       placeholder: selElm.attr('placeholder'),
@@ -210,7 +285,7 @@ function getDataTenor() {
   $("#kelurahan").change(function () {
     var selElm = $('#kelurahan');
     var dataArr = getZipcode($(this).val()[0]);
-    console.log("CITY", dataArr)
+    // console.log("CITY", dataArr)
     var postcodeGen = dataArr[0].postal_code;
     if (postcodeGen !== 'null') {
       $("#kode_pos").val(postcodeGen);
@@ -233,18 +308,28 @@ function getDataTenor() {
 
   $("#recalc").click(function (e) {
     e.preventDefault();
-    var edu_package_price = $("#ex7SliderVal").val().replace(/[.]/g, "");
-    var tenor = $("#jangka_waktu").val()[0];
-    var down_payment = $("#down_payment").val().replace(/[.]/g, "");
-    var _data = {
-      "submission_id": submission_id,
-      "edu_package_price": edu_package_price,
-      "tenor": tenor,
-      "down_payment": down_payment
-    }
-    var post = postData("/credit/edu-calculator", _data);
-    if (post.success === "1") {
-      console.log("CALC", post)
+    if (form.valid()) {
+      var edu_package_price = $("#ex7SliderVal").val().replace(/[.]/g, "");
+      var tenor = $("#jangka_waktu").val()[0];
+      var down_payment = $("#down_payment").val().replace(/[.]/g, "");
+      var _data = {
+        "submission_id": submission_id,
+        "edu_package_price": edu_package_price,
+        "tenor": tenor,
+        "down_payment": down_payment
+      }
+      var post = postData("/credit/edu-calculator", _data);
+      if (post.success === "1") {
+        var life_insurance = "Rp. " + separatordot(post.data.life_insurance);
+        var monthly_installment = "Rp. " + separatordot(post.data.monthly_installment);
+        var monthly_installment_est_total = "Rp. " + separatordot(post.data.monthly_installment_est_total);
+        var total_funding = "Rp. " + separatordot(post.data.total_funding);
+
+        $("#life_insurance, #summary-life-insurance").text(life_insurance);
+        $("#monthly_installment, #summary-angsuran-bulanan").text(monthly_installment);
+        $("#monthly_installment_est_total, #summary-funding").text(monthly_installment_est_total);
+        $("#total_funding, #summary-total-pembiayaan").text(total_funding);
+      }
     }
   });
 

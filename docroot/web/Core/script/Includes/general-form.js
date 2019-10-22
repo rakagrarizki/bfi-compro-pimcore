@@ -4,16 +4,44 @@ function retryAjax(_this, xhr) {
   if (xhr.status == 500) {
     _this.tryCount++;
     if (_this.tryCount <= _this.retryLimit) {
-      console.log("TRY " + _this.tryCount);
+      // console.log("TRY " + _this.tryCount);
       //try again
       $.ajax(_this);
       return;
     } else {
-      console.log("LAST TRY");
+      // console.log("LAST TRY");
       // _this.url = '/credit/save-car-leads1';
       return;
     }
   }
+}
+
+function postOTP(url, data) {
+  var _ret;
+  $.ajax({
+    type: 'POST',
+    url: url,
+    data: data,
+    dataType: 'json',
+    // tryCount: 0,
+    // retryLimit: retryLimit,
+    async: false,
+    error: function (xhr, textStatus, errorThrown) {
+      // retryAjax(this, xhr);
+    },
+    fail: function (xhr, textStatus, error) {
+      // retryAjax(this, xhr);
+    },
+    success: function (result) {
+      // console.log("RESULT", result);
+      if (result.success === "1") {
+        _ret = result;
+      } else {
+        // console.log('error' + result.message);
+      }
+    }
+  })
+  return _ret;
 }
 
 function postData(url, data) {
@@ -33,11 +61,11 @@ function postData(url, data) {
       retryAjax(this, xhr);
     },
     success: function (result) {
-      console.log("RESULT", result);
+      // console.log("RESULT", result);
       if (result.success === "1") {
         _ret = result;
       } else {
-        console.log('error' + result.message);
+        // console.log('error' + result.message);
       }
     }
   })
@@ -78,27 +106,43 @@ function getProvince() {
 }
 
 function getCity(provinceId) {
-  var url = "/credit/get-city";
-  var data = { "province_id": provinceId };
-  return transformData(postData(url, data).data);
+  if (provinceId) {
+    var url = "/credit/get-city";
+    var data = { "province_id": provinceId };
+    return transformData(postData(url, data).data);
+  } else {
+    return false;
+  }
 }
 
 function getDistrict(cityId) {
-  var url = "/credit/get-district";
-  var data = { "city_id": cityId };
-  return transformData(postData(url, data).data);
+  if (cityId) {
+    var url = "/credit/get-district";
+    var data = { "city_id": cityId };
+    return transformData(postData(url, data).data);
+  } else {
+    return false;
+  }
 }
 
 function getSubdistrict(districtId) {
-  var url = "/credit/get-subdistrict";
-  var data = { "district_id": districtId };
-  return transformData(postData(url, data).data);
+  if (districtId) {
+    var url = "/credit/get-subdistrict";
+    var data = { "district_id": districtId };
+    return transformData(postData(url, data).data);
+  } else {
+    return false;
+  }
 }
 
 function getZipcode(subdistrictId) {
-  var url = "/credit/get-zipcode";
-  var data = { "subdistrict_id": subdistrictId };
-  return postData(url, data).data;
+  if (subdistrictId) {
+    var url = "/credit/get-zipcode";
+    var data = { "subdistrict_id": subdistrictId };
+    return postData(url, data).data;
+  } else {
+    return false;
+  }
 }
 
 function transformData(data) {
@@ -128,7 +172,98 @@ function separatordot(o) {
   return rupiah;
 }
 
+function showOtp() {
+  $(".wizard .steps, .wizard .actions").hide();
+  $("#otp-success").hide();
+  $("#step-summary").hide();
+  $("#step-otp").show();
+  showOtpWait();
+  startOtp();
+}
+
+function showOtpWait() {
+  $(".otp-number__text .otp-resend").hide();
+  $(".otp-number__text .otp-wait").show();
+}
+
+function showOtpResend() {
+  $(".otp-number__text .otp-resend").show();
+  $(".otp-number__text .otp-wait").hide();
+}
+
+function showSuccessOtp() {
+  $("#otp-success").show();
+  $("#step-summary").hide();
+  $("#step-otp").hide();
+}
+
+function requestOTP(cb) {
+  var _data = {
+    phone_number: $('#no_handphone').val().toString()
+  }
+  postOTP("/otp/send-otp", _data);
+  cb();
+}
+
+var otpTimeout = 90;
+var otpTimeRemain = 0;
+function startOtp() {
+  otpTimeRemain = otpTimeout;
+  requestOTP(otpCountDown);
+}
+
+function otpCountDown() {
+  var timeElm = $("#otp-counter");
+  timeElm.text(otpTimeRemain + " detik");
+  setTimeout(function () {
+    otpTimeRemain--
+    timeElm.text(otpTimeRemain + " detik");
+    if (otpTimeRemain >= 0) {
+      otpCountDown();
+    } else {
+      showOtpResend();
+    }
+  }, 1000);
+}
+
+function otpResend() {
+  startOtp();
+  showOtpWait();
+}
+
+function otpVerified() {
+  var otp1Value = $('input[name=otp1]').val().toString(),
+    otp2Value = $('input[name=otp2]').val().toString(),
+    otp3Value = $('input[name=otp3]').val().toString(),
+    otp4Value = $('input[name=otp4]').val().toString(),
+    no_handphone = $('#no_handphone').val().toString();
+
+  var _data = {
+    phone_number: no_handphone,
+    otp_code: otp1Value + otp2Value + otp3Value + otp4Value
+  }
+  var verifiedOtp = postOTP("/otp/validate-otp", _data);
+  if (verifiedOtp.success === "1") {
+    successOTP();
+  } else {
+    $('#wrongOtp').modal('show');
+  }
+}
+
+function successOTP() {
+  var _data = getDataRegister();
+  var register = postData("/register", _data);
+  if (register.success === "1") {
+    showSuccessOtp();
+  } else {
+    $('#failedOtp').modal('show');
+  }
+}
+
 (function ($) {
+
+  $(document).on("click", "#otp-resend", otpResend);
+  $(document).on("click", "#otp-verification", otpVerified)
 
   $(document).on('click', '.countdown--reload', function (e) {
     e.preventDefault();
@@ -180,8 +315,8 @@ function separatordot(o) {
       var reader = new FileReader();
       reader.addEventListener("load", function () {
         if (typeof (preview) !== "undefined") {
-          // $("#" + iptFrm).val(reader.result).trigger("change");
-          $("#" + iptFrm).val("/test/test.png").trigger("change");
+          $("#" + iptFrm).val(reader.result).trigger("change");
+          // $("#" + iptFrm).val("/test/test.png").trigger("change");
           $(label).text(file.name);
           preview.src = reader.result;
         }
@@ -329,5 +464,24 @@ function separatordot(o) {
 
     });
   }
+
+  $('.otp-number__verify input[type="tel"]').on("keyup", function () {
+    console.log(this.value.length, this.maxLength)
+    if (this.value.length == this.maxLength) {
+      var $next = $(this).next('.input-number');
+      if ($next.length) {
+        $(this).next('.input-number').focus();
+      } else {
+        $(this).blur();
+      }
+    } else {
+      var $prev = $(this).prev('.input-number');
+      if ($prev.length) {
+        $(this).prev('.input-number').focus();
+      } else {
+        $(this).blur();
+      }
+    }
+  });
 
 })(jQuery);

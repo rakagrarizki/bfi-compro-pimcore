@@ -30,7 +30,7 @@
 
     if ($(".formatRibuan").length > 0) {
       $(".formatRibuan").keyup(function () {
-        console.log($(this).val())
+        // console.log($(this).val())
         $(this).val(formatRupiah($(this).val(), ""));
       })
     }
@@ -633,6 +633,11 @@
       minDp: 10
     },
 
+    minDownPaymentMachine: {
+      required: true,
+      minDpMachine: 30
+    },
+
     submitHandler: function (form) {
       form.submit();
     }
@@ -646,6 +651,15 @@
     return (minPayment <= thisval ? true : false);
     // return false
   }, "Minimal 10% from payment.");
+
+  jQuery.validator.addMethod("minDpMachine", function (value, element, param) {
+    var thisval = parseInt(value.replace(/\./g, ""));
+    var payment = parseInt($("#ex7SliderVal").val().replace(/\./g, ""));
+    var minPayment = payment * (param / 100);
+    console.log("DP ", payment, thisval, minPayment);
+    return (minPayment <= thisval ? true : false);
+    // return false
+  }, "Minimal 30% from payment.");
 
   jQuery.validator.addMethod("acceptAlphabet", function (value, element, param) {
     //console.log(value.match(new RegExp("." + param + "$")));
