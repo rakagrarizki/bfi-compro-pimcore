@@ -54,8 +54,6 @@
                           </a>
                       </div>
                     <?php } ?>
-
-                    <?php if(!$this->input("title-travel")->isEmpty()) { ?>
                     <div class="credit--icon col-md-3">
                         <?php $assetMotor = $this->image("image-travel");?>
                         <a href="<?= $this->link('url-travel')->getHref(); ?>">
@@ -66,9 +64,6 @@
 
                         </a>
                     </div>
-                    <?php } ?>
-
-                    <?php if(!$this->input("title-mesin")->isEmpty()) { ?>
                     <div class="credit--icon col-md-3">
                         <?php $assetRumah = $this->image("image-mesin");?>
                         <a href="<?= $this->link('url-mesin')->getHref(); ?>">
@@ -79,8 +74,6 @@
 
                         </a>
                     </div>
-                    <?php } ?>
-
                 </div>
             </div>
 
