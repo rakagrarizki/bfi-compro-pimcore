@@ -2197,7 +2197,7 @@
 
     var _data = {
       nama_lengkap: htmlEntities(params.pemohon.nama),
-      no_handphone: htmlEntities(params.pemohon.no_handphone)
+      phone_number: htmlEntities(params.pemohon.no_handphone)
     }
 
     $.ajax({
@@ -2226,17 +2226,14 @@
     //var _url = 'https://bfi.staging7.salt.id/otp/validate-otp';
     var _url = '/otp/validate-otp';
 
-    var otp1Value = $('input[name=otp1]').val(),
-      otp2Value = $('input[name=otp2]').val(),
-      otp3Value = $('input[name=otp3]').val(),
-      otp4Value = $('input[name=otp4]').val();
+    var otp1Value = htmlEntities($('input[name=otp1]').val()),
+      otp2Value = htmlEntities($('input[name=otp2]').val()),
+      otp3Value = htmlEntities($('input[name=otp3]').val()),
+      otp4Value = htmlEntities($('input[name=otp4]').val());
 
     var _data = {
-      no_handphone: htmlEntities(params.pemohon.no_handphone),
-      otp1: htmlEntities(otp1Value),
-      otp2: htmlEntities(otp2Value),
-      otp3: htmlEntities(otp3Value),
-      otp4: htmlEntities(otp4Value)
+      phone_number: htmlEntities(params.pemohon.no_handphone),
+      otp_code: otp1Value + otp2Value + otp3Value + otp4Value
     }
 
     $.ajax({
