@@ -135,7 +135,7 @@ class SendApi
 
     public function getProduct($url, $params){
 
-        return $this->executeApi('api-product', $url,$params,"POST");
+        return $this->executeApi('api-product-test', $url,$params,"POST");
     }
 
     public function getData($data)
