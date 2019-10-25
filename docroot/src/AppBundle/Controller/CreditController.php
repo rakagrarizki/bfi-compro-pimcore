@@ -824,8 +824,8 @@ class CreditController extends FrontendController
 
     public function getCarFundingAction(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-         $url = HOST . $host . WebsiteSetting::getByName('URL_GET_CAR_FUNDING')->getData();
+
+         $url = HOST . WebsiteSetting::getByName('URL_GET_CAR_FUNDING')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
 
 
