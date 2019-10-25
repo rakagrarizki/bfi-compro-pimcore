@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 return [
     1 => [
@@ -736,7 +736,7 @@ return [
         "name" => "URL_GET_PRODUCT_CATEGORY",
         "language" => "",
         "type" => "text",
-        "data" => "/get_product_category",
+        "data" => "/get_list_product_category",
         "siteId" => 0,
         "creationDate" => 0,
         "modificationDate" => 1568709712
@@ -746,7 +746,7 @@ return [
         "name" => "URL_GET_PRODUCT",
         "language" => "",
         "type" => "text",
-        "data" => "/get_product",
+        "data" => "/get_list_product",
         "siteId" => 0,
         "creationDate" => 0,
         "modificationDate" => 1568709778

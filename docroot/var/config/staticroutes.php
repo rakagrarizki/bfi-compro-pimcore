@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 return [
     1 => [
@@ -973,33 +973,15 @@ return [
         "creationDate" => 1568025769,
         "modificationDate" => 1568718000
     ],
-    57 => [
-        "id" => 57,
-        "name" => "get product category",
-        "pattern" => "/\\/simulation\\/get-product-category/",
-        "reverse" => "/simulation/get-product-category",
-        "module" => "AppBundle",
-        "controller" => "@AppBundle\\Controller\\SimulationController",
-        "action" => "getProductCategory",
-        "variables" => NULL,
-        "defaults" => NULL,
-        "siteId" => [
-
-        ],
-        "priority" => 0,
-        "legacy" => FALSE,
-        "creationDate" => 1568710912,
-        "modificationDate" => 1568710977
-    ],
     58 => [
         "id" => 58,
         "name" => "get product",
         "pattern" => "/\\/simulation\\/get-product/",
         "reverse" => "/simulation/get-product",
         "module" => "AppBundle",
-        "controller" => "@AppBundle\\Controller\\SimulationController",
-        "action" => "getProduct",
-        "variables" => NULL,
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getListProduct",
+        "variables" => "",
         "defaults" => NULL,
         "siteId" => [
 
@@ -1007,7 +989,7 @@ return [
         "priority" => 0,
         "legacy" => FALSE,
         "creationDate" => 1568710976,
-        "modificationDate" => 1568711009
+        "modificationDate" => 1571907968
     ],
     60 => [
         "id" => 60,
@@ -1864,14 +1846,14 @@ return [
         "controller" => "@AppBundle\\Controller\\AgentController",
         "action" => "saveAgentCandidateStep5",
         "variables" => NULL,
-        "defaults" => NULL,
+        "defaults" => "",
         "siteId" => [
 
         ],
         "priority" => 0,
         "legacy" => FALSE,
         "creationDate" => 1567594158,
-        "modificationDate" => 1567594183
+        "modificationDate" => 1571907275
     ],
     108 => [
         "id" => 108,
@@ -1890,5 +1872,23 @@ return [
         "legacy" => FALSE,
         "creationDate" => 1567594158,
         "modificationDate" => 1567594183
+    ],
+    109 => [
+        "id" => 109,
+        "name" => "get list product category",
+        "pattern" => "/\\/simulation\\/get-list-product-category/",
+        "reverse" => "/simulation/get-list-product-category",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getListProductCategory",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1571906931,
+        "modificationDate" => 1571907273
     ]
 ];

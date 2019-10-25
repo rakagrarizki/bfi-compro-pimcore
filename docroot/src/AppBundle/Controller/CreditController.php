@@ -19,13 +19,20 @@ class CreditController extends FrontendController
 
     public function __construct(SendApi $sendAPI, sendApiDummy $sendApiDummy)
     {
-        if(ENV != "dev"){
-            $this->sendAPI = $sendAPI;
-            $this->randomNumber = rand(000001,999999);
-        } else {
-            $this->sendAPI = $sendApiDummy;
-            $this->randomNumber = rand(000001,999999);
-        }
+        $this->sendAPI = $sendAPI;
+        //$this->sendAPI = $sendApiDummy;
+        $this->randomNumber = rand(000001,999999);
+//        if(ENV != "dev"){
+//            $this->sendAPI = $sendAPI;
+//            $this->randomNumber = rand(000001,999999);
+//        } else {
+//            $this->sendAPI = $sendApiDummy;
+//            $this->randomNumber = rand(000001,999999);
+//        }
+
+
+
+
 
     }
 
@@ -817,8 +824,8 @@ class CreditController extends FrontendController
 
     public function getCarFundingAction(Request $request){
 
-         $host = WebsiteSetting::getByName("HOST")->getData();
-         $url = HOST . $host . WebsiteSetting::getByName('URL_GET_CAR_FUNDING')->getData();
+
+         $url = HOST . WebsiteSetting::getByName('URL_GET_CAR_FUNDING')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
 
 
@@ -2927,6 +2934,63 @@ class CreditController extends FrontendController
 
         try {
             $data = $this->sendAPI->saveMachineryLeads6($url, $param);
+        } catch (\Exception $e) {
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Save Machinery leads 6 Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
+        }
+
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $this->get("translator")->trans("api-error")
+            ]);
+        }
+    }
+
+
+    public function getListProductCategoryAction(Request $request){
+
+        $url = HOST . WebsiteSetting::getByName('URL_GET_PRODUCT_CATEGORY')->getData();
+
+        try {
+            $data = $this->sendAPI->getProductCategory($url);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Service Request Product Category Down"
+            ]);
+            //throw new \Exception('Something went wrong!');
+        }
+        //sdump($data->header->status);exit;
+        if($data->header->status == 200){
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $this->get("translator")->trans("api-error")
+            ]);
+        }
+    }
+    public function getListProductAction(Request $request){
+
+        $url = HOST . WebsiteSetting::getByName('URL_GET_PRODUCT')->getData();
+        $param["category_id"] = htmlentities(addslashes($request->get('category_id')));
+
+        try {
+            $data = $this->sendAPI->getProduct($url, $param);
         } catch (\Exception $e) {
 //            return new JsonResponse([
 //                'success' => "0",
