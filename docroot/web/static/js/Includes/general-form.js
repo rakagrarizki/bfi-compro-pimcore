@@ -260,6 +260,11 @@ function successOTP() {
   }
 }
 
+function reInitJcf() {
+  $('input[type="radio"], input[type="checkbox"]').unwrap().next().remove();
+  jcf.replaceAll();
+}
+
 (function ($) {
 
   $(document).on("click", "#otp-resend", otpResend);

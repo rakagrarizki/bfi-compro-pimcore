@@ -659,6 +659,31 @@
             }
         }
 
+        > label {
+            font-family: 'HelveticaNeue';
+            font-size: 12px;
+            letter-spacing: 1px;
+            padding: 5px 15px;
+            position: absolute;
+            color: #04559F;
+            display: none;
+            z-index: 1;
+
+            &.error {
+                margin: 10px 0;
+                font-family: 'HelveticaNeue-Light';
+                font-size: 1em;
+                color: $red-color;
+                position: relative;
+            }
+
+            &:last-child {
+                font-size: 14px;
+                margin: 0;
+                color: $red-color;
+            }
+        }
+
         .radio-group{
             overflow: hidden;
 
@@ -735,31 +760,6 @@
                     border-radius: 50%;
                     background: white;
                 }
-            }
-        }
-
-        label {
-            font-family: 'HelveticaNeue';
-            font-size: 12px;
-            letter-spacing: 1px;
-            padding: 5px 15px;
-            position: absolute;
-            color: #04559F;
-            display: none;
-            z-index: 1;
-
-            &.error {
-                margin: 10px 0;
-                font-family: 'HelveticaNeue-Light';
-                font-size: 1em;
-                color: $red-color;
-                position: relative;
-            }
-
-            &:last-child {
-                font-size: 14px;
-                margin: 0;
-                color: $red-color;
             }
         }
 
@@ -895,6 +895,24 @@
             }
 
             &.jcf-checkbox {
+                display: inline-block;
+                vertical-align: top;
+                width: 16px;
+
+                span {
+                    border-color: #7AC143 !important;
+                    border-width: 0 0 3px 3px;
+                }
+
+                &.jcf-checked span {
+                    height: 10px;
+                    width: 25px;
+                    top: -5%;
+                    left: 35%;
+                }
+            }
+
+            &.jcf-radio {
                 display: inline-block;
                 vertical-align: top;
                 width: 16px;

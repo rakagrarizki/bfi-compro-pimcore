@@ -1,6 +1,6 @@
 var form, submission_id;
 var formGroup = [];
-formGroup[0] = ["#nama_lengkap", "#email_pemohon", "#no_handphone", "#ktp"];
+formGroup[0] = ["#nama_lengkap", "#email_pemohon", "#no_handphone"];
 formGroup[1] = ["#provinsi", "#kota", "#kecamatan", "#kelurahan", "#kode_pos", "#alamat_lengkap"];
 formGroup[2] = ["#ex7SliderVal", "#down_payment", "#jangka_waktu"];
 
@@ -46,13 +46,21 @@ function sendLeadData() {
 
     switch (currentStep) {
       case 0:
-        _url = "/credit/save-edu-leads1";
+        _url = "/agent/save-agent-candidate-step1-after-otp";
         _data = {
-          "submission_id": "",
+          "submission_id": submission_id,
           "name": $("#nama_lengkap").val(),
           "email": $("#email_pemohon").val(),
           "phone_number": $("#no_handphone").val(),
-          "path_ktp": $("#ktp").val()
+          "education_id": $("#education").val()[0],
+          "marital_status_id": $("#meried").val()[0],
+          "jumlah_tanggungan": $("#burden").val()[0],
+          "occupation_id": $("#profession").val()[0],
+          "no_npwp": $("#npwp").val(),
+          "no_ktp": $("#noKtp").val(),
+          "stream_ktp": $("#ktp").val(),
+          "code_are": ($('input[name="are_member"]:checked').val() === "1" ? $("#areCode").val() : ""),
+          "have_smartphone": $('input[name="haveSmartphone"]:checked').val()
         }
         break;
       case 1:
@@ -169,79 +177,249 @@ function getDataRegister() {
   return _data;
 }
 
+function dropdownElm(elm, url, data) {
+  var selElm = elm;
+  var dataArr = transformData(getData(url, data).data);
+  // console.log("EDUCATION", dataArr)
+  // selElm.empty();
+  selElm.select2({
+    placeholder: selElm.attr('placeholder'),
+    dropdownParent: selElm.parent(),
+    data: dataArr
+  });
+  selElm.removeAttr("disabled");
+}
+
+
+function getEducation() {
+  var url = "/agent/get-list-education";
+  var data = {};
+  var selElm = $('#education');
+  dropdownElm(selElm, url, data);
+}
+
+function getMaritalStatus() {
+  var url = "/agent/get-list-marital-status";
+  var data = {};
+  var selElm = $('#meried');
+  dropdownElm(selElm, url, data);
+}
+
+function getBurden() {
+  var selElm = $('#burden');
+  var dataArr = [
+    { id: 0, text: 0 },
+    { id: 1, text: 1 },
+    { id: 2, text: 2 },
+    { id: 3, text: 3 },
+    { id: 4, text: 4 },
+    { id: 5, text: 5 }
+  ];
+  selElm.select2({
+    placeholder: selElm.attr('placeholder'),
+    dropdownParent: selElm.parent(),
+    data: dataArr
+  });
+  selElm.removeAttr("disabled");
+}
+
+function getProfession() {
+  var url = "/agent/get-list-pekerjaan";
+  var data = {};
+  var selElm = $('#profession');
+  dropdownElm(selElm, url, data);
+}
+
+function showFormOTP() {
+  if (isValidOtp) {
+    form.validate().settings.ignore = ":disabled";
+    return form.valid();
+  } else {
+    $("#formStep1").hide();
+    showOtp()
+    return false;
+  }
+}
+
+function successAgentOTP() {
+  $(".actions > ul li a[href$='next']").text('Selanjutnya');
+  $("#personal-detail").show();
+}
+
+function otpAgentVerified() {
+  var otp1Value = $('input[name=otp1]').val().toString(),
+    otp2Value = $('input[name=otp2]').val().toString(),
+    otp3Value = $('input[name=otp3]').val().toString(),
+    otp4Value = $('input[name=otp4]').val().toString(),
+    no_handphone = $('#no_handphone').val().toString();
+
+  var _data = {
+    phone_number: no_handphone,
+    otp_code: otp1Value + otp2Value + otp3Value + otp4Value
+  }
+  var verifiedOtp = postOTP("/otp/validate-otp", _data);
+  if (verifiedOtp.success === "1") {
+    successAgentOTP();
+  } else {
+    $('#wrongOtp').modal('show');
+  }
+}
+
+$("#frmAreCode").hide();
+function toggleAreMember() {
+  var _val = $('input[name="are_member"]:checked').val();
+  // console.log("ARE", _val)
+  if (_val === "1") {
+    $("#frmAreCode").show();
+  } else {
+    $("#frmAreCode").hide();
+  }
+}
+
+function agentVerifiedOtp() {
+  var otp1Value = $('input[name=otp1]').val().toString(),
+    otp2Value = $('input[name=otp2]').val().toString(),
+    otp3Value = $('input[name=otp3]').val().toString(),
+    otp4Value = $('input[name=otp4]').val().toString(),
+    no_handphone = $('#no_handphone').val().toString();
+
+  var _data = {
+    phone_number: no_handphone,
+    otp_code: otp1Value + otp2Value + otp3Value + otp4Value
+  }
+  var verifiedOtp = postOTP("/otp/validate-otp", _data);
+  if (verifiedOtp.success === "1") {
+    // successAgentOTP();
+    showSuccessAgentOtp();
+  } else {
+    $('#wrongOtp').modal('show');
+  }
+}
+
+function successAgentOTP() {
+  var _data = {
+    "submission_id": "",
+    "collateral_type_id": "5B79398F- 6824 - 41DC-8946 - 9F52C4E211D8",
+    "name": $('#nama_lengkap').val().toString(),
+    "email": $('#email_pemohon').val().toString(),
+    "phone_number": $('#no_handphone').val().toString()
+  }
+  var register = postData("/agent/save-agent-candidate-step1", _data);
+  if (register.success === "1") {
+    showSuccessAgentOtp();
+  } else {
+    $('#failedOtp').modal('show');
+  }
+}
+
+function showSuccessAgentOtp() {
+  $("#formStep1, .actions, .steps").show();
+  $("#step-otp").hide();
+  $("#personal-detail").show();
+  nextButton("inactive");
+  $(".actions > ul li a[href$='next']").text('Selanjutnya');
+  isValidOtp = true;
+}
+
+function initForm() {
+  reInitJcf();
+  $("#step-otp,#personal-detail").hide();
+  $("#npwp").inputmask("99.999.999.9-999.999", { "placeholder": "0" });
+  $("#areCode").inputmask("99999", { "placeholder": "0" });
+  getEducation();
+  getMaritalStatus();
+  getBurden();
+  getProfession();
+}
+
+
+form = $("#getCredit").show();
+
+form.steps({
+  headerTag: "h3",
+  bodyTag: "fieldset",
+  transitionEffect: "slideLeft",
+  titleTemplate: '<span class="number"><i class="fa fa-check" aria-hidden="true"></i><b>#index#</b></span> <p>#title#</p>',
+  /* Labels */
+  labels: {
+    finish: "Selesai",
+    next: "Send OTP",
+    previous: "Sebelumnya",
+    loading: "Loading ..."
+  },
+  onInit: function () {
+    nextButton("inactive");
+    setTimeout(initForm, 500);
+  },
+  onStepChanging: function (event, currentIndex, newIndex) {
+    // Allways allow previous action even if the current form is not valid!
+    if (currentIndex > newIndex) {
+      return true;
+    }
+    if ($(".actions > ul li a[href$='next']").parent().hasClass("inactive")) {
+      return false;
+    }
+    // console.log("isEdit", isEdit);
+    if (isEdit) {
+      isEdit = false;
+      // console.log("edited");
+      if (currentIndex === 0) {
+        // console.log("go to summary");
+        goToStep(3);
+        return false;
+      }
+    }
+
+    if (currentIndex === 0) {
+      return showFormOTP();
+    }
+
+    form.validate().settings.ignore = ":disabled,:hidden";
+    return sendLeadData();
+    // return true;
+  },
+  onStepChanged: function (event, currentIndex, priorIndex) {
+    // Used to skip the "Warning" step if the user is old enough.
+    checkValid();
+    if (currentIndex > priorIndex && currentIndex === 2) {
+      initCalculate();
+    }
+    if (currentIndex > priorIndex && currentIndex === 3) {
+      initSummary();
+    }
+    // if (currentIndex > priorIndex && currentIndex === 3) {
+    //   initCalculate();
+    // }
+  },
+  onFinishing: function (event, currentIndex) {
+    if (!isValidOtp) {
+      showOtp()
+      return false;
+    } else {
+      form.validate().settings.ignore = ":disabled";
+      return form.valid();
+    }
+  },
+  onFinished: function (event, currentIndex) {
+    alert("Submitted!");
+  }
+});
+
 var isValidOtp = false;
 (function ($) {
+  $(document).on("click", "#otp-verification", otpAgentVerified)
 
   $("#step-otp").hide();
-  form = $("#getCredit").show();
-
-  form.steps({
-    headerTag: "h3",
-    bodyTag: "fieldset",
-    transitionEffect: "slideLeft",
-    titleTemplate: '<span class="number"><i class="fa fa-check" aria-hidden="true"></i><b>#index#</b></span> <p>#title#</p>',
-    /* Labels */
-    labels: {
-      finish: "Selesai",
-      next: "Selanjutnya",
-      previous: "Sebelumnya",
-      loading: "Loading ..."
-    },
-    onInit: function () {
-      nextButton("inactive");
-    },
-    onStepChanging: function (event, currentIndex, newIndex) {
-      // Allways allow previous action even if the current form is not valid!
-      if (currentIndex > newIndex) {
-        return true;
-      }
-      if ($(".actions > ul li a[href$='next']").parent().hasClass("inactive")) {
-        return false;
-      }
-      // console.log("isEdit", isEdit);
-      if (isEdit) {
-        isEdit = false;
-        // console.log("edited");
-        if (currentIndex === 0) {
-          // console.log("go to summary");
-          goToStep(3);
-          return false;
-        }
-      }
-      form.validate().settings.ignore = ":disabled,:hidden";
-      return sendLeadData();
-      // return true;
-    },
-    onStepChanged: function (event, currentIndex, priorIndex) {
-      // Used to skip the "Warning" step if the user is old enough.
-      checkValid();
-      if (currentIndex > priorIndex && currentIndex === 2) {
-        initCalculate();
-      }
-      if (currentIndex > priorIndex && currentIndex === 3) {
-        initSummary();
-      }
-      // if (currentIndex > priorIndex && currentIndex === 3) {
-      //   initCalculate();
-      // }
-    },
-    onFinishing: function (event, currentIndex) {
-      if (!isValidOtp) {
-        showOtp()
-        return false;
-      } else {
-        form.validate().settings.ignore = ":disabled";
-        return form.valid();
-      }
-    },
-    onFinished: function (event, currentIndex) {
-      alert("Submitted!");
-    }
-  });
 
   $(document).on('change', 'input[type="hidden"]', checkValid);
   $(document).on('focusout keyup', 'input, textarea, select', checkValid);
 
+  $(document).on('change', 'input[name="are_member"]', toggleAreMember);
+  $(document).on('click', '#agentOtp-verification', agentVerifiedOtp)
+
+  $('input[name="applicant_position"]').change(function () {
+    console.log($(this).val())
+  });
 
   $("#provinsi").change(function () {
     var selElm = $('#kota');
