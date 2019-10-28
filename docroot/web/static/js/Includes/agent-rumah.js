@@ -195,17 +195,17 @@ function initSummary() {
   $("#showAccount_number").text($("#account_number").val());
   $("#showAccount_name").text($("#account_name").val());
 
-  // Data Tambahan
-  var financing = $('input[name="financing"]:checked')[0].labels[0].innerText;
-  var workingHour = $('input[name="waktu-kerja"]:checked')[0].labels[0].innerText;
-  $("#showChannel").empty();
-  $.each($('input[name="channel"]:checked'), function (idx, item) {
-    console.log("CHOOSE", $(this));
-    $("#showChannel").append("<li>" + $(this)[0].labels[0].innerText + "</li>");
-  });
+  // // Data Tambahan
+  // var financing = $('input[name="financing"]:checked')[0].labels[0].innerText;
+  // var workingHour = $('input[name="waktu-kerja"]:checked')[0].labels[0].innerText;
+  // $("#showChannel").empty();
+  // $.each($('input[name="channel"]:checked'), function (idx, item) {
+  //   console.log("CHOOSE", $(this));
+  //   $("#showChannel").append("<li>" + $(this)[0].labels[0].innerText + "</li>");
+  // });
 
-  $("#showFinancing").text(financing);
-  $("#showWaktu-kerja").text(workingHour);
+  // $("#showFinancing").text(financing);
+  // $("#showWaktu-kerja").text(workingHour);
 }
 
 function getText(elm) {
@@ -494,9 +494,6 @@ form.steps({
       setTimeout(initBank, 500);
     }
     if (currentIndex > priorIndex && currentIndex === 3) {
-      setTimeout(initAdditionalInfo, 500);
-    }
-    if (currentIndex > priorIndex && currentIndex === 4) {
       initSummary();
     }
     // if (currentIndex > priorIndex && currentIndex === 3) {
