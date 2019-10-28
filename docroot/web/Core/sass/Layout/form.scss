@@ -658,8 +658,8 @@
                 border: 1px solid red;
             }
         }
-
-        > label {
+        
+        label {
             font-family: 'HelveticaNeue';
             font-size: 12px;
             letter-spacing: 1px;
@@ -691,8 +691,136 @@
                 width: 50%;
                 float: left;
 
+                &.full {
+                  width: 100%;
+                }
+
+                .jcf-radio {
+                  vertical-align: top;
+                  margin-top: 5px;
+                  width: 20px;
+                  height: 20px;
+                }
+
+                .jcf-radio.jcf-checked span {
+                  top: 2px;
+                  left: 2px;
+                  right: 2px;
+                  bottom: 2px;
+                }
+
                 label{
                     color: #8d8e8f;
+                    position: relative;
+                    display: inline-block;
+                    width: calc( 100% - 28px );
+                    padding-left: 5px;
+                    font-size: 18px;
+                    font-weight: normal;
+                }
+
+                /* The container */
+                .container {
+                    display: block;
+                    position: relative;
+                    padding-left: 35px;
+                    margin-bottom: 12px;
+                    letter-spacing: 0px;
+                    font-weight: 500;
+                    cursor: pointer;
+                    font-size: 22px;
+                    -webkit-user-select: none;
+                    -moz-user-select: none;
+                    -ms-user-select: none;
+                    user-select: none;
+                }
+                
+                /* Hide the browser's default radio button */
+                .container input {
+                    position: absolute;
+                    opacity: 0;
+                    cursor: pointer;
+                }
+                
+                /* Create a custom radio button */
+                .checkmark {
+                    position: absolute;
+                    top: 10px;
+                    left: 0;
+                    height: 25px;
+                    width: 25px;
+                    background-color: #eee;
+                    border-radius: 50%;
+                }
+                
+                /* On mouse-over, add a grey background color */
+                .container:hover input ~ .checkmark {
+                    background-color: #ccc;
+                }
+                
+                /* When the radio button is checked, add a blue background */
+                .container input:checked ~ .checkmark {
+                    background-color: #8d8e8f;
+                }
+                
+                /* Create the indicator (the dot/circle - hidden when not checked) */
+                .checkmark:after {
+                    content: "";
+                    position: absolute;
+                    display: none;
+                }
+                
+                /* Show the indicator (dot/circle) when checked */
+                .container input:checked ~ .checkmark:after {
+                    display: block;
+                }
+                
+                /* Style the indicator (dot/circle) */
+                .container .checkmark:after {
+                    top: 9px;
+                    left: 9px;
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 50%;
+                    background: white;
+                }
+            }
+        }
+
+        .checkbox-group{
+            overflow: hidden;
+
+            .checkbox-inside{
+                width: 50%;
+                float: left;
+
+                &.full {
+                  width: 100%;
+                }
+
+                .jcf-checkbox {
+                  vertical-align: top;
+                  margin-top: 8px;
+                  width: 20px;
+                  height: 20px;
+                  overflow: unset;
+                }
+
+                .jcf-checkbox.jcf-checked span {
+                  display: block;
+                  width: 20px;
+                  height: 10px;
+                  margin: -10px 0 0 -7px;
+                }
+
+                label{
+                    color: #8d8e8f;
+                    position: relative;
+                    display: inline-block;
+                    width: calc( 100% - 28px );
+                    padding-left: 5px;
+                    font-size: 18px;
+                    font-weight: normal;
                 }
 
                 /* The container */
@@ -1572,6 +1700,16 @@ select::-ms-expand {
 .wizard {
 
   >.steps {
+
+    > ul {
+      display: flex;
+      justify-content: center;
+      >li {
+        float: unset;
+        width: 18%;
+      }
+    }
+
     a, .done a, .current a {
       overflow: hidden;
       // display: inline-flex;
@@ -1606,7 +1744,7 @@ select::-ms-expand {
       }
 
       p {
-        width: auto;
+        width: calc( 100% - 42px );
         display: inline-block;
         vertical-align: middle;
         line-height: 1.3;
@@ -1614,7 +1752,7 @@ select::-ms-expand {
         // display: block;
         color: #565656;
         margin: 0;
-        font-size: 12px;
+        font-size: 16px;
       }
     }
 
@@ -1717,6 +1855,24 @@ select::-ms-expand {
         }
 
       }
+    }
+  }
+
+}
+
+#showChannel {
+  list-style: none !important;
+  li {
+    padding-left: 30px;
+    position: relative;
+    &:after {
+      content: "";
+      width: 15px;
+      height: 15px;
+      background: #6c6c6c;
+      position: absolute;
+      left: 0;
+      top: 10px;
     }
   }
 
