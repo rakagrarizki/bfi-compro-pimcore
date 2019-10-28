@@ -1865,13 +1865,14 @@ select::-ms-expand {
   li {
     padding-left: 30px;
     position: relative;
+
     &:after {
       content: "";
       width: 15px;
       height: 15px;
       background: #6c6c6c;
       position: absolute;
-      left: 0;
+      left: 0px;
       top: 10px;
     }
   }
