@@ -260,6 +260,13 @@ function successOTP() {
   }
 }
 
+function reInitJcf() {
+  $('input[type="radio"], input[type="checkbox"]').parent().find("span").remove();
+  $('input[type="radio"], input[type="checkbox"]').unwrap();
+  // jcf.destroyAll();
+  jcf.replaceAll();
+}
+
 (function ($) {
 
   $(document).on("click", "#otp-resend", otpResend);
@@ -315,8 +322,8 @@ function successOTP() {
       var reader = new FileReader();
       reader.addEventListener("load", function () {
         if (typeof (preview) !== "undefined") {
-          $("#" + iptFrm).val(reader.result).trigger("change");
-          // $("#" + iptFrm).val("/test/test.png").trigger("change");
+          // $("#" + iptFrm).val(reader.result).trigger("change");
+          $("#" + iptFrm).val("/test/test.png").trigger("change");
           $(label).text(file.name);
           preview.src = reader.result;
         }
