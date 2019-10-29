@@ -45,7 +45,8 @@ $urlTwitter = " https://twitter.com/share?text=$titleshare&url=$fixedurl&wrap_li
                 <span>Share:</span>
                 <a href="<?= $urlFacebook;?>" class="share-fb"><i class="fa fa-facebook"></i></a>
                 <a href="<?= $urlTwitter;?>" class="share-tw"><i class="fa fa-twitter"></i></a>
-                <a href="javscript:void(0)" class="share-cp" id="copy"><i class="fa fa-chain"></i></a>
+                <a class="share-cp" id="copy" onclick="copyURL('<?= $fixedurl ?>')"><i class="fa fa-chain"></i></a>
+                <div style="display: none;padding: 0px 20px;" id="copied">Copied</div>
             </div>
             <div class="sumber">
                 <span><?= $this->t("source")?>:</span> <?= $blog->getSource();?>
