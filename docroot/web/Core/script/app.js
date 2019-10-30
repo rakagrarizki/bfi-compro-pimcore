@@ -4725,3 +4725,12 @@
 
 
 })(jQuery);
+
+function copyURL(url) {
+  var $temp = $("<input>");
+  $("body").append($temp);
+  $temp.val(url).select();
+  document.execCommand("copy");
+  $temp.remove();
+  $('#copied').show().delay(2000).fadeOut(400);
+}
