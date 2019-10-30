@@ -22,6 +22,11 @@ $urlcheck = Pimcore\Model\Asset::getByPath($imagethumbnail);
 $urlFacebook = " https://www.facebook.com/sharer/sharer.php?u=" . $fixedurl . "&title=" . $titleshare . "&picture=" . $imagethumbnail;
 $urlTwitter = " https://twitter.com/share?text=$titleshare&url=$fixedurl&wrap_links=true ";
 ?>
+<?php $this->headTitle()->append('BFI - '.$blog->getTitle());
+
+ $this->headMeta('BFI - '. $blog->getTitle(), "title");
+
+?>
 
 <div class="blog-promo detail">
     <div class="container">

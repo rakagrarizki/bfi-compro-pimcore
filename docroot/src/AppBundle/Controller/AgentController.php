@@ -17,13 +17,13 @@ class AgentController extends FrontendController
 
     public function __construct(SendApi $sendAPI, sendApiDummy $sendApiDummy)
     {
-        if(ENV != "dev"){
+
             $this->sendAPI = $sendAPI;
-            $this->randomNumber = rand(000001,999999);
-        } else {
-            $this->sendAPI = $sendApiDummy;
-            $this->randomNumber = rand(000001,999999);
-        }
+//            $this->randomNumber = rand(000001,999999);
+//        } else {
+//            $this->sendAPI = $sendApiDummy;
+//            $this->randomNumber = rand(000001,999999);
+//        }
 
     }
     public function defaultAction(Request $request)
