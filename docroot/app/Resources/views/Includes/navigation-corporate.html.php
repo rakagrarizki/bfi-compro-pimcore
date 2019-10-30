@@ -25,8 +25,8 @@ use Pimcore\Model\Document\Page;
                     </div>
                     <div class="col-md-4 col-md-offset-1 col-sm-5 right-side-top clearfix">
                         <div class="link-about-top">
-                            <a  href="<?=$this->websiteConfig('career_link') == "" ? '#': $this->websiteConfig('career_link'); ?>">
-                                <?= $this->translate("career") ?></a>
+                            <a  href="">
+                                <?= $this->translate("career"); ?></a>
 
                         </div>
 
