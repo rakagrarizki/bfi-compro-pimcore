@@ -25,7 +25,7 @@
                     <?php
                 }
                 ?>
-                    
+
                             <img src="<?= $blog->getImage();?>">
                         </div>
                         <div class="thumbnail-infomation">
@@ -35,7 +35,7 @@
                             $date = date("D, d-M'Y", $dateUnix);
                             ?>
                             <p><?= $date;?></p>
-                            <h3><a href="#"><?= $blog->getTitle();?></a></h3>
+                            <h3><a href="/blog/<?=$blog->getSlug();?>"><?= $blog->getTitle();?></a></h3>
                         </div>
                     </div>
                 </div>

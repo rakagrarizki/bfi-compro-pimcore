@@ -14,6 +14,38 @@
 	visibility: visible !important;
 	z-index: 99999;
 
+}.pimcore_area_buttons .pimcore_area_buttons_inner{
+	z-index: 9999;
+}
+
+.navbar-fixed-top, .navbar-fixed-bottom {
+	/*position: inherit !important;*/
+}
+
+.pimcore_area_edit_button {
+	z-index: 9999 !important;
+}
+
+.pimcore_area_buttons.top {
+	visibility: visible !important;
+	z-index: 99999;
+
+}.pimcore_area_buttons .pimcore_area_buttons_inner{
+	z-index: 9999;
+}
+
+.navbar-fixed-top, .navbar-fixed-bottom {
+	/*position: inherit !important;*/
+}
+
+.pimcore_area_edit_button {
+	z-index: 9999 !important;
+}
+
+.pimcore_area_buttons.top {
+	visibility: visible !important;
+	z-index: 99999;
+
 }
 /*
 .border-editmode {
@@ -40,3 +72,8 @@
 .edit{
     margin-top :100px;
 }*/
+
+.x-window{
+    z-index:99999 !important;
+
+}

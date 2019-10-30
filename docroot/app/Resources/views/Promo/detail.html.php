@@ -8,10 +8,17 @@
 use Pimcore\Model\Asset;
 $this->extend('layout.html.php');
 $promo = $this->promo;
-$relatedPromos = $this->relatedPromos;
 
 
 
+
+
+?>
+<?php
+//dump($this->getTitle());exit;
+$this->headTitle()->append('BFI - '. $promo->getTitle());
+//echo $this->headTitle();
+$this->headMeta('BFI - '. $promo->getTitle(), "title");
 
 ?>
 <div class="blog-promo detail">

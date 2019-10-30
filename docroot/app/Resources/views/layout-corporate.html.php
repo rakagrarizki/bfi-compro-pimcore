@@ -18,7 +18,7 @@
           href="<?= \Pimcore\Tool::getHostUrl() . '/static/images/favicon/favicon.ico' ?>" />
 
     <?php
-    $site = $this->document->getProperty("site");
+
     if ($this->document instanceof \Pimcore\Model\Document\Page) {
         $slug = $this->getParam("slug");
         if(!$slug){
@@ -38,7 +38,7 @@
 //
 //    }
 
-    if ($this->document instanceof Document\Page && $this->document->getDescription()) {
+    if ($this->document->getDescription()) {
         // use the manually set description if available
         $this->headMeta()->appendName('description', $this->document->getDescription());
     }
@@ -74,17 +74,14 @@
 
 </head>
 <body>
-<?php if($site == "corporate"):?>
-    <?php echo $this->template('Includes/navigation-corporate.html.php') ?>
-<?php else :?>
-<?php echo $this->template('Includes/navigation.html.php', ['documentInitiator' => $this->document->getId()]) ?>
-<?php endif?>
+<?php echo $this->template('Includes/navigation-corporate.html.php', ['documentInitiator' => $this->document->getId()]) ?>
+
 <div id="site-container">
     <?php $this->slots()->output('_content'); ?>
 </div>
 <!-- CONTAINER -->
 <!-- FOOTER -->
-<?= $this->inc("/" . $this->getLocale() . "/shared/includes/footer") ?>
+<?= $this->inc("/" . $this->getLocale() . "/shared/includes/footer-corporate") ?>
 <!-- FOOTER -->
 <?php $this->headScript()->prependFile('/static/js/Includes/homepage.js'); ?>
 <?php $this->headScript()->prependFile('/static/js/custom.js'); ?>

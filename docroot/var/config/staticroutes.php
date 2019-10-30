@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 return [
     1 => [
@@ -1890,5 +1890,24 @@ return [
         "legacy" => FALSE,
         "creationDate" => 1571906931,
         "modificationDate" => 1571907273
-    ]
+    ],
+    110 => [
+        "id" => 110,
+        "name" => "detail award",
+        "pattern" => "/\\/(en|id)\\/award\\/([0-9]+)\$/",
+        "reverse" => "/%lang/award/%year",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\AwardsController",
+        "action" => "detail",
+        "variables" => "lang,year",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1568710976,
+        "modificationDate" => 1568711009
+    ],
+
 ];

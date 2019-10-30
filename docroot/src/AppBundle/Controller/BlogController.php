@@ -10,6 +10,7 @@ use Pimcore\Model\DataObject\BlogCategory;
 
 class BlogController extends FrontendController
 {
+
     public function defaultAction(Request $request)
     {
         $category = htmlentities(addslashes($request->get("category")));
@@ -34,10 +35,14 @@ class BlogController extends FrontendController
         $this->view->paginator = $paginator;
 
     }
+
     public function detailAction(Request $request){
+
+
         $slug = htmlentities(addslashes($request->get("slug")));
 
         $blog = BlogArticle::getBySlug($slug,["limit"=>1]);
+
         $totalViews = $blog->getViews() + 1;
         $blog->setViews($totalViews);
         $blog->save();
