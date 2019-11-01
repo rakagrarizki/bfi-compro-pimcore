@@ -8,7 +8,7 @@
 
 namespace AppBundle\Document\Areabrick;
 
-class BfiWysiwygLink extends AbstractAreabrick
+class BfiDownloadLink extends AbstractAreabrick
 {
 
 }
