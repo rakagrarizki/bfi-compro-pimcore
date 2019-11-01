@@ -160,3 +160,9 @@ a {
         color:#04559F;
     }
 }
+
+@media (min-width: 1200px){
+    .container {
+        width: 970px!important;
+    }
+}

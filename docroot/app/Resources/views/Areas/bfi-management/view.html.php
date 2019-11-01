@@ -1,5 +1,5 @@
 
-
+<div class="con">
         <?php foreach($this->multihref("objectPaths") as $element):
             /** @var \Pimcore\Model\Element\ElementInterface $element */
             ?>
@@ -12,5 +12,6 @@
 
 
         <?php endforeach; ?>
+</div>
 
 
