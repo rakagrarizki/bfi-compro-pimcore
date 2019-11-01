@@ -1,0 +1,22 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: salt
+ * Date: 03/12/18
+ * Time: 17:04
+ */
+?>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="row">
+            <div class="col-sm-4">Image</div>
+            <div class="col-sm-8"><?= $this->image("image"); ?></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">Text</div>
+            <div class="col-sm-8"><?= $this->wysiwyg("text"); ?></div>
+        </div>
+    </div>
+</div>
+
+
