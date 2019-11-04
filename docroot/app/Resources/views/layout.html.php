@@ -21,7 +21,9 @@
     $site = $this->document->getProperty("site");
     if ($this->document instanceof \Pimcore\Model\Document\Page) {
         $slug = $this->getParam("slug");
-        if(!$slug){
+        $year = $this->getParam("year");
+
+        if(!$slug && !$year){
             if ($this->document->getTitle()) {
                 // use the manually set title if available
                 $this->headTitle()->set($this->document->getTitle());
@@ -84,7 +86,11 @@
 </div>
 <!-- CONTAINER -->
 <!-- FOOTER -->
-<?= $this->inc("/" . $this->getLocale() . "/shared/includes/footer") ?>
+<?php if($site == "corporate"):?>
+    <?= $this->inc("/" . $this->getLocale() . "/shared/includes/footer-corporate") ?>
+<?php else: ?>
+    <?= $this->inc("/" . $this->getLocale() . "/shared/includes/footer") ?>
+<?php endif;?>
 <!-- FOOTER -->
 <?php $this->headScript()->prependFile('/static/js/Includes/homepage.js'); ?>
 <?php $this->headScript()->prependFile('/static/js/custom.js'); ?>
