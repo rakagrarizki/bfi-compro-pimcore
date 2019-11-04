@@ -1,4 +1,4 @@
-<div>
+<div class="container">
     <?php $asset = $this->image("image");?>
 
     <h3><?= $this->input('title');?></h3>

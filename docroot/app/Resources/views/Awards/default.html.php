@@ -8,6 +8,16 @@
 $this->extend('layout.html.php');
 
 ?>
-<?php foreach($this->paginator as $key => $award) :?>
-    <a href = "<?= '/'. $this->getLocale(). '/award/'.$award->getYear(); ?>"><?php echo $award->getYear();?></a>
-<?php endforeach; ?>
+<div class="container">
+    <div class="page-title">Title</div>
+    <div class="row">
+        <?php foreach($this->paginator as $key => $award) :?>
+            <a href = "<?= '/'. $this->getLocale(). '/award/'.$award->getYear(); ?>">
+                <div class="button-type-17 col-md-12">
+                    Tahun <?php echo $award->getYear();?>
+                    <span class="arrow-right"><i class="icon-next"></i></span>
+                </div>
+            </a>
+        <?php endforeach; ?>
+    </div>
+</div>
