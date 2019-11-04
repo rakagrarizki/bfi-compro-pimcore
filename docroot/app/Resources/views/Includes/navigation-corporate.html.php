@@ -17,13 +17,13 @@ use Pimcore\Model\Document\Page;
         <div class="header-top">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-5 col-md-offset-1 col-sm-6 left-side-top">
+                    <div class="col-md-7 col-sm-6 left-side-top">
                         <a class="_grup"
                            href="/<?php echo $this->getLocale() ?>"><?= $this->translate("personal") ?></a>
                         <a class="_personal" target="<?=$this->link('corporate')!= "" ?$this->link('corporate')->getTarget():'' ?>" href="<?= '/'.$this->getLocale().'/corporate'?>">
                             <?= $this->translate("corporate") ?></a>
                     </div>
-                    <div class="col-md-4 col-md-offset-1 col-sm-5 right-side-top clearfix">
+                    <div class="col-md-5 col-sm-6 right-side-top clearfix">
                         <div class="link-about-top">
                             <a  href="">
                                 <?= $this->translate("career"); ?></a>
@@ -46,12 +46,12 @@ use Pimcore\Model\Document\Page;
             <div class="container">
                 <div class="row">
 
-                    <div class="col-md-3 col-md-offset-1 col-sm-4 header-bottom-logo">
+                    <div class="col-md-4 col-sm-4 header-bottom-logo">
                         <a href="<?php echo "/" . $this->getLocale().'/corporate'; ?>">
                             <img src="/static/images/logo-bfi.png" class="img-responsive" alt="">
                         </a>
                     </div>
-                    <div class="col-md-7 col-sm-8 header-bottom-menu">
+                    <div class="col-md-8 col-sm-8 header-bottom-menu">
                         <div class="header-link-menu">
                             <ul class="nav">
                                 <?php
