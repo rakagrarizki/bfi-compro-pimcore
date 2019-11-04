@@ -167,6 +167,11 @@
                         color: #04559F !important;
                         font-weight: bold;
                     }
+                    
+                    &.active{
+                        color: #04559F;
+                        font-weight: bold;
+                    }
                 }
             }
         }
