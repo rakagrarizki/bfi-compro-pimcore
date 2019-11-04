@@ -119,7 +119,7 @@ use Pimcore\Model\Document\Page;
         </div>
     </div>
 
-    <?php echo $this->template("Includes/mobile-navigation.html.php") ?>
+    <?php echo $this->template("Includes/mobile-navigation-corporate.html.php") ?>
 
 </nav>
 <!-- HEADER -->

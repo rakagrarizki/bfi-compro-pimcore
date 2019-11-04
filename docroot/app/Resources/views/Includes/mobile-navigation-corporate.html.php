@@ -38,7 +38,7 @@ use Pimcore\Model\Document;
     <ul class="nav navbar-nav">
         <?php
 
-        $listMenu = Document::getByPath("/" . $this->getLocale() . "/");
+        $listMenu = Document::getByPath("/" . $this->getLocale() . "/corporate");
         $subPage = $this->navigation()->buildNavigation($this->document, $listMenu);
 
         if ($subPage) {
@@ -48,10 +48,8 @@ use Pimcore\Model\Document;
                 if (strpos($page->getUri(), 'branch-office') !== false) {
                     continue;
                 }
-                if($page->getHref() == "/".$this->getLocale()."/corporate"){
-                    break;
-                }
-                if ($hasChildren && strpos($page->getUri(), '#product') !== false) {
+
+                if ($hasChildren) {
                     ?>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -62,7 +60,7 @@ use Pimcore\Model\Document;
                             <?php
                             foreach ($page->getPages() as $child) {
                                 ?>
-                                <li><a href="#" class="title-dropdown"><?= $child->getLabel() ?></a></li>
+                                <li><a href="<?= $child->getHref()?>" class="title-dropdown"><?= $child->getLabel() ?></a></li>
                                 <?php
                                 $hasGrandChildren = $child->hasPages();
                                 if ($hasGrandChildren) {
@@ -72,7 +70,7 @@ use Pimcore\Model\Document;
                                         <li><a href="<?= $grandChild->getHref() ?>"><?= $grandChild->getLabel() ?></a>
                                         </li>
                                         <?php else: ?>
-                                            <li><a href="#" class="title-dropdown"><?= $grandChild->getLabel() ?></a></li>
+                                            <li><a href="<?= $grandChild->getHref()?>" class="title-dropdown"><?= $grandChild->getLabel() ?></a></li>
                                         <?php endif;?>
                                         <?php
                                         $hasGreatGrandChild = $grandChild->hasPages();
