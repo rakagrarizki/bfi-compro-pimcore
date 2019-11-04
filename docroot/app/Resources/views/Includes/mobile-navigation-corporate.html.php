@@ -8,7 +8,12 @@ use Pimcore\Model\Document;
     <div class="container">
         <div class="row top-nav">
 
-            <?= $this->inc("/" . $this->getLocale() . "/shared/includes/sub-navigation-mobile") ?>
+            <div class="col-xs-8">
+                <a class="_grup" href="/<?php echo $this->getLocale() ?>"
+                   class="cta-top-nav "><?= $this->translate("personal") ?></a>
+                <a class="_personal" href="/<?php echo $this->getLocale() . '/corporate' ?>" class="cta-top-nav active"><?= $this->translate("corporate") ?></a>
+            </div>
+
             <div class="col-xs-4 text-right">
                 <?php echo $this->template("Includes/mobile-language.html.php") ?>
             </div>
@@ -105,7 +110,8 @@ use Pimcore\Model\Document;
         }
         ?>
         <li role="separator" class="divider"></li>
-        <?= $this->inc("/" . $this->getLocale() . "/shared/includes/sub-navigation-burger") ?>
+        <li> <a  href="<?= $this->websiteConfig("career_link") ? $this->websiteConfig("career_link") : "#" ;?>">
+                <?= $this->translate("career"); ?></a></li>
     </ul>
 </div>
 <!-- END Mobile -->

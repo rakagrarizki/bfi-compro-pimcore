@@ -1246,9 +1246,9 @@ return [
         "name" => "career_link",
         "language" => "",
         "type" => "text",
-        "data" => "www.bfi.co.id",
+        "data" => "http://www.bfi.co.id",
         "siteId" => 0,
         "creationDate" => 0,
-        "modificationDate" => 1572419183
+        "modificationDate" => 1572859046
     ]
 ];
