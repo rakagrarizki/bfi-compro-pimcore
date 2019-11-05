@@ -8,7 +8,12 @@ use Pimcore\Model\Document;
     <div class="container">
         <div class="row top-nav">
 
-            <?= $this->inc("/" . $this->getLocale() . "/shared/includes/sub-navigation-mobile") ?>
+            <div class="col-xs-8">
+                <a class="_grup" href="/<?php echo $this->getLocale() ?>"
+                   class="cta-top-nav "><?= $this->translate("personal") ?></a>
+                <a class="_personal" href="/<?php echo $this->getLocale() . '/corporate' ?>" class="cta-top-nav active"><?= $this->translate("corporate") ?></a>
+            </div>
+
             <div class="col-xs-4 text-right">
                 <?php echo $this->template("Includes/mobile-language.html.php") ?>
             </div>
@@ -61,6 +66,24 @@ use Pimcore\Model\Document;
                             foreach ($page->getPages() as $child) {
                                 ?>
                                 <li><a href="<?= $child->getHref()?>" class="title-dropdown"><?= $child->getLabel() ?></a></li>
+                                <ol>
+                                <?php $d = Document::getById($child->getId());
+                                $doc = $d->getProperty("child");
+                                $childs = explode(",", $doc);
+                                foreach($childs as $c){
+                                    $name = $c;
+                                    $pattern = '/\W/';
+                                    $result = preg_replace($pattern," ", $c);
+                                    $removeSpace = preg_replace('/\s+/',"-",$result);
+
+                                    $last = str_replace(" ","-",strtolower($removeSpace));
+                                    $value = $last; ?>
+                                    <li><a href="<?= $child->getHref() ."?tab=" . $value?>" class="title-dropdown"><?= $name ?></a></li>
+                                <?php }
+
+                                ?>
+                                </ol>
+
                                 <?php
                                 $hasGrandChildren = $child->hasPages();
                                 if ($hasGrandChildren) {
@@ -71,6 +94,7 @@ use Pimcore\Model\Document;
                                         </li>
                                         <?php else: ?>
                                             <li><a href="<?= $grandChild->getHref()?>" class="title-dropdown"><?= $grandChild->getLabel() ?></a></li>
+
                                         <?php endif;?>
                                         <?php
                                         $hasGreatGrandChild = $grandChild->hasPages();
@@ -105,7 +129,8 @@ use Pimcore\Model\Document;
         }
         ?>
         <li role="separator" class="divider"></li>
-        <?= $this->inc("/" . $this->getLocale() . "/shared/includes/sub-navigation-burger") ?>
+        <li> <a  href="<?= $this->websiteConfig("career_link") ? $this->websiteConfig("career_link") : "#" ;?>">
+                <?= $this->translate("career"); ?></a></li>
     </ul>
 </div>
 <!-- END Mobile -->

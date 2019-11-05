@@ -17,15 +17,16 @@ use Pimcore\Model\Document\Page;
         <div class="header-top">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-7 col-sm-6 left-side-top">
+                    <div class="col-md-9 col-sm-8 left-side-top">
                         <a class="_grup"
                            href="/<?php echo $this->getLocale() ?>"><?= $this->translate("personal") ?></a>
                         <a class="_personal" target="<?=$this->link('corporate')!= "" ?$this->link('corporate')->getTarget():'' ?>" href="<?= '/'.$this->getLocale().'/corporate'?>">
                             <?= $this->translate("corporate") ?></a>
                     </div>
-                    <div class="col-md-5 col-sm-6 right-side-top clearfix">
+                    <div class="col-md-3 col-sm-4 right-side-top clearfix">
                         <div class="link-about-top">
-                            <a  href="">
+
+                            <a  href="<?= $this->websiteConfig("career_link") ? $this->websiteConfig("career_link") : "#" ;?>">
                                 <?= $this->translate("career"); ?></a>
 
                         </div>
@@ -58,7 +59,7 @@ use Pimcore\Model\Document\Page;
 
                                 $listMenu = Document::getByPath("/" . $this->getLocale() . "/corporate");
                                 $subPage = $this->navigation()->buildNavigation($this->document, $listMenu);
-                                //dump($subPage);exit;
+                                //dump($listMenu);exit;
                                 if ($subPage) {
                                     foreach ($subPage as $page) {
                                         //$hasChildren = $page->hasChildren();
