@@ -4,7 +4,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'fontello';
-    src: url('../font/fontello.svg?22343334#fontello') format('svg');
+    src: url('../font/fontello.svg?47696043#fontello') format('svg');
   }
 }
 */
@@ -49,6 +49,7 @@
 .icon-download:before { content: '\e802'; } /* '' */
 .icon-edit:before { content: '\e803'; } /* '' */
 .icon-grid-world:before { content: '\e804'; } /* '' */
+.icon-mail:before { content: '\e805'; } /* '' */
 .icon-group-2583:before { content: '\e806'; } /* '' */
 .icon-group-2584:before { content: '\e807'; } /* '' */
 .icon-home:before { content: '\e808'; } /* '' */
@@ -59,3 +60,4 @@
 .icon-telephone:before { content: '\e80d'; } /* '' */
 .icon-tick:before { content: '\e80e'; } /* '' */
 .icon-maps-and-flags:before { content: '\e80f'; } /* '' */
+.icon-left-arrow:before { content: '\e810'; } /* '' */

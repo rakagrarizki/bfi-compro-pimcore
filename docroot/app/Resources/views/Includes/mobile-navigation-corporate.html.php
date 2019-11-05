@@ -57,7 +57,7 @@ use Pimcore\Model\Document;
                 if ($hasChildren) {
                     ?>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                        <a href="#" class="dropdown-toggle <?= $page->getActive() ? "active" : ""?>" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false">
                             <?= $page->getLabel() ?>
                         </a>
@@ -65,21 +65,26 @@ use Pimcore\Model\Document;
                             <?php
                             foreach ($page->getPages() as $child) {
                                 ?>
-                                <li><a href="<?= $child->getHref()?>" class="title-dropdown"><?= $child->getLabel() ?></a></li>
-                                <ol>
+                                <li><a href="<?= $child->getHref()?>" class="title-dropdown <?= $child->getActive() ? "active" : ""?>"><?= $child->getLabel() ?></a></li>
+                                <ol class="grand-child">
                                 <?php $d = Document::getById($child->getId());
                                 $doc = $d->getProperty("child");
                                 $childs = explode(",", $doc);
-                                foreach($childs as $c){
-                                    $name = $c;
-                                    $pattern = '/\W/';
-                                    $result = preg_replace($pattern," ", $c);
-                                    $removeSpace = preg_replace('/\s+/',"-",$result);
-
-                                    $last = str_replace(" ","-",strtolower($removeSpace));
-                                    $value = $last; ?>
+                                if($doc){
+                                    foreach($childs as $c){
+                                        $name = $c;
+                                        $pattern = '/\W/';
+                                        $result = preg_replace($pattern," ", $c);
+                                        $removeSpace = preg_replace('/\s+/',"-",$result);
+    
+                                        $last = str_replace(" ","-",strtolower($removeSpace));
+                                        $value = $last; 
+                                
+                               ?>
                                     <li><a href="<?= $child->getHref() ."?tab=" . $value?>" class="title-dropdown"><?= $name ?></a></li>
-                                <?php }
+                                <?php 
+                                }    
+                            }
 
                                 ?>
                                 </ol>
@@ -97,15 +102,15 @@ use Pimcore\Model\Document;
 
                                         <?php endif;?>
                                         <?php
-                                        $hasGreatGrandChild = $grandChild->hasPages();
-                                        if ($hasGreatGrandChild) {
-                                            foreach ($grandChild->getPages() as $greatGrandChild) { ?>
+                                        // $hasGreatGrandChild = $grandChild->hasPages();
+                                        // if ($hasGreatGrandChild) {
+                                        //     foreach ($grandChild->getPages() as $greatGrandChild) { ?>
                                                 <li>
-                                                    <a class="<?php echo $greatGrandChild->getActive() ? 'active' : '' ?>" href="<?= $greatGrandChild->getHref() ?>"><?= $greatGrandChild->getLabel() ?></a>
+                                                    <a class="<?php //echo $greatGrandChild->getActive() ? 'active' : '' ?>" href="<?php //echo $greatGrandChild->getHref() ?>"><?php //echo $greatGrandChild->getLabel() ?></a>
                                                 </li>
                                         <?php
-                                            }
-                                        }
+                                            //}
+                                        //}
 
                                     }
                                 }

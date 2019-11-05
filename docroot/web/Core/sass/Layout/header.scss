@@ -538,8 +538,12 @@
             >li {
                 >a {
                     font-weight: bold;
-                    font-size: 1.2em;
-                    color: $dark;
+                    font-size: 1.3em;
+                    color: $grey-dark-color;
+
+                    &.active{
+                        color: $green-color;
+                    }
                 }
 
                 .about {
@@ -583,6 +587,9 @@
                 }
 
                 >.dropdown-menu {
+                    ol{
+                        margin-bottom: 12px;
+                    }
                     li {
                         a {
                             color: $dark;
@@ -590,12 +597,42 @@
                             padding-bottom: 6px;
                             padding-left: 30px;
                             font-size: 1.1em;
+
+                            &.active{
+                                color: $green-color;
+                            }
                         }
 
                         .title-dropdown {
-                            color: #0069aa;
+                            color: $grey-dark-color;
                             font-weight: bold;
                             font-size: 1.2em;
+                        }
+                    }
+                }
+
+                .grand-child{
+                    
+                    ol{
+                        padding-left: 30px;
+                    }
+                      
+                    li::before {
+                        content: "\25A0";
+                        color: $grey-dark-color;
+                        font-weight: bold;
+                        display: inline-block; 
+                        width: 1em;
+                        margin-left: -1em;
+                    }
+            
+                    li{
+                        padding-left: 50px;
+                        margin-bottom: 5px;
+
+                        a{
+                            padding-left: 8px;
+                            font-weight: normal!important;
                         }
                     }
                 }
