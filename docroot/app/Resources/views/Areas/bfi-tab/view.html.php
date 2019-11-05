@@ -7,6 +7,8 @@
 //         echo $this->wysiwyg("value");
 //     }
 // }
+$tab = $this->getParam("tab");
+
 ?>
 <div class="tabs-accor">
     <div class="container">
@@ -21,13 +23,22 @@
                     $result = preg_replace($pattern," ", $this->input("text"));
                     $removeSpace = preg_replace('/\s+/',"-",$result);
                     $last = str_replace(" ","-",strtolower($removeSpace));
-
-
+                    $id = $this->block("tab")->getCurrent();
+                    $active = "";
+                    if($tab == ""){
+                        if($id == 0){
+                            $active = "active";
+                        }
+                    }
+                    if($tab == $last){
+                        $active = "active";
+                    }
                     ?>
 
-                <li role="presentation">
-                    <a href="#<?= $last;?>" aria-controls="<?= $last;?>" role="tab" data-toggle="tab"><?= $this->input("text");?></a>
-                </li>
+                        <li role="presentation" class="<?= $active ?>">
+                            <a href="#" id="<?= $last;?>" aria-controls="<?= $id;?>" role="tab" data-toggle="tab"><?= $this->input("text");?></a>
+                        </li>
+
                 <?php }?>
 
             </ul>
@@ -42,10 +53,19 @@
                 $removeSpace = preg_replace('/\s+/',"-",$result);
                 $last = str_replace(" ","-",strtolower($removeSpace));
 
-
+                $id = $this->block("tab")->getCurrent();
+                $active = "";
                 ?>
-
-                <div role="tabpanel" class="tab-pane" id="<?= $last;?>">
+                <?php if($tab == "") {
+                    if($id == 0){
+                        $active = "active";
+                    }
+                }
+                if($tab == $last){
+                    $active = "active";
+                }
+                ?>
+                <div role="tabpanel" class="tab-pane <?= $active?>" id="<?=$id?>">
                     <?= $this->snippet("teaserSnipet");?>
                 </div>
             <?php }?>
