@@ -10,13 +10,21 @@
 $tab = $this->getParam("tab");
 
 ?>
+
+<?php
+    $this->headScript()->offsetSetFile(100, '/static/js/Includes/tabbing.js');
+?>
+
 <div class="tabs-accor">
     <div class="container">
         <article class="sect-title text-center">
             <h2 class="margin-top-10"><?= $this->input('title');?></h2>
         </article>
         <div id="<?= $this->select("group")->getData();?>">
-            <ul class="nav nav-tabs" role="tablist" id="tabsAccor">
+            <ul class="nav nav-tabs" role="tablist" id="outer-choice">
+                <li style="display: none" role="presentation" onclick="prev()" class="arrow" onclick="scrollPosition('<?= $id;?>')" id="prevButton">
+                    <a><i class="icon-left-arrow"></i></a>
+                </li>
                 <?php while ($this->block("tab")->loop()) { ?>
                     <?php
                     $pattern = '/\W/';
@@ -32,14 +40,20 @@ $tab = $this->getParam("tab");
                     }
                     if($tab == $last){
                         $active = "active";
+                        // dump($last);
+                        // dump($id);
+                        // exit;
                     }
                     ?>
 
-                        <li role="presentation" class="<?= $active ?>">
-                            <a href="#" id="<?= $last;?>" aria-controls="<?= $id;?>" role="tab" data-toggle="tab"><?= $this->input("text");?></a>
+                        <li role="presentation" class="<?= $active ?>" id="div<?= $id;?>">
+                            <a href="#<?= $id;?>" id="href<?= $id;?>"  data-prev="<?= $id == 0 ? '' : $id - 1 ?>" data-next="<?=$id == ($this->block("tab")->getCount() -1) ? "" : $id + 1;?>" aria-controls="<?= $id?>" role="tab" data-toggle="tab" onclick="setPreviewId(<?= $id == 0 ? '' : $id - 1 ?>,<?=$id == ($this->block('tab')->getCount() -1) ? '' : $id + 1;?>)"><?= $this->input("text");?></a>
                         </li>
 
                 <?php }?>
+                <li role="presentation" class="arrow" onclick="next()" id="nextButton">
+                    <a><i class="icon-right-arrow"></i></a>
+                </li>
 
             </ul>
 

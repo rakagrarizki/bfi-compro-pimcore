@@ -7,13 +7,13 @@
                 <div class="header-text"> <?= $this->input('subtitle'); ?></div>
                 <div class="header-title"><?= $this->input('title-profesi'); ?></div>
                 <div class="header-contain">
-                    <i class="demo-icon icon-maps-and-flags"></i><?= $this->input('address'); ?>
+                    <i class="icon-maps-and-flags"></i><?= $this->input('address'); ?>
                 </div>
                 <div class="header-contain">
-                    <?= $this->input('phone'); ?>
+                    <i class="icon-group-2584"></i><?= $this->input('phone'); ?>
                 </div>
                 <div class="header-contain">
-                    <a href="<?= $this->link('url')->isEmpty() ? '#' :$this->link('url')->getHref(); ?>"><?= $this->link('url')->getHref(); ?></a>
+                    <i class="icon-grid-world"></i><a href="<?= $this->link('url')->isEmpty() ? '#' :$this->link('url')->getHref(); ?>"><?= $this->link('url')->getHref(); ?></a>
                 </div>
             </div>
         </div>

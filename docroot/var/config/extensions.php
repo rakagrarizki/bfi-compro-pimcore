@@ -2,6 +2,6 @@
 
 return [
     "bundle" => [
-        "AppAdminBundle\\AppAdminBundle" => TRUE
+        "AppAdminBundle\\AppAdminBundle" => FALSE
     ]
 ];

@@ -49,7 +49,7 @@ $next = $data->getYear() + 1;
         <?php
         $checkPast = \Pimcore\Model\DataObject\Penghargaan::getByYear($past,1);
         if($checkPast):?>
-        <div class="col-md-6">
+        <div class="col-xs-6">
             <a href="<?= '/'.$this->getLocale().'/award/'.$past?>">
                 <div class="side-left">
 
@@ -62,7 +62,7 @@ $next = $data->getYear() + 1;
         <?php
         $checkNext = \Pimcore\Model\DataObject\Penghargaan::getByYear($next,1);
         if($checkNext):?>
-        <div class="col-md-6">
+        <div class="col-xs-6">
             <a href="<?= '/'.$this->getLocale().'/award/'.$next?>">
                 <div class="side-right">
 
