@@ -9,7 +9,7 @@ $this->extend('layout.html.php');
 
 ?>
 <div class="container">
-    <div class="page-title">Title</div>
+    <div class="page-title"><?= $this->t("award-title")?></div>
     <div class="row">
         <?php foreach($this->paginator as $key => $award) :?>
             <a href = "<?= '/'. $this->getLocale(). '/award/'.$award->getYear(); ?>">

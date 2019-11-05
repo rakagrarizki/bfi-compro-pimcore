@@ -66,6 +66,24 @@ use Pimcore\Model\Document;
                             foreach ($page->getPages() as $child) {
                                 ?>
                                 <li><a href="<?= $child->getHref()?>" class="title-dropdown"><?= $child->getLabel() ?></a></li>
+                                <ol>
+                                <?php $d = Document::getById($child->getId());
+                                $doc = $d->getProperty("child");
+                                $childs = explode(",", $doc);
+                                foreach($childs as $c){
+                                    $name = $c;
+                                    $pattern = '/\W/';
+                                    $result = preg_replace($pattern," ", $c);
+                                    $removeSpace = preg_replace('/\s+/',"-",$result);
+
+                                    $last = str_replace(" ","-",strtolower($removeSpace));
+                                    $value = $last; ?>
+                                    <li><a href="<?= $child->getHref() ."?tab=" . $value?>" class="title-dropdown"><?= $name ?></a></li>
+                                <?php }
+
+                                ?>
+                                </ol>
+
                                 <?php
                                 $hasGrandChildren = $child->hasPages();
                                 if ($hasGrandChildren) {
@@ -76,6 +94,7 @@ use Pimcore\Model\Document;
                                         </li>
                                         <?php else: ?>
                                             <li><a href="<?= $grandChild->getHref()?>" class="title-dropdown"><?= $grandChild->getLabel() ?></a></li>
+
                                         <?php endif;?>
                                         <?php
                                         $hasGreatGrandChild = $grandChild->hasPages();
