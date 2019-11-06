@@ -82,11 +82,13 @@ if($this->editmode) : ?>
                     Sunburst CBD Lot. 1.2 <br>
                     Jl. Kapt. Soebijanto Djojohadikusumo <br>
                     BSD City - Tangerang Selatan 15322
+                    Phone +62 21 2965 0300, 2965 0500
+                    Fax +62 21 2965 0757, 2965 0758
                 </p>
             </div>
             <div class="col-md-4 footer-center">
                 <span><a href="tel:1500018"><?= $this->translate("customer-care") ?> <i class="fa fa-phone"></i> 1500018</a></span>
-                <label><?= $this->translate("Newsletter") ?></label> 
+                <label><?= $this->translate("Newsletter") ?></label>
                 <form class="form-inline" id="sendNewsletter" action="/register/newsletter"
                       method="POST">
 
