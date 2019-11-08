@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 return [
     1 => [
@@ -1909,5 +1909,22 @@ return [
         "creationDate" => 1568710976,
         "modificationDate" => 1568711009
     ],
+    111 => [
+        "id" => 111,
+        "name" => "detail blog",
+        "pattern" => "/\\/(en|id)\\/news\\/([0-9a-zA-Z_-]+)\$/",
+        "reverse" => "/%lang/news/%slug",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\NewsController",
+        "action" => "detail",
+        "variables" => "lang,slug",
+        "defaults" => "",
+        "siteId" => [
 
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1573208609,
+        "modificationDate" => 1573208651
+    ]
 ];
