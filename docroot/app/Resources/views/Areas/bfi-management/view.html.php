@@ -29,14 +29,14 @@
             <div class="button-box"><button type="button" class="close" data-dismiss="modal">&times;</button></div>
             <div class="row">
                 <div class="col-sm-4">
-                    <div style="background-image: url(/_default_upload_bucket/kk-2018-1.jpg);" class="image-profile"></div>
+                    <div id="userImage" style="background-image: url('');" class="image-profile"></div>
                 </div>
                 <div class="col-sm-8">
                     <div class="title-profile" id="profileName"></div>
-                    <div class="job-profile" id="profileJob">Presiden Komisaris</div>
+                    <div class="job-profile" id="profileJob"></div>
                     <div class="profile-separate"></div>
                     <div class="sub-info-title">Biodata</div>
-                    <div class="sub-contain-title" id="profileBio">Warga negara Indonesia, lahir pada 1954, usia 64 tahun, berdomisili di Jakarta. Beliau menjabat sebagai Presiden Komisaris Perusahaan berdasarkan Akta Berita Acara RUPST No. 80 tanggal 15 Juni 2011, dan diangkat kembali sebagai Presiden Komisaris berdasarkan Akta Berita Acara RUPSLB No. 43 tanggal 25 April 2016 untuk periode 2016-2021. Beliau juga menjawab sebagai Wakil Presiden Komisaris PT Adaro Power, Komisaris PT Tamaris Hidro, Presiden Komisaris PT Setiabudi Investment Management, dan Komisaris PT Profesional Telekomunikasi Indonesia (Protelindo). </div>
+                    <div class="sub-contain-title" id="profileBio"></div>
                     <div class="sub-info-title">Riwayat Kerja</div>
                     <div class="sub-contain-title" id="profileHistory"></div>
                     <div class="sub-info-title">Riwayat Pendidikan</div>

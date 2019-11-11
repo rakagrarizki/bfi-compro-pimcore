@@ -4551,7 +4551,7 @@
   // });
 
 
-  $("#produk").hover(
+  $(".dark-back").hover(
     function () {
       $(".header-link-menu").addClass("active");
     },

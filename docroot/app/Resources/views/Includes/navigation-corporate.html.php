@@ -69,10 +69,10 @@ use Pimcore\Model\Document\Page;
 
                                         if ($hasChildren ) {
                                             ?>
-                                            <li class="dropdown"
+                                            <li class="dropdown dark-back"
                                                 id="produk">
                                                 <a href="#"
-                                                   class="<?php echo $page->getActive() ? 'active' : '' ?> produk"><?= $page->getLabel() ?></a>
+                                                   class="<?php echo $page->getActive() ? 'active' : '' ?> produk has-child"><?= $page->getLabel() ?></a>
                                                 <div class="dropdown-content main">
                                                     <div class="produk-hover container">
                                                         <div class="col-md-12">

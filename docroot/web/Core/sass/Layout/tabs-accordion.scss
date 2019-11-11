@@ -20,9 +20,17 @@
             color: $grey-dark-color;
         }
 
-        >li {
+        .arrow-outer{
+            display: none;
+
+            @include breakpoint(mobile) {
+                display: block;
+            }
+        }
+
+        li {
             margin: 0;
-            width: 25%;
+            // width: 25%;
 
             @include breakpoint(mobile) {
                 min-width: 180px;
@@ -30,7 +38,7 @@
                 width: auto;
             }
 
-            >a {
+            a {
                 margin: 0;
                 border: none;
                 border-radius: 0;
@@ -48,10 +56,18 @@
                 background-color: rgba($grey-dark-color, .5);
                 position: absolute;
                 left: 0;
-                bottom: -3px;
+                bottom: 0;
+            }
+            
+            &:hover{
+                background-color: #eee;
+                @include breakpoint(mobile) {
+                    background-color: transparent;
+                }
             }
 
             &.active {
+                background-color: $white;
                 &:after {
                     content: '';
                     width: 100%;
@@ -59,10 +75,10 @@
                     background-color: $blue;
                     position: absolute;
                     left: 0;
-                    bottom: -3px;
+                    bottom: 0;
                 }
                 >a {
-                    font-family: HelveticaNeue-Bold;
+                    // font-family: HelveticaNeue-Bold;
                     color: $blue;
 
                     &:hover,
@@ -78,6 +94,28 @@
         .accordion__wrap {
             &.produk {
                 margin-top: 20px;
+            }
+        }
+    }
+
+    .tabs-outer{
+        display: table;
+        width: 100%;
+
+        @include breakpoint(mobile){
+            display: block;
+        }
+        ul{
+            display: table-row;
+            @include breakpoint(mobile){
+                display: -webkit-box;
+                display: -moz-box;
+            }
+
+            li{
+                vertical-align: middle;
+                display: table-cell;
+                float: unset;
             }
         }
     }
