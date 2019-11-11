@@ -1,8 +1,10 @@
+console.log('management js');
 function getDetail(id){
     var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", 'http://bfi.localhost/management/get-detail?id='+id, false ); // false for synchronous request
+    xmlHttp.open( "GET", '/management/get-detail?id='+id, false ); // false for synchronous request
     xmlHttp.send( null );
 
+    document.getElementById('userImage').style.backgroundImage = 'url(' + JSON.parse(xmlHttp.responseText).data.Image + ')';
     document.getElementById('profileName').innerHTML  = JSON.parse(xmlHttp.responseText).data.Nama;
     document.getElementById('profileJob').innerHTML  = JSON.parse(xmlHttp.responseText).data.Jabatan;
     document.getElementById('profileBio').innerHTML  = JSON.parse(xmlHttp.responseText).data.Biodata;
