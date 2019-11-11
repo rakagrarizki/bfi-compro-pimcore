@@ -6,6 +6,7 @@
  */
 
 $this->extend('layout.html.php');
+$this->document->setProperty("site","Text","corporate",true );
 $news = $this->news;
 $relatedNews = $this->relatedNews;
 
