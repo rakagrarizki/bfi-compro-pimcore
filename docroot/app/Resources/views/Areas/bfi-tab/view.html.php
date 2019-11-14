@@ -46,7 +46,7 @@ $tab = $this->getParam("tab");
                     }
                     ?>
 
-                        <!-- need width --><li role="presentation" class="<?= $active ?>" id="div<?= $id;?>">
+                        <li role="presentation" class="<?= $active ?>" id="div<?= $id;?>" style="width:<?= 100 / $this->block("tab")->getCount()?>%">
                             <a href="#<?= $id;?>" id="href<?= $id;?>"  data-prev="<?= $id == 0 ? '' : $id - 1 ?>" data-next="<?=$id == ($this->block("tab")->getCount() -1) ? "" : $id + 1;?>" aria-controls="<?= $id?>" role="tab" data-toggle="tab" onclick="setPreviewId(<?= $id == 0 ? '' : $id - 1 ?>,<?=$id == ($this->block('tab')->getCount() -1) ? '' : $id + 1;?>)"><?= $this->input("text");?></a>
                         </li>
 

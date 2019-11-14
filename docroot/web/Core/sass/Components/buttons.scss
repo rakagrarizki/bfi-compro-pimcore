@@ -40,20 +40,12 @@
     &-orange { 
         position: relative;
         font-family: 'HelveticaNeue';
-        background-color: #F8991D;
-        color: #fff;
-        padding-right: 30px;
+        background-color: $orange-color;
+        color: $white;
 
-        &::after {
-            position: absolute;
-            font-family: 'FontAwesome';
-            content: "\f105";
-            right: 15px;
-            top: 9px;
-        }
 
         &:hover {
-            background-color: #d88417;
+            background-color: $orange-color;
             color: #fff;
         }
     }
