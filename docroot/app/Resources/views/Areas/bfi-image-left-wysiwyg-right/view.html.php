@@ -9,13 +9,15 @@
             </div>
             <div class="col-md-6">
                 <?= $this->wysiwyg("text"); ?>
+                <?php if(!$this->link("link")->isEmpty()) : ?>
+                    <br><br>
+                    <div class="row">
+                        <div class="button-area text-center no-padding">
+                            <a href="<?= $this->link("link")->getHref();?>" class="cta cta-orange cta-see cta-big"><?= $this->link("link")->getText();?></a>
+                        </div>
+                    </div>
+                <?php endif?>
             </div>
         </div>
     </div>
 </div>
-
-<?php if(!$this->link("link")->isEmpty()) : ?>
-<!-- <div></div> -->
-<?= $this->link("link")->getHref();?>
-<?= $this->link("link")->getText();?>
-<?php endif?>
