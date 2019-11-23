@@ -135,7 +135,7 @@ class ServiceController extends FrontendController
         }
 
         $data = new City\Listing();
-        $data->setCondition('ProvinceCode = '.$id);
+        $data->setCondition('ProvinceCode = :id',["id"=>$id]);
         $data->setOrderKey("Name");
         $data->setOrder("ASC");
         $maps = [];
@@ -154,7 +154,7 @@ class ServiceController extends FrontendController
     }
 
     /**
-     * @Route("/service/kecamatan/listJson")
+     * @Route("/service/kecamatan/listJson")0
     @Method({"GET"})
     @return \Symfony\Component\HttpFoundation\JsonResponse
      */
@@ -168,7 +168,7 @@ class ServiceController extends FrontendController
             ]);
         }
         $data = new Kecamatan\Listing();
-        $data->setCondition('CityCode = '.$id);
+        $data->setCondition('CityCode = ?',$id);
         $data->setOrderKey("Name");
         $data->setOrder("ASC");
         $maps = [];
@@ -201,7 +201,7 @@ class ServiceController extends FrontendController
             ]);
         }
         $data = new Kelurahan\Listing();
-        $data->setCondition('KecamatanCode = '.$id);
+        $data->setCondition('KecamatanCode = ?',$id);
         $data->setOrderKey("Name");
         $data->setOrder("ASC");
         $maps = [];

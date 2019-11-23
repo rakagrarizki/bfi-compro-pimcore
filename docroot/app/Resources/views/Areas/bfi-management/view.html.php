@@ -35,11 +35,11 @@
                     <div class="title-profile" id="profileName"></div>
                     <div class="job-profile" id="profileJob"></div>
                     <div class="profile-separate"></div>
-                    <div class="sub-info-title">Biodata</div>
+                    <div class="sub-info-title"><?= $this->t("biodata");?></div>
                     <div class="sub-contain-title" id="profileBio"></div>
-                    <div class="sub-info-title">Riwayat Kerja</div>
+                    <div class="sub-info-title"><?= $this->t("riwayat-kerja");?>></div>
                     <div class="sub-contain-title" id="profileHistory"></div>
-                    <div class="sub-info-title">Riwayat Pendidikan</div>
+                    <div class="sub-info-title"><?= $this->t("riwayat-pendidikan");?></div>
                     <div class="sub-contain-title" id="profileEducation"></div>
                 </div>
             </div>
