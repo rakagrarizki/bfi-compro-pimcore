@@ -5,7 +5,7 @@ $lang = $this->getLocale();
 $asset = $this->image("Image");
 //$fixedurl = $this->link("url")->getHref();
 $fixedurl = BASEURL . $this->document->getFullPath();
-$imagethumbnail = $asset->getImage();dump($imagethumbnail);exit;
+$imagethumbnail = $asset->getImage();
 //$urlcheck = Pimcore\Model\Asset::getByPath($imagethumbnail);
 $urlFacebook = " https://www.facebook.com/sharer/sharer.php?u=" . $fixedurl . "&title=" . $titleshare . "&picture=" . $imagethumbnail;
 $urlTwitter = " https://twitter.com/share?text=$titleshare&url=$fixedurl&wrap_links=true "; ?>
