@@ -1,5 +1,5 @@
 <style>
-    .accordion .accordion__wrap .panel-default>.panel-heading a.a-panelheading {
+    .accordion .accordion__wrap .panel-default>.panel-heading a.a-reportheading {
         padding: 35px 70px;
     }
 
@@ -19,6 +19,11 @@
     .accordion .accordion__wrap .panel .panel-body ul{
         list-style: none;
     }
+
+    .accordion .accordion__wrap .panel .panel-body .content-list{
+        justify-content: space-between; 
+        display: flex;        
+    }
     
     .accordion .accordion__wrap .panel .panel-body li{
         padding-bottom: 0px; 
@@ -31,23 +36,18 @@
         font-size: 150%;
     }
     
-    .accordion .accordion__wrap .panel .panel-body .content-list{
-        justify-content: space-between; 
-        display: flex;        
-    }
-    
-    .download-btn{
+    .content-list .download-btn{
         margin: auto 0;
     }
 
-    .down-box .cta-down{
+    .content-list .download-btn .down-box .cta-down{
         position: relative;
         padding-left: 56px;
         padding-right: 0;
         letter-spacing: 0;
     }
 
-    .down-box .cta-down::before{
+    .content-list .download-btn .down-box .cta-down::before{
         content: "\f019";
         display: block;
         width: 40px;
@@ -63,7 +63,7 @@
         left: 0;
     }
 
-    .down-box .cta-down span{
+    .content-list .download-btn  .down-box .cta-down span{
         font-family: HelveticaNeue-Bold;
         font-size: 14px;
         text-transform: uppercase;
@@ -81,11 +81,11 @@
         </article>
         <div class="accordion">
             <div class="accordion__wrap produk">
-                <div class="panel-group" id="coba">
+                <div class="panel-group">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title">
-                                <a class="a-panelheading" data-toggle="collapse" data-parent="#semester" href="#semester">
+                                <a class="a-reportheading" data-toggle="collapse" data-parent="#semester" href="#semester">
                                     2019</a>
                             </h4>
                         </div>
@@ -143,7 +143,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title">
-                                <a class="a-panelheading" data-toggle="collapse" data-parent="#semester1" href="#semester1">
+                                <a class="a-reportheading" data-toggle="collapse" data-parent="#semester1" href="#semester1">
                                     2018</a>
                             </h4>
                         </div>

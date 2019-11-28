@@ -9,7 +9,13 @@
         display: flex;
     }
     
-    .report-download-container {
+    .list-container .year{
+        font-size: 12px;
+        color: #565656;
+        margin-bottom: 5px;
+    }
+    
+    .list-container .report-download-container {
         font-size: 18px;
         width: 100%;
         margin: 0 auto;
@@ -17,30 +23,25 @@
         align-items: center;
         -webkit-box-pack: justify;
     }
-
-    .list-container .title{
+    
+    .list-container .report-download-container .title{
         font-weight: 900;
         color: #04559F;
     }
 
-    .year{
-        font-size: 12px;
-        color: #565656;
-        margin-bottom: 5px;
-    }
 
-    .download-btn{
+    .list-container .download-btn{
         margin: auto 0;
     }
 
-    .down-box .cta-down{
+    .list-container .down-box .cta-down{
         position: relative;
         padding-left: 56px;
         padding-right: 0;
         letter-spacing: 0;
     }
 
-    .down-box .cta-down::before{
+    .list-container .down-box .cta-down::before{
         content: "\f019";
         display: block;
         width: 40px;
@@ -56,7 +57,7 @@
         left: 0;
     }
 
-    .down-box .cta-down span{
+    .list-container .down-box .cta-down span{
         font-family: HelveticaNeue-Bold;
         font-size: 14px;
         text-transform: uppercase;
@@ -72,7 +73,7 @@
             <p><?= $this->textarea('text');?></p>
         </article>
         <div class="list-container">
-            <div class="">
+            <div class="information">
                 <div class="year">
                     2019
                 </div>
@@ -91,7 +92,7 @@
             </div>
         </div>
         <div class="list-container">
-            <div class="">
+            <div class="information">
                 <div class="year">
                     2018
                 </div>
