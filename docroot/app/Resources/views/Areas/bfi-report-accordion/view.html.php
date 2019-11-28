@@ -15,12 +15,27 @@
         background-color: #FCFCFC;
     }
 
+    
+    .accordion .accordion__wrap .panel .panel-body ul{
+        list-style: none;
+    }
+    
     .accordion .accordion__wrap .panel .panel-body li{
-        padding: 15px 25px; 
-        justify-content: space-between; 
-        display: flex;
+        padding-bottom: 0px; 
     }
 
+    .accordion .accordion__wrap .panel .panel-body li::before{
+        margin-right: 25px;
+        content: '\25AA';
+        color: #04559F;
+        font-size: 150%;
+    }
+    
+    .accordion .accordion__wrap .panel .panel-body .content-list{
+        justify-content: space-between; 
+        display: flex;        
+    }
+    
     .download-btn{
         margin: auto 0;
     }
@@ -56,9 +71,6 @@
         border-bottom: 2px solid #F9991C;
     }
 
-    /* .panel-body li:before{
-        border-bottom: 1px solid #000;
-    } */
 
 </style>
 
@@ -79,11 +91,11 @@
                         </div>
                         <div id="semester" class="panel-collapse collapse">
                             <div class="panel-body">
-                                <ul> 
-                                    <li>
-                                        <div>
+                                <ul>
+                                    <div class="content-list">
+                                        <li>
                                             Laporan Keuangan September 2019
-                                        </div>
+                                        </li>
                                         <div>
                                             <div class="download-btn">
                                                 <div class="down-box">
@@ -92,13 +104,13 @@
                                                     </a>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </li>
+                                        </div>                                    
+                                    </div> 
                                     <hr>
-                                    <li>
-                                        <div>
+                                    <div class="content-list">
+                                        <li>
                                             Laporan Keuangan Juli 2019
-                                        </div>
+                                        </li>
                                         <div>
                                             <div class="download-btn">
                                                 <div class="down-box">
@@ -107,13 +119,13 @@
                                                     </a>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </li>
+                                        </div>                                    
+                                    </div> 
                                     <hr>
-                                    <li>
-                                        <div>
+                                    <div class="content-list">
+                                        <li>
                                             Laporan Keuangan Maret 2019
-                                        </div>
+                                        </li>
                                         <div>
                                             <div class="download-btn">
                                                 <div class="down-box">
@@ -122,9 +134,8 @@
                                                     </a>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </li>
-                                    <hr>
+                                        </div>                                    
+                                    </div> 
                                 </ul>
                             </div>
                         </div>
@@ -138,11 +149,13 @@
                         </div>
                         <div id="semester1" class="panel-collapse collapse">
                             <div class="panel-body">
-                                <ul> 
-                                    <li>
-                                        <div>
-                                            Laporan Keuangan September 2018
-                                        </div>
+                                <ul>
+                                    <div class="content-list">
+                                        <li>
+                                            <div>
+                                                Laporan Keuangan September 2018
+                                            </div>
+                                        </li>
                                         <div>
                                             <div class="download-btn">
                                                 <div class="down-box">
@@ -151,13 +164,15 @@
                                                     </a>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </li>
+                                        </div>                                    
+                                    </div> 
                                     <hr>
-                                    <li>
-                                        <div>
-                                            Laporan Keuangan Juli 2018
-                                        </div>
+                                    <div class="content-list">
+                                        <li>
+                                            <div>
+                                                Laporan Keuangan Juli 2018
+                                            </div>
+                                        </li>
                                         <div>
                                             <div class="download-btn">
                                                 <div class="down-box">
@@ -166,13 +181,15 @@
                                                     </a>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </li>
+                                        </div>                                    
+                                    </div> 
                                     <hr>
-                                    <li>
-                                        <div>
-                                            Laporan Keuangan Maret 2018
-                                        </div>
+                                    <div class="content-list">
+                                        <li>
+                                            <div>
+                                                Laporan Keuangan Maret 2018
+                                            </div>
+                                        </li>
                                         <div>
                                             <div class="download-btn">
                                                 <div class="down-box">
@@ -181,8 +198,8 @@
                                                     </a>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </li>
+                                        </div>                                    
+                                    </div> 
                                     <hr>
                                 </ul>
                             </div>

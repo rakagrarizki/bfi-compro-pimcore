@@ -3,7 +3,7 @@
         padding: 15px 25px; 
         background-color: #F4F4F4; 
         margin-top: 20px;
-        width: 960px;
+        width: 100%;
         height: 73px;
         justify-content: space-between; 
         display: flex;
