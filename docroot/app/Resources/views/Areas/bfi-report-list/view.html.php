@@ -1,5 +1,5 @@
 <style>
-    .list-container {
+    /* .list-container {
         padding: 15px 25px; 
         background-color: #F4F4F4; 
         margin-top: 20px;
@@ -63,7 +63,7 @@
         text-transform: uppercase;
         color: #565656;
         border-bottom: 2px solid #000;
-    }
+    } */
 
 </style>
 <div class="row">

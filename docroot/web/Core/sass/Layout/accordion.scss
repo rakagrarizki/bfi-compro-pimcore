@@ -71,12 +71,83 @@
                             }
                         }
                     }
+
+                    // M. Muhyidin Amin
+                    ul {
+                        list-style: none;
+                    }
+
+                    li {
+                        padding-bottom: 0px;
+
+                        &::before {
+                            margin-right: 25px;
+                            content: '\25AA';
+                            color: #04559F;
+                            font-size: 150%;
+                        }
+                    }
+
+                    .content-list {
+                        justify-content: space-between; 
+                        display: flex;
+
+                        .download-btn{
+                            margin: auto 0;
+                            
+                            .down-box {
+
+                                .cta-down{
+                                    position: relative;
+                                    padding-left: 56px;
+                                    padding-right: 0;
+                                    letter-spacing: 0;
+                                
+                                    &::before{
+                                        content: "\f019";
+                                        display: block;
+                                        width: 40px;
+                                        height: 40px;
+                                        text-align: center;
+                                        line-height: 40px;
+                                        font-family: FontAwesome;
+                                        font-size: 14px;
+                                        color: #F9991C;
+                                        background-color: #fff;
+                                        position: absolute;
+                                        top: 0px;
+                                        left: 0;
+                                    }
+
+                                    span{
+                                        font-family: HelveticaNeue-Bold;
+                                        font-size: 14px;
+                                        text-transform: uppercase;
+                                        color: #F9991C;
+                                        border-bottom: 2px solid #F9991C;
+                                    }
+                                }
+
+                            }
+                        
+                        }
+                    }
+                    // -->
                 }
             }
 
             .panel-body {
                 padding: 25px 15px;
             }
+
+            // M. Muhyidin Amin
+            .content-accord {
+                color: #565656;
+                font-size: 20px;
+                padding: 50px 110px;
+                background-color: #FCFCFC;
+            }
+            // -->
 
             p {
                 font-family: 'HelveticaNeue';
@@ -135,6 +206,18 @@
                     font-size: 1.3em;
                     opacity: 0.4;
                 }
+
+                // M. Muhyidin Amin
+                &.a-reportheading {
+                    padding: 35px 70px;
+
+                    &::after {
+                        padding-right: 35px;
+                        top: 30px;
+                    }
+                }
+                // -->
+
             }
         }
     }
