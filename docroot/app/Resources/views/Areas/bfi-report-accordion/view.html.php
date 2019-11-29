@@ -1,21 +1,21 @@
 <style>
-    .accordion .accordion__wrap .panel-default>.panel-heading a.a-reportheading {
+    /* .accordion .accordion__wrap .panel-default>.panel-heading a.a-reportheading {
         padding: 35px 70px;
     }
 
     .accordion .accordion__wrap .panel-default>.panel-heading a::after {
         padding-right: 35px;
         top: 30px;
-    }
+    } */
 
-    .accordion .accordion__wrap .panel .panel-body {
+    /* .accordion .accordion__wrap .panel .panel-body {
         color: #565656;
         font-size: 20px;
         padding: 50px 110px;
         background-color: #FCFCFC;
-    }
+    } */
 
-    
+    /*
     .accordion .accordion__wrap .panel .panel-body ul{
         list-style: none;
     }
@@ -69,7 +69,7 @@
         text-transform: uppercase;
         color: #F9991C;
         border-bottom: 2px solid #F9991C;
-    }
+    } */
 
 
 </style>
@@ -93,7 +93,7 @@
                                     </h4>
                                 </div>
                                 <div id="5de097092fd27-1" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
-                                    <div class="panel-body">
+                                    <div class="panel-body report-accordion">
                                         <ul>
                                             <div class="content-list">
                                                 <li>
@@ -151,7 +151,7 @@
                                     </h4>
                                 </div>
                                 <div id="5de097092fd27-2" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
-                                    <div class="panel-body">
+                                    <div class="panel-body report-accordion">
                                         <ul>
                                             <div class="content-list">
                                                 <li>

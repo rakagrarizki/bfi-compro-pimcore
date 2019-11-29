@@ -23,6 +23,10 @@
         .title{
             font-weight: 900;
             color: #04559F;
+
+            @include breakpoint(mobile) {
+                font-size: 12px;
+            }
         }
     }
 
@@ -51,6 +55,13 @@
                     position: absolute;
                     top: 0px;
                     left: 0;
+
+                    @include breakpoint(mobile) {
+                        width: 35px;
+                        height: 35px;
+                        top: 15px;
+                        left: 15px;
+                    }
                 }
 
                 span{
@@ -59,7 +70,12 @@
                     text-transform: uppercase;
                     color: #565656;
                     border-bottom: 2px solid #000;
+                    
+                    @include breakpoint(mobile) {
+                        font-size: 12px;
+                    }
                 }
+
             }
         }
     }
