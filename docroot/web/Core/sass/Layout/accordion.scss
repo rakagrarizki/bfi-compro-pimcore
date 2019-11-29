@@ -84,15 +84,11 @@
                     font-size: 20px;
                     padding: 50px 110px;
                     background-color: #FCFCFC;
-
-                    @include breakpoint(tablet) {
-                        padding:  35px 30px;
-                        font-size: 18px;
-                    }
                     
                     @include breakpoint(mobile) {
-                        padding:  25px 20px;
-                        font-size: 14px;
+                        padding: 0px;
+                        padding-left:  45px;
+                        display: block;
                     }
                 }
 
@@ -111,19 +107,25 @@
                         font-size: 150%;
 
                         @include breakpoint(mobile) {
-                            margin-right: 5px;
+                            margin-right: 25px;
+                            padding: 0px;
                         }
                     }
 
                     @include breakpoint(mobile) {
-                        padding-left: 2rem;
-                        text-indent: -15px;
+                        font-size: 20px;
+                        padding-left: 25px;
+                        text-indent: -40px;
                     }
                 }
 
                 .content-list {
                     justify-content: space-between; 
                     display: flex;
+
+                    @include breakpoint(mobile) {
+                        display: block;
+                    }
 
                     .download-btn{
                         margin: auto 0;
@@ -135,6 +137,11 @@
                                 padding-left: 56px;
                                 padding-right: 0;
                                 letter-spacing: 0;
+
+                                @include breakpoint(mobile) {
+                                    padding-left: 40px;
+                                    left: 10px;
+                                }
                             
                                 &::before{
                                     content: "\f019";
@@ -150,6 +157,11 @@
                                     position: absolute;
                                     top: 0px;
                                     left: 0;
+
+                                    @include breakpoint(mobile) {
+                                        width: 40px;
+                                        height: 40px;
+                                    }
                                 }
 
                                 span{
@@ -242,6 +254,16 @@
                     &::after {
                         padding-right: 35px;
                         top: 30px;
+
+                        @include breakpoint(mobile) {
+                            padding-right: 30px;
+                            top: 50px;
+                        }
+                    }
+
+                    @include breakpoint(mobile) {
+                        padding: 50px 30px;
+                        font-size: 24px;
                     }
                 }
                 // -->

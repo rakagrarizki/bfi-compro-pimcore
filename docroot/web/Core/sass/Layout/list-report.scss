@@ -6,10 +6,19 @@
     justify-content: space-between; 
     display: flex;
 
+    @include breakpoint(mobile){
+        padding: 30px 40px 30px 30px;
+    }
+
     .year{
         font-size: 12px;
         color: #565656;
         margin-bottom: 5px;
+
+        @include breakpoint(mobile) {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
     }
 
     .report-download-container {
@@ -25,7 +34,8 @@
             color: #04559F;
 
             @include breakpoint(mobile) {
-                font-size: 12px;
+                font-size: 16px;
+                width: 150px;
             }
         }
     }
@@ -50,7 +60,7 @@
                     line-height: 40px;
                     font-family: FontAwesome;
                     font-size: 14px;
-                    color: #000;
+                    color: #fff;
                     background-color: #F9991C;
                     position: absolute;
                     top: 0px;
@@ -59,8 +69,8 @@
                     @include breakpoint(mobile) {
                         width: 35px;
                         height: 35px;
-                        top: 15px;
-                        left: 15px;
+                        top: 10px;
+                        left: 65px;
                     }
                 }
 
@@ -72,7 +82,7 @@
                     border-bottom: 2px solid #000;
                     
                     @include breakpoint(mobile) {
-                        font-size: 12px;
+                        visibility: hidden;
                     }
                 }
 
