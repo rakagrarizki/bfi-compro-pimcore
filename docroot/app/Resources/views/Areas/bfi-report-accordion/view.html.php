@@ -24,5 +24,3 @@ foreach($reports as $year){
         <?php endforeach;?>
 <?php }
 ?>
-
-

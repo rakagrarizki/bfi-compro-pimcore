@@ -1,0 +1,72 @@
+$mobile: 750px;
+@mixin mobile {
+    @media (max-width: #{$mobile}) {
+        @content;
+    }
+}
+
+.card-list-box{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    .card-list{
+        padding: 10px;
+        width: 25%;
+        @include mobile {
+            width: 50%;
+            margin-bottom: 20px;
+        }
+        img{
+            margin: 0 auto 20px auto;
+            width: 150px;
+            height: 200px;
+            
+        }
+        .card-content{
+            margin: 0 auto 0 auto;
+            h6{
+                margin-bottom: 10px;
+                font-size: 14px;
+                color: #565656;
+                @include mobile {
+                    font-size: 22px;
+                }
+            }
+            h3{
+                margin-bottom: 20px;
+                font-weight: bold;
+                font-size: 20px;
+                color: #04559f;
+                min-height: 50px;
+                @include mobile {
+                    font-size: 28px;
+                    margin-bottom: 30px;
+                }
+            }
+            a{
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                img{
+                    margin: 0 10px 0 0;
+                    width: 15px;
+                    height: 14px;
+                    @include mobile {
+                        width: 30px;
+                        height: 28px;
+                    }
+                }
+                span{
+                    font-size: 12px;
+                    color: #f9991c;
+                    @include mobile {
+                        font-size: 18px;
+                    }
+                }   
+            }
+        }
+    }
+}
