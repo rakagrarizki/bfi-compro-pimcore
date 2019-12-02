@@ -112,8 +112,15 @@
                         }
                     }
 
+                    @include breakpoint(tablet) {
+                        width: 60%;
+                        padding-left: 25px;
+                        text-indent: -40px;
+                    }
+
                     @include breakpoint(mobile) {
                         font-size: 20px;
+                        width: 100%;
                         padding-left: 25px;
                         text-indent: -40px;
                     }

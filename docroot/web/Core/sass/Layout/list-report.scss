@@ -51,6 +51,10 @@
                 padding-right: 0;
                 letter-spacing: 0;
 
+                @include breakpoint(mobile) {
+                    padding-left: 0px;
+                }
+
                 &::before{
                     content: "\f019";
                     display: block;
@@ -67,10 +71,10 @@
                     left: 0;
 
                     @include breakpoint(mobile) {
-                        width: 35px;
-                        height: 35px;
+                        width: 40px;
+                        height: 40px;
                         top: 10px;
-                        left: 65px;
+                        left: 80%;
                     }
                 }
 
