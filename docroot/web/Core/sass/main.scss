@@ -9,11 +9,11 @@
 
 /* BASE */
 @import
-    'base/fonts',
-    'base/reset',
-    'base/helper',
-    'base/flaticon',
-    'base/fontello';
+    'Base/fonts',
+    'Base/reset',
+    'Base/helper',
+    'Base/flaticon',
+    'Base/fontello';
 
 /* COMPONENT */
 @import
@@ -52,3 +52,4 @@
     'Layout/report-list-icon-year',
     'Layout/list-title',
     'Layout/object-popup';
+    'Layout/list-report.scss';
