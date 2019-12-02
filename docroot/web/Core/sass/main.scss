@@ -9,11 +9,11 @@
 
 /* BASE */
 @import
-    'base/fonts',
-    'base/reset',
-    'base/helper',
-    'base/flaticon',
-    'base/fontello';
+    'Base/fonts',
+    'Base/reset',
+    'Base/helper',
+    'Base/flaticon',
+    'Base/fontello';
 
 /* COMPONENT */
 @import
@@ -48,4 +48,5 @@
     'Layout/tabs-accordion',
     'Layout/visi-misi',
     'Layout/blog-promo',
-    'Layout/datepicker';
+    'Layout/datepicker',
+    'Layout/list-report.scss';
