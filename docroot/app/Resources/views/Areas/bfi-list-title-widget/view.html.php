@@ -16,3 +16,47 @@
         <?php } ?>
     </div>
 </div>
+
+ 
+<!-- Template -->
+<div class="container">
+    <ul class="list-title">
+        <li>
+            <a href="#">
+                <div class="right-content">
+                    <h6>18 April 2019</h6>
+                    <h3>Pengumuman Rapat Umum Pemegang Saham Tahunan dan Luar Biasa 2019</h3>
+                </div>
+                <div class="left-content">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </a>
+        </li>
+        
+        <li>
+            <a href="#">
+                <div class="right-content">
+                    <h6>10 Maret 2019</h6>
+                    <h3>Pengumuman Rapat Umum Pemegang Saham Tahunan dan Luar Biasa 2019</h3>
+                </div>
+                <div class="left-content">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <div class="right-content">
+                    <h6>1 Februari 2019</h6>
+                    <h3>Pengumuman Rapat Umum Pemegang Saham Tahunan dan Luar Biasa 2019</h3>
+                </div>
+                <div class="left-content">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<!-- Template -->
