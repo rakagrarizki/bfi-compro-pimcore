@@ -1,3 +1,19 @@
+
+<?php $category = $this->document->getProperty("category")->getId();
+$reports = new \Pimcore\Model\DataObject\Report\Listing();
+$reports->addConditionParam("Category__id = ?",$category,"AND");
+$years = [];
+foreach($reports as $year){
+    $found = in_array($year->getDate()->format("Y"), $years);
+
+    if(!$found){
+        $years[] = $year->getDate()->format("Y");
+    }
+
+}
+
+$key = 0;
+?>
 <div class="row">
     <div class="container">
         <article class="sect-title text-center">
@@ -8,122 +24,49 @@
                 <!-- <div class="container"> -->
                     <div class="row">
                         <div class="panel-group" id="5de097092fd27">
+                        <?php
+                        foreach($years as $y ){
+
+                            ?>
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
-                                        <a class="a-reportheading" data-toggle="collapse" data-parent="#5de097092fd27" href="#5de097092fd27-1">
-                                            2019</a>
+                                        <a class="a-reportheading" data-toggle="collapse" data-parent="#5de097092fd27" href="#5de097092fd27-<?=$key?>">
+                                            <?= $y?></a>
                                     </h4>
                                 </div>
-                                <div id="5de097092fd27-1" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+                                <div id="5de097092fd27-<?=$key?>" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
                                     <div class="panel-body report-accordion">
                                         <ul>
+                                            <?php
+                                            $reports->addConditionParam("YEAR(FROM_UNIXTIME(DATE)) = ? ", (int)$y,"AND");
+                                            $reports->load();
+                                            $total = count($reports);
+                                            foreach($reports as $i => $data):?>
                                             <div class="content-list">
                                                 <li>
-                                                    Laporan Keuangan September 2019
+                                                    <?= $data->getFileName();?>
                                                 </li>
                                                 <div>
                                                     <div class="download-btn">
                                                         <div class="down-box">
-                                                            <a href="<?= $this->link('url')->getHref(); ?>" class="cta cta-down">
-                                                                <span><?=  $this->t("Unduh Dokumen")?></span>
+                                                            <a href="<?= $data->getUrl(); ?>" class="cta cta-down">
+                                                                <span><?=  $this->t("download-document")?></span>
                                                             </a>
                                                         </div>
                                                     </div>
-                                                </div>                                    
-                                            </div> 
-                                            <hr>
-                                            <div class="content-list">
-                                                <li>
-                                                    Laporan Keuangan Juli 2019
-                                                </li>
-                                                <div>
-                                                    <div class="download-btn">
-                                                        <div class="down-box">
-                                                            <a href="<?= $this->link('url')->getHref(); ?>" class="cta cta-down">
-                                                                <span><?=  $this->t("Unduh Dokumen")?></span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>                                    
-                                            </div> 
-                                            <hr>
-                                            <div class="content-list">
-                                                <li>
-                                                    Laporan Keuangan Maret 2019
-                                                </li>
-                                                <div>
-                                                    <div class="download-btn">
-                                                        <div class="down-box">
-                                                            <a href="<?= $this->link('url')->getHref(); ?>" class="cta cta-down">
-                                                                <span><?=  $this->t("Unduh Dokumen")?></span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>                                    
-                                            </div> 
+                                                </div>
+                                            </div>
+                                            <?php echo  $i < $total ? "<hr>" : ""?>
+                                            <?php endforeach;?>
+
                                         </ul>
                                     </div>
                                 </div>
                             </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <a class="a-reportheading collapsed" data-toggle="collapse" data-parent="#5de097092fd27" href="#5de097092fd27-2" aria-expanded="false">
-                                            2018</a>
-                                    </h4>
-                                </div>
-                                <div id="5de097092fd27-2" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
-                                    <div class="panel-body report-accordion">
-                                        <ul>
-                                            <div class="content-list">
-                                                <li>
-                                                    Laporan Keuangan September 2018
-                                                </li>
-                                                <div>
-                                                    <div class="download-btn">
-                                                        <div class="down-box">
-                                                            <a href="<?= $this->link('url')->getHref(); ?>" class="cta cta-down">
-                                                                <span><?=  $this->t("Unduh Dokumen")?></span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>                                    
-                                            </div> 
-                                            <hr>
-                                            <div class="content-list">
-                                                <li>
-                                                    Laporan Keuangan Juli 2018
-                                                </li>
-                                                <div>
-                                                    <div class="download-btn">
-                                                        <div class="down-box">
-                                                            <a href="<?= $this->link('url')->getHref(); ?>" class="cta cta-down">
-                                                                <span><?=  $this->t("Unduh Dokumen")?></span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>                                    
-                                            </div> 
-                                            <hr>
-                                            <div class="content-list">
-                                                <li>
-                                                    Laporan Keuangan Maret 2018
-                                                </li>
-                                                <div>
-                                                    <div class="download-btn">
-                                                        <div class="down-box">
-                                                            <a href="<?= $this->link('url')->getHref(); ?>" class="cta cta-down">
-                                                                <span><?=  $this->t("Unduh Dokumen")?></span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>                                    
-                                            </div> 
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+                            <?php $key++;?>
+                            <?php } ?>
+
                         </div>
                     </div>
                 <!-- </div> -->
@@ -132,27 +75,3 @@
     </div>
 </div>
 
-<?php //$category = $this->document->getProperty("category")->getId();
-$reports = new \Pimcore\Model\DataObject\Report\Listing();
-$reports->addConditionParam("Category__id = ?",$category,"AND");
-$years = [];
-foreach($reports as $year){
-    $years[] = $year->getDate()->format("Y");
-}
-
-?>
-<?php
-    foreach($years as $y ){
-        $reports->addConditionParam("YEAR(Date) = ? ", $y,"AND");
-        echo $y. "__________ <br>";?>
-
-        <?php foreach($reports as $data):?>
-            <?= $data->getFilename();?>
-            <?= $data->getUrl();?>
-            <?= $data->get?>
-            <?php echo "<br>";?>
-
-
-        <?php endforeach;?>
-<?php }
-?>
