@@ -1,9 +1,9 @@
-$mobile: 750px;
-@mixin mobile {
-    @media (max-width: #{$mobile}) {
-        @content;
-    }
-}
+// $mobile: 750px;
+// @mixin mobile {
+//     @media (max-width: #{$mobile}) {
+//         @content;
+//     }
+// }
 
 .card-list-box{
     display: flex;
@@ -15,7 +15,7 @@ $mobile: 750px;
     .card-list{
         padding: 10px;
         width: 25%;
-        @include mobile {
+        @include breakpoint(mobile) {
             width: 50%;
             margin-bottom: 20px;
         }
@@ -31,7 +31,7 @@ $mobile: 750px;
                 margin-bottom: 10px;
                 font-size: 14px;
                 color: #565656;
-                @include mobile {
+                @include breakpoint(mobile) {
                     font-size: 22px;
                 }
             }
@@ -41,7 +41,7 @@ $mobile: 750px;
                 font-size: 20px;
                 color: #04559f;
                 min-height: 50px;
-                @include mobile {
+                @include breakpoint(mobile) {
                     font-size: 28px;
                     margin-bottom: 30px;
                 }
@@ -54,7 +54,7 @@ $mobile: 750px;
                     margin: 0 10px 0 0;
                     width: 15px;
                     height: 14px;
-                    @include mobile {
+                    @include breakpoint(mobile) {
                         width: 30px;
                         height: 28px;
                     }
@@ -62,7 +62,7 @@ $mobile: 750px;
                 span{
                     font-size: 12px;
                     color: #f9991c;
-                    @include mobile {
+                    @include breakpoint(mobile) {
                         font-size: 18px;
                     }
                 }   
