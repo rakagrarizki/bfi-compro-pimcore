@@ -9,14 +9,11 @@ $this->extend('layout.html.php');
 ?>
 
 <?php
-    // $this->headScript()->offsetSetFile(100, '/static/js/Includes/tabbing.js');
+    $this->headScript()->offsetSetFile(100, '/static/js/Includes/contact-us.js');
 ?>
 
 <style>
 
-    .identitas > label {
-        display: block;
-    } */
 </style>
 
 <div class="container">
@@ -51,17 +48,23 @@ $this->extend('layout.html.php');
                 </div>
                 <div class="form-group customer-type">
                     <label for="identitas">Identitas Anda</label>
-                    <div class="ipt-radio">
-                        <span>
-                            <input type="radio" name="tipe_paket" value="apprisal" />
-                        </span>
-                        Nasabah
-                    </div>
-                    <div class="ipt-radio">
-                        <span>
-                            <input type="radio" name="tipe_paket" value="non-apprisal" />
-                        </span>
-                        Non-Nasabah
+                    <div class="input-group inputform biaya-agunan">
+                        <div class="ipt-radio">
+                            <label>
+                            <span>
+                                <input id="type" type="radio" name="tipe_nasabah" value="nasabah" checked/>
+                            </span>
+                            Nasabah
+                            </label>
+                        </div>
+                        <div class="ipt-radio">
+                            <label>
+                            <span>
+                                <input id="type" type="radio" name="tipe_nasabah" value="non-nasabah" />
+                            </span>
+                            Non-Nasabah
+                            </label>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
@@ -73,12 +76,12 @@ $this->extend('layout.html.php');
                 <div class="form-group">
                     <label for="customer_name"><?= $this->translate('Nama Pelanggan')?></label>
                     <input type="tel" pattern="\d*" class="form-control formEmail" name="customer_name" id="customer_name" maxlength="13"
-                            placeholder="Masukkan nama pelanggan">
+                            placeholder="Masukkan nama pelanggan" disabled>
                     <div class="error-wrap"></div>
                 </div>
                 <div class="form-group">
-                    <label for="subject"><?= $this->translate('Jenis Pesan')?></label>
-                    <select class="form-control formRequired type-message" id="pekerjaan" name="pekerjaan"
+                    <label for="type_message"><?= $this->translate('Jenis Pesan')?></label>
+                    <select class="form-control formRequired type-message" id="pekerjaan" name="type_message"
                             placeholder="Pilih jenis pesan"/>
                         <option value="" disabled selected>Pilih jenis pesan</option>
                         <option value="1">Keluhan</option>
@@ -106,8 +109,8 @@ $this->extend('layout.html.php');
                     <div class="error-wrap"></div>
                     <span>Max. ukuran file adalah 500kb</span>
                 </div>
-                <div class="form-group">
-                    <div class="g-recaptcha captcha" id="g-recaptcha" data-sitekey="6LcsxcUUAAAAAO22We2mizM6KrBMmPECFMVMJ4NE"></div>
+                <div class="form-group captcha">
+                    <div class="g-recaptcha" id="g-recaptcha" data-sitekey="6LcsxcUUAAAAAO22We2mizM6KrBMmPECFMVMJ4NE"></div>
                 </div>
             </div>
             <div class="button-area text-center">
