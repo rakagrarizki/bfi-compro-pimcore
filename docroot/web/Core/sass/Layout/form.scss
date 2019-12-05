@@ -1616,6 +1616,16 @@ select::-ms-expand {
 }
 
 .form-contact {
+    .form-group .form-control {
+        @include breakpoint(tablet){
+            font-size: 16px;
+        }
+
+        @include breakpoint(mobile){
+            font-size: 12px;
+        }
+    }
+
     .select2-container--default .select2-selection--single .select2-selection__rendered {
         line-height : 1.5;
         padding-left: 0;
@@ -1624,9 +1634,9 @@ select::-ms-expand {
     .select2-container--default .select2-selection--single .select2-selection__arrow {
         display : none;
     }
-
-    .form-group option:checked .select2-container--default .select2-selection--single .select2-selection__rendered {
-        line-height : 45px;
+    
+    .select-wrapper > label {
+        visibility: hidden;
     }
 
     .captcha {
@@ -1634,14 +1644,18 @@ select::-ms-expand {
 
         .g-recaptcha {
             @include breakpoint(mobile){
-                transform:scale(0.77);
-                -webkit-transform:scale(0.77);
+                transform:scale(0.75);
+                -webkit-transform:scale(0.75);
                 transform-origin:0 0;
                 -webkit-transform-origin:0 0;
             }
 
             & > div[style] {
                 width : inherit !important;
+
+                @include breakpoint(mobile){
+                    width: 100vw !important;
+                }
             }
         }
 
@@ -1683,7 +1697,11 @@ select::-ms-expand {
                 display : contents;
                 color : #04559F;
                 font-size : 18px;
-                
+
+                @include breakpoint(tablet) {
+                    font-size: 14px;
+                }
+
                 @include breakpoint(mobile) {
                     font-size: 12px;
                 }
