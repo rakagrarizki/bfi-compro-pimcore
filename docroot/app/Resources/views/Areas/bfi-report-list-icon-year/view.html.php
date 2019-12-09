@@ -12,7 +12,11 @@ $reports->addConditionParam("Category__id = ?",$category,"AND");
     <ul class="card-list-box">
         <?php foreach($reports as $data):?>
         <li class="card-list">
-            <img src="/static/images/people.jpg" alt="">
+            <?php $asset = Pimcore\Model\Asset::getById($data->getPdf()->getId());
+            ?>
+
+
+            <img src="<?php echo $asset->getImageThumbnail('tes'); ?>" alt="">
             <div class="card-content">
                 <h6><?= $data->getDate()->formatLocalized("%Y");?></h6>
                 <h3><?= $data->getFilename();?></h3>
