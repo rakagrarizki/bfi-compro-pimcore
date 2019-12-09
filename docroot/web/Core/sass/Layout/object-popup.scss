@@ -1,8 +1,25 @@
+$mobile: 750px;
+@mixin mobile {
+    @media (max-width: #{$mobile}) {
+        @content;
+    }
+}
+
+#paragraph{
+    @include mobile {
+        padding: 0 20px 0 20px;
+    }
+}
+
 .photo-frame{
     position: relative;
     width: 100%;
     padding: 0;
     border: none;
+    background-color: transparent;
+    @include mobile {
+        margin-bottom: 60px;
+    }
 
     &:focus{
         outline: none;
@@ -10,6 +27,9 @@
 
     img{
         width: 100%;
+        @include mobile {
+            width: 80%;
+        }
     }
     .photo-description{
         background-color: #fff;
@@ -25,6 +45,9 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        @include mobile {
+            width: 70%;
+        }
         
         h5{ 
             font-size: 18px;
@@ -44,6 +67,9 @@
 .popup-style{
     margin: 20px auto 20px auto;
     max-width: 80vw;
+    @include mobile {
+        max-width: 90vw;
+    }
     
     .modal-content{
         box-shadow: 0px 3px 10px rgba(4, 85, 159, .75);
@@ -58,6 +84,10 @@
             position: absolute;
             top: 1%;
             right: 2%;
+            @include mobile {
+                top: .5%;
+                right: 3%;
+            }
             
             span{
                 font-size: 60px;
@@ -67,10 +97,21 @@
 
         .modal-body{
             margin-top: 80px;
-            padding: 0 20px 10px 20px;         
+            padding: 0 20px 10px 20px;
+            @include mobile {
+                padding: 0 5px 0 5px;
+            }
+            
             .row{
                 margin: 0;
                 
+                img{
+                    width: 100%;
+                    @include mobile {
+                        margin-bottom: 40px;
+                    }
+                }
+
                 #head-profile{
                     p{
                         color: #565656;

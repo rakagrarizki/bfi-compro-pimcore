@@ -1,0 +1,41 @@
+$mobile: 750px;
+@mixin mobile {
+    @media (max-width: #{$mobile}) {
+        @content;
+    }
+}
+
+.wysiwyg-list-right{
+    
+    img{
+        max-width: 100%;
+
+        @include mobile {
+            margin-bottom: 40px;
+        }
+    }
+
+    ul{
+    margin: 0;
+    list-style:none;
+    padding: 0;
+    
+        li{
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+
+            .number{
+                width: 10%;
+                text-align: center;
+                @include mobile {
+                    text-align: start;
+                }
+            }
+
+            .content{
+                width: 90%;
+            }
+        }
+    }    
+}
