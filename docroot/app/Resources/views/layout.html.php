@@ -16,6 +16,7 @@
           href="<?= \Pimcore\Tool::getHostUrl() . '/static/images/favicon/favicon.png' ?>"/>
     <link rel="shortcut icon" type="image/x-icon"
           href="<?= \Pimcore\Tool::getHostUrl() . '/static/images/favicon/favicon.ico' ?>" />
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
     <?php
     $site = $this->document->getProperty("site");

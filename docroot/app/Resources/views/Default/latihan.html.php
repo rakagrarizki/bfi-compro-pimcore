@@ -9,184 +9,110 @@ $this->extend('layout.html.php');
 ?>
 
 <?php
-    $this->headScript()->offsetSetFile(100, '/static/js/Includes/tabbing.js');
+    // $this->headScript()->offsetSetFile(100, '/static/js/Includes/tabbing.js');
 ?>
 
-<div class="tabs-accor">
-    <div class="container">
-        <article class="sect-title text-center">
-            <h2 class="margin-top-10">Informasi Keuangan</h2>
-        </article>
-        <div id="" class="tabs-outer">
-            <ul class="nav nav-tabs" role="tablist" id="outer-choice">
-                <li style="display: none" role="presentation" onclick="prev()" class="arrow" onclick="scrollPosition('<?= $id;?>')" id="prevButton">
-                    <a class="arrow-outer"><i class="icon-left-arrow"></i></a>
-                </li>
-                <li class="active">
-                    <a  href="#1a" data-toggle="tab">Informasi Keuangan Triwulan</a>
-                </li>
-                <li>
-                    <a href="#2a" data-toggle="tab">Informasi Keuangan Semester</a>
-                </li>
-                <li>
-                    <a href="#3a" data-toggle="tab">Informasi Keuangan Tahunan</a>
-                </li>
-                <li role="presentation" class="arrow" onclick="next()" id="nextButton">
-                    <a class="arrow-outer"><i class="icon-right-arrow"></i></a>
-                </li>
-            </ul>
-        </div>	
-        <div class="tab-content clearfix">
-            <div role="tabpanel" class="tab-pane active" id="1a">
-                <div class="accordion">
-                    <div class="accordion__wrap produk">
-                        <div class="container">
-                            <div class="row">
-                                <div class="panel-group" id="coba">
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h4 class="panel-title">
-                                                <a class="a-panelheading" data-toggle="collapse" data-parent="#triwulan" href="#triwulan">
-                                                    2019</a>
-                                            </h4>
-                                        </div>
-                                        <div id="triwulan" class="panel-collapse collapse">
-                                            <div class="panel-body">
-                                                <ul>
-                                                    <li>Laporan Keuangan September 2019</li>
-                                                    <li>Laporan Keuangan Juli 2019</li>
-                                                    <li>Laporan Keuangan Maret 2019</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h4 class="panel-title">
-                                                <a class="a-panelheading" data-toggle="collapse" data-parent="#triwulan1" href="#triwulan1">
-                                                    2018</a>
-                                            </h4>
-                                        </div>
-                                        <div id="triwulan1" class="panel-collapse collapse">
-                                            <div class="panel-body">
-                                                <ul>        
-                                                    <li>Laporan Keuangan September 2018</li>
-                                                    <li>Laporan Keuangan Juli 2018</li>
-                                                    <li>Laporan Keuangan Maret 2018</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+<style>
+
+    .identitas > label {
+        display: block;
+    } */
+</style>
+
+<div class="container">
+    <div class="col-xs-12">
+
+        <form id="contact" class="form-get--credit" action="#">
+        <input type="hidden" id="jenis_form" name="jenis_form" value="Contact">
+        
+            <div class="form-body--credit form-contact">
+                <div class="text-head">
+                    <h2 class="text-center">Hubungi Kami</h2>
+                    <p class="text-center">Silahkan mengisi form dibawah ini, agen BFI akan menghubungi Anda</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="nama_lengkap"><?= $this->translate('form-name')?></label>
+                    <input type="text" class="form-control formRequired formName" name="nama_lengkap" id="nama_lengkap"
+                            placeholder="Masukkan nama lengkap Anda">
+                    <div class="error-wrap"></div>
+                </div>
+                <div class="form-group">
+                    <label for="no_handphone"><?= $this->translate('form-hp')?></label>
+                    <input type="email" class="form-control formRequired formPhoneNumber" name="no_handphone" id="no_handphone"
+                            placeholder="Masukkan nomor handphone Anda">
+                    <div class="error-wrap"></div>
+                </div>
+                <div class="form-group">
+                    <label for="email_penanya"><?= $this->translate('form-email')?></label>
+                    <input type="tel" pattern="\d*" class="form-control formEmail" name="email_penanya" id="email_penanya" maxlength="13"
+                            placeholder="Masukkan email Anda">
+                    <div class="error-wrap"></div>
+                </div>
+                <div class="form-group customer-type">
+                    <label for="identitas">Identitas Anda</label>
+                    <div class="ipt-radio">
+                        <span>
+                            <input type="radio" name="tipe_paket" value="apprisal" />
+                        </span>
+                        Nasabah
+                    </div>
+                    <div class="ipt-radio">
+                        <span>
+                            <input type="radio" name="tipe_paket" value="non-apprisal" />
+                        </span>
+                        Non-Nasabah
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="no_kontrak"><?= $this->translate('Nomor Kontrak')?></label>
+                    <input type="tel" pattern="\d*" class="form-control formEmail" name="no_kontrak" id="no_kontrak" maxlength="13"
+                            placeholder="Masukkan nomor kontrak">
+                    <div class="error-wrap"></div>
+                </div>
+                <div class="form-group">
+                    <label for="customer_name"><?= $this->translate('Nama Pelanggan')?></label>
+                    <input type="tel" pattern="\d*" class="form-control formEmail" name="customer_name" id="customer_name" maxlength="13"
+                            placeholder="Masukkan nama pelanggan">
+                    <div class="error-wrap"></div>
+                </div>
+                <div class="form-group">
+                    <label for="subject"><?= $this->translate('Jenis Pesan')?></label>
+                    <select class="form-control formRequired type-message" id="pekerjaan" name="pekerjaan"
+                            placeholder="Pilih jenis pesan"/>
+                        <option value="" disabled selected>Pilih jenis pesan</option>
+                        <option value="1">Keluhan</option>
+                        <option value="2">Saran</option>
+                    </select>
+                    <div class="error-wrap"></div>
+                </div>
+                <div class="form-group">
+                    <label for="message"><?= $this->translate('label-place')?></label>
+                    <textarea class="form-control formRequired formMessage" name="message" id="message"
+                                placeholder="Masukkan Pesan Anda"></textarea>
+                    <div class="error-wrap"></div>
+                </div>
+                <div class="form-group upload-image">
+                    <label><?= $this->translate('Dokumen Pendukung')?></label>
+                    <div class="upload-file">
+                        <img src="" />
+                        <div class="upload-btn">
+                        <input type="file" class="file-input" accept="image/*" data-id="document" />
+                        <button type="button">Pilih File</button>
+                        <b></b>
                         </div>
                     </div>
+                    <input type="hidden" class="form-control formRequired" name="document" id="document">
+                    <div class="error-wrap"></div>
+                    <span>Max. ukuran file adalah 500kb</span>
+                </div>
+                <div class="form-group">
+                    <div class="g-recaptcha captcha" id="g-recaptcha" data-sitekey="6LcsxcUUAAAAAO22We2mizM6KrBMmPECFMVMJ4NE"></div>
                 </div>
             </div>
-            <div role="tabpanel" class="tab-pane" id="2a">
-            <div class="accordion">
-                    <div class="accordion__wrap produk">
-                        <div class="container">
-                            <div class="row">
-                                <div class="panel-group" id="coba">
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h4 class="panel-title">
-                                                <a class="a-panelheading" data-toggle="collapse" data-parent="#semester" href="#semester">
-                                                    2019</a>
-                                            </h4>
-                                        </div>
-                                        <div id="semester" class="panel-collapse collapse">
-                                            <div class="panel-body">
-                                                <ul>
-                                                    <div class="download-box">
-                                                        <div class="container" style="padding: 30px 40px;">
-                                                            <div class="down-box" style="padding: 20px 0px;">
-                                                                <h3><li>Desember</li></h3>
-                                                                <a href="<?= $this->link('url')->getHref(); ?>" class="cta cta-down">
-                                                                    <span><?=  $this->t("Unduh Dokumen")?></span>
-                                                                </a>
-                                                            </div>
-                                                            <div class="down-box" style="padding: 20px 0px;">
-                                                                <h3><li>Juni</li></h3>
-                                                                <a href="<?= $this->link('url')->getHref(); ?>" class="cta cta-down">
-                                                                    <span><?=  $this->t("Unduh Dokumen")?></span>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h4 class="panel-title">
-                                                <a class="a-panelheading" data-toggle="collapse" data-parent="#semester1" href="#semester1">
-                                                    2018</a>
-                                            </h4>
-                                        </div>
-                                        <div id="semester1" class="panel-collapse collapse">
-                                            <div class="panel-body">
-                                                <ul>        
-                                                    <div class="download-box">
-                                                        <div class="container" style="padding: 30px 40px;">
-                                                            <div class="down-box" style="padding: 20px 0px;">
-                                                                <h3><li>Desember</li></h3>
-                                                                <a href="<?= $this->link('url')->getHref(); ?>" class="cta cta-down">
-                                                                    <span><?=  $this->t("Unduh Dokumen")?></span>
-                                                                </a>
-                                                            </div>
-                                                            <div class="down-box" style="padding: 20px 0px;">
-                                                                <h3><li>Juni</li></h3>
-                                                                <a href="<?= $this->link('url')->getHref(); ?>" class="cta cta-down">
-                                                                    <span><?=  $this->t("Unduh Dokumen")?></span>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="button-area text-center">
+                <button class="cta cta-primary cta-big" id="button1" type="button">Kirim Pesan</button>
             </div>
-            <div role="tabpanel" class="tab-pane" id="3a">
-                <div style="padding: 12px; background-color: #CBCBCB; margin-top: 20px;">
-                    <div class="container">
-                        2019
-                        <div style="font-size: 20px; display: flex;">
-                            <div class="down-box">
-                                <strong>
-                                    Informasi Keuangan Tahunan Juni 2019
-                                </strong>
-                                <a href="<?= $this->link('url')->getHref(); ?>" class="cta cta-down">
-                                    <span><?=  $this->t("Unduh Dokumen")?></span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div style="padding: 12px; background-color: #CBCBCB; margin-top: 20px;">
-                    <div class="container">
-                        2018
-                        <div style="font-size: 20px">
-                            <div class="down-box">
-                                <strong>
-                                    Informasi Keuangan Tahunan Juni 2018
-                                </strong>
-                                <a href="<?= $this->link('url')->getHref(); ?>" class="cta cta-down">
-                                    <span><?=  $this->t("Unduh Dokumen")?></span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </form>
     </div>
 </div>

@@ -14,9 +14,10 @@
 	visibility: visible !important;
 	z-index: 99999;
 
-}.pimcore_area_buttons .pimcore_area_buttons_inner{
-	z-index: 9999;
 }
+/*.pimcore_area_buttons .pimcore_area_buttons_inner{*/
+/*	z-index: 8888;*/
+/*}*/
 
 .navbar-fixed-top, .navbar-fixed-bottom {
 	/*position: inherit !important;*/
@@ -73,10 +74,10 @@
     margin-top :100px;
 }*/
 
-.x-window{
-    z-index:99999 !important;
+/*.x-window{*/
+/*    z-index:99999 !important;*/
 
-}
+/*}*/
 .cke_dialog{
 	z-index: 100000!important;
 }
