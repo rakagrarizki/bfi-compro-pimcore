@@ -1,3 +1,5 @@
+
+
 <?php $category = $this->document->getProperty("category")->getId();
 $reports = new \Pimcore\Model\DataObject\Report\Listing();
 $reports->addConditionParam("Category__id = ?",$category,"AND");
@@ -37,18 +39,3 @@ $reports->addConditionParam("Category__id = ?",$category,"AND");
 
     </div>
 </div>
-
-
-
-
-    <?php
-//$thumb = "/prev/".$data->getFileName();
-//    $image = new \Pimcore\Image\Adapter\Imagick($data->getUrl().'[0]'); // first page only
-//    //$image->flattenImages();
-////    $image->setImageFormat('jpg');
-////    $image->setImageCompression(Imagick::COMPRESSION_JPEG);
-////    $image->setImageCompressionQuality(80);
-////    $image->thumbnailImage("300", 0);
-//    $image->load($thumb);
-    ?>
-
