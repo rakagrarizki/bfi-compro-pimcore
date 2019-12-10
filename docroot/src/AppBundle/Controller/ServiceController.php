@@ -22,6 +22,12 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class ServiceController extends FrontendController
 {
+    public function getToken()
+    {
+        $token = $this->get('session')->get('token');
+        return $token;
+    }
+
     public function defaultAction(Request $request)
     { }
 
@@ -43,7 +49,7 @@ class ServiceController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => "GG"
+                'message' => "Failed to retrieve the data!"
             ]);
         }
 
@@ -77,22 +83,19 @@ class ServiceController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => "GG"
+                'message' => "Failed to retrieve the data!"
             ]);
         }
 
         if ($data->status == "success") {
-            // $session->invalidate();
-            // $result = $data->data->is_ktp_verify;
-            // $session->set('token', $result);
-            // $ses = $session->get('token');
-            // $ses = $this->getSession()->get('token');
+            // $ses = $this->get('session')->get('token');
+            $ses = $this->getToken();
         }
 
         return new JsonResponse([
             'success' => true,
-            'result' => $data
-            // 'session' => $this->getSession()->get('token')
+            'result' => $data,
+            'session' => $ses
         ]);
     }
 
@@ -113,30 +116,33 @@ class ServiceController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => "GG"
+                'message' => "Failed to retrieve the data!"
             ]);
         }
 
         if ($data->status == "success") {
+            $redis = new \Credis_Client("localhost", 6379, null, '', 1);
             // $session = new SessionInterface();
-            $session = new Session();
+            // $session = new Session();
             // $session->clear();
-            $session->invalidate();
-            $session->start();
+            // $session->invalidate();
+            // $session->start();
             $result = $data->data->customer_token;
-            $session->set('token', $result);
+            // $redis->set('token', $result);
+            $this->get('session')->set('token', ['key' => $result]);
+            // $session->set('token', $result);
             // $token = $session->get('token');
             // $session->setName('key') = $token;
-            $ses = $session->get('token');
+            // $ses = $session->get('token');
             // $_SESSION['token'] = $result;
             // $ses = $_SESSION['token'];
-            // $session->save();
+            // $ses = $redis->get('token');
         }
 
         return new JsonResponse([
             'success' => true,
             'result' => $data,
-            'session' => $ses
+            'session' => $this->getToken()
         ]);
     }
 
@@ -148,6 +154,7 @@ class ServiceController extends FrontendController
     public function checkVerifyStatusListJsonAction()
     {
         // $session = new Session();
+        $token = $this->getToken();
 
         $param = [];
 
@@ -156,11 +163,11 @@ class ServiceController extends FrontendController
         $sendAPI = new SendApi();
 
         try {
-            $data = $sendAPI->verifyStatus($url, $param);
+            $data = $sendAPI->verifyStatus($url, $param, $token);
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => "GG",
+                'message' => "Failed to retrieve the data!",
                 'detail' => $data
             ]);
         }
@@ -186,6 +193,8 @@ class ServiceController extends FrontendController
      */
     public function verifyEmailRequestListJsonAction(Request $request)
     {
+        $token = $this->getToken();
+
         $param['email'] = htmlentities(addslashes($request->get('email')));
 
         $url = "http://www.bficorporatedev.com/login_email_verify_request";
@@ -193,11 +202,11 @@ class ServiceController extends FrontendController
         $sendAPI = new SendApi();
 
         try {
-            $data = $sendAPI->verifyEmailRequest($url, $param);
+            $data = $sendAPI->verifyEmailRequest($url, $param, $token);
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => "GG",
+                'message' => "Failed to retrieve the data!",
                 'detail' => $data
             ]);
         }
@@ -217,8 +226,10 @@ class ServiceController extends FrontendController
     @Method({"POST"})
     @return \Symfony\Component\HttpFoundation\JsonResponse
      */
-    public function verifyEmailConfirmJsonAction(Request $request)
+    public function verifyEmailConfirmListJsonAction(Request $request)
     {
+        $token = $this->getToken();
+
         $param['email_verify_code'] = htmlentities(addslashes($request->get('email_verify_code')));
 
         $url = "http://www.bficorporatedev.com/login_email_verify_confirm";
@@ -226,11 +237,11 @@ class ServiceController extends FrontendController
         $sendAPI = new SendApi();
 
         try {
-            $data = $sendAPI->verifyEmailConfirm($url, $param);
+            $data = $sendAPI->verifyEmailConfirm($url, $param, $token);
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => "GG",
+                'message' => "Failed to retrieve the data!",
                 'detail' => $data
             ]);
         }
@@ -250,8 +261,10 @@ class ServiceController extends FrontendController
     @Method({"POST"})
     @return \Symfony\Component\HttpFoundation\JsonResponse
      */
-    public function verifyNoKtpJsonAction(Request $request)
+    public function verifyNoKtpListJsonAction(Request $request)
     {
+        $token = $this->getToken();
+
         $param['no_ktp'] = htmlentities(addslashes($request->get('no_ktp')));
         $param['path_ktp'] = htmlentities(addslashes($request->get('path_ktp')));
 
@@ -260,11 +273,11 @@ class ServiceController extends FrontendController
         $sendAPI = new SendApi();
 
         try {
-            $data = $sendAPI->verifyNoKtp($url, $param);
+            $data = $sendAPI->verifyNoKtp($url, $param, $token);
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => "GG",
+                'message' => "Failed to retrieve the data!",
                 'detail' => $data
             ]);
         }
@@ -284,8 +297,10 @@ class ServiceController extends FrontendController
     @Method({"POST"})
     @return \Symfony\Component\HttpFoundation\JsonResponse
      */
-    public function logoutJsonAction()
+    public function logoutListJsonAction()
     {
+        $token = $this->getToken();
+
         $param = [];
 
         $url = "http://www.bficorporatedev.com/logout";
@@ -293,11 +308,223 @@ class ServiceController extends FrontendController
         $sendAPI = new SendApi();
 
         try {
-            $data = $sendAPI->logout($url, $param);
+            $data = $sendAPI->logout($url, $param, $token);
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => "GG",
+                'message' => "Failed to retrieve the data!",
+                'detail' => $data
+            ]);
+        }
+
+        if ($data->status == "success") {
+            // fill something
+            $this->get('session')->clear();
+        }
+
+        return new JsonResponse([
+            'success' => true,
+            'result' => $data
+        ]);
+    }
+
+    /**
+     * @Route("/service/assignment/listJson")
+    @Method({"GET"})
+    @return \Symfony\Component\HttpFoundation\JsonResponse
+     */
+    public function assignmentListJsonAction()
+    {
+        $token = $this->getToken();
+
+        $param = [];
+
+        $url = "http://www.bficorporatedev.com/dashboard_get_list_assignment";
+
+        $sendAPI = new SendApi();
+
+        try {
+            $data = $sendAPI->listAssignment($url, $param, $token);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Failed to retrieve the data!",
+                'detail' => $data
+            ]);
+        }
+
+        if ($data->status == "success") {
+            // fill something
+        }
+
+        return new JsonResponse([
+            'success' => true,
+            'result' => $data
+        ]);
+    }
+
+    /**
+     * @Route("/service/applicationstep/listJson")
+    @Method({"GET"})
+    @return \Symfony\Component\HttpFoundation\JsonResponse
+     */
+    public function applicationStepListJsonAction()
+    {
+        $token = $this->getToken();
+
+        $param = [];
+
+        $url = "http://www.bficorporatedev.com/dashboard_get_list_application_step";
+
+        $sendAPI = new SendApi();
+
+        try {
+            $data = $sendAPI->listApplicationStep($url, $param, $token);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Failed to retrieve the data!",
+                'detail' => $data
+            ]);
+        }
+
+        if ($data->status == "success") {
+            // fill something
+        }
+
+        return new JsonResponse([
+            'success' => true,
+            'result' => $data
+        ]);
+    }
+
+    /**
+     * @Route("/service/applicationstatus/listJson")
+    @Method({"POST"})
+    @return \Symfony\Component\HttpFoundation\JsonResponse
+     */
+    public function applicationStatusListJsonAction(Request $request)
+    {
+        $token = $this->getToken();
+
+        $param['assignment_id'] = htmlentities(addslashes($request->get('assignment_id')));
+
+        $url = "http://www.bficorporatedev.com/dashboard_get_list_application_status";
+
+        $sendAPI = new SendApi();
+
+        try {
+            $data = $sendAPI->listApplicationStatus($url, $param, $token);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Failed to retrieve the data!",
+                'detail' => $data
+            ]);
+        }
+
+        if ($data->status == "success") {
+            // fill something
+        }
+
+        return new JsonResponse([
+            'success' => true,
+            'result' => $data
+        ]);
+    }
+
+    /**
+     * @Route("/service/contractstatus/listJson")
+    @Method({"POST"})
+    @return \Symfony\Component\HttpFoundation\JsonResponse
+     */
+    public function contractStatusListJsonAction(Request $request)
+    {
+        $token = $this->getToken();
+
+        $param['started_index'] = htmlentities(addslashes($request->get('started_index')));
+        $param['length'] = htmlentities(addslashes($request->get('length')));
+
+        $url = "http://www.bficorporatedev.com/dashboard_get_list_contract_status";
+
+        $sendAPI = new SendApi();
+
+        try {
+            $data = $sendAPI->listContractStatus($url, $param, $token);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Failed to retrieve the data!",
+                'detail' => $data
+            ]);
+        }
+
+        if ($data->status == "success") {
+            // fill something
+        }
+
+        return new JsonResponse([
+            'success' => true,
+            'result' => $data
+        ]);
+    }
+
+    /**
+     * @Route("/service/contractdetail/listJson")
+    @Method({"POST"})
+    @return \Symfony\Component\HttpFoundation\JsonResponse
+     */
+    public function contractDetailListJsonAction(Request $request)
+    {
+        $token = $this->getToken();
+
+        $param['contract_number'] = htmlentities(addslashes($request->get('contract_number')));
+
+        $url = "http://www.bficorporatedev.com/dashboard_get_detail_contract";
+
+        $sendAPI = new SendApi();
+
+        try {
+            $data = $sendAPI->detailContract($url, $param, $token);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Failed to retrieve the data!",
+                'detail' => $data
+            ]);
+        }
+
+        if ($data->status == "success") {
+            // fill something
+        }
+
+        return new JsonResponse([
+            'success' => true,
+            'result' => $data
+        ]);
+    }
+
+    /**
+     * @Route("/service/contractdetailtransaction/listJson")
+    @Method({"POST"})
+    @return \Symfony\Component\HttpFoundation\JsonResponse
+     */
+    public function contractDetailTransactionListJsonAction(Request $request)
+    {
+        $token = $this->getToken();
+
+        $param['contract_number'] = htmlentities(addslashes($request->get('contract_number')));
+
+        $url = "http://www.bficorporatedev.com/dashboard_get_detail_transaksi_pembayaran";
+
+        $sendAPI = new SendApi();
+
+        try {
+            $data = $sendAPI->detailContractTransaction($url, $param, $token);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Failed to retrieve the data!",
                 'detail' => $data
             ]);
         }

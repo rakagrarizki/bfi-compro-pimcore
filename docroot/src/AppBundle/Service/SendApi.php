@@ -56,17 +56,9 @@ class SendApi
         return $this->getData($data);
     }
 
-    public function executeApiBearer($name, $url, $params, $method)
+    public function executeApiBearer($name, $url, $params, $method, $token)
     {
-        // $request = new Request();
-        // $session = $request->getSession();
-        // $session = new Session();
-        // $token = $_SESSION['token'];
-        // $session = new Session;
-        // $session = $this->getRequest()->getSession();
-        // $request = new Request;
-        // $token = $session->get('token');
-        $token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRGF0YSI6eyJwaG9uZV9udW1iZXIiOiIwODkxMTg4MTgxOCIsIm90cF9jb2RlIjoiODQzNSIsImlzX2xvZ2luIjoxfSwiaWF0IjoxNTc1ODczODI1LCJleHAiOjE1NzU5NjAyMjV9.1Ls5s42eaZqDld4_HBPacmQWL1mJ86BJIj8bJC6DWVg";
+        // $token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRGF0YSI6eyJwaG9uZV9udW1iZXIiOiIwODkxMTg4MTgxOCIsIm90cF9jb2RlIjoiODQzNSIsImlzX2xvZ2luIjoxfSwiaWF0IjoxNTc1ODczODI1LCJleHAiOjE1NzU5NjAyMjV9.1Ls5s42eaZqDld4_HBPacmQWL1mJ86BJIj8bJC6DWVg";
 
         $client = new Client();
 
@@ -77,7 +69,7 @@ class SendApi
                 [
                     RequestOptions::HEADERS => [
                         'Accept' => 'application/json',
-                        'Authorization' => 'Bearer ' . $token,
+                        'Authorization' => 'Bearer ' . $token['key'],
                     ],
                     "json" => $params
                 ]
@@ -86,7 +78,6 @@ class SendApi
             return json_decode($e->getMessage());
         }
 
-        // print_r($response->getBody()->getContents());
         return $this->getData($response);
     }
 
@@ -115,29 +106,59 @@ class SendApi
         return $this->executeApi('api-validate-otp', $url, $params, "POST");
     }
 
-    public function verifyStatus($url, $params)
+    public function verifyStatus($url, $params, $token)
     {
-        return $this->executeApiBearer('verifyKtp', $url, $params, "GET");
+        return $this->executeApiBearer('verifyKtp', $url, $params, "GET", $token);
     }
 
-    public function verifyEmailRequest($url, $params)
+    public function verifyEmailRequest($url, $params, $token)
     {
-        return $this->executeApiBearer('verifyEmailRequest', $url, $params, "POST");
+        return $this->executeApiBearer('verifyEmailRequest', $url, $params, "POST", $token);
     }
 
-    public function verifyEmailConfirm($url, $params)
+    public function verifyEmailConfirm($url, $params, $token)
     {
-        return $this->executeApiBearer('verifyEmailConfirm', $url, $params, "POST");
+        return $this->executeApiBearer('verifyEmailConfirm', $url, $params, "POST", $token);
     }
 
-    public function verifyNoKtp($url, $params)
+    public function verifyNoKtp($url, $params, $token)
     {
-        return $this->executeApiBearer('verifyNoKtp', $url, $params, "POST");
+        return $this->executeApiBearer('verifyNoKtp', $url, $params, "POST", $token);
     }
 
-    public function logout($url, $params)
+    public function logout($url, $params, $token)
     {
-        return $this->executeApiBearer('logout', $url, $params, "POST");
+        return $this->executeApiBearer('logout', $url, $params, "POST", $token);
+    }
+
+    public function listAssignment($url, $params, $token)
+    {
+        return $this->executeApiBearer('listAssignment', $url, $params, "GET", $token);
+    }
+
+    public function listApplicationStep($url, $params, $token)
+    {
+        return $this->executeApiBearer('listApplicationStep', $url, $params, "GET", $token);
+    }
+
+    public function listApplicationStatus($url, $params, $token)
+    {
+        return $this->executeApiBearer('listApplicationStatus', $url, $params, "POST", $token);
+    }
+
+    public function listContractStatus($url, $params, $token)
+    {
+        return $this->executeApiBearer('listContractStatus', $url, $params, "POST", $token);
+    }
+
+    public function detailContract($url, $params, $token)
+    {
+        return $this->executeApiBearer('detailContract', $url, $params, "POST", $token);
+    }
+
+    public function detailContractTransaction($url, $params, $token)
+    {
+        return $this->executeApiBearer('detailContractTransaction', $url, $params, "POST", $token);
     }
 
     public function register($url, $params)
