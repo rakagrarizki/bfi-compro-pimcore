@@ -1616,13 +1616,19 @@ select::-ms-expand {
 }
 
 .form-contact {
-    .form-group .form-control {
-        @include breakpoint(tablet){
-            font-size: 16px;
+    .form-group {
+        textarea.form-control {
+            padding-top : 30px;
         }
+        
+        .form-control {
+            @include breakpoint(tablet){
+                font-size: 16px;
+            }
 
-        @include breakpoint(mobile){
-            font-size: 12px;
+            @include breakpoint(mobile){
+                font-size: 12px;
+            }
         }
     }
 
