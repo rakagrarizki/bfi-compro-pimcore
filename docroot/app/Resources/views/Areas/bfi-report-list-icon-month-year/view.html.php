@@ -1,4 +1,4 @@
-<?= $this->input("title")?>
+
 
 <?php $category = $this->document->getProperty("category")->getId();
 $reports = new \Pimcore\Model\DataObject\Report\Listing();
@@ -7,13 +7,17 @@ $reports->addConditionParam("Category__id = ?",$category,"AND");
 ?>
 
 
-
+<?= $this->input("title")?>
 <!-- Template -->
 <div class="container">
     <ul class="card-list-box">
         <?php foreach($reports as $data):?>
         <li class="card-list">
-            <img src="image/content-image/card-image.png" alt="">
+            <?php $asset = Pimcore\Model\Asset::getById($data->getPdf()->getId());
+            ?>
+
+
+            <img src="<?php echo $asset->getImageThumbnail('tes'); ?>" alt="">
             <div class="card-content">
                 <h6><?= $data->getDate()->formatLocalized("%B %Y")?></h6>
                 <h3><?= $data->getFilename();?></h3>
