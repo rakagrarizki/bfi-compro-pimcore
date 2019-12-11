@@ -81,7 +81,7 @@ $this->extend('layout.html.php');
                 </div>
                 <div class="form-group">
                     <label for="type_message" class="type_message"><?= $this->translate('Jenis Pesan')?></label>
-                    <select class="form-control formRequired type-message" id="pekerjaan" name="type_message"
+                    <select class="form-control formRequired type-message" id="type_message" name="type_message"
                             placeholder="Pilih jenis pesan"/>
                         <option value="" disabled selected>Pilih jenis pesan</option>
                         <option value="1">Keluhan</option>

@@ -81,6 +81,43 @@
     }
 }
 
+.contact-us {
+    &.success-wrapper {
+        display : inherit;
+        padding : 150px 0;
+        clear: both;
+    
+        .img-wrap {
+            text-align: center;
+    
+            .icon-thank-page {
+                width: 120px;
+                height: 91px;
+            }
+        }
+    
+        .text-wrap {
+            padding: 0 15px;
+        }
+    
+        img {
+            margin: auto;
+        }
+    
+        h3 {
+            font-family: 'HelveticaNeue';
+            font-size: 2em;
+            font-weight: 600;
+            color: $grey-dark-color;
+        }
+    
+        p {
+            font-family: 'HelveticaNeue';
+            font-size: 1.2em;
+        }
+    }
+}
+
 .tab-content>.tab-pane {
     clear: both;
 }

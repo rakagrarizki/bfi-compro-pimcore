@@ -1,10 +1,15 @@
 (function ($) {
+    var type_message_placeholder = $('#type_message').attr('placeholder');
+    $('#type_message').select2({
+        placeholder: type_message_placeholder,
+        dropdownParent: $('#type_message').parent()
+    });
+
     $('select').on('change', function (e) {
         $('label[for="type_message"]').css('visibility', 'visible');
     });
 
     $('select.type-message').on('change', function(){
-        // console.log($(this).children("option:selected"). val())
         $('.select2-selection__rendered').css('line-height', '45px');
     });
 
