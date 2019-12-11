@@ -539,6 +539,146 @@ class ServiceController extends FrontendController
         ]);
     }
 
+    /**
+     * @Route("/service/detailagunanrumah/listJson")
+    @Method({"POST"})
+    @return \Symfony\Component\HttpFoundation\JsonResponse
+     */
+    public function detailAgunanRumahListJsonAction(Request $request)
+    {
+        $token = $this->getToken();
+
+        $param['contract_number'] = htmlentities(addslashes($request->get('contract_number')));
+
+        $url = "http://www.bficorporatedev.com/dashboard_get_detail_pbf_collateral";
+
+        $sendAPI = new SendApi();
+
+        try {
+            $data = $sendAPI->detailAgunanRumah($url, $param, $token);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Failed to retrieve the data!",
+                'detail' => $data
+            ]);
+        }
+
+        if ($data->status == "success") {
+            // fill something
+        }
+
+        return new JsonResponse([
+            'success' => true,
+            'result' => $data
+        ]);
+    }
+
+    /**
+     * @Route("/service/detailagunanmobil/listJson")
+    @Method({"POST"})
+    @return \Symfony\Component\HttpFoundation\JsonResponse
+     */
+    public function detailAgunanMobilListJsonAction(Request $request)
+    {
+        $token = $this->getToken();
+
+        $param['contract_number'] = htmlentities(addslashes($request->get('contract_number')));
+
+        $url = "http://www.bficorporatedev.com/dashboard_get_detail_car_collateral";
+
+        $sendAPI = new SendApi();
+
+        try {
+            $data = $sendAPI->detailAgunanMobil($url, $param, $token);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Failed to retrieve the data!",
+                'detail' => $data
+            ]);
+        }
+
+        if ($data->status == "success") {
+            // fill something
+        }
+
+        return new JsonResponse([
+            'success' => true,
+            'result' => $data
+        ]);
+    }
+
+    /**
+     * @Route("/service/detailagunanmotor/listJson")
+    @Method({"POST"})
+    @return \Symfony\Component\HttpFoundation\JsonResponse
+     */
+    public function detailAgunanMotorListJsonAction(Request $request)
+    {
+        $token = $this->getToken();
+
+        $param['contract_number'] = htmlentities(addslashes($request->get('contract_number')));
+
+        $url = "http://www.bficorporatedev.com/dashboard_get_detail_motorcycle_collateral";
+
+        $sendAPI = new SendApi();
+
+        try {
+            $data = $sendAPI->detailAgunanMotor($url, $param, $token);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Failed to retrieve the data!",
+                'detail' => $data
+            ]);
+        }
+
+        if ($data->status == "success") {
+            // fill something
+        }
+
+        return new JsonResponse([
+            'success' => true,
+            'result' => $data
+        ]);
+    }
+
+    /**
+     * @Route("/service/detailagunanalatberat/listJson")
+    @Method({"POST"})
+    @return \Symfony\Component\HttpFoundation\JsonResponse
+     */
+    public function detailAgunanAlatBeratListJsonAction(Request $request)
+    {
+        $token = $this->getToken();
+
+        $param['contract_number'] = htmlentities(addslashes($request->get('contract_number')));
+
+        $url = "http://www.bficorporatedev.com/dashboard_get_detail_machinery_collateral";
+
+        $sendAPI = new SendApi();
+
+        try {
+            $data = $sendAPI->detailAgunanAlatBerat($url, $param, $token);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Failed to retrieve the data!",
+                'detail' => $data
+            ]);
+        }
+
+        if ($data->status == "success") {
+            // fill something
+        }
+
+        return new JsonResponse([
+            'success' => true,
+            'result' => $data
+        ]);
+    }
+
     public function registerNewsletterAction(TranslatorInterface $translator, Request $request)
     {
         $lang = htmlentities($request->get('lang'));
