@@ -161,6 +161,26 @@ class SendApi
         return $this->executeApiBearer('detailContractTransaction', $url, $params, "POST", $token);
     }
 
+    public function detailAgunanRumah($url, $params, $token)
+    {
+        return $this->executeApiBearer('detailAgunanRumah', $url, $params, "POST", $token);
+    }
+
+    public function detailAgunanMobil($url, $params, $token)
+    {
+        return $this->executeApiBearer('detailAgunanMobil', $url, $params, "POST", $token);
+    }
+
+    public function detailAgunanMotor($url, $params, $token)
+    {
+        return $this->executeApiBearer('detailAgunanMotor', $url, $params, "POST", $token);
+    }
+
+    public function detailAgunanAlatberat($url, $params, $token)
+    {
+        return $this->executeApiBearer('detailAgunanAlatberat', $url, $params, "POST", $token);
+    }
+
     public function register($url, $params)
     {
         return $this->executeApi('register', $url, $params, "POST");
