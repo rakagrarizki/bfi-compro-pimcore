@@ -7,9 +7,13 @@ $reports->addConditionParam("Category__id = ?",$category,"AND");
 ?>
 
 
-<?= $this->input("title")?>
+
 <!-- Template -->
 <div class="container">
+    <article class="sect-title text-center">
+        <h2 class="margin-top-10"><?= $this->input("title")?></h2>
+
+    </article>
     <ul class="card-list-box">
         <?php foreach($reports as $data):?>
         <li class="card-list">
