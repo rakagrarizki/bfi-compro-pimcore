@@ -9,110 +9,56 @@ $this->extend('layout.html.php');
 ?>
 
 <?php
-    // $this->headScript()->offsetSetFile(100, '/static/js/Includes/tabbing.js');
+    $this->headScript()->offsetSetFile(100, '/static/js/Includes/contact-us.js');
 ?>
-
 <style>
+    .sect-list {
+        padding : 10px 20px;
+    }
 
-    .identitas > label {
-        display: block;
-    } */
 </style>
 
 <div class="container">
-    <div class="col-xs-12">
-
-        <form id="contact" class="form-get--credit" action="#">
-        <input type="hidden" id="jenis_form" name="jenis_form" value="Contact">
-        
-            <div class="form-body--credit form-contact">
-                <div class="text-head">
-                    <h2 class="text-center">Hubungi Kami</h2>
-                    <p class="text-center">Silahkan mengisi form dibawah ini, agen BFI akan menghubungi Anda</p>
-                </div>
-
-                <div class="form-group">
-                    <label for="nama_lengkap"><?= $this->translate('form-name')?></label>
-                    <input type="text" class="form-control formRequired formName" name="nama_lengkap" id="nama_lengkap"
-                            placeholder="Masukkan nama lengkap Anda">
-                    <div class="error-wrap"></div>
-                </div>
-                <div class="form-group">
-                    <label for="no_handphone"><?= $this->translate('form-hp')?></label>
-                    <input type="email" class="form-control formRequired formPhoneNumber" name="no_handphone" id="no_handphone"
-                            placeholder="Masukkan nomor handphone Anda">
-                    <div class="error-wrap"></div>
-                </div>
-                <div class="form-group">
-                    <label for="email_penanya"><?= $this->translate('form-email')?></label>
-                    <input type="tel" pattern="\d*" class="form-control formEmail" name="email_penanya" id="email_penanya" maxlength="13"
-                            placeholder="Masukkan email Anda">
-                    <div class="error-wrap"></div>
-                </div>
-                <div class="form-group customer-type">
-                    <label for="identitas">Identitas Anda</label>
-                    <div class="ipt-radio">
-                        <span>
-                            <input type="radio" name="tipe_paket" value="apprisal" />
-                        </span>
-                        Nasabah
-                    </div>
-                    <div class="ipt-radio">
-                        <span>
-                            <input type="radio" name="tipe_paket" value="non-apprisal" />
-                        </span>
-                        Non-Nasabah
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="no_kontrak"><?= $this->translate('Nomor Kontrak')?></label>
-                    <input type="tel" pattern="\d*" class="form-control formEmail" name="no_kontrak" id="no_kontrak" maxlength="13"
-                            placeholder="Masukkan nomor kontrak">
-                    <div class="error-wrap"></div>
-                </div>
-                <div class="form-group">
-                    <label for="customer_name"><?= $this->translate('Nama Pelanggan')?></label>
-                    <input type="tel" pattern="\d*" class="form-control formEmail" name="customer_name" id="customer_name" maxlength="13"
-                            placeholder="Masukkan nama pelanggan">
-                    <div class="error-wrap"></div>
-                </div>
-                <div class="form-group">
-                    <label for="subject"><?= $this->translate('Jenis Pesan')?></label>
-                    <select class="form-control formRequired type-message" id="pekerjaan" name="pekerjaan"
-                            placeholder="Pilih jenis pesan"/>
-                        <option value="" disabled selected>Pilih jenis pesan</option>
-                        <option value="1">Keluhan</option>
-                        <option value="2">Saran</option>
-                    </select>
-                    <div class="error-wrap"></div>
-                </div>
-                <div class="form-group">
-                    <label for="message"><?= $this->translate('label-place')?></label>
-                    <textarea class="form-control formRequired formMessage" name="message" id="message"
-                                placeholder="Masukkan Pesan Anda"></textarea>
-                    <div class="error-wrap"></div>
-                </div>
-                <div class="form-group upload-image">
-                    <label><?= $this->translate('Dokumen Pendukung')?></label>
-                    <div class="upload-file">
-                        <img src="" />
-                        <div class="upload-btn">
-                        <input type="file" class="file-input" accept="image/*" data-id="document" />
-                        <button type="button">Pilih File</button>
-                        <b></b>
-                        </div>
-                    </div>
-                    <input type="hidden" class="form-control formRequired" name="document" id="document">
-                    <div class="error-wrap"></div>
-                    <span>Max. ukuran file adalah 500kb</span>
-                </div>
-                <div class="form-group">
-                    <div class="g-recaptcha captcha" id="g-recaptcha" data-sitekey="6LcsxcUUAAAAAO22We2mizM6KrBMmPECFMVMJ4NE"></div>
-                </div>
+    <div class="row">
+        <article class="sect-title text-center">
+            <h2 class="margin-top-10">Profile Anda</h2>
+            <p>Berikut ini adalah profile Anda</p>
+        </article>
+        <div class="sect-list">
+            <h3>Daftar Kontak</h3>
+            <div class="list">
+                <ol>
+                    <li><a href="">1234567890 Pembayaran Berjamin - BPKB Mobil</a></li>
+                    <li><a href="">1234567890 Pembayaran Berjamin - Sertifikat Rumah</a></li>
+                    <li><a href="">1234567890 Pembayaran Berjamin - BPKB Motor</a></li>
+                    <li><a href="">1234567890 Pembiayaan Lainnya - Pendidikan</a></li>
+                    <li><a href="">1234567890 Pembiayaan Lainnya - Travel & Wisata</a></li>
+                    <li><a href="">1234567890 Pembiayaan Lainnya - Alat Berat & Mesin</a></li>
+                </ol>            
             </div>
-            <div class="button-area text-center">
-                <button class="cta cta-primary cta-big" id="button1" type="button">Kirim Pesan</button>
+        </div>
+        <hr>
+        <div class="sect-list">
+            <h3>Data Pemohon</h3>
+            <div class="list">
+                Nama Lengkap : Deborah T. Morris
+                Email : deborahmorris@gmail.com
+                Nomor Handphone : 08124567890
+                Nomor KTP : 1234567890987654
+                Foto Ktp : Ktp.jpg
             </div>
-        </form>
+        </div>
+        <hr>
+        <div class="sect-list">
+            <h3>Data Tempat Tinggal</h3>
+            <div class="list">
+                Provinsi : DKI Jakarta
+                Kecamatan : Kebon Jeruk
+                Kelurahan : Kebon Jeruk
+                Kode Pos : 11530
+                Alamat Lengkap Rumah : Jl. Raya Kebon Jeruk No.1, RT.7/RW.1        
+            </div>
+        </div>
+        <hr>
     </div>
 </div>
