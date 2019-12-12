@@ -8,10 +8,6 @@
 $this->extend('layout.html.php');
 ?>
 
-<?php
-    $this->headScript()->offsetSetFile(100, '/static/js/Includes/contact-us.js');
-?>
-
 <div class="container">
     <div class="row">
         <article class="sect-title text-center">
