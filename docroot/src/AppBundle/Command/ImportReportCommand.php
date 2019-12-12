@@ -29,7 +29,8 @@ class ImportReportCommand extends AbstractCommand
             ->setDescription('import report command')
             ->setDefinition(
                 new InputDefinition(array(
-                    new InputArgument('category', InputArgument::REQUIRED)
+                    new InputArgument('category', InputArgument::REQUIRED),
+                    new InputArgument('file', InputArgument::REQUIRED)
                 ))
             );
 
@@ -41,8 +42,8 @@ class ImportReportCommand extends AbstractCommand
         $parent = DataObject::getByPath("/Report");
         $category = $input->getArgument('category');
         $reportcategory = DataObject\ReportCategory::getById($category);
-        //$filename = $input->getArgument('filename');
-        $filename = "report.csv";
+        $filename = $input->getArgument('file');
+        //$filename = "report.csv";
 
         if ($parent == null) {
             die("/Report path not found");
@@ -50,20 +51,22 @@ class ImportReportCommand extends AbstractCommand
 
         $file = new \SplFileObject(tmp . "/" . $filename);
 
-        $report = new DataObject\Report\Listing();
-        $report->load();
-        if(count($report) != 0){
-            $this->dump("Deleting old Data ...");
-            foreach($report as $data){
-                $data->delete();
-            }
-        }
+//        $report = new DataObject\Report\Listing();
+//        $report->load();
+//        if(count($report) != 0){
+//            $this->dump("Deleting old Data ...");
+//            foreach($report as $data){
+//                $data->delete();
+//            }
+//        }
 
         $this->dump("Uploading Data ...");
         while (!$file->eof() && ($row = $file->fgetcsv(",")) && $row[0] !== null) {
 
             //list($name, $address, $map) = $row;
-            list($url) = $row;
+            list($url, $d) = $row;
+//            $this->dump($url);
+//            $this->dump($d);
             $guzzleClient = new Client();
             $getAssets = $guzzleClient->request('GET', $url, [
                 'verify' => false,
@@ -89,7 +92,7 @@ class ImportReportCommand extends AbstractCommand
             $r->setKey($key);
             $r->setPublished(true);
             $r->setFileName($noExtension);
-            $r->setDate(Carbon::today());
+            $r->setDate(Carbon::createFromFormat("Y-m-d",$d));
             $r->setCategory($reportcategory);
             $r->setUrl($url);
             $r->setPdf($newAsset);
