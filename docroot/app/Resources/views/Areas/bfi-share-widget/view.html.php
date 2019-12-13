@@ -10,10 +10,23 @@ $imagethumbnail = $asset->getImage();
 $urlFacebook = " https://www.facebook.com/sharer/sharer.php?u=" . $fixedurl . "&title=" . $titleshare . "&picture=" . $imagethumbnail;
 $urlTwitter = " https://twitter.com/share?text=$titleshare&url=$fixedurl&wrap_links=true "; ?>
 
-<div class="share">
-    <span>Share:</span>
-    <a href="<?= $urlFacebook;?>" class="share-fb"><i class="fa fa-facebook"></i></a>
-    <a href="<?= $urlTwitter;?>" class="share-tw"><i class="fa fa-twitter"></i></a>
-    <a class="share-cp" id="copy" onclick="copyURL('<?= $fixedurl ?>')"><i class="fa fa-chain"></i></a>
-    <div style="display: none;padding: 0px 20px;" id="copied">Copied</div>
-</div>
+<div class="container">
+    <div class="row">
+        <div class="share">
+            <div class="share-text">
+                <span>Share :</span>
+            </div>
+            <div class="icon-share">
+                <a href="<?= $urlFacebook;?>" class="share-fb"><span class="fa fa-facebook"></span></a>
+            </div>
+            <div class="icon-share" >
+                <a href="<?= $urlTwitter;?>" class="share-tw"><span class="fa fa-twitter"></span></a>
+            </div>
+            <div class="icon-share">
+                <a class="share-cp" id="copy" onclick="copyURL('<?= $fixedurl ?>')"><span class="fa fa-chain"></span></a>
+            </div>
+            <div style="display: none;padding: 0px 20px;" id="copied">Copied</div>
+        </div>
+    </div> 
+</div> 
+
