@@ -12,7 +12,7 @@ $this->extend('layout.html.php');
     $this->headScript()->offsetSetFile(100, '/static/js/Includes/contact-us.js');
 ?>
 
-<div class="container">
+<div class="container profile">
     <div class="row">
         <article class="sect-title text-center">
             <h2 class="margin-top-10">Profile Anda</h2>
@@ -78,8 +78,8 @@ $this->extend('layout.html.php');
                     <span class="value-data">11530</span>
                 </div>
                 <div class="detail-wrapper">
-                    <span class="label">Alamat Lengkap</span>
-                    <span class="value-data">Rumah Jl. Raya Kebon Jeruk No.1, RT.7/RW.1</span>
+                    <span class="label">Alamat</span>
+                    <span class="value-data address">Rumah Jl. Raya Kebon Jeruk No.1, RT.7/RW.1</span>
                 </div>
             </div>
         </div>
