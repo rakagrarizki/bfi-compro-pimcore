@@ -9,11 +9,11 @@
 $this->extend('layout.html.php');
 ?>
 
-<?php
-$this->headScript()->offsetSetFile(100, '/static/js/Includes/contact-us.js');
-?>
-
 <?php if (!$this->success) { ?>
+    <?php
+    $this->headScript()->offsetSetFile(100, '/static/js/Includes/contact-us.js');
+    ?>
+
 
     <style>
 
