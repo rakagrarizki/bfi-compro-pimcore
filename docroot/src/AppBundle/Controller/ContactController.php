@@ -10,12 +10,15 @@ use Symfony\Component\HttpFoundation\Request;
 class ContactController extends FrontendController
 {
     public function defaultAction(Request $request)
-    { }
+    {
+    }
 
     public function corporateAction(Request $request)
     {
         if ($request->isMethod('POST')) {
             $data = $request->get('corporate');
+            // dump($data);
+            // exit();
 
             $time = time();
 
@@ -33,6 +36,36 @@ class ContactController extends FrontendController
             $contactCorporate->setSubject($data['subject']);
             $contactCorporate->setMessage($data['message']);
             $contactCorporate->save();
+        }
+    }
+
+    public function personalAction(Request $request)
+    {
+        if ($request->isMethod('POST')) {
+            $data = $request->get('personal');
+            // dump($data);
+            // exit();
+
+            $time = time();
+
+            $contactPersonal = new DataObject\ContactPersonal;
+            // $filename = File::getValidFilename($name);
+            $filename = File::getValidFilename($data['email'] . $time);
+
+            $contactPersonal->setParent(DataObject\AbstractObject::getByPath('/Contact/Personal')); // we store all objects in /Contact/Personal
+            $contactPersonal->setKey($filename); // the filename of the object
+            $contactPersonal->setPublished(true); // yep, it should be published :)
+
+            $contactPersonal->setName($data['name']);
+            $contactPersonal->setPhone($data['phone']);
+            $contactPersonal->setEmail($data['email']);
+            $contactPersonal->setIdentity($data['identity']);
+            $contactPersonal->setNo_kontrak($data['no_kontrak']);
+            $contactPersonal->setCustomer_name($data['customer_name']);
+            $contactPersonal->setType_message($data['type_message']);
+            $contactPersonal->setMessage($data['message']);
+            $contactPersonal->setFile($data['file']);
+            $contactPersonal->save();
         }
     }
 }

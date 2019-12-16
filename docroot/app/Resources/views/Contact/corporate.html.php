@@ -41,7 +41,7 @@ $this->headScript()->offsetSetFile(100, '/static/js/Includes/contact-us.js');
                 </div>
                 <div class="form-group">
                     <label for="corporate[email]"><?= $this->translate('form-email') ?></label>
-                    <input type="email" pattern="\d*" class="form-control formEmail" name="corporate[email]" id="email_penanya" placeholder="Masukkan email Anda">
+                    <input type="email" class="form-control formEmail" name="corporate[email]" id="email_penanya" placeholder="Masukkan email Anda">
                     <div class="error-wrap"></div>
                 </div>
                 <div class="form-group">
@@ -54,12 +54,12 @@ $this->headScript()->offsetSetFile(100, '/static/js/Includes/contact-us.js');
                     <textarea class="form-control formRequired formMessage" name="corporate[message]" id="message" placeholder="Masukkan Pesan Anda"></textarea>
                     <div class="error-wrap"></div>
                 </div>
-                <!-- <div class="form-group captcha">
+                <div class="form-group captcha">
                     <div class="g-recaptcha" id="g-recaptcha" data-sitekey="6LcsxcUUAAAAAO22We2mizM6KrBMmPECFMVMJ4NE"></div>
-                </div> -->
+                </div>
             </div>
             <div class="button-area text-center">
-                <button class="cta cta-primary cta-big" id="button1" type="submit">Kirim Pesan</button>
+                <button class="cta cta-primary cta-big" type="submit">Kirim Pesan</button>
             </div>
         </form>
     </div>
