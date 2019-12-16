@@ -15,10 +15,14 @@ class ContactController extends FrontendController
 
     public function corporateAction(Request $request)
     {
+        $success = false;
+
         if ($request->isMethod('POST')) {
             $data = $request->get('corporate');
             // dump($data);
             // exit();
+
+            $success = true;
 
             $time = time();
 
@@ -37,14 +41,18 @@ class ContactController extends FrontendController
             $contactCorporate->setMessage($data['message']);
             $contactCorporate->save();
         }
+        $this->view->success = $success;
     }
 
     public function personalAction(Request $request)
     {
+        $success = false;
+
         if ($request->isMethod('POST')) {
             $data = $request->get('personal');
             // dump($data);
             // exit();
+            $success = true;
 
             $time = time();
 
@@ -67,5 +75,6 @@ class ContactController extends FrontendController
             $contactPersonal->setFile($data['file']);
             $contactPersonal->save();
         }
+        $this->view->success = $success;
     }
 }
