@@ -13,6 +13,8 @@ class ScholarshipController extends FrontendController
     {
         if ($request->isMethod('POST')) {
             $data = $request->get('scholarship');
+            // dump($data);
+            // exit();
 
             // check for an existing scholarship with this email
             $scholarship = DataObject\Scholarship::getByEmail($data['email'], 1);
@@ -35,12 +37,12 @@ class ScholarshipController extends FrontendController
                 $scholarship->setFaculty($data['faculty']);
                 $scholarship->setProgramStudy($data['prodi']);
                 $scholarship->setSemester($data['semester']);
-                $scholarship->setAcademicSemester1($data['academic1']);
-                $scholarship->setIpk1($data['ipk1']);
-                $scholarship->setAcademicSemester2($data['academic2']);
-                $scholarship->setIpk2($data['ipk2']);
-                $scholarship->setAcademicSemester3($data['academic3']);
-                $scholarship->setIpk3($data['ipk3']);
+                $scholarship->setAcademicSemester1($data['academicSemester1']);
+                $scholarship->setIpk1('3.' . $data['ipk1']);
+                $scholarship->setAcademicSemester2($data['academicSemester2']);
+                $scholarship->setIpk2('3.' . $data['ipk2']);
+                $scholarship->setAcademicSemester3($data['academicSemester3']);
+                $scholarship->setIpk3('3.' . $data['ipk3']);
                 $scholarship->setTranscript($data['transcript']);
                 $scholarship->save();
             }
