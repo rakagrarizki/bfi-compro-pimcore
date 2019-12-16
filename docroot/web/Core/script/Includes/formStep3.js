@@ -38,7 +38,7 @@ function uploadPDF(event) {
     titlePDF.setAttribute("style", "margin-bottom: 10px;");
     buttonPDF.textContent = "Ubah File";
     showPDF.classList.add("image-wrapper");
-    imagePDF.src = "image/logo/download.png";
+    imagePDF.src = "static/images/pdf_logo.png";
     ext = fileName.split('.').pop();
     if (fileName.length > 15){
         trimName = fileName.substring(0 , 10) + ".." + ext;
