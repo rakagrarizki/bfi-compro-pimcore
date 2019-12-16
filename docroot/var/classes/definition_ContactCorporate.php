@@ -1,7 +1,7 @@
 <?php 
 
 /** 
-* Generated at: 2019-12-12T11:36:06+01:00
+* Generated at: 2019-12-16T09:55:33+01:00
 * Inheritance: no
 * Variants: no
 * Changed by: admin (2)
@@ -9,20 +9,20 @@
 
 
 Fields Summary: 
-- name [input]
-- phone [input]
+- Name [input]
+- Phone [input]
 - email [email]
-- subject [input]
-- message [textarea]
+- Subject [input]
+- Message [textarea]
 */ 
 
 
 return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
-   'id' => '22',
+   'id' => '21',
    'name' => 'ContactCorporate',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1576146960,
+   'modificationDate' => 1576486530,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -78,8 +78,8 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'phpdocType' => 'string',
              'regex' => '',
              'unique' => false,
-             'name' => 'name',
-             'title' => 'name',
+             'name' => 'Name',
+             'title' => 'Name',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
@@ -103,8 +103,8 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'phpdocType' => 'string',
              'regex' => '',
              'unique' => false,
-             'name' => 'phone',
-             'title' => 'phone',
+             'name' => 'Phone',
+             'title' => 'Phone',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
@@ -153,8 +153,8 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'phpdocType' => 'string',
              'regex' => '',
              'unique' => false,
-             'name' => 'subject',
-             'title' => 'subject',
+             'name' => 'Subject',
+             'title' => 'Subject',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
@@ -176,8 +176,8 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'queryColumnType' => 'longtext',
              'columnType' => 'longtext',
              'phpdocType' => 'string',
-             'name' => 'message',
-             'title' => 'message',
+             'name' => 'Message',
+             'title' => 'Message',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
