@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @var \Pimcore\Templating\PhpEngine $this
  * @var \Pimcore\Templating\PhpEngine $view
@@ -28,28 +29,28 @@ $this->extend('layout.html.php');
             <span class="text">Konfirmasi Data</span>
         </li>
     </ul>
-    
+
     <div id="stepper">
         <h3 id="step-title">Data Pemohon</h3>
         <p id="step-subtitle">Silahkan masukkan data diri anda</p>
 
-        <form action="">
+        <form method="POST" name="scholarship">
             <div class="step-content" id="stepper-csr-1">
                 <div class="form-wrapper">
                     <div class="input-text-group">
-                        <input id="name-input" class="style-input" type="text" onfocus="changeLabel(this.id)" onfocusout="deleteLabel(this.id)" required>
+                        <input name="scholarship[name]" id="name-input" class="style-input" type="text" onfocus="changeLabel(this.id)" onfocusout="deleteLabel(this.id)" required>
                         <label id="name-label" class="input-label">Masukkan nama lengkap anda</label>
                     </div>
                     <div class="input-text-group">
-                        <input id="email-input" class="style-input" type="email" onfocus="changeLabel(this.id)" onfocusout="deleteLabel(this.id)" required>
+                        <input name="scholarship[email]" id="email-input" class="style-input" type="email" onfocus="changeLabel(this.id)" onfocusout="deleteLabel(this.id)" required>
                         <label id="email-label" class="input-label">Masukkan email anda</label>
                     </div>
                     <div class="input-text-group">
-                        <input id="phone-input" class="style-input" type="number" onfocus="changeLabel(this.id)" onfocusout="deleteLabel(this.id)" required>
+                        <input name="scholarship[phone]" id="phone-input" class="style-input" type="number" onfocus="changeLabel(this.id)" onfocusout="deleteLabel(this.id)" required>
                         <label id="phone-label" class="input-label">Masukkan nomor handphone anda</label>
                     </div>
                     <div class="input-text-group">
-                        <input id="alt-phone-input" class="style-input" type="number" onfocus="changeLabel(this.id)" onfocusout="deleteLabel(this.id)">
+                        <input name="scholarship[phone2]" id="alt-phone-input" class="style-input" type="number" onfocus="changeLabel(this.id)" onfocusout="deleteLabel(this.id)">
                         <label id="alt-phone-label" class="input-label">Masukkan nomor handphone alternatif</label>
                     </div>
                     <div id="upload">
@@ -60,7 +61,7 @@ $this->extend('layout.html.php');
                                 <button id="upload-button" class="btn-upload">
                                     Pilih File
                                 </button>
-                                <input id="file-upload" class="hide-input" type="file" name="myfile">  
+                                <input id="file-upload" class="hide-input" type="file" name="scholarship[photo]">
                             </div>
                             <span id="file-upload-filename"></span>
                         </div>
@@ -78,23 +79,23 @@ $this->extend('layout.html.php');
             <div class="step-content hide" id="stepper-csr-2">
                 <div class="form-wrapper">
                     <div class="input-text-group">
-                        <input id="univ-input" class="style-input" type="text" onfocus="changeLabelAcademic(this.id)" onfocusout="deleteLabelAcademic(this.id)" required>
+                        <input name="scholarship[university]" id="univ-input" class="style-input" type="text" onfocus="changeLabelAcademic(this.id)" onfocusout="deleteLabelAcademic(this.id)" required>
                         <label id="univ-label" class="input-label">Masukkan nama universitas anda</label>
                     </div>
                     <div class="input-text-group">
-                        <input id="nim-input" class="style-input" type="text" onfocus="changeLabelAcademic(this.id)" onfocusout="deleteLabelAcademic(this.id)" required>
+                        <input name="scholarship[nim]" id="nim-input" class="style-input" type="text" onfocus="changeLabelAcademic(this.id)" onfocusout="deleteLabelAcademic(this.id)" required>
                         <label id="nim-label" class="input-label">Masukkan nomor NIM / NPM</label>
                     </div>
                     <div class="input-text-group">
-                        <input id="fak-input" class="style-input" type="text" onfocus="changeLabelAcademic(this.id)" onfocusout="deleteLabelAcademic(this.id)" required>
+                        <input name="scholarship[faculty]" id="fak-input" class="style-input" type="text" onfocus="changeLabelAcademic(this.id)" onfocusout="deleteLabelAcademic(this.id)" required>
                         <label id="fak-label" class="input-label">Masukkan fakultas anda</label>
                     </div>
                     <div class="input-text-group">
-                        <input id="prodi-input" class="style-input" type="text" onfocus="changeLabelAcademic(this.id)" onfocusout="deleteLabelAcademic(this.id)">
+                        <input name="scholarship[prodi]" id="prodi-input" class="style-input" type="text" onfocus="changeLabelAcademic(this.id)" onfocusout="deleteLabelAcademic(this.id)">
                         <label id="prodi-label" class="input-label">Masukkan program studi anda</label>
                     </div>
                     <div class="input-text-group">
-                        <select class="semester style-input" name="state">
+                        <select class="semester style-input" name="scholarship[semester]">
                             <option></option>
                             <option value="4">Semester 4</option>
                             <option value="5">Semester 5</option>
@@ -116,12 +117,12 @@ $this->extend('layout.html.php');
                     </a>
                 </div>
             </div>
-            
+
             <div class="step-content hide" id="stepper-csr-3">
                 <div class="form-wrapper" id="form-semester-ipk">
-                    
+
                     <!-- input template generated from js -->
-                    
+
                     <!-- input template generated from js -->
 
                     <div id="upload">
@@ -135,7 +136,7 @@ $this->extend('layout.html.php');
                                 <button id="upload-pdf-button" class="btn-upload">
                                     Pilih File
                                 </button>
-                                <input id="file-pdf-upload" class="hide-input" type="file" name="myfile">  
+                                <input id="file-pdf-upload" class="hide-input" type="file">
                             </div>
                         </div>
                         <p>Mohon file disatukan dalam PDF (Ukuran Maksimal 5 MB)</p>
@@ -236,7 +237,7 @@ $this->extend('layout.html.php');
                                 <span class="label">IPK</span>
                                 <span class="input">: 3.25</span>
                             </div> -->
-            
+
                             <div class="detail-wrapper">
                                 <span class="label">Transkrip Nilai</span>
                                 <span id="transkrip-peserta" class="input"></span>
@@ -249,10 +250,14 @@ $this->extend('layout.html.php');
                         <i class="fa fa-chevron-left"></i>
                         <span>SEBELUMNYA</span>
                     </a>
-                    <a href="#stepper-csr-4" class="btn-next-prev" onclick="nextToStep4()">
+                    <!-- <a href="#stepper-csr-4" class="btn-next-prev" onclick="nextToStep4()">
                         <span>SELESAI</span>
                         <i class="fa fa-chevron-right"></i>
-                    </a>
+                    </a> -->
+                    <button class="btn-next-prev" type="submit">
+                        <span>SELESAI</span>
+                        <i class="fa fa-chevron-right"></i>
+                    </button>
                 </div>
             </div>
         </form>
