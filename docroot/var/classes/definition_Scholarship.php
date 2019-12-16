@@ -1,7 +1,7 @@
 <?php 
 
 /** 
-* Generated at: 2019-12-12T05:07:58+01:00
+* Generated at: 2019-12-16T08:17:32+01:00
 * Inheritance: no
 * Variants: no
 * Changed by: admin (2)
@@ -11,8 +11,8 @@
 Fields Summary: 
 - Name [input]
 - Email [input]
-- phone [input]
-- phone2 [input]
+- Phone [input]
+- Phone2 [input]
 - Photo [image]
 - UniversityName [input]
 - Nim [input]
@@ -34,7 +34,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'Scholarship',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1576123676,
+   'modificationDate' => 1576480649,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -140,8 +140,8 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'phpdocType' => 'string',
              'regex' => '',
              'unique' => false,
-             'name' => 'phone',
-             'title' => 'phone',
+             'name' => 'Phone',
+             'title' => 'Phone',
              'tooltip' => '',
              'mandatory' => true,
              'noteditable' => false,
@@ -165,7 +165,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'phpdocType' => 'string',
              'regex' => '',
              'unique' => false,
-             'name' => 'phone2',
+             'name' => 'Phone2',
              'title' => 'Phone Alternative',
              'tooltip' => '',
              'mandatory' => false,
@@ -415,7 +415,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'regex' => '',
              'unique' => false,
              'name' => 'Ipk2',
-             'title' => 'Ipk1',
+             'title' => 'Ipk2',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
@@ -465,7 +465,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'regex' => '',
              'unique' => false,
              'name' => 'Ipk3',
-             'title' => 'Ipk1',
+             'title' => 'Ipk3',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
@@ -511,7 +511,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
