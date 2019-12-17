@@ -67,5 +67,5 @@ $this->extend('layout.html.php');
     </div>
 
 <?php } else { ?>
-    <?= $this->template('Contact/success.html.php') ?>
+    <?= $this->template('Includes/success.html.php') ?>
 <?php } ?>
