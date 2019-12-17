@@ -1,7 +1,7 @@
 <?php 
 
 /** 
-* Generated at: 2019-12-16T08:17:32+01:00
+* Generated at: 2019-12-17T10:36:09+01:00
 * Inheritance: no
 * Variants: no
 * Changed by: admin (2)
@@ -34,7 +34,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'Scholarship',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1576480649,
+   'modificationDate' => 1576575367,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -492,9 +492,13 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
             ),
              'phpdocType' => '\\Pimcore\\Model\\Document\\Page | \\Pimcore\\Model\\Document\\Snippet | \\Pimcore\\Model\\Document | \\Pimcore\\Model\\Asset | \\Pimcore\\Model\\DataObject\\AbstractObject',
              'objectsAllowed' => false,
-             'assetsAllowed' => false,
+             'assetsAllowed' => true,
              'assetTypes' => 
             array (
+              0 => 
+              array (
+                'assetTypes' => 'document',
+              ),
             ),
              'documentsAllowed' => false,
              'documentTypes' => 
