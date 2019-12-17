@@ -1926,5 +1926,257 @@ return [
         "legacy" => FALSE,
         "creationDate" => 1573208609,
         "modificationDate" => 1573208651
+    ],
+    112 => [
+        "id" => 112,
+        "name" => "login",
+        "pattern" => "/\\/user\\/login/",
+        "reverse" => "/user/login",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\UserController",
+        "action" => "loginJson",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1576550523,
+        "modificationDate" => 1576551665
+    ],
+    113 => [
+        "id" => 113,
+        "name" => "login otp request",
+        "pattern" => "/\\/user\\/otp-request/",
+        "reverse" => "/user/otp-request",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\UserController",
+        "action" => "otpRequestJson",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1576551673,
+        "modificationDate" => 1576551985
+    ],
+    114 => [
+        "id" => 114,
+        "name" => "check verify status",
+        "pattern" => "/\\/user\\/check-verify-status/",
+        "reverse" => "/user/check-verify-status",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\UserController",
+        "action" => "checkVerifyStatusJson",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1576551775,
+        "modificationDate" => 1576552063
+    ],
+    115 => [
+        "id" => 115,
+        "name" => "login otp confirm",
+        "pattern" => "/\\/user\\/otp-confirm/",
+        "reverse" => "/user/otp-confirm",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\UserController",
+        "action" => "otpConfirmJson",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1576551777,
+        "modificationDate" => 1576577632
+    ],
+    116 => [
+        "id" => 116,
+        "name" => "verify email request",
+        "pattern" => "/\\/user\\/verify-email-request/",
+        "reverse" => "/user/verify-email-request",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\UserController",
+        "action" => "verifyEmailRequestJson",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1576551902,
+        "modificationDate" => 1576577627
+    ],
+    117 => [
+        "id" => 117,
+        "name" => "verify email confirm",
+        "pattern" => "/\\/user\\/verify-email-confirm/",
+        "reverse" => "/user/verify-email-confirm",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\UserController",
+        "action" => "verifyEmailConfirmJson",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1576552067,
+        "modificationDate" => 1576577629
+    ],
+    118 => [
+        "id" => 118,
+        "name" => "verify no ktp",
+        "pattern" => "/\\/user\\/verify-no-ktp/",
+        "reverse" => "/user/verify-no-ktp",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\UserController",
+        "action" => "verifyNoKtpJson",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1576576819,
+        "modificationDate" => 1576577792
+    ],
+    119 => [
+        "id" => 119,
+        "name" => "logout",
+        "pattern" => "/\\/user\\/logout/",
+        "reverse" => "/user/logout",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\UserController",
+        "action" => "logoutJson",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1576576955,
+        "modificationDate" => 1576577797
+    ],
+    120 => [
+        "id" => 120,
+        "name" => "assignment list",
+        "pattern" => "/\\/user\\/assignment-list/",
+        "reverse" => "/user/assignment-list",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\UserController",
+        "action" => "assignmentListJson",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1576576974,
+        "modificationDate" => 1576577806
+    ],
+    121 => [
+        "id" => 121,
+        "name" => "application step list",
+        "pattern" => "/\\/user\\/application-step-list/",
+        "reverse" => "/user/application-step-list",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\UserController",
+        "action" => "applicationStepListJson",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1576576978,
+        "modificationDate" => 1576577818
+    ],
+    122 => [
+        "id" => 122,
+        "name" => "application status list",
+        "pattern" => "/\\/user\\/application-status-list/",
+        "reverse" => "/user/application-status-list",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\UserController",
+        "action" => "applicationStatusListJson",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1576576982,
+        "modificationDate" => 1576577823
+    ],
+    123 => [
+        "id" => 123,
+        "name" => "contract status list",
+        "pattern" => "/\\/user\\/contract-status-list/",
+        "reverse" => "/user/contract-status-list",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\UserController",
+        "action" => "contractStatusListJson",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1576576985,
+        "modificationDate" => 1576577829
+    ],
+    124 => [
+        "id" => 124,
+        "name" => "contract detail",
+        "pattern" => "/\\/user\\/contract-detail/",
+        "reverse" => "/user/contract-detail",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\UserController",
+        "action" => "contractDetailJson",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1576576987,
+        "modificationDate" => 1576577836
+    ],
+    125 => [
+        "id" => 125,
+        "name" => "contract detail transaction",
+        "pattern" => "/\\/user\\/contract-detail-transaction/",
+        "reverse" => "/user/contract-detail-transaction",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\UserController",
+        "action" => "contractDetailTransactionJson",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1576576990,
+        "modificationDate" => 1576577840
     ]
 ];
