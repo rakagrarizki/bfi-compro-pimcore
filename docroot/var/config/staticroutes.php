@@ -2178,5 +2178,77 @@ return [
         "legacy" => FALSE,
         "creationDate" => 1576576990,
         "modificationDate" => 1576577840
+    ],
+    126 => [
+        "id" => 126,
+        "name" => "detail agunan rumah",
+        "pattern" => "/\\/user\\/detail-agunan-rumah/",
+        "reverse" => "/user/detail-agunan-rumah",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\UserController",
+        "action" => "detailAgunanRumahJson",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1576640703,
+        "modificationDate" => 1576640784
+    ],
+    127 => [
+        "id" => 127,
+        "name" => "detail agunan mobil",
+        "pattern" => "/\\/user\\/detail-agunan-mobil/",
+        "reverse" => "/user/detail-agunan-mobil",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\UserController",
+        "action" => "detailAgunanMobilJson",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1576640787,
+        "modificationDate" => 1576640830
+    ],
+    128 => [
+        "id" => 128,
+        "name" => "detail agunan motor",
+        "pattern" => "/\\/user\\/detail-agunan-motor/",
+        "reverse" => "/user/detail-agunan-motor",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\UserController",
+        "action" => "detailAgunanMotorJson",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1576640833,
+        "modificationDate" => 1576640945
+    ],
+    129 => [
+        "id" => 129,
+        "name" => "detail agunan alat berat",
+        "pattern" => "/\\/user\\/detail-agunan-alat-berat/",
+        "reverse" => "/user/detail-agunan-alat-berat",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\UserController",
+        "action" => "detailAgunanAlatBeratJson",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1576640948,
+        "modificationDate" => 1576641047
     ]
 ];
