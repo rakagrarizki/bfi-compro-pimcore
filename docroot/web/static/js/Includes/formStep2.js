@@ -17,6 +17,8 @@ $(document).ready(function() {
 
     $('.semester').select2({
         minimumResultsForSearch: Infinity,
+        placeholder: "",
+        allowClear: true
     });
     $('.semester').on('select2:open', function (e) {
         semester_label_element.textContent = "SEMESTER"

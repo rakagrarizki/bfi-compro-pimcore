@@ -1,18 +1,18 @@
 <?php 
 
 /** 
-* Generated at: 2019-11-23T06:04:51+01:00
+* Generated at: 2019-12-17T10:36:09+01:00
 * Inheritance: no
 * Variants: no
 * Changed by: admin (2)
-* IP: ::1
+* IP: 127.0.0.1
 
 
 Fields Summary: 
 - Name [input]
 - Email [input]
-- phone [input]
-- phone2 [input]
+- Phone [input]
+- Phone2 [input]
 - Photo [image]
 - UniversityName [input]
 - Nim [input]
@@ -25,7 +25,7 @@ Fields Summary:
 - Ipk2 [input]
 - AcademicSemester3 [input]
 - Ipk3 [input]
-- Transcript [image]
+- Transcript [href]
 */ 
 
 
@@ -34,7 +34,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'Scholarship',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1574485489,
+   'modificationDate' => 1576575367,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -93,10 +93,10 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'name' => 'Name',
              'title' => 'Name',
              'tooltip' => '',
-             'mandatory' => false,
+             'mandatory' => true,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
@@ -118,10 +118,10 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'name' => 'Email',
              'title' => 'Email',
              'tooltip' => '',
-             'mandatory' => false,
+             'mandatory' => true,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
@@ -140,13 +140,13 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'phpdocType' => 'string',
              'regex' => '',
              'unique' => false,
-             'name' => 'phone',
-             'title' => 'phone',
+             'name' => 'Phone',
+             'title' => 'Phone',
              'tooltip' => '',
-             'mandatory' => false,
+             'mandatory' => true,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
@@ -165,13 +165,13 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'phpdocType' => 'string',
              'regex' => '',
              'unique' => false,
-             'name' => 'phone2',
+             'name' => 'Phone2',
              'title' => 'Phone Alternative',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
@@ -195,7 +195,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
@@ -220,7 +220,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
@@ -245,7 +245,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
@@ -270,7 +270,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
@@ -295,7 +295,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
@@ -320,7 +320,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
@@ -345,7 +345,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
@@ -370,7 +370,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
@@ -395,7 +395,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
@@ -415,12 +415,12 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'regex' => '',
              'unique' => false,
              'name' => 'Ipk2',
-             'title' => 'Ipk1',
+             'title' => 'Ipk2',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
@@ -445,7 +445,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
@@ -465,12 +465,12 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'regex' => '',
              'unique' => false,
              'name' => 'Ipk3',
-             'title' => 'Ipk1',
+             'title' => 'Ipk3',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
@@ -480,25 +480,46 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'visibleSearch' => false,
           )),
           16 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Image::__set_state(array(
-             'fieldtype' => 'image',
+          Pimcore\Model\DataObject\ClassDefinition\Data\Href::__set_state(array(
+             'fieldtype' => 'href',
              'width' => '',
-             'height' => '',
-             'uploadPath' => '',
-             'queryColumnType' => 'int(11)',
-             'columnType' => 'int(11)',
-             'phpdocType' => '\\Pimcore\\Model\\Asset\\Image',
+             'assetUploadPath' => '',
+             'relationType' => true,
+             'queryColumnType' => 
+            array (
+              'id' => 'int(11)',
+              'type' => 'enum(\'document\',\'asset\',\'object\')',
+            ),
+             'phpdocType' => '\\Pimcore\\Model\\Document\\Page | \\Pimcore\\Model\\Document\\Snippet | \\Pimcore\\Model\\Document | \\Pimcore\\Model\\Asset | \\Pimcore\\Model\\DataObject\\AbstractObject',
+             'objectsAllowed' => false,
+             'assetsAllowed' => true,
+             'assetTypes' => 
+            array (
+              0 => 
+              array (
+                'assetTypes' => 'document',
+              ),
+            ),
+             'documentsAllowed' => false,
+             'documentTypes' => 
+            array (
+            ),
+             'lazyLoading' => false,
+             'classes' => 
+            array (
+            ),
+             'pathFormatterClass' => '',
              'name' => 'Transcript',
              'title' => 'Transcript',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'relationType' => false,
+             'columnType' => NULL,
              'invisible' => false,
              'visibleGridView' => false,
              'visibleSearch' => false,
