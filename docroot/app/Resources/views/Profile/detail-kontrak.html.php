@@ -8,10 +8,6 @@
 $this->extend('layout.html.php');
 ?>
 
-<style>
-
-</style>
-
 <div class="container detail-contract">
     <div class="row">
         <article class="sect-title text-center">
