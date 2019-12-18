@@ -21,3 +21,10 @@ services:
     # AppBundle\EventListener\TestListener:
     #     tags:
     #         - { name: kernel.event_listener, event: pimcore.dataobject.preUpdate, method: onObjectPreUpdate }
+#    AppBundle\EventListener\ReportListener:
+#        tags:
+#            - { name: kernel.event_listener, event: pimcore.dataobject.postUpdate, method: onObjectPostUpdate }
+    AppBundle\EventListener\ElasticListener:
+        tags:
+            - { name: kernel.event_listener, event: pimcore.dataobject.postUpdate, method: onObjectPostUpdate }
+            - { name: kernel.event_listener, event: pimcore.document.postUpdate, method: onDocumentPostUpdate }
