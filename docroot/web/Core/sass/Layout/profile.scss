@@ -472,6 +472,7 @@
 
         @include breakpoint(tablet) {
             width: 30%;
+            padding : 0 25px 25px;
         }
 
         @include breakpoint(mobile) {
@@ -482,14 +483,25 @@
         .icon-wrapper {
             display: flex;
             justify-content : space-between;
-            
-            .icon img{
-                width : 50px;
-                height : 50px;
+
+            .icon {
+                @include breakpoint(mobile) {
+                    display: none;
+                }
+
+                img{
+                    width : 50px;
+                    height : 50px;
+                }
             }
             
             .status {
                 margin: auto 0px;
+
+                @include breakpoint(mobile) {
+                    margin-top: 30px;
+                    margin-bottom: 25px;
+                }
                 
                 span {
                     background-color: #04559F;
@@ -608,6 +620,175 @@
 
 
 
+.progress-container {
+    background-color : #FCFCFC;
+    padding : 55px;
+    width : 100%;
+    height : 255px;
+
+    @include breakpoint(mobile) {
+        height: inherit;
+        padding : 25px 20px;
+    }
+    
+    h4 {
+        color : #565656;
+        font-size : 20px;
+        font-weight : bold;
+    }
+    
+    p {
+        color : #565656;
+        font-size : 16px;
+    }
+
+    .header-progress {
+        float : right;
+        width: 65%;
+        text-align: right;
+
+        @include breakpoint(mobile) {
+            float : none;
+            width: 100%;
+            text-align : left;
+        }
+        
+        .status {
+            margin-top : 45px;
+            text-transform : uppercase;
+            font-size : 11px;
+
+            @include breakpoint(mobile) {
+                margin : 30px 0;
+            }
+            
+            span{
+                background-color : #04559F;
+                color : white;
+                padding: 10px 20px;
+                border-radius: 25px;
+            } 
+        }
+    }
+    
+    .footer-progress {
+        float : left;
+        width: 35%;
+
+        @include breakpoint(mobile) {
+            float : none;
+            width: 100%;
+            display : inline-flex;
+        }
+
+        .footer-content {
+            @include breakpoint(mobile) {
+                width: 50%;
+            }
+        }
+    }
+}
+
+.md-stepper-horizontal {
+    display: inline-flex;
+    width: 100%;
+    
+    .md-step {
+        flex : 5;
+        position:relative;
+        padding:5px;
+        
+        &:hover .md-step-circle {
+            background-color:#757575;
+        }
+        
+        &:first-child .md-step-bar-left,
+        &:last-child .md-step-bar-right {
+            display:none;
+        }
+        
+        .md-step-circle {
+            width:30px;
+            height:30px;
+            margin:0 auto;
+            background-color:#999999;
+            border-radius: 50%;
+            text-align: center;
+            line-height:30px;
+            font-size: 16px;
+            font-weight: 600;
+            color:#FFFFFF;
+        }
+        
+        &.active .md-step-circle {
+            background-color:#F9991C;
+        }
+        
+        &.done .md-step-circle:before {
+            font-family:'FontAwesome';
+            font-weight:100;
+            content: "\f00c";
+        }
+        
+        &.fail .md-step-circle:before {
+            font-family:'FontAwesome';
+            content: "\00d7";
+            font-size : 20px;
+        }
+        
+        &.done .md-step-circle *,
+        &.fail .md-step-circle * {
+            display:none;
+        }
+        
+        .md-step-title {
+            margin-top:10px;
+            font-size:15px;
+            font-weight:600;
+            white-space: nowrap;
+            overflow: auto;
+            text-align: center;
+            color:rgba(0,0,0,.26);
+
+            @include breakpoint(mobile) {
+                white-space: normal;
+            }
+        }
+        
+        &.active .md-step-title {
+            font-weight: 600;
+            color:rgba(0,0,0,.87);
+        }
+        
+        &.active .md-step-bar-left,
+        &.active .md-step-bar-right {
+            position:absolute;
+            top:20px;
+            height:1px;
+            border-top:3px solid #F9991C;
+        }
+        
+        .md-step-bar-left,
+        .md-step-bar-right {
+            position:absolute;
+            top:20px;
+            height:1px;
+            border-top:3px solid #ddd;
+        }
+        
+        .md-step-bar-right {
+            right:0;
+            left:50%;
+            margin-left:20px;
+        }
+
+        .md-step-bar-left {
+            left:0;
+            right:50%;
+            margin-right:20px;
+        }
+    }
+}
 
 
 
