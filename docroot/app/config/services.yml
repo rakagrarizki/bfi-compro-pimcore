@@ -24,7 +24,7 @@ services:
 #    AppBundle\EventListener\ReportListener:
 #        tags:
 #            - { name: kernel.event_listener, event: pimcore.dataobject.postUpdate, method: onObjectPostUpdate }
-    AppBundle\EventListener\ElasticListener:
-        tags:
-            - { name: kernel.event_listener, event: pimcore.dataobject.postUpdate, method: onObjectPostUpdate }
-            - { name: kernel.event_listener, event: pimcore.document.postUpdate, method: onDocumentPostUpdate }
+#    AppBundle\EventListener\ElasticListener:
+#        tags:
+#            - { name: kernel.event_listener, event: pimcore.dataobject.postUpdate, method: onObjectPostUpdate }
+#            - { name: kernel.event_listener, event: pimcore.document.postUpdate, method: onDocumentPostUpdate }
