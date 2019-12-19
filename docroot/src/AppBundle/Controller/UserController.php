@@ -34,9 +34,8 @@ class UserController extends FrontendController
         $host = WebsiteSetting::getByName("HOST")->getData();
         $url = $host . WebsiteSetting::getByName('LOGIN')->getData();
 
-        $sendApi = new SendAPi;
         try {
-            $data = $sendApi->login($url, $param);
+            $data = $this->sendApi->login($url, $param);
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
@@ -56,14 +55,18 @@ class UserController extends FrontendController
 
     public function otpRequestJsonAction(Request $request)
     {
-        $handphone = htmlentities($request->get('phone_number'));
+        $params['phone_number'] = htmlentities($request->get('phone_number'));
+
+        $host = WebsiteSetting::getByName("HOST")->getData();
+        $url = $host . WebsiteSetting::getByName('LOGIN_OTP_REQUEST')->getData();
 
         try {
-            $data = $this->sendAPI->loginRequestOtp($handphone);
+            $data = $this->sendApi->loginRequestOtp($url, $params);
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Failed to retrieve the data!"
+                'message' => "Failed to retrieve the data!",
+                'data' => $url
             ]);
         }
 
@@ -79,11 +82,14 @@ class UserController extends FrontendController
 
     public function otpConfirmJsonAction(Request $request)
     {
-        $handphone = htmlentities($request->get('phone_number'));
-        $code = htmlentities($request->get('otp_code'));
+        $params["phone_number"] = htmlentities($request->get('phone_number'));
+        $params["otp_code"] = htmlentities($request->get('otp_code'));
+
+        $host = WebsiteSetting::getByName("HOST")->getData();
+        $url = $host . WebsiteSetting::getByName('LOGIN_OTP_CONFIRM')->getData();
 
         try {
-            $data = $this->sendAPI->loginConfirmOtp($handphone, $code);
+            $data = $this->sendApi->loginConfirmOtp($url, $params);
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
@@ -98,8 +104,7 @@ class UserController extends FrontendController
 
         return new JsonResponse([
             'success' => true,
-            'result' => $data,
-            'session' => $this->getToken()
+            'result' => $data
         ]);
     }
 
@@ -113,7 +118,7 @@ class UserController extends FrontendController
         $url = $host . WebsiteSetting::getByName('CHECK_VERIFY_STATUS')->getData();
 
         try {
-            $data = $this->sendAPI->verifyStatus($url, $param, $token);
+            $data = $this->sendApi->verifyStatus($url, $param, $token);
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
@@ -142,7 +147,7 @@ class UserController extends FrontendController
         $url = $host . WebsiteSetting::getByName('VERIFY_EMAIL_REQUEST')->getData();
 
         try {
-            $data = $this->sendAPI->verifyEmailRequest($url, $param, $token);
+            $data = $this->sendApi->verifyEmailRequest($url, $param, $token);
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
@@ -171,7 +176,7 @@ class UserController extends FrontendController
         $url = $host . WebsiteSetting::getByName('VERIFY_EMAIL_CONFIRM')->getData();
 
         try {
-            $data = $this->sendAPI->verifyEmailConfirm($url, $param, $token);
+            $data = $this->sendApi->verifyEmailConfirm($url, $param, $token);
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
@@ -201,7 +206,7 @@ class UserController extends FrontendController
         $url = $host . WebsiteSetting::getByName('VERIFY_NO_KTP')->getData();
 
         try {
-            $data = $this->sendAPI->verifyNoKtp($url, $param, $token);
+            $data = $this->sendApi->verifyNoKtp($url, $param, $token);
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
@@ -230,7 +235,7 @@ class UserController extends FrontendController
         $url = $host . WebsiteSetting::getByName('LOGOUT')->getData();
 
         try {
-            $data = $this->sendAPI->logout($url, $param, $token);
+            $data = $this->sendApi->logout($url, $param, $token);
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
@@ -259,7 +264,7 @@ class UserController extends FrontendController
         $url = $host . WebsiteSetting::getByName('ASSIGNMENT_LIST')->getData();
 
         try {
-            $data = $this->sendAPI->listAssignment($url, $param, $token);
+            $data = $this->sendApi->listAssignment($url, $param, $token);
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
@@ -288,7 +293,7 @@ class UserController extends FrontendController
         $url = $host . WebsiteSetting::getByName('APPLICATION_STEP_LIST')->getData();
 
         try {
-            $data = $this->sendAPI->listApplicationStep($url, $param, $token);
+            $data = $this->sendApi->listApplicationStep($url, $param, $token);
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
@@ -317,7 +322,7 @@ class UserController extends FrontendController
         $url = $host . WebsiteSetting::getByName('APPLICATION_STATUS_LIST')->getData();
 
         try {
-            $data = $this->sendAPI->listApplicationStatus($url, $param, $token);
+            $data = $this->sendApi->listApplicationStatus($url, $param, $token);
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
@@ -347,7 +352,7 @@ class UserController extends FrontendController
         $url = $host . WebsiteSetting::getByName('CONTRACT_STATUS_LIST')->getData();
 
         try {
-            $data = $this->sendAPI->listContractStatus($url, $param, $token);
+            $data = $this->sendApi->listContractStatus($url, $param, $token);
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
@@ -376,7 +381,7 @@ class UserController extends FrontendController
         $url = $host . WebsiteSetting::getByName('CONTRACT_DETAIL')->getData();
 
         try {
-            $data = $this->sendAPI->detailContract($url, $param, $token);
+            $data = $this->sendApi->detailContract($url, $param, $token);
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
@@ -405,7 +410,7 @@ class UserController extends FrontendController
         $url = $host . WebsiteSetting::getByName('DETAIL_AGUNAN_RUMAH')->getData();
 
         try {
-            $data = $this->sendAPI->detailAgunanRumah($url, $param, $token);
+            $data = $this->sendApi->detailAgunanRumah($url, $param, $token);
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
@@ -434,7 +439,7 @@ class UserController extends FrontendController
         $url = $host . WebsiteSetting::getByName('DETAIL_AGUNAN_MOBIL')->getData();
 
         try {
-            $data = $this->sendAPI->detailAgunanMobil($url, $param, $token);
+            $data = $this->sendApi->detailAgunanMobil($url, $param, $token);
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
@@ -463,7 +468,7 @@ class UserController extends FrontendController
         $url = $host . WebsiteSetting::getByName('DETAIL_AGUNAN_MOTOR')->getData();
 
         try {
-            $data = $this->sendAPI->detailAgunanMotor($url, $param, $token);
+            $data = $this->sendApi->detailAgunanMotor($url, $param, $token);
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
@@ -492,7 +497,7 @@ class UserController extends FrontendController
         $url = $host . WebsiteSetting::getByName('DETAIL_AGUNAN_ALAT_BERAT')->getData();
 
         try {
-            $data = $this->sendAPI->detailAgunanAlatberat($url, $param, $token);
+            $data = $this->sendApi->detailAgunanAlatberat($url, $param, $token);
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
@@ -521,7 +526,7 @@ class UserController extends FrontendController
         $url = $host . WebsiteSetting::getByName('DETAIL_TRANSAKSI')->getData();
 
         try {
-            $data = $this->sendAPI->detailContractTransaction($url, $param, $token);
+            $data = $this->sendApi->detailContractTransaction($url, $param, $token);
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",

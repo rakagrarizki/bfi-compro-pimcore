@@ -106,23 +106,13 @@ class SendApi
         return $this->executeApi('api-validate-otp', $url, $params, "POST");
     }
 
-    public function loginRequestOtp($handphone)
+    public function loginRequestOtp($url, $params)
     {
-        $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('LOGIN_OTP_REQUEST')->getData();
-        $params["phone_number"] = $handphone;
-        //$params["first_name"] = $name;
-
         return $this->executeApi('otpRequest', $url, $params, "POST");
     }
 
-    public function loginConfirmOtp($handphone, $code)
+    public function loginConfirmOtp($url, $params)
     {
-        $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('LOGIN_OTP_CONFIRM')->getData();
-        $params["phone_number"] = $handphone;
-        $params["otp_code"] = $code;
-
         return $this->executeApi('otpConfirm', $url, $params, "POST");
     }
 
