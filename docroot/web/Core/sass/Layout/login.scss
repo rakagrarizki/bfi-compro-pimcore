@@ -1,4 +1,4 @@
-#login, #otp{
+#login, #otp, #email-verify, #email-sent{
     margin: 170px auto 80px auto;
     text-align: center;
     h3{
@@ -23,7 +23,7 @@
     }
 }
 
-#login{
+#login, #email-verify{
 
     #login-form{
         width: 400px;
@@ -63,6 +63,10 @@
                         -moz-transform: translateY(0);
                         -ms-transform: translateY(0);
                         -o-transform: translateY(0);
+                    }
+
+                    &::-webkit-inner-spin-button{
+                        -webkit-appearance: none;
                     }
                 }
     
@@ -176,7 +180,6 @@
 }
 
 #otp{
-
     #otp-form{
         margin-top: 25px;
         margin-bottom: 25px;
@@ -195,7 +198,32 @@
             &::-webkit-inner-spin-button{
                 -webkit-appearance: none;
             }
+
+            &:focus{
+                outline: none;
+            }
         }
     }
 
+    a{
+        color: #565656;
+    }
+
+    #resend-notice{
+        color: #04559f;
+    }
+}
+
+#email-verify{
+    .input-text-group{
+        margin-bottom: 0 !important;
+
+        .style-input{
+            background: url(/static/images/icon/pencils.png) no-repeat right 20px center /20px 20px;
+        }
+    }
+}
+
+.hide{
+    display: none;
 }
