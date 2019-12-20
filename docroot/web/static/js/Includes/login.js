@@ -49,21 +49,3 @@ $('#otp-form').find('input').each(function() {
 	});
 });
 
-
-function otp(){
-    var timeleft = 90;
-    var timer = setInterval(function(){
-        document.getElementById("resend").innerHTML = "Mohon menunggu <b>" +timeleft+ " seconds </b> untuk mengirim ulang";
-        timeleft -= 1;
-        if(timeleft <= 0){
-            clearInterval(timer);
-            document.getElementById("resend").innerHTML = "Tidak menerima 4-digit kode ? <a onclick='resendOTP()'><b>Kirim Ulang</b></a>"
-        };
-    }, 1000);
-}
-
-function resendOTP(){
-    otp();
-    document.getElementById("resend-notice").textContent = "4-digit kode telah dikirimkan ke nomor handphone anda";
-}
-

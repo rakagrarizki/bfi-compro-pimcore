@@ -4767,6 +4767,27 @@ function login() {
   })
 }
 
+function otp(){
+  var timeleft = 90;
+  var timer = setInterval(function(){
+      document.getElementById("resend").innerHTML = "Mohon menunggu <b>" +timeleft+ " seconds </b> untuk mengirim ulang";
+      timeleft -= 1;
+      if(timeleft <= 0){
+          clearInterval(timer);
+          document.getElementById("resend").innerHTML = "Tidak menerima 4-digit kode ? <a onclick='resendOTP()'><b>Kirim Ulang</b></a>"
+      };
+  }, 1000);
+}
+
+function resendOTP(){
+  var dataPhone = {
+      'phone_number' : $('#phone-input').val()
+  };
+  otp();
+  requestOTP(dataPhone)
+  document.getElementById("resend-notice").textContent = "4-digit kode telah dikirimkan ke nomor handphone anda";
+}
+
 function requestOTP(phone) {
   $.ajax({
       type: 'POST',
@@ -4798,7 +4819,6 @@ function verified(){
 
   console.log(dataOTP)
   verifiedOTP(dataOTP)
-  window.dataOTP = dataOTP;
 }
 
 function verifiedOTP(dataOTP){

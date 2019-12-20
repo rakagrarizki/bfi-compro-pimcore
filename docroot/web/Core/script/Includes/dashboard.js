@@ -90,7 +90,10 @@ function showFileName( event ) {
 }
 
 $(document).ready(function(){
-    console.log(dataOTP)
+    checkStatus()
+});
+
+function checkStatus() {
     $.ajax({
         type: 'GET',
         url: 'https://bfi.staging7.salt.id/user/check-verify-status',
@@ -109,4 +112,4 @@ $(document).ready(function(){
             }
         }
     })
-});
+}
