@@ -49,11 +49,6 @@ $('#otp-form').find('input').each(function() {
 	});
 });
 
-function login() {
-    $('#login').addClass("hide");
-    $('#otp').removeClass("hide");
-    otp();
-}
 
 function otp(){
     var timeleft = 90;
@@ -72,6 +67,3 @@ function resendOTP(){
     document.getElementById("resend-notice").textContent = "4-digit kode telah dikirimkan ke nomor handphone anda";
 }
 
-function verified(){
-    window.location="/";
-}

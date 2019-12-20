@@ -4734,3 +4734,92 @@ function copyURL(url) {
   $temp.remove();
   $('#copied').show().delay(2000).fadeOut(400);
 }
+
+var dataOTP = {}
+
+function login() {
+  var dataPhone = {
+      'phone_number' : $('#phone-input').val()
+  };
+  console.log(dataPhone);
+  $.ajax({
+      type: 'POST',
+      url: 'https://bfi.staging7.salt.id/user/login',
+      data: dataPhone,
+      dataType: 'json',
+      error: function (data) {
+          console.log('error' + data);
+      },
+
+      fail: function (xhr, textStatus, error) {
+          console.log('request failed')
+      },
+
+      success: function (dataObj) {
+          if (dataObj.success === true) {
+              console.log('berhasil login')
+              requestOTP(dataPhone)
+              $('#login').addClass("hide");
+              $('#otp').removeClass("hide");
+              otp();
+          }
+      }
+  })
+}
+
+function requestOTP(phone) {
+  $.ajax({
+      type: 'POST',
+      url: 'https://bfi.staging7.salt.id/user/otp-request',
+      data: phone,
+      dataType: 'json',
+      error: function (data) {
+          console.log('error' + data);
+      },
+
+      fail: function (xhr, textStatus, error) {
+          console.log('request failed')
+      },
+
+      success: function (dataObj) {
+          console.log(dataObj.result.data)
+      }
+  })
+}
+
+function verified(){
+  var otpInput = $("input[name='digit[]']").map( function() { return $(this).val(); } ).get();
+  otpInput = otpInput.join("")
+  
+  var dataOTP = {
+      'phone_number' : $('#phone-input').val(),
+      'otp_code' : otpInput
+  };
+
+  console.log(dataOTP)
+  verifiedOTP(dataOTP)
+  window.dataOTP = dataOTP;
+}
+
+function verifiedOTP(dataOTP){
+  $.ajax({
+      type: 'POST',
+      url: 'https://bfi.staging7.salt.id/user/otp-confirm',
+      data: dataOTP,
+      dataType: 'json',
+      error: function (data) {
+          console.log('error' + data);
+      },
+
+      fail: function (xhr, textStatus, error) {
+          console.log('request failed')
+      },
+
+      success: function (dataObj) {
+          if (dataObj.success === true) {
+              console.log('berhasil verified otp')
+              window.location="/test4";
+          }
+      }
+  })
+}

@@ -88,3 +88,25 @@ function showFileName( event ) {
     infoArea.textContent = fileName;
     return photo = fileName;
 }
+
+$(document).ready(function(){
+    console.log(dataOTP)
+    $.ajax({
+        type: 'GET',
+        url: 'https://bfi.staging7.salt.id/user/check-verify-status',
+        dataType: 'json',
+        error: function (data) {
+            console.log('error' + data);
+        },
+
+        fail: function (xhr, textStatus, error) {
+            console.log('request failed')
+        },
+
+        success: function (dataObj) {
+            if (dataObj.success === true) {
+                console.log('berhasil get data')
+            }
+        }
+    })
+});
