@@ -16,7 +16,6 @@ class Elastic
         }
 
 
-
        $params = [
            'index' => $index,
            'type' => '_doc',
