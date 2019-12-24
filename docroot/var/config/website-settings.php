@@ -1253,12 +1253,182 @@ return [
     ],
     131 => [
         "id" => 131,
-        "name" => "cse",
+        "name" => "LOGIN",
         "language" => "",
         "type" => "text",
-        "data" => "015134883047426095748:jpmv3zymna8",
+        "data" => "/login",
         "siteId" => 0,
         "creationDate" => 0,
-        "modificationDate" => 1577071796
+        "modificationDate" => 1576578410
+    ],
+    132 => [
+        "id" => 132,
+        "name" => "LOGIN_OTP_REQUEST",
+        "language" => "",
+        "type" => "text",
+        "data" => "/login_otp_request",
+        "siteId" => 0,
+        "creationDate" => 0,
+        "modificationDate" => 1576578430
+    ],
+    134 => [
+        "id" => 134,
+        "name" => "LOGIN_OTP_CONFIRM",
+        "language" => "",
+        "type" => "text",
+        "data" => "/login_otp_confirm",
+        "siteId" => 0,
+        "creationDate" => 0,
+        "modificationDate" => 1576578456
+    ],
+    135 => [
+        "id" => 135,
+        "name" => "CHECK_VERIFY_STATUS",
+        "language" => "",
+        "type" => "text",
+        "data" => "/login_get_verify_status",
+        "siteId" => 0,
+        "creationDate" => 0,
+        "modificationDate" => 1576578486
+    ],
+    136 => [
+        "id" => 136,
+        "name" => "VERIFY_EMAIL_REQUEST",
+        "language" => "",
+        "type" => "text",
+        "data" => "/login_email_verify_request",
+        "siteId" => 0,
+        "creationDate" => 0,
+        "modificationDate" => 1576578508
+    ],
+    137 => [
+        "id" => 137,
+        "name" => "VERIFY_EMAIL_CONFIRM",
+        "language" => "",
+        "type" => "text",
+        "data" => "/login_email_verify_confirm",
+        "siteId" => 0,
+        "creationDate" => 0,
+        "modificationDate" => 1576578519
+    ],
+    138 => [
+        "id" => 138,
+        "name" => "VERIFY_NO_KTP",
+        "language" => "",
+        "type" => "text",
+        "data" => "/login_noktp_verify",
+        "siteId" => 0,
+        "creationDate" => 0,
+        "modificationDate" => 1576578537
+    ],
+    139 => [
+        "id" => 139,
+        "name" => "LOGOUT",
+        "language" => "",
+        "type" => "text",
+        "data" => "/logout",
+        "siteId" => 0,
+        "creationDate" => 0,
+        "modificationDate" => 1576578444
+    ],
+    140 => [
+        "id" => 140,
+        "name" => "ASSIGNMENT_LIST",
+        "language" => "",
+        "type" => "text",
+        "data" => "/dashboard_get_list_assignment",
+        "siteId" => 0,
+        "creationDate" => 0,
+        "modificationDate" => 1576578752
+    ],
+    141 => [
+        "id" => 141,
+        "name" => "APPLICATION_STEP_LIST",
+        "language" => "",
+        "type" => "text",
+        "data" => "/dashboard_get_list_application_step",
+        "siteId" => 0,
+        "creationDate" => 0,
+        "modificationDate" => 1576579082
+    ],
+    142 => [
+        "id" => 142,
+        "name" => "APPLICATION_STATUS_LIST",
+        "language" => "",
+        "type" => "text",
+        "data" => "/dashboard_get_list_application_status",
+        "siteId" => 0,
+        "creationDate" => 0,
+        "modificationDate" => 1576579368
+    ],
+    143 => [
+        "id" => 143,
+        "name" => "CONTRACT_STATUS_LIST",
+        "language" => "",
+        "type" => "text",
+        "data" => "/dashboard_get_list_contract_status",
+        "siteId" => 0,
+        "creationDate" => 0,
+        "modificationDate" => 1576579393
+    ],
+    144 => [
+        "id" => 144,
+        "name" => "CONTRACT_DETAIL",
+        "language" => "",
+        "type" => "text",
+        "data" => "/dashboard_get_detail_contract",
+        "siteId" => 0,
+        "creationDate" => 0,
+        "modificationDate" => 1576579440
+    ],
+    145 => [
+        "id" => 145,
+        "name" => "DETAIL_AGUNAN_RUMAH",
+        "language" => "",
+        "type" => "text",
+        "data" => "/dashboard_get_detail_pbf_collateral",
+        "siteId" => 0,
+        "creationDate" => 0,
+        "modificationDate" => 1576579464
+    ],
+    146 => [
+        "id" => 146,
+        "name" => "DETAIL_AGUNAN_MOBIL",
+        "language" => "",
+        "type" => "text",
+        "data" => "/dashboard_get_detail_car_collateral",
+        "siteId" => 0,
+        "creationDate" => 0,
+        "modificationDate" => 1576579481
+    ],
+    147 => [
+        "id" => 147,
+        "name" => "DETAIL_AGUNAN_MOTOR",
+        "language" => "",
+        "type" => "text",
+        "data" => "/dashboard_get_detail_motorcycle_collateral",
+        "siteId" => 0,
+        "creationDate" => 0,
+        "modificationDate" => 1576579497
+    ],
+    148 => [
+        "id" => 148,
+        "name" => "DETAIL_AGUNAN_ALAT_BERAT",
+        "language" => "",
+        "type" => "text",
+        "data" => "/dashboard_get_detail_machinery_collateral",
+        "siteId" => 0,
+        "creationDate" => 0,
+        "modificationDate" => 1576579515
+    ],
+    149 => [
+        "id" => 149,
+        "name" => "DETAIL_TRANSAKSI",
+        "language" => "",
+        "type" => "text",
+        "data" => "/dashboard_get_detail_transaksi_pembayaran",
+        "siteId" => 0,
+        "creationDate" => 0,
+        "modificationDate" => 1576579532
     ]
 ];
