@@ -37,10 +37,10 @@ if($this->editmode) : ?>
                         <?= $this->translate("blog") ?></a>
                 </div>
 
-                <!--<div class="link-log">
-                            <a href="#" class="login"><?/*= $this->translate("login") */?></a>
-                            <a href="#" class="register"><?/*= $this->translate("register") */?></a>
-                        </div>-->
+                <!-- <div class="link-log">
+                    <a href="#" class="login"><?= $this->translate("login")?></a>
+                    <a href="#" class="register"><?= $this->translate("register") ?></a>
+                </div> -->
 
                 <?php echo $this->template("Includes/language.html.php") ?>
 

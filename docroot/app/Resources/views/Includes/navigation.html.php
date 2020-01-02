@@ -45,12 +45,12 @@ use Pimcore\Model\Document\Page;
                                             ?>
 
                                             <li class="dropdown"
-                                                id="produk">
+                                                id="produk" onmouseover="hoverDropdown()" onmouseout="closeDropdown()">
                                                 <a href="#"
                                                    class="<?php echo $page->getActive() ? 'active' : '' ?> produk"><?= $page->getLabel() ?></a>
                                                 <div class="dropdown-content main">
                                                     <div class="produk-hover container">
-                                                        <div class="col-md-12">
+                                                        <div class="">
                                                             <?php
                                                             foreach ($page->getPages() as $child) {
                                                                 ?>

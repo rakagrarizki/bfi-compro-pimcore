@@ -2,25 +2,22 @@ var transkrip;
 var ipk = [];
 
 function loopSemester() {
-    var stop = semester_count - 1;
-    num = 3;
-    for (i = stop; i > stop - 3; i--) {
+    var stop=semester_count-1;
+    for (i=stop;i>stop-3;i--){
         let asd = document.createElement("div");
         asd.setAttribute("class", "ipk-wrapper");
         asd.innerHTML += (
             "<div class='input-text-group'>" +
-            "<input id='name-input' class='style-input exist-input' type='text' value=" + i + " disabled>" +
-            "<label id='name-label' class='input-label exist'>SEMESTER</label>" +
+                "<input id='name-input' class='style-input exist-input' type='text' value="+i+" disabled>" +
+                "<label id='name-label' class='input-label exist'>SEMESTER</label>" +
             "</div>" +
-            "<input name='scholarship[academicSemester" + num + "]' class='style-input exist-input' type='hidden' value='" + i + "'>" +
             "<div class='input-ipk-wrapper'>" +
-            "<p>IPK</p>" +
-            "<input class='first-digit' type='number' disabled value='3'>" +
-            "<input name='scholarship[ipk" + num + "]' id='smt-ke-" + i + "' class='last-two-digit' maxlength='2' type='number' oninput='javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);' onfocusout='getIpkValue(this.id)'>" +
-            "<span>Minimal IPK 3.00</span>" +
+                "<p>IPK</p>" +
+                "<input class='first-digit' type='number' disabled value='3'>" +
+                "<input id='smt-ke-"+i+"' class='last-two-digit' maxlength='2' value='00' type='number' oninput='javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);' onfocusout='getIpkValue(this.id)'>" +
+                "<span>Minimal IPK 3.00</span>"+
             "</div>");
         document.getElementById("form-semester-ipk").prepend(asd);
-        num--;
     }
 }
 
@@ -31,7 +28,7 @@ var inputPDF = document.getElementById('file-pdf-upload');
 var infoAreaPDF = document.getElementById('pdf-filename');
 var showPDF = document.getElementById('show');
 
-inputPDF.addEventListener('change', uploadPDF);
+inputPDF.addEventListener( 'change', uploadPDF );
 titlePDF.setAttribute("style", "margin-bottom: -15px;");
 
 function uploadPDF(event) {
@@ -43,16 +40,17 @@ function uploadPDF(event) {
     showPDF.classList.add("image-wrapper");
     imagePDF.src = "static/images/pdf_logo.png";
     ext = fileName.split('.').pop();
-    if (fileName.length > 15) {
-        trimName = fileName.substring(0, 10) + ".." + ext;
+    if (fileName.length > 15){
+        trimName = fileName.substring(0 , 10) + ".." + ext;
         infoAreaPDF.textContent = trimName;
         return transkrip = trimName;
-    } else {
+    }
+    else{
         infoAreaPDF.textContent = fileName;
         return transkrip = fileName;
     }
 }
 
-function getIpkValue(id_smt) {
+function getIpkValue(id_smt){
     ipk[id_smt] = document.getElementById(id_smt).value;
 }
