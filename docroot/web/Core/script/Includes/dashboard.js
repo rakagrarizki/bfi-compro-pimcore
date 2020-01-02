@@ -94,9 +94,13 @@ $(document).ready(function(){
 });
 
 function checkStatus() {
+    var token = {
+        "token" : window.sessionStorage.getItem("token")
+    }
+    console.log(token)
     $.ajax({
         type: 'GET',
-        url: 'https://bfi.staging7.salt.id/user/check-verify-status',
+        url: '/user/check-verify-status',
         dataType: 'json',
         error: function (data) {
             console.log('error' + data);

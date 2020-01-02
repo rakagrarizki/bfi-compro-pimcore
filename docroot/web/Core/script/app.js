@@ -4744,7 +4744,7 @@ function login() {
   console.log(dataPhone);
   $.ajax({
       type: 'POST',
-      url: 'https://bfi.staging7.salt.id/user/login',
+      url: '/user/login',
       data: dataPhone,
       dataType: 'json',
       error: function (data) {
@@ -4791,7 +4791,7 @@ function resendOTP(){
 function requestOTP(phone) {
   $.ajax({
       type: 'POST',
-      url: 'https://bfi.staging7.salt.id/user/otp-request',
+      url: '/user/otp-request',
       data: phone,
       dataType: 'json',
       error: function (data) {
@@ -4824,7 +4824,7 @@ function verified(){
 function verifiedOTP(dataOTP){
   $.ajax({
       type: 'POST',
-      url: 'https://bfi.staging7.salt.id/user/otp-confirm',
+      url: '/user/otp-confirm',
       data: dataOTP,
       dataType: 'json',
       error: function (data) {
@@ -4838,6 +4838,9 @@ function verifiedOTP(dataOTP){
       success: function (dataObj) {
           if (dataObj.success === true) {
               console.log('berhasil verified otp')
+              var token = dataObj.result.data.customer_token
+              sessionStorage.setItem("token", token);
+              console.log ('token : ' + token)
               window.location="/test4";
           }
       }
