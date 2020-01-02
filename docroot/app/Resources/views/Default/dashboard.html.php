@@ -40,6 +40,209 @@ $this->extend('layout.html.php');
     </div>
 </section>
 
+<section id="app-status">
+    <div class="container">
+        <div class="title">
+            <h3>Cek Status Aplikasi</h3>
+            <p>Berikut ini adalah status aplikasi anda</p>
+        </div>
+        <ul class="status-wrapper">
+            <li class="status-box">
+                <div class="detail">
+                    <div class="assignment">
+                        <h6>Assignment ID</h6>
+                        <p>-</p>
+                    </div>
+                    <div class="credit-type">
+                        <h6>Jenis Kredit</h6>
+                        <p>Pembiayaan Agunan - Sertifikat Rumah</p>
+                    </div>
+                </div>
+                <div class="status-step">
+                    <ul class="stepper-row">
+                        <li id="status-step" class="active">
+                            <span id="step1" class="number">1</span>
+                        </li>
+                        <li id="status-step" class="active">
+                            <span id="step2" class="number">2</span>
+                        </li>
+                        <li id="status-step">
+                            <span id="step3" class="number">3</span>
+                        </li>
+                        <li id="status-step">
+                            <span id="step4" class="number">4</span>
+                        </li>
+                        <li id="status-step">
+                            <span id="step5" class="number">5</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="fail-notif">
+                    <span>&#10005;</span>
+                    <span>PENGAJUAN DITOLAK</span>
+                </div>
+            </li>
+
+            <hr>
+
+            <li class="status-box">
+                <div class="detail">
+                    <div class="assignment">
+                        <h6>Assignment ID</h6>
+                        <p>-</p>
+                    </div>
+                    <div class="credit-type">
+                        <h6>Jenis Kredit</h6>
+                        <p>Pembiayaan Agunan - Sertifikat Rumah</p>
+                    </div>
+                </div>
+                <div class="status-step">
+                    <ul class="stepper-row">
+                        <li id="status-step" class="active">
+                            <span class="number">1</span>
+                        </li>
+                        <li id="status-step" class="active">
+                            <span class="number">2</span>
+                        </li>
+                        <li id="status-step" class="active">
+                            <span class="number">3</span>
+                        </li>
+                        <li id="status-step">
+                            <span class="number">4</span>
+                        </li>
+                        <li id="status-step">
+                            <span class="number">5</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="fail-notif">
+                    <span>&#10005;</span>
+                    <span>PENGAJUAN DITOLAK</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<section id="check-contract">
+    <div class="container">
+        <div class="title">
+            <h3>Cek Kontrak</h3>
+            <p>Berikut ini adalah informasi kontrak anda</p>
+        </div>
+        <ul class="contract-wrapper">
+            <a class="contract-box" href="#">
+                <li href="" class="contract-detail" id="telat"> <!--tambah id=telat utk tambah note telat bayar-->
+                    <img src="/static/images/gedung.png" alt="">
+                    <div class="contract-type">
+                        <h5>Pembiayan Agunan</h5>
+                        <h5>BPKB Mobil</h5>
+                    </div>
+                    <div class="details">
+                        <div>
+                            <h6>No. Kontrak</h6>
+                            <p>1234567890</p>
+                        </div>
+                        <div>
+                            <h6>Angsuran per Bulan</h6>
+                            <p>Rp. 5.000.000,-</p>
+                        </div>
+                        <div>
+                            <h6>Tanggal Jatuh Tempo</h6>
+                            <p>11 November 2019</p>
+                        </div>
+                    </div>
+                    <h5 class="more">LIHAT DETAIL &#62;</h5>
+                </li>
+            </a>
+            <a class="contract-box" href="#">
+                <li href="" class="contract-detail">
+                    <img src="/static/images/gedung.png" alt="">
+                    <div class="contract-type">
+                        <h5>Pembiayan Agunan</h5>
+                        <h5>BPKB Mobil</h5>
+                    </div>
+                    <div class="details">
+                        <div>
+                            <h6>No. Kontrak</h6>
+                            <p>1234567890</p>
+                        </div>
+                        <div>
+                            <h6>Angsuran per Bulan</h6>
+                            <p>Rp. 5.000.000,-</p>
+                        </div>
+                        <div>
+                            <h6>Tanggal Jatuh Tempo</h6>
+                            <p>11 November 2019</p>
+                        </div>
+                    </div>
+                    <h5 class="more">LIHAT DETAIL &#62;</h5>
+                </li>
+            </a>
+            <a class="contract-box" href="#">
+                <li href="" class="contract-detail" id="telat">
+                    <img src="/static/images/gedung.png" alt="">
+                    <div class="contract-type">
+                        <h5>Pembiayan Agunan</h5>
+                        <h5>BPKB Mobil</h5>
+                    </div>
+                    <div class="details">
+                        <div>
+                            <h6>No. Kontrak</h6>
+                            <p>1234567890</p>
+                        </div>
+                        <div>
+                            <h6>Angsuran per Bulan</h6>
+                            <p>Rp. 5.000.000,-</p>
+                        </div>
+                        <div>
+                            <h6>Tanggal Jatuh Tempo</h6>
+                            <p>11 November 2019</p>
+                        </div>
+                    </div>
+                    <h5 class="more">LIHAT DETAIL &#62;</h5>
+                </li>
+            </a>
+            <a class="contract-box" href="#">
+                <li href="" class="contract-detail">
+                    <img src="/static/images/gedung.png" alt="">
+                    <div class="contract-type">
+                        <h5>Pembiayan Agunan</h5>
+                        <h5>BPKB Mobil</h5>
+                    </div>
+                    <div class="details">
+                        <div>
+                            <h6>No. Kontrak</h6>
+                            <p>1234567890</p>
+                        </div>
+                        <div>
+                            <h6>Angsuran per Bulan</h6>
+                            <p>Rp. 5.000.000,-</p>
+                        </div>
+                        <div>
+                            <h6>Tanggal Jatuh Tempo</h6>
+                            <p>11 November 2019</p>
+                        </div>
+                    </div>
+                    <h5 class="more">LIHAT DETAIL &#62;</h5>
+                </li>
+            </a>
+            <a href="" class="contract-box add-contract">
+                <li class="">
+                    <div class="box">
+                        <div class="plus">
+                            <h1>&#43;</h1>
+                        </div>
+                        <h3>AJUKAN KREDIT</h3>
+                    </div>
+                </li>
+            </a>
+        </ul>
+    </div>
+</section>
+
+
+<!-- Pop-up -->
 <div class="modal fade" id="popup-ktp">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -84,6 +287,7 @@ $this->extend('layout.html.php');
     </div>
 </div>
 
+<<<<<<< HEAD
 <div class="container detail-contract">
     <div class="row">
         <article class="sect-title text-center">
@@ -225,5 +429,8 @@ $this->extend('layout.html.php');
         </div>
     </div>
 </div>
+=======
+<!-- Pop-up -->
+>>>>>>> 40954c5f708122a30eec3662402a952d5a82792f
 
 <?php $this->headScript()->prependFile('/static/js/Includes/dashboard.js'); ?>

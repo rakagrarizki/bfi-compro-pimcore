@@ -25,12 +25,12 @@ class ElasticListener {
             $data['path'] = $object->getFullPath();
 
             if($object instanceof News){
-                $index = "news";
+                $index = "document";
                 $data = $this->getData($object);
                 $elastic = Elastic::addToIndex($index, $object->getId(),$data);
             }
             if ($object instanceof BlogArticle){
-                $index = "blog";
+                $index = "document";
                 $data = $this->getData($object);
                 $elastic = Elastic::addToIndex($index, $object->getId(),$data);
             }
@@ -71,15 +71,15 @@ class ElasticListener {
                         }
                     }
                     //$index =$document->();
-                    $index = "document_".$document->getProperty("language");
+                    $index = "document";
 
     //                $data['parentid'] = $document->getParentId();
     //                $data['grandparentid'] = $grandParent;
 
-                    $data['Title'] = $document->getTitle();
-                    $data["Description"] = $document->getDescription();
+                    $data['Title_'.$document->getProperty("language")] = $document->getTitle();
+                    //$data["Body".$document->getProperty("language")] = $document->getDescription();
                     //$data["Tag"] = $document->getProperty("tag");
-                    $data['ContentDetail'] = $content;
+                    $data['Body_'.$document->getProperty("language")] = $content;
                     $data['url'] = $document->getFullPath();
 
                 }
@@ -101,7 +101,14 @@ class ElasticListener {
         foreach($validLanguages as $lang){
             //foreach($object->getObject() as $key=> $val){
             $data['Title_'.$lang] = strip_tags($object->getTitle($lang));
-            $data['Content_'.$lang] = strip_tags($object->getContent($lang));
+            $data['Body_'.$lang] = strip_tags($object->getContent($lang));
+            if($object->getClassName() == "News"){
+                $url = '/'.$lang.'/news/'.$object->getSlug();
+                $data['url'] = $url;
+            }else{
+                $url = '/'.$lang.'/blog/'.$object->getSlug();
+                $data['url'] = $url;
+            }
 
             // }
         }

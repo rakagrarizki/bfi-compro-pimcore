@@ -91,6 +91,21 @@ function showFileName( event ) {
 
 $(document).ready(function(){
     checkStatus()
+
+    window.onload = function(){
+        var elements = document.querySelectorAll('[id="telat"]');
+        for(var i = 0; i < elements.length; i++) {
+            elements[i].innerHTML += (
+                "<div class='outdate'>TELAT BAYAR</div>" +
+                "<div class='outdate-note'>" +
+                    "<div class='circle'>" +
+                        "<i class='fa fa-exclamation'></i>"+
+                    "</div>"+
+                    "<span>Anda terlambat membayar 5 hari</span>"+
+                "</div>"
+            );
+        }
+    }
 });
 
 function checkStatus() {
