@@ -287,7 +287,6 @@ $this->extend('layout.html.php');
     </div>
 </div>
 
-<<<<<<< HEAD
 <div class="container detail-contract">
     <div class="row">
         <article class="sect-title text-center">
@@ -429,8 +428,5 @@ $this->extend('layout.html.php');
         </div>
     </div>
 </div>
-=======
-<!-- Pop-up -->
->>>>>>> 40954c5f708122a30eec3662402a952d5a82792f
 
 <?php $this->headScript()->prependFile('/static/js/Includes/dashboard.js'); ?>
