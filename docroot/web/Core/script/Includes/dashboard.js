@@ -91,6 +91,7 @@ function showFileName( event ) {
 
 $(document).ready(function(){
     checkStatus()
+    checkAssignmentList()
 
     window.onload = function(){
         var elements = document.querySelectorAll('[id="telat"]');
@@ -109,14 +110,43 @@ $(document).ready(function(){
 });
 
 function checkStatus() {
-    var token = {
-        "token" : window.sessionStorage.getItem("token")
-    }
-    console.log(token)
+    var token = window.sessionStorage.getItem("token");
+    console.log(token);
+
     $.ajax({
         type: 'GET',
         url: '/user/check-verify-status',
+        crossDomain: true,
         dataType: 'json',
+        headers: { 'session_id': token },
+
+        error: function (data) {
+            console.log('error' + data);
+        },
+
+        fail: function (xhr, textStatus, error) {
+            console.log('request failed')
+        },
+
+        success: function (dataObj) {
+            if (dataObj.success === true) {
+                console.log('berhasil get data')
+            }
+        }
+    })
+}
+
+function checkAssignmentList() {
+    var token = window.sessionStorage.getItem("token");
+    console.log(token);
+
+    $.ajax({
+        type: 'GET',
+        url: '/user/assignment-list',
+        crossDomain: true,
+        dataType: 'json',
+        headers: { 'session_id': token },
+
         error: function (data) {
             console.log('error' + data);
         },
