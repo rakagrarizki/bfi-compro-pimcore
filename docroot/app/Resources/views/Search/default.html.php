@@ -1,66 +1,87 @@
-<?php $q = htmlentities($this->getParam("q"));?>
 
-<form action="/search">
-    <section id="banner-result">
-        <div class="container">
-            <div class="banner-title">
-                <div class="heading-1"><h1><?= $this->t("search-result");?></h1></div>
-                <div class="search">
-                    <div class="form-group">
-                        <div class="search-form">
-
-                            <input type="text" name="q" value="<?=$q?>"><i class="flaticon-search"></i>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</form>
 
 <?php
-dump($this->document["items"]);
-dump($this->blog["items"]);exit;
+/**
+ * @var \Pimcore\Templating\PhpEngine $this
+ * @var \Pimcore\Templating\PhpEngine $view
+ * @var \Pimcore\Templating\GlobalVariables $app
+ */
 
+$this->extend('layout.html.php');
 ?>
+<?php $q = $this->queryString;
+$page = $this->page;
+?>
+<?php $lang = $this->getLocale();?>
 
 <!-- TEMPLATE -->
+
 <section id="search">
     <div class="container">
-        <div class="search-wrapper">
-            <input id="search-input" class="input-search" type="text" placeholder="Search Here...">
-            <button id="search-on" onclick="search(this.id)">
-                <img id="button-search" src="/static/images/icon/search.png" widht="36" height="36">
-            </button>
-        </div>
-        <p id="search-result"></p>
+        <form action="/search">
+            <div class="search-wrapper">
+                <input id="search-input" class="input-search" name="q" type="text" value="<?= $q;?>"placeholder=<?= $this->t("search-here")?>>
 
-        <ul id="result-list" class="hide">
-            <a href="">
+                <button type="submit" id="search-on">
+                    <img id="button-search" src="/static/images/icon/search.png" widht="36" height="36">
+                </button>
+            </div>
+        </form>
+
+        <?php if($this->paginator): ?>
+        <p id="search-result"><?= $this->paginator["items"] ? $this->paginator["totalItem"] : "0 " ?> <?= $this->t("search-found")?></p>
+        <ul id="result-list">
+            <?php foreach($this->paginator["items"] as $item): ?>
+
+            <a href="<?= $item["_source"]["url"];?>">
                 <li id="result-wrapper">
-                    <h6>Produk</h6>
-                    <h3>Pembiayaan dengan Jaminan BPKB <span class="highlight">Motor</span></h3>
-                    <p><span class="highlight">Kredit Motor</span> kini lebih mudah dengan pembiayaan BFI hingga 4 tahun. Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum excepturi dolor voluptate sint magnam! Officiis eaque totam aspernatur quam neque dicta, maiores iure, voluptatum quidem molestiae aperiam, tenetur placeat. Ipsa!</p>
+                    <?php  $highlight = "<span class=\"highlight\">".$q."</span>";
+                    $title = str_ireplace($q, $highlight, $item["_source"]["Title_".$lang]);
+                    $body = str_ireplace($q, $highlight, $item["_source"]["Body_".$lang]);
+                    ?>
+                    <h3><?= $title?></h3>
+                    <p><?=   substr($body, 0, 250) . ' ...';?></p>
                 </li>
             </a>
-            <a href="">
-                <li id="result-wrapper">
-                    <h6>Produk</h6>
-                    <h3>Pembiayaan dengan Jaminan BPKB <span class="highlight">Motor</span></h3>
-                    <p><span class="highlight">Kredit Motor</span> kini lebih mudah dengan pembiayaan BFI hingga 4 tahun. Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum excepturi dolor voluptate sint magnam! Officiis eaque totam aspernatur quam neque dicta, maiores iure, voluptatum quidem molestiae aperiam, tenetur placeat. Ipsa!</p>
-                </li>
-            </a>
-            <a href="">
-                <li id="result-wrapper">
-                    <h6>Produk</h6>
-                    <h3>Pembiayaan dengan Jaminan BPKB <span class="highlight">Motor</span></h3>
-                    <p><span class="highlight">Kredit Motor</span> kini lebih mudah dengan pembiayaan BFI hingga 4 tahun. Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum excepturi dolor voluptate sint magnam! Officiis eaque totam aspernatur quam neque dicta, maiores iure, voluptatum quidem molestiae aperiam, tenetur placeat. Ipsa!</p>
-                </li>
-            </a>
+            <?php endforeach;?>
+
         </ul>
+            <?php if($this->totalPage != 0) :?>
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    <?php
+                    $prev = (int)$page - 1;
+                    if($prev != 0) :?>
+                        <li>
+                            <a href="<?= urldecode($this->pimcoreUrl(['page' => $prev])); ?>" aria-label="Previous">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        </li>
+                    <?php endif; ?>
+                    <?php
+
+                    for ($p = 1; $p <= $this->totalPage; $p++) :
+                     ?>
+                        <?php if ($p == $page): ?>
+                            <li class="active"><a href="javascript:void(0)"><?= $p; ?></a></li>
+                        <?php else :?>
+                            <li><a href="<?= $this->pimcoreUrl(['page' => $p]); ?>"><?= $p; ?></a></li>
+                        <?php endif;?>
+
+                    <?php endfor;?>
+                    <?php $next = (int)$page + 1;?>
+                    <li>
+                        <a href="<?= $this->pimcoreUrl(['page' => $next]); ?>" aria-label="Next">
+                        <i class="fa fa-angle-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <?php endif;?>
+        <?php endif;?>
     </div>
 </section>
 
-<?php $this->headScript()->prependFile('/static/js/Includes/search.js'); ?>
+
+
 <!-- TEMPLATE -->
