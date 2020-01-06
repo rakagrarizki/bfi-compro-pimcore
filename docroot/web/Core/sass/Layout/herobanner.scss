@@ -23,12 +23,20 @@
         }
 
         p {
-            color: $primary;
+            color: $grey-dark-color;
             font-size: 20px;
             font-weight: normal;
 
             @include breakpoint(mobile) {
                 font-size: 12pt;
+            }
+        }
+        a{
+            font-weight: bold;
+            text-transform: uppercase;
+            text-decoration: underline;
+            &::after{
+                text-decoration: none;
             }
         }
     }
@@ -50,10 +58,11 @@
                 font-family: 'HelveticaNeue';
 
                 &.title {
-                    font-size: 2.25em;
+                    font-size: 40px;
                     color: $blue-dark-color;
                     font-weight: 600;
                     margin-bottom: 30px;
+                    text-align: left;
 
                     @include breakpoint(mobile) {
                         font-size: 1.8em;
@@ -233,6 +242,10 @@
             color: $white;
 
             .desc-cont {
+                .row {
+                    display: flex;
+                    justify-content: center;
+                }
                 @include breakpoint(mobile) {
                     width: calc(100% - 60px);
                 }

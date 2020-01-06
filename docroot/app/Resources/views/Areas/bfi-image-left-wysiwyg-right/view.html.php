@@ -24,7 +24,7 @@
 
 <!-- Template -->
 
-<div class="container wysiwyg-list-right">
+<!-- <div class="container wysiwyg-list-right">
     <div class="row">
         <div class="col-lg-4 col-md-4 col-12">
             <img src="/static/images/gedung.jpg">
@@ -73,6 +73,6 @@
             </ul>
         </div>
     </div>
-</div>
+</div> -->
 
 <!-- Template -->

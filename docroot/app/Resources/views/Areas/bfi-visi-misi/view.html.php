@@ -2,9 +2,9 @@
 
 <div class="visi-misi">
     <div class="container clearfix">
-        <div class="row">
+        <div class="visi">
             <div class="col-md-3">
-                <h2>VISI</h2>
+                <h2>Visi</h2>
             </div>
             <div class="col-md-9">
                 <p>
@@ -12,9 +12,9 @@
                 </p>
             </div>
         </div>
-        <div class="row">
+        <div class="misi">
             <div class="col-md-3">
-                <h2>MISI</h2>
+                <h2>Misi</h2>
             </div>
             <div class="col-md-9">
                 <div class="vm-slide">

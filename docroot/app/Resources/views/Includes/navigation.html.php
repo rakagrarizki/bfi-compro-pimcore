@@ -111,7 +111,11 @@ use Pimcore\Model\Document\Page;
                                 }
 
                                 ?>
+                                
                             </ul>
+                            <div class="search-button">
+                                <a href=""><i class="fa fa-search"></i></a>
+                            </div>
                         </div>
 
                     </div>
