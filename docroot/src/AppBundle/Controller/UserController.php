@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use Pimcore\Controller\FrontendController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Pimcore\Model\WebsiteSetting;
 use AppBundle\Service\SendApi;
 use Pimcore\Bundle\AdminBundle\HttpFoundation\JsonResponse;
@@ -23,7 +24,11 @@ class UserController extends FrontendController
 
     public function getToken()
     {
-        $token = $this->get('session')->get('token');
+        // $token = $this->get('session')->get('token');
+
+        $request = Request::createFromGlobals();
+        $token = $request->headers->get('sessionId');
+
         return $token;
     }
 
@@ -123,7 +128,7 @@ class UserController extends FrontendController
             return new JsonResponse([
                 'success' => "0",
                 'message' => "Failed to retrieve the data!",
-                'detail' => $data
+                'detail' => $data . $token
             ]);
         }
 
@@ -133,7 +138,7 @@ class UserController extends FrontendController
 
         return new JsonResponse([
             'success' => true,
-            'result' => $data
+            'result' => $data . " (" . $token . ")"
         ]);
     }
 
@@ -240,7 +245,7 @@ class UserController extends FrontendController
             return new JsonResponse([
                 'success' => "0",
                 'message' => "Failed to retrieve the data!",
-                'detail' => $data
+                'detail' => $data . '" ' . $token . ' "'
             ]);
         }
 
@@ -269,7 +274,8 @@ class UserController extends FrontendController
             return new JsonResponse([
                 'success' => "0",
                 'message' => "Failed to retrieve the data!",
-                'detail' => $data
+                // 'detail' => $data . '" ' . $token . ' "'
+                'detail' => $token
             ]);
         }
 
