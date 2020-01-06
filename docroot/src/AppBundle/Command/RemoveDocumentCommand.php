@@ -28,7 +28,7 @@ class RemoveDocumentCommand extends AbstractCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-       $index = "document_en";
+       $index = "document";
        $type = '_doc';
        $id = $input->getArgument("id");
        $elastic = Elastic::deleteDocument($index,$type,$id);

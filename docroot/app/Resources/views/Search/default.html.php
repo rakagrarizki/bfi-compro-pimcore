@@ -35,12 +35,25 @@ $page = $this->page;
 
             <a href="<?= $item["_source"]["url"];?>">
                 <li id="result-wrapper">
-                    <?php  $highlight = "<span class=\"highlight\">".$q."</span>";
-                    $title = str_ireplace($q, $highlight, $item["_source"]["Title_".$lang]);
-                    $body = str_ireplace($q, $highlight, $item["_source"]["Body_".$lang]);
+                    <?php
+                    $arr = explode(" ",$q);
+//                    $wordsCount = count($arr);
+//                    for($i=0;$i<$wordsCount;$i++){
+//                        $highlight = "<span class=\"highlight\">".$arr[$i]."</span>";
+//                        $title = str_ireplace($arr[$i], $highlight, $item["_source"]["Title_".$lang]);
+//                    }
+                    $title = preg_replace('/'.implode('|', $arr).'/i', '<span class="highlight">$0</span>', $item["_source"]["Title_".$lang]);
+                    $body = preg_replace('/'.implode('|', $arr).'/i', '<span class="highlight">$0</span>', $item["_source"]["Body_".$lang]);
+                    //$title = preg_replace("/($arr)/i","<span class=\"highlight\">".$q."</span>",$item["_source"]["Title_".$lang]);
+
+                    //$title = str_ireplace($q, $highlight, $item["_source"]["Title_".$lang]);
+                    //$body = str_ireplace($q, $highlight, $item["_source"]["Body_".$lang]);
+//                    $highlight = "<span class=\"highlight\">".$q."</span>";
+//                    $title = str_ireplace($q, $highlight, $item["_source"]["Title_".$lang]);
+//                    $body = str_ireplace($q, $highlight, $item["_source"]["Body_".$lang]);
                     ?>
                     <h3><?= $title?></h3>
-                    <p><?=   substr($body, 0, 250) . ' ...';?></p>
+                    <p><?=   strlen($body) == 0 ? "": substr($body, 0, 250) . ' ...';?></p>
                 </li>
             </a>
             <?php endforeach;?>
