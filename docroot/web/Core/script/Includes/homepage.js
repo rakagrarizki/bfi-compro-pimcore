@@ -33,3 +33,13 @@ $(document).ready(function () {
         }
     });
 });
+
+function hoverDropdown(){
+    // $("body").css("background-color", "yellow");
+    document.getElementById("overlay").classList.add("greyout");
+}
+
+function closeDropdown(){
+    // $("body").css("background-color", "#fff");
+    document.getElementById("overlay").classList.remove("greyout");
+}

@@ -82,12 +82,14 @@ if($this->editmode) : ?>
                     Sunburst CBD Lot. 1.2 <br>
                     Jl. Kapt. Soebijanto Djojohadikusumo <br>
                     BSD City - Tangerang Selatan 15322
-                    Phone +62 21 2965 0300, 2965 0500
+                </p>
+                <p>
+                    Phone +62 21 2965 0300, 2965 0500 <br>
                     Fax +62 21 2965 0757, 2965 0758
                 </p>
             </div>
             <div class="col-md-4 footer-center">
-                <span><a href="tel:1500018"><?= $this->translate("customer-care") ?> <i class="fa fa-phone"></i> 1500018</a></span>
+                <span><a href="tel:1500018"><?= $this->translate("customer-care") ?> <img src="/static/images/icon/telephone.png" alt=""> 1500018</a></span>
                 <label><?= $this->translate("Newsletter") ?></label>
                 <form class="form-inline" id="sendNewsletter" action="/register/newsletter"
                       method="POST">
@@ -119,14 +121,17 @@ if($this->editmode) : ?>
 <div class="footer-bottom">
     <div class="container">
         <div class="row">
-            <div class="col-sm-5">
+            <div class="col-sm-4">
                 <span>&copy; <?php echo date("Y"); ?> - PT BFI Finance Indonesia Tbk</span>
             </div>
-            <div class="col-sm-7">
+            <div class="col-sm-8">
                 <ul class="nav-footer">
                     <li><a href="<?=$this->link('career')->getHref();?>"><?= $this->translate("career") ?></a></li>
+                    <li><a href="">Peluang Bisnis</a></li>
                     <li><a href="<?=$this->link('contact')->getHref();?>"><?= $this->translate("contact") ?></a></li>
                     <li><a href="<?=$this->link('branch')->getHref();?>"><?= $this->translate("branch") ?></a></li>
+                    <li><a href="">Syarat Penggunaan</a></li>
+                    <li><a href="">Kebijakan Privasi</a></li>
                 </ul>
             </div>
         </div>
