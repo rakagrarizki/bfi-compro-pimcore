@@ -4734,3 +4734,115 @@ function copyURL(url) {
   $temp.remove();
   $('#copied').show().delay(2000).fadeOut(400);
 }
+
+var dataOTP = {}
+
+function login() {
+  var dataPhone = {
+      'phone_number' : $('#phone-input').val()
+  };
+  console.log(dataPhone);
+  $.ajax({
+      type: 'POST',
+      url: '/user/login',
+      data: dataPhone,
+      dataType: 'json',
+      error: function (data) {
+          console.log('error' + data);
+      },
+
+      fail: function (xhr, textStatus, error) {
+          console.log('request failed')
+      },
+
+      success: function (dataObj) {
+          if (dataObj.success === true) {
+              console.log('berhasil login')
+              requestOTP(dataPhone)
+              $('#login').addClass("hide");
+              $('#otp').removeClass("hide");
+              otp();
+          }
+      }
+  })
+}
+
+function otp(){
+  var timeleft = 90;
+  var timer = setInterval(function(){
+      document.getElementById("resend").innerHTML = "Mohon menunggu <b>" +timeleft+ " seconds </b> untuk mengirim ulang";
+      timeleft -= 1;
+      if(timeleft <= 0){
+          clearInterval(timer);
+          document.getElementById("resend").innerHTML = "Tidak menerima 4-digit kode ? <a onclick='resendOTP()'><b>Kirim Ulang</b></a>"
+      };
+  }, 1000);
+}
+
+function resendOTP(){
+  var dataPhone = {
+      'phone_number' : $('#phone-input').val()
+  };
+  otp();
+  requestOTP(dataPhone)
+  document.getElementById("resend-notice").textContent = "4-digit kode telah dikirimkan ke nomor handphone anda";
+}
+
+function requestOTP(phone) {
+  $.ajax({
+      type: 'POST',
+      url: '/user/otp-request',
+      data: phone,
+      dataType: 'json',
+      error: function (data) {
+          console.log('error' + data);
+      },
+
+      fail: function (xhr, textStatus, error) {
+          console.log('request failed')
+      },
+
+      success: function (dataObj) {
+          console.log(dataObj.result.data)
+      }
+  })
+}
+
+function verified(){
+  var otpInput = $("input[name='digit[]']").map( function() { return $(this).val(); } ).get();
+  otpInput = otpInput.join("")
+  
+  var dataOTP = {
+      'phone_number' : $('#phone-input').val(),
+      'otp_code' : otpInput
+  };
+
+  console.log(dataOTP)
+  verifiedOTP(dataOTP)
+}
+
+function verifiedOTP(dataOTP){
+  $.ajax({
+      type: 'POST',
+      url: '/user/otp-confirm',
+      data: dataOTP,
+      dataType: 'json',
+      error: function (data) {
+          console.log('error' + data);
+      },
+
+      fail: function (xhr, textStatus, error) {
+          console.log('request failed')
+      },
+
+      success: function (dataObj) {
+          if (dataObj.success === true) {
+              console.log('berhasil verified otp')
+              var token = dataObj.result.data.customer_token
+              sessionStorage.setItem("token", token);
+              console.log ('token : ' + token)
+              window.location="/test4";
+          }
+      }
+  })
+}

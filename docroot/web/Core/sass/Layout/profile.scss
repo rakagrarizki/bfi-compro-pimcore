@@ -11,6 +11,8 @@
         
         h3 {
             font-weight : 600;
+            color : #333;
+
             @include breakpoint(mobile){
                 margin-left : 5px;
             }
@@ -19,7 +21,7 @@
         .list {
             padding: 1em 1em 1em 2.5em;
             
-            &.contact {
+            &.contract {
                 text-decoration : underline;
                 padding: 1em 1em 1em 3em;
         
@@ -48,7 +50,7 @@
             li:before {
                 margin-right: 25px;
                 content: counter(item)'.';
-                color: black;
+                color: #333;
                 text-align: center;
                 display: inline-block;
     
@@ -59,11 +61,10 @@
             
             .detail-wrapper {
                 display: flex;
-                // flex-wrap: wrap;
                 
                 span.label {
                     text-align : left;
-                    color : black;
+                    color : #333;
                     font-size : 20px;
                     width: 35%;
                     font-weight : 500;
@@ -92,6 +93,713 @@
         }
     }
 }
+
+.detail-contract {
+    .sect-title.text-center h2 {
+        font-size : 2.250em;
+
+        @include breakpoint(mobile) {
+            font-size : 28px;
+        }
+    }
+
+    .table-container {
+        display : -webkit-inline-box;
+        background-color : #FCFCFC;
+        color : #333;
+        padding : 37px 25px;
+        margin-bottom : 20px;
+
+        @include breakpoint(mobile) {
+            display : block;
+        }
+
+        .table-content {
+            width : 50%;
+            font-size : 18px;
+            margin-right : 45px;
+
+            @include breakpoint(tablet) {
+                margin-right : 0px;
+                font-size : 14px;
+            }
+
+            @include breakpoint(mobile) {
+                width: 100%;
+                font-size : 13px;
+            }
+            
+            .content-wrapper {
+                margin-bottom: 15px;
+
+                .detail-wrapper {
+                    display: flex;
+                        
+                    span.label {
+                        color : #333;
+                        font-size : 100%;
+                        text-align : left;
+                        width: 35%;
+                        font-weight : normal;
+                    }
+        
+                    .value-data{ 
+                        padding-left : 50px;
+                        font-weight : 200;
+        
+                        &:before { 
+                            content: ':';
+                            margin-right : 10px;
+                        }
+                    }
+                }
+            }
+
+            .keterangan {
+                padding : .2em .6em .3em;
+                font-size : 12px;
+                font-weight : 200;
+                
+                @include breakpoint(mobile) {
+                    font-size: 10px;
+                }
+
+                strong {
+                    font-weight : bold;
+                }
+
+            }
+        }
+    }
+
+    .sect-list {
+        font-size : 20px;
+
+        @include breakpoint(mobile){
+            font-size: 15px;
+        }
+        
+        h3 {
+            font-weight : 600;
+            color : #333;
+
+            @include breakpoint(mobile){
+                margin-left : 10px;
+                font-size: 18px;
+            }
+        }
+
+        .heading {
+            display : flex;
+            justify-content : space-between;
+            
+            button {
+                background-color: rgb(248, 153, 29);
+                border-color: rgb(248, 153, 29);
+                text-transform: uppercase;
+                font-weight : 600;
+
+                @include breakpoint(mobile) {
+                    position: relative;
+                }
+
+                &.full {
+                    @include breakpoint(mobile) {
+                        display: none;
+                    }
+                }
+                
+                &.short {
+                    display: none;
+
+                    @include breakpoint(mobile) {
+                        display: inline-block;
+                        background-color: white;
+                        border-color: white;
+                        color : #333;
+                        text-decoration: underline;
+                        padding: 0 50px;
+                    }
+
+                    &:before {
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+    
+        
+        .list {
+            padding: 1em 1em 1em 2.5em;
+
+            @include breakpoint(mobile) {
+                padding: 1em;
+            }
+            
+            .list-wrapper {
+                margin-bottom : 15px;
+            }
+
+            .detail-wrapper {
+                display: flex;
+                
+                span.label {
+                    text-align : left;
+                    color : #333;
+                    font-size : 20px;
+                    width: 35%;
+                    font-weight : normal;
+    
+                    @include breakpoint(mobile) {
+                        font-size: 13px;
+                    }
+                }
+
+                span.value-data {
+                    @include breakpoint(mobile) {
+                        font-size : 13px;
+                        margin-left : 30px;
+                        text-indent: -15px;
+                        padding-left: 15px;
+                    }
+
+                    &:before { 
+                        content: ':';
+                        margin-right : 10px;
+                    }
+                }
+                
+            }
+
+            .keterangan {
+                padding : .2em .6em .3em;
+                font-size : 12px;
+                font-weight : 200;
+
+                @include breakpoint(mobile) {
+                    font-size : 10px;
+                }
+
+                span {
+                    @include breakpoint(mobile) {
+                        margin-bottom: 15px;
+                    }
+                }
+                
+                strong {
+                    font-weight : bold;
+                }
+            }
+        }
+    }
+
+    .card {
+        background-color : #FCFCFC; 
+        display : flex;
+        justify-content : space-between;
+        position : relative;
+        padding : 20px 30px;
+
+        @include breakpoint(mobile) {
+            display : block;
+        }
+
+        div {
+            @include breakpoint(mobile) {
+                margin-bottom: 15px;
+                width: 80%;
+            }
+        }
+        
+        span {
+            text-align: left;
+            color: #333;
+            font-size: 20px;
+            font-weight: 500;
+            margin : auto 0;
+
+            @include breakpoint(mobile) {
+                font-size: 18px;
+            }
+        }
+        .btn-container {
+            position : relative;
+        
+            .button-detail {
+                text-transform: uppercase;
+                font-weight : 600;
+                color : #333;
+                padding: 13px 50px;
+                text-decoration : underline;
+                text-align : center;
+    
+                &.full {
+                    @include breakpoint(mobile) {
+                        display: none;
+                    }
+                }
+    
+                &.short {
+                    display: none;
+    
+                    @include breakpoint(mobile) {
+                        display: inline-block;
+                        padding: 0;
+                    }
+    
+                }
+                
+                .fa-angle-right:before {
+                    position: absolute;
+                    top : 0px;
+                    left : 200px;
+                    font-size: 18px;
+    
+                    @include breakpoint(mobile) {
+                        top : 0px;
+                        left : 120px;
+                    }
+                }
+    
+                &:hover {
+                    color: #04559F;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}
+
+.card-update {
+    padding : 20px;
+    display : -webkit-inline-box;
+    background-color : #F5F5F5;
+    margin-bottom : 20px;
+
+    @include breakpoint(mobile) {
+        display : inherit;
+    }
+
+    .icon {
+        width : 20%;
+
+        @include breakpoint(tablet) {
+            width: 23%;
+        }
+
+        img {
+            width : 150px;
+            height : 150px;
+        }
+    }
+
+    .content-text {
+        width : 55%;
+        margin : 20px 0;
+
+        @include breakpoint(tablet) {
+            width : 53%;
+        }
+
+        @include breakpoint(mobile) {
+            width : 100%;
+        }
+
+        .title h3 {
+            font-weight : 600;
+            color : #04559F;
+
+            @include breakpoint(tablet) {
+                font-size : 20px
+            }
+
+            @include breakpoint(mobile) {
+                font-size : 24px
+            }
+        }
+
+        .text{
+            color : #333;
+            font-size : 18px;
+
+            @include breakpoint(tablet) {
+                font-size: 15px;
+            }
+
+            @include breakpoint(mobile) {
+                font-size : 18px;
+            }
+        }
+    }
+
+    .button-cabang {
+        width : 25%;
+        text-align : center;
+        display: flex;
+        align-items: center;
+
+        @include breakpoint(mobile) {
+            width : 100%;
+        }
+
+        button {
+            background-color: rgb(248, 153, 29);
+            border-color: rgb(248, 153, 29);
+            text-transform: uppercase;
+            font-weight : 600;
+
+            @include breakpoint(tablet) {
+                padding: 13px 20px;
+            }
+        }
+    }
+}
+
+.card-contract {
+    display : -webkit-inline-box;
+
+    @include breakpoint(mobile){
+        display : block;
+    }
+    
+    .card-icon {
+        width : 300px;
+        height : 352px;
+        background-color: #FCFCFC;
+        padding : 0 35px 25px;
+        margin-bottom : 30px;
+        margin-right : 30px;
+
+        @include breakpoint(tablet) {
+            width: 30%;
+            padding : 0 25px 25px;
+        }
+
+        @include breakpoint(mobile) {
+            width: 90%;
+            margin: 30px 25px;
+        }
+        
+        .icon-wrapper {
+            display: flex;
+            justify-content : space-between;
+
+            .icon {
+                @include breakpoint(mobile) {
+                    display: none;
+                }
+
+                img{
+                    width : 50px;
+                    height : 50px;
+                }
+            }
+            
+            .status {
+                margin: auto 0px;
+
+                @include breakpoint(mobile) {
+                    margin-top: 30px;
+                    margin-bottom: 25px;
+                }
+                
+                span {
+                    background-color: #04559F;
+                    color : white;
+                    text-transform : uppercase;
+                    border-radius : 25px;
+                    font-size : 11px;
+                    font-weight : 600;
+                    padding: 10px 15px;
+                    text-align: center;        
+                }
+            }
+        }
+        
+        .title h4 {
+            color : #565656;
+            font-weight : bold;
+            line-height: 1.5; 
+        }
+
+        .label-value {
+            margin-bottom : 15px;
+
+            span{
+                display: block;
+                color : #565656;
+            }
+            
+            .label{
+                font-size : 14px;
+                color : #565656;
+                font-weight : 600;
+                text-align : left;
+                padding : inherit;
+                margin-bottom : 5px;
+            }
+
+        }
+        
+        .button {
+            position : relative;
+            
+            .button-detail {
+                text-transform: uppercase;
+                font-weight: 600;
+                color: #565656;
+                text-decoration: underline;
+                
+                &:before {
+                    content: '\f105';
+                    font-family: FontAwesome;
+                    position: absolute;
+                    font-size : 16px;
+                    top : -2px;
+                    right: 110px;
+                    text-decoration : none;
+                    transition: all cubic-bezier(0.455, 0.03, 0.515, 0.955) 0.5s;
+                
+                    @include breakpoint(tablet) {
+                        right: 40px;
+                    }
+                }
+
+                &:hover {
+                    color: #04559F;
+                    font-weight: bold;
+                }
+            }
+        }
+        
+        .warning {
+            font-size : 10px;
+            color : #E00909;
+            font-style : italic;
+            padding : 5px 0px;
+            position : relative;
+            
+            span {
+                margin-left : 10px;
+            }
+        }
+        
+        &.add {
+            border-style : dashed;
+            background-color : white !important;
+            border-width : 5px;
+            border-color : #565656;
+            text-align : center;
+            
+            .plus-container {
+                margin : 80px 0;
+                
+                .image a{
+                    font-size : 80px;
+                    color : #565656;
+                    
+                    &:hover {
+                        color: #04559F;
+                    }
+                }
+                
+                .text a{
+                    font-size : 18px;
+                    text-transform : uppercase;
+                    font-weight : bold;
+                    color : #565656;
+                    
+                    &:hover{ 
+                        color: #04559F;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+.progress-container {
+    background-color : #FCFCFC;
+    padding : 55px;
+    width : 100%;
+    height : 255px;
+
+    @include breakpoint(mobile) {
+        height: inherit;
+        padding : 25px 20px;
+    }
+    
+    h4 {
+        color : #565656;
+        font-size : 20px;
+        font-weight : bold;
+    }
+    
+    p {
+        color : #565656;
+        font-size : 16px;
+    }
+
+    .header-progress {
+        float : right;
+        width: 65%;
+        text-align: right;
+
+        @include breakpoint(mobile) {
+            float : none;
+            width: 100%;
+            text-align : left;
+        }
+        
+        .status {
+            margin-top : 45px;
+            text-transform : uppercase;
+            font-size : 11px;
+
+            @include breakpoint(mobile) {
+                margin : 30px 0;
+            }
+            
+            span{
+                background-color : #04559F;
+                color : white;
+                padding: 10px 20px;
+                border-radius: 25px;
+            } 
+        }
+    }
+    
+    .footer-progress {
+        float : left;
+        width: 35%;
+
+        @include breakpoint(mobile) {
+            float : none;
+            width: 100%;
+            display : inline-flex;
+        }
+
+        .footer-content {
+            @include breakpoint(mobile) {
+                width: 50%;
+            }
+        }
+    }
+}
+
+.md-stepper-horizontal {
+    display: inline-flex;
+    width: 100%;
+    
+    .md-step {
+        flex : 5;
+        position:relative;
+        padding:5px;
+        
+        &:hover .md-step-circle {
+            background-color:#757575;
+        }
+        
+        &:first-child .md-step-bar-left,
+        &:last-child .md-step-bar-right {
+            display:none;
+        }
+        
+        .md-step-circle {
+            width:30px;
+            height:30px;
+            margin:0 auto;
+            background-color:#999999;
+            border-radius: 50%;
+            text-align: center;
+            line-height:30px;
+            font-size: 16px;
+            font-weight: 600;
+            color:#FFFFFF;
+        }
+        
+        &.active .md-step-circle {
+            background-color:#F9991C;
+        }
+        
+        &.done .md-step-circle:before {
+            font-family:'FontAwesome';
+            font-weight:100;
+            content: "\f00c";
+        }
+        
+        &.fail .md-step-circle:before {
+            font-family:'FontAwesome';
+            content: "\00d7";
+            font-size : 20px;
+        }
+        
+        &.done .md-step-circle *,
+        &.fail .md-step-circle * {
+            display:none;
+        }
+        
+        .md-step-title {
+            margin-top:10px;
+            font-size:15px;
+            font-weight:600;
+            white-space: nowrap;
+            overflow: auto;
+            text-align: center;
+            color:rgba(0,0,0,.26);
+
+            @include breakpoint(mobile) {
+                white-space: normal;
+            }
+        }
+        
+        &.active .md-step-title {
+            font-weight: 600;
+            color:rgba(0,0,0,.87);
+        }
+        
+        &.active .md-step-bar-left,
+        &.active .md-step-bar-right {
+            position:absolute;
+            top:20px;
+            height:1px;
+            border-top:3px solid #F9991C;
+        }
+        
+        .md-step-bar-left,
+        .md-step-bar-right {
+            position:absolute;
+            top:20px;
+            height:1px;
+            border-top:3px solid #ddd;
+        }
+        
+        .md-step-bar-right {
+            right:0;
+            left:50%;
+            margin-left:20px;
+        }
+
+        .md-step-bar-left {
+            left:0;
+            right:50%;
+            margin-right:20px;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
