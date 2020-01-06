@@ -21,7 +21,7 @@ $page = $this->page;
         <form action="/search">
             <div class="search-wrapper">
                 <input id="search-input" class="input-search" name="q" type="text" value="<?= $q;?>"placeholder=<?= $this->t("search-here")?>>
-                <input type="hidden" name="lang" value="<?= $lang;?>">
+<!--               -->
                 <button type="submit" id="search-on">
                     <img id="button-search" src="/static/images/icon/search.png" widht="36" height="36">
                 </button>

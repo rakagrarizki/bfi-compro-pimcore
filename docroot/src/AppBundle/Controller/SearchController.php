@@ -33,8 +33,8 @@ class SearchController extends FrontendController
     {
         $queryString = htmlentities($request->get("q"));
         $page = htmlentities($request->get("page",1));
-
-        $lang = htmlentities($request->get("lang"));
+        $lang = $request->getLocale();
+        //$lang = htmlentities($request->get("lang"));
 
 
         //$cse = WebsiteSetting::getByName("cse")->getData();
@@ -79,7 +79,7 @@ class SearchController extends FrontendController
     }
 
     public function searchDocument($index,$lang, $query, $page){
-        $itemsPerPage = 3;
+        $itemsPerPage = 10;
         $offset = ($page - 1) * $itemsPerPage;
 
         $params = [
