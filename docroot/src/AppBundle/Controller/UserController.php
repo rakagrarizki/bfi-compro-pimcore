@@ -138,7 +138,7 @@ class UserController extends FrontendController
 
         return new JsonResponse([
             'success' => true,
-            'result' => $data . " (" . $token . ")"
+            'result' => $data
         ]);
     }
 
