@@ -8,15 +8,21 @@
 $this->extend('layout.html.php');
 ?>
 
+<style>
+
+</style>
+
 <div class="container profile">
     <div class="row">
         <article class="sect-title text-center">
             <h2 class="margin-top-10">Profile Anda</h2>
             <p>Berikut ini adalah profile Anda</p>
         </article>
+    </div>
+    <div class="row">
         <div class="sect-list">
-            <h3>Daftar Kontak</h3>
-            <div class="list contact">
+            <h3>Daftar Kontrak</h3>
+            <div class="list contract">
                 <ol>
                     <li><a href="">1234567890 Pembayaran Berjamin - BPKB Mobil</a></li>
                     <li><a href="">1234567890 Pembayaran Berjamin - Sertifikat Rumah</a></li>
@@ -27,7 +33,9 @@ $this->extend('layout.html.php');
                 </ol>            
             </div>
         </div>
-        <hr>
+    </div>
+    <hr>
+    <div class="row">
         <div class="sect-list">
             <h3>Data Pemohon</h3>
             <div class="list">
@@ -53,7 +61,9 @@ $this->extend('layout.html.php');
                 </div>
             </div>
         </div>
-        <hr>
+    </div>
+    <hr>
+    <div class="row">
         <div class="sect-list">
             <h3>Data Tempat Tinggal</h3>
             <div class="list">
@@ -79,6 +89,26 @@ $this->extend('layout.html.php');
                 </div>
             </div>
         </div>
-        <hr>
+    </div>
+    <div class="row">
+        <div class="card-update">
+            <div class="icon">
+                <img class="imggetcredit" src="/_default_upload_bucket/form_credit/Mobil.png" alt="">
+            </div>
+            <div class="content-text">
+                <div class="title">
+                    <h3>Update Data Anda</h3>
+                </div>
+                <div class="text">
+                    <p><span>
+                        Jika ada perubahan data profil Anda,
+                        silahkan datang ke cabang BFI terdekat
+                    </span></p>
+                </div>
+            </div>
+            <div class="button-cabang">
+                <button class="cta cta-primary cta-big">Lihat Cabang</button>
+            </div> 
+        </div>
     </div>
 </div>

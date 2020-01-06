@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 return [
     1 => [
@@ -1861,7 +1861,7 @@ return [
         "pattern" => "/\\/agent\\/get-list-product-is-agent/",
         "reverse" => "/agent/get-list-product-is-agent",
         "module" => "AppBundle",
-        "controller" => "@AppBundle\\Controller\\AgentController",
+        "controller" => "@AppBundle\\Controller\\CreditController",
         "action" => "getListProductIsAgent",
         "variables" => NULL,
         "defaults" => NULL,

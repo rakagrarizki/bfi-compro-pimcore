@@ -89,17 +89,76 @@ function showFileName( event ) {
     return photo = fileName;
 }
 
-window.onload = function(){
-    var elements = document.querySelectorAll('[id="telat"]');
-    for(var i = 0; i < elements.length; i++) {
-        elements[i].innerHTML += (
-            "<div class='outdate'>TELAT BAYAR</div>" +
-            "<div class='outdate-note'>" +
-                "<div class='circle'>" +
-                    "<i class='fa fa-exclamation'></i>"+
-                "</div>"+
-                "<span>Anda terlambat membayar 5 hari</span>"+
-            "</div>"
-        );
+$(document).ready(function(){
+    checkStatus()
+    checkAssignmentList()
+
+    window.onload = function(){
+        var elements = document.querySelectorAll('[id="telat"]');
+        for(var i = 0; i < elements.length; i++) {
+            elements[i].innerHTML += (
+                "<div class='outdate'>TELAT BAYAR</div>" +
+                "<div class='outdate-note'>" +
+                    "<div class='circle'>" +
+                        "<i class='fa fa-exclamation'></i>"+
+                    "</div>"+
+                    "<span>Anda terlambat membayar 5 hari</span>"+
+                "</div>"
+            );
+        }
     }
+});
+
+function checkStatus() {
+    var token = window.sessionStorage.getItem("token");
+    console.log(token);
+
+    $.ajax({
+        type: 'GET',
+        url: '/user/check-verify-status',
+        crossDomain: true,
+        dataType: 'json',
+        headers: { 'session_id': token },
+
+        error: function (data) {
+            console.log('error' + data);
+        },
+
+        fail: function (xhr, textStatus, error) {
+            console.log('request failed')
+        },
+
+        success: function (dataObj) {
+            if (dataObj.success === true) {
+                console.log('berhasil get data')
+            }
+        }
+    })
+}
+
+function checkAssignmentList() {
+    var token = window.sessionStorage.getItem("token");
+    console.log(token);
+
+    $.ajax({
+        type: 'GET',
+        url: '/user/assignment-list',
+        crossDomain: true,
+        dataType: 'json',
+        headers: { 'session_id': token },
+
+        error: function (data) {
+            console.log('error' + data);
+        },
+
+        fail: function (xhr, textStatus, error) {
+            console.log('request failed')
+        },
+
+        success: function (dataObj) {
+            if (dataObj.success === true) {
+                console.log('berhasil get data')
+            }
+        }
+    })
 }

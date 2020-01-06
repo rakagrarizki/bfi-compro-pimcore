@@ -9,6 +9,10 @@ $this->extend('layout-branch.html.php');
 ?>
 <?= $this->areablock('areaBlock');?>
 
+<?php
+    $this->headScript()->offsetSetFile(100, '/static/js/Includes/login.js');
+?>
+
 <section id="login" class="container">
     <h3>Selamat Datang di BFI</h3>
     <p>Silahkan login ke akun anda</p>
@@ -31,10 +35,10 @@ $this->extend('layout-branch.html.php');
     <h3>Konfirmasi OTP</h3>
     <p>Silahkan masukkan 4-digit kode verifikasi <br> yang telah dikirimkan ke nomor handphone anda</p>
     <form action="" id="otp-form">
-        <input type="number" id="digit-1" name="digit-1" data-next="digit-2" />
-	    <input type="number" id="digit-2" name="digit-2" data-next="digit-3" data-previous="digit-1" disabled />
-        <input type="number" id="digit-3" name="digit-3" data-next="digit-4" data-previous="digit-2" disabled />
-        <input type="number" id="digit-4" name="digit-4" data-next="digit-5" data-previous="digit-3" disabled />
+        <input type="number" id="digit-1" name="digit[]" data-next="digit-2" />
+	    <input type="number" id="digit-2" name="digit[]" data-next="digit-3" data-previous="digit-1" disabled />
+        <input type="number" id="digit-3" name="digit[]" data-next="digit-4" data-previous="digit-2" disabled />
+        <input type="number" id="digit-4" name="digit[]" data-next="digit-5" data-previous="digit-3" disabled />
     </form>
     <p id="resend">Mohon menunggu <b>90 seconds</b> untuk mengirim ulang</p>
     <p><small id="resend-notice"></small></p>

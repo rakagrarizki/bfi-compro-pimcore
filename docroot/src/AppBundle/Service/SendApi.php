@@ -60,7 +60,15 @@ class SendApi
     {
         // $token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRGF0YSI6eyJwaG9uZV9udW1iZXIiOiIwODkxMTg4MTgxOCIsIm90cF9jb2RlIjoiODQzNSIsImlzX2xvZ2luIjoxfSwiaWF0IjoxNTc1ODczODI1LCJleHAiOjE1NzU5NjAyMjV9.1Ls5s42eaZqDld4_HBPacmQWL1mJ86BJIj8bJC6DWVg";
 
-        $client = new Client();
+        $logger = new Logger($name);
+        $logger->pushHandler(new StreamHandler(PIMCORE_LOG_DIRECTORY . DIRECTORY_SEPARATOR . date('d') . date('m') . date("Y") . "-" . $name . ".log"), Logger::DEBUG);
+        $stack = HandlerStack::create();
+        $stack->push(Middleware::log(
+            $logger,
+            new MessageFormatter('{url} - {req_body} - {res_body}')
+        ));
+
+        $client = new Client(['handler' => $stack]);
 
         try {
             $response = $client->request(
@@ -69,7 +77,7 @@ class SendApi
                 [
                     RequestOptions::HEADERS => [
                         'Accept' => 'application/json',
-                        'Authorization' => 'Bearer ' . $token['key'],
+                        'Authorization' => 'Bearer ' . $token,
                     ],
                     "json" => $params
                 ]

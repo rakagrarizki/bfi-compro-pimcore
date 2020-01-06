@@ -1,3 +1,4 @@
+<?php $p = $this->getParam("page");?>
 <nav aria-label="Page navigation">
     <ul class="pagination">
         <?php
@@ -12,14 +13,16 @@
         }
         ?>
         <?php foreach ($this->pagesInRange as $page): ?>
-            <?php if ($page == $this->current): ?>
+
+            <?php if ($page == $p): ?>
+
             <li class="active"><a href="javascript:void(0)"><?= $page; ?></a></li>
             <?php else :?>
             <li><a href="<?= $this->pimcoreUrl(['page' => $page]); ?>"><?= $page; ?></a></li>
             <?php endif;?>
         <?php endforeach;?>
         <li>
-            <a href=""<?= $this->pimcoreUrl(['page' => $this->next]); ?>" aria-label="Next">
+            <a href="<?= $this->pimcoreUrl(['page' => $this->next]); ?>" aria-label="Next">
                 <i class="fa fa-angle-right"></i>
             </a>
         </li>
