@@ -20,7 +20,7 @@ use Pimcore\Model\DataObject;
 use Pimcore\Model\Document;
 use Zend\Paginator\Adapter\Callback;
 use Zend\Paginator\Paginator;
-use Laminas\ApiTools\Hal;
+
 
 class SearchController extends FrontendController
 {
