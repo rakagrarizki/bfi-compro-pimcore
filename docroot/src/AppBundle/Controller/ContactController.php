@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use Pimcore\Model\Asset;
 use Pimcore\Model\DataObject;
 use Pimcore\File;
 use Pimcore\Controller\FrontendController;
@@ -34,11 +35,11 @@ class ContactController extends FrontendController
             $contactCorporate->setKey($filename); // the filename of the object
             $contactCorporate->setPublished(true); // yep, it should be published :)
 
-            $contactCorporate->setName($data['name']);
-            $contactCorporate->setPhone($data['phone']);
-            $contactCorporate->setEmail($data['email']);
-            $contactCorporate->setSubject($data['subject']);
-            $contactCorporate->setMessage($data['message']);
+            $contactCorporate->setName(htmlentities($data['name']));
+            $contactCorporate->setPhone(htmlentities($data['phone']));
+            $contactCorporate->setEmail(htmlentities($data['email']));
+            $contactCorporate->setSubject(htmlentities($data['subject']));
+            $contactCorporate->setMessage(htmlentities($data['message']));
             $contactCorporate->save();
         }
         $this->view->success = $success;
@@ -50,29 +51,52 @@ class ContactController extends FrontendController
 
         if ($request->isMethod('POST')) {
             $data = $request->get('personal');
-            // dump($data);
-            // exit();
+            $email = htmlentities($data['email']);
+            $document = $_FILES['document']['name'];
+            $documentTmp = $_FILES['document']['tmp_name'];
+
             $success = true;
 
             $time = time();
 
             $contactPersonal = new DataObject\ContactPersonal;
             // $filename = File::getValidFilename($name);
-            $filename = File::getValidFilename($data['email'] . $time);
+            $filename = File::getValidFilename($email . $time);
 
             $contactPersonal->setParent(DataObject\AbstractObject::getByPath('/Contact/Personal')); // we store all objects in /Contact/Personal
             $contactPersonal->setKey($filename); // the filename of the object
             $contactPersonal->setPublished(true); // yep, it should be published :)
 
-            $contactPersonal->setName($data['name']);
-            $contactPersonal->setPhone($data['phone']);
-            $contactPersonal->setEmail($data['email']);
-            $contactPersonal->setIdentity($data['identity']);
-            $contactPersonal->setNo_kontrak($data['no_kontrak']);
-            $contactPersonal->setCustomer_name($data['customer_name']);
-            $contactPersonal->setType_message($data['type_message']);
-            $contactPersonal->setMessage($data['message']);
-            $contactPersonal->setFile($data['file']);
+            //creating and saving new asset
+            if ($document != "") {
+                $asset = new Asset();
+                $asset->setFilename($email . "-" . $document);
+                $status = move_uploaded_file($documentTmp, tmp . $email . "-" . $document);
+                $fileDocument = tmp . $email . "-" . $document;
+                if (!$status) {
+                    dump($_FILES);
+                    dump($status);
+                    exit();
+                } else {
+                    $asset->setData(file_get_contents($fileDocument));
+                    $asset->setParent(Asset::getByPath("/Contact/Document"));
+                    $asset->save();
+                    unlink($fileDocument);
+                }
+            }
+            // dump($data);
+            // dump($document);
+            // exit;
+
+            $contactPersonal->setName(htmlentities($data['name']));
+            $contactPersonal->setPhone(htmlentities($data['phone']));
+            $contactPersonal->setEmail($email);
+            $contactPersonal->setIdentity(htmlentities($data['identity']));
+            $contactPersonal->setNo_kontrak(htmlentities($data['no_kontrak']));
+            $contactPersonal->setCustomer_name(htmlentities($data['customer_name']));
+            $contactPersonal->setType_message(htmlentities($data['type_message']));
+            $contactPersonal->setMessage(htmlentities($data['message']));
+            $contactPersonal->setFile($asset);
             $contactPersonal->save();
         }
         $this->view->success = $success;
