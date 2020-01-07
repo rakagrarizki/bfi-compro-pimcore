@@ -7,7 +7,7 @@
  */
 ?>
 
-<div class="container pengajuan">
+<!-- <div class="container pengajuan">
     <div class="row">
         <div class="cek-pengajuan">
             <p class="title"><?= $this->input('title'); ?></p>
@@ -27,7 +27,7 @@
                                                 data-placeholder="<?= $this->translate('collateralInfo2')?>" multiple="multiple">
                                             <?php
                                             while ($this->block("contentblock")->loop()) {
-//                                                $url = !$this->link('url')->isEmpty() ? $this->link('url')->getHref() : "";
+                                            //    $url = !$this->link('url')->isEmpty() ? $this->link('url')->getHref() : "";
                                                 ?>
                                                 <option value="<?= $this->input('value') ?>" id="block-<?=$this->block('contentblock')->getCurrent()?>"><?= $this->input('text'); ?></option>
                                             <?php } ?>
@@ -60,4 +60,33 @@
             </form>
         </div>
     </div>
-</div>
+</div> -->
+
+<!-- template -->
+<section id="pengajuan">
+    <div class="container">
+        <div class="submission-wrapper">
+            <h4>Simulasikan Pengajuan Kredit Anda</h4>
+            <form action="" id="selection-form">
+                <div class="selection-wrapper">
+                <div class="selection-1">
+                    <select id="category-1">
+                        <option value="" selected style="display:none;"></option>
+                        <option value="1">BPKB Motor</option>
+                        <option value="2">BPKB Mobil</option>
+                    </select>
+                </div>
+                <div class="selection-2">
+                    <select id="category-2">
+                        <option value="" selected style="display:none;"></option>
+                        <option value="1">BPKB Motor2</option>
+                        <option value="2">BPKB Mobil2</option>
+                    </select>
+                </div>
+                </div>
+                <button class="btn-next">Hitung &nbsp<i class="fa fa-angle-right"></i></button>
+            </form>
+        </div>
+    </div>
+</section>
+<!-- template -->
