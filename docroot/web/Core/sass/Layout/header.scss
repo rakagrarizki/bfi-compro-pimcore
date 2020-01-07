@@ -279,6 +279,7 @@ body{
                     display: flex;
                     flex-wrap: wrap;
                     align-items: center;
+                    width: 100%;
 
                     >li {
                         // display: inline-block;
@@ -286,6 +287,7 @@ body{
                         display: flex;
                         align-items: center;
                         margin-right: 25px;
+                        max-width: 20%;
 
                         @include breakpoint(wide) {
                             margin-right: 50px;
@@ -313,7 +315,7 @@ body{
                                     content: '\f107';
                                     font-family: "FontAwesome";
                                     position: absolute;
-                                    right: -20px;
+                                    right: -10px;
                                     font-weight: 400;
                                 }
                             }
@@ -335,6 +337,11 @@ body{
                             font-size: 1.2em;
                             font-weight: 600;
                             text-transform: capitalize;
+                            margin: 0 auto;
+                            height: 100%;
+                            display: flex;
+                            align-items: center;
+                            padding-right: 20px;
 
                             &:hover {
                                 text-decoration: none;
