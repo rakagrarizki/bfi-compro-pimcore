@@ -199,6 +199,11 @@ class SendApi
         return $this->executeApiBearer('detailAgunanAlatberat', $url, $params, "POST", $token);
     }
 
+    public function dataCustomer($url, $params, $token)
+    {
+        return $this->executeApiBearer('dataCustomer', $url, $params, "GET", $token);
+    }
+
     public function register($url, $params)
     {
         return $this->executeApi('register', $url, $params, "POST");
