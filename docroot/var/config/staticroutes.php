@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 return [
     1 => [
@@ -2250,5 +2250,23 @@ return [
         "legacy" => FALSE,
         "creationDate" => 1576640948,
         "modificationDate" => 1576641047
+    ],
+    130 => [
+        "id" => 130,
+        "name" => "data customer",
+        "pattern" => "/\\/user\\/data-customer/",
+        "reverse" => "/user/data-customer",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\UserController",
+        "action" => "dataCustomerJson",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1578464959,
+        "modificationDate" => 1578465009
     ]
 ];
