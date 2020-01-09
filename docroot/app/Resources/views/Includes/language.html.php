@@ -3,8 +3,13 @@
 $service = new \Pimcore\Model\Document\Service;
 $translations = $service->getTranslations($this->document);
 $links = [];
+$site = $this->document->getProperty("site");
 foreach (\Pimcore\Tool::getValidLanguages() as $language) {
-    $target = "/" . $language;
+    if ($site == "corporate") {
+        $target = "/" . $language . "/corporate";
+    } else {
+        $target = "/" . $language;
+    }
     if (isset($translations[$language])) {
         $localizedDocument = \Pimcore\Model\Document::getById($translations[$language]);
         if ($localizedDocument) {
@@ -16,10 +21,8 @@ foreach (\Pimcore\Tool::getValidLanguages() as $language) {
 ?>
 <div class="lang">
     <?php foreach ($links as $lang => $target) { ?>
-        <a class="<?php echo $this->getLocale() === $lang ? 'active' : ''; ?> "
-           href="<?php echo $target ?>">
+        <a class="<?php echo $this->getLocale() === $lang ? 'active' : ''; ?> " href="<?php echo $target ?>">
             <?php echo $lang == 'en' ? 'EN' : 'ID' ?>
         </a>
     <?php } ?>
 </div>
-
