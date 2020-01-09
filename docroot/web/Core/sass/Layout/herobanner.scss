@@ -61,7 +61,7 @@
                     font-size: 40px;
                     color: $blue-dark-color;
                     font-weight: 600;
-                    margin-bottom: 30px;
+                    margin-bottom: 35px;
                     text-align: left;
 
                     @include breakpoint(mobile) {
@@ -296,10 +296,11 @@
             }
 
             .quotes {
-                margin-top: 50px;
-                margin-bottom: 40px;
+                margin-top: 75px;
+                margin-bottom: 25px;
                 font-size: 20px;
                 width: 50%;
+                color: #727272 !important;
 
                 @include breakpoint(mobile) {
                     width: auto;
@@ -465,7 +466,13 @@
 }
 
 #herobanner2 {
-
+    .lihat-produk{
+        font-size: 14px;
+        color: #727272;
+        u{
+            margin-right: 20px;
+        }
+    }
     .slide-cont {
         .bungkus-img-people {
             width: 60px;
@@ -498,8 +505,8 @@
             p {
                 &.name {
                     font-family: 'HelveticaNeue';
-                    font-size: 1.5em;
-                    font-weight: 600;
+                    font-size: 18px;
+                    font-weight: bold;
 
                     @include breakpoint(mobile) {
                         font-size: 1em;
@@ -509,7 +516,8 @@
 
                 &.position {
                     font-family: $light;
-                    font-size: 1.2em;
+                    font-size: 16px;
+                    color: #727272;
 
                     @include breakpoint(mobile) {
                         font-size: 1em;
@@ -522,16 +530,29 @@
         }
 
         .tagar {
-            right: 0;
             position: absolute;
-            bottom: -50px;
+            right: 20%;
+            bottom: 0;
+            font-style: italic;
+            font-weight: bold;
+            font-size: 16px;
             color: $white;
         }
     }
 
     .slick-dots {
-        bottom: 30px;
+        bottom: 0px;
+        left: 15.5%;
         width: 100%;
+        text-align: left;
+
+        li{
+            button{
+                &::before{
+                    background-color: #bcbcbc;
+                }
+            }
+        }
 
         @include breakpoint (mobile) {
             bottom: 15px;
@@ -556,7 +577,7 @@
 
         .prev {
             opacity: .6;
-            left: 0px;
+            left: -7.5%;
             position: absolute;
 
             &.bawah {
@@ -584,7 +605,7 @@
 
         .next {
             opacity: .6;
-            right: 0px;
+            right: -5%;
             position: absolute;
 
             &.bawah {

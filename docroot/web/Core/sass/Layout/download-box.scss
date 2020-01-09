@@ -27,7 +27,7 @@
             margin: 0;
             font-family: HelveticaNeue-Bold;
             font-size: 26px;
-            color: $grey-dark-color;
+            color:  #04559F;
             padding-right: 20px;
 
             @include breakpoint(small-mobile) {
@@ -88,8 +88,9 @@
                 font-size: 15px;
                 color: $grey-dark-color;
                 text-transform: uppercase;
-                color: $dark;
-                border-bottom: 2px solid $dark;
+                text-decoration: underline;
+                // color: $dark;
+                // border-bottom: 2px solid $dark;
 
                 @include breakpoint(mobile) {
                     display: none;
