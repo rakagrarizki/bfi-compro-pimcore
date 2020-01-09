@@ -155,6 +155,7 @@
             .centered-content{
                 display: flex;
                 flex-wrap: wrap;
+                padding: 0 60px 0 60px;
         
                 .testimony-wrap{
                     width: 100%;
@@ -167,10 +168,10 @@
                     .quote{
                         position: absolute;
                         top: -40px;
-                        left: 0px;
-                        opacity: .1;
+                        left: -10px;
+                        opacity: .2;
                         font-size: 60px;
-                        color: #04559F;
+                        color: #FFF;
                     }
                 }
         
@@ -181,8 +182,8 @@
                     width: 100%;
                     .img-wrap{
                         img{
-                            height: 60px !important;
-                            width: 60px !important;
+                            height: 80px !important;
+                            width: 80px !important;
                         }
                     }
                     .text-wrapper{

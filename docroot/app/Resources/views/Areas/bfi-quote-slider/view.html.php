@@ -1,10 +1,10 @@
 <div class="slider-author">
-    <div class="slider-author__wrapper container">
+    <div class="slider-author__wrapper">
         <?php while ($this->block("contentblock")->loop()) { ?>
             <?php $asset = $this->image("image");?>
             <?php $assetAuthor = $this->image("image-author");?>
             <div class="item-slide item-slide-produk" style="background-image: url('<?= $asset->getImage()?>')">
-                <div class="centered-content">
+                <div class="container centered-content">
                     <div class="testimony-wrap">
                         <p class="testimony"><?= $this->textarea('text');?></p>
                         <span class="quote"><i class="fa fa-quote-left"></i></span>
