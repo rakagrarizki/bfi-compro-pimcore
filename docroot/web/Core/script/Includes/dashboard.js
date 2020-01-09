@@ -90,35 +90,77 @@ function showFileName( event ) {
 }
 
 $(document).ready(function(){
-    checkStatus()
-    checkAssignmentList()
+    var token = window.sessionStorage.getItem("token");
 
-    window.onload = function(){
-        var elements = document.querySelectorAll('[id="telat"]');
-        for(var i = 0; i < elements.length; i++) {
-            elements[i].innerHTML += (
-                "<div class='outdate'>TELAT BAYAR</div>" +
-                "<div class='outdate-note'>" +
-                    "<div class='circle'>" +
-                        "<i class='fa fa-exclamation'></i>"+
-                    "</div>"+
-                    "<span>Anda terlambat membayar 5 hari</span>"+
-                "</div>"
-            );
+    $('ul.contract-wrapper').hide()
+    checkStatus(token)
+    checkAssignmentList(token)
+    contractStatusList(token)
+    
+    $('#btn-submit').click(function(event) { 
+
+        var formData = {
+            'name' : $('#name-input').val(),
+            'email' : $('#email-input').val(),
+            'phone': $('#phone-input').val(),
+            'no_ktp' : $('#ktp-input').val(),
+            'path_ktp' : $('#file-upload').val()
+        };
+        console.log(formData)
+
+        var dataKTP = {
+            'no_ktp' : $('#ktp-input').val(),
+            'path_ktp' : 'text'
         }
-    }
+        console.log(dataKTP)
+
+        $.ajax({
+            type: 'POST',
+            url: 'https://bfi.staging7.salt.id/user/verify-no-ktp',
+            data: dataKTP,
+            dataType: 'json',
+            headers: { 'sessionId': token },
+            error: function (data) {
+                console.log('error' + data);
+            },
+    
+            fail: function (xhr, textStatus, error) {
+                console.log('request failed')
+            },
+    
+            success: function (dataObj) {
+                if (dataObj.success === true) {
+                    console.log('berhasil verify ktp')
+                    $('#popup-ktp').modal('hide');
+                }
+            }
+        })
+    });
+
+    // window.onload = function(){
+    //     var elements = document.querySelectorAll('[id="telat"]');
+    //     for(var i = 0; i < elements.length; i++) {
+    //         elements[i].innerHTML += (
+    //             "<div class='outdate'>TELAT BAYAR</div>" +
+    //             "<div class='outdate-note'>" +
+    //                 "<div class='circle'>" +
+    //                     "<i class='fa fa-exclamation'></i>"+
+    //                 "</div>"+
+    //                 "<span>Anda terlambat membayar 5 hari</span>"+
+    //             "</div>"
+    //         );
+    //     }
+    // }
+
 });
 
-function checkStatus() {
-    var token = window.sessionStorage.getItem("token");
-    console.log(token);
-
+function checkStatus(token) {
     $.ajax({
         type: 'GET',
-        url: '/user/check-verify-status',
+        url: 'https://bfi.staging7.salt.id/user/check-verify-status',
         crossDomain: true,
         dataType: 'json',
-        headers: { 'session_id': token },
+        headers: { 'sessionId': token },
 
         error: function (data) {
             console.log('error' + data);
@@ -129,23 +171,76 @@ function checkStatus() {
         },
 
         success: function (dataObj) {
+            var data = dataObj.result.data
             if (dataObj.success === true) {
-                console.log('berhasil get data')
+                if(data.is_phone_number_verify == true){
+                    $('span#poin1').parent().addClass('active')
+                    $('span#poin3').parent().children('a.tool-tip').hide()
+                }
+                if(data.is_email_verify == true){
+                    $('span#poin2').parent().addClass('active')
+                    $('span#poin2').parent().children('a.tool-tip').hide()
+                    $('span#poin3').parent().children('a.tool-tip').show()
+                }
+                if(data.is_ktp_verify == true){
+                    $('span#poin3').parent().addClass('active')
+                    $('span#poin3').parent().children('a.tool-tip').hide()
+                    $('section#verify-section > .container').hide()
+                    $('p.not-verify').addClass('hide')
+                    $('p.verify').removeClass('hide')
+                    $('ul.contract-wrapper').show()
+                }
             }
         }
     })
 }
 
-function checkAssignmentList() {
-    var token = window.sessionStorage.getItem("token");
-    console.log(token);
-
+function checkAssignmentList(token) {
     $.ajax({
         type: 'GET',
-        url: '/user/assignment-list',
+        url: 'https://bfi.staging7.salt.id/user/assignment-list',
         crossDomain: true,
         dataType: 'json',
-        headers: { 'session_id': token },
+        headers: { 'sessionId': token },
+
+        error: function (data) {
+            console.log('error' + data);
+        },
+
+        fail: function (xhr, textStatus, error) {
+            console.log('request failed')
+        },
+
+        success: function (dataObj) {
+            var data = dataObj.result.data
+            if (dataObj.success === true) {
+                for(var i=0; i < data.length; i++){ 
+                    var newel = $('#status0').clone();
+                    newel.attr('id', 'status'+i);
+                    $('.status-wrapper').append(newel).append("<hr/>");
+                }
+                $.each(data, function( index, value ) {
+                    console.log(value.assignment_id)    
+                    $('li.status-box').removeClass('hide');
+                    $('#status'+index).find('div.assignment > p').text(value.assignment_id);
+                    $('#status'+index).find('div.credit-type > p').text(value.category_desc+' - '+value.product_desc);
+                    var statusNumber = '#status'+index
+                    applicationStatus(token, statusNumber ,value.assignment_id);
+                    
+                });
+                $('.status-box:nth-child(2)').remove()
+            }
+        }
+    })
+}
+
+function applicationStep(token) {
+    $.ajax({
+        type: 'GET',
+        url: 'https://bfi.staging7.salt.id/user/application-step-list',
+        crossDomain: true,
+        dataType: 'json',
+        headers: {'sessionId': token },
 
         error: function (data) {
             console.log('error' + data);
@@ -157,7 +252,107 @@ function checkAssignmentList() {
 
         success: function (dataObj) {
             if (dataObj.success === true) {
-                console.log('berhasil get data')
+                console.log('Application Step List')
+            }
+        }
+    })
+}
+
+function contractStatusList(token) {
+    var dataContract = {
+        'started_index': 10,
+        'length': 11
+    }
+
+    $.ajax({
+        type: 'POST',
+        url: 'https://bfi.staging7.salt.id/user/contract-status-list',
+        data: dataContract,
+        crossDomain: true,
+        dataType: 'json',
+        headers: {'sessionId': token},
+
+        error: function (data) {
+            console.log('error' + data);
+        },
+
+        fail: function (xhr, textStatus, error) {
+            console.log('request failed')
+        },
+
+        success: function (dataObj) {
+            var data = dataObj.result.data
+            if (dataObj.success === true) {
+                $('a.contract-box').removeClass('hide');
+                for(var i=0; i < data.length; i++){ 
+                    var newel = $('#contract0').clone();
+                    newel.attr('id', 'contract'+i);
+                    $(newel).insertAfter(".contract-box:first");
+                }
+                $.each(data, function( index, value ) {
+                    console.log(value)
+                    $('#contract'+index).find('h5.category').text(value.category_desc);
+                    $('#contract'+index).find('h5.product').text(value.product_desc);
+                    $('#contract'+index).find('p.contract_number').text(value.contract_number);
+                    $('#contract'+index).find('p.angsuran_perbulan').text(value.angsuran_perbulan);
+                    $('#contract'+index).find('p.tanggal_jatuh_tempo').text(value.tanggal_jatuh_tempo);
+                    
+                    //just example if status != telat
+                    if(value.contract_number == '21231213'){
+                        $('#contract'+index).find('.status').css('visibility', 'hidden');
+                        $('#contract'+index).find('.warning').css('visibility', 'hidden');
+                    }
+                })
+                $('.contract-box:nth-last-child(2)').remove()
+            }
+        }
+    })
+}
+
+function applicationStatus(token, statusNumber, assignmentId) {
+    var dataAssignment = {
+        'assignment_id': assignmentId
+    }
+
+    console.log(dataAssignment)
+
+    $.ajax({
+        type: 'POST',
+        url: 'https://bfi.staging7.salt.id/user/application-status-list',
+        data: dataAssignment,
+        crossDomain: true,
+        dataType: 'json',
+        async: false,
+        headers: {'sessionId': token},
+
+        error: function (data) {
+            console.log('error' + data);
+        },
+
+        fail: function (xhr, textStatus, error) {
+            console.log('request failed')
+        },
+
+        success: function (dataObj) {
+            var data = dataObj.result.data
+            if (dataObj.success === true) {
+                if(data[0].status_id == 1){
+                    $(statusNumber).find('div.fail-notif').css('visibility', 'hidden');
+                }else if(data[0].status_id == 2){
+                    $(statusNumber).find('div.fail-notif > span:last').text(data[0].status_desc)
+                }else{
+                    $(statusNumber).find('div.fail-notif > span:first').hide()
+                    $(statusNumber).find('div.fail-notif > span:last').text(data[0].status_desc)
+                }
+                //for active process
+                for(var i=1;i<=data[0].step_id;i++){
+                    $(statusNumber).find('span#step'+i).parent().addClass('active')
+                }
+                //for done process
+                for(var i=1;i<data[0].step_id;i++){
+                    $(statusNumber).find('span#step'+i).parent().addClass('done')
+                }
+                console.log(data)
             }
         }
     })

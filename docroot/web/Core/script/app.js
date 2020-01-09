@@ -4842,7 +4842,35 @@ function verifiedOTP(dataOTP){
               sessionStorage.setItem("token", token);
               console.log ('token : ' + token)
               window.location="/test4";
+          }else {
+            console.log('otp salah, masukkan otp yang valid')
           }
       }
+  })
+}
+
+function logout() {
+  var token = window.sessionStorage.getItem("token");
+
+  $.ajax({
+    type: 'POST',
+    url: '/user/logout',
+    crossDomain: true,
+    dataType: 'json',
+    headers: {'sessionId': token },
+
+    error: function (data) {
+        console.log('error' + data);
+    },
+
+    fail: function (xhr, textStatus, error) {
+        console.log('request failed')
+    },
+
+    success: function (dataObj) {
+        if (dataObj.success === true) {
+          console.log('berhasil logout')
+        }
+    }
   })
 }

@@ -20,8 +20,34 @@ function deleteLabel(ele_id){
 }
 
 function verify(){
-    $("#email-sent").removeClass("hide");
-    $("#email-verify").addClass("hide");
+    var token = window.sessionStorage.getItem("token");
+    var dataEmail = {
+        'email' : $('#email-input').val()
+    };
+    console.log(dataEmail);
+    $.ajax({
+        type: 'POST',
+        url: 'https://bfi.staging7.salt.id/user/verify-email-request',
+        data: dataEmail,
+        dataType: 'json',
+        headers: { 'sessionId': token },
+        error: function (data) {
+            console.log('error' + data);
+        },
+
+        fail: function (xhr, textStatus, error) {
+            console.log('request failed')
+        },
+
+        success: function (dataObj) {
+            if (dataObj.success === true) {
+                // var verify_code = dataObj.result.data.email_verify_code
+                console.log(dataObj.result.data)
+                $("#email-sent").removeClass("hide");
+                $("#email-verify").addClass("hide");
+            }
+        }
+    })
 }
 
 function back(){
