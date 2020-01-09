@@ -16,9 +16,9 @@
         }
 
         .title-cara-kerja {
-            font-size: 3em;
+            font-size: 40px;
             font-family: 'HelveticaNeue';
-            font-weight: 600;
+            font-weight: bold;
             color: #04559F;
 
             @include breakpoint(mobile) {
@@ -27,8 +27,9 @@
         }
 
         .step-cara {
-            font-size: 1.5em;
+            font-size: 20px;
             font-family: 'HelveticaNeue';
+            margin-bottom: 60px;
 
             @include breakpoint(mobile) {
                 font-size: 1.2em;
@@ -36,15 +37,17 @@
         }
 
         .list-step {
-            display: block;
+            display: flex;
             text-align: center;
-            flex-wrap: nowrap;
+            flex-wrap: wrap;
+            justify-content: space-between;
 
             li {
+                width: 20%;
                 list-style: none;
                 display: inline-block;
                 vertical-align: top;
-                margin: 20px 50px;
+                // margin: 20px 50px;
                 text-align: center;
                 cursor: default !important;
 
@@ -53,7 +56,7 @@
                 }
 
                 .img-step {
-                    padding: 20px;
+                    padding: 10px;
                     transition: all .5s ease-in-out;
 
                     img {
@@ -82,8 +85,8 @@
 
                 p {
                     font-size: 1.2em;
-                    max-width: 155px;
-                    max-height: 85px;
+                    // max-width: 155px;
+                    // max-height: 85px;
                     //transform: translateY(20px);
 
                     @include breakpoint(mobile) {

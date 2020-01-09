@@ -22,7 +22,7 @@ $this->extend('layout.html.php');
     <div class="container">
         <div class="col-xs-12">
 
-            <form method="POST" name="personal" id="contact" class="form-get--credit" action="#">
+            <form method="POST" name="personal" id="contact" class="form-get--credit" action="#" enctype="multipart/form-data">
                 <input type="hidden" id="jenis_form" name="jenis_form" value="Contact">
 
                 <div class="form-body--credit form-contact">
@@ -98,12 +98,12 @@ $this->extend('layout.html.php');
                         <div class="upload-file">
                             <img src="" />
                             <div class="upload-btn">
-                                <input type="file" class="file-input" accept="image/*" data-id="document" />
+                                <input type="file" class="file-input" accept="image/*" data-id="document" name="document" />
                                 <button type="button">Pilih File</button>
                                 <b></b>
                             </div>
                         </div>
-                        <input type="hidden" class="form-control formRequired" name="document" id="document">
+                        <input type="hidden" class="form-control formRequired" id="document">
                         <div class="error-wrap"></div>
                         <span>Max. ukuran file adalah 500kb</span>
                     </div>

@@ -550,4 +550,33 @@ class UserController extends FrontendController
             'result' => $data
         ]);
     }
+
+    public function dataCustomerJsonAction(Request $request)
+    {
+        $token = $this->getToken();
+
+        $param = [];
+
+        $host = WebsiteSetting::getByName("HOST")->getData();
+        $url = $host . WebsiteSetting::getByName('DATA_CUSTOMER')->getData();
+
+        try {
+            $data = $this->sendApi->dataCustomer($url, $param, $token);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Failed to retrieve the data!",
+                'detail' => $data
+            ]);
+        }
+
+        if ($data->status == "success") {
+            // fill something
+        }
+
+        return new JsonResponse([
+            'success' => true,
+            'result' => $data
+        ]);
+    }
 }

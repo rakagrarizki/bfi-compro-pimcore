@@ -1,7 +1,7 @@
 <?php 
 
 /** 
-* Generated at: 2019-12-16T09:55:33+01:00
+* Generated at: 2020-01-07T08:35:48+01:00
 * Inheritance: no
 * Variants: no
 * Changed by: admin (2)
@@ -18,11 +18,11 @@ Fields Summary:
 
 
 return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
-   'id' => '21',
+   'id' => '23',
    'name' => 'ContactCorporate',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1576486530,
+   'modificationDate' => 1578382546,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',

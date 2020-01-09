@@ -1,3 +1,20 @@
+body{
+    position: relative;
+    
+}
+.greyout {
+    position: absolute;
+    // display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 99;
+}
+
 #site-header {
     border-bottom: none;
     font-family: 'HelveticaNeue';
@@ -20,7 +37,7 @@
             opacity: 0.5;
         }
     }
-
+    
     &.active {
         .header-bottom {
             height: 70px;
@@ -31,12 +48,13 @@
                 transition: all .3s ease-in-out;
 
                 .header-link-menu .nav {
-                    padding-top: 15px;
+                    // padding-top: 15px;
                     transition: all .3s ease-in-out;
 
                     #produk .dropdown-content.main {
                         margin-top: 12px;
                         transition: all .3s ease-in-out;
+                        top: 99px;
                     }
                 }
             }
@@ -103,7 +121,7 @@
             // }
 
             .link-about-top {
-                float: left;
+                // float: left;
 
                 a {
                     font-family: 'HelveticaNeue';
@@ -118,7 +136,12 @@
 
             .link-log {
                 padding: 0 15px;
+                display: flex;
+                flex-wrap: wrap;
 
+                .login{
+                    margin-right: 20px;
+                }
                 a {
                     padding: 0 10px;
                     font-weight: bold;
@@ -127,19 +150,23 @@
                         color: #04559F;
                     }
 
-                    &.login:after {
-                        content: '';
-                        position: absolute;
-                        width: 1px;
-                        height: 100%;
-                        background: black;
-                        margin-left: 10px;
+                    &:focus {
+                        text-decoration: none;
                     }
+
+                    // &.login:after {
+                    //     content: '';
+                    //     position: absolute;
+                    //     width: 1px;
+                    //     height: 100%;
+                    //     background: black;
+                    //     margin-left: 10px;
+                    // }
                 }
             }
 
             .lang {
-                float: right;
+                // float: right;
 
                 a {
                     font-family: 'HelveticaNeue';
@@ -218,7 +245,16 @@
             transition: all .3s ease-in-out;
 
             .header-link-menu {
-
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                
+                .search-button{
+                    a{
+                        color: #fff;
+                        font-size: 16px;
+                    }
+                }
                 &.active {
                     &:before {
                         content: "";
@@ -239,13 +275,19 @@
                 transition: all .3s ease-in-out;
 
                 .nav {
-                    padding-top: 30px;
                     height: 100%;
                     display: flex;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    width: 100%;
 
                     >li {
-                        display: inline-block;
+                        // display: inline-block;
+                        height: 100%;
+                        display: flex;
+                        align-items: center;
                         margin-right: 25px;
+                        max-width: 20%;
 
                         @include breakpoint(wide) {
                             margin-right: 50px;
@@ -273,7 +315,8 @@
                                     content: '\f107';
                                     font-family: "FontAwesome";
                                     position: absolute;
-                                    right: 0;
+                                    right: -10px;
+                                    font-weight: 400;
                                 }
                             }
 
@@ -294,6 +337,11 @@
                             font-size: 1.2em;
                             font-weight: 600;
                             text-transform: capitalize;
+                            margin: 0 auto;
+                            height: 100%;
+                            display: flex;
+                            align-items: center;
+                            padding-right: 20px;
 
                             &:hover {
                                 text-decoration: none;
@@ -306,49 +354,66 @@
                         .dropdown-content.main {
                             width: 100%;
                             position: fixed;
-                            margin-top: 18px;
+                            // margin-top: 18px;
+                            top: 130px;
                             left: 0;
                             display: none;
 
                             .produk-hover {
                                 background: $white;
-                                padding: 30px;
+                                padding: 40px 70px 40px 70px;
+                                box-shadow: 0px 3px 10px rgba(0,0,0,.15);
 
                                 &:before {
                                     content: '';
                                     position: absolute;
+                                    top: 30px;
+                                    left: 9%;
                                     width: 0;
                                     height: 30;
-                                    border-left: 20px solid transparent;
-                                    border-right: 20px solid transparent;
-                                    border-bottom: 15px solid $white;
+                                    border-left: 10px solid transparent;
+                                    border-right: 10px solid transparent;
+                                    border-bottom: 10px solid $white;
                                     transform: translate(435px, -40px);
 
                                     @include breakpoint(tablet) {
                                         transform: translate(304px, -40px);
+                                        -webkit-transform: translate(304px, -40px);
+                                        -moz-transform: translate(304px, -40px);
+                                        -ms-transform: translate(304px, -40px);
+                                        -o-transform: translate(304px, -40px);
                                     }
 
                                     @include breakpoint(wide) {
                                         transform: translate(387px, -40px);
+                                        -webkit-transform: translate(387px, -40px);
+                                        -moz-transform: translate(387px, -40px);
+                                        -ms-transform: translate(387px, -40px);
+                                        -o-transform: translate(387px, -40px);
                                     }
 
                                     @include breakpoint(desktop) {
                                         transform: translate(435px, -40px);
+                                        -webkit-transform: translate(435px, -40px);
+                                        -moz-transform: translate(435px, -40px);
+                                        -ms-transform: translate(435px, -40px);
+                                        -o-transform: translate(435px, -40px);
                                     }
                                 }
 
                                 li {
                                     color: #04559f;
-                                    padding-bottom: 5px;
+                                    margin-bottom: 10px;
                                     list-style-type: none !important;
                                     list-style: none !important;
                                     list-style-position: outside;
                                     overflow: hidden;
 
                                     .label-title {
-                                        font-size: 1.2em;
+                                        font-size: 20px;
                                         font-family: 'HelveticaNeue';
-                                        font-weight: 600;
+                                        font-weight: 700;
+                                        // margin-bottom: 30px;
                                     }
                                 }
                             }
@@ -364,12 +429,12 @@
 
                                 .produk-hover {
                                     li {
-                                        line-height: 1.8;
+                                        // line-height: 1.8;
 
                                         a {
                                             font-family: 'HelveticaNeue';
                                             color: $grey-dark-color;
-                                            font-size: 1.2em;
+                                            font-size: 20px;
                                             font-weight: 500;
 
                                             &:hover {
@@ -637,4 +702,11 @@
         }
     }
 
+}
+
+.clearfix{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
 }

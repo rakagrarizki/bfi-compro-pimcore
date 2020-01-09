@@ -1,14 +1,19 @@
 .visi-misi {
-    padding: 60px 0;
+    padding: 40px 0 60px 0;
     background-color: $blue-dark-color;
 
-    .row {
-        margin-bottom: 20px;
+    .visi{
+        margin-bottom: 50px;
+    }
+    .misi{
+        margin-bottom: 10px;
+    }
+    .visi , .misi {
 
         h2 {
             margin: 0;
             font-family: HelveticaNeue-Bold;
-            font-size: 2rem;
+            font-size: 52px;
             color: $white;
 
             @include breakpoint(mobile) {
@@ -18,7 +23,8 @@
 
         p {
             font-family: HelveticaNeue-Light;
-            font-size: 1.4rem;
+            font-size: 24px;
+            line-height: 42px;
             color: $white;
         }
 
@@ -28,6 +34,7 @@
     }
 
     .counter {
+        margin-left: auto;
         display: flex;
         align-items: center;
         justify-content: flex-end;
@@ -37,7 +44,7 @@
         }
 
         .cta-orange{
-            background-color: #ffffffdd;
+            background-color: #ffffff;
             color: $blue-dark-color;
         }
 

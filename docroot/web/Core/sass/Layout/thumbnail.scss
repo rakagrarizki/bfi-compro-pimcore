@@ -46,9 +46,9 @@
         }
     }
 
-    &.thumbnail--branch {
-        // margin:0px;
-    }
+    // &.thumbnail--branch {
+    //     margin:0px;
+    // }
 
     >img {
         width: 24px;
@@ -145,7 +145,7 @@
         height: 100%;
         // margin-right: 10px;
         // margin-left: 10px;
-        box-shadow: 1px 2px 10px $grey-dark;
+        // box-shadow: 1px 2px 10px $grey-dark;
         border: 1px solid $grey-dark;
 
         @include breakpoint(mobile) {

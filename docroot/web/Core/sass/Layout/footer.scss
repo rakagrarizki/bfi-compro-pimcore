@@ -1,12 +1,12 @@
 footer {
     background-color: #404040;
-    padding: 50px 0 30px;
+    padding: 40px 0 40px;
     color: #000;
 
     .footer-left {
         h3 {
             font-family: 'HelveticaNeue';
-            margin: 10px 0;
+            margin: 0 0 20px 0;
             font-weight: 600;
             font-size: 1.4em;
             color: white;
@@ -14,8 +14,12 @@ footer {
 
         p {
             font-family: 'HelveticaNeue';
+            margin: 0 0 20px 0;
             font-size: 1.1em;
             color: #9A9A9A;
+            &:last-child{
+                margin: 0;
+            }
         }
     }
 
@@ -25,19 +29,25 @@ footer {
             font-family: 'HelveticaNeue';
             display: block;
             // width: calc(100% - 80px);
-            width: 60%;
-            background: #d88417;
+            width: fit-content;
             color: $light;
             padding: 10px 15px;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
+            border: solid 1px #fff;
             cursor: pointer;
 
             @include breakpoint(mobile) {
                 width: 75%;
+                vertical-align: baseline;
             }
 
             a {
                 color: white;
+            }
+            img{
+                width: 15px;
+                height: 15px;
+                margin: 0 5px 0 5px;
             }
         }
 
@@ -45,8 +55,8 @@ footer {
             font-family: 'HelveticaNeue';
             display: block;
             font-size: 14px;
-            padding-top: 15px;
             color: white;
+            margin-bottom: 10px;
         }
 
         .form-inline {
@@ -74,7 +84,7 @@ footer {
                 border-radius: 0;
                 background: transparent;
                 box-shadow: none;
-                padding: 0 4px !important;
+                padding: 0 10px !important;
             }
         }
     }

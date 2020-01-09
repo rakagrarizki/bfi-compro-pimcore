@@ -77,6 +77,7 @@
 
 </head>
 <body>
+    <div id="overlay"></div>
 <?php if($site == "corporate"):?>
     <?php echo $this->template('Includes/navigation-corporate.html.php') ?>
 <?php else :?>
