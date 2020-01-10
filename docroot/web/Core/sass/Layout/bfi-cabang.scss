@@ -7,3 +7,49 @@
         margin-bottom: 30px;
     }
 }
+
+#bfi-branch{
+    background-color: #f4f4f4;
+    text-align: center;
+    padding: 50px 0 50px 0;
+    .title{
+        margin-bottom: 40px;
+        h1{
+            font-size: 40px;
+            color: #04559f;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        p{
+            font-size: 20px;
+            color: #565656;
+        }
+    }
+    .button{
+        width: 220px;
+        height: 60px;
+        background-color: #f9991c;
+        display: block;
+        margin: 0 auto 40px auto;
+        a{
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            span{
+                margin-right: 10px;
+            }
+        }
+    }
+    .operation-time{
+        .info , .date-time{
+            font-size: 20px;
+            color: #565656;
+            margin-bottom: 10px;
+        }
+        .info{
+            font-weight: 700;
+        }
+    }
+}

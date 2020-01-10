@@ -75,7 +75,11 @@
             }
 
             .panel-body {
-                padding: 25px 15px;
+                padding: 20px 110px;
+                .container{
+                    width: 100% !important;
+                    padding: 0;
+                }
 
                 // M. Muhyidin Amin
 
@@ -234,7 +238,7 @@
             a {
                 position: relative;
                 display: block;
-                padding: 22px 15px;
+                padding: 20px 70px;
 
                 @include breakpoint(small-mobile) {
                     padding-right: 35px;
@@ -248,7 +252,7 @@
                     position: absolute;
                     content: '\f107';
                     font-family: "FontAwesome";
-                    right: 15px;
+                    right: 70px;
                     top: 15px;
                     font-size: 1.3em;
                     opacity: 0.4;
@@ -280,7 +284,7 @@
     }
 
     .document-table {
-        padding: 0 20px;
+        // padding: 0 20px;
 
         @include breakpoint(mobile) {
             padding: 0;

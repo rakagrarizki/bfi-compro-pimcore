@@ -4872,3 +4872,13 @@ function logout() {
     }
   })
 }
+$(document).ready(function() {
+  $('#category-1').select2({
+    placeholder: "Pilih jenis pembiayaan?",
+    minimumResultsForSearch: -1
+  });
+  $('#category-2').select2({
+    placeholder: "Pembiayaan apa yang dibutuhkan?",
+    minimumResultsForSearch: -1
+  });
+});

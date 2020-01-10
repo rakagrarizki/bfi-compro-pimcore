@@ -2268,5 +2268,23 @@ return [
         "legacy" => FALSE,
         "creationDate" => 1578464959,
         "modificationDate" => 1578465009
+    ],
+    131 => [
+        "id" => 131,
+        "name" => "newsletter",
+        "pattern" => "/\\/newsletter/",
+        "reverse" => "/newsletter",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\NewsLetterController",
+        "action" => "default",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1578567031,
+        "modificationDate" => 1578567177
     ]
 ];

@@ -435,7 +435,7 @@
 }
 
 .select2-results__options{
-    height: 210px;
+    max-height: 210px;
     li{
         font-size:18px;
         color: #565656;

@@ -1,25 +1,27 @@
 .slider-author {
     position: relative;
-    height: 400px;
+    // padding: 60px 0 30px 0;
+    // height: 400px;
 
     @include breakpoint(mobile) {
         height: auto;
     }
 
-    .row {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        z-index: 9;
+    // .row {
+    //     position: absolute;
+    //     top: 50%;
+    //     transform: translateY(-50%);
+    //     z-index: 9;
 
-        @include breakpoint(mobile) {
-            position: relative;
-            top: 0;
-            transform: unset;
-        }
-    }
+    //     @include breakpoint(mobile) {
+    //         position: relative;
+    //         top: 0;
+    //         transform: unset;
+    //     }
+    // }
 
     .slider-author__wrapper {
+        margin-bottom: 0;
         .item-slide {
             &-produk{
                 height:335px;
@@ -30,24 +32,24 @@
             background-repeat: no-repeat;
             background-position: top center;
 
-            &::after {
-                position: absolute;
-                content: "";
-                right: 0;
-                left: 0;
-                top: 0;
-                bottom: 0;
-                background: none!important;
-                background: rgba(147,206,222,0);
-                background: -moz-linear-gradient(top, rgba(147,206,222,0) 0%, rgba(6,65,117,0.84) 100%);
-                background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(147,206,222,0)), color-stop(100%, rgba(6,65,117,0.84)));
-                background: -webkit-linear-gradient(top, rgba(147,206,222,0) 0%, rgba(6,65,117,0.84) 100%);
-                background: -o-linear-gradient(top, rgba(147,206,222,0) 0%, rgba(6,65,117,0.84) 100%);
-                background: -ms-linear-gradient(top, rgba(147,206,222,0) 0%, rgba(6,65,117,0.84) 100%);
-                background: linear-gradient(to bottom, rgba(147,206,222,0) 0%, rgba(6,65,117,0.84) 100%);
-                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#93cede', endColorstr='#064175', GradientType=0 );
+            // &::after {
+            //     position: absolute;
+            //     content: "";
+            //     right: 0;
+            //     left: 0;
+            //     top: 0;
+            //     bottom: 0;
+            //     background: none!important;
+            //     background: rgba(147,206,222,0);
+            //     background: -moz-linear-gradient(top, rgba(147,206,222,0) 0%, rgba(6,65,117,0.84) 100%);
+            //     background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(147,206,222,0)), color-stop(100%, rgba(6,65,117,0.84)));
+            //     background: -webkit-linear-gradient(top, rgba(147,206,222,0) 0%, rgba(6,65,117,0.84) 100%);
+            //     background: -o-linear-gradient(top, rgba(147,206,222,0) 0%, rgba(6,65,117,0.84) 100%);
+            //     background: -ms-linear-gradient(top, rgba(147,206,222,0) 0%, rgba(6,65,117,0.84) 100%);
+            //     background: linear-gradient(to bottom, rgba(147,206,222,0) 0%, rgba(6,65,117,0.84) 100%);
+            //     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#93cede', endColorstr='#064175', GradientType=0 );
                 
-            }
+            // }
 
             @include breakpoint(mobile) {
                 height: auto;
@@ -55,14 +57,14 @@
             }
         
 
-            &::before {
-                position: absolute;
-                content: "";
-                left: 0;
-                right: 0;
-                top: 0;
-                bottom: 0;
-            }
+            // &::before {
+            //     position: absolute;
+            //     content: "";
+            //     left: 0;
+            //     right: 0;
+            //     top: 0;
+            //     bottom: 0;
+            // }
         }
 
         .img-wrap {
@@ -72,7 +74,7 @@
             .img-produk{
                 width:200px;
                 height:200px;
-                margin-right:50px;
+                margin-right: 27px;
 
                 @include breakpoint(mobile) {
                     margin-right:auto;
@@ -117,9 +119,9 @@
             
         }
 
-        .author {
-            margin-top: 30px;
-        }
+        // .author {
+        //     margin-top: 30px;
+        // }
 
         h4 {
             font-family: 'HelveticaNeue-Medium';
@@ -128,8 +130,8 @@
             
 
             strong {
-                font-size: 18pt;
-                font-weight: 600;
+                font-size: 18px;
+                font-weight: bold;
                 text-transform: uppercase;
                 
             }
@@ -137,10 +139,74 @@
 
         p {
             font-family: 'HelveticaNeue';
-            font-size: 16pt;
+            font-size: 16px;
             color: $white;
 
             
+        }
+
+        .item-slide{
+            display: flex;
+            align-items: center;
+        
+            &:focus{
+                outline: none;
+            }
+            .centered-content{
+                display: flex;
+                flex-wrap: wrap;
+                padding: 0 60px 0 60px;
+        
+                .testimony-wrap{
+                    width: 100%;
+                    position: relative;
+                    .testimony{
+                        font-size: 18px !important;
+                        margin-bottom: 40px;
+                        
+                    }
+                    .quote{
+                        position: absolute;
+                        top: -40px;
+                        left: -10px;
+                        opacity: .2;
+                        font-size: 60px;
+                        color: #FFF;
+                    }
+                }
+        
+                .author-wrap{
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: flex-end;
+                    width: 100%;
+                    .img-wrap{
+                        img{
+                            height: 80px !important;
+                            width: 80px !important;
+                        }
+                    }
+                    .text-wrapper{
+                        p{
+                            margin: 0 0 10px 0;
+                            &:last-child{
+                                margin: 0;
+                            }
+                        }
+                        .name{
+                            font-size: 18px !important;
+                            font-weight: bold;
+                        }
+                        .position{
+                            font-size: 16px !important;
+                        }
+                    }
+                }
+            }
+        }
+        .slick-dots{
+            text-align: left;
+            bottom: 30px;
         }
     }
 
@@ -171,7 +237,7 @@
     }
 
     .fa-angle-left {
-        left: 30px;
+        left: -7.5%;
         color: $blue-dark-color;
         font-size: 30px;
 
@@ -181,7 +247,7 @@
     }
 
     .fa-angle-right {
-        right: 30px;
+        right: -7.5%;
         color: $blue-dark-color;
         font-size: 30px;
 
