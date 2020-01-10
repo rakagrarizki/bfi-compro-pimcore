@@ -59,13 +59,13 @@ if ($this->editmode) : ?>
 
 <?php endif ?>
 
-<div id="errorNewsletter" class="modal modal--failed fade" role="dialog">
+<div id="errorNewsletter" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content text-center">
             <div class="modal-body">
                 <div class="body-text"></div>
-                <button type="button" class="cta cta-orange news-ok" data-dismiss="modal">Ok</button>
+                <button type="button" id="button-klik" class="cta cta-orange news-ok" data-dismiss="modal">Ok</button>
             </div>
         </div>
     </div>
