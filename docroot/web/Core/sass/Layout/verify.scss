@@ -488,6 +488,13 @@ section{
                             -o-border-radius: 50%;
                             z-index: 99;
                         }
+
+                        .label-step{
+                            position : absolute;
+                            top : 40px;
+                            text-align : center;
+                            color:rgba(0,0,0,.26);
+                        }
                     }
         
                     .active{
@@ -498,7 +505,27 @@ section{
                         .number{
                             background-color: #f9991c;
                         }
+
+                        .label-step {
+                            color : #565656;
+                        }
                     }
+
+                    .done {
+                        .number:before {
+                            font-family:'FontAwesome';
+                            font-weight:100;
+                            content: "\f00c";
+                        }
+                    }
+                
+                    .fail {
+                        .number:before {
+                            font-family:'FontAwesome';
+                            content: "\00d7";
+                            font-size : 20px;
+                        }
+                    } 
                 }
 
                 .fail-notif {
@@ -511,7 +538,7 @@ section{
                     border-radius: 25px;
         
                     @include breakpoint(mobile) {
-                        margin : 30px 0;
+                        margin : 60px 0 20px 0;
                     }
                     
                     .icon{
@@ -816,6 +843,11 @@ section{
 .title{
     text-align: center;
     margin-bottom: 40px;
+
+    @include breakpoint(mobile) {
+        margin-bottom: 20px;
+    }
+
     h3{
         color: #04559F;
         font-size: 26px;

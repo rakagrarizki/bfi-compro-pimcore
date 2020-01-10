@@ -4735,8 +4735,6 @@ function copyURL(url) {
   $('#copied').show().delay(2000).fadeOut(400);
 }
 
-var dataOTP = {}
-
 function login() {
   var dataPhone = {
       'phone_number' : $('#phone-input').val()

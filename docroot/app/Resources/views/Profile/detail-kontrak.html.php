@@ -226,7 +226,7 @@ $this->extend('layout.html.php');
             <p>Berikut ini adalah informasi kontrak anda</p>
         </div>
         <ul class="contract-wrapper">
-            <a class="contract-box hide" id="contract0" href="#">
+            <a class="contract-box hide" id="contract" href="#">
                 <li href="" class="contract-detail contract-detail-mobile" id="telat"> <!--tambah id=telat utk tambah note telat bayar-->
                     <div class="icon-wrapper">
                         <div class="icon">

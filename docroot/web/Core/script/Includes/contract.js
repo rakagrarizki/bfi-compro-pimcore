@@ -34,7 +34,7 @@ $(document).ready(function(){
 function contractDetailTransaction(token, dataContract) {
     $.ajax({
         type: 'POST',
-        url: 'https://bfi.staging7.salt.id/user/contract-detail-transaction',
+        url: '/user/contract-detail-transaction',
         data: dataContract,
         crossDomain: true,
         dataType: 'json',
@@ -52,10 +52,14 @@ function contractDetailTransaction(token, dataContract) {
             var data = dataObj.result.data
             if (dataObj.success === true) {
                 console.log(data)
+                var options = { year: 'numeric', month: 'long', day: 'numeric' };
+                var date = new Date(data[0].tanggal_jatuh_tempo);
+                var due_date = date.toLocaleDateString('id-ID', options)
+
                 $('.total-installment').text("Rp. "+ (convertInttoCurrency(data[0].angsuran_telah_dibayar+data[0].sisa_angsuran)));
                 $('.remaining-installment').text("Rp. "+ convertInttoCurrency(data[0].sisa_angsuran));
                 $('.have-paid-installment').text("Rp. "+ convertInttoCurrency(data[0].angsuran_telah_dibayar));
-                $('.due-date').text(data[0].tanggal_jatuh_tempo);
+                $('.due-date').text(due_date);
                 $('.installment-per-month').text("Rp. "+ convertInttoCurrency(data[0].angsuran_per_bulan));
                 $('.late-charge').text("Rp. "+ convertInttoCurrency(data[0].denda_keterlambatan));
             }
@@ -71,7 +75,7 @@ function convertInttoCurrency(int){
 function contractDetailList(token, dataContract) {
     $.ajax({
         type: 'POST',
-        url: 'https://bfi.staging7.salt.id/user/contract-detail-list',
+        url: '/user/contract-detail-list',
         data: dataContract,
         crossDomain: true,
         dataType: 'json',
@@ -89,18 +93,20 @@ function contractDetailList(token, dataContract) {
             var data = dataObj.result.data
             if (dataObj.success === true) {
                 console.log(data);
+                var due_date = new Date(data.tanggal_jatuh_tempo);
+
                 $('article.title > h3').text(data.category_desc+" "+data.product_desc);
                 $('.product').text(data.product_desc);
                 $('.contract-number').text(data.contract_number);
                 $('.name').text(data.nama_pemohon);
                 $('.total-installment-contract').text("Rp. "+ convertInttoCurrency(data.pembiayaan));
-                $('.due-date-contract').text(data.tanggal_jatuh_tempo);
+                $('.due-date-contract').text(due_date.getDate());
                 $('.installment-per-month-contract').text("Rp. "+ convertInttoCurrency(data.angsuran_per_bulan));
                 $('.jangka-on-month').text(data.jangka_waktu_on_month+" Bulan");
                 $('.cabang-pencairan').text(data.cabang_pencairan_desc);
                 var product_desc = "Alat Berat & Mesin Refinancing";
 
-                if(product_desc == "Sertipikat Rumah"){
+                if(product_desc == "Sertifikat Rumah"){
                     $('.land-certificate').removeClass('hide');
                     detailAgunanRumah(token, dataContract);
                 }else if(product_desc == "BPKB Mobil"){
@@ -121,7 +127,7 @@ function contractDetailList(token, dataContract) {
 function detailAgunanRumah(token, dataContract) {
     $.ajax({
         type: 'POST',
-        url: 'https://bfi.staging7.salt.id/user/detail-agunan-rumah',
+        url: '/user/detail-agunan-rumah',
         data: dataContract,
         crossDomain: true,
         dataType: 'json',
@@ -151,7 +157,7 @@ function detailAgunanRumah(token, dataContract) {
 function detailAgunanMobil(token, dataContract) {
     $.ajax({
         type: 'POST',
-        url: 'https://bfi.staging7.salt.id/user/detail-agunan-mobil',
+        url: '/user/detail-agunan-mobil',
         data: dataContract,
         crossDomain: true,
         dataType: 'json',
@@ -183,7 +189,7 @@ function detailAgunanMobil(token, dataContract) {
 function detailAgunanMotor(token, dataContract) {
     $.ajax({
         type: 'POST',
-        url: 'https://bfi.staging7.salt.id/user/detail-agunan-motor',
+        url: '/user/detail-agunan-motor',
         data: dataContract,
         crossDomain: true,
         dataType: 'json',
@@ -215,7 +221,7 @@ function detailAgunanMotor(token, dataContract) {
 function detailAgunanAlatBerat(token, dataContract) {
     $.ajax({
         type: 'POST',
-        url: 'https://bfi.staging7.salt.id/user/detail-agunan-alat-berat',
+        url: '/user/detail-agunan-alat-berat',
         data: dataContract,
         crossDomain: true,
         dataType: 'json',
@@ -252,7 +258,7 @@ function contractStatusList(token, dataContract) {
 
     $.ajax({
         type: 'POST',
-        url: 'https://bfi.staging7.salt.id/user/contract-status-list',
+        url: '/user/contract-status-list',
         data: dataContract,
         crossDomain: true,
         dataType: 'json',
@@ -271,17 +277,30 @@ function contractStatusList(token, dataContract) {
             if (dataObj.success === true) {
                 $('a.contract-box').removeClass('hide');
                 for(var i=0; i < data.length; i++){ 
-                    var newel = $('#contract0').clone();
+                    var newel = $('#contract').clone();
                     newel.attr('id', 'contract'+i);
                     $(newel).insertAfter(".contract-box:first");
                 }
                 $.each(data, function( index, value ) {
                     console.log(value)
+                    // var date = Date(value.tanggal_jatuh_tempo)
+                    // console.log(date.toString());
+
                     $('#contract'+index).find('h5.category').text(value.category_desc);
                     $('#contract'+index).find('h5.product').text(value.product_desc);
                     $('#contract'+index).find('p.contract_number').text(value.contract_number);
                     $('#contract'+index).find('p.angsuran_perbulan').text(value.angsuran_perbulan);
                     $('#contract'+index).find('p.tanggal_jatuh_tempo').text(value.tanggal_jatuh_tempo);
+
+                    if(value.product_desc == "Sertifikat Rumah"){
+                        $('#contract'+index).find('.icon > img').attr('src', '/_default_upload_bucket/form_credit/Rumah.png');
+                    }else if(value.product_desc == "BPKB Mobil"){
+                        $('#contract'+index).find('.icon > img').attr('src', '/_default_upload_bucket/form_credit/Mobil.png');
+                    }else if(value.product_desc == "BPKB Motor"){
+                        $('#contract'+index).find('.icon > img').attr('src', '/_default_upload_bucket/form_credit/Motor.png');
+                    }else if(value.product_desc == "Alat Berat & Mesin Refinancing"){
+                        $('#contract'+index).find('.icon > img').attr('src', '/_default_upload_bucket/form_credit/D_alat%20berat.png');
+                    }
                     
                     //just example if status != telat
                     if(value.contract_number == '21231213'){
@@ -289,7 +308,7 @@ function contractStatusList(token, dataContract) {
                         $('#contract'+index).find('.warning').css('visibility', 'hidden');
                     }
                 })
-                $('.contract-box:nth-last-child(2)').remove()
+                $('.contract-box:first').hide()
             }
         }
     })

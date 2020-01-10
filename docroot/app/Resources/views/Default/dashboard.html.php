@@ -47,29 +47,29 @@ $this->extend('layout.html.php');
             <p>Berikut ini adalah status aplikasi anda</p>
         </div>
         <ul class="status-wrapper">
-            <li class="status-box hide" id="status0">
+            <li class="status-box hide" id="status">
                 <div class="status-step">
                     <div class="">
                         <ul class="stepper-row">
                             <li id="status-step">
-                                <span id="step1" class="number">1</span>
-                                <!-- <span class="label-step">Ajukan Kredit</!--> -->
+                                <span id="step1" class="number"></span>
+                                <span id="label-step1" class="label-step"></span>
                             </li>
                             <li id="status-step">
-                                <span id="step2" class="number">2</span>
-                                <!-- <span class="label-step">Verifikasi Telepon</span> -->
+                                <span id="step2" class="number"></span>
+                                <span id="label-step2" class="label-step"></span>
                             </li>
                             <li id="status-step">
-                                <span id="step3" class="number">3</span>
-                                <!-- <span class="label-step">Survey</span> -->
+                                <span id="step3" class="number"></span>
+                                <span id="label-step3" class="label-step"></span>
                             </li>
                             <li id="status-step">
-                                <span id="step4" class="number">4</span>
-                                <!-- <span class="label-step">Disetujui</span> -->
+                                <span id="step4" class="number"></span>
+                                <span id="label-step4" class="label-step"></span>
                             </li>
                             <li id="status-step">
-                                <span id="step5" class="number">5</span>
-                                <!-- <span class="label-step">Pendanaan</span> -->
+                                <span id="step5" class="number"></span>
+                                <span id="label-step5" class="label-step"></span>
                             </li>
                         </ul>                        
                     </div>
@@ -89,7 +89,6 @@ $this->extend('layout.html.php');
                     </div>
                 </div>
             </li>
-            <hr/>
         </ul>
     </div>
 </section>
@@ -102,7 +101,7 @@ $this->extend('layout.html.php');
             <p class="verify hide">Berikut ini adalah informasi kontrak anda</p>
         </div>
         <ul class="contract-wrapper">
-            <a class="contract-box hide" id="contract0" href="#">
+            <a class="contract-box hide" id="contract" href="#">
                 <li href="" class="contract-detail contract-detail-mobile" id="telat"> <!--tambah id=telat utk tambah note telat bayar-->
                     <div class="icon-wrapper">
                         <div class="icon">

@@ -92,10 +92,11 @@ function showFileName( event ) {
 $(document).ready(function(){
     var token = window.sessionStorage.getItem("token");
 
-    $('ul.contract-wrapper').hide()
-    checkStatus(token)
-    checkAssignmentList(token)
-    contractStatusList(token)
+    $('ul.contract-wrapper').hide();
+    checkStatus(token);
+    applicationStep(token);
+    checkAssignmentList(token);
+    contractStatusList(token);
     
     $('#btn-submit').click(function(event) { 
 
@@ -116,7 +117,7 @@ $(document).ready(function(){
 
         $.ajax({
             type: 'POST',
-            url: 'https://bfi.staging7.salt.id/user/verify-no-ktp',
+            url: '/user/verify-no-ktp',
             data: dataKTP,
             dataType: 'json',
             headers: { 'sessionId': token },
@@ -157,7 +158,7 @@ $(document).ready(function(){
 function checkStatus(token) {
     $.ajax({
         type: 'GET',
-        url: 'https://bfi.staging7.salt.id/user/check-verify-status',
+        url: '/user/check-verify-status',
         crossDomain: true,
         dataType: 'json',
         headers: { 'sessionId': token },
@@ -198,7 +199,7 @@ function checkStatus(token) {
 function checkAssignmentList(token) {
     $.ajax({
         type: 'GET',
-        url: 'https://bfi.staging7.salt.id/user/assignment-list',
+        url: '/user/assignment-list',
         crossDomain: true,
         dataType: 'json',
         headers: { 'sessionId': token },
@@ -215,7 +216,7 @@ function checkAssignmentList(token) {
             var data = dataObj.result.data
             if (dataObj.success === true) {
                 for(var i=0; i < data.length; i++){ 
-                    var newel = $('#status0').clone();
+                    var newel = $('#status').clone();
                     newel.attr('id', 'status'+i);
                     $('.status-wrapper').append(newel).append("<hr/>");
                 }
@@ -228,7 +229,7 @@ function checkAssignmentList(token) {
                     applicationStatus(token, statusNumber ,value.assignment_id);
                     
                 });
-                $('.status-box:nth-child(2)').remove()
+                $('.status-box:first').hide()
             }
         }
     })
@@ -237,7 +238,7 @@ function checkAssignmentList(token) {
 function applicationStep(token) {
     $.ajax({
         type: 'GET',
-        url: 'https://bfi.staging7.salt.id/user/application-step-list',
+        url: '/user/application-step-list',
         crossDomain: true,
         dataType: 'json',
         headers: {'sessionId': token },
@@ -251,8 +252,12 @@ function applicationStep(token) {
         },
 
         success: function (dataObj) {
+            var data = dataObj.result.data;
             if (dataObj.success === true) {
-                console.log('Application Step List')
+                $.each(data, function( index, value ) {
+                    $('.stepper-row').find('#step'+(index+1)).text(value.step_id);
+                    $('.stepper-row').find('#label-step'+(index+1)).text(value.desc);
+                })
             }
         }
     })
@@ -266,7 +271,7 @@ function contractStatusList(token) {
 
     $.ajax({
         type: 'POST',
-        url: 'https://bfi.staging7.salt.id/user/contract-status-list',
+        url: '/user/contract-status-list',
         data: dataContract,
         crossDomain: true,
         dataType: 'json',
@@ -285,17 +290,28 @@ function contractStatusList(token) {
             if (dataObj.success === true) {
                 $('a.contract-box').removeClass('hide');
                 for(var i=0; i < data.length; i++){ 
-                    var newel = $('#contract0').clone();
+                    var newel = $('#contract').clone();
                     newel.attr('id', 'contract'+i);
                     $(newel).insertAfter(".contract-box:first");
                 }
                 $.each(data, function( index, value ) {
                     console.log(value)
+                    $('#contract'+index).attr('href', '/detail?contract_number='+value.contract_number);
                     $('#contract'+index).find('h5.category').text(value.category_desc);
                     $('#contract'+index).find('h5.product').text(value.product_desc);
                     $('#contract'+index).find('p.contract_number').text(value.contract_number);
                     $('#contract'+index).find('p.angsuran_perbulan').text(value.angsuran_perbulan);
                     $('#contract'+index).find('p.tanggal_jatuh_tempo').text(value.tanggal_jatuh_tempo);
+
+                    if(value.product_desc == "Sertifikat Rumah"){
+                        $('#contract'+index).find('.icon > img').attr('src', '/_default_upload_bucket/form_credit/Rumah.png');
+                    }else if(value.product_desc == "BPKB Mobil"){
+                        $('#contract'+index).find('.icon > img').attr('src', '/_default_upload_bucket/form_credit/Mobil.png');
+                    }else if(value.product_desc == "BPKB Motor"){
+                        $('#contract'+index).find('.icon > img').attr('src', '/_default_upload_bucket/form_credit/Motor.png');
+                    }else if(value.product_desc == "Alat Berat & Mesin Refinancing"){
+                        $('#contract'+index).find('.icon > img').attr('src', '/_default_upload_bucket/form_credit/D_alat%20berat.png');
+                    }
                     
                     //just example if status != telat
                     if(value.contract_number == '21231213'){
@@ -303,7 +319,7 @@ function contractStatusList(token) {
                         $('#contract'+index).find('.warning').css('visibility', 'hidden');
                     }
                 })
-                $('.contract-box:nth-last-child(2)').remove()
+                $('.contract-box:first').hide()
             }
         }
     })
@@ -318,7 +334,7 @@ function applicationStatus(token, statusNumber, assignmentId) {
 
     $.ajax({
         type: 'POST',
-        url: 'https://bfi.staging7.salt.id/user/application-status-list',
+        url: '/user/application-status-list',
         data: dataAssignment,
         crossDomain: true,
         dataType: 'json',
@@ -344,13 +360,18 @@ function applicationStatus(token, statusNumber, assignmentId) {
                     $(statusNumber).find('div.fail-notif > span:first').hide()
                     $(statusNumber).find('div.fail-notif > span:last').text(data[0].status_desc)
                 }
-                //for active process
+
+                //add icon done and fail
                 for(var i=1;i<=data[0].step_id;i++){
+                    if(i<data[0].step_id || data[0].status_id == 1){
+                        $(statusNumber).find('span#step'+i).parent().addClass('done');
+                        $(statusNumber).find('span#step'+i).text('');
+                    }
+                    if(data[0].status_id == 2 && i==data[0].step_id) {
+                        $(statusNumber).find('span#step'+i).parent().addClass('fail');
+                        $(statusNumber).find('span#step'+i).text('');
+                    }
                     $(statusNumber).find('span#step'+i).parent().addClass('active')
-                }
-                //for done process
-                for(var i=1;i<data[0].step_id;i++){
-                    $(statusNumber).find('span#step'+i).parent().addClass('done')
                 }
                 console.log(data)
             }
