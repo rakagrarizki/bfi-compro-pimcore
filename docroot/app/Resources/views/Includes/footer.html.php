@@ -34,6 +34,10 @@ if ($this->editmode) : ?>
                 <div class="col-lg-8"><?= $this->link('career'); ?></div>
             </div>
             <div class="row">
+                <div class="col-lg-4">Peluang Bisnis</div>
+                <div class="col-lg-8"><?= $this->link('peluang-bisnis'); ?></div>
+            </div>
+            <div class="row">
                 <div class="col-lg-4">Contact Us</div>
                 <div class="col-lg-8"><?= $this->link('contact'); ?></div>
             </div>
@@ -59,13 +63,13 @@ if ($this->editmode) : ?>
 
 <?php endif ?>
 
-<div id="errorNewsletter" class="modal modal--failed fade" role="dialog">
+<div id="errorNewsletter" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content text-center">
             <div class="modal-body">
                 <div class="body-text"></div>
-                <button type="button" class="cta cta-orange news-ok" data-dismiss="modal">Ok</button>
+                <button type="button" id="button-klik" class="cta cta-orange news-ok" data-dismiss="modal">Ok</button>
             </div>
         </div>
     </div>
@@ -125,12 +129,12 @@ if ($this->editmode) : ?>
             </div>
             <div class="col-sm-8">
                 <ul class="nav-footer">
-                    <li><a href="<?= $this->link('career')->getHref(); ?>"><?= $this->translate("career") ?></a></li>
-                    <li><a href="">Peluang Bisnis</a></li>
-                    <li><a href="<?= $this->link('contact')->getHref(); ?>"><?= $this->translate("contact") ?></a></li>
-                    <li><a href="<?= $this->link('branch')->getHref(); ?>"><?= $this->translate("branch") ?></a></li>
-                    <li><a href="">Syarat Penggunaan</a></li>
-                    <li><a href="">Kebijakan Privasi</a></li>
+                    <li><a href="<?= $this->link('career')->getHref(); ?>"><?= $this->translate("career"); ?></a></li>
+                    <li><a href="<?= $this->link('peluang-bisnis')->getHref(); ?>"><?= $this->translate("peluang-bisnis"); ?></a></li>
+                    <li><a href="<?= $this->link('contact')->getHref(); ?>"><?= $this->translate("contact"); ?></a></li>
+                    <li><a href="<?= $this->link('branch')->getHref(); ?>"><?= $this->translate("branch"); ?></a></li>
+                    <li><a href="<?= $this->link('term')->getHref(); ?>"><?= $this->translate("term"); ?></a></li>
+                    <li><a href="<?= $this->link('privacy')->getHref(); ?>"><?= $this->translate("privacy"); ?></a></li>
                 </ul>
             </div>
         </div>
