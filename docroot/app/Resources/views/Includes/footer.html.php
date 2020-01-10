@@ -1,28 +1,28 @@
 <?php
 //use AppBundle\Model\DataObject\BlogArticle;
 
-if($this->editmode) : ?>
+if ($this->editmode) : ?>
     <div class="row">
         <div class="col-lg-12">
             <div class="row">
                 <div class="col-lg-4">Facebook</div>
-                <div class="col-lg-8"><?=$this->link('facebook');?></div>
+                <div class="col-lg-8"><?= $this->link('facebook'); ?></div>
             </div>
             <div class="row">
                 <div class="col-lg-4">Twitter</div>
-                <div class="col-lg-8"><?=$this->link('twitter');?></div>
+                <div class="col-lg-8"><?= $this->link('twitter'); ?></div>
             </div>
             <div class="row">
                 <div class="col-lg-4">Instagram</div>
-                <div class="col-lg-8"><?=$this->link('instagram');?></div>
+                <div class="col-lg-8"><?= $this->link('instagram'); ?></div>
             </div>
             <div class="row">
                 <div class="col-lg-4">Youtube</div>
-                <div class="col-lg-8"><?=$this->link('youtube');?></div>
+                <div class="col-lg-8"><?= $this->link('youtube'); ?></div>
             </div>
             <div class="row">
                 <div class="col-lg-4">LinkedIn</div>
-                <div class="col-lg-8"><?=$this->link('linkedin');?></div>
+                <div class="col-lg-8"><?= $this->link('linkedin'); ?></div>
             </div>
         </div>
     </div>
@@ -31,33 +31,33 @@ if($this->editmode) : ?>
         <div class="col-lg-12">
             <div class="row">
                 <div class="col-lg-4">Career</div>
-                <div class="col-lg-8"><?=$this->link('career');?></div>
+                <div class="col-lg-8"><?= $this->link('career'); ?></div>
             </div>
             <div class="row">
                 <div class="col-lg-4">Contact Us</div>
-                <div class="col-lg-8"><?=$this->link('contact');?></div>
+                <div class="col-lg-8"><?= $this->link('contact'); ?></div>
             </div>
             <div class="row">
                 <div class="col-lg-4">Our Branch</div>
-                <div class="col-lg-8"><?=$this->link('branch');?></div>
+                <div class="col-lg-8"><?= $this->link('branch'); ?></div>
             </div>
             <div class="row">
                 <div class="col-lg-4">Term of Use</div>
-                <div class="col-lg-8"><?=$this->link('term');?></div>
+                <div class="col-lg-8"><?= $this->link('term'); ?></div>
             </div>
             <div class="row">
                 <div class="col-lg-4">Privacy Policy</div>
-                <div class="col-lg-8"><?=$this->link('privacy');?></div>
+                <div class="col-lg-8"><?= $this->link('privacy'); ?></div>
             </div>
         </div>
     </div>
 
     <div class="row">
         <div class="col-sm-4">Image OJK</div>
-        <div class="col-sm-8"><?= $this->image('ojk-image');?></div>
+        <div class="col-sm-8"><?= $this->image('ojk-image'); ?></div>
     </div>
 
-<?php endif?>
+<?php endif ?>
 
 <div id="errorNewsletter" class="modal modal--failed fade" role="dialog">
     <div class="modal-dialog">
@@ -91,8 +91,7 @@ if($this->editmode) : ?>
             <div class="col-md-4 footer-center">
                 <span><a href="tel:1500018"><?= $this->translate("customer-care") ?> <img src="/static/images/icon/telephone.png" alt=""> 1500018</a></span>
                 <label><?= $this->translate("Newsletter") ?></label>
-                <form class="form-inline" id="sendNewsletter" action="/register/newsletter"
-                      method="POST">
+                <form class="form-inline" id="sendNewsletter" action="<?= BASEURL . '/newsletter' ?>" method="POST">
 
                     <div class="form-group">
                         <input type="text" class="form-control" id="email" name="email" placeholder="<?= $this->translate("email-input") ?>">
@@ -100,20 +99,20 @@ if($this->editmode) : ?>
 
                     </div>
                     <div id="ajax-loading"></div>
-                    <button type="submit" id="button-klik" class="cta cta-primary submitfoot"><?= $this->translate("submit") ?></button>
+                    <button type="submit" class="cta cta-primary submitfoot"><?= $this->translate("submit") ?></button>
                 </form>
             </div>
             <div class="col-md-4 footer-right">
                 <div class="social-media">
-                    <a target="<?=$this->link('facebook')!= "" ?$this->link('facebook')->getTarget():'' ?>" href="<?=$this->link('facebook')!= "" ?$this->link('facebook')->getHref():'' ?>"><span class="fa fa-facebook"></span></a>
-                    <a target="<?=$this->link('twitter')!= "" ?$this->link('twitter')->getTarget():'' ?>" href="<?=$this->link('twitter')!= "" ?$this->link('twitter')->getHref():'' ?>"><span class="fa fa-twitter"></span></a>
-                    <a target="<?=$this->link('instagram')!= "" ?$this->link('instagram')->getTarget():'' ?>" href="<?=$this->link('instagram')!= "" ?$this->link('instagram')->getHref():'' ?>"><span class="fa fa-instagram"></span></a>
-                    <a target="<?=$this->link('youtube')!= "" ?$this->link('youtube')->getTarget():'' ?>" href="<?=$this->link('youtube')!= "" ?$this->link('youtube')->getHref():'' ?>"><span class="fa fa-youtube-play"></span></a>
-                    <a target="<?=$this->link('linkedin')!= "" ?$this->link('linkedin')->getTarget():'' ?>" href="<?=$this->link('linkedin')!= "" ?$this->link('linkedin')->getHref():'' ?>"><span class="fa fa-linkedin"></span></a>
+                    <a target="<?= $this->link('facebook') != "" ? $this->link('facebook')->getTarget() : '' ?>" href="<?= $this->link('facebook') != "" ? $this->link('facebook')->getHref() : '' ?>"><span class="fa fa-facebook"></span></a>
+                    <a target="<?= $this->link('twitter') != "" ? $this->link('twitter')->getTarget() : '' ?>" href="<?= $this->link('twitter') != "" ? $this->link('twitter')->getHref() : '' ?>"><span class="fa fa-twitter"></span></a>
+                    <a target="<?= $this->link('instagram') != "" ? $this->link('instagram')->getTarget() : '' ?>" href="<?= $this->link('instagram') != "" ? $this->link('instagram')->getHref() : '' ?>"><span class="fa fa-instagram"></span></a>
+                    <a target="<?= $this->link('youtube') != "" ? $this->link('youtube')->getTarget() : '' ?>" href="<?= $this->link('youtube') != "" ? $this->link('youtube')->getHref() : '' ?>"><span class="fa fa-youtube-play"></span></a>
+                    <a target="<?= $this->link('linkedin') != "" ? $this->link('linkedin')->getTarget() : '' ?>" href="<?= $this->link('linkedin') != "" ? $this->link('linkedin')->getHref() : '' ?>"><span class="fa fa-linkedin"></span></a>
                 </div>
                 <span><?= $this->translate("text-pengawasan") ?>:</span>
-                <?php $asset = $this->image("ojk-image");?>
-                <img src="<?= $asset->getImage()?>" class="img-ojk">
+                <?php $asset = $this->image("ojk-image"); ?>
+                <img src="<?= $asset->getImage() ?>" class="img-ojk">
             </div>
         </div>
     </div>
@@ -126,10 +125,10 @@ if($this->editmode) : ?>
             </div>
             <div class="col-sm-8">
                 <ul class="nav-footer">
-                    <li><a href="<?=$this->link('career')->getHref();?>"><?= $this->translate("career") ?></a></li>
+                    <li><a href="<?= $this->link('career')->getHref(); ?>"><?= $this->translate("career") ?></a></li>
                     <li><a href="">Peluang Bisnis</a></li>
-                    <li><a href="<?=$this->link('contact')->getHref();?>"><?= $this->translate("contact") ?></a></li>
-                    <li><a href="<?=$this->link('branch')->getHref();?>"><?= $this->translate("branch") ?></a></li>
+                    <li><a href="<?= $this->link('contact')->getHref(); ?>"><?= $this->translate("contact") ?></a></li>
+                    <li><a href="<?= $this->link('branch')->getHref(); ?>"><?= $this->translate("branch") ?></a></li>
                     <li><a href="">Syarat Penggunaan</a></li>
                     <li><a href="">Kebijakan Privasi</a></li>
                 </ul>
