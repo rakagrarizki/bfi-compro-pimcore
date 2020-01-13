@@ -92,6 +92,8 @@
 <!-- FOOTER -->
 <?php if($site == "corporate"):?>
     <?= $this->inc("/" . $this->getLocale() . "/shared/includes/footer-corporate") ?>
+<?php elseif ($site == "user"): ?>
+    <?= $this->inc("/" . $this->getLocale() . "/shared/includes/footer-dashboard") ?>
 <?php else: ?>
     <?= $this->inc("/" . $this->getLocale() . "/shared/includes/footer") ?>
 <?php endif;?>
