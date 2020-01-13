@@ -1,7 +1,7 @@
 <?php 
 
 /** 
-* Generated at: 2020-01-07T08:35:48+01:00
+* Generated at: 2020-01-09T11:37:41+01:00
 * Inheritance: no
 * Variants: no
 * Changed by: admin (2)
@@ -9,20 +9,17 @@
 
 
 Fields Summary: 
-- Name [input]
-- Phone [input]
 - email [email]
-- Subject [input]
-- Message [textarea]
+- Date_time [datetime]
 */ 
 
 
 return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
-   'id' => '23',
-   'name' => 'ContactCorporate',
+   'id' => '24',
+   'name' => 'NewsLetter',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1578382546,
+   'modificationDate' => 1578566255,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -69,56 +66,6 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
          'childs' => 
         array (
           0 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-             'fieldtype' => 'input',
-             'width' => NULL,
-             'queryColumnType' => 'varchar',
-             'columnType' => 'varchar',
-             'columnLength' => 190,
-             'phpdocType' => 'string',
-             'regex' => '',
-             'unique' => false,
-             'name' => 'Name',
-             'title' => 'Name',
-             'tooltip' => '',
-             'mandatory' => false,
-             'noteditable' => false,
-             'index' => false,
-             'locked' => NULL,
-             'style' => '',
-             'permissions' => NULL,
-             'datatype' => 'data',
-             'relationType' => false,
-             'invisible' => false,
-             'visibleGridView' => false,
-             'visibleSearch' => false,
-          )),
-          1 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-             'fieldtype' => 'input',
-             'width' => NULL,
-             'queryColumnType' => 'varchar',
-             'columnType' => 'varchar',
-             'columnLength' => 190,
-             'phpdocType' => 'string',
-             'regex' => '',
-             'unique' => false,
-             'name' => 'Phone',
-             'title' => 'Phone',
-             'tooltip' => '',
-             'mandatory' => false,
-             'noteditable' => false,
-             'index' => false,
-             'locked' => NULL,
-             'style' => '',
-             'permissions' => NULL,
-             'datatype' => 'data',
-             'relationType' => false,
-             'invisible' => false,
-             'visibleGridView' => false,
-             'visibleSearch' => false,
-          )),
-          2 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\Email::__set_state(array(
              'fieldtype' => 'email',
              'width' => NULL,
@@ -143,41 +90,16 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'visibleGridView' => false,
              'visibleSearch' => false,
           )),
-          3 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-             'fieldtype' => 'input',
-             'width' => NULL,
-             'queryColumnType' => 'varchar',
-             'columnType' => 'varchar',
-             'columnLength' => 190,
-             'phpdocType' => 'string',
-             'regex' => '',
-             'unique' => false,
-             'name' => 'Subject',
-             'title' => 'Subject',
-             'tooltip' => '',
-             'mandatory' => false,
-             'noteditable' => false,
-             'index' => false,
-             'locked' => NULL,
-             'style' => '',
-             'permissions' => NULL,
-             'datatype' => 'data',
-             'relationType' => false,
-             'invisible' => false,
-             'visibleGridView' => false,
-             'visibleSearch' => false,
-          )),
-          4 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Textarea::__set_state(array(
-             'fieldtype' => 'textarea',
-             'width' => '',
-             'height' => '',
-             'queryColumnType' => 'longtext',
-             'columnType' => 'longtext',
-             'phpdocType' => 'string',
-             'name' => 'Message',
-             'title' => 'Message',
+          1 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Datetime::__set_state(array(
+             'fieldtype' => 'datetime',
+             'queryColumnType' => 'bigint(20)',
+             'columnType' => 'bigint(20)',
+             'phpdocType' => '\\Carbon\\Carbon',
+             'defaultValue' => NULL,
+             'useCurrentDate' => true,
+             'name' => 'Date_time',
+             'title' => 'Date_time',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,

@@ -24,12 +24,7 @@ $this->extend('layout.html.php');
             <h3>Daftar Kontrak</h3>
             <div class="list contract">
                 <ol>
-                    <li><a href="">1234567890 Pembayaran Berjamin - BPKB Mobil</a></li>
-                    <li><a href="">1234567890 Pembayaran Berjamin - Sertifikat Rumah</a></li>
-                    <li><a href="">1234567890 Pembayaran Berjamin - BPKB Motor</a></li>
-                    <li><a href="">1234567890 Pembiayaan Lainnya - Pendidikan</a></li>
-                    <li><a href="">1234567890 Pembiayaan Lainnya - Travel & Wisata</a></li>
-                    <li><a href="">1234567890 Pembiayaan Lainnya - Alat Berat & Mesin</a></li>
+                    <!-- here position list from API -->
                 </ol>            
             </div>
         </div>
@@ -38,26 +33,26 @@ $this->extend('layout.html.php');
     <div class="row">
         <div class="sect-list">
             <h3>Data Pemohon</h3>
-            <div class="list">
+            <div class="list profile">
                 <div class="detail-wrapper">
                     <span class="label">Nama Lengkap</span>
-                    <span class="value-data">Deborah T. Morris</span>
+                    <span class="value-data name">Deborah T. Morris</span>
                 </div>
                 <div class="detail-wrapper">
                     <span class="label">Email</span>
-                    <span class="value-data">deborahmorris@gmail.com</span>
+                    <span class="value-data email">deborahmorris@gmail.com</span>
                 </div>
                 <div class="detail-wrapper">
                     <span class="label">Nomor Handphone</span>
-                    <span class="value-data">08124567890</span>
+                    <span class="value-data phone">08124567890</span>
                 </div>
                 <div class="detail-wrapper">
                     <span class="label">Nomor KTP</span>
-                    <span class="value-data">1234567890987654</span>
+                    <span class="value-data identity-number">1234567890987654</span>
                 </div>
                 <div class="detail-wrapper">
                     <span class="label">Foto Ktp</span>
-                    <span class="value-data">Ktp.jpg</span>
+                    <span class="value-data identity-img">Ktp.jpg</span>
                 </div>
             </div>
         </div>
@@ -66,22 +61,26 @@ $this->extend('layout.html.php');
     <div class="row">
         <div class="sect-list">
             <h3>Data Tempat Tinggal</h3>
-            <div class="list">
+            <div class="list profile-address">
                 <div class="detail-wrapper">
                     <span class="label">Provinsi</span>
-                    <span class="value-data">DKI Jakarta</span>
+                    <span class="value-data province">DKI Jakarta</span>
+                </div>
+                <div class="detail-wrapper">
+                    <span class="label">Kota</span>
+                    <span class="value-data city">Jakarta</span>
                 </div>
                 <div class="detail-wrapper">
                     <span class="label">Kecamatan</span>
-                    <span class="value-data">Kebon Jeruk</span>
+                    <span class="value-data district">Kebon Jeruk</span>
                 </div>
                 <div class="detail-wrapper">
                     <span class="label">Kelurahan</span>
-                    <span class="value-data">Kebon Jeruk</span>
+                    <span class="value-data subdistrict">Kebon Jeruk</span>
                 </div>
                 <div class="detail-wrapper">
                     <span class="label">Kode Pos</span>
-                    <span class="value-data">11530</span>
+                    <span class="value-data zip-code">11530</span>
                 </div>
                 <div class="detail-wrapper">
                     <span class="label">Alamat</span>
@@ -112,3 +111,5 @@ $this->extend('layout.html.php');
         </div>
     </div>
 </div>
+
+<?php $this->headScript()->prependFile('/static/js/Includes/profile.js'); ?>

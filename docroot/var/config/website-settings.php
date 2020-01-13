@@ -1430,5 +1430,15 @@ return [
         "siteId" => 0,
         "creationDate" => 0,
         "modificationDate" => 1576579532
+    ],
+    150 => [
+        "id" => 150,
+        "name" => "DATA_CUSTOMER",
+        "language" => "",
+        "type" => "text",
+        "data" => "/dashboard_get_data_customer",
+        "siteId" => 0,
+        "creationDate" => 0,
+        "modificationDate" => 1578464788
     ]
 ];
