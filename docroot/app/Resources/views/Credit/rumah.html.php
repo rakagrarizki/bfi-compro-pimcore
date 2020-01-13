@@ -58,7 +58,7 @@ $this->extend('layout-credit.html.php');
                         <form action="#" id="getCredit" method="POST" class="form-get--credit" role="form">
                             <input type="hidden" id="jenis_form" name="jenis_form" value="SURAT BANGUNAN">
                             <div class="tab-content">
-                                <div id="menu1" class="tab-pane fade in active form-group">
+                                <div id="menu1" class="tab-pane fade in active">
                                     <div class="form-body--credit">
                                         <div class="text-head">
                                             <h2 class="text-center"><?= $this->translate('data-name')?></h2>
@@ -111,7 +111,7 @@ $this->extend('layout-credit.html.php');
                                               <img src="" />
                                               <div class="upload-btn">
                                                 <input type="file" class="file-input" accept="image/*" data-id="ktp" />
-                                                <button type="button">Ubah File</button>
+                                                <button type="button">Pilih File</button>
                                                 <b></b>
                                               </div>
                                             </div>
@@ -143,7 +143,7 @@ $this->extend('layout-credit.html.php');
                                     </div>
 
                                 </div>
-                                <div id="menu2" class="tab-pane slide-left form-group ">
+                                <div id="menu2" class="tab-pane slide-left">
                                     <div class="form-body--credit">
                                         <div class="text-head">
                                             <h2 class="text-center"><?= $this->translate('data-place')?></h2>
@@ -661,7 +661,7 @@ $this->extend('layout-credit.html.php');
                                     </div>
 
 
-                                    <div class="button-area text-right next">
+                                    <div class="button-area text-center">
                                         <button class="cta cta-primary cta-big cta-see btn-verifikasi buttonnext" id="button6"
                                                 type="button"><?= $this->translate('verifikasi')?></button>
                                     </div>
