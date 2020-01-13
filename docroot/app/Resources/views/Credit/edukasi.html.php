@@ -44,12 +44,13 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
               <div class="error-wrap"></div>
           </div>
           <div class="form-group upload-image">
-              <label><?= $this->translate('form-ktp')?></label>
+              <!-- <label></*?= $this->translate('form-ktp')?*/> Unggah Foto KTP</label> -->
+              <label>Unggah Foto KTP</label>
               <div class="upload-file">
                 <img src="" />
                 <div class="upload-btn">
                   <input type="file" class="file-input" accept="image/*" data-id="ktp" />
-                  <button type="button">Ubah File</button>
+                  <button type="button">Pilih File</button>
                   <b></b>
                 </div>
               </div>

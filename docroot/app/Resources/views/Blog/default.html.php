@@ -12,8 +12,8 @@ $lang = $this->getLocale();
 <div class="blog-promo">
     <div class="container">
         <article class="sect-title text-center">
-            <h2 class="margin-top-10"><?= $this->t("blog-title");?></h2>
-            <p><?= $this->t("blog-text1");?></p>
+            <h2 class="title"><?= $this->t("blog-title");?></h2>
+            <p class="subtitle"><?= $this->t("blog-text1");?></p>
             <p><?php //echo $this->t("blog-text2");?></p>
         </article>
         <div class="pengajuan">

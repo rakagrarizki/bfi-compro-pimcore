@@ -259,7 +259,7 @@
 .share {
     font-weight: 300;
     font-size: 14px;
-    margin : 0 20px;
+    margin : 30px 15px 70px 15px;
     display: flex;
     justify-content: flex-start;
 
@@ -273,6 +273,7 @@
 
     .share-text {
         padding : 5px;
+        color: #565656;
 
         @include breakpoint(mobile) {
             margin-right: 5px;
@@ -301,10 +302,11 @@
         a > span {
             width: 30px;
             height: 30px;
-            text-align: center;
             color : #FFFFFF;
-            font-size: 1.3em;
-            padding-top: 5px;
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     }
 }
