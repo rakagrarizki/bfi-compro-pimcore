@@ -80,6 +80,8 @@
     <div id="overlay"></div>
 <?php if($site == "corporate"):?>
     <?php echo $this->template('Includes/navigation-corporate.html.php') ?>
+<?php elseif($site == "user") :?>
+    <?php echo $this->template('Includes/navigation-dashboard.html.php') ?>
 <?php else :?>
 <?php echo $this->template('Includes/navigation.html.php', ['documentInitiator' => $this->document->getId()]) ?>
 <?php endif?>

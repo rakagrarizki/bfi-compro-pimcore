@@ -7,6 +7,8 @@ $site = $this->document->getProperty("site");
 foreach (\Pimcore\Tool::getValidLanguages() as $language) {
     if ($site == "corporate") {
         $target = "/" . $language . "/corporate";
+    } elseif ($site == "user") {
+        $target = "/" . $language . "/user/dashboard";
     } else {
         $target = "/" . $language;
     }
