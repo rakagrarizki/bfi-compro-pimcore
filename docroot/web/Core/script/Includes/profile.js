@@ -1,8 +1,22 @@
 $(document).ready(function(){
-    var token = window.sessionStorage.getItem("token");
+    var token = window.localStorage.getItem("token");
 
     contractStatusList(token);
     dataCustomer(token);
+
+    window.onload = function(){
+        if(this.localStorage.token == null){
+            window.location="/login"
+        }else{
+            $('.link-log').find('.login').hide();
+            $('.link-about-top').hide();
+            $('.link-log').find('.user').removeClass('hide');
+
+            if(this.localStorage.full_name != null){
+                $('.link-log').find('.full_name').text(this.localStorage.full_name);
+            }
+        }
+    }
 });
 
 function contractStatusList(token) {
@@ -13,7 +27,7 @@ function contractStatusList(token) {
 
     $.ajax({
         type: 'POST',
-        url: 'https://bfi.staging7.salt.id/user/contract-status-list',
+        url: '/user/contract-status-list',
         data: dataContract,
         crossDomain: true,
         dataType: 'json',
@@ -43,7 +57,7 @@ function contractStatusList(token) {
 function dataCustomer(token){
     $.ajax({
         type: 'GET',
-        url: 'https://bfi.staging7.salt.id/user/data-customer',
+        url: '/user/data-customer',
         crossDomain: true,
         dataType: 'json',
         headers: {'sessionId': token},

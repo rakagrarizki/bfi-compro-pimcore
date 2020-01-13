@@ -90,7 +90,7 @@ function showFileName( event ) {
 }
 
 $(document).ready(function(){
-    var token = window.sessionStorage.getItem("token");
+    var token = window.localStorage.getItem("token");
 
     $('ul.contract-wrapper').hide();
     checkStatus(token);
@@ -138,6 +138,22 @@ $(document).ready(function(){
         })
     });
 
+    window.onload = function(){
+        if(this.localStorage.token == null){
+            window.location="/login"
+        }else{
+            $('.link-log').find('.login').hide();
+            $('.link-about-top').hide()
+            $('.link-log').find('.user').removeClass('hide');
+
+            if(this.localStorage.full_name != null){
+                $('.link-log').find('.full_name').text(this.localStorage.full_name);
+            }else{
+                getCustomer(token);
+            }
+        }
+    }
+
     // window.onload = function(){
     //     var elements = document.querySelectorAll('[id="telat"]');
     //     for(var i = 0; i < elements.length; i++) {
@@ -154,6 +170,32 @@ $(document).ready(function(){
     // }
 
 });
+
+function getCustomer(token){
+    $.ajax({
+        type: 'GET',
+        url: '/user/data-customer',
+        crossDomain: true,
+        dataType: 'json',
+        headers: {'sessionId': token},
+
+        error: function(data) {
+            console.log('error' + data);
+        },
+
+        fail: function(xhr, textStatus, error) {
+            console.log('request failed')
+        },
+
+        success: function(dataObj){
+            var data = dataObj.result.data;
+            if(dataObj.success === true) {
+                window.localStorage.setItem('full_name', data.full_name);
+                $('.link-log').find('.full_name').text(data.full_name);
+            }
+        }
+    });
+}
 
 function checkStatus(token) {
     $.ajax({

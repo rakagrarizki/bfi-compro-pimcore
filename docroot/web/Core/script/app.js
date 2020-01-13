@@ -4837,9 +4837,9 @@ function verifiedOTP(dataOTP){
           if (dataObj.success === true) {
               console.log('berhasil verified otp')
               var token = dataObj.result.data.customer_token
-              sessionStorage.setItem("token", token);
+              localStorage.setItem("token", token);
               console.log ('token : ' + token)
-              window.location="/test4";
+              window.location="/dashboard";
           }else {
             console.log('otp salah, masukkan otp yang valid')
           }
@@ -4848,7 +4848,7 @@ function verifiedOTP(dataOTP){
 }
 
 function logout() {
-  var token = window.sessionStorage.getItem("token");
+  var token = window.localStorage.getItem("token");
 
   $.ajax({
     type: 'POST',
@@ -4867,7 +4867,9 @@ function logout() {
 
     success: function (dataObj) {
         if (dataObj.success === true) {
-          console.log('berhasil logout')
+          console.log('berhasil logout');
+          window.localStorage.clear();
+          window.location="/login";
         }
     }
   })
@@ -4881,4 +4883,16 @@ $(document).ready(function() {
     placeholder: "Pembiayaan apa yang dibutuhkan?",
     minimumResultsForSearch: -1
   });
+
+  window.onload = function(){
+    if(this.localStorage.token != null){
+      $('.link-log').find('.login').hide();
+      $('.link-about-top').hide();
+      $('.link-log').find('.user').removeClass('hide');
+
+      if(this.localStorage.full_name != null){
+        $('.link-log').find('.full_name').text(this.localStorage.full_name);
+      }
+    }
+  }
 });

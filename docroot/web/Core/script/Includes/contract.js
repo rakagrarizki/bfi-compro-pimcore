@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    var token = window.sessionStorage.getItem("token");
+    var token = window.localStorage.getItem("token");
     
     // <--- if using param to get contract_number
     var urlParams = new URLSearchParams(location.search);  
@@ -13,6 +13,20 @@ $(document).ready(function(){
     contractDetailTransaction(token, dataContract);
     contractDetailList(token, dataContract);
     contractStatusList(token, dataContract);
+
+    window.onload = function(){
+        if(this.localStorage.token == null){
+            window.location="/login"
+        }else{
+            $('.link-log').find('.login').hide();
+            $('.link-about-top').hide()
+            $('.link-log').find('.user').removeClass('hide');
+
+            if(this.localStorage.full_name != null){
+                $('.link-log').find('.full_name').text(this.localStorage.full_name);
+            }
+        }
+    }
 
     // window.onload = function(){
     //     var elements = document.querySelectorAll('[id="telat"]');

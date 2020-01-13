@@ -18,8 +18,13 @@ use Pimcore\Model\Document\Page;
                     <div class="col-md-6 col-sm-6 left-side-top">
                         <a href="/<?php echo $this->getLocale() ?>" class="backtohome"><?= $this->translate("backtohome") ?></a>
                     </div>
-                    <div class="col-md-5 col-sm-5 right-side-top">
-                        <?php echo $this->template("Includes/language.html.php") ?>
+                    <div class="col-md-6 col-sm-6 right-side-top">
+                        <div class="link-log">
+                            <div class="user hide">
+                                <a href="/dashboard" class="full_name icon">Deborah Morris</a> | <a href="#" class="logout" onclick="return logout();"><?= $this->translate("Log Out") ?></a>
+                            </div>
+                            <?php echo $this->template("Includes/language.html.php") ?>
+                        </div>
                     </div>
                 </div>
             </div>

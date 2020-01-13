@@ -5,7 +5,7 @@
  * @var \Pimcore\Templating\GlobalVariables $app
  */
 
-$this->extend('layout.html.php');
+$this->extend('layout-credit.html.php');
 ?>
 
 <div class="container detail-contract">

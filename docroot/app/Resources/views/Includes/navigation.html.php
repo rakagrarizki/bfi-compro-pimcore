@@ -32,6 +32,9 @@ use Pimcore\Model\Document\Page;
 
                         <div class="link-log">
                             <a href="#" class="login"><?= $this->translate("login") ?></a>
+                            <div class="user hide">
+                                <a href="/dashboard" class="full_name">Deborah Morris</a> | <a href="#" class="logout" onclick="return logout();"><?= $this->translate("Log Out") ?></a>
+                            </div>
                             <!-- <a href="#" class="register"><?/*= $this->translate("register") */ ?></a> -->
                             <?php echo $this->template("Includes/language.html.php") ?>
                         </div>
