@@ -4735,8 +4735,6 @@ function copyURL(url) {
   $('#copied').show().delay(2000).fadeOut(400);
 }
 
-var dataOTP = {}
-
 function login() {
   var dataPhone = {
       'phone_number' : $('#phone-input').val()
@@ -4842,11 +4840,38 @@ function verifiedOTP(dataOTP){
               sessionStorage.setItem("token", token);
               console.log ('token : ' + token)
               window.location="/test4";
+          }else {
+            console.log('otp salah, masukkan otp yang valid')
           }
       }
   })
 }
 
+function logout() {
+  var token = window.sessionStorage.getItem("token");
+
+  $.ajax({
+    type: 'POST',
+    url: '/user/logout',
+    crossDomain: true,
+    dataType: 'json',
+    headers: {'sessionId': token },
+
+    error: function (data) {
+        console.log('error' + data);
+    },
+
+    fail: function (xhr, textStatus, error) {
+        console.log('request failed')
+    },
+
+    success: function (dataObj) {
+        if (dataObj.success === true) {
+          console.log('berhasil logout')
+        }
+    }
+  })
+}
 $(document).ready(function() {
   $('#category-1').select2({
     placeholder: "Pilih jenis pembiayaan?",
