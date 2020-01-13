@@ -12,6 +12,7 @@ foreach($reports as $year){
 
 }
 
+echo $this->tabpanel;exit;
 $key = 0;
 ?>
 <div class="row">

@@ -10,11 +10,7 @@ namespace AppBundle\Document\Areabrick;
 use Pimcore\Model\DataObject\BlogArticle;
 use Pimcore\Model\Document\Tag\Area\Info;
 
-class BfiReportAccordion extends AbstractAreabrick
+class BfiTabReportAccordion extends AbstractAreabrick
 {
-    public function getName()
-    {
-        return 'Bfi-report-accordion';
-    }
 
 }
