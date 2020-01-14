@@ -8,6 +8,7 @@
 $this->extend('layout-branch.html.php');
 ?>
 <?= $this->areablock('areaBlock');?>
+<?php $lang = $this->getLocale(); ?>
 
 <?php
     $this->headScript()->offsetSetFile(100, '/static/js/Includes/login.js');
@@ -42,7 +43,7 @@ $this->extend('layout-branch.html.php');
     </form>
     <p id="resend">Mohon menunggu <b>90 seconds</b> untuk mengirim ulang</p>
     <p><small id="resend-notice"></small></p>
-    <button id="btn-verify" class="button-login" onclick="verified()" disabled style="opacity: .5;"> VERIFIKASI </button>
+    <button id="btn-verify" class="button-login" onclick="verified('<?= $lang ;?>')" disabled style="opacity: .5;"> VERIFIKASI </button>
 </section>
 
 <?php $this->headScript()->prependFile('/static/js/Includes/login.js'); ?>

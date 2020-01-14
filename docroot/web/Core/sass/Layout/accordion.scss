@@ -202,7 +202,9 @@
 
             p {
                 font-family: 'HelveticaNeue';
-                font-size: 1.1em;
+                font-size: 20px;
+                line-height: 30px;
+                color: #565656;
             }
         }
 
@@ -238,7 +240,8 @@
             a {
                 position: relative;
                 display: block;
-                padding: 20px 70px;
+                padding: 20px 95px 20px 70px;
+                color: #565656;
 
                 @include breakpoint(small-mobile) {
                     padding-right: 35px;
@@ -254,7 +257,7 @@
                     font-family: "FontAwesome";
                     right: 70px;
                     top: 15px;
-                    font-size: 1.3em;
+                    font-size: 28px;
                     opacity: 0.4;
                 }
 

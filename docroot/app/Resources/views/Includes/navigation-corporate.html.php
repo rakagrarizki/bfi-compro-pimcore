@@ -96,14 +96,13 @@ use Pimcore\Model\Document\Page;
                                             </li>
                                             <?php
                                         } else {
-                                            if ($page != 'contact-us') :
                                             ?>
                                                 <li class="<?php echo $page->getActive() ? 'active' : '' ?>">
                                                     <a href="<?= $page->getHref() ?>">
                                                         <?= $page->getLabel() ?>
                                                     </a>
                                                 </li>
-                                <?php endif;
+                                <?php
                                         }
                                     }
                                 }

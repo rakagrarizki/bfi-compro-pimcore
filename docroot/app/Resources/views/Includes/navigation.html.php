@@ -31,7 +31,7 @@ use Pimcore\Model\Document\Page;
                         </div>
 
                         <div class="link-log">
-                            <a href="#" class="login"><?= $this->translate("login") ?></a>
+                            <a href="<?= "/" . $lang . "/login"; ?>" class="login"><?= $this->translate("login") ?></a>
                             <div class="user hide">
                                 <a href="/dashboard" class="full_name">Deborah Morris</a> | <a href="#" class="logout" onclick="return logout();"><?= $this->translate("Log Out") ?></a>
                             </div>
