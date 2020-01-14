@@ -13,6 +13,8 @@ foreach($reports as $year){
 }
 
 $key = 0;
+
+$randId = rand(10,100);
 ?>
 <div class="row">
     <div class="container">
@@ -23,7 +25,7 @@ $key = 0;
             <div class="accordion__wrap produk">
                 <!-- <div class="container"> -->
                     <div class="row">
-                        <div class="panel-group" id="5de097092fd27">
+                        <div class="panel-group" id="<?= $randId?>">
                         <?php
                         foreach($years as $y ){
 
@@ -31,11 +33,11 @@ $key = 0;
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
-                                        <a class="a-reportheading" data-toggle="collapse" data-parent="#5de097092fd27" href="#5de097092fd27-<?=$key?>">
+                                        <a class="a-reportheading" data-toggle="collapse" data-parent="#<?=$randId?>" href="#<?=$randId.'-'.$key?>">
                                             <?= $y?></a>
                                     </h4>
                                 </div>
-                                <div id="5de097092fd27-<?=$key?>" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+                                <div id="<?=$randId.'-'.$key?>" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
                                     <div class="panel-body report-accordion">
                                         <ul>
                                             <?php
