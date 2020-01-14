@@ -1,6 +1,7 @@
 .form-body--credit {
     width: calc(0.422 * 100%);
     margin: auto;
+    margin-bottom: 40px;
 
     @include breakpoint(mobile) {
         width: 100%;
@@ -13,7 +14,8 @@
     }
 
     @include breakpoint(desktop) {
-        width: calc(0.42 * 100%);
+        // width: calc(0.42 * 100%);
+        width: 100%;
     }
 
     h2 {
@@ -126,9 +128,15 @@
     margin: 30px 0;
     font-family: 'HelveticaNeue';
 
+    .content{
+        width: 100%;
+        margin: 0;
+    }
+
     .form-body--credit-simulasi {
         width: 100%;
         margin: auto;
+        margin-bottom: 40px;
 
         @include breakpoint(mobile) {
             width: auto;
@@ -165,6 +173,7 @@
                 font-size: 14px;
                 width: 140px;
                 height: 50px;
+                text-transform: uppercase;
 
                 @include breakpoint(mobile) {
                     width: 35px;
@@ -288,6 +297,9 @@
                     }
                 }
             }
+            .form-group{
+                width: 100%;
+            }
         }
 
         .biaya-agunan-mesin {
@@ -301,6 +313,7 @@
                 font-size: 14px;
                 width: 140px;
                 height: 50px;
+                text-transform: uppercase;
 
                 @include breakpoint(mobile) {
                     width: 35px;
@@ -639,7 +652,7 @@
             .total-estimate {
                 padding: 50px;
                 background-color: #EFEFEF;
-                margin-top: 10px;
+                // margin-top: 10px;
                 text-align: left;
                 margin-bottom: 25px;
 
@@ -688,6 +701,8 @@
 
     .form-group {
         position: relative;
+        width: 400px;
+        margin: 0 auto 20px auto;
         //margin-bottom:35px;
 
         .c-custom-select.jcf-hidden {
@@ -1611,7 +1626,7 @@
 
 .select2-selection:after {
     position: absolute;
-    content: '\f107';
+    content: '';
     font-family: "FontAwesome";
     right: 15px;
     top: 2px;
@@ -1620,36 +1635,48 @@
     pointer-events: none;
 }
 
+.select2-selection{
+    background-image: url("/static/images/down_arrow.png");
+    background-position: 95% center;
+    background-size: 20px 12px;
+}
+
+.select2-container--open{
+    .select2-selection{
+        background-image: url("/static/images/up_arrow.png");
+    }
+}
+
 select::-ms-expand {
     display: none;
 }
 
 .form-group {
-  .input-group.date {
-    width: 100%;
+    .input-group.date {
+        width: 100%;
 
-    label {
-      z-index: 4;
-    }
+        label {
+        z-index: 4;
+        }
 
-    .form-control {
-      width: calc( 100% - 60px );
-      border-right: 0;
-      // padding-top: 20px !important;
-      // padding-bottom: 20px !important;
-    }
+        .form-control {
+        width: calc( 100% - 60px );
+        border-right: 0;
+        // padding-top: 20px !important;
+        // padding-bottom: 20px !important;
+        }
 
-    button.ui-datepicker-trigger {
-      width: 60px;
-      height: 70px;
-      background: transparent url("/static/images/calendar.png") center center no-repeat;
-      border-top: 1px #ccc solid;
-      border-bottom: 1px #ccc solid;
-      border-right: 1px #ccc solid;
-      box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
-      outline: none;
+        button.ui-datepicker-trigger {
+        width: 60px;
+        height: 70px;
+        background: transparent url("/static/images/calendar.png") center center no-repeat;
+        border-top: 1px #ccc solid;
+        border-bottom: 1px #ccc solid;
+        border-right: 1px #ccc solid;
+        box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+        outline: none;
+        }
     }
-  }
 }
 
 .form-contact {
@@ -1842,9 +1869,13 @@ select::-ms-expand {
     > ul {
       display: flex;
       justify-content: center;
+      align-items: center;
       >li {
         float: unset;
-        width: 18%;
+        width: 25%;
+        &.done{
+            opacity: .5;
+        }
       }
     }
 
@@ -1936,7 +1967,7 @@ select::-ms-expand {
             content: '\f104';
             font-family: FontAwesome;
             position: absolute;
-            left: 15px;
+            left: 20px;
             right: auto;
             -webkit-transition: all cubic-bezier(0.455, 0.03, 0.515, 0.955) 0.5s;
             -o-transition: all cubic-bezier(0.455, 0.03, 0.515, 0.955) 0.5s;
@@ -1947,6 +1978,10 @@ select::-ms-expand {
 
         a {
           position: relative;
+          border-radius: 0;
+          border: none !important;
+          text-transform: uppercase;
+
           &, &:visited, &:active {
             height: 50px;
             width: 185px;
@@ -1960,6 +1995,11 @@ select::-ms-expand {
 
           &:hover {
             background-color: #F8991D;
+            border-radius: 0;
+            -webkit-border-radius: 0;
+            -moz-border-radius: 0;
+            -ms-border-radius: 0;
+            -o-border-radius: 0;
           }
 
           &:before {
@@ -1967,7 +2007,7 @@ select::-ms-expand {
             font-family: FontAwesome;
             position: absolute;
             left: auto;
-            right: 30px;
+            right: 20px;
             -webkit-transition: all cubic-bezier(0.455, 0.03, 0.515, 0.955) 0.5s;
             -o-transition: all cubic-bezier(0.455, 0.03, 0.515, 0.955) 0.5s;
             -moz-transition: all cubic-bezier(0.455, 0.03, 0.515, 0.955) 0.5s;
@@ -2015,4 +2055,18 @@ select::-ms-expand {
     }
   }
 
+}
+
+.ui-datepicker{
+    z-index: 5 !important;
+}
+
+.select2-search__field{
+    &::placeholder{
+        font-style: italic;
+    }
+}
+
+.absolutebutcalc{
+    width: 100%;
 }
