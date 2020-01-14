@@ -12,5 +12,9 @@ use Pimcore\Model\Document\Tag\Area\Info;
 
 class BfiReportAccordion extends AbstractAreabrick
 {
+    public function getName()
+    {
+        return 'Bfi-report-accordion';
+    }
 
 }

@@ -610,10 +610,12 @@ body{
     .collapse-mobile {
         background-color: $white;
         padding-top: 0;
-        position: fixed;
+        position: absolute;
         z-index: 999;
         left: 0;
         right: 0;
+        top: 95px;
+        height: 100%;
 
         .nav .open>a,
         .nav>li>a:hover,
@@ -635,7 +637,7 @@ body{
             >li {
                 >a {
                     font-weight: bold;
-                    font-size: 1.3em;
+                    font-size: 25px;
                     color: $grey-dark-color;
 
                     &.active{
@@ -657,30 +659,36 @@ body{
             .dropdown {
                 >.dropdown-toggle[aria-expanded="false"] {
                     position: relative;
+                    background-image: url("/static/images/down_arrow.png");
+                    background-size: 20px 12px;
+                    background-position: 96% center;
 
-                    &:after {
-                        content: "\f107";
-                        font-family: FontAwesome;
-                        color: $dark;
-                        position: absolute;
-                        font-size: 40px;
-                        top: 7px;
-                        right: 0;
-                    }
+                    // &:after {
+                    //     content: "\f107";
+                    //     font-family: FontAwesome;
+                    //     color: $dark;
+                    //     font-size: 40px;
+                    //     position: absolute;
+                    //     top: 7px;
+                    //     right: 10px;
+                    // }
                 }
 
                 .dropdown-toggle[aria-expanded="true"] {
                     position: relative;
+                    background-image: url("/static/images/up_arrow.png");
+                    background-size: 20px 12px;
+                    background-position: 96% center;
 
-                    &:after {
-                        content: "\f106";
-                        font-family: FontAwesome;
-                        color: $dark;
-                        position: absolute;
-                        font-size: 40px;
-                        top: 7px;
-                        right: 0;
-                    }
+                    // &:after {
+                    //     content: "\f106";
+                    //     font-family: FontAwesome;
+                    //     color: $dark;
+                    //     position: absolute;
+                    //     font-size: 40px;
+                    //     top: 7px;
+                    //     right: 10px;
+                    // }
                 }
 
                 >.dropdown-menu {
@@ -689,11 +697,11 @@ body{
                     }
                     li {
                         a {
-                            color: $dark;
+                            color: #565656;
                             padding-top: 6px;
                             padding-bottom: 6px;
                             padding-left: 30px;
-                            font-size: 1.1em;
+                            font-size: 18px;
 
                             &.active{
                                 color: $green-color;
@@ -703,7 +711,7 @@ body{
                         .title-dropdown {
                             color: $grey-dark-color;
                             font-weight: bold;
-                            font-size: 1.2em;
+                            font-size: 20px;
                         }
                     }
                 }
