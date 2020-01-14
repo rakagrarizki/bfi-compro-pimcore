@@ -37,8 +37,11 @@ footer {
             cursor: pointer;
 
             @include breakpoint(mobile) {
-                width: 75%;
+                // width: 75%;
                 vertical-align: baseline;
+                width: fit-content;
+                margin-top: 15px;
+                margin-bottom: 15px;
             }
 
             a {
