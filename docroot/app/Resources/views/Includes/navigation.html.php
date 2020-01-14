@@ -31,7 +31,7 @@ use Pimcore\Model\Document\Page;
                         </div>
 
                         <div class="link-log">
-                            <a href="#" class="login"><?= $this->translate("login") ?></a>
+                            <a href="<?= "/" . $lang . "/login"; ?>" class="login"><?= $this->translate("login") ?></a>
                             <!-- <a href="#" class="register"><?/*= $this->translate("register") */ ?></a> -->
                             <?php echo $this->template("Includes/language.html.php") ?>
                         </div>
