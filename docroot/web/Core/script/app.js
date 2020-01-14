@@ -4815,7 +4815,7 @@ function requestOTP(phone) {
   })
 }
 
-function verified(){
+function verified(language){
   var otpInput = $("input[name='digit[]']").map( function() { return $(this).val(); } ).get();
   otpInput = otpInput.join("")
   
@@ -4825,10 +4825,10 @@ function verified(){
   };
 
   console.log(dataOTP)
-  verifiedOTP(dataOTP)
+  verifiedOTP(language, dataOTP)
 }
 
-function verifiedOTP(dataOTP){
+function verifiedOTP(language, dataOTP){
   $.ajax({
       type: 'POST',
       url: '/user/otp-confirm',
@@ -4846,9 +4846,10 @@ function verifiedOTP(dataOTP){
           if (dataObj.success === true) {
               console.log('berhasil verified otp')
               var token = dataObj.result.data.customer_token
-              sessionStorage.setItem("token", token);
-              console.log ('token : ' + token)
-              window.location="/test4";
+              localStorage.setItem("token", token);
+              console.log ('token : ' + token);
+              getCustomer(token);
+              window.location="/"+language+"/user/dashboard";
           }else {
             console.log('otp salah, masukkan otp yang valid')
           }
@@ -4856,8 +4857,34 @@ function verifiedOTP(dataOTP){
   })
 }
 
-function logout() {
-  var token = window.sessionStorage.getItem("token");
+function getCustomer(token){
+  $.ajax({
+      type: 'GET',
+      url: '/user/data-customer',
+      crossDomain: true,
+      dataType: 'json',
+      headers: {'sessionId': token},
+
+      error: function(data) {
+          console.log('error' + data);
+      },
+
+      fail: function(xhr, textStatus, error) {
+          console.log('request failed')
+      },
+
+      success: function(dataObj){
+          var data = dataObj.result.data;
+          if(dataObj.success === true) {
+            console.log(data)
+            document.cookie = "customer="+data.full_name;
+          }
+      }
+  });
+}
+
+function logout(language) {
+  var token = window.localStorage.getItem("token");
 
   $.ajax({
     type: 'POST',
@@ -4876,7 +4903,9 @@ function logout() {
 
     success: function (dataObj) {
         if (dataObj.success === true) {
-          console.log('berhasil logout')
+          console.log('berhasil logout');
+          window.localStorage.clear();
+          window.location="/"+language+"/login";
         }
     }
   })
@@ -4890,4 +4919,15 @@ $(document).ready(function() {
     placeholder: "Pembiayaan apa yang dibutuhkan?",
     minimumResultsForSearch: -1
   });
+
+  window.onload = function(){
+    if(this.localStorage.token != null){
+      $('.link-log').find('.login').hide();
+      $('.link-about-top').hide();
+      $('.link-log').find('.user').removeClass('hide');
+
+      var full_name = document.cookie.replace(/(?:(?:^|.*;\s*)customer\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+      $('.link-log').find('.full_name').text(full_name);
+    }
+  }
 });

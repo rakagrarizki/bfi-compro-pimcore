@@ -135,16 +135,51 @@ body{
             }
 
             .link-log {
-                padding: 0 15px;
+                // padding: 0 15px;
                 display: flex;
                 flex-wrap: wrap;
+                float: right;
 
                 .login{
                     margin-right: 20px;
+                    font-weight: bold;
                 }
+
+                .user {
+                    a.full_name {
+                        text-decoration : underline;
+                        font-weight : bold;
+                        color: #04559F;
+                        
+                        &:before {
+                            content: '';
+                            display: inline-block;
+                            width: 10px;
+                            height: 10px;
+                            -moz-border-radius: 7.5px;
+                            -webkit-border-radius: 7.5px;
+                            border-radius: 7.5px;
+                            background-color: #04559F;
+                            margin-right : 10px;
+                        }
+                    }
+
+                    .icon{
+                        &:after {
+                            content: "";
+                            position: absolute;
+                            top: 154%;
+                            left: 33%;
+                            margin-left: -5px;
+                            border-width: 8px;
+                            border-style: solid;
+                            border-color: #fff transparent transparent transparent;
+                        }
+                    }
+                }
+
                 a {
                     padding: 0 10px;
-                    font-weight: bold;
 
                     &:hover {
                         color: #04559F;
