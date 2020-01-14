@@ -4806,7 +4806,7 @@ function requestOTP(phone) {
   })
 }
 
-function verified(){
+function verified(language){
   var otpInput = $("input[name='digit[]']").map( function() { return $(this).val(); } ).get();
   otpInput = otpInput.join("")
   
@@ -4816,10 +4816,10 @@ function verified(){
   };
 
   console.log(dataOTP)
-  verifiedOTP(dataOTP)
+  verifiedOTP(language, dataOTP)
 }
 
-function verifiedOTP(dataOTP){
+function verifiedOTP(language, dataOTP){
   $.ajax({
       type: 'POST',
       url: '/user/otp-confirm',
@@ -4838,8 +4838,9 @@ function verifiedOTP(dataOTP){
               console.log('berhasil verified otp')
               var token = dataObj.result.data.customer_token
               localStorage.setItem("token", token);
-              console.log ('token : ' + token)
-              window.location="/dashboard";
+              console.log ('token : ' + token);
+              getCustomer(token);
+              window.location="/"+language+"/user/dashboard";
           }else {
             console.log('otp salah, masukkan otp yang valid')
           }
@@ -4847,7 +4848,33 @@ function verifiedOTP(dataOTP){
   })
 }
 
-function logout() {
+function getCustomer(token){
+  $.ajax({
+      type: 'GET',
+      url: '/user/data-customer',
+      crossDomain: true,
+      dataType: 'json',
+      headers: {'sessionId': token},
+
+      error: function(data) {
+          console.log('error' + data);
+      },
+
+      fail: function(xhr, textStatus, error) {
+          console.log('request failed')
+      },
+
+      success: function(dataObj){
+          var data = dataObj.result.data;
+          if(dataObj.success === true) {
+            console.log(data)
+            document.cookie = "customer="+data.full_name;
+          }
+      }
+  });
+}
+
+function logout(language) {
   var token = window.localStorage.getItem("token");
 
   $.ajax({
@@ -4869,7 +4896,7 @@ function logout() {
         if (dataObj.success === true) {
           console.log('berhasil logout');
           window.localStorage.clear();
-          window.location="/login";
+          window.location="/"+language+"/login";
         }
     }
   })
@@ -4890,9 +4917,8 @@ $(document).ready(function() {
       $('.link-about-top').hide();
       $('.link-log').find('.user').removeClass('hide');
 
-      if(this.localStorage.full_name != null){
-        $('.link-log').find('.full_name').text(this.localStorage.full_name);
-      }
+      var full_name = document.cookie.replace(/(?:(?:^|.*;\s*)customer\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+      $('.link-log').find('.full_name').text(full_name);
     }
   }
 });

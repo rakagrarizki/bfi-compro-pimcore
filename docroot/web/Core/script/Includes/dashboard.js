@@ -91,12 +91,13 @@ function showFileName( event ) {
 
 $(document).ready(function(){
     var token = window.localStorage.getItem("token");
+    var lang = document.documentElement.lang
 
     $('ul.contract-wrapper').hide();
     checkStatus(token);
     applicationStep(token);
     checkAssignmentList(token);
-    contractStatusList(token);
+    contractStatusList(lang, token);
     
     $('#btn-submit').click(function(event) { 
 
@@ -145,12 +146,9 @@ $(document).ready(function(){
             $('.link-log').find('.login').hide();
             $('.link-about-top').hide()
             $('.link-log').find('.user').removeClass('hide');
-
-            if(this.localStorage.full_name != null){
-                $('.link-log').find('.full_name').text(this.localStorage.full_name);
-            }else{
-                getCustomer(token);
-            }
+            
+            var full_name = document.cookie.replace(/(?:(?:^|.*;\s*)customer\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+            $('.link-log').find('.full_name').text(full_name);
         }
     }
 
@@ -170,32 +168,6 @@ $(document).ready(function(){
     // }
 
 });
-
-function getCustomer(token){
-    $.ajax({
-        type: 'GET',
-        url: '/user/data-customer',
-        crossDomain: true,
-        dataType: 'json',
-        headers: {'sessionId': token},
-
-        error: function(data) {
-            console.log('error' + data);
-        },
-
-        fail: function(xhr, textStatus, error) {
-            console.log('request failed')
-        },
-
-        success: function(dataObj){
-            var data = dataObj.result.data;
-            if(dataObj.success === true) {
-                window.localStorage.setItem('full_name', data.full_name);
-                $('.link-log').find('.full_name').text(data.full_name);
-            }
-        }
-    });
-}
 
 function checkStatus(token) {
     $.ajax({
@@ -305,7 +277,7 @@ function applicationStep(token) {
     })
 }
 
-function contractStatusList(token) {
+function contractStatusList(lang, token) {
     var dataContract = {
         'started_index': 10,
         'length': 11
@@ -338,7 +310,7 @@ function contractStatusList(token) {
                 }
                 $.each(data, function( index, value ) {
                     console.log(value)
-                    $('#contract'+index).attr('href', '/detail?contract_number='+value.contract_number);
+                    $('#contract'+index).attr('href', '/'+lang+'/user/profile/detail-kontrak?contract_number='+value.contract_number);
                     $('#contract'+index).find('h5.category').text(value.category_desc);
                     $('#contract'+index).find('h5.product').text(value.product_desc);
                     $('#contract'+index).find('p.contract_number').text(value.contract_number);
@@ -360,7 +332,8 @@ function contractStatusList(token) {
                         $('#contract'+index).find('.status').css('visibility', 'hidden');
                         $('#contract'+index).find('.warning').css('visibility', 'hidden');
                     }
-                })
+                });
+                $('.contract-box:last').attr('href', '/'+lang+'/credit');
                 $('.contract-box:first').hide()
             }
         }

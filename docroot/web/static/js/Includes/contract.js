@@ -1,5 +1,6 @@
 $(document).ready(function(){
     var token = window.localStorage.getItem("token");
+    var lang = document.documentElement.lang
     
     // <--- if using param to get contract_number
     var urlParams = new URLSearchParams(location.search);  
@@ -12,7 +13,7 @@ $(document).ready(function(){
 
     contractDetailTransaction(token, dataContract);
     contractDetailList(token, dataContract);
-    contractStatusList(token, dataContract);
+    contractStatusList(lang, token);
 
     window.onload = function(){
         if(this.localStorage.token == null){
@@ -22,9 +23,8 @@ $(document).ready(function(){
             $('.link-about-top').hide()
             $('.link-log').find('.user').removeClass('hide');
 
-            if(this.localStorage.full_name != null){
-                $('.link-log').find('.full_name').text(this.localStorage.full_name);
-            }
+            var full_name = document.cookie.replace(/(?:(?:^|.*;\s*)customer\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+            $('.link-log').find('.full_name').text(full_name);
         }
     }
 
@@ -264,8 +264,8 @@ function detailAgunanAlatBerat(token, dataContract) {
     })
 }
 
-function contractStatusList(token, dataContract) {
-    var dataContract = {
+function contractStatusList(lang, token) {
+    var dataInput = {
         'started_index': 10,
         'length': 11
     }
@@ -273,7 +273,7 @@ function contractStatusList(token, dataContract) {
     $.ajax({
         type: 'POST',
         url: '/user/contract-status-list',
-        data: dataContract,
+        data: dataInput,
         crossDomain: true,
         dataType: 'json',
         headers: {'sessionId': token},
@@ -297,9 +297,7 @@ function contractStatusList(token, dataContract) {
                 }
                 $.each(data, function( index, value ) {
                     console.log(value)
-                    // var date = Date(value.tanggal_jatuh_tempo)
-                    // console.log(date.toString());
-
+                    $('#contract'+index).attr('href', '/'+lang+'/user/profile/detail-kontrak?contract_number='+value.contract_number);
                     $('#contract'+index).find('h5.category').text(value.category_desc);
                     $('#contract'+index).find('h5.product').text(value.product_desc);
                     $('#contract'+index).find('p.contract_number').text(value.contract_number);
@@ -322,6 +320,7 @@ function contractStatusList(token, dataContract) {
                         $('#contract'+index).find('.warning').css('visibility', 'hidden');
                     }
                 })
+                $('.contract-box:last').attr('href', '/'+lang+'/credit');
                 $('.contract-box:first').hide()
             }
         }

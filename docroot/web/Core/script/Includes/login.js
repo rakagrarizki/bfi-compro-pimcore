@@ -49,3 +49,9 @@ $('#otp-form').find('input').each(function() {
 	});
 });
 
+window.onload = function(){
+    if(this.localStorage.token != null){
+        
+    }
+}
+

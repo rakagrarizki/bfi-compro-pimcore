@@ -22,7 +22,7 @@ $this->extend('layout-credit.html.php');
                     </li>
                     <li id="list-step">
                         <span id="poin2" class="number">2</span>
-                        <a href="/test3" class="tool-tip">
+                        <a href="/<?= $this->getLocale() ?>/user/verify-email" class="tool-tip">
                             <p class="email">Email</p>
                             <p class="verifikasi"><u>VERIFIKASI</u> &#62;</p>
                         </a>

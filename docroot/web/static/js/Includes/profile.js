@@ -1,7 +1,8 @@
 $(document).ready(function(){
     var token = window.localStorage.getItem("token");
+    var lang = document.documentElement.lang
 
-    contractStatusList(token);
+    contractStatusList(lang, token);
     dataCustomer(token);
 
     window.onload = function(){
@@ -11,15 +12,15 @@ $(document).ready(function(){
             $('.link-log').find('.login').hide();
             $('.link-about-top').hide();
             $('.link-log').find('.user').removeClass('hide');
+            
+            var full_name = document.cookie.replace(/(?:(?:^|.*;\s*)customer\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+            $('.link-log').find('.full_name').text(full_name);
 
-            if(this.localStorage.full_name != null){
-                $('.link-log').find('.full_name').text(this.localStorage.full_name);
-            }
         }
     }
 });
 
-function contractStatusList(token) {
+function contractStatusList(lang, token) {
     var dataContract = {
         'started_index': 10,
         'length': 11
@@ -46,7 +47,7 @@ function contractStatusList(token) {
             if (dataObj.success === true) {
                 $.each(data, function( index, value ) {
                     console.log(value)
-                    var item = "<li><a href='/detail?contract_number="+value.contract_number+"'>"+ value.contract_number+" "+value.category_desc+" - "+value.product_desc+"</a></li>"
+                    var item = "<li><a href='/"+lang+"/user/profile/detail-kontrak?contract_number="+value.contract_number+"'>"+ value.contract_number+" "+value.category_desc+" - "+value.product_desc+"</a></li>"
                     $(".contract > ol").append(item);
                 });
             }
