@@ -18,7 +18,7 @@ $lang = $this->getLocale();
         </article>
         <div class="pengajuan">
             <div class="cek-pengajuan">
-                <form >
+                <form method="get">
                     <div class="_parentboxkirikanan">
                         <div class="_boxkiri">
                             <div class="input-group">
