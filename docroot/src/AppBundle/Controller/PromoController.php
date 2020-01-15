@@ -13,6 +13,7 @@ class PromoController extends FrontendController
     public function defaultAction(Request $request)
     {
         $category = htmlentities($request->get("category"));
+
         $page = htmlentities(addslashes($request->get("page")));
 
         $promoCategories = new PromoCategory\Listing();
@@ -20,9 +21,9 @@ class PromoController extends FrontendController
 
         $promos = new Promo\Listing();
         if($category != ""){
-            $promos->setCondition("PromoCategory__id = ?", $category);
+            $promos->addConditionParam("PromoCategory__id = ?", $category,'AND');
         }
-        $promos->setCondition("PromoEndDate > ?",strtotime(date("Y-m-d")));
+        $promos->addConditionParam("PromoEndDate > ?",time(),'AND');
         $promos->load();
 
         $paginator = new \Zend\Paginator\Paginator($promos);
