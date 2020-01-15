@@ -12,7 +12,7 @@ class PromoController extends FrontendController
 {
     public function defaultAction(Request $request)
     {
-        $category = htmlentities(addslashes($request->get("category")));
+        $category = htmlentities($request->get("category"));
         $page = htmlentities(addslashes($request->get("page")));
 
         $promoCategories = new PromoCategory\Listing();
