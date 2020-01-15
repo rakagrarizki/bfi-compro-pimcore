@@ -28,7 +28,7 @@ $this->extend('layout-branch.html.php');
                 <span class="checkmark"></span>
             </label>
         </div>
-        <button id="btn-login" type="button" class="button-login" onclick="login()" disabled style="opacity: .5;"> LOGIN </button>
+        <button id="btn-login" type="button" class="button-login" onclick="return loginCustomer()" disabled style="opacity: .5;"> LOGIN </button>
     </form>
 </section>
 
