@@ -50,14 +50,11 @@ class ContactController extends FrontendController
         $success = false;
 
         if ($request->isMethod('POST')) {
+            $time = time();
             $data = $request->get('personal');
             $email = htmlentities($data['email']);
             $document = $_FILES['document']['name'];
             $documentTmp = $_FILES['document']['tmp_name'];
-
-            $success = true;
-
-            $time = time();
 
             $contactPersonal = new DataObject\ContactPersonal;
             // $filename = File::getValidFilename($name);
@@ -70,7 +67,7 @@ class ContactController extends FrontendController
             //creating and saving new asset
             if ($document != "") {
                 $asset = new Asset();
-                $asset->setFilename($email . "-" . $document);
+                $asset->setFilename($email . "-" . $time . $document);
                 $status = move_uploaded_file($documentTmp, tmp . $email . "-" . $document);
                 $fileDocument = tmp . $email . "-" . $document;
                 if (!$status) {
@@ -98,6 +95,8 @@ class ContactController extends FrontendController
             $contactPersonal->setMessage(htmlentities($data['message']));
             $contactPersonal->setFile($asset);
             $contactPersonal->save();
+
+            $success = true;
         }
         $this->view->success = $success;
     }
