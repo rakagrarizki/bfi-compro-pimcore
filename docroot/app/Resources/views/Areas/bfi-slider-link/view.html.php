@@ -13,7 +13,7 @@
                                     <div class="col-md-12">
                                         <div class="slider-content-wrapper">
                                             <p class="title"><?= $this->input('title');?></p>
-                                            <a class="lihat-produk" href="#"><u><b>LIHAT PRODUK</b></u><i class="fa fa-angle-right"></i></a>
+                                            <a class="lihat-produk" href="#">LIHAT PRODUK<i class="fa fa-angle-right"></i></a>
                                             <p class="quotes"><?= $this->textarea('text');?></p>
                                             <div class="bungkus-img-people"><img src="<?= $assetFounder->getImage()?>" class="img-responsive img-people" alt=""></div>
                                             <div class="cont-name">
@@ -38,8 +38,9 @@
                         <div class="desc-slide2">
                             <div class="desc-cont container">
                                 <div class="row">
-                                    <div class="col-md-10 col-md-offset-1">
+                                    <div class="col-xs-12">
                                         <p class="title"><?= $this->input('title');?></p>
+                                        <a class="lihat-produk" href="#">LIHAT PRODUK<i class="fa fa-angle-right"></i></a>
                                         <p class="quotes"><?= $this->textarea('text');?></p>
                                         <div class="bungkus-img-people"><img src="<?= $assetFounder->getImage()?>" class="img-responsive img-people" alt=""></div>
                                         <div class="cont-name">

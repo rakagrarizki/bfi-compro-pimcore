@@ -10,26 +10,34 @@ use Pimcore\Model\Document;
 
             <?= $this->inc("/" . $this->getLocale() . "/shared/includes/sub-navigation-mobile") ?>
             <div class="col-xs-4 text-right">
-                <?php echo $this->template("Includes/mobile-language.html.php") ?>
+                <div class="link-log">
+                    <a href="<?= "/" . $lang . "/login"; ?>" class="login"><?= $this->translate("login") ?></a>                    
+                </div>
             </div>
         </div>
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                    aria-expanded="false"
-                    aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="close-bar">x</span>
-            </button>
             <a class="navbar-brand" href="<?php echo "/" . $this->getLocale(); ?>">
                 <img src="/static/images/logo-bfi.png" alt="logo-bfi" class="img-responsive">
             </a>
-            <div class="button-area--nav">
-                <?php $credit = Document::getByPath("/" . $this->getLocale() . "/credit/"); ?>
-                <a href="<?php echo $credit->getHref(); ?>"
-                   class="cta cta-orange"><?php echo $credit->getTitle(); ?></a>
+            <div class="header-button-wrapper">
+                <div class="button-area--nav" id="btn-credit">
+                    <?php $credit = Document::getByPath("/" . $this->getLocale() . "/credit/"); ?>
+                    <a href="<?php echo $credit->getHref(); ?>"
+                    class="cta cta-orange"><?php echo $credit->getTitle(); ?>
+                    </a>
+                </div>
+                <div class="search-button">
+                    <a href="<?= "/" . $lang . "/search" ?>"><i class="fa fa-search"></i></a>
+                </div>
+                <button type="button" id="btn-burger" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                        aria-expanded="false"
+                        aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="close-bar">x</span>
+                </button>
             </div>
         </div>
     </div>
@@ -108,6 +116,10 @@ use Pimcore\Model\Document;
         ?>
         <li role="separator" class="divider"></li>
         <?= $this->inc("/" . $this->getLocale() . "/shared/includes/sub-navigation-burger") ?>
+        <li role="separator" class="divider"></li>
+        <div class="lang">
+            <?php echo $this->template("Includes/mobile-language.html.php") ?>
+        </div>
     </ul>
 </div>
 <!-- END Mobile -->

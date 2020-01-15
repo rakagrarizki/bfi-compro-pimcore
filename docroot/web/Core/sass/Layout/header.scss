@@ -474,6 +474,8 @@ body{
         .top-nav {
             height: 30px;
             padding: 5px 0;
+            display: flex;
+            align-items: center;
 
             a {
                 margin-right: 15px;
@@ -490,7 +492,7 @@ body{
 
                 }
 
-                &._grup {}
+                // &._grup {}
             }
 
             .active {
@@ -502,70 +504,94 @@ body{
         .navbar-header {
             height: 65px;
             background-color: $primary;
-
-            >.navbar-toggle[aria-expanded="true"] {
-                line-height: 65px;
-                height: 60px;
-                padding: 0 15px;
-                margin: 0;
-                width: 55px;
-
-                .icon-bar {
-                    background: $light;
-                    display: none;
-                }
-
-                .close-bar {
-                    display: block;
-                    font-size: 30px;
-                    position: relative;
-                    top: -7px;
-                    color: $light;
-                    // left: 6px;
-                }
-            }
-
-            >.navbar-toggle[aria-expanded="false"] {
-                line-height: 65px;
-                height: 60px;
-                padding: 0 15px;
-                margin: 0;
-                width: 55px;
-
-                .icon-bar {
-                    background: $light;
-                    display: block;
-                }
-
-                .close-bar {
-                    display: none;
-                }
-            }
-
-            .button-area--nav {
-                display: block;
-                float: right;
-                margin: 12px 0px 12px 15px;
-
-                a {
-                    font-size: 12px;
-                    text-transform: uppercase;
-
-                    &:before {
-                        right: 10px;
-                    }
-                }
-            }
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
 
             >a {
-                padding: 0 5px;
+                padding: 0;
                 line-height: 65px;
                 height: 65px;
+                display: flex;
+                align-items: center;
+                width: 20%;
 
                 img {
                     max-width: 100%;
                     width: 45px;
-                    margin: 10px;
+                    margin-left: 15px;
+                    // margin: 10px;
+                }
+            }
+
+            .header-button-wrapper{
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: flex-end;
+                width: 80%;
+                >.navbar-toggle[aria-expanded="true"] {
+                    line-height: 65px;
+                    height: 60px;
+                    padding: 0 15px;
+                    margin: 0;
+                    width: 55px;
+    
+                    .icon-bar {
+                        background: $light;
+                        display: none;
+                    }
+    
+                    .close-bar {
+                        display: block;
+                        font-size: 30px;
+                        position: relative;
+                        top: -7px;
+                        color: $light;
+                        // left: 6px;
+                    }
+                }
+    
+                >.navbar-toggle[aria-expanded="false"] {
+                    line-height: 65px;
+                    height: 60px;
+                    padding: 0 15px;
+                    margin: 0;
+                    width: 55px;
+    
+                    .icon-bar {
+                        background: $light;
+                        display: block;
+                    }
+    
+                    .close-bar {
+                        display: none;
+                    }
+                }
+    
+                .button-area--nav {
+                    display: block;
+                    // float: right;
+                    // margin: 12px 0px 12px 15px;
+    
+                    a {
+                        font-size: 12px;
+                        text-transform: uppercase;
+    
+                        &:before {
+                            right: 10px;
+                        }
+                    }
+                }
+                .search-button{
+                    margin-left: 20px;
+                    margin-right: 5px;
+                    a{
+                        font-size: 18px;
+                        color: #fff;
+                    }
                 }
             }
         }
@@ -575,7 +601,7 @@ body{
     .collapse-mobile {
         background-color: $white;
         padding-top: 0;
-        position: absolute;
+        position: fixed;
         z-index: 999;
         left: 0;
         right: 0;
@@ -602,7 +628,7 @@ body{
             >li {
                 >a {
                     font-weight: bold;
-                    font-size: 25px;
+                    font-size: 20px;
                     color: $grey-dark-color;
 
                     &.active{
@@ -663,10 +689,10 @@ body{
                     li {
                         a {
                             color: #565656;
-                            padding-top: 6px;
-                            padding-bottom: 6px;
+                            padding-top: 0px;
+                            padding-bottom: 15px;
                             padding-left: 30px;
-                            font-size: 18px;
+                            font-size: 16px;
 
                             &.active{
                                 color: $green-color;
@@ -676,7 +702,8 @@ body{
                         .title-dropdown {
                             color: $grey-dark-color;
                             font-weight: bold;
-                            font-size: 20px;
+                            font-size: 18px;
+                            margin-top: 20px;
                         }
                     }
                 }
@@ -704,6 +731,19 @@ body{
                             padding-left: 8px;
                             font-weight: normal!important;
                         }
+                    }
+                }
+            }
+            .lang{
+                padding: 15px;
+                a{
+                    color: #565656;
+                    font-size: 14px;
+                    padding: 0 15px 0 15px;
+
+                    &:first-child{
+                        padding-left: 0;
+                        border-right: solid 1px #565656;
                     }
                 }
             }
