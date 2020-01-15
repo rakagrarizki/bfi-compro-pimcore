@@ -1,11 +1,12 @@
 <?php
+
 /**
  * @var \Pimcore\Templating\PhpEngine $this
  * @var \Pimcore\Templating\PhpEngine $view
  * @var \Pimcore\Templating\GlobalVariables $app
  */
 
-$this->extend('layout-credit.html.php');
+$this->extend('layout.html.php');
 ?>
 
 <style>
@@ -25,7 +26,7 @@ $this->extend('layout-credit.html.php');
             <div class="list contract">
                 <ol>
                     <!-- here position list from API -->
-                </ol>            
+                </ol>
             </div>
         </div>
     </div>
@@ -100,14 +101,14 @@ $this->extend('layout-credit.html.php');
                 </div>
                 <div class="text">
                     <p><span>
-                        Jika ada perubahan data profil Anda,
-                        silahkan datang ke cabang BFI terdekat
-                    </span></p>
+                            Jika ada perubahan data profil Anda,
+                            silahkan datang ke cabang BFI terdekat
+                        </span></p>
                 </div>
             </div>
             <div class="button-cabang">
                 <button class="cta cta-primary cta-big">Lihat Cabang</button>
-            </div> 
+            </div>
         </div>
     </div>
 </div>

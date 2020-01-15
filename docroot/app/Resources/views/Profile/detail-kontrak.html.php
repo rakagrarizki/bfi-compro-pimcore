@@ -1,11 +1,12 @@
 <?php
+
 /**
  * @var \Pimcore\Templating\PhpEngine $this
  * @var \Pimcore\Templating\PhpEngine $view
  * @var \Pimcore\Templating\GlobalVariables $app
  */
 
-$this->extend('layout-credit.html.php');
+$this->extend('layout.html.php');
 ?>
 
 <div class="container detail-contract">
@@ -227,13 +228,14 @@ $this->extend('layout-credit.html.php');
         </div>
         <ul class="contract-wrapper">
             <a class="contract-box hide" id="contract" href="#">
-                <li href="" class="contract-detail contract-detail-mobile" id="telat"> <!--tambah id=telat utk tambah note telat bayar-->
+                <li href="" class="contract-detail contract-detail-mobile" id="telat">
+                    <!--tambah id=telat utk tambah note telat bayar-->
                     <div class="icon-wrapper">
                         <div class="icon">
                             <img src="/_default_upload_bucket/form_credit/Rumah.png" alt="">
                         </div>
                         <div class="status">
-                            <span>Telat Bayar</span> 
+                            <span>Telat Bayar</span>
                         </div>
                     </div>
                     <div class="contract-type">
