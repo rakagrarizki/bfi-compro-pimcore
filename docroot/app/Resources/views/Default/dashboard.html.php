@@ -1,11 +1,12 @@
 <?php
+
 /**
  * @var \Pimcore\Templating\PhpEngine $this
  * @var \Pimcore\Templating\PhpEngine $view
  * @var \Pimcore\Templating\GlobalVariables $app
  */
 
-$this->extend('layout-credit.html.php');
+$this->extend('layout.html.php');
 ?>
 
 <section id="verify-section">
@@ -71,7 +72,7 @@ $this->extend('layout-credit.html.php');
                                 <span id="step5" class="number"></span>
                                 <span id="label-step5" class="label-step"></span>
                             </li>
-                        </ul>                        
+                        </ul>
                     </div>
                     <div class="fail-notif">
                         <span class="icon">&#10005;</span>
@@ -102,13 +103,14 @@ $this->extend('layout-credit.html.php');
         </div>
         <ul class="contract-wrapper">
             <a class="contract-box hide" id="contract" href="#">
-                <li href="" class="contract-detail contract-detail-mobile" id="telat"> <!--tambah id=telat utk tambah note telat bayar-->
+                <li href="" class="contract-detail contract-detail-mobile" id="telat">
+                    <!--tambah id=telat utk tambah note telat bayar-->
                     <div class="icon-wrapper">
                         <div class="icon">
                             <img src="/_default_upload_bucket/form_credit/Rumah.png" alt="">
                         </div>
                         <div class="status">
-                            <span>Telat Bayar</span> 
+                            <span>Telat Bayar</span>
                         </div>
                     </div>
                     <div class="contract-type">
@@ -185,14 +187,14 @@ $this->extend('layout-credit.html.php');
                                 <button id="upload-button" class="btn-upload">
                                     Pilih File
                                 </button>
-                                <input id="file-upload" class="hide-input" type="file" name="myfile">  
+                                <input id="file-upload" class="hide-input" type="file" name="myfile">
                             </div>
                             <span id="file-upload-filename"></span>
                         </div>
                         <p>Pastikan foto KTP terlihat jelas (max. ukuran file adalah 1MB)</p>
                     </div>
                 </div>
-                <input id="btn-submit" class="button-login" type="button" value="SIMPAN"> 
+                <input id="btn-submit" class="button-login" type="button" value="SIMPAN">
             </form>
         </div>
     </div>

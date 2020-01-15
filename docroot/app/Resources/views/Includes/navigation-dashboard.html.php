@@ -11,9 +11,9 @@ use Pimcore\Model\Document\Page;
 ?>
 
 
-<?php 
-$pageCurrent = $this->getParam('page', 1); 
-$name = "dadang";?>
+<?php
+$pageCurrent = $this->getParam('page', 1);
+$name = $_COOKIE["customer"]; ?>
 <nav id="site-header">
     <div class="navbar-fixed-top hidden-xs">
         <div class="header-top">
@@ -57,14 +57,14 @@ $name = "dadang";?>
                                     foreach ($subPage as $page) {
                                         //$hasChildren = $page->hasChildren();
 
-                                       
+
                                 ?>
-                                            <li  id="produk">
-                                                <a href="<?= $page->getHref(); ?>" class="<?php echo $page->getActive() ? 'active' : '' ?>"><?= $page->getLabel() ?></a>
-                                                
-                                            </li>
-                                            <?php
-                                        
+                                        <li id="produk">
+                                            <a href="<?= $page->getHref(); ?>" class="<?php echo $page->getActive() ? 'active' : '' ?>"><?= $page->getLabel() ?></a>
+
+                                        </li>
+                                <?php
+
                                     }
                                 }
                                 ?>
