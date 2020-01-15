@@ -4744,7 +4744,7 @@ function copyURL(url) {
   $('#copied').show().delay(2000).fadeOut(400);
 }
 
-function login() {
+function loginCustomer() {
   var dataPhone = {
       'phone_number' : $('#phone-input').val()
   };
@@ -4863,6 +4863,7 @@ function getCustomer(token){
       url: '/user/data-customer',
       crossDomain: true,
       dataType: 'json',
+      async: false,
       headers: {'sessionId': token},
 
       error: function(data) {
@@ -4876,7 +4877,7 @@ function getCustomer(token){
       success: function(dataObj){
           var data = dataObj.result.data;
           if(dataObj.success === true) {
-            console.log(data)
+            console.log(data.full_name)
             document.cookie = "customer="+data.full_name;
           }
       }
@@ -4929,5 +4930,13 @@ $(document).ready(function() {
       var full_name = document.cookie.replace(/(?:(?:^|.*;\s*)customer\s*\=\s*([^;]*).*$)|^.*$/, "$1");
       $('.link-log').find('.full_name').text(full_name);
     }
+
+    $(".blog-promo").load(function() {
+      var lang = document.documentElement.lang
+      var options = { year: 'numeric', month: 'long', day: 'numeric' };
+      var date = new Date($(this).find('.dateview > span.date').html());
+      var blogDate = date.toLocaleDateString(lang+'-'+lang, options);
+      $(this).find('.dateview > span.date').text(blogDate);
+    });
   }
 });

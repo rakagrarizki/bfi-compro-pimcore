@@ -11,13 +11,13 @@ $(document).ready(function(){
         "contract_number" : urlParams.get('contract_number')
     }
 
-    contractDetailTransaction(token, dataContract);
+    contractDetailTransaction(lang, token, dataContract);
     contractDetailList(token, dataContract);
     contractStatusList(lang, token);
 
     window.onload = function(){
         if(this.localStorage.token == null){
-            window.location="/login"
+            window.location="/"+lang+"/login"
         }else{
             $('.link-log').find('.login').hide();
             $('.link-about-top').hide()
@@ -45,7 +45,7 @@ $(document).ready(function(){
 
 });
 
-function contractDetailTransaction(token, dataContract) {
+function contractDetailTransaction(lang, token, dataContract) {
     $.ajax({
         type: 'POST',
         url: '/user/contract-detail-transaction',
@@ -68,7 +68,7 @@ function contractDetailTransaction(token, dataContract) {
                 console.log(data)
                 var options = { year: 'numeric', month: 'long', day: 'numeric' };
                 var date = new Date(data[0].tanggal_jatuh_tempo);
-                var due_date = date.toLocaleDateString('id-ID', options)
+                var due_date = date.toLocaleDateString(lang+'-'+lang, options);
 
                 $('.total-installment').text("Rp. "+ (convertInttoCurrency(data[0].angsuran_telah_dibayar+data[0].sisa_angsuran)));
                 $('.remaining-installment').text("Rp. "+ convertInttoCurrency(data[0].sisa_angsuran));

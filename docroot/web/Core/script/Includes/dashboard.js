@@ -141,7 +141,7 @@ $(document).ready(function(){
 
     window.onload = function(){
         if(this.localStorage.token == null){
-            window.location="/login"
+            window.location="/"+lang+"/login"
         }else{
             $('.link-log').find('.login').hide();
             $('.link-about-top').hide()
