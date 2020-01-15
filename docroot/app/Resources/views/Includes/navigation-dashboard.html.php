@@ -27,10 +27,8 @@ $name = $_COOKIE["customer"]; ?>
                             <div class="user hide">
                                 <a href="/<?= $this->getLocale() ?>/user/dashboard" class="full_name icon"><?= $name; ?></a> | <a href="#" class="logout" onclick="return logout('<?= $this->getLocale() ?>');"><?= $this->translate("logout") ?></a>
                             </div>
+                            <?php echo $this->template("Includes/language.html.php") ?>
                         </div>
-
-                        <?php echo $this->template("Includes/language.html.php") ?>
-
                     </div>
 
                 </div>

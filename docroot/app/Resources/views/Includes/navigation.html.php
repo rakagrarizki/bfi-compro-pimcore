@@ -22,7 +22,7 @@ use Pimcore\Model\Document\Page;
                         <a class="_grup" href="<?= "/" . $lang . "/corporate" ?>">
                             <?= $this->translate("corporate") ?></a>
                     </div>
-                    <div class="col-md-6 col-sm-6 right-side-top clearfix">
+                    <div class="col-md-6 col-sm-6 right-side-top">
                         <div class="link-about-top">
                             <a href="<?= "/" . $lang . "/tentang-kami" ?>">
                                 <?= $this->translate("tentang-kami") ?></a>
