@@ -4884,7 +4884,7 @@ function getCustomer(token){
         if(dataObj.success === true) {
           var data = dataObj.result.data;
           console.log(data.full_name)
-          document.cookie = "customer="+data.full_name;
+          document.cookie = "customer="+data.full_name+"; path=/";
         }
       }
   });
