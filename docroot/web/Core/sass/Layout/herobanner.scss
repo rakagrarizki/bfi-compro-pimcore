@@ -1,5 +1,5 @@
 .herobanner {
-    margin-bottom: 0;
+    margin-bottom: 0 !important;
     position: relative;
 
     &.herobanner--author {
@@ -18,7 +18,9 @@
             font-weight: bold;
 
             @include breakpoint(mobile) {
-                font-size: 18pt;
+                margin-top: 0;
+                font-size: 22px;
+                line-height: 30px;
             }
         }
 
@@ -28,7 +30,9 @@
             font-weight: normal;
 
             @include breakpoint(mobile) {
-                font-size: 12pt;
+                font-size: 13px;
+                line-height: 20px;
+                margin-bottom: 20px;
             }
         }
         a{
@@ -65,7 +69,7 @@
                     text-align: left;
 
                     @include breakpoint(mobile) {
-                        font-size: 1.8em;
+                        font-size: 20px;
                     }
                 }
 
@@ -94,12 +98,16 @@
 
     .slide {
         height: 0;
-        padding-bottom: 505px;
+        padding-bottom: 600px;
         position: relative;
         overflow: hidden;
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
+
+        @include breakpoint(tablet) {
+            padding-bottom: 450px;
+        }
 
         &.slidemodif {
             .desc-slide2 {
@@ -184,9 +192,10 @@
 
             h3 {
                 margin: 0;
+                margin-bottom: 20px;
                 font-family: 'HelveticaNeue';
                 font-weight: bold;
-                font-size: 1.3em;
+                font-size: 20px;
                 // width: 85%;
                 // margin-left: auto;
                 // margin-right: auto;
@@ -196,7 +205,7 @@
                 }
 
                 @include breakpoint (mobile) {
-                    font-size: 12pt;
+                    font-size: 15px;
                     // width: 100%;
                     // margin: -85px 0 0 0;
                 }
@@ -204,9 +213,9 @@
 
             h1 {
                 font-weight: normal;
-                opacity: 0.9;
+                // opacity: 0.9;
                 font-family: 'HelveticaNeue';
-                font-size: 40px;
+                font-size: 44px;
                 // width: 85%;
                 // margin-left: auto;
                 // margin-right: auto;
@@ -217,7 +226,7 @@
                 }
 
                 @include breakpoint (mobile) {
-                    font-size: 20pt;
+                    font-size: 24px;
                     // width: 100%;
                     margin: 10px 0;
                 }
@@ -238,8 +247,9 @@
             width: 100vw;
             text-align: left;
             z-index: 1;
-            transform: translateY(50px);
+            // transform: translateY(50px);
             color: $white;
+            padding-top: 40px;
 
             .desc-cont {
                 .row {
@@ -270,13 +280,13 @@
                     font-size: 1em;
                     position: relative;
 
-                    &:before {
-                        content: '\f105';
-                        font-family: FontAwesome;
-                        position: absolute;
-                        right: -15px;
-                        transition: all cubic-bezier(0.075, 0.82, 0.165, 1) .5s;
-                    }
+                    // &:before {
+                    //     content: '\f105';
+                    //     font-family: FontAwesome;
+                    //     position: absolute;
+                    //     right: -15px;
+                    //     transition: all cubic-bezier(0.075, 0.82, 0.165, 1) .5s;
+                    // }
                 }
 
                 // &:before{
@@ -304,7 +314,8 @@
 
                 @include breakpoint(mobile) {
                     width: auto;
-                    font-size: 1em;
+                    font-size: 13px;
+                    line-height: 20px;
                     margin-top: 30px;
                     margin-bottom: 30px;
                 }
@@ -320,7 +331,7 @@
                     color: #04559F;
 
                     @include breakpoint(mobile) {
-                        margin-top: -25px;
+                        margin-top: -10px;
                         font-size: 2.5em;
                     }
                 }
@@ -424,7 +435,7 @@
             }
 
             @include breakpoint(mobile) {
-                width: 45%;
+                width: 55%;
                 left: 14%;
             }
 
@@ -434,12 +445,16 @@
                     position: relative;
                     padding-right: 20px;
 
+                    @include breakpoint(mobile) {
+                        font-size: 10px;
+                    }
+
                     &:after {
                         display: block;
                         font-family: 'FontAwesome';
                         content: "\f105";
                         right: 0;
-                        top: 2px;
+                        top: 0;
                         transform: rotate(90deg);
                         position: absolute;
                         width: 16px;
@@ -469,8 +484,11 @@
     .lihat-produk{
         font-size: 14px;
         color: #727272;
-        u{
-            margin-right: 20px;
+        .fa{
+            margin-left: 20px;
+            @include breakpoint(mobile){
+                margin-left: 10px;
+            }
         }
     }
     .slide-cont {
@@ -480,10 +498,10 @@
             overflow: hidden;
             float: left;
 
-            @include breakpoint(mobile) {
-                width: 80px;
-                height: 80px;
-            }
+            // @include breakpoint(mobile) {
+            //     width: 80px;
+            //     height: 80px;
+            // }
         }
 
         .img-people {
@@ -496,10 +514,12 @@
         }
 
         .cont-name {
+            padding-top: 10px;
             margin-left: 100px;
 
             @include breakpoint(mobile) {
-                margin-left: 100px;
+                padding: 5px;
+                margin-left: 80px;
             }
 
             p {
@@ -507,20 +527,22 @@
                     font-family: 'HelveticaNeue';
                     font-size: 18px;
                     font-weight: bold;
+                    text-transform: uppercase;
 
                     @include breakpoint(mobile) {
-                        font-size: 1em;
+                        font-size: 11px;
                         margin: 0 0 5px;
                     }
                 }
 
                 &.position {
-                    font-family: $light;
+                    // font-family: $light;
                     font-size: 16px;
                     color: #727272;
+                    margin: 0;
 
                     @include breakpoint(mobile) {
-                        font-size: 1em;
+                        font-size: 11px;
                         margin: 0;
                     }
                 }
@@ -532,7 +554,7 @@
         .tagar {
             position: absolute;
             right: 20%;
-            bottom: 0;
+            bottom: 40px;
             font-style: italic;
             font-weight: bold;
             font-size: 16px;
@@ -541,7 +563,7 @@
     }
 
     .slick-dots {
-        bottom: 0px;
+        bottom: 20px;
         left: 15.5%;
         width: 100%;
         text-align: left;
@@ -549,7 +571,7 @@
         li{
             button{
                 &::before{
-                    background-color: #bcbcbc;
+                    background-color: #fff;
                 }
             }
         }
@@ -580,6 +602,10 @@
             left: -7.5%;
             position: absolute;
 
+            @include breakpoint (mobile) {
+                left: 2%;
+            }
+
             &.bawah {
                 top: 30px;
             }
@@ -605,7 +631,7 @@
 
         .next {
             opacity: .6;
-            right: -5%;
+            right: -7.5%;
             position: absolute;
 
             &.bawah {
@@ -613,7 +639,7 @@
             }
 
             @include breakpoint (mobile) {
-                right: 0;
+                right: 2%;
             }
 
             &:before {
