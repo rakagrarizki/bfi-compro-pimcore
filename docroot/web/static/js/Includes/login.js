@@ -21,31 +21,42 @@ function deleteLabel(ele_id) {
     }
 }
 
-$('#otp-form').find('input').each(function() {
-	$(this).attr('maxlength', 1);
-	$(this).on('keyup', function(e) {
-		var parent = $($(this).parent());
-		
-		if(e.keyCode === 8) {
-			var prev = parent.find('input#' + $(this).data('previous'));
+$(document).ready(function(){
+    $('#otp-form').find('input').each(function() {
+        $(this).attr('maxlength', 1);
+        $(this).on('keyup', function(e) {
+            var parent = $($(this).parent());
             
-			if(prev.length) {
-                $(prev).select().val("");
-			}
-        }
-        else if((e.keyCode >= 48 && e.keyCode <= 57) || (e.keyCode >= 96 && e.keyCode <= 105)) {
-			var next = parent.find('input#' + $(this).data('next'));
-			
-			if(next.length) {
-                $(next).removeAttr("disabled").select();
+            if(e.keyCode === 8) {
+                var prev = parent.find('input#' + $(this).data('previous'));
+                
+                if(prev.length) {
+                    $(prev).select().val("");
+                }
             }
-            else {
-                $("#btn-verify").removeAttr("disabled").removeAttr("style");
-				// if(parent.data('autosubmit')) {
-				// 	parent.submit();
-				// }
-			}
-		}
-	});
+            else if((e.keyCode >= 48 && e.keyCode <= 57) || (e.keyCode >= 96 && e.keyCode <= 105)) {
+                var next = parent.find('input#' + $(this).data('next'));
+                
+                if(next.length) {
+                    $(next).removeAttr("disabled").select();
+                }
+                else {
+                    $("#btn-verify").removeAttr("disabled").removeAttr("style");
+                    // if(parent.data('autosubmit')) {
+                    // 	parent.submit();
+                    // }
+                }
+            }
+        });
+    });
+    
+    window.onload = function(){
+        var lang = document.documentElement.lang
+
+        if(this.localStorage.token != null){
+            window.location="/"+lang+"/user/dashboard";
+        }
+    }
 });
+
 

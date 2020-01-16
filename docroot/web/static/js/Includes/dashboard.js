@@ -90,13 +90,14 @@ function showFileName( event ) {
 }
 
 $(document).ready(function(){
-    var token = window.sessionStorage.getItem("token");
+    var token = window.localStorage.getItem("token");
+    var lang = document.documentElement.lang
 
     $('ul.contract-wrapper').hide();
     checkStatus(token);
     applicationStep(token);
     checkAssignmentList(token);
-    contractStatusList(token);
+    contractStatusList(lang, token);
     
     $('#btn-submit').click(function(event) { 
 
@@ -137,6 +138,19 @@ $(document).ready(function(){
             }
         })
     });
+
+    window.onload = function(){
+        if(this.localStorage.token == null){
+            window.location="/"+lang+"/login"
+        }else{
+            $('.link-log').find('.login').hide();
+            $('.link-about-top').hide()
+            $('.link-log').find('.user').removeClass('hide');
+            
+            var full_name = document.cookie.replace(/(?:(?:^|.*;\s*)customer\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+            $('.link-log').find('.full_name').text(full_name);
+        }
+    }
 
     // window.onload = function(){
     //     var elements = document.querySelectorAll('[id="telat"]');
@@ -263,7 +277,7 @@ function applicationStep(token) {
     })
 }
 
-function contractStatusList(token) {
+function contractStatusList(lang, token) {
     var dataContract = {
         'started_index': 10,
         'length': 11
@@ -296,7 +310,7 @@ function contractStatusList(token) {
                 }
                 $.each(data, function( index, value ) {
                     console.log(value)
-                    $('#contract'+index).attr('href', '/detail?contract_number='+value.contract_number);
+                    $('#contract'+index).attr('href', '/'+lang+'/user/profile/detail-kontrak?contract_number='+value.contract_number);
                     $('#contract'+index).find('h5.category').text(value.category_desc);
                     $('#contract'+index).find('h5.product').text(value.product_desc);
                     $('#contract'+index).find('p.contract_number').text(value.contract_number);
@@ -318,7 +332,8 @@ function contractStatusList(token) {
                         $('#contract'+index).find('.status').css('visibility', 'hidden');
                         $('#contract'+index).find('.warning').css('visibility', 'hidden');
                     }
-                })
+                });
+                $('.contract-box:last').attr('href', '/'+lang+'/credit');
                 $('.contract-box:first').hide()
             }
         }

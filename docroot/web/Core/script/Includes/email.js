@@ -20,14 +20,14 @@ function deleteLabel(ele_id){
 }
 
 function verify(){
-    var token = window.sessionStorage.getItem("token");
+    var token = window.localStorage.getItem("token");
     var dataEmail = {
         'email' : $('#email-input').val()
     };
     console.log(dataEmail);
     $.ajax({
         type: 'POST',
-        url: 'https://bfi.staging7.salt.id/user/verify-email-request',
+        url: '/user/verify-email-request',
         data: dataEmail,
         dataType: 'json',
         headers: { 'sessionId': token },

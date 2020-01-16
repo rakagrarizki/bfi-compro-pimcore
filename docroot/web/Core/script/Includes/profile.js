@@ -1,11 +1,26 @@
 $(document).ready(function(){
-    var token = window.sessionStorage.getItem("token");
+    var token = window.localStorage.getItem("token");
+    var lang = document.documentElement.lang
 
-    contractStatusList(token);
+    contractStatusList(lang, token);
     dataCustomer(token);
+
+    window.onload = function(){
+        if(this.localStorage.token == null){
+            window.location="/"+lang+"/login"
+        }else{
+            $('.link-log').find('.login').hide();
+            $('.link-about-top').hide();
+            $('.link-log').find('.user').removeClass('hide');
+            
+            var full_name = document.cookie.replace(/(?:(?:^|.*;\s*)customer\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+            $('.link-log').find('.full_name').text(full_name);
+
+        }
+    }
 });
 
-function contractStatusList(token) {
+function contractStatusList(lang, token) {
     var dataContract = {
         'started_index': 10,
         'length': 11
@@ -13,7 +28,7 @@ function contractStatusList(token) {
 
     $.ajax({
         type: 'POST',
-        url: 'https://bfi.staging7.salt.id/user/contract-status-list',
+        url: '/user/contract-status-list',
         data: dataContract,
         crossDomain: true,
         dataType: 'json',
@@ -32,7 +47,7 @@ function contractStatusList(token) {
             if (dataObj.success === true) {
                 $.each(data, function( index, value ) {
                     console.log(value)
-                    var item = "<li><a href='/detail?contract_number="+value.contract_number+"'>"+ value.contract_number+" "+value.category_desc+" - "+value.product_desc+"</a></li>"
+                    var item = "<li><a href='/"+lang+"/user/profile/detail-kontrak?contract_number="+value.contract_number+"'>"+ value.contract_number+" "+value.category_desc+" - "+value.product_desc+"</a></li>"
                     $(".contract > ol").append(item);
                 });
             }
@@ -43,7 +58,7 @@ function contractStatusList(token) {
 function dataCustomer(token){
     $.ajax({
         type: 'GET',
-        url: 'https://bfi.staging7.salt.id/user/data-customer',
+        url: '/user/data-customer',
         crossDomain: true,
         dataType: 'json',
         headers: {'sessionId': token},

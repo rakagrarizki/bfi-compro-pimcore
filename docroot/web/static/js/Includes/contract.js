@@ -1,5 +1,6 @@
 $(document).ready(function(){
-    var token = window.sessionStorage.getItem("token");
+    var token = window.localStorage.getItem("token");
+    var lang = document.documentElement.lang
     
     // <--- if using param to get contract_number
     var urlParams = new URLSearchParams(location.search);  
@@ -10,9 +11,22 @@ $(document).ready(function(){
         "contract_number" : urlParams.get('contract_number')
     }
 
-    contractDetailTransaction(token, dataContract);
+    contractDetailTransaction(lang, token, dataContract);
     contractDetailList(token, dataContract);
-    contractStatusList(token, dataContract);
+    contractStatusList(lang, token);
+
+    window.onload = function(){
+        if(this.localStorage.token == null){
+            window.location="/"+lang+"/login"
+        }else{
+            $('.link-log').find('.login').hide();
+            $('.link-about-top').hide()
+            $('.link-log').find('.user').removeClass('hide');
+
+            var full_name = document.cookie.replace(/(?:(?:^|.*;\s*)customer\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+            $('.link-log').find('.full_name').text(full_name);
+        }
+    }
 
     // window.onload = function(){
     //     var elements = document.querySelectorAll('[id="telat"]');
@@ -31,7 +45,7 @@ $(document).ready(function(){
 
 });
 
-function contractDetailTransaction(token, dataContract) {
+function contractDetailTransaction(lang, token, dataContract) {
     $.ajax({
         type: 'POST',
         url: '/user/contract-detail-transaction',
@@ -54,7 +68,7 @@ function contractDetailTransaction(token, dataContract) {
                 console.log(data)
                 var options = { year: 'numeric', month: 'long', day: 'numeric' };
                 var date = new Date(data[0].tanggal_jatuh_tempo);
-                var due_date = date.toLocaleDateString('id-ID', options)
+                var due_date = date.toLocaleDateString(lang+'-'+lang, options);
 
                 $('.total-installment').text("Rp. "+ (convertInttoCurrency(data[0].angsuran_telah_dibayar+data[0].sisa_angsuran)));
                 $('.remaining-installment').text("Rp. "+ convertInttoCurrency(data[0].sisa_angsuran));
@@ -250,8 +264,8 @@ function detailAgunanAlatBerat(token, dataContract) {
     })
 }
 
-function contractStatusList(token, dataContract) {
-    var dataContract = {
+function contractStatusList(lang, token) {
+    var dataInput = {
         'started_index': 10,
         'length': 11
     }
@@ -259,7 +273,7 @@ function contractStatusList(token, dataContract) {
     $.ajax({
         type: 'POST',
         url: '/user/contract-status-list',
-        data: dataContract,
+        data: dataInput,
         crossDomain: true,
         dataType: 'json',
         headers: {'sessionId': token},
@@ -283,9 +297,7 @@ function contractStatusList(token, dataContract) {
                 }
                 $.each(data, function( index, value ) {
                     console.log(value)
-                    // var date = Date(value.tanggal_jatuh_tempo)
-                    // console.log(date.toString());
-
+                    $('#contract'+index).attr('href', '/'+lang+'/user/profile/detail-kontrak?contract_number='+value.contract_number);
                     $('#contract'+index).find('h5.category').text(value.category_desc);
                     $('#contract'+index).find('h5.product').text(value.product_desc);
                     $('#contract'+index).find('p.contract_number').text(value.contract_number);
@@ -308,6 +320,7 @@ function contractStatusList(token, dataContract) {
                         $('#contract'+index).find('.warning').css('visibility', 'hidden');
                     }
                 })
+                $('.contract-box:last').attr('href', '/'+lang+'/credit');
                 $('.contract-box:first').hide()
             }
         }

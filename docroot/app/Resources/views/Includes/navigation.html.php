@@ -22,7 +22,7 @@ use Pimcore\Model\Document\Page;
                         <a class="_grup" href="<?= "/" . $lang . "/corporate" ?>">
                             <?= $this->translate("corporate") ?></a>
                     </div>
-                    <div class="col-md-6 col-sm-6 right-side-top clearfix">
+                    <div class="col-md-6 col-sm-6 right-side-top">
                         <div class="link-about-top">
                             <a href="<?= "/" . $lang . "/tentang-kami" ?>">
                                 <?= $this->translate("tentang-kami") ?></a>
@@ -32,6 +32,9 @@ use Pimcore\Model\Document\Page;
 
                         <div class="link-log">
                             <a href="<?= "/" . $lang . "/login"; ?>" class="login"><?= $this->translate("login") ?></a>
+                            <div class="user hide">
+                                <a href="/<?= $this->getLocale() ?>/user/dashboard" class="full_name">Deborah Morris</a> | <a href="#" class="logout" onclick="return logout('<?= $this->getLocale() ?>');"><?= $this->translate("logout") ?></a>
+                            </div>
                             <!-- <a href="#" class="register"><?/*= $this->translate("register") */ ?></a> -->
                             <?php echo $this->template("Includes/language.html.php") ?>
                         </div>

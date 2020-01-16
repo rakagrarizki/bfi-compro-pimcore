@@ -11,9 +11,9 @@ use Pimcore\Model\Document\Page;
 ?>
 
 
-<?php 
-$pageCurrent = $this->getParam('page', 1); 
-$name = "dadang";?>
+<?php
+$pageCurrent = $this->getParam('page', 1);
+$name = $_COOKIE["customer"]; ?>
 <nav id="site-header">
     <div class="navbar-fixed-top hidden-xs">
         <div class="header-top">
@@ -22,17 +22,13 @@ $name = "dadang";?>
                     <div class="col-md-6 col-sm-6 left-side-top">
                         <a href="<?php echo "/" . $this->getLocale() . '/user/dashboard'; ?>" class="text-btn"><?= $this->translate("back") ?></a>
                     </div>
-                    <div class="col-md-3 col-sm-4 right-side-top clearfix">
-                        <div class="link-about-top">
-                            <input type="text" value="<?= $name; ?>" disable>
-                        </div>
-
+                    <div class="col-md-6 col-sm-6 right-side-top">
                         <div class="link-log">
-                            <a href="#" class="login" onclick="logout()"><?= $this->translate("logout") ?></a>
+                            <div class="user hide">
+                                <a href="/<?= $this->getLocale() ?>/user/dashboard" class="full_name icon"><?= $name; ?></a> | <a href="#" class="logout" onclick="return logout('<?= $this->getLocale() ?>');"><?= $this->translate("logout") ?></a>
+                            </div>
+                            <?php echo $this->template("Includes/language.html.php") ?>
                         </div>
-
-                        <?php echo $this->template("Includes/language.html.php") ?>
-
                     </div>
 
                 </div>
@@ -59,14 +55,14 @@ $name = "dadang";?>
                                     foreach ($subPage as $page) {
                                         //$hasChildren = $page->hasChildren();
 
-                                       
+
                                 ?>
-                                            <li  id="produk">
-                                                <a href="<?= $page->getHref(); ?>" class="<?php echo $page->getActive() ? 'active' : '' ?>"><?= $page->getLabel() ?></a>
-                                                
-                                            </li>
-                                            <?php
-                                        
+                                        <li id="produk">
+                                            <a href="<?= $page->getHref(); ?>" class="<?php echo $page->getActive() ? 'active' : '' ?>"><?= $page->getLabel() ?></a>
+
+                                        </li>
+                                <?php
+
                                     }
                                 }
                                 ?>

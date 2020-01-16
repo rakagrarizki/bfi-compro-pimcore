@@ -18,7 +18,7 @@ $lang = $this->getLocale();
         </article>
         <div class="pengajuan">
             <div class="cek-pengajuan">
-                <form action="#">
+                <form method="get">
                     <div class="_parentboxkirikanan">
                         <div class="_boxkiri">
                             <div class="input-group">
@@ -29,7 +29,7 @@ $lang = $this->getLocale();
                             <div class="_boxkananchild1">
                                 <div class="input-group inputform">
                                     <select class="c-custom-select-home form-control bp-select" id="category"  onchange="this.form.submit()" name="category">
-                                        <option value="" <?php echo ($this->getParam("category") == "") ? "selected" : ""; ?>><?= $this->t("all-promo");?></option>
+                                        <option value="<?php echo ($this->getParam("category") == "") ? "selected" : ""; ?>"><?= $this->t("all-promo");?></option>
                                         <?php foreach ($this->promoCategories as $category):?>
                                         <option value="<?= $category->getId()?>" <?php echo ($this->getParam("category") == $category->getId()) ? "selected" : ""; ?>><?= $category->getName();?></option>
                                         <?php endforeach ?>
