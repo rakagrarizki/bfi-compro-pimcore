@@ -1,7 +1,7 @@
 
 
 <div class="visi-misi">
-    <div class="container clearfix">
+    <div class="container">
         <div class="visi">
             <div class="col-md-3">
                 <h2>Visi</h2>
@@ -17,18 +17,17 @@
                 <h2>Misi</h2>
             </div>
             <div class="col-md-9">
-                <div class="vm-slide">
+
+                <div class="vm-slide" id=vm-slide-misi>
                     <!-- loop disini -->
                     <?php while($this->block("contentblock")->loop()) { ?>
                     <div>
-                        <p>
-                            <?= $this->input("input-misi"); ?>
-                        </p>
+                        <p><?= $this->input("input-misi"); ?></p>
                     </div>
                     <?php } ?>
                     <!--  -->
-
                 </div>
+
             </div>
         </div>
         <div class="counter">

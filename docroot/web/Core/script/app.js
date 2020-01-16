@@ -43,7 +43,7 @@
 
   // VISI-MISI
   var $status = $('.pagingInfo');
-  var $slickElement = $('.vm-slide');
+  var $slickElement = $('#vm-slide-misi');
 
   $slickElement.on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
     //currentSlide is undefined on init -- set it to 0 in this case (currentSlide is 0 based)
@@ -59,6 +59,7 @@
     autoplaySpeed: 5000,
     adaptiveHeight: true
   });
+
 
   // BLOG/PROMO
   $('.bp-select').select2({
