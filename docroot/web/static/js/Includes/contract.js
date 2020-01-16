@@ -63,8 +63,8 @@ function contractDetailTransaction(lang, token, dataContract) {
         },
 
         success: function (dataObj) {
-            var data = dataObj.result.data
             if (dataObj.success === true) {
+                var data = dataObj.result.data
                 console.log(data)
                 var options = { year: 'numeric', month: 'long', day: 'numeric' };
                 var date = new Date(data[0].tanggal_jatuh_tempo);
@@ -104,8 +104,8 @@ function contractDetailList(token, dataContract) {
         },
 
         success: function (dataObj) {
-            var data = dataObj.result.data
             if (dataObj.success === true) {
+                var data = dataObj.result.data
                 console.log(data);
                 var due_date = new Date(data.tanggal_jatuh_tempo);
 
@@ -156,8 +156,8 @@ function detailAgunanRumah(token, dataContract) {
         },
 
         success: function (dataObj) {
-            var data = dataObj.result.data
             if (dataObj.success === true) {
+                var data = dataObj.result.data
                 console.log(data);
                 $('.address').text(data.alamat);
                 $('.building-area').text(data.luas_bangunan).append("m<sup>2</sup>");
@@ -186,8 +186,8 @@ function detailAgunanMobil(token, dataContract) {
         },
 
         success: function (dataObj) {
-            var data = dataObj.result.data
             if (dataObj.success === true) {
+                var data = dataObj.result.data
                 console.log(data);
                 $('.brand').text(data.merk_desc);
                 $('.type').text(data.tipe_desc);
@@ -218,8 +218,8 @@ function detailAgunanMotor(token, dataContract) {
         },
 
         success: function (dataObj) {
-            var data = dataObj.result.data
             if (dataObj.success === true) {
+                var data = dataObj.result.data
                 console.log(data);
                 $('.brand').text(data.merk_desc);
                 $('.type').text(data.tipe_desc);
@@ -250,8 +250,8 @@ function detailAgunanAlatBerat(token, dataContract) {
         },
 
         success: function (dataObj) {
-            var data = dataObj.result.data
             if (dataObj.success === true) {
+                var data = dataObj.result.data
                 console.log(data);
                 $('.asset-brand').text(data.merk_desc);
                 $('.asset-type').text(data.tipe_desc);
@@ -266,8 +266,8 @@ function detailAgunanAlatBerat(token, dataContract) {
 
 function contractStatusList(lang, token) {
     var dataInput = {
-        'started_index': 10,
-        'length': 11
+        'started_index': 11,
+        'length': 10
     }
 
     $.ajax({
@@ -287,8 +287,8 @@ function contractStatusList(lang, token) {
         },
 
         success: function (dataObj) {
-            var data = dataObj.result.data
             if (dataObj.success === true) {
+                var data = dataObj.result.data
                 $('a.contract-box').removeClass('hide');
                 for(var i=0; i < data.length; i++){ 
                     var newel = $('#contract').clone();
@@ -296,13 +296,21 @@ function contractStatusList(lang, token) {
                     $(newel).insertAfter(".contract-box:first");
                 }
                 $.each(data, function( index, value ) {
-                    console.log(value)
+                    var options = { year: 'numeric', month: 'long', day: 'numeric' };
+                    var date = new Date(data[0].tanggal_jatuh_tempo);
+                    var now = new Date();
+                    now.setHours(0,0,0,0);
+
+                    var due_date = date.toLocaleDateString(lang+'-'+lang, options);
+                    var difference_in_ms = Math.abs(now - date);
+                    var difference_in_days = difference_in_ms / (1000 * 3600 * 24);
+                    
                     $('#contract'+index).attr('href', '/'+lang+'/user/profile/detail-kontrak?contract_number='+value.contract_number);
                     $('#contract'+index).find('h5.category').text(value.category_desc);
                     $('#contract'+index).find('h5.product').text(value.product_desc);
                     $('#contract'+index).find('p.contract_number').text(value.contract_number);
                     $('#contract'+index).find('p.angsuran_perbulan').text(value.angsuran_perbulan);
-                    $('#contract'+index).find('p.tanggal_jatuh_tempo').text(value.tanggal_jatuh_tempo);
+                    $('#contract'+index).find('p.tanggal_jatuh_tempo').text(due_date);
 
                     if(value.product_desc == "Sertifikat Rumah"){
                         $('#contract'+index).find('.icon > img').attr('src', '/_default_upload_bucket/form_credit/Rumah.png');
@@ -314,13 +322,13 @@ function contractStatusList(lang, token) {
                         $('#contract'+index).find('.icon > img').attr('src', '/_default_upload_bucket/form_credit/D_alat%20berat.png');
                     }
                     
-                    //just example if status != telat
-                    if(value.contract_number == '21231213'){
+                    if(difference_in_days > 0){
+                        $('#contract'+index).find('.warning > span').text("Anda terlambat membayar "+ difference_in_days +" hari");
+                    }else{
                         $('#contract'+index).find('.status').css('visibility', 'hidden');
                         $('#contract'+index).find('.warning').css('visibility', 'hidden');
                     }
                 })
-                $('.contract-box:last').attr('href', '/'+lang+'/credit');
                 $('.contract-box:first').hide()
             }
         }

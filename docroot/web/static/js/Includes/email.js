@@ -51,5 +51,6 @@ function verify(){
 }
 
 function back(){
-    window.location="/";
+    var lang = document.documentElement.lang
+    window.location="/"+lang+"/user/dashboard";
 }

@@ -112,7 +112,8 @@ $(document).ready(function(){
 
         var dataKTP = {
             'no_ktp' : $('#ktp-input').val(),
-            'path_ktp' : 'text'
+            'path_ktp' : $('#file-upload').val()
+
         }
         console.log(dataKTP)
 
@@ -134,6 +135,7 @@ $(document).ready(function(){
                 if (dataObj.success === true) {
                     console.log('berhasil verify ktp')
                     $('#popup-ktp').modal('hide');
+                    location.reload();
                 }
             }
         })
@@ -186,8 +188,8 @@ function checkStatus(token) {
         },
 
         success: function (dataObj) {
-            var data = dataObj.result.data
             if (dataObj.success === true) {
+                var data = dataObj.result.data
                 if(data.is_phone_number_verify == true){
                     $('span#poin1').parent().addClass('active')
                     $('span#poin3').parent().children('a.tool-tip').hide()
@@ -227,8 +229,8 @@ function checkAssignmentList(token) {
         },
 
         success: function (dataObj) {
-            var data = dataObj.result.data
             if (dataObj.success === true) {
+                var data = dataObj.result.data
                 for(var i=0; i < data.length; i++){ 
                     var newel = $('#status').clone();
                     newel.attr('id', 'status'+i);
@@ -266,8 +268,8 @@ function applicationStep(token) {
         },
 
         success: function (dataObj) {
-            var data = dataObj.result.data;
             if (dataObj.success === true) {
+                var data = dataObj.result.data;
                 $.each(data, function( index, value ) {
                     $('.stepper-row').find('#step'+(index+1)).text(value.step_id);
                     $('.stepper-row').find('#label-step'+(index+1)).text(value.desc);
@@ -279,8 +281,8 @@ function applicationStep(token) {
 
 function contractStatusList(lang, token) {
     var dataContract = {
-        'started_index': 10,
-        'length': 11
+        'started_index': 11,
+        'length': 10
     }
 
     $.ajax({
@@ -300,8 +302,8 @@ function contractStatusList(lang, token) {
         },
 
         success: function (dataObj) {
-            var data = dataObj.result.data
             if (dataObj.success === true) {
+                var data = dataObj.result.data
                 $('a.contract-box').removeClass('hide');
                 for(var i=0; i < data.length; i++){ 
                     var newel = $('#contract').clone();
@@ -309,13 +311,21 @@ function contractStatusList(lang, token) {
                     $(newel).insertAfter(".contract-box:first");
                 }
                 $.each(data, function( index, value ) {
-                    console.log(value)
+                    var options = { year: 'numeric', month: 'long', day: 'numeric' };
+                    var date = new Date(data[0].tanggal_jatuh_tempo);
+                    var now = new Date();
+                    now.setHours(0,0,0,0);
+
+                    var due_date = date.toLocaleDateString(lang+'-'+lang, options);
+                    var difference_in_ms = Math.abs(now - date);
+                    var difference_in_days = difference_in_ms / (1000 * 3600 * 24); 
+
                     $('#contract'+index).attr('href', '/'+lang+'/user/profile/detail-kontrak?contract_number='+value.contract_number);
                     $('#contract'+index).find('h5.category').text(value.category_desc);
                     $('#contract'+index).find('h5.product').text(value.product_desc);
                     $('#contract'+index).find('p.contract_number').text(value.contract_number);
                     $('#contract'+index).find('p.angsuran_perbulan').text(value.angsuran_perbulan);
-                    $('#contract'+index).find('p.tanggal_jatuh_tempo').text(value.tanggal_jatuh_tempo);
+                    $('#contract'+index).find('p.tanggal_jatuh_tempo').text(due_date);
 
                     if(value.product_desc == "Sertifikat Rumah"){
                         $('#contract'+index).find('.icon > img').attr('src', '/_default_upload_bucket/form_credit/Rumah.png');
@@ -327,13 +337,13 @@ function contractStatusList(lang, token) {
                         $('#contract'+index).find('.icon > img').attr('src', '/_default_upload_bucket/form_credit/D_alat%20berat.png');
                     }
                     
-                    //just example if status != telat
-                    if(value.contract_number == '21231213'){
+                    if(difference_in_days > 0){
+                        $('#contract'+index).find('.warning > span').text("Anda terlambat membayar "+ difference_in_days +" hari");
+                    }else{
                         $('#contract'+index).find('.status').css('visibility', 'hidden');
                         $('#contract'+index).find('.warning').css('visibility', 'hidden');
                     }
                 });
-                $('.contract-box:last').attr('href', '/'+lang+'/credit');
                 $('.contract-box:first').hide()
             }
         }
@@ -365,8 +375,8 @@ function applicationStatus(token, statusNumber, assignmentId) {
         },
 
         success: function (dataObj) {
-            var data = dataObj.result.data
             if (dataObj.success === true) {
+                var data = dataObj.result.data
                 if(data[0].status_id == 1){
                     $(statusNumber).find('div.fail-notif').css('visibility', 'hidden');
                 }else if(data[0].status_id == 2){
