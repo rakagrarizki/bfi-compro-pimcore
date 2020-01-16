@@ -16,22 +16,32 @@
           href="<?= \Pimcore\Tool::getHostUrl() . '/static/images/favicon/favicon.png' ?>"/>
     <link rel="shortcut icon" type="image/x-icon"
           href="<?= \Pimcore\Tool::getHostUrl() . '/static/images/favicon/favicon.ico' ?>" />
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
     <?php
-
+    $site = $this->document->getProperty("site");
     if ($this->document instanceof \Pimcore\Model\Document\Page) {
-        if ($this->document->getTitle()) {
-            // use the manually set title if available
-            $this->headTitle()->set($this->document->getTitle());
+        $slug = $this->getParam("slug");
+        $year = $this->getParam("year");
 
+        if(!$slug && !$year){
+            if ($this->document->getTitle()) {
+                // use the manually set title if available
+                $this->headTitle()->set($this->document->getTitle());
+                $this->headMeta()->appendName('title', $this->document->getTitle());
+
+            }
         }
-    }
-    if ($this->document == '/') {
-        $this->headTitle()->set($this->document->getTitle());
 
     }
 
-    if ($this->document->getDescription()) {
+
+//    if ($this->document == '/') {
+//        $this->headTitle()->set($this->document->getTitle());
+//
+//    }
+
+    if ($this->document instanceof Document\Page && $this->document->getDescription()) {
         // use the manually set description if available
         $this->headMeta()->appendName('description', $this->document->getDescription());
     }
@@ -67,14 +77,26 @@
 
 </head>
 <body>
+    <div id="overlay"></div>
+<?php if($site == "corporate"):?>
+    <?php echo $this->template('Includes/navigation-corporate.html.php') ?>
+<?php elseif($site == "user") :?>
+    <?php echo $this->template('Includes/navigation-dashboard.html.php') ?>
+<?php else :?>
 <?php echo $this->template('Includes/navigation.html.php', ['documentInitiator' => $this->document->getId()]) ?>
-
+<?php endif?>
 <div id="site-container">
     <?php $this->slots()->output('_content'); ?>
 </div>
 <!-- CONTAINER -->
 <!-- FOOTER -->
-<?= $this->inc("/" . $this->getLocale() . "/shared/includes/footer") ?>
+<?php if($site == "corporate"):?>
+    <?= $this->inc("/" . $this->getLocale() . "/shared/includes/footer-corporate") ?>
+<?php elseif ($site == "user"): ?>
+    <?= $this->inc("/" . $this->getLocale() . "/shared/includes/footer-dashboard") ?>
+<?php else: ?>
+    <?= $this->inc("/" . $this->getLocale() . "/shared/includes/footer") ?>
+<?php endif;?>
 <!-- FOOTER -->
 <?php $this->headScript()->prependFile('/static/js/Includes/homepage.js'); ?>
 <?php $this->headScript()->prependFile('/static/js/custom.js'); ?>

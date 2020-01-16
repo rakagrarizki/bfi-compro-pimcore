@@ -1,0 +1,17 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: salt
+ * Date: 03/12/18
+ * Time: 17:44
+ */
+
+namespace AppBundle\Document\Areabrick;
+
+class BfiBackWidget extends AbstractAreabrick
+{
+    public function hasEditTemplate()
+    {
+        return false;
+    }
+}

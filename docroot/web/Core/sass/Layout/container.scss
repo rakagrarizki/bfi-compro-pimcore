@@ -89,8 +89,8 @@ a {
 
 .title-wrapper {
     font-family: 'HelveticaNeue';
-    font-weight: 600;
-    font-size: 37px;
+    font-weight: bold;
+    font-size: 40px;
     color:#04559F;
     margin-top:60px;
     padding:0 8%;
@@ -108,7 +108,7 @@ a {
     }
 }
 .paragraf-title {
-    font-size: 1.45em;
+    font-size: 20px;
     font-family: 'HelveticaNeue';
     color:#565656;
     @include breakpoint(mobile){
@@ -158,5 +158,11 @@ a {
 
     strong{
         color:#04559F;
+    }
+}
+
+@media (min-width: 1200px){
+    .container {
+        width: 970px!important;
     }
 }

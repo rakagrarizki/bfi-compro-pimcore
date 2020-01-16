@@ -1,6 +1,7 @@
 .form-body--credit {
     width: calc(0.422 * 100%);
     margin: auto;
+    margin-bottom: 40px;
 
     @include breakpoint(mobile) {
         width: 100%;
@@ -13,7 +14,8 @@
     }
 
     @include breakpoint(desktop) {
-        width: calc(0.42 * 100%);
+        // width: calc(0.42 * 100%);
+        width: 100%;
     }
 
     h2 {
@@ -41,7 +43,9 @@
         }
     }
 
-
+    .title-input{
+        font-size: 22px;
+    }
 }
 
 .success-wrapper {
@@ -79,6 +83,43 @@
     }
 }
 
+.contact-us {
+    &.success-wrapper {
+        display : inherit;
+        padding : 150px 0;
+        clear: both;
+    
+        .img-wrap {
+            text-align: center;
+    
+            .icon-thank-page {
+                width: 120px;
+                height: 91px;
+            }
+        }
+    
+        .text-wrap {
+            padding: 0 15px;
+        }
+    
+        img {
+            margin: auto;
+        }
+    
+        h3 {
+            font-family: 'HelveticaNeue';
+            font-size: 2em;
+            font-weight: 600;
+            color: $grey-dark-color;
+        }
+    
+        p {
+            font-family: 'HelveticaNeue';
+            font-size: 1.2em;
+        }
+    }
+}
+
 .tab-content>.tab-pane {
     clear: both;
 }
@@ -87,9 +128,15 @@
     margin: 30px 0;
     font-family: 'HelveticaNeue';
 
+    .content{
+        width: 100%;
+        margin: 0;
+    }
+
     .form-body--credit-simulasi {
         width: 100%;
         margin: auto;
+        margin-bottom: 40px;
 
         @include breakpoint(mobile) {
             width: auto;
@@ -126,6 +173,7 @@
                 font-size: 14px;
                 width: 140px;
                 height: 50px;
+                text-transform: uppercase;
 
                 @include breakpoint(mobile) {
                     width: 35px;
@@ -212,6 +260,150 @@
                                     width: 30%;
                                     position: relative;
                                     padding-left: 28px;
+
+                                    .separate-column{
+                                        padding-bottom: 30px;
+                                    }
+
+                                    @include breakpoint(mobile) {
+                                        width: 50%;
+
+                                        &.short {
+                                            width: 45%;
+                                        }
+
+                                        &.medium {
+                                            width: 55%;
+                                        }
+
+                                        &.long {
+                                            width: 60%;
+                                        }
+                                    }
+
+                                    &:after {
+                                        content: ':';
+                                        position: absolute;
+                                        top: 0;
+                                        right: 10px;
+
+                                        @include breakpoint(mobile) {
+                                            right: 5px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .form-group{
+                width: 100%;
+            }
+        }
+
+        .biaya-agunan-mesin {
+
+            position: relative;
+            padding: 20px;
+
+            .cta-primary {
+                background-color: #F0F0F0;
+                border: 1px solid #F0F0F0;
+                font-size: 14px;
+                width: 140px;
+                height: 50px;
+                text-transform: uppercase;
+
+                @include breakpoint(mobile) {
+                    width: 35px;
+                    height: 35px;
+                    padding: 0;
+                }
+
+                b {
+                    color: black;
+                    opacity: 0.8;
+                    margin-left: 10px;
+
+                    @include breakpoint(mobile) {
+                        display: none;
+                    }
+                }
+            }
+
+            &:after {
+                content: '';
+                position: absolute;
+                left: 0;
+                right: 0;
+                height: 2px;
+                margin-left: auto;
+                margin-right: auto;
+                background-color: $grey-light;
+
+                @include breakpoint(mobile) {
+                    left: 20px;
+                    right: 20px;
+                }
+            }
+
+            &:last-child {
+                &:after {
+                    display: none;
+                }
+            }
+
+            .cont-agunan {
+                margin-bottom: 20px;
+
+                .title-agunan {
+                    width: 100%;
+                    font-size: 22px;
+                    font-family: 'HelveticaNeue';
+                    font-weight: 600;
+
+                    @include breakpoint(mobile) {
+                        margin-right: 100px;
+                        font-size: 14pt;
+                    }
+                }
+
+                .button-angsur {
+                    position: absolute;
+                    right: 0;
+                    top: 20px;
+                }
+
+                table {
+                    width: 100%;
+                    font-size: 18px;
+
+
+                    @include breakpoint(mobile) {
+                        font-size: 0.8em;
+                    }
+
+                    tbody {
+                        tr {
+                            line-height: 2;
+                            vertical-align: top;
+
+                            td {
+                                font-size: 1.125rem;
+
+                                @include breakpoint(mobile) {
+                                    font-size: .8rem;
+                                }
+
+                                &:first-child {
+                                    width: 30%;
+                                    position: relative;
+                                    padding-left: 28px;
+
+                                    .separate-column{
+                                        padding-bottom: 30px;
+                                    }
 
                                     @include breakpoint(mobile) {
                                         width: 50%;
@@ -460,7 +652,7 @@
             .total-estimate {
                 padding: 50px;
                 background-color: #EFEFEF;
-                margin-top: 10px;
+                // margin-top: 10px;
                 text-align: left;
                 margin-bottom: 25px;
 
@@ -501,11 +693,16 @@
                     }
                 }
             }
+            .total-estimate-travel{
+                margin-top: 0px;
+            }
         }
     }
 
     .form-group {
         position: relative;
+        width: 400px;
+        margin: 0 auto 20px auto;
         //margin-bottom:35px;
 
         .c-custom-select.jcf-hidden {
@@ -513,7 +710,7 @@
                 border: 1px solid red;
             }
         }
-
+        
         label {
             font-family: 'HelveticaNeue';
             font-size: 12px;
@@ -536,6 +733,213 @@
                 font-size: 14px;
                 margin: 0;
                 color: $red-color;
+            }
+        }
+
+        .radio-group{
+            overflow: hidden;
+
+            .radio-inside{
+                width: 50%;
+                float: left;
+
+                &.full {
+                  width: 100%;
+                }
+
+                .jcf-radio {
+                  vertical-align: top;
+                  margin-top: 5px;
+                  width: 20px;
+                  height: 20px;
+                }
+
+                .jcf-radio.jcf-checked span {
+                  top: 2px;
+                  left: 2px;
+                  right: 2px;
+                  bottom: 2px;
+                }
+
+                label{
+                    color: #8d8e8f;
+                    position: relative;
+                    display: inline-block;
+                    width: calc( 100% - 28px );
+                    padding-left: 5px;
+                    font-size: 18px;
+                    font-weight: normal;
+                }
+
+                /* The container */
+                .container {
+                    display: block;
+                    position: relative;
+                    padding-left: 35px;
+                    margin-bottom: 12px;
+                    letter-spacing: 0px;
+                    font-weight: 500;
+                    cursor: pointer;
+                    font-size: 22px;
+                    -webkit-user-select: none;
+                    -moz-user-select: none;
+                    -ms-user-select: none;
+                    user-select: none;
+                }
+                
+                /* Hide the browser's default radio button */
+                .container input {
+                    position: absolute;
+                    opacity: 0;
+                    cursor: pointer;
+                }
+                
+                /* Create a custom radio button */
+                .checkmark {
+                    position: absolute;
+                    top: 10px;
+                    left: 0;
+                    height: 25px;
+                    width: 25px;
+                    background-color: #eee;
+                    border-radius: 50%;
+                }
+                
+                /* On mouse-over, add a grey background color */
+                .container:hover input ~ .checkmark {
+                    background-color: #ccc;
+                }
+                
+                /* When the radio button is checked, add a blue background */
+                .container input:checked ~ .checkmark {
+                    background-color: #8d8e8f;
+                }
+                
+                /* Create the indicator (the dot/circle - hidden when not checked) */
+                .checkmark:after {
+                    content: "";
+                    position: absolute;
+                    display: none;
+                }
+                
+                /* Show the indicator (dot/circle) when checked */
+                .container input:checked ~ .checkmark:after {
+                    display: block;
+                }
+                
+                /* Style the indicator (dot/circle) */
+                .container .checkmark:after {
+                    top: 9px;
+                    left: 9px;
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 50%;
+                    background: white;
+                }
+            }
+        }
+
+        .checkbox-group{
+            overflow: hidden;
+
+            .checkbox-inside{
+                width: 50%;
+                float: left;
+
+                &.full {
+                  width: 100%;
+                }
+
+                .jcf-checkbox {
+                  vertical-align: top;
+                  margin-top: 8px;
+                  width: 20px;
+                  height: 20px;
+                  overflow: unset;
+                }
+
+                .jcf-checkbox.jcf-checked span {
+                  display: block;
+                  width: 20px;
+                  height: 10px;
+                  margin: -10px 0 0 -7px;
+                }
+
+                label{
+                    color: #8d8e8f;
+                    position: relative;
+                    display: inline-block;
+                    width: calc( 100% - 28px );
+                    padding-left: 5px;
+                    font-size: 18px;
+                    font-weight: normal;
+                }
+
+                /* The container */
+                .container {
+                    display: block;
+                    position: relative;
+                    padding-left: 35px;
+                    margin-bottom: 12px;
+                    letter-spacing: 0px;
+                    font-weight: 500;
+                    cursor: pointer;
+                    font-size: 22px;
+                    -webkit-user-select: none;
+                    -moz-user-select: none;
+                    -ms-user-select: none;
+                    user-select: none;
+                }
+                
+                /* Hide the browser's default radio button */
+                .container input {
+                    position: absolute;
+                    opacity: 0;
+                    cursor: pointer;
+                }
+                
+                /* Create a custom radio button */
+                .checkmark {
+                    position: absolute;
+                    top: 10px;
+                    left: 0;
+                    height: 25px;
+                    width: 25px;
+                    background-color: #eee;
+                    border-radius: 50%;
+                }
+                
+                /* On mouse-over, add a grey background color */
+                .container:hover input ~ .checkmark {
+                    background-color: #ccc;
+                }
+                
+                /* When the radio button is checked, add a blue background */
+                .container input:checked ~ .checkmark {
+                    background-color: #8d8e8f;
+                }
+                
+                /* Create the indicator (the dot/circle - hidden when not checked) */
+                .checkmark:after {
+                    content: "";
+                    position: absolute;
+                    display: none;
+                }
+                
+                /* Show the indicator (dot/circle) when checked */
+                .container input:checked ~ .checkmark:after {
+                    display: block;
+                }
+                
+                /* Style the indicator (dot/circle) */
+                .container .checkmark:after {
+                    top: 9px;
+                    left: 9px;
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 50%;
+                    background: white;
+                }
             }
         }
 
@@ -687,6 +1091,71 @@
                     left: 35%;
                 }
             }
+
+            &.jcf-radio {
+                display: inline-block;
+                vertical-align: top;
+                width: 16px;
+
+                span {
+                    border-color: #7AC143 !important;
+                    border-width: 0 0 3px 3px;
+                }
+
+                &.jcf-checked span {
+                    height: 10px;
+                    width: 25px;
+                    top: -5%;
+                    left: 35%;
+                }
+            }
+        }
+
+        &.chk-label {
+          cursor: pointer;
+          >span {
+            display: block;
+            margin-top: 5px;
+            font-size: 12px;
+            top: calc(100% - 5px) !important;
+            width: 100%;
+
+            &.select2-container {
+                width: 100% !important;
+            }
+
+            &.jcf-checkbox {
+                display: inline-block;
+                vertical-align: top;
+                width: 25px;
+                height: 25px;
+
+                span {
+                    border-color: #7AC143 !important;
+                    border-width: 0 0 3px 3px;
+                }
+
+                &.jcf-checked span {
+                    height: 13px;
+                    width: 33px;
+                    top: 0%;
+                    left: 22%;
+                    border-color: #565656 !important;
+                }
+            }
+          }
+
+          label {
+            position: relative;
+            display: inline-block;
+            width: calc( 100% - 35px );
+            font-family: 'HelveticaNeue';
+            font-size: 16px;
+            font-weight: normal;
+            padding-left: 0;
+            color: #565656;
+            letter-spacing: 0;
+          }
         }
 
         .jcf-select {
@@ -850,7 +1319,7 @@
     .select-wrapper {
         position: relative;
 
-        &:after {
+        &.inputsimulasi:after {
             position: absolute;
             content: '\f107';
             font-family: "FontAwesome";
@@ -1141,7 +1610,7 @@
     }
 }
 
-#basic-addon1 {
+#basic-addon1, #basic-addon2 {
     display: table-cell !important;
 }
 
@@ -1157,15 +1626,447 @@
 
 .select2-selection:after {
     position: absolute;
-    content: '\f107';
+    content: '';
     font-family: "FontAwesome";
     right: 15px;
     top: 2px;
     font-size: 2.5em;
-    opacity: 0;
+    opacity: .4;
     pointer-events: none;
+}
+
+.select2-selection{
+    background-image: url("/static/images/down_arrow.png");
+    background-position: 95% center;
+    background-size: 20px 12px;
+}
+
+.select2-container--open{
+    .select2-selection{
+        background-image: url("/static/images/up_arrow.png");
+    }
 }
 
 select::-ms-expand {
     display: none;
+}
+
+.form-group {
+    .input-group.date {
+        width: 100%;
+
+        label {
+        z-index: 4;
+        }
+
+        .form-control {
+        width: calc( 100% - 60px );
+        border-right: 0;
+        // padding-top: 20px !important;
+        // padding-bottom: 20px !important;
+        }
+
+        button.ui-datepicker-trigger {
+        width: 60px;
+        height: 70px;
+        background: transparent url("/static/images/calendar.png") center center no-repeat;
+        border-top: 1px #ccc solid;
+        border-bottom: 1px #ccc solid;
+        border-right: 1px #ccc solid;
+        box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+        outline: none;
+        }
+    }
+}
+
+.form-contact {
+    .form-group {
+        textarea.form-control {
+            padding-top : 30px;
+        }
+        
+        .form-control {
+            @include breakpoint(tablet){
+                font-size: 16px;
+            }
+
+            @include breakpoint(mobile){
+                font-size: 12px;
+            }
+        }
+    }
+
+    .select2-container--default .select2-selection--single .select2-selection__rendered {
+        line-height : 1.5;
+        padding-left: 0;
+    }
+    
+    .select2-container--default .select2-selection--single .select2-selection__arrow {
+        display : none;
+    }
+    
+    .select-wrapper > label {
+        visibility: hidden;
+    }
+
+    .captcha {
+        text-align : center;
+
+        .g-recaptcha {
+            @include breakpoint(mobile){
+                transform:scale(0.75);
+                -webkit-transform:scale(0.75);
+                transform-origin:0 0;
+                -webkit-transform-origin:0 0;
+            }
+
+            & > div[style] {
+                width : inherit !important;
+
+                @include breakpoint(mobile){
+                    width: 100vw !important;
+                }
+            }
+        }
+
+    }
+
+    .customer-type {
+        &.form-group > label {
+            font-family: 'HelveticaNeue';
+            font-size: 16px;
+            font-weight: normal;
+            color: #565656;
+            position: relative;
+            display: block;
+            padding-left: 0;
+        }
+
+        .inputform {
+            padding: 5px;
+
+            input[type='radio'] {
+                transform: scale(1.5);
+                margin-right: 15px;
+
+                @include breakpoint(mobile) {
+                    margin-right: 5px;
+                }
+            }
+
+            .jcf-radio span {
+                background : #F9991C;
+            }
+        }
+
+        &.form-group .ipt-radio {
+            display: table-cell;
+            width: 1%;
+
+            label {
+                display : contents;
+                color : #04559F;
+                font-size : 18px;
+
+                @include breakpoint(tablet) {
+                    font-size: 14px;
+                }
+
+                @include breakpoint(mobile) {
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+}
+
+.upload-image {
+  &.form-group > label {
+    font-family: 'HelveticaNeue';
+    font-size: 16px;
+    font-weight: normal;
+    color: #565656;
+    position: relative;
+    display: block;
+    padding-left: 0;
+  }
+}
+
+.upload-file {
+
+  img { max-width: 100%;display: none;margin-bottom: 15px;  }
+
+  .upload-btn {
+    position: relative;
+    vertical-align: middle;
+    overflow: hidden;
+
+    b { 
+      display: inline-block; 
+      vertical-align: middle;
+      line-height: normal;
+      width: calc( 100% - 105px );
+      padding-left: 10px;
+    }
+
+    button {
+      width: 100px;
+      height: 50px;
+      padding: 10px;
+      line-height: 30px;
+      background: #04559f;
+      outline: none;
+      font-family: 'HelveticaNeue';
+      font-size: 16px;
+      font-weight: bold;
+      color: #FFF;
+    }
+
+    .file-input { position: absolute; top: 100%; }
+
+  }
+
+}
+
+.form-get--credit .form-body--credit-simulasi .form-group {
+  .ipt-radio {
+    display: table-cell;
+    width: 1%;
+    label {
+      color: #333;
+      font-size: 18px;
+    }
+  }
+}
+
+.mesin-page{
+    .steps{
+        li{
+            width: 20%!important;
+        }
+    }
+    .mesin-down-payment{
+        .input-group-addon{
+            display: table-cell;
+        }
+    }
+    .machine-funding{
+        padding-bottom: 120px;
+    }
+    .machine-data{
+        .form-group{
+            input{
+                width: 100%!important;
+            }
+        }
+    }
+}
+
+.wizard {
+
+  >.steps {
+
+    > ul {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      >li {
+        float: unset;
+        width: 25%;
+        &.done{
+            opacity: .5;
+        }
+      }
+    }
+
+    a, .done a, .current a {
+      overflow: hidden;
+      // display: inline-flex;
+
+      &, &:hover, &:active {
+        color: #000;
+        font-weight: bold;
+        background: transparent;
+      }
+    }
+
+    a {
+      span.number {
+        display: inline-block;
+        vertical-align: middle;
+        min-width: 30px;
+        min-height: 30px;
+        line-height: 30px;
+        background-color: #dddddd;
+        // float: left;
+        text-align: center;
+        margin-right: 5px;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+        font-size: 12px;
+        color: white;
+
+        i {
+          display: none;
+        }
+      }
+
+      p {
+        width: calc( 100% - 42px );
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 1.3;
+        // float: left;
+        // display: block;
+        color: #565656;
+        margin: 0;
+        font-size: 16px;
+      }
+    }
+
+    .done a, .current a {
+      span.number {
+        background-color: #F9991C;
+        color: #fff;
+      }
+    }
+
+    .done a {
+      span.number {
+        i {
+          display: inline-block;
+        }
+        b {
+          display: none;
+        }
+      }
+    }
+
+    .disabled a {
+      &, &:hover, &:active {
+        color: #000;
+        font-weight: normal;
+        background: transparent;
+      }
+    }
+
+
+  }
+
+  >.actions {
+    ul {
+      display: block;
+
+      li {
+        float: right;
+
+        &:first-child {
+          float: left;
+          a:before {
+            content: '\f104';
+            font-family: FontAwesome;
+            position: absolute;
+            left: 20px;
+            right: auto;
+            -webkit-transition: all cubic-bezier(0.455, 0.03, 0.515, 0.955) 0.5s;
+            -o-transition: all cubic-bezier(0.455, 0.03, 0.515, 0.955) 0.5s;
+            -moz-transition: all cubic-bezier(0.455, 0.03, 0.515, 0.955) 0.5s;
+            transition: all cubic-bezier(0.455, 0.03, 0.515, 0.955) 0.5s;
+          }
+        }
+
+        a {
+          position: relative;
+          border-radius: 0;
+          border: none !important;
+          text-transform: uppercase;
+
+          &, &:visited, &:active {
+            height: 50px;
+            width: 185px;
+            padding: 13px 0px !important;
+            background-color: #F8991D;
+            border: 1px solid #F8991D;
+            font-weight: bold;
+            font-size: 16px;
+            text-align: center;
+          }
+
+          &:hover {
+            background-color: #F8991D;
+            border-radius: 0;
+            -webkit-border-radius: 0;
+            -moz-border-radius: 0;
+            -ms-border-radius: 0;
+            -o-border-radius: 0;
+          }
+
+          &:before {
+            content: '\f105';
+            font-family: FontAwesome;
+            position: absolute;
+            left: auto;
+            right: 20px;
+            -webkit-transition: all cubic-bezier(0.455, 0.03, 0.515, 0.955) 0.5s;
+            -o-transition: all cubic-bezier(0.455, 0.03, 0.515, 0.955) 0.5s;
+            -moz-transition: all cubic-bezier(0.455, 0.03, 0.515, 0.955) 0.5s;
+            transition: all cubic-bezier(0.455, 0.03, 0.515, 0.955) 0.5s;
+          }
+        }
+
+        &.disabled {
+          display: none;
+          a {
+            border-color: #aaa;
+          }
+        }
+
+        &.inactive {
+          a {
+            &, &:visited, &:active {
+              background: #eee;
+              border-color: #aaa;
+              color: #aaa;
+            }
+          }
+        }
+
+      }
+    }
+  }
+
+}
+
+#showChannel {
+  list-style: none !important;
+  li {
+    padding-left: 30px;
+    position: relative;
+
+    &:after {
+      content: "";
+      width: 15px;
+      height: 15px;
+      background: #6c6c6c;
+      position: absolute;
+      left: 0px;
+      top: 10px;
+    }
+  }
+
+}
+
+.ui-datepicker{
+    z-index: 5 !important;
+}
+
+.select2-search__field{
+    &::placeholder{
+        font-style: italic;
+    }
+}
+
+.absolutebutcalc{
+    width: 100%;
 }

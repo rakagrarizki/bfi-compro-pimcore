@@ -7,7 +7,7 @@ use Pimcore\Model\Document;
 <div class="top-nav--mobille hidden-md">
     <div class="container">
         <div class="row top-nav">
-            
+
             <?= $this->inc("/" . $this->getLocale() . "/shared/includes/sub-navigation-mobile") ?>
             <div class="col-xs-4 text-right">
                 <?php echo $this->template("Includes/mobile-language.html.php") ?>
@@ -48,6 +48,9 @@ use Pimcore\Model\Document;
                 if (strpos($page->getUri(), 'branch-office') !== false) {
                     continue;
                 }
+                if($page->getHref() == "/".$this->getLocale()."/corporate"){
+                    break;
+                }
                 if ($hasChildren && strpos($page->getUri(), '#product') !== false) {
                     ?>
                     <li class="dropdown">
@@ -65,9 +68,23 @@ use Pimcore\Model\Document;
                                 if ($hasGrandChildren) {
                                     foreach ($child->getPages() as $grandChild) {
                                         ?>
+                                        <?php if($grandChild->getDocumentType() != "link"):?>
                                         <li><a href="<?= $grandChild->getHref() ?>"><?= $grandChild->getLabel() ?></a>
                                         </li>
+                                        <?php else: ?>
+                                            <li><a href="#" class="title-dropdown"><?= $grandChild->getLabel() ?></a></li>
+                                        <?php endif;?>
                                         <?php
+                                        $hasGreatGrandChild = $grandChild->hasPages();
+                                        if ($hasGreatGrandChild) {
+                                            foreach ($grandChild->getPages() as $greatGrandChild) { ?>
+                                                <li>
+                                                    <a class="<?php echo $greatGrandChild->getActive() ? 'active' : '' ?>" href="<?= $greatGrandChild->getHref() ?>"><?= $greatGrandChild->getLabel() ?></a>
+                                                </li>
+                                        <?php
+                                            }
+                                        }
+
                                     }
                                 }
                                 ?>

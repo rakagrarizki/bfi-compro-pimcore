@@ -40,20 +40,12 @@
     &-orange { 
         position: relative;
         font-family: 'HelveticaNeue';
-        background-color: #F8991D;
-        color: #fff;
-        padding-right: 30px;
+        background-color: $orange-color;
+        color: $white;
 
-        &::after {
-            position: absolute;
-            font-family: 'FontAwesome';
-            content: "\f105";
-            right: 15px;
-            top: 9px;
-        }
 
         &:hover {
-            background-color: #d88417;
+            background-color: $orange-color;
             color: #fff;
         }
     }
@@ -224,3 +216,99 @@
 .back{
     float: left;
 }
+
+.pimcore_area_bfi-back-widget {
+    background-color : #F4F4F4;
+    
+    .btn-back  {
+        padding-top : 5px;
+        padding-left : 30px;
+    
+        @include breakpoint(mobile){
+            padding-left: 25px;
+        }
+        
+        .text-btn {
+            color : #565656;
+            font-size : 14px;
+            font-weight : 600;
+            margin-left : 15px;
+    
+            @include breakpoint(mobile){
+                margin-left : 10px;
+            }
+    
+            &:before {
+                content: '\f104';
+                font-family: FontAwesome;
+                position: absolute;
+                left: -1px;
+                top: -10px;
+                font-size: 25px;
+                opacity: 0.5;
+            }
+
+            &:hover {
+                color: #04559F;
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+.share {
+    font-weight: 300;
+    font-size: 14px;
+    margin : 30px 15px 70px 15px;
+    display: flex;
+    justify-content: flex-start;
+
+    @include breakpoint(mobile) {
+        margin: 0 5px;
+    }
+    
+    > div {
+        margin-right : 20px;
+    }
+
+    .share-text {
+        padding : 5px;
+        color: #565656;
+
+        @include breakpoint(mobile) {
+            margin-right: 5px;
+        }
+    }
+    
+    .fa {
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        text-decoration: none;
+    }
+    
+    .icon-share {
+        font-size : 18px;
+        background-color : #C9C9C9;
+
+        @include breakpoint(mobile) {
+            margin-right: 15px;
+        }
+        
+        &:hover {
+            background-color : #F9991C;
+        }
+
+        a > span {
+            width: 30px;
+            height: 30px;
+            color : #FFFFFF;
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
+
+

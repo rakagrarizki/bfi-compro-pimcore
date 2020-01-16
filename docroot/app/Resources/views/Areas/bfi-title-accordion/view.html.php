@@ -1,7 +1,7 @@
 <div>
     <div id="accordion-pembiayaan" class="accordion">
         <div class="sect-title text-center">
-            <h2 class="margin-top-10"><?= $this->input('title');?></h2>
+            <h2 class=""><?= $this->input('title');?></h2>
             <p><?= $this->textarea('text'); ?></p>
         </div>
 

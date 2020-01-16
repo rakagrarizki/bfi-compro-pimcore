@@ -15,23 +15,34 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Pimcore\Bundle\AdminBundle\HttpFoundation\JsonResponse;
 use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag;
+use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class ServiceController extends FrontendController
 {
+    public function getToken()
+    {
+        $token = $this->get('session')->get('token');
+        return $token;
+    }
+
     public function defaultAction(Request $request)
     {
-
     }
 
     public function registerNewsletterAction(TranslatorInterface $translator, Request $request)
     {
         $lang = htmlentities($request->get('lang'));
         $param = [];
-        $param["email"] = htmlentities($request->get('email'));
+        $param["submission_id"] = htmlentities($request->get('submission_id'));
+        $param["is_news_letter"] = htmlentities($request->get('is_news_letter'));
 
-        $url = WebsiteSetting::getByName('URL_NEWSLETTER')->getData();
+        $host = WebsiteSetting::getByName("HOST")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_NEWSLETTER')->getData();
 
-        if($lang == "en"){
+        if ($lang == "en") {
             $emailRegistered = 'Your Email Address had been Registered / Service down';
             $emailSuccess = 'Success';
             $emailFailed = 'Failed to Register your Email Address to Newsletter';
@@ -40,10 +51,10 @@ class ServiceController extends FrontendController
             $emailSuccess = 'Sukses';
             $emailFailed = 'Gagal Mendaftarkan email newslettter';
         }
-//        $translation = $translator->trans("email",[],'',$lang);
+        //        $translation = $translator->trans("email",[],'',$lang);
 
-//        $request->setLocale($lang);
-//        dump($this->get("translator")->trans("email-had-been-registered"));exit;
+        //        $request->setLocale($lang);
+        //        dump($this->get("translator")->trans("email-had-been-registered"));exit;
         $sendAPI = new SendApi();
 
         try {
@@ -55,16 +66,15 @@ class ServiceController extends FrontendController
             ]);
         }
 
-        if(is_array($data))
-        {
-            if($data->code == "413"){
+        if (is_array($data)) {
+            if ($data->code == "413") {
                 return new JsonResponse([
                     'success' => "0",
                     'message' => $data->message
                 ]);
             }
-        }else{
-            if($data == true){
+        } else {
+            if ($data == true) {
                 return new JsonResponse([
                     'success' => "1",
                     'message' => $emailSuccess
@@ -126,7 +136,7 @@ class ServiceController extends FrontendController
     {
         $id = htmlentities($request->get('id'));
 
-        if($id == null){
+        if ($id == null) {
             return new JsonResponse([
                 'success' => false,
                 'message' => "must include id"
@@ -134,7 +144,7 @@ class ServiceController extends FrontendController
         }
 
         $data = new City\Listing();
-        $data->setCondition('ProvinceCode = '.$id);
+        $data->setCondition('ProvinceCode = :id', ["id" => $id]);
         $data->setOrderKey("Name");
         $data->setOrder("ASC");
         $maps = [];
@@ -153,21 +163,21 @@ class ServiceController extends FrontendController
     }
 
     /**
-     * @Route("/service/kecamatan/listJson")
+     * @Route("/service/kecamatan/listJson")0
     @Method({"GET"})
     @return \Symfony\Component\HttpFoundation\JsonResponse
      */
     public function kecamatanListJsonAction(Request $request)
     {
         $id = htmlentities($request->get('id'));
-        if($id == null){
+        if ($id == null) {
             return new JsonResponse([
                 'success' => false,
                 'message' => "must include id"
             ]);
         }
         $data = new Kecamatan\Listing();
-        $data->setCondition('CityCode = '.$id);
+        $data->setCondition('CityCode = ?', $id);
         $data->setOrderKey("Name");
         $data->setOrder("ASC");
         $maps = [];
@@ -193,14 +203,14 @@ class ServiceController extends FrontendController
     public function kelurahanListJsonAction(Request $request)
     {
         $id = htmlentities($request->get('id'));
-        if($id == null){
+        if ($id == null) {
             return new JsonResponse([
                 'success' => false,
                 'message' => "must include id"
             ]);
         }
         $data = new Kelurahan\Listing();
-        $data->setCondition('KecamatanCode = '.$id);
+        $data->setCondition('KecamatanCode = ?', $id);
         $data->setOrderKey("Name");
         $data->setOrder("ASC");
         $maps = [];
@@ -208,10 +218,9 @@ class ServiceController extends FrontendController
             foreach ($data as $item) {
                 $temp['name'] = $item->getName();
                 $temp['id'] = $item->getCode();
-                if($item->getPostCode() == null)
-                {
+                if ($item->getPostCode() == null) {
                     $postcode = "";
-                }else{
+                } else {
                     $postcode = $item->getPostCode();
                 }
                 $temp['postcode'] = $postcode;
@@ -224,6 +233,4 @@ class ServiceController extends FrontendController
             'result' => $maps
         ]);
     }
-    
-    
 }

@@ -25,7 +25,7 @@
                         <div class="desc-slide">
                             <div class="container">
                                 <div class="row">
-                                    <div class="col-md-10 col-md-offset-1">
+                                    <div class="col-xs-12">
                                         <div class="desc-cont">
                                             <h3><?= $this->input('title');?></h3>
                                             <h1><?= $this->input('text'); ?></h1>

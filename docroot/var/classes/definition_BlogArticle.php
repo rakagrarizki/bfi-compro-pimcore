@@ -1,20 +1,23 @@
 <?php 
 
 /** 
-* Generated at: 2018-12-05T12:28:54+01:00
+* Generated at: 2019-10-16T10:04:33+02:00
 * Inheritance: no
 * Variants: no
 * Changed by: admin (2)
-* IP: 127.0.0.1
+* IP: ::1
 
 
 Fields Summary: 
 - Slug [input]
+- BlogCategory [href]
 - Date [date]
 - localizedfields [localizedfields]
 -- Title [input]
 -- Content [wysiwyg]
 - Image [image]
+- Views [numeric]
+- Source [input]
 */ 
 
 
@@ -23,7 +26,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'BlogArticle',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1544009334,
+   'modificationDate' => 1571213068,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -95,6 +98,51 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'visibleSearch' => false,
           )),
           1 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Href::__set_state(array(
+             'fieldtype' => 'href',
+             'width' => '',
+             'assetUploadPath' => '',
+             'relationType' => true,
+             'queryColumnType' => 
+            array (
+              'id' => 'int(11)',
+              'type' => 'enum(\'document\',\'asset\',\'object\')',
+            ),
+             'phpdocType' => '\\Pimcore\\Model\\Document\\Page | \\Pimcore\\Model\\Document\\Snippet | \\Pimcore\\Model\\Document | \\Pimcore\\Model\\Asset | \\Pimcore\\Model\\DataObject\\AbstractObject',
+             'objectsAllowed' => true,
+             'assetsAllowed' => false,
+             'assetTypes' => 
+            array (
+            ),
+             'documentsAllowed' => false,
+             'documentTypes' => 
+            array (
+            ),
+             'lazyLoading' => true,
+             'classes' => 
+            array (
+              0 => 
+              array (
+                'classes' => 'BlogCategory',
+              ),
+            ),
+             'pathFormatterClass' => '',
+             'name' => 'BlogCategory',
+             'title' => 'BlogCategory',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'columnType' => NULL,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+          )),
+          2 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\Date::__set_state(array(
              'fieldtype' => 'date',
              'queryColumnType' => 'bigint(20)',
@@ -117,7 +165,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'visibleGridView' => false,
              'visibleSearch' => false,
           )),
-          2 => 
+          3 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\Localizedfields::__set_state(array(
              'fieldtype' => 'localizedfields',
              'phpdocType' => '\\Pimcore\\Model\\DataObject\\Localizedfield',
@@ -163,7 +211,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'mandatory' => false,
                  'noteditable' => false,
                  'index' => false,
-                 'locked' => NULL,
+                 'locked' => false,
                  'style' => '',
                  'permissions' => NULL,
                  'datatype' => 'data',
@@ -200,7 +248,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'visibleGridView' => true,
              'visibleSearch' => true,
           )),
-          3 => 
+          4 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\Image::__set_state(array(
              'fieldtype' => 'image',
              'width' => '',
@@ -211,6 +259,61 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'phpdocType' => '\\Pimcore\\Model\\Asset\\Image',
              'name' => 'Image',
              'title' => 'Image',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+          )),
+          5 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
+             'fieldtype' => 'numeric',
+             'width' => '',
+             'defaultValue' => NULL,
+             'queryColumnType' => 'double',
+             'columnType' => 'double',
+             'phpdocType' => 'float',
+             'integer' => false,
+             'unsigned' => false,
+             'minValue' => NULL,
+             'maxValue' => NULL,
+             'unique' => false,
+             'decimalSize' => NULL,
+             'decimalPrecision' => NULL,
+             'name' => 'Views',
+             'title' => 'Views',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+          )),
+          6 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+             'fieldtype' => 'input',
+             'width' => NULL,
+             'queryColumnType' => 'varchar',
+             'columnType' => 'varchar',
+             'columnLength' => 190,
+             'phpdocType' => 'string',
+             'regex' => '',
+             'unique' => false,
+             'name' => 'Source',
+             'title' => 'Source',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,

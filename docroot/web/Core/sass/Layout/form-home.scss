@@ -1,6 +1,7 @@
 .cont-credit {
     text-align: center;
-    padding: 90px 50px 50px;
+    margin-bottom: 60px;
+    // padding: 90px 50px 50px;
     @include breakpoint(mobile){
         padding: 20px 15px;
     }
@@ -21,14 +22,32 @@
         }
     }
 
+    .title-wrapper{
+        margin-top: 50px;
+    }
+    .paragraf-title{
+        margin: 0;
+    }
+
     .list-credit {
-        padding: 40px 60px 80px 60px;
+        padding: 50px 60px 0 60px;
         @include breakpoint(mobile){
             padding: 0;
         }
 
         @include breakpoint(tablet){
             padding: 0;
+        }
+
+        h3 {
+          font-family: 'HelveticaNeue';
+          font-weight: 600;
+          font-size: 20px;
+          color: #04559F;
+          margin-top: 20px;
+          padding: 0 15px;
+          text-align: left;
+          margin-bottom: 20px;
         }
         
         .list-credit--icon {

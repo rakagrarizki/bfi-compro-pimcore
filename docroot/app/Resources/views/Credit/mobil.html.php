@@ -58,7 +58,7 @@ $this->extend('layout-credit.html.php');
                         <form action="#" id="getCredit" method="POST" class="form-get--credit" role="form">
                             <input type="hidden" id="jenis_form" name="jenis_form" value="MOBIL">
                             <div class="tab-content">
-                                <div id="menu1" class="tab-pane fade in active form-group">
+                                <div id="menu1" class="tab-pane fade in active">
                                     <div class="form-body--credit">
                                         <div class="text-head">
                                             <h2 class="text-center"><?= $this->translate('data-name')?></h2>
@@ -80,7 +80,7 @@ $this->extend('layout-credit.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label for="no_handphone"><?= $this->translate('form-hp')?></label>
-                                            <input type="text" class="form-control formPhoneNumber" name="no_handphone" id="no_handphone" maxlength="13"
+                                            <input type="tel" pattern="\d*" class="form-control formPhoneNumber" name="no_handphone" id="no_handphone" maxlength="13"
                                                    placeholder="<?= $this->translate('placeholder-hp')?>">
                                             <div class="error-wrap"></div>
                                         </div>
@@ -108,7 +108,7 @@ $this->extend('layout-credit.html.php');
                                     </div>
 
                                 </div>
-                                <div id="menu2" class="tab-pane slide-left form-group">
+                                <div id="menu2" class="tab-pane slide-left">
                                     <div class="form-body--credit">
                                         <div class="text-head">
                                             <h2 class="text-center"><?= $this->translate('data-place')?></h2>
@@ -177,6 +177,15 @@ $this->extend('layout-credit.html.php');
                                             <p class="text-center"><?= $this->translate('input-data-vehicle')?></p>
                                         </div>
                                         <div class="form-group">
+                                            <label><?= $this->translate('label-type')?></label>
+                                            <select class="c-custom-select-trans form-control formRequired"
+                                                    placeholder="<?= $this->translate('placeholder-type')?>" id="type_kendaraan"
+                                                    name="type_kendaraan" multiple="multiple">
+                                                <option value="" disabled selected> <?= $this->translate('placeholder-type')?></option>
+                                            </select>
+                                            <div class="error-wrap"></div>
+                                        </div>
+                                        <div class="form-group">
                                             <label><?= $this->translate('label-merk')?></label>
                                             <select class="c-custom-select-trans form-control formRequired"
                                                     placeholder="<?= $this->translate('placeholder-merk')?>" id="merk_kendaraan"
@@ -205,8 +214,8 @@ $this->extend('layout-credit.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label><?= $this->translate('label-status')?></label>
-                                            <select class="c-custom-select-trans form-control formRequired" 
-                                                    placeholder="<?= $this->translate('placeholder-status')?>" id="status_kep" 
+                                            <select class="c-custom-select-trans form-control formRequired"
+                                                    placeholder="<?= $this->translate('placeholder-status')?>" id="status_kep"
                                                     name="status_kep" multiple="multiple" data-status-self="<?= $this->translate('placeholder-status-self')?>" data-status-other="<?=$this->translate('placeholder-status-other');?>">
                                                 <option value="" disabled selected> <?= $this->translate('placeholder-status')?></option>
                                             </select>
@@ -240,14 +249,14 @@ $this->extend('layout-credit.html.php');
                                                 <label for="jml-biaya"><?= $this->translate('label-data-funding')?></label>
                                                 <div class="input-group inputform">
                                                     <span class="input-group-addon" id="basic-addon1">Rp</span>
-                                                    <input type="text" id="ex6SliderVal" class="form-control formRequired formPrice c-input-trans"
+                                                    <input type="tel" pattern="\d*" id="ex6SliderVal" class="form-control formRequired formPrice c-input-trans"
                                                            aria-describedby="basic-addon1">
 
                                                     <div class="error-wrap"></div>
 
                                                 </div>
                                                 <div class="slidecontainer ">
-                                                    <input id="funding" class="customslide" type="text" data-slider-handle="custom" data-slider-tooltip="hide" />
+                                                    <input id="funding" class="customslide" type="tel" pattern="\d*" data-slider-handle="custom" data-slider-tooltip="hide" />
                                                     <div class="value-left valuemin"></div>
                                                     <div class="value-right valuemax"></div>
                                                     <input type="hidden" id="otr">
@@ -549,13 +558,13 @@ $this->extend('layout-credit.html.php');
 
                                         <div class="otp-number form-group">
                                             <div class="otp-number__phone disabled">
-                                                <p id="showPhone"> <input type="text" id="otpPhone" disabled /> <img id="otpEditPhone" src="/static/images/icon/pencils.png" alt=""></p>
+                                                <p id="showPhone"> <input type="tel" pattern="\d*" id="otpPhone" disabled /> <img id="otpEditPhone" src="/static/images/icon/pencils.png" alt=""></p>
                                             </div>
                                             <div class="otp-number__verify">
-                                                <input type="text" class="input-number formRequired" maxlength="1" name="otp1">
-                                                <input type="text" class="input-number formRequired" maxlength="1" name="otp2">
-                                                <input type="text" class="input-number formRequired" maxlength="1" name="otp3">
-                                                <input type="text" class="input-number formRequired" maxlength="1" name="otp4">
+                                                <input type="tel" pattern="\d*" class="input-number formRequired" maxlength="1" name="otp1">
+                                                <input type="tel" pattern="\d*" class="input-number formRequired" maxlength="1" name="otp2">
+                                                <input type="tel" pattern="\d*" class="input-number formRequired" maxlength="1" name="otp3">
+                                                <input type="tel" pattern="\d*" class="input-number formRequired" maxlength="1" name="otp4">
                                             </div>
                                             <div class="error-wrap"></div>
                                             <div class="otp-number__text">
@@ -566,7 +575,7 @@ $this->extend('layout-credit.html.php');
                                     </div>
 
 
-                                    <div class="button-area text-right next">
+                                    <div class="button-area text-center">
                                         <button class="cta cta-primary cta-big cta-see btn-verifikasi buttonnext" id="button6"
                                                 type="button"><?= $this->translate('verifikasi')?></button>
                                     </div>
