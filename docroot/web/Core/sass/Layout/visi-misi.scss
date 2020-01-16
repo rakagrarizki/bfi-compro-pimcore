@@ -35,7 +35,8 @@
 
     .counter {
         margin-left: auto;
-        display: flex;
+        display: inline-flex;
+        float: right;
         align-items: center;
         justify-content: flex-end;
 
