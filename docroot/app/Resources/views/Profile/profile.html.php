@@ -96,7 +96,7 @@ $this->extend('layout.html.php');
                 <img class="imggetcredit" src="/_default_upload_bucket/form_credit/Mobil.png" alt="">
             </div>
             <div class="content-text">
-                <div class="title">
+                <div class="title-update">
                     <h3>Update Data Anda</h3>
                 </div>
                 <div class="text">
