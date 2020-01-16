@@ -22,7 +22,7 @@
             color: #04559F;
 
             @include breakpoint(mobile) {
-                font-size: 2em;
+                font-size: 20px;
             }
         }
 
@@ -32,7 +32,8 @@
             margin-bottom: 60px;
 
             @include breakpoint(mobile) {
-                font-size: 1.2em;
+                font-size: 13px;
+                margin-bottom: 30px;
             }
         }
 
@@ -52,7 +53,11 @@
                 cursor: default !important;
 
                 @include breakpoint(mobile) {
-                    margin: 20px 30px;
+                    // &:first-child{
+                    //     margin-left: 50px;
+                    // }
+                    margin: 0;
+                    // width: 15% !important;
                 }
 
                 .img-step {
@@ -90,7 +95,7 @@
                     //transform: translateY(20px);
 
                     @include breakpoint(mobile) {
-                        font-size: 1em;
+                        font-size: 15px;
                     }
                 }
 

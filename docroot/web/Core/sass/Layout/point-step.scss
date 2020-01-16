@@ -8,6 +8,10 @@
 
             p {
                 font-weight: normal;
+                @include breakpoint(mobile) {
+                    font-size: 13px;
+                    line-height: 20px;
+                }
 
                 &.title {
                     font-size: 50px;
@@ -15,6 +19,11 @@
                     color: #04559F;
                     margin-top: 72px;
                     margin-bottom: 10px;
+
+                    @include breakpoint(mobile) {
+                        font-size: 20px;
+                        line-height: 30px;
+                    }
                 }
             }
         }
@@ -62,6 +71,10 @@
         p {
             font-family: 'HelveticaNeue-Light';
             font-size: 1.250em;
+            @include breakpoint(mobile) {
+                font-size: 15px;
+                line-height: 25px;
+            }
         }
 
         img {
@@ -69,6 +82,9 @@
             vertical-align: top;
             height: 65px;
             margin-bottom: 40px;
+            @include breakpoint(mobile) {
+                margin-bottom: 20px;
+            }
         }
     }
 
@@ -86,11 +102,22 @@
 
         .cta-orange {
             text-transform: uppercase;
+            width: 220px;
             height: 60px;
-            padding-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
 
             &::after {
                 top: 19px;
+            }
+
+            @include breakpoint(mobile) {
+                font-size: 9px;
+                height: 35px;
+                width: 150px;
+                padding: 0;
             }
         }
     }
