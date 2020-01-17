@@ -265,7 +265,7 @@ $this->extend('layout.html.php');
                     <h5 class="more">LIHAT DETAIL &#62;</h5>
                 </li>
             </a>
-            <a href="" class="contract-box add-contract">
+            <a href="/<?= $this->getLocale() ?>/credit" class="contract-box add-contract">
                 <li class="">
                     <div class="box">
                         <div class="plus">
