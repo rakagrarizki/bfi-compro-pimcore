@@ -20,7 +20,7 @@ class BlogController extends FrontendController
         $blogCategories->load();
 
         $blogs = new BlogArticle\Listing();
-        if($category != ""){
+        if ($category != "") {
             $blogs->setCondition("BlogCategory__id = ?", $category);
         }
         $blogs->setOrderKey("Date");
@@ -28,20 +28,20 @@ class BlogController extends FrontendController
         $blogs->load();
 
         $paginator = new \Zend\Paginator\Paginator($blogs);
-        $paginator->setCurrentPageNumber( $page );
-        $paginator->setItemCountPerPage(1);
+        $paginator->setCurrentPageNumber($page);
+        $paginator->setItemCountPerPage(14);
 
         $this->view->blogCategories = $blogCategories;
         $this->view->paginator = $paginator;
-
     }
 
-    public function detailAction(Request $request){
+    public function detailAction(Request $request)
+    {
 
 
         $slug = htmlentities(addslashes($request->get("slug")));
 
-        $blog = BlogArticle::getBySlug($slug,["limit"=>1]);
+        $blog = BlogArticle::getBySlug($slug, ["limit" => 1]);
 
         $totalViews = $blog->getViews() + 1;
         $blog->setViews($totalViews);
@@ -50,15 +50,12 @@ class BlogController extends FrontendController
         $this->view->blog = $blog;
 
 
-        if($blog->getBlogCategory()) {
+        if ($blog->getBlogCategory()) {
             $relatedBlogs = new BlogArticle\Listing();
-            $relatedBlogs->addConditionParam("BlogCategory__id = ?",$blog->getBlogCategory()->getId(),"AND");
-            $relatedBlogs->addConditionParam("oo_id != ?", $blog->getId(),"AND");
+            $relatedBlogs->addConditionParam("BlogCategory__id = ?", $blog->getBlogCategory()->getId(), "AND");
+            $relatedBlogs->addConditionParam("oo_id != ?", $blog->getId(), "AND");
             $relatedBlogs->load();
             $this->view->relatedBlogs = $relatedBlogs;
         }
-
-
-
     }
 }
