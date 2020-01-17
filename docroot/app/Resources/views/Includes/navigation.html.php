@@ -10,7 +10,10 @@ use Pimcore\Model\Document;
 use Pimcore\Model\Document\Page;
 ?>
 <?php $pageCurrent = $this->getParam('page', 1); ?>
-<?php $lang = $this->getLocale(); ?>
+<?php
+$lang = $this->getLocale();
+$name = $_COOKIE["customer"];
+?>
 <nav id="site-header">
     <div class="navbar-fixed-top hidden-xs">
 
@@ -23,15 +26,19 @@ use Pimcore\Model\Document\Page;
                             <?= $this->translate("corporate") ?></a>
                     </div>
                     <div class="col-md-6 col-sm-6 right-side-top">
-                        <div class="link-about-top">
-                            <a href="<?= "/" . $lang . "/tentang-kami" ?>">
-                                <?= $this->translate("tentang-kami") ?></a>
-                            <a href="<?= "/" . $lang . "/blog" ?>">
-                                <?= $this->translate("blog") ?></a>
-                        </div>
+                        <?php if (!isset($name) || $name == "") { ?>
+                            <div class="link-about-top">
+                                <a href="<?= "/" . $lang . "/tentang-kami" ?>">
+                                    <?= $this->translate("tentang-kami") ?></a>
+                                <a href="<?= "/" . $lang . "/blog" ?>">
+                                    <?= $this->translate("blog") ?></a>
+                            </div>
+                        <?php } ?>
 
                         <div class="link-log">
-                            <a href="<?= "/" . $lang . "/login"; ?>" class="login"><?= $this->translate("login") ?></a>
+                            <?php if (!isset($name) || $name == "") { ?>
+                                <a href="<?= "/" . $lang . "/login"; ?>" class="login"><?= $this->translate("login") ?></a>
+                            <?php } ?>
                             <div class="user hide">
                                 <a href="/<?= $this->getLocale() ?>/user/dashboard" class="full_name">Deborah Morris</a> | <a href="#" class="logout" onclick="return logout('<?= $this->getLocale() ?>');"><?= $this->translate("logout") ?></a>
                             </div>
