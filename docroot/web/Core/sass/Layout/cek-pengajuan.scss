@@ -111,6 +111,7 @@
                 @include breakpoint(mobile) {
                     text-align: center;
                     font-weight: normal;
+                    font-size: 14px;
                 }
 
                 @include breakpoint(tablet) {

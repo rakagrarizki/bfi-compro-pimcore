@@ -3,12 +3,11 @@
         <div class="cont-credit">
             <h2 class="title-wrapper"><?= $this->input("title"); ?></h2>
             <p class="paragraf-title"><?= $this->textarea('text');?></p>
-            <br />
 
             <div class="list-credit">
               <h3><?= $this->input("credit-jaminan-title"); ?></h3>
                 <div class="list-credit--icon">
-                    <div class="credit--icon col-md-3">
+                    <div class="credit--icon col-md-3 col-xs-3">
                         <?php $assetMobil = $this->image("image-mobil");?>
                         <a href="<?= $this->link('url-mobil')->getHref(); ?>">
                             <div class="icon">
@@ -17,7 +16,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="credit--icon col-md-3">
+                    <div class="credit--icon col-md-3 col-xs-3">
                         <?php $assetMotor = $this->image("image-motor");?>
                         <a href="<?= $this->link('url-motor')->getHref(); ?>">
                             <div class="icon">
@@ -27,7 +26,7 @@
 
                         </a>
                     </div>
-                    <div class="credit--icon col-md-3">
+                    <div class="credit--icon col-md-3 col-xs-3">
                         <?php $assetRumah = $this->image("image-rumah");?>
                         <a href="<?= $this->link('url-rumah')->getHref(); ?>">
                             <div class="icon">
@@ -44,7 +43,7 @@
               <h3><?= $this->input("credit-lainnya-title"); ?></h3>
                 <div class="list-credit--icon">
                     <?php if(!$this->input("title-education")->isEmpty()) { ?>
-                      <div class="credit--icon col-md-3">
+                      <div class="credit--icon col-md-3 col-xs-3">
                           <?php $assetMobil = $this->image("image-education");?>
                           <a href="<?= $this->link('url-education')->getHref(); ?>">
                               <div class="icon">
@@ -56,7 +55,7 @@
                     <?php } ?>
 
                     <?php if(!$this->input("title-travel")->isEmpty()) { ?>
-                    <div class="credit--icon col-md-3">
+                    <div class="credit--icon col-md-3 col-xs-3">
                         <?php $assetMotor = $this->image("image-travel");?>
                         <a href="<?= $this->link('url-travel')->getHref(); ?>">
                             <div class="icon">
@@ -69,7 +68,7 @@
                     <?php } ?>
 
                     <?php if(!$this->input("title-mesin")->isEmpty()) { ?>
-                    <div class="credit--icon col-md-3">
+                    <div class="credit--icon col-md-3 col-xs-3">
                         <?php $assetRumah = $this->image("image-mesin");?>
                         <a href="<?= $this->link('url-mesin')->getHref(); ?>">
                             <div class="icon">
