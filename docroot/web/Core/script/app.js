@@ -264,16 +264,7 @@
     prevArrow: $(".prev-1"),
     nextArrow: $(".next-1"),
     autoplay: true,
-    autoplaySpeed: 5000,
-    responsicve: [
-      {
-        breakpoint: 750,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
+    autoplaySpeed: 5000
   })
 
   $("#herobanner2").slick({
@@ -2196,7 +2187,21 @@
       prevArrow: false,
       nextArrow: false,
       infinite: false,
-      slidesToShow: 2.5
+      slidesToShow: 2.5,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: "unslick"
+        },
+        {
+          breakpoint: 750,
+          settings: {
+            centerMode: true,
+            slidesToShow: 1.3,
+            slidesToScroll: 1
+          }
+        }
+      ]
     });
   }
 
@@ -4876,11 +4881,11 @@ function getCustomer(token){
       },
 
       success: function(dataObj){
+        if(dataObj.success === true) {
           var data = dataObj.result.data;
-          if(dataObj.success === true) {
-            console.log(data.full_name)
-            document.cookie = "customer="+data.full_name;
-          }
+          console.log(data.full_name)
+          document.cookie = "customer="+data.full_name+"; path=/";
+        }
       }
   });
 }
@@ -4931,13 +4936,33 @@ $(document).ready(function() {
       var full_name = document.cookie.replace(/(?:(?:^|.*;\s*)customer\s*\=\s*([^;]*).*$)|^.*$/, "$1");
       $('.link-log').find('.full_name').text(full_name);
     }
-  }
-  
-  $(".blog-promo").load(function() {
+
     var lang = document.documentElement.lang
     var options = { year: 'numeric', month: 'long', day: 'numeric' };
-    var date = new Date($(this).find('.dateview > span.date').html());
+    var date = new Date($(".blog-promo").find('.dateview > span.date').html());
     var blogDate = date.toLocaleDateString(lang+'-'+lang, options);
-    $(this).find('.dateview > span.date').text(blogDate);
+    $(".blog-promo").find('.dateview > span.date').text(blogDate);
+  }
+});
+
+$(document).ready(function() {
+  // if ($('#btn-burger').attr('aria-expanded') === 'true') {
+  //   console.log("ada");
+  //   $('#btn-credit').css({ display: "none" });
+  // }
+  // if ($('#btn-burger').attr('aria-expanded') === "false") {
+  //   $('#btn-credit').css({ display: "block" });
+  // }
+});
+
+$(function () { 
+  $('#btn-burger').on('click', function (e) {
+      var menuItem = $( e.currentTarget );
+
+      if (menuItem.attr( 'aria-expanded') === 'true') {
+        $('#btn-credit').css({ display: "block" });
+      } else {
+        $('#btn-credit').css({ display: "none" });
+      }
   });
 });

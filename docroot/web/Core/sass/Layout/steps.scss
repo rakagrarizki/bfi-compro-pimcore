@@ -68,6 +68,12 @@
                 @include breakpoint(mobile) {
                     margin: 0 20px;
                 }
+
+                p{
+                    @include breakpoint(mobile) {
+                        font-size: 14px;
+                    }
+                }
             }
 
             &:last-child {

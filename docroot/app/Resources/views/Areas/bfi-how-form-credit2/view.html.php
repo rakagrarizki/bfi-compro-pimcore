@@ -69,20 +69,20 @@
             <h4>Simulasikan Pengajuan Kredit Anda</h4>
             <form action="" id="selection-form">
                 <div class="selection-wrapper">
-                <div class="selection-1">
-                    <select id="category-1">
-                        <option value="" selected style="display:none;"></option>
-                        <option value="1">BPKB Motor</option>
-                        <option value="2">BPKB Mobil</option>
-                    </select>
-                </div>
-                <div class="selection-2">
-                    <select id="category-2">
-                        <option value="" selected style="display:none;"></option>
-                        <option value="1">BPKB Motor2</option>
-                        <option value="2">BPKB Mobil2</option>
-                    </select>
-                </div>
+                    <div class="selection-1">
+                        <select id="category-1">
+                            <option value="" selected style="display:none;"></option>
+                            <option value="1">BPKB Motor</option>
+                            <option value="2">BPKB Mobil</option>
+                        </select>
+                    </div>
+                    <div class="selection-2">
+                        <select id="category-2">
+                            <option value="" selected style="display:none;"></option>
+                            <option value="1">BPKB Motor2</option>
+                            <option value="2">BPKB Mobil2</option>
+                        </select>
+                    </div>
                 </div>
                 <button class="btn-next">Hitung &nbsp<i class="fa fa-angle-right"></i></button>
             </form>

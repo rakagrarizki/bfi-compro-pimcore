@@ -43,8 +43,8 @@ function contractStatusList(lang, token) {
         },
 
         success: function (dataObj) {
-            var data = dataObj.result.data
             if (dataObj.success === true) {
+                var data = dataObj.result.data
                 $.each(data, function( index, value ) {
                     console.log(value)
                     var item = "<li><a href='/"+lang+"/user/profile/detail-kontrak?contract_number="+value.contract_number+"'>"+ value.contract_number+" "+value.category_desc+" - "+value.product_desc+"</a></li>"
@@ -72,8 +72,8 @@ function dataCustomer(token){
         },
 
         success: function(dataObj){
-            var data = dataObj.result.data;
             if(dataObj.success === true) {
+                var data = dataObj.result.data;
                 $('.profile').find('.name').text(data.full_name);
                 $('.profile').find('.email').text(data.email);
                 $('.profile').find('.phone').text(data.phone_number);
