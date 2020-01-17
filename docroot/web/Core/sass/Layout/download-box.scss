@@ -31,7 +31,8 @@
             padding-right: 20px;
 
             @include breakpoint(small-mobile) {
-                font-size: 20px;
+                font-size: 15px;
+                line-height: 20px;
             }
         }
 
@@ -40,6 +41,9 @@
             padding-left: 56px;
             padding-right: 0;
             letter-spacing: 0;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
 
             @include breakpoint(mobile) {
                 padding: 0;
@@ -63,24 +67,24 @@
                 font-size: 14px;
                 color: $white;
                 background-color: $orange-color;
-                position: absolute;
-                top: 0px;
-                left: 0;
+                // position: absolute;
+                // top: 0px;
+                // left: 0;
 
-                @include breakpoint(mobile) {
-                    position: relative;
-                    width: 80px;
-                    height: 80px;
-                    line-height: 80px;
-                    font-size: 26px;
-                }
+                // @include breakpoint(mobile) {
+                //     position: relative;
+                //     width: 60px;
+                //     height: 60px;
+                //     line-height: 60px;
+                //     font-size: 26px;
+                // }
 
-                @include breakpoint(small-mobile) {
-                    width: 60px;
-                    height: 60px;
-                    line-height: 60px;
-                    font-size: 24px;
-                }
+                // @include breakpoint(small-mobile) {
+                //     width: 60px;
+                //     height: 60px;
+                //     line-height: 60px;
+                //     font-size: 24px;
+                // }
             }
 
             span {
