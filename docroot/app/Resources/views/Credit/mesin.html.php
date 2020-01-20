@@ -11,7 +11,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
 ?>
 
 <div class="container">
-  <div class="col-xs-12">
+  <div class="col-xs-12 no-padding-mobile">
 
     <form id="getCredit" class="form-get--credit mesin-page" action="#">
     <input type="hidden" id="jenis_form" name="jenis_form" value="EDUCATION">
@@ -206,7 +206,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                   <p class="text-center"><?= $this->translate('input-data-funding')?></p>
               </div>
 
-              <div class="col-md-6">
+              <div class="col-md-6 no-padding-mobile">
                   <div class="form-group sliderGroup inputsimulasi">
                       <label for="jml-biaya"><?= $this->translate('label-data-funding')?></label>
                       <div class="input-group inputform">
@@ -243,7 +243,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                       <div class="error-wrap"></div>
                   </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-6 no-padding-mobile">
                   <div class="rincian">
                       <div class="total-estimate">
                           <p class="title-angsuran"><?= $this->translate('label-estimate')?></p>
