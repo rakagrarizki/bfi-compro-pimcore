@@ -11,7 +11,10 @@ use Pimcore\Model\Document\Page;
 ?>
 
 
-<?php $pageCurrent = $this->getParam('page', 1); ?>
+<?php
+$pageCurrent = $this->getParam('page', 1);
+$lang = $this->getLocale();
+?>
 <nav id="site-header">
     <div class="navbar-fixed-top hidden-xs">
         <div class="header-top">
@@ -94,20 +97,23 @@ use Pimcore\Model\Document\Page;
                                                     </div>
                                                 </div>
                                             </li>
-                                            <?php
+                                        <?php
                                         } else {
-                                            ?>
-                                                <li class="<?php echo $page->getActive() ? 'active' : '' ?>">
-                                                    <a href="<?= $page->getHref() ?>">
-                                                        <?= $page->getLabel() ?>
-                                                    </a>
-                                                </li>
+                                        ?>
+                                            <li class="<?php echo $page->getActive() ? 'active' : '' ?>">
+                                                <a href="<?= $page->getHref() ?>">
+                                                    <?= $page->getLabel() ?>
+                                                </a>
+                                            </li>
                                 <?php
                                         }
                                     }
                                 }
                                 ?>
                             </ul>
+                            <div class="search-button">
+                                <a href="<?= "/" . $lang . "/search" ?>"><i class="fa fa-search"></i></a>
+                            </div>
                         </div>
 
                     </div>

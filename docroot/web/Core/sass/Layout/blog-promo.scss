@@ -1,7 +1,16 @@
 .blog-promo {
-    padding: 60px 0 0 0;
+    // padding: 60px 0 0 0;
 
     .sect-title {
+        @include breakpoint(mobile){
+            width: 100%;
+        }
+
+        h2{
+            @include breakpoint(mobile){
+                margin-bottom: 10px;
+            }
+        }
         p {
             &:last-child {
                 margin-top: -40px;
@@ -12,11 +21,21 @@
             font-weight: bold;
             line-height: 72px;
             color: #04559f;
+
+            @include breakpoint(mobile){
+                font-size: 20px;
+                line-height: 30px;
+            }
         }
         .subtitle{
             font-size: 30px;
             line-height: 46px;
             color: #565656;
+
+            @include breakpoint(mobile){
+                font-size: 13px;
+                line-height: 20px;
+            }
         }
     }
 
@@ -93,6 +112,10 @@
                     font-family: HelveticaNeue-Bold;
                     color: $orange-color;
                     font-size: 12px;
+
+                    @include breakpoint(mobile){
+                        font-size: 10px;
+                    }
                 }
 
                 .title {
@@ -101,6 +124,10 @@
                     color: $grey-dark-color;
                     font-size: 16px;
                     text-align: left;
+                    
+                    @include breakpoint(mobile){
+                        font-size: 14px;
+                    }
                 }
 
                 .dateview {

@@ -30,10 +30,10 @@ if($this->editmode) : ?>
 <div class="footer-bottom">
     <div class="container">
         <div class="row">
-            <div class="col-sm-5">
+            <div class="col-md-4 col-sm-12">
                 <span>&copy; <?php echo date("Y"); ?> - PT BFI Finance Indonesia Tbk</span>
             </div>
-            <div class="col-sm-7">
+            <div class="col-md-8 col-sm-12">
                 <ul class="nav-footer">
                     <li><a href="<?=$this->link('career')->getHref();?>"><?= $this->translate("career") ?></a></li>
                     <li><a href="<?=$this->link('contact')->getHref();?>"><?= $this->translate("contact") ?></a></li>

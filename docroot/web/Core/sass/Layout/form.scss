@@ -5,8 +5,8 @@
 
     @include breakpoint(mobile) {
         width: 100%;
-        padding-left: 15px;
-        padding-right: 15px;
+        // padding-left: 15px;
+        // padding-right: 15px;
     }
 
     @include breakpoint(wide) {
@@ -24,6 +24,10 @@
         color: #04559F;
         font-size: 26px;
 
+        @include breakpoint(mobile){
+            font-size: 20px;
+        }
+
         &.text-center-edit {
             display: none;
             text-align: center;
@@ -33,6 +37,9 @@
     p {
         font-size: 18px;
         color: #565656;
+        @include breakpoint(mobile){
+            font-size: 13px;
+        }
     }
 
     .text-head {
@@ -160,6 +167,10 @@
             font-weight: 800;
             color: #04559F;
 
+            @include breakpoint(mobile){
+                font-size: 20px;
+            }
+
             &.text-center-edit {
                 display: none;
                 text-align: center;
@@ -169,6 +180,9 @@
         p {
             font-family: 'HelveticaNeue';
             font-size: 1.1em;
+            @include breakpoint(mobile){
+                font-size: 13px;
+            }
         }
 
         .credit-simulasi {
@@ -179,6 +193,14 @@
 
             position: relative;
             padding: 20px;
+
+            @include breakpoint(mobile){
+                padding: 0;
+                margin-top: 40px;
+                &:first-child{
+                    margin-top: 0;
+                }
+            }
 
             .cta-primary {
                 background-color: #F0F0F0;
@@ -216,8 +238,8 @@
                 background-color: $grey-light;
 
                 @include breakpoint(mobile) {
-                    left: 20px;
-                    right: 20px;
+                    left: 0;
+                    right: 0;
                 }
             }
 
@@ -238,7 +260,7 @@
 
                     @include breakpoint(mobile) {
                         margin-right: 100px;
-                        font-size: 14pt;
+                        font-size: 12px;
                     }
                 }
 
@@ -266,7 +288,7 @@
                                 font-size: 1.125rem;
 
                                 @include breakpoint(mobile) {
-                                    font-size: .8rem;
+                                    font-size: 11px;
                                 }
 
                                 &:first-child {
@@ -457,12 +479,15 @@
 
             label {
                 font-family: 'HelveticaNeue';
-                font-size: 16px;
+                font-size: 18px;
                 letter-spacing: 1px;
                 display: block;
                 position: relative;
                 padding: 0;
-                font-size: 18px;
+
+                @include breakpoint(mobile){
+                    font-size: 12px;
+                }
 
                 &.label-agreement {
                     font-family: 'HelveticaNeue';
@@ -484,13 +509,19 @@
                     margin: 5px 0 0;
                     color: $red-color;
 
-
+                    @include breakpoint(mobile){
+                        font-size: 12px;
+                    }
                 }
             }
 
 
             &.inputsimulasi {
                 margin-top: 30px;
+
+                .formPrice {
+                    text-align: right;
+                }
 
                 .form-control.select2-selection {
                     padding-top: 14px;
@@ -619,7 +650,7 @@
                 margin-top: 30px;
 
                 @include breakpoint(mobile) {
-                    padding: 30px 15px;
+                    padding: 15px 15px;
                 }
 
                 .title-angsuran {
@@ -669,7 +700,10 @@
                 text-align: left;
                 margin-bottom: 25px;
 
-                @include breakpoint(mobile) {}
+                @include breakpoint(mobile) {
+                    padding: 15px;
+                    margin: 0;
+                }
 
                 p {
                     line-height: 2;
@@ -718,6 +752,10 @@
         margin: 0 auto 20px auto;
         //margin-bottom:35px;
 
+        @include breakpoint(mobile){
+            width: 100%;
+        }
+
         .c-custom-select.jcf-hidden {
             &.error+span {
                 border: 1px solid red;
@@ -733,6 +771,7 @@
             color: #04559F;
             display: none;
             z-index: 1;
+            text-transform: uppercase;
 
             &.error {
                 margin: 10px 0;
@@ -1019,8 +1058,7 @@
             width: 100%;
             font-size: 18px;
             border-radius: inherit;
-            padding-top: 20px;
-            padding-bottom: 20px;
+            padding: 20px 15px;
 
             &::placeholder {
                 font-style: italic;
@@ -1482,7 +1520,7 @@
             }
 
             @include breakpoint(tablet) {
-                width: 40px;
+                width: 13%;
             }
         }
     }
@@ -1620,6 +1658,7 @@
 #recalc {
     @include breakpoint(mobile) {
         width: 100%;
+        margin: 0;
     }
 }
 
@@ -2170,4 +2209,10 @@ select::-ms-expand {
 
 .absolutebutcalc{
     width: 100%;
+}
+
+.no-padding-mobile{
+    @include breakpoint(mobile){
+        padding: 0 !important;
+    }
 }
