@@ -12,7 +12,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
 ?>
 
 <div class="container">
-    <div class="col-xs-12">
+    <div class="">
 
         <form id="getCredit" class="form-get--credit" action="#">
             <input type="hidden" id="jenis_form" name="jenis_form" value="EDUCATION">
