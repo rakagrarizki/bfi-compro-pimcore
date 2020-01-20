@@ -484,6 +484,8 @@
     .lihat-produk{
         font-size: 14px;
         color: #727272;
+        text-decoration: none;
+        
         .fa{
             margin-left: 20px;
             @include breakpoint(mobile){

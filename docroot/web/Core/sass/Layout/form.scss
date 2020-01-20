@@ -98,6 +98,10 @@
         clear: both;
         padding: inherit;
 
+        &.corporate {
+            margin: 150px auto;
+        }
+
         @include breakpoint(mobile) {
             margin : 50px auto;
         }
@@ -1772,7 +1776,6 @@ select::-ms-expand {
             
             > label {
                 text-transform: uppercase;
-                
             }
     
             &.select-wrapper {
@@ -1818,14 +1821,19 @@ select::-ms-expand {
             }
         }
     
-        .select2-container--default .select2-selection--single .select2-selection__rendered {
-            line-height : 1.5;
-            padding-left: 0;
-        }
+        .select2-container--default .select2-selection--single {
+            border: 1px solid #ccc;
+            
+            .select2-selection__rendered {
+                line-height : 1.5;
+                padding-left: 0;
+            }
+
+            .select2-selection__arrow {
+                display : none;
+            }
+        } 
         
-        .select2-container--default .select2-selection--single .select2-selection__arrow {
-            display : none;
-        }
         
         .select-wrapper > label {
             visibility: hidden;
@@ -1843,8 +1851,8 @@ select::-ms-expand {
     
             .g-recaptcha {
                 @include breakpoint(mobile){
-                    transform:scale(0.75);
-                    -webkit-transform:scale(0.75);
+                    transform:scale(0.88);
+                    -webkit-transform:scale(0.88);
                     transform-origin:0 0;
                     -webkit-transform-origin:0 0;
                 }
@@ -1896,6 +1904,7 @@ select::-ms-expand {
                     display : contents;
                     color : #04559F;
                     font-size : 18px;
+                    text-transform: capitalize;
     
                     @include breakpoint(tablet) {
                         font-size: 14px;
@@ -1916,6 +1925,8 @@ select::-ms-expand {
         button {
             background: #F9991C;
             border: inherit;
+            text-transform: uppercase;
+            font-weight : 600;
         }
     }
 }
