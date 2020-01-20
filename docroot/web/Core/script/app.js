@@ -158,7 +158,7 @@
   var step2Done = false;
   var step3Done = false;
   var step4Done = false;
-
+  var is_branch = true;
   var changeDataPemohon = false;
   var changeDataTempatTinggal = false;
   var changeDataKendaraan = false;
@@ -1010,14 +1010,6 @@
             getCertificateOnBehalf();
             getHunian();
           }
-          if(is_branch = "false"){
-            showTab2();
-            hideTab3();
-            $('.nav-item-3').removeClass('active');
-            $('.nav-item-2').removeClass('done');
-            $('.nav-item-2').addClass('active');
-            $("#modal-branch").modal('show');
-           } 
         }
       }
     })
@@ -1659,7 +1651,7 @@
     $('#button2').on('click', function (e) {
       e.preventDefault();
 
-      if ($(this).closest('form').valid()) {
+      if ($(this).closest('form').valid() && is_branch == true) {
         showTab3();
         hideTab2();
         scrollToTop();
@@ -1694,6 +1686,8 @@
           $(".horizontal-scroll").scrollLeft(260);
         }
 
+      }else {
+        $("#modal-branch").modal('show');
       }
     })
 
