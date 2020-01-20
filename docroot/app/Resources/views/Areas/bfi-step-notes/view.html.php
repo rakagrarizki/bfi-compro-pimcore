@@ -15,6 +15,7 @@
                 <?php } ?>
             </ul>
             <!-- <a href="/" class="cta cta-primary cta-big cta-see"><?= $this->translate("more") ?></a> -->
+<<<<<<< HEAD
             <?php if (!$this->link("url")->isEmpty()) : ?>
                 <div class="row">
                     <div class="button-area text-center no-padding">
@@ -22,6 +23,13 @@
                     </div>
                 </div>
             <?php endif; ?>
+=======
+            <!-- <div class="row">
+                <div class="button-area text-center no-padding">
+                    <a href="<?= $this->link('url')->getHref(); ?>" class="cta cta-orange cta-see cta-big"><?= $this->link('url')->getText(); ?></a>
+                </div>
+            </div> -->
+>>>>>>> origin/development
         </div>
     </div>
 </div>
