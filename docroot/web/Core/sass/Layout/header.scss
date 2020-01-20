@@ -54,7 +54,7 @@ body{
                     #produk .dropdown-content.main {
                         margin-top: 12px;
                         transition: all .3s ease-in-out;
-                        top: 98px;
+                        top: 108px;
                     }
                 }
             }
@@ -421,7 +421,8 @@ body{
                                 background: $white;
                                 padding: 40px 70px 40px 70px;
                                 box-shadow: 0px 3px 10px rgba(0,0,0,.15);
-
+                                text-align: left;
+                                
                                 // &:before {
                                 //     content: '';
                                 //     position: absolute;

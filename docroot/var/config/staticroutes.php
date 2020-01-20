@@ -1768,8 +1768,8 @@ return [
     103 => [
         "id" => 103,
         "name" => "save agent candidate step 1 after otp",
-        "pattern" => "/\\/agent\\/save-agent-candidate-step1-after-otp/",
-        "reverse" => "/agent/save-agent-candidate-step1-after-otp",
+        "pattern" => "/\\/agent\\/save-agent-otp/",
+        "reverse" => "/agent/save-agent-otp",
         "module" => "AppBundle",
         "controller" => "@AppBundle\\Controller\\AgentController",
         "action" => "saveAgentCandidateStep1AfterOtp",
@@ -1781,7 +1781,7 @@ return [
         "priority" => 0,
         "legacy" => FALSE,
         "creationDate" => 1567594158,
-        "modificationDate" => 1570508283
+        "modificationDate" => 1579491577
     ],
     104 => [
         "id" => 104,

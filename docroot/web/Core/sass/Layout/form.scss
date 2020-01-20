@@ -5,8 +5,8 @@
 
     @include breakpoint(mobile) {
         width: 100%;
-        padding-left: 15px;
-        padding-right: 15px;
+        // padding-left: 15px;
+        // padding-right: 15px;
     }
 
     @include breakpoint(wide) {
@@ -24,6 +24,10 @@
         color: #04559F;
         font-size: 26px;
 
+        @include breakpoint(mobile){
+            font-size: 20px;
+        }
+
         &.text-center-edit {
             display: none;
             text-align: center;
@@ -33,6 +37,9 @@
     p {
         font-size: 18px;
         color: #565656;
+        @include breakpoint(mobile){
+            font-size: 13px;
+        }
     }
 
     .text-head {
@@ -84,17 +91,23 @@
 }
 
 .contact-us {
+    min-height: inherit;
     &.success-wrapper {
         display : inherit;
-        padding : 150px 0;
+        margin: 132px auto 144px;
         clear: both;
+        padding: inherit;
+
+        @include breakpoint(mobile) {
+            margin : 50px auto;
+        }
     
         .img-wrap {
             text-align: center;
     
             .icon-thank-page {
-                width: 120px;
-                height: 91px;
+                width: 118px;
+                height: 90px;
             }
         }
     
@@ -108,14 +121,21 @@
     
         h3 {
             font-family: 'HelveticaNeue';
-            font-size: 2em;
+            font-size: 26px;
             font-weight: 600;
             color: $grey-dark-color;
+            margin-top: 50px;
+            margin-bottom: 20px;
+
+            @include breakpoint(mobile) {
+                margin-top : 20px;
+                margin-bottom: 30px;
+            }
         }
     
         p {
             font-family: 'HelveticaNeue';
-            font-size: 1.2em;
+            font-size: 18px;
         }
     }
 }
@@ -147,6 +167,10 @@
             font-weight: 800;
             color: #04559F;
 
+            @include breakpoint(mobile){
+                font-size: 20px;
+            }
+
             &.text-center-edit {
                 display: none;
                 text-align: center;
@@ -156,6 +180,9 @@
         p {
             font-family: 'HelveticaNeue';
             font-size: 1.1em;
+            @include breakpoint(mobile){
+                font-size: 13px;
+            }
         }
 
         .credit-simulasi {
@@ -166,6 +193,14 @@
 
             position: relative;
             padding: 20px;
+
+            @include breakpoint(mobile){
+                padding: 0;
+                margin-top: 40px;
+                &:first-child{
+                    margin-top: 0;
+                }
+            }
 
             .cta-primary {
                 background-color: #F0F0F0;
@@ -203,8 +238,8 @@
                 background-color: $grey-light;
 
                 @include breakpoint(mobile) {
-                    left: 20px;
-                    right: 20px;
+                    left: 0;
+                    right: 0;
                 }
             }
 
@@ -225,7 +260,7 @@
 
                     @include breakpoint(mobile) {
                         margin-right: 100px;
-                        font-size: 14pt;
+                        font-size: 12px;
                     }
                 }
 
@@ -253,7 +288,7 @@
                                 font-size: 1.125rem;
 
                                 @include breakpoint(mobile) {
-                                    font-size: .8rem;
+                                    font-size: 11px;
                                 }
 
                                 &:first-child {
@@ -444,12 +479,15 @@
 
             label {
                 font-family: 'HelveticaNeue';
-                font-size: 16px;
+                font-size: 18px;
                 letter-spacing: 1px;
                 display: block;
                 position: relative;
                 padding: 0;
-                font-size: 18px;
+
+                @include breakpoint(mobile){
+                    font-size: 12px;
+                }
 
                 &.label-agreement {
                     font-family: 'HelveticaNeue';
@@ -471,13 +509,19 @@
                     margin: 5px 0 0;
                     color: $red-color;
 
-
+                    @include breakpoint(mobile){
+                        font-size: 12px;
+                    }
                 }
             }
 
 
             &.inputsimulasi {
                 margin-top: 30px;
+
+                .formPrice {
+                    text-align: right;
+                }
 
                 .form-control.select2-selection {
                     padding-top: 14px;
@@ -606,7 +650,7 @@
                 margin-top: 30px;
 
                 @include breakpoint(mobile) {
-                    padding: 30px 15px;
+                    padding: 15px 15px;
                 }
 
                 .title-angsuran {
@@ -656,7 +700,10 @@
                 text-align: left;
                 margin-bottom: 25px;
 
-                @include breakpoint(mobile) {}
+                @include breakpoint(mobile) {
+                    padding: 15px;
+                    margin: 0;
+                }
 
                 p {
                     line-height: 2;
@@ -705,6 +752,10 @@
         margin: 0 auto 20px auto;
         //margin-bottom:35px;
 
+        @include breakpoint(mobile){
+            width: 100%;
+        }
+
         .c-custom-select.jcf-hidden {
             &.error+span {
                 border: 1px solid red;
@@ -720,6 +771,7 @@
             color: #04559F;
             display: none;
             z-index: 1;
+            text-transform: uppercase;
 
             &.error {
                 margin: 10px 0;
@@ -1006,8 +1058,7 @@
             width: 100%;
             font-size: 18px;
             border-radius: inherit;
-            padding-top: 20px;
-            padding-bottom: 20px;
+            padding: 20px 15px;
 
             &::placeholder {
                 font-style: italic;
@@ -1469,7 +1520,7 @@
             }
 
             @include breakpoint(tablet) {
-                width: 40px;
+                width: 13%;
             }
         }
     }
@@ -1607,6 +1658,7 @@
 #recalc {
     @include breakpoint(mobile) {
         width: 100%;
+        margin: 0;
     }
 }
 
@@ -1679,103 +1731,191 @@ select::-ms-expand {
     }
 }
 
-.form-contact {
-    .form-group {
-        textarea.form-control {
-            padding-top : 30px;
-        }
-        
-        .form-control {
-            @include breakpoint(tablet){
-                font-size: 16px;
-            }
-
-            @include breakpoint(mobile){
-                font-size: 12px;
-            }
-        }
-    }
-
-    .select2-container--default .select2-selection--single .select2-selection__rendered {
-        line-height : 1.5;
-        padding-left: 0;
-    }
+#contact {
+    .form-contact {
     
-    .select2-container--default .select2-selection--single .select2-selection__arrow {
-        display : none;
-    }
+        @include breakpoint(mobile){
+            padding-left: 5px;
+            padding-right: 5px;
+        }
     
-    .select-wrapper > label {
-        visibility: hidden;
-    }
-
-    .captcha {
-        text-align : center;
-
-        .g-recaptcha {
-            @include breakpoint(mobile){
-                transform:scale(0.75);
-                -webkit-transform:scale(0.75);
-                transform-origin:0 0;
-                -webkit-transform-origin:0 0;
+        .text-head {
+            margin-bottom: 55px;
+    
+            @include breakpoint(mobile) {
+                margin : 35px auto;
             }
-
-            & > div[style] {
-                width : inherit !important;
-
-                @include breakpoint(mobile){
-                    width: 100vw !important;
+            
+            h2 {
+                margin-top: 60px;
+    
+                @include breakpoint(mobile) {
+                    font-size: 20px;
+                    margin-top: inherit;
+                }
+            }
+    
+            p {
+                @include breakpoint(mobile) {
+                    font-size: 13px;
                 }
             }
         }
-
-    }
-
-    .customer-type {
-        &.form-group > label {
-            font-family: 'HelveticaNeue';
-            font-size: 16px;
-            font-weight: normal;
-            color: #565656;
-            position: relative;
-            display: block;
+    
+        .form-group {
+            margin : 30px auto;
+    
+            @include breakpoint(mobile){
+                width: auto;
+                margin : 20px auto;
+            }
+            
+            > label {
+                text-transform: uppercase;
+                
+            }
+    
+            &.select-wrapper {
+                span.select2-selection__placeholder {
+                    font-style: italic;
+                }
+            }
+    
+            &.customer-type > label, 
+            &.upload-image > label{
+                text-transform: capitalize;
+            }
+    
+            textarea.form-control {
+                padding-top : 30px;
+            }
+            
+            .form-control {
+                @include breakpoint(tablet){
+                    font-size: 16px;
+                }
+    
+                @include breakpoint(mobile){
+                    font-size: 14px;
+                    height: 65px;
+                }
+            }
+    
+            .upload-btn > button {
+                background: #F9991C;
+            }
+    
+            /* Chrome, Safari, Edge, Opera */
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+    
+            /* Firefox */
+            input[type=number] {
+                -moz-appearance:textfield;
+            }
+        }
+    
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            line-height : 1.5;
             padding-left: 0;
         }
+        
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
+            display : none;
+        }
+        
+        .select-wrapper > label {
+            visibility: hidden;
+        }
+    
+        .captcha {
+            text-align : center;
+            margin-bottom: 60px;
+            margin-top : 55px;
 
-        .inputform {
-            padding: 5px;
-
-            input[type='radio'] {
-                transform: scale(1.5);
-                margin-right: 15px;
-
-                @include breakpoint(mobile) {
-                    margin-right: 5px;
+            @include breakpoint(mobile){
+                margin-bottom: 35px;
+                margin-top : 35px;
+            }
+    
+            .g-recaptcha {
+                @include breakpoint(mobile){
+                    transform:scale(0.75);
+                    -webkit-transform:scale(0.75);
+                    transform-origin:0 0;
+                    -webkit-transform-origin:0 0;
+                }
+    
+                & > div[style] {
+                    width : inherit !important;
+    
+                    @include breakpoint(mobile){
+                        width: 100vw !important;
+                    }
                 }
             }
-
-            .jcf-radio span {
-                background : #F9991C;
+    
+        }
+    
+        .customer-type {
+            &.form-group > label {
+                font-family: 'HelveticaNeue';
+                font-size: 16px;
+                font-weight: normal;
+                color: #565656;
+                position: relative;
+                display: block;
+                padding-left: 0;
+            }
+    
+            .inputform {
+                padding: 5px;
+    
+                input[type='radio'] {
+                    transform: scale(1.5);
+                    margin-right: 15px;
+    
+                    @include breakpoint(mobile) {
+                        margin-right: 5px;
+                    }
+                }
+    
+                .jcf-radio span {
+                    background : #F9991C;
+                }
+            }
+    
+            &.form-group .ipt-radio {
+                display: table-cell;
+                width: 1%;
+    
+                label {
+                    display : contents;
+                    color : #04559F;
+                    font-size : 18px;
+    
+                    @include breakpoint(tablet) {
+                        font-size: 14px;
+                    }
+    
+                    @include breakpoint(mobile) {
+                        font-size: 12px;
+                    }
+                }
             }
         }
+    }
+    .button-area {
+        @include breakpoint(mobile) {
+            padding-bottom: inherit;
+        }
 
-        &.form-group .ipt-radio {
-            display: table-cell;
-            width: 1%;
-
-            label {
-                display : contents;
-                color : #04559F;
-                font-size : 18px;
-
-                @include breakpoint(tablet) {
-                    font-size: 14px;
-                }
-
-                @include breakpoint(mobile) {
-                    font-size: 12px;
-                }
-            }
+        button {
+            background: #F9991C;
+            border: inherit;
         }
     }
 }
@@ -2070,7 +2210,6 @@ select::-ms-expand {
 .absolutebutcalc{
     width: 100%;
 }
-
 .modal-dialog {
     height: 100%;
     width: 100%;
@@ -2082,3 +2221,8 @@ select::-ms-expand {
     margin: 0 auto;
     width: 50%;
   }
+.no-padding-mobile{
+    @include breakpoint(mobile){
+        padding: 0 !important;
+    }
+}

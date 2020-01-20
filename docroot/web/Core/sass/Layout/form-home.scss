@@ -3,12 +3,12 @@
     margin-bottom: 60px;
     // padding: 90px 50px 50px;
     @include breakpoint(mobile){
-        padding: 20px 15px;
+        padding: 0px 15px;
     }
 
-    @include breakpoint(tablet){
-        padding: 20px 15px;
-    }
+    // @include breakpoint(tablet){
+    //     padding: 20px 15px;
+    // }
 
     @include breakpoint(desktop){
         &.modif{
@@ -24,6 +24,10 @@
 
     .title-wrapper{
         margin-top: 50px;
+
+        @include breakpoint(mobile){
+            margin-top: 30px;
+        }
     }
     .paragraf-title{
         margin: 0;
@@ -48,6 +52,11 @@
           padding: 0 15px;
           text-align: left;
           margin-bottom: 20px;
+
+          @include breakpoint(mobile){
+              margin-top: 30px;
+              margin-bottom: 10px;
+          }
         }
         
         .list-credit--icon {
@@ -96,13 +105,13 @@
 
                 @include breakpoint(tablet){
                     flex: 1 0 21%;
-                    margin: 15px -1px;
+                    margin: 15px -10px;
                     min-width:auto;
                     min-height:auto;
                 }
 
                 @media only screen and (max-width: 323px) {
-                    min-width:100px;
+                    // min-width:100px;
                 }
 
                 a {
@@ -128,28 +137,31 @@
                             vertical-align: middle;
                             margin-bottom: 20px;
                             width: 90px;
-                            margin-top: 10px;
                             height: 90px;
+                            margin-top: 10px;
+                            
                             @include breakpoint(mobile){
-                                width:80px;
-                                height:80px;
+                                width: 100%;
+                                height: auto;
                             }
 
-                            @include breakpoint(tablet){
-                                width:80px;
-                                height:80px;
-                            }
+                            // @include breakpoint(tablet){
+                            //     width:80px;
+                            //     height:80px;
+                            // }
                         }
 
                         p{
                             font-weight:bold;
                             color: #9C9C9C;
                             @include breakpoint(mobile){
-                                height:40px;
+                                // height:40px;
+                                font-size: 8px;
+                                line-height: 11px;
                             }
 
                             @include breakpoint(tablet){
-                                height:40px;
+                                height: 30px;
                             }
                         }
 

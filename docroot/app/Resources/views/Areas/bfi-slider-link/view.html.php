@@ -12,17 +12,14 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="slider-content-wrapper">
-<<<<<<< HEAD
-                                            <p class="title"><?= $this->input('title');?></p>
+                                            <!-- <p class="title"><?= $this->input('title');?></p>
                                             <a class="lihat-produk" href="#">LIHAT PRODUK<i class="fa fa-angle-right"></i></a>
                                             <p class="quotes"><?= $this->textarea('text');?></p>
-                                            <div class="bungkus-img-people"><img src="<?= $assetFounder->getImage()?>" class="img-responsive img-people" alt=""></div>
-=======
+                                            <div class="bungkus-img-people"><img src="<?= $assetFounder->getImage()?>" class="img-responsive img-people" alt=""></div> -->
                                             <p class="title"><?= $this->input('title'); ?></p>
-                                            <a class="lihat-produk" href="<?= $this->link("url")->getHref(); ?>"><u><b><?= $this->link("url")->getText(); ?></b></u><!-- <i class="fa fa-angle-right"></i> --></a>
+                                            <a class="lihat-produk" href="<?= $this->link("url")->getHref(); ?>"><?= $this->link("url")->getText(); ?><i class="fa fa-angle-right"></i></a>
                                             <p class="quotes"><?= $this->textarea('text'); ?></p>
                                             <div class="bungkus-img-people"><img src="<?= $assetFounder->getImage() ?>" class="img-responsive img-people" alt=""></div>
->>>>>>> development
                                             <div class="cont-name">
                                                 <p class="name"><?= $this->input('founder'); ?></p>
                                                 <p class="position"><?= $this->input('position'); ?></p>

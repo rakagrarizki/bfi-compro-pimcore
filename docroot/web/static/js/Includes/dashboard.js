@@ -380,8 +380,10 @@ function applicationStatus(token, statusNumber, assignmentId) {
                 if(data[0].status_id == 1){
                     $(statusNumber).find('div.fail-notif').css('visibility', 'hidden');
                 }else if(data[0].status_id == 2){
+                    $(statusNumber).find('div.fail-notif').css('visibility', 'visible');
                     $(statusNumber).find('div.fail-notif > span:last').text(data[0].status_desc)
                 }else{
+                    $(statusNumber).find('div.fail-notif').css('visibility', 'visible');
                     $(statusNumber).find('div.fail-notif > span:first').hide()
                     $(statusNumber).find('div.fail-notif > span:last').text(data[0].status_desc)
                 }
