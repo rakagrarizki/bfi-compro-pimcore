@@ -56,7 +56,7 @@ $this->extend('layout.html.php');
                         <div class="error-wrap"></div>
                     </div>
                     <div class="form-group captcha">
-                        <div class="g-recaptcha" id="g-recaptcha" data-sitekey="6LcsxcUUAAAAAO22We2mizM6KrBMmPECFMVMJ4NE"></div>
+                        <div class="g-recaptcha" id="g-recaptcha" data-sitekey="6Ldb1c8UAAAAALZP6FbNJAM7z8T-tPpkbJvjbJBW"></div>
                     </div>
                 </div>
                 <div class="button-area text-center">

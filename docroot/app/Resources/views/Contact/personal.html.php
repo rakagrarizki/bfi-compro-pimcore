@@ -20,7 +20,7 @@ $this->extend('layout.html.php');
     </style>
 
     <div class="container">
-        <div class="col-xs-12">
+        <!-- <div class="col-xs-12"> -->
 
             <form method="POST" name="personal" id="contact" class="form-get--credit" action="#" enctype="multipart/form-data">
                 <input type="hidden" id="jenis_form" name="jenis_form" value="Contact">
@@ -108,14 +108,14 @@ $this->extend('layout.html.php');
                         <span>Max. ukuran file adalah 500kb</span>
                     </div>
                     <div class="form-group captcha">
-                        <div class="g-recaptcha" id="g-recaptcha" data-sitekey="6LcsxcUUAAAAAO22We2mizM6KrBMmPECFMVMJ4NE"></div>
+                        <div class="g-recaptcha" id="g-recaptcha" data-sitekey="6Ldb1c8UAAAAALZP6FbNJAM7z8T-tPpkbJvjbJBW"></div>
                     </div>
                 </div>
                 <div class="button-area text-center">
                     <button class="cta cta-primary cta-big" type="submit">Kirim Pesan</button>
                 </div>
             </form>
-        </div>
+        <!-- </div> -->
     </div>
 
 <?php } else { ?>

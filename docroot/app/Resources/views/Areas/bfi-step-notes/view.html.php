@@ -15,11 +15,11 @@
                 <?php } ?>
             </ul>
             <!-- <a href="/" class="cta cta-primary cta-big cta-see"><?= $this->translate("more") ?></a> -->
-            <div class="row">
+            <!-- <div class="row">
                 <div class="button-area text-center no-padding">
                     <a href="<?= $this->link('url')->getHref(); ?>" class="cta cta-orange cta-see cta-big"><?= $this->link('url')->getText(); ?></a>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
