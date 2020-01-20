@@ -1010,6 +1010,14 @@
             getCertificateOnBehalf();
             getHunian();
           }
+          if(is_branch = "false"){
+            showTab2();
+            hideTab3();
+            $('.nav-item-3').removeClass('active');
+            $('.nav-item-2').removeClass('done');
+            $('.nav-item-2').addClass('active');
+            $("#modal-branch").modal('show');
+           } 
         }
       }
     })

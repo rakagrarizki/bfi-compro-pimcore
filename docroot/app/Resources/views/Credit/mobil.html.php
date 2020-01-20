@@ -630,3 +630,17 @@ $this->extend('layout-credit.html.php');
         </div>
     </div>
 </div>
+
+<!-- Modal-branch -->
+<div class="modal fade" id="modal-branch" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content branch">
+      <div class="modal-body">
+        <h4>Branch not available</h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

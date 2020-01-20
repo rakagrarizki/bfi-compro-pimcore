@@ -2210,7 +2210,17 @@ select::-ms-expand {
 .absolutebutcalc{
     width: 100%;
 }
-
+.modal-dialog {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+  
+  .modal-content.branch {
+    margin: 0 auto;
+    width: 50%;
+  }
 .no-padding-mobile{
     @include breakpoint(mobile){
         padding: 0 !important;
