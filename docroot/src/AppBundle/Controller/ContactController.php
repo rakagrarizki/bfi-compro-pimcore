@@ -55,48 +55,54 @@ class ContactController extends FrontendController
             $email = htmlentities($data['email']);
             $document = $_FILES['document']['name'];
             $documentTmp = $_FILES['document']['tmp_name'];
+            $documentSize = $_FILES['document']['size'];
 
-            $contactPersonal = new DataObject\ContactPersonal;
-            // $filename = File::getValidFilename($name);
-            $filename = File::getValidFilename($email . $time);
+            if ($documentSize <= 500) {
+                $contactPersonal = new DataObject\ContactPersonal;
+                // $filename = File::getValidFilename($name);
+                $filename = File::getValidFilename($email . $time);
 
-            $contactPersonal->setParent(DataObject\AbstractObject::getByPath('/Contact/Personal')); // we store all objects in /Contact/Personal
-            $contactPersonal->setKey($filename); // the filename of the object
-            $contactPersonal->setPublished(true); // yep, it should be published :)
+                $contactPersonal->setParent(DataObject\AbstractObject::getByPath('/Contact/Personal')); // we store all objects in /Contact/Personal
+                $contactPersonal->setKey($filename); // the filename of the object
+                $contactPersonal->setPublished(true); // yep, it should be published :)
 
-            //creating and saving new asset
-            if ($document != "") {
-                $asset = new Asset();
-                $asset->setFilename($email . "-" . $time . $document);
-                $status = move_uploaded_file($documentTmp, tmp . $email . "-" . $document);
-                $fileDocument = tmp . $email . "-" . $document;
-                if (!$status) {
-                    dump($_FILES);
-                    dump($status);
-                    exit();
-                } else {
-                    $asset->setData(file_get_contents($fileDocument));
-                    $asset->setParent(Asset::getByPath("/Contact/Document"));
-                    $asset->save();
-                    unlink($fileDocument);
+                //creating and saving new asset
+                if ($document != "") {
+                    $asset = new Asset();
+                    $asset->setFilename($email . "-" . $time . $document);
+                    $status = move_uploaded_file($documentTmp, tmp . $email . "-" . $document);
+                    $fileDocument = tmp . $email . "-" . $document;
+                    if (!$status) {
+                        dump($_FILES);
+                        dump($status);
+                        exit();
+                    } else {
+                        $asset->setData(file_get_contents($fileDocument));
+                        $asset->setParent(Asset::getByPath("/Contact/Document"));
+                        $asset->save();
+                        unlink($fileDocument);
+                    }
                 }
+                // dump($data);
+                // dump($document);
+                // exit;
+
+                $contactPersonal->setName(htmlentities($data['name']));
+                $contactPersonal->setPhone(htmlentities($data['phone']));
+                $contactPersonal->setEmail($email);
+                $contactPersonal->setIdentity(htmlentities($data['identity']));
+                $contactPersonal->setNo_kontrak(htmlentities($data['no_kontrak']));
+                $contactPersonal->setCustomer_name(htmlentities($data['customer_name']));
+                $contactPersonal->setType_message(htmlentities($data['type_message']));
+                $contactPersonal->setMessage(htmlentities($data['message']));
+                $contactPersonal->setFile($asset);
+                $contactPersonal->save();
+
+                $success = true;
+            } else {
+                $success = false;
+                echo "File tidak boleh lebih dari 500kb";
             }
-            // dump($data);
-            // dump($document);
-            // exit;
-
-            $contactPersonal->setName(htmlentities($data['name']));
-            $contactPersonal->setPhone(htmlentities($data['phone']));
-            $contactPersonal->setEmail($email);
-            $contactPersonal->setIdentity(htmlentities($data['identity']));
-            $contactPersonal->setNo_kontrak(htmlentities($data['no_kontrak']));
-            $contactPersonal->setCustomer_name(htmlentities($data['customer_name']));
-            $contactPersonal->setType_message(htmlentities($data['type_message']));
-            $contactPersonal->setMessage(htmlentities($data['message']));
-            $contactPersonal->setFile($asset);
-            $contactPersonal->save();
-
-            $success = true;
         }
         $this->view->success = $success;
     }

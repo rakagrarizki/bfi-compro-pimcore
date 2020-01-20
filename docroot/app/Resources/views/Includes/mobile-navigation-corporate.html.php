@@ -9,8 +9,7 @@ use Pimcore\Model\Document;
         <div class="row top-nav">
 
             <div class="col-xs-8">
-                <a class="_grup" href="/<?php echo $this->getLocale() ?>"
-                   class="cta-top-nav "><?= $this->translate("personal") ?></a>
+                <a class="_grup" href="/<?php echo $this->getLocale() ?>" class="cta-top-nav "><?= $this->translate("personal") ?></a>
                 <a class="_personal" href="/<?php echo $this->getLocale() . '/corporate' ?>" class="cta-top-nav active"><?= $this->translate("corporate") ?></a>
             </div>
 
@@ -19,9 +18,7 @@ use Pimcore\Model\Document;
             </div>
         </div>
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                    aria-expanded="false"
-                    aria-controls="navbar">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -31,7 +28,7 @@ use Pimcore\Model\Document;
             <a class="navbar-brand" href="<?php echo "/" . $this->getLocale(); ?>">
                 <img src="/static/images/logo-bfi.png" alt="logo-bfi" class="img-responsive">
             </a>
-            
+
         </div>
     </div>
 </div>
@@ -51,86 +48,59 @@ use Pimcore\Model\Document;
                 }
 
                 if ($hasChildren) {
-                    ?>
+        ?>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle <?= $page->getActive() ? "active" : ""?>" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">
+                        <a href="#" class="dropdown-toggle <?= $page->getActive() ? "active" : "" ?>" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                             <?= $page->getLabel() ?>
                         </a>
                         <ul class="dropdown-menu">
                             <?php
                             foreach ($page->getPages() as $child) {
-                                ?>
-                                <li><a href="<?= $child->getHref()?>" class="title-dropdown <?= $child->getActive() ? "active" : ""?>"><?= $child->getLabel() ?></a></li>
+                            ?>
+                                <li><a href="<?= $child->getHref() ?>" class="title-dropdown <?= $child->getActive() ? "active" : "" ?>"><?= $child->getLabel() ?></a></li>
                                 <ol class="grand-child">
-                                <?php $d = Document::getById($child->getId());
-                                $doc = $d->getProperty("child");
-                                $childs = explode(",", $doc);
-                                if($doc){
-                                    foreach($childs as $c){
-                                        $name = $c;
-                                        $pattern = '/\W/';
-                                        $result = preg_replace($pattern," ", $c);
-                                        $removeSpace = preg_replace('/\s+/',"-",$result);
-    
-                                        $last = str_replace(" ","-",strtolower($removeSpace));
-                                        $value = $last; 
-                                
-                               ?>
-                                    <li><a href="<?= $child->getHref() ."?tab=" . $value?>" class="title-dropdown"><?= $name ?></a></li>
-                                <?php 
-                                }    
-                            }
+                                    <?php $d = Document::getById($child->getId());
+                                    $doc = $d->getProperty("child");
+                                    $childs = explode(",", $doc);
+                                    if ($doc) {
+                                        foreach ($childs as $c) {
+                                            $name = $c;
+                                            $pattern = '/\W/';
+                                            $result = preg_replace($pattern, " ", $c);
+                                            $removeSpace = preg_replace('/\s+/', "-", $result);
 
-                                ?>
+                                            $last = str_replace(" ", "-", strtolower($removeSpace));
+                                            $value = $last;
+
+                                    ?>
+                                            <li><a href="<?= $child->getHref() . "?tab=" . $value ?>" class="title-dropdown"><?= $name ?></a></li>
+                                    <?php
+                                        }
+                                    }
+
+                                    ?>
                                 </ol>
 
-                                <?php
-                                $hasGrandChildren = $child->hasPages();
-                                if ($hasGrandChildren) {
-                                    foreach ($child->getPages() as $grandChild) {
-                                        ?>
-                                        <?php if($grandChild->getDocumentType() != "link"):?>
-                                        <li><a href="<?= $grandChild->getHref() ?>"><?= $grandChild->getLabel() ?></a>
-                                        </li>
-                                        <?php else: ?>
-                                            <li><a href="<?= $grandChild->getHref()?>" class="title-dropdown"><?= $grandChild->getLabel() ?></a></li>
-
-                                        <?php endif;?>
-                                        <?php
-                                        // $hasGreatGrandChild = $grandChild->hasPages();
-                                        // if ($hasGreatGrandChild) {
-                                        //     foreach ($grandChild->getPages() as $greatGrandChild) { ?>
-                                                <li>
-                                                    <a class="<?php //echo $greatGrandChild->getActive() ? 'active' : '' ?>" href="<?php //echo $greatGrandChild->getHref() ?>"><?php //echo $greatGrandChild->getLabel() ?></a>
-                                                </li>
-                                        <?php
-                                            //}
-                                        //}
-
-                                    }
-                                }
-                                ?>
-                                <?php
+                            <?php
                             }
                             ?>
                         </ul>
                     </li>
-                    <?php
+                <?php
                 } else {
-                    ?>
+                ?>
                     <li class="<?php echo $page->getActive() ? 'active' : '' ?>">
                         <a href="<?= $page->getHref() ?>">
                             <?= $page->getLabel() ?>
                         </a>
                     </li>
-                    <?php
+        <?php
                 }
             }
         }
         ?>
         <li role="separator" class="divider"></li>
-        <li> <a  href="<?= $this->websiteConfig("career_link") ? $this->websiteConfig("career_link") : "#" ;?>">
+        <li> <a href="<?= $this->websiteConfig("career_link") ? $this->websiteConfig("career_link") : "#"; ?>">
                 <?= $this->translate("career"); ?></a></li>
     </ul>
 </div>
