@@ -12,8 +12,13 @@ use Pimcore\Model\Document;
                 <a href="<?php echo "/" . $this->getLocale() . '/user/dashboard'; ?>" class="text-btn"><?= $this->translate("back") ?></a>
             </div>
 
-            <div class="col-xs-4 text-right">
-                <?php echo $this->template("Includes/mobile-language.html.php") ?>
+            <div class="col-xs-6 text-right">
+                <div class="link-log">
+                    <a href="<?= "/" . $lang . "/login"; ?>" class="login"><?= $this->translate("login") ?></a>
+                    <div class="user hide">
+                        <a href="/<?= $this->getLocale() ?>/user/dashboard" class="full_name">Deborah Morris</a>|<a href="#" class="logout" onclick="return logout('<?= $this->getLocale() ?>');"><?= $this->translate("logout") ?></a>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="navbar-header">

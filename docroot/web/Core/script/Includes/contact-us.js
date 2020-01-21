@@ -37,4 +37,40 @@ $(document).ready(function(){
         $('label[for="message"]').css('display', 'block').css('padding', '15px 15px 5px');
         $('textarea#message').css('padding-top', '35px');
     })
+
+    $('.file-input').on('change', function(e) { 
+        const sizeLimit = 500000;
+        const parent = $(this).parents(".upload-image");
+        const iptFrm = $(this).data("id");
+        const label = parent.find("b")[0];
+        const preview = parent.find("img")[0];
+        const file = e.target.files[0];
+
+        if (file.size > sizeLimit) { 
+            console.log('if')
+            var errorMsg = '';
+            errorMsg = 'File size must be less than 500 KB.';
+            parent.find(".error-wrap").show();
+            parent.find(".error-wrap").html('<label id="img-error" class="error" for="img" style="display: inline-block;">' + errorMsg + '</label>');
+        } else {
+            console.log('else')
+            var reader = new FileReader();
+            reader.addEventListener("load", function () {
+                if (typeof (preview) !== "undefined") {
+                // $("#" + iptFrm).val(reader.result).trigger("change");
+                $("#" + iptFrm).val("/test/test.png").trigger("change");
+                $(label).text(file.name);
+                preview.src = reader.result;
+                }
+            }, false);
+
+            if (file) {
+                $(preview).show();
+                reader.readAsDataURL(file);
+            } else {
+                $(preview).hide();
+            } 
+            parent.find(".error-wrap").hide();
+        } 
+    });
 });
