@@ -335,6 +335,7 @@ function reInitJcf() {
       } else {
         $(preview).hide();
       }
+      parent.find(".error-wrap").hide();
     } else {
       var errorMsg = '';
       switch (false) {
@@ -345,6 +346,7 @@ function reInitJcf() {
           errorMsg = 'Please choose image file.';
           break;
       }
+      parent.find(".error-wrap").show();
       parent.find(".error-wrap").html('<label id="ktp-error" class="error" for="ktp" style="display: inline-block;">' + errorMsg + '</label>')
     }
   });
