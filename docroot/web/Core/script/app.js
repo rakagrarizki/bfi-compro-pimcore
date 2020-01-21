@@ -158,7 +158,6 @@
   var step2Done = false;
   var step3Done = false;
   var step4Done = false;
-  var is_branch = true;
   var changeDataPemohon = false;
   var changeDataTempatTinggal = false;
   var changeDataKendaraan = false;
@@ -998,13 +997,27 @@
       },
       success: function (data) {
         if (data.success === "1") {
-          credits.tempat_tinggal.provinsi = htmlEntities(provinsi);
-          credits.tempat_tinggal.kota = htmlEntities(kota);
-          credits.tempat_tinggal.kecamatan = htmlEntities(kecamatan);
-          credits.tempat_tinggal.kelurahan = htmlEntities(kelurahan);
-          credits.tempat_tinggal.kode_pos = htmlEntities(kode_pos_text);
-          credits.tempat_tinggal.alamat = htmlEntities(alamat);
-          if (credType === "rumah") {
+          if(credType === "motor" || credType === "mobil"){
+            if(data.data.is_branch) {
+              credits.tempat_tinggal.provinsi = htmlEntities(provinsi);
+              credits.tempat_tinggal.kota = htmlEntities(kota);
+              credits.tempat_tinggal.kecamatan = htmlEntities(kecamatan);
+              credits.tempat_tinggal.kelurahan = htmlEntities(kelurahan);
+              credits.tempat_tinggal.kode_pos = htmlEntities(kode_pos_text);
+              credits.tempat_tinggal.alamat = htmlEntities(alamat);
+            } else {
+              $("#modal-branch").modal('show');
+              // if(window.stop) {
+              //   window.stop
+              // }
+            }
+          } else if (credType === "rumah") {
+            credits.tempat_tinggal.provinsi = htmlEntities(provinsi);
+            credits.tempat_tinggal.kota = htmlEntities(kota);
+            credits.tempat_tinggal.kecamatan = htmlEntities(kecamatan);
+            credits.tempat_tinggal.kelurahan = htmlEntities(kelurahan);
+            credits.tempat_tinggal.kode_pos = htmlEntities(kode_pos_text);
+            credits.tempat_tinggal.alamat = htmlEntities(alamat);
             getProperty();
             getCertificateType();
             getCertificateOnBehalf();
@@ -1175,14 +1188,20 @@
       },
       success: function (data) {
         if (data.success === "1") {
-          credits.kendaraan.merk_kendaraan = htmlEntities(merk_kendaraan);
-          credits.kendaraan.merk_kendaraan_text = htmlEntities(merk_kendaraan_text);
-          credits.kendaraan.model_kendaraan = htmlEntities(model_kendaraan);
-          credits.kendaraan.model_kendaraan_text = htmlEntities(model_kendaraan_text);
-          credits.kendaraan.tahun_kendaraan = htmlEntities(tahun_kendaraan);
-          credits.kendaraan.tahun_kendaraan_text = htmlEntities(tahun_kendaraan_text);
-          credits.kendaraan.status_pemilik = htmlEntities(status_pemilik);
-          cb();
+          if(credType === "motor" || credType ==="mobil"){
+             if(data.data.is_pricing){
+              credits.kendaraan.merk_kendaraan = htmlEntities(merk_kendaraan);
+              credits.kendaraan.merk_kendaraan_text = htmlEntities(merk_kendaraan_text);
+              credits.kendaraan.model_kendaraan = htmlEntities(model_kendaraan);
+              credits.kendaraan.model_kendaraan_text = htmlEntities(model_kendaraan_text);
+              credits.kendaraan.tahun_kendaraan = htmlEntities(tahun_kendaraan);
+              credits.kendaraan.tahun_kendaraan_text = htmlEntities(tahun_kendaraan_text);
+              credits.kendaraan.status_pemilik = htmlEntities(status_pemilik);
+              cb();
+             }else{
+              $("#modal-pricing").modal('show');
+            }
+          }
         }
       }
     })
@@ -1651,7 +1670,9 @@
     $('#button2').on('click', function (e) {
       e.preventDefault();
 
-      if ($(this).closest('form').valid() && is_branch == true) {
+      pushDataTempatTinggal();
+
+      if ($(this).closest('form').valid()) {
         showTab3();
         hideTab2();
         scrollToTop();
@@ -1675,8 +1696,6 @@
           })
         }
 
-        pushDataTempatTinggal();
-
         if ($("#merk_kendaraan").length > 0 && change_addres) {
           getmobilormotor($("#merk_kendaraan"), credits);
           change_addres = false;
@@ -1686,8 +1705,6 @@
           $(".horizontal-scroll").scrollLeft(260);
         }
 
-      }else {
-        $("#modal-branch").modal('show');
       }
     })
 
