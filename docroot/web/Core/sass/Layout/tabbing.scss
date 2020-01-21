@@ -325,10 +325,11 @@
 }
 
 .page-title{
-    font-size: 2.5rem;
+    font-size: 40px;
     font-family: 'HelveticaNeue-Bold';
     text-align: center;
-    padding: 55px 30px;
+    // padding: 55px 30px;
+    margin: 80px 0 40px 0;
     color: $grey-dark-color;
 }
 
@@ -489,7 +490,7 @@
 
 .button-type-18{
     font-family: 'HelveticaNeue-Bold';
-    margin-bottom: 40px;
+    margin-bottom: 70px;
 
     a{
         color: $white;
@@ -626,4 +627,13 @@
     .modal-dialog {
         width: 1200px!important;
     }
+}
+
+.container-profesi{
+    margin-bottom: 30px;
+}
+
+.profesi-box{
+    margin-bottom: 40px;
+    padding: 0 20px 0 20px;
 }

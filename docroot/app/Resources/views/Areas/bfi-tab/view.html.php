@@ -18,7 +18,7 @@ $tab = $this->getParam("tab");
 <div class="tabs-accor">
     <div class="container">
         <article class="sect-title text-center">
-            <h2 class="margin-top-10"><?= $this->input('title');?></h2>
+            <h2 class=""><?= $this->input('title');?></h2>
         </article>
         <div id="<?= $this->select("group")->getData();?>" class="tabs-outer">
             <ul class="nav nav-tabs" role="tablist" id="outer-choice">

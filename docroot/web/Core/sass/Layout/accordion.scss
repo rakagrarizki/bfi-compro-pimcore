@@ -257,7 +257,7 @@
             a {
                 position: relative;
                 display: block;
-                padding: 20px 95px 20px 70px;
+                padding: 35px 95px 35px 70px;
                 color: #565656;
 
                 @include breakpoint(small-mobile) {
@@ -269,7 +269,7 @@
                 }
 
                 &.a-panelheading {
-                    padding-bottom: 40px;
+                    padding-bottom: 35px;
                     @include breakpoint(mobile) {
                         padding-bottom: 20px;
                         font-size: 15px;
