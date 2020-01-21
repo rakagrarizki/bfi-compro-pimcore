@@ -23,7 +23,6 @@ class ContactController extends FrontendController
             // dump($data);
             // exit();
 
-            $success = true;
 
             $time = time();
 
@@ -41,6 +40,9 @@ class ContactController extends FrontendController
             $contactCorporate->setSubject(htmlentities($data['subject']));
             $contactCorporate->setMessage(htmlentities($data['message']));
             $contactCorporate->save();
+
+            $this->_success();
+            $success = true;
         }
         $this->view->success = $success;
     }
@@ -105,5 +107,16 @@ class ContactController extends FrontendController
             }
         }
         $this->view->success = $success;
+    }
+
+    private function _success()
+    {
+        $blog = new DataObject\BlogArticle\Listing();
+        $blog->setOrderKey("Date");
+        $blog->setOrder("desc");
+        $blog->setLimit(4);
+        $blog->load();
+
+        return $this->view->blog = $blog;
     }
 }

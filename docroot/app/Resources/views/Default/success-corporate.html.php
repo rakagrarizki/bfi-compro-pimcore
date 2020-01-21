@@ -6,7 +6,7 @@
  * @var \Pimcore\Templating\GlobalVariables $app
  */
 
-$this->extend('layout.html.php');
+// $this->extend('layout.html.php');
 ?>
 
 <?php
@@ -28,73 +28,33 @@ $this->headScript()->offsetSetFile(100, '/static/js/Includes/contact-us.js');
     <div id="news" class="news">
         <div class="row">
             <div class="sect-title text-center">
-                <h2>Berita</h2>
-                <p>Temukan berita inspiratif untuk kehidupan finansial Anda</p>
+                <h2><?= $this->t('berita_head'); ?></h2>
+                <p><?= $this->t('berita_sub_head'); ?></p>
             </div>
         </div>
         <div class="row list-news-container">
-            <div class="col-md-3 col-xs-6">
-                <article class="article__post">
-                    <div class="article__post__img" style="background-image: url('https://dummyimage.com/600x400/000/ff')">
-                    </div>
-                    <div class="article__post__text">
-                        <p>Entrepeneur</p>
-                        <h4><a href="#">Ketika Kerja Keras Berbuah Kesuksesan</a></h4>
-                        <div class="dateview">
-                            <span class="date">03.11.18</span>
-                            <span class="view"><i class="fa fa-eye"></i>1.234</span>
+            <?php foreach ($this->blog as $blog) : ?>
+                <div class="col-md-3 col-xs-6">
+                    <article class="article__post">
+                        <div class="article__post__img" style="background-image: url('<?= $blog->getImage(); ?>')">
                         </div>
-                    </div>
-                </article>
-            </div>
-            <div class="col-md-3 col-xs-6">
-                <article class="article__post">
-                    <div class="article__post__img" style="background-image: url('https://dummyimage.com/600x400/000/ff')">
-                    </div>
-                    <div class="article__post__text">
-                        <p>Sekilas BFI</p>
-                        <h4><a href="#">Kampanye Uber Milyaran BFI Rebut Perhatian</a></h4>
-                        <div class="dateview">
-                            <span class="date">03.11.18</span>
-                            <span class="view"><i class="fa fa-eye"></i>1.234</span>
+                        <div class="article__post__text">
+                            <p><?= $blog->getBlogCategory()->getName(); ?></p>
+                            <h4><a href="<?= '/' . $this->getLocale() . '/blog/' . $blog->getSlug(); ?>"><?= $blog->getTitle(); ?></a></h4>
+                            <div class="dateview">
+                                <span class="date"><?= date('Y-m-d', strtotime($blog->getDate())); ?></span>
+                                <span class="view"><i class="fa fa-eye"></i><?= $blog->getViews(); ?></span>
+                            </div>
                         </div>
-                    </div>
-                </article>
-            </div>
-            <div class="col-md-3 col-xs-6">
-                <article class="article__post">
-                    <div class="article__post__img" style="background-image: url('https://dummyimage.com/600x400/000/ff')">
-                    </div>
-                    <div class="article__post__text">
-                        <p>Entrepeneur</p>
-                        <h4><a href="#">Ketika Kerja Keras Berbuah Kesuksesan</a></h4>
-                        <div class="dateview">
-                            <span class="date">03.11.18</span>
-                            <span class="view"><i class="fa fa-eye"></i>1.234</span>
-                        </div>
-                    </div>
-                </article>
-            </div>
-            <div class="col-md-3 col-xs-6">
-                <article class="article__post">
-                    <div class="article__post__img" style="background-image: url('https://dummyimage.com/600x400/000/ff')">
-                    </div>
-                    <div class="article__post__text">
-                        <p>Sekilas BFI</p>
-                        <h4><a href="#">Kampanye Uber Milyaran BFI Rebut Perhatian</a></h4>
-                        <div class="dateview">
-                            <span class="date">03.11.18</span>
-                            <span class="view"><i class="fa fa-eye"></i>1.234</span>
-                        </div>
-                    </div>
-                </article>
-            </div>
+                    </article>
+                </div>
+            <?php endforeach; ?>
         </div>
         <div class="row">
             <div class="button-area text-center btn-beranda">
-                <a href="/<?php echo $this->getLocale() ?>" class="cta cta-primary cta-big">
+                <a href="<?php echo "/" . $this->getLocale() . '/corporate'; ?>" class="cta cta-primary cta-big">
                     <i class="icon-home"></i>
-                    <span>Kembali Ke Beranda</span></a>    
+                    <span>Kembali Ke Beranda</span></a>
             </div>
         </div>
     </div>
