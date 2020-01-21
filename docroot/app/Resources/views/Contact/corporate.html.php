@@ -14,12 +14,8 @@ $this->extend('layout.html.php');
     $this->headScript()->offsetSetFile(100, '/static/js/Includes/contact-us.js');
     ?>
 
-    <style>
-
-    </style>
-
     <div class="container">
-        <div class="col-xs-12">
+        <!-- <div class="col-xs-12"> -->
 
             <form id="contact" class="form-get--credit" name="corporate" method="POST" role="form">
                 <input type="hidden" id="jenis_form" name="jenis_form" value="Contact">
@@ -63,7 +59,7 @@ $this->extend('layout.html.php');
                     <button class="cta cta-primary cta-big" type="submit">Kirim Pesan</button>
                 </div>
             </form>
-        </div>
+        <!-- </div> -->
     </div>
 
 <?php } else { ?>
