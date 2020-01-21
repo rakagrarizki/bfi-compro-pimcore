@@ -112,11 +112,11 @@
         .slick-dots {
             bottom: 20px;
             text-align: center;
-            left: 18%;
+            // left: 18%;
 
-            @include breakpoint(mobile) {
-                left: 10%;
-            }
+            // @include breakpoint(mobile) {
+            //     left: 10%;
+            // }
             
         }
 
@@ -210,7 +210,7 @@
             }
         }
         .slick-dots{
-            text-align: left;
+            text-align: center;
             bottom: 30px;
         }
     }
@@ -246,7 +246,7 @@
     }
 
     .fa-angle-left {
-        left: -7.5%;
+        left: 7.5%;
         color: $blue-dark-color;
         font-size: 30px;
 
@@ -256,7 +256,7 @@
     }
 
     .fa-angle-right {
-        right: -7.5%;
+        right: 7.5%;
         color: $blue-dark-color;
         font-size: 30px;
 
