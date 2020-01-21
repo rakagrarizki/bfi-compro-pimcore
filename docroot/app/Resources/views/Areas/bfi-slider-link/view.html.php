@@ -17,7 +17,7 @@
                                             <p class="quotes"><?= $this->textarea('text');?></p>
                                             <div class="bungkus-img-people"><img src="<?= $assetFounder->getImage()?>" class="img-responsive img-people" alt=""></div> -->
                                             <p class="title"><?= $this->input('title'); ?></p>
-                                            <a class="lihat-produk" href="<?= $this->link("url")->getHref(); ?>"><?= $this->link("url")->getText(); ?><i class="fa fa-angle-right"></i></a>
+                                            <a class="lihat-produk" href="<?= $this->link("url")->getHref(); ?>"><?= $this->link("url")->getText(); ?></a>
                                             <p class="quotes"><?= $this->textarea('text'); ?></p>
                                             <div class="bungkus-img-people"><img src="<?= $assetFounder->getImage() ?>" class="img-responsive img-people" alt=""></div>
                                             <div class="cont-name">
