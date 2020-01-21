@@ -293,7 +293,7 @@ $this->extend('layout-credit.html.php');
                                             <p class="text-center"><?= $this->translate('input-data-funding') ?></p>
                                         </div>
 
-                                        <div class="col-md-6">
+                                        <div class="col-md-6 no-padding-mobile">
                                             <div class="form-group">
                                                 <label for="tipe_paket"><?= $this->translate('label-tipe-paket') ?></label>
                                                 <div class="input-group inputform">
@@ -366,7 +366,7 @@ $this->extend('layout-credit.html.php');
                                                 </div>
                                             </div> -->
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-6 no-padding-mobile">
                                             <div class="rincian">
                                                 <div class="rincian--content">
                                                     <p class="title-angsuran"><?= $this->translate('label-rincian') ?></p>

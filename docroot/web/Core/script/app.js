@@ -158,7 +158,7 @@
   var step2Done = false;
   var step3Done = false;
   var step4Done = false;
-
+  var is_branch = true;
   var changeDataPemohon = false;
   var changeDataTempatTinggal = false;
   var changeDataKendaraan = false;
@@ -1651,7 +1651,7 @@
     $('#button2').on('click', function (e) {
       e.preventDefault();
 
-      if ($(this).closest('form').valid()) {
+      if ($(this).closest('form').valid() && is_branch == true) {
         showTab3();
         hideTab2();
         scrollToTop();
@@ -1686,6 +1686,8 @@
           $(".horizontal-scroll").scrollLeft(260);
         }
 
+      }else {
+        $("#modal-branch").modal('show');
       }
     })
 

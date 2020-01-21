@@ -12,7 +12,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
 ?>
 
 <div class="container">
-    <div class="col-xs-12">
+    <div class="">
 
         <form id="getCredit" class="form-get--credit" action="#">
             <input type="hidden" id="jenis_form" name="jenis_form" value="TRAVEL">
@@ -116,7 +116,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                         <p class="text-center"><?= $this->translate('count-estimated-installment') ?></p>
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="col-md-6 no-padding-mobile">
                         <div class="form-group sliderGroup inputsimulasi">
                             <label for="jml-biaya"><?= $this->translate('travel-package-price') ?></label>
                             <div class="input-group inputform">
@@ -139,7 +139,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                                 <span class="input-group-addon">Rp</span>
                                 <input type="text" id="down_payment" name="down_payment" class="form-control minDownPayment formatRibuan">
                             </div>
-                            <small><?= $this->translate('min-10-from-package-price') ?></small>
+                            <div><?= $this->translate('min-10-from-package-price') ?></div>
                             <div class="error-wrap"></div>
                         </div>
                         <div class="form-group sliderGroup inputsimulasi">
@@ -162,7 +162,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                             <div><?= $this->translate('max-20-from-package-price') ?></div>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 no-padding-mobile">
                         <div class="rincian">
                             <div class="rincian--content">
                                 <p class="title-angsuran"><?= $this->translate('label-rincian') ?></p>

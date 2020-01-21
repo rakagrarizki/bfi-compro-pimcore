@@ -4,6 +4,7 @@
 use Pimcore\Model\Document;
 
 ?>
+<?php $lang = $this->getLocale(); ?>
 <div class="top-nav--mobille hidden-md">
     <div class="container">
         <div class="row top-nav">
@@ -11,7 +12,11 @@ use Pimcore\Model\Document;
             <?= $this->inc("/" . $this->getLocale() . "/shared/includes/sub-navigation-mobile") ?>
             <div class="col-xs-4 text-right">
                 <div class="link-log">
+<<<<<<< HEAD
+                    <a href="<?= "/" . $lang . "/login"; ?>" class="login"><?= $this->translate("login") ?></a>
+=======
                     <a href="<?= "/" . $this->getLocale() . "/login"; ?>" class="login"><?= $this->translate("login") ?></a>                    
+>>>>>>> origin/development
                 </div>
             </div>
         </div>
@@ -22,16 +27,13 @@ use Pimcore\Model\Document;
             <div class="header-button-wrapper">
                 <div class="button-area--nav" id="btn-credit">
                     <?php $credit = Document::getByPath("/" . $this->getLocale() . "/credit/"); ?>
-                    <a href="<?php echo $credit->getHref(); ?>"
-                    class="cta cta-orange"><?php echo $credit->getTitle(); ?>
+                    <a href="<?php echo $credit->getHref(); ?>" class="cta cta-orange"><?php echo $credit->getTitle(); ?>
                     </a>
                 </div>
                 <div class="search-button">
                     <a href="<?= "/" . $lang . "/search" ?>"><i class="fa fa-search"></i></a>
                 </div>
-                <button type="button" id="btn-burger" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                        aria-expanded="false"
-                        aria-controls="navbar">
+                <button type="button" id="btn-burger" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -56,32 +58,31 @@ use Pimcore\Model\Document;
                 if (strpos($page->getUri(), 'branch-office') !== false) {
                     continue;
                 }
-                if($page->getHref() == "/".$this->getLocale()."/corporate"){
+                if ($page->getHref() == "/" . $this->getLocale() . "/corporate") {
                     break;
                 }
                 if ($hasChildren && strpos($page->getUri(), '#product') !== false) {
-                    ?>
+        ?>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                             <?= $page->getLabel() ?>
                         </a>
                         <ul class="dropdown-menu">
                             <?php
                             foreach ($page->getPages() as $child) {
-                                ?>
+                            ?>
                                 <li><a href="#" class="title-dropdown"><?= $child->getLabel() ?></a></li>
                                 <?php
                                 $hasGrandChildren = $child->hasPages();
                                 if ($hasGrandChildren) {
                                     foreach ($child->getPages() as $grandChild) {
-                                        ?>
-                                        <?php if($grandChild->getDocumentType() != "link"):?>
-                                        <li><a href="<?= $grandChild->getHref() ?>"><?= $grandChild->getLabel() ?></a>
-                                        </li>
-                                        <?php else: ?>
+                                ?>
+                                        <?php if ($grandChild->getDocumentType() != "link") : ?>
+                                            <li><a href="<?= $grandChild->getHref() ?>"><?= $grandChild->getLabel() ?></a>
+                                            </li>
+                                        <?php else : ?>
                                             <li><a href="#" class="title-dropdown"><?= $grandChild->getLabel() ?></a></li>
-                                        <?php endif;?>
+                                        <?php endif; ?>
                                         <?php
                                         $hasGreatGrandChild = $grandChild->hasPages();
                                         if ($hasGreatGrandChild) {
@@ -89,27 +90,26 @@ use Pimcore\Model\Document;
                                                 <li>
                                                     <a class="<?php echo $greatGrandChild->getActive() ? 'active' : '' ?>" href="<?= $greatGrandChild->getHref() ?>"><?= $greatGrandChild->getLabel() ?></a>
                                                 </li>
-                                        <?php
+                                <?php
                                             }
                                         }
-
                                     }
                                 }
                                 ?>
-                                <?php
+                            <?php
                             }
                             ?>
                         </ul>
                     </li>
-                    <?php
+                <?php
                 } else {
-                    ?>
+                ?>
                     <li class="<?php echo $page->getActive() ? 'active' : '' ?>">
                         <a href="<?= $page->getHref() ?>">
                             <?= $page->getLabel() ?>
                         </a>
                     </li>
-                    <?php
+        <?php
                 }
             }
         }

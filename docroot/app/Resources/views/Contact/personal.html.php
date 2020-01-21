@@ -38,7 +38,7 @@ $this->extend('layout.html.php');
                     </div>
                     <div class="form-group">
                         <label for="no_handphone"><?= $this->translate('form-hp') ?></label>
-                        <input type="number" class="form-control formRequired formPhoneNumber" name="personal[phone]" id="no_handphone" maxlength="13" placeholder="Masukkan nomor handphone Anda">
+                        <input type="text" class="form-control formRequired formPhoneNumber" name="personal[phone]" id="no_handphone" maxlength="13" placeholder="Masukkan nomor handphone Anda">
                         <div class="error-wrap"></div>
                     </div>
                     <div class="form-group">
