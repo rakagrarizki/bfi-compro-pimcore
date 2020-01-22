@@ -51,8 +51,9 @@
                 margin-right: 25px;
                 content: counter(item)'.';
                 color: #333;
-                text-align: center;
+                text-align: right;
                 display: inline-block;
+                width: 30px;
     
                 @include breakpoint(mobile) {
                     margin-right: 15px;
