@@ -37,23 +37,28 @@ $this->extend('layout.html.php');
             <div class="list profile">
                 <div class="detail-wrapper">
                     <span class="label">Nama Lengkap</span>
-                    <span class="value-data name">Deborah T. Morris</span>
+                    <span class="value-data name">
+                        <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
                     <span class="label">Email</span>
-                    <span class="value-data email">deborahmorris@gmail.com</span>
+                    <span class="value-data email">
+                        <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
                     <span class="label">Nomor Handphone</span>
-                    <span class="value-data phone">08124567890</span>
+                    <span class="value-data phone">
+                        <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
                     <span class="label">Nomor KTP</span>
-                    <span class="value-data identity-number">1234567890987654</span>
+                    <span class="value-data identity-number">
+                        <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
                     <span class="label">Foto Ktp</span>
-                    <span class="value-data identity-img">Ktp.jpg</span>
+                    <span class="value-data identity-img">
+                        <!-- here position list from API --></span>
                 </div>
             </div>
         </div>
@@ -65,27 +70,33 @@ $this->extend('layout.html.php');
             <div class="list profile-address">
                 <div class="detail-wrapper">
                     <span class="label">Provinsi</span>
-                    <span class="value-data province">DKI Jakarta</span>
+                    <span class="value-data province">
+                        <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
                     <span class="label">Kota</span>
-                    <span class="value-data city">Jakarta</span>
+                    <span class="value-data city">
+                        <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
                     <span class="label">Kecamatan</span>
-                    <span class="value-data district">Kebon Jeruk</span>
+                    <span class="value-data district">
+                        <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
                     <span class="label">Kelurahan</span>
-                    <span class="value-data subdistrict">Kebon Jeruk</span>
+                    <span class="value-data subdistrict">
+                        <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
                     <span class="label">Kode Pos</span>
-                    <span class="value-data zip-code">11530</span>
+                    <span class="value-data zip-code">
+                        <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
                     <span class="label">Alamat</span>
-                    <span class="value-data address">Rumah Jl. Raya Kebon Jeruk No.1, RT.7/RW.1</span>
+                    <span class="value-data address">
+                        <!-- here position list from API --></span>
                 </div>
             </div>
         </div>
