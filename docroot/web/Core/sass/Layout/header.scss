@@ -559,6 +559,43 @@ body{
                 font-weight: bold;
                 color: #04559F;
             }
+
+            .link-log {
+                .user {
+                    a.full_name {
+                        text-decoration : underline;
+                        font-weight : bold;
+                        color: #04559F;
+                        margin-right : 10px;
+                        
+                        &:before {
+                            content: '';
+                            display: inline-block;
+                            width: 10px;
+                            height: 10px;
+                            -moz-border-radius: 7.5px;
+                            -webkit-border-radius: 7.5px;
+                            border-radius: 7.5px;
+                            background-color: #04559F;
+                            margin-right : 10px;
+                        }
+                    }
+
+                    a.logout {
+                        margin-left : 10px;
+                    }
+                }
+
+                a {
+                    &:hover {
+                        color: #04559F;
+                    }
+
+                    &:focus {
+                        text-decoration: none;
+                    }
+                }
+            }
         }
 
         .navbar-header {
