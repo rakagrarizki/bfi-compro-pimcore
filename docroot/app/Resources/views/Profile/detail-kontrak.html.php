@@ -8,6 +8,7 @@
 
 $this->extend('layout.html.php');
 ?>
+<?php $lang = $this->getLocale(); ?>
 
 <div class="container detail-contract">
     <div class="row">
@@ -22,15 +23,18 @@ $this->extend('layout.html.php');
                 <div class="content-wrapper">
                     <div class="detail-wrapper">
                         <span class="label">Jumlah Pembiayaan</span>
-                        <span class="value-data total-installment">telah_dibayar+sisa_angsuran</span>
+                        <span class="value-data total-installment">
+                            <!-- here position list from API --></span>
                     </div>
                     <div class="detail-wrapper">
                         <span class="label">Jumlah Sisa Angsuran</span>
-                        <span class="value-data remaining-installment">sisa_angsuran</span>
+                        <span class="value-data remaining-installment">
+                            <!-- here position list from API --></span>
                     </div>
                     <div class="detail-wrapper">
                         <span class="label">Jumlah Anda Bulan Ini*</span>
-                        <span class="value-data have-paid-installment">angsuran_telah_dibayar</span>
+                        <span class="value-data have-paid-installment">
+                            <!-- here position list from API --></span>
                     </div>
                 </div>
                 <div class="keterangan">
@@ -41,15 +45,18 @@ $this->extend('layout.html.php');
                 <div class="content-wrapper">
                     <div class="detail-wrapper">
                         <span class="label">Tanggal Jatuh Tempo</span>
-                        <span class="value-data due-date">tanggal_jatuh_tempo</span>
+                        <span class="value-data due-date">
+                            <!-- here position list from API --></span>
                     </div>
                     <div class="detail-wrapper">
                         <span class="label">Angsuran per Bulan</span>
-                        <span class="value-data installment-per-month">angsuran_per_bulan</span>
+                        <span class="value-data installment-per-month">
+                            <!-- here position list from API --></span>
                     </div>
                     <div class="detail-wrapper">
                         <span class="label">Denda Keterlambatan*</span>
-                        <span class="value-data late-charge">denda_keterlambatan</span>
+                        <span class="value-data late-charge">
+                            <!-- here position list from API --></span>
                     </div>
                 </div>
                 <div class="keterangan">
@@ -63,7 +70,7 @@ $this->extend('layout.html.php');
         <div class="sect-list">
             <div class="heading">
                 <h3>Cara Pembayaran Angsuran</h3>
-                <button class="cta cta-primary cta-big cta-see full" type="button">Selengkapnya</button>
+                <a href="<?= "/" . $lang . "/user/layanan"; ?>" class="cta cta-primary cta-big cta-see full" type="button">Selengkapnya</a>
                 <button class="cta cta-primary cta-big cta-see short" type="button">Lihat</button>
             </div>
             <div class="list">
@@ -74,7 +81,8 @@ $this->extend('layout.html.php');
                     </div>
                     <div class="detail-wrapper">
                         <span class="label">Nomor Kontrak**</span>
-                        <span class="value-data">9876543210</span>
+                        <span class="value-data contract-number">
+                            <!-- here position list from API --></span>
                     </div>
                 </div>
                 <div class="keterangan">
@@ -104,35 +112,43 @@ $this->extend('layout.html.php');
             <div class="list contract-detail">
                 <div class="detail-wrapper">
                     <span class="label">Jenis Jaminan</span>
-                    <span class="value-data product">BPKB Mobil</span>
+                    <span class="value-data product">
+                        <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
                     <span class="label">Nomor Kontrak</span>
-                    <span class="value-data contract-number">1234567890</span>
+                    <span class="value-data contract-number">
+                        <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
                     <span class="label">Nama Pemohon</span>
-                    <span class="value-data name">Deborah T. Morris</span>
+                    <span class="value-data name">
+                        <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
                     <span class="label">Tanggal Jatuh Tempo</span>
-                    <span class="value-data due-date-contract">11</span>
+                    <span class="value-data due-date-contract">
+                        <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
                     <span class="label">Jumlah Pembayaran</span>
-                    <span class="value-data total-installment-contract">Rp 80.000.000</span>
+                    <span class="value-data total-installment-contract">
+                        <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
                     <span class="label">Angsuran per Bulan</span>
-                    <span class="value-data installment-per-month-contract">Rp 4.514.000</span>
+                    <span class="value-data installment-per-month-contract">
+                        <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
                     <span class="label">Jangka Waktu</span>
-                    <span class="value-data jangka-on-month">12 Bulan</span>
+                    <span class="value-data jangka-on-month">
+                        <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
                     <span class="label">Cabang Pencairan</span>
-                    <span class="value-data cabang-pencairan">Bogor</span>
+                    <span class="value-data cabang-pencairan">
+                        <!-- here position list from API --></span>
                 </div>
             </div>
         </div>
@@ -144,27 +160,33 @@ $this->extend('layout.html.php');
             <div class="list">
                 <div class="detail-wrapper">
                     <span class="label">Merk Kendaraan</span>
-                    <span class="value-data brand">Daihatsu</span>
+                    <span class="value-data brand">
+                        <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
                     <span class="label">Tipe Kendaraan</span>
-                    <span class="value-data type">CBS</span>
+                    <span class="value-data type">
+                        <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
                     <span class="label">Model Kendaraan</span>
-                    <span class="value-data model">Ayla X10AT</span>
+                    <span class="value-data model">
+                        <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
                     <span class="label">Tahun Kendaraan</span>
-                    <span class="value-data year">2013</span>
+                    <span class="value-data year">
+                        <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
                     <span class="label">Warna</span>
-                    <span class="value-data color">Silver</span>
+                    <span class="value-data color">
+                        <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
                     <span class="label">No. Polisi</span>
-                    <span class="value-data vehicle-number">B 1234 CD</span>
+                    <span class="value-data vehicle-number">
+                        <!-- here position list from API --></span>
                 </div>
             </div>
         </div>
@@ -173,19 +195,23 @@ $this->extend('layout.html.php');
             <div class="list">
                 <div class="detail-wrapper">
                     <span class="label">Alamat</span>
-                    <span class="value-data address">Jl. Raya Kebon Jeruk No.1, RT.7/RW.1, Jakarta Barat</span>
+                    <span class="value-data address">
+                        <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
                     <span class="label">Luas Bangunan</span>
-                    <span class="value-data building-area">278 m<sup>2</sup></span>
+                    <span class="value-data building-area">
+                        <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
                     <span class="label">Luas Tanah</span>
-                    <span class="value-data surface-area">201 m<sup>2</sup></span>
+                    <span class="value-data surface-area">
+                        <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
                     <span class="label">Harga Pasar Saat Pengajuan</span>
-                    <span class="value-data price">Rp. 3.117.000.000</span>
+                    <span class="value-data price">
+                        <!-- here position list from API --></span>
                 </div>
             </div>
         </div>
@@ -194,27 +220,33 @@ $this->extend('layout.html.php');
             <div class="list">
                 <div class="detail-wrapper">
                     <span class="label">Merk Aset</span>
-                    <span class="value-data asset-brand">MK</span>
+                    <span class="value-data asset-brand">
+                        <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
                     <span class="label">Tipe Aset</span>
-                    <span class="value-data asset-type">Machine Cutting</span>
+                    <span class="value-data asset-type">
+                        <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
                     <span class="label">Model Aset</span>
-                    <span class="value-data asset-model">Auto Platen Die Cutter W</span>
+                    <span class="value-data asset-model">
+                        <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
                     <span class="label">Tahun Aset</span>
-                    <span class="value-data asset-year">2013</span>
+                    <span class="value-data asset-year">
+                        <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
                     <span class="label">Warna</span>
-                    <span class="value-data asset-color">Abu-Abu</span>
+                    <span class="value-data asset-color">
+                        <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
                     <span class="label">Buatan</span>
-                    <span class="value-data made-in">China</span>
+                    <span class="value-data made-in">
+                        <!-- here position list from API --></span>
                 </div>
             </div>
         </div>
@@ -260,12 +292,13 @@ $this->extend('layout.html.php');
                         <div class='circle'>
                             <i class='fa fa-exclamation'></i>
                         </div>
-                        <span>Anda terlambat membayar 5 hari</span>
+                        <span>
+                            <!-- here position list from API --></span>
                     </div>
                     <h5 class="more">LIHAT DETAIL &#62;</h5>
                 </li>
             </a>
-            <a href="/<?= $this->getLocale() ?>/credit" class="contract-box add-contract">
+            <a href="/<?= $lang; ?>/credit" class="contract-box add-contract">
                 <li class="">
                     <div class="box">
                         <div class="plus">

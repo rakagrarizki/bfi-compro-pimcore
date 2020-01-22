@@ -4,31 +4,36 @@
 use Pimcore\Model\Document;
 
 ?>
+<?php $lang = $this->getLocale(); ?>
 <div class="top-nav--mobille hidden-md">
     <div class="container">
         <div class="row top-nav">
 
             <div class="col-xs-8">
-                <a class="_grup" href="/<?php echo $this->getLocale() ?>" class="cta-top-nav "><?= $this->translate("personal") ?></a>
-                <a class="_personal" href="/<?php echo $this->getLocale() . '/corporate' ?>" class="cta-top-nav active"><?= $this->translate("corporate") ?></a>
+                <a class="_grup" href="/<?= $lang; ?>" class="cta-top-nav "><?= $this->translate("personal") ?></a>
+                <a class="_personal" href="/<?= $lang . '/corporate'; ?>" class="cta-top-nav active"><?= $this->translate("corporate") ?></a>
             </div>
 
             <div class="col-xs-4 text-right">
-                <?php echo $this->template("Includes/mobile-language.html.php") ?>
+                <?= $this->template("Includes/mobile-language.html.php"); ?>
             </div>
         </div>
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="close-bar">x</span>
-            </button>
-            <a class="navbar-brand" href="<?php echo "/" . $this->getLocale(); ?>">
+            <a class="navbar-brand" href="<?= "/" . $lang . "/corporate"; ?>">
                 <img src="/static/images/logo-bfi.png" alt="logo-bfi" class="img-responsive">
             </a>
-
+            <div class="header-button-wrapper">
+                <div class="search-button">
+                    <a href="<?= "/" . $lang . "/search"; ?>"><i class="fa fa-search"></i></a>
+                </div>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="close-bar">x</span>
+                </button>
+            </div>
         </div>
     </div>
 </div>
@@ -58,29 +63,6 @@ use Pimcore\Model\Document;
                             foreach ($page->getPages() as $child) {
                             ?>
                                 <li><a href="<?= $child->getHref() ?>" class="title-dropdown <?= $child->getActive() ? "active" : "" ?>"><?= $child->getLabel() ?></a></li>
-                                <ol class="grand-child">
-                                    <?php $d = Document::getById($child->getId());
-                                    $doc = $d->getProperty("child");
-                                    $childs = explode(",", $doc);
-                                    if ($doc) {
-                                        foreach ($childs as $c) {
-                                            $name = $c;
-                                            $pattern = '/\W/';
-                                            $result = preg_replace($pattern, " ", $c);
-                                            $removeSpace = preg_replace('/\s+/', "-", $result);
-
-                                            $last = str_replace(" ", "-", strtolower($removeSpace));
-                                            $value = $last;
-
-                                    ?>
-                                            <li><a href="<?= $child->getHref() . "?tab=" . $value ?>" class="title-dropdown"><?= $name ?></a></li>
-                                    <?php
-                                        }
-                                    }
-
-                                    ?>
-                                </ol>
-
                             <?php
                             }
                             ?>

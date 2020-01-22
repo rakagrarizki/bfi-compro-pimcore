@@ -8,7 +8,7 @@
 $this->extend('layout.html.php');
 ?>
 
-<section id="email-verify">
+<section id="email-verify" class="container">
     <h3>Verifikasi Email Anda</h3>
     <p>Pastikan email yang tertera sudah benar</p>
     <form action="" id="login-form">
@@ -22,7 +22,7 @@ $this->extend('layout.html.php');
     </form>
 </section>
 
-<section id="email-sent" class="hide">
+<section id="email-sent" class="container hide">
     <img src="/static/images/icon/emailsent.png" alt="">
     <h3>Check Email Anda</h3>
     <p>Silahkan cek email anda untuk <br> verifikasi profil anda</p>

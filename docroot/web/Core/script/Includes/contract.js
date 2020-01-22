@@ -118,18 +118,17 @@ function contractDetailList(token, dataContract) {
                 $('.installment-per-month-contract').text("Rp. "+ convertInttoCurrency(data.angsuran_per_bulan));
                 $('.jangka-on-month').text(data.jangka_waktu_on_month+" Bulan");
                 $('.cabang-pencairan').text(data.cabang_pencairan_desc);
-                var product_desc = "Alat Berat & Mesin Refinancing";
 
-                if(product_desc == "Sertifikat Rumah"){
+                if(data.product_desc == "Sertifikat Rumah"){
                     $('.land-certificate').removeClass('hide');
                     detailAgunanRumah(token, dataContract);
-                }else if(product_desc == "BPKB Mobil"){
+                }else if(data.product_desc == "BPKB Mobil"){
                     $('.vehicle').removeClass('hide');
                     detailAgunanMobil(token, dataContract);
-                }else if(product_desc == "BPKB Motor"){
+                }else if(data.product_desc == "BPKB Motor"){
                     $('.vehicle').removeClass('hide');
                     detailAgunanMotor(token, dataContract);
-                }else if(product_desc == "Alat Berat & Mesin Refinancing"){
+                }else if(data.product_desc == "Alat Berat & Mesin Refinancing"){
                     $('.asset').removeClass('hide');
                     detailAgunanAlatBerat(token, dataContract);
                 }
@@ -266,8 +265,8 @@ function detailAgunanAlatBerat(token, dataContract) {
 
 function contractStatusList(lang, token) {
     var dataInput = {
-        'started_index': 11,
-        'length': 10
+        'started_index': 0,
+        'length': 12
     }
 
     $.ajax({
