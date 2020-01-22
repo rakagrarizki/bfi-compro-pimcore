@@ -65,6 +65,7 @@ function postData(url, data) {
       if (result.success === "1") {
         _ret = result;
       } else {
+        _ret = result;
         // console.log('error' + result.message);
       }
     }
@@ -244,7 +245,7 @@ function otpVerified() {
   }
   var verifiedOtp = postOTP("/otp/validate-otp", _data);
   if (verifiedOtp.success === "1") {
-    successOTP();
+    sendLastLeads();
   } else {
     $('#wrongOtp').modal('show');
   }

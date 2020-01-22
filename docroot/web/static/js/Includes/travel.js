@@ -72,18 +72,53 @@ function sendLeadData() {
           "submission_id": submission_id
         }
         break;
+      case 3:
+        _url = "/credit/save-leisure-leads4";
+        _data = {
+          "submission_id": submission_id
+        }
+        break;
+      case 4:
+        _url = "/credit/save-leisure-leads5";
+        _data = {
+          "submission_id": submission_id
+        }
+        break;
     }
     var sendData = postData(_url, _data);
     if (currentStep === 0) {
       submission_id = sendData.data.submission_id;
     }
     if (sendData.success === "1") {
-      return true;
+      if (currentStep === 1) {
+        if (sendData.data.is_branch === false) {
+          $("#modal-branch").modal('show');
+        }
+        return sendData.data.is_branch
+      } else if (currentStep === 2) {
+        if (sendData.data.is_pricing === false) {
+          $("#modal-pricing").modal('show');
+        }
+        return sendData.data.is_pricing
+      } else {
+        return true;
+      }
     } else {
       return false;
     }
   } else {
     return false;
+  }
+}
+
+function sendLastLeads() {
+  _url = "/credit/save-leisure-leads5";
+  _data = {
+    "submission_id": submission_id
+  }
+  var sendData = postData(_url, _data);
+  if (sendData.success === "1") {
+    successOTP();
   }
 }
 
@@ -216,7 +251,8 @@ var isValidOtp = false;
     },
     onFinishing: function (event, currentIndex) {
       if (!isValidOtp) {
-        showOtp();
+        var retLead = sendLeadData();
+        if (retLead) { showOtp() };
         var dataNews = {
           "submission_id": submission_id,
           "is_news_letter": $('#agreement1').is(":checked")
@@ -326,5 +362,7 @@ var isValidOtp = false;
         $("#summary-harga-paket-pendidikan").text('Rp. '+$("#ex7SliderVal").val());
     }
   });
+
+  setTimeout(function () { reInitJcf(); }, 2000); 
 
 })(jQuery);
