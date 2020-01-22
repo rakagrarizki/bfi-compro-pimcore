@@ -4,7 +4,8 @@
 use Pimcore\Model\Document;
 
 ?>
-<?php $lang = $this->getLocale(); ?>
+<?php $lang = $this->getLocale();
+$name = $_COOKIE["customer"]; ?>
 <div class="top-nav--mobille hidden-md">
     <div class="container">
         <div class="row top-nav">
@@ -12,9 +13,11 @@ use Pimcore\Model\Document;
             <?= $this->inc("/" . $this->getLocale() . "/shared/includes/sub-navigation-mobile") ?>
             <div class="col-xs-6 text-right">
                 <div class="link-log">
-                    <a href="<?= "/" . $lang . "/login"; ?>" class="login"><?= $this->translate("login") ?></a>
+                    <?php if (!isset($name) || $name == "") { ?>
+                        <a href="<?= "/" . $lang . "/login"; ?>" class="login"><?= $this->translate("login") ?></a>
+                    <?php } ?>
                     <div class="user hide">
-                        <a href="/<?= $this->getLocale() ?>/user/dashboard" class="full_name">Deborah Morris</a>|<a href="#" class="logout" onclick="return logout('<?= $this->getLocale() ?>');"><?= $this->translate("logout") ?></a>
+                        <a href="/<?= $this->getLocale() ?>/user/dashboard" class="full_name"><?= $name; ?></a> | <a href="#" class="logout" onclick="return logout('<?= $this->getLocale() ?>');"><?= $this->translate("logout") ?></a>
                     </div>
                 </div>
             </div>

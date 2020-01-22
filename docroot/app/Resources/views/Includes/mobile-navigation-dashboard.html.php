@@ -8,32 +8,31 @@ use Pimcore\Model\Document;
     <div class="container">
         <div class="row top-nav">
 
-            <div class="col-xs-8 left-side-top">
+            <div class="col-xs-6 left-side-top">
                 <a href="<?php echo "/" . $this->getLocale() . '/user/dashboard'; ?>" class="text-btn"><?= $this->translate("back") ?></a>
             </div>
 
             <div class="col-xs-6 text-right">
                 <div class="link-log">
-                    <a href="<?= "/" . $lang . "/login"; ?>" class="login"><?= $this->translate("login") ?></a>
                     <div class="user hide">
-                        <a href="/<?= $this->getLocale() ?>/user/dashboard" class="full_name">Deborah Morris</a>|<a href="#" class="logout" onclick="return logout('<?= $this->getLocale() ?>');"><?= $this->translate("logout") ?></a>
+                        <a href="/<?= $this->getLocale() ?>/user/dashboard" class="full_name icon"><?= $name; ?></a> | <a href="#" class="logout" onclick="return logout('<?= $this->getLocale() ?>');"><?= $this->translate("logout") ?></a>
                     </div>
                 </div>
             </div>
         </div>
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                    aria-expanded="false"
-                    aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="close-bar">x</span>
-            </button>
             <a class="navbar-brand" href="<?php echo "/" . $this->getLocale(); ?>">
                 <img src="/static/images/logo-bfi.png" alt="logo-bfi" class="img-responsive">
             </a>
+            <div class="header-button-wrapper">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="close-bar">x</span>
+                </button>
+            </div>
         </div>
     </div>
 </div>
@@ -51,14 +50,13 @@ use Pimcore\Model\Document;
                 if (strpos($page->getUri(), 'branch-office') !== false) {
                     continue;
                 }
-                    ?>
-                    <li class="dropdown">
-                        <a href="<?= $page->getHref(); ?>" class="<?= $page->getActive() ? "active" : ""?>" role="button" aria-haspopup="true"
-                           aria-expanded="false">
-                            <?= $page->getLabel() ?>
-                        </a>
-                    </li>
-                    <?php
+        ?>
+                <li class="dropdown">
+                    <a href="<?= $page->getHref(); ?>" class="<?= $page->getActive() ? "active" : "" ?>" role="button" aria-haspopup="true" aria-expanded="false">
+                        <?= $page->getLabel() ?>
+                    </a>
+                </li>
+        <?php
             }
         }
         ?>
