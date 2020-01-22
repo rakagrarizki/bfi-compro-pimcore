@@ -514,6 +514,7 @@
                     display: inline-block;
                     vertical-align: top;
                     margin: 0;
+                    text-transform: capitalize;
 
                     @include breakpoint(mobile) {
                         font-size: 11px;
