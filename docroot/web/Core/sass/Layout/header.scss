@@ -538,7 +538,7 @@ body{
             align-items: center;
 
             a {
-                margin-right: 15px;
+                margin-right: 10px;
                 color: $dark;
 
                 &:last-child {
@@ -583,6 +583,7 @@ body{
 
                     a.logout {
                         margin-left : 10px;
+                        margin-right: 10px;
                     }
                 }
 

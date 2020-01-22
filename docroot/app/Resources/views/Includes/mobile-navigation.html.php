@@ -11,7 +11,7 @@ $name = $_COOKIE["customer"]; ?>
         <div class="row top-nav">
 
             <?= $this->inc("/" . $this->getLocale() . "/shared/includes/sub-navigation-mobile") ?>
-            <div class="col-xs-6 text-right">
+            <div class="col-xs-6 text-right no-padding-mobile">
                 <div class="link-log">
                     <?php if (!isset($name) || $name == "") { ?>
                         <a href="<?= "/" . $lang . "/login"; ?>" class="login"><?= $this->translate("login") ?></a>
