@@ -13,7 +13,7 @@
                     <h3> <?= $this->input("detail-title");?></h3>
                 </div>
                 <div class="left-content">
-                    <i class="fa fa-chevron-right"></i>
+                    <i class="fa fa-angle-right"></i>
                 </div>
             </a>
         </li>
