@@ -257,6 +257,10 @@
 
         .style-input{
             background: url(/static/images/icon/pencils.png) no-repeat right 20px center /20px 20px;
+
+            @include breakpoint(mobile){
+                background-size: 15px 15px;
+            }
         }
     }
 }
