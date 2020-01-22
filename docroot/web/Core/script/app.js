@@ -1006,11 +1006,14 @@
               credits.tempat_tinggal.kode_pos = htmlEntities(kode_pos_text);
               credits.tempat_tinggal.alamat = htmlEntities(alamat);
             } else {
+              showTab2(); 
+              hideTab3();
+              $('.nav-item-2').addClass('active');
+              $('.nav-item-3').addClass('disabled');
+              $('.nav-item-2').removeClass('done');
+              $('.nav-item-3').removeClass('active');
               $("#modal-branch").modal('show');
-              // if(window.stop) {
-              //   window.stop
-              // }
-            }
+              }
           } else if (credType === "rumah") {
             credits.tempat_tinggal.provinsi = htmlEntities(provinsi);
             credits.tempat_tinggal.kota = htmlEntities(kota);
@@ -1026,7 +1029,6 @@
         }
       }
     })
-
   }
 
   function getHunian() {
@@ -1199,6 +1201,12 @@
               credits.kendaraan.status_pemilik = htmlEntities(status_pemilik);
               cb();
              }else{
+              showTab3(); 
+              hideTab4();
+              $('.nav-item-3').addClass('active');
+              $('.nav-item-4').addClass('disabled');
+              $('.nav-item-3').removeClass('done');
+              $('.nav-item-4').removeClass('active');
               $("#modal-pricing").modal('show');
             }
           }
@@ -1704,7 +1712,6 @@
         if (isMobile) {
           $(".horizontal-scroll").scrollLeft(260);
         }
-
       }
     })
 
