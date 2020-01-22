@@ -1,8 +1,8 @@
 <div class="page-title"><?= $this->input("title"); ?></div>
-<div class="container" style="padding-bottom: 30px;">
+<div class="container container-profesi">
     <div class="row">
         <?php while ($this->block("contentblock")->loop()) { ?>
-        <div class="col-md-6">
+        <div class="col-md-6 profesi-box">
             <div class="cards-type-13">
                 <div class="header-text"> <?= $this->input('subtitle'); ?></div>
                 <div class="header-title"><?= $this->input('title-profesi'); ?></div>

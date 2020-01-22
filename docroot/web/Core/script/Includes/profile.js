@@ -22,8 +22,8 @@ $(document).ready(function(){
 
 function contractStatusList(lang, token) {
     var dataContract = {
-        'started_index': 10,
-        'length': 11
+        'started_index': 0,
+        'length': 12
     }
 
     $.ajax({

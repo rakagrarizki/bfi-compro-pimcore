@@ -22,7 +22,7 @@ $this->extend('layout.html.php');
     <div class="container">
         <!-- <div class="col-xs-12"> -->
 
-            <form method="POST" name="personal" id="contact" class="form-get--credit" action="#" enctype="multipart/form-data">
+            <form method="POST" name="personal" id="contact" class="form-get--credit" enctype="multipart/form-data">
                 <input type="hidden" id="jenis_form" name="jenis_form" value="Contact">
 
                 <div class="form-body--credit form-contact">
