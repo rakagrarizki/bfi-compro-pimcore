@@ -12,14 +12,7 @@ use Pimcore\Model\Document;
             <?= $this->inc("/" . $this->getLocale() . "/shared/includes/sub-navigation-mobile") ?>
             <div class="col-xs-6 text-right">
                 <div class="link-log">
-<<<<<<< HEAD
                     <a href="<?= "/" . $this->getLocale() . "/login"; ?>" class="login"><?= $this->translate("login") ?></a>                    
-=======
-                    <a href="<?= "/" . $lang . "/login"; ?>" class="login"><?= $this->translate("login") ?></a>
-                    <div class="user hide">
-                        <a href="/<?= $this->getLocale() ?>/user/dashboard" class="full_name">Deborah Morris</a>|<a href="#" class="logout" onclick="return logout('<?= $this->getLocale() ?>');"><?= $this->translate("logout") ?></a>
-                    </div>
->>>>>>> a005afbbf48b223fc52a50f44cfeb6a208088b69
                 </div>
             </div>
         </div>
