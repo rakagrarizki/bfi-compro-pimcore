@@ -137,6 +137,7 @@ function sendLeadData() {
     var currentStep = form.steps("getCurrentIndex");
     var _url = "";
     var _data = {};
+   
 
     switch (currentStep) {
       case 0:
@@ -189,12 +190,21 @@ function sendLeadData() {
       setType();
       setBrand();
     }
+    // sendData.data.is_branch = false;
     if (sendData.success === "1") {
-      return true;
+      // return true;
+      if(currentStep === 1) {
+        if(sendData.data.is_branch === false) {
+          $("#modal-branch").modal('show');
+        }        
+        return sendData.data.is_branch
+      }else{
+        return true;
+      }
     } else {
       return false;
     }
-  } else {
+  }else {
     return false;
   }
 }
