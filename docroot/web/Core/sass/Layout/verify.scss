@@ -1,8 +1,9 @@
-section{
-    // margin-bottom: 80px;
-}
 #verify-section{
     margin-top: 170px;
+
+    @include breakpoint(mobile){
+        margin-top: 120px;
+    }
 
     .verify-wrapper{
         background-color: #fcfcfc;
@@ -21,11 +22,19 @@ section{
             font-size: 26px;
             font-weight: 700;
             margin: 0 0 10px 0;
+
+            @include breakpoint(mobile){
+                font-size: 20px;
+            }
         }
         p{
             font-size: 18px;
             color: #565656;
             margin: 0;
+
+            @include breakpoint(mobile){
+                font-size: 14px;
+            }
         }
 
         ul,li,span{
@@ -36,6 +45,11 @@ section{
         }
         .step-wrapper{
             padding: 0;
+
+            @include breakpoint(mobile){
+                margin-bottom: 100px;
+            }
+
             .stepper-row{
                 padding: 0;
                 margin: 0 -100px 0 -75px;
