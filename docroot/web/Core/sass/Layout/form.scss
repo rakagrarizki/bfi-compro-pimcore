@@ -514,6 +514,7 @@
                     display: inline-block;
                     vertical-align: top;
                     margin: 0;
+                    text-transform: capitalize;
 
                     @include breakpoint(mobile) {
                         font-size: 11px;
@@ -1595,7 +1596,7 @@
 
 .modal {
     &.modal--failed {
-        z-index: 99999;
+        z-index: 100050;
 
         .modal-body {
             padding: 50px;

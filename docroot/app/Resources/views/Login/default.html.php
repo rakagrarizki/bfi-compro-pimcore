@@ -32,7 +32,7 @@ $this->extend('layout-branch.html.php');
     </form>
 </section>
 
-<section id="otp" class="hide">
+<section id="otp" class="container hide">
     <h3>Konfirmasi OTP</h3>
     <p>Silahkan masukkan 4-digit kode verifikasi <br> yang telah dikirimkan ke nomor handphone anda</p>
     <form action="" id="otp-form">
