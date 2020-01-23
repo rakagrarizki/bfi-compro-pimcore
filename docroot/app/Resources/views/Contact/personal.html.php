@@ -27,6 +27,7 @@ $this->extend('layout.html.php');
 
                 <div class="form-body--credit form-contact">
                     <div class="text-head">
+                        <?php if($this->msg_error) { echo '<div class="alert alert-danger" role="alert">' . $msg_error . '</div>'; } ?>
                         <h2 class="text-center">Hubungi Kami</h2>
                         <p class="text-center">Silahkan mengisi form dibawah ini, agen BFI akan menghubungi Anda</p>
                     </div>
