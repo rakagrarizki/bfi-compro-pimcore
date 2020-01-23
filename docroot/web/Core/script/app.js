@@ -910,7 +910,7 @@
       var _data = {
         "submission_id": submission_id,
         "name": nama_lengkap,
-        "emails": email_pemohon,
+        "email": email_pemohon,
         "phone_number": no_telepon
       };
 
@@ -4802,13 +4802,13 @@
   });
 
   $(".formPhoneNumber").on("keydown", function (e) {
-    if (e.which != 8 && e.which != 0 && e.which != 144 && (e.which < 48 || e.which > 57) && (e.which < 96 || e.which > 105)) {
+    if (e.which != 8 && e.which != 0 && e.which != 144 && (e.which < 46 || e.which > 57) && (e.which < 96 || e.which > 105)) {
       return false;
     }
-    if (($(this).get(0).selectionStart == 0 && (e.keyCode < 35 || e.keyCode > 40)) ||
-      ($(this).get(0).selectionStart == 1 && e.keyCode == 8)) {
-      return false;
-    }
+  //   if (($(this).get(0).selectionStart == 0 && (e.keyCode < 35 || e.keyCode > 40)) ||
+  //     ($(this).get(0).selectionStart == 1 && e.keyCode == 8)) {
+  //     return false;
+  //   }
   });
 
   $('.formPhoneNumber').on('input propertychange paste', function (e) {
