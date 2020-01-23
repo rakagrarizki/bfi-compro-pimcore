@@ -6,31 +6,33 @@
  * @var \Pimcore\Templating\GlobalVariables $app
  */
 
-$this->extend('layout.html.php');
-// echo $this->headScript()->prependFile('/static/js/Includes/homepage1.js');
+$this->extend('layout-credit.html.php');
+
 ?>
 
 <?php if (!$this->success) { ?>
 
     <div class="stepper-wrapper container">
-        <ul class="stepper-row">
-            <li id="list-step1" class="active">
-                <span id="poin1" class="number">1</span>
-                <span class="text">Data Pemohon</span>
-            </li>
-            <li id="list-step2">
-                <span id="poin2" class="number">2</span>
-                <span class="text">Data Universitas</span>
-            </li>
-            <li id="list-step3">
-                <span id="poin3" class="number">3</span>
-                <span class="text">Data Akademik</span>
-            </li>
-            <li id="list-step4">
-                <span id="poin4" class="number">4</span>
-                <span class="text">Konfirmasi Data</span>
-            </li>
-        </ul>
+        <nav>
+            <ul class="stepper-row">
+                <li id="list-step1" class="active">
+                    <span id="poin1" class="number">1</span>
+                    <span class="text">Data Pemohon</span>
+                </li>
+                <li id="list-step2">
+                    <span id="poin2" class="number">2</span>
+                    <span class="text">Data Universitas</span>
+                </li>
+                <li id="list-step3">
+                    <span id="poin3" class="number">3</span>
+                    <span class="text">Data Akademik</span>
+                </li>
+                <li id="list-step4">
+                    <span id="poin4" class="number">4</span>
+                    <span class="text">Konfirmasi Data</span>
+                </li>
+            </ul>
+        </nav>
 
         <div id="stepper">
             <h3 id="step-title">Data Pemohon</h3>
@@ -163,7 +165,7 @@ $this->extend('layout.html.php');
                                 <h4 class="point">A.</h4>
                                 <h4 class="title">Data Pemohon</h4>
                                 <a href="#stepper-csr-1" onclick="jumpToStep1()">
-                                    <i class="fa fa-pencil"></i>
+                                    <!-- <i class="fa fa-pencil"></i> -->
                                     <span>Ubah</span>
                                 </a>
                             </div>
@@ -192,7 +194,7 @@ $this->extend('layout.html.php');
                                 <h4 class="point">B.</h4>
                                 <h4 class="title">Data Universitas</h4>
                                 <a href="#stepper-csr-2" onclick="jumpToStep2()">
-                                    <i class="fa fa-pencil"></i>
+                                    <!-- <i class="fa fa-pencil"></i> -->
                                     <span>Ubah</span>
                                 </a>
                             </div>
@@ -225,7 +227,7 @@ $this->extend('layout.html.php');
                                 <h4 class="point">C.</h4>
                                 <h4 class="title">Data Akademik</h4>
                                 <a href="#stepper-csr-3" onclick="jumpToStep3()">
-                                    <i class="fa fa-pencil"></i>
+                                    <!-- <i class="fa fa-pencil"></i> -->
                                     <span>Ubah</span>
                                 </a>
                             </div>
