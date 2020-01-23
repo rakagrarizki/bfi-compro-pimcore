@@ -20,10 +20,6 @@ class ContactController extends FrontendController
 
         if ($request->isMethod('POST')) {
             $data = $request->get('corporate');
-            // dump($data);
-            // exit();
-
-
             $time = time();
 
             $contactCorporate = new DataObject\ContactCorporate;
@@ -50,6 +46,7 @@ class ContactController extends FrontendController
     public function personalAction(Request $request)
     {
         $success = false;
+        $msg_error = false;
 
         if ($request->isMethod('POST')) {
             $time = time();
@@ -59,9 +56,8 @@ class ContactController extends FrontendController
             $documentTmp = $_FILES['document']['tmp_name'];
             $documentSize = $_FILES['document']['size'];
 
-            if ($documentSize <= 500) {
+            if ($documentSize <= 500000) {
                 $contactPersonal = new DataObject\ContactPersonal;
-                // $filename = File::getValidFilename($name);
                 $filename = File::getValidFilename($email . $time);
 
                 $contactPersonal->setParent(DataObject\AbstractObject::getByPath('/Contact/Personal')); // we store all objects in /Contact/Personal
@@ -85,9 +81,6 @@ class ContactController extends FrontendController
                         unlink($fileDocument);
                     }
                 }
-                // dump($data);
-                // dump($document);
-                // exit;
 
                 $contactPersonal->setName(htmlentities($data['name']));
                 $contactPersonal->setPhone(htmlentities($data['phone']));
@@ -103,10 +96,11 @@ class ContactController extends FrontendController
                 $success = true;
             } else {
                 $success = false;
-                echo "File tidak boleh lebih dari 500kb";
+                $msg_error = "File tidak boleh lebih dari 500kb";
             }
         }
         $this->view->success = $success;
+        $this->view->msg_error = $msg_error;
     }
 
     private function _success()
