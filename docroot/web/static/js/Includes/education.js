@@ -73,18 +73,53 @@ function sendLeadData() {
           "submission_id": submission_id
         }
         break;
+      case 3:
+        _url = "/credit/save-edu-leads4";
+        _data = {
+          "submission_id": submission_id
+        }
+        break;
+      case 4:
+        _url = "/credit/save-edu-leads5";
+        _data = {
+          "submission_id": submission_id
+        }
+        break;
     }
     var sendData = postData(_url, _data);
     if (currentStep === 0) {
       submission_id = sendData.data.submission_id;
     }
     if (sendData.success === "1") {
-      return true;
+      if (currentStep === 1) {
+        if (sendData.data.is_branch === false) {
+          $("#modal-branch").modal('show');
+        }
+        return sendData.data.is_branch
+      } else if (currentStep === 2) {
+        if (sendData.data.is_pricing === false) {
+          $("#modal-pricing").modal('show');
+        }
+        return sendData.data.is_pricing
+      } else {
+        return true;
+      }
     } else {
       return false;
     }
   } else {
     return false;
+  }
+}
+
+function sendLastLeads() {
+  _url = "/credit/save-edu-leads5";
+  _data = {
+    "submission_id": submission_id
+  }
+  var sendData = postData(_url, _data);
+  if (sendData.success === "1") {
+    successOTP();
   }
 }
 
@@ -94,6 +129,8 @@ function initCalculate() {
   var rawMinPrice = parseInt(package.data.minimum_funding),
     rawMaxPrice = parseInt(package.data.maximum_funding),
     otr_price = parseInt(package.data.minimum_funding);
+  
+  var rawDownPayment = rawMinPrice * 0.1
 
   $("#calcSlider").slider({ min: rawMinPrice, max: rawMaxPrice, step: 100000 });
   $("#ex7SliderVal").parents(".sliderGroup").find(".calcslide").data('slider').options.max = rawMaxPrice;
@@ -103,9 +140,11 @@ function initCalculate() {
   $("#ex7SliderVal").parents(".sliderGroup").find(".calcslide").slider('setValue', rawMinPrice);
 
   var minprice = separatordot(rawMinPrice),
-    maxprice = separatordot(rawMaxPrice);
+    maxprice = separatordot(rawMaxPrice),
+    downPayment = separatordot(rawDownPayment);
 
   $("#ex7SliderVal").val(minprice);
+  $('#down_payment').val(downPayment);
   $(".valuemin").text(minprice);
   $(".valuemax").text(maxprice);
   $("#otr").val(otr_price);
@@ -227,7 +266,8 @@ var isValidOtp = false;
     },
     onFinishing: function (event, currentIndex) {
       if (!isValidOtp) {
-        showOtp()
+        var retLead = sendLeadData();
+        if (retLead) { showOtp() };
         return false;
       } else {
         form.validate().settings.ignore = ":disabled";
@@ -332,5 +372,7 @@ var isValidOtp = false;
       }
     }
   });
+
+  setTimeout(function() { reInitJcf(); }, 2000);
 
 })(jQuery);

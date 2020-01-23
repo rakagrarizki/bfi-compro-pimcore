@@ -1,7 +1,7 @@
 <?php 
 
 /** 
-* Generated at: 2020-01-07T08:35:48+01:00
+* Generated at: 2020-01-23T11:40:43+01:00
 * Inheritance: no
 * Variants: no
 * Changed by: admin (2)
@@ -22,7 +22,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'ContactCorporate',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1578382546,
+   'modificationDate' => 1579776042,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -81,10 +81,10 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'name' => 'Name',
              'title' => 'Name',
              'tooltip' => '',
-             'mandatory' => false,
+             'mandatory' => true,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
@@ -109,7 +109,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
@@ -131,10 +131,10 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'name' => 'email',
              'title' => 'Email',
              'tooltip' => '',
-             'mandatory' => false,
+             'mandatory' => true,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
@@ -159,7 +159,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
@@ -182,7 +182,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',

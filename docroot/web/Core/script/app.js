@@ -910,7 +910,7 @@
       var _data = {
         "submission_id": submission_id,
         "name": nama_lengkap,
-        "emails": email_pemohon,
+        "email": email_pemohon,
         "phone_number": no_telepon
       };
 
@@ -1006,11 +1006,14 @@
               credits.tempat_tinggal.kode_pos = htmlEntities(kode_pos_text);
               credits.tempat_tinggal.alamat = htmlEntities(alamat);
             } else {
+              showTab2(); 
+              hideTab3();
+              $('.nav-item-2').addClass('active');
+              $('.nav-item-3').addClass('disabled');
+              $('.nav-item-2').removeClass('done');
+              $('.nav-item-3').removeClass('active');
               $("#modal-branch").modal('show');
-              // if(window.stop) {
-              //   window.stop
-              // }
-            }
+              }
           } else if (credType === "rumah") {
             credits.tempat_tinggal.provinsi = htmlEntities(provinsi);
             credits.tempat_tinggal.kota = htmlEntities(kota);
@@ -1026,7 +1029,6 @@
         }
       }
     })
-
   }
 
   function getHunian() {
@@ -1199,9 +1201,132 @@
               credits.kendaraan.status_pemilik = htmlEntities(status_pemilik);
               cb();
              }else{
+              showTab3(); 
+              hideTab4();
+              $('.nav-item-3').addClass('active');
+              $('.nav-item-4').addClass('disabled');
+              $('.nav-item-3').removeClass('done');
+              $('.nav-item-4').removeClass('active');
               $("#modal-pricing").modal('show');
             }
           }
+        }
+      }
+    })
+
+  }
+
+  function sendLeads4(cb) {
+
+    var _url = '';
+    var _data = {
+      "submission_id": submission_id
+    };
+
+    switch (credType) {
+      case 'mobil':
+        _url = '/credit/save-car-leads4';
+        break;
+      case 'motor':
+        _url = '/credit/save-motorcycle-leads4';
+        break;
+      case 'rumah':
+        _url = '/credit/save-pbf-leads4';
+        break;
+    }
+
+    $.ajax({
+      type: 'POST',
+      url: _url,
+      data: _data,
+      dataType: 'json',
+      error: function (data) {
+        console.log('error' + data);
+      },
+      fail: function (xhr, textStatus, error) {
+        console.log('request failed')
+      },
+      success: function (data) {
+        if (data.success === "1") {
+          cb();
+        }
+      }
+    })
+
+  }
+
+  function sendLeads5(cb) {
+
+    var _url = '';
+    var _data = {
+      "submission_id": submission_id
+    };
+
+    switch (credType) {
+      case 'mobil':
+        _url = '/credit/save-car-leads5';
+        break;
+      case 'motor':
+        _url = '/credit/save-motorcycle-leads5';
+        break;
+      case 'rumah':
+        _url = '/credit/save-pbf-leads5';
+        break;
+    }
+
+    $.ajax({
+      type: 'POST',
+      url: _url,
+      data: _data,
+      dataType: 'json',
+      error: function (data) {
+        console.log('error' + data);
+      },
+      fail: function (xhr, textStatus, error) {
+        console.log('request failed')
+      },
+      success: function (data) {
+        if (data.success === "1") {
+          cb();
+        }
+      }
+    })
+
+  }
+
+  function sendLeads6(cb) {
+
+    var _url = '';
+    var _data = {
+      "submission_id": submission_id
+    };
+
+    switch (credType) {
+      case 'mobil':
+        _url = '/credit/save-car-leads6';
+        break;
+      case 'motor':
+        _url = '/credit/save-motorcycle-leads6';
+        break;
+      case 'rumah':
+        _url = '/credit/save-pbf-leads6';
+        break;
+    }
+
+    $.ajax({
+      type: 'POST',
+      url: _url,
+      data: _data,
+      dataType: 'json',
+      error: function (data) {
+        console.log('error' + data);
+      },
+      fail: function (xhr, textStatus, error) {
+        console.log('request failed')
+      },
+      success: function (data) {
+        if (data.success === "1") {
+          cb();
         }
       }
     })
@@ -1704,7 +1829,6 @@
         if (isMobile) {
           $(".horizontal-scroll").scrollLeft(260);
         }
-
       }
     })
 
@@ -1830,78 +1954,86 @@
 
     $('#button4').on('click', function (e) {
       e.preventDefault();
+      var _this = $(this);
 
-      var totalvalidate = $(".total").text();
-      totalvalidate = totalvalidate.replace("Rp", "");
-      totalvalidate = totalvalidate.replace(" ", "");
-      totalvalidate = totalvalidate.replace(/\./g, "");
+      sendLeads4(function() {
 
-      if ($(this).closest('form').valid() && parseInt(totalvalidate) > 0 && flag_sudahcalc == true) {
+        var totalvalidate = $(".total").text();
+        totalvalidate = totalvalidate.replace("Rp", "");
+        totalvalidate = totalvalidate.replace(" ", "");
+        totalvalidate = totalvalidate.replace(/\./g, "");
+
+        if (_this.closest('form').valid() && parseInt(totalvalidate) > 0 && flag_sudahcalc == true) {
 
 
 
-        showTab5();
-        hideTab4();
-        scrollToTop();
-        step4Done = true;
-        $('.nav-item-4').removeClass('active');
-        $('.nav-item-4').addClass('done');
-        $('.nav-item-5').addClass('active');
-        if ($('.nav-item-4').hasClass("done")) {
-          $('.nav-item-4').on('click', function (e) {
-            e.preventDefault();
-            hideCurrentTab();
-            showTab4();
-            $('.nav-item-4').addClass('active');
-            if ($('.nav-item-4').hasClass('active')) {
-              hideTab1();
-              hideTab2();
-              hideTab3();
-              hideTab5();
-              hideTab6();
-            }
-          })
+          showTab5();
+          hideTab4();
+          scrollToTop();
+          step4Done = true;
+          $('.nav-item-4').removeClass('active');
+          $('.nav-item-4').addClass('done');
+          $('.nav-item-5').addClass('active');
+          if ($('.nav-item-4').hasClass("done")) {
+            $('.nav-item-4').on('click', function (e) {
+              e.preventDefault();
+              hideCurrentTab();
+              showTab4();
+              $('.nav-item-4').addClass('active');
+              if ($('.nav-item-4').hasClass('active')) {
+                hideTab1();
+                hideTab2();
+                hideTab3();
+                hideTab5();
+                hideTab6();
+              }
+            })
+          }
+
+          setSummary();
+          $(".text-head").children("h2[class='text-center']").css("display", "block");
+          $(".text-head").children("h2[class='text-center-edit']").css("display", "none");
+
+          if (isMobile) {
+            $(".horizontal-scroll").scrollLeft(500);
+          }
         }
-
-        setSummary();
-        $(".text-head").children("h2[class='text-center']").css("display", "block");
-        $(".text-head").children("h2[class='text-center-edit']").css("display", "none");
-
-        if (isMobile) {
-          $(".horizontal-scroll").scrollLeft(500);
-        }
-      }
+      });
     })
 
     $('#button4rumah').on('click', function (e) {
       e.preventDefault();
 
-      showTab5();
-      hideTab4();
-      scrollToTop();
+      sendLeads4(function () {
+        showTab5();
+        hideTab4();
+        scrollToTop();
 
-      $('.input-number:first-child').focus();
-      $('.horizontal-scroll').hide();
-      // $('#showPhone span').html(credits.pemohon.no_handphone);
-      $("#otpPhone").val(credits.pemohon.no_handphone)
-      countDown();
-      requestOtp(credits);
+        $('.input-number:first-child').focus();
+        $('.horizontal-scroll').hide();
+        // $('#showPhone span').html(credits.pemohon.no_handphone);
+        $("#otpPhone").val(credits.pemohon.no_handphone)
+        countDown();
+        requestOtp(credits);
+      });
 
     })
 
     $('#button5').on('click', function (e) {
       e.preventDefault();
 
-      showTab6();
-      hideTab5();
-      scrollToTop();
+      sendLeads5(function () {
+        showTab6();
+        hideTab5();
+        scrollToTop();
 
-      $('.input-number:first-child').focus();
-      $('.horizontal-scroll').hide();
-      // $('#showPhone span').html(credits.pemohon.no_handphone);
-      $("#otpPhone").val(credits.pemohon.no_handphone)
-      countDown();
-      requestOtp(credits);
+        $('.input-number:first-child').focus();
+        $('.horizontal-scroll').hide();
+        // $('#showPhone span').html(credits.pemohon.no_handphone);
+        $("#otpPhone").val(credits.pemohon.no_handphone)
+        countDown();
+        requestOtp(credits);
+      });
 
     })
 
@@ -2288,11 +2420,19 @@
 
         } else if (data.success == 1) {
           $('.tab-pane').fadeOut();
-          sendDataCredits(credits);
+          leads6();
+          //sendDataCredits(credits);
           //showTab4();
         }
       }
     })
+  }
+
+  function leads6() {
+    sendLeads6(function () {
+      $('.tab-pane').hide();
+      $('#success').fadeIn();
+    });
   }
 
   function sendDataCredits(params) {
@@ -2465,6 +2605,14 @@
     // $('#model_kendaraan').next().find(".jcf-select-opener").css("background-color", "#F4F4F4");
   }
 
+  function resetSameAddress() {
+    if ($('#chkSameAddress').length > 0) {
+      $('#chkSameAddress').prop("checked", false);
+      $("#chkSameAddress").trigger("change");
+      $("#chkSameAddress").parent(".jcf-checkbox").removeClass('jcf-checked');
+    }
+  }
+
   // function getmotor(element){
   // 	$.ajax({
   // 		type: 'GET',
@@ -2622,6 +2770,9 @@
 
   $('#provinsi').change(function () {
     // console.log('#provinsi change working...');
+
+    resetSameAddress();
+
     showDefaultButton();
     change_addres = true;
     if ($('.nav-item-2').hasClass("done")) {
@@ -2816,6 +2967,7 @@
   })
 
   $('#kota').change(function () {
+    resetSameAddress();
     showDefaultButton();
     change_addres = true;
 
@@ -2994,6 +3146,7 @@
   })
 
   $('#kecamatan').change(function () {
+    resetSameAddress();
     showDefaultButton();
     change_addres = true;
 
@@ -3188,6 +3341,7 @@
   })
 
   $("#kelurahan").on("select2:select", function (e) {
+    resetSameAddress();
     console.log("===#kelurahan select ganti2");
     showDefaultButton();
     change_addres = true;
@@ -3269,6 +3423,7 @@
   });
 
   $('#kode_pos').change(function () {
+    resetSameAddress();
     showDefaultButton();
     change_addres = true;
     if ($('.nav-item-2').hasClass("done")) {
@@ -3304,6 +3459,7 @@
   })
 
   $('#alamat_lengkap').change(function () {
+    resetSameAddress();
     showDefaultButton();
     change_addres = true;
     if ($('.nav-item-2').hasClass("done")) {
@@ -4653,13 +4809,13 @@
   });
 
   $(".formPhoneNumber").on("keydown", function (e) {
-    if (e.which != 8 && e.which != 0 && e.which != 144 && (e.which < 48 || e.which > 57) && (e.which < 96 || e.which > 105)) {
+    if (e.which != 8 && e.which != 0 && e.which != 144 && (e.which < 46 || e.which > 57) && (e.which < 96 || e.which > 105)) {
       return false;
     }
-    if (($(this).get(0).selectionStart == 0 && (e.keyCode < 35 || e.keyCode > 40)) ||
-      ($(this).get(0).selectionStart == 1 && e.keyCode == 8)) {
-      return false;
-    }
+  //   if (($(this).get(0).selectionStart == 0 && (e.keyCode < 35 || e.keyCode > 40)) ||
+  //     ($(this).get(0).selectionStart == 1 && e.keyCode == 8)) {
+  //     return false;
+  //   }
   });
 
   $('.formPhoneNumber').on('input propertychange paste', function (e) {

@@ -181,6 +181,12 @@ function sendLeadData() {
           "submission_id": submission_id
         }
         break;
+      case 4:
+        _url = "/credit/save-machinery-leads5";
+        _data = {
+          "submission_id": submission_id
+        }
+        break;
     }
     var sendData = postData(_url, _data);
     if (currentStep === 0) {
@@ -198,6 +204,11 @@ function sendLeadData() {
           $("#modal-branch").modal('show');
         }        
         return sendData.data.is_branch
+      } else if (currentStep === 2) {
+        if (sendData.data.is_pricing === false) {
+          $("#modal-pricing").modal('show');
+        }
+        return sendData.data.is_pricing
       }else{
         return true;
       }
@@ -206,6 +217,17 @@ function sendLeadData() {
     }
   }else {
     return false;
+  }
+}
+
+function sendLastLeads() {
+  _url = "/credit/save-machinery-leads6";
+  _data = {
+    "submission_id": submission_id
+  }
+  var sendData = postData(_url, _data);
+  if (sendData.success === "1") {
+    successOTP();
   }
 }
 
@@ -218,6 +240,8 @@ function initCalculate() {
     rawMaxPrice = parseInt(package.data.funding_max),
     otr_price = parseInt(package.data.funding_min);
 
+  var rawDownPayment = rawMinPrice * 0.3;
+
   $("#calcSlider").slider({ min: rawMinPrice, max: rawMaxPrice, step: 100000 });
   $("#ex7SliderVal").parents(".sliderGroup").find(".calcslide").data('slider').options.max = rawMaxPrice;
   $("#ex7SliderVal").parents(".sliderGroup").find(".calcslide").data('slider').options.min = rawMinPrice;
@@ -226,9 +250,11 @@ function initCalculate() {
   $("#ex7SliderVal").parents(".sliderGroup").find(".calcslide").slider('setValue', rawMinPrice);
 
   var minprice = separatordot(rawMinPrice),
-    maxprice = separatordot(rawMaxPrice);
+    maxprice = separatordot(rawMaxPrice), 
+    downPayment = separatordot(rawDownPayment);
 
   $("#ex7SliderVal").val(minprice);
+  $('#down_payment').val(downPayment);
   $(".valuemin").text(minprice);
   $(".valuemax").text(maxprice);
   $("#otr").val(otr_price);
@@ -347,7 +373,8 @@ var isValidOtp = false;
     },
     onFinishing: function (event, currentIndex) {
       if (!isValidOtp) {
-        showOtp();
+        var retLead = sendLeadData();
+        if (retLead) { showOtp() };
         var dataNews = {
           "submission_id": submission_id,
           "is_news_letter": $('#agreement1').is(":checked")
@@ -495,5 +522,7 @@ var isValidOtp = false;
             $("#nama_perusahaan").prop('disabled', false);
         }
   });
+
+  setTimeout(function () { reInitJcf(); }, 2000);
 
 })(jQuery);
