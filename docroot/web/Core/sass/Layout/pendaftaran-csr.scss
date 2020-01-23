@@ -2,6 +2,10 @@
     margin-top: 170px;
     margin-bottom: 80px;
 
+    @include breakpoint(mobile){
+        margin-top: 130px;
+    }
+
     ul,li,span{
         display: flex;
         flex-wrap: wrap;
@@ -9,13 +13,32 @@
         align-items: center;
     }
 
+    nav{
+        overflow: hidden;
+        overflow-x: auto;
+        margin-bottom: 55px;
+    }
+
     .stepper-row{
         padding: 0;
-        margin: 0 0 40px 0;
+        justify-content: space-between;
+
+        @include breakpoint(mobile){
+            width: max-content;
+        }
 
         li{
             width: 20%;
             font-weight: 600;
+
+            @include breakpoint(mobile){
+                width: max-content;
+                margin-right: 30px;
+
+                &:last-child{
+                    margin-right: 0px;
+                }
+            }
             
             .number{
                 font-size: 12px;
@@ -52,7 +75,7 @@
     #stepper{
         hr {
             border-top: solid 1px rgba(112, 112, 112, .3);
-            margin: 40px 0 40px 0;
+            margin: 50px 0 50px 0;
         } 
 
         h3,p{
@@ -60,8 +83,14 @@
             text-align: center;
         }
 
+        h3{
+            font-family: 'HelveticaNeue-Bold';
+            color: #04559f;
+            margin-bottom: 10px;
+        }
+
         form{
-            margin-top: 40px;
+            margin-top: 55px;
 
             input[type=number]{
                 &::-webkit-inner-spin-button{
@@ -73,10 +102,15 @@
                 display: block;
                 margin: 0 auto 0 auto;
                 width: 400px;
-                margin-bottom: 80px;
+                margin-bottom: 40px;
+                
+                @include breakpoint(mobile){
+                    width: 100%;
+                }
+
                 .input-text-group{
                     height: 70px;
-                    margin: 0 auto 20px auto;
+                    margin: 0 auto 30px auto;
                     position: relative;
                     
                     input{
@@ -133,6 +167,10 @@
                         -moz-transition: 0.2s ease all;
                         -ms-transition: 0.2s ease all;
                         -o-transition: 0.2s ease all;
+
+                        @include breakpoint(mobile){
+                            font-size: 16px;
+                        }
                     }
                     
                     .exist {
@@ -168,6 +206,10 @@
                     #preview-upload {
                         max-width: 50%;
                         margin-bottom: 20px;
+
+                        @include breakpoint(mobile){
+                            max-width: 100%;
+                        }
                     }
     
                     .image-wrapper{
@@ -214,6 +256,10 @@
                                 font-size: 18px;
                                 font-weight: 500;
                                 color: #fff;
+
+                                @include breakpoint(mobile){
+                                    font-size: 14px;
+                                }
                             }
             
                             .hide-input{
@@ -271,8 +317,14 @@
                                 }
                                 
                                 &:focus{
-                                    border: solid #F9991C 1px;
+                                    border: solid #97b9f0 2px;
                                     outline: none;
+                                    box-shadow: none;
+                                    border-radius: 2px;
+                                    -webkit-border-radius: 2px;
+                                    -moz-border-radius: 2px;
+                                    -ms-border-radius: 2px;
+                                    -o-border-radius: 2px;
                                 }
     
                                 &:after{
@@ -308,6 +360,7 @@
                     margin: 0;
                     .style-input{
                         width: 200px;
+                        background-color: #f4f4f4;
                     }
                 }
 
@@ -332,12 +385,19 @@
                         padding: 0 15px 0 15px;
                         border: solid 1px #e2e2e2;
                     }
+
+                    .last-two-digit::placeholder{
+                        opacity: .5;
+                        // color: #f4f4f4;
+                    }
+
                     span{
                         margin-top: 5px;
                         width: 100%;
                         font-size: 11px;
                         color: #565656;
-                        padding-left: 33px;
+                        padding-left: 49px;
+                        justify-content: flex-start;
                     }
                 }
             }
@@ -357,7 +417,15 @@
                 width: 185px;
                 color: #fff;
                 background-color: #f8991d;
-                padding: 15px 20px;
+                height: 50px;
+                padding: 0 20px 0 20px;
+                
+                @include breakpoint(mobile){
+                    width: 45%;
+                    font-size: 12px;
+                    height: 50px;
+                    padding: 0 10px 0 10px;
+                }
 
                 &:hover{
                     text-decoration: none;
@@ -374,6 +442,10 @@
                 display: flex;
                 position: relative;
 
+                .point , .title{
+                    font-weight: bold;
+                    font-size: 20px;
+                }
                 .point{
                     position: absolute;
                     left: 0;
@@ -381,6 +453,7 @@
 
                 .title{
                     margin-left: 45px;
+                    margin-bottom: 10px;
                 }
 
                 a{
@@ -394,7 +467,12 @@
                     color: #565656;
                     font-weight: 700;
                     right: 0;
+                    padding-left: 20px;
                     background-color: #cbcbcb;
+                    background-image: url(/static/images/icon/pencils.png);
+                    background-size: 20px 20px;
+                    background-position: 30px center;
+
                     i {
                         margin-right: 10px;
                         font-size: 18px;
