@@ -2,12 +2,12 @@
     $this->headScript()->offsetSetFile(100, '/static/js/Includes/management.js');
 ?>
 
-<div class="container">
+<div class="container management-container">
     <div class="row">
         <?php foreach($this->multihref("objectPaths") as $element):
             /** @var \Pimcore\Model\Element\ElementInterface $element */
             ?>
-            <div class="col-md-4">
+            <div class="col-md-4 management-box">
                 <div class="cards-type-14" onclick="getDetail(<?= $element->getId(); ?>)" data-toggle="modal" data-target="#myModal" style="background-image: url('<?= $element->getImage() ? $element->getImage()->getFullPath() : ""; ?>')">
                     <div class="information">
                         <div class="information-name"><?= $element->getNama(); ?></div>
@@ -37,7 +37,7 @@
                     <div class="profile-separate"></div>
                     <div class="sub-info-title"><?= $this->t("biodata");?></div>
                     <div class="sub-contain-title" id="profileBio"></div>
-                    <div class="sub-info-title"><?= $this->t("riwayat-kerja");?>></div>
+                    <div class="sub-info-title"><?= $this->t("riwayat-kerja");?></div>
                     <div class="sub-contain-title" id="profileHistory"></div>
                     <div class="sub-info-title"><?= $this->t("riwayat-pendidikan");?></div>
                     <div class="sub-contain-title" id="profileEducation"></div>
