@@ -59,7 +59,6 @@ $this->extend('layout.html.php');
                 </div>
             </div>
             <div class="button-area text-center">
-                <input type="hidden" name="lang" id="lang" value="<?= $this->getLocale(); ?>">
                 <button class="cta cta-primary cta-big" type="submit">Kirim Pesan</button>
             </div>
         </form>
