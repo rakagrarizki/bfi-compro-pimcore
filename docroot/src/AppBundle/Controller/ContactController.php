@@ -24,7 +24,6 @@ class ContactController extends FrontendController
             $name = htmlentities($data['name']);
             $email = htmlentities($data['email']);
             $message = htmlentities($data['message']);
-            $lang = htmlentities($request->get('lang'));
             $time = time();
 
             if ($name != "" && $email != "" && $message != "") {
@@ -47,11 +46,7 @@ class ContactController extends FrontendController
                 $success = true;
             } else {
                 $success = false;
-                if ($lang == "en") {
-                    $msg_error = "Name / Email / Message must not empty!";
-                } else {
-                    $msg_error = "Nama / Email / Pesan tidak boleh kosong!";
-                }
+                $msg_error = $this->get("translator")->trans("contact-error");
             }
         }
         $this->view->success = $success;
@@ -68,7 +63,6 @@ class ContactController extends FrontendController
             $data = $request->get('personal');
             $name = htmlentities($data['name']);
             $email = htmlentities($data['email']);
-            $lang = htmlentities($request->get('lang'));
             $message = htmlentities($data['message']);
             $document = $_FILES['document']['name'];
             $documentTmp = $_FILES['document']['tmp_name'];
@@ -115,19 +109,11 @@ class ContactController extends FrontendController
                     $success = true;
                 } else {
                     $success = false;
-                    if ($lang == "en") {
-                        $msg_error = "File must not exceed 500kb!";
-                    } else {
-                        $msg_error = "File tidak boleh lebih dari 500kb!";
-                    }
+                    $msg_error = $this->get("translator")->trans("contact-file-error");
                 }
             } else {
                 $success = false;
-                if ($lang == "en") {
-                    $msg_error = "Name / Email / Message must not empty!";
-                } else {
-                    $msg_error = "Nama / Email / Pesan tidak boleh kosong!";
-                }
+                $msg_error = $this->get("translator")->trans("contact-error");
             }
         }
         $this->view->success = $success;
