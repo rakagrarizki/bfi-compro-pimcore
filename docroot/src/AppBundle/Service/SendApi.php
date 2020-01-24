@@ -209,6 +209,11 @@ class SendApi
         return $this->executeApi('register', $url, $params, "POST");
     }
 
+    public function registerSubmission($url, $params)
+    {
+        return $this->executeApi('registerSubmission', $url, $params, "POST");
+    }
+
     public function sendDataCredit($url, $params)
     {
         return $this->executeApi('api-credit', $url, $params, "POST");
