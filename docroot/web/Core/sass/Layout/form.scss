@@ -2329,3 +2329,12 @@ select::-ms-expand {
         padding: 0 !important;
     }
 }
+.error-wrap {
+    label.error {
+        text-transform: lowercase;
+
+        &::first-letter {
+            text-transform: uppercase;
+        }
+    }
+}
