@@ -25,6 +25,7 @@
 
         @include breakpoint(mobile){
             width: max-content;
+            margin-bottom: 20px;
         }
 
         li{
@@ -356,11 +357,20 @@
                 flex-wrap: wrap;
                 justify-content: space-between;
                 margin-bottom: 20px;
+                
                 .input-text-group{
                     margin: 0;
+
+                    @include breakpoint(mobile){
+                        width: 55%;
+                    }
                     .style-input{
                         width: 200px;
                         background-color: #f4f4f4;
+
+                        @include breakpoint(mobile){
+                            width: 100%;
+                        }
                     }
                 }
 
@@ -371,10 +381,20 @@
                     flex-wrap: wrap;
                     align-items: center;
                     font-weight: 500;
+
+                    @include breakpoint(mobile){
+                        width: 45%;
+                    }
+
                     p{
                         margin: 0 20px 0 0;
                         color: #565656;
                         font-size: 18px;
+                        @include breakpoint(mobile){
+                            width: 33.33%;
+                            margin: 0;
+                            font-size: 14px;
+                        }
                     }
 
                     .first-digit , .last-two-digit{
@@ -384,6 +404,10 @@
                         text-align: center;
                         padding: 0 15px 0 15px;
                         border: solid 1px #e2e2e2;
+                        @include breakpoint(mobile){
+                            width: 33.33%;
+                            padding: 0;
+                        }
                     }
 
                     .last-two-digit::placeholder{
@@ -398,6 +422,10 @@
                         color: #565656;
                         padding-left: 49px;
                         justify-content: flex-start;
+
+                        @include breakpoint(mobile){
+                            padding-left: 44px;
+                        }
                     }
                 }
             }
@@ -445,6 +473,10 @@
                 .point , .title{
                     font-weight: bold;
                     font-size: 20px;
+
+                    @include breakpoint(mobile){
+                        font-size: 14px;
+                    }
                 }
                 .point{
                     position: absolute;
@@ -454,6 +486,10 @@
                 .title{
                     margin-left: 45px;
                     margin-bottom: 10px;
+
+                    @include breakpoint(mobile){
+                        margin-left: 20px;
+                    }
                 }
 
                 a{
@@ -473,6 +509,15 @@
                     background-size: 20px 20px;
                     background-position: 30px center;
 
+                    @include breakpoint(mobile){
+                        background-position: center center;
+                        background-size: 20px 20px;
+                        width: 50px;
+                        height: 50px;
+                        padding: 0;
+                        font-size: 0;
+                    }
+
                     i {
                         margin-right: 10px;
                         font-size: 18px;
@@ -486,6 +531,11 @@
             .data-detail{
                 padding-left: 45px;
                 text-align: left;
+
+                @include breakpoint(mobile){
+                    padding-left: 20px;
+                }
+
                 .detail-wrapper{
                     margin-top: 20px;
                     display: flex;
@@ -493,15 +543,27 @@
                     .label{
                         width: 35%;
                         font-weight: 500;
+
+                        @include breakpoint(mobile){
+                            width: 45%;
+                        }
                     }
                     .input{
                         width: 65%;
+
+                        @include breakpoint(mobile){
+                            width: 55%;
+                        }
                     }
                     .label , .input{
                         justify-content: flex-start;
                         font-size: 18px;
                         color: #565656;
                         padding: 0;
+
+                        @include breakpoint(mobile){
+                            font-size: 13px;
+                        }
                     }
                 }
             }
