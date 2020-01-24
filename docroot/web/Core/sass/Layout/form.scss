@@ -2330,8 +2330,64 @@ select::-ms-expand {
     }
 }
 
+.error-wrap {
+    label.error {
+        text-transform: lowercase;
+
+        &::first-letter {
+            text-transform: uppercase;
+        }
+    }
+}
+
 #myModal{
     .modal-dialog{
         height: max-content;
+
+        @include breakpoint(mobile){
+            width: fit-content;
+        }
+        
+        .modal-content{
+            border-radius: 0;
+
+            .modal-body{
+                position: relative;
+                padding: 100px 60px 60px 60px;
+
+                @include breakpoint(mobile){
+                    padding: 60px 20px 20px 20px;
+                }
+
+                .button-box{
+                    width: max-content;
+                    height: max-content;
+                    position: absolute;
+                    top: 0;
+                    right: 20px;
+
+                    .close{
+                        font-size: 50px;
+                        @include breakpoint(mobile){
+                            font-size: 40px;
+                        }
+                    }
+                }
+
+                .row{
+                    .title-profile{
+                        font-size: 40px;
+                        margin-bottom: 10px;
+                    }
+                    .job-profile{
+                        font-size: 24px;
+                    }
+                    .sub-info-title{
+                        font-size: 24px;
+                        text-transform: capitalize;
+                    }
+                }
+            }
+        }
     }
 }

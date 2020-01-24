@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+    var lang = document.documentElement.lang;
+
     var type_message_placeholder = $('#type_message').attr('placeholder');
     $('#type_message').select2({
         placeholder: type_message_placeholder,
@@ -47,9 +49,12 @@ $(document).ready(function(){
         const file = e.target.files[0];
 
         if (file.size > sizeLimit) { 
-            console.log('if')
             var errorMsg = '';
-            errorMsg = 'File size must be less than 500 KB.';
+            if(lang === 'id'){
+                errorMsg = 'Ukuran file harus kurang dari 500 KB.';
+            }else{
+                errorMsg = 'File size must be less than 500 KB.';
+            }
             parent.find(".error-wrap").show();
             parent.find(".error-wrap").html('<label id="img-error" class="error" for="img" style="display: inline-block;">' + errorMsg + '</label>');
         } else {
