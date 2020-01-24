@@ -18,7 +18,7 @@ function nextToStep2(){
     step2.classList.remove("hide");
     listStep1.classList.remove("active");
     listStep2.classList.add("active");
-    document.getElementById("poin1").textContent = "✓";
+    document.getElementById("poin1").innerHTML = "<i class='fa fa-check'></i>";
     stepTitle.textContent = "Data Universitas";
     stepSubtitle.textContent = "Silahkan masukkan data universitas anda";
 }
@@ -30,8 +30,8 @@ function nextToStep3(){
     loopSemester();
     listStep2.classList.remove("active");
     listStep3.classList.add("active");
-    document.getElementById("poin1").textContent = "✓";
-    document.getElementById("poin2").textContent = "✓";
+    document.getElementById("poin1").innerHTML = "<i class='fa fa-check'></i>";
+    document.getElementById("poin2").innerHTML = "<i class='fa fa-check'></i>";
     stepTitle.textContent = "Data Akademik";
     stepSubtitle.textContent = "Silahkan masukkan data akademik tiga semester terakhir anda";
 }
@@ -43,9 +43,9 @@ function nextToStep4(){
     loopDataSemester();
     listStep3.classList.remove("active");
     listStep4.classList.add("active");
-    document.getElementById("poin1").textContent = "✓";
-    document.getElementById("poin2").textContent = "✓";
-    document.getElementById("poin3").textContent = "✓";
+    document.getElementById("poin1").innerHTML = "<i class='fa fa-check'></i>";
+    document.getElementById("poin2").innerHTML = "<i class='fa fa-check'></i>";
+    document.getElementById("poin3").innerHTML = "<i class='fa fa-check'></i>";
     stepTitle.textContent = "Konfirmasi Data";
     stepSubtitle.textContent = "Pastikan data yang anda masukkan sudah benar";
 }

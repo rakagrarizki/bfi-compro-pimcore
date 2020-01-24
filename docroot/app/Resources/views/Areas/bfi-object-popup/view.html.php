@@ -19,8 +19,6 @@ $this->headScript()->offsetSetFile(100, '/static/js/Includes/management.js');
           <img src="<?= $element->getImage() ? $element->getImage()->getFullPath() : ""; ?>" alt="">
           <div class="photo-description">
             <div class="text-box">
-              <!-- <h5>Sudjono</h5> -->
-              <!-- <p>Direktur Keuangan</p> -->
               <h5><?= $element->getNama(); ?></h5>
               <p><?= $element->getJabatan(); ?></p>
             </div>
@@ -164,10 +162,10 @@ $this->headScript()->offsetSetFile(100, '/static/js/Includes/management.js');
       <div class="modal-body modal-profile">
         <div class="button-box"><button type="button" class="close" data-dismiss="modal">&times;</button></div>
         <div class="row">
-          <div class="col-sm-4">
+          <div class="col-lg-4 col-md-4 col-xs-12">
             <div id="userImage" style="background-image: url('');" class="image-profile"></div>
           </div>
-          <div class="col-sm-8">
+          <div class="col-lg-8 col-md-8 col-xs-12">
             <div class="title-profile" id="profileName"></div>
             <div class="job-profile" id="profileJob"></div>
             <div class="profile-separate"></div>
