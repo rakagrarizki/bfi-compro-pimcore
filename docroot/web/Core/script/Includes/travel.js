@@ -129,6 +129,8 @@ function initCalculate() {
     rawMaxPrice = parseInt(package.data.maximum_funding),
     otr_price = parseInt(package.data.minimum_funding);
 
+  var rawDownPayment = rawMinPrice * 0.1;
+
   $("#calcSlider").slider({ min: rawMinPrice, max: rawMaxPrice, step: 100000 });
   $("#ex7SliderVal").parents(".sliderGroup").find(".calcslide").data('slider').options.max = rawMaxPrice;
   $("#ex7SliderVal").parents(".sliderGroup").find(".calcslide").data('slider').options.min = rawMinPrice;
@@ -140,9 +142,12 @@ function initCalculate() {
   $("#ex7SliderVal").parents(".sliderGroup").find(".calcslide").slider('setValue', rawMinPrice);
 
   var minprice = separatordot(rawMinPrice),
-    maxprice = separatordot(rawMaxPrice);
+    maxprice = separatordot(rawMaxPrice),
+    downPayment = separatordot(rawDownPayment);
 
   $("#ex7SliderVal").val(minprice);
+  $('#down_payment').val(downPayment);
+  $("#pocket_money").val(downPayment);
   $(".valuemin").text(minprice);
   $(".valuemax").text(maxprice);
   $("#otr").val(otr_price);

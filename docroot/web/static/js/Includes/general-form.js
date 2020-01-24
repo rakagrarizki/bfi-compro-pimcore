@@ -365,13 +365,13 @@ function reInitJcf() {
   });
 
   $(".formPhoneNumber").on("keydown", function (e) {
-    if (e.which != 8 && e.which != 0 && e.which != 144 && (e.which < 48 || e.which > 57) && (e.which < 96 || e.which > 105)) {
+    if (e.which != 8 && e.which != 0 && e.which != 144 && (e.which < 46 || e.which > 57) && (e.which < 96 || e.which > 105)) {
       return false;
     }
-    if (($(this).get(0).selectionStart == 0 && (e.keyCode < 35 || e.keyCode > 40)) ||
-      ($(this).get(0).selectionStart == 1 && e.keyCode == 8)) {
-      return false;
-    }
+  //   if (($(this).get(0).selectionStart == 0 && (e.keyCode < 35 || e.keyCode > 40)) ||
+  //     ($(this).get(0).selectionStart == 1 && e.keyCode == 8)) {
+  //     return false;
+  //   }
   });
 
   $('.formPhoneNumber').on('input propertychange paste', function (e) {
@@ -429,9 +429,22 @@ function reInitJcf() {
   });
 
   if (typeof ($('#ex7SliderVal').parents(".sliderGroup").find(".calcslide").slider()) !== 'undefined') {
-    $('#ex7SliderVal').parents(".sliderGroup").find(".calcslide").slider().on('slideStop', function (ev) {
-      console.log(ev)
-    });
+    if($('#ex7SliderVal').parents(".machine-funding").length == 1){
+      $('#ex7SliderVal').parents(".sliderGroup").find(".calcslide").slider().on('slideStop', function (ev) {
+        console.log(ev)
+        var rawDownPayment = ev.value * 0.3;
+        var downPayment = separatordot(rawDownPayment);
+        $('#down_payment').val(downPayment);
+      });
+    }else{
+      $('#ex7SliderVal').parents(".sliderGroup").find(".calcslide").slider().on('slideStop', function (ev) {
+        console.log(ev)
+        var rawDownPayment = ev.value * 0.1;
+        var downPayment = separatordot(rawDownPayment);
+        $('#down_payment').val(downPayment);
+        $("#pocket_money").val(downPayment);
+      });
+    }
   }
 
   if ($(".calcslide").length > 0) {

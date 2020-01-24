@@ -19,8 +19,6 @@ $this->headScript()->offsetSetFile(100, '/static/js/Includes/management.js');
           <img src="<?= $element->getImage() ? $element->getImage()->getFullPath() : ""; ?>" alt="">
           <div class="photo-description">
             <div class="text-box">
-              <!-- <h5>Sudjono</h5> -->
-              <!-- <p>Direktur Keuangan</p> -->
               <h5><?= $element->getNama(); ?></h5>
               <p><?= $element->getJabatan(); ?></p>
             </div>
