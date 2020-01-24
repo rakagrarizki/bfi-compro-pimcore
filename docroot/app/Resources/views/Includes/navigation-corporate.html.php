@@ -75,7 +75,7 @@ $lang = $this->getLocale();
                                                 <a href="#" class="<?php echo $page->getActive() ? 'active' : '' ?> produk has-child"><?= $page->getLabel() ?></a>
                                                 <div class="dropdown-content main">
                                                     <div class="produk-hover container">
-                                                        <div class="col-md-12">
+                                                        <div class="">
                                                             <?php
                                                             foreach ($page->getPages() as $child) {
                                                             ?>
