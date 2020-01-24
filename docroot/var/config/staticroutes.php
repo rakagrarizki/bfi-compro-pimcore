@@ -2286,5 +2286,23 @@ return [
         "legacy" => FALSE,
         "creationDate" => 1578567031,
         "modificationDate" => 1578567177
+    ],
+    132 => [
+        "id" => 132,
+        "name" => "register login submission",
+        "pattern" => "/\\/submission-register/",
+        "reverse" => "/submission-register",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\RegisterController",
+        "action" => "registerSubmission",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1579848553,
+        "modificationDate" => 1579849386
     ]
 ];

@@ -269,6 +269,7 @@ function reInitJcf() {
 }
 
 (function ($) {
+  var lang = document.documentElement.lang;
 
   $(document).on("click", "#otp-resend", otpResend);
   $(document).on("click", "#otp-verification", otpVerified)
@@ -341,10 +342,18 @@ function reInitJcf() {
       var errorMsg = '';
       switch (false) {
         case (file.size <= sizeLimit):
-          errorMsg = 'File size must be less than 1 MB.';
+          if(lang === 'id'){
+            errorMsg = 'Ukuran file harus kurang dari 1 MB.';
+          }else{
+            errorMsg = 'File size must be less than 1 MB.';
+          }
           break;
         case isImage:
-          errorMsg = 'Please choose image file.';
+          if(lang === 'id'){
+            errorMsg = 'Silakan pilih file gambar.';
+          }else{
+            errorMsg = 'Please choose image file.';
+          }
           break;
       }
       parent.find(".error-wrap").show();
