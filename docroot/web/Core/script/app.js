@@ -1,4 +1,6 @@
 (function ($) {
+  var lang = document.documentElement.lang;
+
   $('.panel-collapse').on('shown.bs.collapse', function (e) {
     var $panel = $(this).closest('.panel');
     $('html,body').animate({
@@ -699,6 +701,34 @@
     });
   }
 
+  if(lang === 'id'){
+    jQuery.extend(jQuery.validator.messages, {
+      required: "Isian wajib diisi.",
+      remote: "Harap perbaiki isian ini.",
+      email: "Silakan isi alamat email yang valid.",
+      url: "Silakan masukkan URL yang valid.",
+      date: "Silakan masukkan tanggal yang valid.",
+      dateISO: "Silakan masukkan tanggal yang valid (ISO).",
+      number: "Silakan masukkan nomor yang valid.",
+      digits: "Masukkan hanya berupa digit.",
+      creditcard: "Harap masukkan nomor kartu kredit yang benar.",
+      equalTo: "Silakan masukkan nilai yang sama sekali lagi.",
+      accept: "Silakan masukkan nilai dengan ekstensi yang valid.",
+      maxlength: jQuery.validator.format("Harap masukkan tidak lebih dari {0} karakter."),
+      minlength: jQuery.validator.format("Silakan masukkan setidaknya {0} karakter."),
+      rangelength: jQuery.validator.format("Masukkan nilai antara panjang {0} dan {1} karakter."),
+      range: jQuery.validator.format("Silakan masukkan nilai antara {0} dan {1}."),
+      max: jQuery.validator.format("Masukkan nilai kurang dari atau sama dengan {0}."),
+      min: jQuery.validator.format("Silakan masukkan nilai yang lebih besar dari atau sama dengan {0}."),
+      minDp : "DP Minimal 10% dari pembayaran.",
+      minDpMachine : "DP Minimal 30% dari pembayaran.",
+      acceptAlphabet: "Masukkan hanya berupa huruf alfabet.",
+      minPrice : "Silakan masukkan harga lebih dari harga minimum.",
+      emailCust : "Silakan isi alamat email yang valid.",
+      filesize : "Ukuran file harus kurang dari 1 MB."
+    });
+  }
+
   function scrollToTop() {
     $('html, body').animate({
       scrollTop: 0
@@ -935,6 +965,12 @@
             credits.pemohon.nama = htmlEntities(nama_lengkap);
             credits.pemohon.email = htmlEntities(email_pemohon);
             credits.pemohon.no_handphone = htmlEntities(no_telepon);
+            if(changeDataPemohon === true){
+              //data pemohon
+              $('#showFullName').html(credits.pemohon.nama);
+              $('#showEmail').html(credits.pemohon.email);
+              $('#showPhone').html(credits.pemohon.no_handphone);      
+            }
           } else {
             console.log('error' + result.message);
           }
