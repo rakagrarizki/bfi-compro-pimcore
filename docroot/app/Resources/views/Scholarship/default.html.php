@@ -35,6 +35,9 @@ $this->extend('layout-credit.html.php');
         </nav>
 
         <div id="stepper">
+            <?php if ($this->msg_error) {
+                echo '<div class="alert alert-danger" role="alert">' . $msg_error . '</div>';
+            } ?>
             <h3 id="step-title">Data Pemohon</h3>
             <p id="step-subtitle">Silahkan masukkan data diri anda</p>
 
@@ -50,15 +53,15 @@ $this->extend('layout-credit.html.php');
                             <label id="email-label" class="input-label">Masukkan email anda</label>
                         </div>
                         <div class="input-text-group">
-                            <input name="scholarship[phone]" id="phone-input" class="style-input" type="number" onfocus="changeLabel(this.id)" onfocusout="deleteLabel(this.id)" required>
+                            <input name="scholarship[phone]" id="phone-input" class="style-input formPhoneNumber" type="text" onfocus="changeLabel(this.id)" onfocusout="deleteLabel(this.id)" maxlength="13" required>
                             <label id="phone-label" class="input-label">Masukkan nomor handphone anda</label>
                         </div>
                         <div class="input-text-group">
-                            <input name="scholarship[phone2]" id="alt-phone-input" class="style-input" type="number" onfocus="changeLabel(this.id)" onfocusout="deleteLabel(this.id)">
+                            <input name="scholarship[phone2]" id="alt-phone-input" class="style-input formPhoneNumber" type="text" onfocus="changeLabel(this.id)" onfocusout="deleteLabel(this.id)" maxlength="13">
                             <label id="alt-phone-label" class="input-label">Masukkan nomor handphone alternatif</label>
                         </div>
                         <div id="upload">
-                            <h5 id="upload-text">Unggah Foto 3x4</h5>
+                            <h5 id="upload-text"><?= $this->translate('upload-photo-3x4') ?></h5>
                             <img id="preview-upload" src="">
                             <div class="upload-content-wrapper">
                                 <div class="upload-btn-wrapper">
@@ -69,7 +72,8 @@ $this->extend('layout-credit.html.php');
                                 </div>
                                 <span id="file-upload-filename"></span>
                             </div>
-                            <p>Pastikan foto KTP terlihat jelas (max. ukuran file adalah 300kB)</p>
+                            <!-- <p>Pastikan foto KTP terlihat jelas (max. ukuran file adalah 300kB)</p> -->
+                            <p><?= $this->translate('upload-photo-max') ?></p>
                         </div>
                     </div>
                     <div id="step-1" class="next-prev-container">
