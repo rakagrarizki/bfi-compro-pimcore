@@ -1446,9 +1446,19 @@ return [
         "name" => "URL_REGISTER_SUBMISSION",
         "language" => "",
         "type" => "text",
-        "data" => "/register_or_login_after_submission",
+        "data" => "/register_after_submission",
         "siteId" => 0,
         "creationDate" => 0,
-        "modificationDate" => 1579848924
+        "modificationDate" => 1580093903
+    ],
+    152 => [
+        "id" => 152,
+        "name" => "URL_LOGIN_SUBMISSION",
+        "language" => "",
+        "type" => "text",
+        "data" => "/login_after_submission",
+        "siteId" => 0,
+        "creationDate" => 0,
+        "modificationDate" => 1580094769
     ]
 ];
