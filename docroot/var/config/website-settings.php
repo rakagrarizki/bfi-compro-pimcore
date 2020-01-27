@@ -1440,5 +1440,25 @@ return [
         "siteId" => 0,
         "creationDate" => 0,
         "modificationDate" => 1578464788
+    ],
+    151 => [
+        "id" => 151,
+        "name" => "URL_REGISTER_SUBMISSION",
+        "language" => "",
+        "type" => "text",
+        "data" => "/register_after_submission",
+        "siteId" => 0,
+        "creationDate" => 0,
+        "modificationDate" => 1580093903
+    ],
+    152 => [
+        "id" => 152,
+        "name" => "URL_LOGIN_SUBMISSION",
+        "language" => "",
+        "type" => "text",
+        "data" => "/login_after_submission",
+        "siteId" => 0,
+        "creationDate" => 0,
+        "modificationDate" => 1580094769
     ]
 ];
