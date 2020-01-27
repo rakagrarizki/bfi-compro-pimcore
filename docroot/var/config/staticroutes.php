@@ -2289,7 +2289,7 @@ return [
     ],
     132 => [
         "id" => 132,
-        "name" => "register login submission",
+        "name" => "register submission",
         "pattern" => "/\\/submission-register/",
         "reverse" => "/submission-register",
         "module" => "AppBundle",
@@ -2303,6 +2303,24 @@ return [
         "priority" => 0,
         "legacy" => FALSE,
         "creationDate" => 1579848553,
-        "modificationDate" => 1579849386
+        "modificationDate" => 1580094799
+    ],
+    133 => [
+        "id" => 133,
+        "name" => "login submission",
+        "pattern" => "/\\/submission-login/",
+        "reverse" => "/submission-login",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\RegisterController",
+        "action" => "loginSubmission",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1580094801,
+        "modificationDate" => 1580095068
     ]
 ];

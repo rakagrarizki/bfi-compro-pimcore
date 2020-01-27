@@ -82,4 +82,32 @@ class RegisterController extends FrontendController
             ]);
         }
     }
+
+    public function loginSubmissionAction(Request $request)
+    {
+        $url = HOST . WebsiteSetting::getByName('URL_LOGIN_SUBMISSION')->getData();
+        $param["phone_number"] = htmlentities(addslashes($request->get('phone_number')));
+
+        try {
+            $data = $this->sendAPI->loginSubmission($url, $param);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+
+        if ($data->header->status == 200) {
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "Sukses",
+                'data' => $data->data
+            ]);
+        } else {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "Gagal"
+            ]);
+        }
+    }
 }
