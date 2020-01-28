@@ -11,22 +11,15 @@
             $lang = $this->getLocale();
             $i = 0;
             foreach ($this->blog as $blog) {
-
-                if ($i == 0) {
-            ?>
+                if ($i == 0) { ?>
                     <div class="col-md-6 col-sm-12 col-xs-12 thumbnail-infor">
                         <div class="thumbnail-body--content">
                             <div class="thumbnail-image modif">
-                            <?php
-                        } else {
-                            ?>
+                            <?php } else { ?>
                                 <div class="col-md-3 col-sm-6 col-xs-6 thumbnail-infor">
                                     <div class="thumbnail-body--content">
                                         <div class="thumbnail-image">
-                                        <?php
-                                    }
-                                        ?>
-
+                                        <?php } ?>
                                         <img src="<?= $blog->getImage(); ?>">
                                         </div>
                                         <div class="thumbnail-infomation">
@@ -35,8 +28,10 @@
                                             $dateUnix = $timestampDate->timestamp;
                                             $date = date("D, d-M'Y", $dateUnix);
                                             ?>
-                                            <p><?= $date; ?></p>
+                                            <p><?= $blog->getBlogCategory()->getName(); ?></p>
                                             <h3><a href="<?= $lang; ?>/blog/<?= $blog->getSlug(); ?>"><?= $blog->getTitle(); ?></a></h3>
+                                            <p class="date"><?= $blog->getDate(); ?></p>
+                                            <p class="view"><i class="fa fa-eye"></i> <?= $blog->getViews(); ?></p>
                                         </div>
                                     </div>
                                 </div>
