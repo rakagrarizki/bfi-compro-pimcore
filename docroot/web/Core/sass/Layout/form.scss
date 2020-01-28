@@ -56,6 +56,58 @@
             font-size: 14px;
         }
     }
+
+    .application-position {
+        margin: 30px auto;
+        
+        &.form-group > label {
+            font-family: 'HelveticaNeue';
+            font-size: 16px;
+            font-weight: normal;
+            color: #565656;
+            position: relative;
+            display: block;
+            padding-left: 0;
+            text-transform: capitalize;
+        }
+
+        .inputform {
+            padding: 5px;
+
+            input[type='radio'] {
+                transform: scale(1.5);
+                margin-right: 15px;
+
+                @include breakpoint(mobile) {
+                    margin-right: 5px;
+                }
+            }
+
+            .jcf-radio span {
+                background : #F9991C;
+            }
+        }
+
+        &.form-group .ipt-radio {
+            display: table-cell;
+            width: 1%;
+
+            label {
+                display : contents;
+                color : #04559F;
+                font-size : 18px;
+                text-transform: capitalize;
+
+                @include breakpoint(tablet) {
+                    font-size: 14px;
+                }
+
+                @include breakpoint(mobile) {
+                    font-size: 12px;
+                }
+            }
+        }
+    }
 }
 
 .success-wrapper {

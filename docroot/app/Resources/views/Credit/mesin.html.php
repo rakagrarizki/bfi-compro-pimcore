@@ -24,8 +24,29 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
             <h2 class="text-center-edit"><?= $this->translate('change-data-name')?></h2>
             <p class="text-center"><?= $this->translate('input-data-name')?></p>
           </div>
-
-          <div class="form-group">
+          <div class="form-group application-position">
+                <label for="identitas"><?= $this->translate('appicant-position')?></label>
+                <div class="input-group inputform">
+                    <div class="ipt-radio">
+                        <label>
+                            <span>
+                                <input id="type" type="radio" name="applicant_position" value="perorang" checked />
+                            </span>
+                            <?= $this->translate('perorangan')?>
+                        </label>
+                    </div>
+                    <div class="ipt-radio">
+                        <label>
+                            <span>
+                                <input id="type" type="radio" name="applicant_position" value="perusahaan" />
+                            </span>
+                            <?= $this->translate('perusahaan')?>
+                        </label>
+                    </div>
+                </div>
+                <div class="error-wrap"></div>
+            </div>
+          <!-- <div class="form-group">
               <div class="title-input">
                   <?= $this->translate('appicant-position')?>
               </div>
@@ -45,7 +66,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                   </div>
               </div>
               <div class="error-wrap"></div>
-          </div>
+          </div> -->
           <div class="form-group">
               <label for="nama_perusahaan"><?= $this->translate('form-name-company')?></label>
               <input type="text" class="form-control formRequired formAlphabet" name="nama_perusahaan" id="nama_perusahaan"
@@ -459,10 +480,8 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                   <p><?= $this->translate('tq-text-2')?></p>
               </div>
               <div class="button-area text-center backtohome">
-                  <a href="/<?php echo $this->getLocale() ?>">
-                      <button class="cta cta-primary cta-big cta-see buttonnext backtohome" id="button7"
-                              type="button"><?= $this->translate('backtohome')?></button>
-                  </a>
+                    <button class="cta cta-primary cta-big cta-see buttonnext backtohome" id="button7"
+                            type="button" onclick="return checkStatus()"><?= $this->translate('backtohome')?></button>
               </div>
           </div>
         </fieldset>

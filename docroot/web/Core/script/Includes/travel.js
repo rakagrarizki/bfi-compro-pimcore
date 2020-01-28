@@ -95,11 +95,11 @@ function sendLeadData() {
           $("#modal-branch").modal('show');
         }
         return sendData.data.is_branch
-      } else if (currentStep === 2) {
-        if (sendData.data.is_pricing === false) {
-          $("#modal-pricing").modal('show');
-        }
-        return sendData.data.is_pricing
+      // } else if (currentStep === 2) {
+      //   if (sendData.data.is_pricing === false) {
+      //     $("#modal-pricing").modal('show');
+      //   }
+      //   return sendData.data.is_pricing
       } else {
         return true;
       }
@@ -208,9 +208,9 @@ function editStep(idx) {
 function getDataRegister() {
   var _data = {
     "submission_id": submission_id,
-    "full_name": $('#nama_lengkap').val().toString(),
-    "email": $('#email_pemohon').val().toString(),
-    "phone_number": $('#no_handphone').val().toString()
+    // "full_name": $('#nama_lengkap').val().toString(),
+    // "email": $('#email_pemohon').val().toString(),
+    // "phone_number": $('#no_handphone').val().toString()
   }
   return _data;
 }
@@ -249,6 +249,7 @@ var isValidOtp = false;
       // Used to skip the "Warning" step if the user is old enough.
       checkValid();
       if (currentIndex > priorIndex && currentIndex === 2) {
+        nextButton("inactive");
         initCalculate();
       }else if (currentIndex > priorIndex && currentIndex === 3) {
         initSummary();
@@ -341,6 +342,7 @@ var isValidOtp = false;
   });
 
   $("#recalc").click(function (e) {
+    nextButton("inactive");
     e.preventDefault();
     var leisure_package_price = $("#ex7SliderVal").val().replace(/[.]/g, "");
     var tenor = $("#jangka_waktu").val()[0];
@@ -356,6 +358,7 @@ var isValidOtp = false;
     var post = postData("/credit/leisure-calculator", _data);
     if (post.success === "1") {
     //   console.log("CALC", post)
+        nextButton("active");
         $("#totalFinance").text(post.data.total_funding.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
         $("#pocketMoney").text(post.data.pocket_money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
         $("#labelTotal").text(post.data.monthly_installment.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
