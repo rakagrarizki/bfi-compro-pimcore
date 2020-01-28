@@ -96,11 +96,11 @@ function sendLeadData() {
           $("#modal-branch").modal('show');
         }
         return sendData.data.is_branch
-      } else if (currentStep === 2) {
-        if (sendData.data.is_pricing === false) {
-          $("#modal-pricing").modal('show');
-        }
-        return sendData.data.is_pricing
+      // } else if (currentStep === 2) {
+      //   if (sendData.data.is_pricing === false) {
+      //     $("#modal-pricing").modal('show');
+      //   }
+      //   return sendData.data.is_pricing
       } else {
         return true;
       }
@@ -201,9 +201,9 @@ function editStep(idx) {
 function getDataRegister() {
   var _data = {
     "submission_id": submission_id,
-    "full_name": $('#nama_lengkap').val().toString(),
-    "email": $('#email_pemohon').val().toString(),
-    "phone_number": $('#no_handphone').val().toString()
+    // "full_name": $('#nama_lengkap').val().toString(),
+    // "email": $('#email_pemohon').val().toString(),
+    // "phone_number": $('#no_handphone').val().toString()
   }
   return _data;
 }
@@ -255,6 +255,7 @@ var isValidOtp = false;
       // Used to skip the "Warning" step if the user is old enough.
       checkValid();
       if (currentIndex > priorIndex && currentIndex === 2) {
+        nextButton("inactive");
         initCalculate();
       }
       if (currentIndex > priorIndex && currentIndex === 3) {
@@ -347,6 +348,7 @@ var isValidOtp = false;
   });
 
   $("#recalc").click(function (e) {
+    nextButton("inactive");
     e.preventDefault();
     if (form.valid()) {
       var edu_package_price = $("#ex7SliderVal").val().replace(/[.]/g, "");
@@ -360,6 +362,7 @@ var isValidOtp = false;
       }
       var post = postData("/credit/edu-calculator", _data);
       if (post.success === "1") {
+        nextButton("active");
         var life_insurance = "Rp. " + separatordot(post.data.life_insurance);
         var monthly_installment = "Rp. " + separatordot(post.data.monthly_installment);
         var monthly_installment_est_total = "Rp. " + separatordot(post.data.monthly_installment_est_total);

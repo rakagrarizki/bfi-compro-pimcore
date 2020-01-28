@@ -1113,7 +1113,7 @@
   function getCertificateType() {
     $.ajax({
       type: 'POST',
-      url: 'credit/get-pbf-certificate-type',
+      url: '/credit/get-pbf-certificate-type',
       dataType: 'json',
       error: function (data) {
         console.log('error' + data);
