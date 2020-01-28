@@ -106,6 +106,7 @@ class ContactController extends FrontendController
                     $contactPersonal->setFile($asset);
                     $contactPersonal->save();
 
+                    $this->_success();
                     $success = true;
                 } else {
                     $success = false;
