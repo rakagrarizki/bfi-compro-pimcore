@@ -1,6 +1,8 @@
 $(document).ready(function () {
     let btnSubmitFormCredit = $('.btn-submit-how-form-credit');
+    let btnNext = $('.btn-next');
     let selFormCredit = $('#sel-how-form-credit');
+    let selFormCreditNew = $('#category-2');
     let sel_placeholder = selFormCredit.attr('data-placeholder');
     
     selFormCredit.select2({
@@ -27,6 +29,15 @@ $(document).ready(function () {
     btnSubmitFormCredit.click((e) => {
         e.preventDefault();
         let redirectUrl = selFormCredit.val();
+        if (redirectUrl) {
+
+            window.location.href = redirectUrl;
+        }
+    });
+
+    btnNext.click((e) => {
+        e.preventDefault();
+        let redirectUrl = selFormCreditNew.val();
         if (redirectUrl) {
 
             window.location.href = redirectUrl;
