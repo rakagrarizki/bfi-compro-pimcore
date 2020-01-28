@@ -36,7 +36,7 @@ $this->extend('layout.html.php');
 
                 <div class="form-group">
                     <label for="nama_lengkap"><?= $this->translate('form-name') ?></label>
-                    <input type="text" class="form-control formRequired formName" name="personal[name]" id="nama_lengkap" placeholder="Masukkan nama lengkap Anda">
+                    <input type="text" class="form-control formRequired formAlphabet formName" name="personal[name]" id="nama_lengkap" placeholder="Masukkan nama lengkap Anda">
                     <div class="error-wrap"></div>
                 </div>
                 <div class="form-group">
@@ -46,7 +46,7 @@ $this->extend('layout.html.php');
                 </div>
                 <div class="form-group">
                     <label for="email_penanya"><?= $this->translate('form-email') ?></label>
-                    <input type="tel" class="form-control formEmail" name="personal[email]" id="email_penanya" placeholder="Masukkan email Anda">
+                    <input type="tel" class="form-control formRequired formEmail" name="personal[email]" id="email_penanya" placeholder="Masukkan email Anda">
                     <div class="error-wrap"></div>
                 </div>
                 <div class="form-group customer-type">
@@ -101,14 +101,14 @@ $this->extend('layout.html.php');
                     <div class="upload-file">
                         <img src="" />
                         <div class="upload-btn">
-                            <input type="file" class="file-input" accept="image/*" data-id="document" name="document" />
+                            <input type="file" class="file-input" accept="image/*" data-id="document" />
                             <button type="button">Pilih File</button>
                             <b></b>
                         </div>
                     </div>
-                    <input type="hidden" class="form-control formRequired" id="document">
+                    <input type="hidden" class="form-control formRequired" name="document" id="document">
                     <div class="error-wrap"></div>
-                    <span>Max. ukuran file adalah 500kb</span>
+                    <!-- <span>Max. ukuran file adalah 500kb</span> -->
                 </div>
                 <div class="form-group captcha">
                     <div class="g-recaptcha" id="g-recaptcha" data-sitekey="6Ldb1c8UAAAAALZP6FbNJAM7z8T-tPpkbJvjbJBW"></div>

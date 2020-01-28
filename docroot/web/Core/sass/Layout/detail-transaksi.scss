@@ -65,6 +65,16 @@
                     &:nth-of-type(odd){
                         background-color: #fff;      
                     }
+
+                    &:last-child{
+                        td{
+                            &:nth-child(4), &:nth-child(7){
+                                &::before{
+                                    display: none;
+                                }
+                            }
+                        }
+                    }
                     
                     td{
                         border: solid 1px #eaeaea;
