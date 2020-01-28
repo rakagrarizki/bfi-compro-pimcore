@@ -253,11 +253,35 @@ function otpVerified() {
 
 function successOTP() {
   var _data = getDataRegister();
-  var register = postData("/register", _data);
+  var register = postData("/submission-register", _data)
+  var lang = document.documentElement.lang;
+
   if (register.success === "1") {
+    phone_number = register.data.phone_number
     showSuccessOtp();
+    setTimeout(function(){ 
+      window.location="/"+lang+"/login";
+    }, 120000);
   } else {
     $('#failedOtp').modal('show');
+  }
+}
+
+function checkStatus() {
+  console.log(phone_number);
+  var lang = document.documentElement.lang;
+  var data = {
+    'phone_number' : phone_number
+  }
+  var check = postData("/submission-login", data)
+  if (check.success === "1"){
+    var token = check.data.customer_token
+    localStorage.setItem("token", token);
+    console.log ('token : ' + token);
+    getCustomer(token);
+    window.location="/"+lang+"/user/dashboard";
+  }else{
+    console.log("login after submission failed");
   }
 }
 

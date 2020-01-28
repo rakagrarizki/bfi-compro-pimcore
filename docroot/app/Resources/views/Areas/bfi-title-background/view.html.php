@@ -11,7 +11,7 @@
                 <p><?= $this->input('text'); ?></p>
                 <?php if(!$this->link("link")->isEmpty()) :?>
                 <div class="button">
-                    <a href="javscript:void(0)" data-key="<?= $this->link("link")->getHref();?>"><?= $this->link("link")->getText();?></a>
+                    <a href="#" data-key="<?= $this->link("link")->getHref();?>"><?= $this->link("link")->getText();?></a>
                 </div>
                 <?php endif;?>
             </div>
@@ -23,7 +23,7 @@
                 <p><?= $this->input('text'); ?></p>
                 <?php if(!$this->link("link")->isEmpty()) :?>
                 <div class="button">
-                    <a href="javscript:void(0)" data-key="<?= $this->link("link")->getHref();?>"><?= $this->link("link")->getText();?></a>
+                    <a href="#" data-key="<?= $this->link("link")->getHref();?>"><?= $this->link("link")->getText();?></a>
                 </div>
                 <?php endif;?>
             </div>
