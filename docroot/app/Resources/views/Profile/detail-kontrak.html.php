@@ -33,7 +33,7 @@ $this->extend('layout.html.php');
                     </div>
                     <div class="detail-wrapper">
                         <span class="label">Tagihan Anda Bulan Ini*</span>
-                        <span class="value-data have-paid-installment">
+                        <span class="value-data this-month-bill">
                             <!-- here position list from API --></span>
                     </div>
                 </div>

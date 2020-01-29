@@ -74,7 +74,7 @@ $(document).ready(function(){
 
 //                 $('.total-installment').text("Rp. "+ (convertInttoCurrency(data[0].angsuran_telah_dibayar+data[0].sisa_angsuran)));
 //                 $('.remaining-installment').text("Rp. "+ convertInttoCurrency(data[0].sisa_angsuran));
-//                 $('.have-paid-installment').text("Rp. "+ convertInttoCurrency(data[0].angsuran_telah_dibayar));
+//                 $('.this-month-bill').text("Rp. "+ convertInttoCurrency(data[0].angsuran_telah_dibayar));
 //                 $('.due-date').text(due_date);
 //                 $('.installment-per-month').text("Rp. "+ convertInttoCurrency(data[0].angsuran_per_bulan));
 //                 $('.late-charge').text("Rp. "+ convertInttoCurrency(data[0].denda_keterlambatan));
@@ -92,7 +92,7 @@ function contractDetail(data) {
 
     $('.total-installment').text("Rp. "+ (convertInttoCurrency(data.pembiayaan)));
     $('.remaining-installment').text("Rp. "+ convertInttoCurrency(data.sisa_angsuran));
-    $('.have-paid-installment').text("Rp. "+ convertInttoCurrency(data.tagihan_bulan_ini));
+    $('.this-month-bill').text("Rp. "+ convertInttoCurrency(data.tagihan_bulan_ini));
     $('.due-date').text(due_date);
     $('.installment-per-month').text("Rp. "+ convertInttoCurrency(data.angsuran_per_bulan));
     $('.late-charge').text("Rp. "+ convertInttoCurrency(data.denda_keterlambatan));
