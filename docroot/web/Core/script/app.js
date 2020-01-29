@@ -5237,6 +5237,23 @@ $(document).ready(function() {
   // }
 });
 
+/*Scroll to top when arrow up clicked BEGIN*/
+$(window).scroll(function() {
+  var height = $(window).scrollTop();
+  if (height > 100) {
+      $('.backtoTop').fadeIn(200);
+  } else {
+      $('.backtoTop').fadeOut(200);
+  }
+});
+  $(".backtoTop").click(function(event) {
+      event.preventDefault();
+      $("html, body").animate({
+          scrollTop: 0
+      }, 800);
+      return false;
+  });
+
 $(function () { 
   $('#btn-burger').on('click', function (e) {
       var menuItem = $( e.currentTarget );
