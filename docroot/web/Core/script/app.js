@@ -1576,7 +1576,7 @@
     disableButton("#button3rumah");
     disableButton("#button4");
     disableButton("#button4rumah");
-    disableButton("#button5");
+    enableButton("#button5");
     $("#kode_pos").css("background-color", "#F4F4F4");
     $("#kode_pos_sertificate").css("background-color", "#F4F4F4");
 
