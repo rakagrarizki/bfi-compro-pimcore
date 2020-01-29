@@ -58,7 +58,7 @@ function sendLeadData() {
 
     switch (currentStep) {
       case 0:
-        _url = "/agent/save-agent-candidate-step1-after-otp";
+        _url = "/agent/save-agent-otp";
         _data = {
           "submission_id": submission_id,
           "name": $("#nama_lengkap").val(),

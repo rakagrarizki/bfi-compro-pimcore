@@ -1362,11 +1362,36 @@
       },
       success: function (data) {
         if (data.success === "1") {
+          registerCredit(data.data.submission_id)
           cb();
         }
       }
     })
+  }
 
+  function registerCredit(submission_id) {
+    var _url = '/submission-register';
+    var _data = {
+      "submission_id": submission_id
+    };
+
+    $.ajax({
+      type: 'POST',
+      url: _url,
+      data: _data,
+      dataType: 'json',
+      error: function (data) {
+        console.log('error' + data);
+      },
+      fail: function (xhr, textStatus, error) {
+        console.log('request failed')
+      },
+      success: function (data) {
+        if (data.success === "1") {
+          phone_number = data.data.phone_number
+        }
+      }
+    })
   }
 
   function pushDataBangunan(cb) {
@@ -2468,6 +2493,9 @@
     sendLeads6(function () {
       $('.tab-pane').hide();
       $('#success').fadeIn();
+      setTimeout(function(){ 
+        window.location="/"+lang+"/login";
+      }, 120000);
     });
   }
 
@@ -4934,10 +4962,19 @@
       var errorMsg = '';
       switch (false) {
         case (file.size <= sizeLimit):
-          errorMsg = 'File size must be less than 1 MB.';
+          console.log("app")
+          if(lang === 'id'){
+            errorMsg = 'Ukuran file harus kurang dari 1 MB.';
+          }else{
+            errorMsg = 'File size must be less than 1 MB.';
+          }
           break;
         case isImage:
-          errorMsg = 'Please choose image file.';
+          if(lang === 'id'){
+            errorMsg = 'Silakan pilih file gambar.';
+          }else{
+            errorMsg = 'Please choose image file.';
+          }
           break;
       }
       parent.find(".error-wrap").html('<label id="ktp-error" class="error" for="ktp" style="display: inline-block;">' + errorMsg + '</label>')
@@ -4959,6 +4996,39 @@ function copyURL(url) {
   document.execCommand("copy");
   $temp.remove();
   $('#copied').show().delay(2000).fadeOut(400);
+}
+
+function checkStatusPengajuan() {
+  console.log(phone_number);
+  var lang = document.documentElement.lang;
+  var _url = "/submission-login";
+  var _data = {
+    'phone_number' : phone_number
+  }
+
+  $.ajax({
+    type: 'POST',
+    url: _url,
+    data: _data,
+    dataType: 'json',
+    error: function (data) {
+      console.log('error' + data);
+    },
+    fail: function (xhr, textStatus, error) {
+      console.log('request failed')
+    },
+    success: function (data) {
+      if (data.success === "1") {
+        var token = data.data.customer_token
+        localStorage.setItem("token", token);
+        console.log ('token : ' + token);
+        getCustomer(token);
+        window.location="/"+lang+"/user/dashboard";    
+      }else{
+        console.log("login after submission failed");
+      }
+    }
+  })
 }
 
 function loginCustomer() {

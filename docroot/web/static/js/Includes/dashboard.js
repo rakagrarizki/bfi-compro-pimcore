@@ -94,7 +94,7 @@ $(document).ready(function(){
     var lang = document.documentElement.lang
 
     $('ul.contract-wrapper').hide();
-    checkStatus(token);
+    checkStatusVerify(token);
     applicationStep(token);
     checkAssignmentList(token);
     contractStatusList(lang, token);
@@ -171,7 +171,7 @@ $(document).ready(function(){
 
 });
 
-function checkStatus(token) {
+function checkStatusVerify(token) {
     $.ajax({
         type: 'GET',
         url: '/user/check-verify-status',

@@ -592,7 +592,7 @@ $this->extend('layout-credit.html.php');
                                     </div>
                                     <div class="button-area text-center backtohome">
                                         <button class="cta cta-primary cta-big cta-see buttonnext backtohome" id="button7"
-                                                type="button" onclick="return checkStatus()"><?= $this->translate('backtohome')?></button>
+                                                type="button" onclick="return checkStatusPengajuan()"><?= $this->translate('backtohome')?></button>
                                     </div>
                                 </div>
 

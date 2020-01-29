@@ -41,49 +41,22 @@ $this->extend('layout.html.php');
             </thead>
             <tbody>
                 <tr>
-                    <td>1</td>
-                    <td>05/03/2018</td>
-                    <td>3,343,500.00</td>
-                    <td>3,343,500.00</td>
-                    <td>06/03/2018</td>
-                    <td>0.00</td>
-                    <td>36,778,500.00</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>05/03/2018</td>
-                    <td>3,343,500.00</td>
-                    <td>3,343,500.00</td>
-                    <td>06/03/2018</td>
-                    <td>0.00</td>
-                    <td>36,778,500.00</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>05/03/2018</td>
-                    <td>3,343,500.00</td>
-                    <td>3,343,500.00</td>
-                    <td>06/03/2018</td>
-                    <td>0.00</td>
-                    <td>36,778,500.00</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>05/03/2018</td>
-                    <td>3,343,500.00</td>
-                    <td>3,343,500.00</td>
-                    <td>06/03/2018</td>
-                    <td>0.00</td>
-                    <td>36,778,500.00</td>
+                    <td class="installment_no"></td>
+                    <td class="tanggal_jatuh_tempo"></td>
+                    <td class="angsuran_per_bulan"></td>
+                    <td class="angsuran_telah_dibayar"></td>
+                    <td class="tanggal_pembayaran"></td>
+                    <td class="denda_keterlambatan"></td>
+                    <td class="sisa_angsuran"></td>
                 </tr>
                 <tr class="total">
                     <td></td>
                     <td>Total</td>
-                    <td>40,122,000.00</td>
-                    <td>0</td>
+                    <td class="total_installment"></td>
                     <td></td>
-                    <td>4,122,000.00</td>
-                    <td>0</td>
+                    <td></td>
+                    <td class="total_late_charge"></td>
+                    <td></td>
                 </tr>
             </tbody>
         </table>
@@ -96,3 +69,5 @@ $this->extend('layout.html.php');
         </ul>
     </div>
 </section>
+
+<?php $this->headScript()->prependFile('/static/js/Includes/contract.js'); ?>
