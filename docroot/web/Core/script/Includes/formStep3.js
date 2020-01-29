@@ -14,7 +14,7 @@ function loopSemester() {
             "<div class='input-ipk-wrapper'>" +
                 "<p>IPK</p>" +
                 "<input class='first-digit' type='number' disabled value='3'>" +
-                "<input id='smt-ke-"+i+"' class='last-two-digit' maxlength='2' placeholder='00' type='number' oninput='javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);' onfocusout='getIpkValue(this.id)' onfocus='this.placeholder= \"\" ' onblur='this.placeholder= \"00\" ' onkeypress='return isNumberKey(event);''>" +
+                "<input id='smt-ke-"+i+"' class='last-two-digit' maxlength='2' placeholder='00' type='number' oninput='javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);' onfocusout='getIpkValue(this.id)' onfocus='this.placeholder= \"\" ' onblur='this.placeholder= \"00\" ' onkeydown='return isNumberKey(event);'>" +
                 "<span>Minimal IPK 3.00</span>"+
             "</div>");
         document.getElementById("form-semester-ipk").prepend(asd);
@@ -53,9 +53,4 @@ function uploadPDF(event) {
 
 function getIpkValue(id_smt){
     ipk[id_smt] = document.getElementById(id_smt).value;
-}
-
-function isNumberKey(evt){
-    var charCode = (evt.which) ? evt.which : evt.keyCode
-    return !(charCode > 31 && (charCode < 48 || charCode > 57));
 }
