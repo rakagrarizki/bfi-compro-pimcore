@@ -30,7 +30,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                     <div class="ipt-radio">
                         <label>
                             <span>
-                                <input id="type" type="radio" name="applicant_position" value="perorang" checked />
+                                <input type="radio" name="applicant_position" value="perorang" checked />
                             </span>
                             <?= $this->translate('perorangan')?>
                         </label>
@@ -38,7 +38,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                     <div class="ipt-radio">
                         <label>
                             <span>
-                                <input id="type" type="radio" name="applicant_position" value="perusahaan" />
+                                <input type="radio" name="applicant_position" value="perusahaan" />
                             </span>
                             <?= $this->translate('perusahaan')?>
                         </label>
@@ -434,7 +434,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
               </div>
               <div class="biaya-agunan-mesin">
                   <div class="form-group">
-                      <input type="checkbox" id="agreement1" name="agreement1" class="agreement">
+                      <input type="checkbox" id="agreement1" name="agreement1" class="agreement formRequired">
                       <label for="agreement1" class="label-agreement"><?= $this->translate('term-condition')?></label>
                       <div class="error-wrap"></div>
                   </div>
