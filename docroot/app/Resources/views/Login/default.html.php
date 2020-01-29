@@ -20,7 +20,7 @@ $this->extend('layout-branch.html.php');
     <form action="" id="login-form">
         <div class="input-login">
             <div class="input-text-group">
-                <input id="phone-input" class="style-input" type="number" onfocus="changeLabel(this.id)" onfocusout="deleteLabel(this.id)" required>
+                <input id="phone-input" class="style-input" type="number" onfocus="changeLabel(this.id)" onfocusout="deleteLabel(this.id)" onkeydown="return isNumberKey(event);" required>
                 <label id="phone-label" class="input-label">Masukkan nomor handphone anda</label>
             </div>
             <label class="checkbox-wrapper">Ingat akun saya

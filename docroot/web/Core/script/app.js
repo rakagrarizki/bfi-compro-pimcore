@@ -5194,3 +5194,8 @@ input.addEventListener('keydown', function(e) {
         return false;
     };
 });
+
+function isNumberKey(evt){
+    var charCode = (evt.which) ? evt.which : evt.keyCode
+    return ((evt.ctrlKey && evt.which === 65) || (evt.ctrlKey && evt.which === 67) || (evt.ctrlKey && evt.which === 86) || (charCode < 65 || charCode > 90) );
+}
