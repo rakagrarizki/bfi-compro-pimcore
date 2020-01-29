@@ -13,7 +13,13 @@ $this->headMeta('BFI - ' . $data->getYear());
 
 
 ?>
-
+<div class="container btn-back">
+    <div class="row">
+        <div class="col-md-6 col-sm-6 left-side-top">
+            <a href="javascript:history.back()" class="text-btn"><?= $this->t("back-button"); ?></a>
+        </div>
+    </div>
+</div>
 <div class="container main-card">
     <div class="page-title"><?= $this->t("award-title");?></div>
     <div class="page-sub-title"><?= $data->getYear();?></div>
@@ -41,7 +47,7 @@ $next = $data->getYear() + 1;
 ?>
 
 <div class="container">
-    <div class="page-title">Penghargaan Lainnya</div>
+    <div class="page-title"><?= $this->t("other-awards");?>></div>
 </div>
 
 <div class="container">

@@ -86,6 +86,7 @@
     <?php endif ?>
     <div id="site-container">
         <?php $this->slots()->output('_content'); ?>
+        <a class="backtoTop" href="#"><i class="icon-back-to-top"></i></a>
     </div>
     <!-- CONTAINER -->
     <!-- FOOTER -->
