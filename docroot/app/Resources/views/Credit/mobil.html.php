@@ -524,7 +524,7 @@ $this->extend('layout-credit.html.php');
                                         </div>
                                         <div class="biaya-agunan">
                                             <div class="form-group">
-                                                <input type="checkbox" id="agreement1" class="agreement">
+                                                <input type="checkbox" id="agreement1" class="agreement" checked>
                                                 <label for="agreement1" class="label-agreement"><?= $this->translate('term-condition')?></label>
                                                 <div class="error-wrap"></div>
                                             </div>
@@ -592,7 +592,7 @@ $this->extend('layout-credit.html.php');
                                     </div>
                                     <div class="button-area text-center backtohome">
                                         <button class="cta cta-primary cta-big cta-see buttonnext backtohome" id="button7"
-                                                type="button" onclick="return checkStatusPengajuan()"><?= $this->translate('backtohome')?></button>
+                                                type="button" onclick="return checkStatus()"><?= $this->translate('backtohome')?></button>
                                     </div>
                                 </div>
 

@@ -343,7 +343,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                     </div>
                     <div class="biaya-agunan">
                         <div class="form-group">
-                            <input type="checkbox" id="agreement1" name="agreement1" class="agreement formRequired">
+                            <input type="checkbox" id="agreement1" name="agreement1" class="agreement formRequired" checked>
                             <label for="agreement1" class="label-agreement"><?= $this->translate('term-condition') ?></label>
                             <div class="error-wrap"></div>
                         </div>
