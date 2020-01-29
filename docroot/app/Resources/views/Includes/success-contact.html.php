@@ -11,6 +11,11 @@
 
 <?php
 $this->headScript()->offsetSetFile(100, '/static/js/Includes/contact-us.js');
+$site = $this->document->getProperty("site");
+$link = "";
+if ($site == "corporate") {
+    $link = "corporate";
+}
 ?>
 
 <div class="container">
@@ -52,9 +57,9 @@ $this->headScript()->offsetSetFile(100, '/static/js/Includes/contact-us.js');
         </div>
         <div class="row">
             <div class="button-area text-center btn-beranda">
-                <a href="<?php echo "/" . $this->getLocale() . '/corporate'; ?>" class="cta cta-primary cta-big">
+                <a href="<?php echo "/" . $this->getLocale() . '/' . $link; ?>" class="cta cta-primary cta-big">
                     <i class="icon-home"></i>
-                    <span>Kembali Ke Beranda</span></a>
+                    <span><?= $this->translate('backtohome') ?></span></a>
             </div>
         </div>
     </div>

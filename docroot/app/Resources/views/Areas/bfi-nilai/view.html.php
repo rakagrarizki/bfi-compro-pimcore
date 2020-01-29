@@ -3,7 +3,7 @@
     <?php while ($this->block("block")->loop()) { ?>
     <div class="content-wrapper">
         <div class="content-inner">
-            <div class="primary-letter" style="color: #73BC85"><?= $this->input("word"); ?></div>
+            <div class="primary-letter" ><?= $this->input("word"); ?></div>
             <div class="content-title"><?= $this->input("title"); ?></div>
             <div class="content-description"><?= $this->input("description"); ?></div>
         </div>
