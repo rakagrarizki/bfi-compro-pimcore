@@ -4,20 +4,7 @@ $(document).ready(function(){
 
     contractStatusList(lang, token);
     dataCustomer(token);
-
-    window.onload = function(){
-        if(this.localStorage.token == null){
-            window.location="/"+lang+"/login"
-        }else{
-            $('.link-log').find('.login').hide();
-            $('.link-about-top').hide();
-            $('.link-log').find('.user').removeClass('hide');
-            
-            var full_name = document.cookie.replace(/(?:(?:^|.*;\s*)customer\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-            $('.link-log').find('.full_name').text(full_name);
-
-        }
-    }
+    
 });
 
 function contractStatusList(lang, token) {

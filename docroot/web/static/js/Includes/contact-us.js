@@ -67,6 +67,7 @@ $(document).ready(function(){
             } else {
                 $(preview).hide();
             } 
+            parent.find('b').show();
             parent.find(".error-wrap").hide();
         } else {
             var errorMsg = '';
@@ -87,6 +88,8 @@ $(document).ready(function(){
                     }
                     break;
             }
+            $(preview).hide();
+            parent.find('b').hide();
             parent.find(".error-wrap").show();
             parent.find(".error-wrap").html('<label id="img-error" class="error" for="img" style="display: inline-block;">' + errorMsg + '</label>');
         } 
@@ -151,8 +154,8 @@ $(document).ready(function(){
     function validateFormRequired(elementParam) {
     $(elementParam).validate({
         errorPlacement: function (error, element) {
-        console.log(element)
-        element.closest('.form-group').find('.error-wrap').html(error);
+            console.log(element)
+            element.closest('.form-group').find('.error-wrap').html(error);
         }
     });
     }
