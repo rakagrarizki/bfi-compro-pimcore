@@ -14,15 +14,15 @@ $this->extend('layout.html.php');
         <div class="container">
             <button onclick="window.history.back();">
                 <i class="fa fa-angle-left"></i>
-                <span>Kembali ke Halaman Sebelumnya</span>
+                <span><?= $this->translate('back') ?></span>
             </button>
         </div>
     </div>
 
     <div class="container">
         <div class="title-wrapper">
-            <h1>Detail Transaksi</h1>
-            <p>Berikut ini detail transaksi Anda</p>
+            <h1><?= $this->translate('detail-transaksi') ?></h1>
+            <p><?= $this->translate('detail-transaksi-sub') ?></p>
         </div>
     </div>
 
@@ -31,12 +31,12 @@ $this->extend('layout.html.php');
             <thead>
                 <tr>
                     <th scope="col">No.</th>
-                    <th scope="col">Tanggal Jatuh Tempo</th>
-                    <th scope="col">Angsuran per Bulan</th>
-                    <th scope="col">Angsuran yang telah Dibayar</th>
-                    <th scope="col">Tanggal Pembayaran</th>
-                    <th scope="col">Denda Keterlambatan</th>
-                    <th scope="col">Sisa Hutang</th>
+                    <th scope="col"><?= $this->translate('label-jatuh-tempo') ?></th>
+                    <th scope="col"><?= $this->translate('installment') ?></th>
+                    <th scope="col"><?= $this->translate('angsuran-dibayar') ?></th>
+                    <th scope="col"><?= $this->translate('tgl-bayar') ?></th>
+                    <th scope="col"><?= $this->translate('denda-terlambat') ?></th>
+                    <th scope="col"><?= $this->translate('sisa-hutang') ?></th>
                 </tr>
             </thead>
             <tbody>
@@ -51,7 +51,7 @@ $this->extend('layout.html.php');
                 </tr>
                 <tr class="total">
                     <td></td>
-                    <td>Total</td>
+                    <td><?= $this->translate('total-installment') ?></td>
                     <td class="total_installment"></td>
                     <td></td>
                     <td></td>
@@ -64,8 +64,8 @@ $this->extend('layout.html.php');
 
     <div class="container">
         <ul class="notes">
-            <li>* Berikut denda dan biaya lainnya</li>
-            <li>Silahkan hubungi cabang pencairan untuk pelunasan</li>
+            <li>* <?= $this->translate('denda-lainya') ?></li>
+            <li><?= $this->translate('keterangan-cabang-pencairan') ?></li>
         </ul>
     </div>
 </section>

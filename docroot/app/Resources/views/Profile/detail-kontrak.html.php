@@ -13,8 +13,8 @@ $this->extend('layout.html.php');
 <div class="container detail-contract">
     <div class="row">
         <article class="title text-center">
-            <h3 class="margin-top-10">Pembiayaan Agunan BPKB Mobil</h3>
-            <p>Berikut ini detail kontrak Anda</p>
+            <h3 class="margin-top-10"><?= $this->translate('detail-contract-head'); ?></h3>
+            <p><?= $this->translate('detail-contract-sub'); ?></p>
         </article>
     </div>
     <div class="row">
@@ -22,46 +22,45 @@ $this->extend('layout.html.php');
             <div class="table-content">
                 <div class="content-wrapper">
                     <div class="detail-wrapper">
-                        <span class="label">Jumlah Pembiayaan</span>
+                        <span class="label"><?= $this->translate('label-data-funding'); ?></span>
                         <span class="value-data total-installment">
                             <!-- here position list from API --></span>
                     </div>
                     <div class="detail-wrapper">
-                        <span class="label">Jumlah Sisa Angsuran</span>
+                        <span class="label"><?= $this->translate('label-sisa-angsuran'); ?></span>
                         <span class="value-data remaining-installment">
                             <!-- here position list from API --></span>
                     </div>
                     <div class="detail-wrapper">
-                        <span class="label">Tagihan Anda Bulan Ini*</span>
+                        <span class="label"><?= $this->translate('label-tagihan-bulan-ini'); ?></span>
                         <span class="value-data this-month-bill">
                             <!-- here position list from API --></span>
                     </div>
                 </div>
                 <div class="keterangan">
-                    <span>*Jumlah Tagihan = Jumlah pembiayaan per bulan + denda</span>
+                    <span><?= $this->translate('label-jumlah-tagihan'); ?></span>
                 </div>
             </div>
             <div class="table-content">
                 <div class="content-wrapper">
                     <div class="detail-wrapper">
-                        <span class="label">Tanggal Jatuh Tempo</span>
+                        <span class="label"><?= $this->translate('label-jatuh-tempo'); ?></span>
                         <span class="value-data due-date">
                             <!-- here position list from API --></span>
                     </div>
                     <div class="detail-wrapper">
-                        <span class="label">Angsuran per Bulan</span>
+                        <span class="label"><?= $this->translate('installment'); ?></span>
                         <span class="value-data installment-per-month">
                             <!-- here position list from API --></span>
                     </div>
                     <div class="detail-wrapper">
-                        <span class="label">Denda Keterlambatan*</span>
+                        <span class="label"><?= $this->translate('label-denda-terlambat'); ?></span>
                         <span class="value-data late-charge">
                             <!-- here position list from API --></span>
                     </div>
                 </div>
                 <div class="keterangan">
-                    <span>*Denda keterlambatan per hari ini.</span>
-                    <span>Untuk keterangan lebih lanjut silahkan hubungi <strong>Customer Care 1500018</strong></span>
+                    <span><?= $this->translate('keterangan-denda'); ?></span> <strong><?= $this->translate('customer-care'); ?></strong>
                 </div>
             </div>
         </div>
@@ -69,28 +68,28 @@ $this->extend('layout.html.php');
     <div class="row">
         <div class="sect-list">
             <div class="heading">
-                <h3>Cara Pembayaran Angsuran</h3>
-                <a href="<?= "/" . $lang . "/user/layanan"; ?>" class="cta cta-primary cta-big cta-see full" type="button">Selengkapnya</a>
-                <button class="cta cta-primary cta-big cta-see short" type="button">Lihat</button>
+                <h3><?= $this->translate('cara-bayar'); ?></h3>
+                <a href="<?= "/" . $lang . "/user/layanan"; ?>" class="cta cta-primary cta-big cta-see full" type="button"><?= $this->translate('more'); ?></a>
+                <button class="cta cta-primary cta-big cta-see short" type="button"><?= $this->translate('more'); ?></button>
             </div>
             <div class="list">
                 <div class="list-wrapper">
                     <div class="detail-wrapper">
-                        <span class="label">Nomor Virtual Account*</span>
-                        <span class="value-data">112233445566778899 a/n BFI Finance</span>
+                        <span class="label"><?= $this->translate('virtual-account'); ?></span>
+                        <span class="value-data"><?= $this->translate('value-virtual-account'); ?></span>
                     </div>
                     <div class="detail-wrapper">
-                        <span class="label">Nomor Kontrak**</span>
+                        <span class="label"><?= $this->translate('Nomor Kontrak'); ?>**</span>
                         <span class="value-data contract-number">
                             <!-- here position list from API --></span>
                     </div>
                 </div>
                 <div class="keterangan">
                     <div>
-                        <span>*Nomor Virtual Account digunakan untuk pembayaran angsuran BFI Finance melalui Bank Permata dan Bank yang tergabung dalam ATM Bersama</span>
+                        <span>*<?= $this->translate('keterangan-virtual-account'); ?></span>
                     </div>
                     <div>
-                        <span>**Nomor Kontrak digunakan untuk pembayaran angsuran BFI Finance melalui Kantor Pos, Alfa Group, Indomaret, Bank Mandiri dan BCA</span>
+                        <span>**<?= $this->translate('keterangan-nomor-kontrak'); ?></span>
                     </div>
                 </div>
             </div>
@@ -99,54 +98,54 @@ $this->extend('layout.html.php');
     <div class="row">
         <div class="card">
             <div>
-                <span>Lihat detail pembayaran angsuran Anda</span>
+                <span><?= $this->translate('detail-angsuran'); ?></span>
             </div>
             <div class="btn-container">
-                <a class="button-detail full" href="">Detail Transaksi<i class="fa fa-angle-right"></i></a>
-                <a class="button-detail short" href="">Lihat Detail<i class="fa fa-angle-right"></i></a>
+                <a class="button-detail full" href=""><?= $this->translate('detail-transaksi'); ?><i class="fa fa-angle-right"></i></a>
+                <a class="button-detail short" href=""><?= $this->translate('detail-transaksi'); ?><i class="fa fa-angle-right"></i></a>
             </div>
         </div>
         <hr>
         <div class="sect-list">
-            <h3>Detail Kontrak</h3>
+            <h3><?= $this->translate('detail-kontrak'); ?></h3>
             <div class="list contract-detail">
                 <div class="detail-wrapper">
-                    <span class="label">Jenis Jaminan</span>
+                    <span class="label"><?= $this->translate('label-jenis'); ?></span>
                     <span class="value-data product">
                         <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
-                    <span class="label">Nomor Kontrak</span>
+                    <span class="label"><?= $this->translate('Nomor Kontrak'); ?></span>
                     <span class="value-data contract-number">
                         <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
-                    <span class="label">Nama Pemohon</span>
+                    <span class="label"><?= $this->translate('nama-pemohon'); ?></span>
                     <span class="value-data name">
                         <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
-                    <span class="label">Tanggal Jatuh Tempo</span>
+                    <span class="label"><?= $this->translate('label-jatuh-tempo'); ?></span>
                     <span class="value-data due-date-contract">
                         <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
-                    <span class="label">Jumlah Pembayaran</span>
+                    <span class="label"><?= $this->translate('label-pembayaran'); ?></span>
                     <span class="value-data total-installment-contract">
                         <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
-                    <span class="label">Angsuran per Bulan</span>
+                    <span class="label"><?= $this->translate('installment'); ?></span>
                     <span class="value-data installment-per-month-contract">
                         <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
-                    <span class="label">Jangka Waktu</span>
+                    <span class="label"><?= $this->translate('periode'); ?></span>
                     <span class="value-data jangka-on-month">
                         <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
-                    <span class="label">Cabang Pencairan</span>
+                    <span class="label"><?= $this->translate('cabang-pencairan'); ?></span>
                     <span class="value-data cabang-pencairan">
                         <!-- here position list from API --></span>
                 </div>
@@ -156,95 +155,95 @@ $this->extend('layout.html.php');
     <hr>
     <div class="row detail-jaminan">
         <div class="sect-list vehicle hide">
-            <h3>Detail Jaminan</h3>
+            <h3><?= $this->translate('detail-jaminan'); ?></h3>
             <div class="list">
                 <div class="detail-wrapper">
-                    <span class="label">Merk Kendaraan</span>
+                    <span class="label"><?= $this->translate('merk-kendaraan'); ?></span>
                     <span class="value-data brand">
                         <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
-                    <span class="label">Tipe Kendaraan</span>
+                    <span class="label"><?= $this->translate('tipe-kendaraan'); ?></span>
                     <span class="value-data type">
                         <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
-                    <span class="label">Model Kendaraan</span>
+                    <span class="label"><?= $this->translate('model-kendaraan'); ?></span>
                     <span class="value-data model">
                         <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
-                    <span class="label">Tahun Kendaraan</span>
+                    <span class="label"><?= $this->translate('year-kendaraan'); ?></span>
                     <span class="value-data year">
                         <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
-                    <span class="label">Warna</span>
+                    <span class="label"><?= $this->translate('warna'); ?></span>
                     <span class="value-data color">
                         <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
-                    <span class="label">No. Polisi</span>
+                    <span class="label"><?= $this->translate('nomor-polisi'); ?></span>
                     <span class="value-data vehicle-number">
                         <!-- here position list from API --></span>
                 </div>
             </div>
         </div>
         <div class="sect-list land-certificate hide">
-            <h3>Detail Jaminan</h3>
+            <h3><?= $this->translate('detail-jaminan'); ?></h3>
             <div class="list">
                 <div class="detail-wrapper">
-                    <span class="label">Alamat</span>
+                    <span class="label"><?= $this->translate('address'); ?></span>
                     <span class="value-data address">
                         <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
-                    <span class="label">Luas Bangunan</span>
+                    <span class="label"><?= $this->translate('luas-bangunan'); ?></span>
                     <span class="value-data building-area">
                         <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
-                    <span class="label">Luas Tanah</span>
+                    <span class="label"><?= $this->translate('luas-tanah'); ?></span>
                     <span class="value-data surface-area">
                         <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
-                    <span class="label">Harga Pasar Saat Pengajuan</span>
+                    <span class="label"><?= $this->translate('harga-pasar-pengajuan'); ?></span>
                     <span class="value-data price">
                         <!-- here position list from API --></span>
                 </div>
             </div>
         </div>
         <div class="sect-list asset hide">
-            <h3>Detail Jaminan</h3>
+            <h3><?= $this->translate('detail-jaminan'); ?></h3>
             <div class="list">
                 <div class="detail-wrapper">
-                    <span class="label">Merk Aset</span>
+                    <span class="label"><?= $this->translate('merk-aset'); ?></span>
                     <span class="value-data asset-brand">
                         <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
-                    <span class="label">Tipe Aset</span>
+                    <span class="label"><?= $this->translate('tipe-aset'); ?></span>
                     <span class="value-data asset-type">
                         <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
-                    <span class="label">Model Aset</span>
+                    <span class="label"><?= $this->translate('model-aset'); ?></span>
                     <span class="value-data asset-model">
                         <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
-                    <span class="label">Tahun Aset</span>
+                    <span class="label"><?= $this->translate('year-aset'); ?></span>
                     <span class="value-data asset-year">
                         <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
-                    <span class="label">Warna</span>
+                    <span class="label"><?= $this->translate('warna-aset'); ?></span>
                     <span class="value-data asset-color">
                         <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
-                    <span class="label">Buatan</span>
+                    <span class="label"><?= $this->translate('label-buatan'); ?></span>
                     <span class="value-data made-in">
                         <!-- here position list from API --></span>
                 </div>
@@ -255,8 +254,8 @@ $this->extend('layout.html.php');
 <section id="check-contract">
     <div class="container">
         <div class="title">
-            <h3 class="margin-top-10">Cek Kontrak Lainnya</h3>
-            <p>Berikut ini adalah informasi kontrak anda</p>
+            <h3 class="margin-top-10"><?= $this->translate('cek-kontrak-lain'); ?></h3>
+            <p><?= $this->translate('informasi-kontrak'); ?></p>
         </div>
         <ul class="contract-wrapper">
             <a class="contract-box hide" id="contract" href="#">
@@ -267,7 +266,7 @@ $this->extend('layout.html.php');
                             <img src="/_default_upload_bucket/form_credit/Rumah.png" alt="">
                         </div>
                         <div class="status">
-                            <span>Telat Bayar</span>
+                            <span><?= $this->translate('telat-bayar'); ?></span>
                         </div>
                     </div>
                     <div class="contract-type">
@@ -276,15 +275,15 @@ $this->extend('layout.html.php');
                     </div>
                     <div class="details">
                         <div>
-                            <h6>No. Kontrak</h6>
+                            <h6><?= $this->translate('Nomor Kontrak'); ?></h6>
                             <p class="contract_number"></p>
                         </div>
                         <div>
-                            <h6>Angsuran per Bulan</h6>
+                            <h6><?= $this->translate('installment'); ?></h6>
                             <p class="angsuran_perbulan"></p>
                         </div>
                         <div>
-                            <h6>Tanggal Jatuh Tempo</h6>
+                            <h6><?= $this->translate('label-jatuh-tempo'); ?></h6>
                             <p class="tanggal_jatuh_tempo"></p>
                         </div>
                     </div>
@@ -295,7 +294,7 @@ $this->extend('layout.html.php');
                         <span>
                             <!-- here position list from API --></span>
                     </div>
-                    <h5 class="more">LIHAT DETAIL &#62;</h5>
+                    <h5 class="more"><?= $this->translate('more'); ?> &#62;</h5>
                 </li>
             </a>
             <a href="/<?= $lang; ?>/credit" class="contract-box add-contract">
@@ -304,7 +303,7 @@ $this->extend('layout.html.php');
                         <div class="plus">
                             <h1>&#43;</h1>
                         </div>
-                        <h3>AJUKAN KREDIT</h3>
+                        <h3><?= $this->translate('ajukan-kredit'); ?></h3>
                     </div>
                 </li>
             </a>
