@@ -272,7 +272,6 @@
             right:auto;
         }
     }
-
 }
 
 .horizontal-scroll{
@@ -649,4 +648,85 @@
 .profesi-box{
     margin-bottom: 40px;
     padding: 0 20px 0 20px;
+}
+
+.form-body--credit-simulasi{
+    .cta-primary{
+        height: 50px;
+        width: 185px;
+        padding: 13px 0px;
+        background-color:#F8991D;
+        border:1px solid #F8991D;
+        font-weight:bold;
+        font-size:16px;
+        text-transform: uppercase;
+
+        &.backtohome{
+            width:auto;
+            height:auto;
+            padding:13px 10px 13px 50px;
+        }
+
+        &.deactive{
+            display:none;
+        }
+
+        &.absolutebutcalc{
+            display:inline-block;
+            width: 100%;
+
+            &.active{
+                display:inline-block;
+            }
+        }
+
+        &.hidesavebutton{
+            display:none;
+
+            &.active{
+                display:inline-block;
+                text-transform: uppercase;
+                &::before{
+                    content: none;
+                }
+            }
+        }
+
+        &.hidesavebuttonhome{
+            display:none;
+
+             &.active{
+                display:inline-block;
+            }
+        }
+
+        &.btn-verifikasi{
+            font-size: 12px;
+            height: unset;
+            width: auto;
+            padding: 15px 30px;
+            text-transform: uppercase;
+            
+            &.cta-see:before{
+                // top:15px;
+                content: none;
+            }
+        }
+
+        @include breakpoint(mobile){
+            margin-bottom:25px;
+            font-size: 13px;
+            height: 45px;
+            width: auto;
+            padding: 13px 28px 13px 28px;
+        }
+
+        @include breakpoint(small-mobile){
+            font-size: 11px;
+            height: 50px;
+            width: 135px;
+            padding: 0;
+            // padding: 13px 25px 13px 25px;
+        }
+    }
 }
