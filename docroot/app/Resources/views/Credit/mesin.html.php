@@ -140,9 +140,9 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
               <div class="error-wrap"></div>
           </div>
           <div class="form-group">
-              <label for="alamat_lengkap"><?= $this->translate('label-place')?></label>
+              <label id="label_alamat" for="alamat_lengkap"><?= $this->translate('label-place')?></label>
               <textarea class="form-control formRequired formAddress" name="alamat_lengkap" id="alamat_lengkap"
-                        placeholder="<?= $this->translate('placeholder-place')?> Contoh: Jalan Rajawali 1 Blok A no.11 RT 01 RW 02"></textarea>
+                        placeholder="<?= $this->translate('placeholder-place')?> Contoh: Jalan Rajawali 1 Blok A no.11 RT 01 RW 02" onfocus="alamatFocus()"></textarea>
               <div class="error-wrap"></div>
           </div>
         </fieldset>
@@ -434,7 +434,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
               </div>
               <div class="biaya-agunan-mesin">
                   <div class="form-group">
-                      <input type="checkbox" id="agreement1" name="agreement1" class="agreement formRequired">
+                      <input type="checkbox" id="agreement1" name="agreement1" class="agreement formRequired" checked>
                       <label for="agreement1" class="label-agreement"><?= $this->translate('term-condition')?></label>
                       <div class="error-wrap"></div>
                   </div>
@@ -481,7 +481,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
               </div>
               <div class="button-area text-center backtohome">
                     <button class="cta cta-primary cta-big cta-see buttonnext backtohome" id="button7"
-                            type="button" onclick="return checkStatus()"><?= $this->translate('backtohome')?></button>
+                            type="button" onclick="return checkStatus()"><?= $this->translate('cek-status-aplikasi')?></button>
               </div>
           </div>
         </fieldset>
@@ -520,7 +520,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content branch">
       <div class="modal-body">
-        <h4>Branch not available</h4>
+        <h4><?= $this->translate('Branch not available')?></h4>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>

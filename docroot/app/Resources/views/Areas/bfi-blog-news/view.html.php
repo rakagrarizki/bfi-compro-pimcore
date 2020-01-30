@@ -45,7 +45,7 @@
                             </div>
                             <div class="row">
                                 <div class="button-area text-center no-padding">
-                                    <a href="<?= $this->link('url')->getHref(); ?>" class="cta cta-orange cta-see cta-big">SELENGKAPNYA</a>
+                                    <a href="<?= $this->link('url')->getHref(); ?>" class="cta cta-orange cta-see cta-big"><?= $this->translate('more'); ?></a>
                                 </div>
                             </div>
                         </div>

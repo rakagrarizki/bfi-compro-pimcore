@@ -101,7 +101,7 @@ $this->extend('layout-credit.html.php');
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group upload-image">
-                                            <label><?= $this->translate('label-noktp') ?></label>
+                                            <label><?= $this->translate('labelNoktp') ?></label>
                                             <div class="upload-file">
                                                 <img src="" />
                                                 <div class="upload-btn">
@@ -112,7 +112,7 @@ $this->extend('layout-credit.html.php');
                                             </div>
                                             <input type="hidden" class="form-control formRequired" name="ktp" id="ktp">
                                             <div class="error-wrap"></div>
-                                            <span><?= $this->translate('placeholder-noktp') ?></span>
+                                            <span><?= $this->translate('placeholderNoktp') ?></span>
                                             <!-- <span>Pastikan foto KTP terlihat jelas (max. ukuran file adalah 1MB)</span> -->
                                         </div>
                                         <!-- <div class="form-group">
@@ -588,7 +588,7 @@ $this->extend('layout-credit.html.php');
                                                 <div class="error-wrap"></div>
                                             </div>
                                             <div class="form-group">
-                                                <input type="checkbox" id="agreement2" class="agreement">
+                                                <input type="checkbox" id="agreement2" class="agreement" checked>
                                                 <label for="agreement2" class="label-agreement agreement2"><?= $this->translate('term-condition-2') ?></label>
                                                 <div class="error-wrap"></div>
                                             </div>
@@ -611,9 +611,9 @@ $this->extend('layout-credit.html.php');
                                         <p class="text-center"><?= $this->translate('text-confirmation-otp') ?></p>
 
                                         <div class="otp-number form-group">
-                                            <div class="otp-number__phone disabled">
+                                            <!-- <div class="otp-number__phone disabled">
                                                 <p id="showPhone"> <input type="tel" pattern="\d*" id="otpPhone" disabled /> <img id="otpEditPhone" src="/static/images/icon/pencils.png" alt=""></p>
-                                            </div>
+                                            </div> -->
                                             <div class="otp-number__verify">
                                                 <input type="tel" pattern="\d*" class="input-number formRequired" maxlength="1" name="otp1">
                                                 <input type="tel" pattern="\d*" class="input-number formRequired" maxlength="1" name="otp2">
@@ -645,7 +645,7 @@ $this->extend('layout-credit.html.php');
                                     </div>
                                     <div class="button-area text-center backtohome">
                                         <button class="cta cta-primary cta-big cta-see buttonnext backtohome" id="button7" 
-                                            type="button" onclick="return checkStatusPengajuan()"><?= $this->translate('backtohome') ?></button>
+                                            type="button" onclick="return checkStatusPengajuan()"><?= $this->translate('cek-status-aplikasi') ?></button>
                                     </div>
                                 </div>
 

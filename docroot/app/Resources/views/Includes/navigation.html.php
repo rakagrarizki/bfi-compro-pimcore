@@ -38,10 +38,11 @@ $name = $_COOKIE["customer"];
                         <div class="link-log">
                             <?php if (!isset($name) || $name == "") { ?>
                                 <a href="<?= "/" . $lang . "/login"; ?>" class="login"><?= $this->translate("login") ?></a>
-                            <?php } ?>
-                            <div class="user hide">
-                                <a href="/<?= $this->getLocale() ?>/user/dashboard" class="full_name">Deborah Morris</a> | <a href="#" class="logout" onclick="return logout('<?= $this->getLocale() ?>');"><?= $this->translate("logout") ?></a>
+                            <?php } else { ?>
+                            <div class="user">
+                                <a href="/<?= $this->getLocale() ?>/user/dashboard" class="full_name"><?= $name?>></a> | <a href="#" class="logout" onclick="return logout('<?= $this->getLocale() ?>');"><?= $this->translate("logout") ?></a>
                             </div>
+                            <?php }?>
                             <!-- <a href="#" class="register"><?/*= $this->translate("register") */ ?></a> -->
                             <?php echo $this->template("Includes/language.html.php") ?>
                         </div>

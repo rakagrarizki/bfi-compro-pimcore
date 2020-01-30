@@ -1576,7 +1576,7 @@
     disableButton("#button3rumah");
     disableButton("#button4");
     disableButton("#button4rumah");
-    disableButton("#button5");
+    enableButton("#button5");
     $("#kode_pos").css("background-color", "#F4F4F4");
     $("#kode_pos_sertificate").css("background-color", "#F4F4F4");
 
@@ -4783,6 +4783,19 @@
     }
   });
 
+  $("textarea.form-control").on('focus', function () {
+    if ($(this).attr("id") == "alamat_lengkap") {
+      $(this).prev().css({
+        'display': 'block',
+        'padding': '15px 15px 5px'
+      });
+      $(this).css({
+        'padding-top': '35px',
+        'padding-bottom': '15px'
+      });
+    }
+  });  
+
   $("input.form-control").on('focusout', function () {
     if ($(this).val() == "") {
       $(this).prev().css("display", "none");
@@ -5231,6 +5244,23 @@ $(document).ready(function() {
   // }
 });
 
+/*Scroll to top when arrow up clicked BEGIN*/
+$(window).scroll(function() {
+  var height = $(window).scrollTop();
+  if (height > 100) {
+      $('.backtoTop').fadeIn(200);
+  } else {
+      $('.backtoTop').fadeOut(200);
+  }
+});
+  $(".backtoTop").click(function(event) {
+      event.preventDefault();
+      $("html, body").animate({
+          scrollTop: 0
+      }, 800);
+      return false;
+  });
+
 $(function () { 
   $('#btn-burger').on('click', function (e) {
       var menuItem = $( e.currentTarget );
@@ -5258,3 +5288,19 @@ input.addEventListener('keydown', function(e) {
         return false;
     };
 });
+
+function isNumberKey(evt){
+    var charCode = (evt.which) ? evt.which : evt.keyCode
+    return ((evt.ctrlKey && evt.which === 65) || (evt.ctrlKey && evt.which === 67) || (evt.ctrlKey && evt.which === 86) || (charCode < 65 || charCode > 90) );
+}
+
+function alamatFocus(){
+    $("#label_alamat").css({
+      'display': 'block',
+      'padding': '15px 15px 5px'
+    });
+    $("#alamat_lengkap").css({
+      'padding-top': '35px',
+      'padding-bottom': '15px'
+    });
+}
