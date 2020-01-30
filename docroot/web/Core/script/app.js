@@ -4783,6 +4783,20 @@
     }
   });
 
+  $("textarea.form-control").on('focus', function () {
+    if ($(this).attr("id") == "alamat_lengkap") {
+      console.log("ada");
+      $(this).prev().css({
+        'display': 'block',
+        'padding': '15px 15px 5px'
+      });
+      $(this).css({
+        'padding-top': '35px',
+        'padding-bottom': '15px'
+      });
+    }
+  });  
+
   $("input.form-control").on('focusout', function () {
     if ($(this).val() == "") {
       $(this).prev().css("display", "none");
@@ -5285,4 +5299,16 @@ input.addEventListener('keydown', function(e) {
 function isNumberKey(evt){
     var charCode = (evt.which) ? evt.which : evt.keyCode
     return ((evt.ctrlKey && evt.which === 65) || (evt.ctrlKey && evt.which === 67) || (evt.ctrlKey && evt.which === 86) || (charCode < 65 || charCode > 90) );
+}
+
+function alamatFocus(){
+  // console.log("ada");
+    $("#label_alamat").css({
+      'display': 'block',
+      'padding': '15px 15px 5px'
+    });
+    $("#alamat_lengkap").css({
+      'padding-top': '35px',
+      'padding-bottom': '15px'
+    });
 }
