@@ -481,7 +481,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
               </div>
               <div class="button-area text-center backtohome">
                     <button class="cta cta-primary cta-big cta-see buttonnext backtohome" id="button7"
-                            type="button" onclick="return checkStatus()"><?= $this->translate('backtohome')?></button>
+                            type="button" onclick="return checkStatus()"><?= $this->translate('cek-status-aplikasi')?></button>
               </div>
           </div>
         </fieldset>
@@ -520,7 +520,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content branch">
       <div class="modal-body">
-        <h4>Branch not available</h4>
+        <h4><?= $this->translate('Branch not available')?></h4>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
