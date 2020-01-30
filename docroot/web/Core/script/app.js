@@ -4971,6 +4971,7 @@
       } else {
         $(preview).hide();
       }
+      parent.find(".error-wrap").hide();
     } else {
       var errorMsg = '';
       switch (false) {
@@ -4990,6 +4991,7 @@
           }
           break;
       }
+      parent.find(".error-wrap").show();
       parent.find(".error-wrap").html('<label id="ktp-error" class="error" for="ktp" style="display: inline-block;">' + errorMsg + '</label>')
     }
   });
@@ -5223,14 +5225,6 @@ $(document).ready(function() {
   });
 
   window.onload = function(){
-    if(this.localStorage.token != null){
-      $('.link-log').find('.login').hide();
-      $('.link-about-top').hide();
-      $('.link-log').find('.user').removeClass('hide');
-
-      var full_name = document.cookie.replace(/(?:(?:^|.*;\s*)customer\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-      $('.link-log').find('.full_name').text(full_name);
-    }
 
     var lang = document.documentElement.lang
     var options = { year: 'numeric', month: 'long', day: 'numeric' };

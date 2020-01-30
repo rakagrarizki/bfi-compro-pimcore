@@ -41,24 +41,28 @@ $this->extend('layout-credit.html.php');
             <h3 id="step-title"><?= $this->translate('data-name') ?></h3>
             <p id="step-subtitle"><?= $this->translate('data-name-sub') ?></p>
 
-            <form method="POST" name="scholarship" enctype="multipart/form-data">
+            <form method="POST" id="scholarship" name="scholarship" enctype="multipart/form-data">
                 <div class="step-content" id="stepper-csr-1">
                     <div class="form-wrapper">
                         <div class="input-text-group">
-                            <input name="scholarship[name]" id="name-input" class="style-input" type="text" onfocus="changeLabel(this.id)" onfocusout="deleteLabel(this.id)" required>
+                            <input name="scholarship[name]" id="name-input" class="style-input formAlphabet formName formRequired" type="text" onfocus="changeLabel(this.id)" onfocusout="deleteLabel(this.id)" required>
                             <label id="name-label" class="input-label"><?= $this->translate('form-name') ?></label>
+                            <div class="error-wrap"></div>
                         </div>
                         <div class="input-text-group">
-                            <input name="scholarship[email]" id="email-input" class="style-input" type="email" onfocus="changeLabel(this.id)" onfocusout="deleteLabel(this.id)" required>
+                            <input name="scholarship[email]" id="email-input" class="style-input formEmail formRequired" type="email" onfocus="changeLabel(this.id)" onfocusout="deleteLabel(this.id)" required>
                             <label id="email-label" class="input-label"><?= $this->translate('email-input') ?></label>
+                            <div class="error-wrap"></div>
                         </div>
                         <div class="input-text-group">
-                            <input name="scholarship[phone]" id="phone-input" class="style-input formPhoneNumber" type="text" onfocus="changeLabel(this.id)" onfocusout="deleteLabel(this.id)" maxlength="13" required>
+                            <input name="scholarship[phone]" id="phone-input" class="style-input formRequired formPhoneNumber" type="text" onfocus="changeLabel(this.id)" onfocusout="deleteLabel(this.id)" maxlength="13" required>
                             <label id="phone-label" class="input-label"><?= $this->translate('input-phone') ?></label>
+                            <div class="error-wrap"></div>
                         </div>
                         <div class="input-text-group">
-                            <input name="scholarship[phone2]" id="alt-phone-input" class="style-input formPhoneNumber" type="text" onfocus="changeLabel(this.id)" onfocusout="deleteLabel(this.id)" maxlength="13">
+                            <input name="scholarship[phone2]" id="alt-phone-input" class="style-input formRequired formPhoneNumber" type="text" onfocus="changeLabel(this.id)" onfocusout="deleteLabel(this.id)" maxlength="13">
                             <label id="alt-phone-label" class="input-label"><?= $this->translate('input-phone-alternatif') ?></label>
+                            <div class="error-wrap"></div>
                         </div>
                         <div id="upload">
                             <h5 id="upload-text"><?= $this->translate('upload-photo-3x4') ?></h5>
@@ -68,16 +72,17 @@ $this->extend('layout-credit.html.php');
                                     <button id="upload-button" class="btn-upload">
                                         <?= $this->translate('choose-file') ?>
                                     </button>
-                                    <input id="file-upload" class="hide-input" type="file" name="photo">
+                                    <input id="file-upload" class="hide-input formRequired" accept="image/*" type="file" name="photo" id="photo">
                                 </div>
                                 <span id="file-upload-filename"></span>
                             </div>
+                            <div class="error-wrap"></div>
                             <!-- <p>Pastikan foto KTP terlihat jelas (max. ukuran file adalah 300kB)</p> -->
                             <p><?= $this->translate('upload-photo-max') ?></p>
                         </div>
                     </div>
                     <div id="step-1" class="next-prev-container">
-                        <a href="#stepper-csr-2" class="btn-next-prev" onclick="nextToStep2()">
+                        <a href="#stepper-csr-2" id="button1next" class="btn-next-prev" onclick="nextToStep2()">
                             <span><?= $this->translate('next') ?></span>
                             <i class="fa fa-chevron-right"></i>
                         </a>
@@ -87,23 +92,27 @@ $this->extend('layout-credit.html.php');
                 <div class="step-content hide" id="stepper-csr-2">
                     <div class="form-wrapper">
                         <div class="input-text-group">
-                            <input name="scholarship[university]" id="univ-input" class="style-input" type="text" onfocus="changeLabelAcademic(this.id)" onfocusout="deleteLabelAcademic(this.id)" required>
+                            <input name="scholarship[university]" id="univ-input" class="style-input formAlphabet formRequired" type="text" onfocus="changeLabelAcademic(this.id)" onfocusout="deleteLabelAcademic(this.id)" required>
                             <label id="univ-label" class="input-label"><?= $this->translate('univ-name') ?></label>
+                            <div class="error-wrap"></div>
                         </div>
                         <div class="input-text-group">
-                            <input name="scholarship[nim]" id="nim-input" class="style-input" type="text" onfocus="changeLabelAcademic(this.id)" onfocusout="deleteLabelAcademic(this.id)" required>
+                            <input name="scholarship[nim]" id="nim-input" class="style-input formNumber formRequired" type="text" onfocus="changeLabelAcademic(this.id)" onfocusout="deleteLabelAcademic(this.id)" required>
                             <label id="nim-label" class="input-label"><?= $this->translate('input-nim') ?></label>
+                            <div class="error-wrap"></div>
                         </div>
                         <div class="input-text-group">
-                            <input name="scholarship[faculty]" id="fak-input" class="style-input" type="text" onfocus="changeLabelAcademic(this.id)" onfocusout="deleteLabelAcademic(this.id)" required>
+                            <input name="scholarship[faculty]" id="fak-input" class="style-input formAlphabet formRequired" type="text" onfocus="changeLabelAcademic(this.id)" onfocusout="deleteLabelAcademic(this.id)" required>
                             <label id="fak-label" class="input-label"><?= $this->translate('input-fakultas') ?></label>
+                            <div class="error-wrap"></div>
                         </div>
                         <div class="input-text-group">
-                            <input name="scholarship[prodi]" id="prodi-input" class="style-input" type="text" onfocus="changeLabelAcademic(this.id)" onfocusout="deleteLabelAcademic(this.id)">
+                            <input name="scholarship[prodi]" id="prodi-input" class="style-input formAlphabet formRequired" type="text" onfocus="changeLabelAcademic(this.id)" onfocusout="deleteLabelAcademic(this.id)">
                             <label id="prodi-label" class="input-label"><?= $this->translate('input-prodi') ?></label>
+                            <div class="error-wrap"></div>
                         </div>
                         <div class="input-text-group">
-                            <select class="semester style-input" name="scholarship[semester]">
+                            <select class="semester style-input formRequired" name="scholarship[semester]" id="semester-input">
                                 <option></option>
                                 <option value="4"><?= $this->translate('label-semester') ?> 4</option>
                                 <option value="5"><?= $this->translate('label-semester') ?> 5</option>
@@ -112,14 +121,15 @@ $this->extend('layout-credit.html.php');
                                 <option value="8"><?= $this->translate('label-semester') ?> 8</option>
                             </select>
                             <label id="semester-label" class="input-label"><?= $this->translate('choose-semester') ?></label>
+                            <div class="error-wrap"></div>
                         </div>
                     </div>
                     <div id="step-2" class="next-prev-container">
-                        <a href="#stepper-csr-1" class="btn-next-prev" onclick="backToStep1()">
+                        <a href="#stepper-csr-1" id="button1prev" class="btn-next-prev" onclick="backToStep1()">
                             <i class="fa fa-chevron-left"></i>
                             <span><?= $this->translate('before') ?></span>
                         </a>
-                        <a href="#stepper-csr-3" class="btn-next-prev" onclick="nextToStep3()">
+                        <a href="#stepper-csr-3" id="button2next" class="btn-next-prev" onclick="nextToStep3()">
                             <span><?= $this->translate('next') ?></span>
                             <i class="fa fa-chevron-right"></i>
                         </a>
@@ -147,15 +157,16 @@ $this->extend('layout-credit.html.php');
                                     <input id="file-pdf-upload" class="hide-input" type="file" name="transcript">
                                 </div>
                             </div>
+                            <div class="error-wrap"></div>
                             <p><?= $this->translate('ket-file-pdf') ?></p>
                         </div>
                     </div>
                     <div id="step-3" class="next-prev-container">
-                        <a href="#stepper-csr-2" class="btn-next-prev" onclick="backToStep2()">
+                        <a href="#stepper-csr-2" id="button2prev" class="btn-next-prev" onclick="backToStep2()">
                             <i class="fa fa-chevron-left"></i>
                             <span><?= $this->translate('before') ?></span>
                         </a>
-                        <a href="#stepper-csr-4" class="btn-next-prev" onclick="nextToStep4()">
+                        <a href="#stepper-csr-4" id="button3next" class="btn-next-prev" onclick="nextToStep4()">
                             <span><?= $this->translate('next') ?></span>
                             <i class="fa fa-chevron-right"></i>
                         </a>
@@ -254,7 +265,7 @@ $this->extend('layout-credit.html.php');
                         </section>
                     </div>
                     <div id="step-3" class="next-prev-container">
-                        <a href="#stepper-csr-3" class="btn-next-prev" onclick="backToStep3()">
+                        <a href="#stepper-csr-3" id="button3prev" class="btn-next-prev" onclick="backToStep3()">
                             <i class="fa fa-chevron-left"></i>
                             <span><?= $this->translate('before') ?></span>
                         </a>
@@ -262,7 +273,7 @@ $this->extend('layout-credit.html.php');
                         <span>SELESAI</span>
                         <i class="fa fa-chevron-right"></i>
                     </a> -->
-                        <button class="btn-next-prev" type="submit">
+                        <button class="btn-next-prev" id="button4next" type="submit">
                             <span><?= $this->translate('selesai') ?></span>
                             <i class="fa fa-chevron-right"></i>
                         </button>
