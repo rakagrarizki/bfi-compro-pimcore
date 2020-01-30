@@ -16,13 +16,13 @@ $this->extend('layout.html.php');
 <div class="container profile">
     <div class="row">
         <article class="sect-title text-center">
-            <h2 class="margin-top-10">Profile Anda</h2>
-            <p>Berikut ini adalah profile Anda</p>
+            <h2 class="margin-top-10"><?= $this->translate('profil'); ?></h2>
+            <p><?= $this->translate('profil-sub'); ?></p>
         </article>
     </div>
     <div class="row">
         <div class="sect-list">
-            <h3>Daftar Kontrak</h3>
+            <h3><?= $this->translate('list-kontrak'); ?></h3>
             <div class="list contract">
                 <ol>
                     <!-- here position list from API -->
@@ -33,30 +33,30 @@ $this->extend('layout.html.php');
     <hr>
     <div class="row">
         <div class="sect-list">
-            <h3>Data Pemohon</h3>
+            <h3><?= $this->translate('data-name'); ?></h3>
             <div class="list profile">
                 <div class="detail-wrapper">
-                    <span class="label">Nama Lengkap</span>
+                    <span class="label"><?= $this->translate('form-name'); ?></span>
                     <span class="value-data name">
                         <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
-                    <span class="label">Email</span>
+                    <span class="label"><?= $this->translate('form-email'); ?></span>
                     <span class="value-data email">
                         <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
-                    <span class="label">Nomor Handphone</span>
+                    <span class="label"><?= $this->translate('form-hp'); ?></span>
                     <span class="value-data phone">
                         <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
-                    <span class="label">Nomor KTP</span>
+                    <span class="label"><?= $this->translate('label-ktp'); ?></span>
                     <span class="value-data identity-number">
                         <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
-                    <span class="label">Foto Ktp</span>
+                    <span class="label"><?= $this->translate('form-ktp'); ?></span>
                     <span class="value-data identity-img">
                         <!-- here position list from API --></span>
                 </div>
@@ -66,35 +66,35 @@ $this->extend('layout.html.php');
     <hr>
     <div class="row">
         <div class="sect-list">
-            <h3>Data Tempat Tinggal</h3>
+            <h3><?= $this->translate('data-place'); ?></h3>
             <div class="list profile-address">
                 <div class="detail-wrapper">
-                    <span class="label">Provinsi</span>
+                    <span class="label"><?= $this->translate('label-provinsi'); ?></span>
                     <span class="value-data province">
                         <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
-                    <span class="label">Kota</span>
+                    <span class="label"><?= $this->translate('label-kota'); ?></span>
                     <span class="value-data city">
                         <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
-                    <span class="label">Kecamatan</span>
+                    <span class="label"><?= $this->translate('label-kecamatan'); ?></span>
                     <span class="value-data district">
                         <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
-                    <span class="label">Kelurahan</span>
+                    <span class="label"><?= $this->translate('label-kelurahan'); ?></span>
                     <span class="value-data subdistrict">
                         <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
-                    <span class="label">Kode Pos</span>
+                    <span class="label"><?= $this->translate('postcode'); ?></span>
                     <span class="value-data zip-code">
                         <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
-                    <span class="label">Alamat</span>
+                    <span class="label"><?= $this->translate('label-place'); ?></span>
                     <span class="value-data address">
                         <!-- here position list from API --></span>
                 </div>
@@ -108,17 +108,16 @@ $this->extend('layout.html.php');
             </div>
             <div class="content-text">
                 <div class="title-update">
-                    <h3>Update Data Anda</h3>
+                    <h3><?= $this->translate('update-data'); ?></h3>
                 </div>
                 <div class="text">
                     <p><span>
-                            Jika ada perubahan data profil Anda,
-                            silahkan datang ke cabang BFI terdekat
+                            <?= $this->translate('petunjuk-update-data'); ?>
                         </span></p>
                 </div>
             </div>
             <div class="button-cabang">
-                <button class="cta cta-primary cta-big">Lihat Cabang</button>
+                <button class="cta cta-primary cta-big"><?= $this->translate('branch'); ?></button>
             </div>
         </div>
     </div>

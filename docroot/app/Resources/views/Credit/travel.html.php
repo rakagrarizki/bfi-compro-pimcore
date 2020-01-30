@@ -42,7 +42,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                     <div class="error-wrap"></div>
                 </div>
                 <div class="form-group upload-image">
-                    <label><?= $this->translate('label-noktp') ?></label>
+                    <label><?= $this->translate('labelNoktp') ?></label>
                     <div class="upload-file">
                         <img src="" />
                         <div class="upload-btn">
@@ -53,7 +53,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                     </div>
                     <input type="hidden" class="form-control formRequired" name="ktp" id="ktp">
                     <div class="error-wrap"></div>
-                    <span><?= $this->translate('placeholder-noktp') ?></span>
+                    <span><?= $this->translate('placeholderNoktp') ?></span>
                     <!-- <span>Pastikan foto KTP terlihat jelas (max. ukuran file adalah 1MB)</span> -->
                 </div>
 
@@ -390,7 +390,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                     </div>
                     <div class="button-area text-center backtohome">
                         <button class="cta cta-primary cta-big cta-see buttonnext backtohome" id="button7" 
-                            type="button" onclick="return checkStatus()"><?= $this->translate('backtohome') ?></button>
+                            type="button" onclick="return checkStatus()"><?= $this->translate('cek-status-aplikasi') ?></button>
                     </div>
                 </div>
             </fieldset>
