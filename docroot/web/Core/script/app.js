@@ -4785,7 +4785,6 @@
 
   $("textarea.form-control").on('focus', function () {
     if ($(this).attr("id") == "alamat_lengkap") {
-      console.log("ada");
       $(this).prev().css({
         'display': 'block',
         'padding': '15px 15px 5px'
@@ -5302,7 +5301,6 @@ function isNumberKey(evt){
 }
 
 function alamatFocus(){
-  // console.log("ada");
     $("#label_alamat").css({
       'display': 'block',
       'padding': '15px 15px 5px'
