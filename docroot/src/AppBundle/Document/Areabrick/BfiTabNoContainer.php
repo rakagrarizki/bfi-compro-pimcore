@@ -10,7 +10,7 @@ namespace AppBundle\Document\Areabrick;
 use Pimcore\Model\DataObject\BlogArticle;
 use Pimcore\Model\Document\Tag\Area\Info;
 
-class BfiTab extends AbstractAreabrick
+class BfiTabNoContainer extends AbstractAreabrick
 {
 
 }
