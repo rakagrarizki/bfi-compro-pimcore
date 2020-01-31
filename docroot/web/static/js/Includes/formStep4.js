@@ -32,6 +32,9 @@ function loopDataSemester() {
     for (i=stop;i>stop-3;i--){
         let asd = document.createElement("div");
         asd.setAttribute("id", "ipk")
+        if (ipk['smt-ke-'+i] === undefined){
+            ipk['smt-ke-'+i] = '00'
+        }
         asd.innerHTML += (
             "<div class='detail-wrapper'>" +
                 "<span class='label'>Semester</span>" +

@@ -11,77 +11,13 @@ $(document).ready(function(){
         "contract_number" : urlParams.get('contract_number')
     }
 
-    $('.button-detail').attr('href', '/'+lang+'/user/profile/detail-transaksi?contract_number='+urlParams.get('contract_number'));
+    $('.button-detail').attr('href', '/'+lang+'/user/profile/detail-kontrak/detail-transaksi?contract_number='+urlParams.get('contract_number'));
 
     contractDetailList(token, dataContract);
     contractStatusList(lang, token);
     contractDetailTransactionAll(lang, token, dataContract);
 
-    window.onload = function(){
-        if(this.localStorage.token == null){
-            window.location="/"+lang+"/login"
-        }else{
-            $('.link-log').find('.login').hide();
-            $('.link-about-top').hide()
-            $('.link-log').find('.user').removeClass('hide');
-
-            var full_name = document.cookie.replace(/(?:(?:^|.*;\s*)customer\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-            $('.link-log').find('.full_name').text(full_name);
-        }
-    }
-
-    // window.onload = function(){
-    //     var elements = document.querySelectorAll('[id="telat"]');
-    //     for(var i = 0; i < elements.length; i++) {
-    //         elements[i].innerHTML += (
-    //             "<div class='outdate'>TELAT BAYAR</div>" +
-    //             "<div class='outdate-note'>" +
-    //                 "<div class='circle'>" +
-    //                     "<i class='fa fa-exclamation'></i>"+
-    //                 "</div>"+
-    //                 "<span>Anda terlambat membayar 5 hari</span>"+
-    //             "</div>"
-    //         );
-    //     }
-    // }
-
 });
-
-// function contractDetailTransaction(lang, token, dataContract) {
-//     $.ajax({
-//         type: 'POST',
-//         url: '/user/contract-detail-transaction',
-//         data: dataContract,
-//         crossDomain: true,
-//         dataType: 'json',
-//         headers: { 'sessionId': token },
-
-//         error: function (data) {
-//             console.log('error' + data);
-//         },
-
-//         fail: function (xhr, textStatus, error) {
-//             console.log('request failed')
-//         },
-
-//         success: function (dataObj) {
-//             if (dataObj.success === true) {
-//                 var data = dataObj.result.data
-//                 console.log(data)
-//                 var options = { year: 'numeric', month: 'long', day: 'numeric' };
-//                 var date = new Date(data[0].tanggal_jatuh_tempo);
-//                 var due_date = date.toLocaleDateString(lang+'-'+lang, options);
-
-//                 $('.total-installment').text("Rp. "+ (convertInttoCurrency(data[0].angsuran_telah_dibayar+data[0].sisa_angsuran)));
-//                 $('.remaining-installment').text("Rp. "+ convertInttoCurrency(data[0].sisa_angsuran));
-//                 $('.this-month-bill').text("Rp. "+ convertInttoCurrency(data[0].angsuran_telah_dibayar));
-//                 $('.due-date').text(due_date);
-//                 $('.installment-per-month').text("Rp. "+ convertInttoCurrency(data[0].angsuran_per_bulan));
-//                 $('.late-charge').text("Rp. "+ convertInttoCurrency(data[0].denda_keterlambatan));
-//             }
-//         }
-//     })
-// }
 
 function contractDetail(data) {
     console.log(data)
