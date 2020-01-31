@@ -164,6 +164,9 @@ $this->extend('layout.html.php');
         <div class="modal-content">
             <h3><?= $this->translate('lengkapi-data-pemohon'); ?></h3>
             <p><?= $this->translate('lengkapi-data-pemohon-sub'); ?></p>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
             <form action="">
                 <div class="form-wrapper">
                     <div class="input-text-group">

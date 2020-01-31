@@ -1999,11 +1999,14 @@
 
     if ($("#estimasi_harga").length > 0) {
       var isPrice = false;
-      $(".inputsimulasi").addClass("hidden");
+      // $(".inputsimulasi").addClass("hidden");
+      $(".inputsimulasi #ex6SliderVal").val("10.000.000");
+      $(".inputsimulasi .valuemin , .inputsimulasi .valuemax").text("10.000.000");
       $("#estimasi_harga").change(function () {
         var _val = $(this).val();
         _val = parseInt(_val.replace(/[.]/g, ""));
         isPrice = (_val > 0 ? true : false);
+        
 
         if (isPrice) {
           $(".inputsimulasi").removeClass("hidden");
@@ -2019,7 +2022,7 @@
           status_edit = false;
           // }
         } else {
-          $(".inputsimulasi").addClass("hidden");
+          // $(".inputsimulasi").addClass("hidden");
         }
       });
     }
@@ -3718,6 +3721,8 @@
       $("#kode_pos_sertificate").data("value", $("#kode_pos").data("value"));
       $("#alamat_lengkap_sertificate").val($("#alamat_lengkap").val()).trigger("change");
       $('#provinsi_sertificate, #kota_sertificate, #kecamatan_sertificate, #kelurahan_sertificate, #kode_pos_sertificate, #alamat_lengkap_sertificate').prop('disabled', true);
+      enableButton("#button3rumah");
+
     } else {
       $('#kota_sertificate').select2({
         placeholder: $('#kota_sertificate').attr('placeholder'),
@@ -3744,6 +3749,8 @@
       // disabled input
       $('#provinsi_sertificate').prop('disabled', false)
       $('#kota_sertificate, #kecamatan_sertificate, #kelurahan_sertificate, #kode_pos_sertificate, #alamat_lengkap_sertificate').prop('disabled', true)
+
+      disableButton("#button3rumah");
     }
   })
 
