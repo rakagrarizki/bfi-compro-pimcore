@@ -1988,11 +1988,14 @@
 
     if ($("#estimasi_harga").length > 0) {
       var isPrice = false;
-      $(".inputsimulasi").addClass("hidden");
+      // $(".inputsimulasi").addClass("hidden");
+      $(".inputsimulasi #ex6SliderVal").val("10.000.000");
+      $(".inputsimulasi .valuemin , .inputsimulasi .valuemax").text("10.000.000");
       $("#estimasi_harga").change(function () {
         var _val = $(this).val();
         _val = parseInt(_val.replace(/[.]/g, ""));
         isPrice = (_val > 0 ? true : false);
+        
 
         if (isPrice) {
           $(".inputsimulasi").removeClass("hidden");
@@ -2008,7 +2011,7 @@
           status_edit = false;
           // }
         } else {
-          $(".inputsimulasi").addClass("hidden");
+          // $(".inputsimulasi").addClass("hidden");
         }
       });
     }

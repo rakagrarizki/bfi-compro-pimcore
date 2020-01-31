@@ -300,7 +300,7 @@ $this->extend('layout-credit.html.php');
                                                     <div class="ipt-radio">
                                                         <label>
                                                             <span>
-                                                                <input type="radio" name="tipe_paket" value="apprisal" />
+                                                                <input type="radio" name="tipe_paket" value="apprisal" checked />
                                                             </span>
                                                             Apprisal
                                                         </label>
@@ -320,7 +320,7 @@ $this->extend('layout-credit.html.php');
                                                 <label for="estimasi_harga"><?= $this->translate('label-estimasi-harga') ?></label>
                                                 <div class="input-group inputform">
                                                     <span class="input-group-addon" id="basic-addon1">Rp</span>
-                                                    <input type="text" id="estimasi_harga" class="formatRibuan form-control formRequired c-input-trans">
+                                                    <input type="text" id="estimasi_harga" class="formatRibuan form-control formRequired c-input-trans" value="0">
                                                     <div class="error-wrap"></div>
                                                 </div>
                                             </div>
