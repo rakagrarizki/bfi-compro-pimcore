@@ -13,8 +13,8 @@ $this->extend('layout.html.php');
     <div class="container">
         <div class="verify-wrapper">
             <div class="col-lg-4 col-md-4 col-xs-12">
-                <h4>Verifikasi akun Anda</h4>
-                <p>Pastikan data anda benar untuk melihat kontrak</p>
+                <h4><?= $this->translate('verifikasi-akun') ?></h4>
+                <p><?= $this->translate('verifikasi-akun-sub') ?></p>
             </div>
             <div class="col-lg-8 col-md-8 col-xs-12 step-wrapper">
                 <ul class="stepper-row">
@@ -24,15 +24,15 @@ $this->extend('layout.html.php');
                     <li id="list-step">
                         <span id="poin2" class="number">2</span>
                         <a href="/<?= $this->getLocale() ?>/user/verify-email" class="tool-tip">
-                            <p class="email">Email</p>
-                            <p class="verifikasi"><u>VERIFIKASI</u> &#62;</p>
+                            <p class="email"><?= $this->translate('email') ?></p>
+                            <p class="verifikasi"><u><?= $this->translate('verifikasi') ?></u> &#62;</p>
                         </a>
                     </li>
                     <li id="list-step">
                         <span id="poin3" class="number"><i class="fa fa-star"></i></span>
                         <a id="ktp" class="tool-tip" data-toggle="modal" data-target="#popup-ktp">
-                            <p class="email">Nomor KTP</p>
-                            <p class="verifikasi"><u>VERIFIKASI</u> &#62;</p>
+                            <p class="email"><?= $this->translate('label-ktp') ?></p>
+                            <p class="verifikasi"><u><?= $this->translate('verifikasi') ?></u> &#62;</p>
                         </a>
                     </li>
                 </ul>
@@ -44,8 +44,8 @@ $this->extend('layout.html.php');
 <section id="app-status">
     <div class="container">
         <div class="title">
-            <h3>Cek Status Aplikasi</h3>
-            <p>Berikut ini adalah status aplikasi anda</p>
+            <h3><?= $this->translate('cek-status-aplikasi'); ?></h3>
+            <p><?= $this->translate('cek-status-aplikasi-sub'); ?></p>
         </div>
         <ul class="status-wrapper">
             <li class="status-box hide" id="status">
@@ -76,17 +76,19 @@ $this->extend('layout.html.php');
                     </div>
                     <div class="fail-notif">
                         <span class="icon">&#10005;</span>
-                        <span>PENGAJUAN DITOLAK</span>
+                        <span><?= $this->translate('pengajuan-tolak'); ?></span>
                     </div>
                 </div>
                 <div class="detail">
                     <div class="assignment">
-                        <h6>Assignment ID</h6>
+                        <h6><?= $this->translate('assigment-id'); ?></h6>
                         <p>-</p>
                     </div>
                     <div class="credit-type">
-                        <h6>Jenis Kredit</h6>
-                        <p>Pembiayaan Agunan - Sertifikat Rumah</p>
+                        <h6><?= $this->translate('jenis-kredit'); ?></h6>
+                        <p>
+                            <!-- Pembiayaan Agunan - Sertifikat Rumah -->
+                        </p>
                     </div>
                 </div>
             </li>
@@ -97,9 +99,9 @@ $this->extend('layout.html.php');
 <section id="check-contract">
     <div class="container">
         <div class="title">
-            <h3 class="margin-top-10">Cek Kontrak</h3>
-            <p class="not-verify">Untuk melihat kontrak Anda, <br> Anda harus menyelesaikan <a href="#verify-section">Verifikasi Profile Anda</a></p>
-            <p class="verify hide">Berikut ini adalah informasi kontrak anda</p>
+            <h3 class="margin-top-10"><?= $this->translate('cek-kontrak-title'); ?></h3>
+            <p class="not-verify"><?= $this->translate('cek-kontrak-sub1'); ?><br> <?= $this->translate('cek-kontrak-sub2'); ?> <a href="#verify-section"><?= $this->translate('verifikasi-profile'); ?></a></p>
+            <p class="verify hide"><?= $this->translate('informasi-kontrak'); ?></p>
         </div>
         <ul class="contract-wrapper">
             <a class="contract-box hide" id="contract" href="#">
@@ -110,7 +112,7 @@ $this->extend('layout.html.php');
                             <img src="/_default_upload_bucket/form_credit/Rumah.png" alt="">
                         </div>
                         <div class="status">
-                            <span>Telat Bayar</span>
+                            <span><?= $this->translate('telat-bayar'); ?></span>
                         </div>
                     </div>
                     <div class="contract-type">
@@ -119,15 +121,15 @@ $this->extend('layout.html.php');
                     </div>
                     <div class="details">
                         <div>
-                            <h6>No. Kontrak</h6>
+                            <h6><?= $this->translate('Nomor Kontrak'); ?></h6>
                             <p class="contract_number"></p>
                         </div>
                         <div>
-                            <h6>Angsuran per Bulan</h6>
+                            <h6><?= $this->translate('installment'); ?></h6>
                             <p class="angsuran_perbulan"></p>
                         </div>
                         <div>
-                            <h6>Tanggal Jatuh Tempo</h6>
+                            <h6><?= $this->translate('label-jatuh-tempo'); ?></h6>
                             <p class="tanggal_jatuh_tempo"></p>
                         </div>
                     </div>
@@ -135,9 +137,10 @@ $this->extend('layout.html.php');
                         <div class='circle'>
                             <i class='fa fa-exclamation'></i>
                         </div>
-                        <span>Anda terlambat membayar 5 hari</span>
+                        <span>
+                            <!-- Anda terlambat membayar 5 hari --></span>
                     </div>
-                    <h5 class="more">LIHAT DETAIL &#62;</h5>
+                    <h5 class="more"><?= $this->translate('lihat-detail'); ?> &#62;</h5>
                 </li>
             </a>
             <a href="/<?= $this->getLocale() ?>/credit" class="contract-box add-contract">
@@ -146,7 +149,7 @@ $this->extend('layout.html.php');
                         <div class="plus">
                             <h1>&#43;</h1>
                         </div>
-                        <h3>AJUKAN KREDIT</h3>
+                        <h3><?= $this->translate('ajukan-kredit'); ?></h3>
                     </div>
                 </li>
             </a>
@@ -159,39 +162,39 @@ $this->extend('layout.html.php');
 <div class="modal fade" id="popup-ktp">
     <div class="modal-dialog">
         <div class="modal-content">
-            <h3>Lengkapi Data Pemohon</h3>
-            <p>Silahkan lengkapi data pemohon anda</p>
+            <h3><?= $this->translate('lengkapi-data-pemohon'); ?></h3>
+            <p><?= $this->translate('lengkapi-data-pemohon-sub'); ?></p>
             <form action="">
                 <div class="form-wrapper">
                     <div class="input-text-group">
                         <input id="name-input" class="style-input" type="text" onfocus="changeLabel(this.id)" onfocusout="deleteLabel(this.id)" required>
-                        <label id="name-label" class="input-label">Masukkan nama lengkap anda</label>
+                        <label id="name-label" class="input-label"><?= $this->translate('form-name'); ?></label>
                     </div>
                     <div class="input-text-group">
                         <input id="email-input" class="style-input" type="email" onfocus="changeLabel(this.id)" onfocusout="deleteLabel(this.id)" required>
-                        <label id="email-label" class="input-label">Masukkan email anda</label>
+                        <label id="email-label" class="input-label"><?= $this->translate('email'); ?></label>
                     </div>
                     <div class="input-text-group">
                         <input id="phone-input" class="style-input" type="number" onfocus="changeLabel(this.id)" onfocusout="deleteLabel(this.id)" required>
-                        <label id="phone-label" class="input-label">Masukkan nomor handphone anda</label>
+                        <label id="phone-label" class="input-label"><?= $this->translate('form-hp'); ?></label>
                     </div>
                     <div class="input-text-group">
                         <input id="ktp-input" class="style-input" type="number" onfocus="changeLabel(this.id)" onfocusout="deleteLabel(this.id)">
-                        <label id="ktp-label" class="input-label">Masukkan nomor KTP anda</label>
+                        <label id="ktp-label" class="input-label"><?= $this->translate('label-ktp'); ?></label>
                     </div>
                     <div id="upload-ktp">
-                        <h5 id="upload-text">Unggah Foto KTP</h5>
+                        <h5 id="upload-text"><?= $this->translate('labelNoktp'); ?></h5>
                         <img id="preview-upload" src="">
                         <div class="upload-content-wrapper">
                             <div class="upload-btn-wrapper">
                                 <button id="upload-button" class="btn-upload">
-                                    Pilih File
+                                    <?= $this->translate('choose-file') ?>
                                 </button>
                                 <input id="file-upload" class="hide-input" type="file" name="myfile">
                             </div>
                             <span id="file-upload-filename"></span>
                         </div>
-                        <p>Pastikan foto KTP terlihat jelas (max. ukuran file adalah 1MB)</p>
+                        <p><?= $this->translate('placeholderNoktp') ?></p>
                     </div>
                 </div>
                 <input id="btn-submit" class="button-login" type="button" value="SIMPAN">

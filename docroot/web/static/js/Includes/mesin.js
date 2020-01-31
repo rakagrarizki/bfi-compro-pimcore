@@ -240,6 +240,8 @@ function initCalculate() {
     rawMaxPrice = parseInt(package.data.funding_max),
     otr_price = parseInt(package.data.funding_min);
 
+  var rawDownPayment = rawMinPrice * 0.3;
+
   $("#calcSlider").slider({ min: rawMinPrice, max: rawMaxPrice, step: 100000 });
   $("#ex7SliderVal").parents(".sliderGroup").find(".calcslide").data('slider').options.max = rawMaxPrice;
   $("#ex7SliderVal").parents(".sliderGroup").find(".calcslide").data('slider').options.min = rawMinPrice;
@@ -248,9 +250,11 @@ function initCalculate() {
   $("#ex7SliderVal").parents(".sliderGroup").find(".calcslide").slider('setValue', rawMinPrice);
 
   var minprice = separatordot(rawMinPrice),
-    maxprice = separatordot(rawMaxPrice);
+    maxprice = separatordot(rawMaxPrice), 
+    downPayment = separatordot(rawDownPayment);
 
   $("#ex7SliderVal").val(minprice);
+  $('#down_payment').val(downPayment);
   $(".valuemin").text(minprice);
   $(".valuemax").text(maxprice);
   $("#otr").val(otr_price);
@@ -319,9 +323,9 @@ function editStep(idx) {
 function getDataRegister() {
   var _data = {
     "submission_id": submission_id,
-    "full_name": $('#nama_lengkap').val().toString(),
-    "email": $('#email_pemohon').val().toString(),
-    "phone_number": $('#no_handphone').val().toString()
+    // "full_name": $('#nama_lengkap').val().toString(),
+    // "email": $('#email_pemohon').val().toString(),
+    // "phone_number": $('#no_handphone').val().toString()
   }
   return _data;
 }

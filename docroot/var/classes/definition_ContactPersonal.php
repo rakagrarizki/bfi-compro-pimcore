@@ -1,7 +1,7 @@
 <?php 
 
 /** 
-* Generated at: 2020-01-07T09:03:11+01:00
+* Generated at: 2020-01-23T11:40:50+01:00
 * Inheritance: no
 * Variants: no
 * Changed by: admin (2)
@@ -26,7 +26,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'ContactPersonal',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1578384190,
+   'modificationDate' => 1579776048,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -85,7 +85,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'name' => 'Name',
              'title' => 'Name',
              'tooltip' => '',
-             'mandatory' => false,
+             'mandatory' => true,
              'noteditable' => false,
              'index' => false,
              'locked' => false,
@@ -135,7 +135,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'name' => 'email',
              'title' => 'Email',
              'tooltip' => '',
-             'mandatory' => false,
+             'mandatory' => true,
              'noteditable' => false,
              'index' => false,
              'locked' => false,

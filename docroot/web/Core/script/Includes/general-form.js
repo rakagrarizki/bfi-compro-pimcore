@@ -253,11 +253,35 @@ function otpVerified() {
 
 function successOTP() {
   var _data = getDataRegister();
-  var register = postData("/register", _data);
+  var register = postData("/submission-register", _data)
+  var lang = document.documentElement.lang;
+
   if (register.success === "1") {
+    phone_number = register.data.phone_number
     showSuccessOtp();
+    setTimeout(function(){ 
+      window.location="/"+lang+"/login";
+    }, 120000);
   } else {
     $('#failedOtp').modal('show');
+  }
+}
+
+function checkStatus() {
+  console.log(phone_number);
+  var lang = document.documentElement.lang;
+  var data = {
+    'phone_number' : phone_number
+  }
+  var check = postData("/submission-login", data)
+  if (check.success === "1"){
+    var token = check.data.customer_token
+    localStorage.setItem("token", token);
+    console.log ('token : ' + token);
+    getCustomer(token);
+    window.location="/"+lang+"/user/dashboard";
+  }else{
+    console.log("login after submission failed");
   }
 }
 
@@ -269,6 +293,7 @@ function reInitJcf() {
 }
 
 (function ($) {
+  var lang = document.documentElement.lang;
 
   $(document).on("click", "#otp-resend", otpResend);
   $(document).on("click", "#otp-verification", otpVerified)
@@ -341,10 +366,18 @@ function reInitJcf() {
       var errorMsg = '';
       switch (false) {
         case (file.size <= sizeLimit):
-          errorMsg = 'File size must be less than 1 MB.';
+          if(lang === 'id'){
+            errorMsg = 'Ukuran file harus kurang dari 1 MB.';
+          }else{
+            errorMsg = 'File size must be less than 1 MB.';
+          }
           break;
         case isImage:
-          errorMsg = 'Please choose image file.';
+          if(lang === 'id'){
+            errorMsg = 'Silakan pilih file gambar.';
+          }else{
+            errorMsg = 'Please choose image file.';
+          }
           break;
       }
       parent.find(".error-wrap").show();
@@ -365,13 +398,13 @@ function reInitJcf() {
   });
 
   $(".formPhoneNumber").on("keydown", function (e) {
-    if (e.which != 8 && e.which != 0 && e.which != 144 && (e.which < 48 || e.which > 57) && (e.which < 96 || e.which > 105)) {
+    if (e.which != 8 && e.which != 0 && e.which != 144 && (e.which < 46 || e.which > 57) && (e.which < 96 || e.which > 105)) {
       return false;
     }
-    if (($(this).get(0).selectionStart == 0 && (e.keyCode < 35 || e.keyCode > 40)) ||
-      ($(this).get(0).selectionStart == 1 && e.keyCode == 8)) {
-      return false;
-    }
+  //   if (($(this).get(0).selectionStart == 0 && (e.keyCode < 35 || e.keyCode > 40)) ||
+  //     ($(this).get(0).selectionStart == 1 && e.keyCode == 8)) {
+  //     return false;
+  //   }
   });
 
   $('.formPhoneNumber').on('input propertychange paste', function (e) {
@@ -429,9 +462,22 @@ function reInitJcf() {
   });
 
   if (typeof ($('#ex7SliderVal').parents(".sliderGroup").find(".calcslide").slider()) !== 'undefined') {
-    $('#ex7SliderVal').parents(".sliderGroup").find(".calcslide").slider().on('slideStop', function (ev) {
-      console.log(ev)
-    });
+    if($('#ex7SliderVal').parents(".machine-funding").length == 1){
+      $('#ex7SliderVal').parents(".sliderGroup").find(".calcslide").slider().on('slideStop', function (ev) {
+        console.log(ev)
+        var rawDownPayment = ev.value * 0.3;
+        var downPayment = separatordot(rawDownPayment);
+        $('#down_payment').val(downPayment);
+      });
+    }else{
+      $('#ex7SliderVal').parents(".sliderGroup").find(".calcslide").slider().on('slideStop', function (ev) {
+        console.log(ev)
+        var rawDownPayment = ev.value * 0.1;
+        var downPayment = separatordot(rawDownPayment);
+        $('#down_payment').val(downPayment);
+        $("#pocket_money").val(downPayment);
+      });
+    }
   }
 
   if ($(".calcslide").length > 0) {

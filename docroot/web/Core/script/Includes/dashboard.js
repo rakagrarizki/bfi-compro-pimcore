@@ -94,7 +94,7 @@ $(document).ready(function(){
     var lang = document.documentElement.lang
 
     $('ul.contract-wrapper').hide();
-    checkStatus(token);
+    checkStatusVerify(token);
     applicationStep(token);
     checkAssignmentList(token);
     contractStatusList(lang, token);
@@ -140,38 +140,9 @@ $(document).ready(function(){
             }
         })
     });
-
-    window.onload = function(){
-        if(this.localStorage.token == null){
-            window.location="/"+lang+"/login"
-        }else{
-            $('.link-log').find('.login').hide();
-            $('.link-about-top').hide()
-            $('.link-log').find('.user').removeClass('hide');
-            
-            var full_name = document.cookie.replace(/(?:(?:^|.*;\s*)customer\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-            $('.link-log').find('.full_name').text(full_name);
-        }
-    }
-
-    // window.onload = function(){
-    //     var elements = document.querySelectorAll('[id="telat"]');
-    //     for(var i = 0; i < elements.length; i++) {
-    //         elements[i].innerHTML += (
-    //             "<div class='outdate'>TELAT BAYAR</div>" +
-    //             "<div class='outdate-note'>" +
-    //                 "<div class='circle'>" +
-    //                     "<i class='fa fa-exclamation'></i>"+
-    //                 "</div>"+
-    //                 "<span>Anda terlambat membayar 5 hari</span>"+
-    //             "</div>"
-    //         );
-    //     }
-    // }
-
 });
 
-function checkStatus(token) {
+function checkStatusVerify(token) {
     $.ajax({
         type: 'GET',
         url: '/user/check-verify-status',

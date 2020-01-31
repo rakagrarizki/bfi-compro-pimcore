@@ -58,7 +58,7 @@ function sendLeadData() {
 
     switch (currentStep) {
       case 0:
-        _url = "/agent/save-agent-candidate-step1-after-otp";
+        _url = "/agent/save-agent-otp";
         _data = {
           "submission_id": submission_id,
           "name": $("#nama_lengkap").val(),
@@ -226,9 +226,9 @@ function editStep(idx) {
 function getDataRegister() {
   var _data = {
     "submission_id": submission_id,
-    "full_name": $('#nama_lengkap').val().toString(),
-    "email": $('#email_pemohon').val().toString(),
-    "phone_number": $('#no_handphone').val().toString()
+    // "full_name": $('#nama_lengkap').val().toString(),
+    // "email": $('#email_pemohon').val().toString(),
+    // "phone_number": $('#no_handphone').val().toString()
   }
   return _data;
 }

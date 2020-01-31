@@ -95,11 +95,11 @@ function sendLeadData() {
           $("#modal-branch").modal('show');
         }
         return sendData.data.is_branch
-      } else if (currentStep === 2) {
-        if (sendData.data.is_pricing === false) {
-          $("#modal-pricing").modal('show');
-        }
-        return sendData.data.is_pricing
+      // } else if (currentStep === 2) {
+      //   if (sendData.data.is_pricing === false) {
+      //     $("#modal-pricing").modal('show');
+      //   }
+      //   return sendData.data.is_pricing
       } else {
         return true;
       }
@@ -129,6 +129,8 @@ function initCalculate() {
     rawMaxPrice = parseInt(package.data.maximum_funding),
     otr_price = parseInt(package.data.minimum_funding);
 
+  var rawDownPayment = rawMinPrice * 0.1;
+
   $("#calcSlider").slider({ min: rawMinPrice, max: rawMaxPrice, step: 100000 });
   $("#ex7SliderVal").parents(".sliderGroup").find(".calcslide").data('slider').options.max = rawMaxPrice;
   $("#ex7SliderVal").parents(".sliderGroup").find(".calcslide").data('slider').options.min = rawMinPrice;
@@ -140,9 +142,12 @@ function initCalculate() {
   $("#ex7SliderVal").parents(".sliderGroup").find(".calcslide").slider('setValue', rawMinPrice);
 
   var minprice = separatordot(rawMinPrice),
-    maxprice = separatordot(rawMaxPrice);
+    maxprice = separatordot(rawMaxPrice),
+    downPayment = separatordot(rawDownPayment);
 
   $("#ex7SliderVal").val(minprice);
+  $('#down_payment').val(downPayment);
+  $("#pocket_money").val(downPayment);
   $(".valuemin").text(minprice);
   $(".valuemax").text(maxprice);
   $("#otr").val(otr_price);
@@ -203,9 +208,9 @@ function editStep(idx) {
 function getDataRegister() {
   var _data = {
     "submission_id": submission_id,
-    "full_name": $('#nama_lengkap').val().toString(),
-    "email": $('#email_pemohon').val().toString(),
-    "phone_number": $('#no_handphone').val().toString()
+    // "full_name": $('#nama_lengkap').val().toString(),
+    // "email": $('#email_pemohon').val().toString(),
+    // "phone_number": $('#no_handphone').val().toString()
   }
   return _data;
 }
@@ -244,6 +249,7 @@ var isValidOtp = false;
       // Used to skip the "Warning" step if the user is old enough.
       checkValid();
       if (currentIndex > priorIndex && currentIndex === 2) {
+        nextButton("inactive");
         initCalculate();
       }else if (currentIndex > priorIndex && currentIndex === 3) {
         initSummary();
@@ -336,6 +342,7 @@ var isValidOtp = false;
   });
 
   $("#recalc").click(function (e) {
+    nextButton("inactive");
     e.preventDefault();
     var leisure_package_price = $("#ex7SliderVal").val().replace(/[.]/g, "");
     var tenor = $("#jangka_waktu").val()[0];
@@ -351,6 +358,7 @@ var isValidOtp = false;
     var post = postData("/credit/leisure-calculator", _data);
     if (post.success === "1") {
     //   console.log("CALC", post)
+        nextButton("active");
         $("#totalFinance").text(post.data.total_funding.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
         $("#pocketMoney").text(post.data.pocket_money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
         $("#labelTotal").text(post.data.monthly_installment.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
