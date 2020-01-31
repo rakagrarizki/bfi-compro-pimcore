@@ -3707,6 +3707,8 @@
       $("#kode_pos_sertificate").data("value", $("#kode_pos").data("value"));
       $("#alamat_lengkap_sertificate").val($("#alamat_lengkap").val()).trigger("change");
       $('#provinsi_sertificate, #kota_sertificate, #kecamatan_sertificate, #kelurahan_sertificate, #kode_pos_sertificate, #alamat_lengkap_sertificate').prop('disabled', true);
+      enableButton("#button3rumah");
+
     } else {
       $('#kota_sertificate').select2({
         placeholder: $('#kota_sertificate').attr('placeholder'),
@@ -3733,6 +3735,8 @@
       // disabled input
       $('#provinsi_sertificate').prop('disabled', false)
       $('#kota_sertificate, #kecamatan_sertificate, #kelurahan_sertificate, #kode_pos_sertificate, #alamat_lengkap_sertificate').prop('disabled', true)
+
+      disableButton("#button3rumah");
     }
   })
 
