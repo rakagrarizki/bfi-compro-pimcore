@@ -177,8 +177,9 @@
         // width: 830px !important;
         width: max-content !important;
         height: max-content;
+        position: relative;
         .modal-content{
-            padding: 70px 20px 40px 20px;
+            padding: 70px 180px 40px 180px;
             border-radius: 0;
             -webkit-border-radius: 0;
             -moz-border-radius: 0;
@@ -199,6 +200,14 @@
                 margin-bottom: 50px;
                 font-size: 18px;
             }
+
+            .close{
+                position: absolute;
+                top: 3px;
+                right: 20px;
+                font-size: 40px;
+            }
+
             .form-wrapper{
                 display: block;
                 margin: 0 auto 0 auto;
