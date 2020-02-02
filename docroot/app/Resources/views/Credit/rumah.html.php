@@ -421,7 +421,7 @@ $this->extend('layout-credit.html.php');
 
                                     <div class="button-area text-right next">
                                         <button class="cta cta-primary cta-big cta-see buttonnext" id="button4rumah" type="button"><?= $this->translate('next') ?></button>
-                                        <button class="cta cta-primary cta-big cta-see buttonnext hidesavebutton" type="button"><?= $this->translate('save') ?></button>
+                                        <button class="cta cta-primary cta-big cta-see buttonnext hidesavebuttonhome" type="button"><?= $this->translate('save') ?></button>
                                     </div>
 
                                 </div>
