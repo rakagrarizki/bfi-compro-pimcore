@@ -523,7 +523,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
         <h4><?= $this->translate('Branch not available')?></h4>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal"><?= $this->translate('close')?></button>
       </div>
     </div>
   </div>

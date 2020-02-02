@@ -655,7 +655,7 @@ $this->extend('layout-credit.html.php');
         <h4><?= $this->translate('pricing-not-found')?></h4>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal"><?= $this->translate('close')?></button>
       </div>
     </div>
   </div>
