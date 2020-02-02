@@ -384,7 +384,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                         <div class="error-wrap"></div>
                         <div class="otp-number__text">
                             <p class="otp-wait"><?= $this->translate('wait-otp') ?> <span id="otp-counter" class="countdown"></span> </p>
-                            <p class="otp-resend"><?= $this->translate('dont-get-otp') ?> <span id="otp-resend" class="countdown">Resend</span></p>
+                            <p class="otp-resend"><?= $this->translate('dont-get-otp') ?> <span id="otp-resend" class="countdown"><?= $this->translate('resend')?></span></p>
                         </div>
                         <div class="otp-button margin-top-50">
                             <button class="cta cta-primary cta-big cta-see btn-verifikasi buttonnext" id="otp-verification" type="button"><?= $this->translate('verifikasi') ?></button>
