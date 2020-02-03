@@ -154,7 +154,7 @@ $this->extend('layout-credit.html.php');
                                     <button id="upload-pdf-button" class="btn-upload">
                                         <?= $this->translate('choose-file') ?>
                                     </button>
-                                    <input id="file-pdf-upload" class="hide-input" type="file" name="transcript">
+                                    <input id="file-pdf-upload" class="hide-input" type="file" accept="application/pdf" name="transcript">
                                 </div>
                             </div>
                             <div class="error-wrap"></div>

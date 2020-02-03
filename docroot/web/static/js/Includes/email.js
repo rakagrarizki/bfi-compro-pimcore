@@ -50,7 +50,39 @@ function verify(){
     })
 }
 
+function dataCustomer(token){
+    $.ajax({
+        type: 'GET',
+        url: '/user/data-customer',
+        crossDomain: true,
+        dataType: 'json',
+        headers: {'sessionId': token},
+
+        error: function(data) {
+            console.log('error' + data);
+        },
+
+        fail: function(xhr, textStatus, error) {
+            console.log('request failed')
+        },
+
+        success: function(dataObj){
+            if(dataObj.success === true) {
+                var data = dataObj.result.data;
+                console.log(data);
+                $("#email-input").focus();
+                $('#email-input').val(data.email);
+            }
+        }
+    });
+}
+
 function back(){
     var lang = document.documentElement.lang
     window.location="/"+lang+"/user/dashboard";
 }
+
+$(document).ready(function(){
+    var token = window.localStorage.getItem("token");
+    dataCustomer(token);
+});
