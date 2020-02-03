@@ -1586,7 +1586,14 @@
     disableButton("#button3rumah");
     disableButton("#button4");
     disableButton("#button4rumah");
-    enableButton("#button5");
+
+    if ($("#jenis_form").val() == "SURAT BANGUNAN") {
+      disableButton("#button5");
+    }
+    else {
+      enableButton("#button5");
+    }
+
     $("#kode_pos").css("background-color", "#F4F4F4");
     $("#kode_pos_sertificate").css("background-color", "#F4F4F4");
 
@@ -2002,6 +2009,7 @@
       // $(".inputsimulasi").addClass("hidden");
       $(".inputsimulasi #ex6SliderVal").val("10.000.000");
       $(".inputsimulasi .valuemin , .inputsimulasi .valuemax").text("10.000.000");
+      $("#estimasi_harga").val("10.000.000");
       $("#estimasi_harga").change(function () {
         var _val = $(this).val();
         _val = parseInt(_val.replace(/[.]/g, ""));
@@ -2026,6 +2034,9 @@
         }
       });
     }
+    // if ($("#estimasi_harga").length == 0) {
+    //   $("#estimasi_harga").val("10.000.000");
+    // }  
 
     $('#button4').on('click', function (e) {
       e.preventDefault();
@@ -4592,8 +4603,12 @@
     if (_param.funding == 0) {
       if ($("#jenis_form").val() == "MOBIL") {
         _param.funding = 10000000;
-      } else if ($("#jenis_form").val() == "MOTOR") {
+      }
+      else if ($("#jenis_form").val() == "MOTOR") {
         _param.funding = 1000000;
+      }
+      else if ($("#jenis_form").val() == "SURAT BANGUNAN") {
+        _param.funding = 10000000;
       }
     }
 

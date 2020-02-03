@@ -300,7 +300,7 @@ $this->extend('layout-credit.html.php');
                                         </div>
                                         <div class="col-md-6">
                                             <div class="rincian">
-                                                <div class="rincian--content">
+                                                <div class="rincian--content hide">
                                                     <p class="title-angsuran"><?= $this->translate('label-rincian')?></p>
                                                     <table class="tableangsuran">
                                                         <tr>
@@ -337,7 +337,7 @@ $this->extend('layout-credit.html.php');
                                                          </tr> -->
                                                     </table>
                                                 </div>
-                                                <div class="total-estimate">
+                                                <div class="total-estimate mt-30">
                                                     <p class="title-angsuran"><?= $this->translate('label-estimate')?></p>
                                                     <p class="total">Rp 0</p>
                                                     <p class="infotext">*<?= $this->translate('text-estimate')?></p>
