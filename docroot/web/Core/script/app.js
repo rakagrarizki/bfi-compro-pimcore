@@ -921,6 +921,7 @@
   function pushDataPemohon() {
     submission_id = '';
     var _URL = '';
+    var _data = {};
     var nama_lengkap = $('#nama_lengkap').val(),
       email_pemohon = $('#email_pemohon').val(),
       no_telepon = $('#no_handphone').val(),
@@ -933,16 +934,25 @@
       case 'MOTOR':
         _URL = '/credit/save-motorcycle-leads1';
         break;
+      case 'SURAT BANGUNAN':
+        _URL = '/credit/save-pbf-leads1';
+        _data = {
+          "dob": reformatDate($('#tgl_lahir').val()),
+          "profession_id": $('#pekerjaan').val()[0],
+          "salary": reformatMoney($('#penghasilan').val()),
+          "path_ktp": $('#ktp').val()
+        };
+        break;
     }
 
     if (_URL !== '') {
 
-      var _data = {
+      _data = Object.assign(_data, {
         "submission_id": submission_id,
         "name": nama_lengkap,
         "email": email_pemohon,
         "phone_number": no_telepon
-      };
+      });
 
       $.ajax({
         type: 'POST',
@@ -1792,10 +1802,11 @@
       e.preventDefault();
 
       if ($(this).closest('form').valid()) {
-        showTab4();
+        showTab5();
         hideTab1();
         hideTab2();
         hideTab3();
+        hideTab4();
 
         scrollToTop();
         $('.nav-item-1').removeClass('active');
