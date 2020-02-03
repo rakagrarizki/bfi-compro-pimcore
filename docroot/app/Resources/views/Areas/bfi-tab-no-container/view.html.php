@@ -1,4 +1,3 @@
-
 <?php
 // while ($this->block("tab")->loop()) {
 //     echo $this->input("text");
