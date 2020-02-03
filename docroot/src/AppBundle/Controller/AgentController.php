@@ -7,6 +7,7 @@ use AppBundle\Service\SendApiDummy;
 use Pimcore\Bundle\AdminBundle\HttpFoundation\JsonResponse;
 use Pimcore\Controller\FrontendController;
 use Pimcore\Model\WebsiteSetting;
+use Pimcore\Model\DataObject;
 use Symfony\Component\HttpFoundation\Request;
 
 class AgentController extends FrontendController
@@ -29,6 +30,17 @@ class AgentController extends FrontendController
     public function defaultAction(Request $request)
     {
 
+    }
+
+    public function successAction()
+    {
+        $blog = new DataObject\BlogArticle\Listing();
+        $blog->setOrderKey("Date");
+        $blog->setOrder("desc");
+        $blog->setLimit(4);
+        $blog->load();
+
+        $this->view->blog = $blog;
     }
 
     public function getListProductIsAgentAction(Request $request){
