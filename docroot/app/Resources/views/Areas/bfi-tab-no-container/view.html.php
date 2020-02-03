@@ -1,3 +1,4 @@
+
 <?php
 // while ($this->block("tab")->loop()) {
 //     echo $this->input("text");
@@ -15,7 +16,7 @@ $tab = $this->getParam("tab");
 ?>
 
 <div class="tabs-accor">
-    <div class="container">
+    <div class="container-fluids">
         <article class="sect-title text-center">
             <h2 class=""><?= $this->input('title');?></h2>
         </article>
