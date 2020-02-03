@@ -95,6 +95,7 @@ $(document).ready(function(){
 
     $('ul.contract-wrapper').hide();
     checkStatusVerify(token);
+    dataCustomer(token);
     applicationStep(token);
     checkAssignmentList(token);
     contractStatusList(lang, token);
@@ -181,6 +182,38 @@ function checkStatusVerify(token) {
             }
         }
     })
+}
+
+function dataCustomer(token){
+    $.ajax({
+        type: 'GET',
+        url: '/user/data-customer',
+        crossDomain: true,
+        dataType: 'json',
+        headers: {'sessionId': token},
+
+        error: function(data) {
+            console.log('error' + data);
+        },
+
+        fail: function(xhr, textStatus, error) {
+            console.log('request failed')
+        },
+
+        success: function(dataObj){
+            if(dataObj.success === true) {
+                var data = dataObj.result.data;
+                console.log(data);
+                // $("#name-input").focus();
+                $("#email-input").focus();
+                // $("#phone-input").focus();
+
+                $('#name-input').val(data.full_name);
+                $('#email-input').val(data.email);
+                $('#phone-input').val(data.phone_number);
+            }
+        }
+    });
 }
 
 function checkAssignmentList(token) {

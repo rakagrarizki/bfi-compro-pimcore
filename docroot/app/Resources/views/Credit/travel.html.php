@@ -134,7 +134,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                             </div>
                         </div>
                         <div class="form-group inputsimulasi mesin-down-payment">
-                            <label for="jml-biaya"><?= $this->translate('down-payment-to-institution') ?></label>
+                            <label for="down_payment"><?= $this->translate('down-payment-to-institution') ?></label>
                             <div class="input-group inputform">
                                 <span class="input-group-addon">Rp</span>
                                 <input type="text" id="down_payment" name="down_payment" class="form-control minDownPayment formatRibuan">
@@ -143,7 +143,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                             <div class="error-wrap"></div>
                         </div>
                         <div class="form-group sliderGroup inputsimulasi">
-                            <label><?= $this->translate('travel-package-price') ?></label>
+                            <label for="jangka-waktu"><?= $this->translate('label-travel-jangka-waktu')?></label>
                             <div>
                                 <select class="c-custom-select-trans form-control formRequired" id="jangka_waktu" name="jangka-waktu" multiple="multiple">
                                 </select>
@@ -375,7 +375,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                             <p class="otp-resend"><?= $this->translate('dont-get-otp') ?> <span id="otp-resend" class="countdown">Resend</span></p>
                         </div>
                         <div class="otp-button margin-top-50">
-                            <button class="cta cta-primary cta-big cta-see btn-verifikasi buttonnext" id="otp-verification" type="button"><?= $this->translate('verifikasi') ?></button>
+                            <button class="cta cta-orange cta-big cta-see btn-verifikasi buttonnext" id="otp-verification" type="button"><?= $this->translate('verifikasi') ?></button>
                         </div>
                     </div>
                 </div>
