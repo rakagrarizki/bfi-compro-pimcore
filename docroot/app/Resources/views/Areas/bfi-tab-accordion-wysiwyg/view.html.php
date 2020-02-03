@@ -48,8 +48,8 @@
                     <div class="accordion">
 
                         <div class="accordion__wrap produk">
-                            <div class="container">
-                                <div class="row">
+                            <div class="">
+                                <div class="">
                                     <?php $a=1;?>
                                     <?php
                                     $unik = uniqid();

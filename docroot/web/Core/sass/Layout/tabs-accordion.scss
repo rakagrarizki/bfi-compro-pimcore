@@ -3,7 +3,9 @@
         border-bottom: none;
         padding-bottom: 5px;
         position: relative;
-        display: inline-block;
+        // display: inline-block;
+        display: flex;
+        justify-content: space-between;
         width: 100%;
 
         @include breakpoint(mobile) {
@@ -30,6 +32,7 @@
 
         li {
             margin: 0;
+            width: 100%;
             // width: 25%;
 
             @include breakpoint(mobile) {

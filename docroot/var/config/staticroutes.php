@@ -1911,7 +1911,7 @@ return [
     ],
     111 => [
         "id" => 111,
-        "name" => "detail blog",
+        "name" => "detail news",
         "pattern" => "/\\/(en|id)\\/news\\/([0-9a-zA-Z_-]+)\$/",
         "reverse" => "/%lang/news/%slug",
         "module" => "AppBundle",
@@ -1925,7 +1925,7 @@ return [
         "priority" => 0,
         "legacy" => FALSE,
         "creationDate" => 1573208609,
-        "modificationDate" => 1573208651
+        "modificationDate" => 1580718824
     ],
     112 => [
         "id" => 112,
