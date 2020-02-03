@@ -475,6 +475,7 @@
                 background-color: #f8991d;
                 height: 50px;
                 padding: 0 20px 0 20px;
+                text-transform: uppercase;
                 
                 @include breakpoint(mobile){
                     width: 45%;
