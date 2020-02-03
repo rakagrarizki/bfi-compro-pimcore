@@ -16,7 +16,7 @@ $tab = $this->getParam("tab");
 ?>
 
 <div class="tabs-accor">
-    <div class="container-fluids">
+    <div class="container">
         <article class="sect-title text-center">
             <h2 class=""><?= $this->input('title');?></h2>
         </article>
