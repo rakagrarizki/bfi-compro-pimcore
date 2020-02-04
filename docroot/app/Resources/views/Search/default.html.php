@@ -82,12 +82,14 @@ $page = $this->page;
                         <?php endif;?>
 
                     <?php endfor;?>
-                    <?php $next = (int)$page + 1;?>
-                    <li>
-                        <a href="<?= $this->pimcoreUrl(['page' => $next]); ?>" aria-label="Next">
-                        <i class="fa fa-angle-right"></i>
-                        </a>
-                    </li>
+                    <?php $next = (int)$page + 1;
+                        if($next < $this->totalPage) :?>
+                            <li>
+                                <a href="<?= $this->pimcoreUrl(['page' => $next]); ?>" aria-label="Next">
+                                <i class="fa fa-angle-right"></i>
+                                </a>
+                            </li>
+                        <?php endif; ?>
                 </ul>
             </nav>
             <?php endif;?>
