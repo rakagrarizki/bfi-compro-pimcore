@@ -291,15 +291,62 @@ class AgentController extends FrontendController
         $param["code_are"] = htmlentities(addslashes($request->get('code_are')));
         $param["have_smartphone"] = htmlentities(addslashes($request->get('have_smartphone')));
 
+        $limitTime = WebsiteSetting::getByName('LIMIT_TIME')->getData();
+        $limit = $limitTime * 3600;
+
+
+        $redis = new \Credis_Client("localhost", 6379, null, '', 1);
+        $dateSend = $redis->hGet($param['phone_number'], "time-send");
+        $attempts = $redis->hGet($param['phone_number'], "attempt-hit");
+        $timenow = time();
+        /*$a = "attemp =".$attempts;
+
+        return new JsonResponse([
+            'success' => "0",
+            'message' => $a
+        ]);*/
+
+        $clear = false;
+        if($attempts){
+            $diff = $timenow - $dateSend;
+            if($diff >= 600){
+                $send = true;
+                $clear = true;
+            }else{
+                if($attempts < 3){
+                    $send = true;
+                }else{
+                    $redis->setEx($param['phone_number'],$limit,"expiry");
+                    $send = false;
+                }
+            }
+        }else{
+            $clear = true;
+            $send = true;
+        }
+
+        if(!$send){
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "error multiple request otp",
+            ]);
+        }
 
         try {
             $data = $this->sendAPI->saveAgentCandidateStep1AfterOtp($url, $param);
+            $redis->hSet($param['phone_number'], 'time-send', time());
         } catch (\Exception $e) {
 //            return new JsonResponse([
 //                'success' => "0",
 //                'message' => "Service Request Save Car Leads 1 Down"
 //            ]);
             throw new \Exception('Something went wrong!');
+        }
+
+        if($clear){
+            $redis->hSet($param['phone_number'], 'attempt-hit', 1);
+        }else{
+            $redis->hSet($param['phone_number'], 'attempt-hit', $attempts + 1);
         }
 
         if($data->header->status == 200){

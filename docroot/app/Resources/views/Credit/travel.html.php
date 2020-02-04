@@ -134,7 +134,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                             </div>
                         </div>
                         <div class="form-group inputsimulasi mesin-down-payment">
-                            <label for="jml-biaya"><?= $this->translate('down-payment-to-institution') ?></label>
+                            <label for="down_payment"><?= $this->translate('down-payment-to-institution') ?></label>
                             <div class="input-group inputform">
                                 <span class="input-group-addon">Rp</span>
                                 <input type="text" id="down_payment" name="down_payment" class="form-control minDownPayment formatRibuan">
@@ -143,7 +143,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                             <div class="error-wrap"></div>
                         </div>
                         <div class="form-group sliderGroup inputsimulasi">
-                            <label><?= $this->translate('travel-package-price') ?></label>
+                            <label for="jangka-waktu"><?= $this->translate('label-travel-jangka-waktu')?></label>
                             <div>
                                 <select class="c-custom-select-trans form-control formRequired" id="jangka_waktu" name="jangka-waktu" multiple="multiple">
                                 </select>

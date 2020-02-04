@@ -16,11 +16,12 @@ $tab = $this->getParam("tab");
 ?>
 
 <div class="tabs-accor">
-    <div class="container">
+    <div class="container-fluids">
         <article class="sect-title text-center">
+            <h1 style="text-align:justify">&nbsp;</h1>
             <h2 class=""><?= $this->input('title');?></h2>
         </article>
-        <div id="<?= $this->select("group")->getData();?>" class="tabs-outer">
+        <div id="<?= $this->select("group")->getData();?>" class="tabs-outer container">
             <ul class="nav nav-tabs" role="tablist" id="outer-choice">
                 <li style="display: none" role="presentation" onclick="prev()" class="arrow" onclick="scrollPosition('<?= $id;?>')" id="prevButton">
                     <a class="arrow-outer"><i class="icon-left-arrow"></i></a>
