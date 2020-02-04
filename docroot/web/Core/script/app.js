@@ -2094,13 +2094,6 @@
         showTab5();
         hideTab4();
         scrollToTop();
-
-        $('.input-number:first-child').focus();
-        $('.horizontal-scroll').hide();
-        // $('#showPhone span').html(credits.pemohon.no_handphone);
-        $("#otpPhone").val(credits.pemohon.no_handphone)
-        countDown();
-        requestOtp(credits);
       });
 
     })
