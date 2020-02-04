@@ -18,6 +18,7 @@ class ContactController extends FrontendController
     {
         $success = false;
         $msg_error = false;
+        $lang = $request->getLocale();
 
         if ($request->isMethod('POST')) {
             $data = $request->get('corporate');
@@ -42,13 +43,14 @@ class ContactController extends FrontendController
                 $contactCorporate->setMessage($message);
                 $contactCorporate->save();
 
-                $this->_success();
+                $this->_successCorporate();
                 $success = true;
             } else {
                 $success = false;
                 $msg_error = $this->get("translator")->trans("contact-error");
             }
         }
+        // $this->view->url = "/". $lang . "/corporate/hubungan-investor/berita-informasi";
         $this->view->success = $success;
         $this->view->msg_error = $msg_error;
     }
@@ -57,6 +59,7 @@ class ContactController extends FrontendController
     {
         $success = false;
         $msg_error = false;
+        $lang = $request->getLocale();
 
         if ($request->isMethod('POST')) {
             $time = time();
@@ -117,6 +120,7 @@ class ContactController extends FrontendController
                 $msg_error = $this->get("translator")->trans("contact-error");
             }
         }
+        // $this->view->url = "/". $lang . "/blog";
         $this->view->success = $success;
         $this->view->msg_error = $msg_error;
     }
@@ -130,5 +134,16 @@ class ContactController extends FrontendController
         $blog->load();
 
         return $this->view->blog = $blog;
+    }
+
+    private function _successCorporate()
+    {
+        $news = new DataObject\News\Listing();
+        $news->setOrderKey("Date");
+        $news->setOrder("desc");
+        $news->setLimit(4);
+        $news->load();
+
+        return $this->view->news = $news;
     }
 }

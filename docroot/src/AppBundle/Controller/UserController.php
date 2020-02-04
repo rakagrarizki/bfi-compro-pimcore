@@ -65,8 +65,50 @@ class UserController extends FrontendController
         $host = WebsiteSetting::getByName("HOST")->getData();
         $url = $host . WebsiteSetting::getByName('LOGIN_OTP_REQUEST')->getData();
 
+        $limitTime = WebsiteSetting::getByName('LIMIT_TIME')->getData();
+        $limit = $limitTime * 3600;
+
+
+        $redis = new \Credis_Client("localhost", 6379, null, '', 1);
+        $dateSend = $redis->hGet($params['phone_number'], "time-send");
+        $attempts = $redis->hGet($params['phone_number'], "attempt-hit");
+        $timenow = time();
+        /*$a = "attemp =".$attempts;
+
+        return new JsonResponse([
+            'success' => "0",
+            'message' => $a
+        ]);*/
+
+        $clear = false;
+        if($attempts){
+            $diff = $timenow - $dateSend;
+            if($diff >= 600){
+                $send = true;
+                $clear = true;
+            }else{
+                if($attempts < 3){
+                    $send = true;
+                }else{
+                    $redis->setEx($params['phone_number'],$limit,"expiry");
+                    $send = false;
+                }
+            }
+        }else{
+            $clear = true;
+            $send = true;
+        }
+
+        if(!$send){
+            return new JsonResponse([
+                'success' => "0",
+                'message' => "error multiple request otp",
+            ]);
+        }
+
         try {
             $data = $this->sendApi->loginRequestOtp($url, $params);
+            $redis->hSet($params['phone_number'], 'time-send', time());
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
@@ -75,9 +117,22 @@ class UserController extends FrontendController
             ]);
         }
 
-        if ($data->status == "success") {
-            // add something
+        if($clear){
+            $redis->hSet($params['phone_number'], 'attempt-hit', 1);
+        }else{
+            $redis->hSet($params['phone_number'], 'attempt-hit', $attempts + 1);
         }
+
+        if($data->header->status != 200){
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $this->get("translator")->trans("api-error")
+            ]);
+        }
+
+        // if ($data->status == "success") {
+        //     add something
+        // }
 
         return new JsonResponse([
             'success' => true,
