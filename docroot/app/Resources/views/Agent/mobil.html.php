@@ -32,7 +32,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                     <div class="form-group">
                         <label for="nama_lengkap"><?= $this->translate('form-name') ?></label>
                         <input type="text" class="form-control formRequired formAlphabet" name="nama_lengkap" id="nama_lengkap" placeholder="<?= $this->translate('placeholder-name') ?>">
-                        <!-- <small></?= $this->translate('agent-note-name') ?></small> -->
+                        <small><?= $this->translate('agent-note-name') ?></small>
                         <div class="error-wrap"></div>
                     </div>
                     <div class="form-group">
