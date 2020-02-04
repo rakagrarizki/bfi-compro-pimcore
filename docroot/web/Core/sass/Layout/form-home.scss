@@ -190,3 +190,24 @@
         }
     }
 }
+
+.selection-1,
+.selection-2{
+    .select2-selection--multiple{
+    height: 60px;
+    border-radius: 0;
+    border: 0;
+    box-shadow: 0px 3px 8px rgba(4,85,159,0.1);
+    .select2-search__field{
+        margin-top: 12px;
+        }
+    .select2-selection__choice{
+        margin-top:13px;
+        }
+    }
+}
+
+.newsletter{
+    margin: 0 auto;
+    text-align: center;
+}

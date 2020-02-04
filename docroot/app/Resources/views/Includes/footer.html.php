@@ -63,17 +63,19 @@ if ($this->editmode) : ?>
 
 <?php endif ?>
 
-<div id="errorNewsletter" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content text-center">
-            <div class="modal-body">
+<!-- Modal-branch -->
+<div class="modal fade" id="errorNewsletter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content newsletter">
+    <div class="modal-body">
                 <div class="body-text"></div>
                 <button type="button" id="button-klik" class="cta cta-orange news-ok" data-dismiss="modal">Ok</button>
-            </div>
         </div>
     </div>
+  </div>
 </div>
+<!-- end Modal branch -->
+
 
 <!-- FOOTER -->
 <footer>
