@@ -11,6 +11,7 @@ use Pimcore\Model\Document\Page;
 ?>
 <?php $pageCurrent = $this->getParam('page', 1); ?>
 <?php
+$site = $this->document->getProperty("site");
 $lang = $this->getLocale();
 $name = $_COOKIE["customer"];
 ?>
@@ -151,7 +152,11 @@ $name = $_COOKIE["customer"];
 
                             </ul>
                             <div class="search-button">
-                                <a href="<?= "/" . $lang . "/search" ?>"><i class="fa fa-search"></i></a>
+                                <?php if ($site == "search") : ?>
+                                    <a href="javascript:history.back()"><i class="fa fa-times"></i></a>
+                                <?php else : ?>
+                                    <a href="<?= "/" . $lang . "/search" ?>"><i class="fa fa-search"></i></a>
+                                <?php endif; ?>
                             </div>
                         </div>
 
