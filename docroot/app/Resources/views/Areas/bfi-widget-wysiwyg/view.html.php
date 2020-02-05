@@ -16,4 +16,9 @@
  .MsoTableGrid ul{
     text-align: left;
  }
+ .Table{
+     p{
+         text-align:left;
+     }
+ }
  </style>
