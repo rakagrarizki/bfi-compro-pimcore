@@ -28,6 +28,7 @@ function postOTP(url, data) {
     async: false,
     error: function (xhr, textStatus, errorThrown) {
       // retryAjax(this, xhr);
+      $('#wrongOtp').modal('show');
     },
     fail: function (xhr, textStatus, error) {
       // retryAjax(this, xhr);
@@ -239,15 +240,28 @@ function otpVerified() {
     otp4Value = $('input[name=otp4]').val().toString(),
     no_handphone = $('#no_handphone').val().toString();
 
-  var _data = {
-    phone_number: no_handphone,
-    otp_code: otp1Value + otp2Value + otp3Value + otp4Value
-  }
-  var verifiedOtp = postOTP("/otp/validate-otp", _data);
-  if (verifiedOtp.success === "1") {
-    sendLastLeads();
-  } else {
-    $('#wrongOtp').modal('show');
+  if(otp1Value == '' || otp2Value == '' || otp3Value == '' || otp4Value == ''){
+    var errorMsg = '';
+    var lang = document.documentElement.lang;
+
+    if(lang === 'id'){
+      errorMsg = 'Isian wajib diisi.';
+    }else{
+      errorMsg = 'This field is Required.';
+    }
+    $('.otp-number').find('.error-wrap').show();
+    $(".error-wrap").html('<label id="otp-error" class="error" for="otp" style="display: inline-block;">' + errorMsg + '</label>');
+  }else{
+    var _data = {
+      phone_number: no_handphone,
+      otp_code: otp1Value + otp2Value + otp3Value + otp4Value
+    }
+    var verifiedOtp = postOTP("/otp/validate-otp", _data);
+    if (verifiedOtp.success === "1") {
+      sendLastLeads();
+    } else {
+      $('#wrongOtp').modal('show');
+    }
   }
 }
 
@@ -333,6 +347,10 @@ function reInitJcf() {
       'display': 'block',
       'padding': '12px 15px'
     });
+  });
+
+  $('.input-number').on('change', function(){
+    $('.otp-number').find('.error-wrap').hide();
   });
 
   $(".file-input").change(function (e) {

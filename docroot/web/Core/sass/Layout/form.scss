@@ -1481,6 +1481,15 @@
             cursor: pointer;
         }
     }
+
+    .otp-button > button {
+        font-size: 12px;
+        height: unset;
+        width: auto;
+        padding: 15px 30px;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
 }
 
 .file-upload {
@@ -1931,9 +1940,17 @@ select::-ms-expand {
         } 
         
         
-        .select-wrapper > label {
-            visibility: hidden;
+        .select-wrapper {
+            
+            &> label {
+                visibility: hidden;
+            }
+            .select2-search__field {
+                display: none;
+            }
+            
         }
+        
     
         .captcha {
             text-align : center;
