@@ -87,6 +87,12 @@ function getListCategory() {
     type: 'GET',
     url: '/simulation/get-list-product-category',
     dataType: 'json',
+      beforeSend: function(){
+        $('#spinner').show();
+    },
+    complete: function(){
+        $('#spinner').hide();
+    },
     error: function (data) {
       console.log('error' + data);
     },
@@ -200,11 +206,11 @@ $('#selection-form').validate({
   }
 });
 
-jQuery("#category-1").on('change', function (evt) {
-  $thisVal = jQuery("#category-1").val();
+$("#category-1").on('change', function () {
+  $thisVal = $("#category-1").val();
   if($thisVal != '') {
       setTimeout(function(){
-          jQuery("#selection-form").validate().element('#category-1');
+          $("#selection-form").validate().element('#category-1');
       },100);
   }           
 });

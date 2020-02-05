@@ -378,7 +378,7 @@
             .selection-1 , .selection-2{
                 width: 45%;
                 margin: 0 15px 0 15px;
-
+                position: relative;
                 @include breakpoint(mobile) {
                     width: 100%;
                     margin: 15px 0 15px 0;
@@ -424,5 +424,29 @@
                 width: 100%;
             }
         }
+    }
+}
+
+.spinnericon {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #f2f3f3;
+    border-top: solid #428bca;
+    border-radius: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
     }
 }
