@@ -132,7 +132,7 @@
 }
 
 .thumbnail-infor {
-    height: 260px;
+    height: 330px;
     overflow: hidden;
     position: relative;
 
@@ -178,7 +178,7 @@
         }
 
         &.modif {
-            height: 178px;
+            height: 180px;
 
             >img {
                 max-width: none;
@@ -201,6 +201,9 @@
             @include breakpoint(mobile) {
                 font-size: 9px;
             }
+        }
+        .view{
+            margin-bottom: 0;
         }
 
         >h3 {

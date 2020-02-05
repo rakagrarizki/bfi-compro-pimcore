@@ -2122,7 +2122,22 @@
       // $('.tab-pane').hide();
       // $('#success').fadeIn();
 
-      sendOtp(credits);
+      if($('input[name="otp1"]').val() == '' || $('input[name="otp2"]').val() == '' || $('input[name="otp3"]').val() == '' || $('input[name="otp4"]').val() == ''){
+        var errorMsg = '';
+        if(lang === 'id'){
+          errorMsg = 'Isian wajib diisi.';
+        }else{
+          errorMsg = 'This field is Required.';
+        }
+        $('.otp-number').find('.error-wrap').show();
+        $(".error-wrap").html('<label id="otp-error" class="error" for="otp" style="display: inline-block;">' + errorMsg + '</label>');
+      }else{
+        sendOtp(credits);
+      }
+
+      $('.input-number').on('change', function(){
+        $('.otp-number').find('.error-wrap').hide();
+      });
 
       //console.log(objCredits);
     })
@@ -2488,6 +2503,7 @@
       dataType: 'json',
       error: function (data) {
         console.log('error' + data);
+        $('#wrongOtp').modal('show');
       },
       fail: function (xhr, textStatus, error) {
         console.log('request failed')

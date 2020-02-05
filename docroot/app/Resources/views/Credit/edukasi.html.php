@@ -376,10 +376,10 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
 
                     <div class="otp-number form-group">
                         <div class="otp-number__verify">
-                            <input type="tel" pattern="\d*" placeholder="0" class="input-number" maxlength="1" name="otp1">
-                            <input type="tel" pattern="\d*" placeholder="0" class="input-number" maxlength="1" name="otp2">
-                            <input type="tel" pattern="\d*" placeholder="0" class="input-number" maxlength="1" name="otp3">
-                            <input type="tel" pattern="\d*" placeholder="0" class="input-number" maxlength="1" name="otp4">
+                            <input type="tel" pattern="\d*" placeholder="0" class="input-number formRequired" maxlength="1" name="otp1">
+                            <input type="tel" pattern="\d*" placeholder="0" class="input-number formRequired" maxlength="1" name="otp2">
+                            <input type="tel" pattern="\d*" placeholder="0" class="input-number formRequired" maxlength="1" name="otp3">
+                            <input type="tel" pattern="\d*" placeholder="0" class="input-number formRequired" maxlength="1" name="otp4">
                         </div>
                         <div class="error-wrap"></div>
                         <div class="otp-number__text">
@@ -387,7 +387,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                             <p class="otp-resend"><?= $this->translate('dont-get-otp') ?> <span id="otp-resend" class="countdown"><?= $this->translate('resend')?></span></p>
                         </div>
                         <div class="otp-button margin-top-50">
-                            <button class="cta cta-orange cta-big cta-see btn-verifikasi buttonnext" id="otp-verification" type="button"><?= $this->translate('verifikasi') ?></button>
+                            <button class="cta cta-orange cta-big btn-verifikasi buttonnext" id="otp-verification" type="button"><?= $this->translate('verifikasi') ?></button>
                         </div>
                     </div>
                 </div>
