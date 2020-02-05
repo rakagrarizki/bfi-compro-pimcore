@@ -56,27 +56,30 @@
     .select2-selection__arrow {
         display: none;
     }
-
+    
     .list-card {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
+        justify-content: flex-start;
         align-items: flex-start;
         align-content: flex-start;
         padding: 40px 0;
+        margin-left: -20px;
 
         .card-item {
-            width: calc(25% - 10px);
+            width: calc(25% - 20px);
             margin-bottom: 20px;
+            margin-left: 20px;
             border: 1px solid #e2e2e2;
+            min-height: 300px;
 
             @include breakpoint(mobile) {
-                width: calc(50% - 10px);
+                width: calc(50% - 20px);
             }
 
             &:nth-child(1),
             &:nth-child(2) {
-                width: calc(50% - 10px);
+                width: calc(50% - 20px);
 
                 @include breakpoint(mobile) {
                     width: 100%;

@@ -73,12 +73,12 @@
             <form action="" id="selection-form">
                 <div class="selection-wrapper">
                     <div class="selection-1">
-                        <select id="category-1"class="c-custom-select-home form-control" placeholder="<?= $this->translate('Pilih jenis pembiayaan')?>" >
+                        <select id="category-1"class="c-custom-select-home form-control formRequired" placeholder="<?= $this->translate('Pilih jenis pembiayaan')?>" >
                              <option value="" selected style="display:none;" disabled selected><?= $this->translate('Pilih jenis pembiayaan') ?></option>
                         </select>
                     </div>
                     <div class="selection-2">
-                    <select id="category-2" class="form-control formRequired" name="category-2" placeholder="<?= $this->translate('Pembiayaan apa yang dibutuhkan?') ?>">
+                    <select id="category-2" class="form-control" name="category-2" placeholder="<?= $this->translate('Pembiayaan apa yang dibutuhkan?') ?>" disabled="disabled">
                              <option value="" selected style="display:none;" disabled selected><?= $this->translate('Pembiayaan apa yang dibutuhkan?') ?></option>
                         </select>
                     </div>

@@ -122,5 +122,5 @@ $this->extend('layout.html.php');
     </div>
 
 <?php } else { ?>
-    <?= $this->template('Includes/success-contact.html.php') ?>
+    <?= $this->template('Contact/success.html.php') ?>
 <?php } ?>
