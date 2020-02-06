@@ -72,17 +72,17 @@ $this->extend('layout.html.php');
                 </div>
                 <div class="form-group">
                     <label for="no_kontrak"><?= $this->translate('Nomor Kontrak') ?></label>
-                    <input type="tel" class="form-control" name="personal[no_kontrak]" id="no_kontrak" placeholder="<?= $this->translate('Nomor Kontrak'); ?>">
+                    <input type="tel" class="form-control formRequired" name="personal[no_kontrak]" id="no_kontrak" placeholder="<?= $this->translate('Nomor Kontrak'); ?>">
                     <div class="error-wrap"></div>
                 </div>
                 <div class="form-group">
                     <label for="customer_name"><?= $this->translate('Nama Pelanggan') ?></label>
-                    <input type="tel" class="form-control" name="personal[customer_name]" id="customer_name" placeholder="<?= $this->translate('Nama Pelanggan') ?>" disabled>
+                    <input type="tel" class="form-control" name="personal[customer_name]" id="customer_name" placeholder="<?= $this->translate('Nama Pelanggan') ?>">
                     <div class="error-wrap"></div>
                 </div>
                 <div class="form-group">
                     <label for="type_message" class="type_message"><?= $this->translate('Jenis Pesan') ?></label>
-                    <select class="form-control formRequired type-message" id="type_message" name="personal[type_message]" placeholder="<?= $this->translate('Jenis Pesan') ?>" >
+                    <select class="form-control formRequired type-message" id="type_message" name="personal[type_message]" placeholder="<?= $this->translate('Jenis Pesan') ?>" />
                     <option value="" disabled selected><?= $this->translate('jenis-pesan'); ?></option>
                     <option value="keluhan"><?= $this->translate('keluhan'); ?></option>
                     <option value="layanan-purna-jual"><?= $this->translate('layanan-purna'); ?></option>
@@ -101,7 +101,7 @@ $this->extend('layout.html.php');
                     <div class="upload-file">
                         <img src="" />
                         <div class="upload-btn">
-                            <input type="file" class="file-input" accept="image/*" data-id="document" />
+                            <input type="file" id="uploadImage" class="file-input" accept="image/*" data-id="document" />
                             <button type="button"><?= $this->translate('choose-file') ?></button>
                             <b></b>
                         </div>
@@ -124,3 +124,5 @@ $this->extend('layout.html.php');
 <?php } else { ?>
     <?= $this->template('Contact/success.html.php') ?>
 <?php } ?>
+
+
