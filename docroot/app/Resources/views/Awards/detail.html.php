@@ -33,7 +33,6 @@ $this->headMeta('BFI - ' . $data->getYear());
     <div class="row">
         <?php foreach($awards as $key => $award){ ?>
         <div class="awards-card col-md-4">
-            <img src="<?= $award->getImage(); ?>" alt="">
             <div class="title"><?= $award->getTitle(); ?></div>
             <div class="desc"><?= $award->getDescription(); ?></div>
         </div>
