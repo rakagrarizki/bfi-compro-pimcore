@@ -13,7 +13,7 @@ $relatedNews = $this->relatedNews;
 use Pimcore\Model\Asset;
 
 
-
+$url = '/news/';
 $titleshare = $news->getTitle();
 $lang = $this->getLocale();
 

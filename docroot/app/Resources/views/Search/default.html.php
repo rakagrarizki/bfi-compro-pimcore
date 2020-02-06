@@ -18,7 +18,7 @@ $page = $this->page;
 
 <section id="search">
     <div class="container">
-        <form action="/search">
+        <form action="<?= "/" . $lang . "/search"; ?>">
             <div class="search-wrapper">
                 <input id="search-input" class="input-search" name="q" type="text" value="<?= $q;?>"placeholder=<?= $this->t("search-here")?>>
 

@@ -364,10 +364,10 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
 
                     <div class="otp-number form-group">
                         <div class="otp-number__verify">
-                            <input type="tel" pattern="\d*" placeholder="0" class="input-number" maxlength="1" name="otp1">
-                            <input type="tel" pattern="\d*" placeholder="0" class="input-number" maxlength="1" name="otp2">
-                            <input type="tel" pattern="\d*" placeholder="0" class="input-number" maxlength="1" name="otp3">
-                            <input type="tel" pattern="\d*" placeholder="0" class="input-number" maxlength="1" name="otp4">
+                            <input type="tel" pattern="\d*" placeholder="0" class="input-number formRequired" maxlength="1" name="otp1">
+                            <input type="tel" pattern="\d*" placeholder="0" class="input-number formRequired" maxlength="1" name="otp2">
+                            <input type="tel" pattern="\d*" placeholder="0" class="input-number formRequired" maxlength="1" name="otp3">
+                            <input type="tel" pattern="\d*" placeholder="0" class="input-number formRequired" maxlength="1" name="otp4">
                         </div>
                         <div class="error-wrap"></div>
                         <div class="otp-number__text">
@@ -375,7 +375,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                             <p class="otp-resend"><?= $this->translate('dont-get-otp') ?> <span id="otp-resend" class="countdown">Resend</span></p>
                         </div>
                         <div class="otp-button margin-top-50">
-                            <button class="cta cta-orange cta-big cta-see btn-verifikasi buttonnext" id="otp-verification" type="button"><?= $this->translate('verifikasi') ?></button>
+                            <button class="cta cta-orange cta-big btn-verifikasi buttonnext" id="otp-verification" type="button"><?= $this->translate('verifikasi') ?></button>
                         </div>
                     </div>
                 </div>
@@ -390,7 +390,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                     </div>
                     <div class="button-area text-center backtohome">
                         <button class="cta cta-primary cta-big cta-see buttonnext backtohome" id="button7" 
-                            type="button" onclick="return checkStatus()"><?= $this->translate('cek-status-aplikasi') ?></button>
+                            type="button" onclick="return checkStatusPengajuan()"><?= $this->translate('cek-status-aplikasi') ?></button>
                     </div>
                 </div>
             </fieldset>

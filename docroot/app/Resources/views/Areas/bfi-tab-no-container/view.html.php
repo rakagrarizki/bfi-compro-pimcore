@@ -60,7 +60,7 @@ $tab = $this->getParam("tab");
 
 
         </div>
-        <div class="tab-content">
+        <div class="tab-content container">
             <?php while ($this->block("tab")->loop()) { ?>
                 <?php
                 $pattern = '/\W/';
