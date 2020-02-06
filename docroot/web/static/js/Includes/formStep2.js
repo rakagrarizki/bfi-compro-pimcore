@@ -1,11 +1,11 @@
-var univ_label_element = document.getElementById("univ-label");
-var nim_label_element = document.getElementById("nim-label");
-var fak_label_element = document.getElementById("fak-label");
-var prodi_label_element = document.getElementById("prodi-label");
-var default_univ_label = univ_label_element.textContent;
-var default_nim_label = nim_label_element.textContent;
-var default_fak_label = fak_label_element.textContent;
-var default_prodi_label = prodi_label_element.textContent;
+// var univ_label_element = document.getElementById("univ-label");
+// var nim_label_element = document.getElementById("nim-label");
+// var fak_label_element = document.getElementById("fak-label");
+// var prodi_label_element = document.getElementById("prodi-label");
+// var default_univ_label = univ_label_element.textContent;
+// var default_nim_label = nim_label_element.textContent;
+// var default_fak_label = fak_label_element.textContent;
+// var default_prodi_label = prodi_label_element.textContent;
 
 var semester_count = 0;
 var univ,nim,fak,prodi;

@@ -192,7 +192,7 @@ $(document).ready(function(){
 
         $.ajax({
             type: 'POST',
-            url: 'https://bfi.staging7.salt.id/user/verify-no-ktp',
+            url: '/user/verify-no-ktp',
             data: dataKTP,
             dataType: 'json',
             headers: { 'sessionId': token },
@@ -218,7 +218,7 @@ $(document).ready(function(){
 function checkStatusVerify(token) {
     $.ajax({
         type: 'GET',
-        url: 'https://bfi.staging7.salt.id/user/check-verify-status',
+        url: '/user/check-verify-status',
         crossDomain: true,
         dataType: 'json',
         headers: { 'sessionId': token },
@@ -236,21 +236,21 @@ function checkStatusVerify(token) {
                 var data = dataObj.result.data
                 if(data.is_phone_number_verify == true){
                     $('span#poin1').parent().addClass('active')
-                    // $('span#poin3').parent().children('a.tool-tip').hide()
+                    $('span#poin3').parent().children('a.tool-tip').hide()
                 }
-                // if(data.is_email_verify == true){
-                //     $('span#poin2').parent().addClass('active')
-                //     $('span#poin2').parent().children('a.tool-tip').hide()
-                //     $('span#poin3').parent().children('a.tool-tip').show()
-                // }
-                // if(data.is_ktp_verify == true){
-                //     $('span#poin3').parent().addClass('active')
-                //     $('span#poin3').parent().children('a.tool-tip').hide()
-                //     $('section#verify-section > .container').hide()
-                //     $('p.not-verify').addClass('hide')
-                //     $('p.verify').removeClass('hide')
-                //     $('ul.contract-wrapper').show()
-                // }
+                if(data.is_email_verify == true){
+                    $('span#poin2').parent().addClass('active')
+                    $('span#poin2').parent().children('a.tool-tip').hide()
+                    $('span#poin3').parent().children('a.tool-tip').show()
+                }
+                if(data.is_ktp_verify == true){
+                    $('span#poin3').parent().addClass('active')
+                    $('span#poin3').parent().children('a.tool-tip').hide()
+                    $('section#verify-section > .container').hide()
+                    $('p.not-verify').addClass('hide')
+                    $('p.verify').removeClass('hide')
+                    $('ul.contract-wrapper').show()
+                }
             }
         }
     })
@@ -259,7 +259,7 @@ function checkStatusVerify(token) {
 function dataCustomer(token){
     $.ajax({
         type: 'GET',
-        url: 'https://bfi.staging7.salt.id/user/data-customer',
+        url: '/user/data-customer',
         crossDomain: true,
         dataType: 'json',
         async: false,
@@ -288,7 +288,7 @@ function dataCustomer(token){
 function checkAssignmentList(token) {
     $.ajax({
         type: 'GET',
-        url: 'https://bfi.staging7.salt.id/user/assignment-list',
+        url: '/user/assignment-list',
         crossDomain: true,
         dataType: 'json',
         headers: { 'sessionId': token },
@@ -327,7 +327,7 @@ function checkAssignmentList(token) {
 function applicationStep(token) {
     $.ajax({
         type: 'GET',
-        url: 'https://bfi.staging7.salt.id/user/application-step-list',
+        url: '/user/application-step-list',
         crossDomain: true,
         dataType: 'json',
         headers: {'sessionId': token },
@@ -360,7 +360,7 @@ function contractStatusList(lang, token) {
 
     $.ajax({
         type: 'POST',
-        url: 'https://bfi.staging7.salt.id/user/contract-status-list',
+        url: '/user/contract-status-list',
         data: dataContract,
         crossDomain: true,
         dataType: 'json',
@@ -432,7 +432,7 @@ function applicationStatus(token, statusNumber, assignmentId) {
 
     $.ajax({
         type: 'POST',
-        url: 'https://bfi.staging7.salt.id/user/application-status-list',
+        url: '/user/application-status-list',
         data: dataAssignment,
         crossDomain: true,
         dataType: 'json',

@@ -27,7 +27,7 @@ function verify(){
     console.log(dataEmail);
     $.ajax({
         type: 'POST',
-        url: 'https://bfi.staging7.salt.id/user/verify-email-request',
+        url: '/user/verify-email-request',
         data: dataEmail,
         dataType: 'json',
         headers: { 'sessionId': token },
@@ -53,7 +53,7 @@ function verify(){
 function dataCustomer(token){
     $.ajax({
         type: 'GET',
-        url: 'https://bfi.staging7.salt.id/user/data-customer',
+        url: '/user/data-customer',
         crossDomain: true,
         dataType: 'json',
         async: false,

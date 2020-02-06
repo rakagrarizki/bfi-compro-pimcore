@@ -67,6 +67,7 @@ $(document).ready(function () {
   getListCategory();
 });
 
+
 function hoverDropdown(){
   // $("body").css("background-color", "yellow");
   document.getElementById("overlay").classList.add("greyout");
@@ -86,6 +87,12 @@ function getListCategory() {
     type: 'GET',
     url: '/simulation/get-list-product-category',
     dataType: 'json',
+      beforeSend: function(){
+        $('#spinner').show();
+    },
+    complete: function(){
+        $('#spinner').hide();
+    },
     error: function (data) {
       console.log('error' + data);
     },
@@ -170,6 +177,41 @@ $('#category-1').change(function () {
   $('#category-2').removeAttr("disabled");
 })
 
+$('#selection-form').validate({
+  errorClass: 'help-block', errorElement: 'div',
 
+  errorPlacement: function (error, e) {
+      e.parents('.selection-1').append(error);
+  },
+  highlight: function (e) {
+      $(e).closest('.selection-1').removeClass('has-success has-error').addClass('has-error');
+      $(e).closest('.help-block').remove();
+;
+  },
+  unhighlight: function(e) {
+    if (jQuery(e).is('#category-1')) {
+        setTimeout(function(){
+            $(e).closest('.selection-1').removeClass('has-error');
+        },50);
+      }
+  },
+  success: function (e) {
+      e.closest('.selection-1').removeClass('has-success has-error');
+      e.closest('.help-block').remove();
+ 
+  }, rules:  {
+      select: {required: true}
+  }, messages: {
+      select: {required: ''}
+  }
+});
 
+$("#category-1").on('change', function () {
+  $thisVal = $("#category-1").val();
+  if($thisVal != '') {
+      setTimeout(function(){
+          $("#selection-form").validate().element('#category-1');
+      },100);
+  }           
+});
 
