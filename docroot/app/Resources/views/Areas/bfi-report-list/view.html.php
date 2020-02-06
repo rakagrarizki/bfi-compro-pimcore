@@ -18,9 +18,11 @@ $reports->addConditionParam("Category__id = ?",$category,"AND");
 
         <div class="list-container">
             <div class="information">
-                <div class="year">
-                    <?= $data->getDate()->formatLocalized("%Y");?>
-                </div>
+                <?php if($data->getDate() != null) : ?>
+                    <div class="year">
+                        <?= $data->getDate()->formatLocalized("%Y");?>
+                    </div>
+                <?php endif; ?>
                 <div class="report-download-container">
                     <div class="title">
                         <?= $data->getFilename();?>
