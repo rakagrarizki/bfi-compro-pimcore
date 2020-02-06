@@ -1460,15 +1460,5 @@ return [
         "siteId" => 0,
         "creationDate" => 0,
         "modificationDate" => 1580094769
-    ],
-    153 => [
-        "id" => 153,
-        "name" => "valuePercentage",
-        "language" => "",
-        "type" => "text",
-        "data" => "50",
-        "siteId" => 0,
-        "creationDate" => 0,
-        "modificationDate" => 1580961628
     ]
 ];
