@@ -20,7 +20,6 @@ $this->extend('layout.html.php');
     </style>
 
     <div class="container">
-        <!-- <div class="col-xs-12"> -->
 
         <form method="POST" name="personal" id="contact" class="form-get--credit" enctype="multipart/form-data">
             <input type="hidden" id="jenis_form" name="jenis_form" value="Contact">
@@ -118,7 +117,6 @@ $this->extend('layout.html.php');
                 <button class="cta cta-primary cta-big" type="submit"><?= $this->translate('submit-contact'); ?></button>
             </div>
         </form>
-        <!-- </div> -->
     </div>
 
 <?php } else { ?>

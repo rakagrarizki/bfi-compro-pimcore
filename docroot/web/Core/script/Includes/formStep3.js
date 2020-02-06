@@ -51,6 +51,7 @@ function uploadPDF(event) {
     }
 }
 
+
 function getIpkValue(id_smt){
     ipk[id_smt] = document.getElementById(id_smt).value;
 }
