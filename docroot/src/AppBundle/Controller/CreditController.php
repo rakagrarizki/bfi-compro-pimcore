@@ -807,6 +807,7 @@ class CreditController extends FrontendController
          $host = WebsiteSetting::getByName("HOST")->getData();
          $url = $host . WebsiteSetting::getByName('URL_GET_CAR_YEAR')->getData();
         $param["model_id"] = htmlentities(addslashes($request->get('model_id')));
+        $param["district_id"] = htmlentities(addslashes($request->get('district_id')));
 
 
         try {
@@ -1204,6 +1205,7 @@ class CreditController extends FrontendController
          $host = WebsiteSetting::getByName("HOST")->getData();
          $url = $host . WebsiteSetting::getByName('URL_GET_MOTORCYCLE_YEAR')->getData();
         $param["model_id"] = htmlentities(addslashes($request->get('model_id')));
+        $param["district_id"] = htmlentities(addslashes($request->get('district_id')));
 
 
         try {
