@@ -15,7 +15,7 @@ function contractStatusList(lang, token) {
 
     $.ajax({
         type: 'POST',
-        url: '/user/contract-status-list',
+        url: 'https://bfi.staging7.salt.id/user/contract-status-list',
         data: dataContract,
         crossDomain: true,
         dataType: 'json',
@@ -45,7 +45,7 @@ function contractStatusList(lang, token) {
 function dataCustomer(token){
     $.ajax({
         type: 'GET',
-        url: '/user/data-customer',
+        url: 'https://bfi.staging7.salt.id/user/data-customer',
         crossDomain: true,
         dataType: 'json',
         headers: {'sessionId': token},

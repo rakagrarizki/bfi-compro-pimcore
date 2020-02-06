@@ -15,8 +15,8 @@ $this->extend('layout.html.php');
     <form action="" id="login-form">
         <div class="input-login">
             <div class="input-text-group">
-                <input id="email-input" class="style-input" type="email" onfocus="changeLabel(this.id)" onfocusout="deleteLabel(this.id)" required>
-                <label id="email-label" class="input-label"><?= $this->translate('email-input') ?></label>
+                <label id="email-label" class="input-label">EMAIL</label>
+                <input id="email-input" class="style-input" type="email" placeholder="<?= $this->translate('email-input') ?>" required>
             </div>
         </div>
         <button id="btn-verify" type="button" class="button-login" onclick="verify()" disabled style="opacity: .5;"><?= $this->translate('send-email') ?></button>

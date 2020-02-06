@@ -1,69 +1,69 @@
-var name_label_element = document.getElementById("name-label");
-var email_label_element = document.getElementById("email-label");
-var phone_label_element = document.getElementById("phone-label");
-var alt_phone_label_element = document.getElementById("alt-phone-label");
+// var name_label_element = document.getElementById("name-label");
+// var email_label_element = document.getElementById("email-label");
+// var phone_label_element = document.getElementById("phone-label");
+// var alt_phone_label_element = document.getElementById("alt-phone-label");
 
-var default_name_label = name_label_element.textContent;
-var default_email_label = email_label_element.textContent;
-var default_phone_label = phone_label_element.textContent;
-var default_alt_phone_label = alt_phone_label_element.textContent;
+// var default_name_label = name_label_element.textContent;
+// var default_email_label = email_label_element.textContent;
+// var default_phone_label = phone_label_element.textContent;
+// var default_alt_phone_label = alt_phone_label_element.textContent;
 
-var name, email, phone, photo;
+// var name, email, phone, photo;
 
-function changeLabel(ele_id) {
-    if (ele_id == "name-input"){
-        name_label_element.textContent = "NAMA LENGKAP";
-    }
-    else if(ele_id == "email-input"){
-        email_label_element.textContent = "EMAIL";
-    }
-    else if(ele_id == "phone-input"){
-        phone_label_element.textContent = "NOMOR HANDPHONE";
-    }
-    else if(ele_id == "alt-phone-input"){
-        alt_phone_label_element.textContent = "NOMOR HANDPHONE ALTERNATIF";
-    }
-}
+// function changeLabel(ele_id) {
+//     if (ele_id == "name-input"){
+//         name_label_element.textContent = "NAMA LENGKAP";
+//     }
+//     else if(ele_id == "email-input"){
+//         email_label_element.textContent = "EMAIL";
+//     }
+//     else if(ele_id == "phone-input"){
+//         phone_label_element.textContent = "NOMOR HANDPHONE";
+//     }
+//     else if(ele_id == "alt-phone-input"){
+//         alt_phone_label_element.textContent = "NOMOR HANDPHONE ALTERNATIF";
+//     }
+// }
 
-function deleteLabel(ele_id) {
-    if (ele_id == "name-input" && document.getElementById(ele_id).value.length > 0){
-        name_label_element.classList.add("exist");
-        document.getElementById(ele_id).classList.add("exist-input");
-        return name = document.getElementById(ele_id).value;
-    }
-    else if (ele_id == "email-input" && document.getElementById(ele_id).value.length > 0) {
-        email_label_element.classList.add("exist");
-        document.getElementById(ele_id).classList.add("exist-input");
-        return email = document.getElementById(ele_id).value;
-    }
-    else if (ele_id == "phone-input" && document.getElementById(ele_id).value.length > 0) {
-        phone_label_element.classList.add("exist");
-        document.getElementById(ele_id).classList.add("exist-input");
-        return phone = document.getElementById(ele_id).value;
-    }
-    else if (ele_id == "alt-phone-input" && document.getElementById(ele_id).value.length > 0) {
-        alt_phone_label_element.classList.add("exist");
-        document.getElementById(ele_id).classList.add("exist-input");
-    }
-    else {
-        if (ele_id == "name-input"){
-            name_label_element.classList.remove("exist");
-            name_label_element.textContent = default_name_label;
-        }
-        else if(ele_id == "email-input"){
-            email_label_element.classList.remove("exist");
-            email_label_element.textContent = default_email_label;
-        }
-        else if(ele_id == "phone-input"){
-            phone_label_element.classList.remove("exist");
-            phone_label_element.textContent = default_phone_label;
-        }
-        else if(ele_id == "alt-phone-input"){
-            alt_phone_label_element.classList.remove("exist");
-            alt_phone_label_element.textContent = default_alt_phone_label;
-        }
-    }
-}
+// function deleteLabel(ele_id) {
+//     if (ele_id == "name-input" && document.getElementById(ele_id).value.length > 0){
+//         name_label_element.classList.add("exist");
+//         document.getElementById(ele_id).classList.add("exist-input");
+//         return name = document.getElementById(ele_id).value;
+//     }
+//     else if (ele_id == "email-input" && document.getElementById(ele_id).value.length > 0) {
+//         email_label_element.classList.add("exist");
+//         document.getElementById(ele_id).classList.add("exist-input");
+//         return email = document.getElementById(ele_id).value;
+//     }
+//     else if (ele_id == "phone-input" && document.getElementById(ele_id).value.length > 0) {
+//         phone_label_element.classList.add("exist");
+//         document.getElementById(ele_id).classList.add("exist-input");
+//         return phone = document.getElementById(ele_id).value;
+//     }
+//     else if (ele_id == "alt-phone-input" && document.getElementById(ele_id).value.length > 0) {
+//         alt_phone_label_element.classList.add("exist");
+//         document.getElementById(ele_id).classList.add("exist-input");
+//     }
+//     else {
+//         if (ele_id == "name-input"){
+//             name_label_element.classList.remove("exist");
+//             name_label_element.textContent = default_name_label;
+//         }
+//         else if(ele_id == "email-input"){
+//             email_label_element.classList.remove("exist");
+//             email_label_element.textContent = default_email_label;
+//         }
+//         else if(ele_id == "phone-input"){
+//             phone_label_element.classList.remove("exist");
+//             phone_label_element.textContent = default_phone_label;
+//         }
+//         else if(ele_id == "alt-phone-input"){
+//             alt_phone_label_element.classList.remove("exist");
+//             alt_phone_label_element.textContent = default_alt_phone_label;
+//         }
+//     }
+// }
 
 // preview uploaded image //
 var title = document.getElementById("upload-text");
@@ -78,8 +78,14 @@ title.setAttribute("style", "margin-bottom: -15px;");
 function showFileName( event ) {    
     var input = event.srcElement;
     var fileName = input.files[0].name;
+    var lang = document.documentElement.lang
+
     title.setAttribute("style", "margin-bottom: 10px;");
-    button.textContent = "Ubah File";
+    if(lang == 'id'){
+        button.textContent = "Ubah File";
+    }else{
+        button.textContent = "Change File";
+    }
     image.src = URL.createObjectURL(event.target.files[0]);
     infoArea.textContent = fileName;
     return photo = fileName;

@@ -82,7 +82,7 @@ $this->extend('layout.html.php');
                 </div>
                 <div class="form-group">
                     <label for="type_message" class="type_message"><?= $this->translate('Jenis Pesan') ?></label>
-                    <select class="form-control formRequired type-message" id="type_message" name="personal[type_message]" placeholder="<?= $this->translate('Jenis Pesan') ?>" />
+                    <select class="form-control formRequired type-message" id="type_message" name="personal[type_message]" placeholder="<?= $this->translate('Jenis Pesan') ?>" >
                     <option value="" disabled selected><?= $this->translate('jenis-pesan'); ?></option>
                     <option value="keluhan"><?= $this->translate('keluhan'); ?></option>
                     <option value="layanan-purna-jual"><?= $this->translate('layanan-purna'); ?></option>

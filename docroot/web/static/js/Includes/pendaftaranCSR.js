@@ -100,6 +100,31 @@ $(document).ready(function(){
     var lang = document.documentElement.lang;
     $("#button1next").addClass('inactive');
 
+    $("input.style-input").on('focus', function () {
+        if ($(this).attr("id") !== "ex6SliderVal") {
+            $(this).prev().css({
+                'display': 'block',
+                'padding': '15px 15px 5px'
+            });
+            $(this).css({
+                'padding-top': '35px',
+                'padding-bottom': '15px'
+            });
+        }
+    });
+    
+    $("input.style-input").on('focusout', function () {
+        if ($(this).val() == "") {
+            $(this).prev().css("display", "none");
+            $(this).css({
+                'padding-top': '20px',
+                'padding-bottom': '20px'
+            });
+        }else{
+            $("#btn-verify").removeAttr("disabled").removeAttr("style");
+        }
+    });
+
     $('#name-input, #email-input, #phone-input, #alt-phone-input, #file-upload').change( function() {
         if ( $('#name-input').val() != "" && $('#email-input').val() != "" && $('#phone-input').val() != "" && 
             $('#alt-phone-input').val() != "" && $('#file-upload').val() != ""){

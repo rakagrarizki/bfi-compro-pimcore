@@ -45,23 +45,23 @@ $this->extend('layout-credit.html.php');
                 <div class="step-content" id="stepper-csr-1">
                     <div class="form-wrapper">
                         <div class="input-text-group">
-                            <input name="scholarship[name]" id="name-input" class="style-input formAlphabet formName formRequired" type="text" onfocus="changeLabel(this.id)" onfocusout="deleteLabel(this.id)" required>
-                            <label id="name-label" class="input-label"><?= $this->translate('form-name') ?></label>
+                            <label id="name-label" class="input-label">NAMA LENGKAP</label>
+                            <input name="scholarship[name]" id="name-input" class="style-input formAlphabet formName formRequired" placeholder="<?= $this->translate('form-name') ?>" type="text" required>
                             <div class="error-wrap"></div>
                         </div>
                         <div class="input-text-group">
-                            <input name="scholarship[email]" id="email-input" class="style-input formEmail formRequired" type="email" onfocus="changeLabel(this.id)" onfocusout="deleteLabel(this.id)" required>
-                            <label id="email-label" class="input-label"><?= $this->translate('email-input') ?></label>
+                            <label id="email-label" class="input-label">EMAIL</label>
+                            <input name="scholarship[email]" id="email-input" class="style-input formEmail formRequired" placeholder="<?= $this->translate('email-input') ?>" type="email" required>
                             <div class="error-wrap"></div>
                         </div>
                         <div class="input-text-group">
-                            <input name="scholarship[phone]" id="phone-input" class="style-input formRequired formPhoneNumber" type="text" onfocus="changeLabel(this.id)" onfocusout="deleteLabel(this.id)" maxlength="13" required>
-                            <label id="phone-label" class="input-label"><?= $this->translate('input-phone') ?></label>
+                            <label id="phone-label" class="input-label">NOMOR HANDPHONE</label>
+                            <input name="scholarship[phone]" id="phone-input" class="style-input formRequired formPhoneNumber" placeholder="<?= $this->translate('input-phone') ?>" type="text" maxlength="13" required>
                             <div class="error-wrap"></div>
                         </div>
                         <div class="input-text-group">
-                            <input name="scholarship[phone2]" id="alt-phone-input" class="style-input formRequired formPhoneNumber" type="text" onfocus="changeLabel(this.id)" onfocusout="deleteLabel(this.id)" maxlength="13">
-                            <label id="alt-phone-label" class="input-label"><?= $this->translate('input-phone-alternatif') ?></label>
+                            <label id="alt-phone-label" class="input-label">NOMOR HANDPHONE ALTERNATIF</label>
+                            <input name="scholarship[phone2]" id="alt-phone-input" class="style-input formRequired formPhoneNumber" placeholder="<?= $this->translate('input-phone-alternatif') ?>" type="text" maxlength="13">
                             <div class="error-wrap"></div>
                         </div>
                         <div id="upload">
@@ -92,27 +92,28 @@ $this->extend('layout-credit.html.php');
                 <div class="step-content hide" id="stepper-csr-2">
                     <div class="form-wrapper">
                         <div class="input-text-group">
-                            <input name="scholarship[university]" id="univ-input" class="style-input formAlphabet formRequired" type="text" onfocus="changeLabelAcademic(this.id)" onfocusout="deleteLabelAcademic(this.id)" required>
-                            <label id="univ-label" class="input-label"><?= $this->translate('univ-name') ?></label>
+                            <label id="univ-label" class="input-label">UNIVERSITAS</label>
+                            <input name="scholarship[university]" id="univ-input" class="style-input formAlphabet formRequired" placeholder="<?= $this->translate('univ-name') ?>" type="text" required>
                             <div class="error-wrap"></div>
                         </div>
                         <div class="input-text-group">
-                            <input name="scholarship[nim]" id="nim-input" class="style-input formNumber formRequired" type="text" onfocus="changeLabelAcademic(this.id)" onfocusout="deleteLabelAcademic(this.id)" required>
-                            <label id="nim-label" class="input-label"><?= $this->translate('input-nim') ?></label>
+                            <label id="nim-label" class="input-label">NIM / NPM</label>
+                            <input name="scholarship[nim]" id="nim-input" class="style-input formNumber formRequired" placeholder="<?= $this->translate('input-nim') ?>" type="text" required>
                             <div class="error-wrap"></div>
                         </div>
                         <div class="input-text-group">
-                            <input name="scholarship[faculty]" id="fak-input" class="style-input formAlphabet formRequired" type="text" onfocus="changeLabelAcademic(this.id)" onfocusout="deleteLabelAcademic(this.id)" required>
-                            <label id="fak-label" class="input-label"><?= $this->translate('input-fakultas') ?></label>
+                            <label id="fak-label" class="input-label">FAKULTAS</label>
+                            <input name="scholarship[faculty]" id="fak-input" class="style-input formAlphabet formRequired" placeholder="<?= $this->translate('input-fakultas') ?>" type="text" required>
                             <div class="error-wrap"></div>
                         </div>
                         <div class="input-text-group">
-                            <input name="scholarship[prodi]" id="prodi-input" class="style-input formAlphabet formRequired" type="text" onfocus="changeLabelAcademic(this.id)" onfocusout="deleteLabelAcademic(this.id)">
-                            <label id="prodi-label" class="input-label"><?= $this->translate('input-prodi') ?></label>
+                            <label id="prodi-label" class="input-label">JURUSAN / PROGRAM STUDI</label>
+                            <input name="scholarship[prodi]" id="prodi-input" class="style-input formAlphabet formRequired" placeholder="<?= $this->translate('input-prodi') ?>" type="text">
                             <div class="error-wrap"></div>
                         </div>
                         <div class="input-text-group">
-                            <select class="semester style-input formRequired" name="scholarship[semester]" id="semester-input">
+                            <label id="semester-label" class="input-label">SEMESTER</label>
+                            <select class="semester style-input formRequired" name="scholarship[semester]" id="semester-input" data-placeholder="<?= $this->translate('choose-semester') ?>">
                                 <option></option>
                                 <option value="4"><?= $this->translate('label-semester') ?> 4</option>
                                 <option value="5"><?= $this->translate('label-semester') ?> 5</option>
@@ -120,7 +121,6 @@ $this->extend('layout-credit.html.php');
                                 <option value="7"><?= $this->translate('label-semester') ?> 7</option>
                                 <option value="8"><?= $this->translate('label-semester') ?> 8</option>
                             </select>
-                            <label id="semester-label" class="input-label"><?= $this->translate('choose-semester') ?></label>
                             <div class="error-wrap"></div>
                         </div>
                     </div>
