@@ -10,7 +10,7 @@
             <?php
             $lang = $this->getLocale();
             $i = 0;
-            foreach ($this->blog as $blog) {
+            foreach ($this->news as $news) {
                 if ($i == 0) { ?>
                     <div class="col-md-6 col-sm-12 col-xs-12 thumbnail-infor">
                         <div class="thumbnail-body--content">
@@ -20,18 +20,18 @@
                                     <div class="thumbnail-body--content">
                                         <div class="thumbnail-image">
                                         <?php } ?>
-                                        <img src="<?= $blog->getImage(); ?>">
+                                        <img src="<?= $news->getImage(); ?>">
                                         </div>
                                         <div class="thumbnail-infomation">
                                             <?php
-                                            $timestampDate = \Carbon\Carbon::parse($blog->getDate());
+                                            $timestampDate = \Carbon\Carbon::parse($news->getDate());
                                             $dateUnix = $timestampDate->timestamp;
                                             $date = date("D, d-M'Y", $dateUnix);
                                             ?>
-                                            <p><?= $blog->getBlogCategory()->getName(); ?></p>
-                                            <h3><a href="<?= $lang; ?>/blog/<?= $blog->getSlug(); ?>"><?= $blog->getTitle(); ?></a></h3>
-                                            <p class="date"><?= $blog->getDate(); ?></p>
-                                            <p class="view"><i class="fa fa-eye"></i> <?= $blog->getViews(); ?></p>
+                                            <p><?= $news->getCategory()->getName(); ?></p>
+                                            <h3><a href="/<?= $lang; ?>/news/<?= $news->getSlug(); ?>"><?= $news->getTitle(); ?></a></h3>
+                                            <p class="date"><?= $news->getDate(); ?></p>
+                                            <p class="view"><i class="fa fa-eye"></i> <?= $news->getViews(); ?></p>
                                         </div>
                                     </div>
                                 </div>

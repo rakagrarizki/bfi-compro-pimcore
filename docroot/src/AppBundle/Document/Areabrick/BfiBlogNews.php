@@ -7,15 +7,15 @@
  */
 
 namespace AppBundle\Document\Areabrick;
-use Pimcore\Model\DataObject\BlogArticle;
+use Pimcore\Model\DataObject\News;
 use Pimcore\Model\Document\Tag\Area\Info;
 
 class BfiBlogNews extends AbstractAreabrick
 {
     public function action(Info $info){
-        $blog = new BlogArticle\Listing();
-        $blog->setLimit(3);
+        $news = new News\Listing();
+        $news->setLimit(3);
 
-        $info->getView()->blog = $blog;
+        $info->getView()->news = $news;
     }
 }

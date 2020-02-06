@@ -159,7 +159,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                                 <div class="error-wrap"></div>
 
                             </div>
-                            <div><?= $this->translate('max-20-from-package-price') ?></div>
+                            <div><?= $this->translate('max-20-from-package-price'), $this->websiteConfig('valuePercentage'), $this->translate('max-20-from-package-price2') ?></div>
                         </div>
                     </div>
                     <div class="col-md-6 no-padding-mobile">
