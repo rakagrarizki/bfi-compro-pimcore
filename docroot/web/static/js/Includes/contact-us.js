@@ -93,7 +93,7 @@ $(document).ready(function(){
             parent.find(".error-wrap").html('<label id="img-error" class="error" for="img" style="display: inline-block;">' + errorMsg + '</label>');
         } 
     });
-
+    
     validateFormRequired($('#contact'))
 
     $.validator.addClassRules({
@@ -130,7 +130,7 @@ $(document).ready(function(){
             accept: "image/*",
             filesize: 500   //max size 1MB
         },
-    
+
         submitHandler: function (form) {
             form.submit();
         }
@@ -183,4 +183,50 @@ $(document).ready(function(){
             filesize : "Ukuran file harus kurang dari 500 Kb."
         });
     }
+
+    $( '#submitPersonal' ).click(function(){
+        var $captcha = $( '#g-recaptcha' ),
+            response = grecaptcha.getResponse();
+        
+        if (response.length === 0) {
+          $( '.msg-error').text( "reCAPTCHA wajib diisi" );
+          if( !$captcha.hasClass( "error" ) ){
+            $captcha.addClass( "error" );
+            return false;
+          }
+        } else {
+          $( '.msg-error' ).text('');
+          $captcha.removeClass( "error" );
+        }
+      })
+
+    //   var titlePDF = document.getElementById("upload-pdf-text");
+    //   var imagePDF = document.getElementById('preview-pdf-upload');
+    //   var buttonPDF = document.getElementById('upload-pdf-button');
+    //   var inputPDF = document.getElementById('file-pdf-upload');
+    //   var infoAreaPDF = document.getElementById('pdf-filename');
+    //   var showPDF = document.getElementById('show');
+  
+    //   inputPDF.addEventListener( 'change', uploadPDF );
+    //   titlePDF.setAttribute("style", "margin-bottom: -15px;");
+  
+    //   function uploadPDF(event) {
+    //       var input = event.srcElement;
+    //       var fileName = input.files[0].name;
+    //       var trimName, ext;
+    //       titlePDF.setAttribute("style", "margin-bottom: 10px;");
+    //       buttonPDF.textContent = "Ubah File";
+    //       showPDF.classList.add("image-wrapper");
+    //       imagePDF.src = "static/images/pdf_logo.png";
+    //       ext = fileName.split('.').pop();
+    //       if (fileName.length > 15){
+    //           trimName = fileName.substring(0 , 10) + ".." + ext;
+    //           infoAreaPDF.textContent = trimName;
+    //           return transkrip = trimName;
+    //       }
+    //       else{
+    //           infoAreaPDF.textContent = fileName;
+    //           return transkrip = fileName;
+    //       }
+    //   }
 });
