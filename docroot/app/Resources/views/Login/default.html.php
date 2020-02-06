@@ -21,8 +21,8 @@ $this->headScript()->offsetSetFile(100, '/static/js/Includes/login.js');
     <form action="" id="login-form">
         <div class="input-login">
             <div class="input-text-group">
-                <input id="phone-input" class="style-input" type="number" onfocus="changeLabel(this.id)" onfocusout="deleteLabel(this.id)" onkeydown="return isNumberKey(event);" required>
-                <label id="phone-label" class="input-label"><?= $this->translate('input-phone') ?></label>
+                <label id="phone-label" class="input-label">NOMOR HANDPHONE</label>
+                <input id="phone-input" class="style-input" type="number" placeholder=<?= $this->translate('input-phone') ?> onkeydown="return isNumberKey(event);" required>
             </div>
             <label class="checkbox-wrapper"><?= $this->translate('remember-me'); ?><input type="checkbox" checked="checked">
                 <span class="checkmark"></span>

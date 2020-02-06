@@ -12,6 +12,16 @@ function insertData(){
 
     var data_transkrip = document.getElementById("transkrip-peserta");
 
+    var name = document.getElementById("name-input").value;
+    var email = document.getElementById("email-input").value;
+    var phone = document.getElementById("phone-input").value;
+
+    var univ = document.getElementById("univ-input").value;
+    var nim = document.getElementById("nim-input" ).value;
+    var fak = document.getElementById("fak-input").value;
+    var prodi = document.getElementById("prodi-input").value;
+
+
     // Data Pemohon //
     data_name.textContent = ": "+name;
     data_email.textContent = ": "+email;

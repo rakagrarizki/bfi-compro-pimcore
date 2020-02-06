@@ -170,20 +170,20 @@ $this->extend('layout.html.php');
             <form action="">
                 <div class="form-wrapper">
                     <div class="input-text-group">
-                        <input id="name-input" class="style-input" type="text" onfocus="changeLabel(this.id)" onfocusout="deleteLabel(this.id)" required>
-                        <label id="name-label" class="input-label"><?= $this->translate('form-name'); ?></label>
+                        <label id="name-label" class="input-label">NAMA LENGKAP</label>
+                        <input id="name-input" class="style-input" type="text" placeholder="<?= $this->translate('form-name'); ?>" required>
                     </div>
                     <div class="input-text-group">
-                        <input id="email-input" class="style-input" type="email" onfocus="changeLabel(this.id)" onfocusout="deleteLabel(this.id)" required>
-                        <label id="email-label" class="input-label"><?= $this->translate('email'); ?></label>
+                        <label id="email-label" class="input-label">EMAIL</label>
+                        <input id="email-input" class="style-input" type="email" placeholder="<?= $this->translate('email'); ?>" required>
                     </div>
                     <div class="input-text-group">
-                        <input id="phone-input" class="style-input" type="number" onfocus="changeLabel(this.id)" onfocusout="deleteLabel(this.id)" required>
-                        <label id="phone-label" class="input-label"><?= $this->translate('form-hp'); ?></label>
+                        <label id="phone-label" class="input-label">NOMOR HANDPHONE</label>
+                        <input id="phone-input" class="style-input" type="number" placeholder="<?= $this->translate('form-hp'); ?>" required>
                     </div>
                     <div class="input-text-group">
-                        <input id="ktp-input" class="style-input" type="number" onfocus="changeLabel(this.id)" onfocusout="deleteLabel(this.id)">
-                        <label id="ktp-label" class="input-label"><?= $this->translate('label-ktp'); ?></label>
+                        <label id="ktp-label" class="input-label">NOMOR KTP</label>
+                        <input id="ktp-input" class="style-input" type="number" placeholder="<?= $this->translate('label-ktp'); ?>">
                     </div>
                     <div id="upload-ktp">
                         <h5 id="upload-text"><?= $this->translate('labelNoktp'); ?></h5>
@@ -193,7 +193,7 @@ $this->extend('layout.html.php');
                                 <button id="upload-button" class="btn-upload">
                                     <?= $this->translate('choose-file') ?>
                                 </button>
-                                <input id="file-upload" class="hide-input" type="file" name="myfile">
+                                <input id="file-upload" class="hide-input" accept="image/*" type="file" name="myfile">
                             </div>
                             <span id="file-upload-filename"></span>
                         </div>

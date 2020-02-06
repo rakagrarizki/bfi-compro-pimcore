@@ -1,27 +1,64 @@
-var phone_label_element = document.getElementById("phone-label");
-var default_phone_label = phone_label_element.textContent;
+// var phone_label_element = document.getElementById("phone-label");
+// var default_phone_label = phone_label_element.textContent;
 
-function changeLabel(ele_id) {
-    if(ele_id == "phone-input"){
-        phone_label_element.textContent = "NOMOR HANDPHONE";
-    }
-}
+// function changeLabel(ele_id) {
+//     if(ele_id == "phone-input"){
+//         phone_label_element.textContent = "NOMOR HANDPHONE";
+//     }
+// }
 
-function deleteLabel(ele_id) {
-    if (ele_id == "phone-input" && document.getElementById(ele_id).value.length > 0) {
-        phone_label_element.classList.add("exist");
-        document.getElementById(ele_id).classList.add("exist-input");
-        $("#btn-login").removeAttr("disabled").removeAttr("style");
-    }
-    else {
-        if(ele_id == "phone-input"){
-            phone_label_element.classList.remove("exist");
-            phone_label_element.textContent = default_phone_label;
-        }
-    }
-}
+// function deleteLabel(ele_id) {
+//     if (ele_id == "phone-input" && document.getElementById(ele_id).value.length > 0) {
+//         phone_label_element.classList.add("exist");
+//         document.getElementById(ele_id).classList.add("exist-input");
+//         $("#btn-login").removeAttr("disabled").removeAttr("style");
+//     }
+//     else {
+//         if(ele_id == "phone-input"){
+//             phone_label_element.classList.remove("exist");
+//             phone_label_element.textContent = default_phone_label;
+//         }
+//     }
+// }
 
 $(document).ready(function(){
+    if($('input.style-input').val() != ''){
+        $('input.style-input').prev().css({
+            'display': 'block',
+            'padding': '15px 15px 5px'
+        });
+        $('input.style-input').css({
+            'padding-top': '35px',
+            'padding-bottom': '15px'
+        });
+        $("#btn-login").removeAttr("disabled").removeAttr("style");
+    }
+
+    $("input.style-input").on('focus', function () {
+        if ($(this).attr("id") !== "ex6SliderVal") {
+            $(this).prev().css({
+                'display': 'block',
+                'padding': '15px 15px 5px'
+            });
+            $(this).css({
+            'padding-top': '35px',
+            'padding-bottom': '15px'
+            });
+        }
+    });
+    
+    $("input.style-input").on('focusout', function () {
+        if ($(this).val() == "") {
+            $(this).prev().css("display", "none");
+            $(this).css({
+                'padding-top': '20px',
+                'padding-bottom': '20px'
+            });
+        }else{
+            $("#btn-login").removeAttr("disabled").removeAttr("style");
+        }
+    });
+
     $('#otp-form').find('input').each(function() {
         $(this).attr('maxlength', 1);
         $(this).on('keyup', function(e) {

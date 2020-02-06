@@ -26,7 +26,8 @@
         buttonText: "",
         changeMonth: true,
         changeYear: true,
-        dateFormat: 'dd/mm/yy'
+        dateFormat: 'dd/mm/yy',
+        yearRange: "-56:+0"
       });
     }
 
