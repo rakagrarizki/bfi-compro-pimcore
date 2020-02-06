@@ -258,6 +258,8 @@
     jangka_waktu: 0,
     installment: 0
   }
+  
+  var kecamatanForCarYear;
 
   $("#herobanner").slick({
     slideToShow: 1,
@@ -3296,6 +3298,9 @@
     var id = this.value;
     var params_getSubdistrict = { "district_id": id }
 
+    // save and send the district id to get-car-year / get-motorcycle-year
+    kecamatanForCarYear = id;
+
     $.ajax({
       type: 'POST',
       // url: '/service/kelurahan/listJson?id=' + id,
@@ -3930,7 +3935,8 @@
 
     var _url = '';
     var _data = {
-      model_id: model_attr
+      model_id: model_attr,
+      district_id: kecamatanForCarYear
     }
 
     // console.log(brand_attr, $(this).val())
