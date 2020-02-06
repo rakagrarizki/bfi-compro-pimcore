@@ -1,11 +1,11 @@
-var univ_label_element = document.getElementById("univ-label");
-var nim_label_element = document.getElementById("nim-label");
-var fak_label_element = document.getElementById("fak-label");
-var prodi_label_element = document.getElementById("prodi-label");
-var default_univ_label = univ_label_element.textContent;
-var default_nim_label = nim_label_element.textContent;
-var default_fak_label = fak_label_element.textContent;
-var default_prodi_label = prodi_label_element.textContent;
+// var univ_label_element = document.getElementById("univ-label");
+// var nim_label_element = document.getElementById("nim-label");
+// var fak_label_element = document.getElementById("fak-label");
+// var prodi_label_element = document.getElementById("prodi-label");
+// var default_univ_label = univ_label_element.textContent;
+// var default_nim_label = nim_label_element.textContent;
+// var default_fak_label = fak_label_element.textContent;
+// var default_prodi_label = prodi_label_element.textContent;
 
 var semester_count = 0;
 var univ,nim,fak,prodi;
@@ -14,10 +14,17 @@ var univ,nim,fak,prodi;
 $(document).ready(function() {
     var semester_label_element = document.getElementById("semester-label");
     var default_semester_label = semester_label_element.textContent;
+    var lang = document.documentElement.lang
+
+    if (lang == 'id'){
+        var placeholderText = 'Pilih Semester' 
+    }else{
+        var placeholderText = "Choose Semester"
+    }
 
     $('.semester').select2({
         minimumResultsForSearch: Infinity,
-        placeholder: "",
+        placeholder: placeholderText,
         allowClear: true
     });
     $('.semester').on('select2:open', function (e) {
@@ -40,58 +47,58 @@ $(document).ready(function() {
     });
 });
 
-function changeLabelAcademic(ele_id) {
-    if (ele_id == "univ-input"){
-        univ_label_element.textContent = "UNIVERSITAS";
-    }
-    else if(ele_id == "nim-input"){
-        nim_label_element.textContent = "NIM / NPM";
-    }
-    else if(ele_id == "fak-input"){
-        fak_label_element.textContent = "FAKULTAS";
-    }
-    else if(ele_id == "prodi-input"){
-        prodi_label_element.textContent = "JURUSAN / PROGRAM STUDI";
-    }
-}
+// function changeLabelAcademic(ele_id) {
+//     if (ele_id == "univ-input"){
+//         univ_label_element.textContent = "UNIVERSITAS";
+//     }
+//     else if(ele_id == "nim-input"){
+//         nim_label_element.textContent = "NIM / NPM";
+//     }
+//     else if(ele_id == "fak-input"){
+//         fak_label_element.textContent = "FAKULTAS";
+//     }
+//     else if(ele_id == "prodi-input"){
+//         prodi_label_element.textContent = "JURUSAN / PROGRAM STUDI";
+//     }
+// }
 
-function deleteLabelAcademic(ele_id) {
-    if (ele_id == "univ-input" && document.getElementById(ele_id).value.length > 0){
-        univ_label_element.classList.add("exist");
-        document.getElementById(ele_id).classList.add("exist-input");
-        return univ = document.getElementById(ele_id).value;
-    }
-    else if (ele_id == "nim-input" && document.getElementById(ele_id).value.length > 0) {
-        nim_label_element.classList.add("exist");
-        document.getElementById(ele_id).classList.add("exist-input");
-        return nim = document.getElementById(ele_id).value;
-    }
-    else if (ele_id == "fak-input" && document.getElementById(ele_id).value.length > 0) {
-        fak_label_element.classList.add("exist");
-        document.getElementById(ele_id).classList.add("exist-input");
-        return fak = document.getElementById(ele_id).value;
-    }
-    else if (ele_id == "prodi-input" && document.getElementById(ele_id).value.length > 0) {
-        prodi_label_element.classList.add("exist");
-        document.getElementById(ele_id).classList.add("exist-input");
-        return prodi = document.getElementById(ele_id).value;
-    }
-    else {
-        if (ele_id == "univ-input"){
-            univ_label_element.classList.remove("exist");
-            univ_label_element.textContent = default_univ_label;
-        }
-        else if(ele_id == "nim-input"){
-            nim_label_element.classList.remove("exist");
-            nim_label_element.textContent = default_nim_label;
-        }
-        else if(ele_id == "fak-input"){
-            fak_label_element.classList.remove("exist");
-            fak_label_element.textContent = default_fak_label;
-        }
-        else if(ele_id == "prodi-input"){
-            prodi_label_element.classList.remove("exist");
-            prodi_label_element.textContent = default_prodi_label;
-        }
-    }
-}
+// function deleteLabelAcademic(ele_id) {
+//     if (ele_id == "univ-input" && document.getElementById(ele_id).value.length > 0){
+//         univ_label_element.classList.add("exist");
+//         document.getElementById(ele_id).classList.add("exist-input");
+//         return univ = document.getElementById(ele_id).value;
+//     }
+//     else if (ele_id == "nim-input" && document.getElementById(ele_id).value.length > 0) {
+//         nim_label_element.classList.add("exist");
+//         document.getElementById(ele_id).classList.add("exist-input");
+//         return nim = document.getElementById(ele_id).value;
+//     }
+//     else if (ele_id == "fak-input" && document.getElementById(ele_id).value.length > 0) {
+//         fak_label_element.classList.add("exist");
+//         document.getElementById(ele_id).classList.add("exist-input");
+//         return fak = document.getElementById(ele_id).value;
+//     }
+//     else if (ele_id == "prodi-input" && document.getElementById(ele_id).value.length > 0) {
+//         prodi_label_element.classList.add("exist");
+//         document.getElementById(ele_id).classList.add("exist-input");
+//         return prodi = document.getElementById(ele_id).value;
+//     }
+//     else {
+//         if (ele_id == "univ-input"){
+//             univ_label_element.classList.remove("exist");
+//             univ_label_element.textContent = default_univ_label;
+//         }
+//         else if(ele_id == "nim-input"){
+//             nim_label_element.classList.remove("exist");
+//             nim_label_element.textContent = default_nim_label;
+//         }
+//         else if(ele_id == "fak-input"){
+//             fak_label_element.classList.remove("exist");
+//             fak_label_element.textContent = default_fak_label;
+//         }
+//         else if(ele_id == "prodi-input"){
+//             prodi_label_element.classList.remove("exist");
+//             prodi_label_element.textContent = default_prodi_label;
+//         }
+//     }
+// }

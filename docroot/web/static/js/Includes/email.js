@@ -1,23 +1,23 @@
-var email_label_element = document.getElementById("email-label");
-var default_email_label = email_label_element.textContent;
+// var email_label_element = document.getElementById("email-label");
+// var default_email_label = email_label_element.textContent;
 
-function changeLabel(ele_id){
-    if(ele_id == "email-input"){
-        email_label_element.textContent = "EMAIL";
-    }
-}
+// function changeLabel(ele_id){
+//     if(ele_id == "email-input"){
+//         email_label_element.textContent = "EMAIL";
+//     }
+// }
 
-function deleteLabel(ele_id){
-    if (ele_id == "email-input" && document.getElementById(ele_id).value.length > 0) {
-        email_label_element.classList.add("exist");
-        document.getElementById(ele_id).classList.add("exist-input");
-        $("#btn-verify").removeAttr("disabled").removeAttr("style");
-    }
-    else {
-        email_label_element.classList.remove("exist");
-        email_label_element.textContent = default_email_label;
-    }
-}
+// function deleteLabel(ele_id){
+//     if (ele_id == "email-input" && document.getElementById(ele_id).value.length > 0) {
+//         email_label_element.classList.add("exist");
+//         document.getElementById(ele_id).classList.add("exist-input");
+//         $("#btn-verify").removeAttr("disabled").removeAttr("style");
+//     }
+//     else {
+//         email_label_element.classList.remove("exist");
+//         email_label_element.textContent = default_email_label;
+//     }
+// }
 
 function verify(){
     var token = window.localStorage.getItem("token");
@@ -56,6 +56,7 @@ function dataCustomer(token){
         url: '/user/data-customer',
         crossDomain: true,
         dataType: 'json',
+        async: false,
         headers: {'sessionId': token},
 
         error: function(data) {
@@ -70,7 +71,7 @@ function dataCustomer(token){
             if(dataObj.success === true) {
                 var data = dataObj.result.data;
                 console.log(data);
-                $("#email-input").focus();
+                // $("#email-input").focus();
                 $('#email-input').val(data.email);
             }
         }
@@ -85,4 +86,41 @@ function back(){
 $(document).ready(function(){
     var token = window.localStorage.getItem("token");
     dataCustomer(token);
+
+    if($('input#email-input').val() != ''){
+        $('input#email-input').prev().css({
+            'display': 'block',
+            'padding': '15px 15px 5px'
+        });
+        $('input#email-input').css({
+            'padding-top': '35px',
+            'padding-bottom': '15px'
+        });
+        $("#btn-verify").removeAttr("disabled").removeAttr("style");
+    }
+
+    $("input#email-input").on('focus', function () {
+        if ($(this).attr("id") !== "ex6SliderVal") {
+            $(this).prev().css({
+                'display': 'block',
+                'padding': '15px 15px 5px'
+            });
+            $(this).css({
+                'padding-top': '35px',
+                'padding-bottom': '15px'
+            });
+        }
+    });
+    
+    $("input#email-input").on('focusout', function () {
+        if ($(this).val() == "") {
+            $(this).prev().css("display", "none");
+            $(this).css({
+                'padding-top': '20px',
+                'padding-bottom': '20px'
+            });
+        }else{
+            $("#btn-verify").removeAttr("disabled").removeAttr("style");
+        }
+    });
 });

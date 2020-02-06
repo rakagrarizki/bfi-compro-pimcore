@@ -1,73 +1,73 @@
-var name_label_element = document.getElementById("name-label");
-var email_label_element = document.getElementById("email-label");
-var phone_label_element = document.getElementById("phone-label");
-var ktp_label_element = document.getElementById("ktp-label");
+// var name_label_element = document.getElementById("name-label");
+// var email_label_element = document.getElementById("email-label");
+// var phone_label_element = document.getElementById("phone-label");
+// var ktp_label_element = document.getElementById("ktp-label");
 
-var default_name_label = name_label_element.textContent;
-var default_email_label = email_label_element.textContent;
-var default_phone_label = phone_label_element.textContent;
-var default_ktp_label = ktp_label_element.textContent;
+// var default_name_label = name_label_element.textContent;
+// var default_email_label = email_label_element.textContent;
+// var default_phone_label = phone_label_element.textContent;
+// var default_ktp_label = ktp_label_element.textContent;
 
-if ($("li").hasClass("active")){
-    $(".active #poin1,#poin2").html("<i class='fa fa-check'></i>");
-    $(".active .tool-tip").addClass("hide");
-}
+// if ($("li").hasClass("active")){
+//     $(".active #poin1,#poin2").html("<i class='fa fa-check'></i>");
+//     $(".active .tool-tip").addClass("hide");
+// }
 
 
-function changeLabel(ele_id) {
-    if (ele_id == "name-input"){
-        name_label_element.textContent = "NAMA LENGKAP";
-    }
-    else if(ele_id == "email-input"){
-        email_label_element.textContent = "EMAIL";
-    }
-    else if(ele_id == "phone-input"){
-        phone_label_element.textContent = "NOMOR HANDPHONE";
-    }
-    else if(ele_id == "ktp-input"){
-        ktp_label_element.textContent = "NOMOR KTP";
-    }
-}
+// function changeLabel(ele_id) {
+//     if (ele_id == "name-input"){
+//         name_label_element.textContent = "NAMA LENGKAP";
+//     }
+//     else if(ele_id == "email-input"){
+//         email_label_element.textContent = "EMAIL";
+//     }
+//     else if(ele_id == "phone-input"){
+//         phone_label_element.textContent = "NOMOR HANDPHONE";
+//     }
+//     else if(ele_id == "ktp-input"){
+//         ktp_label_element.textContent = "NOMOR KTP";
+//     }
+// }
 
-function deleteLabel(ele_id) {
-    if (ele_id == "name-input" && document.getElementById(ele_id).value.length > 0){
-        name_label_element.classList.add("exist");
-        document.getElementById(ele_id).classList.add("exist-input");
-        return name = document.getElementById(ele_id).value;
-    }
-    else if (ele_id == "email-input" && document.getElementById(ele_id).value.length > 0) {
-        email_label_element.classList.add("exist");
-        document.getElementById(ele_id).classList.add("exist-input");
-        return email = document.getElementById(ele_id).value;
-    }
-    else if (ele_id == "phone-input" && document.getElementById(ele_id).value.length > 0) {
-        phone_label_element.classList.add("exist");
-        document.getElementById(ele_id).classList.add("exist-input");
-        return phone = document.getElementById(ele_id).value;
-    }
-    else if (ele_id == "ktp-input" && document.getElementById(ele_id).value.length > 0) {
-        ktp_label_element.classList.add("exist");
-        document.getElementById(ele_id).classList.add("exist-input");
-    }
-    else {
-        if (ele_id == "name-input"){
-            name_label_element.classList.remove("exist");
-            name_label_element.textContent = default_name_label;
-        }
-        else if(ele_id == "email-input"){
-            email_label_element.classList.remove("exist");
-            email_label_element.textContent = default_email_label;
-        }
-        else if(ele_id == "phone-input"){
-            phone_label_element.classList.remove("exist");
-            phone_label_element.textContent = default_phone_label;
-        }
-        else if(ele_id == "ktp-input"){
-            ktp_label_element.classList.remove("exist");
-            ktp_label_element.textContent = default_ktp_label;
-        }
-    }
-}
+// function deleteLabel(ele_id) {
+//     if (ele_id == "name-input" && document.getElementById(ele_id).value.length > 0){
+//         name_label_element.classList.add("exist");
+//         document.getElementById(ele_id).classList.add("exist-input");
+//         return name = document.getElementById(ele_id).value;
+//     }
+//     else if (ele_id == "email-input" && document.getElementById(ele_id).value.length > 0) {
+//         email_label_element.classList.add("exist");
+//         document.getElementById(ele_id).classList.add("exist-input");
+//         return email = document.getElementById(ele_id).value;
+//     }
+//     else if (ele_id == "phone-input" && document.getElementById(ele_id).value.length > 0) {
+//         phone_label_element.classList.add("exist");
+//         document.getElementById(ele_id).classList.add("exist-input");
+//         return phone = document.getElementById(ele_id).value;
+//     }
+//     else if (ele_id == "ktp-input" && document.getElementById(ele_id).value.length > 0) {
+//         ktp_label_element.classList.add("exist");
+//         document.getElementById(ele_id).classList.add("exist-input");
+//     }
+//     else {
+//         if (ele_id == "name-input"){
+//             name_label_element.classList.remove("exist");
+//             name_label_element.textContent = default_name_label;
+//         }
+//         else if(ele_id == "email-input"){
+//             email_label_element.classList.remove("exist");
+//             email_label_element.textContent = default_email_label;
+//         }
+//         else if(ele_id == "phone-input"){
+//             phone_label_element.classList.remove("exist");
+//             phone_label_element.textContent = default_phone_label;
+//         }
+//         else if(ele_id == "ktp-input"){
+//             ktp_label_element.classList.remove("exist");
+//             ktp_label_element.textContent = default_ktp_label;
+//         }
+//     }
+// }
 
 // preview uploaded image //
 var title = document.getElementById("upload-text");
@@ -82,8 +82,14 @@ title.setAttribute("style", "margin-bottom: -15px;");
 function showFileName( event ) {    
     var input = event.srcElement;
     var fileName = input.files[0].name;
+    var lang = document.documentElement.lang
+
     title.setAttribute("style", "margin-bottom: 10px;");
-    button.textContent = "Ubah File";
+    if(lang == 'id'){
+        button.textContent = "Ubah File";
+    }else{
+        button.textContent = "Change File";
+    }
     image.src = URL.createObjectURL(event.target.files[0]);
     infoArea.textContent = fileName;
     return photo = fileName;
@@ -99,9 +105,75 @@ $(document).ready(function(){
     applicationStep(token);
     checkAssignmentList(token);
     contractStatusList(lang, token);
+
+    if($("#name-input").val() != ""){
+        $('#name-input').prev().css({
+            'display': 'block',
+            'padding': '15px 15px 5px'
+        });
+        $('#name-input').css({
+            'padding-top': '35px',
+            'padding-bottom': '15px'
+        });
+    }
+
+    if($("#email-input").val() != ""){
+        $('#email-input').prev().css({
+            'display': 'block',
+            'padding': '15px 15px 5px'
+        });
+        $('#email-input').css({
+            'padding-top': '35px',
+            'padding-bottom': '15px'
+        });
+    }
+
+    if($("#phone-input").val() != ""){
+        $('#phone-input').prev().css({
+            'display': 'block',
+            'padding': '15px 15px 5px'
+        });
+        $('#phone-input').css({
+            'padding-top': '35px',
+            'padding-bottom': '15px'
+        });
+    }
+
+    if( $("#ktp-input").val() != ""){
+        $('#ktp-input').prev().css({
+            'display': 'block',
+            'padding': '15px 15px 5px'
+        });
+        $('#ktp-input').css({
+            'padding-top': '35px',
+            'padding-bottom': '15px'
+        });
+    }
+
+    $("input.style-input").on('focus', function () {
+        if ($(this).attr("id") !== "ex6SliderVal") {
+            $(this).prev().css({
+                'display': 'block',
+                'padding': '15px 15px 5px'
+            });
+            $(this).css({
+                'padding-top': '35px',
+                'padding-bottom': '15px'
+            });
+        }
+    });
+    
+    $("input.style-input").on('focusout', function () {
+        if ($(this).val() == "") {
+            $(this).prev().css("display", "none");
+            $(this).css({
+                'padding-top': '20px',
+                'padding-bottom': '20px'
+            });
+        }
+    });
     
     $('#btn-submit').click(function(event) { 
-
         var formData = {
             'name' : $('#name-input').val(),
             'email' : $('#email-input').val(),
@@ -190,6 +262,7 @@ function dataCustomer(token){
         url: '/user/data-customer',
         crossDomain: true,
         dataType: 'json',
+        async: false,
         headers: {'sessionId': token},
 
         error: function(data) {
@@ -204,10 +277,6 @@ function dataCustomer(token){
             if(dataObj.success === true) {
                 var data = dataObj.result.data;
                 console.log(data);
-                // $("#name-input").focus();
-                $("#email-input").focus();
-                // $("#phone-input").focus();
-
                 $('#name-input').val(data.full_name);
                 $('#email-input').val(data.email);
                 $('#phone-input').val(data.phone_number);

@@ -8,8 +8,8 @@ function loopSemester() {
         asd.setAttribute("class", "ipk-wrapper");
         asd.innerHTML += (
             "<div class='input-text-group'>" +
-                "<input id='name-input' class='style-input exist-input' type='text' value="+i+" disabled>" +
-                "<label id='name-label' class='input-label exist'>SEMESTER</label>" +
+                "<label id='name-label' class='input-label exist' style='display: block;'>SEMESTER</label>" +
+                "<input id='name-input' class='style-input exist-input' type='text' value="+i+" style='padding-left: 18px;' disabled>" +
             "</div>" +
             "<div class='input-ipk-wrapper'>" +
                 "<p>IPK</p>" +
@@ -35,8 +35,14 @@ function uploadPDF(event) {
     var input = event.srcElement;
     var fileName = input.files[0].name;
     var trimName, ext;
+    var lang = document.documentElement.lang
+
     titlePDF.setAttribute("style", "margin-bottom: 10px;");
-    buttonPDF.textContent = "Ubah File";
+    if(lang == 'id'){
+        buttonPDF.textContent = "Ubah File";
+    }else{
+        buttonPDF.textContent = "Change File";
+    }
     showPDF.classList.add("image-wrapper");
     imagePDF.src = "static/images/pdf_logo.png";
     ext = fileName.split('.').pop();
