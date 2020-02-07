@@ -38,7 +38,7 @@ function uploadPDF(event) {
     titlePDF.setAttribute("style", "margin-bottom: 10px;");
     buttonPDF.textContent = "Ubah File";
     showPDF.classList.add("image-wrapper");
-    imagePDF.src = "static/images/pdf_logo.png";
+    imagePDF.src = "../images/pdf_logo.png";
     ext = fileName.split('.').pop();
     if (fileName.length > 15){
         trimName = fileName.substring(0 , 10) + ".." + ext;
@@ -50,6 +50,7 @@ function uploadPDF(event) {
         return transkrip = fileName;
     }
 }
+
 
 function getIpkValue(id_smt){
     ipk[id_smt] = document.getElementById(id_smt).value;

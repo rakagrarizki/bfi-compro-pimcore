@@ -17,10 +17,10 @@ $urlTwitter = " https://twitter.com/share?text=$titleshare&url=$fixedurl&wrap_li
                 <span>Share :</span>
             </div>
             <div class="icon-share">
-                <a href="<?= $urlFacebook;?>" class="share-fb"><span class="fa fa-facebook"></span></a>
+                <a href="<?= $urlFacebook;?>" class="share-fb" target="_blank"><span class="fa fa-facebook"></span></a>
             </div>
             <div class="icon-share" >
-                <a href="<?= $urlTwitter;?>" class="share-tw"><span class="fa fa-twitter"></span></a>
+                <a href="<?= $urlTwitter;?>" class="share-tw" target="_blank"><span class="fa fa-twitter"></span></a>
             </div>
             <div class="icon-share">
                 <a class="share-cp" id="copy" onclick="copyURL('<?= $fixedurl ?>')"><span class="fa fa-chain"></span></a>

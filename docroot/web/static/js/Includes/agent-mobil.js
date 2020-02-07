@@ -513,7 +513,10 @@ form.steps({
     }
   },
   onFinished: function (event, currentIndex) {
-    alert("Submitted!");
+    $("#otp-success").show();
+    $("#step-summary").hide();
+    $(".wizard .steps, .wizard .actions").hide();
+    // alert("Submitted!");
   }
 });
 

@@ -259,6 +259,8 @@
     jangka_waktu: 0,
     installment: 0
   }
+  
+  var kecamatanForCarYear;
 
   $("#herobanner").slick({
     slideToShow: 1,
@@ -641,6 +643,11 @@
       minDpMachine: 30
     },
 
+    maxPocketMoney: {
+      required: true,
+      maxPocket: 20
+    },
+
     submitHandler: function (form) {
       form.submit();
     }
@@ -663,6 +670,15 @@
     return (minPayment <= thisval ? true : false);
     // return false
   }, "Minimal 30% from payment.");
+
+  jQuery.validator.addMethod("maxPocket", function (value, element, param) {
+    var thisval = parseInt(value.replace(/\./g, ""));
+    var payment = parseInt($("#ex7SliderVal").val().replace(/\./g, ""));
+    var maxPocketMoney = payment * (param / 100);
+    console.log("Pocket ", payment, thisval, maxPocketMoney);
+    return (maxPocketMoney > thisval ? true : false);
+    // return false
+  }, "Maximum allowance is 20% of payment.");
 
   jQuery.validator.addMethod("acceptAlphabet", function (value, element, param) {
     //console.log(value.match(new RegExp("." + param + "$")));
@@ -723,6 +739,7 @@
       min: jQuery.validator.format("Silakan masukkan nilai yang lebih besar dari atau sama dengan {0}."),
       minDp : "DP Minimal 10% dari pembayaran.",
       minDpMachine : "DP Minimal 30% dari pembayaran.",
+      maxPocketMoney : "Uang saku maksimal adalah 20% dari pembayaran.",
       acceptAlphabet: "Masukkan hanya berupa huruf alfabet.",
       minPrice : "Silakan masukkan harga lebih dari harga minimum.",
       emailCust : "Silakan isi alamat email yang valid.",
@@ -3297,6 +3314,9 @@
     var id = this.value;
     var params_getSubdistrict = { "district_id": id }
 
+    // save and send the district id to get-car-year / get-motorcycle-year
+    kecamatanForCarYear = id;
+
     $.ajax({
       type: 'POST',
       // url: '/service/kelurahan/listJson?id=' + id,
@@ -3931,7 +3951,8 @@
 
     var _url = '';
     var _data = {
-      model_id: model_attr
+      model_id: model_attr,
+      district_id: kecamatanForCarYear
     }
 
     // console.log(brand_attr, $(this).val())

@@ -154,12 +154,10 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                             <label for="jml-biaya"><?= $this->translate('pocket-money') ?></label>
                             <div class="input-group inputform">
                                 <span class="input-group-addon" id="basic-addon1">Rp</span>
-                                <input type="tel" pattern="\d*" id="pocket_money" class="form-control formRequired formatRibuan c-input-trans" style="text-align: right;" aria-describedby="basic-addon1">
-
-                                <div class="error-wrap"></div>
-
+                                <input type="tel" pattern="\d*" id="pocket_money" class="form-control formRequired formatRibuan maxPocketMoney c-input-trans" style="text-align: right;" aria-describedby="basic-addon1">
                             </div>
-                            <div><?= $this->translate('max-20-from-package-price') ?></div>
+                            <div><?= $this->translate('max-20-from-package-price'), $this->websiteConfig('valuePercentage'), $this->translate('max-20-from-package-price2') ?></div>
+                            <div class="error-wrap"></div>
                         </div>
                     </div>
                     <div class="col-md-6 no-padding-mobile">

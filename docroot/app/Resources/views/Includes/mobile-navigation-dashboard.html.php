@@ -4,6 +4,7 @@
 use Pimcore\Model\Document;
 
 ?>
+<?php $name = $_COOKIE["customer"]; ?>
 <div class="top-nav--mobille hidden-md">
     <div class="container">
         <div class="row top-nav">
@@ -15,7 +16,7 @@ use Pimcore\Model\Document;
             <div class="col-xs-6 text-right">
                 <div class="link-log">
                     <div class="user">
-                        <a href="/<?= $this->getLocale() ?>/user/dashboard" class="full_name icon"><?= $name; ?></a> | <a href="#" class="logout" onclick="return logout('<?= $this->getLocale() ?>');"><?= $this->translate("logout") ?></a>
+                        <a href="/<?= $this->getLocale() ?>/user/dashboard" class="full_name"><?= $name; ?></a> | <a href="#" class="logout" onclick="return logout('<?= $this->getLocale() ?>');"><?= $this->translate("logout") ?></a>
                     </div>
                 </div>
             </div>

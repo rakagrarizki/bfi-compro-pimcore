@@ -122,7 +122,7 @@ function getListCategory() {
         $('#category-1').on('hover', function () {
           $('.select2-selection__rendered').removeAttr('title');
       });
-        changeSelected($('#category-1')[0].value);
+        changeSelected($('#category-1')[0]);
       }
     }
   })
