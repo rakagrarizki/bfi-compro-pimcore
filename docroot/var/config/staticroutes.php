@@ -2322,5 +2322,23 @@ return [
         "legacy" => FALSE,
         "creationDate" => 1580094801,
         "modificationDate" => 1580095068
+    ],
+    134 => [
+        "id" => 134,
+        "name" => "get machinery price",
+        "pattern" => "/\\/credit\\/get-machinery-price/",
+        "reverse" => "/credit/get-machinery-price",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getMachineryPrice",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1581048378,
+        "modificationDate" => 1581048436
     ]
 ];

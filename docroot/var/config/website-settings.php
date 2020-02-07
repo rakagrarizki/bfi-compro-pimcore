@@ -1460,5 +1460,15 @@ return [
         "siteId" => 0,
         "creationDate" => 0,
         "modificationDate" => 1580094769
+    ],
+    153 => [
+        "id" => 153,
+        "name" => "URL_GET_MACHINERY_PRICING",
+        "language" => "",
+        "type" => "text",
+        "data" => "/get_machinery_pricing",
+        "siteId" => 0,
+        "creationDate" => 0,
+        "modificationDate" => 1581048339
     ]
 ];
