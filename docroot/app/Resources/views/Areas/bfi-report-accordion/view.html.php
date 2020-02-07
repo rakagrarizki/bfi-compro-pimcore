@@ -53,21 +53,11 @@ $randId = rand(10,100);
                                                 <li>
                                                     <?= $data->getFileName();?>
                                                 </li>
-<<<<<<< HEAD
                                                 <div class="download-btn">
                                                     <div class="down-box">
                                                         <a href="<?= $data->getUrl(); ?>" class="cta cta-down">
                                                             <span><?=  $this->t("download-document")?></span>
                                                         </a>
-=======
-                                                <div>
-                                                    <div class="download-btn">
-                                                        <div class="down-box">
-                                                            <a href="<?= $data->getUrl(); ?>" class="cta cta-down" target="_blank">
-                                                                <span><?=  $this->t("download-document")?></span>
-                                                            </a>
-                                                        </div>
->>>>>>> development
                                                     </div>
                                                 </div>
 
