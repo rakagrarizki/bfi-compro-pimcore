@@ -32,6 +32,10 @@
             <div class="col-sm-8"><?= $this->input("phone"); ?></div>
         </div>
         <div class="row">
+            <div class="col-sm-4">Fax</div>
+            <div class="col-sm-8"><?= $this->input("fax"); ?></div>
+        </div>
+        <div class="row">
             <div class="col-sm-4">link</div>
             <div class="col-sm-8"><?= $this->link("url"); ?></div>
         </div>

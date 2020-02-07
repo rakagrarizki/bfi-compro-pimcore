@@ -1463,12 +1463,12 @@ return [
     ],
     153 => [
         "id" => 153,
-        "name" => "valuePercentage",
+        "name" => "URL_GET_MACHINERY_PRICING",
         "language" => "",
         "type" => "text",
-        "data" => "50",
+        "data" => "/get_machinery_pricing",
         "siteId" => 0,
         "creationDate" => 0,
-        "modificationDate" => 1580961628
+        "modificationDate" => 1581048339
     ]
 ];

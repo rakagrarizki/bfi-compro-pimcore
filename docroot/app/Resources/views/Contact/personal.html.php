@@ -20,7 +20,6 @@ $this->extend('layout.html.php');
     </style>
 
     <div class="container">
-        <!-- <div class="col-xs-12"> -->
 
         <form method="POST" name="personal" id="contact" class="form-get--credit" enctype="multipart/form-data">
             <input type="hidden" id="jenis_form" name="jenis_form" value="Contact">
@@ -100,8 +99,12 @@ $this->extend('layout.html.php');
                     <label><?= $this->translate('Dokumen Pendukung') ?></label>
                     <div class="upload-file">
                         <img src="" />
+                        <div id="show">
+                                <img id="preview-pdf-upload" src="">
+                                <span id="pdf-filename"></span>
+                            </div>
                         <div class="upload-btn">
-                            <input type="file" id="uploadImage" class="file-input" accept="image/*" data-id="document" />
+                            <input type="file" id="uploadFile" class="file-input" accept="image/*" data-id="document" />
                             <button type="button"><?= $this->translate('choose-file') ?></button>
                             <b></b>
                         </div>
@@ -110,15 +113,15 @@ $this->extend('layout.html.php');
                     <div class="error-wrap"></div>
                     <span>Max. ukuran file adalah 500kb</span>
                 </div>
-                <div class="form-group captcha">
+                <div class="form-group captcha formRequired">
                     <div class="g-recaptcha" id="g-recaptcha" data-sitekey="6Ldb1c8UAAAAALZP6FbNJAM7z8T-tPpkbJvjbJBW"></div>
+                      <span class="msg-error error"></span>
                 </div>
             </div>
             <div class="button-area text-center">
-                <button class="cta cta-primary cta-big" type="submit"><?= $this->translate('submit-contact'); ?></button>
+                <button id="submitPersonal" class="cta cta-primary cta-big" type="submit"><?= $this->translate('submit-contact'); ?></button>
             </div>
         </form>
-        <!-- </div> -->
     </div>
 
 <?php } else { ?>

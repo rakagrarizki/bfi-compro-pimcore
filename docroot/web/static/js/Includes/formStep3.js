@@ -59,6 +59,7 @@ function uploadPDF(event) {
     }
 }
 
+
 function getIpkValue(id_smt){
     ipk[id_smt] = document.getElementById(id_smt).value;
     if (ipk[id_smt] < 9){

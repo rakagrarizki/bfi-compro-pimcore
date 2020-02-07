@@ -681,6 +681,11 @@ class SendApi
 
         return $this->executeApi('api-machinery-year', $url, $params, "POST");
     }
+    public function getMachineryPricing($url, $params)
+    {
+
+        return $this->executeApi('api-machinery-pricing', $url, $params, "POST");
+    }
     public function getMachineryFunding($url, $params)
     {
 

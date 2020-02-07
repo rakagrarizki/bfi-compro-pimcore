@@ -33,7 +33,9 @@ $this->headMeta('BFI - ' . $data->getYear());
     <div class="row">
         <?php foreach($awards as $key => $award){ ?>
         <div class="awards-card col-md-4">
-            <img src="<?= $award->getImage(); ?>" alt="">
+            <picture>
+                <img src="<?= $award->getImage(); ?>" alt="">
+            </picture>
             <div class="title"><?= $award->getTitle(); ?></div>
             <div class="desc"><?= $award->getDescription(); ?></div>
         </div>
@@ -60,7 +62,7 @@ $next = $data->getYear() + 1;
             <a href="<?= '/'.$this->getLocale().'/award/'.$past?>">
                 <div class="side-left">
 
-                     <span class="arrow-left"><i class="icon-next"></i></span> <?= $past ?>
+                     <span class="arrow-left"><i class="icon-next"></i></span><?= $this->translate("year") ?> <?= $past ?>
 
                 </div>
             </a>
@@ -73,7 +75,7 @@ $next = $data->getYear() + 1;
             <a href="<?= '/'.$this->getLocale().'/award/'.$next?>">
                 <div class="side-right">
 
-                    <?= $next ?> <span class="arrow-right"><i class="icon-next"></i></span>
+                    <?= $this->translate("year") ?> <?= $next ?> <span class="arrow-right"><i class="icon-next"></i></span>
 
                 </div>
             </a>

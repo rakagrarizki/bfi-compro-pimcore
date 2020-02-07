@@ -291,5 +291,5 @@ $this->extend('layout-credit.html.php');
 
 
 <?php } else { ?>
-    <?= $this->template('Includes/success.html.php') ?>
+    <?= $this->template('Scholarship/success-scholar.html.php') ?>
 <?php } ?>

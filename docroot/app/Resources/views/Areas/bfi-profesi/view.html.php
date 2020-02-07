@@ -13,7 +13,8 @@
                     <?php } ?>
                     <?php if (!$this->input("phone")->isEmpty()) { ?>
                         <div class="header-contain">
-                            <i class="icon-group-2584"></i><?= $this->input('phone'); ?>
+                            <i class="icon-group-2584"></i><?= $this->input('phone'); ?><br>
+                            <?= $this->input('fax'); ?>
                         </div>
                     <?php } ?>
                     <?php if (!$this->link("url")->isEmpty()) { ?>
