@@ -18,9 +18,6 @@
                     <div class="selection-1">
                         <select id="category-1"class="c-custom-select-home form-control formRequired">
                         </select>
-                          <div id="spinner" class="d-flex align-items-center">
-                            <div class="spinnericon" role="status" aria-hidden="true"></div>
-                        </div>
                     </div>
                     <div class="selection-2">
                     <select id="category-2" class="c-custom-select-home form-control formRequired" name="category-2" disabled="disabled">
