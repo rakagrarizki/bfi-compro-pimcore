@@ -60,7 +60,7 @@ $tab = $this->getParam("tab");
 
 
         </div>
-        <div class="tab-content container">
+        <div class="tab-content">
             <?php while ($this->block("tab")->loop()) { ?>
                 <?php
                 $pattern = '/\W/';
@@ -80,7 +80,7 @@ $tab = $this->getParam("tab");
                     $active = "active";
                 }
                 ?>
-                <div role="tabpanel" class="tab-pane <?= $active?>" id="<?=$id?>">
+                <div role="tabpanel" class=" container tab-pane <?= $active?>" id="<?=$id?>">
                     <?= $this->snippet("teaserSnipet");?>
                 </div>
             <?php }?>
