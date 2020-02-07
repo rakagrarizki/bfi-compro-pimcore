@@ -2724,6 +2724,44 @@ class CreditController extends FrontendController
             ]);
         }
     }
+    public function getMachineryPriceAction(Request $request){
+
+         $host = WebsiteSetting::getByName("HOST")->getData();
+         $url = $host . WebsiteSetting::getByName('URL_GET_MACHINERY_PRICING')->getData();
+        $param["machinery_year_id"] = htmlentities(addslashes($request->get('machinery_year_id')));
+
+
+        try {
+            $data = $this->sendAPI->getMachineryPricing($url, $param);
+        } catch (\Exception $e) {
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Machinery Pricing Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
+        }
+
+        if($data->header->status == 200){
+            if($data->data != []){
+                return new JsonResponse([
+                    'success' => "1",
+                    'message' => "Sukses",
+                    'data' => $data->data
+                ]);
+            }else {
+                return new JsonResponse([
+                    'success' => "0",
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $this->get("translator")->trans("api-error")
+            ]);
+        }
+    }
     public function getMachineryFundingAction(Request $request){
 
          $host = WebsiteSetting::getByName("HOST")->getData();
