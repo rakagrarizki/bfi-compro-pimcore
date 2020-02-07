@@ -40,59 +40,33 @@ $(document).ready(function(){
         $('textarea#message').css('padding-top', '35px');
     })
 
-    $('.file-input').on('change', function(e) { 
-        const sizeLimit = 500000;
-        const parent = $(this).parents(".upload-image");
-        const preview = parent.find("img")[0];
-        const label = parent.find("b")[0];
-        const file = e.target.files[0];
-        const iptFrm = $(this).data("id");
-        const isImage = (file.type.match("image") ? true : false);
-
+    if (window.File && window.FileList && window.FileReader) {
+        $("#files").on("change", function(e) {
+         const sizeLimit = 500000;
+         const parent = $(this).parents(".upload-image");
+         const preview = parent.find("img")[0];
+         const label = parent.find("b")[0];
+         const file = e.target.files[0];
+         const iptFrm = $(this).data("id");
+         const isImage = (file.type.match("image") ? true : false);
 
         if (file.size <= sizeLimit && isImage) { 
-            var reader = new FileReader();
-            reader.addEventListener("load", function () {
-                if (typeof (preview) !== "undefined") {
-                $("#" + iptFrm).val("/test/test.png").trigger("change");
-                $(label).text(file.name);
-                preview.src = reader.result;
-                }
-            }, false);
-
-            if (file) {
-                $(preview).show();
-                reader.readAsDataURL(file);
-            } else {
-                $(preview).hide();
-            } 
-            parent.find('b').show();
-            parent.find(".error-wrap").hide();
-        } else {
-            var errorMsg = '';
-            switch (false) {
-                case (file.size <= sizeLimit):
-                    console.log('contact-us')
-                    if(lang === 'id'){
-                        errorMsg = 'Ukuran file harus kurang dari 500 KB.';
-                    }else{
-                        errorMsg = 'File size must be less than 500 KB.';
-                    }
-                    break;
-                case isImage:
-                    if(lang === 'id'){
-                        errorMsg = 'Silakan pilih file gambar.'
-                    }else{
-                        errorMsg = 'Please choose image file.';
-                    }
-                    break;
-            }
-            $(preview).hide();
-            parent.find('b').hide();
-            parent.find(".error-wrap").show();
-            parent.find(".error-wrap").html('<label id="img-error" class="error" for="img" style="display: inline-block;">' + errorMsg + '</label>');
-        } 
-    });
+            const fileReader = new FileReader();
+            fileReader.onload = (function(e) {
+              $("<span class=\"pip\">" +
+                "<img class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
+                "<br/><span class=\"remove\">Remove image</span>" +
+                "</span>").insertAfter("#files");
+                $(".remove").click(function(){
+                $(this).parent(".pip").remove();
+                 });
+            });
+            fileReader.readAsDataURL(file);
+          }
+        });
+      } else {
+        alert("Your browser doesn't support to File API")
+      }
     
     validateFormRequired($('#contact'))
 
@@ -199,34 +173,4 @@ $(document).ready(function(){
           $captcha.removeClass( "error" );
         }
       })
-
-    //   var titlePDF = document.getElementById("upload-pdf-text");
-    //   var imagePDF = document.getElementById('preview-pdf-upload');
-    //   var buttonPDF = document.getElementById('upload-pdf-button');
-    //   var inputPDF = document.getElementById('file-pdf-upload');
-    //   var infoAreaPDF = document.getElementById('pdf-filename');
-    //   var showPDF = document.getElementById('show');
-  
-    //   inputPDF.addEventListener( 'change', uploadPDF );
-    //   titlePDF.setAttribute("style", "margin-bottom: -15px;");
-  
-    //   function uploadPDF(event) {
-    //       var input = event.srcElement;
-    //       var fileName = input.files[0].name;
-    //       var trimName, ext;
-    //       titlePDF.setAttribute("style", "margin-bottom: 10px;");
-    //       buttonPDF.textContent = "Ubah File";
-    //       showPDF.classList.add("image-wrapper");
-    //       imagePDF.src = "static/images/pdf_logo.png";
-    //       ext = fileName.split('.').pop();
-    //       if (fileName.length > 15){
-    //           trimName = fileName.substring(0 , 10) + ".." + ext;
-    //           infoAreaPDF.textContent = trimName;
-    //           return transkrip = trimName;
-    //       }
-    //       else{
-    //           infoAreaPDF.textContent = fileName;
-    //           return transkrip = fileName;
-    //       }
-    //   }
 });
