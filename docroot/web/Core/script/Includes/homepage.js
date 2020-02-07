@@ -87,12 +87,6 @@ function getListCategory() {
     type: 'GET',
     url: '/simulation/get-list-product-category',
     dataType: 'json',
-      beforeSend: function(){
-        $('#spinner').show();
-    },
-    complete: function(){
-        $('#spinner').hide();
-    },
     error: function (data) {
       console.log('error' + data);
     },

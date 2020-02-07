@@ -3,6 +3,8 @@
     width: 100%;
     text-align: center;
     z-index: 9;
+    margin-bottom:40px;
+    margin-top: 80px;
 
     h2 {
         font-family: 'HelveticaNeue-Bold';
@@ -40,11 +42,9 @@
         transform: translateY(-50%);
     }
     &.text-center h2{
-        margin-top: 80px;
         color:#04559F!important;
         font-size:40px;
         font-weight:bold;
-        margin-bottom: 50px;
 
         @include breakpoint(mobile){
             font-size: 20px;
@@ -54,7 +54,7 @@
     &.text-center p{
         color:#565656;
         font-size:20px;
-        margin-bottom:40px;
+        
         @include breakpoint(mobile){
             font-size: 13px;
             margin-bottom: 30px;

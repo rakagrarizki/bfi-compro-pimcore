@@ -84,7 +84,7 @@
     .page-title{
         margin-top: 40px;
         margin-bottom: 0;
-        font-family: 'HelveticaNeue';
+        font-family: 'HelveticaNeue-Bold';
         font-weight: bolder;
         text-align: center;
         padding: 8px;
@@ -95,23 +95,34 @@
         margin-bottom: 50px;
         font-size: 1.3rem;
     }
-    p,ol{
+    p,ol,ul{
         font-size: 1.2rem;
-        font-family: 'HelveticaNeue-Light';
+        font-family: 'HelveticaNeue-Bold';
         letter-spacing: 0.5px;
 
         span{
             font-family: 'HelveticaNeue-Light';
         }
     }
+    
     ol{
-        padding-left: 1.6rem;
+        padding-left: 25px;
 
         li::before {
             font-weight: bolder;
         }
         li{
             margin-bottom: 12px;
+            padding-left: 20px;
+        }
+    }
+
+    ul{
+        padding-left:20px;
+        list-style-type: square;
+        li{
+            margin-bottom: 12px;
+            padding-left: 20px;
         }
     }
       

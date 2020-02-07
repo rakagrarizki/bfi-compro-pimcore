@@ -13,10 +13,12 @@ $this->headMeta('BFI - ' . $data->getYear());
 
 
 ?>
-<div class="container btn-back">
-    <div class="row">
-        <div class="col-md-6 col-sm-6 left-side-top">
-            <a href="javascript:history.back()" class="text-btn"><?= $this->t("back-button"); ?></a>
+<div class="pimcore_area_bfi-back-widget pimcore_area_content">
+    <div class="container btn-back">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 left-side-top">
+                <a href="javascript:history.back()" class="text-btn"><?= $this->t("back-button"); ?></a>
+            </div>
         </div>
     </div>
 </div>
@@ -26,16 +28,17 @@ $this->headMeta('BFI - ' . $data->getYear());
 </div>
 
 
-<div class="container">
+<div class="container award-page">
 
     <?php $awards = $data->getAwards();
         if($awards){ ?>
+
+    <picture>
+        <img src="<?= $award->getImage(); ?>" alt="">
+    </picture>    
     <div class="row">
         <?php foreach($awards as $key => $award){ ?>
         <div class="awards-card col-md-4">
-            <picture>
-                <img src="<?= $award->getImage(); ?>" alt="">
-            </picture>
             <div class="title"><?= $award->getTitle(); ?></div>
             <div class="desc"><?= $award->getDescription(); ?></div>
         </div>

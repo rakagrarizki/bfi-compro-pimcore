@@ -221,8 +221,9 @@
     background-color : #F4F4F4;
     
     .btn-back  {
-        padding-top : 5px;
-        padding-left : 30px;
+        padding-top: 15px;
+        padding-left: 30px;
+        padding-bottom: 5px;
     
         @include breakpoint(mobile){
             padding-left: 25px;
