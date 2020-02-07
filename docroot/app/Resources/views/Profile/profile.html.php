@@ -56,7 +56,7 @@ $this->extend('layout.html.php');
                         <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
-                    <span class="label"><?= $this->translate('form-ktp'); ?></span>
+                    <span class="label"><?= $this->translate('photo-ktp'); ?></span>
                     <span class="value-data identity-img">
                         <!-- here position list from API --></span>
                 </div>

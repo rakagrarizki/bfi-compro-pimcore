@@ -91,6 +91,7 @@ class ScholarshipController extends FrontendController
                         $scholarship->setTranscript($asset2);
                         $scholarship->save();
 
+                        $this->_successCorporate();
                         $success = true;
                     }
                 } else {
@@ -104,5 +105,16 @@ class ScholarshipController extends FrontendController
         }
         $this->view->success = $success;
         $this->view->msg_error = $msg_error;
+    }
+
+    private function _successCorporate()
+    {
+        $news = new DataObject\News\Listing();
+        $news->setOrderKey("Date");
+        $news->setOrder("desc");
+        $news->setLimit(4);
+        $news->load();
+
+        return $this->view->news = $news;
     }
 }
