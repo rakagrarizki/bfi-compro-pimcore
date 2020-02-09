@@ -33,12 +33,14 @@ $this->headMeta('BFI - ' . $data->getYear());
     <?php $awards = $data->getAwards();
         if($awards){ ?>
 
-    <picture>
-        <img src="<?= $award->getImage(); ?>" alt="">
-    </picture>    
-    <div class="row">
-        <?php foreach($awards as $key => $award){ ?>
+<div class="row">
+    <?php foreach($awards as $key => $award){ ?>
         <div class="awards-card col-md-4">
+            <?php if($award->getImage() != null) : ?>
+                <picture>
+                    <img src="<?= $award->getImage(); ?>" alt="">
+                </picture>
+            <?php endif; ?>
             <div class="title"><?= $award->getTitle(); ?></div>
             <div class="desc"><?= $award->getDescription(); ?></div>
         </div>
