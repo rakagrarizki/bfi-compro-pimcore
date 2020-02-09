@@ -18,6 +18,7 @@ class ScholarshipController extends FrontendController
             $data = $request->get('scholarship');
             $name = htmlentities($data['name']);
             $email = htmlentities($data['email']);
+            $phone = htmlentities($data['phone']);
             $periode = date("Y");
             $photo = $_FILES['photo']['name'];
             $transcript = $_FILES['transcript']['name'];
@@ -28,11 +29,11 @@ class ScholarshipController extends FrontendController
             if ($email != "" && $name != "") {
                 if ($photoSize <= 300000) {
                     // check for an existing scholarship with this email
-                    $scholarship = DataObject\Scholarship::getByEmail($email, 1);
+                    $scholarship = DataObject\Scholarship::getByPhone($phone, 1);
                     if (!$scholarship) {
                         $scholarship = new DataObject\Scholarship;
                         // $filename = File::getValidFilename($name);
-                        $filename = File::getValidFilename($email.$periode);
+                        $filename = File::getValidFilename($phone . '-' . $periode);
 
                         $scholarship->setParent(DataObject\AbstractObject::getByPath('/Scholarship')); // we store all objects in /Scholarship
                         
@@ -77,7 +78,7 @@ class ScholarshipController extends FrontendController
 
                             $scholarship->setName($name);
                             $scholarship->setEmail($email);
-                            $scholarship->setPhone(htmlentities($data['phone']));
+                            $scholarship->setPhone($phone);
                             $scholarship->setPhone2(htmlentities($data['phone2']));
                             $scholarship->setPhoto($asset1);
                             $scholarship->setUniversityName(htmlentities($data['university']));
