@@ -29,25 +29,32 @@ $this->headMeta('BFI - ' . $data->getYear());
 
 
 <div class="container award-page">
-
     <?php $awards = $data->getAwards();
-        if($awards){ ?>
-
-<div class="row">
-    <?php foreach($awards as $key => $award){ ?>
-        <div class="awards-card col-md-4">
-            <?php if($award->getImage() != null) : ?>
-                <picture>
-                    <img src="<?= $award->getImage(); ?>" alt="">
-                </picture>
-            <?php endif; ?>
-            <div class="title"><?= $award->getTitle(); ?></div>
-            <div class="desc"><?= $award->getDescription(); ?></div>
-        </div>
+    $i = 3;
+    ?>
+        <?php if($awards) { ?>
+            <?php foreach($awards as $key => $award){ ?>
+                <?php if ($i == 3) { ?>
+                    <div class="row">
+                <?php } ?>
+                        <div class="awards-card col-md-4">
+                            <?php if($award->getImage() != null) : ?>
+                                <picture>
+                                    <img src="<?= $award->getImage(); ?>" alt="">
+                                </picture>
+                            <?php endif; ?>
+                            <div class="title">
+                                <?= $award->getTitle(); ?>
+                            </div>
+                            <div class="desc">
+                                <?= $award->getDescription(); ?>
+                            </div>
+                        </div>
+                <?php if ($i == 3) { ?>
+                    </div>
+                <?php $i = 0; } ?>
+            <?php $i++; } ?>
         <?php } ?>
-
-    </div>
-    <?php }?>
 </div>
 
 <?php $past = $data->getYear()-1;
