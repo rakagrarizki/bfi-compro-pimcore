@@ -30,11 +30,11 @@ $this->headMeta('BFI - ' . $data->getYear());
 
 <div class="container award-page">
     <?php $awards = $data->getAwards();
-    $i = 3;
+    $i = 1;
     ?>
         <?php if($awards) { ?>
             <?php foreach($awards as $key => $award){ ?>
-                <?php if ($i == 3) { ?>
+                <?php if ($i == 1) { ?>
                     <div class="row">
                 <?php } ?>
                         <div class="awards-card col-md-4">
