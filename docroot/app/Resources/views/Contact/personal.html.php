@@ -13,12 +13,6 @@ $this->extend('layout.html.php');
     <?php
     $this->headScript()->offsetSetFile(100, '/static/js/Includes/contact-us.js');
     ?>
-
-
-    <style>
-
-    </style>
-
     <div class="container">
 
         <form method="POST" name="personal" id="contact" class="form-get--credit" enctype="multipart/form-data">
@@ -98,15 +92,9 @@ $this->extend('layout.html.php');
                 <div class="form-group upload-image">
                     <label><?= $this->translate('Dokumen Pendukung') ?></label>
                     <div class="upload-file">
-                        <img src="" />
-                        <div id="show">
-                                <img id="preview-pdf-upload" src="">
-                                <span id="pdf-filename"></span>
-                            </div>
                         <div class="upload-btn">
-                            <input type="file" id="uploadFile" class="file-input" accept="image/*" data-id="document" />
-                            <button type="button"><?= $this->translate('choose-file') ?></button>
-                            <b></b>
+                            <input type="file" id="files" class="file-input" accept="image/*,application/pdf" data-id="document">
+                            <button type="button">choose-file</button>
                         </div>
                     </div>
                     <input type="hidden" class="form-control formRequired" name="document" id="document">
@@ -128,4 +116,33 @@ $this->extend('layout.html.php');
     <?= $this->template('Contact/success.html.php') ?>
 <?php } ?>
 
-
+<style>
+#contact img{
+    display:inherit !important;
+}
+#contact .imageThumb {
+  padding: 1px;
+  cursor: pointer;
+}
+#contact .pip {
+  display: inline;
+  margin: 10px 10px 0 0;
+}
+.upload-btn button{
+    margin-top:10px;
+}
+#contact .remove {
+    padding: 16px;
+    line-height: 30px;
+    background: #F9991C;
+    outline: none;
+    font-family: 'HelveticaNeue';
+    font-size: 16px;
+    font-weight: bold;
+    color: #FFF;
+    cursor: pointer;
+}
+#contact #ktp-error{
+    display:none !important;
+}
+</style>

@@ -6,10 +6,10 @@ $reports->addConditionParam("Category__id = ?",$category,"AND");
 
 ?>
 
-<div class="row">
-    <div class="container">
+<div class="container report-list-wrapper">
+    <div class="row">
         <article class="sect-title text-center">
-            <h2 class="margin-top-10"><?= $this->input("title")?></h2>
+            <h2 class=""><?= $this->input("title")?></h2>
             <p><?= $this->textarea('text');?></p>
         </article>
 

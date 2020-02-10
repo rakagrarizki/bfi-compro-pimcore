@@ -108,23 +108,32 @@
 
                 
                 ul {
-                    list-style: none;
+                    list-style: square;
+                    color: #04559F;
+                    font-size: 20px;
+                    margin: 0;
+
+                    hr{
+                        margin-left: -20;
+                    }
                 }
 
                 li {
                     padding-bottom: 0px;
+                    padding-left: 10px;
+                    width: 75%;
 
-                    &::before {
-                        margin-right: 25px;
-                        content: '\25AA';
-                        color: #04559F;
-                        font-size: 150%;
+                    // &::before {
+                    //     margin-right: 25px;
+                    //     content: '\25AA';
+                    //     color: #04559F;
+                    //     font-size: 150%;
 
-                        @include breakpoint(mobile) {
-                            margin-right: 25px;
-                            padding: 0px;
-                        }
-                    }
+                    //     @include breakpoint(mobile) {
+                    //         margin-right: 25px;
+                    //         padding: 0px;
+                    //     }
+                    // }
 
                     @include breakpoint(tablet) {
                         width: 60%;
@@ -150,13 +159,13 @@
 
                     .download-btn{
                         margin: auto 0;
+                        width: 25%;
                         
                         .down-box {
 
                             .cta-down{
                                 position: relative;
-                                padding-left: 56px;
-                                padding-right: 0;
+                                padding: 8px 0 0 50px;
                                 letter-spacing: 0;
 
                                 @include breakpoint(mobile) {

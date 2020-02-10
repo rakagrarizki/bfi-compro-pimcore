@@ -19,7 +19,7 @@ $randId = rand(10,100);
 <div class="row">
     <div class="container">
         <article class="sect-title text-center">
-            <h2 class="margin-top-40"><?= $this->input("title")?></h2>
+            <h2 class=""><?= $this->input("title")?></h2>
         </article>
         <div class="accordion">
             <div class="accordion__wrap produk">
@@ -49,15 +49,14 @@ $randId = rand(10,100);
                                                 <li>
                                                     <?= $data->getFileName();?>
                                                 </li>
-                                                <div>
-                                                    <div class="download-btn">
-                                                        <div class="down-box">
-                                                            <a href="<?= $data->getUrl(); ?>" class="cta cta-down" target="_blank">
-                                                                <span><?=  $this->t("download-document")?></span>
-                                                            </a>
-                                                        </div>
+                                                <div class="download-btn">
+                                                    <div class="down-box">
+                                                        <a href="<?= $data->getUrl(); ?>" class="cta cta-down">
+                                                            <span><?=  $this->t("download-document")?></span>
+                                                        </a>
                                                     </div>
                                                 </div>
+
                                             </div>
                                             <?php echo  $i < $total ? "<hr>" : ""?>
                                             <?php endforeach;?>

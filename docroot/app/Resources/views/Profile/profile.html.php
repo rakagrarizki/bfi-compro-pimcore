@@ -56,7 +56,7 @@ $this->extend('layout.html.php');
                         <!-- here position list from API --></span>
                 </div>
                 <div class="detail-wrapper">
-                    <span class="label"><?= $this->translate('form-ktp'); ?></span>
+                    <span class="label"><?= $this->translate('photo-ktp'); ?></span>
                     <span class="value-data identity-img">
                         <!-- here position list from API --></span>
                 </div>
@@ -117,7 +117,9 @@ $this->extend('layout.html.php');
                 </div>
             </div>
             <div class="button-cabang">
-                <button class="cta cta-primary cta-big"><?= $this->translate('branch'); ?></button>
+                <form action="<?= "/" . $this->getLocale() . "/branch-office"; ?>" target="_blank">
+                    <button class="cta cta-primary cta-big"><?= $this->translate('branch'); ?></button>
+                </form>
             </div>
         </div>
     </div>

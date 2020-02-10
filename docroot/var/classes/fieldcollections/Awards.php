@@ -1,7 +1,7 @@
 <?php 
 
 /** 
-* Generated at: 2020-02-06T07:35:07+01:00
+* Generated at: 2020-02-09T06:58:39+01:00
 * IP: 127.0.0.1
 
 
@@ -138,8 +138,8 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
           1 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\Image::__set_state(array(
              'fieldtype' => 'image',
-             'width' => 50,
-             'height' => 50,
+             'width' => '',
+             'height' => '',
              'uploadPath' => '',
              'queryColumnType' => 'int(11)',
              'columnType' => 'int(11)',
