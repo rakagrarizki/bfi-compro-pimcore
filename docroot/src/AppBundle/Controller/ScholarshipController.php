@@ -33,7 +33,7 @@ class ScholarshipController extends FrontendController
                     if (!$scholarship) {
                         $scholarship = new DataObject\Scholarship;
                         // $filename = File::getValidFilename($name);
-                        $filename = File::getValidFilename($phone . '-' . $periode);
+                        $filename = File::getValidFilename($phone . "-" . $periode);
 
                         $scholarship->setParent(DataObject\AbstractObject::getByPath('/Scholarship')); // we store all objects in /Scholarship
                         
@@ -44,9 +44,9 @@ class ScholarshipController extends FrontendController
                             //creating and saving new asset
                             if ($photo != "") {
                                 $asset1 = new Asset();
-                                $asset1->setFilename($email . "-" . $photo);
-                                $status1 = move_uploaded_file($photoTmp, tmp . $email . "-" . $photo);
-                                $filePhoto = tmp . $email . "-" . $photo;
+                                $asset1->setFilename($phone . "-" . $periode);
+                                $status1 = move_uploaded_file($photoTmp, tmp . $phone . "-" . $periode);
+                                $filePhoto = tmp . $phone . "-" . $periode;
                                 if (!$status1) {
                                     dump($_FILES);
                                     dump($status1);
@@ -60,9 +60,9 @@ class ScholarshipController extends FrontendController
                             }
                             if ($transcript != "") {
                                 $asset2 = new Asset();
-                                $asset2->setFilename($email . "-" . $transcript);
-                                $status2 = move_uploaded_file($transcriptTmp, tmp . $email . "-" . $transcript);
-                                $fileTranscript = tmp . $email . "-" . $transcript;
+                                $asset2->setFilename($phone . "-" . $periode);
+                                $status2 = move_uploaded_file($transcriptTmp, tmp . $phone . "-" . $periode);
+                                $fileTranscript = tmp . $phone . "-" . $periode;
                                 if (!$status2) {
                                     dump($_FILES);
                                     dump($status2);

@@ -76,6 +76,8 @@ if($this->editmode) : ?>
     </div>
 </div>
 
+<?= $this->template('Includes/modal.html.php'); ?>
+
 <!-- FOOTER -->
 <footer>
     <div class="container">
