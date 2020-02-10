@@ -117,7 +117,9 @@ $this->extend('layout.html.php');
                 </div>
             </div>
             <div class="button-cabang">
-                <button class="cta cta-primary cta-big"><?= $this->translate('branch'); ?></button>
+                <form action="<?= "/" . $this->getLocale() . "/branch-office"; ?>" target="_blank">
+                    <button class="cta cta-primary cta-big"><?= $this->translate('branch'); ?></button>
+                </form>
             </div>
         </div>
     </div>
