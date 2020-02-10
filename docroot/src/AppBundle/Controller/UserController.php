@@ -402,33 +402,59 @@ class UserController extends FrontendController
         ]);
     }
 
+    // public function contractStatusListJsonAction(Request $request)
+    // {
+    //     $token = $this->getToken();
+
+    //     $param['started_index'] = htmlentities(addslashes($request->get('started_index')));
+    //     $param['length'] = htmlentities(addslashes($request->get('length')));
+
+    //     $host = WebsiteSetting::getByName("HOST")->getData();
+    //     $url = $host . WebsiteSetting::getByName('CONTRACT_STATUS_LIST')->getData();
+
+    //     try {
+    //         $data = $this->sendApi->listContractStatus($url, $param, $token);
+    //     } catch (\Exception $e) {
+    //         return new JsonResponse([
+    //             'success' => "0",
+    //             'message' => "Failed to retrieve the data!",
+    //             'detail' => $data
+    //         ]);
+    //     }
+
+    //     if ($data->status == "success") {
+    //         // fill something
+    //     }
+
+    //     return new JsonResponse([
+    //         'success' => true,
+    //         'result' => $data
+    //     ]);
+    // }
+
     public function contractStatusListJsonAction(Request $request)
     {
-        $token = $this->getToken();
+        $datas = [];
 
-        $param['started_index'] = htmlentities(addslashes($request->get('started_index')));
-        $param['length'] = htmlentities(addslashes($request->get('length')));
-
-        $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('CONTRACT_STATUS_LIST')->getData();
-
-        try {
-            $data = $this->sendApi->listContractStatus($url, $param, $token);
-        } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Failed to retrieve the data!",
-                'detail' => $data
-            ]);
-        }
-
-        if ($data->status == "success") {
-            // fill something
+        for($i = 1; $i <= 100; $i++) {
+            $params['contract_number'] = "134534535";
+            $params['angsuran_perbulan'] = 4500000;
+            $params['tanggal_jatuh_tempo'] = "15-06-2019";
+            $params['category_desc'] = "Pembiayaan Agunan";
+            $params['product_desc'] = "BPKB Mobil";
+            $datas[] = $params;
         }
 
         return new JsonResponse([
             'success' => true,
-            'result' => $data
+            'result' => [
+                'header' => [
+                    'status' => 200,
+                    'message' => "success fetch data"
+                ],
+                'status' => 'success',
+                'data' => $datas
+            ]
         ]);
     }
 

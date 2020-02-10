@@ -169,6 +169,11 @@ class SendApi
         return $this->executeApiBearer('listContractStatus', $url, $params, "POST", $token);
     }
 
+    public function listContractStatusDummy($url, $params, $token)
+    {
+        return $this->executeApiBearer('listContractStatusDummy', $url, $params, "POST", $token);
+    }
+
     public function detailContract($url, $params, $token)
     {
         return $this->executeApiBearer('detailContract', $url, $params, "POST", $token);
