@@ -24,6 +24,7 @@ $this->headScript()->offsetSetFile(100, '/static/js/Includes/login.js');
                 <label id="phone-label" class="input-label">NOMOR HANDPHONE</label>
                 <input id="phone-input" class="style-input" type="number" placeholder=<?= $this->translate('input-phone') ?> onkeydown="return isNumberKey(event);" required>
             </div>
+            <div class="error-wrap"></div>
             <label class="checkbox-wrapper"><?= $this->translate('remember-me'); ?><input type="checkbox" checked="checked">
                 <span class="checkmark"></span>
             </label>

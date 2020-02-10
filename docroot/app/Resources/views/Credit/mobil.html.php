@@ -270,8 +270,8 @@ $this->extend('layout-credit.html.php');
                                                     <div class="list-select">
                                                         <select class="c-custom-select-trans form-control formRequired opsiasuransi" name="status"></select>
                                                     </div>
-                                                    <div class="error-wrap"></div>
                                                 </div>
+                                                <div class="error-wrap"></div>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-xs-12 no-padding-mobile">
