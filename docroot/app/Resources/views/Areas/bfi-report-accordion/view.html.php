@@ -19,11 +19,7 @@ $randId = rand(10,100);
 <div class="row">
     <div class="container">
         <article class="sect-title text-center">
-<<<<<<< HEAD
             <h2 class=""><?= $this->input("title")?></h2>
-=======
-            <h2 class="margin-top-40"><?= $this->input("title")?></h2>
->>>>>>> development
         </article>
         <div class="accordion">
             <div class="accordion__wrap produk">
