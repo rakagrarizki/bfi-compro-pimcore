@@ -93,10 +93,8 @@ $this->extend('layout.html.php');
                     <label><?= $this->translate('Dokumen Pendukung') ?></label>
                     <div class="upload-file">
                         <div class="upload-btn">
-                            <!-- <input type="file" id="files" name="files" accept="image/*" data-id="document" /> -->
-                            <input type="file" id="files" class="file-input" accept="image/*" data-id="document">
+                            <input type="file" id="files" class="file-input" accept="image/*,application/pdf" data-id="document">
                             <button type="button">choose-file</button>
-                            <b></b>
                         </div>
                     </div>
                     <input type="hidden" class="form-control formRequired" name="document" id="document">
@@ -127,17 +125,14 @@ $this->extend('layout.html.php');
   cursor: pointer;
 }
 #contact .pip {
-  display: inline-block;
+  display: inline;
   margin: 10px 10px 0 0;
 }
 .upload-btn button{
     margin-top:10px;
 }
-#contact .btnUp,
 #contact .remove {
-    width: 100px;
-    height: 50px;
-    padding: 10px;
+    padding: 16px;
     line-height: 30px;
     background: #F9991C;
     outline: none;
@@ -146,5 +141,8 @@ $this->extend('layout.html.php');
     font-weight: bold;
     color: #FFF;
     cursor: pointer;
+}
+#contact .pdfThumb{
+    background-image: url("/static/images/pdf_logo.png");
 }
 </style>

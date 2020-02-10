@@ -41,31 +41,31 @@ $(document).ready(function(){
     })
 
     if (window.File && window.FileList && window.FileReader) {
+
         $("#files").on("change", function(e) {
          const sizeLimit = 500000;
-         const parent = $(this).parents(".upload-image");
-         const preview = parent.find("img")[0];
-         const label = parent.find("b")[0];
          const file = e.target.files[0];
-         const iptFrm = $(this).data("id");
          const isImage = (file.type.match("image") ? true : false);
-
-        if (file.size <= sizeLimit && isImage) { 
+         const isPdf = (file.type.match("application/pdf") ? true : false);
+        //  const srcPdf = "/static/images/pdf_logo.png"
+         
+        if (file.size <= sizeLimit && isImage || file.size <= sizeLimit && isPdf) { 
             const fileReader = new FileReader();
             fileReader.onload = (function(e) {
+
               $("<span class=\"pip\">" +
-                "<img class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
-                "<br/><span class=\"remove\">Remove image</span>" +
+                "<img class=\"imageThumb\" src=\"" + e.target.result +"\" />"+
+                "<br/><span class=\"remove\">Remove image or pdf</span>" +
                 "</span>").insertAfter("#files");
-                $(".remove").click(function(){
-                $(this).parent(".pip").remove();
-                 });
+                   
+                    $(".remove").click(function(){
+                    $(this).parent(".pip").remove();
+                    });
             });
             fileReader.readAsDataURL(file);
           }
         });
-      } else {
-        alert("Your browser doesn't support to File API")
+
       }
     
     validateFormRequired($('#contact'))
@@ -104,7 +104,11 @@ $(document).ready(function(){
             accept: "image/*",
             filesize: 500   //max size 1MB
         },
-
+        uploadFile: {
+            accept: "application/pdf",
+            filesize: 500   //max size 1MB
+        },
+   
         submitHandler: function (form) {
             form.submit();
         }

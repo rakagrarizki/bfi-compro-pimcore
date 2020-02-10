@@ -73,11 +73,9 @@ $tab = $this->getParam("tab");
                     if($id == 0){
                         $active = "active";
                     }if($id == 1){
-                        $active = "active";
                         $container = "container";
                     }
                     if($id == 2){
-                        $active = "active";
                         $container = "container";
                     }
                 }
