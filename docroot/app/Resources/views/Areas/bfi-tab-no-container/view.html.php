@@ -41,13 +41,10 @@ $tab = $this->getParam("tab");
                     }
                     if($tab == $last){
                         $active = "active";
-                        // dump($last);
-                        // dump($id);
-                        // exit;
                     }
                     ?>
 
-                        <li role="presentation" class="<?= $active ?>" id="div<?= $id;?>" style="width:<?= 100 / $this->block("tab")->getCount()?>%">
+                        <li role="presentation" class="<?= $active ?><?= $container ?>" id="div<?= $id;?>" style="width:<?= 100 / $this->block("tab")->getCount()?>%">
                             <a href="#<?= $id;?>" id="href<?= $id;?>"  data-prev="<?= $id == 0 ? '' : $id - 1 ?>" data-next="<?=$id == ($this->block("tab")->getCount() -1) ? "" : $id + 1;?>" aria-controls="<?= $id?>" role="tab" data-toggle="tab" onclick="setPreviewId(<?= $id == 0 ? '' : $id - 1 ?>,<?=$id == ($this->block('tab')->getCount() -1) ? '' : $id + 1;?>)"><?= $this->input("text");?></a>
                         </li>
 
@@ -70,17 +67,23 @@ $tab = $this->getParam("tab");
 
                 $id = $this->block("tab")->getCurrent();
                 $active = "";
+                $container = "";
                 ?>
                 <?php if($tab == "") {
                     if($id == 0){
                         $active = "active";
+                    }if($id == 1){
+                        $container = "container";
+                    }
+                    if($id == 2){
+                        $container = "container";
                     }
                 }
                 if($tab == $last){
                     $active = "active";
                 }
                 ?>
-                <div role="tabpanel" class=" container tab-pane <?= $active?>" id="<?=$id?>">
+                <div role="tabpanel" class="tab-pane <?= $active?> <?= $container?>" id="<?=$id?>">
                     <?= $this->snippet("teaserSnipet");?>
                 </div>
             <?php }?>
