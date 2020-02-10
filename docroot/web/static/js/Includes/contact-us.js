@@ -45,27 +45,43 @@ $(document).ready(function(){
         $("#files").on("change", function(e) {
          const sizeLimit = 500000;
          const file = e.target.files[0];
+         const filePdf = e.target.files[0];
          const isImage = (file.type.match("image") ? true : false);
          const isPdf = (file.type.match("application/pdf") ? true : false);
-        //  const srcPdf = "/static/images/pdf_logo.png"
          
-        if (file.size <= sizeLimit && isImage || file.size <= sizeLimit && isPdf) { 
+        if (file.size <= sizeLimit && isImage ) { 
             const fileReader = new FileReader();
-            fileReader.onload = (function(e) {
+                fileReader.onload = (function(e) {
+                $("<span class=\"pip\">" +
+                    "<img class=\"imageThumb\" src=\"" + e.target.result +"\" />"+
+                    "<br/><span class=\"remove\">Remove image</span>" +
+                    "</span>").insertAfter("#files");
 
-              $("<span class=\"pip\">" +
-                "<img class=\"imageThumb\" src=\"" + e.target.result +"\" />"+
-                "<br/><span class=\"remove\">Remove image or pdf</span>" +
-                "</span>").insertAfter("#files");
-                   
-                    $(".remove").click(function(){
-                    $(this).parent(".pip").remove();
-                    });
-            });
+                        $(".remove").click(function(){
+                        $(this).parent(".pip").remove();
+                        });
+                });
             fileReader.readAsDataURL(file);
           }
-        });
+          else if (filePdf.size <= sizeLimit && isPdf) { 
+            const fileReaderPdf = new FileReader();
+          if (file.type == "application/pdf"){
+            const imagePDF = "/static/images/pdf_logo.png";
+            fileReaderPdf.onload = (function(e) {
 
+                $("<span class=\"pipPdf\">" +
+                    "<img class=\"imagePdf\" src=\"" + imagePDF +"\"  title=\"" + file.name + "\"/>"+
+                    "<br/><span class=\"remove\">Remove pdf</span>" +
+                    "</span>").insertAfter("#files");
+
+                        $(".remove").click(function(){
+                        $(this).parent(".pipPdf").remove();
+                        });
+                });
+            }
+        fileReaderPdf.readAsDataURL(filePdf);
+          }
+        });
       }
     
     validateFormRequired($('#contact'))
