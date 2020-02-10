@@ -142,7 +142,7 @@ $this->extend('layout.html.php');
     color: #FFF;
     cursor: pointer;
 }
-#contact .pdfThumb{
-    background-image: url("/static/images/pdf_logo.png");
+#contact #ktp-error{
+    display:none !important;
 }
 </style>
