@@ -316,33 +316,58 @@ class UserController extends FrontendController
         ]);
     }
 
+    // public function assignmentListJsonAction()
+    // {
+    //     $token = $this->getToken();
+
+    //     $param = [];
+
+    //     $host = WebsiteSetting::getByName("HOST")->getData();
+    //     $url = $host . WebsiteSetting::getByName('ASSIGNMENT_LIST')->getData();
+
+    //     try {
+    //         $data = $this->sendApi->listAssignment($url, $param, $token);
+    //     } catch (\Exception $e) {
+    //         return new JsonResponse([
+    //             'success' => "0",
+    //             'message' => "Failed to retrieve the data!",
+    //             // 'detail' => $data . '" ' . $token . ' "'
+    //             'detail' => $token
+    //         ]);
+    //     }
+
+    //     if ($data->status == "success") {
+    //         // fill something
+    //     }
+
+    //     return new JsonResponse([
+    //         'success' => true,
+    //         'result' => $data
+    //     ]);
+    // }
+
     public function assignmentListJsonAction()
     {
-        $token = $this->getToken();
+        $datas = [];
 
-        $param = [];
-
-        $host = WebsiteSetting::getByName("HOST")->getData();
-        $url = $host . WebsiteSetting::getByName('ASSIGNMENT_LIST')->getData();
-
-        try {
-            $data = $this->sendApi->listAssignment($url, $param, $token);
-        } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => "Failed to retrieve the data!",
-                // 'detail' => $data . '" ' . $token . ' "'
-                'detail' => $token
-            ]);
-        }
-
-        if ($data->status == "success") {
-            // fill something
+        for($i = 1; $i <= 15; $i++) {
+            $params['assignment_id'] = "2018074010000000087";
+            $params['submission_id'] = "";
+            $params['category_desc'] = "Pembiayaan Agunan";
+            $params['product_desc'] = "BPKB Mobil";
+            $datas[] = $params;
         }
 
         return new JsonResponse([
             'success' => true,
-            'result' => $data
+            'result' => [
+                'header' => [
+                    'status' => 200,
+                    'message' => "success fetch data"
+                ],
+                'status' => 'success',
+                'data' => $datas
+            ]
         ]);
     }
 
