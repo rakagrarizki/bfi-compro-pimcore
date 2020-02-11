@@ -466,7 +466,7 @@
               '</div>' +
               '<div class="list-select select-wrapper">' +
               '<select class="c-custom-select-trans form-control formRequired opsiasuransi"' +
-              'name="status" multiple="multiple"></select>' +
+              'name="status" multiple="multiple"><option disabled></option></select>' +
               '</div>' +
               '<div class="error-wrap"></div>' +
               '</div>';
@@ -479,9 +479,17 @@
             // $(".columnselect[ke=" + i + "]").children().find("label").text("" + tahunke + " - " + i + "");
 
             asuransi_arr[asuransi_arr.length] = $("#tahun" + i + " .c-custom-select-trans").val();
+
+            var asuransiPlaceholder;
+            if(lang == 'id'){
+              asuransiPlaceholder = "Jenis Asuransi"
+            }else{
+              asuransiPlaceholder = "Type of Insurance"
+            }
             $("#tahun" + i + " .opsiasuransi").select2({
               dropdownParent: $("#tahun" + i + " .select-wrapper"),
-              data: list_asuransi[i - 1]
+              data: list_asuransi[i - 1],
+              placeholder: asuransiPlaceholder
             });
 
           }
@@ -5135,6 +5143,16 @@ function loginCustomer() {
               $('#login').addClass("hide");
               $('#otp').removeClass("hide");
               otp();
+          }else{
+            var lang = document.documentElement.lang;
+            var errorMsg;
+            if(lang == 'id'){
+              errorMsg = "Nomor Handphone Belum Terdaftar.";
+            }else{
+              errorMsg = "Phone Number Not Registered.";
+            }
+            $(".error-wrap").html('<label id="otp-error" class="error" for="otp" style="display: inline-block;">' + errorMsg + '</label>');
+            console.log('gagal login');
           }
       }
   })

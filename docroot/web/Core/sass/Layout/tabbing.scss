@@ -333,7 +333,7 @@
     text-align: center;
     // padding: 55px 30px;
     margin: 80px 0 40px 0;
-    color: $grey-dark-color;
+    color: #04559f;
 }
 
 .cards-type-13{
@@ -739,4 +739,8 @@
             // padding: 13px 25px 13px 25px;
         }
     }
+}
+
+a:last-child > .button-type-17{
+    margin-bottom: 60px;
 }

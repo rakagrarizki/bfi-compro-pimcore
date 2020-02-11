@@ -9,6 +9,13 @@
     @include breakpoint (mobile) {
         margin-top: 95px;
     }
+
+    .container{
+        .container{
+            padding: 0;
+            width: 100% !important;
+        }
+    }
 }
 a {
     &:hover {
