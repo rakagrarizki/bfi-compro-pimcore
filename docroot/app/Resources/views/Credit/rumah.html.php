@@ -412,6 +412,7 @@ $this->extend('layout-credit.html.php');
                                                     <button class="cta cta-primary cta-big absolutebutcalc" id="recalc" type="button"><?= $this->translate('hitung') ?></button>
                                                 </div>
                                             </div>
+                                            <div class="warning-calculate hide"><label>Silahkan Klik hitung ulang sebelum melanjutkan.</label></div>
                                         </div>
                                     </div>
 

@@ -347,6 +347,22 @@
                         padding-bottom: 5px;
                     }
                 }
+
+                .error-wrap {
+                    padding-top: 15px;
+                    position: relative;
+                    text-align: left;
+                    margin-bottom: 10px;
+
+                    label {
+                        position: inherit;
+                        font-size: 12px;
+                        margin: 0;
+                        color: #E00909;
+                        opacity: 1;
+                        font-style : unset;
+                    }
+                }
         
                 #upload-ktp {
                     margin: 0 auto 0 auto;

@@ -274,6 +274,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                                   type="button"><?= $this->translate('hitung')?></button>
                       </div>
                   </div>
+                  <div class="warning-calculate hide"><label>Silahkan Klik hitung ulang sebelum melanjutkan.</label></div>
               </div>
 
           </div>
