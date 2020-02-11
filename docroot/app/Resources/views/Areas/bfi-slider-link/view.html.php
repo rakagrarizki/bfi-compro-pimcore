@@ -63,7 +63,7 @@
             </div>
         <?php } ?>
     </div>
-    <div class="container navigation">
+    <div class="navigation">
         <div class="row">
             <div class="slick-nav">
                 <div class="prev prev-2 btn-kotak arrowbanner bawah"></div>
