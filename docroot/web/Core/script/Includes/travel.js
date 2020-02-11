@@ -164,8 +164,16 @@ function getDataTenor() {
     });
   })
   selElm.empty();
+  var lang = document.documentElement.lang;
+  var periodPlaceholder;
+  if (lang=='id'){
+    periodPlaceholder = "Jangka Waktu" ;
+  }else{
+    periodPlaceholder = "Period of Time";
+  }
+
   selElm.select2({
-    placeholder: selElm.attr('placeholder'),
+    placeholder : periodPlaceholder,
     dropdownParent: selElm.parent(),
     data: dataArr
   });

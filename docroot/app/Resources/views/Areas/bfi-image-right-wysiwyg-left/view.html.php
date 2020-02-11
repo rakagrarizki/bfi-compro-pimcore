@@ -3,7 +3,7 @@
 <?php $asset = $this->image("image");?>
 <div class="about-us-page">
     <div class="container">
-        <div class="row activities-section">
+        <div class="row activities-section contact-hi">
             <div class="col-md-6">
                 
                 <?= $this->wysiwyg("text"); ?>
