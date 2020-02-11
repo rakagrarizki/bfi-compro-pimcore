@@ -62,6 +62,7 @@
             
             .detail-wrapper {
                 display: flex;
+                margin-bottom: 15px;
                 
                 span.label {
                     text-align : left;
@@ -92,6 +93,11 @@
                 
             }
         }
+    }
+    hr {
+        margin-right: -15px;
+        margin-left: -15px;
+        border: solid 1px #eee;
     }
 }
 

@@ -2483,3 +2483,11 @@ select::-ms-expand {
     border-radius: 0;
     width: 400px;
 }
+
+#wrongOtp{
+    .modal-dialog{
+        width: max-content !important;
+        height: 100vh;
+        margin: auto;
+    }
+}

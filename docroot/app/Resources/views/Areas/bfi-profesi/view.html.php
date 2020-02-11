@@ -1,5 +1,5 @@
-<div class="page-title"><?= $this->input("title"); ?></div>
 <div class="container container-profesi">
+    <div class="page-title"><?= $this->input("title"); ?></div>
     <div class="row">
         <?php while ($this->block("contentblock")->loop()) { ?>
             <div class="col-md-6 profesi-box">

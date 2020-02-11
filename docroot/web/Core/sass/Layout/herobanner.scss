@@ -601,7 +601,7 @@
 
         .prev {
             opacity: .6;
-            left: -7.5%;
+            left: 7.5%;
             position: absolute;
 
             @include breakpoint (mobile) {
@@ -633,7 +633,7 @@
 
         .next {
             opacity: .6;
-            right: -7.5%;
+            right: 7.5%;
             position: absolute;
 
             &.bawah {
@@ -663,5 +663,16 @@
             }
         }
 
+    }
+}
+
+.MsoTableGrid{
+    p{
+        margin-bottom: 0;
+    }
+    li{
+        width: 100%;
+        text-align: left;
+        margin-bottom: 0;
     }
 }
