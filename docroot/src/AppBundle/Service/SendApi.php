@@ -9,6 +9,7 @@
 
 namespace AppBundle\Service;
 
+use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;
@@ -49,8 +50,10 @@ class SendApi
             $data = $client->request($method, $url, [
                 "json" => $params
             ]);
-        } catch (Exception $e) {
-            return json_decode($e->getMessage());
+        } catch (ClientException $e) {
+            // return json_decode($e->getMessage());
+            $response = $e->getResponse();
+            return json_decode($response->getBody());
         }
 
         return $this->getData($data);
@@ -71,7 +74,7 @@ class SendApi
         $client = new Client(['handler' => $stack]);
 
         try {
-            $response = $client->request(
+            $data = $client->request(
                 $method,
                 $url,
                 [
@@ -82,11 +85,13 @@ class SendApi
                     "json" => $params
                 ]
             );
-        } catch (Exception $e) {
-            return json_decode($e->getMessage());
+        } catch (ClientException $e) {
+            // return json_decode($e->getMessage());
+            $response = $e->getResponse();
+            return json_decode($response->getBody());
         }
 
-        return $this->getData($response);
+        return $this->getData($data);
     }
 
     public function login($url, $params)
