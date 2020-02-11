@@ -463,8 +463,12 @@ class UserController extends FrontendController
     {
         $datas = [];
 
-        for($i = 1; $i <= 100; $i++) {
-            $params['contract_number'] = "134534535";
+        $param['started_index'] = htmlentities(addslashes($request->get('started_index')));
+        $param['length'] = htmlentities(addslashes($request->get('length')));
+        $length = $param['started_index'] + $param['length'];
+
+        for($i = $param['started_index']; $i <= $length; $i++) {
+            $params['contract_number'] = "134534535-" . $i;
             $params['angsuran_perbulan'] = 4500000;
             $params['tanggal_jatuh_tempo'] = "15-06-2019";
             $params['category_desc'] = "Pembiayaan Agunan";
