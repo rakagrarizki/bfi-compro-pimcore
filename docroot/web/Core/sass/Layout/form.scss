@@ -654,7 +654,7 @@
                     -moz-border-radius: 2px;
                     -ms-border-radius: 2px;
                     -o-border-radius: 2px;
-}
+                }
             }
 
             .slidecontainer {
@@ -824,6 +824,16 @@
             }
             .total-estimate-travel{
                 margin-top: 0px;
+            }
+            
+        }
+        .warning-calculate {
+            label {
+                text-transform: lowercase;
+        
+                &::first-letter {
+                    text-transform: uppercase;
+                }
             }
         }
     }

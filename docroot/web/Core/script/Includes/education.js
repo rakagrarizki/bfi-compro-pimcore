@@ -3,6 +3,7 @@ var formGroup = [];
 formGroup[0] = ["#nama_lengkap", "#email_pemohon", "#no_handphone", "#ktp"];
 formGroup[1] = ["#provinsi", "#kota", "#kecamatan", "#kelurahan", "#kode_pos", "#alamat_lengkap"];
 formGroup[2] = ["#ex7SliderVal", "#down_payment", "#jangka_waktu"];
+// var countCalculate = 0;
 
 
 function isValidStep() {
@@ -374,6 +375,10 @@ var isValidOtp = false;
         $("#total_funding, #summary-total-pembiayaan").text(total_funding);
       }
     }
+    // if(countCalculate > 0){
+    //   $(".warning-calculate").addClass("hide");
+    // }
+    // countCalculate += 1;
   });
 
   setTimeout(function() { reInitJcf(); }, 2000);

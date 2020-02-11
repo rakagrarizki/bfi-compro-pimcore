@@ -168,6 +168,7 @@
   var changeJumlahPembiayaan = false;
 
   var retryLimit = 3;
+  var countCalculate = 0;
 
   // SET HEIGHT CONTAINER WHEN CONTAINER SMALLER THAN DOCUMENT
 
@@ -523,6 +524,9 @@
 
             disableButton("#button4");
             disableButton(".hidesavebutton");
+            if(countCalculate > 0){
+              $(".warning-calculate").removeClass("hide");
+            }
             flag_sudahcalc = false;
           });
 
@@ -539,6 +543,9 @@
     newoptionAsuransi(thisval, raw_select);
     disableButton("#button4");
     disableButton(".hidesavebutton");
+    if(countCalculate > 0){
+      $(".warning-calculate").removeClass("hide");
+    }
     flag_sudahcalc = false;
   });
 
@@ -4795,6 +4802,9 @@
   if (typeof ($('#ex6SliderVal').parents(".sliderGroup").find(".customslide").slider()) !== 'undefined') {
     $('#ex6SliderVal').parents(".sliderGroup").find(".customslide").slider().on('slideStop', function (ev) {
       $('#jangka_waktu').empty();
+      if (countCalculate > 0){
+        $(".warning-calculate").removeClass("hide");
+      }
       getTenor();
     });
   }
@@ -4833,6 +4843,8 @@
     }
     enableButton('.hidesavebutton');
     flag_sudahcalc = true;
+    countCalculate += 1;
+    $(".warning-calculate").addClass("hide");
   })
 
   $(document).on('click', '.countdown--reload', function (e) {
@@ -5151,7 +5163,7 @@ function loginCustomer() {
             }else{
               errorMsg = "Phone Number Not Registered.";
             }
-            $(".error-wrap").html('<label id="otp-error" class="error" for="otp" style="display: inline-block;">' + errorMsg + '</label>');
+            $(".error-wrap").html('<label id="login-error" class="error" for="login" style="display: inline-block;">' + errorMsg + '</label>');
             console.log('gagal login');
           }
       }

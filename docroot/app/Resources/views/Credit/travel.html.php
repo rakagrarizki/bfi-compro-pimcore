@@ -213,6 +213,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                                 <button class="cta cta-primary cta-big absolutebutcalc" id="recalc" type="button"><?= $this->translate('count-installment') ?></button>
                             </div>
                         </div>
+                        <div class="warning-calculate hide"><label>Silahkan Klik hitung ulang sebelum melanjutkan.</label></div>
                     </div>
 
                 </div>
