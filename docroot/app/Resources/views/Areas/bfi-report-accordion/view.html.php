@@ -51,7 +51,7 @@ $randId = rand(10,100);
                                                 </li>
                                                 <div class="download-btn">
                                                     <div class="down-box">
-                                                        <a href="<?= $data->getUrl(); ?>" class="cta cta-down">
+                                                        <a href="<?= $data->getUrl(); ?>" target="_blank" class="cta cta-down">
                                                             <span><?=  $this->t("download-document")?></span>
                                                         </a>
                                                     </div>
