@@ -228,15 +228,15 @@ class UserController extends FrontendController
 
     public function verifyEmailConfirmJsonAction(Request $request)
     {
-        $token = $this->getToken();
+        $token = htmlentities(addslashes($request->get("token")));
 
-        $param['email_verify_code'] = htmlentities(addslashes($request->get('email_verify_code')));
+        $param['email_verify_code'] = $token;
 
         $host = WebsiteSetting::getByName("HOST")->getData();
         $url = $host . WebsiteSetting::getByName('VERIFY_EMAIL_CONFIRM')->getData();
 
         try {
-            $data = $this->sendApi->verifyEmailConfirm($url, $param, $token);
+            $data = $this->sendApi->verifyEmailConfirm($url, $param);
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
@@ -246,13 +246,15 @@ class UserController extends FrontendController
         }
 
         if ($data->status == "success") {
-            // fill something
+            // return new JsonResponse([
+            //     'success' => true,
+            //     'result' => $data
+            // ]);
+            
+            /* Redirect to dashboard */
+            return $this->redirect("http://bfi.localhost/id/user/dashboard");
         }
 
-        return new JsonResponse([
-            'success' => true,
-            'result' => $data
-        ]);
     }
 
     public function verifyNoKtpJsonAction(Request $request)

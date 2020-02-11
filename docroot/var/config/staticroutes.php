@@ -2340,5 +2340,23 @@ return [
         "legacy" => FALSE,
         "creationDate" => 1581048378,
         "modificationDate" => 1581048436
+    ],
+    135 => [
+        "id" => 135,
+        "name" => "email confirmation",
+        "pattern" => "/\\/confirm-email\\/([0-9a-zA-Z_-]+)\$/",
+        "reverse" => "/confirm-email/%token",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\UserController",
+        "action" => "verifyEmailConfirmJson",
+        "variables" => "token",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1581392622,
+        "modificationDate" => 1581392767
     ]
 ];
