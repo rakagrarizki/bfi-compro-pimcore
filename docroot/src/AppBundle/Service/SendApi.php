@@ -134,9 +134,9 @@ class SendApi
         return $this->executeApiBearer('verifyEmailRequest', $url, $params, "POST", $token);
     }
 
-    public function verifyEmailConfirm($url, $params, $token)
+    public function verifyEmailConfirm($url, $params)
     {
-        return $this->executeApiBearer('verifyEmailConfirm', $url, $params, "POST", $token);
+        return $this->executeApi('verifyEmailConfirm', $url, $params, "POST");
     }
 
     public function verifyNoKtp($url, $params, $token)
