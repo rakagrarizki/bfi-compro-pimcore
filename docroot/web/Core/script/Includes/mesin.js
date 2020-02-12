@@ -4,6 +4,7 @@ formGroup[0] = ["#nama_lengkap", "#email_pemohon", "#no_handphone"]
 formGroup[1] = ["#provinsi", "#kota", "#kecamatan", "#kelurahan", "#kode_pos", "#alamat_lengkap"]
 formGroup[2] = ["#layanan", "#industri", "#type", "#machine_qty", "#brand", "#model", "#year", "#machine_estimated"]
 formGroup[3] = ["#machine_estimated", "#machine_estimated", "#machine_estimated"]
+// var countCalculate = 0;
 
 function isValidStep() {
   var currentStep = form.steps("getCurrentIndex");
@@ -271,8 +272,16 @@ function getDataTenor() {
     });
   })
   selElm.empty();
+  var lang = document.documentElement.lang;
+  var periodPlaceholder;
+  if (lang=='id'){
+    periodPlaceholder = "Jangka Waktu" ;
+  }else{
+    periodPlaceholder = "Period of Time";
+  }
+
   selElm.select2({
-    placeholder: selElm.attr('placeholder'),
+    placeholder: periodPlaceholder,
     dropdownParent: selElm.parent(),
     data: dataArr
   });
@@ -509,6 +518,10 @@ var isValidOtp = false;
       $("#permonth-estimation").text(post.data.monthly_installment_est_total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
       $("#summary-angsuran-bulanan").text(post.data.monthly_installment_est_total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
     }
+    // if(countCalculate > 0){
+    //   $(".warning-calculate").addClass("hide");
+    // }
+    // countCalculate += 1;
   });
 
   $('input[type=radio][name=applicant_position]').change(function() {

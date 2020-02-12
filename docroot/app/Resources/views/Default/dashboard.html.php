@@ -199,6 +199,7 @@ $this->extend('layout.html.php');
                         </div>
                         <p><?= $this->translate('placeholderNoktp') ?></p>
                     </div>
+                    <div class="error-wrap"></div>
                 </div>
                 <input id="btn-submit" class="button-login" type="button" value="SIMPAN">
             </form>
