@@ -1480,5 +1480,15 @@ return [
         "siteId" => 0,
         "creationDate" => 0,
         "modificationDate" => 1581227943
+    ],
+    155 => [
+        "id" => 155,
+        "name" => "URL_GET_MACHINERY_DOWN_PAYMENT",
+        "language" => "",
+        "type" => "text",
+        "data" => "/get_machinery_down_payment",
+        "siteId" => 0,
+        "creationDate" => 0,
+        "modificationDate" => 1581493851
     ]
 ];

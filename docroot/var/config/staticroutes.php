@@ -2358,5 +2358,23 @@ return [
         "legacy" => FALSE,
         "creationDate" => 1581392622,
         "modificationDate" => 1581392767
+    ],
+    136 => [
+        "id" => 136,
+        "name" => "get machinery down payment",
+        "pattern" => "/\\/credit\\/get-machinery-down-payment/",
+        "reverse" => "/credit/get-machinery-down-payment",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getMachineryDownPayment",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1581494082,
+        "modificationDate" => 1581494171
     ]
 ];
