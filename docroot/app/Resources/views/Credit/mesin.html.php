@@ -258,7 +258,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                       <label><?= $this->translate('label-funding-year')?></label>
                       <div>
                         <select class="c-custom-select-trans form-control formRequired" id="jangka_waktu"
-                                name="jangka-waktu" multiple="multiple">
+                                name="jangka-waktu" multiple="multiple" placeholder="<?= $this->translate('jangka-waktu') ?>">
                         </select>
                       </div>
                       <div class="error-wrap"></div>

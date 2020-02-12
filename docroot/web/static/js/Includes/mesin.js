@@ -4,7 +4,7 @@ formGroup[0] = ["#nama_lengkap", "#email_pemohon", "#no_handphone"]
 formGroup[1] = ["#provinsi", "#kota", "#kecamatan", "#kelurahan", "#kode_pos", "#alamat_lengkap"]
 formGroup[2] = ["#layanan", "#industri", "#type", "#machine_qty", "#brand", "#model", "#year", "#machine_estimated"]
 formGroup[3] = ["#machine_estimated", "#machine_estimated", "#machine_estimated"]
-// var countCalculate = 0;
+var countCalculate = 0;
 
 function isValidStep() {
   var currentStep = form.steps("getCurrentIndex");
@@ -234,14 +234,22 @@ function sendLastLeads() {
 
 function initCalculate() {
   getDataTenor();
-  var package = getData("/credit/get-machinery-funding", {
-      "submission_id" : submission_id
+  var package = postData("/credit/get-machinery-funding", {
+    "submission_id" : submission_id
   });
   var rawMinPrice = parseInt(package.data.funding_min),
-    rawMaxPrice = parseInt(package.data.funding_max),
-    otr_price = parseInt(package.data.funding_min);
-
-  var rawDownPayment = rawMinPrice * 0.3;
+  rawMaxPrice = parseInt(package.data.funding_max),
+  otr_price = parseInt(package.data.funding_min);
+  
+  if(package.data.is_payment_down){
+    var down_payment = postData("/credit/get-machinery-down-payment", {
+      "submission_id" : submission_id
+    });
+    $('.mesin-down-payment').show();
+    var rawDownPayment = parseFloat(rawMinPrice) * parseFloat(down_payment.data.down_payment_min_percent);
+  }else{
+    $('.mesin-down-payment').hide();
+  }
 
   $("#calcSlider").slider({ min: rawMinPrice, max: rawMaxPrice, step: 100000 });
   $("#ex7SliderVal").parents(".sliderGroup").find(".calcslide").data('slider').options.max = rawMaxPrice;
@@ -272,16 +280,8 @@ function getDataTenor() {
     });
   })
   selElm.empty();
-  var lang = document.documentElement.lang;
-  var periodPlaceholder;
-  if (lang=='id'){
-    periodPlaceholder = "Jangka Waktu" ;
-  }else{
-    periodPlaceholder = "Period of Time";
-  }
-
   selElm.select2({
-    placeholder: periodPlaceholder,
+    placeholder: selElm.attr('placeholder'),
     dropdownParent: selElm.parent(),
     data: dataArr
   });
@@ -518,10 +518,8 @@ var isValidOtp = false;
       $("#permonth-estimation").text(post.data.monthly_installment_est_total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
       $("#summary-angsuran-bulanan").text(post.data.monthly_installment_est_total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
     }
-    // if(countCalculate > 0){
-    //   $(".warning-calculate").addClass("hide");
-    // }
-    // countCalculate += 1;
+    $(".warning-calculate").addClass("hide");
+    countCalculate += 1;
   });
 
   $('input[type=radio][name=applicant_position]').change(function() {

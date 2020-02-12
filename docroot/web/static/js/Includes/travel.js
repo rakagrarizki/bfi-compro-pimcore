@@ -3,7 +3,7 @@ var formGroup = [];
 formGroup[0] = ["#nama_lengkap", "#email_pemohon", "#no_handphone", "#ktp"];
 formGroup[1] = ["#provinsi", "#kota", "#kecamatan", "#kelurahan", "#kode_pos", "#alamat_lengkap"];
 formGroup[2] = ["#ex7SliderVal", "#down_payment", "#jangka_waktu","#pocket_money"];
-// var countCalculate = 0;
+var countCalculate = 0;
 
 function isValidStep() {
   var currentStep = form.steps("getCurrentIndex");
@@ -165,16 +165,8 @@ function getDataTenor() {
     });
   })
   selElm.empty();
-  var lang = document.documentElement.lang;
-  var periodPlaceholder;
-  if (lang=='id'){
-    periodPlaceholder = "Jangka Waktu" ;
-  }else{
-    periodPlaceholder = "Period of Time";
-  }
-
   selElm.select2({
-    placeholder : periodPlaceholder,
+    placeholder : selElm.attr('placeholder'),
     dropdownParent: selElm.parent(),
     data: dataArr
   });
@@ -378,10 +370,8 @@ var isValidOtp = false;
         $("#summary-total-pembiayaan").text('Rp. '+post.data.total_funding.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
         $("#summary-harga-paket-pendidikan").text('Rp. '+$("#ex7SliderVal").val());
     }
-    // if(countCalculate > 0){
-    //   $(".warning-calculate").addClass("hide");
-    // }
-    // countCalculate += 1;
+    $(".warning-calculate").addClass("hide");
+    countCalculate += 1;
   });
 
   setTimeout(function () { reInitJcf(); }, 2000); 
