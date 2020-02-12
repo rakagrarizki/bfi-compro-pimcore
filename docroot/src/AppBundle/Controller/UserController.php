@@ -484,6 +484,7 @@ class UserController extends FrontendController
                     'message' => "success fetch data"
                 ],
                 'status' => 'success',
+                'total_record' => 100,
                 'data' => $datas
             ]
         ]);
