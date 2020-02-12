@@ -40,49 +40,121 @@ $(document).ready(function(){
         $('textarea#message').css('padding-top', '35px');
     })
 
-    if (window.File && window.FileList && window.FileReader) {
+    $('.file-input').on('change', function(e) { 
+        const sizeLimit = 500000;
+        const parent = $(this).parents(".upload-image");
+        const preview = parent.find("img")[0];
+        const label = parent.find("b")[0];
+        const file = e.target.files[0];
+        const iptFrm = $(this).data("id");
+        const filePdf = e.target.files[0];
+        const isImage = (file.type.match("image") ? true : false);
+        const isPdf = (file.type.match("application/pdf") ? true : false);
 
-        $("#files").on("change", function(e) {
-         const sizeLimit = 500000;
-         const file = e.target.files[0];
-         const filePdf = e.target.files[0];
-         const isImage = (file.type.match("image") ? true : false);
-         const isPdf = (file.type.match("application/pdf") ? true : false);
-         
-        if (file.size <= sizeLimit && isImage ) { 
-            const fileReader = new FileReader();
-                fileReader.onload = (function(e) {
-                $("<span class=\"pip\">" +
-                    "<img class=\"imageThumb\" src=\"" + e.target.result +"\" />"+
-                    "<br/><span class=\"remove\">Remove image</span>" +
-                    "</span>").insertAfter("#files");
 
-                        $(".remove").click(function(){
-                        $(this).parent(".pip").remove();
-                        });
-                });
-            fileReader.readAsDataURL(file);
-          }
-          else if (filePdf.size <= sizeLimit && isPdf) { 
-            const fileReaderPdf = new FileReader();
-          if (file.type == "application/pdf"){
-            const imagePDF = "/static/images/pdf_logo.png";
-            fileReaderPdf.onload = (function(e) {
+        if (file.size <= sizeLimit && isImage) { 
+            var reader = new FileReader();
+            reader.addEventListener("load", function (e) {
+                $("<span class=\"pipImg\">" +
+                "<img  src=\"" + e.target.result +"\" />"+
+                "<br/><span class=\"remove\">Remove image</span>" +
+                "</span>").insertAfter("#files");
 
-                $("<span class=\"pipPdf\">" +
-                    "<img class=\"imagePdf\" src=\"" + imagePDF +"\"  title=\"" + file.name + "\"/>"+
+                    $(".remove").click(function(){
+                    $(this).parent(".pipImg").remove();
+                    });  
+                if (typeof (preview) !== "undefined") {
+                $("#" + iptFrm).val("/test/test.png").trigger("change");
+                $(label).text(file.name);
+                preview.src = reader.result;
+                }
+            }, false);
+
+            if (file) {
+                $(preview).show();
+                reader.readAsDataURL(file);
+            } else {
+                $(preview).hide();
+            } 
+            parent.find('b').show();
+            parent.find(".error-wrap").hide();
+        } else {
+            var errorMsg = '';
+            switch (false) {
+                case (file.size <= sizeLimit):
+                    console.log('contact-us')
+                    if(lang === 'id'){
+                        errorMsg = 'Ukuran file harus kurang dari 500 KB.';
+                    }else{
+                        errorMsg = 'File size must be less than 500 KB.';
+                    }
+                    break;
+                case isImage:
+                    if(lang === 'id'){
+                        errorMsg = 'Silakan pilih file gambar.'
+                    }else{
+                        errorMsg = 'Please choose image file.';
+                    }
+                    break;
+            }
+                $(preview).hide();
+                parent.find('b').hide();
+                parent.find(".error-wrap").show();
+                parent.find(".error-wrap").html('<label id="img-error" class="error" for="img" style="display: inline-block;">' + errorMsg + '</label>');
+            } 
+            if (filePdf.size <= sizeLimit && isPdf) { 
+                const fileReaderPdf = new FileReader();
+                if (file.type == "application/pdf"){
+                    const imagePDF = "/static/images/pdf_logo.png";
+                    fileReaderPdf.addEventListener("load", function () {
+                    $("<span class=\"pipPdf\">" +
+                    "<img  src=\"" + imagePDF +"\" />"+
                     "<br/><span class=\"remove\">Remove pdf</span>" +
                     "</span>").insertAfter("#files");
-
+    
                         $(".remove").click(function(){
                         $(this).parent(".pipPdf").remove();
-                        });
-                });
+                        });  
+                    if (typeof (preview) !== "undefined") {
+                    $("#" + iptFrm).val("/test/test.png").trigger("change");
+                    $(label).text(file.name);
+                    preview.src = fileReaderPdf.result;
+                    }
+                }, false);
+                if (file) {
+                    $(preview).show();
+                    fileReaderPdf.readAsDataURL(file);
+                } else {
+                    $(preview).hide();
+                } 
+                parent.find('b').show();
+                parent.find(".error-wrap").hide();
+            } else {
+                var errorMsg = '';
+                switch (false) {
+                    case (file.size <= sizeLimit):
+                        console.log('contact-us')
+                        if(lang === 'id'){
+                            errorMsg = 'Ukuran file harus kurang dari 500 KB.';
+                        }else{
+                            errorMsg = 'File size must be less than 500 KB.';
+                        }
+                        break;
+                    case isImage:
+                        if(lang === 'id'){
+                            errorMsg = 'Silakan pilih file pdf.'
+                        }else{
+                            errorMsg = 'Please choose pdf file.';
+                        }
+                        break;
+                }
+                $(preview).hide();
+                parent.find('b').hide();
+                parent.find(".error-wrap").show();
+                parent.find(".error-wrap").html('<label id="img-error" class="error" for="img" style="display: inline-block;">' + errorMsg + '</label>');
             }
-        fileReaderPdf.readAsDataURL(filePdf);
-          }
-        });
-      }
+        }
+    });
     
     validateFormRequired($('#contact'))
 
