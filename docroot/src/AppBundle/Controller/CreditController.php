@@ -2800,6 +2800,44 @@ class CreditController extends FrontendController
             ]);
         }
     }
+    public function getMachineryDownPaymentAction(Request $request){
+
+        $host = WebsiteSetting::getByName("HOST")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_MACHINERY_DOWN_PAYMENT')->getData();
+        $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+
+
+        try {
+            $data = $this->sendAPI->getMachineryDownPayment($url, $param);
+        } catch (\Exception $e) {
+//            return new JsonResponse([
+//                'success' => "0",
+//                'message' => "Service Request Machinery Year Down"
+//            ]);
+            throw new \Exception('Something went wrong!');
+        }
+
+        if($data->header->status == 200){
+            if($data->data != []){
+                return new JsonResponse([
+                    'success' => "1",
+                    'message' => "Sukses",
+                    'data' => $data->data
+                ]);
+            }else {
+                return new JsonResponse([
+                    'success' => "0",
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+
+        }else{
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $this->get("translator")->trans("api-error")
+            ]);
+        }
+    }
 
     public function getMachineryTenorAction(Request $request){
 

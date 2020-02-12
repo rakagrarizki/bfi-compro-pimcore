@@ -701,6 +701,11 @@ class SendApi
 
         return $this->executeApi('api-machinery-funding', $url, $params, "POST");
     }
+    public function getMachineryDownPayment($url, $params)
+    {
+
+        return $this->executeApi('api-machinery-down-payment', $url, $params, "POST");
+    }
     public function getMachineryTenor($url)
     {
 
