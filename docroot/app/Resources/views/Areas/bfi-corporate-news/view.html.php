@@ -38,10 +38,11 @@ $news->load();
                             <?php
                             $timestampDate = \Carbon\Carbon::parse($data->getDate());
                             $dateUnix = $timestampDate->timestamp;
-                            $date = date("D, d-M'Y", $dateUnix);
+                            $date = date("d.m.y", $dateUnix);
                             ?>
-                            <p><?= $date;?></p>
-                            <h3><a href="/blog/<?=$data->getSlug();?>"><?= $data->getTitle();?></a></h3>
+                            <p><?= $data->getCategory()->getName(); ?></p>
+                            <h3><a href="/<?= $lang; ?>/news/<?= $data->getSlug(); ?>"><?= $data->getTitle();?></a></h3>
+                            <p class="date"><?= $date; ?> | <i class="fa fa-eye"></i> <?= $data->getViews(); ?></p>
                         </div>
                     </div>
                 </div>
