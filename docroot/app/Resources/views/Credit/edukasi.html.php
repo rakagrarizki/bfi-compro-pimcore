@@ -145,8 +145,10 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                         </div>
                         <div class="form-group sliderGroup inputsimulasi">
                             <label><?= $this->translate('label-funding-year') ?></label>
-                            <select class="c-custom-select-trans form-control formRequired" id="jangka_waktu" name="jangka-waktu">
-                            </select>
+                            <div>
+                                <select class="c-custom-select-trans form-control formRequired" id="jangka_waktu" name="jangka-waktu" placeholder="<?= $this->translate('jangka-waktu') ?>" multiple="multiple">
+                                </select>
+                            </div>
                             <div class="error-wrap"></div>
                         </div>
                     </div>

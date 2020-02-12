@@ -3,7 +3,7 @@ var formGroup = [];
 formGroup[0] = ["#nama_lengkap", "#email_pemohon", "#no_handphone", "#ktp"];
 formGroup[1] = ["#provinsi", "#kota", "#kecamatan", "#kelurahan", "#kode_pos", "#alamat_lengkap"];
 formGroup[2] = ["#ex7SliderVal", "#down_payment", "#jangka_waktu"];
-// var countCalculate = 0;
+var countCalculate = 0;
 
 
 function isValidStep() {
@@ -155,14 +155,25 @@ function getDataTenor() {
   var selElm = $("#jangka_waktu");
   var ret = getData("/credit/get-edu-tenor", {});
   var dataArr = [];
-  selElm.empty();
   $.each(ret.data, function (idx, item) {
-    selElm.append($('<option>', {
-      value: item.tenor,
+    dataArr.push({
+      id: item.tenor,
       text: item.desc
-    }));
+    });
   })
-  selElm.find('option:first-child').attr('selected', 'selected');
+  selElm.empty();
+  selElm.select2({
+    placeholder: selElm.attr('placeholder'),
+    dropdownParent: selElm.parent(),
+    data: dataArr
+  });
+  // $.each(ret.data, function (idx, item) {
+  //   selElm.append($('<option>', {
+  //     value: item.tenor,
+  //     text: item.desc
+  //   }));
+  // })
+  // selElm.find('option:first-child').attr('selected', 'selected');
 }
 
 function initSummary() {
@@ -375,10 +386,8 @@ var isValidOtp = false;
         $("#total_funding, #summary-total-pembiayaan").text(total_funding);
       }
     }
-    // if(countCalculate > 0){
-    //   $(".warning-calculate").addClass("hide");
-    // }
-    // countCalculate += 1;
+    $(".warning-calculate").addClass("hide");
+    countCalculate += 1;
   });
 
   setTimeout(function() { reInitJcf(); }, 2000);
