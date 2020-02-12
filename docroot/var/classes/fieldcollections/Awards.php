@@ -1,13 +1,12 @@
 <?php 
 
 /** 
-* Generated at: 2020-02-09T06:58:39+01:00
+* Generated at: 2020-02-12T04:11:16+01:00
 * IP: 127.0.0.1
 
 
 Fields Summary: 
  - localizedfields [localizedfields]
- - Image [image]
 */ 
 
 
@@ -134,30 +133,6 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
              'invisible' => false,
              'visibleGridView' => true,
              'visibleSearch' => true,
-          )),
-          1 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Image::__set_state(array(
-             'fieldtype' => 'image',
-             'width' => '',
-             'height' => '',
-             'uploadPath' => '',
-             'queryColumnType' => 'int(11)',
-             'columnType' => 'int(11)',
-             'phpdocType' => '\\Pimcore\\Model\\Asset\\Image',
-             'name' => 'Image',
-             'title' => 'Image',
-             'tooltip' => '',
-             'mandatory' => false,
-             'noteditable' => false,
-             'index' => false,
-             'locked' => false,
-             'style' => '',
-             'permissions' => NULL,
-             'datatype' => 'data',
-             'relationType' => false,
-             'invisible' => false,
-             'visibleGridView' => false,
-             'visibleSearch' => false,
           )),
         ),
          'locked' => false,
