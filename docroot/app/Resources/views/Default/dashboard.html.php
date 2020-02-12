@@ -193,7 +193,7 @@ $this->extend('layout.html.php');
                                 <button id="upload-button" class="btn-upload">
                                     <?= $this->translate('choose-file') ?>
                                 </button>
-                                <input id="file-upload" class="hide-input" accept="image/*" type="file" name="myfile">
+                                <input id="file-upload" class="hide-input" accept="image/*" type="file" name="myfile" onchange=" document.getElementById('upload-button').innerHTML = 'Ubah File';">
                             </div>
                             <span id="file-upload-filename"></span>
                         </div>
