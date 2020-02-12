@@ -26,12 +26,12 @@
                                             <?php
                                             $timestampDate = \Carbon\Carbon::parse($news->getDate());
                                             $dateUnix = $timestampDate->timestamp;
-                                            $date = date("D, d-M'Y", $dateUnix);
+                                            $date = date("d.m.y", $dateUnix);
                                             ?>
                                             <p><?= $news->getCategory()->getName(); ?></p>
                                             <h3><a href="/<?= $lang; ?>/news/<?= $news->getSlug(); ?>"><?= $news->getTitle(); ?></a></h3>
-                                            <p class="date"><?= $date; ?></p>
-                                            <p class="view"><i class="fa fa-eye"></i> <?= $news->getViews(); ?></p>
+                                            <p class="date"><?= $date; ?> | <i class="fa fa-eye"></i> <?= $news->getViews(); ?></p>
+                                            <!-- <p class="view"><i class="fa fa-eye"></i> </?= $news->getViews(); ?></p> -->
                                         </div>
                                     </div>
                                 </div>
