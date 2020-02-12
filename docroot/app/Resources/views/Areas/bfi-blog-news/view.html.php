@@ -30,7 +30,7 @@
                                             ?>
                                             <p><?= $news->getCategory()->getName(); ?></p>
                                             <h3><a href="/<?= $lang; ?>/news/<?= $news->getSlug(); ?>"><?= $news->getTitle(); ?></a></h3>
-                                            <p class="date"><?= $news->getDate(); ?></p>
+                                            <p class="date"><?= $date; ?></p>
                                             <p class="view"><i class="fa fa-eye"></i> <?= $news->getViews(); ?></p>
                                         </div>
                                     </div>
