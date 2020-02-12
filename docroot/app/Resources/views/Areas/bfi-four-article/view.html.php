@@ -19,11 +19,11 @@
                                     <?php
                                     $timestampDate = \Carbon\Carbon::parse($blog->getDate());
                                     $dateUnix = $timestampDate->timestamp;
-                                    $date = date("D, d-M'Y", $dateUnix);
+                                    $date = date("d.m.y", $dateUnix);
                                     ?>
-                                    <p><?= $date;?></p>
-
+                                    <p><?= $blog->getBlogCategory()->getName(); ?></p>
                                     <h4><a href="#"><?= $blog->getTitle();?></a></h4>
+                                    <p><?= $date;?> | <i class="fa fa-eye"></i> <?= $blog->getViews(); ?></p>
                                 </div>
                             </article>
                         </div>
@@ -36,11 +36,11 @@
                                     <?php
                                     $timestampDate = \Carbon\Carbon::parse($blog->getDate());
                                     $dateUnix = $timestampDate->timestamp;
-                                    $date = date("D, d-M'Y", $dateUnix);
+                                    $date = date("d.m.y", $dateUnix);
                                     ?>
-                                    <p><?= $date;?></p>
-
+                                    <p><?= $blog->getBlogCategory()->getName(); ?></p>
                                     <h4><a href="#"><?= $blog->getTitle();?></a></h4>
+                                    <p><?= $date;?> | <i class="fa fa-eye"></i> <?= $blog->getViews(); ?></p>
                                 </div>
                             </article>
                         </div>
