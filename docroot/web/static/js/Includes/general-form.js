@@ -536,37 +536,34 @@ function reInitJcf() {
       //   // objCredits.jangka_waktu = parseInt(_thisVal);
       // }
 
-      // nextButton("inactive");
-      // console.log('=======')
-      // if(countCalculate > 0){
-      //   $(".warning-calculate").removeClass("hide");
-      // }
+      nextButton("inactive");
+      if(countCalculate > 0){
+        $(".warning-calculate").removeClass("hide");
+      }
     });
   }
 
-  // $('#down_payment').on("change", function(){
-  //   nextButton("inactive");
-  //   console.log('++++++++++')
-  //   if(countCalculate > 0){
-  //     $(".warning-calculate").removeClass("hide");
-  //   }
-  // });
+  $('#down_payment').on("change", function(){
+    nextButton("inactive");
+    if(countCalculate > 0){
+      $(".warning-calculate").removeClass("hide");
+    }
+  });
 
   // $('#jangka_waktu').on("change", function(){
   //   nextButton("inactive");
-  //   console.log('-----')
-  //   // if(countCalculate > 0){
-  //   //   $(".warning-calculate").removeClass("hide");
-  //   // }
-  // });
-
-  // $('#pocket_money').on("change", function(){
-  //   nextButton("inactive");
-  //   console.log('-----')
+  //   console.log('-----', this.value)
   //   if(countCalculate > 0){
   //     $(".warning-calculate").removeClass("hide");
   //   }
   // });
+
+  $('#pocket_money').on("change", function(){
+    nextButton("inactive");
+    if(countCalculate > 0){
+      $(".warning-calculate").removeClass("hide");
+    }
+  });
 
   $('.otp-number__verify input[type="tel"]').on("keyup", function () {
     console.log(this.value.length, this.maxLength)

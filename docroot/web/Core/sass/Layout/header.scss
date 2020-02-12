@@ -329,7 +329,8 @@ body{
                         display: flex;
                         align-items: center;
                         margin-right: 25px;
-                        max-width: 20%;
+                        // max-width: 20%;
+                        max-width: 22%;
                         position: relative;
 
                         @include breakpoint(wide) {
