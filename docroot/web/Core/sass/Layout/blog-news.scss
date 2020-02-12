@@ -86,4 +86,28 @@
 
 #informasi-inspiratif {
     margin-bottom: 80px;
+    .col-md-6.col-sm-12.col-xs-12.thumbnail-infor{
+        .thumbnail-infomation{
+            a{
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                -o-text-overflow: ellipsis;
+                text-overflow: ellipsis;
+            }
+        }
+    }
+    .col-md-3.col-sm-6.col-xs-6.thumbnail-infor{
+        .thumbnail-infomation{
+            a{
+                display: -webkit-box;
+                -webkit-line-clamp: 4;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                -o-text-overflow: ellipsis;
+                text-overflow: ellipsis;
+            }
+        }
+    }
 }
