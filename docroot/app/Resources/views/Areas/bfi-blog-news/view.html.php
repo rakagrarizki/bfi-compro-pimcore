@@ -8,6 +8,7 @@
         </p>
         <div class="row content-bfi">
             <?php
+            $site = $this->document->getProperty("site");
             $lang = $this->getLocale();
             $i = 0;
             foreach ($this->news as $news) {
@@ -28,8 +29,16 @@
                                             $dateUnix = $timestampDate->timestamp;
                                             $date = date("d.m.y", $dateUnix);
                                             ?>
-                                            <p><?= $news->getCategory()->getName(); ?></p>
-                                            <h3><a href="/<?= $lang; ?>/news/<?= $news->getSlug(); ?>"><?= $news->getTitle(); ?></a></h3>
+                                            <?php if ($site == "corporate") {
+                                                $category = $news->getCategory()->getName();
+                                                $link = "/news";
+                                            } else {
+                                                $category = $news->getBlogCategory()->getName();
+                                                $link = "/blog";
+                                            }
+                                            ?>
+                                            <p><?= $category; ?></p>
+                                            <h3><a href="/<?= $lang . $link; ?>/<?= $news->getSlug(); ?>"><?= $news->getTitle(); ?></a></h3>
                                             <p class="date"><?= $date; ?> | <i class="fa fa-eye"></i> <?= $news->getViews(); ?></p>
                                             <!-- <p class="view"><i class="fa fa-eye"></i> </?= $news->getViews(); ?></p> -->
                                         </div>
