@@ -39,7 +39,7 @@ $this->extend('layout.html.php');
                 </div>
                 <div class="form-group">
                     <label for="email_penanya"><?= $this->translate('form-email') ?></label>
-                    <input type="tel" class="form-control formRequired formEmail" name="personal[email]" id="email_penanya" placeholder="<?= $this->translate('placeholder-email') ?>">
+                    <input type="email" class="form-control formRequired formEmail" name="personal[email]" id="email_penanya" placeholder="<?= $this->translate('placeholder-email') ?>">
                     <div class="error-wrap"></div>
                 </div>
                 <div class="form-group customer-type">
@@ -70,7 +70,7 @@ $this->extend('layout.html.php');
                 </div>
                 <div class="form-group">
                     <label for="customer_name"><?= $this->translate('Nama Pelanggan') ?></label>
-                    <input type="tel" class="form-control" name="personal[customer_name]" id="customer_name" placeholder="<?= $this->translate('Nama Pelanggan') ?>">
+                    <input type="text" class="form-control formAlphabet formName formRequired" name="personal[customer_name]" id="customer_name" placeholder="<?= $this->translate('Nama Pelanggan') ?>">
                     <div class="error-wrap"></div>
                 </div>
                 <div class="form-group">
@@ -94,7 +94,7 @@ $this->extend('layout.html.php');
                     <div class="upload-file">
                         <div class="upload-btn">
                             <input type="file" id="files" class="file-input" accept="image/*,application/pdf" data-id="document">
-                            <button type="button">choose-file</button>
+                            <button type="button"><?= $this->translate('choose-file') ?></button>
                         </div>
                     </div>
                     <input type="hidden" class="form-control formRequired" name="document" id="document">

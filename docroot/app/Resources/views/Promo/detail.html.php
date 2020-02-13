@@ -23,10 +23,12 @@ $this->headMeta('BFI - '. $promo->getTitle(), "title");
 ?>
 
 <div class="blog-promo detail">
-    <div class="container btn-back">
-        <div class="row">
-            <div class="col-md-6 col-sm-6 left-side-top">
-                <a href="javascript:history.back()" class="text-btn"><?= $this->t("back-button"); ?></a>
+    <div class="pimcore_area_bfi-back-widget pimcore_area_content">
+        <div class="container btn-back">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 left-side-top">
+                    <a href="javascript:history.back()" class="text-btn"><?= $this->t("back-button"); ?></a>
+                </div>
             </div>
         </div>
     </div>
