@@ -15,9 +15,9 @@ function showFileName( event ) {
 
     title.setAttribute("style", "margin-bottom: 10px;");
     if(lang == 'id'){
-        button.textContent = "Ubah File";
+        button.textContent = "Pilih File";
     }else{
-        button.textContent = "Change File";
+        button.textContent = "Choose File";
     }
     image.src = URL.createObjectURL(event.target.files[0]);
     infoArea.textContent = fileName;
