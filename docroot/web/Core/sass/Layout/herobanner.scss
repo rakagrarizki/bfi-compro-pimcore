@@ -486,6 +486,10 @@
         color: #727272;
         text-decoration: none;
         
+        @include breakpoint(mobile){
+            display: none;
+        }
+        
         .fa{
             margin-left: 20px;
             @include breakpoint(mobile){
