@@ -30,10 +30,12 @@ $urlTwitter = " https://twitter.com/share?text=$titleshare&url=$fixedurl&wrap_li
 ?>
 
 <div class="blog-promo detail">
-    <div class="container btn-back">
-        <div class="row">
-            <div class="col-md-6 col-sm-6 left-side-top">
-                <a href="javascript:history.back()" class="text-btn"><?= $this->t("back-button"); ?></a>
+    <div class="pimcore_area_bfi-back-widget pimcore_area_content">
+        <div class="container btn-back">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 left-side-top">
+                    <a href="javascript:history.back()" class="text-btn"><?= $this->t("back-button"); ?></a>
+                </div>
             </div>
         </div>
     </div>
@@ -81,7 +83,7 @@ $urlTwitter = " https://twitter.com/share?text=$titleshare&url=$fixedurl&wrap_li
                     <img src="<?= $relatedNewsData->getImage();?>" alt="">
                 </picture>
                 <div class="caption">
-                    <h3 class="tag"><?= $relatedNewsData->getCategory()->getName();?>></h3>
+                    <h3 class="tag"><?= $relatedNewsData->getCategory()->getName();?></h3>
                     <h2 class="title"><?= $relatedNewsData->getTitle();?></h2>
                     <div class="dateview">
                         <span class="date"><?= $relatedNewsData->getDate();?></span>

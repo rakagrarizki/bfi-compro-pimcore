@@ -227,6 +227,7 @@
     
         @include breakpoint(mobile){
             padding-left: 25px;
+            padding-top: 5px;
         }
         
         .text-btn {
