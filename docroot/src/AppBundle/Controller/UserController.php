@@ -316,60 +316,111 @@ class UserController extends FrontendController
         ]);
     }
 
+    public function assignmentListJsonAction()
+    {
+        if(ENV != "dev"){
+            $token = $this->getToken();
+
+            $param = [];
+    
+            $host = WebsiteSetting::getByName("HOST")->getData();
+            $url = $host . WebsiteSetting::getByName('ASSIGNMENT_LIST')->getData();
+    
+            try {
+                $data = $this->sendApi->listAssignment($url, $param, $token);
+            } catch (\Exception $e) {
+                return new JsonResponse([
+                    'success' => "0",
+                    'message' => "Failed to retrieve the data!",
+                    // 'detail' => $data . '" ' . $token . ' "'
+                    'detail' => $token
+                ]);
+            }
+    
+            if ($data->status == "success") {
+                // fill something
+            }
+    
+            return new JsonResponse([
+                'success' => true,
+                'result' => $data
+            ]);
+        } else {
+            $datas = [];
+
+            for($i = 1; $i <= 15; $i++) {
+                $params['assignment_id'] = "2018074010000000087";
+                $params['submission_id'] = "";
+                $params['category_desc'] = "Pembiayaan Agunan";
+                $params['product_desc'] = "BPKB Mobil";
+                $datas[] = $params;
+            }
+
+            return new JsonResponse([
+                'success' => true,
+                'result' => [
+                    'header' => [
+                        'status' => 200,
+                        'message' => "success fetch data"
+                    ],
+                    'status' => 'success',
+                    'data' => $datas
+                ]
+            ]);
+        }
+
+        // $token = $this->getToken();
+
+        // $param = [];
+
+        // $host = WebsiteSetting::getByName("HOST")->getData();
+        // $url = $host . WebsiteSetting::getByName('ASSIGNMENT_LIST')->getData();
+
+        // try {
+        //     $data = $this->sendApi->listAssignment($url, $param, $token);
+        // } catch (\Exception $e) {
+        //     return new JsonResponse([
+        //         'success' => "0",
+        //         'message' => "Failed to retrieve the data!",
+        //         // 'detail' => $data . '" ' . $token . ' "'
+        //         'detail' => $token
+        //     ]);
+        // }
+
+        // if ($data->status == "success") {
+        //     // fill something
+        // }
+
+        // return new JsonResponse([
+        //     'success' => true,
+        //     'result' => $data
+        // ]);
+    }
+
     // public function assignmentListJsonAction()
     // {
-    //     $token = $this->getToken();
+    //     $datas = [];
 
-    //     $param = [];
-
-    //     $host = WebsiteSetting::getByName("HOST")->getData();
-    //     $url = $host . WebsiteSetting::getByName('ASSIGNMENT_LIST')->getData();
-
-    //     try {
-    //         $data = $this->sendApi->listAssignment($url, $param, $token);
-    //     } catch (\Exception $e) {
-    //         return new JsonResponse([
-    //             'success' => "0",
-    //             'message' => "Failed to retrieve the data!",
-    //             // 'detail' => $data . '" ' . $token . ' "'
-    //             'detail' => $token
-    //         ]);
-    //     }
-
-    //     if ($data->status == "success") {
-    //         // fill something
+    //     for($i = 1; $i <= 15; $i++) {
+    //         $params['assignment_id'] = "2018074010000000087";
+    //         $params['submission_id'] = "";
+    //         $params['category_desc'] = "Pembiayaan Agunan";
+    //         $params['product_desc'] = "BPKB Mobil";
+    //         $datas[] = $params;
     //     }
 
     //     return new JsonResponse([
     //         'success' => true,
-    //         'result' => $data
+    //         'result' => [
+    //             'header' => [
+    //                 'status' => 200,
+    //                 'message' => "success fetch data"
+    //             ],
+    //             'status' => 'success',
+    //             'data' => $datas
+    //         ]
     //     ]);
     // }
-
-    public function assignmentListJsonAction()
-    {
-        $datas = [];
-
-        for($i = 1; $i <= 15; $i++) {
-            $params['assignment_id'] = "2018074010000000087";
-            $params['submission_id'] = "";
-            $params['category_desc'] = "Pembiayaan Agunan";
-            $params['product_desc'] = "BPKB Mobil";
-            $datas[] = $params;
-        }
-
-        return new JsonResponse([
-            'success' => true,
-            'result' => [
-                'header' => [
-                    'status' => 200,
-                    'message' => "success fetch data"
-                ],
-                'status' => 'success',
-                'data' => $datas
-            ]
-        ]);
-    }
 
     public function applicationStepListJsonAction()
     {
@@ -429,66 +480,116 @@ class UserController extends FrontendController
         ]);
     }
 
+    public function contractStatusListJsonAction(Request $request)
+    {
+        if(ENV != "dev"){
+            
+        $token = $this->getToken();
+
+        $param['started_index'] = htmlentities(addslashes($request->get('started_index')));
+        $param['length'] = htmlentities(addslashes($request->get('length')));
+
+        $host = WebsiteSetting::getByName("HOST")->getData();
+        $url = $host . WebsiteSetting::getByName('CONTRACT_STATUS_LIST')->getData();
+
+            try {
+                $data = $this->sendApi->listContractStatus($url, $param, $token);
+            } catch (\Exception $e) {
+                return new JsonResponse([
+                    'success' => "0",
+                    'message' => "Failed to retrieve the data!",
+                    'detail' => $data
+                ]);
+            }
+    
+            if ($data->status == "success") {
+                // fill something
+            }
+    
+            return new JsonResponse([
+                'success' => true,
+                'result' => $data
+            ]);
+        } else {
+            $datas = [];
+
+                $param['started_index'] = htmlentities(addslashes($request->get('started_index')));
+                $param['length'] = htmlentities(addslashes($request->get('length')));
+                $length = $param['started_index'] + $param['length'];
+        
+                for($i = $param['started_index']; $i <= $length; $i++) {
+                    $params['contract_number'] = "134534535-" . $i;
+                    $params['angsuran_perbulan'] = 4500000;
+                    $params['tanggal_jatuh_tempo'] = "15-06-2019";
+                    $params['category_desc'] = "Pembiayaan Agunan";
+                    $params['product_desc'] = "BPKB Mobil";
+                    $datas[] = $params;
+                }
+        
+                return new JsonResponse([
+                    'success' => true,
+                    'result' => [
+                        'header' => [
+                            'status' => 200,
+                            'message' => "success fetch data"
+                        ],
+                        'status' => 'success',
+                        'total_record' => 100,
+                        'data' => $datas
+                    ]
+                ]);
+        }
+
+        // try {
+        //     $data = $this->sendApi->listContractStatus($url, $param, $token);
+        // } catch (\Exception $e) {
+        //     return new JsonResponse([
+        //         'success' => "0",
+        //         'message' => "Failed to retrieve the data!",
+        //         'detail' => $data
+        //     ]);
+        // }
+
+        // if ($data->status == "success") {
+        //     // fill something
+        // }
+
+        // return new JsonResponse([
+        //     'success' => true,
+        //     'result' => $data
+        // ]);
+    }
+
     // public function contractStatusListJsonAction(Request $request)
     // {
-    //     $token = $this->getToken();
+    //     $datas = [];
 
     //     $param['started_index'] = htmlentities(addslashes($request->get('started_index')));
     //     $param['length'] = htmlentities(addslashes($request->get('length')));
+    //     $length = $param['started_index'] + $param['length'];
 
-    //     $host = WebsiteSetting::getByName("HOST")->getData();
-    //     $url = $host . WebsiteSetting::getByName('CONTRACT_STATUS_LIST')->getData();
-
-    //     try {
-    //         $data = $this->sendApi->listContractStatus($url, $param, $token);
-    //     } catch (\Exception $e) {
-    //         return new JsonResponse([
-    //             'success' => "0",
-    //             'message' => "Failed to retrieve the data!",
-    //             'detail' => $data
-    //         ]);
-    //     }
-
-    //     if ($data->status == "success") {
-    //         // fill something
+    //     for($i = $param['started_index']; $i <= $length; $i++) {
+    //         $params['contract_number'] = "134534535-" . $i;
+    //         $params['angsuran_perbulan'] = 4500000;
+    //         $params['tanggal_jatuh_tempo'] = "15-06-2019";
+    //         $params['category_desc'] = "Pembiayaan Agunan";
+    //         $params['product_desc'] = "BPKB Mobil";
+    //         $datas[] = $params;
     //     }
 
     //     return new JsonResponse([
     //         'success' => true,
-    //         'result' => $data
+    //         'result' => [
+    //             'header' => [
+    //                 'status' => 200,
+    //                 'message' => "success fetch data"
+    //             ],
+    //             'status' => 'success',
+    //             'total_record' => 100,
+    //             'data' => $datas
+    //         ]
     //     ]);
     // }
-
-    public function contractStatusListJsonAction(Request $request)
-    {
-        $datas = [];
-
-        $param['started_index'] = htmlentities(addslashes($request->get('started_index')));
-        $param['length'] = htmlentities(addslashes($request->get('length')));
-        $length = $param['started_index'] + $param['length'];
-
-        for($i = $param['started_index']; $i <= $length; $i++) {
-            $params['contract_number'] = "134534535-" . $i;
-            $params['angsuran_perbulan'] = 4500000;
-            $params['tanggal_jatuh_tempo'] = "15-06-2019";
-            $params['category_desc'] = "Pembiayaan Agunan";
-            $params['product_desc'] = "BPKB Mobil";
-            $datas[] = $params;
-        }
-
-        return new JsonResponse([
-            'success' => true,
-            'result' => [
-                'header' => [
-                    'status' => 200,
-                    'message' => "success fetch data"
-                ],
-                'status' => 'success',
-                'total_record' => 100,
-                'data' => $datas
-            ]
-        ]);
-    }
 
     public function contractDetailJsonAction(Request $request)
     {
