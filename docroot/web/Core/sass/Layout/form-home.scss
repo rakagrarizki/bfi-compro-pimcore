@@ -123,15 +123,16 @@
                         height: 165px;
                         padding: 10px;
                         border: 1px solid;
-                        @include breakpoint(mobile){
-                            width: 100%;
-                            height: auto;
-                        }
-
                         @include breakpoint(tablet){
                             width: 100%;
                             height: auto;
                         }
+
+                        @include breakpoint(mobile){
+                            width: 100%;
+                            height: 180px;
+                        }
+
 
                         .imggetcredit{
                             vertical-align: middle;

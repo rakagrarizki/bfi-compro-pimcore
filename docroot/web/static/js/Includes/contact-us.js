@@ -23,8 +23,14 @@ $(document).ready(function(){
     $('input[type="radio"]#type').on('change', function(){
         var value = $("input[name='personal[identity]']:checked").val();
         if (value === 'nasabah'){
+            $('input#customer_name').addClass('formRequired');
+            $('input#no_kontrak').addClass('formRequired');
+            $('input#customer_name').prop( "disabled", false );
             $('input#no_kontrak').prop( "disabled", false );
         }else if (value === 'non-nasabah'){
+            $('input#customer_name').removeClass('formRequired');
+            $('input#no_kontrak').removeClass('formRequired');
+            $('input#customer_name').prop( "disabled", true );
             $('input#no_kontrak').prop( "disabled", true );
         }
     })
