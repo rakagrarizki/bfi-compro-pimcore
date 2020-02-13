@@ -84,7 +84,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                         </div>
 
                         <div class="form-group upload-image">
-                            <label><?= $this->translate('labelNoktp') ?></label>
+                            <label><?= $this->translate('form-ktp') ?></label>
                             <div class="upload-file">
                                 <img src="" />
                                 <div class="upload-btn">
