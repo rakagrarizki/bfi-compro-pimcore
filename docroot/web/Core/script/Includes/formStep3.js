@@ -40,9 +40,9 @@ function uploadPDF(event) {
     titlePDF.setAttribute("style", "margin-bottom: 10px;");
 
     if(lang == 'id'){
-        buttonPDF.textContent = "Ubah File";
+        buttonPDF.textContent = "Pilih File";
     }else{
-        buttonPDF.textContent = "Change File";
+        buttonPDF.textContent = "Choose File";
     }
     // buttonPDF.textContent = "Ubah File";
     showPDF.classList.add("image-wrapper");
