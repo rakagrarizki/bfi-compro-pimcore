@@ -1246,10 +1246,10 @@ return [
         "name" => "career_link",
         "language" => "",
         "type" => "text",
-        "data" => "http://www.bfi.co.id",
+        "data" => "http://jobs.bfi.co.id/jobs",
         "siteId" => 0,
         "creationDate" => 0,
-        "modificationDate" => 1572859046
+        "modificationDate" => 1581670973
     ],
     131 => [
         "id" => 131,
