@@ -249,6 +249,7 @@ function initCalculate() {
     var rawDownPayment = parseFloat(rawMinPrice) * parseFloat(down_payment.data.down_payment_min_percent);
   }else{
     $('.mesin-down-payment').hide();
+    var rawDownPayment = 0;
   }
 
   $("#calcSlider").slider({ min: rawMinPrice, max: rawMaxPrice, step: 100000 });
