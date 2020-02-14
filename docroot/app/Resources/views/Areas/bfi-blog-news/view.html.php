@@ -7,7 +7,8 @@
             <?= $this->textarea('text'); ?>
         </p>
         <div class="row content-bfi">
-            <?php
+            <?php            
+            $page = $_GET["pimcore_editmode"];
             $site = $this->document->getProperty("site");
             $lang = $this->getLocale();
             $i = 0;
@@ -29,13 +30,14 @@
                                             $dateUnix = $timestampDate->timestamp;
                                             $date = date("d.m.y", $dateUnix);
                                             ?>
-                                            <?php if ($site == "corporate") {
+                                            <?php if ($site == "corporate" || $page == "true") {
                                                 $category = $news->getCategory()->getName();
                                                 $link = "/news";
                                             } else {
                                                 $category = $news->getBlogCategory()->getName();
                                                 $link = "/blog";
                                             }
+                                            dump($page);
                                             ?>
                                             <p><?= $category; ?></p>
                                             <h3><a href="/<?= $lang . $link; ?>/<?= $news->getSlug(); ?>"><?= $news->getTitle(); ?></a></h3>
