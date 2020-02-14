@@ -158,7 +158,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                             <p class="otp-resend"><?= $this->translate('dont-get-otp') ?> <span id="otp-resend" class="countdown">Resend</span></p>
                         </div>
                         <div class="otp-button margin-top-50">
-                            <button class="cta cta-primary cta-big cta-see btn-verifikasi buttonnext" id="agentOtp-verification" type="button"><?= $this->translate('verifikasi') ?></button>
+                            <button class="cta cta-orange cta-big cta-see btn-verifikasi buttonnext" id="agentOtp-verification" type="button"><?= $this->translate('verifikasi') ?></button>
                         </div>
                     </div>
                 </div>
@@ -203,7 +203,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                     </div>
                     <div class="form-group">
                         <label for="kode_pos"><?= $this->translate('label-postcode') ?></label>
-                        <input type="text" class="form-control formKodePos" name="kode_pos" id="kode_pos" placeholder="<?= $this->translate('placeholder-postcode') ?>">
+                        <input type="text" class="form-control formKodePos" name="kode_pos" id="kode_pos" placeholder="<?= $this->translate('placeholder-postcode') ?>" disabled>
                         <div class="error-wrap"></div>
                     </div>
                     <div class="form-group">

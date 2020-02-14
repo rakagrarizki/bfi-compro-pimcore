@@ -1,4 +1,4 @@
-<div>
+<div class="container">
     <div id="accordion-pembiayaan" class="accordion">
         <div class="sect-title text-center">
             <h2 class=""><?= $this->input('title');?></h2>
