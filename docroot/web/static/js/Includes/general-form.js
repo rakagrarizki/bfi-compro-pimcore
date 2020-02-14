@@ -584,4 +584,11 @@ function reInitJcf() {
     }
   });
 
+  $(".formNoKtp").on("keydown", function (e) {
+    if (e.which != 8 && e.which != 0 && e.which != 144 && (e.which < 46 || e.which > 57) && (e.which < 96 || e.which > 105)) {
+      console.log('masuk sini')
+      return false;
+    }
+  });
+
 })(jQuery);
