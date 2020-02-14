@@ -37,7 +37,6 @@
                                                 $category = $news->getBlogCategory()->getName();
                                                 $link = "/blog";
                                             }
-                                            dump($page);
                                             ?>
                                             <p><?= $category; ?></p>
                                             <h3><a href="/<?= $lang . $link; ?>/<?= $news->getSlug(); ?>"><?= $news->getTitle(); ?></a></h3>
