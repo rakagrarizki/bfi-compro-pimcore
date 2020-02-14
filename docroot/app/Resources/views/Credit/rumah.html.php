@@ -176,7 +176,7 @@ $this->extend('layout-credit.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label for="kode_pos"><?= $this->translate('label-postcode') ?></label>
-                                            <input type="text" class="form-control formKodePos" name="kode_pos" id="kode_pos" placeholder="<?= $this->translate('placeholder-postcode') ?>">
+                                            <input type="text" class="form-control formKodePos" name="kode_pos" id="kode_pos" placeholder="<?= $this->translate('placeholder-postcode') ?>" disabled>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
@@ -252,14 +252,14 @@ $this->extend('layout-credit.html.php');
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
-                                            <label><?= $this->translate('label-status-bangunan') ?></label>
-                                            <select class="c-custom-select-trans form-control formRequired" placeholder="<?= $this->translate('placeholder-bangunan') ?>" id="status_sertificate" name="status_sertificate" multiple="multiple">
+                                            <label><?= $this->translate('label-property-condition') ?></label>
+                                            <select class="c-custom-select-trans form-control formRequired" placeholder="<?= $this->translate('placeholder-property-condition') ?>" id="property_condition" name="property_condition" multiple="multiple">
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
-                                            <label><?= $this->translate('label-property-condition') ?></label>
-                                            <select class="c-custom-select-trans form-control formRequired" placeholder="<?= $this->translate('placeholder-property-condition') ?>" id="property_condition" name="property_condition" multiple="multiple">
+                                            <label><?= $this->translate('label-status-bangunan') ?></label>
+                                            <select class="c-custom-select-trans form-control formRequired" placeholder="<?= $this->translate('placeholder-bangunan') ?>" id="status_sertificate" name="status_sertificate" multiple="multiple">
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>

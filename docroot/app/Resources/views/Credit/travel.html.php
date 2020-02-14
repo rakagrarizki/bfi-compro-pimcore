@@ -96,7 +96,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                 </div>
                 <div class="form-group">
                     <label for="kode_pos"><?= $this->translate('label-postcode') ?></label>
-                    <input type="text" class="form-control formKodePos" name="kode_pos" id="kode_pos" placeholder="<?= $this->translate('placeholder-postcode') ?>">
+                    <input type="text" class="form-control formKodePos" name="kode_pos" id="kode_pos" placeholder="<?= $this->translate('placeholder-postcode') ?>" disabled>
                     <div class="error-wrap"></div>
                 </div>
                 <div class="form-group">
