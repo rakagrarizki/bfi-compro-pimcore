@@ -24,7 +24,6 @@ if (preg_match("/.\/service-contract/", $page)) {
     $trans1 = $this->translate('welcome-login');
     $trans2 = $this->translate('welcome-login-sub');
 }
-dump($page);
 ?>
 
 <section id="login" class="container">
