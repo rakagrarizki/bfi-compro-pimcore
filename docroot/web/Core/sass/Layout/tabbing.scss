@@ -393,6 +393,10 @@
         background-color: $white;
         padding: 18px;
 
+        @include breakpoint(mobile){
+            bottom: -1px;
+        }
+
         .information-name{
             font-family: 'HelveticaNeue-Bold';
             font-size: 18px;
@@ -408,7 +412,7 @@
 .pimcore_area_bfi-management {
     .management-container {
         margin-top: 50px;
-        margin-bottom: 70px;
+        // margin-bottom: 70px;
 
         .management-box {
             padding-top: 15px;

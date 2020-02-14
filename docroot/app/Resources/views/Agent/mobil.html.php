@@ -158,7 +158,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                             <p class="otp-resend"><?= $this->translate('dont-get-otp') ?> <span id="otp-resend" class="countdown">Resend</span></p>
                         </div>
                         <div class="otp-button margin-top-50">
-                            <button class="cta cta-primary cta-big cta-see btn-verifikasi buttonnext" id="agentOtp-verification" type="button"><?= $this->translate('verifikasi') ?></button>
+                            <button class="cta cta-orange cta-big cta-see btn-verifikasi buttonnext" id="agentOtp-verification" type="button"><?= $this->translate('verifikasi') ?></button>
                         </div>
                     </div>
                 </div>

@@ -12,8 +12,9 @@
             }
         }
         p {
-            &:last-child {
-                margin-top: -40px;
+            margin: 0;
+            @include breakpoint(mobile){
+                margin: 0;
             }
         }
         .title{
@@ -47,7 +48,7 @@
         }
 
         .cek-pengajuan {
-            padding: 40px 0 0 0;
+            padding: 0;
             background-color: transparent;
             box-shadow: none;
         }
