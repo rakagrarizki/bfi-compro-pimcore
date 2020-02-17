@@ -1086,10 +1086,10 @@ return [
         "name" => "HOST",
         "language" => "",
         "type" => "text",
-        "data" => "http://www.bficorporatedev.com",
+        "data" => "https://www.bficorporatedev.com",
         "siteId" => 0,
         "creationDate" => 0,
-        "modificationDate" => 1570101120
+        "modificationDate" => 1581923334
     ],
     115 => [
         "id" => 115,
