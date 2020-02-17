@@ -31,6 +31,11 @@
 <div class="about-us-page hidden-md">
     <div class="container">
         <div class="row activities-section contact-hi">
+            
+            <div class="col-md-6">
+                <div class="side-image" style="background-image: url('<?= $asset->getImage()?>')"></div>
+            </div>
+        
             <div class="col-md-6">
                 
                 <?= $this->wysiwyg("text"); ?>
@@ -43,9 +48,7 @@
                     </div>
                 <?php endif?>
             </div>
-            <div class="col-md-6">
-                <div class="side-image" style="background-image: url('<?= $asset->getImage()?>')"></div>
-            </div>
+            
         </div>
     </div>
 </div>
