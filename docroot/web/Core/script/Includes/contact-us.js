@@ -63,7 +63,7 @@ $(document).ready(function(){
             reader.addEventListener("load", function (e) {
                 $("<span class=\"pipImg\">" +
                 "<img  src=\"" + e.target.result +"\" />"+
-                "<br/><span class=\"remove\">Remove image</span>" +
+                "<br/><span class=\"remove\">Hapus gambar</span>" +
                 "</span>").insertAfter("#files");
 
                     $(".remove").click(function(){
@@ -115,7 +115,7 @@ $(document).ready(function(){
                     fileReaderPdf.addEventListener("load", function () {
                     $("<span class=\"pipPdf\">" +
                     "<img  src=\"" + imagePDF +"\" />"+
-                    "<br/><span class=\"remove\">Remove pdf</span>" +
+                    "<br/><span class=\"remove\">Hapus pdf</span>" +
                     "</span>").insertAfter("#files");
     
                         $(".remove").click(function(){

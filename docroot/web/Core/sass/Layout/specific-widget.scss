@@ -1,0 +1,55 @@
+
+#custom-table strong > span{
+    font-size:11pt !important;
+}
+#custom-table  td:nth-child(2) > p:nth-child(1),
+#custom-table  td:nth-child(5) > p:nth-child(1),
+#custom-table  td:nth-child(7) > p:nth-child(1),
+#custom-table  td:nth-child(7) > p:nth-child(2){
+    margin:0;
+}
+
+#tabel-custom {
+    @include breakpoint(mobile){
+        margin-left: 0 !important;
+    }
+    tr:nth-child(1) > td:nth-child(1){
+        @include breakpoint(mobile){
+            width: 20% !important;
+            z-index: 4;
+        }
+    }
+}
+
+.pimcore_area_bfi-report-list{
+    .report-download-container{
+        .title{
+            @include breakpoint(mobile){
+                text-align: left;
+                display: inline;
+            }
+        }
+    }
+}
+
+.list-card{
+   h2{
+        @include breakpoint(mobile){
+            height: auto;
+            display: -webkit-box;
+            -webkit-line-clamp: 7;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            -o-text-overflow: ellipsis;
+            text-overflow: ellipsis;
+        }
+   }
+}
+
+#tabel-pembiayaan-travel-wisata{
+    @include breakpoint(mobile){
+        td {
+            padding-right: 0.5rem;
+        }
+    }
+}
