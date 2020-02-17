@@ -79,7 +79,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                         </div>
                         <div class="form-group">
                             <label><?= $this->translate('labelNoktp') ?></label>
-                            <input type="text" class="form-control formRequired formNoKtp" name="noKtp" id="noKtp" placeholder="<?= $this->translate('placeholderNoktp') ?>">
+                            <input type="text" class="form-control formRequired formNoKtp" name="noKtp" id="noKtp" minlength="16" maxlength="17" placeholder="<?= $this->translate('placeholderNoktp') ?>">
                             <div class="error-wrap"></div>
                         </div>
 
