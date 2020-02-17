@@ -72,7 +72,7 @@ $this->extend('layout-credit.html.php');
                                     <button id="upload-button" class="btn-upload">
                                         <?= $this->translate('choose-file') ?>
                                     </button>
-                                    <input id="file-upload" class="hide-input formRequired" accept="image/*" type="file" name="photo" id="photo" style="visibility:hidden;" onchange=" document.getElementById('upload-button').innerHTML = 'Ubah File';">
+                                    <input id="file-upload" class="hide-input formRequired" accept="image/*" type="file" name="photo" id="photo">
                                 </div>
                                 <span id="file-upload-filename"></span>
                             </div>
