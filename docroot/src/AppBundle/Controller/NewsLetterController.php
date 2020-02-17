@@ -36,9 +36,10 @@ class NewsLetterController extends FrontendController
                     'success' => "1"
                 ]);
             } else {
+                $hasEmail = $this->get("translator")->trans("email-had-been-registered");
                 return new JsonResponse([
                     'success' => "0",
-                    'message' => "Email sudah terdaftar / Email already registered"
+                    'message' => $hasEmail
                 ]);
             }
         }
