@@ -3,6 +3,7 @@
 $reports = new \Pimcore\Model\DataObject\Report\Listing();
 $reports->addConditionParam("Category__id = ?",$category,"AND");
 $years = [];
+$page = htmlentities(addslashes($_GET["page"]));
 foreach($reports as $year){
     $found = in_array($year->getDate()->format("Y"), $years);
 
@@ -15,6 +16,10 @@ foreach($reports as $year){
 $key = 0;
 
 $randId = rand(10,100);
+
+$paginator = new \Zend\Paginator\Paginator(new \Zend\Paginator\Adapter\ArrayAdapter($years));
+$paginator->setCurrentPageNumber($page);
+$paginator->setItemCountPerPage(5);
 ?>
 <div class="container">
     <!-- <article class="sect-title text-center">
@@ -26,7 +31,7 @@ $randId = rand(10,100);
                 <div class="">
                     <div class="panel-group" id="<?= $randId?>">
                     <?php
-                    foreach($years as $y ){
+                    foreach($paginator as $y ){
 
                         ?>
                         <div class="panel panel-default">
@@ -66,8 +71,15 @@ $randId = rand(10,100);
                         </div>
                         <?php $key++;?>
                         <?php } ?>
-
+                        
                     </div>
+
+                    <?php if (count($paginator) > 1) : ?>
+                            <?= $this->render("Includes/paging.html.php", get_object_vars($paginator->getPages("Sliding")), [
+                                'urlprefix' => $this->document->getFullPath() . '?page=', // just example (this parameter could be used in paging.php to construct the URL)
+                                'appendQueryString' => true // just example (this parameter could be used in paging.php to construct the URL)
+                            ]); ?>
+                        <?php endif; ?>
                 </div>
             <!-- </div> -->
         </div>

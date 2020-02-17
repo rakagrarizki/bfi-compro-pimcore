@@ -3,7 +3,10 @@
 <?php $category = $this->document->getProperty("category")->getId();
 $reports = new \Pimcore\Model\DataObject\Report\Listing();
 $reports->addConditionParam("Category__id = ?",$category,"AND");
-
+$page = htmlentities(addslashes($_GET["page"]));
+$paginator = new \Zend\Paginator\Paginator($reports);
+$paginator->setCurrentPageNumber($page);
+$paginator->setItemCountPerPage(5);
 ?>
 
 <div class="container report-list-wrapper">
@@ -13,7 +16,7 @@ $reports->addConditionParam("Category__id = ?",$category,"AND");
             <p><?= $this->textarea('text');?></p>
         </article>
 
-        <?php foreach($reports as $data):?>
+        <?php foreach($paginator as $data):?>
 
 
         <div class="list-container">
@@ -39,5 +42,11 @@ $reports->addConditionParam("Category__id = ?",$category,"AND");
         </div>
         <?php endforeach;?>
 
+        <?php if (count($paginator) > 1) : ?>
+            <?= $this->render("Includes/paging.html.php", get_object_vars($paginator->getPages("Sliding")), [
+                'urlprefix' => $this->document->getFullPath() . '?page=', // just example (this parameter could be used in paging.php to construct the URL)
+                'appendQueryString' => true // just example (this parameter could be used in paging.php to construct the URL)
+            ]); ?>
+        <?php endif; ?>
     </div>
 </div>
