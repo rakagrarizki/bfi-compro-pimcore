@@ -116,33 +116,4 @@ $this->extend('layout.html.php');
     <?= $this->template('Contact/success.html.php') ?>
 <?php } ?>
 
-<style>
-#contact img{
-    display:inherit !important;
-}
-#contact .imageThumb {
-  padding: 1px;
-  cursor: pointer;
-}
-#contact .pip {
-  display: inline;
-  margin: 10px 10px 0 0;
-}
-.upload-btn button{
-    margin-top:10px;
-}
-#contact .remove {
-    padding: 16px;
-    line-height: 30px;
-    background: #F9991C;
-    outline: none;
-    font-family: 'HelveticaNeue';
-    font-size: 16px;
-    font-weight: bold;
-    color: #FFF;
-    cursor: pointer;
-}
-#contact #ktp-error{
-    display:none !important;
-}
-</style>
+
