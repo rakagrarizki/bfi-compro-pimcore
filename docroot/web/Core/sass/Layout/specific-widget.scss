@@ -55,7 +55,19 @@
 }
 
 #informasi-inspiratif{
-    h2.title-wrapper{
-        margin-top: 1.5rem;
+    @include breakpoint(mobile){
+        h2.title-wrapper{
+            margin-top: 1.5rem;
+        }
     }
 }
+
+#5e4b63c492346-2{
+    .panel-body{
+        padding: 20px 70px;
+    }
+}
+
+.half-black {
+    background: rgba(black, 0.5);
+  }

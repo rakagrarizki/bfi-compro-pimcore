@@ -821,6 +821,10 @@
     $('#menu6').hide();
   }
 
+  function blackhalf(){
+    $('#menu2').addClass('half-black')
+  }
+
   function hideCurrentTab() {
     $(".form-get--credit .tab-content .tab-pane:visible").hide();
     $('.nav-item-1').removeClass('active');
@@ -944,11 +948,30 @@
           } else {
             console.log('error' + result.message);
           }
+          $.ajax ({  
+            type: 'POST',
+            url: 'user/login',
+            data: _data,
+            dataType: 'json',
+            success: function(data){
+              if(data.success === true) {
+                if(data.result.header.status === 200){
+                  hideTab2();
+                  showTab1();
+                  blackhalf();
+                  $('.nav-item-1').addClass('active');
+                  $('.nav-item-2').addClass('disabled');
+                  $('.nav-item-2').removeClass('active');
+                  window.location="/"+lang+"/login";
+                }else if (data.result.header.status === 400){
+                  return false;
+                }
+              }
+            }
+          });
         }
       })
-
     }
-
   }
 
   function pushDataPemohon() {
@@ -1002,7 +1025,7 @@
           console.log('request failed')
         },
         success: function (result) {
-          if (result.success === "1") {
+          if (result.success === "1" ) {
             submission_id = result.data.submission_id;
             credits.angunan.jenis_angunan = htmlEntities(jenis_kredit);
             credits.pemohon.nama = htmlEntities(nama_lengkap);
@@ -1017,11 +1040,10 @@
           } else {
             console.log('error' + result.message);
           }
+          getPhonenumber();
         }
       })
-
     }
-
   }
 
   function pushDataTempatTinggal() {
@@ -1152,7 +1174,7 @@
       }
     })
   }
-
+  
   function getCertificateType() {
     $.ajax({
       type: 'POST',
