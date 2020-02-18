@@ -821,10 +821,6 @@
     $('#menu6').hide();
   }
 
-  function blackhalf(){
-    $('#menu2').addClass('half-black')
-  }
-
   function hideCurrentTab() {
     $(".form-get--credit .tab-content .tab-pane:visible").hide();
     $('.nav-item-1').removeClass('active');
@@ -956,9 +952,8 @@
             success: function(data){
               if(data.success === true) {
                 if(data.result.header.status === 200){
-                  hideTab2();
                   showTab1();
-                  blackhalf();
+                  hideTab2();
                   $('.nav-item-1').addClass('active');
                   $('.nav-item-2').addClass('disabled');
                   $('.nav-item-2').removeClass('active');
