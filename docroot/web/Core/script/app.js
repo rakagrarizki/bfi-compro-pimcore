@@ -954,7 +954,6 @@
                 if(data.result.header.status === 200){
                   showTab1();
                   hideTab2();
-                  $("#modal-pop-login").modal('show');
                   window.location="/"+lang+"/login";
                 }else if (data.result.header.status === 400){
                   return false;
@@ -1033,7 +1032,6 @@
           } else {
             console.log('error' + result.message);
           }
-          getPhonenumber();
         }
       })
     }

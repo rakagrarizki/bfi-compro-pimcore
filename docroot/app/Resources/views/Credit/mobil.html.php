@@ -616,22 +616,6 @@ $this->extend('layout-credit.html.php');
 </div>
 <!-- end Modal branch -->
 
-<!-- modal-pop-login -->
-<div class="modal fade" id="modal-pop-login" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content branch">
-            <div class="modal-body">
-                <h4><?= $this->translate('
-You are already registered, Please Login'); ?></h4>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal"><?= $this->translate('close'); ?></button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- end modal-pop-login -->
-
 <!-- Modal-pricing -->
 <div class="modal fade" id="modal-pricing" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
