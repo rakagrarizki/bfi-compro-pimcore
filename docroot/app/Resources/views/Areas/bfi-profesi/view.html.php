@@ -19,7 +19,7 @@
                     <?php } ?>
                     <?php if (!$this->link("url")->isEmpty()) { ?>
                         <div class="header-contain">
-                            <i class="icon-grid-world"></i><a href="<?= $this->link('url')->isEmpty() ? '#' : $this->link('url')->getHref(); ?>"><?= $this->link('url')->getHref(); ?></a>
+                            <i class="icon-grid-world"></i><a href="<?= $this->link('url')->isEmpty() ? '#' : $this->link('url')->getHref(); ?>" target="<?= $this->link("url")->getTarget(); ?>"><?= $this->link('url')->getHref(); ?></a>
                         </div>
                     <?php } ?>
                 </div>
