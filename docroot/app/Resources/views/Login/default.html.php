@@ -38,7 +38,7 @@ if (preg_match("/.\/service-contract/", $page)) {
                 <input id="phone-input" class="style-input" type="number" placeholder=<?= $this->translate('input-phone') ?> onkeydown="return isNumberKey(event);" required>
             </div>
             <div class="error-wrap"></div>
-            <label class="checkbox-wrapper"><?= $this->translate('remember-me'); ?><input type="checkbox" checked="checked">
+            <label class="checkbox-wrapper"><?= $this->translate('remember-me'); ?><input type="checkbox">
                 <span class="checkmark"></span>
             </label>
         </div>
