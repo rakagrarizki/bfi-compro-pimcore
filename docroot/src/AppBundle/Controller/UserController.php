@@ -482,7 +482,7 @@ class UserController extends FrontendController
 
     public function contractStatusListJsonAction(Request $request)
     {
-        if(ENV != "dev"){
+        if(ENV != "staging"){
             
         $token = $this->getToken();
 
