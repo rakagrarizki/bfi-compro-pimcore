@@ -954,9 +954,7 @@
                 if(data.result.header.status === 200){
                   showTab1();
                   hideTab2();
-                  $('.nav-item-1').addClass('active');
-                  $('.nav-item-2').addClass('disabled');
-                  $('.nav-item-2').removeClass('active');
+                  $("#modal-pop-login").modal('show');
                   window.location="/"+lang+"/login";
                 }else if (data.result.header.status === 400){
                   return false;
