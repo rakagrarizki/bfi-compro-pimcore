@@ -69,10 +69,10 @@ $this->extend('layout-credit.html.php');
                             <img id="preview-upload" src="">
                             <div class="upload-content-wrapper">
                                 <div class="upload-btn-wrapper">
-                                    <button id="upload-button" class="btn-upload">
-                                        <?= $this->translate('choose-file') ?>
+                                <button id="upload-button" class="btn-upload" onclick="document.getElementById('file-upload').click(); return false;">
+                                        <?= $this->translate('Choose file') ?>
                                     </button>
-                                    <input id="file-upload" class="hide-input formRequired" accept="image/*" type="file" name="photo" id="photo">
+                                    <input class="hide-input formRequired" accept="image/*" type="file" name="photo" id="file-upload" value="Snap Picture"  style="visibility:hidden;" onchange=" document.getElementById('upload-button').innerHTML = '<?= $this->translate('Change file') ?>';">
                                 </div>
                                 <span id="file-upload-filename"></span>
                             </div>
