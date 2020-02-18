@@ -2728,6 +2728,7 @@ class CreditController extends FrontendController
 
          $host = WebsiteSetting::getByName("HOST")->getData();
          $url = $host . WebsiteSetting::getByName('URL_GET_MACHINERY_PRICING')->getData();
+        $param["machinery_service_id"] = htmlentities(addslashes($request->get('machinery_service_id')));
         $param["machinery_year_id"] = htmlentities(addslashes($request->get('machinery_year_id')));
 
 

@@ -17,6 +17,9 @@ $news->load();
             $i = 0;
             foreach ($news as $data){
 
+                if($i>2){
+                    break;
+                }
                 if($i == 0){
                     ?>
                     <div class="col-md-6 col-sm-12 col-xs-12 thumbnail-infor">
@@ -47,9 +50,7 @@ $news->load();
                     </div>
                 </div>
                 <?php
-                if($i>3){
-                    break;
-                }
+                
                 $i++;
             }
             ?>

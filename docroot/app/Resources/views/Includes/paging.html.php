@@ -1,5 +1,5 @@
 <?php $p = $this->getParam("page"); ?>
-<nav aria-label="Page navigation">
+<nav aria-label="Page navigation" id="paginating">
     <ul class="pagination">
         <?php
         if (isset($this->previous)) {

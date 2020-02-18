@@ -10,7 +10,7 @@ $paginator->setItemCountPerPage(5);
 ?>
 
 <div class="container report-list-wrapper">
-    <div class="row">
+    <div class="">
         <article class="sect-title text-center">
             <h2 class=""><?= $this->input("title")?></h2>
             <p><?= $this->textarea('text');?></p>

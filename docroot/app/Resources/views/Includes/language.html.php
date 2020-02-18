@@ -5,13 +5,7 @@ $translations = $service->getTranslations($this->document);
 $links = [];
 $site = $this->document->getProperty("site");
 foreach (\Pimcore\Tool::getValidLanguages() as $language) {
-    if ($site == "corporate") {
-        $target = "/" . $language . "/corporate";
-    } elseif ($site == "user") {
-        $target = "/" . $language . "/user/dashboard";
-    } else {
-        $target = "/" . $language;
-    }
+    $target = "/" . $language;
     if (isset($translations[$language])) {
         $localizedDocument = \Pimcore\Model\Document::getById($translations[$language]);
         if ($localizedDocument) {

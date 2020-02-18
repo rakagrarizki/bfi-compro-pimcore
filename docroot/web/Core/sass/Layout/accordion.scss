@@ -121,7 +121,7 @@
                 li {
                     padding-bottom: 0px;
                     padding-left: 10px;
-                    width: 75%;
+                    width: 70%;
 
                     // &::before {
                     //     margin-right: 25px;
@@ -152,6 +152,7 @@
                 .content-list {
                     justify-content: space-between; 
                     display: flex;
+                    align-items: center;
 
                     @include breakpoint(mobile) {
                         display: block;
@@ -159,7 +160,7 @@
 
                     .download-btn{
                         margin: auto 0;
-                        width: 25%;
+                        width: 30%;
 
                         @include breakpoint(mobile){
                             width: 100%;
@@ -169,7 +170,7 @@
 
                             .cta-down{
                                 position: relative;
-                                padding: 8px 0 0 50px;
+                                padding: 0 0 0 50px;
                                 letter-spacing: 0;
 
                                 @include breakpoint(mobile) {
@@ -189,7 +190,7 @@
                                     color: #F9991C;
                                     background-color: #fff;
                                     position: absolute;
-                                    top: 0px;
+                                    top: -10px;
                                     left: 0;
 
                                     @include breakpoint(mobile) {

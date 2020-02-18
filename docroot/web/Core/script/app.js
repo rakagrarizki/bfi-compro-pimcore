@@ -944,11 +944,26 @@
           } else {
             console.log('error' + result.message);
           }
+          $.ajax ({  
+            type: 'POST',
+            url: 'user/login',
+            data: _data,
+            dataType: 'json',
+            success: function(data){
+              if(data.success === true) {
+                if(data.result.header.status === 200){
+                  showTab1();
+                  hideTab2();
+                  window.location="/"+lang+"/login";
+                }else if (data.result.header.status === 400){
+                  return false;
+                }
+              }
+            }
+          });
         }
       })
-
     }
-
   }
 
   function pushDataPemohon() {
@@ -1002,7 +1017,7 @@
           console.log('request failed')
         },
         success: function (result) {
-          if (result.success === "1") {
+          if (result.success === "1" ) {
             submission_id = result.data.submission_id;
             credits.angunan.jenis_angunan = htmlEntities(jenis_kredit);
             credits.pemohon.nama = htmlEntities(nama_lengkap);
@@ -1019,9 +1034,7 @@
           }
         }
       })
-
     }
-
   }
 
   function pushDataTempatTinggal() {
@@ -1152,7 +1165,7 @@
       }
     })
   }
-
+  
   function getCertificateType() {
     $.ajax({
       type: 'POST',
