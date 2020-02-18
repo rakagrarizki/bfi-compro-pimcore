@@ -267,8 +267,8 @@ function detailAgunanAlatBerat(token, dataContract) {
 
 function contractStatusList(lang, token) {
     var dataInput = {
-        'started_index': 0,
-        'length': 12
+        'started_index': 1,
+        'length': 100
     }
 
     $.ajax({

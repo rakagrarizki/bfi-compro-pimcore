@@ -211,7 +211,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
           </div>
           <div class="form-group">
               <label for="machine_estimated"><?= $this->translate('label-estimated-price')?></label>
-              <input type="text" class="form-control formatRibuan" name="machine_estimated" id="machine_estimated"
+              <input type="text" class="form-control formEstimate formatRibuan" name="machine_estimated" id="machine_estimated"
                       placeholder="<?= $this->translate('placeholder-estimated-price')?>">
               <div class="error-wrap"></div>
           </div>
@@ -433,9 +433,9 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                       </table>
                   </div>
               </div>
-              <div class="biaya-agunan-mesin">
+              <div class="biaya-agunan">
                   <div class="form-group">
-                      <input type="checkbox" id="agreement1" name="agreement1" class="agreement formRequired" checked>
+                      <input type="checkbox" id="agreement1" name="agreement1" class="agreement formRequired">
                       <label for="agreement1" class="label-agreement"><?= $this->translate('term-condition')?></label>
                       <div class="error-wrap"></div>
                   </div>

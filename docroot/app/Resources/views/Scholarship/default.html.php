@@ -72,7 +72,7 @@ $this->extend('layout-credit.html.php');
                                     <button id="upload-button" class="btn-upload">
                                         <?= $this->translate('choose-file') ?>
                                     </button>
-                                    <input id="file-upload" class="hide-input formRequired" accept="image/*" type="file" name="photo" id="photo" style="visibility:hidden;" onchange=" document.getElementById('upload-button').innerHTML = 'Ubah File';">
+                                    <input id="file-upload" class="hide-input formRequired" accept="image/*" type="file" name="photo" id="photo" onchange=" document.getElementById('upload-button').innerHTML = 'Ubah File';">
                                 </div>
                                 <span id="file-upload-filename"></span>
                             </div>
@@ -154,7 +154,7 @@ $this->extend('layout-credit.html.php');
                                     <button id="upload-pdf-button" class="btn-upload">
                                         <?= $this->translate('choose-file') ?>
                                     </button>
-                                    <input id="file-pdf-upload" class="hide-input" type="file" accept="application/pdf" name="transcript" style="visibility:hidden;" onchange=" document.getElementById('upload-pdf-button').innerHTML = 'Ubah File';">
+                                    <input id="file-pdf-upload" class="hide-input" type="file" accept="application/pdf" name="transcript" onchange=" document.getElementById('upload-pdf-button').innerHTML = 'Ubah File';">
                                 </div>
                             </div>
                             <div class="error-wrap"></div>

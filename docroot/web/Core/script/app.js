@@ -691,7 +691,7 @@
     var payment = parseInt($("#ex7SliderVal").val().replace(/\./g, ""));
     var maxPocketMoney = payment * (param / 100);
     console.log("Pocket ", payment, thisval, maxPocketMoney);
-    return (maxPocketMoney > thisval ? true : false);
+    return (maxPocketMoney >= thisval ? true : false);
     // return false
   }, "Maximum allowance is 20% of payment.");
 
