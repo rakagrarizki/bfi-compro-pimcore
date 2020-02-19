@@ -28,7 +28,7 @@
 
 <!-- Mobile view -->
 
-<div class="about-us-page hidden-md">
+<div class="about-us-page hidden-lg hidden-sm hidden-md">
     <div class="container">
         <div class="row activities-section contact-hi">
             
