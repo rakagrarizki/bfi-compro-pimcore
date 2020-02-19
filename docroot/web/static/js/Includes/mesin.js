@@ -511,7 +511,7 @@ var isValidOtp = false;
     });
     $.validator.addClassRules({
       formEstimate: {
-        minPrice: rawMinPriceMachinery,
+        minEstimatePrice: rawMinPriceMachinery,
         required: true
       }
     });
