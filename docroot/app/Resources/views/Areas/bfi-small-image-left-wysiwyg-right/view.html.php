@@ -19,7 +19,7 @@
 
 <!-- Mobile view -->
 
-<div class="container wysiwyg-list-right hidden-md">
+<div class="container wysiwyg-list-right hidden-mdhidden-lg hidden-sm hidden-md">
     <div class="row">
         <div class="col-lg-8 col-md-8 col-12">
             <?= $this->wysiwyg("text"); ?>
