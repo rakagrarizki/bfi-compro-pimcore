@@ -38,6 +38,17 @@ function nextButton(action) {
   }
 }
 
+function finishButton(action){
+  var finishBtn = $(".actions > ul li a[href$='finish']").parent();
+  if (action === "active") {
+    finishBtn.removeClass("inactive");
+  } else {
+    if (!finishBtn.hasClass("inactive")) {
+      finishBtn.addClass("inactive");
+    }
+  }
+}
+
 function sendLeadData() {
   if (form.valid()) {
     var currentStep = form.steps("getCurrentIndex");
@@ -342,6 +353,15 @@ var isValidOtp = false;
     }
   });
 
+  $('input#agreement1').click(function(){
+    if($(this).prop("checked") == true){
+      finishButton("active");
+    }
+    else if($(this).prop("checked") == false){
+      finishButton("inactive");
+    }
+  });
+
   $("#recalc").click(function (e) {
     nextButton("inactive");
     e.preventDefault();
@@ -360,6 +380,7 @@ var isValidOtp = false;
     if (post.success === "1") {
     //   console.log("CALC", post)
         nextButton("active");
+        finishButton("inactive");
         $("#totalFinance").text(post.data.total_funding.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
         $("#pocketMoney").text(post.data.pocket_money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
         $("#labelTotal").text(post.data.monthly_installment.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
