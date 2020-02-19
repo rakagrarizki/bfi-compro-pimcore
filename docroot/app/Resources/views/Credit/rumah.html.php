@@ -683,3 +683,4 @@ $this->extend('layout-credit.html.php');
         </div>
     </div>
 </div>
+

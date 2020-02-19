@@ -481,12 +481,13 @@ function reInitJcf() {
 
   if (typeof ($('#ex7SliderVal').parents(".sliderGroup").find(".calcslide").slider()) !== 'undefined') {
     if($('#ex7SliderVal').parents(".machine-funding").length == 1){
-      $('#ex7SliderVal').parents(".sliderGroup").find(".calcslide").slider().on('slideStop', function (ev) {
-        console.log(ev)
-        var rawDownPayment = ev.value * 0.3;
-        var downPayment = separatordot(rawDownPayment);
-        $('#down_payment').val(downPayment);
-      });
+      console.log('DP changed');
+      // $('#ex7SliderVal').parents(".sliderGroup").find(".calcslide").slider().on('slideStop', function (ev) {
+      //   console.log(ev)
+      //   var rawDownPayment = ev.value * 0.3;
+      //   var downPayment = separatordot(rawDownPayment);
+      //   $('#down_payment').val(downPayment);
+      // });
     }else{
       $('#ex7SliderVal').parents(".sliderGroup").find(".calcslide").slider().on('slideStop', function (ev) {
         console.log(ev)
