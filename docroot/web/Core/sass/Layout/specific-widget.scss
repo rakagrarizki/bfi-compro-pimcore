@@ -67,3 +67,12 @@
         padding: 20px 70px;
     }
 }
+
+#status0,
+#status1{
+    @include breakpoint(mobile){
+        .label-step{
+            font-size: 0.7em;
+        }
+    }
+}
