@@ -19,13 +19,15 @@
 
 <!-- Mobile view -->
 
-<div class="container wysiwyg-list-right hidden-mdhidden-lg hidden-sm hidden-md">
+<div class="container wysiwyg-list-right hidden-md hidden-lg hidden-sm hidden-md">
     <div class="row">
-        <div class="col-lg-8 col-md-8 col-12">
-            <?= $this->wysiwyg("text"); ?>
-        </div>
-        <div class="col-lg-4 col-md-4 col-12">
+    <div class="col-12">
             <img src="<?= $asset->getImage()?>">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <?= $this->wysiwyg("text"); ?>
         </div>
     </div>
 </div>

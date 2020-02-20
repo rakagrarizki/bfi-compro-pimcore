@@ -379,9 +379,9 @@ $this->extend('layout-credit.html.php');
                                                                 Rp 0
                                                             </td>
                                                         </tr>
-                                                        <tr class="hidden">
+                                                        <tr>
                                                             <td>
-                                                                <?= $this->translate('label-total-asuransi') ?> *
+                                                                <?= $this->translate('label-edu-biaya-adm') ?>
                                                             </td>
                                                             <td class="currency" tahun="1">
                                                                 Rp 0
