@@ -685,7 +685,7 @@
       },
 
       formAlphabet: {
-          acceptAlphabet: "^[a-zA-Z]+$"
+          acceptAlphabet: "[a-zA-Z]+"
       },
 
       formEmail: {
@@ -813,13 +813,20 @@
       "Please input price more than min price"
   );
 
-  jQuery.validator.addMethod(
-      "emailCust",
-      function(value, element, param) {
-          return param.test(value);
-      },
-      "Please enter a valid email address."
-  );
+  jQuery.validator.addMethod("minEstimatePrice", function (value, element, param) {
+    var thisval = value.replace(/\./g, "");
+    if (parseInt(thisval) < param) {
+      return false;
+    } else {
+      return true;
+    }
+  }, function(params, element) {
+    return 'Please input price more than '+ separatordot(params) +'.'
+  });
+
+  jQuery.validator.addMethod("emailCust", function (value, element, param) {
+    return param.test(value);
+  }, "Please enter a valid email address.");
 
   jQuery.validator.addMethod(
       "filesize",

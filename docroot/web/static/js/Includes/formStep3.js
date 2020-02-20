@@ -52,8 +52,7 @@ function uploadPDF(event) {
         trimName = fileName.substring(0 , 10) + ".." + ext;
         infoAreaPDF.textContent = trimName;
         return transkrip = trimName;
-    }
-    else{
+    }else{
         infoAreaPDF.textContent = fileName;
         return transkrip = fileName;
     }
@@ -62,9 +61,9 @@ function uploadPDF(event) {
 
 function getIpkValue(id_smt){
     ipk[id_smt] = document.getElementById(id_smt).value;
-    if (ipk[id_smt] < 9){
-        var number = ipk[id_smt] + "0";
-        document.getElementById(id_smt).value = number
-        return number
-    }
+    // if (ipk[id_smt] < 9){
+    //     var number = ipk[id_smt] + "0";
+    //     document.getElementById(id_smt).value = number
+    //     return number
+    // }
 }

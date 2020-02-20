@@ -152,7 +152,6 @@ $(document).ready(function(){
     });
 
     $('#file-pdf-upload, .last-two-digit').change(function(){
-        console.log('masuk')
         if ($('#file-pdf-upload').val() != ""){
             if ($('#file-pdf-upload-error').text() == ""){
                 $("#button3next").removeClass('inactive');
@@ -225,7 +224,6 @@ $(document).ready(function(){
             reader.addEventListener("load", function () {
                 if (typeof (preview) !== "undefined") {
                     $("#" + iptFrm).val("/test/test.png").trigger("change");
-                    $(label).text(file.name);
                     preview.src = reader.result;
                 }
             }, false);
@@ -265,7 +263,7 @@ $(document).ready(function(){
         },
     
         formAlphabet: {
-            acceptAlphabet: "^[a-zA-Z]+$"
+            acceptAlphabet: "[a-zA-Z]+"
         },
     
         formEmail: {
