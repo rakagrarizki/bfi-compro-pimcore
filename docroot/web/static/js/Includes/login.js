@@ -22,17 +22,39 @@
 // }
 
 $(document).ready(function(){
-    if($('input.style-input').val() != ''){
-        $('input.style-input').prev().css({
-            'display': 'block',
-            'padding': '15px 15px 5px'
-        });
-        $('input.style-input').css({
-            'padding-top': '35px',
-            'padding-bottom': '15px'
-        });
-        $("#btn-login").removeAttr("disabled").removeAttr("style");
+
+    function disableButton(button) {
+        $(button).css("background-color", "#dddddd");
+        $(button).css("border-color", "#dddddd");
+        $(button).attr("disabled", "disabled");
     }
+  
+    function enableButton(button) {
+        $(button).css("background-color", "#F8991D");
+        $(button).css("border-color", "#F8991D");
+        $(button).removeAttr("disabled");
+    }
+    $("#phone-input").on("keyup", function(e) {
+        if (
+            $("#phone-input").val() == "" ||
+            $(this).val() == ""
+        ) {
+            disableButton("#btn-login");
+        } else {
+            enableButton("#btn-login");
+        }
+    });
+    // if($('input.style-input').val() != ''){
+    //     $('input.style-input').prev().css({
+    //         'display': 'block',
+    //         'padding': '15px 15px 5px'
+    //     });
+    //     $('input.style-input').css({
+    //         'padding-top': '35px',
+    //         'padding-bottom': '15px'
+    //     });
+    //     $("#btn-login").removeAttr("disabled").removeAttr("style");
+    // }
 
     $("input.style-input").on('focus', function () {
         if ($(this).attr("id") !== "ex6SliderVal") {
