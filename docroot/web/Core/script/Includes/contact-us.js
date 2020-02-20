@@ -60,10 +60,15 @@ $(document).ready(function(){
 
         if (file.size <= sizeLimit && isImage) { 
             var reader = new FileReader();
+            if ( lang === 'id'){
+                btnTextImage = 'Hapus Gambar';
+            }else{
+                btnTextImage = 'Remove Image';
+            }
             reader.addEventListener("load", function (e) {
                 $("<span class=\"pipImg\">" +
                 "<img  src=\"" + e.target.result +"\" />"+
-                "<br/><span class=\"remove\">Hapus gambar</span>" +
+                "<br/><span class=\"remove\">"+ btnTextImage +"</span>" +
                 "</span>").insertAfter("#files");
 
                     $(".remove").click(function(){
@@ -110,12 +115,17 @@ $(document).ready(function(){
             } 
             if (filePdf.size <= sizeLimit && isPdf) { 
                 const fileReaderPdf = new FileReader();
+                if ( lang === 'id'){
+                    btnTextPdf = 'Hapus Pdf';
+                }else{
+                    btnTextPdf = 'Remove Pdf';
+                }
                 if (file.type == "application/pdf"){
                     const imagePDF = "/static/images/pdf_logo.png";
                     fileReaderPdf.addEventListener("load", function () {
                     $("<span class=\"pipPdf\">" +
                     "<img  src=\"" + imagePDF +"\" />"+
-                    "<br/><span class=\"remove\">Hapus pdf</span>" +
+                    "<br/><span class=\"remove\">"+btnTextPdf+"</span>" +
                     "</span>").insertAfter("#files");
     
                         $(".remove").click(function(){
