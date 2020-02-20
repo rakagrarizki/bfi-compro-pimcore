@@ -329,6 +329,11 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                                     <td id="summary-downpayment"></td>
                                 </tr>
                                 <tr>
+                                    <td class="long"><?= $this->translate('label-edu-biaya-adm') ?></td>
+
+                                    <td id="summary-administrasi"></td>
+                                </tr>
+                                <tr>
                                     <td class="long"><?= $this->translate('label-edu-life-insurance') ?></td>
 
                                     <td id="summary-life-insurance"></td>
