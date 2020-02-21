@@ -109,7 +109,7 @@
                 
                 ul {
                     list-style: square;
-                    // color: #04559F;
+                    color:#565656;
                     font-family: 'HelveticaNeue';
                     font-size: 20px;
                     margin: 0;
@@ -123,7 +123,7 @@
                     padding-bottom: 0px;
                     padding-left: 10px;
                     width: 70%;
-
+                    color:#565656;
                     // &::before {
                     //     margin-right: 25px;
                     //     content: '\25AA';
@@ -286,6 +286,7 @@
 
                 &.a-panelheading {
                     padding-bottom: 35px;
+                    color:#565656;
                     @include breakpoint(mobile) {
                         padding-bottom: 20px;
                         font-size: 15px;
@@ -398,7 +399,7 @@
                 font-family: 'HelveticaNeue';
                 padding: 10px 20px;
                 font-size: 1.1em;
-
+                color:#565656;
                 &:nth-child(2n),
                 &:nth-child(3n) {
                     text-align: center;
