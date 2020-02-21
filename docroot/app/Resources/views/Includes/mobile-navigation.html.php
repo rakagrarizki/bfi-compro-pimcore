@@ -5,7 +5,13 @@ use Pimcore\Model\Document;
 
 ?>
 <?php $lang = $this->getLocale();
-$name = $_COOKIE["customer"]; ?>
+$name = "";
+if($_COOKIE["customer"] != "null") {
+    $name = $_COOKIE["customer"];
+} else {
+    $name = "Dashboard";
+}
+?>
 <div class="top-nav--mobille hidden-md">
     <div class="container">
         <div class="row top-nav">
@@ -13,7 +19,7 @@ $name = $_COOKIE["customer"]; ?>
             <?= $this->inc("/" . $this->getLocale() . "/shared/includes/sub-navigation-mobile") ?>
             <div class="col-xs-6 text-right no-padding-mobile">
                 <div class="link-log">
-                    <?php if (!isset($name) || $name == "") { ?>
+                    <?php if (!isset($_COOKIE["customer"])) { ?>
                         <a href="<?= "/" . $lang . "/login"; ?>" class="login"><?= $this->translate("login") ?></a>
                     <?php } else { ?>
                     <div class="user">

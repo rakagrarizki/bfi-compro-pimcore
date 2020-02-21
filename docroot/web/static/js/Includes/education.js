@@ -39,6 +39,17 @@ function nextButton(action) {
   }
 }
 
+function finishButton(action){
+  var finishBtn = $(".actions > ul li a[href$='finish']").parent();
+  if (action === "active") {
+    finishBtn.removeClass("inactive");
+  } else {
+    if (!finishBtn.hasClass("inactive")) {
+      finishBtn.addClass("inactive");
+    }
+  }
+}
+
 function sendLeadData() {
   if (form.valid()) {
     var currentStep = form.steps("getCurrentIndex");
@@ -359,6 +370,15 @@ var isValidOtp = false;
     }
   });
 
+  $('input#agreement1').click(function(){
+    if($(this).prop("checked") == true){
+      finishButton("active");
+    }
+    else if($(this).prop("checked") == false){
+      finishButton("inactive");
+    }
+  });
+
   $("#recalc").click(function (e) {
     nextButton("inactive");
     e.preventDefault();
@@ -375,11 +395,14 @@ var isValidOtp = false;
       var post = postData("/credit/edu-calculator", _data);
       if (post.success === "1") {
         nextButton("active");
+        finishButton("inactive");
+        var admin_fee = "Rp. "+ separatordot(post.data.admin_fee);
         var life_insurance = "Rp. " + separatordot(post.data.life_insurance);
         var monthly_installment = "Rp. " + separatordot(post.data.monthly_installment);
         var monthly_installment_est_total = "Rp. " + separatordot(post.data.monthly_installment_est_total);
         var total_funding = "Rp. " + separatordot(post.data.total_funding);
 
+        $("#administrasi, #summary-administrasi").text(admin_fee);
         $("#life_insurance, #summary-life-insurance").text(life_insurance);
         $("#monthly_installment, #summary-angsuran-bulanan").text(monthly_installment);
         $("#monthly_installment_est_total, #summary-funding").text(monthly_installment_est_total);

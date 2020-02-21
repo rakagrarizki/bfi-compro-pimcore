@@ -55,7 +55,27 @@
 }
 
 #informasi-inspiratif{
-    h2.title-wrapper{
-        margin-top: 1.5rem;
+    @include breakpoint(mobile){
+        h2.title-wrapper{
+            margin-top: 1.5rem;
+        }
     }
 }
+
+#5e4b63c492346-2{
+    .panel-body{
+        padding: 20px 70px;
+    }
+}
+
+#status0,
+#status1{
+    @include breakpoint(mobile){
+        .label-step{
+            font-size: 0.7em;
+        }
+    }
+}
+
+
+

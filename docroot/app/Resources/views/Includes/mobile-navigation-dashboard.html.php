@@ -4,7 +4,12 @@
 use Pimcore\Model\Document;
 
 ?>
-<?php $name = $_COOKIE["customer"]; ?>
+<?php $name = "";
+if($_COOKIE["customer"] != "null") {
+    $name = $_COOKIE["customer"];
+} else {
+    $name = "Dashboard";
+} ?>
 <div class="top-nav--mobille hidden-md">
     <div class="container">
         <div class="row top-nav">

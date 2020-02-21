@@ -38,11 +38,11 @@ if (preg_match("/.\/service-contract/", $page)) {
                 <input id="phone-input" class="style-input" type="number" placeholder=<?= $this->translate('input-phone') ?> onkeydown="return isNumberKey(event);" required>
             </div>
             <div class="error-wrap"></div>
-            <label class="checkbox-wrapper"><?= $this->translate('remember-me'); ?><input type="checkbox" checked="checked">
+            <label class="checkbox-wrapper"><?= $this->translate('remember-me'); ?><input type="checkbox">
                 <span class="checkmark"></span>
             </label>
         </div>
-        <button id="btn-login" type="button" class="button-login" onclick="return loginCustomer()" disabled style="opacity: .5;"> <?= $this->translate('login'); ?></button>
+        <button id="btn-login" type="button" class="button-login" onclick="return loginCustomer()" style="background-color: rgb(221, 221, 221); border-color: rgb(221, 221, 221);" disabled="disabled"> <?= $this->translate('login'); ?></button>
     </form>
 </section>
 <section id="otp" class="container hide">

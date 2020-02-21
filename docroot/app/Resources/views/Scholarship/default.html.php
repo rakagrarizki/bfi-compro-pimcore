@@ -72,7 +72,8 @@ $this->extend('layout-credit.html.php');
                                 <button id="upload-button" class="btn-upload" onclick="document.getElementById('file-upload').click(); return false;">
                                         <?= $this->translate('Choose file') ?>
                                     </button>
-                                    <input class="hide-input formRequired" accept="image/*" type="file" name="photo" id="file-upload" value="Snap Picture"  style="visibility:hidden;" onchange=" document.getElementById('upload-button').innerHTML = '<?= $this->translate('Change file') ?>';">
+                                    <input id="file-upload" class="hide-input formRequired" accept="image/*" type="file" name="photo" id="photo" onchange=" document.getElementById('upload-button').innerHTML = 'Ubah File';">
+                                    <!-- <input class="hide-input formRequired" accept="image/*" type="file" name="photo" id="file-upload" value="Snap Picture"  style="visibility:hidden;" onchange=" document.getElementById('upload-button').innerHTML = '<?= $this->translate('Change file') ?>';"> -->
                                 </div>
                                 <span id="file-upload-filename"></span>
                             </div>
@@ -154,7 +155,7 @@ $this->extend('layout-credit.html.php');
                                     <button id="upload-pdf-button" class="btn-upload">
                                         <?= $this->translate('choose-file') ?>
                                     </button>
-                                    <input id="file-pdf-upload" class="hide-input" type="file" accept="application/pdf" name="transcript" style="visibility:hidden;" onchange=" document.getElementById('upload-pdf-button').innerHTML = 'Ubah File';">
+                                    <input id="file-pdf-upload" class="hide-input" type="file" accept="application/pdf" name="transcript" onchange=" document.getElementById('upload-pdf-button').innerHTML = 'Ubah File';">
                                 </div>
                             </div>
                             <div class="error-wrap"></div>

@@ -76,14 +76,24 @@
 
             @include breakpoint(mobile) {
                 width: calc(50% - 20px);
+                min-height: 253px;
             }
 
             &:nth-child(1),
             &:nth-child(2) {
                 width: calc(50% - 20px);
-
                 @include breakpoint(mobile) {
                     width: 100%;
+                }
+                h2.title{
+                    @include breakpoint(mobile) {
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                        -o-text-overflow: ellipsis;
+                        text-overflow: ellipsis;
+                    }
                 }
             }
 
@@ -123,11 +133,18 @@
                 }
 
                 .title {
+                    height: auto !important;
                     margin: 10px 0 24px;
                     font-family: HelveticaNeue-Bold;
                     color: $grey-dark-color;
                     font-size: 16px;
                     text-align: left;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 3;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    -o-text-overflow: ellipsis;
+                    text-overflow: ellipsis;
                     
                     @include breakpoint(mobile){
                         font-size: 14px;

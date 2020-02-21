@@ -8,11 +8,12 @@
         </p>
         <div class="row content-bfi">
             <?php            
-            $page = $_GET["pimcore_editmode"];
-            $site = $this->document->getProperty("site");
             $lang = $this->getLocale();
             $i = 0;
             foreach ($this->news as $news) {
+                if ($i > 3) {
+                    break;
+                }
                 if ($i == 0) { ?>
                     <div class="col-md-6 col-sm-12 col-xs-12 thumbnail-infor">
                         <div class="thumbnail-body--content">
@@ -30,25 +31,14 @@
                                             $dateUnix = $timestampDate->timestamp;
                                             $date = date("d.m.y", $dateUnix);
                                             ?>
-                                            <?php if ($site == "corporate" || $page == "true") {
-                                                $category = $news->getCategory()->getName();
-                                                $link = "/news";
-                                            } else {
-                                                $category = $news->getBlogCategory()->getName();
-                                                $link = "/blog";
-                                            }
-                                            ?>
-                                            <p><?= $category; ?></p>
-                                            <h3><a href="/<?= $lang . $link; ?>/<?= $news->getSlug(); ?>"><?= $news->getTitle(); ?></a></h3>
+                                            <p><?= $news->getBlogCategory()->getName();; ?></p>
+                                            <h3><a href="/<?= $lang . "/blog"; ?>/<?= $news->getSlug(); ?>"><?= $news->getTitle(); ?></a></h3>
                                             <p class="date"><?= $date; ?> | <i class="fa fa-eye"></i> <?= $news->getViews(); ?></p>
                                             <!-- <p class="view"><i class="fa fa-eye"></i> </?= $news->getViews(); ?></p> -->
                                         </div>
                                     </div>
                                 </div>
                             <?php
-                            if ($i > 3) {
-                                break;
-                            }
                             $i++;
                         }
                             ?>

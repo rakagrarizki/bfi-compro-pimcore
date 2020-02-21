@@ -21,7 +21,7 @@ use Pimcore\Model\Document\Page;
                     <div class="col-md-6 col-sm-6 right-side-top">
                         <div class="link-log">
                             <div class="user hide">
-                                <a href="/<?= $this->getLocale() ?>/user/dashboard" class="full_name icon">Deborah Morris</a> | <a href="#" class="logout" onclick="return logout('<?= $this->getLocale() ?>');"><?= $this->translate("logout") ?></a>
+                                <a href="/<?= $this->getLocale() ?>/user/dashboard" class="full_name icon"> </a> | <a href="#" class="logout" onclick="return logout('<?= $this->getLocale() ?>');"><?= $this->translate("logout") ?></a>
                             </div>
                             <?php echo $this->template("Includes/language.html.php") ?>
                         </div>

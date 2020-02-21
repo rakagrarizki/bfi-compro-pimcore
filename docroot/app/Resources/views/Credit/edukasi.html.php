@@ -329,6 +329,11 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                                     <td id="summary-downpayment"></td>
                                 </tr>
                                 <tr>
+                                    <td class="long"><?= $this->translate('label-edu-biaya-adm') ?></td>
+
+                                    <td id="summary-administrasi"></td>
+                                </tr>
+                                <tr>
                                     <td class="long"><?= $this->translate('label-edu-life-insurance') ?></td>
 
                                     <td id="summary-life-insurance"></td>
@@ -358,7 +363,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                     </div>
                     <div class="biaya-agunan">
                         <div class="form-group">
-                            <input type="checkbox" id="agreement1" name="agreement1" class="agreement formRequired" checked>
+                            <input type="checkbox" id="agreement1" name="agreement1" class="agreement formRequired">
                             <label for="agreement1" class="label-agreement"><?= $this->translate('term-condition') ?></label>
                             <div class="error-wrap"></div>
                         </div>
@@ -438,3 +443,4 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
         </div>
     </div>
 </div>
+

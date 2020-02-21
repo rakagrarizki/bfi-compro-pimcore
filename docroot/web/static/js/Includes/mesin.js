@@ -107,8 +107,8 @@ function setBrand(){
 function getModel(brandId) {
     var url = "/credit/get-machinery-model";
     var data = { 
-        // "machinery_brand_id": brandId, "machinery_type_id": $("#type").val()[0] 
-        "machinery_brand_id": '7C50EED3-52DE-488E-90D6-E5AB9F96016A', "machinery_type_id": '5F8D0155-8035-4F37-8930-723594973F68'
+      "machinery_brand_id": brandId, "machinery_type_id": $("#type").val()[0] 
+      // "machinery_brand_id": '7C50EED3-52DE-488E-90D6-E5AB9F96016A', "machinery_type_id": '5F8D0155-8035-4F37-8930-723594973F68'
     };
     return transformData(postData(url, data).data);
 }
@@ -116,8 +116,16 @@ function getModel(brandId) {
 function getYear(modelId) {
     var url = "/credit/get-machinery-year";
     var data = { 
-        // "machinery_model_id": modelId
-        "machinery_model_id": '7EA5CCF9-2738-4C74-845B-0042CEF2A351' 
+      "machinery_model_id": modelId
+      // "machinery_model_id": '7EA5CCF9-2738-4C74-845B-0042CEF2A351' 
+    };
+    return postData(url, data).data
+}
+
+function getEstimatePrice(yearId){
+  var url = "/credit/get-machinery-price";
+    var data = { 
+      "machinery_service_id": $("#layanan").val()[0], "machinery_year_id": yearId
     };
     return postData(url, data).data
 }
@@ -129,6 +137,17 @@ function nextButton(action) {
   } else {
     if (!nextBtn.hasClass("inactive")) {
       nextBtn.addClass("inactive");
+    }
+  }
+}
+
+function finishButton(action){
+  var finishBtn = $(".actions > ul li a[href$='finish']").parent();
+  if (action === "active") {
+    finishBtn.removeClass("inactive");
+  } else {
+    if (!finishBtn.hasClass("inactive")) {
+      finishBtn.addClass("inactive");
     }
   }
 }
@@ -246,7 +265,7 @@ function initCalculate() {
       "submission_id" : submission_id
     });
     $('.mesin-down-payment').show();
-    var rawDownPayment = parseFloat(rawMinPrice) * parseFloat(down_payment.data.down_payment_min_percent);
+    var rawDownPayment = parseInt(down_payment.data.down_payment_min_value);
   }else{
     $('.mesin-down-payment').hide();
     var rawDownPayment = 0;
@@ -476,6 +495,28 @@ var isValidOtp = false;
     selElm.removeAttr("disabled");
   });
 
+  $("#year").change(function () {
+    var ret = getEstimatePrice($(this).val()[0]);
+    var rawPrice = parseInt(ret.price);
+    var rawMinPriceMachinery = parseInt(ret.min_estimasi_price);
+    var price = separatordot(rawPrice);
+    $("#machine_estimated").val(price);
+    $("#machine_estimated").prev().css({
+      'display': 'block',
+      'padding': '15px 15px 5px'
+    });
+    $("#machine_estimated").css({
+      'padding-top': '35px',
+      'padding-bottom': '15px'
+    });
+    $.validator.addClassRules({
+      formEstimate: {
+        minEstimatePrice: rawMinPriceMachinery,
+        required: true
+      }
+    });
+  });
+
   $("#kelurahan").change(function () {
     var selElm = $('#kelurahan');
     var dataArr = getZipcode($(this).val()[0]);
@@ -500,6 +541,15 @@ var isValidOtp = false;
     }
   });
 
+  $('input#agreement1').click(function(){
+    if($(this).prop("checked") == true){
+      finishButton("active");
+    }
+    else if($(this).prop("checked") == false){
+      finishButton("inactive");
+    }
+  });
+
   $("#recalc").click(function (e) {
     nextButton("inactive");
     e.preventDefault();
@@ -516,6 +566,7 @@ var isValidOtp = false;
     if (post.success === "1") {
       // console.log("CALC", post)
       nextButton("active");
+      finishButton("inactive");
       $("#permonth-estimation").text(post.data.monthly_installment_est_total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
       $("#summary-angsuran-bulanan").text(post.data.monthly_installment_est_total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
     }
