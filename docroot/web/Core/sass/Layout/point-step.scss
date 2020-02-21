@@ -71,6 +71,7 @@
         p {
             font-family: 'HelveticaNeue-Light';
             font-size: 1.250em;
+            color:#565656;
             @include breakpoint(mobile) {
                 font-size: 15px;
                 line-height: 25px;

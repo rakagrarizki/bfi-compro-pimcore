@@ -310,7 +310,6 @@
                 margin-bottom: 25px;
                 font-size: 20px;
                 width: 50%;
-                color: #727272 !important;
 
                 @include breakpoint(mobile) {
                     width: auto;
@@ -544,7 +543,7 @@
                 &.position {
                     // font-family: $light;
                     font-size: 16px;
-                    color: #727272;
+                    color:#565656;
                     margin: 0;
 
                     @include breakpoint(mobile) {
