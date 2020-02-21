@@ -230,6 +230,7 @@
         .sect-title {
             width: 100%;
             margin-bottom: 60px;
+            margin-top: 40px;
 
             @include breakpoint(mobile) {
                 margin-bottom: 40px;
