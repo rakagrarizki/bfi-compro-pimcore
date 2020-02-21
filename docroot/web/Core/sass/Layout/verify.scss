@@ -13,8 +13,9 @@
         padding: 30px 35px;
 
         @include breakpoint(mobile){
-            padding: 10px 15px;
+            padding: 20px 0 15px;
             height: auto;
+            background-color: #eaeaea;
         }
 
         h4{
@@ -74,7 +75,7 @@
                         left: -50%;
                         @include breakpoint(mobile){
                             height: 6px;
-                            top: 37%;
+                            top: 38%;
                         }
                     }
                 
@@ -134,7 +135,7 @@
                             border-right: 7px solid transparent;
                             border-bottom: 7px solid #f9991c;
                             @include breakpoint(mobile){
-                                top: -10%;
+                                top: -7%;
                             }
                         }
 
@@ -152,7 +153,7 @@
                     #ktp{
                         right: 44%;
                         @include breakpoint(mobile){
-                            right: 24%;
+                            right: 27%;
                         }
                         &::before{
                             left: 77%;
@@ -483,6 +484,9 @@
         margin: 0;
         padding: 0;
         list-style: none;
+        @include breakpoint(mobile) {
+            background-color: #eaeaea;
+        }
         .status-box{
             background-color: #FCFCFC;
             padding: 55px;
@@ -496,7 +500,8 @@
 
             @include breakpoint(mobile) {
                 height: inherit;
-                padding : 25px 20px 10px;
+                padding : 25px 10px 10px;
+                background-color: #eaeaea;
             }
 
             ul,li,span{
@@ -514,6 +519,7 @@
                     float : none;
                     width: 100%;
                     display : inline-flex;
+                    padding: 0 15px;
                 }
 
                 div {
@@ -582,6 +588,10 @@
                             height: 12px;
                             top: 30%;
                             left: -50%;
+                            @include breakpoint(mobile) {
+                                height: 6px;
+                                top: 38%;
+                            }
                         }
                     
                         &:first-child:before {
@@ -600,6 +610,10 @@
                             -ms-border-radius: 50%;
                             -o-border-radius: 50%;
                             z-index: 99;
+                            @include breakpoint(mobile) {
+                                width: 25px;
+                                height: 25px;
+                            }
                         }
 
                         .label-step{
@@ -702,10 +716,15 @@
                 margin-right: 20px;
                 margin-left: 20px;
                 opacity: 20%;
-                #app-status > div > ul > hr:nth-child(5){
-                    display: none;
-                }
             }
+        }
+    }
+}
+
+#app-status {
+    hr:nth-child(5){
+        @include breakpoint(mobile) {
+            display: none;
         }
     }
 }
