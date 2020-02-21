@@ -99,7 +99,7 @@ $this->extend('layout.html.php');
                     </div>
                     <input type="hidden" class="form-control formRequired" name="document" id="document">
                     <div class="error-wrap"></div>
-                    <span>Max. ukuran file adalah 500kb</span>
+                    <span><?= $this->translate('max-size') ?></span>
                 </div>
                 <div class="form-group captcha formRequired">
                     <div class="g-recaptcha" id="g-recaptcha" data-sitekey="6Ldb1c8UAAAAALZP6FbNJAM7z8T-tPpkbJvjbJBW"></div>

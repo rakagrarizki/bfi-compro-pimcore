@@ -76,15 +76,24 @@
 
             @include breakpoint(mobile) {
                 width: calc(50% - 20px);
-                min-height: auto;
+                min-height: 253px;
             }
 
             &:nth-child(1),
             &:nth-child(2) {
                 width: calc(50% - 20px);
-
                 @include breakpoint(mobile) {
                     width: 100%;
+                }
+                h2.title{
+                    @include breakpoint(mobile) {
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                        -o-text-overflow: ellipsis;
+                        text-overflow: ellipsis;
+                    }
                 }
             }
 
