@@ -13,7 +13,14 @@ use Pimcore\Model\Document\Page;
 
 <?php
 $pageCurrent = $this->getParam('page', 1);
-$name = $_COOKIE["customer"]; ?>
+$name = "";
+if($_COOKIE["customer"] != "null") {
+    $name = $_COOKIE["customer"];
+} else {
+    $name = "Dashboard";
+}
+dump($name);
+?>
 <nav id="site-header">
     <div class="navbar-fixed-top hidden-xs">
         <div class="header-top">
