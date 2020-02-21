@@ -13,7 +13,12 @@ use Pimcore\Model\Document\Page;
 <?php
 $site = $this->document->getProperty("site");
 $lang = $this->getLocale();
-$name = $_COOKIE["customer"];
+$name = "";
+if($_COOKIE["customer"] != "null") {
+    $name = $_COOKIE["customer"];
+} else {
+    $name = "Dashboard";
+}
 ?>
 <nav id="site-header">
     <div class="navbar-fixed-top hidden-xs">
@@ -27,7 +32,7 @@ $name = $_COOKIE["customer"];
                             <?= $this->translate("corporate") ?></a>
                     </div>
                     <div class="col-md-6 col-sm-6 right-side-top">
-                        <?php if (!isset($name) || $name == "") { ?>
+                        <?php if (!isset($_COOKIE["customer"])) { ?>
                             <div class="link-about-top">
                                 <a href="<?= "/" . $lang . "/tentang-kami" ?>">
                                     <?= $this->translate("tentang-kami") ?></a>
@@ -37,7 +42,7 @@ $name = $_COOKIE["customer"];
                         <?php } ?>
 
                         <div class="link-log">
-                            <?php if (!isset($name) || $name == "") { ?>
+                            <?php if (!isset($_COOKIE["customer"])) { ?>
                                 <a href="<?= "/" . $lang . "/login"; ?>" class="login"><?= $this->translate("login") ?></a>
                             <?php } else { ?>
                             <div class="user">
