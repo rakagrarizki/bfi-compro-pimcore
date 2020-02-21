@@ -566,6 +566,8 @@ body{
                     padding-right: 15px;
                 }
                 .user {
+                    display: flex;
+                    justify-content: flex-end;
                     a.full_name {
                         text-decoration : underline;
                         font-weight : bold;
@@ -806,6 +808,8 @@ body{
                             font-weight: bold;
                             font-size: 18px;
                             margin-top: 20px;
+                            word-break: break-word;
+                            white-space: initial;
                         }
                     }
                 }
