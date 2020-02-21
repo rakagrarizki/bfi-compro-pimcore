@@ -396,11 +396,13 @@ var isValidOtp = false;
       if (post.success === "1") {
         nextButton("active");
         finishButton("inactive");
+        var admin_fee = "Rp. "+ separatordot(post.data.admin_fee);
         var life_insurance = "Rp. " + separatordot(post.data.life_insurance);
         var monthly_installment = "Rp. " + separatordot(post.data.monthly_installment);
         var monthly_installment_est_total = "Rp. " + separatordot(post.data.monthly_installment_est_total);
         var total_funding = "Rp. " + separatordot(post.data.total_funding);
 
+        $("#administrasi, #summary-administrasi").text(admin_fee);
         $("#life_insurance, #summary-life-insurance").text(life_insurance);
         $("#monthly_installment, #summary-angsuran-bulanan").text(monthly_installment);
         $("#monthly_installment_est_total, #summary-funding").text(monthly_installment_est_total);

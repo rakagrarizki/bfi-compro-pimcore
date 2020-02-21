@@ -1847,18 +1847,19 @@
   }
 
   function stepAction() {
-      disableButton("#button1");
-      disableButton("#button2");
-      disableButton("#button3");
-      disableButton("#button3rumah");
-      disableButton("#button4");
-      disableButton("#button4rumah");
+    disableButton("#button1");
+    disableButton("#button2");
+    disableButton("#button3");
+    disableButton("#button3rumah");
+    disableButton("#button4");
+    disableButton("#button4rumah");
 
-      if ($("#jenis_form").val() == "SURAT BANGUNAN") {
-          disableButton("#button5");
-      } else {
-          enableButton("#button5");
-      }
+    // if ($("#jenis_form").val() == "SURAT BANGUNAN") {
+    //     disableButton("#button5");
+    // } else {
+    //     enableButton("#button5");
+    // }
+    disableButton("#button5");
 
       $("#kode_pos").css("background-color", "#F4F4F4");
       $("#kode_pos_sertificate").css("background-color", "#F4F4F4");
