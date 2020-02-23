@@ -44,19 +44,20 @@ $lang = $this->getLocale();
         <?php if (count($this->paginator) > 0) { ?>
         <div class="list-card">
         <?php foreach($this->paginator as $promo) : ?>
-            <a href="<?= '/'.$lang.'/promo/'.$promo->getSlug();?>" class="card-item">
-                <picture>
-                    <img src="<?= $promo->getImage();?>" alt="">
-                </picture>
-                <div class="caption">
-                    <h3 class="tag"><?= $promo->getPromoCategory() ? $promo->getPromoCategory()->getName(): "";?></h3>
-                    <h2 class="title"><?= $promo->getTitle();?></h2>
-                    <div class="dateview periode">
-                        <div><?= $this->t("period-promo"); ?> : </div>
-                        <?= $promo->getPromoStartDate();?> - <?= $promo->getPromoEndDate();?>
+            <div class="card-item">
+                <a href="<?= '/'.$lang.'/promo/'.$promo->getSlug();?>">
+                    <div class="card-content card-static-promo" style="background: url(<?= $promo->getImage();?>)">
                     </div>
-                </div>
-            </a>
+                    <div class="caption">
+                        <h3 class="tag"><?= $promo->getPromoCategory() ? $promo->getPromoCategory()->getName(): "";?></h3>
+                        <h2 class="title"><?= $promo->getTitle();?></h2>
+                        <div class="dateview periode">
+                            <div><?= $this->t("period-promo"); ?> : </div>
+                            <?= $promo->getPromoStartDate();?> - <?= $promo->getPromoEndDate();?>
+                        </div>
+                    </div>
+                </a>
+            </div>
         <?php endforeach;?>
         </div>
         <?php }?>
