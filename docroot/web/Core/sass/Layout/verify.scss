@@ -543,6 +543,8 @@
                     font-size: 16px;
                     @include breakpoint(mobile) {
                         font-size: 13px;
+                        word-break: break-all;
+                        padding-right: 10px;
                     }
                 }
                 .assignment{
