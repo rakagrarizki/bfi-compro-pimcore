@@ -6,7 +6,7 @@ $reports->addConditionParam("Category__id = ?",$category,"AND");
 $page = htmlentities(addslashes($_GET["page"]));
 $paginator = new \Zend\Paginator\Paginator($reports);
 $paginator->setCurrentPageNumber($page);
-$paginator->setItemCountPerPage(5);
+$paginator->setItemCountPerPage(2);
 ?>
 
 <div class="container report-list-wrapper">
@@ -34,7 +34,7 @@ $paginator->setItemCountPerPage(5);
             </div>
             <div class="download-btn">
                 <div class="down-box">
-                    <a href=" <?= $data->getUrl();?>" target="_blank" class="cta cta-down">
+                    <a href=" <?= $data->getUrl();?>" target="_blank" class="cta cta-down mobile-cta">
                         <span><?=  $this->t("download-document")?></span>
                     </a>
                 </div>

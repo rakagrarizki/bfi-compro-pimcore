@@ -70,12 +70,16 @@ $(document).ready(function () {
                             $("#ajax-loading").hide();
                             $("#button-klik").show();
                             $('#errorNewsletter').modal('show');
+                            $('#errorNewsletter').find('.modal-body').css('padding', '50px');
+                            $('#errorNewsletter').find('.modal-dialog').css('margin', 'auto');
                         } else if (data.success == 0) {
                             RenderingErrorContent('<p>' + data.message + '</p>');
                             $("#ajax-loading").hide();
                             $("#button-klik").show();
 
                             $('#errorNewsletter').modal('show');
+                            $('#errorNewsletter').find('.modal-body').css('padding', '50px');
+                            $('#errorNewsletter').find('.modal-dialog').css('margin', 'auto');
                         }
                     }
                 });

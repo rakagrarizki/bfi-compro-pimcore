@@ -62,6 +62,13 @@
                     padding-left: 0px;
                 }
 
+                &.mobile-cta{
+                    @include breakpoint(mobile) {
+                        padding-left: 56px;
+                        width: 40px;
+                    }
+                }
+
                 &::before{
                     content: "\f019";
                     display: block;

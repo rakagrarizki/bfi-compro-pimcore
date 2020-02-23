@@ -99,9 +99,41 @@
         font-size: 1.2rem;
         font-family: 'HelveticaNeue';
         letter-spacing: 0.5px;
+        color:#565656;
+
+        @include breakpoint(mobile){
+            font-size: 1rem;
+        }
 
         span{
             font-family: 'HelveticaNeue-Light';
+            strong{
+                color:#565656;
+            }
+        }
+    }
+    tr:nth-child(1){
+        td{
+            span{
+                color:#ffffff !important;
+            }
+        }
+    }
+    #skema-angsuran{
+        tr:nth-child(1){
+            td{
+                span{
+                    color:#565656 !important;
+                }
+            }
+        }
+    }
+    td:nth-child(1){
+        span{
+            color:#565656 !important;
+            strong{
+                color:#565656;
+            }
         }
     }
     

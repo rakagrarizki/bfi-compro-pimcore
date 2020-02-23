@@ -1,5 +1,5 @@
 <div>
-    <div id="ajukan-sekarang" class="point-step">
+    <div id="ajukan-sekarang" class="point-step container">
         <div class="sect-title text-center">
             <p class="title"><?= $this->input('title');?></p>
             <p><?= $this->input('text'); ?></p>

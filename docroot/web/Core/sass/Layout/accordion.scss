@@ -105,6 +105,50 @@
             display: block;
           }
         }
+                
+                ul {
+                    list-style: square;
+                    color:#565656;
+                    font-family: 'HelveticaNeue';
+                    font-size: 20px;
+                    margin: 0;
+
+                    hr{
+                        margin-left: -20;
+                    }
+                }
+
+                li {
+                    padding-bottom: 0px;
+                    padding-left: 10px;
+                    // width: 70%;
+                    color:#565656;
+                    // &::before {
+                    //     margin-right: 25px;
+                    //     content: '\25AA';
+                    //     color: #04559F;
+                    //     font-size: 150%;
+
+                    //     @include breakpoint(mobile) {
+                    //         margin-right: 25px;
+                    //         padding: 0px;
+                    //     }
+                    // }
+
+                    @include breakpoint(tablet) {
+                        width: 60%;
+                        padding-left: 25px;
+                        // text-indent: -40px;
+                    }
+
+                    @include breakpoint(mobile) {
+                        font-size: 15px;
+                        width: 100%;
+                        padding-left: 10px;
+                        color: #545454;
+                        // text-indent: -40px;
+                    }
+                }
 
 
         ul {
@@ -199,6 +243,13 @@
                     width: 40px;
                     height: 40px;
                   }
+                &.a-panelheading {
+                    padding-bottom: 35px;
+                    color:#565656;
+                    @include breakpoint(mobile) {
+                        padding-bottom: 20px;
+                        font-size: 15px;
+                    }
                 }
 
                 span {
@@ -294,6 +345,16 @@
             padding-bottom: 20px;
             font-size: 15px;
           }
+            td {
+                font-family: 'HelveticaNeue';
+                padding: 10px 20px;
+                font-size: 1.1em;
+                color:#565656;
+                &:nth-child(2n),
+                &:nth-child(3n) {
+                    text-align: center;
+                }
+            }
         }
 
         &::after {
@@ -473,4 +534,5 @@
       max-width: 100%;
     }
   }
+}
 }

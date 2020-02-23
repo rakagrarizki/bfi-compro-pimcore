@@ -8,7 +8,7 @@
 //     }
 // }
 $tab = $this->getParam("tab");
-
+$queryStr = $_GET["t"];
 ?>
 
 <?php
@@ -34,8 +34,14 @@ $tab = $this->getParam("tab");
                     $id = $this->block("tab")->getCurrent();
                     $active = "";
                     if($tab == ""){
-                        if($id == 0){
-                            $active = "active";
+                        if($queryStr) {
+                            if($id == $queryStr){
+                                $active = "active";
+                            }
+                        } else {
+                            if($id == 0){
+                                $active = "active";
+                            }
                         }
                     }
                     if($tab == $last){
@@ -46,7 +52,9 @@ $tab = $this->getParam("tab");
                     }
                     ?>
 
-                        <li role="presentation" class="<?= $active ?>" id="div<?= $id;?>" style="width:<?= 100 / $this->block("tab")->getCount()?>%">
+                        <?php $tabWidth = 100/$this->block("tab")->getCount();?>
+                        <?php $tabWidth = str_replace(",",".",$tabWidth)?>
+                        <li role="presentation" class="<?= $active ?>" id="div<?= $id;?>" style="width:<?= $tabWidth;?>%" onclick="updateQueryStringParameter('t',<?= $id;?>)" >
                             <a href="#<?= $id;?>" id="href<?= $id;?>"  data-prev="<?= $id == 0 ? '' : $id - 1 ?>" data-next="<?=$id == ($this->block("tab")->getCount() -1) ? "" : $id + 1;?>" aria-controls="<?= $id?>" role="tab" data-toggle="tab" onclick="setPreviewId(<?= $id == 0 ? '' : $id - 1 ?>,<?=$id == ($this->block('tab')->getCount() -1) ? '' : $id + 1;?>)"><?= $this->input("text");?></a>
                         </li>
 
@@ -71,8 +79,14 @@ $tab = $this->getParam("tab");
                 $active = "";
                 ?>
                 <?php if($tab == "") {
-                    if($id == 0){
-                        $active = "active";
+                    if($queryStr) {
+                        if($id == $queryStr){
+                            $active = "active";
+                        }
+                    } else {
+                        if($id == 0){
+                            $active = "active";
+                        }
                     }
                 }
                 if($tab == $last){

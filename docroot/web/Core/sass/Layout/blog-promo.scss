@@ -86,6 +86,7 @@
                     width: 100%;
                 }
                 h2.title{
+                    height: 51px !important;
                     @include breakpoint(mobile) {
                         display: -webkit-box;
                         -webkit-line-clamp: 2;
@@ -101,22 +102,21 @@
                 display: block;
                 position: relative;
                 width: 100%;
-                height: 0;
-                padding-bottom: 56.25%;
+                height: 100%;
+                // padding-bottom: 56.25%;
                 overflow: hidden;
                 background-color: $grey-light-color;
 
                 img {
                     width: 100%;
                     max-width: 100%;
-                    object-fit: cover;
-                    position: absolute;
-                    left: 50%;
-                    top: 50%;
-                    transform: translate(-50%, -50%);
+                    // object-fit: cover;
+                    // position: absolute;
+                    // left: 50%;
+                    // top: 50%;
+                    // transform: translate(-50%, -50%);
                 }
             }
-
             .caption {
                 padding: 15px 20px;
                 background-color: $white;
@@ -229,6 +229,7 @@
         .sect-title {
             width: 100%;
             margin-bottom: 60px;
+            margin-top: 40px;
 
             @include breakpoint(mobile) {
                 margin-bottom: 40px;
