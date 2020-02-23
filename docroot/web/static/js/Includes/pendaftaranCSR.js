@@ -162,7 +162,7 @@ $(document).ready(function(){
     });
 
     $('#file-upload').on('change', function(e) { 
-        const sizeLimit = 1000000;
+        const sizeLimit = 300000;
         const parent = $(this).parents("#upload");
         const preview = parent.find("img")[0];
         const label = parent.find("span")[0];
@@ -187,14 +187,15 @@ $(document).ready(function(){
                 $(preview).hide();
             } 
             parent.find(".error-wrap").hide();
+            $('#upload-button').text("Ubah File");
         } else {
             var errorMsg = '';
             switch (false) {
                 case (file.size <= sizeLimit):
                     if(lang === 'id'){
-                        errorMsg = 'Ukuran file harus kurang dari 1 MB.';
+                        errorMsg = 'Ukuran file harus kurang dari 300 KB.';
                     }else{
-                        errorMsg = 'File size must be less than 1 MB.';
+                        errorMsg = 'File size must be less than 300 KB.';
                     }
                     break;
                 case isImage:
@@ -263,7 +264,11 @@ $(document).ready(function(){
         },
     
         formAlphabet: {
-            acceptAlphabet: "[a-zA-Z]+"
+            acceptAlphabet: "[a-zA-Z ]+"
+        },
+
+        formAlphanum: {
+            acceptAlphanum: "[a-zA-Z0-9]+"
         },
     
         formEmail: {
@@ -307,6 +312,11 @@ $(document).ready(function(){
         // console.log(/^[a-z]+$/i.test(value));
         return /^[a-z]+$/i.test(value);
     }, "Please Enter Only Letters");
+
+    jQuery.validator.addMethod("acceptAlphanum", function (value, element, param) {
+        //console.log(value.match(new RegExp("." + param + "$")));
+        return value.match(new RegExp("." + param + "$"));
+    }, "Please Enter Only Letter and Number");
     
     jQuery.validator.addMethod("emailCust", function (value, element, param) {
         return param.test(value);
@@ -347,6 +357,7 @@ $(document).ready(function(){
             max: jQuery.validator.format("Masukkan nilai kurang dari atau sama dengan {0}."),
             min: jQuery.validator.format("Silakan masukkan nilai yang lebih besar dari atau sama dengan {0}."),
             acceptAlphabet: "Masukkan hanya berupa huruf alfabet.",
+            acceptAlphanum: "Masukkan hanya berupa huruf dan angka.",
             emailCust : "Silakan isi alamat email yang valid.",
             filesize : "Ukuran file harus kurang dari 500 Kb."
         });
