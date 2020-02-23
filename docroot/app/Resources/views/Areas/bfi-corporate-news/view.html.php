@@ -6,10 +6,10 @@ $news->load();
 
 <section id="informasi-inspiratif">
     <div class="container">
-        <h2 class="title-wrapper text-left" style="padding: 0;margin-bottom: 2rem">
+        <h2 class="title-wrapper text-center" style="padding: 0;margin-bottom: 2rem">
             <?= $this->input('title');?>
         </h2>
-        <p class="text-left paragraf-title" style="margin-bottom: 2rem;">
+        <p class="text-center paragraf-title" style="margin-bottom: 2rem;">
             <?= $this->textarea('text');?>
         </p>
         <div class="row content-bfi" style="padding: 0; width: 100%; margin-bottom: 3rem;">
@@ -44,7 +44,7 @@ $news->load();
                             $date = date("d.m.y", $dateUnix);
                             ?>
                             <p><?= $data->getCategory()->getName(); ?></p>
-                            <h3><a href="/<?= $this->getLocale(); ?>/news/<?= $data->getSlug(); ?>"><?= $data->getTitle();?></a></h3>
+                            <h3><a href="/<?= $lang; ?>/news/<?= $data->getSlug(); ?>"><?= $data->getTitle();?></a></h3>
                             <p class="date"><?= $date; ?> | <i class="fa fa-eye"></i> <?= $data->getViews(); ?></p>
                         </div>
                     </div>
