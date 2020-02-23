@@ -754,7 +754,7 @@
             return minPayment <= thisval ? true : false;
             // return false
         },
-        "Minimal 10% from payment."
+        "Minimal 10% dari jumlah pembiayaan"
     );
   
     jQuery.validator.addMethod(
@@ -771,7 +771,7 @@
             return minPayment <= thisval ? true : false;
             // return false
         },
-        "Minimal 30% from payment."
+        "Minimal 30% dari jumlah pembiayaan"
     );
   
     jQuery.validator.addMethod(
@@ -788,7 +788,7 @@
             return maxPocketMoney >= thisval ? true : false;
             // return false
         },
-        "Maximum allowance is 20% of payment."
+        "Maksimum uang saku adalah 20% dari jumlah pembiayaan"
     );
   
     jQuery.validator.addMethod(
@@ -797,7 +797,7 @@
             //console.log(value.match(new RegExp("." + param + "$")));
             return value.match(new RegExp("." + param + "$"));
         },
-        "Please Enter Only Letters"
+        "Masukkan hanya huruf"
     );
   
     jQuery.validator.addMethod(
@@ -810,7 +810,7 @@
                 return true;
             }
         },
-        "Please input price more than min price"
+        "Jumlah pembiayaan harus lebih besar dari jumlah minimum pembiayaan"
     );
   
     jQuery.validator.addMethod("minEstimatePrice", function (value, element, param) {
@@ -821,12 +821,12 @@
         return true;
       }
     }, function(params, element) {
-      return 'Please input price more than '+ separatordot(params) +'.'
+      return 'Jumlah pembiayaan harus lebih besar dari'+ separatordot(params) +'.'
     });
   
     jQuery.validator.addMethod("emailCust", function (value, element, param) {
       return param.test(value);
-    }, "Please enter a valid email address.");
+    }, "Masukkan email yang aktif");
   
     jQuery.validator.addMethod(
         "filesize",
@@ -842,7 +842,7 @@
             );
             return this.optional(element) || element.files[0].size <= param;
         },
-        "File size must be less than 1 MB."
+        "Jumlah maksimum file adalah 1MB"
     );
   
     console.log($.validator.classRuleSettings);
