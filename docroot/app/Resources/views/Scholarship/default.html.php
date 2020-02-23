@@ -72,7 +72,7 @@ $this->extend('layout-credit.html.php');
                                 <button id="upload-button" class="btn-upload" onclick="document.getElementById('file-upload').click(); return false;">
                                         <?= $this->translate('Choose file') ?>
                                     </button>
-                                    <input id="file-upload" class="hide-input formRequired" accept="image/*" type="file" name="photo" id="photo" onchange=" document.getElementById('upload-button').innerHTML = 'Ubah File';">
+                                    <input id="file-upload" class="hide-input formRequired" accept="image/*" type="file" name="photo" id="photo" onchange=" document.getElementById('file-upload').innerHTML = 'Ubah File';">
                                     <!-- <input class="hide-input formRequired" accept="image/*" type="file" name="photo" id="file-upload" value="Snap Picture"  style="visibility:hidden;" onchange=" document.getElementById('upload-button').innerHTML = '<?= $this->translate('Change file') ?>';"> -->
                                 </div>
                                 <span id="file-upload-filename"></span>
@@ -99,7 +99,7 @@ $this->extend('layout-credit.html.php');
                         </div>
                         <div class="input-text-group">
                             <label id="nim-label" class="input-label">NIM / NPM</label>
-                            <input name="scholarship[nim]" id="nim-input" class="style-input formRequired" placeholder="<?= $this->translate('input-nim') ?>" maxlength="20" type="text" required>
+                            <input name="scholarship[nim]" id="nim-input" class="style-input formAlphanum formRequired" placeholder="<?= $this->translate('input-nim') ?>" maxlength="20" type="text" required>
                             <div class="error-wrap"></div>
                         </div>
                         <div class="input-text-group">
