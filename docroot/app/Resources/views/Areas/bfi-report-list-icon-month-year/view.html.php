@@ -10,10 +10,11 @@ $reports->addConditionParam("Category__id = ?",$category,"AND");
 
 <!-- Template -->
 <div class="container">
+<?php if (!$this->input("title")->isEmpty()) { ?>
     <article class="sect-title text-center">
         <h2 class="margin-top-10"><?= $this->input("title")?></h2>
-
     </article>
+<?php } ?>
     <ul class="card-list-box">
         <?php foreach($reports as $data):?>
         <li class="card-list">
