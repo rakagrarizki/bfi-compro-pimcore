@@ -352,7 +352,7 @@
             $(this).val("");
         }
     });
-  
+
     var post_val_inputan = 0;
     $("#ex6SliderVal").on("input", function() {
         var thisval = $(this).val(),
@@ -811,6 +811,24 @@
             }
         },
         "Please input price more than min price"
+    );
+    var lang = document.documentElement.lang;
+    if ( lang === 'id'){
+        errormin = 'Jumlah pembiayaan tidak sesuai dengan minimun';
+    }else{
+        errormin = 'The amount of financing does not match the minimum amount';
+    }
+    jQuery.validator.addMethod(
+        "minPrice1000",
+        function(value, element, param) {
+            var thisval = value.replace(/\./g, "");
+            if (parseInt(thisval) < param) {
+                return false;
+            } else {
+                return true;
+            }
+        },
+        errormin
     );
   
     jQuery.validator.addMethod("minEstimatePrice", function (value, element, param) {
@@ -5022,6 +5040,10 @@
                 $.validator.addClassRules({
                     formPrice: {
                         minPrice: rawMinPrice,
+                        required: true
+                    },
+                    formPrice1000: {
+                        minPrice1000: 1000000,
                         required: true
                     }
                 });
