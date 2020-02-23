@@ -82,7 +82,7 @@ use Pimcore\Model\Document;
         }
         ?>
         <li role="separator" class="divider"></li>
-        <li> <a href="<?= $this->websiteConfig("career_link") ? $this->websiteConfig("career_link") : "#"; ?>">
+        <li> <a class="secondary-menu" href="<?= $this->websiteConfig("career_link") ? $this->websiteConfig("career_link") : "#"; ?>">
                 <?= $this->translate("career"); ?></a></li>
     </ul>
 </div>

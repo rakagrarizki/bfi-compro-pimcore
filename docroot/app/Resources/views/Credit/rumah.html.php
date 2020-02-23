@@ -328,7 +328,7 @@ $this->extend('layout-credit.html.php');
                                                 <label for="jml-biaya"><?= $this->translate('label-data-funding') ?></label>
                                                 <div class="input-group inputform">
                                                     <span class="input-group-addon" id="basic-addon1">Rp</span>
-                                                    <input type="tel" pattern="\d*" id="ex6SliderVal" class="form-control formRequired c-input-trans" aria-describedby="basic-addon1">
+                                                    <input type="tel" pattern="\d*" id="ex6SliderVal" class="form-control formPrice1000 formRequired c-input-trans" aria-describedby="basic-addon1">
 
                                                     <div class="error-wrap"></div>
 

@@ -19,5 +19,12 @@ $this->extend('layout.html.php');
                 </div>
             </a>
         <?php endforeach; ?>
+
     </div>
+    <?php if (count($paginator) > 1) : ?>
+        <?= $this->render("Includes/paging.html.php", get_object_vars($paginator->getPages("Sliding")), [
+            'urlprefix' => $this->document->getFullPath() . '?page=', // just example (this parameter could be used in paging.php to construct the URL)
+            'appendQueryString' => true // just example (this parameter could be used in paging.php to construct the URL)
+        ]); ?>
+    <?php endif; ?>
 </div>
