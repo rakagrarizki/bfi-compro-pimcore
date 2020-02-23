@@ -74,6 +74,13 @@
             border: 1px solid #e2e2e2;
             min-height: 300px;
 
+            .card-static-promo{
+                height: 458px;
+                background-size: contain;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+
             @include breakpoint(mobile) {
                 width: calc(50% - 20px);
                 min-height: 253px;
