@@ -305,7 +305,7 @@ $(document).ready(function(){
     jQuery.validator.addMethod("acceptAlphabet", function (value, element, param) {
         // console.log(value.match(new RegExp("." + param + "$")));
         // console.log(/^[a-z]+$/i.test(value));
-        return /^[a-z]+$/i.test(value);
+        return /^[a-z ]+$/i.test(value);
     }, "Please Enter Only Letters");
     
     jQuery.validator.addMethod("emailCust", function (value, element, param) {
