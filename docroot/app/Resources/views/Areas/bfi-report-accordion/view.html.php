@@ -19,7 +19,7 @@ $randId = rand(10,100);
 
 $paginator = new \Zend\Paginator\Paginator(new \Zend\Paginator\Adapter\ArrayAdapter($years));
 $paginator->setCurrentPageNumber($page);
-$paginator->setItemCountPerPage(5);
+$paginator->setItemCountPerPage(2);
 ?>
 <div class="container">
     <article class="sect-title text-center">
