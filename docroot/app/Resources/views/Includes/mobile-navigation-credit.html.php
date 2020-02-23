@@ -17,9 +17,9 @@ use Pimcore\Model\Document;
                 </div>
             </div>
         </div>
-        <div class="navbar-header">
-            <a class="navbar-brand" href="<?php echo "/".$this->getLocale(); ?>">
-                <img src="/static/images/logo-bfi.png" alt="logo-bfi" class="img-responsive">
+        <div class="navbar-header row">
+            <a class="navbar-brand col-xs-12" href="<?php echo "/".$this->getLocale(); ?>">
+                <img src="/static/images/logo-bfi.png" alt="logo-bfi" class="img-responsive header-image-product">
             </a>
         </div>
     </div>
