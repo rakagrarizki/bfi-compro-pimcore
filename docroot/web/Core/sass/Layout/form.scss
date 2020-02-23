@@ -2491,3 +2491,10 @@ select::-ms-expand {
         margin: auto;
     }
 }
+
+#step-otp{
+    @include breakpoint(mobile){
+        position: fixed;
+        margin-left: -15px;
+    }
+}

@@ -99,7 +99,7 @@ $this->extend('layout-credit.html.php');
                         </div>
                         <div class="input-text-group">
                             <label id="nim-label" class="input-label">NIM / NPM</label>
-                            <input name="scholarship[nim]" id="nim-input" class="style-input formNumber formRequired" placeholder="<?= $this->translate('input-nim') ?>" maxlength="20" type="text" required>
+                            <input name="scholarship[nim]" id="nim-input" class="style-input formRequired" placeholder="<?= $this->translate('input-nim') ?>" maxlength="20" type="text" required>
                             <div class="error-wrap"></div>
                         </div>
                         <div class="input-text-group">
