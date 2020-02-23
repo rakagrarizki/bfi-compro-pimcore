@@ -1,7 +1,9 @@
 <div class="container">
+<?php if (!$this->input("title")->isEmpty()) { ?>
     <div class="page-title"><?= $this->input("title")?>
         <?= $this->input("subtitle");?>
     </div>
+<?php } ?>
     <ul class="list-title">
         <?php while($this->block("contentblock")->loop()) { ?>
         <li>

@@ -22,9 +22,11 @@ $paginator->setCurrentPageNumber($page);
 $paginator->setItemCountPerPage(2);
 ?>
 <div class="container">
+<?php if (!$this->input("title")->isEmpty()) { ?>
     <article class="sect-title text-center">
         <h2 class=""><?= $this->input("title")?></h2>
     </article>
+<?php } ?>
     <div class="accordion">
         <div class="accordion__wrap produk">
             <!-- <div class="container"> -->
