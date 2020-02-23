@@ -2,7 +2,7 @@
 var title = document.getElementById("upload-text");
 var image = document.getElementById('preview-upload');
 var button = document.getElementById( 'upload-button' );
-var input = document.getElementById( 'file-upload-csr' );
+var input = document.getElementById( 'file-upload' );
 var infoArea = document.getElementById( 'file-upload-filename' );
 
 input.addEventListener( 'change', showFileName );
