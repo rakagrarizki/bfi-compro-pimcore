@@ -1,5 +1,5 @@
 <div class="container">
-    <div id="accordion-pembiayaan" class="accordion">
+    <div id="accordion-pembiayaan" class="accordion pembiayaan">
         <div class="sect-title text-center">
             <h2 class=""><?= $this->input('title');?></h2>
             <p><?= $this->textarea('text'); ?></p>

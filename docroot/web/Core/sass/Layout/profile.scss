@@ -1,652 +1,671 @@
 .profile {
-    .sect-title.text-center h2 {
-        font-size : 2.250em;
+  .sect-title {
+    @include breakpoint(mobile) {
+      margin-top: 30px;
+      margin-bottom: 10px;
     }
-    .sect-list {
-        font-size : 20px;
-    
-        @include breakpoint(mobile){
-            font-size: 15px;
-        }
-        
-        h3 {
-            font-weight : 600;
-            color : #333;
 
-            @include breakpoint(mobile){
-                margin-left : 5px;
-            }
+    .text-center h2 {
+      font-size: 2.250em;
+
+      @include breakpoint(mobile) {
+        font-size: 1.250em;
+      }
+
+      p {
+        @include breakpoint(mobile) {
+          font-size: 12px;
+          margin-bottom: 10px;
         }
-        
-        .list {
-            padding: 1em 1em 1em 2.5em;
-            
-            &.contract {
-                text-decoration : underline;
-                padding: 1em 1em 1em 3em;
-        
-                @include breakpoint(mobile) {
-                    padding: 1em 1em 1em 3.5em;
-                }
-            }
-            
+      }
+    }
+  }
+
+  .sect-list {
+    font-size: 20px;
+    padding: 0px 10px;
+
+    @include breakpoint(mobile) {
+      font-size: 15px;
+    }
+
+    h3 {
+      font-weight: 600;
+      color: #333;
+
+      @include breakpoint(mobile) {
+        margin-left: 5px;
+        font-size: 14px;
+      }
+    }
+
+    .list {
+      padding: 1em 1em 1em 2.5em;
+
+      &.contract {
+        text-decoration: underline;
+        padding: 1em 1em 1em 3em;
+
+        @include breakpoint(mobile) {
+          padding: 0.5em 1em 1em 2em;
+          font-size: 12px;
+        }
+      }
+
+      @include breakpoint(mobile) {
+        padding: 1em;
+      }
+
+      ol {
+        list-style: none;
+
+        @include breakpoint(mobile) {
+          padding-left: 30px;
+        }
+      }
+
+      li {
+        counter-increment: item;
+        margin-bottom: 5px;
+
+        @include breakpoint(mobile) {
+          text-indent: -45px;
+        }
+      }
+
+      li:before {
+        margin-right: 25px;
+        content: counter(item)'.';
+        color: #333;
+        text-align: right;
+        display: inline-block;
+        width: 30px;
+
+        @include breakpoint(mobile) {
+          margin-right: 15px;
+        }
+      }
+
+      .detail-wrapper {
+        display: flex;
+        margin-bottom: 15px;
+
+        span.label {
+          text-align: left;
+          color: #333;
+          font-size: 20px;
+          width: 35%;
+          font-weight: 500;
+
+          @include breakpoint(mobile) {
+            font-size: 12px;
+            width: 50%;
+            word-break: break-all;
+            white-space: normal;
+          }
+        }
+
+
+        span.value-data {
+
+          @include breakpoint(mobile) {
+            font-size: 12px;
+            word-break: break-all;
+            width: 50%;
+          }
+
+          &.address {
             @include breakpoint(mobile) {
-                padding: 1em;
+              text-indent: -14px;
+              margin-left: 10%;
             }
-    
-            ol {
-                list-style: none;
-            }
-            
-            li {
-                counter-increment: item;
-                margin-bottom: 5px;
-    
-                @include breakpoint(mobile) {
-                    text-indent: -15px;
-                }
-            }
-            
-            li:before {
-                margin-right: 25px;
-                content: counter(item)'.';
-                color: #333;
-                text-align: right;
-                display: inline-block;
-                width: 30px;
-    
-                @include breakpoint(mobile) {
-                    margin-right: 15px;
-                }
-            }
-            
-            .detail-wrapper {
-                display: flex;
-                margin-bottom: 15px;
-                
-                span.label {
-                    text-align : left;
-                    color : #333;
-                    font-size : 20px;
-                    width: 35%;
-                    font-weight : 500;
-    
-                    @include breakpoint(mobile) {
-                        font-size: 15px;
-                    }
-                }
+          }
 
-                
-                span.value-data {
-                    &.address {
-                        @include breakpoint(mobile) {
-                            text-indent: -14px;
-                            margin-left: 10%;
-                        }
-                    }
-                    
-                    &:before { 
-                        content: ':';
-                        margin-right : 10px;
-                    }
-                }
-                
-            }
+          &:before {
+            content: ':';
+            margin-right: 10px;
+          }
         }
+
+      }
     }
-    hr {
-        margin-right: -15px;
-        margin-left: -15px;
-        border: solid 1px #eee;
-    }
+  }
+
+  hr {
+    margin-right: -15px;
+    margin-left: -15px;
+    border: solid 1px #eee;
+  }
 }
 
 .detail-contract {
-    .sect-title.text-center h2 {
-        font-size : 2.250em;
+  .sect-title.text-center h2 {
+    font-size: 2.250em;
 
-        @include breakpoint(mobile) {
-            font-size : 28px;
-        }
+    @include breakpoint(mobile) {
+      font-size: 28px;
+    }
+  }
+
+  .table-container {
+    display: -webkit-inline-box;
+    background-color: #FCFCFC;
+    color: #333;
+    padding: 37px 25px;
+    margin-bottom: 20px;
+
+    @include breakpoint(mobile) {
+      display: block;
     }
 
-    .table-container {
-        display : -webkit-inline-box;
-        background-color : #FCFCFC;
-        color : #333;
-        padding : 37px 25px;
-        margin-bottom : 20px;
+    .table-content {
+      width: 50%;
+      font-size: 18px;
+      margin-right: 45px;
 
-        @include breakpoint(mobile) {
-            display : block;
-        }
+      @include breakpoint(tablet) {
+        margin-right: 0px;
+        font-size: 14px;
+      }
 
-        .table-content {
-            width : 50%;
-            font-size : 18px;
-            margin-right : 45px;
+      @include breakpoint(mobile) {
+        width: 100%;
+        font-size: 13px;
+      }
 
-            @include breakpoint(tablet) {
-                margin-right : 0px;
-                font-size : 14px;
-            }
+      .content-wrapper {
+        margin-bottom: 15px;
 
-            @include breakpoint(mobile) {
-                width: 100%;
-                font-size : 13px;
-            }
-            
-            .content-wrapper {
-                margin-bottom: 15px;
+        .detail-wrapper {
+          display: flex;
 
-                .detail-wrapper {
-                    display: flex;
-                        
-                    span.label {
-                        color : #333;
-                        font-size : 100%;
-                        text-align : left;
-                        width: 35%;
-                        font-weight : normal;
-                    }
-        
-                    .value-data{ 
-                        padding-left : 50px;
-                        font-weight : 200;
-        
-                        &:before { 
-                            content: ':';
-                            margin-right : 10px;
-                        }
-                    }
-                }
-            }
-
-            .keterangan {
-                padding : .2em .6em .3em;
-                font-size : 12px;
-                font-weight : 200;
-                
-                @include breakpoint(mobile) {
-                    font-size: 10px;
-                }
-
-                strong {
-                    font-weight : bold;
-                }
-
-            }
-        }
-    }
-
-    .sect-list {
-        font-size : 20px;
-
-        @include breakpoint(mobile){
-            font-size: 15px;
-        }
-        
-        h3 {
-            font-weight : 600;
-            color : #333;
-
-            @include breakpoint(mobile){
-                margin-left : 10px;
-                font-size: 18px;
-            }
-        }
-
-        .heading {
-            display : flex;
-            justify-content : space-between;
-            
-            button {
-                background-color: rgb(248, 153, 29);
-                border-color: rgb(248, 153, 29);
-                text-transform: uppercase;
-                font-weight : 600;
-
-                @include breakpoint(mobile) {
-                    position: relative;
-                }
-
-                &.full {
-                    @include breakpoint(mobile) {
-                        display: none;
-                    }
-                }
-                
-                &.short {
-                    display: none;
-
-                    @include breakpoint(mobile) {
-                        display: inline-block;
-                        background-color: white;
-                        border-color: white;
-                        color : #333;
-                        text-decoration: underline;
-                        padding: 0 50px;
-                    }
-
-                    &:before {
-                        text-decoration: none;
-                    }
-                }
-            }
-        }
-    
-        
-        .list {
-            padding: 1em 1em 1em 2.5em;
-
-            @include breakpoint(mobile) {
-                padding: 1em;
-            }
-            
-            .list-wrapper {
-                margin-bottom : 15px;
-            }
-
-            .detail-wrapper {
-                display: flex;
-                
-                span.label {
-                    text-align : left;
-                    color : #333;
-                    font-size : 20px;
-                    width: 35%;
-                    font-weight : normal;
-    
-                    @include breakpoint(mobile) {
-                        font-size: 13px;
-                    }
-                }
-
-                span.value-data {
-                    @include breakpoint(mobile) {
-                        font-size : 13px;
-                        margin-left : 30px;
-                        text-indent: -15px;
-                        padding-left: 15px;
-                    }
-
-                    &:before { 
-                        content: ':';
-                        margin-right : 10px;
-                    }
-                }
-                
-            }
-
-            .keterangan {
-                padding : .2em .6em .3em;
-                font-size : 12px;
-                font-weight : 200;
-
-                @include breakpoint(mobile) {
-                    font-size : 10px;
-                }
-
-                span {
-                    @include breakpoint(mobile) {
-                        margin-bottom: 15px;
-                    }
-                }
-                
-                strong {
-                    font-weight : bold;
-                }
-            }
-        }
-    }
-
-    .card {
-        background-color : #FCFCFC; 
-        display : flex;
-        justify-content : space-between;
-        position : relative;
-        padding : 20px 30px;
-
-        @include breakpoint(mobile) {
-            display : block;
-        }
-
-        div {
-            @include breakpoint(mobile) {
-                margin-bottom: 15px;
-                width: 80%;
-            }
-        }
-        
-        span {
-            text-align: left;
+          span.label {
             color: #333;
-            font-size: 20px;
-            font-weight: 500;
-            margin : auto 0;
+            font-size: 100%;
+            text-align: left;
+            width: 35%;
+            font-weight: normal;
+          }
 
-            @include breakpoint(mobile) {
-                font-size: 18px;
+          .value-data {
+            padding-left: 50px;
+            font-weight: 200;
+
+            &:before {
+              content: ':';
+              margin-right: 10px;
             }
+          }
         }
-        .btn-container {
-            position : relative;
-        
-            .button-detail {
-                text-transform: uppercase;
-                font-weight : 600;
-                color : #333;
-                padding: 13px 50px;
-                text-decoration : underline;
-                text-align : center;
-    
-                &.full {
-                    @include breakpoint(mobile) {
-                        display: none;
-                    }
-                }
-    
-                &.short {
-                    display: none;
-    
-                    @include breakpoint(mobile) {
-                        display: inline-block;
-                        padding: 0;
-                    }
-    
-                }
-                
-                .fa-angle-right:before {
-                    position: absolute;
-                    top : 0px;
-                    left : 200px;
-                    font-size: 18px;
-    
-                    @include breakpoint(mobile) {
-                        top : 0px;
-                        left : 120px;
-                    }
-                }
-    
-                &:hover {
-                    color: #04559F;
-                    font-weight: bold;
-                }
-            }
+      }
+
+      .keterangan {
+        padding: .2em .6em .3em;
+        font-size: 12px;
+        font-weight: 200;
+
+        @include breakpoint(mobile) {
+          font-size: 10px;
         }
+
+        strong {
+          font-weight: bold;
+        }
+
+      }
     }
+  }
+
+  .sect-list {
+    font-size: 20px;
+
+    @include breakpoint(mobile) {
+      font-size: 15px;
+    }
+
+    h3 {
+      font-weight: 600;
+      color: #333;
+
+      @include breakpoint(mobile) {
+        margin-left: 10px;
+        font-size: 18px;
+      }
+    }
+
+    .heading {
+      display: flex;
+      justify-content: space-between;
+
+      button {
+        background-color: rgb(248, 153, 29);
+        border-color: rgb(248, 153, 29);
+        text-transform: uppercase;
+        font-weight: 600;
+
+        @include breakpoint(mobile) {
+          position: relative;
+        }
+
+        &.full {
+          @include breakpoint(mobile) {
+            display: none;
+          }
+        }
+
+        &.short {
+          display: none;
+
+          @include breakpoint(mobile) {
+            display: inline-block;
+            background-color: white;
+            border-color: white;
+            color: #333;
+            text-decoration: underline;
+            padding: 0 50px;
+          }
+
+          &:before {
+            text-decoration: none;
+          }
+        }
+      }
+    }
+
+
+    .list {
+      padding: 1em 1em 1em 2.5em;
+
+      @include breakpoint(mobile) {
+        padding: 1em;
+      }
+
+      .list-wrapper {
+        margin-bottom: 15px;
+      }
+
+      .detail-wrapper {
+        display: flex;
+
+        span.label {
+          text-align: left;
+          color: #333;
+          font-size: 20px;
+          width: 35%;
+          font-weight: normal;
+
+          @include breakpoint(mobile) {
+            font-size: 13px;
+          }
+        }
+
+        span.value-data {
+          @include breakpoint(mobile) {
+            font-size: 13px;
+            margin-left: 30px;
+            text-indent: -15px;
+            padding-left: 15px;
+          }
+
+          &:before {
+            content: ':';
+            margin-right: 10px;
+          }
+        }
+
+      }
+
+      .keterangan {
+        padding: .2em .6em .3em;
+        font-size: 12px;
+        font-weight: 200;
+
+        @include breakpoint(mobile) {
+          font-size: 10px;
+        }
+
+        span {
+          @include breakpoint(mobile) {
+            margin-bottom: 15px;
+          }
+        }
+
+        strong {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  .card {
+    background-color: #FCFCFC;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    padding: 20px 30px;
+
+    @include breakpoint(mobile) {
+      display: block;
+    }
+
+    div {
+      @include breakpoint(mobile) {
+        margin-bottom: 15px;
+        width: 80%;
+      }
+    }
+
+    span {
+      text-align: left;
+      color: #333;
+      font-size: 20px;
+      font-weight: 500;
+      margin: auto 0;
+
+      @include breakpoint(mobile) {
+        font-size: 18px;
+      }
+    }
+
+    .btn-container {
+      position: relative;
+
+      .button-detail {
+        text-transform: uppercase;
+        font-weight: 600;
+        color: #333;
+        padding: 13px 50px;
+        text-decoration: underline;
+        text-align: center;
+
+        &.full {
+          @include breakpoint(mobile) {
+            display: none;
+          }
+        }
+
+        &.short {
+          display: none;
+
+          @include breakpoint(mobile) {
+            display: inline-block;
+            padding: 0;
+          }
+
+        }
+
+        .fa-angle-right:before {
+          position: absolute;
+          top: 0px;
+          left: 200px;
+          font-size: 18px;
+
+          @include breakpoint(mobile) {
+            top: 0px;
+            left: 120px;
+          }
+        }
+
+        &:hover {
+          color: #04559F;
+          font-weight: bold;
+        }
+      }
+    }
+  }
 }
 
 .card-update {
-    padding : 20px;
-    display : -webkit-inline-box;
-    background-color : #F5F5F5;
-    margin-bottom : 20px;
+  padding: 20px;
+  display: -webkit-inline-box;
+  background-color: #F5F5F5;
+  margin-bottom: 20px;
+
+  @include breakpoint(mobile) {
+    display: inherit;
+  }
+
+  .icon {
+    width: 20%;
+
+    @include breakpoint(tablet) {
+      width: 23%;
+    }
+
+    img {
+      width: 150px;
+      height: 150px;
+    }
+  }
+
+  .content-text {
+    width: 55%;
+    margin: 20px 0;
+
+    @include breakpoint(tablet) {
+      width: 53%;
+    }
 
     @include breakpoint(mobile) {
-        display : inherit;
+      width: 100%;
     }
 
-    .icon {
-        width : 20%;
+    .title-update h3 {
+      font-weight: 600;
+      color: #04559F;
 
-        @include breakpoint(tablet) {
-            width: 23%;
-        }
+      @include breakpoint(tablet) {
+        font-size: 20px
+      }
 
-        img {
-            width : 150px;
-            height : 150px;
-        }
+      @include breakpoint(mobile) {
+        font-size: 24px
+      }
     }
 
-    .content-text {
-        width : 55%;
-        margin : 20px 0;
+    .text {
+      color: #333;
+      font-size: 18px;
 
-        @include breakpoint(tablet) {
-            width : 53%;
-        }
+      @include breakpoint(tablet) {
+        font-size: 15px;
+      }
 
-        @include breakpoint(mobile) {
-            width : 100%;
-        }
+      @include breakpoint(mobile) {
+        font-size: 18px;
+      }
+    }
+  }
 
-        .title-update h3 {
-            font-weight : 600;
-            color : #04559F;
+  .button-cabang {
+    width: 25%;
+    text-align: center;
+    display: flex;
+    align-items: center;
 
-            @include breakpoint(tablet) {
-                font-size : 20px
-            }
-
-            @include breakpoint(mobile) {
-                font-size : 24px
-            }
-        }
-
-        .text{
-            color : #333;
-            font-size : 18px;
-
-            @include breakpoint(tablet) {
-                font-size: 15px;
-            }
-
-            @include breakpoint(mobile) {
-                font-size : 18px;
-            }
-        }
+    @include breakpoint(mobile) {
+      width: 100%;
     }
 
-    .button-cabang {
-        width : 25%;
-        text-align : center;
-        display: flex;
-        align-items: center;
+    button {
+      background-color: rgb(248, 153, 29);
+      border-color: rgb(248, 153, 29);
+      text-transform: uppercase;
+      font-weight: 600;
 
-        @include breakpoint(mobile) {
-            width : 100%;
-        }
-
-        button {
-            background-color: rgb(248, 153, 29);
-            border-color: rgb(248, 153, 29);
-            text-transform: uppercase;
-            font-weight : 600;
-
-            @include breakpoint(tablet) {
-                padding: 13px 20px;
-            }
-        }
+      @include breakpoint(tablet) {
+        padding: 13px 20px;
+      }
     }
+  }
 }
 
 .progress-container {
-    background-color : #FCFCFC;
-    padding : 55px;
-    width : 100%;
-    height : 255px;
+  background-color: #FCFCFC;
+  padding: 55px;
+  width: 100%;
+  height: 255px;
+
+  @include breakpoint(mobile) {
+    height: inherit;
+    padding: 25px 20px;
+  }
+
+  h4 {
+    color: #565656;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  p {
+    color: #565656;
+    font-size: 16px;
+  }
+
+  .header-progress {
+    float: right;
+    width: 65%;
+    text-align: right;
 
     @include breakpoint(mobile) {
-        height: inherit;
-        padding : 25px 20px;
-    }
-    
-    h4 {
-        color : #565656;
-        font-size : 20px;
-        font-weight : bold;
-    }
-    
-    p {
-        color : #565656;
-        font-size : 16px;
+      float: none;
+      width: 100%;
+      text-align: left;
     }
 
-    .header-progress {
-        float : right;
-        width: 65%;
-        text-align: right;
+    .status {
+      margin-top: 45px;
+      text-transform: uppercase;
+      font-size: 11px;
 
-        @include breakpoint(mobile) {
-            float : none;
-            width: 100%;
-            text-align : left;
-        }
-        
-        .status {
-            margin-top : 45px;
-            text-transform : uppercase;
-            font-size : 11px;
+      @include breakpoint(mobile) {
+        margin: 30px 0;
+      }
 
-            @include breakpoint(mobile) {
-                margin : 30px 0;
-            }
-            
-            span{
-                background-color : #04559F;
-                color : white;
-                padding: 10px 20px;
-                border-radius: 25px;
-            } 
-        }
+      span {
+        background-color: #04559F;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 25px;
+      }
     }
-    
-    .footer-progress {
-        float : left;
-        width: 35%;
+  }
 
-        @include breakpoint(mobile) {
-            float : none;
-            width: 100%;
-            display : inline-flex;
-        }
+  .footer-progress {
+    float: left;
+    width: 35%;
 
-        .footer-content {
-            @include breakpoint(mobile) {
-                width: 50%;
-            }
-        }
+    @include breakpoint(mobile) {
+      float: none;
+      width: 100%;
+      display: inline-flex;
     }
+
+    .footer-content {
+      @include breakpoint(mobile) {
+        width: 50%;
+      }
+    }
+  }
 }
 
 .md-stepper-horizontal {
-    display: inline-flex;
-    width: 100%;
-    
-    .md-step {
-        flex : 5;
-        position:relative;
-        padding:5px;
-        
-        &:hover .md-step-circle {
-            background-color:#757575;
-        }
-        
-        &:first-child .md-step-bar-left,
-        &:last-child .md-step-bar-right {
-            display:none;
-        }
-        
-        .md-step-circle {
-            width:30px;
-            height:30px;
-            margin:0 auto;
-            background-color:#999999;
-            border-radius: 50%;
-            text-align: center;
-            line-height:30px;
-            font-size: 16px;
-            font-weight: 600;
-            color:#FFFFFF;
-        }
-        
-        &.active .md-step-circle {
-            background-color:#F9991C;
-        }
-        
-        &.done .md-step-circle:before {
-            font-family:'FontAwesome';
-            font-weight:100;
-            content: "\f00c";
-        }
-        
-        &.fail .md-step-circle:before {
-            font-family:'FontAwesome';
-            content: "\00d7";
-            font-size : 20px;
-        }
-        
-        &.done .md-step-circle *,
-        &.fail .md-step-circle * {
-            display:none;
-        }
-        
-        .md-step-title {
-            margin-top:10px;
-            font-size:15px;
-            font-weight:600;
-            white-space: nowrap;
-            overflow: auto;
-            text-align: center;
-            color:rgba(0,0,0,.26);
+  display: inline-flex;
+  width: 100%;
 
-            @include breakpoint(mobile) {
-                white-space: normal;
-            }
-        }
-        
-        &.active .md-step-title {
-            font-weight: 600;
-            color:rgba(0,0,0,.87);
-        }
-        
-        &.active .md-step-bar-left,
-        &.active .md-step-bar-right {
-            position:absolute;
-            top:20px;
-            height:1px;
-            border-top:3px solid #F9991C;
-        }
-        
-        .md-step-bar-left,
-        .md-step-bar-right {
-            position:absolute;
-            top:20px;
-            height:1px;
-            border-top:3px solid #ddd;
-        }
-        
-        .md-step-bar-right {
-            right:0;
-            left:50%;
-            margin-left:20px;
-        }
+  .md-step {
+    flex: 5;
+    position: relative;
+    padding: 5px;
 
-        .md-step-bar-left {
-            left:0;
-            right:50%;
-            margin-right:20px;
-        }
+    &:hover .md-step-circle {
+      background-color: #757575;
     }
+
+    &:first-child .md-step-bar-left,
+    &:last-child .md-step-bar-right {
+      display: none;
+    }
+
+    .md-step-circle {
+      width: 30px;
+      height: 30px;
+      margin: 0 auto;
+      background-color: #999999;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 30px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #FFFFFF;
+    }
+
+    &.active .md-step-circle {
+      background-color: #F9991C;
+    }
+
+    &.done .md-step-circle:before {
+      font-family: 'FontAwesome';
+      font-weight: 100;
+      content: "\f00c";
+    }
+
+    &.fail .md-step-circle:before {
+      font-family: 'FontAwesome';
+      content: "\00d7";
+      font-size: 20px;
+    }
+
+    &.done .md-step-circle *,
+    &.fail .md-step-circle * {
+      display: none;
+    }
+
+    .md-step-title {
+      margin-top: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: auto;
+      text-align: center;
+      color: rgba(0, 0, 0, .26);
+
+      @include breakpoint(mobile) {
+        white-space: normal;
+      }
+    }
+
+    &.active .md-step-title {
+      font-weight: 600;
+      color: rgba(0, 0, 0, .87);
+    }
+
+    &.active .md-step-bar-left,
+    &.active .md-step-bar-right {
+      position: absolute;
+      top: 20px;
+      height: 1px;
+      border-top: 3px solid #F9991C;
+    }
+
+    .md-step-bar-left,
+    .md-step-bar-right {
+      position: absolute;
+      top: 20px;
+      height: 1px;
+      border-top: 3px solid #ddd;
+    }
+
+    .md-step-bar-right {
+      right: 0;
+      left: 50%;
+      margin-left: 20px;
+    }
+
+    .md-step-bar-left {
+      left: 0;
+      right: 50%;
+      margin-right: 20px;
+    }
+  }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
