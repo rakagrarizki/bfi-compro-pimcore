@@ -479,14 +479,6 @@ function reInitJcf() {
     $(this).val(rupiah);
   });
 
-  $('input[type="tel"]#ex7SliderVal').on('change', function () {
-    var thisValue = $('input[type="tel"]#ex7SliderVal').val().replace(/\./g, "");
-    var rawDownPayment = thisValue * 0.1;
-    var downPayment = separatordot(rawDownPayment);
-    $('#down_payment').val(downPayment);
-    $("#pocket_money").val(downPayment);
-})
-
   if (typeof ($('#ex7SliderVal').parents(".sliderGroup").find(".calcslide").slider()) !== 'undefined') {
     if($('#ex7SliderVal').parents(".machine-funding").length == 1){
       console.log('DP changed');
