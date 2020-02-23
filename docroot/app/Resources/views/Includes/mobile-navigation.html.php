@@ -5,6 +5,7 @@ use Pimcore\Model\Document;
 
 ?>
 <?php $lang = $this->getLocale();
+$site = $this->document->getProperty("site");
 $name = "";
 if($_COOKIE["customer"] != "null") {
     $name = $_COOKIE["customer"];
@@ -40,7 +41,11 @@ if($_COOKIE["customer"] != "null") {
                     </a>
                 </div>
                 <div class="search-button">
-                    <a href="<?= "/" . $lang . "/search" ?>"><i class="fa fa-search"></i></a>
+                    <?php if ($site == "search") : ?>
+                        <a href="javascript:history.back()"><i class="fa fa-times"></i></a>
+                    <?php else : ?>
+                        <a href="<?= "/" . $lang . "/search" ?>"><i class="fa fa-search"></i></a>
+                    <?php endif; ?>
                 </div>
                 <button type="button" id="btn-burger" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                     <span class="sr-only">Toggle navigation</span>
