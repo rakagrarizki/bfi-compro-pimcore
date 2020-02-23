@@ -121,6 +121,10 @@ a {
     font-size: 20px;
     font-family: 'HelveticaNeue';
     color:#565656;
+
+    .t-p{
+      padding-left: 10px!important;
+    }
     @include breakpoint(mobile){
         font-size: 1em;
     }
