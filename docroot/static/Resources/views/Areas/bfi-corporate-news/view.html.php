@@ -9,7 +9,7 @@ $news->load();
         <h2 class="title-wrapper text-center">
             <?= $this->input('title');?>
         </h2>
-        <p class="text-center paragraf-title">
+        <p class="paragraf-title t-p">
             <?= $this->textarea('text');?>
         </p>
         <div class="row content-bfi">

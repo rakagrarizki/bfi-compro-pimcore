@@ -166,7 +166,7 @@
         li {
           padding-bottom: 0px;
           padding-left: 10px;
-          width: 70%;
+          // width: 70%;
 
           // &::before {
           //     margin-right: 25px;
@@ -352,7 +352,7 @@
                 color:#565656;
                 &:nth-child(2n),
                 &:nth-child(3n) {
-                    text-align: center;
+                    text-align: left;
                 }
             }
         }
@@ -450,6 +450,7 @@
 
     table {
       width: 100%;
+      border: unset!important;
 
       th {
         text-align: center;
