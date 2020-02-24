@@ -96,5 +96,44 @@
     }
 }
 
-
+.desktop-details{
+    font-weight: bold;
+    ol {
+        li > div {
+            font-weight: normal;
+        }
+    }
+}
+.mobile-view{
+        position: relative;
+    .img-mobile-view{
+            margin: 60px 0 -40px;
+            padding:0 15px;
+        img{
+            margin-bottom: 0;
+        }
+    }
+    .details{
+        font-weight: bold;
+        padding:0 15px;
+        font-weight: bold;
+        h1{
+            position: absolute;
+            top: 0.2em;
+            right: 50px;
+            left: 50px;
+            text-align: center;
+            margin:0;
+        }
+    }
+    ol {
+        li > div {
+            font-weight: normal;
+            span{
+                display: inherit;
+                margin-bottom: -10px;
+            }
+        }
+    }
+}
 
