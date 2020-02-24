@@ -9,11 +9,15 @@
                 <?php
                 $i = 0;
                 foreach ($this->blog as $blog){
+                    $image = "https://dummyimage.com/600x400/000/ff";
+                    if($blog->getImage() != null || $blog->getImage() != "") {
+                        $image = $blog->getImage();
+                     } 
                     ?>
                     <?php if($i == 0){?>
                         <div class="col-md-3 col-xs-12">
                             <article class="article__post">
-                                <div class="article__post__img" style="background-image: url('https://dummyimage.com/600x400/000/ff')">
+                                <div class="article__post__img" style="background-image: url('<?= $image; ?>')">
                                 </div>
                                 <div class="article__post__text">
                                     <?php
@@ -22,7 +26,7 @@
                                     $date = date("d.m.y", $dateUnix);
                                     ?>
                                     <p><?= $blog->getBlogCategory()->getName(); ?></p>
-                                    <h4><a href="#"><?= $blog->getTitle();?></a></h4>
+                                    <h4><a href="/<?= $this->getLocale() . "/blog"; ?>/<?= $blog->getSlug(); ?>"><?= $blog->getTitle();?></a></h4>
                                     <p><?= $date;?> | <i class="fa fa-eye"></i> <?= $blog->getViews(); ?></p>
                                 </div>
                             </article>
@@ -30,7 +34,7 @@
                     <?php }else{?>
                         <div class="col-md-3 col-xs-6">
                             <article class="article__post">
-                                <div class="article__post__img" style="background-image: url('https://dummyimage.com/600x400/000/ff')">
+                                <div class="article__post__img" style="background-image: url('<?= $image; ?>')">
                                 </div>
                                 <div class="article__post__text">
                                     <?php
@@ -39,7 +43,7 @@
                                     $date = date("d.m.y", $dateUnix);
                                     ?>
                                     <p><?= $blog->getBlogCategory()->getName(); ?></p>
-                                    <h4><a href="#"><?= $blog->getTitle();?></a></h4>
+                                    <h4><a href="/<?= $this->getLocale() . "/blog"; ?>/<?= $blog->getSlug(); ?>"><?= $blog->getTitle();?></a></h4>
                                     <p><?= $date;?> | <i class="fa fa-eye"></i> <?= $blog->getViews(); ?></p>
                                 </div>
                             </article>
