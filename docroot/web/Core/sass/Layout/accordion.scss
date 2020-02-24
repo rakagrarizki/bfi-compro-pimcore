@@ -1,7 +1,48 @@
-.pimcore_area_bfi-title-accordion {
+.pimcore_area_bfi-title-accordion,
+.pimcore_area_bfi-report-accordion {
   &:first-of-type {
     padding-top: 40px;
   }
+  .panel-default{
+     margin:0;
+     border-color:transparent;
+     border: 1px solid transparent;
+    .panel-heading{
+      color: #565656;
+      background-color: unset;
+      border-color: unset;
+      padding: 25px 20px;
+      border-bottom: solid 1px #dddddd;
+      cursor: pointer;
+        h4{
+          font-size: 24px !important;
+          position: relative;
+          :after{
+              content: "\f107";
+              font-family: FontAwesome;
+              color: #565656;
+              position: absolute;
+              font-size: 40px;
+              font-weight: 100;
+              right: 0;
+              top:0;
+             }
+          }
+        }
+      }
+      .panel-default.active a:after {
+        -webkit-transform: rotate(180deg);
+        -moz-transform: rotate(180deg);
+        transform: rotate(180deg);
+      } 
+    .panel+.panel {
+      margin-top: 0;
+    }
+    .panel-heading+.panel-collapse{
+      .panel-body{
+        border-top: unset;
+      }
+    }
 }
 
 .accordion {
@@ -80,8 +121,7 @@
 
       .panel-body {
         padding: 20px 110px;
-        background-color: #fcfcfc;
-
+        background: #FCFCFC;
         @include breakpoint(mobile) {
           padding: 20px 20px;
         }
@@ -437,6 +477,9 @@
         tr:nth-child(odd) {
           td:first-child {
             background: #ffffff;
+            @include breakpoint(mobile) {
+              z-index: 4;
+            }
           }
         }
 
