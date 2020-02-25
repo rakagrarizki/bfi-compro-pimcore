@@ -30,29 +30,26 @@ if ($site == "corporate") {
             </div>
         </div>
     </div>
-    <div id="news" class="news">
-        <div class="row">
-            <div class="sect-title text-center">
-                <h2><?= $this->t('berita_head'); ?></h2>
-                <p><?= $this->t('berita_sub_head'); ?></p>
-            </div>
-        </div>
-        <div class="row list-news-container">
-            <?php foreach ($this->news as $news) : ?>
-                <div class="col-md-3 col-xs-6">
-                    <article class="article__post">
-                        <div class="article__post__img" style="background-image: url('<?= $news->getImage(); ?>')">
-                        </div>
-                        <div class="article__post__text">
-                            <p><?= $news->getCategory()->getName(); ?></p>
-                            <h4><a href="<?= '/' . $this->getLocale() . '/news/' . $news->getSlug(); ?>"><?= $news->getTitle(); ?></a></h4>
-                            <div class="dateview">
-                                <span class="date"><?= date('Y-m-d', strtotime($news->getDate())); ?></span>
-                                <span class="view"><i class="fa fa-eye"></i><?= $news->getViews(); ?></span>
-                            </div>
-                        </div>
-                    </article>
+    <div class="blog-promo">
+        <article class="sect-title text-center">
+            <h2 class="title"><?= $this->t('berita_head'); ?></h2>
+            <p class="subtitle"><?= $this->t('berita_sub_head'); ?></p>
+        </article>
+        <div class="list-card success-news">
+        <?php foreach ($this->news as $news) : ?>
+            <a href="<?= '/' . $this->getLocale() . '/news/' . $news->getSlug(); ?>" class="card-item">
+                <picture>
+                    <img src="<?= $news->getImage(); ?>" alt="">
+                </picture>
+                <div class="caption">
+                    <h3 class="tag"><?= $news->getCategory()->getName(); ?></h3>
+                    <h2 class="title"><?= $news->getTitle(); ?></h2>
+                    <div class="dateview">
+                        <span class="date"><?= date('Y-m-d', strtotime($news->getDate())); ?></span>
+                        <span class="view"><i class="fa fa-eye"></i><?= $news->getViews(); ?></span>
+                    </div>
                 </div>
+            </a>
             <?php endforeach; ?>
         </div>
         <div class="row">

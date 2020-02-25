@@ -32,9 +32,9 @@ function prev(){
     $('#href'+idprev).click();
 }
 
-function getDetail(id){
+function getDetail(id, lang){
     var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", '/management/get-detail?id='+id, false ); // false for synchronous request
+    xmlHttp.open( "GET", '/management/get-detail?id='+id+'&lang='+lang, false ); // false for synchronous request
     xmlHttp.send( null );
 
     document.getElementById('userImage').style.backgroundImage = 'url(' + JSON.parse(xmlHttp.responseText).data.Image + ')';
