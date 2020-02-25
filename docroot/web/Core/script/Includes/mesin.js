@@ -563,6 +563,18 @@ var isValidOtp = false;
       "down_payment": down_payment
     }
     var post = postData("/credit/machinery-calculate", _data);
+   
+    var lang = document.documentElement.lang;
+    var tenorMsg;
+    if (lang == "id") {
+      tenorMsg = "Isian wajib diisi";
+    } else {
+      tenorMsg = "Field is required.";
+    }
+    if (isNaN(tenor)){
+      console.log("kosong")
+      $("#error-tenor").append("<div class='text-error-tenor'>"+tenorMsg+"</div>");
+    }
     if (post.success === "1") {
       // console.log("CALC", post)
       nextButton("active");
@@ -572,6 +584,8 @@ var isValidOtp = false;
     }
     $(".warning-calculate").addClass("hide");
     countCalculate += 1;
+
+    
   });
 
   $('input[type=radio][name=applicant_position]').change(function() {
@@ -585,7 +599,6 @@ var isValidOtp = false;
             $("#nama_perusahaan").prop('disabled', false);
         }
   });
-
   setTimeout(function () { reInitJcf(); }, 2000);
 
 })(jQuery);
