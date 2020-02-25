@@ -380,16 +380,84 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                 </div>
 
                 <div id="otp-success" class="success-wrapper">
-                    <div class="img-wrap">
-                        <img class="icon-thank-page" src="/static/images/icon/m_thank_you.png" alt="">
+                    <div class="wrapper">
+                        <div class="img-wrap">
+                            <img class="icon-thank-page" src="/static/images/icon/m_thank_you.png" alt="">
+                        </div>
+                        <div class="text-wrap text-center">
+                            <h3><?= $this->translate('tq-text-1') ?></h3>
+                            <p><?= $this->translate('tq-text-2') ?></p>
+                        </div>
+                        <div class="button-area text-center backtohome">
+                            <button class="cta cta-primary cta-big cta-see buttonnext backtohome" id="button7" 
+                                type="button" onclick="return checkStatusPengajuan()"><?= $this->translate('cek-status-aplikasi') ?></button>
+                        </div>
                     </div>
-                    <div class="text-wrap text-center">
-                        <h3><?= $this->translate('tq-text-1') ?></h3>
-                        <p><?= $this->translate('tq-text-2') ?></p>
+                    <div class="blog-promo">
+                        <article class="sect-title text-center">
+                            <h2 class="title"><?= $this->t('berita_head'); ?></h2>
+                            <p class="subtitle"><?= $this->t('berita_sub_head'); ?></p>
+                        </article>
+                        <div class="list-card success-news">
+                            <a href="#" class="card-item">
+                                <picture>
+                                    <img src="https://dummyimage.com/600x400/000/fff" alt="">
+                                </picture>
+                                <div class="caption">
+                                    <h3 class="tag">Berita</h3>
+                                    <h2 class="title">BFI Finance Trifecta Sebagai Perusahaan Terbaik dalam Forbes Best of The Best Awards 2019</h2>
+                                    <div class="dateview">
+                                        <span class="date">29 Oktober 2019</span>
+                                        <span class="view"><i class="fa fa-eye"></i>15</span>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" class="card-item">
+                                <picture>
+                                    <img src="https://dummyimage.com/600x400/000/fff" alt="">
+                                </picture>
+                                <div class="caption">
+                                    <h3 class="tag">Berita</h3>
+                                    <h2 class="title">BFI Finance Trifecta Sebagai Perusahaan Terbaik dalam Forbes Best of The Best Awards 2019</h2>
+                                    <div class="dateview">
+                                        <span class="date">29 Oktober 2019</span>
+                                        <span class="view"><i class="fa fa-eye"></i>15</span>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" class="card-item">
+                                <picture>
+                                    <img src="https://dummyimage.com/600x400/000/fff" alt="">
+                                </picture>
+                                <div class="caption">
+                                    <h3 class="tag">Berita</h3>
+                                    <h2 class="title">BFI Finance Trifecta Sebagai Perusahaan Terbaik dalam Forbes Best of The Best Awards 2019</h2>
+                                    <div class="dateview">
+                                        <span class="date">29 Oktober 2019</span>
+                                        <span class="view"><i class="fa fa-eye"></i>15</span>
+                                    </div>
+                                </div>
+                            </a>
+                                    <a href="#" class="card-item">
+                                <picture>
+                                    <img src="https://dummyimage.com/600x400/000/fff" alt="">
+                                </picture>
+                                <div class="caption">
+                                    <h3 class="tag">Berita</h3>
+                                    <h2 class="title">BFI Finance Trifecta Sebagai Perusahaan Terbaik dalam Forbes Best of The Best Awards 2019</h2>
+                                    <div class="dateview">
+                                        <span class="date">29 Oktober 2019</span>
+                                        <span class="view"><i class="fa fa-eye"></i>15</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
                     </div>
-                    <div class="button-area text-center backtohome">
-                        <button class="cta cta-primary cta-big cta-see buttonnext backtohome" id="button7" 
-                            type="button" onclick="return checkStatusPengajuan()"><?= $this->translate('cek-status-aplikasi') ?></button>
+                    <div class="row">
+                        <div class="button-area text-center btn-beranda">
+                            <a href="<?php echo "/" . $this->getLocale() . '/' . $link; ?>" class="cta cta-primary cta-big cta-see buttonnext backtohome">
+                                <span><?= $this->translate('backtohome') ?></span></a>
+                        </div>
                     </div>
                 </div>
             </fieldset>
