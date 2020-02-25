@@ -264,7 +264,7 @@ $(document).ready(function(){
         },
     
         formAlphabet: {
-            acceptAlphabet: "[a-zA-Z ]+"
+            acceptAlphabet: "[a-zA-Z]+"
         },
 
         formAlphanum: {
