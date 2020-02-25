@@ -18,6 +18,7 @@
 
             @include breakpoint(mobile) {
                 margin-bottom: 10px;
+                font-size: 30px;
             }
         }
 
@@ -26,6 +27,9 @@
             font-size: 24px;
             line-height: 42px;
             color: $white;
+            @include breakpoint(mobile) {
+                font-size: 18px;
+            }
         }
 
         .slick-slide {
@@ -59,13 +63,29 @@
             outline: none;
 
             @include breakpoint(mobile) {
-                width: 60px;
-                height: 60px;
+                width: 30px;
+                height: 30px;
                 line-height: 60px;
             }
 
             &:after {
                 display: none;
+            }
+            i.fa-angle-left{
+                @include breakpoint(mobile) {
+                    top: 7px;
+                    position: absolute;
+                    left: 10px;
+                    font-size: 18px;
+                }
+            }
+            i.fa-angle-right{
+                @include breakpoint(mobile) {
+                    top: 7px;
+                    position: absolute;
+                    right: 10px;
+                    font-size: 18px;
+                }
             }
         }
 
@@ -74,6 +94,9 @@
             font-size: 1.2rem;
             color: $white;
             margin: 0 20px;
+            @include breakpoint(mobile) {
+                font-size: 14px;
+            }
         }
     }
 }
@@ -251,6 +274,18 @@
                     margin-top: 12px;
                 }
             }
+        }
+    }
+}
+.informasi-saham{
+    @include breakpoint(mobile) {
+        td{
+            p{
+                margin: 0;
+            }
+        }
+        span{
+            font-size: 12px;
         }
     }
 }
