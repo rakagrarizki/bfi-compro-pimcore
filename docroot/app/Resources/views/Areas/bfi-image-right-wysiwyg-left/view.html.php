@@ -15,7 +15,7 @@
                 <?php if(!$this->link("link")->isEmpty()) : ?>
                     <br><br>
                     <div class="row">
-                        <div class="button-area text-center no-padding">
+                        <div class="button-area no-padding button-left">
                             <a href="<?= $this->link("link")->getHref();?>" class="cta cta-orange cta-see cta-big"><?= $this->link("link")->getText();?></a>
                         </div>
                     </div>

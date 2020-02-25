@@ -32,9 +32,9 @@ function prev(){
     $('#href'+idprev).click();
 }
 
-function getDetail(id){
+function getDetail(id, lang){
     var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", '/management/get-detail?id='+id, false ); // false for synchronous request
+    xmlHttp.open( "GET", '/management/get-detail?id='+id+'&lang='+lang, false ); // false for synchronous request
     xmlHttp.send( null );
 
     document.getElementById('userImage').style.backgroundImage = 'url(' + JSON.parse(xmlHttp.responseText).data.Image + ')';
@@ -45,4 +45,18 @@ function getDetail(id){
     document.getElementById('profileEducation').innerHTML  = JSON.parse(xmlHttp.responseText).data.RiwayatPekerjaan;
     console.log(JSON.parse(xmlHttp.responseText).data);
     return xmlHttp.responseText;
+}
+
+function updateQueryStringParameter(key, value) {
+    var uri = window.location.href;
+    var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+    var separator = uri.indexOf('?') !== -1 ? "&" : "?";
+    if (uri.match(re)) {
+        uri = uri.replace(re, '$1' + key + "=" + value + '$2');
+    }
+    else {
+        uri = uri + separator + key + "=" + value;
+    }
+
+    window.history.pushState({},"", uri);
 }

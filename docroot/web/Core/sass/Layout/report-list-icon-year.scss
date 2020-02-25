@@ -17,7 +17,10 @@
             margin: 0 auto 20px auto;
             width: 150px;
             height: 200px;
-            
+            @include breakpoint(mobile) {
+                width: 100%;
+                height: 150px;
+            }
         }
         .card-content{
             margin: 0 auto 0 auto;
@@ -27,7 +30,7 @@
                 font-size: 14px;
                 color: #565656;
                 @include breakpoint(mobile) {
-                    font-size: 22px;
+                    font-size: 14px;
                 }
             }
             h3{
@@ -45,8 +48,8 @@
                 height: 45px;
 
                 @include breakpoint(mobile) {
-                    font-size: 28px;
-                    margin-bottom: 30px;
+                    font-size: 14px;
+                    margin-bottom: 15px;
                 }
             }
             a{
@@ -66,7 +69,7 @@
                     font-size: 12px;
                     color: #f9991c;
                     @include breakpoint(mobile) {
-                        font-size: 18px;
+                        font-size: 11px;
                     }
                 }   
             }
