@@ -173,6 +173,15 @@
         }
         .contact-hi {
             margin-top: 0px;
+
+            .button-left {
+                margin-left: 15px;
+
+                @include breakpoint(tablet){
+                    margin-left: 0;
+                    text-align: center;
+                }
+            }
             
             span {
                 line-height: 1.6;
