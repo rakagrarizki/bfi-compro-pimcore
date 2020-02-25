@@ -46,3 +46,17 @@ function getDetail(id){
     console.log(JSON.parse(xmlHttp.responseText).data);
     return xmlHttp.responseText;
 }
+
+function updateQueryStringParameter(key, value) {
+    var uri = window.location.href;
+    var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+    var separator = uri.indexOf('?') !== -1 ? "&" : "?";
+    if (uri.match(re)) {
+        uri = uri.replace(re, '$1' + key + "=" + value + '$2');
+    }
+    else {
+        uri = uri + separator + key + "=" + value;
+    }
+
+    window.history.pushState({},"", uri);
+}
