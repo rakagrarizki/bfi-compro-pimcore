@@ -22,13 +22,13 @@
                 font-weight: bold;
 
                 .fa{
-                    font-size: 18px;
-                    opacity: .7;
+                    font-size: 20px;
+                    opacity: .8;
                 }
 
-                .fa-angle-left{
-                    margin-right: -15px;
-                }
+                // .fa-angle-left{
+                //     margin-right: -15px;
+                // }
                 .fa-angle-right{
                     margin-left: -15px;
                 }
@@ -39,6 +39,7 @@
             a{
                 background-color: #F9991C;
                 border: none;
+                color: #fff;
             }
         }
     }   
