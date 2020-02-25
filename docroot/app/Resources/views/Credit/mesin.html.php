@@ -8,6 +8,11 @@
 $this->extend('layout-credit.html.php');
 $this->headScript()->offsetSetFile(100, '/static/js/Includes/mesin.js');
 $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
+
+$blogList = new Pimcore\Model\DataObject\BlogArticle\Listing();
+$blogList->setOrderKey("Date");
+$blogList->setOrder("desc");
+$blogList->setLimit(4);
 ?>
 
 <div class="container">
@@ -274,7 +279,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                                   type="button"><?= $this->translate('hitung')?></button>
                       </div>
                   </div>
-                  <div class="warning-calculate hide"><label>Silahkan Klik hitung ulang sebelum melanjutkan.</label></div>
+                  <div class="warning-calculate hide"><label><?= $this->translate("calculate-again"); ?></label></div>
               </div>
 
           </div>
@@ -473,17 +478,48 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
           </div>
 
           <div id="otp-success" class="success-wrapper">
-              <div class="img-wrap">
-                  <img class="icon-thank-page" src="/static/images/icon/m_thank_you.png" alt="">
+              <div class="wrapper">
+                  <div class="img-wrap">
+                      <img class="icon-thank-page" src="/static/images/icon/m_thank_you.png" alt="">
+                  </div>
+                  <div class="text-wrap text-center">
+                      <h3><?= $this->translate('tq-text-1')?></h3>
+                      <p><?= $this->translate('tq-text-2')?></p>
+                  </div>
+                  <div class="button-area text-center backtohome">
+                        <button class="cta cta-primary cta-big cta-see buttonnext backtohome" id="button7"
+                                type="button" onclick="return checkStatusPengajuan()"><?= $this->translate('cek-status-aplikasi')?></button>
+                  </div>
               </div>
-              <div class="text-wrap text-center">
-                  <h3><?= $this->translate('tq-text-1')?></h3>
-                  <p><?= $this->translate('tq-text-2')?></p>
-              </div>
-              <div class="button-area text-center backtohome">
-                    <button class="cta cta-primary cta-big cta-see buttonnext backtohome" id="button7"
-                            type="button" onclick="return checkStatusPengajuan()"><?= $this->translate('cek-status-aplikasi')?></button>
-              </div>
+              <div class="blog-promo">
+                <article class="sect-title text-center">
+                    <h2 class="title"><?= $this->t('berita_head'); ?></h2>
+                    <p class="subtitle"><?= $this->t('berita_sub_head'); ?></p>
+                </article>
+                <div class="list-card success-news">
+                    <?php foreach($blogList as $blog) : ?>
+                        <a href="<?= '/' . $this->getLocale() . '/blog/' . $blog->getSlug(); ?>" class="card-item">
+                            <picture>
+                                <img src="<?= $blog->getImage(); ?>" alt="">
+                            </picture>
+                            <div class="caption">
+                                <h3 class="tag"><?= $blog->getBlogCategory()->getName(); ?></h3>
+                                <h2 class="title"><?= $blog->getTitle(); ?></h2>
+                                <div class="dateview">
+                                    <span class="date"><?= date('Y-m-d', strtotime($blog->getDate())); ?></span>
+                                    <span class="view"><i class="fa fa-eye"></i><?= $blog->getViews(); ?></span>
+                                </div>
+                            </div>
+                        </a>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="button-area text-center btn-beranda">
+                    <a href="<?php echo "/" . $this->getLocale() . '/' . $link; ?>" class="cta cta-primary cta-big cta-see buttonnext backtohome">
+                        <span><?= $this->translate('backtohome') ?></span></a>
+                </div>
+            </div>
           </div>
         </fieldset>
 
