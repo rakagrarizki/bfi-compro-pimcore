@@ -15,7 +15,7 @@ use Pimcore\Model\Document;
             </div>
 
             <div class="col-xs-4 text-right">
-                <?= $this->template("Includes/mobile-language.html.php"); ?>
+                
             </div>
         </div>
         <div class="navbar-header">
@@ -82,8 +82,15 @@ use Pimcore\Model\Document;
         }
         ?>
         <li role="separator" class="divider"></li>
-        <li> <a class="secondary-menu" href="<?= $this->websiteConfig("career_link") ? $this->websiteConfig("career_link") : "#"; ?>">
-                <?= $this->translate("career"); ?></a></li>
+        <li> 
+            <a class="secondary-menu" href="<?= $this->websiteConfig("career_link") ? $this->websiteConfig("career_link") : "#"; ?>">
+                <?= $this->translate("career"); ?>
+            </a>
+        </li>
+        <li role="separator" class="divider"></li>
+        <div class="lang">
+            <?php echo $this->template("Includes/mobile-language.html.php") ?>
+        </div>
     </ul>
 </div>
 <!-- END Mobile -->
