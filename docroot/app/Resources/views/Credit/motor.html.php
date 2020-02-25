@@ -7,6 +7,11 @@
 
 $this->extend('layout-credit.html.php');
 // echo $this->headScript()->prependFile('/static/js/Includes/homepage1.js');
+
+$blogList = new Pimcore\Model\DataObject\BlogArticle\Listing();
+$blogList->setOrderKey("Date");
+$blogList->setOrder("desc");
+$blogList->setLimit(4);
 ?>
 <div id="myModal">
     <div class="form-dialog">
@@ -345,7 +350,7 @@ $this->extend('layout-credit.html.php');
                                                             type="button"><?= $this->translate('hitung')?></button>
                                                 </div>
                                             </div>
-                                            <div class="warning-calculate hide"><label>Silahkan Klik hitung ulang sebelum melanjutkan.</label></div>
+                                            <div class="warning-calculate hide"><label><?= $this->translate("calculate-again"); ?></label></div>
                                         </div>
                                     </div>
 
@@ -604,58 +609,21 @@ $this->extend('layout-credit.html.php');
                                             <p class="subtitle"><?= $this->t('berita_sub_head'); ?></p>
                                         </article>
                                         <div class="list-card success-news">
-                                            <a href="#" class="card-item">
-                                                <picture>
-                                                    <img src="https://dummyimage.com/600x400/000/fff" alt="">
-                                                </picture>
-                                                <div class="caption">
-                                                    <h3 class="tag">Berita</h3>
-                                                    <h2 class="title">BFI Finance Trifecta Sebagai Perusahaan Terbaik dalam Forbes Best of The Best Awards 2019</h2>
-                                                    <div class="dateview">
-                                                        <span class="date">29 Oktober 2019</span>
-                                                        <span class="view"><i class="fa fa-eye"></i>15</span>
+                                            <?php foreach($blogList as $blog) : ?>
+                                                <a href="<?= '/' . $this->getLocale() . '/blog/' . $blog->getSlug(); ?>" class="card-item">
+                                                    <picture>
+                                                        <img src="<?= $blog->getImage(); ?>" alt="">
+                                                    </picture>
+                                                    <div class="caption">
+                                                        <h3 class="tag"><?= $blog->getBlogCategory()->getName(); ?></h3>
+                                                        <h2 class="title"><?= $blog->getTitle(); ?></h2>
+                                                        <div class="dateview">
+                                                            <span class="date"><?= date('Y-m-d', strtotime($blog->getDate())); ?></span>
+                                                            <span class="view"><i class="fa fa-eye"></i><?= $blog->getViews(); ?></span>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </a>
-                                            <a href="#" class="card-item">
-                                                <picture>
-                                                    <img src="https://dummyimage.com/600x400/000/fff" alt="">
-                                                </picture>
-                                                <div class="caption">
-                                                    <h3 class="tag">Berita</h3>
-                                                    <h2 class="title">BFI Finance Trifecta Sebagai Perusahaan Terbaik dalam Forbes Best of The Best Awards 2019</h2>
-                                                    <div class="dateview">
-                                                        <span class="date">29 Oktober 2019</span>
-                                                        <span class="view"><i class="fa fa-eye"></i>15</span>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <a href="#" class="card-item">
-                                                <picture>
-                                                    <img src="https://dummyimage.com/600x400/000/fff" alt="">
-                                                </picture>
-                                                <div class="caption">
-                                                    <h3 class="tag">Berita</h3>
-                                                    <h2 class="title">BFI Finance Trifecta Sebagai Perusahaan Terbaik dalam Forbes Best of The Best Awards 2019</h2>
-                                                    <div class="dateview">
-                                                        <span class="date">29 Oktober 2019</span>
-                                                        <span class="view"><i class="fa fa-eye"></i>15</span>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                                    <a href="#" class="card-item">
-                                                <picture>
-                                                    <img src="https://dummyimage.com/600x400/000/fff" alt="">
-                                                </picture>
-                                                <div class="caption">
-                                                    <h3 class="tag">Berita</h3>
-                                                    <h2 class="title">BFI Finance Trifecta Sebagai Perusahaan Terbaik dalam Forbes Best of The Best Awards 2019</h2>
-                                                    <div class="dateview">
-                                                        <span class="date">29 Oktober 2019</span>
-                                                        <span class="view"><i class="fa fa-eye"></i>15</span>
-                                                    </div>
-                                                </div>
-                                            </a>
+                                                </a>
+                                            <?php endforeach; ?>
                                         </div>
                                     </div>
                                     <div class="row">
