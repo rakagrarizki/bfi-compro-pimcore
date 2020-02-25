@@ -33,16 +33,17 @@ class ManagementController extends FrontendController
      */
     public function getDetailAction(Request $request){
         $id = htmlentities(addslashes($request->get("id")));
-        //dump($id);exit;
+        $lang = htmlentities($request->get("lang"));
+
         $data = Manajemen::getById($id);
         $allData = [];
         if($data){
             $allData = ["id" => $data->getId(),
                 "Nama"=> $data->getNama(),
                 "Jabatan" => $data->getJabatan(),
-                "Biodata" => $data->getBiodata(),
-                "RiwayatKerja" => $data->getRiwayatkerja(),
-                "RiwayatPekerjaan" =>$data->getRiwayatPendidikan(),
+                "Biodata" => $data->getBiodata($lang),
+                "RiwayatKerja" => $data->getRiwayatkerja($lang),
+                "RiwayatPekerjaan" =>$data->getRiwayatPendidikan($lang),
                 "Image" => $data->getImage()->getFullPath()];
 
         }
