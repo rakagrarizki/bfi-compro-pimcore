@@ -14,7 +14,7 @@ $this->extend('layout.html.php');
         <?php foreach($this->paginator as $key => $award) :?>
             <a href = "<?= '/'. $this->getLocale(). '/award/'.$award->getYear(); ?>">
                 <div class="button-type-17 col-md-12">
-                    Tahun <?php echo $award->getYear();?>
+                    <?= $this->translate("year"); ?> <?php echo $award->getYear();?>
                     <span class="arrow-right"><i class="icon-next"></i></span>
                 </div>
             </a>
