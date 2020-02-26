@@ -1,39 +1,90 @@
+
+<?php $category = $this->document->getProperty("category")->getId();
+$reports = new \Pimcore\Model\DataObject\Report\Listing();
+$reports->addConditionParam("Category__id = ?",$category,"AND");
+$years = [];
+$page = htmlentities(addslashes($_GET["page"]));
+foreach($reports as $year){
+    $found = in_array($year->getDate()->format("Y"), $years);
+
+    if(!$found){
+        $years[] = $year->getDate()->format("Y");
+    }
+
+}
+
+$key = 0;
+
+$randId = rand(10,100);
+
+$paginator = new \Zend\Paginator\Paginator(new \Zend\Paginator\Adapter\ArrayAdapter($years));
+$paginator->setCurrentPageNumber($page);
+$paginator->setItemCountPerPage(2);
+?>
 <div class="container">
-    <div id="accordion-pembiayaan" class="accordion pembiayaan">
-        <div class="sect-title text-center">
-            <h2 class=""><?= $this->input('title');?></h2>
-            <p><?= $this->textarea('text'); ?></p>
-        </div>
-
+<?php if (!$this->input("title")->isEmpty()) { ?>
+    <article class="sect-title text-center">
+        <h2 class=""><?= $this->input("title")?></h2>
+    </article>
+<?php } ?>
+    <div class="accordion">
         <div class="accordion__wrap produk">
-            <div class="container"> 
+            <!-- <div class="container"> -->
                 <div class="">
-                    <?php $a=1;?>
+                    <div class="panel-group" id="<?= $randId?>">
                     <?php
-                    $unik = uniqid();
-                    ?>
-                    <div class="panel-group" id="<?php echo $unik;?>">
+                    foreach($paginator as $y ){
 
-                        <?php while($this->block('accord')->loop()){ ?>
-                            <div class="panel panel-default">
-                                <div class="panel-heading"  data-toggle="collapse" data-parent="#<?php echo $unik;?>" href="#<?php echo $unik."-".$a;?>">
-                                    <h4 class="panel-title">
-                                        <a class="a-panelheading">
-                                            <?= $this->input('title-accord');?></a>
-                                    </h4>
-                                </div>
-                                <div id="<?php echo $unik."-".$a;?>" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <?php echo $this->areablock("Content-accord"); ?>
-                                    </div>
+                        ?>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a class="a-reportheading" data-toggle="collapse" data-parent="#<?=$randId?>" href="#<?=$randId.'-'.$key?>">
+                                        <?= $y?></a>
+                                </h4>
+                            </div>
+                            <div id="<?=$randId.'-'.$key?>" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+                                <div class="panel-body report-accordion">
+                                    <ul>
+                                        <?php
+                                        $reports->addConditionParam("YEAR(FROM_UNIXTIME(DATE)) = ? ", (int)$y,"AND");
+                                        $reports->load();
+                                        $total = count($reports);
+                                        foreach($reports as $i => $data):?>
+                                        <div class="content-list">
+                                            <li>
+                                                <?= $data->getFileName();?>
+                                            </li>
+                                            <div class="download-btn">
+                                                <div class="down-box">
+                                                    <a href="<?= $data->getUrl(); ?>" target="_blank" class="cta cta-down">
+                                                        <span><?=  $this->t("download-document")?></span>
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <?php echo  $i < $total ? "<hr>" : ""?>
+                                        <?php endforeach;?>
+
+                                    </ul>
                                 </div>
                             </div>
-                            <?php $a++;?>
+                        </div>
+                        <?php $key++;?>
                         <?php } ?>
-
+                        
                     </div>
+
+                    <?php if (count($paginator) > 1) : ?>
+                            <?= $this->render("Includes/paging.html.php", get_object_vars($paginator->getPages("Sliding")), [
+                                'urlprefix' => $this->document->getFullPath() . '?page=', // just example (this parameter could be used in paging.php to construct the URL)
+                                'appendQueryString' => true // just example (this parameter could be used in paging.php to construct the URL)
+                            ]); ?>
+                        <?php endif; ?>
                 </div>
-            </div>
+            <!-- </div> -->
         </div>
     </div>
 </div>
+

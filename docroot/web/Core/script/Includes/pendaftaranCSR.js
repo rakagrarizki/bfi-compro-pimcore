@@ -264,7 +264,7 @@ $(document).ready(function(){
         },
     
         formAlphabet: {
-            acceptAlphabet: "[a-zA-Z ]+"
+            acceptAlphabet: "[a-zA-Z]+"
         },
 
         formAlphanum: {
@@ -362,4 +362,7 @@ $(document).ready(function(){
             filesize : "Ukuran file harus kurang dari 500 Kb."
         });
     }
+    $(".alert-danger").fadeTo(3000, 500).slideUp(500, function(){
+        $(".alert-danger").slideUp(500);
+    });
 });

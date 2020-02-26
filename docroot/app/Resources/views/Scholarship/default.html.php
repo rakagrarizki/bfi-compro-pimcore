@@ -45,22 +45,22 @@ $this->extend('layout-credit.html.php');
                 <div class="step-content" id="stepper-csr-1">
                     <div class="form-wrapper">
                         <div class="input-text-group">
-                            <label id="name-label" class="input-label">NAMA LENGKAP</label>
+                            <label id="name-label" class="input-label"><?= $this->translate("fullname"); ?></label>
                             <input name="scholarship[name]" id="name-input" class="style-input formAlphabet formName formRequired" placeholder="<?= $this->translate('form-name') ?>" type="text" required>
                             <div class="error-wrap"></div>
                         </div>
                         <div class="input-text-group">
-                            <label id="email-label" class="input-label">EMAIL</label>
+                            <label id="email-label" class="input-label"><?= $this->translate("email"); ?></label>
                             <input name="scholarship[email]" id="email-input" class="style-input formEmail formRequired" placeholder="<?= $this->translate('email-input') ?>" type="email" required>
                             <div class="error-wrap"></div>
                         </div>
                         <div class="input-text-group">
-                            <label id="phone-label" class="input-label">NOMOR HANDPHONE</label>
+                            <label id="phone-label" class="input-label"><?= $this->translate("form-hp"); ?></label>
                             <input name="scholarship[phone]" id="phone-input" class="style-input formRequired formPhoneNumber" placeholder="<?= $this->translate('input-phone') ?>" type="text" maxlength="13" required>
                             <div class="error-wrap"></div>
                         </div>
                         <div class="input-text-group">
-                            <label id="alt-phone-label" class="input-label">NOMOR HANDPHONE ALTERNATIF</label>
+                            <label id="alt-phone-label" class="input-label"><?= $this->translate("form-hp-alternatif"); ?></label>
                             <input name="scholarship[phone2]" id="alt-phone-input" class="style-input formRequired formPhoneNumber" placeholder="<?= $this->translate('input-phone-alternatif') ?>" type="text" maxlength="13">
                             <div class="error-wrap"></div>
                         </div>
@@ -93,27 +93,27 @@ $this->extend('layout-credit.html.php');
                 <div class="step-content hide" id="stepper-csr-2">
                     <div class="form-wrapper">
                         <div class="input-text-group">
-                            <label id="univ-label" class="input-label">UNIVERSITAS</label>
+                            <label id="univ-label" class="input-label"><?= $this->translate("input-univ"); ?></label>
                             <input name="scholarship[university]" id="univ-input" class="style-input formAlphabet formRequired" placeholder="<?= $this->translate('univ-name') ?>" type="text" required>
                             <div class="error-wrap"></div>
                         </div>
                         <div class="input-text-group">
-                            <label id="nim-label" class="input-label">NIM / NPM</label>
+                            <label id="nim-label" class="input-label"><?= $this->translate("input-nim"); ?></label>
                             <input name="scholarship[nim]" id="nim-input" class="style-input formAlphanum formRequired" placeholder="<?= $this->translate('input-nim') ?>" maxlength="20" type="text" required>
                             <div class="error-wrap"></div>
                         </div>
                         <div class="input-text-group">
-                            <label id="fak-label" class="input-label">FAKULTAS</label>
+                            <label id="fak-label" class="input-label"><?= $this->translate("input-fakultas"); ?></label>
                             <input name="scholarship[faculty]" id="fak-input" class="style-input formAlphabet formRequired" placeholder="<?= $this->translate('input-fakultas') ?>" type="text" required>
                             <div class="error-wrap"></div>
                         </div>
                         <div class="input-text-group">
-                            <label id="prodi-label" class="input-label">JURUSAN / PROGRAM STUDI</label>
+                            <label id="prodi-label" class="input-label"><?= $this->translate("input-jurusan"); ?></label>
                             <input name="scholarship[prodi]" id="prodi-input" class="style-input formAlphabet formRequired" placeholder="<?= $this->translate('input-prodi') ?>" type="text">
                             <div class="error-wrap"></div>
                         </div>
                         <div class="input-text-group">
-                            <label id="semester-label" class="input-label">SEMESTER</label>
+                            <label id="semester-label" class="input-label"><?= $this->translate("input-semester"); ?></label>
                             <select class="semester style-input formRequired" name="scholarship[semester]" id="semester-input" data-placeholder="<?= $this->translate('choose-semester') ?>">
                                 <option></option>
                                 <option value="4"><?= $this->translate('label-semester') ?> 4</option>
