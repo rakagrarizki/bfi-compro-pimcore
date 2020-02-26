@@ -1,4 +1,7 @@
-<?php $p = $this->getParam("page"); ?>
+<?php $p = $_GET["page"];
+
+
+?>
 <nav aria-label="Page navigation" id="paginating">
     <ul class="pagination">
         <?php
@@ -18,12 +21,13 @@
 
                 <li class="active"><a href="javascript:void(0)"><?= $page; ?></a></li>
             <?php else : ?>
+
                 <li><a href="<?= $this->pimcoreUrl(['page' => $page]); ?>"><?= $page; ?></a></li>
             <?php endif; ?>
         <?php endforeach; ?>
         <?php if (isset($this->next)) { ?>
             <li>
-                <a href="<?= $this->pimcoreUrl(['page' => $this->next]); ?>" aria-label="Next">
+                <a href="<?= $this->pimcoreUrl(['page'=> $this->next]); ?>" aria-label="Next">
                     <i class="fa fa-angle-right"></i>
                 </a>
             </li>
