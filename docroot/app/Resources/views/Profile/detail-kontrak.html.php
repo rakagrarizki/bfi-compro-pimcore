@@ -41,6 +41,7 @@ $this->extend('layout.html.php');
                     <span><?= $this->translate('label-jumlah-tagihan'); ?></span>
                 </div>
             </div>
+            <div class="vertical-separator"></div>
             <div class="table-content">
                 <div class="content-wrapper">
                     <div class="detail-wrapper">

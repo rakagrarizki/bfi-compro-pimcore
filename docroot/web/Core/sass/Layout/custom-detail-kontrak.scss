@@ -1,0 +1,133 @@
+.detail-contract{
+    .row{
+        margin :0;
+        .title{
+            margin-top: 60px;
+            h3{
+                font-family: "HelveticaNeue-Bold";
+            }
+        }
+
+        .table-container{
+            background-color: #f9f9f9;
+            padding: 25px;
+            margin-bottom: 50px;
+            @include breakpoint(mobile){
+                padding: 15px;
+            }
+            .table-content{
+                margin-right: 0px;
+                width: calc(50% - 20px);
+                .content-wrapper{
+                    .detail-wrapper{
+                        margin-bottom: 10px;
+                        .label{
+                            padding: 0;
+                            width: 55%;
+                            white-space: normal;
+                            line-height: inherit;
+                            padding-right: 10px;
+                            font-weight: bold;
+                        }
+                        .value-data{
+                            padding-left: 10px;
+                            width: 45%;
+                            position: relative;
+
+                            &::before{
+                                position: absolute;
+                                left: 0px;
+                                top: 0;
+                            }
+                        }
+                    }
+                }
+                .keterangan{
+                    padding: 0;
+                }
+            }
+            .vertical-separator{
+                border: solid 1px #e1e1e1;
+                margin: 0 20px;
+                height: auto;
+
+                @include breakpoint(mobile){
+                    margin: 20px 0;
+                }
+            }
+        }
+
+        .sect-list{
+            .heading{
+                h3{
+                    margin: 0;
+                    @include breakpoint(mobile){
+                        margin-left: 0;
+                        font-size: 14px;
+                    }
+                }
+                a{
+                    @include breakpoint(mobile){
+                        display: none;
+                    }
+                }
+                button{
+                    @include breakpoint(mobile){
+                        padding: 0 20px;
+                        font-size: 14px;
+                        letter-spacing: 0px;
+
+                        &::before{
+                            right: 10px;
+                        }
+                        &:hover::before{
+                            right: 0px;
+                        }
+                    }
+                }
+            }
+            .list{
+                @include breakpoint(mobile){
+                    margin-top: 10px;
+                }
+                .list-wrapper{
+                    margin-bottom: 30px;
+                    .detail-wrapper{
+                        margin-bottom: 10px;
+                        .label{
+                            padding: 0;
+                            line-height: inherit;
+                            font-weight: bold;
+                        }
+                        .value-data{
+                            width: 65%;
+                            @include breakpoint(mobile){
+                                
+                            }
+                        }
+                    }
+                }
+                .keterangan{
+                    padding: 0;
+                }
+            }
+        }
+
+        .card{
+            @include breakpoint(mobile){
+                padding: 15px;
+            }
+            span{
+                @include breakpoint(mobile){
+                    font-size: 14px;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+    hr{
+        margin-top: 40px;
+        margin-bottom: 40px;
+        border: 1px solid #e1e1e1;
+    }
+}
