@@ -64,6 +64,16 @@ use Pimcore\Model\Document;
                             ?>
                                 <li><a href="<?= $child->getHref() ?>" class="title-dropdown <?= $child->getActive() ? "active" : "" ?>"><?= $child->getLabel() ?></a></li>
                             <?php
+                            $hasGrandChildren = $child->hasPages();
+                                if ($hasGrandChildren) {
+                                    foreach ($child->getPages() as $grandChild) {
+                            ?>
+                                <li>
+                                    <a class="<?php echo $grandChild->getActive() ? 'active' : '' ?>" href="<?= $grandChild->getHref() ?>"><?= $grandChild->getLabel() ?></a>
+                                </li>
+                            <?php
+                                    }
+                                }
                             }
                             ?>
                         </ul>
