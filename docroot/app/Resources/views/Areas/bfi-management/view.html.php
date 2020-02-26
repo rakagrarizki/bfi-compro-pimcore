@@ -4,6 +4,7 @@
 
 <div class="container management-container">
     <div class="row">
+        <h2><?= $this->input('title'); ?></h2>
         <?php foreach($this->multihref("objectPaths") as $element):
             /** @var \Pimcore\Model\Element\ElementInterface $element */
             ?>

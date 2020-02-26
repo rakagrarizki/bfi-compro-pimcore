@@ -279,7 +279,6 @@ $(document).ready(function(){
             required: true,
             number: true
         },
-    
         formPhoneNumber: {
             required: true,
             number: true,
@@ -287,6 +286,14 @@ $(document).ready(function(){
             minlength: 9
         },
 
+        formPhoneNumberMatchPhone: {
+            required: true,
+            number: true,
+            maxlength: 13,
+            minlength: 9,
+            notEqualTo: "#phone-input",
+        },
+    
         formMessage: {
             minlength: 15
         },
@@ -300,7 +307,7 @@ $(document).ready(function(){
             form.submit();
         }
     });
-
+ 
     $(".formNumber").on("keydown", function (e) {
         if (e.which != 8 && e.which != 0 && e.which != 144 && (e.which < 46 || e.which > 57) && (e.which < 96 || e.which > 105)) {
           return false;
@@ -327,6 +334,10 @@ $(document).ready(function(){
         return this.optional(element) || (element.files[0].size <= param)
     }, "File size must be less than 500 KB.");
 
+    $.validator.addMethod( "notEqualTo", function( value, element, param ) {
+        return this.optional( element ) || !$.validator.methods.equalTo.call( this, value, element, param );
+    }, "Please enter a different handphone number, handphone number must not be the same." );
+
     function validateFormRequired(elementParam) {
     $(elementParam).validate({
         errorPlacement: function (error, element) {
@@ -348,6 +359,7 @@ $(document).ready(function(){
             number: "Silakan masukkan nomor yang valid.",
             digits: "Masukkan hanya berupa digit.",
             creditcard: "Harap masukkan nomor kartu kredit yang benar.",
+            notEqualTo: "Silakan masukkan nomor handphone yang berbeda, nomor handphone tidak boleh sama.",
             equalTo: "Silakan masukkan nilai yang sama sekali lagi.",
             accept: "Silakan masukkan nilai dengan ekstensi yang valid.",
             maxlength: jQuery.validator.format("Harap masukkan tidak lebih dari {0} karakter."),
@@ -365,4 +377,5 @@ $(document).ready(function(){
     $(".alert-danger").fadeTo(3000, 500).slideUp(500, function(){
         $(".alert-danger").slideUp(500);
     });
+
 });

@@ -41,9 +41,15 @@ function loopDataSemester() {
     var stop=semester_count-1;
     for (i=stop;i>stop-3;i--){
         let asd = document.createElement("div");
-        asd.setAttribute("id", "ipk")
+        console.log(ipk['smt-ke-'+i]);
         if (ipk['smt-ke-'+i] === undefined){
-            ipk['smt-ke-'+i] = '00'
+            ipk['smt-ke-'+i] = '00';
+        }
+        else if (ipk['smt-ke-'+i] === ('01' || '02' || '03'|| '04'|| '05'|| '06'|| '07'|| '08'|| '09')){
+            ipk['smt-ke-'+i] = ipk['smt-ke-'+i];
+        }
+        else if ( ipk['smt-ke-'+i] < 10){
+            ipk['smt-ke-'+i] = ipk['smt-ke-'+i] * 10 ;
         }
         asd.innerHTML += (
             "<div class='detail-wrapper'>" +

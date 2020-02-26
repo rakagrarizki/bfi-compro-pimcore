@@ -78,7 +78,7 @@ if($_COOKIE["customer"] != "null") {
                 if ($hasChildren && strpos($page->getUri(), '#product') !== false) {
         ?>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <a href="#" class="dropdown-toggle <?= $page->getActive() ? "active" : "" ?>" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                             <?= $page->getLabel() ?>
                         </a>
                         <ul class="dropdown-menu">
@@ -92,7 +92,7 @@ if($_COOKIE["customer"] != "null") {
                                     foreach ($child->getPages() as $grandChild) {
                                 ?>
                                         <?php if ($grandChild->getDocumentType() != "link") : ?>
-                                            <li><a href="<?= $grandChild->getHref() ?>"><?= $grandChild->getLabel() ?></a>
+                                            <li><a class="<?= $grandChild->getActive() ? 'active' : ''; ?>" href="<?= $grandChild->getHref() ?>"><?= $grandChild->getLabel() ?></a>
                                             </li>
                                         <?php else : ?>
                                             <li><a href="#" class="title-dropdown"><?= $grandChild->getLabel() ?></a></li>

@@ -61,7 +61,7 @@ $this->extend('layout-credit.html.php');
                         </div>
                         <div class="input-text-group">
                             <label id="alt-phone-label" class="input-label"><?= $this->translate("form-hp-alternatif"); ?></label>
-                            <input name="scholarship[phone2]" id="alt-phone-input" class="style-input formRequired formPhoneNumber" placeholder="<?= $this->translate('input-phone-alternatif') ?>" type="text" maxlength="13">
+                            <input name="scholarship[phone2]" id="alt-phone-input" class="style-input formRequired formPhoneNumber formPhoneNumberMatchPhone" placeholder="<?= $this->translate('input-phone-alternatif') ?>" type="text" maxlength="13">
                             <div class="error-wrap"></div>
                         </div>
                         <div id="upload">
