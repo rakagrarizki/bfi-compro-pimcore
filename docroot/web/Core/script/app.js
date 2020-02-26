@@ -839,7 +839,7 @@
         return true;
       }
     }, function(params, element) {
-      return 'Jumlah pembiayaan harus lebih besar dari'+ separatordot(params) +'.'
+      return 'Jumlah pembiayaan harus lebih besar dari '+ separatordot(params) +'.'
     });
   
     jQuery.validator.addMethod("emailCust", function (value, element, param) {

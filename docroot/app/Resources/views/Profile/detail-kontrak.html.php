@@ -41,6 +41,7 @@ $this->extend('layout.html.php');
                     <span><?= $this->translate('label-jumlah-tagihan'); ?></span>
                 </div>
             </div>
+            <div class="vertical-separator"></div>
             <div class="table-content">
                 <div class="content-wrapper">
                     <div class="detail-wrapper">
@@ -69,8 +70,8 @@ $this->extend('layout.html.php');
         <div class="sect-list">
             <div class="heading">
                 <h3><?= $this->translate('cara-bayar'); ?></h3>
-                <a href="<?= "/" . $lang . "/user/layanan"; ?>" class="cta cta-primary cta-big cta-see full" type="button"><?= $this->translate('more'); ?></a>
-                <button class="cta cta-primary cta-big cta-see short" type="button"><?= $this->translate('more'); ?></button>
+                <button class="cta cta-primary cta-big cta-see full" type="button" onlick="window.location.href='<?= "/" . $lang . "/user/layanan"; ?>'"><?= $this->translate('more'); ?></button>
+                <button class="cta cta-primary cta-big cta-see short" type="button" onlick="window.location.href='<?= "/" . $lang . "/user/layanan"; ?>'">Lihat</button>
             </div>
             <div class="list">
                 <div class="list-wrapper">
