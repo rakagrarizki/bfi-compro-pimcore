@@ -26,6 +26,10 @@
               font-weight: 100;
               right: 0;
               top:0;
+              @include breakpoint (mobile){
+                font-size: 30px;
+                top: -5px;
+              }
              }
           }
         }
@@ -81,7 +85,7 @@
         }
 
         @include breakpoint(mobile) {
-          font-size: 24px;
+          font-size: 20px !important;
         }
 
         @include breakpoint(small-mobile) {
@@ -93,6 +97,9 @@
     h4 {
       font-size: 1.3em;
       font-family: 'HelveticaNeue';
+      @include breakpoint(mobile){
+        font-size: 20px !important;
+      }
     }
 
     .panel {
@@ -466,8 +473,7 @@
 
       th:first-child,
       td:first-child {
-        position: sticky;
-        position: -webkit-sticky;
+        position: inherit;
         left: 0;
         z-index: 2;
         width: 5%;
