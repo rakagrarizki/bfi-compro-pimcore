@@ -46,7 +46,7 @@ $lang = $this->getLocale();
         <?php foreach($this->paginator as $promo) : ?>
             <div class="card-item">
                 <a href="<?= '/'.$lang.'/promo/'.$promo->getSlug();?>">
-                    <div class="card-content card-static-promo" style="background: url(<?= $promo->getImage();?>)">
+                    <div class="card-content card-static-promo" style="background-image: url(<?= $promo->getImage();?>)">
                     </div>
                     <div class="caption">
                         <h3 class="tag"><?= $promo->getPromoCategory() ? $promo->getPromoCategory()->getName(): "";?></h3>
