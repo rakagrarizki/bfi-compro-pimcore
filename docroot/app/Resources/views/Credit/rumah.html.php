@@ -213,12 +213,6 @@ $blogList->setLimit(4);
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
-                                            <label><?= $this->translate('label-jenis-property') ?></label>
-                                            <select class="c-custom-select-trans form-control formRequired" placeholder="<?= $this->translate('placeholder-jenis-property') ?>" id="jenis_properti" name="jenis_properti" multiple="multiple">
-                                            </select>
-                                            <div class="error-wrap"></div>
-                                        </div>
-                                        <div class="form-group">
                                             <label><?= $this->translate('label-provinsi') ?></label>
                                             <select class="form-control formRequired" id="provinsi_sertificate" name="provinsi_sertificate" placeholder="<?= $this->translate('choose-provinsi') ?>" multiple="multiple" />
                                             <option value="" disabled selected><?= $this->translate('choose-provinsi') ?></option>
@@ -257,14 +251,20 @@ $blogList->setLimit(4);
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
-                                            <label><?= $this->translate('label-property-condition') ?></label>
-                                            <select class="c-custom-select-trans form-control formRequired" placeholder="<?= $this->translate('placeholder-property-condition') ?>" id="property_condition" name="property_condition" multiple="multiple">
+                                            <label><?= $this->translate('label-jenis-property') ?></label>
+                                            <select class="c-custom-select-trans form-control formRequired" placeholder="<?= $this->translate('placeholder-jenis-property') ?>" id="jenis_properti" name="jenis_properti" multiple="multiple">
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
                                             <label><?= $this->translate('label-status-bangunan') ?></label>
                                             <select class="c-custom-select-trans form-control formRequired" placeholder="<?= $this->translate('placeholder-bangunan') ?>" id="status_sertificate" name="status_sertificate" multiple="multiple">
+                                            </select>
+                                            <div class="error-wrap"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label><?= $this->translate('label-property-condition') ?></label>
+                                            <select class="c-custom-select-trans form-control formRequired" placeholder="<?= $this->translate('placeholder-property-condition') ?>" id="property_condition" name="property_condition" multiple="multiple">
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>

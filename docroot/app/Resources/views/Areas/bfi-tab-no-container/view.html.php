@@ -45,7 +45,7 @@ $tab = $this->getParam("tab");
                     ?>
                         <?php $tabWidth = 100/$this->block("tab")->getCount();?>
                         <?php $tabWidth = str_replace(",",".",$tabWidth)?>
-                        <li role="presentation" class="<?= $active ?><?= $container ?>" id="div<?= $id;?>" style="width:<?= $tabWidth; ?>%">
+                        <li role="presentation" class="<?= $active ?><?= $container ?>" id="div<?= $id;?>" style="width:<?= $tabWidth; ?>%" onclick="updateQueryStringParameter('t',<?= $id;?>)" >
                             <a href="#<?= $id;?>" id="href<?= $id;?>"  data-prev="<?= $id == 0 ? '' : $id - 1 ?>" data-next="<?=$id == ($this->block("tab")->getCount() -1) ? "" : $id + 1;?>" aria-controls="<?= $id?>" role="tab" data-toggle="tab" onclick="setPreviewId(<?= $id == 0 ? '' : $id - 1 ?>,<?=$id == ($this->block('tab')->getCount() -1) ? '' : $id + 1;?>)"><?= $this->input("text");?></a>
                         </li>
 
@@ -71,13 +71,20 @@ $tab = $this->getParam("tab");
                 $container = "";
                 ?>
                 <?php if($tab == "") {
-                    if($id == 0){
-                        $active = "active";
-                    }if($id == 1){
-                        $container = "container";
-                    }
-                    if($id == 2){
-                        $container = "container";
+                    if($queryStr) {
+                        if($id == $queryStr){
+                            $active = "active";
+                        }
+                    } else {
+                        if($id == 0){
+                            $active = "active";
+                        }
+                        if($id == 1){
+                            $container = "container";
+                        }
+                        if($id == 2){
+                            $container = "container";
+                        }
                     }
                 }
                 if($tab == $last){
