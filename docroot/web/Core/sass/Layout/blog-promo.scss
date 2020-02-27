@@ -2,6 +2,7 @@
     // padding: 60px 0 0 0;
 
     .sect-title {
+        margin-bottom: 0;
         @include breakpoint(mobile){
             width: 100%;
         }
@@ -18,10 +19,11 @@
             }
         }
         .title{
-            font-size: 50px;
+            font-size: 40px;
             font-weight: bold;
             line-height: normal;
             color: #04559f;
+            margin-bottom: 10px;
 
             @include breakpoint(mobile){
                 font-size: 20px;
@@ -29,7 +31,7 @@
             }
         }
         .subtitle{
-            font-size: 30px;
+            font-size: 20px;
             line-height: 46px;
             color: #565656;
 

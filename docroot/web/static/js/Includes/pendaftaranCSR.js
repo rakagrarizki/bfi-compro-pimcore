@@ -187,7 +187,6 @@ $(document).ready(function(){
                 $(preview).hide();
             } 
             parent.find(".error-wrap").hide();
-            $('#upload-button').text("Ubah File");
         } else {
             var errorMsg = '';
             switch (false) {
