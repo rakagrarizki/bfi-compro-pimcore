@@ -6,10 +6,10 @@ $news->load();
 
 <section id="informasi-inspiratif">
     <div class="container">
-        <h2 class="title-wrapper text-center" style="padding: 0;margin-bottom: 2rem">
+        <h2 class="title-wrapper" style="padding: 0;margin-bottom: 2rem">
             <?= $this->input('title');?>
         </h2>
-        <p class="text-center paragraf-title" style="margin-bottom: 2rem;">
+        <p class="paragraf-title" style="margin-bottom: 2rem;">
             <?= $this->textarea('text');?>
         </p>
         <div class="row content-bfi" style="padding: 0; width: 100%; margin-bottom: 3rem;">

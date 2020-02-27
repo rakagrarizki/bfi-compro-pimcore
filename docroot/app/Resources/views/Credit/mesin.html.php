@@ -567,3 +567,4 @@ $blogList->setLimit(4);
 </div>
 <!-- end Modal branch -->
 
+<?= $this->template('Includes/request-otp.html.php'); ?>

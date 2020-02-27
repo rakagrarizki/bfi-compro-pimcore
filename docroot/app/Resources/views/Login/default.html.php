@@ -34,7 +34,7 @@ if (preg_match("/.\/service-contract/", $page)) {
     <form action="" id="login-form">
         <div class="input-login">
             <div class="input-text-group">
-                <label id="phone-label" class="input-label">NOMOR HANDPHONE</label>
+                <label id="phone-label" class="input-label"><?= $this->translate("form-hp"); ?></label>
                 <input id="phone-input" class="style-input" type="number" placeholder=<?= $this->translate('input-phone') ?> onkeydown="return isNumberKey(event);" required>
             </div>
             <div class="error-wrap"></div>
