@@ -979,7 +979,7 @@
     function hideTab6() {
         $("#menu6").hide();
     }
-  
+    
     function hideCurrentTab() {
         $(".form-get--credit .tab-content .tab-pane:visible").hide();
         $(".nav-item-1").removeClass("active");
@@ -2227,7 +2227,10 @@
                         if (data.success === true) {
                           var token = localStorage.getItem("token");
                             if (data.result.header.status === 200 && token == null) {
-                                    window.location = "/" + lang + "/login";
+                                $("#otp").removeClass("hide");
+                                $("#myModal").hide();
+                                requestOTP(dataPhone);
+                                $("#phone-input").val($("#no_handphone").val());
                             } else {
                                 pushDataPemohon2(function() {
                                     hideTab1();
@@ -6157,9 +6160,10 @@
         phone_number: $("#phone-input").val(),
         otp_code: otpInput
     };
-  
+
     console.log(dataOTP);
     verifiedOTP(language, dataOTP);
+    
   }
   
   function verifiedOTP(language, dataOTP) {
@@ -6184,6 +6188,47 @@
                 console.log("token : " + token);
                 getCustomer(token);
                 window.location = "/" + language + "/user/dashboard";
+            } else {
+                console.log("otp salah, masukkan otp yang valid");
+            }
+        }
+    });
+  }
+  
+  function verifiedOTPCredit() {
+    var otpInput = $("input[name='digit[]']").map(function() {
+            return $(this).val();
+        }).get();
+        otpInput = otpInput.join("");
+
+        var dataOTP = {
+            phone_number: $("#phone-input").val(),
+            otp_code: otpInput
+        };
+        console.log(dataOTP);
+        
+    $.ajax({
+        type: "POST",
+        url: "/user/otp-confirm",
+        data: dataOTP,
+        dataType: "json",
+        error: function(data) {
+            console.log("error" + data);
+        },
+  
+        fail: function(xhr, textStatus, error) {
+            console.log("request failed");
+        },
+  
+        success: function(dataObj) {
+            if (dataObj.success === true) {
+                console.log("berhasil verified otp");
+                var token = dataObj.result.data.customer_token;
+                localStorage.setItem("token", token);
+                console.log("token : " + token);
+                getCustomer(token);
+                $("#otp").addClass("hide");
+                $("#myModal").show();
             } else {
                 console.log("otp salah, masukkan otp yang valid");
             }
@@ -6367,4 +6412,30 @@
         "padding-bottom": "15px"
     });
   }
-  
+  $('#otp-form').find('input').each(function() {
+    $(this).attr('maxlength', 1);
+    $(this).on('keyup', function(e) {
+        var parent = $($(this).parent());
+        
+        if(e.keyCode === 8) {
+            var prev = parent.find('input#' + $(this).data('previous'));
+            
+            if(prev.length) {
+                $(prev).select().val("");
+            }
+        }
+        else if((e.keyCode >= 48 && e.keyCode <= 57) || (e.keyCode >= 96 && e.keyCode <= 105)) {
+            var next = parent.find('input#' + $(this).data('next'));
+            
+            if(next.length) {
+                $(next).removeAttr("disabled").select();
+            }
+            else {
+                $("#btn-verify").removeAttr("disabled").removeAttr("style");
+                // if(parent.data('autosubmit')) {
+                // 	parent.submit();
+                // }
+            }
+        }
+    });
+});
