@@ -52,8 +52,8 @@ $blogList->setLimit(4);
                     <div class="upload-file">
                         <img src="" />
                         <div class="upload-btn">
-                            <input type="file" class="file-input" accept="image/*" data-id="ktp" />
-                            <button type="button"><?= $this->translate('form-ktp') ?></button>
+                            <input type="file" class="file-input" accept="image/*" data-id="ktp" onchange=" document.getElementById('upload-ktp-button').innerHTML = '<?= $this->translate('Ubah Foto KTP') ?>';" />
+                            <button type="button" id="upload-ktp-button"><?= $this->translate('form-ktp') ?></button>
                             <b></b>
                         </div>
                     </div>

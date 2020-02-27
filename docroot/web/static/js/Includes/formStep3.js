@@ -35,16 +35,9 @@ function uploadPDF(event) {
     var input = event.srcElement;
     var fileName = input.files[0].name;
     var trimName, ext;
-    var lang = document.documentElement.lang
 
     titlePDF.setAttribute("style", "margin-bottom: 10px;");
 
-    if(lang == 'id'){
-        buttonPDF.textContent = "Pilih File";
-    }else{
-        buttonPDF.textContent = "Choose File";
-    }
-    // buttonPDF.textContent = "Ubah File";
     showPDF.classList.add("image-wrapper");
     imagePDF.src = "/static/images/pdf_logo.png";
     ext = fileName.split('.').pop();
