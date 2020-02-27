@@ -146,15 +146,15 @@
     font-family: Helvetica;
 }
 
-.title-management{
+.grandchild{
     color: #565656;
-    font-weight: bold;
-    font-size: 28px;
-    margin: 0 15px 40px;
-    @include breakpoint(mobile){
-        text-align: center;
-        margin: -20px 0 20px;
-        font-size: 22px;
-        
+    font-size: 14px;
+    &:before{
+        content: '\f45c ';
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        font-size: 5px;
+        padding-right: 10px;
+        vertical-align: middle;
     }
 }

@@ -10,7 +10,7 @@
 ?>
 <?= $this->areablock('areaBlock'); ?>
 <?php $lang = $this->getLocale(); ?>
-<section id="otp" class="container hide">
+<section id="otp" class="container hide" style="margin: 40px auto 80px auto;text-align: center;">
     <h3><?= $this->translate('credit-confirmation-otp'); ?></h3>
     <p><?= $this->translate('credit-text-confirmation-otp'); ?></p>
     <form action="" id="otp-form">
@@ -19,9 +19,10 @@
         <input type="number" id="digit-3" name="digit[]" data-next="digit-4" data-previous="digit-2" disabled onkeydown="return isNumberKey(event);"/>
         <input type="number" id="digit-4" name="digit[]" data-next="digit-5" data-previous="digit-3" disabled onkeydown="return isNumberKey(event);"/>
     </form>
+    <input id="phone-input" class="hide" />
     <p id="resend"><?= $this->translate('wait-otp'); ?></p>
     <p><small id="resend-notice"></small></p>
-    <button id="btn-verify" class="button-login" onclick="" disabled style="opacity: .5;"> 
+    <button id="btn-verify" class="button-login" onclick="verifiedOTPCredit()" disabled style="opacity: .5;"> 
         <?= $this->translate('verifikasi'); ?>
     </button>
 </section>
