@@ -49,6 +49,18 @@ $this->extend('layout.html.php');
         </div>
         <ul class="status-wrapper">
             <li class="status-box hide" id="status">
+            <div class="detail hidden-lg hidden-sm hidden-md">
+                    <div class="assignment">
+                        <h6><?= $this->translate('assigment-id'); ?></h6>
+                        <p>-</p>
+                    </div>
+                    <div class="credit-type">
+                        <h6><?= $this->translate('jenis-kredit'); ?></h6>
+                        <p>
+                            <!-- Pembiayaan Agunan - Sertifikat Rumah -->
+                        </p>
+                    </div>
+                </div>
                 <div class="status-step">
                     <div class="">
                         <ul class="stepper-row">
@@ -79,7 +91,7 @@ $this->extend('layout.html.php');
                         <span><?= $this->translate('pengajuan-tolak'); ?></span>
                     </div>
                 </div>
-                <div class="detail">
+                <div class="detail hidden-xs">
                     <div class="assignment">
                         <h6><?= $this->translate('assigment-id'); ?></h6>
                         <p>-</p>

@@ -4,7 +4,7 @@
     <div class="container">
         <div class="visi">
             <div class="col-md-3">
-                <h2>Visi</h2>
+                <h2><?= $this->translate("visi"); ?></h2>
             </div>
             <div class="col-md-9">
                 <p>
@@ -14,7 +14,7 @@
         </div>
         <div class="misi">
             <div class="col-md-3">
-                <h2>Misi</h2>
+                <h2><?= $this->translate("misi"); ?></h2>
             </div>
             <div class="col-md-9">
 

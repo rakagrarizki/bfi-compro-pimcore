@@ -1,12 +1,28 @@
 
 
 <?php $category = $this->document->getProperty("category")->getId();
+$id = $this->document->getId();
+$p = htmlentities($_GET["page".$id]);
 $reports = new \Pimcore\Model\DataObject\Report\Listing();
 $reports->addConditionParam("Category__id = ?",$category,"AND");
-$page = htmlentities(addslashes($_GET["page"]));
+
 $paginator = new \Zend\Paginator\Paginator($reports);
-$paginator->setCurrentPageNumber($page);
-$paginator->setItemCountPerPage(4);
+$paginator->setCurrentPageNumber($p);
+$paginator->setItemCountPerPage(2);
+
+
+$t =  $_GET["t"];
+
+$s = $this->pimcoreUrl();
+$u = parse_url($s);
+$u = array_shift($u);
+if(isset($t)){
+    $url = $u . '?t='.$t.'&page'.$id.'=';
+}
+$url = $u . '?page'.$id.'=';
+
+
+
 ?>
 
 
@@ -39,10 +55,40 @@ $paginator->setItemCountPerPage(4);
 
     </ul>
     <?php if (count($paginator) > 1) : ?>
-            <?= $this->render("Includes/paging.html.php", get_object_vars($paginator->getPages("Sliding")), [
-                'urlprefix' => $this->document->getFullPath() . '?page=', // just example (this parameter could be used in paging.php to construct the URL)
-                'appendQueryString' => true // just example (this parameter could be used in paging.php to construct the URL)
-            ]); ?>
-        <?php endif; ?>
+        <?php $pages = $paginator->getPages('Sliding');?>
+        <nav aria-label="Page navigation" id="paginating">
+            <ul class="pagination">
+                <?php
+                if (isset($pages->previous)) {
+                    ?>
+                    <li>
+                        <a href="<?= urldecode($url.$pages->previous); ?>" aria-label="Previous">
+                            <i class="fa fa-angle-left"></i>
+                        </a>
+                    </li>
+                    <?php
+                }
+                ?>
+                <?php foreach ($pages->pagesInRange as $page) : ?>
+
+                    <?php if ($page == $p) : ?>
+
+                        <li class="active"><a href="javascript:void(0)"><?= $page; ?></a></li>
+                    <?php else : ?>
+
+                        <li><a href="<?= $url.$page; ?>"><?= $page; ?></a></li>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+                <?php if (isset($pages->next)) { ?>
+                    <li>
+                        <a href="<?= $url.$pages->next; ?>" aria-label="Next">
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </li>
+                <?php } ?>
+            </ul>
+        </nav>
+    <?php endif; ?>
+
 </div>
 <!-- Template -->
