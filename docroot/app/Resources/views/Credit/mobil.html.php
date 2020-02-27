@@ -666,3 +666,5 @@ $blogList->setLimit(4);
     </div>
 </div>
 <!-- end modal pricing -->
+
+<?= $this->template('Includes/request-otp.html.php'); ?>

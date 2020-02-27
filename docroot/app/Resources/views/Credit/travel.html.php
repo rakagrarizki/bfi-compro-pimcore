@@ -458,3 +458,5 @@ $blogList->setLimit(4);
         </div>
     </div>
 </div>
+
+<?= $this->template('Includes/request-otp.html.php'); ?>
