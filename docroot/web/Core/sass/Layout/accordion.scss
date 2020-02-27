@@ -555,8 +555,8 @@
     }
 
     h4 {
-      font-size: 1em;
-      font-family: 'HelveticaNeue';
+      font-size: 20px;
+      font-family: 'HelveticaNeue-Italic';
       color: $blue-dark-color;
 
       @include breakpoint(mobile) {
