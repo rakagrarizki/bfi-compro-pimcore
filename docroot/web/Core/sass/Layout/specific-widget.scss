@@ -55,9 +55,11 @@
 }
 
 #informasi-inspiratif{
-  text-align: left;
-  padding-left: 10px!important;
-  
+  .title-wrapper,
+  .paragraf-title{  
+    text-align: left;
+    padding-left: 15px !important;
+  }
     @include breakpoint(mobile){
         h2.title-wrapper{
             margin-top: 1.5rem;
