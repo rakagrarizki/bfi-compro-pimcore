@@ -25,9 +25,9 @@
                                     $dateUnix = $timestampDate->timestamp;
                                     $date = date("d.m.y", $dateUnix);
                                     ?>
-                                    <p><?= $blog->getBlogCategory()->getName(); ?></p>
+                                    <p class="tag"><?= $blog->getBlogCategory()->getName(); ?></p>
                                     <h4><a href="/<?= $this->getLocale() . "/blog"; ?>/<?= $blog->getSlug(); ?>"><?= $blog->getTitle();?></a></h4>
-                                    <p><?= $date;?> | <i class="fa fa-eye"></i> <?= $blog->getViews(); ?></p>
+                                    <p class="dateview"><?= $date;?> | <i class="fa fa-eye"></i> <?= $blog->getViews(); ?></p>
                                 </div>
                             </article>
                         </div>
@@ -42,9 +42,9 @@
                                     $dateUnix = $timestampDate->timestamp;
                                     $date = date("d.m.y", $dateUnix);
                                     ?>
-                                    <p><?= $blog->getBlogCategory()->getName(); ?></p>
+                                    <p class="tag"><?= $blog->getBlogCategory()->getName(); ?></p>
                                     <h4><a href="/<?= $this->getLocale() . "/blog"; ?>/<?= $blog->getSlug(); ?>"><?= $blog->getTitle();?></a></h4>
-                                    <p><?= $date;?> | <i class="fa fa-eye"></i> <?= $blog->getViews(); ?></p>
+                                    <p class="dateview"><?= $date;?> | <i class="fa fa-eye"></i> <?= $blog->getViews(); ?></p>
                                 </div>
                             </article>
                         </div>
