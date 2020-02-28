@@ -6078,25 +6078,27 @@
   
         success: function(dataObj) {
             if (dataObj.success === true) {
-                console.log("berhasil login");
-                requestOTP(dataPhone);
-                $("#login").addClass("hide");
-                $("#otp").removeClass("hide");
-                otp();
-            } else {
-                var lang = document.documentElement.lang;
-                var errorMsg;
-                if (lang == "id") {
-                    errorMsg = "Nomor Handphone Belum Terdaftar.";
-                } else {
-                    errorMsg = "Phone Number Not Registered.";
+                if(dataObj.result.header.status == 200){
+                    console.log("berhasil login");
+                    requestOTP(dataPhone);
+                    $("#login").addClass("hide");
+                    $("#otp").removeClass("hide");
+                    otp();
+                }else{
+                    var lang = document.documentElement.lang;
+                    var errorMsg;
+                    if (lang == "id") {
+                        errorMsg = "Nomor Handphone Belum Terdaftar.";
+                    } else {
+                        errorMsg = "Phone Number Not Registered.";
+                    }
+                    $(".error-wrap").html(
+                        '<label id="login-error" class="error" for="login" style="display: inline-block;">' +
+                            errorMsg +
+                            "</label>"
+                    );
+                    console.log("gagal login");
                 }
-                $(".error-wrap").html(
-                    '<label id="login-error" class="error" for="login" style="display: inline-block;">' +
-                        errorMsg +
-                        "</label>"
-                );
-                console.log("gagal login");
             }
         }
     });

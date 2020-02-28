@@ -79,7 +79,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                         </div>
                         <div class="form-group">
                             <label><?= $this->translate('labelNoktp') ?></label>
-                            <input type="text" class="form-control formRequired formNoKtp" name="noKtp" id="noKtp"  minlength="16" maxlength="17" placeholder="<?= $this->translate('placeholderNoktp') ?>">
+                            <input type="text" class="form-control formRequired formNoKtp" name="noKtp" id="noKtp"  minlength="16" maxlength="17" placeholder="<?= $this->translate('label-ktp'); ?>">
                             <div class="error-wrap"></div>
                         </div>
 
@@ -88,8 +88,8 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                             <div class="upload-file">
                                 <img src="" />
                                 <div class="upload-btn">
-                                    <input type="file" class="file-input" accept="image/*" data-id="ktp" />
-                                    <button type="button"><?= $this->translate('form-ktp') ?></button>
+                                    <input type="file" class="file-input" accept="image/*" data-id="ktp" onchange=" document.getElementById('upload-ktp-button').innerHTML = '<?= $this->translate('Ubah Foto KTP') ?>';"/>
+                                    <button type="button" id="upload-ktp-button"><?= $this->translate('form-ktp') ?></button>
                                     <b></b>
                                 </div>
                             </div>
