@@ -1,3 +1,4 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" rel="stylesheet">
 <!-- START Mobille -->
 <?php
 
@@ -70,7 +71,7 @@ use Pimcore\Model\Document;
                             ?>
                             <?php if ($grandChild->getDocumentType() == "link") { ?>
                                 <li>
-                                    <a class="<?php echo $grandChild->getActive() ? 'active' : '' ?>" href="<?= $grandChild->getHref() ?>"><?= $grandChild->getLabel() ?></a>
+                                    <a class="grandchild <?php echo $grandChild->getActive() ? 'active' : '' ?>" href="<?= $grandChild->getHref() ?>"><?= $grandChild->getLabel() ?></a>
                                 </li>
                             <?php       }
                                     }
