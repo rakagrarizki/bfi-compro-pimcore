@@ -482,12 +482,6 @@ function reInitJcf() {
   if (typeof ($('#ex7SliderVal').parents(".sliderGroup").find(".calcslide").slider()) !== 'undefined') {
     if($('#ex7SliderVal').parents(".machine-funding").length == 1){
       console.log('DP changed');
-      // $('#ex7SliderVal').parents(".sliderGroup").find(".calcslide").slider().on('slideStop', function (ev) {
-      //   console.log(ev)
-      //   var rawDownPayment = ev.value * 0.3;
-      //   var downPayment = separatordot(rawDownPayment);
-      //   $('#down_payment').val(downPayment);
-      // });
     }else{
       $('#ex7SliderVal').parents(".sliderGroup").find(".calcslide").slider().on('slideStop', function (ev) {
         console.log(ev)
@@ -524,18 +518,6 @@ function reInitJcf() {
 
       var _toInt = parseInt(_thisVal);
       _toInt = (_toInt > 0 ? _toInt : 0);
-      // objCredits.installment = _toInt;
-      // objCredits.funding = _toInt;
-
-      // } else if (_ifMonth.length > 0) {
-
-      //   _ifMonth.val(parseInt(_thisVal))
-      //   var customFormInstance = jcf.getInstance(_ifMonth);
-      //   customFormInstance.refresh();
-
-      //   // newoptionAsuransi(_thisVal, raw_select);
-      //   // objCredits.jangka_waktu = parseInt(_thisVal);
-      // }
 
       nextButton("inactive");
       if(countCalculate > 0){
@@ -550,14 +532,6 @@ function reInitJcf() {
       $(".warning-calculate").removeClass("hide");
     }
   });
-
-  // $('#jangka_waktu').on("change", function(){
-  //   nextButton("inactive");
-  //   console.log('-----', this.value)
-  //   if(countCalculate > 0){
-  //     $(".warning-calculate").removeClass("hide");
-  //   }
-  // });
 
   $('#pocket_money').on("change", function(){
     nextButton("inactive");

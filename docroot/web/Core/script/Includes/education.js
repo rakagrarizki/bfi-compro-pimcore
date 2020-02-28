@@ -19,6 +19,33 @@ function isValidStep() {
   return isValid;
 }
 
+function checkLogin(){
+  var dataPhone = {
+    phone_number: $("#no_handphone").val()
+  };
+  $.ajax({
+    type: "POST",
+    url: "user/login",
+    data: dataPhone,
+    dataType: "json",
+    success: function(data) {
+        if (data.success === true) {
+          var token = localStorage.getItem("token");
+            if (data.result.header.status === 200 && token == null) {
+                $("#otp").removeClass("hide");
+                $("#getCredit-p-0").hide();
+                $(".steps").hide();
+                requestOTP(dataPhone);
+                $("#phone-input").val($("#no_handphone").val());
+            } else {
+              console.log("tidak masuk");
+          }
+        }
+      }
+    });
+  }
+
+
 function checkValid() {
   if (isValidStep()) {
     // do something
@@ -30,9 +57,9 @@ function checkValid() {
 
 function nextButton(action) {
   var nextBtn = $(".actions > ul li a[href$='next']").parent();
-  if (action === "active") {
+  if (action === "active"){
     nextBtn.removeClass("inactive");
-  } else {
+  } else{
     if (!nextBtn.hasClass("inactive")) {
       nextBtn.addClass("inactive");
     }
@@ -100,7 +127,7 @@ function sendLeadData() {
     }
     var sendData = postData(_url, _data);
     if (currentStep === 0) {
-      submission_id = sendData.data.submission_id;
+      submission_id = sendData.data.submission_id; 
     }
     if (sendData.success === "1") {
       if (currentStep === 1) {
@@ -108,11 +135,6 @@ function sendLeadData() {
           $("#modal-branch").modal('show');
         }
         return sendData.data.is_branch
-      // } else if (currentStep === 2) {
-      //   if (sendData.data.is_pricing === false) {
-      //     $("#modal-pricing").modal('show');
-      //   }
-      //   return sendData.data.is_pricing
       } else {
         return true;
       }
@@ -257,6 +279,10 @@ var isValidOtp = false;
       if (currentIndex > newIndex) {
         return true;
       }
+      if( currentIndex === 0){
+        checkLogin();
+        return false;
+      }
       if ($(".actions > ul li a[href$='next']").parent().hasClass("inactive")) {
         return false;
       }
@@ -378,6 +404,114 @@ var isValidOtp = false;
       finishButton("inactive");
     }
   });
+
+  $('#otp-form').find('input').each(function() {
+    $(this).attr('maxlength', 1);
+    $(this).on('keyup', function(e) {
+        var parent = $($(this).parent());
+        
+        if(e.keyCode === 8) {
+            var prev = parent.find('input#' + $(this).data('previous'));
+            
+            if(prev.length) {
+                $(prev).select().val("");
+            }
+        }
+        else if((e.keyCode >= 48 && e.keyCode <= 57) || (e.keyCode >= 96 && e.keyCode <= 105)) {
+            var next = parent.find('input#' + $(this).data('next'));
+            
+            if(next.length) {
+                $(next).removeAttr("disabled").select();
+            }
+            else {
+                $("#btn-verify").removeAttr("disabled").removeAttr("style");
+            }
+        }
+    });
+});
+function loginCustomer() {
+  var dataPhone = {
+      phone_number: $("#phone-input").val()
+  };
+  console.log(dataPhone);
+  $.ajax({
+      type: "POST",
+      url: "/user/login",
+      data: dataPhone,
+      dataType: "json",
+      error: function(data) {
+          console.log("error" + data);
+      },
+
+      fail: function(xhr, textStatus, error) {
+          console.log("request failed");
+      },
+
+      success: function(dataObj) {
+          if (dataObj.success === true) {
+              console.log("berhasil login");
+              requestOTP(dataPhone);
+              $("#login").addClass("hide");
+              $("#otp").removeClass("hide");
+              otp();
+          } else {
+              var lang = document.documentElement.lang;
+              var errorMsg;
+              if (lang == "id") {
+                  errorMsg = "Nomor Handphone Belum Terdaftar.";
+              } else {
+                  errorMsg = "Phone Number Not Registered.";
+              }
+              $(".error-wrap").html(
+                  '<label id="login-error" class="error" for="login" style="display: inline-block;">' +
+                      errorMsg +
+                      "</label>"
+              );
+              console.log("gagal login");
+          }
+      }
+  });
+}
+function verifiedOTPEdu() {
+  var otpInput = $("input[name='digit[]']").map(function() {
+          return $(this).val();
+      }).get();
+      otpInput = otpInput.join("");
+
+      var dataOTP = {
+          phone_number: $("#phone-input").val(),
+          otp_code: otpInput
+      };
+      console.log(dataOTP);
+      
+  $.ajax({
+      type: "POST",
+      url: "/user/otp-confirm",
+      data: dataOTP,
+      dataType: "json",
+      error: function(data) {
+          console.log("error" + data);
+      },
+
+      fail: function(xhr, textStatus, error) {
+          console.log("request failed");
+      },
+
+      success: function(dataObj) {
+          if (dataObj.success === true) {
+              console.log("berhasil verified otp");
+              var token = dataObj.result.data.customer_token;
+              localStorage.setItem("token", token);
+              console.log("token : " + token);
+              getCustomer(token);
+              $("#otp").addClass("hide");
+              $("#myModal").show();
+          } else {
+              console.log("otp salah, masukkan otp yang valid");
+          }
+      }
+  });
+}
 
   $("#recalc").click(function (e) {
     nextButton("inactive");
