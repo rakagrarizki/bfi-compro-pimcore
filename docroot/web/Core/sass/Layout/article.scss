@@ -39,6 +39,21 @@
         p {
             font-size: 10px;
             font-family: 'HelveticaNeue';
+
+            &.tag{
+                color: #F8991D;
+                font-size: 12px;
+                font-weight: 600;
+                font-family: 'HelveticaNeue-Bold';
+            }
+
+            &.dateview{
+                color: #565656;
+
+                .fa{
+                    margin-right: 5px;
+                }
+            }
         }
 
         h4 {
@@ -90,22 +105,6 @@
         padding: 10px 15px;
         // margin-top: 10px;
 
-        p {
-            .tag{
-                color: #F8991D;
-                font-size: 12px;
-                font-weight: 600;
-                font-family: 'HelveticaNeue-Bold';
-            }
-
-            .dateview{
-                color: #565656;
-
-                .fa{
-                    margin-right: 5px;
-                }
-            }
-        }
     }
 }
 
