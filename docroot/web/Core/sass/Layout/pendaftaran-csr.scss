@@ -560,9 +560,8 @@
                 &.inactive {
                     pointer-events: none;
                     cursor: default;
+                    background: rgb(221, 221, 221);
                     &:visited, &:active {
-                        background: rgb(221, 221, 221);
-                      //   border-color: #aaa;
                         color: #fff;
                     }
                 }

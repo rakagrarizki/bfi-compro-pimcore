@@ -1,3 +1,4 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" rel="stylesheet">
 <!-- START Mobille -->
 <?php
 
@@ -92,7 +93,7 @@ if($_COOKIE["customer"] != "null") {
                                     foreach ($child->getPages() as $grandChild) {
                                 ?>
                                         <?php if ($grandChild->getDocumentType() != "link") : ?>
-                                            <li><a class="<?= $grandChild->getActive() ? 'active' : ''; ?>" href="<?= $grandChild->getHref() ?>"><?= $grandChild->getLabel() ?></a>
+                                            <li><a class="grandchild <?= $grandChild->getActive() ? 'active' : ''; ?>" href="<?= $grandChild->getHref() ?>"><?= $grandChild->getLabel() ?></a>
                                             </li>
                                         <?php else : ?>
                                             <li><a href="#" class="title-dropdown"><?= $grandChild->getLabel() ?></a></li>
@@ -102,7 +103,7 @@ if($_COOKIE["customer"] != "null") {
                                         if ($hasGreatGrandChild) {
                                             foreach ($grandChild->getPages() as $greatGrandChild) { ?>
                                                 <li>
-                                                    <a class="<?php echo $greatGrandChild->getActive() ? 'active' : '' ?>" href="<?= $greatGrandChild->getHref() ?>"><?= $greatGrandChild->getLabel() ?></a>
+                                                    <a class="grandchild <?php echo $greatGrandChild->getActive() ? 'active' : '' ?>" href="<?= $greatGrandChild->getHref() ?>"><?= $greatGrandChild->getLabel() ?></a>
                                                 </li>
                                 <?php
                                             }
