@@ -62,7 +62,6 @@ $blogList->setLimit(4);
                     <span><?= $this->translate('placeholderNoktp') ?></span>
                     <!-- <span>Pastikan foto KTP terlihat jelas (max. ukuran file adalah 1MB)</span> -->
                 </div>
-
             </fieldset>
 
             <!-- STEP 2 -->
@@ -194,22 +193,6 @@ $blogList->setLimit(4);
                                             Rp 0
                                         </td>
                                     </tr>
-                                    <!-- <tr>
-                                  <td class="textsubcurrency">
-                                      Tahun ke-1 [All Risk Only*]
-                                  </td>
-                                  <td class="currency" tahun="1">
-                                      Rp 0
-                                  </td>
-                              </tr> -->
-                                    <!-- <tr>
-                                  <td class="textsubcurrency">
-                                      Tahun ke-2 [Total Cost Only*]
-                                  </td>
-                                  <td class="currency" tahun="2">
-                                      Rp 205.000
-                                  </td>
-                              </tr> -->
                                 </table>
                             </div>
                             <div class="total-estimate">
@@ -257,11 +240,6 @@ $blogList->setLimit(4);
 
                                     <td id="showPhone" class="email"></td>
                                 </tr>
-                                <!-- <tr>
-                              <td>Unggah Foto KTP</td>
-
-                              <td class="unggah"></td>
-                          </tr> -->
                             </table>
                         </div>
 
@@ -353,16 +331,6 @@ $blogList->setLimit(4);
 
                                     <td id="summary-funding"></td>
                                 </tr>
-                                <!--  <tr>
-                                <td>Asuransi Tahun ke-1</td>
-
-                                <td class="tahun1">All Risk</td>
-                            </tr>
-                            <tr>
-                                <td>Asuransi Tahun ke-2</td>
-
-                                <td class="tahun1">Total Lost Only</td>
-                            </tr> -->
                             </table>
                         </div>
                     </div>
@@ -372,15 +340,6 @@ $blogList->setLimit(4);
                             <label for="agreement1" class="label-agreement"><?= $this->translate('term-condition') ?></label>
                             <div class="error-wrap"></div>
                         </div>
-                        <!-- <div class="form-group">
-                      <input type="checkbox" id="agreement2" class="agreement">
-                      <label for="agreement2" class="label-agreement">Lorem ipsum dolor sit
-                          amet, consectetur
-                          adipisicing elit. Odio reprehenderit iusto libero aliquid
-                          temporibus vero, optio eveniet et, adipisci natus rem enim sequi
-                          saepe expedita qui sunt exercitationem delectus. In?</label>
-                      <div class="error-wrap"></div>
-                  </div> -->
                     </div>
                 </div>
                 <div id="step-otp" class="form-body--credit">
@@ -450,9 +409,7 @@ $blogList->setLimit(4);
                     </div>
                 </div>
             </fieldset>
-
         </form>
-
     </div>
 </div>
 
