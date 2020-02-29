@@ -51,27 +51,7 @@ $blogList->setLimit(4);
                 </div>
                 <div class="error-wrap"></div>
             </div>
-          <!-- <div class="form-group">
-              <div class="title-input">
-                  <?= $this->translate('appicant-position')?>
-              </div>
-              <label for="nama_lengkap"><?= $this->translate('form-name')?></label>
-              <div class="radio-group">
-                  <div class="radio-inside">
-                      <label class="container"> <?= $this->translate('perorangan')?>
-                        <input type="radio" checked="checked" value="perorang" name="applicant_position">
-                        <span class="checkmark"></span>
-                      </label>
-                  </div>
-                  <div class="radio-inside">
-                      <label class="container"> <?= $this->translate('perusahaan')?>
-                        <input type="radio" value="perusahaan" name="applicant_position">
-                        <span class="checkmark"></span>
-                      </label>
-                  </div>
-              </div>
-              <div class="error-wrap"></div>
-          </div> -->
+
           <div class="form-group">
               <label for="nama_perusahaan"><?= $this->translate('form-name-company')?></label>
               <input type="text" class="form-control formRequired formAlphabet" name="nama_perusahaan" id="nama_perusahaan"
@@ -96,7 +76,6 @@ $blogList->setLimit(4);
                       placeholder="<?= $this->translate('placeholder-hp')?>">
               <div class="error-wrap"></div>
           </div>
-
         </fieldset>
 
         <!-- STEP 2 -->
@@ -241,7 +220,6 @@ $blogList->setLimit(4);
                                   aria-describedby="basic-addon1">
 
                           <div class="error-wrap"></div>
-
                       </div>
                       <div class="slidecontainer ">
                           <input id="calcSlider" class="calcslide" type="tel" pattern="\d*" data-slider-handle="custom" data-slider-tooltip="hide" />
@@ -281,7 +259,6 @@ $blogList->setLimit(4);
                   </div>
                   <div class="warning-calculate hide"><label><?= $this->translate("calculate-again"); ?></label></div>
               </div>
-
           </div>
         </fieldset>
 
@@ -317,11 +294,6 @@ $blogList->setLimit(4);
 
                               <td id="showPhone" class="email"></td>
                           </tr>
-                          <!-- <tr>
-                              <td>Unggah Foto KTP</td>
-
-                              <td class="unggah"></td>
-                          </tr> -->
                       </table>
                   </div>
 
@@ -444,15 +416,7 @@ $blogList->setLimit(4);
                       <label for="agreement1" class="label-agreement"><?= $this->translate('term-condition')?></label>
                       <div class="error-wrap"></div>
                   </div>
-                  <!-- <div class="form-group">
-                      <input type="checkbox" id="agreement2" class="agreement">
-                      <label for="agreement2" class="label-agreement">Lorem ipsum dolor sit
-                          amet, consectetur
-                          adipisicing elit. Odio reprehenderit iusto libero aliquid
-                          temporibus vero, optio eveniet et, adipisci natus rem enim sequi
-                          saepe expedita qui sunt exercitationem delectus. In?</label>
-                      <div class="error-wrap"></div>
-                  </div> -->
+                  
               </div>
           </div>
           <div id="step-otp" class="form-body--credit">
