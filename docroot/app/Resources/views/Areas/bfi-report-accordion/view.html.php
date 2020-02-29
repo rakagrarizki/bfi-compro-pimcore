@@ -1,9 +1,11 @@
 
 <?php $category = $this->document->getProperty("category")->getId();
+$tab = $this->document->getProperty("tab");
+$id = $this->document->getId();
 $reports = new \Pimcore\Model\DataObject\Report\Listing();
 $reports->addConditionParam("Category__id = ?",$category,"AND");
 $years = [];
-$page = htmlentities(addslashes($_GET["page"]));
+$p = htmlentities(addslashes($_GET["page".$id]));
 foreach($reports as $year){
     $found = in_array($year->getDate()->format("Y"), $years);
 
@@ -18,8 +20,22 @@ $key = 0;
 $randId = rand(10,100);
 
 $paginator = new \Zend\Paginator\Paginator(new \Zend\Paginator\Adapter\ArrayAdapter($years));
-$paginator->setCurrentPageNumber($page);
+$paginator->setCurrentPageNumber($p);
 $paginator->setItemCountPerPage(2);
+
+$t =  $_GET["t"];
+
+$s = $this->pimcoreUrl();
+$u = parse_url($s);
+$u = array_shift($u);
+// if(isset($t)){
+//     $url = $u . '?t='.$t.'&page'.$id.'=';
+// }
+//dump($tab);exit;
+$url = $u . '?page'.$id.'=';
+if($tab != null) {
+    $url = $u . '?t='.$tab.'&page'.$id.'=';
+}
 ?>
 <div class="container">
 <?php if (!$this->input("title")->isEmpty()) { ?>
@@ -34,7 +50,6 @@ $paginator->setItemCountPerPage(2);
                     <div class="panel-group" id="<?= $randId?>">
                     <?php
                     foreach($paginator as $y ){
-
                         ?>
                         <div class="panel panel-default">
                             <div class="panel-heading">
@@ -62,26 +77,55 @@ $paginator->setItemCountPerPage(2);
                                                     </a>
                                                 </div>
                                             </div>
-
                                         </div>
                                         <?php echo  $i < $total ? "<hr>" : ""?>
                                         <?php endforeach;?>
-
                                     </ul>
                                 </div>
                             </div>
                         </div>
                         <?php $key++;?>
                         <?php } ?>
-                        
                     </div>
 
                     <?php if (count($paginator) > 1) : ?>
-                            <?= $this->render("Includes/paging.html.php", get_object_vars($paginator->getPages("Sliding")), [
-                                'urlprefix' => $this->document->getFullPath() . '?page=', // just example (this parameter could be used in paging.php to construct the URL)
-                                'appendQueryString' => true // just example (this parameter could be used in paging.php to construct the URL)
-                            ]); ?>
-                        <?php endif; ?>
+                    <?php $pages = $paginator->getPages('Sliding');?>
+                        <nav aria-label="Page navigation" id="paginating">
+                            <ul class="pagination">
+                                <?php
+                                if (isset($pages->previous)) {
+                                    ?>
+                                    <li>
+                                        <a href="<?= urldecode($url.$pages->previous); ?>" aria-label="Previous">
+                                            <i class="fa fa-angle-left"></i>
+                                        </a>
+                                    </li>
+                                    <?php
+                                }
+                                ?>
+                                <?php foreach ($pages->pagesInRange as $page) : ?>
+
+                                    <?php if ($page == $p) : ?>
+                                        <li class="active"><a href="javascript:void(0)"><?= $page; ?></a></li>
+                                    <?php else : ?>
+                                        <?php if($page == 1 && $p == "") { ?>
+                                            <li class="active"><a href="javascript:void(0)"><?= $page; ?></a></li>
+                                        <?php } else { ?>
+                                            <li><a href="<?= $url.$page; ?>"><?= $page; ?></a></li>
+                                        <?php } ?>
+                                    <?php endif; ?>
+
+                                <?php endforeach; ?>
+                                <?php if (isset($pages->next)) { ?>
+                                    <li>
+                                        <a href="<?= $url.$pages->next; ?>" aria-label="Next">
+                                            <i class="fa fa-angle-right"></i>
+                                        </a>
+                                    </li>
+                                <?php } ?>
+                            </ul>
+                        </nav>
+                    <?php endif; ?>
                 </div>
             <!-- </div> -->
         </div>
