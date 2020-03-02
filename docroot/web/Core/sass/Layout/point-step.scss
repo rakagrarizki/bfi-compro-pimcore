@@ -52,6 +52,7 @@
         margin: 65px 0;
         text-align: center;
         display: flex;
+        justify-content: center;
 
         @include breakpoint(mobile) {
             margin: 20px 0;
