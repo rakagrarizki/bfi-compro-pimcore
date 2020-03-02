@@ -19,33 +19,6 @@ function isValidStep() {
   return isValid;
 }
 
-function checkLogin(){
-  var dataPhone = {
-    phone_number: $("#no_handphone").val()
-  };
-  $.ajax({
-    type: "POST",
-    url: "user/login",
-    data: dataPhone,
-    dataType: "json",
-    success: function(data) {
-        if (data.success === true) {
-          var token = localStorage.getItem("token");
-            if (data.result.header.status === 200 && token == null) {
-                $("#otp").removeClass("hide");
-                $("#getCredit-p-0").hide();
-                $(".steps").hide();
-                requestOTP(dataPhone);
-                $("#phone-input").val($("#no_handphone").val());
-            } else {
-              console.log("tidak masuk");
-          }
-        }
-      }
-    });
-  }
-
-
 function checkValid() {
   if (isValidStep()) {
     // do something
@@ -281,8 +254,9 @@ var isValidOtp = false;
       }
       if( currentIndex === 0){
         checkLogin();
-        return false;
+        return true;
       }
+      
       if ($(".actions > ul li a[href$='next']").parent().hasClass("inactive")) {
         return false;
       }
