@@ -53,7 +53,16 @@ $lang = $this->getLocale();
                         <h2 class="title"><?= $promo->getTitle();?></h2>
                         <div class="dateview periode">
                             <div><?= $this->t("period-promo"); ?> : </div>
-                            <?= $promo->getPromoStartDate();?> - <?= $promo->getPromoEndDate();?>
+                            <?php
+                                $timestampStartDate = \Carbon\Carbon::parse($promo->getPromoStartDate());
+                                $dateUnixStart = $timestampStartDate->timestamp;
+                                $dateStart = date("d F", $dateUnixStart);
+                                
+                                $timestampEndDate = \Carbon\Carbon::parse($promo->getPromoEndDate());
+                                $dateUnixEnd = $timestampEndDate->timestamp;
+                                $dateEnd = date("d F Y", $dateUnixEnd);
+                            ?>
+                            <?= $dateStart;?> - <?= $dateEnd;?>
                         </div>
                     </div>
                 </a>
