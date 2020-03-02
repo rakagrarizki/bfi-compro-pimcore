@@ -1,5 +1,6 @@
 .pimcore_area_bfi-title-accordion,
-.pimcore_area_bfi-report-accordion {
+.pimcore_area_bfi-report-accordion,
+.pimcore_area_bfi-tab-accordion-wysiwyg {
   &:first-of-type {
     padding-top: 40px;
   }
@@ -15,7 +16,7 @@
       border-bottom: solid 1px #dddddd;
       cursor: pointer;
         h4{
-          font-size: 24px !important;
+          font-size: 22px !important;
           position: relative;
           :after{
               content: "\f107";

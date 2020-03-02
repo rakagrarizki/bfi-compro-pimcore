@@ -9,7 +9,7 @@
                         <div class="three-box__item">
                             <h4><?= $this->input('title'); ?></h4>
                             <a class="<?= $this->link('url')->getClass(); ?>"
-                               href="<?= $this->link('url')->getHref(); ?>">
+                               href="<?= $this->link('url')->getHref(); ?>" <?= $this->link('url')->getAttributes(); ?> >
                                 <?= $this->link('url')->getText(); ?>
                             </a>
                         </div>

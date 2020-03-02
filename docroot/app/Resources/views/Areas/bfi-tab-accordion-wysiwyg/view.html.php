@@ -58,9 +58,9 @@
 
                                         <?php while($this->block('accordion')->loop()){ ?>
                                             <div class="panel panel-default">
-                                                <div class="panel-heading">
+                                                <div class="panel-heading" data-toggle="collapse" data-parent="#<?php echo $unik;?>" href="#<?php echo $unik."-".$a;?>">
                                                     <h4 class="panel-title">
-                                                        <a class="a-panelheading" data-toggle="collapse" data-parent="#<?php echo $unik;?>" href="#<?php echo $unik."-".$a;?>">
+                                                        <a class="a-panelheading" >
                                                             <?= $this->input("text1"); ?></a>
                                                     </h4>
                                                 </div>
