@@ -573,6 +573,10 @@ body{
                         font-weight : bold;
                         color: #04559F;
                         margin-right : 10px;
+                        width: 54px;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
                         
                         &:before {
                             content: '';
@@ -584,6 +588,9 @@ body{
                             border-radius: 7.5px;
                             background-color: #04559F;
                             margin-right : 10px;
+                            position: absolute;
+                            top: 5px;
+                            left: 0;
                         }
                     }
 
