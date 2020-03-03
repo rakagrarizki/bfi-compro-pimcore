@@ -30,6 +30,8 @@ $(document).ready(function(){
         }else if (value === 'non-nasabah'){
             $('input#customer_name').removeClass('formRequired');
             $('input#no_kontrak').removeClass('formRequired');
+            $('input#customer_name').val("");
+            $('input#no_kontrak').val("");
             $('input#customer_name').prop( "disabled", true );
             $('input#no_kontrak').prop( "disabled", true );
         }

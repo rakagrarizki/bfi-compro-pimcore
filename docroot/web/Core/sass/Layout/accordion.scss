@@ -270,7 +270,7 @@
                 @include breakpoint(mobile) {
                   padding-left: 25px;
                   left: 10px;
-                  text-decoration: underline;
+                  // text-decoration: underline;
                   text-transform: uppercase;
                   color: #565656;
                   font-weight: 700;
@@ -572,7 +572,7 @@
 
     a {
       position: relative;
-      margin: 0 10px 50px;
+      margin: 0 0 50px;
       display: inline-block;
       vertical-align: middle;
 
