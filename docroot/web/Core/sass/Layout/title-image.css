@@ -1,0 +1,18 @@
+.image-title {
+  margin-bottom: 80px;
+}
+
+.image-title h3 {
+  font-size: 40px;
+  font-family: 'HelveticaNeue-Bold';
+  margin: 80px 0 50px 0;
+  text-align: center;
+  color: #04559F;
+}
+
+.image-title img {
+  margin: 0;
+  width: 100%;
+  height: auto;
+}
+/*# sourceMappingURL=title-image.css.map */

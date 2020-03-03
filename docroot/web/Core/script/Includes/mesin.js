@@ -387,10 +387,13 @@ var isValidOtp = false;
         return true;
       }
       if( currentIndex === 0){
-        checkLogin();
+        console.log("step1");
+        // checkLogin();
+        // byCheckLogin();
+        // return true;
       }
       // else{
-      //   return true;
+      //   byCheckLogin();
       // }
       form.validate().settings.ignore = ":disabled,:hidden";
       return sendLeadData();
