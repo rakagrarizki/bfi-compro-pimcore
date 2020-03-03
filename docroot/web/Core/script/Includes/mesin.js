@@ -386,6 +386,12 @@ var isValidOtp = false;
       if (currentIndex > newIndex) {
         return true;
       }
+      if( currentIndex === 0){
+        checkLogin();
+      }
+      // else{
+      //   return true;
+      // }
       form.validate().settings.ignore = ":disabled,:hidden";
       return sendLeadData();
       // return form.valid();
