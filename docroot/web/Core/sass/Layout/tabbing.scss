@@ -671,6 +671,12 @@
 .profesi-box{
     margin-bottom: 40px;
     padding: 0 20px 0 20px;
+
+    .cards-type-13{
+        @include breakpoint(mobile){
+            height: auto;
+        }
+    }
 }
 
 .form-body--credit-simulasi{
