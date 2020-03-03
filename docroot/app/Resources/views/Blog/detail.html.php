@@ -82,7 +82,7 @@ $urlTwitter = " https://twitter.com/share?text=$titleshare&url=$fixedurl&wrap_li
                     <img src="<?= $relatedBlog->getImage();?>" alt="">
                 </picture>
                 <div class="caption">
-                    <h3 class="tag">Enterpreneur</h3>
+                    <h3 class="tag"><?= $relatedBlog->getBlogCategory()->getName();?></h3>
                     <h2 class="title"><?= $relatedBlog->getTitle();?></h2>
                     <div class="dateview">
                         <span class="date"><?= $relatedBlog->getDate();?></span>
