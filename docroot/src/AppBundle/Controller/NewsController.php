@@ -54,6 +54,7 @@ class NewsController extends FrontendController
             $relatedNews = new News\Listing();
             $relatedNews->addConditionParam("Category__id = ?",$news->getCategory()->getId(),"AND");
             $relatedNews->addConditionParam("oo_id != ?", $news->getId(),"AND");
+            $relatedNews->setLimit(4);
             $relatedNews->load();
             $this->view->relatedNews = $relatedNews;
         }
