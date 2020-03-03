@@ -17,8 +17,29 @@ $promo = $this->promo;
 <?php
 //dump($this->getTitle());exit;
 $this->headTitle()->append('BFI - '. $promo->getTitle());
+
+// setting content type and character set
+$this->headMeta()->appendHttpEquiv('Content-Type', 'text/html; charset=UTF-8')->appendHttpEquiv('Content-Language', 'en-US');
+
 //echo $this->headTitle();
+$this->headMeta()->appendName('description', $promo->getDescription());
 $this->headMeta('BFI - '. $promo->getTitle(), "title");
+// dump($this->headMeta());
+
+// setting open graph tags
+// <!-- Open Graph / Facebook -->
+$this->headMeta()->appendName('og:url', BASEURL.'/'.$lang. $url . $promo->getSlug());
+$this->headMeta()->appendName('og:type', 'article');
+$this->headMeta()->appendName('og:title', 'BFI - '. $promo->getTitle());
+$this->headMeta()->appendName('og:description', $promo->getDescription());
+$this->headMeta()->appendName('og:image', BASEURL . $promo->getImage());
+
+// <!-- Twitter -->
+$this->headMeta()->appendName('twitter:card', 'summary');
+$this->headMeta()->appendName('twitter:title', 'BFI - '. $promo->getTitle());
+$this->headMeta()->appendName('twitter:url', BASEURL.'/'.$lang. $url . $promo->getSlug());
+$this->headMeta()->appendName('twitter:image', BASEURL . $promo->getImage());
+$this->headMeta()->appendName('twitter:description', $promo->getDescription());
 
 ?>
 
