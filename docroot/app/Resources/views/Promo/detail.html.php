@@ -18,10 +18,6 @@ $promo = $this->promo;
 //dump($this->getTitle());exit;
 $this->headTitle()->append('BFI - '. $promo->getTitle());
 
-// setting open graph tags
-$this->headMeta()->setProperty('og:title', 'BFI - '. $promo->getTitle());
-$this->headMeta()->setProperty('og:type', 'article');
-
 // setting content type and character set
 $this->headMeta()->appendHttpEquiv('Content-Type', 'text/html; charset=UTF-8')->appendHttpEquiv('Content-Language', 'en-US');
 
@@ -29,6 +25,21 @@ $this->headMeta()->appendHttpEquiv('Content-Type', 'text/html; charset=UTF-8')->
 $this->headMeta()->appendName('description', $promo->getDescription());
 $this->headMeta('BFI - '. $promo->getTitle(), "title");
 // dump($this->headMeta());
+
+// setting open graph tags
+// <!-- Open Graph / Facebook -->
+$this->headMeta()->setProperty('og:type', 'article');
+$this->headMeta()->setProperty('og:url', BASEURL.'/'.$lang. $url . $promo->getSlug());
+$this->headMeta()->setProperty('og:title', 'BFI - '. $promo->getTitle());
+$this->headMeta()->setProperty('og:description', $promo->getDescription());
+$this->headMeta()->setProperty('og:image', BASEURL . $promo->getImage());
+
+// <!-- Twitter -->
+$this->headMeta()->setProperty('twitter:card', 'summary_large_image');
+$this->headMeta()->setProperty('twitter:url', BASEURL.'/'.$lang. $url . $promo->getSlug());
+$this->headMeta()->setProperty('twitter:title', 'BFI - '. $promo->getTitle());
+$this->headMeta()->setProperty('twitter:description', $promo->getDescription());
+$this->headMeta()->setProperty('twitter:image', BASEURL . $promo->getImage());
 
 ?>
 
@@ -54,6 +65,7 @@ $this->headMeta('BFI - '. $promo->getTitle(), "title");
             $urlcheck = Pimcore\Model\Asset::getByPath($imagethumbnail);
             $urlFacebook = " https://www.facebook.com/sharer/sharer.php?u=" . $fixedurl . "&title=" . $titleshare . "&picture=" . $imagethumbnail;
             $urlTwitter = " https://twitter.com/share?text=$titleshare&url=$fixedurl&wrap_links=true ";
+            dump($fixedurl);
         ?>
         <div class="container">
             <article>
