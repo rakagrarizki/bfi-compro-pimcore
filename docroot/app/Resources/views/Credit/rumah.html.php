@@ -384,14 +384,14 @@ $blogList->setLimit(4);
                                                                 Rp 0
                                                             </td>
                                                         </tr>
-                                                        <tr>
+                                                        <!-- <tr>
                                                             <td>
-                                                                <?= $this->translate('label-edu-biaya-adm') ?>
+                                                                </?= $this->translate('label-edu-biaya-adm') ?>
                                                             </td>
                                                             <td class="currency" tahun="1">
                                                                 Rp 0
                                                             </td>
-                                                        </tr>
+                                                        </tr> -->
                                                         <!--  <tr>
                                                              <td class="textsubcurrency">
                                                                  Tahun ke-1 [All Risk Only*]
