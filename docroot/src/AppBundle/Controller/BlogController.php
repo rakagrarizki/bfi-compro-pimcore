@@ -54,6 +54,7 @@ class BlogController extends FrontendController
             $relatedBlogs = new BlogArticle\Listing();
             $relatedBlogs->addConditionParam("BlogCategory__id = ?", $blog->getBlogCategory()->getId(), "AND");
             $relatedBlogs->addConditionParam("oo_id != ?", $blog->getId(), "AND");
+            $relatedBlogs->setLimit(4);
             $relatedBlogs->load();
             $this->view->relatedBlogs = $relatedBlogs;
         }
