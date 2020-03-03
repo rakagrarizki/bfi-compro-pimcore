@@ -17,8 +17,18 @@ $promo = $this->promo;
 <?php
 //dump($this->getTitle());exit;
 $this->headTitle()->append('BFI - '. $promo->getTitle());
+
+// setting open graph tags
+$this->headMeta()->setProperty('og:title', 'BFI - '. $promo->getTitle());
+$this->headMeta()->setProperty('og:type', 'article');
+
+// setting content type and character set
+$this->headMeta()->appendHttpEquiv('Content-Type', 'text/html; charset=UTF-8')->appendHttpEquiv('Content-Language', 'en-US');
+
 //echo $this->headTitle();
+$this->headMeta()->appendName('description', $promo->getDescription());
 $this->headMeta('BFI - '. $promo->getTitle(), "title");
+// dump($this->headMeta());
 
 ?>
 
