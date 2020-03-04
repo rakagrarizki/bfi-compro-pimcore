@@ -254,13 +254,19 @@
 
           .download-btn {
             margin: auto 0;
-            width: 30%;
+            // width: 30%;
+            width: 50%;
 
             @include breakpoint(mobile) {
               width: 100%;
             }
 
             .down-box {
+              float: right;
+
+              @include breakpoint(mobile){
+                float: none;
+              }
 
               .cta-down {
                 position: relative;
