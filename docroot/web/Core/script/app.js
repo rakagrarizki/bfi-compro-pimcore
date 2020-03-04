@@ -548,6 +548,7 @@
                             asuransiPlaceholder = "Type of Insurance";
                         }
                         $("#tahun" + i + " .opsiasuransi").select2({
+                            minimumResultsForSearch: Infinity,
                             dropdownParent: $(
                                 "#tahun" + i + " .select-wrapper"
                             ),
