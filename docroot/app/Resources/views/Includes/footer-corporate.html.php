@@ -96,7 +96,7 @@ if($this->editmode) : ?>
                 </p>
             </div>
             <div class="col-md-4 footer-center">
-                <span><a href="tel:1500018"><?= $this->translate("customer-care") ?> <i class="fa fa-phone"></i> 1500018</a></span>
+                <span><a href="tel:1500018"><?= $this->translate("customer-care") ?> <img src="/static/images/icon/telephone.png" alt=""> 1500018</a></span>
                 <label><?= $this->translate("Newsletter") ?></label>
                 <form class="form-inline" id="sendNewsletter" action="/register/newsletter"
                       method="POST">
@@ -128,10 +128,10 @@ if($this->editmode) : ?>
 <div class="footer-bottom">
     <div class="container">
         <div class="row">
-            <div class="col-sm-5">
+            <div class="col-sm-4">
                 <span>&copy; <?php echo date("Y"); ?> - PT BFI Finance Indonesia Tbk</span>
             </div>
-            <div class="col-sm-7">
+            <div class="col-sm-8">
                 <ul class="nav-footer">
                     <li><a href="<?=$this->link('career')->getHref();?>"><?= $this->translate("career") ?></a></li>
                     <li><a href="<?=$this->link('peluang-bisnis')->getHref();?>"><?= $this->translate("peluang-bisnis") ?></a></li>
