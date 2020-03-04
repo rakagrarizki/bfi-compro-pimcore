@@ -523,7 +523,7 @@
                             "</div>" +
                             '<div class="list-select select-wrapper">' +
                             '<select class="c-custom-select-trans form-control formRequired opsiasuransi"' +
-                            'name="status" multiple="multiple"><option disabled></option></select>' +
+                            'name="status"><option disabled></option></select>' +
                             "</div>" +
                             '<div class="error-wrap"></div>' +
                             "</div>";
