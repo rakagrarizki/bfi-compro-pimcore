@@ -100,15 +100,9 @@ function sendLeadData() {
     }
     var sendData = postData(_url, _data);
     if (currentStep === 0) {
-      // submission_id = sendData.data.submission_id; 
-      // if (localStorage.getItem('token') === null) {
-        checkLogin();  
-        //  return false;
-      // } else if (localStorage.getItem('token') != null)  {
-      //     sendLeadData();
-      //     return true;
-      // }
+      submission_id = sendData.data.submission_id; 
     }
+  
     if (sendData.success === "1") {
       if (currentStep === 1) {
         if (sendData.data.is_branch === false) {
@@ -259,9 +253,15 @@ var isValidOtp = false;
       if (currentIndex > newIndex) {
         return true;
       }
-      // if( currentIndex === 0){
-        
-      //   }
+      if( currentIndex === 0){
+            if (localStorage.getItem('token') === null) {
+              checkLogin();  
+              return false;
+             } else {
+            sendLeadData();
+           return true;
+         }
+        }
       if ($(".actions > ul li a[href$='next']").parent().hasClass("inactive")) {
         return false;
       }
