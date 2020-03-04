@@ -46,6 +46,12 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                         <div class="error-wrap"></div>
                     </div>
 
+                    <div class="form-group">
+                        <label for="no_handphone"><?= $this->translate('form-hp') ?></label>
+                        <input type="tel" pattern="\d*" class="form-control formPhoneNumber" name="no_handphone" id="no_handphone" maxlength="13" placeholder="<?= $this->translate('placeholder-hp') ?>">
+                        <div class="error-wrap"></div>
+                    </div>
+
                     <div id="personal-detail" style="display: none;">
 
                         <div class="form-group">
