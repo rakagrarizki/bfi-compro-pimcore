@@ -1,3 +1,72 @@
+function sendLeadData2() {
+    if (form.valid() || localStorage.getItem('token') != null) {
+      var currentStep = form.steps("getCurrentIndex");
+      var _url = "";
+      var _data = {};
+  
+      switch (currentStep) {
+        case 0:
+          _url = "/credit/save-edu-leads1";
+          _data = {
+            "submission_id": "",
+            "name": $("#nama_lengkap").val(),
+            "email": $("#email_pemohon").val(),
+            "phone_number": $("#no_handphone").val(),
+            "path_ktp": $("#ktp").val()
+          }
+          break;
+        case 1:
+          _url = "/credit/save-edu-leads2";
+          _data = {
+            "submission_id": submission_id,
+            "province_id": $("#provinsi").val()[0],
+            "city_id": $("#kota").val()[0],
+            "district_id": $("#kecamatan").val()[0],
+            "subdistrict_id": $("#kelurahan").val()[0],
+            "zipcode_id": $('#kode_pos').data('value'),
+            "address": $("#alamat_lengkap").val()
+          }
+          break;
+        case 2:
+          _url = "/credit/save-edu-leads3";
+          _data = {
+            "submission_id": submission_id
+          }
+          break;
+        case 3:
+          _url = "/credit/save-edu-leads4";
+          _data = {
+            "submission_id": submission_id
+          }
+          break;
+        case 4:
+          _url = "/credit/save-edu-leads5";
+          _data = {
+            "submission_id": submission_id
+          }
+          break;
+      }
+      var sendData = postData(_url, _data);
+      if (currentStep === 0) {
+        submission_id = sendData.data.submission_id; 
+      }
+      if (sendData.success === "1") {
+        if (currentStep === 1) {
+          if (sendData.data.is_branch === false) {
+            $("#modal-branch").modal('show');
+          }
+          return sendData.data.is_branch
+        } else {
+          return true;
+        }
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  }
+
 function pushGeneralOTP(cb) {
     submission_id = "";
     var _URL = "";
@@ -96,7 +165,10 @@ function pushGeneralOTP(cb) {
     }
 }
 
-function checkLogin(){
+function checkLogin(currentIndex){
+    $("#otp").removeClass("hide");
+    $("#getCredit-p-0").hide();
+    $(".steps").hide();
     var dataPhone = {
       phone_number: $("#no_handphone").val()
     };
@@ -108,33 +180,86 @@ function checkLogin(){
       success: function(data) {
           if (data.success === true) {
             var token = localStorage.getItem("token");
-              if (data.result.header.status === 200 && token == null) {
-                  $("#otp").removeClass("hide");
-                  $("#getCredit-p-0").hide();
-                  $("#getCredit-p-1").hide();
-                  $(".steps").hide();
+              if (data.result.header.status === 200 || token === null ) {
                   console.log(dataPhone);
                   requestOTP(dataPhone);
                   $("#phone-input").val($("#no_handphone").val());
+                  console.log("checklogin true");
+                  submission_id = sendData.data.submission_id; 
+              }else{
+                submission_id = sendData.data.submission_id; 
+                // sendLeadData2();
+                // console.log("checklogin false");
+                // return true;
+                // sendLeadData2(function() {
+                //     console.log("checkLogin error");
+                //     // sendLeadData();
+                //     $("#otp").addClass("hide");
+                //     $("#getCredit-p-0").hide();
+                //     $("#getCredit-p-1").show();
+                //     // $(".steps").show();
+                //     // $("li:nth-child(2)").removeClass("disabled");
+                //     // $("li:nth-child(2)").addClass("current");
+                //     // $("li:nth-child(1)").addClass("done");
+                //     // $("li:nth-child(1)").removeClass("error");
+                //     // $("li:nth-child(1)").addClass("current");
+                //     });
+                }
+            }
+         }
+      });
+   }
+
+   function byCheckLogin(){
+    var dataPhone = {
+      phone_number: $("#no_handphone").val()
+    };
+    $.ajax({
+      type: "POST",
+      url: "user/login",
+      data: dataPhone,
+      dataType: "json",
+      success: function(data) {
+          if (data.success === true) {
+            var token = localStorage.getItem("token");
+              if (data.result.header.status != 200 && token != null) {
+                   pushGeneralOTP(function() {
+                    console.log("next step");
+                    $(".steps").show();
+                    // $("#getCredit-p-1").hide();
+                    $(".nav-item-1").addClass("active");
+                    $(".nav-item-2").addClass("diabled");
+                    $("#getCredit-p-0").show();
+                });
+                //   $("#otp").removeClass("hide");
+                //   $("#getCredit-p-0").hide();
+                //   $("#getCredit-p-1").hide();
+                //   $(".steps").hide();
+                //   console.log(dataPhone);
+                //   requestOTP(dataPhone);
+                //   $("#phone-input").val($("#no_handphone").val());
               } else {
+                  console.log("failed by checklogin");
+                
                     // console.log("next step");
                     // $(".steps").show();
                     // $("#getCredit-p-1").show();
                     // $(".nav-item-1").addClass("active");
                     // $(".nav-item-2").addClass("diabled");
-                pushGeneralOTP(function() {
-                    console.log("next step");
-                    $(".steps").show();
-                    $("#getCredit-p-1").hide();
-                    $(".nav-item-1").addClass("active");
-                    $(".nav-item-2").addClass("diabled");
-                    $("#getCredit-p-1").show();
-                });
+                // pushGeneralOTP(function() {
+                //     console.log("next step");
+                //     $(".steps").show();
+                //     $("#getCredit-p-1").hide();
+                //     $(".nav-item-1").addClass("active");
+                //     $(".nav-item-2").addClass("diabled");
+                //     $("#getCredit-p-1").show();
+                // });
             }
           }
         }
       });
    }
+
    function loginCustomer() {
     var dataPhone = {
         phone_number: $("#phone-input").val()

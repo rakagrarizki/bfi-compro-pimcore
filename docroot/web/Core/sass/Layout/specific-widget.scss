@@ -58,7 +58,8 @@
   .title-wrapper,
   .paragraf-title{  
     text-align: left;
-    padding-left: 15px !important;
+    // padding-left: 15px !important;
+    padding: 0 !important;
   }
     @include breakpoint(mobile){
         h2.title-wrapper{

@@ -100,7 +100,14 @@ function sendLeadData() {
     }
     var sendData = postData(_url, _data);
     if (currentStep === 0) {
-      submission_id = sendData.data.submission_id; 
+      // submission_id = sendData.data.submission_id; 
+      // if (localStorage.getItem('token') === null) {
+        checkLogin();  
+        //  return false;
+      // } else if (localStorage.getItem('token') != null)  {
+      //     sendLeadData();
+      //     return true;
+      // }
     }
     if (sendData.success === "1") {
       if (currentStep === 1) {
@@ -252,11 +259,9 @@ var isValidOtp = false;
       if (currentIndex > newIndex) {
         return true;
       }
-      if( currentIndex === 0){
-        checkLogin();
-        return true;
-      }
-      
+      // if( currentIndex === 0){
+        
+      //   }
       if ($(".actions > ul li a[href$='next']").parent().hasClass("inactive")) {
         return false;
       }
