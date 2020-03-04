@@ -309,6 +309,18 @@
         }
     }
 
+    .btn-beranda {
+        a {
+            border: 1px solid #F8991C;
+            background: #F9991C;
+            text-transform: uppercase;
+        }
+        
+        span {
+            margin-left: 10px;
+        }
+    }
+
     nav {
         text-align: center;
 

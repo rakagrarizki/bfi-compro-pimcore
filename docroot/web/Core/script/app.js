@@ -1044,7 +1044,7 @@
         return number.replace(/[.]/g, "");
     }
 
-    function saveleads1() {
+    function saveleads1(cb) {
         submission_id = "";
         var _URL = "";
         var _data = {};
@@ -6237,37 +6237,6 @@
     });
   }
 
-  function step2(){
-    hideTab1();
-    showTab2();
-    scrollToTop();
-    step1Done = true;
-    $(".nav-item-1").removeClass("active");
-    $(".nav-item-1").addClass("done");
-    $(".nav-item-2").addClass("active");
-    if ($(".nav-item-1").hasClass("done")) {
-        $(".nav-item-1").on("click", function(
-            e
-        ) {
-            e.preventDefault();
-            hideCurrentTab();
-            showTab1();
-            $(".nav-item-1").addClass("active");
-            if (
-                $(".nav-item-1").hasClass(
-                    "active"
-                )
-            ) {
-                hideTab2();
-                hideTab3();
-                hideTab4();
-                hideTab5();
-                hideTab6();
-            }
-        });
-    }
-  }
-
   function verifiedOTPCredit() {
     var otpInput = $("input[name='digit[]']").map(function() {
             return $(this).val();
@@ -6300,9 +6269,8 @@
                 localStorage.setItem("token", token);
                 console.log("token : " + token);
                 getCustomer(token);
-                step2();
                 $("#otp").addClass("hide");
-                $("#myModal").show();
+                saveleads2();
                 $("#nama_lengkap").attr('disabled','disabled');
                 $("#email_pemohon").attr('disabled','disabled');
                 $("#no_handphone").attr('disabled','disabled');
@@ -6323,6 +6291,37 @@
     });
   }
   
+  function saveleads2 () {
+    $("#myModal").show();
+    $("#menu1").hide();
+    $("#menu2").show();
+    step1Done = true;
+    $(".nav-item-1").removeClass("active");
+    $(".nav-item-1").addClass("done");
+    $(".nav-item-2").addClass("active");
+    if ($(".nav-item-1").hasClass("done")) {
+        $(".nav-item-1").on("click", function(
+            e
+        ) {
+            e.preventDefault();
+            hideCurrentTab();
+            $("#menu1").show();
+            $(".nav-item-1").addClass("active");
+            if (
+                $(".nav-item-1").hasClass(
+                    "active"
+                )
+            ) {
+                $("#menu2").hide();
+                $("#menu3").hide();
+                $("#menu4").hide();
+                $("#menu5").hide();;
+                $("#menu6").hide();
+            }
+        });
+    }
+  }
+
   function getCustomer(token) {
     $.ajax({
         type: "GET",

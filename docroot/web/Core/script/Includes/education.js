@@ -253,15 +253,15 @@ var isValidOtp = false;
       if (currentIndex > newIndex) {
         return true;
       }
-      if( currentIndex === 0){
-            if (localStorage.getItem('token') === null) {
-              checkLogin();  
-              return false;
-             } else {
-            sendLeadData();
-           return true;
-         }
-        }
+      // if( currentIndex === 0){
+      //       if (localStorage.getItem('token') === null) {
+      //         checkLogin();  
+      //         return false;
+      //        } else {
+      //       sendLeadData();
+      //      return true;
+      //    }
+      //   }
       if ($(".actions > ul li a[href$='next']").parent().hasClass("inactive")) {
         return false;
       }
