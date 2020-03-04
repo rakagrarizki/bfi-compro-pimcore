@@ -43,7 +43,7 @@ $(document).ready(function(){
         $('textarea#message').css('padding-top', '20px');
     }
 
-    $('textarea#message').on('change', function(){ 
+    $('textarea#message').on('click', function(){ 
         $('label[for="message"]').css('display', 'block').css('padding', '15px 15px 5px');
         $('textarea#message').css('padding-top', '35px');
     })
