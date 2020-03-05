@@ -284,7 +284,7 @@ $blogList->setLimit(4);
                                         </div>
 
                                         <div class="col-md-6 no-padding-mobile">
-                                            <div class="form-group">
+                                            <!-- <div class="form-group">
                                                 <label for="tipe_paket"><?= $this->translate('label-tipe-paket') ?></label>
                                                 <div class="input-group inputform">
                                                     <div class="ipt-radio">
@@ -305,7 +305,7 @@ $blogList->setLimit(4);
                                                     </div>
                                                 </div>
                                                 <div class="error-wrap"></div>
-                                            </div>
+                                            </div> -->
                                             <div class="form-group">
                                                 <label for="estimasi_harga"><?= $this->translate('label-estimasi-harga') ?></label>
                                                 <div class="input-group inputform">
