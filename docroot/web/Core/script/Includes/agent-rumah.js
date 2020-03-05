@@ -451,7 +451,7 @@ form.steps({
   /* Labels */
   labels: {
     finish: "Selesai",
-    next: "Send OTP",
+    next: "Selanjutnya",
     previous: "Sebelumnya",
     loading: "Loading ..."
   },
