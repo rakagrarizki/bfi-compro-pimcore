@@ -82,11 +82,16 @@ $urlTwitter = " https://twitter.com/share?text=$titleshare&url=$fixedurl&wrap_li
                 <picture>
                     <img src="<?= $relatedNewsData->getImage();?>" alt="">
                 </picture>
+                <?php
+                    $timestampDate = \Carbon\Carbon::parse($relatedNewsData->getDate());
+                    $dateUnix = $timestampDate->timestamp;
+                    $date = date("d.m.y", $dateUnix);
+                ?>
                 <div class="caption">
                     <h3 class="tag"><?= $relatedNewsData->getCategory()->getName();?></h3>
                     <h2 class="title"><?= $relatedNewsData->getTitle();?></h2>
                     <div class="dateview">
-                        <span class="date"><?= $relatedNewsData->getDate();?></span>
+                        <span class="date"><?= $date;?></span>
                         <span class="view"><i class="fa fa-eye"></i> <?= $relatedNewsData->getViews()?></span>
                     </div>
                 </div>

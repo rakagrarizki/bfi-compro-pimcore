@@ -117,24 +117,9 @@ $blogList->setLimit(4);
                                             </div>
                                             <input type="hidden" class="form-control formRequired" name="ktp" id="ktp">
                                             <div class="error-wrap"></div>
-                                            <span><?= $this->translate('placeholderNoktp') ?></span>
-                                            <!-- <span>Pastikan foto KTP terlihat jelas (max. ukuran file adalah 1MB)</span> -->
+                                            <span class="notif-ktp"><?= $this->translate('placeholderNoktp') ?></span>
+                                            <div class="label-cekLogin hide"><?= $this->translate('text-cekLogin') ?><a href="#" class="logout" onclick="return logout('id');"><?= $this->translate('status-login') ?></a></div>
                                         </div>
-                                        <!-- <div class="form-group">
-                                            <label for="foto_ktp">Unggah Foto KTP</label>
-                                            <label class="form-input">
-                                                <div class="file-upload">
-                                                    <div class="file-select">
-                                                        <div class="file-select-button" id="fileName">Ubah File</div>
-                                                        <div class="file-select-name" id="noFile">No file chosen...</div>
-                                                        <input type="file" class="formRequired" name="chooseFile" id="chooseFile">
-                                                    </div>
-                                                </div>
-                                            </label>
-                                            <p id="nama-file"></p>
-                                            <div class="error-wrap"></div>
-                                            <span>Pastikan foto KTP terlihat jelas (max. ukuran file adalah 1MB)</span>
-                                        </div> -->
                                     </div>
                                     <div class="button-area text-right next">
 
@@ -670,7 +655,7 @@ $blogList->setLimit(4);
                                                         <h3 class="tag"><?= $blog->getBlogCategory()->getName(); ?></h3>
                                                         <h2 class="title"><?= $blog->getTitle(); ?></h2>
                                                         <div class="dateview">
-                                                            <span class="date"><?= date('Y-m-d', strtotime($blog->getDate())); ?></span>
+                                                            <span class="date"><?= date('d.m.y', strtotime($blog->getDate())); ?></span>
                                                             <span class="view"><i class="fa fa-eye"></i><?= $blog->getViews(); ?></span>
                                                         </div>
                                                     </div>

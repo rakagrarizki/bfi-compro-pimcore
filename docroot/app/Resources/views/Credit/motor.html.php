@@ -88,6 +88,7 @@ $blogList->setLimit(4);
                                             <input type="tel" pattern="\d*" class="form-control formPhoneNumber" name="no_handphone" id="no_handphone" maxlength="13"
                                                    placeholder="<?= $this->translate('placeholder-hp')?>">
                                             <div class="error-wrap"></div>
+                                            <div class="label-cekLogin hide"><?= $this->translate('text-cekLogin') ?><a href="#" class="logout" onclick="return logout('id');"><?= $this->translate('status-login') ?></a></div>
                                         </div>
                                         <!-- <div class="form-group">
                                             <label for="foto_ktp">Unggah Foto KTP</label>
@@ -618,7 +619,7 @@ $blogList->setLimit(4);
                                                         <h3 class="tag"><?= $blog->getBlogCategory()->getName(); ?></h3>
                                                         <h2 class="title"><?= $blog->getTitle(); ?></h2>
                                                         <div class="dateview">
-                                                            <span class="date"><?= date('Y-m-d', strtotime($blog->getDate())); ?></span>
+                                                            <span class="date"><?= date('d.m.y', strtotime($blog->getDate())); ?></span>
                                                             <span class="view"><i class="fa fa-eye"></i><?= $blog->getViews(); ?></span>
                                                         </div>
                                                     </div>

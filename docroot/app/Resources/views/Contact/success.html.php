@@ -47,7 +47,7 @@ if ($site == "corporate") {
                             <p><?= $blog->getBlogCategory()->getName(); ?></p>
                             <h4><a href="<?= '/' . $this->getLocale() . '/blog/' . $blog->getSlug(); ?>"><?= $blog->getTitle(); ?></a></h4>
                             <div class="dateview">
-                                <span class="date"><?= date('Y-m-d', strtotime($blog->getDate())); ?></span>
+                                <span class="date"><?= date('d.m.y', strtotime($blog->getDate())); ?></span>
                                 <span class="view"><i class="fa fa-eye"></i><?= $blog->getViews(); ?></span>
                             </div>
                         </div>

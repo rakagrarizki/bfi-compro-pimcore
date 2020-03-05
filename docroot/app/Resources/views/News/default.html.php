@@ -48,11 +48,16 @@ $lang = $this->getLocale();
                 <picture>
                     <img src="<?= $news->getImage();?>" alt="">
                 </picture>
+                <?php
+                    $timestampDate = \Carbon\Carbon::parse($news->getDate());
+                    $dateUnix = $timestampDate->timestamp;
+                    $date = date("d.m.y", $dateUnix);
+                ?>
                 <div class="caption">
                     <h3 class="tag"><?= $news->getCategory() ? $news->getCategory()->getName(): "";?></h3>
                     <h2 class="title"><?= $news->getTitle();?></h2>
                     <div class="dateview">
-                        <span class="date"><?= $news->getDate();?></span>
+                        <span class="date"><?= $date;?></span>
                         <span class="view"><i class="fa fa-eye"></i> <?= $news->getViews() == "" ? "0": $news->getViews(); ?></span>
                     </div>
                 </div>

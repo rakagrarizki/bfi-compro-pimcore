@@ -45,7 +45,7 @@ if ($site == "corporate") {
                     <h3 class="tag"><?= $news->getCategory()->getName(); ?></h3>
                     <h2 class="title"><?= $news->getTitle(); ?></h2>
                     <div class="dateview">
-                        <span class="date"><?= date('Y-m-d', strtotime($news->getDate())); ?></span>
+                        <span class="date"><?= date('d.m.y', strtotime($news->getDate())); ?></span>
                         <span class="view"><i class="fa fa-eye"></i><?= $news->getViews(); ?></span>
                     </div>
                 </div>

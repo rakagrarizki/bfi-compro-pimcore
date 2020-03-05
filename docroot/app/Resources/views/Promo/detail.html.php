@@ -28,18 +28,18 @@ $this->headMeta('BFI - '. $promo->getTitle(), "title");
 
 // setting open graph tags
 // <!-- Open Graph / Facebook -->
-$this->headMeta()->setProperty('og:url', BASEURL.'/'.$lang. $url . $promo->getSlug());
-$this->headMeta()->setProperty('og:type', 'article');
-$this->headMeta()->setProperty('og:title', 'BFI - '. $promo->getTitle());
-$this->headMeta()->setProperty('og:description', $promo->getDescription());
-$this->headMeta()->setProperty('og:image', BASEURL . $promo->getImage());
+$this->headMeta()->appendName('og:url', BASEURL.'/'.$lang. $url . $promo->getSlug());
+$this->headMeta()->appendName('og:type', 'article');
+$this->headMeta()->appendName('og:title', 'BFI - '. $promo->getTitle());
+$this->headMeta()->appendName('og:description', $promo->getDescription());
+$this->headMeta()->appendName('og:image', BASEURL . $promo->getImage());
 
 // <!-- Twitter -->
-$this->headMeta()->setProperty('twitter:card', 'summary');
-$this->headMeta()->setProperty('twitter:title', 'BFI - '. $promo->getTitle());
-$this->headMeta()->setProperty('twitter:url', BASEURL.'/'.$lang. $url . $promo->getSlug());
-$this->headMeta()->setProperty('twitter:image', BASEURL . $promo->getImage());
-$this->headMeta()->setProperty('twitter:description', $promo->getDescription());
+$this->headMeta()->appendName('twitter:card', 'summary');
+$this->headMeta()->appendName('twitter:title', 'BFI - '. $promo->getTitle());
+$this->headMeta()->appendName('twitter:url', BASEURL.'/'.$lang. $url . $promo->getSlug());
+$this->headMeta()->appendName('twitter:image', BASEURL . $promo->getImage());
+$this->headMeta()->appendName('twitter:description', $promo->getDescription());
 
 ?>
 
