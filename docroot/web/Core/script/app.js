@@ -1045,72 +1045,6 @@
         return number.replace(/[.]/g, "");
     }
 
-    function saveleads1(cb) {
-        submission_id = "";
-        var _URL = "";
-        var _data = {};
-        var nama_lengkap = $("#nama_lengkap").val(),
-            email_pemohon = $("#email_pemohon").val(),
-            no_telepon = $("#no_handphone").val(),
-            jenis_kredit = $("#jenis_form").val();
-  
-        switch (jenis_kredit) {
-            case "MOBIL":
-                _URL = "/credit/save-car-leads1";
-                break;
-            case "MOTOR":
-                _URL = "/credit/save-motorcycle-leads1";
-                break;
-            case "SURAT BANGUNAN":
-                _URL = "/credit/save-pbf-leads1";
-                _data = {
-                    dob: reformatDate($("#tgl_lahir").val()),
-                    profession_id: $("#pekerjaan").val()[0],
-                    salary: reformatMoney($("#penghasilan").val()),
-                    path_ktp: $("#ktp").val()
-                };
-                break;
-        }
-  
-        if (_URL !== "") {
-            _data = Object.assign(_data, {
-                submission_id: submission_id,
-                name: nama_lengkap,
-                email: email_pemohon,
-                phone_number: no_telepon
-            });
-  
-            $.ajax({
-                type: "POST",
-                url: _URL,
-                data: _data,
-                dataType: "json",
-                tryCount: 0,
-                retryLimit: retryLimit,
-                error: function(xhr, textStatus, errorThrown) {
-                    retryAjax(this, xhr);
-                },
-                fail: function(xhr, textStatus, error) {
-                    retryAjax(this, xhr);
-                },
-                success: function(result) {
-                    if (result.success === "1") {
-                        submission_id = result.data.submission_id;
-                        credits.angunan.jenis_angunan = htmlEntities(
-                            jenis_kredit
-                        );
-                        credits.pemohon.nama = htmlEntities(nama_lengkap);
-                        credits.pemohon.email = htmlEntities(email_pemohon);
-                        credits.pemohon.no_handphone = htmlEntities(no_telepon);
-                        cb();
-                    } else {
-                        console.log("error" + result.message);
-                    }
-                }
-            });
-        }
-    }
-  
     function pushDataPemohon2(cb) {
         submission_id = "";
         var _URL = "";
@@ -2292,8 +2226,8 @@
                     dataType: "json",
                     success: function(data) {
                         if (data.success === true) {
-                          var token = localStorage.getItem("token");
-                            if (data.result.header.status === 200) {
+                            var token = localStorage.getItem("token");
+                            if (data.result.header.status === 200 && token === null) {
                                 $("#otp").removeClass("hide");
                                 $("#myModal").hide();
                                 requestOTP(dataPhone);
@@ -2309,9 +2243,7 @@
                                     $(".nav-item-1").addClass("done");
                                     $(".nav-item-2").addClass("active");
                                     if ($(".nav-item-1").hasClass("done")) {
-                                        $(".nav-item-1").on("click", function(
-                                            e
-                                        ) {
+                                        $(".nav-item-1").on("click", function(e) {
                                             e.preventDefault();
                                             hideCurrentTab();
                                             showTab1();
@@ -6237,6 +6169,126 @@
         }
     });
   }
+  var credits2 = {
+    angunan: {
+        jenis_angunan: ""
+    },
+
+    pemohon: {
+        nama: "",
+        email: "",
+        no_handphone: ""
+    },
+
+    tempat_tinggal: {
+        provinsi: "",
+        kota: "",
+        kecamatan: "",
+        kelurahan: "",
+        kode_pos: "",
+        alamat: ""
+    },
+
+    kendaraan: {
+        merk_kendaraan: "",
+        merk_kendaraan_text: "",
+        model_kendaraan: "",
+        model_kendaraan_text: "",
+        tahun_kendaraan: "",
+        tahun_kendaraan_text: "",
+        status_pemilik: ""
+    },
+
+    data_bangunan: {
+        status_sertifikat: "",
+        sertifikat_atas_nama: "",
+        provinsi: "",
+        kota: "",
+        kecamatan: "",
+        kelurahan: "",
+        kode_pos: "",
+        alamat: "",
+        jenis_properti: "",
+        kondisi: "",
+        tipe_sertifikat: "",
+        is_dihuni: ""
+        }
+    };
+
+    function htmlEntities(str) {
+        return String(str)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;");
+    }
+
+  function pushDataPemohon3(cb) {
+    submission_id = "";
+    var retryLimit = 3;
+    var _URL = "";
+    var _data = {};
+    var nama_lengkap = $("#nama_lengkap").val(),
+        email_pemohon = $("#email_pemohon").val(),
+        no_telepon = $("#no_handphone").val(),
+        jenis_kredit = $("#jenis_form").val();
+
+    switch (jenis_kredit) {
+        case "MOBIL":
+            _URL = "/credit/save-car-leads1";
+            break;
+        case "MOTOR":
+            _URL = "/credit/save-motorcycle-leads1";
+            break;
+        case "SURAT BANGUNAN":
+            _URL = "/credit/save-pbf-leads1";
+            _data = {
+                dob: reformatDate($("#tgl_lahir").val()),
+                profession_id: $("#pekerjaan").val()[0],
+                salary: reformatMoney($("#penghasilan").val()),
+                path_ktp: $("#ktp").val()
+            };
+            break;
+    }
+
+    if (_URL !== "") {
+        _data = Object.assign(_data, {
+            submission_id: submission_id,
+            name: nama_lengkap,
+            email: email_pemohon,
+            phone_number: no_telepon
+        });
+
+        $.ajax({
+            type: "POST",
+            url: _URL,
+            data: _data,
+            dataType: "json",
+            tryCount: 0,
+            retryLimit: retryLimit,
+            error: function(xhr, textStatus, errorThrown) {
+                retryAjax(this, xhr);
+            },
+            fail: function(xhr, textStatus, error) {
+                retryAjax(this, xhr);
+            },
+            success: function(result) {
+                if (result.success === "1") {
+                    submission_id = result.data.submission_id;
+                    credits2.angunan.jenis_angunan = htmlEntities(
+                        jenis_kredit
+                    );
+                    credits2.pemohon.nama = htmlEntities(nama_lengkap);
+                    credits2.pemohon.email = htmlEntities(email_pemohon);
+                    credits2.pemohon.no_handphone = htmlEntities(no_telepon);
+                    cb();
+                } else {
+                    console.log("error" + result.message);
+                }
+            }
+        });
+    }
+}
 
   function verifiedOTPCredit() {
     var otpInput = $("input[name='digit[]']").map(function() {
@@ -6271,7 +6323,10 @@
                 console.log("token : " + token);
                 getCustomer(token);
                 $("#otp").addClass("hide");
-                saveleads2();
+                $("#myModal").show();
+                $("#menu1").hide();
+                $("#menu2").show();
+                step1Done = true;
                 $("#nama_lengkap").attr('disabled','disabled');
                 $("#email_pemohon").attr('disabled','disabled');
                 $("#no_handphone").attr('disabled','disabled');
@@ -6285,42 +6340,35 @@
                 $("#pekerjaan").attr('disabled','disabled');
                 $("#penghasilan").attr('disabled','disabled');
                 $(".label-cekLogin").removeClass('hide');
+                pushDataPemohon3(function() {
+                    $(".nav-item-1").removeClass("active");
+                    $(".nav-item-1").addClass("done");
+                    $(".nav-item-2").addClass("active");
+                    if ($(".nav-item-1").hasClass("done")) {
+                        $(".nav-item-1").on("click", function(e) {
+                            e.preventDefault();
+                            hideCurrentTab();
+                            $("#menu1").show();
+                            $(".nav-item-1").addClass("active");
+                            if (
+                                $(".nav-item-1").hasClass(
+                                    "active"
+                                )
+                            ) {
+                                $("#menu2").hide();
+                                $("#menu3").hide();
+                                $("#menu4").hide();
+                                $("#menu5").hide();;
+                                $("#menu6").hide();
+                            }
+                        });
+                    }
+                });                
             } else {
                 console.log("otp salah, masukkan otp yang valid");
             }
         }
     });
-  }
-  
-  function saveleads2 () {
-    $("#myModal").show();
-    $("#menu1").hide();
-    $("#menu2").show();
-    step1Done = true;
-    $(".nav-item-1").removeClass("active");
-    $(".nav-item-1").addClass("done");
-    $(".nav-item-2").addClass("active");
-    if ($(".nav-item-1").hasClass("done")) {
-        $(".nav-item-1").on("click", function(
-            e
-        ) {
-            e.preventDefault();
-            hideCurrentTab();
-            $("#menu1").show();
-            $(".nav-item-1").addClass("active");
-            if (
-                $(".nav-item-1").hasClass(
-                    "active"
-                )
-            ) {
-                $("#menu2").hide();
-                $("#menu3").hide();
-                $("#menu4").hide();
-                $("#menu5").hide();;
-                $("#menu6").hide();
-            }
-        });
-    }
   }
 
   function getCustomer(token) {
