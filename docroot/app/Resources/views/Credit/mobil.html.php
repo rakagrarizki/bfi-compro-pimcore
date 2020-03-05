@@ -86,22 +86,8 @@ $blogList->setLimit(4);
                                             <label for="no_handphone"><?= $this->translate('form-hp') ?></label>
                                             <input type="tel" pattern="\d*" class="form-control formPhoneNumber" name="no_handphone" id="no_handphone" maxlength="13" placeholder="<?= $this->translate('placeholder-hp') ?>">
                                             <div class="error-wrap"></div>
+                                            <div class="label-cekLogin hide"><?= $this->translate('text-cekLogin') ?><a href="#" class="logout" onclick="return logout('id');"><?= $this->translate('status-login') ?></a></div>
                                         </div>
-                                        <!-- <div class="form-group">
-                                            <label for="foto_ktp">Unggah Foto KTP</label>
-                                            <label class="form-input">
-                                                <div class="file-upload">
-                                                    <div class="file-select">
-                                                        <div class="file-select-button" id="fileName">Ubah File</div>
-                                                        <div class="file-select-name" id="noFile">No file chosen...</div>
-                                                        <input type="file" class="formRequired" name="chooseFile" id="chooseFile">
-                                                    </div>
-                                                </div>
-                                            </label>
-                                            <p id="nama-file"></p>
-                                            <div class="error-wrap"></div>
-                                            <span>Pastikan foto KTP terlihat jelas (max. ukuran file adalah 1MB)</span>
-                                        </div> -->
                                     </div>
                                     <div class="button-area text-right next">
 

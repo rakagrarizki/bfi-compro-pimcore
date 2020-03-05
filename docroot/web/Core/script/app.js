@@ -548,6 +548,7 @@
                             asuransiPlaceholder = "Type of Insurance";
                         }
                         $("#tahun" + i + " .opsiasuransi").select2({
+                            minimumResultsForSearch: Infinity,
                             dropdownParent: $(
                                 "#tahun" + i + " .select-wrapper"
                             ),
@@ -1042,6 +1043,72 @@
   
     function reformatMoney(number) {
         return number.replace(/[.]/g, "");
+    }
+
+    function saveleads1(cb) {
+        submission_id = "";
+        var _URL = "";
+        var _data = {};
+        var nama_lengkap = $("#nama_lengkap").val(),
+            email_pemohon = $("#email_pemohon").val(),
+            no_telepon = $("#no_handphone").val(),
+            jenis_kredit = $("#jenis_form").val();
+  
+        switch (jenis_kredit) {
+            case "MOBIL":
+                _URL = "/credit/save-car-leads1";
+                break;
+            case "MOTOR":
+                _URL = "/credit/save-motorcycle-leads1";
+                break;
+            case "SURAT BANGUNAN":
+                _URL = "/credit/save-pbf-leads1";
+                _data = {
+                    dob: reformatDate($("#tgl_lahir").val()),
+                    profession_id: $("#pekerjaan").val()[0],
+                    salary: reformatMoney($("#penghasilan").val()),
+                    path_ktp: $("#ktp").val()
+                };
+                break;
+        }
+  
+        if (_URL !== "") {
+            _data = Object.assign(_data, {
+                submission_id: submission_id,
+                name: nama_lengkap,
+                email: email_pemohon,
+                phone_number: no_telepon
+            });
+  
+            $.ajax({
+                type: "POST",
+                url: _URL,
+                data: _data,
+                dataType: "json",
+                tryCount: 0,
+                retryLimit: retryLimit,
+                error: function(xhr, textStatus, errorThrown) {
+                    retryAjax(this, xhr);
+                },
+                fail: function(xhr, textStatus, error) {
+                    retryAjax(this, xhr);
+                },
+                success: function(result) {
+                    if (result.success === "1") {
+                        submission_id = result.data.submission_id;
+                        credits.angunan.jenis_angunan = htmlEntities(
+                            jenis_kredit
+                        );
+                        credits.pemohon.nama = htmlEntities(nama_lengkap);
+                        credits.pemohon.email = htmlEntities(email_pemohon);
+                        credits.pemohon.no_handphone = htmlEntities(no_telepon);
+                        cb();
+                    } else {
+                        console.log("error" + result.message);
+                    }
+                }
+            });
+        }
     }
   
     function pushDataPemohon2(cb) {
@@ -2226,10 +2293,11 @@
                     success: function(data) {
                         if (data.success === true) {
                           var token = localStorage.getItem("token");
-                            if (data.result.header.status === 200 && token == null) {
+                            if (data.result.header.status === 200) {
                                 $("#otp").removeClass("hide");
                                 $("#myModal").hide();
                                 requestOTP(dataPhone);
+                                otp();
                                 $("#phone-input").val($("#no_handphone").val());
                             } else {
                                 pushDataPemohon2(function() {
@@ -3182,34 +3250,7 @@
                 .removeClass("jcf-checked");
         }
     }
-  
-    // function getmotor(element){
-    // 	$.ajax({
-    // 		type: 'GET',
-    // 		url: 'https://bfi.staging7.salt.id/brand/motor/listJson',
-    // 		dataType: 'json',
-    // 		error: function (data) {
-    // 			console.log('error' + data);
-    // 		},
-  
-    // 		fail: function (xhr, textStatus, error) {
-    // 			console.log('request failed')
-    // 		},
-  
-    // 		success: function (dataObj) {
-    // 			if(dataObj.success == true) {
-    // 				$.each(dataObj.result.data, function(idMotor, valMotor) {
-    // 					if(valMotor.name != '') {
-    // 						var elementOption = '<option value="'+ valMotor.id +'">'+ valMotor.name +'</option>';
-  
-    // 						$(element).append(elementOption);
-    // 					}
-    // 				})
-    // 			}
-    // 		}
-    // 	})
-    // }
-  
+
     var dataProvinceSertificate = [];
     var dataKotaSertificate = [];
     var dataKecamatanSertificate = [];
@@ -6196,7 +6237,7 @@
         }
     });
   }
-  
+
   function verifiedOTPCredit() {
     var otpInput = $("input[name='digit[]']").map(function() {
             return $(this).val();
@@ -6230,7 +6271,20 @@
                 console.log("token : " + token);
                 getCustomer(token);
                 $("#otp").addClass("hide");
-                $("#myModal").show();
+                saveleads2();
+                $("#nama_lengkap").attr('disabled','disabled');
+                $("#email_pemohon").attr('disabled','disabled');
+                $("#no_handphone").attr('disabled','disabled');
+                $("#upload-ktp-button").attr('disabled','disabled');
+                $("#upload-ktp-button").attr('disabled','disabled');
+                $("#upload-ktp-button").css("background-color", "#dddddd");
+                $("#upload-ktp-button").css("border-color", "#dddddd");
+                $("input[type=radio]").attr('disabled','disabled');
+                $("#tgl_lahir").attr('disabled','disabled');
+                $(".ui-datepicker-trigger").attr('disabled','disabled');
+                $("#pekerjaan").attr('disabled','disabled');
+                $("#penghasilan").attr('disabled','disabled');
+                $(".label-cekLogin").removeClass('hide');
             } else {
                 console.log("otp salah, masukkan otp yang valid");
             }
@@ -6238,6 +6292,37 @@
     });
   }
   
+  function saveleads2 () {
+    $("#myModal").show();
+    $("#menu1").hide();
+    $("#menu2").show();
+    step1Done = true;
+    $(".nav-item-1").removeClass("active");
+    $(".nav-item-1").addClass("done");
+    $(".nav-item-2").addClass("active");
+    if ($(".nav-item-1").hasClass("done")) {
+        $(".nav-item-1").on("click", function(
+            e
+        ) {
+            e.preventDefault();
+            hideCurrentTab();
+            $("#menu1").show();
+            $(".nav-item-1").addClass("active");
+            if (
+                $(".nav-item-1").hasClass(
+                    "active"
+                )
+            ) {
+                $("#menu2").hide();
+                $("#menu3").hide();
+                $("#menu4").hide();
+                $("#menu5").hide();;
+                $("#menu6").hide();
+            }
+        });
+    }
+  }
+
   function getCustomer(token) {
     $.ajax({
         type: "GET",
