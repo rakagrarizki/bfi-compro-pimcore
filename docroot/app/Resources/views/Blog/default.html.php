@@ -50,11 +50,16 @@ $lang = $this->getLocale();
                         <picture>
                             <img src="<?= $blog->getImage(); ?>" alt="">
                         </picture>
+                            <?php
+                                $timestampDate = \Carbon\Carbon::parse($blog->getDate());
+                                $dateUnix = $timestampDate->timestamp;
+                                $date = date("d.m.y", $dateUnix);
+                            ?>
                         <div class="caption">
                             <h3 class="tag"><?= $blog->getBlogCategory()->getName(); ?></h3>
                             <h2 class="title"><?= $blog->getTitle(); ?></h2>
                             <div class="dateview">
-                                <span class="date"><?= $blog->getDate(); ?></span>
+                                <span class="date"><?= $date; ?></span>
                                 <span class="view"><i class="fa fa-eye"></i> <?= $blog->getViews(); ?></span>
                             </div>
                         </div>

@@ -15,36 +15,6 @@ function sendLeadData2() {
             "path_ktp": $("#ktp").val()
           }
           break;
-        case 1:
-          _url = "/credit/save-edu-leads2";
-          _data = {
-            "submission_id": submission_id,
-            "province_id": $("#provinsi").val()[0],
-            "city_id": $("#kota").val()[0],
-            "district_id": $("#kecamatan").val()[0],
-            "subdistrict_id": $("#kelurahan").val()[0],
-            "zipcode_id": $('#kode_pos').data('value'),
-            "address": $("#alamat_lengkap").val()
-          }
-          break;
-        case 2:
-          _url = "/credit/save-edu-leads3";
-          _data = {
-            "submission_id": submission_id
-          }
-          break;
-        case 3:
-          _url = "/credit/save-edu-leads4";
-          _data = {
-            "submission_id": submission_id
-          }
-          break;
-        case 4:
-          _url = "/credit/save-edu-leads5";
-          _data = {
-            "submission_id": submission_id
-          }
-          break;
       }
       var sendData = postData(_url, _data);
       if (currentStep === 0) {
@@ -165,10 +135,8 @@ function pushGeneralOTP(cb) {
     }
 }
 
-function checkLogin(currentIndex){
-    $("#otp").removeClass("hide");
-    $("#getCredit-p-0").hide();
-    $(".steps").hide();
+function checkLogin(){
+   
     var dataPhone = {
       phone_number: $("#no_handphone").val()
     };
@@ -179,17 +147,18 @@ function checkLogin(currentIndex){
       dataType: "json",
       success: function(data) {
           if (data.success === true) {
-            var token = localStorage.getItem("token");
-              if (data.result.header.status === 200 || token === null ) {
+              if (data.result.header.status === 200 ) {
+                $("#otp").removeClass("hide");
+                $("#getCredit-p-0").hide();
+                $(".steps").hide();
                   console.log(dataPhone);
                   requestOTP(dataPhone);
                   $("#phone-input").val($("#no_handphone").val());
                   console.log("checklogin true");
-                  submission_id = sendData.data.submission_id; 
+                  otp();
               }else{
-                submission_id = sendData.data.submission_id; 
-                // sendLeadData2();
-                // console.log("checklogin false");
+                sendLeadData2();
+                console.log("checklogin false");
                 // return true;
                 // sendLeadData2(function() {
                 //     console.log("checkLogin error");
@@ -436,8 +405,15 @@ function checkLogin(currentIndex){
                 $("#getCredit-p-0").show();
                 $(".nav-item-1").addClass("active");
                 $(".nav-item-2").addClass("diabled");
-               
-                
+                $("#nama_lengkap").attr('disabled','disabled');
+                $("#email_pemohon").attr('disabled','disabled');
+                $("#no_handphone").attr('disabled','disabled');
+                $("#upload-ktp-button").attr('disabled','disabled');
+                $("#upload-ktp-button").css("background-color", "#dddddd");
+                $("#upload-ktp-button").css("border-color", "#dddddd");
+                $("input[type=radio]").attr('disabled','disabled');
+                $(".label-cekLogin").removeClass('hide');
+                $(".notif-ktp").addClass('hide');
                 $(".steps").show();
             } else {
                 console.log("otp salah, masukkan otp yang valid");

@@ -60,7 +60,8 @@ $blogList->setLimit(4);
                     </div>
                     <input type="hidden" class="form-control formRequired" name="ktp" id="ktp">
                     <div class="error-wrap"></div>
-                    <span><?= $this->translate('placeholderNoktp') ?></span>
+                    <span class="notif-ktp"><?= $this->translate('placeholderNoktp') ?></span>
+                    <div class="label-cekLogin hide"><?= $this->translate('text-cekLogin') ?><a href="#" class="logout" onclick="return logout('id');"><?= $this->translate('status-login') ?></a></div>
                     <!-- <span>Pastikan foto KTP terlihat jelas (max. ukuran file adalah 1MB)</span> -->
                 </div>
             </fieldset>
@@ -394,7 +395,7 @@ $blogList->setLimit(4);
                                         <h3 class="tag"><?= $blog->getBlogCategory()->getName(); ?></h3>
                                         <h2 class="title"><?= $blog->getTitle(); ?></h2>
                                         <div class="dateview">
-                                            <span class="date"><?= date('Y-m-d', strtotime($blog->getDate())); ?></span>
+                                            <span class="date"><?= date('d.m.y', strtotime($blog->getDate())); ?></span>
                                             <span class="view"><i class="fa fa-eye"></i><?= $blog->getViews(); ?></span>
                                         </div>
                                     </div>

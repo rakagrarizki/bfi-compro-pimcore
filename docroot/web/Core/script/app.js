@@ -523,7 +523,7 @@
                             "</div>" +
                             '<div class="list-select select-wrapper">' +
                             '<select class="c-custom-select-trans form-control formRequired opsiasuransi"' +
-                            'name="status" multiple="multiple"><option disabled></option></select>' +
+                            'name="status"><option disabled></option></select>' +
                             "</div>" +
                             '<div class="error-wrap"></div>' +
                             "</div>";
@@ -548,6 +548,7 @@
                             asuransiPlaceholder = "Type of Insurance";
                         }
                         $("#tahun" + i + " .opsiasuransi").select2({
+                            minimumResultsForSearch: Infinity,
                             dropdownParent: $(
                                 "#tahun" + i + " .select-wrapper"
                             ),
@@ -1043,7 +1044,7 @@
     function reformatMoney(number) {
         return number.replace(/[.]/g, "");
     }
-  
+
     function pushDataPemohon2(cb) {
         submission_id = "";
         var _URL = "";
@@ -2225,11 +2226,12 @@
                     dataType: "json",
                     success: function(data) {
                         if (data.success === true) {
-                          var token = localStorage.getItem("token");
-                            if (data.result.header.status === 200 && token == null) {
+                            var token = localStorage.getItem("token");
+                            if (data.result.header.status === 200 && token === null) {
                                 $("#otp").removeClass("hide");
                                 $("#myModal").hide();
                                 requestOTP(dataPhone);
+                                otp();
                                 $("#phone-input").val($("#no_handphone").val());
                             } else {
                                 pushDataPemohon2(function() {
@@ -2241,9 +2243,7 @@
                                     $(".nav-item-1").addClass("done");
                                     $(".nav-item-2").addClass("active");
                                     if ($(".nav-item-1").hasClass("done")) {
-                                        $(".nav-item-1").on("click", function(
-                                            e
-                                        ) {
+                                        $(".nav-item-1").on("click", function(e) {
                                             e.preventDefault();
                                             hideCurrentTab();
                                             showTab1();
@@ -3182,34 +3182,7 @@
                 .removeClass("jcf-checked");
         }
     }
-  
-    // function getmotor(element){
-    // 	$.ajax({
-    // 		type: 'GET',
-    // 		url: 'https://bfi.staging7.salt.id/brand/motor/listJson',
-    // 		dataType: 'json',
-    // 		error: function (data) {
-    // 			console.log('error' + data);
-    // 		},
-  
-    // 		fail: function (xhr, textStatus, error) {
-    // 			console.log('request failed')
-    // 		},
-  
-    // 		success: function (dataObj) {
-    // 			if(dataObj.success == true) {
-    // 				$.each(dataObj.result.data, function(idMotor, valMotor) {
-    // 					if(valMotor.name != '') {
-    // 						var elementOption = '<option value="'+ valMotor.id +'">'+ valMotor.name +'</option>';
-  
-    // 						$(element).append(elementOption);
-    // 					}
-    // 				})
-    // 			}
-    // 		}
-    // 	})
-    // }
-  
+
     var dataProvinceSertificate = [];
     var dataKotaSertificate = [];
     var dataKecamatanSertificate = [];
@@ -6196,7 +6169,127 @@
         }
     });
   }
-  
+  var credits2 = {
+    angunan: {
+        jenis_angunan: ""
+    },
+
+    pemohon: {
+        nama: "",
+        email: "",
+        no_handphone: ""
+    },
+
+    tempat_tinggal: {
+        provinsi: "",
+        kota: "",
+        kecamatan: "",
+        kelurahan: "",
+        kode_pos: "",
+        alamat: ""
+    },
+
+    kendaraan: {
+        merk_kendaraan: "",
+        merk_kendaraan_text: "",
+        model_kendaraan: "",
+        model_kendaraan_text: "",
+        tahun_kendaraan: "",
+        tahun_kendaraan_text: "",
+        status_pemilik: ""
+    },
+
+    data_bangunan: {
+        status_sertifikat: "",
+        sertifikat_atas_nama: "",
+        provinsi: "",
+        kota: "",
+        kecamatan: "",
+        kelurahan: "",
+        kode_pos: "",
+        alamat: "",
+        jenis_properti: "",
+        kondisi: "",
+        tipe_sertifikat: "",
+        is_dihuni: ""
+        }
+    };
+
+    function htmlEntities(str) {
+        return String(str)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;");
+    }
+
+  function pushDataPemohon3(cb) {
+    submission_id = "";
+    var retryLimit = 3;
+    var _URL = "";
+    var _data = {};
+    var nama_lengkap = $("#nama_lengkap").val(),
+        email_pemohon = $("#email_pemohon").val(),
+        no_telepon = $("#no_handphone").val(),
+        jenis_kredit = $("#jenis_form").val();
+
+    switch (jenis_kredit) {
+        case "MOBIL":
+            _URL = "/credit/save-car-leads1";
+            break;
+        case "MOTOR":
+            _URL = "/credit/save-motorcycle-leads1";
+            break;
+        case "SURAT BANGUNAN":
+            _URL = "/credit/save-pbf-leads1";
+            _data = {
+                dob: reformatDate($("#tgl_lahir").val()),
+                profession_id: $("#pekerjaan").val()[0],
+                salary: reformatMoney($("#penghasilan").val()),
+                path_ktp: $("#ktp").val()
+            };
+            break;
+    }
+
+    if (_URL !== "") {
+        _data = Object.assign(_data, {
+            submission_id: submission_id,
+            name: nama_lengkap,
+            email: email_pemohon,
+            phone_number: no_telepon
+        });
+
+        $.ajax({
+            type: "POST",
+            url: _URL,
+            data: _data,
+            dataType: "json",
+            tryCount: 0,
+            retryLimit: retryLimit,
+            error: function(xhr, textStatus, errorThrown) {
+                retryAjax(this, xhr);
+            },
+            fail: function(xhr, textStatus, error) {
+                retryAjax(this, xhr);
+            },
+            success: function(result) {
+                if (result.success === "1") {
+                    submission_id = result.data.submission_id;
+                    credits2.angunan.jenis_angunan = htmlEntities(
+                        jenis_kredit
+                    );
+                    credits2.pemohon.nama = htmlEntities(nama_lengkap);
+                    credits2.pemohon.email = htmlEntities(email_pemohon);
+                    credits2.pemohon.no_handphone = htmlEntities(no_telepon);
+                    cb();
+                } else {
+                    console.log("error" + result.message);
+                }
+            }
+        });
+    }
+}
+
   function verifiedOTPCredit() {
     var otpInput = $("input[name='digit[]']").map(function() {
             return $(this).val();
@@ -6231,13 +6324,53 @@
                 getCustomer(token);
                 $("#otp").addClass("hide");
                 $("#myModal").show();
+                $("#menu1").hide();
+                $("#menu2").show();
+                step1Done = true;
+                $("#nama_lengkap").attr('disabled','disabled');
+                $("#email_pemohon").attr('disabled','disabled');
+                $("#no_handphone").attr('disabled','disabled');
+                $("#upload-ktp-button").attr('disabled','disabled');
+                $("#upload-ktp-button").attr('disabled','disabled');
+                $("#upload-ktp-button").css("background-color", "#dddddd");
+                $("#upload-ktp-button").css("border-color", "#dddddd");
+                $("input[type=radio]").attr('disabled','disabled');
+                $("#tgl_lahir").attr('disabled','disabled');
+                $(".ui-datepicker-trigger").attr('disabled','disabled');
+                $("#pekerjaan").attr('disabled','disabled');
+                $("#penghasilan").attr('disabled','disabled');
+                $(".label-cekLogin").removeClass('hide');
+                pushDataPemohon3(function() {
+                    $(".nav-item-1").removeClass("active");
+                    $(".nav-item-1").addClass("done");
+                    $(".nav-item-2").addClass("active");
+                    if ($(".nav-item-1").hasClass("done")) {
+                        $(".nav-item-1").on("click", function(e) {
+                            e.preventDefault();
+                            hideCurrentTab();
+                            $("#menu1").show();
+                            $(".nav-item-1").addClass("active");
+                            if (
+                                $(".nav-item-1").hasClass(
+                                    "active"
+                                )
+                            ) {
+                                $("#menu2").hide();
+                                $("#menu3").hide();
+                                $("#menu4").hide();
+                                $("#menu5").hide();;
+                                $("#menu6").hide();
+                            }
+                        });
+                    }
+                });                
             } else {
                 console.log("otp salah, masukkan otp yang valid");
             }
         }
     });
   }
-  
+
   function getCustomer(token) {
     $.ajax({
         type: "GET",

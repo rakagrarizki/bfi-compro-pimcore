@@ -64,10 +64,10 @@
     @include breakpoint(mobile){
         h2.title-wrapper{
             margin-top: 1.5rem;
-            text-align: left !important;
+            // text-align: left !important;
         }
         .paragraf-title{
-            text-align: left !important;
+            // text-align: left !important;
         }
     }
 }
@@ -157,5 +157,11 @@
         font-size: 5px;
         padding-right: 10px;
         vertical-align: middle;
+    }
+}
+
+.awards-card{
+    .title{
+        color: #04559F;
     }
 }

@@ -41,7 +41,7 @@ $this->headMeta('BFI - ' . $data->getYear());
             <?php if ($i == 1) { ?>
                 <div class="row">
                 <?php } ?>
-                <div class="awards-card col-md-4">
+                <div class="awards-card col-xs-12">
                     <div class="title">
                         <?= $award->getTitle(); ?>
                     </div>
