@@ -110,11 +110,13 @@ a {
     }
 
     @include breakpoint(mobile){
-        font-size: 1.8em;
+        // font-size: 1.8em;
+        font-size: 20px;
     }
 
     @include breakpoint(tablet){
-        font-size: 1.8em;
+        // font-size: 1.8em;
+        font-size: 20px;
     }
 }
 .paragraf-title {
