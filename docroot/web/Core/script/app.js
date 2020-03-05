@@ -6222,6 +6222,21 @@
             .replace(/>/g, "&gt;")
             .replace(/"/g, "&quot;");
     }
+    
+  function disabledField(){
+    $("#nama_lengkap").attr('disabled','disabled');
+    $("#email_pemohon").attr('disabled','disabled');
+    $("#no_handphone").attr('disabled','disabled');
+    $("#upload-ktp-button").attr('disabled','disabled');
+    $("#upload-ktp-button").css("background-color", "#dddddd");
+    $("#upload-ktp-button").css("border-color", "#dddddd");
+    $("input[type=radio]").attr('disabled','disabled');
+    $("#tgl_lahir").attr('disabled','disabled');
+    $(".ui-datepicker-trigger").attr('disabled','disabled');
+    $("#pekerjaan").attr('disabled','disabled');
+    $("#penghasilan").attr('disabled','disabled');
+    $(".label-cekLogin").removeClass('hide');
+  }
 
   function pushDataPemohon3(cb) {
     submission_id = "";
@@ -6327,23 +6342,11 @@
                 $("#menu1").hide();
                 $("#menu2").show();
                 step1Done = true;
-                $("#nama_lengkap").attr('disabled','disabled');
-                $("#email_pemohon").attr('disabled','disabled');
-                $("#no_handphone").attr('disabled','disabled');
-                $("#upload-ktp-button").attr('disabled','disabled');
-                $("#upload-ktp-button").attr('disabled','disabled');
-                $("#upload-ktp-button").css("background-color", "#dddddd");
-                $("#upload-ktp-button").css("border-color", "#dddddd");
-                $("input[type=radio]").attr('disabled','disabled');
-                $("#tgl_lahir").attr('disabled','disabled');
-                $(".ui-datepicker-trigger").attr('disabled','disabled');
-                $("#pekerjaan").attr('disabled','disabled');
-                $("#penghasilan").attr('disabled','disabled');
-                $(".label-cekLogin").removeClass('hide');
+                $(".nav-item-1").removeClass("active");
+                $(".nav-item-1").addClass("done");
+                $(".nav-item-2").addClass("active");
+                disabledField();
                 pushDataPemohon3(function() {
-                    $(".nav-item-1").removeClass("active");
-                    $(".nav-item-1").addClass("done");
-                    $(".nav-item-2").addClass("active");
                     if ($(".nav-item-1").hasClass("done")) {
                         $(".nav-item-1").on("click", function(e) {
                             e.preventDefault();

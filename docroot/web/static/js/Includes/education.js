@@ -174,13 +174,6 @@ function getDataTenor() {
     dropdownParent: selElm.parent(),
     data: dataArr
   });
-  // $.each(ret.data, function (idx, item) {
-  //   selElm.append($('<option>', {
-  //     value: item.tenor,
-  //     text: item.desc
-  //   }));
-  // })
-  // selElm.find('option:first-child').attr('selected', 'selected');
 }
 
 function initSummary() {
@@ -227,6 +220,45 @@ function getDataRegister() {
   return _data;
 }
 
+function sendLeadData1Edu(){
+  if (form.valid()) {
+    var currentStep = form.steps("getCurrentIndex");
+    var _url = "";
+    var _data = {};
+
+    switch (currentStep) {
+      case 0:
+        _url = "/credit/save-edu-leads1";
+        _data = {
+          "submission_id": "",
+          "name": $("#nama_lengkap").val(),
+          "email": $("#email_pemohon").val(),
+          "phone_number": $("#no_handphone").val(),
+          "path_ktp": $("#ktp").val()
+        }
+        break;
+    }
+    var sendData = postData(_url, _data);
+    if (currentStep === 0) {
+      submission_id = sendData.data.submission_id; 
+    }
+    if (sendData.success === "1") {
+      if (currentStep === 1) {
+        if (sendData.data.is_branch === false) {
+          $("#modal-branch").modal('show');
+        }
+        return sendData.data.is_branch
+       } else {
+        return true;
+      }
+    } else {
+      return false;
+    }
+  } else {
+    return false;
+  }
+}
+
 var isValidOtp = false;
 (function ($) {
 
@@ -253,15 +285,18 @@ var isValidOtp = false;
       if (currentIndex > newIndex) {
         return true;
       }
-      // if( currentIndex === 0){
-      //       if (localStorage.getItem('token') === null) {
-      //         checkLogin();  
-      //         return false;
-      //        } else {
-      //       sendLeadData();
-      //      return true;
-      //    }
-      //   }
+      if( currentIndex === 0){
+            if (localStorage.getItem('token') === null ) {
+               if(!isKnownNumber) {
+                 checkLogin(); 
+              }else{
+                sendLeadData1Edu();
+              }
+               return isKnownNumber;
+             } else {
+                console.log("currentIndex false");
+             }
+          }
       if ($(".actions > ul li a[href$='next']").parent().hasClass("inactive")) {
         return false;
       }
@@ -408,89 +443,6 @@ var isValidOtp = false;
         }
     });
 });
-function loginCustomer() {
-  var dataPhone = {
-      phone_number: $("#phone-input").val()
-  };
-  console.log(dataPhone);
-  $.ajax({
-      type: "POST",
-      url: "/user/login",
-      data: dataPhone,
-      dataType: "json",
-      error: function(data) {
-          console.log("error" + data);
-      },
-
-      fail: function(xhr, textStatus, error) {
-          console.log("request failed");
-      },
-
-      success: function(dataObj) {
-          if (dataObj.success === true) {
-              console.log("berhasil login");
-              requestOTP(dataPhone);
-              $("#login").addClass("hide");
-              $("#otp").removeClass("hide");
-              otp();
-          } else {
-              var lang = document.documentElement.lang;
-              var errorMsg;
-              if (lang == "id") {
-                  errorMsg = "Nomor Handphone Belum Terdaftar.";
-              } else {
-                  errorMsg = "Phone Number Not Registered.";
-              }
-              $(".error-wrap").html(
-                  '<label id="login-error" class="error" for="login" style="display: inline-block;">' +
-                      errorMsg +
-                      "</label>"
-              );
-              console.log("gagal login");
-          }
-      }
-  });
-}
-function verifiedOTPEdu() {
-  var otpInput = $("input[name='digit[]']").map(function() {
-          return $(this).val();
-      }).get();
-      otpInput = otpInput.join("");
-
-      var dataOTP = {
-          phone_number: $("#phone-input").val(),
-          otp_code: otpInput
-      };
-      console.log(dataOTP);
-      
-  $.ajax({
-      type: "POST",
-      url: "/user/otp-confirm",
-      data: dataOTP,
-      dataType: "json",
-      error: function(data) {
-          console.log("error" + data);
-      },
-
-      fail: function(xhr, textStatus, error) {
-          console.log("request failed");
-      },
-
-      success: function(dataObj) {
-          if (dataObj.success === true) {
-              console.log("berhasil verified otp");
-              var token = dataObj.result.data.customer_token;
-              localStorage.setItem("token", token);
-              console.log("token : " + token);
-              getCustomer(token);
-              $("#otp").addClass("hide");
-              $("#myModal").show();
-          } else {
-              console.log("otp salah, masukkan otp yang valid");
-          }
-      }
-  });
-}
 
   $("#recalc").click(function (e) {
     nextButton("inactive");
