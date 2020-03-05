@@ -470,7 +470,7 @@ $blogList->setLimit(4);
                                 <h3 class="tag"><?= $blog->getBlogCategory()->getName(); ?></h3>
                                 <h2 class="title"><?= $blog->getTitle(); ?></h2>
                                 <div class="dateview">
-                                    <span class="date"><?= date('Y-m-d', strtotime($blog->getDate())); ?></span>
+                                    <span class="date"><?= date('d.m.y', strtotime($blog->getDate())); ?></span>
                                     <span class="view"><i class="fa fa-eye"></i><?= $blog->getViews(); ?></span>
                                 </div>
                             </div>
