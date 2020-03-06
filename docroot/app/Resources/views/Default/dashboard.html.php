@@ -64,25 +64,25 @@ $this->extend('layout.html.php');
                 <div class="status-step">
                     <div class="">
                         <ul class="stepper-row">
-                            <li id="status-step">
-                                <span id="step1" class="number"></span>
-                                <span id="label-step1" class="label-step"></span>
+                            <li class="status-step">
+                                <span class="step1 number"></span>
+                                <span class="label-step1 label-step"></span>
                             </li>
-                            <li id="status-step">
-                                <span id="step2" class="number"></span>
-                                <span id="label-step2" class="label-step"></span>
+                            <li class="status-step">
+                                <span class="step2 number"></span>
+                                <span class="label-step2 label-step"></span>
                             </li>
-                            <li id="status-step">
-                                <span id="step3" class="number"></span>
-                                <span id="label-step3" class="label-step"></span>
+                            <li class="status-step">
+                                <span class="step3 number"></span>
+                                <span class="label-step3 label-step"></span>
                             </li>
-                            <li id="status-step">
-                                <span id="step4" class="number"></span>
-                                <span id="label-step4" class="label-step"></span>
+                            <li class="status-step">
+                                <span class="step4 number"></span>
+                                <span class="label-step4 label-step"></span>
                             </li>
-                            <li id="status-step">
-                                <span id="step5" class="number"></span>
-                                <span id="label-step5" class="label-step"></span>
+                            <li class="status-step">
+                                <span class="step5 number"></span>
+                                <span class="label-step5 label-step"></span>
                             </li>
                         </ul>
                     </div>

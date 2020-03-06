@@ -165,3 +165,8 @@
         color: #04559F;
     }
 }
+
+select option[disabled],
+select option:disabled {
+    -webkit-text-fill-color: #eeeeee;
+}
