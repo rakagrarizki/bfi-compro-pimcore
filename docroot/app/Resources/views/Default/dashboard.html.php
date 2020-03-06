@@ -61,7 +61,7 @@ $this->extend('layout.html.php');
                         </p>
                     </div>
                 </div>
-                <div class="status-step">
+                    <div class="status-step">
                     <div class="">
                         <ul class="stepper-row">
                             <li class="status-step">
