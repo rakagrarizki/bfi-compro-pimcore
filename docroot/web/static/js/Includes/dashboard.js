@@ -387,28 +387,31 @@ function applicationStatus(token, statusNumber, assignmentId) {
         success: function (dataObj) {
             if (dataObj.success === true) {
                 var data = dataObj.result.data
-                if(data[0].status_id == 1){
-                    $(statusNumber).find('div.fail-notif').css('visibility', 'hidden');
-                }else if(data[0].status_id == 2){
-                    $(statusNumber).find('div.fail-notif').css('visibility', 'visible');
-                    $(statusNumber).find('div.fail-notif > span:last').text(data[0].status_desc)
-                }else{
-                    $(statusNumber).find('div.fail-notif').css('visibility', 'visible');
-                    $(statusNumber).find('div.fail-notif > span:first').hide()
-                    $(statusNumber).find('div.fail-notif > span:last').text(data[0].status_desc)
-                }
+                // if(data[0].status_id == 1){
+                //     $(statusNumber).find('div.fail-notif').css('visibility', 'hidden');
+                // }else if(data[0].status_id == 2){
+                //     $(statusNumber).find('div.fail-notif').css('visibility', 'visible');
+                //     $(statusNumber).find('div.fail-notif > span:last').text(data[0].status_desc)
+                // }else{
+                //     $(statusNumber).find('div.fail-notif').css('visibility', 'visible');
+                //     $(statusNumber).find('div.fail-notif > span:first').hide()
+                //     $(statusNumber).find('div.fail-notif > span:last').text(data[0].status_desc)
+                // }
 
                 //add icon done and fail
-                for(var i=1;i<=data[0].step_id;i++){
-                    if(i<data[0].step_id || data[0].status_id == 1){
-                        $(statusNumber).find('span#step'+i).parent().addClass('done');
-                        $(statusNumber).find('span#step'+i).text('');
+                for(var i=0;i<data.length;i++){
+                    console.log(statusNumber + 'span.step'+(i+1), data[i].step_id, data[i].status_id, )
+                    if(data[i].status_id == 1 && (i+1)==data[i].step_id){
+                        $(statusNumber).find('span.step'+(i+1)).parent().addClass('done');
+                        $(statusNumber).find('span.step'+(i+1)).parent().addClass('active')
+                        $(statusNumber).find('span.step'+(i+1)).text('');
+                    } else if(data[i].status_id == 2 && (i+1)==data[i].step_id) {
+                        $(statusNumber).find('span.step'+(i+1)).parent().addClass('fail');
+                        $(statusNumber).find('span.step'+(i+1)).parent().addClass('active')
+                        $(statusNumber).find('span.step'+(i+1)).text('');
+                    } else {
+                        $(statusNumber).find('span.step'+(i+1)).text((i+1));
                     }
-                    if(data[0].status_id == 2 && i==data[0].step_id) {
-                        $(statusNumber).find('span#step'+i).parent().addClass('fail');
-                        $(statusNumber).find('span#step'+i).text('');
-                    }
-                    $(statusNumber).find('span#step'+i).parent().addClass('active')
                 }
                 console.log(data)
             }
