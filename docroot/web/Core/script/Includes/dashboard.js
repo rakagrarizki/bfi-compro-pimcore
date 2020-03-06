@@ -247,7 +247,7 @@ function checkAssignmentList(token) {
                     $('.status-wrapper').append(newel).append("<hr/>");
                 }
                 $.each(data, function( index, value ) {
-                    console.log(value.assignment_id)    
+                    // console.log(value.assignment_id)    
                     $('li.status-box').removeClass('hide');
                     $('#status'+index).find('div.assignment > p').text(value.assignment_id);
                     $('#status'+index).find('div.credit-type > p').text(value.category_desc+' - '+value.product_desc);
