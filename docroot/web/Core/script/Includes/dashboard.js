@@ -281,7 +281,7 @@ function applicationStep(token) {
             if (dataObj.success === true) {
                 var data = dataObj.result.data;
                 $.each(data, function( index, value ) {
-                    $('.stepper-row').find('#step'+(index+1)).text(value.step_id);
+                    $('.stepper-row').find('.step'+(index+1)).text(value.step_id);
                     $('.stepper-row').find('.label-step'+(index+1)).text(value.desc);
                 })
             }
