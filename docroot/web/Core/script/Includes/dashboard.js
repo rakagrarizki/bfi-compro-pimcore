@@ -282,7 +282,7 @@ function applicationStep(token) {
                 var data = dataObj.result.data;
                 $.each(data, function( index, value ) {
                     $('.stepper-row').find('#step'+(index+1)).text(value.step_id);
-                    $('.stepper-row').find('#label-step'+(index+1)).text(value.desc);
+                    $('.stepper-row').find('.label-step'+(index+1)).text(value.desc);
                 })
             }
         }
@@ -397,7 +397,7 @@ function applicationStatus(token, statusNumber, assignmentId) {
                 //     $(statusNumber).find('div.fail-notif > span:first').hide()
                 //     $(statusNumber).find('div.fail-notif > span:last').text(data[0].status_desc)
                 // }
-
+                
                 //add icon done and fail
                 for(var i=0;i<data.length;i++){
                     console.log(statusNumber + 'span.step'+(i+1), data[i].step_id, data[i].status_id, )
