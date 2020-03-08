@@ -18,6 +18,7 @@ function loopSemester() {
                 "<span>Minimal IPK 3.00</span>"+
             "</div>");
         document.getElementById("form-semester-ipk").prepend(asd);
+        $("input#smt-ke-"+i).val(ipk['smt-ke-'+i]);
     }
 }
 
