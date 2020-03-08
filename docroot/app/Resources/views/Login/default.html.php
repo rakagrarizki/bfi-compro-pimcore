@@ -12,6 +12,9 @@ $this->extend('layout-branch.html.php');
 <?php $lang = $this->getLocale(); ?>
 
 <?php
+if ($_COOKIE['customer'] != null || $_COOKIE['customer'] != "") {
+    header("Location: ". BASEURL . "/{$lang}/user/dashboard");
+}
 $this->headScript()->offsetSetFile(100, '/static/js/Includes/login.js');
 $page = $_SERVER['REQUEST_URI'];
 if (preg_match("/.\/service-contract/", $page)) {
