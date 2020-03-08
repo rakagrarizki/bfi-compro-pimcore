@@ -65,7 +65,7 @@ $this->extend('layout.html.php');
                 </div>
                 <div class="form-group">
                     <label for="no_kontrak"><?= $this->translate('Nomor Kontrak') ?></label>
-                    <input type="tel" class="form-control formRequired" name="personal[no_kontrak]" id="no_kontrak" placeholder="<?= $this->translate('Nomor Kontrak'); ?>">
+                    <input type="tel" class="form-control formRequired formAlphanum" name="personal[no_kontrak]" id="no_kontrak" placeholder="<?= $this->translate('Nomor Kontrak'); ?>">
                     <div class="error-wrap"></div>
                 </div>
                 <div class="form-group">
