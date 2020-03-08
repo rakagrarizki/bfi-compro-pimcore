@@ -56,10 +56,11 @@ $lang = $this->getLocale();
                 <div class="caption">
                     <h3 class="tag"><?= $news->getCategory() ? $news->getCategory()->getName(): "";?></h3>
                     <h2 class="title"><?= $news->getTitle();?></h2>
-                    <div class="dateview">
-                        <span class="date"><?= $date;?></span>
-                        <span class="view"><i class="fa fa-eye"></i> <?= $news->getViews() == "" ? "0": $news->getViews(); ?></span>
-                    </div>
+                    <p class="date"><?= $date;?> | <i class="fa fa-eye"></i><?= $news->getViews() == "" ? "0": $news->getViews();?></p>
+                    <!-- <div class="dateview">
+                        <span class="date"></?= $date;?></span>
+                        <span class="view"><i class="fa fa-eye"></i> </?= $news->getViews() == "" ? "0": $news->getViews(); ?></span>
+                    </div> -->
                 </div>
             </a>
         <?php endforeach;?>

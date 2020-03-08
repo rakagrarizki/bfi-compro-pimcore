@@ -46,10 +46,11 @@ if ($site == "corporate") {
                         <div class="article__post__text">
                             <p><?= $news->getCategory()->getName(); ?></p>
                             <h4><a href="<?= '/' . $this->getLocale() . '/news/' . $news->getSlug(); ?>"><?= $news->getTitle(); ?></a></h4>
-                            <div class="dateview">
-                                <span class="date"><?= date('Y-m-d', strtotime($news->getDate())); ?></span>
-                                <span class="view"><i class="fa fa-eye"></i><?= $news->getViews(); ?></span>
-                            </div>
+                            <p class="date"><?= date('d.m.y', strtotime($news->getDate())); ?> | <i class="fa fa-eye"></i> <?= $news->getViews(); ?></p>
+                            <!-- <div class="dateview">
+                                <span class="date"></?= date('Y-m-d', strtotime($news->getDate())); ?></span>
+                                <span class="view"><i class="fa fa-eye"></i></?= $news->getViews(); ?></span>
+                            </div> -->
                         </div>
                     </article>
                 </div>
