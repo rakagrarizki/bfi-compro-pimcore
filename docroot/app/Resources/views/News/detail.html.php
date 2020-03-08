@@ -90,10 +90,11 @@ $urlTwitter = " https://twitter.com/share?text=$titleshare&url=$fixedurl&wrap_li
                 <div class="caption">
                     <h3 class="tag"><?= $relatedNewsData->getCategory()->getName();?></h3>
                     <h2 class="title"><?= $relatedNewsData->getTitle();?></h2>
-                    <div class="dateview">
-                        <span class="date"><?= $date;?></span>
-                        <span class="view"><i class="fa fa-eye"></i> <?= $relatedNewsData->getViews()?></span>
-                    </div>
+                    <p class="date"><?= $date;?> | <i class="fa fa-eye"></i><?= $relatedNewsData->getViews()?></p>
+                    <!-- <div class="dateview">
+                        <span class="date"></?= $date;?></span>
+                        <span class="view"><i class="fa fa-eye"></i> </?= $relatedNewsData->getViews()?></span>
+                    </div> -->
                 </div>
             </a>
         <?php endforeach;?>
