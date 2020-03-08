@@ -414,10 +414,11 @@ $blogList->setLimit(4);
                                     <div class="caption">
                                         <h3 class="tag"><?= $blog->getBlogCategory()->getName(); ?></h3>
                                         <h2 class="title"><?= $blog->getTitle(); ?></h2>
-                                        <div class="dateview">
-                                            <span class="date"><?= date('d.m.y', strtotime($blog->getDate())); ?></span>
-                                            <span class="view"><i class="fa fa-eye"></i><?= $blog->getViews(); ?></span>
-                                        </div>
+                                        <p class="date"><?= date('d.m.y', strtotime($blog->getDate())); ?> | <i class="fa fa-eye"></i> <?= $blog->getViews(); ?></p>
+                                        <!-- <div class="dateview">
+                                            <span class="date"></?= date('d.m.y', strtotime($blog->getDate())); ?></span>
+                                            <span class="view"><i class="fa fa-eye"></i></?= $blog->getViews(); ?></span>
+                                        </div> -->
                                     </div>
                                 </a>
                             <?php endforeach; ?>

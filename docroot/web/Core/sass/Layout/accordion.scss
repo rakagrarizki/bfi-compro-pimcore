@@ -18,6 +18,11 @@
         h4{
           font-size: 22px !important;
           position: relative;
+          .a-reportheading{
+            &:focus{
+              text-decoration: none;
+            }
+          }
           :after{
               content: "\f107";
               font-family: FontAwesome;

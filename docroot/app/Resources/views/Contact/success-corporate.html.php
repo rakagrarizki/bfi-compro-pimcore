@@ -44,10 +44,11 @@ if ($site == "corporate") {
                 <div class="caption">
                     <h3 class="tag"><?= $news->getCategory()->getName(); ?></h3>
                     <h2 class="title"><?= $news->getTitle(); ?></h2>
-                    <div class="dateview">
-                        <span class="date"><?= date('d.m.y', strtotime($news->getDate())); ?></span>
-                        <span class="view"><i class="fa fa-eye"></i><?= $news->getViews(); ?></span>
-                    </div>
+                    <p class="date"><?= date('d.m.y', strtotime($news->getDate())); ?> | <i class="fa fa-eye"></i> <?= $news->getViews(); ?></p>
+                    <!-- <div class="dateview">
+                        <span class="date"></?= date('d.m.y', strtotime($news->getDate())); ?></span>
+                        <span class="view"><i class="fa fa-eye"></i></?= $news->getViews(); ?></span>
+                    </div> -->
                 </div>
             </a>
             <?php endforeach; ?>
