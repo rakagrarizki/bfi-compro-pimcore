@@ -9,6 +9,7 @@
 $this->extend('layout-credit.html.php');
 $this->headScript()->offsetSetFile(100, '/static/js/Includes/travel.js');
 $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
+$this->headScript()->offsetSetFile(102, '/static/js/Includes/general-otp.js');
 
 $blogList = new Pimcore\Model\DataObject\BlogArticle\Listing();
 $blogList->setOrderKey("Date");

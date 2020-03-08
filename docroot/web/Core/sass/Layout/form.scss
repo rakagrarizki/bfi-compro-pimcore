@@ -2502,10 +2502,4 @@ select::-ms-expand {
     }
 }
 
-#step-otp{
-    @include breakpoint(mobile){
-        position: fixed;
-        margin-left: -15px;
-    }
-}
 
