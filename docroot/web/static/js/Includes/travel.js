@@ -354,6 +354,17 @@ var isValidOtp = false;
     selElm.removeAttr("disabled");
   });
 
+
+  $('.main-package-price').on('input propertychange paste', function (e) {
+    if(parseInt($("#ex7SliderVal").val().replace(/[.]/g, ""),10)/10 >= parseInt($(".valuemin").text().replace(/\./g,''),10)/10){
+      $("#down_payment").val((parseInt($("#ex7SliderVal").val().replace(/[.]/g, ""),10)/10).toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+      $("#pocket_money").val((parseInt($("#ex7SliderVal").val().replace(/[.]/g, ""),10)/10).toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+    } else {
+      $("#down_payment").val((parseInt($(".valuemin").text().replace(/\./g,''),10)/10).toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+      $("#pocket_money").val((parseInt($(".valuemin").text().replace(/\./g,''),10)/10).toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+    }
+  });
+
   $("#kota").change(function () {
     var selElm = $('#kecamatan');
     var dataArr = getDistrict($(this).val()[0]);

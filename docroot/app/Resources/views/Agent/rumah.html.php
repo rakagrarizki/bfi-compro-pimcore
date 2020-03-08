@@ -234,13 +234,13 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
 
                     <div class="form-group">
                         <label for="account_number"><?= $this->translate('label-account-number') ?></label>
-                        <input type="text" class="form-control" name="account_number" id="account_number" placeholder="<?= $this->translate('placeholder-account-number') ?>">
+                        <input type="text" class="form-control formNumber" name="account_number" id="account_number" placeholder="<?= $this->translate('placeholder-account-number') ?>">
                         <div class="error-wrap"></div>
                     </div>
 
                     <div class="form-group">
                         <label for="account_name"><?= $this->translate('label-account-name') ?></label>
-                        <input type="text" class="form-control" name="account_name" id="account_name" placeholder="<?= $this->translate('placeholder-account-name') ?>">
+                        <input type="text" class="form-control formAlphabet" name="account_name" id="account_name" placeholder="<?= $this->translate('placeholder-account-name') ?>">
                         <div class="error-wrap"></div>
                     </div>
 

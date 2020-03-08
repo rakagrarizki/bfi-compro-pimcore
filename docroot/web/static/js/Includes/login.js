@@ -83,7 +83,7 @@ $(document).ready(function(){
 
     $('#otp-form').find('input').each(function() {
         $(this).attr('maxlength', 1);
-        $(this).on('keyup', function(e) {
+        $(this).on('keypress', function(e) {
             var parent = $($(this).parent());
             
             if(e.keyCode === 8) {
