@@ -9,7 +9,7 @@ $reports->addConditionParam("Category__id = ?",$category,"AND");
 
 $paginator = new \Zend\Paginator\Paginator($reports);
 $paginator->setCurrentPageNumber($p);
-$paginator->setItemCountPerPage(2);
+$paginator->setItemCountPerPage(5);
 
 
 $t =  $_GET["t"];
