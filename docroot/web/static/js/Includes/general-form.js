@@ -299,8 +299,6 @@ function checkStatus() {
   }
 }
 
-
-
 function reInitJcf() {
   $('input[type="radio"], input[type="checkbox"]').parent().find("span").remove();
   $('input[type="radio"], input[type="checkbox"]').unwrap();

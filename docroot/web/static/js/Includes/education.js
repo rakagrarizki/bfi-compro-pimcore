@@ -259,11 +259,25 @@ function sendLeadData1Edu(){
   }
 }
 
+
 var isValidOtp = false;
 (function ($) {
 
   $("#step-otp").hide();
   form = $("#getCredit").show();
+  
+  var lang = document.documentElement.lang;
+  if ( lang === 'id'){
+      nextLabel = 'Selanjutnya'
+      previouslabel = 'Sebelumnya'
+      finishlabel = 'Selesai'
+      loadinglabel = 'Mohon menunggu ...'
+  }else{
+      nextLabel = 'Next'
+      previouslabel = 'Previous'
+      finishlabel = 'Finish',
+      loadinglabel = 'Loading ...'
+  }
 
   form.steps({
     headerTag: "h3",
@@ -271,12 +285,14 @@ var isValidOtp = false;
     transitionEffect: "slideLeft",
     titleTemplate: '<span class="number"><i class="fa fa-check" aria-hidden="true"></i><b>#index#</b></span> <p>#title#</p>',
     /* Labels */
+  
     labels: {
-      finish: "Selesai",
-      next: "Selanjutnya",
-      previous: "Sebelumnya",
-      loading: "Loading ..."
+      finish: finishlabel,
+      next: nextLabel,
+      previous:  previouslabel ,
+      loading: loadinglabel 
     },
+
     onInit: function () {
       nextButton("inactive");
     },
