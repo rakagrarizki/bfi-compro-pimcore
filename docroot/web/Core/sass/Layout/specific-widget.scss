@@ -64,10 +64,12 @@
     @include breakpoint(mobile){
         h2.title-wrapper{
             margin-top: 1.5rem;
-            // text-align: left !important;
+            margin-right: 20%;
+            margin-left: 20%;
         }
         .paragraf-title{
-            // text-align: left !important;
+            margin-right: 15%;
+            margin-left: 15%;
         }
     }
 }
