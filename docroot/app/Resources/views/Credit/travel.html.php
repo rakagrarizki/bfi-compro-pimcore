@@ -128,7 +128,7 @@ $blogList->setLimit(4);
                             <label for="jml-biaya"><?= $this->translate('travel-package-price') ?></label>
                             <div class="input-group inputform">
                                 <span class="input-group-addon" id="basic-addon1">Rp</span>
-                                <input type="tel" pattern="\d*" id="ex7SliderVal" class="form-control formRequired formPrice c-input-trans" style="text-align: right;" aria-describedby="basic-addon1">
+                                <input type="tel" pattern="\d*" id="ex7SliderVal" class="form-control formRequired formPrice c-input-trans main-package-price" style="text-align: right;" aria-describedby="basic-addon1">
 
                                 <div class="error-wrap"></div>
 
@@ -161,7 +161,7 @@ $blogList->setLimit(4);
                             <label for="jml-biaya"><?= $this->translate('pocket-money') ?></label>
                             <div class="input-group inputform">
                                 <span class="input-group-addon" id="basic-addon1">Rp</span>
-                                <input type="tel" pattern="\d*" id="pocket_money" class="form-control formRequired formatRibuan maxPocketMoney c-input-trans" style="text-align: right;" aria-describedby="basic-addon1">
+                                <input type="tel" pattern="\d*" id="pocket_money" class="form-control formRequired formatRibuan maxPocketMoney main-package-price c-input-trans" style="text-align: right;" aria-describedby="basic-addon1">
                             </div>
                             <div><?= $this->translate('max-20-from-package-price'), $this->websiteConfig('valuePercentage'), $this->translate('max-20-from-package-price2') ?></div>
                             <div class="error-wrap"></div>

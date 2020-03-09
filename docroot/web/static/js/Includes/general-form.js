@@ -436,6 +436,9 @@ function reInitJcf() {
     if (this.value.match(reg2)) {
       this.value = this.value.replace(reg2, '0');
     }
+    if ($.trim($(this).val()) == "") {
+      $(this).val("0");
+    }
   });
 
   $(".formPhoneNumber").bind("contextmenu", function (e) {
