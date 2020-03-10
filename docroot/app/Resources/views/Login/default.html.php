@@ -12,28 +12,28 @@ $this->extend('layout-branch.html.php');
 <?php $lang = $this->getLocale(); ?>
 
 <?php
-if ($_COOKIE['customer'] != null || $_COOKIE['customer'] != "") {
-    header("Location: ". BASEURL . "/{$lang}/user/dashboard");
-}
+// if ($_COOKIE['customer'] != null || $_COOKIE['customer'] != "") {
+//     header("Location: ". BASEURL . "/{$lang}/user/dashboard");
+// }
 $this->headScript()->offsetSetFile(100, '/static/js/Includes/login.js');
-$page = $_SERVER['REQUEST_URI'];
-if (preg_match("/.\/service-contract/", $page)) {
-    $trans1 = $this->translate('welcome-login-kontrak');
-    $trans2 = $this->translate('welcome-login-sub-kontrak');
-} else if (preg_match("/.\/service-status/", $page)) {
-    $trans1 = $this->translate('welcome-login-status');
-    $trans2 = $this->translate('welcome-login-sub-status');
-} else {
-    $trans1 = $this->translate('welcome-login');
-    $trans2 = $this->translate('welcome-login-sub');
-}
+// $page = $_SERVER['REQUEST_URI'];
+// if (preg_match("/.\/service-contract/", $page)) {
+//     $trans1 = $this->translate('welcome-login-kontrak');
+//     $trans2 = $this->translate('welcome-login-sub-kontrak');
+// } else if (preg_match("/.\/service-status/", $page)) {
+//     $trans1 = $this->translate('welcome-login-status');
+//     $trans2 = $this->translate('welcome-login-sub-status');
+// } else {
+//     $trans1 = $this->translate('welcome-login');
+//     $trans2 = $this->translate('welcome-login-sub');
+// }
 ?>
 
 <section id="login" class="container">
     <!-- <h3></?= $this->translate('welcome-login'); ?></h3>
     <p></?= $this->translate('welcome-login-sub'); ?></p> -->
-    <h3><?= $trans1; ?></h3>
-    <p><?= $trans2; ?></p>
+    <h3><?= $this->trans1; ?></h3>
+    <p><?= $this->trans2; ?></p>
     <form action="" id="login-form">
         <div class="input-login">
             <div class="input-text-group">
