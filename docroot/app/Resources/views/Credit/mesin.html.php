@@ -392,7 +392,7 @@ $blogList->setLimit(4);
                           D. <?= $this->translate('data-funding')?>
                       </p>
                       <div class="button-area text-right button-angsur">
-                          <button id="btnJumlahPembiayaan" onclick="editStep(2)" class="cta cta-primary cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"></i><b><?= $this->translate('ubah')?></b></button>
+                          <button id="btnJumlahPembiayaan2" onclick="editStep(2)" class="cta cta-primary cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"></i><b><?= $this->translate('ubah')?></b></button>
                       </div>
                       <table class="tablebiaya">
                           <tr>
