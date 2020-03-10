@@ -188,6 +188,11 @@ function checkStatusVerify(token) {
                     $('p.verify').removeClass('hide')
                     $('ul.contract-wrapper').show()
                 }
+                if(data.is_noktp == true){
+                    $('span#poin3').parent().children('a.tool-tip').show()
+                }else{
+                    $('span#poin3').parent().children('a.tool-tip').hide()
+                }
             }
         }
     })

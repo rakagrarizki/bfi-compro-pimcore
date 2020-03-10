@@ -493,17 +493,6 @@
                         });
                     });
   
-                    // var raw_select = '<div class="columnselect" id="$0">' +
-                    //     '<div class="list-select">' +
-                    //     '<label>$1</label>' +
-                    //     '</div>' +
-                    //     '<div class="list-select select-wrapper">' +
-                    //     '<select class="c-custom-select-trans form-control formRequired opsiasuransi"' +
-                    //     'name="status" multiple="multiple">' + asu_ransi + '</select>' +
-                    //     '</div>' +
-                    //     '<div class="error-wrap"></div>' +
-                    //     '</div>';
-  
                     $(".form-group.inputsimulasi.asuransi")
                         .find(".columnselect")
                         .remove();
