@@ -171,3 +171,40 @@ function otp() {
         }
     });
   }
+
+  function postOTP(url, data) {
+    var _ret;
+    $.ajax({
+      type: 'POST',
+      url: url,
+      data: data,
+      dataType: 'json',
+      // tryCount: 0,
+      // retryLimit: retryLimit,
+      async: false,
+      error: function (xhr, textStatus, errorThrown) {
+        // retryAjax(this, xhr);
+        $('#wrongOtp').modal('show');
+      },
+      fail: function (xhr, textStatus, error) {
+        // retryAjax(this, xhr);
+      },
+      success: function (result) {
+        // console.log("RESULT", result);
+        if (result.success === "1") {
+          _ret = result;
+        } else {
+          // console.log('error' + result.message);
+        }
+      }
+    })
+    return _ret;
+  }
+
+  function requestOTP(cb) {
+    var _data = {
+      phone_number: $('#no_handphone').val().toString()
+    }
+    postOTP("/otp/send-otp", _data);
+    cb();
+  }

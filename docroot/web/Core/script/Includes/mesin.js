@@ -360,12 +360,12 @@ function sendLeadData1Mesin(){
   if (form.valid()) {
     var currentStep = form.steps("getCurrentIndex");
     var _url = "";
-    var _data = {};
+    var _datamesin = {};
 
     switch (currentStep) {
       case 0:
         _url = "/credit/save-machinery-leads1";
-        _data = {
+        _datamesin = {
           "submission_id": "",
           "name": $("#nama_lengkap").val(),
           "email": $("#email_pemohon").val(),
@@ -373,7 +373,7 @@ function sendLeadData1Mesin(){
         }
         break;
     }
-    var sendData = postData(_url, _data);
+    var sendData = postData(_url, _datamesin,_data);
     if (currentStep === 0) {
       submission_id = sendData.data.submission_id; 
     }
@@ -438,9 +438,6 @@ var isValidOtp = false;
       if (currentIndex > newIndex) {
         return true;
       }
-      if( currentIndex === 0){
-        console.log("step1");
-        }
       if( currentIndex === 0){
           if (localStorage.getItem('token') === null ) {
              if(!isKnownNumber) {
