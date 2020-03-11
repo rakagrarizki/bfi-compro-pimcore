@@ -33,8 +33,8 @@ if ($site == "corporate") {
     <div id="news" class="news">
         <div class="row">
             <div class="sect-title text-center">
-                <h2><?= $this->t('berita_head'); ?></h2>
-                <p><?= $this->t('berita_sub_head'); ?></p>
+                <h2><?= $this->t('blog-title'); ?></h2>
+                <p><?= $this->t('blog-text1'); ?></p>
             </div>
         </div>
         <div class="row list-news-container">
