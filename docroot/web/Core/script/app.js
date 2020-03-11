@@ -526,17 +526,13 @@
                         // $(".columnselect[ke=0]").attr("ke", i);
                         // $(".columnselect[ke=" + i + "]").children().find("label").text("" + tahunke + " - " + i + "");
   
-                        asuransi_arr[asuransi_arr.length] = $(
-                            "#tahun" + i + " .c-custom-select-trans"
-                        ).val();
-  
                         var asuransiPlaceholder;
                         if (lang == "id") {
                             asuransiPlaceholder = "Jenis Asuransi";
                         } else {
                             asuransiPlaceholder = "Type of Insurance";
                         }
-                        $("#tahun" + i + " .opsiasuransi").select2({
+                        var sel = $("#tahun" + i + " .opsiasuransi").select2({
                             minimumResultsForSearch: Infinity,
                             dropdownParent: $(
                                 "#tahun" + i + " .select-wrapper"
@@ -544,6 +540,9 @@
                             data: list_asuransi[i - 1],
                             placeholder: asuransiPlaceholder
                         });
+
+                      asuransi_arr.push(sel.find(':selected').val());
+                      // console.log("FFFFFF", sel.find(':selected').val())
                     }
                     if (isonly == true) {
                         $(".columnselect .opsiasuransi").attr(
@@ -567,15 +566,15 @@
                         // }
                     });
   
-                    $.each($(".columnselect .c-custom-select-trans"), function(
-                        i,
-                        o
-                    ) {
-                        asuransi_arr[asuransi_arr_txt.length] = $(o).val()[0];
-                        asuransi_arr_txt[asuransi_arr_txt.length] = $(o)
-                            .find("option:selected")
-                            .text();
-                    });
+                    // $.each($(".columnselect .c-custom-select-trans"), function(
+                    //     i,
+                    //     o
+                    // ) {
+                    //     asuransi_arr[asuransi_arr.length] = $(o).val()[0];
+                    //     asuransi_arr_txt[asuransi_arr_txt.length] = $(o)
+                    //         .find("option:selected")
+                    //         .text();
+                    // });
   
                     $(".columnselect .c-custom-select-trans").on(
                         "change",
@@ -583,7 +582,7 @@
                             var rowke = $(this)
                                 .parents(".columnselect")
                                 .data("index");
-                            asuransi_arr[rowke - 1] = $(this).val()[0];
+                          asuransi_arr[rowke - 1] = $(this).find(':selected').val();
                             asuransi_arr_txt[rowke - 1] = $(this)
                                 .find("option:selected")
                                 .text();
@@ -2392,7 +2391,8 @@
                         });
                     }
   
-                    // pushDataBangunan();
+                  // pushDataBangunan();
+                  getpriceminmax(credits);
                     setSummary();
                     getTenor();
                     $(".text-head")
@@ -2412,11 +2412,14 @@
         if ($("#estimasi_harga").length > 0) {
             var isPrice = false;
             // $(".inputsimulasi").addClass("hidden");
-            $(".inputsimulasi #ex6SliderVal").val("10.000.000");
-            $(".inputsimulasi .valuemin , .inputsimulasi .valuemax").text(
-                "10.000.000"
-            );
-            $("#estimasi_harga").val("10.000.000");
+            // $(".inputsimulasi #ex6SliderVal").val("1.000.000");
+            // $(".inputsimulasi .valuemin").text(
+            //     "1.000.000"
+            // );
+            // $(".inputsimulasi .valuemax").text(
+            //     "10.000.000"
+            // );
+            $("#estimasi_harga").val("0");
             $("#estimasi_harga").change(function() {
                 var _val = $(this).val();
                 _val = parseInt(_val.replace(/[.]/g, ""));
@@ -5490,7 +5493,7 @@
                 console.log("request failed");
             },
             success: function(result) {
-                console.log("Calculator Result", data)
+              console.log("Calculator Result", asuransi_arr, _param, result)
   
                 var angsuranFinal = result.data.monthly_installment_est_total,
                     angsuranFinal_txt = separatordot(angsuranFinal),
