@@ -5452,7 +5452,7 @@
             submission_id: submission_id,
             funding: htmlEntities(objCredits.funding),
             tenor: htmlEntities(objCredits.jangka_waktu),
-            insurance: asuransi_arr.join(",")
+          insurance: htmlEntities(asuransi_arr.join(","))
         };
   
         // console.log(brand_attr, $(this).val())
@@ -5490,7 +5490,7 @@
                 console.log("request failed");
             },
             success: function(result) {
-                // console.log("Calculator Result", data)
+                console.log("Calculator Result", data)
   
                 var angsuranFinal = result.data.monthly_installment_est_total,
                     angsuranFinal_txt = separatordot(angsuranFinal),
