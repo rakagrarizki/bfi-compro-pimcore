@@ -446,7 +446,7 @@ form = $("#getCredit").show();
 form.steps({
   headerTag: "h3",
   bodyTag: "fieldset",
-  transitionEffect: "slideLeft",
+  transitionEffect: "fade",
   titleTemplate: '<span class="number"><i class="fa fa-check" aria-hidden="true"></i><b>#index#</b></span> <p>#title#</p>',
   /* Labels */
   labels: {
