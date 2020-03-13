@@ -496,6 +496,7 @@ var isValidOtp = false;
       data: dataArr
     });
     selElm.removeAttr("disabled");
+    leavePage = true;
   });
 
   $("#kota").change(function () {
