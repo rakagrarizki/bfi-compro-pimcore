@@ -159,7 +159,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                             <p class="otp-resend"><?= $this->translate('dont-get-otp') ?> <span id="otp-resend" class="countdown">Resend</span></p>
                         </div>
                         <div class="otp-button margin-top-50">
-                            <button class="cta cta-orange cta-big cta-see btn-verifikasi buttonnext" id="agentOtp-verification" type="button"><?= $this->translate('verifikasi') ?></button>
+                            <button class="cta cta-orange cta-big cta-see btn-verifikasi buttonnext" id="agentOtp-verification"  disabled style="opacity: .5;" type="button"><?= $this->translate('verifikasi') ?></button>
                         </div>
                     </div>
                 </div>
@@ -488,8 +488,6 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                             </table>
                         </div>
                     </div>
-
-
                     <div class="biaya-agunan">
                         <div class="form-group">
                             <div class="checkbox-group formRequired">
@@ -500,15 +498,6 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                             </div>
                             <div class="error-wrap"></div>
                         </div>
-                        <!-- <div class="form-group">
-                      <input type="checkbox" id="agreement2" class="agreement">
-                      <label for="agreement2" class="label-agreement">Lorem ipsum dolor sit
-                          amet, consectetur
-                          adipisicing elit. Odio reprehenderit iusto libero aliquid
-                          temporibus vero, optio eveniet et, adipisci natus rem enim sequi
-                          saepe expedita qui sunt exercitationem delectus. In?</label>
-                      <div class="error-wrap"></div>
-                  </div> -->
                     </div>
                 </div>
                 <div id="otp-success" class="success-wrapper">
