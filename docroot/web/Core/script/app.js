@@ -61,6 +61,7 @@ var objCredits = {
 
 var credType = "";
 var submission_id = "";
+var leavePage = false;
 
 (function($) {
     var lang = document.documentElement.lang;
@@ -2558,6 +2559,7 @@ var submission_id = "";
                 );
             } else {
                 sendOtp(credits);
+                leavePage = false;
             }
   
             $(".input-number").on("change", function() {
@@ -3326,6 +3328,8 @@ var submission_id = "";
   
     $("#provinsi").change(function() {
         // console.log('#provinsi change working...');
+        leavePage = true;
+        console.log('leavePage', leavePage);
   
         resetSameAddress();
   
@@ -5982,6 +5986,14 @@ var submission_id = "";
         var parent = $(this).parents(".upload-image");
         parent.find(".file-input").click();
     });
+
+    $(window).on('beforeunload', function(e) {
+        if (leavePage) {
+            e.preventDefault();
+            return "Are you sure you want to leave ?";
+        }
+    });
+
   })(jQuery); // tanda tutup
   
   function copyURL(url) {
