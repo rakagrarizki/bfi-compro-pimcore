@@ -182,19 +182,19 @@ $this->extend('layout.html.php');
             <form action="">
                 <div class="form-wrapper">
                     <div class="input-text-group">
-                        <label id="name-label" class="input-label">NAMA LENGKAP</label>
+                        <label id="name-label" class="input-label"><?= $this->translate('fullname'); ?></label>
                         <input id="name-input" class="style-input" type="text" placeholder="<?= $this->translate('form-name'); ?>" required>
                     </div>
                     <div class="input-text-group">
-                        <label id="email-label" class="input-label">EMAIL</label>
+                        <label id="email-label" class="input-label"><?= $this->translate('email'); ?></label>
                         <input id="email-input" class="style-input" type="email" placeholder="<?= $this->translate('email'); ?>" required>
                     </div>
                     <div class="input-text-group">
-                        <label id="phone-label" class="input-label">NOMOR HANDPHONE</label>
+                        <label id="phone-label" class="input-label"><?= $this->translate('form-hp'); ?></label>
                         <input id="phone-input" class="style-input" type="number" placeholder="<?= $this->translate('form-hp'); ?>" required>
                     </div>
                     <div class="input-text-group">
-                        <label id="ktp-label" class="input-label">NOMOR KTP</label>
+                        <label id="ktp-label" class="input-label"><?= $this->translate('label-ktp-new'); ?></label>
                         <input id="ktp-input" class="style-input" type="number" placeholder="<?= $this->translate('label-ktp'); ?>">
                     </div>
                     <div id="upload-ktp">

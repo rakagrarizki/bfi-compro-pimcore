@@ -49,7 +49,7 @@ $blogList->setLimit(4);
                 </div>
                 <div class="form-group upload-image">
                     <!-- <label></*?= $this->translate('form-ktp')?*/> Unggah Foto KTP</label> -->
-                    <label><?= $this->translate('labelNoktp') ?></label>
+                    <label><?= $this->translate('label-ktp-new') ?></label>
                     <div class="upload-file">
                         <img src="" />
                         <div class="upload-btn">
