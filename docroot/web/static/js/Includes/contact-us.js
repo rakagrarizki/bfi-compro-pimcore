@@ -311,4 +311,9 @@ $(document).ready(function(){
         o.value = arr[i].v;
         $(o).text(arr[i].t);
     });
+
+    $('#message').keypress(function(event){
+      
+        $('.label-messages').hide();
+    });
 });

@@ -85,7 +85,7 @@ $this->extend('layout.html.php');
                     <div class="error-wrap"></div>
                 </div>
                 <div class="form-group">
-                    <label for="message"><?= $this->translate('Pesan') ?></label>
+                    <label for="message" class="label-messages"><?= $this->translate('Pesan') ?></label>
                     <textarea class="form-control formRequired formMessage" name="personal[message]" id="message" placeholder="<?= $this->translate('Pesan') ?>"></textarea>
                     <div class="error-wrap"></div>
                 </div>

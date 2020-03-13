@@ -48,7 +48,7 @@ $blogList->setLimit(4);
                     <div class="error-wrap"></div>
                 </div>
                 <div class="form-group upload-image">
-                    <label><?= $this->translate('labelNoktp') ?></label>
+                    <label><?= $this->translate('label-ktp-new') ?></label>
                     <div class="upload-file">
                         <img src="" />
                         <div class="upload-btn">

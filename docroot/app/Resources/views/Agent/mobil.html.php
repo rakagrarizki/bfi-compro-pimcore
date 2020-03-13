@@ -78,7 +78,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                             <div class="error-wrap"></div>
                         </div>
                         <div class="form-group">
-                            <label><?= $this->translate('labelNoktp') ?></label>
+                            <label><?= $this->translate('label-ktp-new') ?></label>
                             <input type="text" class="form-control formRequired formNoKtp" name="noKtp" id="noKtp"  minlength="16" maxlength="17" placeholder="<?= $this->translate('label-ktp'); ?>">
                             <div class="error-wrap"></div>
                         </div>
@@ -356,7 +356,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                                     <td id="showNpwp"></td>
                                 </tr>
                                 <tr>
-                                    <td><b><?= $this->translate('labelNoktp') ?></b></td>
+                                    <td><b><?= $this->translate('label-ktp-new') ?></b></td>
 
                                     <td id="showNoKtp"></td>
                                 </tr>
@@ -488,8 +488,6 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                             </table>
                         </div>
                     </div>
-
-
                     <div class="biaya-agunan">
                         <div class="form-group">
                             <div class="checkbox-group formRequired">
@@ -500,15 +498,6 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                             </div>
                             <div class="error-wrap"></div>
                         </div>
-                        <!-- <div class="form-group">
-                      <input type="checkbox" id="agreement2" class="agreement">
-                      <label for="agreement2" class="label-agreement">Lorem ipsum dolor sit
-                          amet, consectetur
-                          adipisicing elit. Odio reprehenderit iusto libero aliquid
-                          temporibus vero, optio eveniet et, adipisci natus rem enim sequi
-                          saepe expedita qui sunt exercitationem delectus. In?</label>
-                      <div class="error-wrap"></div>
-                  </div> -->
                     </div>
                 </div>
                 <div id="otp-success" class="success-wrapper">

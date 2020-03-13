@@ -383,7 +383,6 @@ function agentVerifiedOtp() {
   var verifiedOtp = postOTP("/otp/validate-otp", _data);
   if (verifiedOtp.success === "1") {
     successAgentOTP();
-    leavePage = false;
     // showSuccessAgentOtp();
   } else {
     $('#wrongOtp').modal('show');
@@ -534,10 +533,6 @@ var isValidOtp = false;
     console.log($(this).val())
   });
 
-  $("#education").change(function () {
-    leavePage = true;
-  })
-
   $("#provinsi").change(function () {
     var selElm = $('#kota');
     var dataArr = getCity($(this).val()[0]);
@@ -549,7 +544,6 @@ var isValidOtp = false;
       data: dataArr
     });
     selElm.removeAttr("disabled");
-    leavePage = true;
   });
 
   $("#kota").change(function () {

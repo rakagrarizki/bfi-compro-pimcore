@@ -374,8 +374,6 @@ var isValidOtp = false;
       data: dataArr
     });
     selElm.removeAttr("disabled");
-    leavePage = true;
-    console.log('leavePage', leavePage);
   });
 
   $("#kota").change(function () {

@@ -259,7 +259,6 @@ function otpVerified() {
     var verifiedOtp = postOTP("/otp/validate-otp", _data);
     if (verifiedOtp.success === "1") {
       sendLastLeads();
-      leavePage = false;
     } else {
       $('#wrongOtp').modal('show');
     }

@@ -172,3 +172,37 @@ select option[disabled],
 select option:disabled {
     -webkit-text-fill-color: #eeeeee;
 }
+
+.about-us-page{
+    .table-responsive{
+        @include breakpoint(mobile){
+            div{
+                margin-top: 30px !important;
+                p{
+                    margin-bottom: 20px;
+                    span{
+                        font-size: 21px !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+#contact{
+    .form-control{
+        @include breakpoint(mobile){
+            #message{
+                padding-top: 60px;
+            }
+        }
+    }
+}
+
+.verifikasi{
+    cursor: pointer;
+}
+
+.site-container{
+    min-height: auto;
+}
