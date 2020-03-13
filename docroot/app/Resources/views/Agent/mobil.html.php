@@ -488,8 +488,6 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                             </table>
                         </div>
                     </div>
-
-
                     <div class="biaya-agunan">
                         <div class="form-group">
                             <div class="checkbox-group formRequired">
@@ -500,15 +498,6 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                             </div>
                             <div class="error-wrap"></div>
                         </div>
-                        <!-- <div class="form-group">
-                      <input type="checkbox" id="agreement2" class="agreement">
-                      <label for="agreement2" class="label-agreement">Lorem ipsum dolor sit
-                          amet, consectetur
-                          adipisicing elit. Odio reprehenderit iusto libero aliquid
-                          temporibus vero, optio eveniet et, adipisci natus rem enim sequi
-                          saepe expedita qui sunt exercitationem delectus. In?</label>
-                      <div class="error-wrap"></div>
-                  </div> -->
                     </div>
                 </div>
                 <div id="otp-success" class="success-wrapper">
