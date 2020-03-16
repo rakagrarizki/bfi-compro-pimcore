@@ -8,6 +8,7 @@
 $this->extend('layout-credit.html.php');
 $this->headScript()->offsetSetFile(100, '/static/js/Includes/mesin.js');
 $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
+$this->headScript()->offsetSetFile(102, '/static/js/Includes/general-otp.js');
 
 $blogList = new Pimcore\Model\DataObject\BlogArticle\Listing();
 $blogList->setOrderKey("Date");
@@ -171,6 +172,12 @@ $blogList->setLimit(4);
               <div class="error-wrap"></div>
           </div>
           <div class="form-group">
+              <label for="machine_estimated"><?= $this->translate('label-estimated-price')?></label>
+              <input type="text" class="form-control formEstimate formatRibuan" name="machine_estimated" id="machine_estimated"
+                      placeholder="<?= $this->translate('placeholder-estimated-price')?>">
+              <div class="error-wrap"></div>
+          </div>
+          <div class="form-group">
               <label><?= $this->translate('brand')?></label>
               <select class="form-control formRequired" id="brand" name="brand"
                       placeholder="<?= $this->translate('choose-brand')?>" multiple="multiple">
@@ -194,12 +201,7 @@ $blogList->setLimit(4);
               </select>
               <div class="error-wrap"></div>
           </div>
-          <div class="form-group">
-              <label for="machine_estimated"><?= $this->translate('label-estimated-price')?></label>
-              <input type="text" class="form-control formEstimate formatRibuan" name="machine_estimated" id="machine_estimated"
-                      placeholder="<?= $this->translate('placeholder-estimated-price')?>">
-              <div class="error-wrap"></div>
-          </div>
+      
         </fieldset>
 
         <!-- STEP 4 -->
@@ -390,7 +392,7 @@ $blogList->setLimit(4);
                           D. <?= $this->translate('data-funding')?>
                       </p>
                       <div class="button-area text-right button-angsur">
-                          <button id="btnJumlahPembiayaan" onclick="editStep(2)" class="cta cta-primary cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"></i><b><?= $this->translate('ubah')?></b></button>
+                          <button id="btnJumlahPembiayaan2" onclick="editStep(2)" class="cta cta-primary cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"></i><b><?= $this->translate('ubah')?></b></button>
                       </div>
                       <table class="tablebiaya">
                           <tr>
@@ -470,10 +472,11 @@ $blogList->setLimit(4);
                             <div class="caption">
                                 <h3 class="tag"><?= $blog->getBlogCategory()->getName(); ?></h3>
                                 <h2 class="title"><?= $blog->getTitle(); ?></h2>
-                                <div class="dateview">
-                                    <span class="date"><?= date('d.m.y', strtotime($blog->getDate())); ?></span>
-                                    <span class="view"><i class="fa fa-eye"></i><?= $blog->getViews(); ?></span>
-                                </div>
+                                <p class="date"><?= date('d.m.y', strtotime($blog->getDate())); ?> | <i class="fa fa-eye"></i> <?= $blog->getViews(); ?></p>
+                                <!-- <div class="dateview">
+                                    <span class="date"></?= date('d.m.y', strtotime($blog->getDate())); ?></span>
+                                    <span class="view"><i class="fa fa-eye"></i></?= $blog->getViews(); ?></span>
+                                </div> -->
                             </div>
                         </a>
                     <?php endforeach; ?>

@@ -65,7 +65,7 @@ $this->extend('layout.html.php');
                 </div>
                 <div class="form-group">
                     <label for="no_kontrak"><?= $this->translate('Nomor Kontrak') ?></label>
-                    <input type="tel" class="form-control formRequired" name="personal[no_kontrak]" id="no_kontrak" placeholder="<?= $this->translate('Nomor Kontrak'); ?>">
+                    <input type="tel" class="form-control formRequired formAlphanum" name="personal[no_kontrak]" id="no_kontrak" placeholder="<?= $this->translate('Nomor Kontrak'); ?>">
                     <div class="error-wrap"></div>
                 </div>
                 <div class="form-group">
@@ -85,7 +85,7 @@ $this->extend('layout.html.php');
                     <div class="error-wrap"></div>
                 </div>
                 <div class="form-group">
-                    <label for="message"><?= $this->translate('Pesan') ?></label>
+                    <label for="message" class="label-messages"><?= $this->translate('Pesan') ?></label>
                     <textarea class="form-control formRequired formMessage" name="personal[message]" id="message" placeholder="<?= $this->translate('Pesan') ?>"></textarea>
                     <div class="error-wrap"></div>
                 </div>

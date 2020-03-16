@@ -1,3 +1,68 @@
+var credits = {
+    angunan: {
+        jenis_angunan: ""
+    },
+
+    pemohon: {
+        nama: "",
+        email: "",
+        no_handphone: ""
+    },
+
+    tempat_tinggal: {
+        provinsi: "",
+        kota: "",
+        kecamatan: "",
+        kelurahan: "",
+        kode_pos: "",
+        alamat: ""
+    },
+
+    kendaraan: {
+        merk_kendaraan: "",
+        merk_kendaraan_text: "",
+        model_kendaraan: "",
+        model_kendaraan_text: "",
+        tahun_kendaraan: "",
+        tahun_kendaraan_text: "",
+        status_pemilik: ""
+    },
+
+    data_bangunan: {
+        status_sertifikat: "",
+        sertifikat_atas_nama: "",
+        provinsi: "",
+        kota: "",
+        kecamatan: "",
+        kelurahan: "",
+        kode_pos: "",
+        alamat: "",
+        jenis_properti: "",
+        kondisi: "",
+        tipe_sertifikat: "",
+        is_dihuni: ""
+    }
+};
+var objCredits = {
+    nama_lengkap: "",
+    email: "",
+    alamat_lengkap: "",
+    no_handphone: "",
+    kota: "",
+    kecamatan: "",
+    kelurahan: "",
+    model_kendaraan: "",
+    tahun_kendaraan: "",
+    funding: 0,
+    merk_kendaraan: "",
+    jangka_waktu: 0,
+    installment: 0
+};
+
+var credType = "";
+var submission_id = "";
+var leavePage = false;
+
 (function($) {
     var lang = document.documentElement.lang;
   
@@ -226,66 +291,7 @@
   
     // CLOSE
   
-    var credits = {
-        angunan: {
-            jenis_angunan: ""
-        },
-  
-        pemohon: {
-            nama: "",
-            email: "",
-            no_handphone: ""
-        },
-  
-        tempat_tinggal: {
-            provinsi: "",
-            kota: "",
-            kecamatan: "",
-            kelurahan: "",
-            kode_pos: "",
-            alamat: ""
-        },
-  
-        kendaraan: {
-            merk_kendaraan: "",
-            merk_kendaraan_text: "",
-            model_kendaraan: "",
-            model_kendaraan_text: "",
-            tahun_kendaraan: "",
-            tahun_kendaraan_text: "",
-            status_pemilik: ""
-        },
-  
-        data_bangunan: {
-            status_sertifikat: "",
-            sertifikat_atas_nama: "",
-            provinsi: "",
-            kota: "",
-            kecamatan: "",
-            kelurahan: "",
-            kode_pos: "",
-            alamat: "",
-            jenis_properti: "",
-            kondisi: "",
-            tipe_sertifikat: "",
-            is_dihuni: ""
-        }
-    };
-    var objCredits = {
-        nama_lengkap: "",
-        email: "",
-        alamat_lengkap: "",
-        no_handphone: "",
-        kota: "",
-        kecamatan: "",
-        kelurahan: "",
-        model_kendaraan: "",
-        tahun_kendaraan: "",
-        funding: 0,
-        merk_kendaraan: "",
-        jangka_waktu: 0,
-        installment: 0
-    };
+    
   
     var kecamatanForCarYear;
   
@@ -493,17 +499,6 @@
                         });
                     });
   
-                    // var raw_select = '<div class="columnselect" id="$0">' +
-                    //     '<div class="list-select">' +
-                    //     '<label>$1</label>' +
-                    //     '</div>' +
-                    //     '<div class="list-select select-wrapper">' +
-                    //     '<select class="c-custom-select-trans form-control formRequired opsiasuransi"' +
-                    //     'name="status" multiple="multiple">' + asu_ransi + '</select>' +
-                    //     '</div>' +
-                    //     '<div class="error-wrap"></div>' +
-                    //     '</div>';
-  
                     $(".form-group.inputsimulasi.asuransi")
                         .find(".columnselect")
                         .remove();
@@ -537,17 +532,13 @@
                         // $(".columnselect[ke=0]").attr("ke", i);
                         // $(".columnselect[ke=" + i + "]").children().find("label").text("" + tahunke + " - " + i + "");
   
-                        asuransi_arr[asuransi_arr.length] = $(
-                            "#tahun" + i + " .c-custom-select-trans"
-                        ).val();
-  
                         var asuransiPlaceholder;
                         if (lang == "id") {
                             asuransiPlaceholder = "Jenis Asuransi";
                         } else {
                             asuransiPlaceholder = "Type of Insurance";
                         }
-                        $("#tahun" + i + " .opsiasuransi").select2({
+                        var sel = $("#tahun" + i + " .opsiasuransi").select2({
                             minimumResultsForSearch: Infinity,
                             dropdownParent: $(
                                 "#tahun" + i + " .select-wrapper"
@@ -555,6 +546,9 @@
                             data: list_asuransi[i - 1],
                             placeholder: asuransiPlaceholder
                         });
+
+                      asuransi_arr.push(sel.find(':selected').val());
+                      // console.log("FFFFFF", sel.find(':selected').val())
                     }
                     if (isonly == true) {
                         $(".columnselect .opsiasuransi").attr(
@@ -578,15 +572,15 @@
                         // }
                     });
   
-                    $.each($(".columnselect .c-custom-select-trans"), function(
-                        i,
-                        o
-                    ) {
-                        asuransi_arr[asuransi_arr_txt.length] = $(o).val()[0];
-                        asuransi_arr_txt[asuransi_arr_txt.length] = $(o)
-                            .find("option:selected")
-                            .text();
-                    });
+                    // $.each($(".columnselect .c-custom-select-trans"), function(
+                    //     i,
+                    //     o
+                    // ) {
+                    //     asuransi_arr[asuransi_arr.length] = $(o).val()[0];
+                    //     asuransi_arr_txt[asuransi_arr_txt.length] = $(o)
+                    //         .find("option:selected")
+                    //         .text();
+                    // });
   
                     $(".columnselect .c-custom-select-trans").on(
                         "change",
@@ -594,7 +588,7 @@
                             var rowke = $(this)
                                 .parents(".columnselect")
                                 .data("index");
-                            asuransi_arr[rowke - 1] = $(this).val()[0];
+                          asuransi_arr[rowke - 1] = $(this).find(':selected').val();
                             asuransi_arr_txt[rowke - 1] = $(this)
                                 .find("option:selected")
                                 .text();
@@ -1006,8 +1000,6 @@
         }
     }
   
-    var credType = "";
-    var submission_id = "";
     function setCreditType() {
         var _path = window.location.pathname;
   
@@ -1045,72 +1037,6 @@
         return number.replace(/[.]/g, "");
     }
 
-    function saveleads1(cb) {
-        submission_id = "";
-        var _URL = "";
-        var _data = {};
-        var nama_lengkap = $("#nama_lengkap").val(),
-            email_pemohon = $("#email_pemohon").val(),
-            no_telepon = $("#no_handphone").val(),
-            jenis_kredit = $("#jenis_form").val();
-  
-        switch (jenis_kredit) {
-            case "MOBIL":
-                _URL = "/credit/save-car-leads1";
-                break;
-            case "MOTOR":
-                _URL = "/credit/save-motorcycle-leads1";
-                break;
-            case "SURAT BANGUNAN":
-                _URL = "/credit/save-pbf-leads1";
-                _data = {
-                    dob: reformatDate($("#tgl_lahir").val()),
-                    profession_id: $("#pekerjaan").val()[0],
-                    salary: reformatMoney($("#penghasilan").val()),
-                    path_ktp: $("#ktp").val()
-                };
-                break;
-        }
-  
-        if (_URL !== "") {
-            _data = Object.assign(_data, {
-                submission_id: submission_id,
-                name: nama_lengkap,
-                email: email_pemohon,
-                phone_number: no_telepon
-            });
-  
-            $.ajax({
-                type: "POST",
-                url: _URL,
-                data: _data,
-                dataType: "json",
-                tryCount: 0,
-                retryLimit: retryLimit,
-                error: function(xhr, textStatus, errorThrown) {
-                    retryAjax(this, xhr);
-                },
-                fail: function(xhr, textStatus, error) {
-                    retryAjax(this, xhr);
-                },
-                success: function(result) {
-                    if (result.success === "1") {
-                        submission_id = result.data.submission_id;
-                        credits.angunan.jenis_angunan = htmlEntities(
-                            jenis_kredit
-                        );
-                        credits.pemohon.nama = htmlEntities(nama_lengkap);
-                        credits.pemohon.email = htmlEntities(email_pemohon);
-                        credits.pemohon.no_handphone = htmlEntities(no_telepon);
-                        cb();
-                    } else {
-                        console.log("error" + result.message);
-                    }
-                }
-            });
-        }
-    }
-  
     function pushDataPemohon2(cb) {
         submission_id = "";
         var _URL = "";
@@ -1119,7 +1045,6 @@
             email_pemohon = $("#email_pemohon").val(),
             no_telepon = $("#no_handphone").val(),
             jenis_kredit = $("#jenis_form").val();
-  
         switch (jenis_kredit) {
             case "MOBIL":
                 _URL = "/credit/save-car-leads1";
@@ -1227,6 +1152,7 @@
                     console.log("request failed");
                 },
                 success: function(result) {
+                    console.log('masuk 1');
                     if (result.success === "1") {
                         submission_id = result.data.submission_id;
                         credits.angunan.jenis_angunan = htmlEntities(
@@ -1274,7 +1200,6 @@
         kelurahan = $("#kelurahan option[value='" + kelurahan + "']").text();
   
         var _url = "";
-        console.log("DATA", _data);
   
         switch (credType) {
             case "mobil":
@@ -1876,19 +1801,20 @@
                     i--;
                 }
             }
-  
+            
             for (var i = 0; i <= asuransi_arr.length - 1; i++) {
                 //var txt_asuransi = $(".c-custom-select-trans.opsiasuransi option[value='"+ asuransi_arr[i] +"']").text();
+                var asuransi_txt = asuransi_arr_txt[i] ? asuransi_arr_txt[i] : 'All Risk';
                 var html_sum_asuransi =
                     "<tr>" +
                     "<td>Asuransi Tahun ke-" +
                     (i + 1) +
                     "</td>" +
                     "<td class='tahun'>" +
-                    asuransi_arr_txt[i] +
+                    asuransi_txt +
                     "</td>" +
                     "</tr>";
-  
+
                 $(".tablebiaya").append(html_sum_asuransi);
             }
         }
@@ -2292,8 +2218,8 @@
                     dataType: "json",
                     success: function(data) {
                         if (data.success === true) {
-                          var token = localStorage.getItem("token");
-                            if (data.result.header.status === 200) {
+                            var token = localStorage.getItem("token");
+                            if (data.result.header.status === 200 && token === null) {
                                 $("#otp").removeClass("hide");
                                 $("#myModal").hide();
                                 requestOTP(dataPhone);
@@ -2309,9 +2235,7 @@
                                     $(".nav-item-1").addClass("done");
                                     $(".nav-item-2").addClass("active");
                                     if ($(".nav-item-1").hasClass("done")) {
-                                        $(".nav-item-1").on("click", function(
-                                            e
-                                        ) {
+                                        $(".nav-item-1").on("click", function(e) {
                                             e.preventDefault();
                                             hideCurrentTab();
                                             showTab1();
@@ -2471,7 +2395,8 @@
                         });
                     }
   
-                    // pushDataBangunan();
+                  // pushDataBangunan();
+                  getpriceminmax(credits);
                     setSummary();
                     getTenor();
                     $(".text-head")
@@ -2491,11 +2416,14 @@
         if ($("#estimasi_harga").length > 0) {
             var isPrice = false;
             // $(".inputsimulasi").addClass("hidden");
-            $(".inputsimulasi #ex6SliderVal").val("10.000.000");
-            $(".inputsimulasi .valuemin , .inputsimulasi .valuemax").text(
-                "10.000.000"
-            );
-            $("#estimasi_harga").val("10.000.000");
+            // $(".inputsimulasi #ex6SliderVal").val("1.000.000");
+            // $(".inputsimulasi .valuemin").text(
+            //     "1.000.000"
+            // );
+            // $(".inputsimulasi .valuemax").text(
+            //     "10.000.000"
+            // );
+            $("#estimasi_harga").val("0");
             $("#estimasi_harga").change(function() {
                 var _val = $(this).val();
                 _val = parseInt(_val.replace(/[.]/g, ""));
@@ -2631,6 +2559,7 @@
                 );
             } else {
                 sendOtp(credits);
+                leavePage = false;
             }
   
             $(".input-number").on("change", function() {
@@ -3157,7 +3086,7 @@
             url: _urlType,
             dataType: "json",
             error: function(data) {
-                console.log("error" + data);
+                console.log("error", data);
             },
   
             fail: function(xhr, textStatus, error) {
@@ -3399,6 +3328,8 @@
   
     $("#provinsi").change(function() {
         // console.log('#provinsi change working...');
+        leavePage = true;
+        console.log('leavePage', leavePage);
   
         resetSameAddress();
   
@@ -5531,7 +5462,7 @@
             submission_id: submission_id,
             funding: htmlEntities(objCredits.funding),
             tenor: htmlEntities(objCredits.jangka_waktu),
-            insurance: asuransi_arr.join(",")
+          insurance: htmlEntities(asuransi_arr.join(","))
         };
   
         // console.log(brand_attr, $(this).val())
@@ -5569,7 +5500,7 @@
                 console.log("request failed");
             },
             success: function(result) {
-                // console.log("Calculator Result", data)
+              console.log("Calculator Result", asuransi_arr, _param, result)
   
                 var angsuranFinal = result.data.monthly_installment_est_total,
                     angsuranFinal_txt = separatordot(angsuranFinal),
@@ -5942,6 +5873,9 @@
         if (this.value.match(reg2)) {
             this.value = this.value.replace(reg2, "0");
         }
+        if ($.trim($(this).val()) == "") {
+            $(this).val("0");
+        }
     });
   
     $(".formPhoneNumber").bind("contextmenu", function(e) {
@@ -6052,7 +5986,15 @@
         var parent = $(this).parents(".upload-image");
         parent.find(".file-input").click();
     });
-  })(jQuery);
+
+    $(window).on('beforeunload', function(e) {
+        if (leavePage) {
+            e.preventDefault();
+            return "Are you sure you want to leave ?";
+        }
+    });
+
+  })(jQuery); // tanda tutup
   
   function copyURL(url) {
     var $temp = $("<input>");
@@ -6237,6 +6179,141 @@
         }
     });
   }
+  var credits2 = {
+    angunan: {
+        jenis_angunan: ""
+    },
+
+    pemohon: {
+        nama: "",
+        email: "",
+        no_handphone: ""
+    },
+
+    tempat_tinggal: {
+        provinsi: "",
+        kota: "",
+        kecamatan: "",
+        kelurahan: "",
+        kode_pos: "",
+        alamat: ""
+    },
+
+    kendaraan: {
+        merk_kendaraan: "",
+        merk_kendaraan_text: "",
+        model_kendaraan: "",
+        model_kendaraan_text: "",
+        tahun_kendaraan: "",
+        tahun_kendaraan_text: "",
+        status_pemilik: ""
+    },
+
+    data_bangunan: {
+        status_sertifikat: "",
+        sertifikat_atas_nama: "",
+        provinsi: "",
+        kota: "",
+        kecamatan: "",
+        kelurahan: "",
+        kode_pos: "",
+        alamat: "",
+        jenis_properti: "",
+        kondisi: "",
+        tipe_sertifikat: "",
+        is_dihuni: ""
+        }
+    };
+
+    function htmlEntities(str) {
+        return String(str)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;");
+    }
+    
+  function disabledField(){
+    $("#nama_lengkap").attr('disabled','disabled');
+    $("#email_pemohon").attr('disabled','disabled');
+    $("#no_handphone").attr('disabled','disabled');
+    $("#upload-ktp-button").attr('disabled','disabled');
+    $("#upload-ktp-button").css("background-color", "#dddddd");
+    $("#upload-ktp-button").css("border-color", "#dddddd");
+    $("input[type=radio]").attr('disabled','disabled');
+    $("#tgl_lahir").attr('disabled','disabled');
+    $(".ui-datepicker-trigger").attr('disabled','disabled');
+    $("#pekerjaan").attr('disabled','disabled');
+    $("#penghasilan").attr('disabled','disabled');
+    $(".label-cekLogin").removeClass('hide');
+  }
+
+  function pushDataPemohon3(cb) {
+    // submission_id = "";
+    var retryLimit = 3;
+    var _URL = "";
+    var _data = {};
+    var nama_lengkap = $("#nama_lengkap").val(),
+        email_pemohon = $("#email_pemohon").val(),
+        no_telepon = $("#no_handphone").val(),
+        jenis_kredit = $("#jenis_form").val();
+
+    switch (jenis_kredit) {
+        case "MOBIL":
+            _URL = "/credit/save-car-leads1";
+            break;
+        case "MOTOR":
+            _URL = "/credit/save-motorcycle-leads1";
+            break;
+        case "SURAT BANGUNAN":
+            _URL = "/credit/save-pbf-leads1";
+            _data = {
+                dob: reformatDate($("#tgl_lahir").val()),
+                profession_id: $("#pekerjaan").val()[0],
+                salary: reformatMoney($("#penghasilan").val()),
+                path_ktp: $("#ktp").val()
+            };
+            break;
+    }
+
+    if (_URL !== "") {
+        _data = Object.assign(_data, {
+            submission_id: submission_id,
+            name: nama_lengkap,
+            email: email_pemohon,
+            phone_number: no_telepon
+        });
+
+        $.ajax({
+            type: "POST",
+            url: _URL,
+            data: _data,
+            dataType: "json",
+            tryCount: 0,
+            retryLimit: retryLimit,
+            error: function(xhr, textStatus, errorThrown) {
+                retryAjax(this, xhr);
+            },
+            fail: function(xhr, textStatus, error) {
+                retryAjax(this, xhr);
+            },
+            success: function(result) {
+                if (result.success === "1") {
+                    submission_id = result.data.submission_id;
+                    credits.angunan.jenis_angunan = htmlEntities(
+                        jenis_kredit
+                    );
+                    credits.pemohon.nama = htmlEntities(nama_lengkap);
+                    credits.pemohon.email = htmlEntities(email_pemohon);
+                    credits.pemohon.no_handphone = htmlEntities(no_telepon);
+                    cb();
+                } else {
+                    console.log("error" + result.message);
+                }
+            }
+        });
+    }
+}
 
   function verifiedOTPCredit() {
     var otpInput = $("input[name='digit[]']").map(function() {
@@ -6265,62 +6342,46 @@
   
         success: function(dataObj) {
             if (dataObj.success === true) {
-                console.log("berhasil verified otp");
-                var token = dataObj.result.data.customer_token;
-                localStorage.setItem("token", token);
-                console.log("token : " + token);
-                getCustomer(token);
-                $("#otp").addClass("hide");
-                saveleads2();
-                $("#nama_lengkap").attr('disabled','disabled');
-                $("#email_pemohon").attr('disabled','disabled');
-                $("#no_handphone").attr('disabled','disabled');
-                $("#upload-ktp-button").attr('disabled','disabled');
-                $("#upload-ktp-button").attr('disabled','disabled');
-                $("#upload-ktp-button").css("background-color", "#dddddd");
-                $("#upload-ktp-button").css("border-color", "#dddddd");
-                $("input[type=radio]").attr('disabled','disabled');
-                $("#tgl_lahir").attr('disabled','disabled');
-                $(".ui-datepicker-trigger").attr('disabled','disabled');
-                $("#pekerjaan").attr('disabled','disabled');
-                $("#penghasilan").attr('disabled','disabled');
-                $(".label-cekLogin").removeClass('hide');
+                pushDataPemohon3(function() {
+                    console.log("berhasil verified otp");
+                    var token = dataObj.result.data.customer_token;
+                    localStorage.setItem("token", token);
+                    console.log("token : " + token);
+                    getCustomer(token);
+                    $("#otp").addClass("hide");
+                    $("#myModal").show();
+                    $("#menu1").hide();
+                    $("#menu2").show();
+                    step1Done = true;
+                    $(".nav-item-1").removeClass("active");
+                    $(".nav-item-1").addClass("done");
+                    $(".nav-item-2").addClass("active");
+                    disabledField();
+                    if ($(".nav-item-1").hasClass("done")) {
+                        $(".nav-item-1").on("click", function(e) {
+                            e.preventDefault();
+                            hideCurrentTab();
+                            $("#menu1").show();
+                            $(".nav-item-1").addClass("active");
+                            if (
+                                $(".nav-item-1").hasClass(
+                                    "active"
+                                )
+                            ) {
+                                $("#menu2").hide();
+                                $("#menu3").hide();
+                                $("#menu4").hide();
+                                $("#menu5").hide();;
+                                $("#menu6").hide();
+                            }
+                        });
+                    }
+                });                
             } else {
                 console.log("otp salah, masukkan otp yang valid");
             }
         }
     });
-  }
-  
-  function saveleads2 () {
-    $("#myModal").show();
-    $("#menu1").hide();
-    $("#menu2").show();
-    step1Done = true;
-    $(".nav-item-1").removeClass("active");
-    $(".nav-item-1").addClass("done");
-    $(".nav-item-2").addClass("active");
-    if ($(".nav-item-1").hasClass("done")) {
-        $(".nav-item-1").on("click", function(
-            e
-        ) {
-            e.preventDefault();
-            hideCurrentTab();
-            $("#menu1").show();
-            $(".nav-item-1").addClass("active");
-            if (
-                $(".nav-item-1").hasClass(
-                    "active"
-                )
-            ) {
-                $("#menu2").hide();
-                $("#menu3").hide();
-                $("#menu4").hide();
-                $("#menu5").hide();;
-                $("#menu6").hide();
-            }
-        });
-    }
   }
 
   function getCustomer(token) {
@@ -6501,7 +6562,7 @@
   }
   $('#otp-form').find('input').each(function() {
     $(this).attr('maxlength', 1);
-    $(this).on('keyup', function(e) {
+    $(this).on('keypress', function(e) {
         var parent = $($(this).parent());
         
         if(e.keyCode === 8) {

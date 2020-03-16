@@ -185,6 +185,10 @@ $(document).ready(function(){
         formAlphabet: {
             acceptAlphabet: "[a-zA-Z]+"
         },
+
+        formAlphanum: {
+            acceptAlphanum: "[a-zA-Z0-9]+"
+        },
     
         formEmail: {
             emailCust: /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/
@@ -225,6 +229,11 @@ $(document).ready(function(){
         return value.match(new RegExp("." + param + "$"));
     }, "Please Enter Only Letters");
     
+    jQuery.validator.addMethod("acceptAlphanum", function (value, element, param) {
+        //console.log(value.match(new RegExp("." + param + "$")));
+        return value.match(new RegExp("." + param + "$"));
+    }, "Please Enter Only Letter and Number");
+    
     jQuery.validator.addMethod("emailCust", function (value, element, param) {
         return param.test(value);
     }, "Please enter a valid email address.");
@@ -263,6 +272,7 @@ $(document).ready(function(){
             max: jQuery.validator.format("Masukkan nilai kurang dari atau sama dengan {0}."),
             min: jQuery.validator.format("Silakan masukkan nilai yang lebih besar dari atau sama dengan {0}."),
             acceptAlphabet: "Masukkan hanya berupa huruf alfabet.",
+            acceptAlphanum: "Nomor kontrak hanya boleh menggunakan angka & huruf",
             emailCust : "Silakan isi alamat email yang valid.",
             filesize : "Ukuran file harus kurang dari 500 Kb."
         });
@@ -283,4 +293,27 @@ $(document).ready(function(){
           $captcha.removeClass( "error" );
         }
       })
+
+    //   Sort Select
+
+    var options = $('select.type-message option');
+    var arr = options.map(function(_, o) {
+        return {
+            t: $(o).text(),
+            v: o.value
+        };
+    }).get();
+    arr.sort(function(o1, o2) {
+        return o1.t > o2.t ? 1 : o1.t < o2.t ? -1 : 0;
+    });
+    options.each(function(i, o) {
+        console.log(i);
+        o.value = arr[i].v;
+        $(o).text(arr[i].t);
+    });
+
+    $('#message').keypress(function(event){
+      
+        $('.label-messages').hide();
+    });
 });

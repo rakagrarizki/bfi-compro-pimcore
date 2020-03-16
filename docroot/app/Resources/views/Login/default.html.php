@@ -12,30 +12,22 @@ $this->extend('layout-branch.html.php');
 <?php $lang = $this->getLocale(); ?>
 
 <?php
+// if ($_COOKIE['customer'] != null || $_COOKIE['customer'] != "") {
+//     header("Location: ". BASEURL . "/{$lang}/user/dashboard");
+// }
 $this->headScript()->offsetSetFile(100, '/static/js/Includes/login.js');
-$page = $_SERVER['REQUEST_URI'];
-if (preg_match("/.\/service-contract/", $page)) {
-    $trans1 = $this->translate('welcome-login-kontrak');
-    $trans2 = $this->translate('welcome-login-sub-kontrak');
-} else if (preg_match("/.\/service-status/", $page)) {
-    $trans1 = $this->translate('welcome-login-status');
-    $trans2 = $this->translate('welcome-login-sub-status');
-} else {
-    $trans1 = $this->translate('welcome-login');
-    $trans2 = $this->translate('welcome-login-sub');
-}
 ?>
 
 <section id="login" class="container">
     <!-- <h3></?= $this->translate('welcome-login'); ?></h3>
     <p></?= $this->translate('welcome-login-sub'); ?></p> -->
-    <h3><?= $trans1; ?></h3>
-    <p><?= $trans2; ?></p>
+    <h3><?= $this->trans1; ?></h3>
+    <p><?= $this->trans2; ?></p>
     <form action="" id="login-form">
         <div class="input-login">
             <div class="input-text-group">
                 <label id="phone-label" class="input-label"><?= $this->translate("form-hp"); ?></label>
-                <input id="phone-input" class="style-input formPhoneNumber" type="tel" maxlength="13" placeholder=<?= $this->translate('input-phone') ?> onkeydown="return isNumberKey(event);" required>
+                <input id="phone-input" class="style-input formPhoneNumber" type="tel" maxlength="13" placeholder="<?= $this->translate('input-phone') ?>" onkeydown="return isNumberKey(event);" required>
             </div>
             <div class="error-wrap"></div>
             <label class="checkbox-wrapper"><?= $this->translate('remember-me'); ?><input type="checkbox">

@@ -58,8 +58,8 @@ $urlTwitter = " https://twitter.com/share?text=$titleshare&url=$fixedurl&wrap_li
             </div>
             <div class="share">
                 <span>Share:</span>
-                <a href="<?= $urlFacebook;?>" class="share-fb"><i class="fa fa-facebook"></i></a>
-                <a href="<?= $urlTwitter;?>" class="share-tw"><i class="fa fa-twitter"></i></a>
+                <a href="<?= $urlFacebook;?>" class="share-fb" target="_blank"><i class="fa fa-facebook"></i></a>
+                <a href="<?= $urlTwitter;?>" class="share-tw" target="_blank"><i class="fa fa-twitter"></i></a>
                 <a class="share-cp" id="copy" onclick="copyURL('<?= $fixedurl ?>')"><i class="fa fa-chain"></i></a>
                 <div style="display: none;padding: 0px 20px;" id="copied">Copied</div>
             </div>
@@ -90,10 +90,11 @@ $urlTwitter = " https://twitter.com/share?text=$titleshare&url=$fixedurl&wrap_li
                 <div class="caption">
                     <h3 class="tag"><?= $relatedNewsData->getCategory()->getName();?></h3>
                     <h2 class="title"><?= $relatedNewsData->getTitle();?></h2>
-                    <div class="dateview">
-                        <span class="date"><?= $date;?></span>
-                        <span class="view"><i class="fa fa-eye"></i> <?= $relatedNewsData->getViews()?></span>
-                    </div>
+                    <p class="date"><?= $date;?> | <i class="fa fa-eye"></i><?= $relatedNewsData->getViews()?></p>
+                    <!-- <div class="dateview">
+                        <span class="date"></?= $date;?></span>
+                        <span class="view"><i class="fa fa-eye"></i> </?= $relatedNewsData->getViews()?></span>
+                    </div> -->
                 </div>
             </a>
         <?php endforeach;?>

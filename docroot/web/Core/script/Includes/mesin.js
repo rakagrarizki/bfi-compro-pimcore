@@ -352,11 +352,46 @@ function editStep(idx) {
 function getDataRegister() {
   var _data = {
     "submission_id": submission_id,
-    // "full_name": $('#nama_lengkap').val().toString(),
-    // "email": $('#email_pemohon').val().toString(),
-    // "phone_number": $('#no_handphone').val().toString()
   }
   return _data;
+}
+
+function sendLeadData1Mesin(){
+  if (form.valid()) {
+    var currentStep = form.steps("getCurrentIndex");
+    var _url = "";
+    var _data = {};
+
+    switch (currentStep) {
+      case 0:
+        _url = "/credit/save-machinery-leads1";
+        _data = {
+          "submission_id": "",
+          "name": $("#nama_lengkap").val(),
+          "email": $("#email_pemohon").val(),
+          "phone_number": $("#no_handphone").val()
+        }
+        break;
+    }
+    var sendData = postData(_url,_data);
+    if (currentStep === 0) {
+      submission_id = sendData.data.submission_id; 
+    }
+    if (sendData.success === "1") {
+      if (currentStep === 1) {
+        if (sendData.data.is_branch === false) {
+          $("#modal-branch").modal('show');
+        }
+        return sendData.data.is_branch
+       } else {
+        return true;
+      }
+    } else {
+      return false;
+    }
+  } else {
+    return false;
+  }
 }
 
 var isValidOtp = false;
@@ -366,18 +401,33 @@ var isValidOtp = false;
   $("#step-otp").hide();
   form = $("#getCredit").show();
 
+  var lang = document.documentElement.lang;
+  if ( lang === 'id'){
+      nextLabel = 'Selanjutnya'
+      previouslabel = 'Sebelumnya'
+      finishlabel = 'Selesai'
+      loadinglabel = 'Mohon menunggu ...'
+  }else{
+      nextLabel = 'Next'
+      previouslabel = 'Previous'
+      finishlabel = 'Finish',
+      loadinglabel = 'Loading ...'
+  }
+
   form.steps({
     headerTag: "h3",
     bodyTag: "fieldset",
-    transitionEffect: "slideLeft",
+    transitionEffect: "fade",
     titleTemplate: '<span class="number"><i class="fa fa-check" aria-hidden="true"></i><b>#index#</b></span> <p>#title#</p>',
     /* Labels */
+  
     labels: {
-      finish: "Selesai",
-      next: "Selanjutnya",
-      previous: "Sebelumnya",
-      loading: "Loading ..."
+      finish: finishlabel,
+      next: nextLabel,
+      previous:  previouslabel ,
+      loading: loadinglabel 
     },
+
     onInit: function () {
       nextButton("inactive");
     },
@@ -387,14 +437,17 @@ var isValidOtp = false;
         return true;
       }
       if( currentIndex === 0){
-        console.log("step1");
-        // checkLogin();
-        // byCheckLogin();
-        // return true;
-      }
-      // else{
-      //   byCheckLogin();
-      // }
+          if (localStorage.getItem('token') === null ) {
+             if(!isKnownNumber) {
+               checkLogin(); 
+            }else{
+              sendLeadData1Mesin();
+            }
+            //  return isKnownNumber;
+           } else {
+              console.log("currentIndex false");
+           }
+        }
       form.validate().settings.ignore = ":disabled,:hidden";
       return sendLeadData();
       // return form.valid();

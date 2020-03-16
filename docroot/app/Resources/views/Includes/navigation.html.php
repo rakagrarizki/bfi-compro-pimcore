@@ -32,15 +32,12 @@ if($_COOKIE["customer"] != "null") {
                             <?= $this->translate("corporate") ?></a>
                     </div>
                     <div class="col-md-6 col-sm-6 right-side-top">
-                        <?php if (!isset($_COOKIE["customer"])) { ?>
                             <div class="link-about-top">
                                 <a href="<?= "/" . $lang . "/tentang-kami" ?>">
                                     <?= $this->translate("tentang-kami") ?></a>
                                 <a href="<?= "/" . $lang . "/blog" ?>">
                                     <?= $this->translate("blog") ?></a>
                             </div>
-                        <?php } ?>
-
                         <div class="link-log">
                             <?php if (!isset($_COOKIE["customer"])) { ?>
                                 <a href="<?= "/" . $lang . "/login"; ?>" class="login"><?= $this->translate("login") ?></a>

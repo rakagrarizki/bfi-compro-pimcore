@@ -33,8 +33,8 @@ if ($site == "corporate") {
     <div id="news" class="news">
         <div class="row">
             <div class="sect-title text-center">
-                <h2><?= $this->t('berita_head'); ?></h2>
-                <p><?= $this->t('berita_sub_head'); ?></p>
+                <h2><?= $this->t('blog-title'); ?></h2>
+                <p><?= $this->t('blog-text1'); ?></p>
             </div>
         </div>
         <div class="row list-news-container">
@@ -46,10 +46,11 @@ if ($site == "corporate") {
                         <div class="article__post__text">
                             <p><?= $blog->getBlogCategory()->getName(); ?></p>
                             <h4><a href="<?= '/' . $this->getLocale() . '/blog/' . $blog->getSlug(); ?>"><?= $blog->getTitle(); ?></a></h4>
-                            <div class="dateview">
-                                <span class="date"><?= date('d.m.y', strtotime($blog->getDate())); ?></span>
-                                <span class="view"><i class="fa fa-eye"></i><?= $blog->getViews(); ?></span>
-                            </div>
+                            <p class="date"><?= date('d.m.y', strtotime($blog->getDate())); ?> | <i class="fa fa-eye"></i> <?= $blog->getViews(); ?></p>
+                            <!-- <div class="dateview">
+                                <span class="date"></?= date('d.m.y', strtotime($blog->getDate())); ?></span>
+                                <span class="view"><i class="fa fa-eye"></i></?= $blog->getViews(); ?></span>
+                            </div> -->
                         </div>
                     </article>
                 </div>

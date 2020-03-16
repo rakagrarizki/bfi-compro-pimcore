@@ -61,28 +61,28 @@ $this->extend('layout.html.php');
                         </p>
                     </div>
                 </div>
-                <div class="status-step">
+                    <div class="status-step">
                     <div class="">
                         <ul class="stepper-row">
-                            <li id="status-step">
-                                <span id="step1" class="number"></span>
-                                <span id="label-step1" class="label-step"></span>
+                            <li class="status-step">
+                                <span class="step1 number"></span>
+                                <span class="label-step1 label-step"></span>
                             </li>
-                            <li id="status-step">
-                                <span id="step2" class="number"></span>
-                                <span id="label-step2" class="label-step"></span>
+                            <li class="status-step">
+                                <span class="step2 number"></span>
+                                <span class="label-step2 label-step"></span>
                             </li>
-                            <li id="status-step">
-                                <span id="step3" class="number"></span>
-                                <span id="label-step3" class="label-step"></span>
+                            <li class="status-step">
+                                <span class="step3 number"></span>
+                                <span class="label-step3 label-step"></span>
                             </li>
-                            <li id="status-step">
-                                <span id="step4" class="number"></span>
-                                <span id="label-step4" class="label-step"></span>
+                            <li class="status-step">
+                                <span class="step4 number"></span>
+                                <span class="label-step4 label-step"></span>
                             </li>
-                            <li id="status-step">
-                                <span id="step5" class="number"></span>
-                                <span id="label-step5" class="label-step"></span>
+                            <li class="status-step">
+                                <span class="step5 number"></span>
+                                <span class="label-step5 label-step"></span>
                             </li>
                         </ul>
                     </div>
@@ -182,19 +182,19 @@ $this->extend('layout.html.php');
             <form action="">
                 <div class="form-wrapper">
                     <div class="input-text-group">
-                        <label id="name-label" class="input-label">NAMA LENGKAP</label>
+                        <label id="name-label" class="input-label"><?= $this->translate('fullname'); ?></label>
                         <input id="name-input" class="style-input" type="text" placeholder="<?= $this->translate('form-name'); ?>" required>
                     </div>
                     <div class="input-text-group">
-                        <label id="email-label" class="input-label">EMAIL</label>
+                        <label id="email-label" class="input-label"><?= $this->translate('email'); ?></label>
                         <input id="email-input" class="style-input" type="email" placeholder="<?= $this->translate('email'); ?>" required>
                     </div>
                     <div class="input-text-group">
-                        <label id="phone-label" class="input-label">NOMOR HANDPHONE</label>
+                        <label id="phone-label" class="input-label"><?= $this->translate('form-hp'); ?></label>
                         <input id="phone-input" class="style-input" type="number" placeholder="<?= $this->translate('form-hp'); ?>" required>
                     </div>
                     <div class="input-text-group">
-                        <label id="ktp-label" class="input-label">NOMOR KTP</label>
+                        <label id="ktp-label" class="input-label"><?= $this->translate('label-ktp-new'); ?></label>
                         <input id="ktp-input" class="style-input" type="number" placeholder="<?= $this->translate('label-ktp'); ?>">
                     </div>
                     <div id="upload-ktp">

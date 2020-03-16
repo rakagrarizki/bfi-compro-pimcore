@@ -9,6 +9,7 @@
 $this->extend('layout-credit.html.php');
 $this->headScript()->offsetSetFile(100, '/static/js/Includes/travel.js');
 $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
+$this->headScript()->offsetSetFile(102, '/static/js/Includes/general-otp.js');
 
 $blogList = new Pimcore\Model\DataObject\BlogArticle\Listing();
 $blogList->setOrderKey("Date");
@@ -47,7 +48,7 @@ $blogList->setLimit(4);
                     <div class="error-wrap"></div>
                 </div>
                 <div class="form-group upload-image">
-                    <label><?= $this->translate('labelNoktp') ?></label>
+                    <label><?= $this->translate('label-ktp-new') ?></label>
                     <div class="upload-file">
                         <img src="" />
                         <div class="upload-btn">
@@ -127,7 +128,7 @@ $blogList->setLimit(4);
                             <label for="jml-biaya"><?= $this->translate('travel-package-price') ?></label>
                             <div class="input-group inputform">
                                 <span class="input-group-addon" id="basic-addon1">Rp</span>
-                                <input type="tel" pattern="\d*" id="ex7SliderVal" class="form-control formRequired formPrice c-input-trans" style="text-align: right;" aria-describedby="basic-addon1">
+                                <input type="tel" pattern="\d*" id="ex7SliderVal" class="form-control formRequired formPrice c-input-trans main-package-price" style="text-align: right;" aria-describedby="basic-addon1">
 
                                 <div class="error-wrap"></div>
 
@@ -160,7 +161,7 @@ $blogList->setLimit(4);
                             <label for="jml-biaya"><?= $this->translate('pocket-money') ?></label>
                             <div class="input-group inputform">
                                 <span class="input-group-addon" id="basic-addon1">Rp</span>
-                                <input type="tel" pattern="\d*" id="pocket_money" class="form-control formRequired formatRibuan maxPocketMoney c-input-trans" style="text-align: right;" aria-describedby="basic-addon1">
+                                <input type="tel" pattern="\d*" id="pocket_money" class="form-control formRequired formatRibuan maxPocketMoney main-package-price c-input-trans" style="text-align: right;" aria-describedby="basic-addon1">
                             </div>
                             <div><?= $this->translate('max-20-from-package-price'), $this->websiteConfig('valuePercentage'), $this->translate('max-20-from-package-price2') ?></div>
                             <div class="error-wrap"></div>
@@ -413,10 +414,11 @@ $blogList->setLimit(4);
                                     <div class="caption">
                                         <h3 class="tag"><?= $blog->getBlogCategory()->getName(); ?></h3>
                                         <h2 class="title"><?= $blog->getTitle(); ?></h2>
-                                        <div class="dateview">
-                                            <span class="date"><?= date('d.m.y', strtotime($blog->getDate())); ?></span>
-                                            <span class="view"><i class="fa fa-eye"></i><?= $blog->getViews(); ?></span>
-                                        </div>
+                                        <p class="date"><?= date('d.m.y', strtotime($blog->getDate())); ?> | <i class="fa fa-eye"></i> <?= $blog->getViews(); ?></p>
+                                        <!-- <div class="dateview">
+                                            <span class="date"></?= date('d.m.y', strtotime($blog->getDate())); ?></span>
+                                            <span class="view"><i class="fa fa-eye"></i></?= $blog->getViews(); ?></span>
+                                        </div> -->
                                     </div>
                                 </a>
                             <?php endforeach; ?>

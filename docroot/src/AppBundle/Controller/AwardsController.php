@@ -22,7 +22,7 @@ class AwardsController extends FrontendController
         $awards->load();
         $paginator = new \Zend\Paginator\Paginator($awards);
         $paginator->setCurrentPageNumber( $page );
-        $paginator->setItemCountPerPage(3);
+        $paginator->setItemCountPerPage(5);
         $this->view->paginator = $paginator;
 
     }

@@ -78,7 +78,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                             <div class="error-wrap"></div>
                         </div>
                         <div class="form-group">
-                            <label><?= $this->translate('labelNoktp') ?></label>
+                            <label><?= $this->translate('label-ktp-new') ?></label>
                             <input type="text" class="form-control formRequired formNoKtp" name="noKtp" id="noKtp" minlength="16" maxlength="17" placeholder="<?= $this->translate('label-ktp'); ?>">
                             <div class="error-wrap"></div>
                         </div>
@@ -234,13 +234,13 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
 
                     <div class="form-group">
                         <label for="account_number"><?= $this->translate('label-account-number') ?></label>
-                        <input type="text" class="form-control" name="account_number" id="account_number" placeholder="<?= $this->translate('placeholder-account-number') ?>">
+                        <input type="text" class="form-control formNumber" name="account_number" id="account_number" placeholder="<?= $this->translate('placeholder-account-number') ?>">
                         <div class="error-wrap"></div>
                     </div>
 
                     <div class="form-group">
                         <label for="account_name"><?= $this->translate('label-account-name') ?></label>
-                        <input type="text" class="form-control" name="account_name" id="account_name" placeholder="<?= $this->translate('placeholder-account-name') ?>">
+                        <input type="text" class="form-control formAlphabet" name="account_name" id="account_name" placeholder="<?= $this->translate('placeholder-account-name') ?>">
                         <div class="error-wrap"></div>
                     </div>
 
@@ -308,7 +308,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                                     <td id="showNpwp"></td>
                                 </tr>
                                 <tr>
-                                    <td><b><?= $this->translate('labelNoktp') ?></b></td>
+                                    <td><b><?= $this->translate('label-ktp-new') ?></b></td>
 
                                     <td id="showNoKtp"></td>
                                 </tr>
@@ -432,16 +432,17 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                     </div>
                 </div>
                 <div id="otp-success" class="success-wrapper">
-                    <div class="img-wrap">
+                    <!-- <div class="img-wrap">
                         <img class="icon-thank-page" src="/static/images/icon/m_thank_you.png" alt="">
                     </div>
                     <div class="text-wrap text-center">
-                        <h3><?= $this->translate('tq-text-1') ?></h3>
-                        <p><?= $this->translate('tq-text-2') ?></p>
-                    </div>
+                        <h3></?= $this->translate('tq-text-1') ?></h3>
+                        <p></?= $this->translate('tq-text-2') ?></p>
+                    </div> -->
+                    <?= $this->template('Includes/request-otp.html.php'); ?>
                     <div class="button-area text-center backtohome">
                         <button class="cta cta-primary cta-big cta-see buttonnext backtohome" id="button7" 
-                            type="button" onclick="return checkStatusPengajuan()"><?= $this->translate('cek-status-aplikasi') ?></button>
+                            type="button" onclick="return checkStatusPengajuan()"><?= $this->translate('backtohome') ?></button>
                     </div>
                 </div>
             </fieldset>

@@ -248,7 +248,7 @@ gulp.task('js_plugins', ['clean-js_plugins'], function () {
         .pipe(gulp.dest(path.join(__dirname, targetPath + '/js/')));
 });
 
-gulp.task('js_custom', ['clean-js_custom'], function () {
+gulp.task('js_custom', function () {
     return gulp.src(paths.js.includes)
         //.pipe(uglifyjs())
         .pipe(gulp.dest(path.join(__dirname, targetPath + '/js/')));

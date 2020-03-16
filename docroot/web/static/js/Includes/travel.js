@@ -123,6 +123,45 @@ function sendLeadData() {
   }
 }
 
+function sendLeadData1Travel() {
+  if (form.valid()) {
+    var currentStep = form.steps("getCurrentIndex");
+    var _url = "";
+    var _data = {};
+
+    switch (currentStep) {
+      case 0:
+        _url = "/credit/save-leisure-leads1";
+        _data = {
+          "submission_id": "",
+          "name": $("#nama_lengkap").val(),
+          "email": $("#email_pemohon").val(),
+          "phone_number": $("#no_handphone").val()
+        //   "path_ktp": $("#ktp").val()
+        }
+        break;
+    }
+    var sendData = postData(_url, _data);
+    if (currentStep === 0) {
+      submission_id = sendData.data.submission_id; 
+    }
+    if (sendData.success === "1") {
+      if (currentStep === 1) {
+        if (sendData.data.is_branch === false) {
+          $("#modal-branch").modal('show');
+        }
+        return sendData.data.is_branch
+       } else {
+        return true;
+      }
+    } else {
+      return false;
+    }
+  } else {
+    return false;
+  }
+}
+
 function sendLastLeads() {
   _url = "/credit/save-leisure-leads5";
   _data = {
@@ -233,18 +272,33 @@ var isValidOtp = false;
   $("#step-otp").hide();
   form = $("#getCredit").show();
 
+  var lang = document.documentElement.lang;
+  if ( lang === 'id'){
+      nextLabel = 'Selanjutnya'
+      previouslabel = 'Sebelumnya'
+      finishlabel = 'Selesai'
+      loadinglabel = 'Mohon menunggu ...'
+  }else{
+      nextLabel = 'Next'
+      previouslabel = 'Previous'
+      finishlabel = 'Finish',
+      loadinglabel = 'Loading ...'
+  }
+
   form.steps({
     headerTag: "h3",
     bodyTag: "fieldset",
-    transitionEffect: "slideLeft",
+    transitionEffect: "fade",
     titleTemplate: '<span class="number"><i class="fa fa-check" aria-hidden="true"></i><b>#index#</b></span> <p>#title#</p>',
     /* Labels */
+  
     labels: {
-      finish: "Selesai",
-      next: "Selanjutnya",
-      previous: "Sebelumnya",
-      loading: "Loading ..."
+      finish: finishlabel,
+      next: nextLabel,
+      previous:  previouslabel ,
+      loading: loadinglabel 
     },
+
     onInit: function () {
       nextButton("inactive");
     },
@@ -252,6 +306,18 @@ var isValidOtp = false;
       // Allways allow previous action even if the current form is not valid!
       if (currentIndex > newIndex) {
         return true;
+      }
+      if( currentIndex === 0){
+        if (localStorage.getItem('token') === null ) {
+           if(!isKnownNumber) {
+             checkLogin(); 
+          }else{
+            sendLeadData1Travel();
+          }
+           return isKnownNumber;
+         } else {
+            console.log("currentIndex false");
+         }
       }
       form.validate().settings.ignore = ":disabled,:hidden";
       return sendLeadData();
@@ -301,6 +367,17 @@ var isValidOtp = false;
       data: dataArr
     });
     selElm.removeAttr("disabled");
+  });
+
+
+  $('.main-package-price').on('input propertychange paste', function (e) {
+    if(parseInt($("#ex7SliderVal").val().replace(/[.]/g, ""),10)/10 >= parseInt($(".valuemin").text().replace(/\./g,''),10)/10){
+      $("#down_payment").val((parseInt($("#ex7SliderVal").val().replace(/[.]/g, ""),10)/10).toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+      $("#pocket_money").val((parseInt($("#ex7SliderVal").val().replace(/[.]/g, ""),10)/10).toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+    } else {
+      $("#down_payment").val((parseInt($(".valuemin").text().replace(/\./g,''),10)/10).toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+      $("#pocket_money").val((parseInt($(".valuemin").text().replace(/\./g,''),10)/10).toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+    }
   });
 
   $("#kota").change(function () {

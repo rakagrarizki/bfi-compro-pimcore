@@ -41,7 +41,8 @@ function loopDataSemester() {
     var stop=semester_count-1;
     for (i=stop;i>stop-3;i--){
         let asd = document.createElement("div");
-        console.log(ipk['smt-ke-'+i]);
+        asd.setAttribute("class", "content-ipk-looping");
+        // console.log('ipk', ipk['smt-ke-'+i]);
         if (ipk['smt-ke-'+i] === undefined){
             ipk['smt-ke-'+i] = '00';
         }

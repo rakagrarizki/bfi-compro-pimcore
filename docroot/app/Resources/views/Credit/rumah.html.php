@@ -106,7 +106,7 @@ $blogList->setLimit(4);
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group upload-image">
-                                            <label><?= $this->translate('labelNoktp') ?></label>
+                                            <label><?= $this->translate('label-ktp-new') ?></label>
                                             <div class="upload-file">
                                                 <img src="" />
                                                 <div class="upload-btn">
@@ -284,7 +284,7 @@ $blogList->setLimit(4);
                                         </div>
 
                                         <div class="col-md-6 no-padding-mobile">
-                                            <div class="form-group">
+                                            <!-- <div class="form-group">
                                                 <label for="tipe_paket"><?= $this->translate('label-tipe-paket') ?></label>
                                                 <div class="input-group inputform">
                                                     <div class="ipt-radio">
@@ -305,7 +305,7 @@ $blogList->setLimit(4);
                                                     </div>
                                                 </div>
                                                 <div class="error-wrap"></div>
-                                            </div>
+                                            </div> -->
                                             <div class="form-group">
                                                 <label for="estimasi_harga"><?= $this->translate('label-estimasi-harga') ?></label>
                                                 <div class="input-group inputform">
@@ -654,10 +654,11 @@ $blogList->setLimit(4);
                                                     <div class="caption">
                                                         <h3 class="tag"><?= $blog->getBlogCategory()->getName(); ?></h3>
                                                         <h2 class="title"><?= $blog->getTitle(); ?></h2>
-                                                        <div class="dateview">
-                                                            <span class="date"><?= date('d.m.y', strtotime($blog->getDate())); ?></span>
-                                                            <span class="view"><i class="fa fa-eye"></i><?= $blog->getViews(); ?></span>
-                                                        </div>
+                                                        <p class="date"><?= date('d.m.y', strtotime($blog->getDate())); ?> | <i class="fa fa-eye"></i> <?= $blog->getViews(); ?></p>
+                                                        <!-- <div class="dateview">
+                                                            <span class="date"></?= date('d.m.y', strtotime($blog->getDate())); ?></span>
+                                                            <span class="view"><i class="fa fa-eye"></i></?= $blog->getViews(); ?></span>
+                                                        </div> -->
                                                     </div>
                                                 </a>
                                             <?php endforeach; ?>

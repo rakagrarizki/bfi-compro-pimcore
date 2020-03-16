@@ -299,8 +299,6 @@ function checkStatus() {
   }
 }
 
-
-
 function reInitJcf() {
   $('input[type="radio"], input[type="checkbox"]').parent().find("span").remove();
   $('input[type="radio"], input[type="checkbox"]').unwrap();
@@ -435,6 +433,9 @@ function reInitJcf() {
     }
     if (this.value.match(reg2)) {
       this.value = this.value.replace(reg2, '0');
+    }
+    if ($.trim($(this).val()) == "") {
+      $(this).val("0");
     }
   });
 

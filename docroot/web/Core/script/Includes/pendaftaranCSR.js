@@ -90,6 +90,7 @@ function backToStep3(){
     step4.classList.add("hide");
     listStep3.classList.add("active");
     listStep4.classList.remove("active");
+    $('.content-ipk-looping').remove();
     document.getElementById("poin3").textContent = "3";
     stepTitle.textContent = "Data Akademik";
     stepSubtitle.textContent = "Silahkan masukkan data akademik tiga semester terakhir anda";

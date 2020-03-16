@@ -16,5 +16,5 @@
         </div>
     </div>
 <?php endif; ?>
-<li><a href="<?=$this->link('about')!=""?$this->link('about')->getHref():"#";?>" class="about"><?= $this->translate("contact-us") ?></a></li>
+<li><a href="<?=$this->link('about')!=""?$this->link('about')->getHref():"#";?>" class="about"><?= $this->translate("tentang-kami") ?></a></li>
 <li><a href="<?=$this->link('blog')!=""?$this->link('blog')->getHref():"#";?>" class="about"><?= $this->translate("blog") ?></a></li>

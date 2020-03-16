@@ -21,7 +21,7 @@ $randId = rand(10,100);
 
 $paginator = new \Zend\Paginator\Paginator(new \Zend\Paginator\Adapter\ArrayAdapter($years));
 $paginator->setCurrentPageNumber($p);
-$paginator->setItemCountPerPage(2);
+$paginator->setItemCountPerPage(5);
 
 $t =  $_GET["t"];
 
