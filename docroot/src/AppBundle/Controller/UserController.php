@@ -25,7 +25,9 @@ class UserController extends FrontendController
     public function dashboardAction(Request $request)
     {
         $lang = $request->getLocale();
-        if ($_COOKIE['customer'] == null || $_COOKIE['customer'] == "") {
+        if ($_COOKIE['customer'] != null || $_COOKIE['customer'] != "") {
+            // fill something
+        } else {
             header("Location: ". BASEURL . "/{$lang}/login");
         }
     }
