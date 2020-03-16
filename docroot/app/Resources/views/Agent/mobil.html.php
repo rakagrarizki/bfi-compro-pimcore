@@ -508,7 +508,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                         <h3></?= $this->translate('tq-text-1') ?></h3>
                         <p></?= $this->translate('tq-text-2') ?></p>
                     </div> -->
-                    <?= $this->template('Includes/request-otp.html.php'); ?>
+                    <?= $this->template('Agent/success.html.php'); ?>
                     <div class="button-area text-center backtohome">
                         <button class="cta cta-primary cta-big cta-see buttonnext backtohome" id="button7" 
                             type="button" onclick="return checkStatusPengajuan()"><?= $this->translate('backtohome') ?></button>
