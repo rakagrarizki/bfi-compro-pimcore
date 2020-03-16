@@ -340,6 +340,10 @@
     // padding: 55px 30px;
     margin: 60px 0 40px 0;
     color: #04559f;
+
+    @include breakpoint(mobile){
+        font-size: 20px;
+    }
 }
 
 .cards-type-13{
