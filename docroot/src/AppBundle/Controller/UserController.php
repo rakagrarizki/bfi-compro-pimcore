@@ -26,7 +26,8 @@ class UserController extends FrontendController
     {
         $lang = $request->getLocale();
         if (!isset($_COOKIE['customer'])) {
-            header("Location: ". BASEURL . "/{$lang}/login");
+            // header("Location: ". BASEURL . "/{$lang}/login");
+            return $this->redirect("/{$lang}/login");
         }
     }
 
