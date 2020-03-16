@@ -547,7 +547,6 @@ var isValidOtp = false;
       data: dataArr
     });
     selElm.removeAttr("disabled");
-    leavePage = true;
   });
 
   $("#kota").change(function () {
@@ -626,10 +625,5 @@ var isValidOtp = false;
       }
     }
   });
-
-  $("#button7").click(function (e) {
-    leavePage = false;
-  });
-  
 
 })(jQuery);

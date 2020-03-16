@@ -97,6 +97,10 @@
                 text-overflow: ellipsis;
                 color: #565656;
                 font-size: 18px;
+                
+                @include breakpoint(mobile){
+                    font-size: 14px;
+                }
             }
             p{
                 font-size: 12px;
@@ -120,6 +124,10 @@
                 text-overflow: ellipsis;
                 color: #565656;
                 font-size: 18px;
+                
+                @include breakpoint(mobile){
+                    font-size: 14px;
+                }
             }
             p{
                 font-size: 12px;

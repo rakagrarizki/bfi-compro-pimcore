@@ -71,18 +71,18 @@ function jumpToStep1(){
     step4.classList.add("hide");
     semester_count = 0;
     $("#form-semester-ipk .ipk-wrapper").remove();
-    $('#list-ipk #ipk').empty();
+    $('.content-ipk-looping').remove();
 }
 
 function jumpToStep2(){
     step2.classList.remove("hide");
     step4.classList.add("hide");
     $("#form-semester-ipk .ipk-wrapper").remove();
-    $('#list-ipk #ipk').empty();
+    $('.content-ipk-looping').remove();
 }
 
 function jumpToStep3(){
     step3.classList.remove("hide");
     step4.classList.add("hide");
-    $('#list-ipk #ipk').empty();
+    $('.content-ipk-looping').remove();
 }

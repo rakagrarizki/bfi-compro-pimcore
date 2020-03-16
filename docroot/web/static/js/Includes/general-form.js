@@ -544,11 +544,7 @@ function reInitJcf() {
   });
 
   $('.otp-number__verify input[type="tel"]').on("keyup", function () {
-    var otp1 = $("input[name=otp1]").val();
-    var otp2 = $("input[name=otp2]").val();
-    var otp3 = $("input[name=otp3]").val();
-    var otp4 = $("input[name=otp4]").val();
-
+    console.log(this.value.length, this.maxLength)
     if (this.value.length == this.maxLength) {
       var $next = $(this).next('.input-number');
       if ($next.length) {
@@ -564,13 +560,6 @@ function reInitJcf() {
         $(this).blur();
       }
     }
-
-    if (otp1 && otp2 && otp3 && otp4) {
-      $("#agentOtp-verification").removeAttr("disabled");
-    } else {
-      $("#agentOtp-verification").attr('disabled', true); 
-    }
-
   });
 
   $(".formNoKtp").on("keydown", function (e) {
