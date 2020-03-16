@@ -544,6 +544,7 @@ var isValidOtp = false;
       data: dataArr
     });
     selElm.removeAttr("disabled");
+    leavePage = true;
   });
 
   $("#kota").change(function () {
@@ -621,6 +622,10 @@ var isValidOtp = false;
         $("#total_funding, #summary-total-pembiayaan").text(total_funding);
       }
     }
+  });
+
+  $("#button7").click(function (e) {
+    leavePage = false;
   });
 
 })(jQuery);

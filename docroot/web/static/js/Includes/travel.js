@@ -336,7 +336,11 @@ var isValidOtp = false;
     onFinishing: function (event, currentIndex) {
       if (!isValidOtp) {
         var retLead = sendLeadData();
-        if (retLead) { showOtp() };
+        if (retLead) { 
+          console.log('masuk finish');
+          showOtp()
+          $("html, body").animate( { scrollTop: 0 }, 400);
+        };
         var dataNews = {
           "submission_id": submission_id,
           "is_news_letter": $('#agreement1').is(":checked")

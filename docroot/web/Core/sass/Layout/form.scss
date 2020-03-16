@@ -1506,6 +1506,21 @@
         padding: 15px 30px;
         text-transform: uppercase;
         font-weight: bold;
+        &:disabled {
+            cursor: not-allowed;
+            opacity: .65;
+            box-shadow: none;
+            background-color: #a7a7a7;
+            border-color: #a7a7a7;
+            &:before {
+                content: '';
+            }
+            &:hover {
+                background-color: #a7a7a7;
+                border-color: #a7a7a7;
+                color: #ffffff;
+            }
+        }
     }
 }
 
@@ -1791,7 +1806,7 @@
 #ex6SliderVal-error {
     position: absolute;
     width: 100%;
-    bottom: -21px;
+    bottom: -20px;
 }
 
 .select2-selection {
@@ -2119,6 +2134,14 @@ select::-ms-expand {
       @include breakpoint(mobile){
         font-size: 12px;
       }
+    }
+  }
+  #ex6SliderVal-error {
+    @media screen and (max-width: 400px) {
+      font-size: 9px !important;
+       @media screen and (max-width: 320px) {
+          margin-left: -45px !important;
+       }
     }
   }
 }

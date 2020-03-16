@@ -347,7 +347,10 @@ var isValidOtp = false;
     onFinishing: function (event, currentIndex) {
       if (!isValidOtp) {
         var retLead = sendLeadData();
-        if (retLead) { showOtp() };
+        if (retLead) { 
+          showOtp()
+          $("html, body").animate( { scrollTop: 0 }, 400);
+        };
         return false;
       } else {
         form.validate().settings.ignore = ":disabled";
