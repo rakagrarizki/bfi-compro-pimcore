@@ -206,3 +206,15 @@ select option:disabled {
 .site-container{
     min-height: auto;
 }
+
+#step-summary {
+     div:nth-child(5){
+        tr { 
+            td{
+                &:after{
+                    display: none;
+                }
+            }
+        }
+    }
+}

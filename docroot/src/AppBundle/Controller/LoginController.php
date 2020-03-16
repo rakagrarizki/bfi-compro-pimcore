@@ -11,7 +11,8 @@ class LoginController extends FrontendController
     {
         $lang = $request->getLocale();
         if ($_COOKIE['customer'] != null || $_COOKIE['customer'] != "") {
-            header("Location: ". BASEURL . "/{$lang}/user/dashboard");
+            // header("Location: ". BASEURL . "/{$lang}/user/dashboard");
+            return $this->redirect(BASEURL . "/{$lang}/user/dashboard");
         } else {
             $page = $_SERVER['REQUEST_URI'];
             if (preg_match("/.\/service-contract/", $page)) {

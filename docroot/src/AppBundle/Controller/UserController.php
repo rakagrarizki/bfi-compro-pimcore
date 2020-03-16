@@ -268,7 +268,8 @@ class UserController extends FrontendController
         // ]);
         // /* Redirect to dashboard */
         // $this->view->success = $success;
-        header("Location:{$redirect}");
+        // header("Location:{$redirect}");
+        return $this->redirect($redirect);
 
     }
 
