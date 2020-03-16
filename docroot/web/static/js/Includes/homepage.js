@@ -192,7 +192,8 @@ $(document).ready(function() {
   });
 
   $("#category-2").prop('disabled', true);
-  
+  document.getElementById("#category-2").disabled=true;
+
   $("#selection-form").validate({
     errorClass: "help-block",
     errorElement: "div",
