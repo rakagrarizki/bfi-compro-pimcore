@@ -22,6 +22,14 @@ class UserController extends FrontendController
     {
     }
 
+    public function dashboardAction(Request $request)
+    {
+        $lang = $request->getLocale();
+        if ($_COOKIE['customer'] == null || $_COOKIE['customer'] == "") {
+            header("Location: ". BASEURL . "/{$lang}/login");
+        }
+    }
+
     public function getToken()
     {
         // $token = $this->get('session')->get('token');
@@ -258,7 +266,8 @@ class UserController extends FrontendController
         //     'test' => $data->header->status
         // ]);
         // /* Redirect to dashboard */
-        $this->view->success = $success;
+        // $this->view->success = $success;
+        header("Location:{$redirect}");
 
     }
 
