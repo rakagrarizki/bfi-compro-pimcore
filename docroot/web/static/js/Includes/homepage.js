@@ -190,7 +190,10 @@ $(document).ready(function() {
     changeSelected(this.value);
     $("#category-2").removeAttr("disabled");
   });
-  
+
+  $("#category-2").prop('disabled', true);
+  document.getElementById("#category-2").disabled=true;
+
   $("#selection-form").validate({
     errorClass: "help-block",
     errorElement: "div",
