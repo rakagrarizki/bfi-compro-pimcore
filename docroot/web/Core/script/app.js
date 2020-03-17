@@ -6587,3 +6587,8 @@ var leavePage = false;
         }
     });
 });
+
+$('#alamat_lengkap').keypress(function(event){
+    $('#alamat_lengkap').addClass('disapper-label');
+    $('.label-place').fadeOut();
+});

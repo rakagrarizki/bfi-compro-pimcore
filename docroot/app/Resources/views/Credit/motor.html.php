@@ -160,7 +160,7 @@ $blogList->setLimit(4);
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="alamat_lengkap"><?= $this->translate('label-place')?></label>
+                                            <label class="label-place" for="alamat_lengkap"><?= $this->translate('label-place')?></label>
                                             <textarea class="form-control formRequired formAddress" name="alamat_lengkap" id="alamat_lengkap"
                                                       placeholder="<?= $this->translate('placeholder-place')?>, Contoh: Jalan Rajawali 1 Blok A no.11 RT 01 RW 02"></textarea>
                                             <div class="error-wrap"></div>

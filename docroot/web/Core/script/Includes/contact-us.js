@@ -313,7 +313,7 @@ $(document).ready(function(){
     });
 
     $('#message').keypress(function(event){
-      
-        $('.label-messages').hide();
+        $('#message').addClass('disapper-label');
+        $('.label-messages').fadeOut();
     });
 });
