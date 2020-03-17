@@ -500,7 +500,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                         </div>
                     </div>
                 </div>
-                <div id="otp-success" class="success-wrapper">
+                <!-- <div id="otp-success" class="success-wrapper"> -->
                     <!-- <div class="img-wrap">
                         <img class="icon-thank-page" src="/static/images/icon/m_thank_you.png" alt="">
                     </div>
@@ -508,12 +508,12 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                         <h3></?= $this->translate('tq-text-1') ?></h3>
                         <p></?= $this->translate('tq-text-2') ?></p>
                     </div> -->
-                    <?= $this->template('Agent/success.html.php'); ?>
+                    <!-- </?= $this->template('Agent/success.html.php'); ?>
                     <div class="button-area text-center backtohome">
                         <button class="cta cta-primary cta-big cta-see buttonnext backtohome" id="button7" 
-                            type="button" onclick="return checkStatusPengajuan()"><?= $this->translate('backtohome') ?></button>
+                            type="button" onclick="return checkStatusPengajuan()"></?= $this->translate('backtohome') ?></button>
                     </div>
-                </div>
+                </div> -->
             </fieldset>
 
         </form>
