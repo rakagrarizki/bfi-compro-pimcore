@@ -522,7 +522,7 @@ form.steps({
       setTimeout(initBank, 500);
     }
     if (currentIndex > priorIndex && currentIndex === 3) {
-      setTimeoutnama_lengkap(initAdditionalInfo, 500);
+      setTimeout(initAdditionalInfo, 500);
     }
     if (currentIndex > priorIndex && currentIndex === 4) {
       initSummary();
