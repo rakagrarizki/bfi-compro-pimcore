@@ -159,7 +159,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                             <p class="otp-resend"><?= $this->translate('dont-get-otp') ?> <span id="otp-resend" class="countdown">Resend</span></p>
                         </div>
                         <div class="otp-button margin-top-50">
-                            <button class="cta cta-orange cta-big cta-see btn-verifikasi buttonnext" id="agentOtp-verification" type="button"><?= $this->translate('verifikasi') ?></button>
+                            <button class="cta cta-orange cta-big cta-see btn-verifikasi buttonnext" id="agentOtp-verification" disabled type="button"><?= $this->translate('verifikasi') ?></button>
                         </div>
                     </div>
                 </div>
@@ -431,7 +431,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                   </div> -->
                     </div>
                 </div>
-                <div id="otp-success" class="success-wrapper">
+                <!-- <div id="otp-success" class="success-wrapper"> -->
                     <!-- <div class="img-wrap">
                         <img class="icon-thank-page" src="/static/images/icon/m_thank_you.png" alt="">
                     </div>
@@ -439,12 +439,12 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                         <h3></?= $this->translate('tq-text-1') ?></h3>
                         <p></?= $this->translate('tq-text-2') ?></p>
                     </div> -->
-                    <?= $this->template('Agent/success.html.php'); ?>
+                    <!-- </?= $this->template('Agent/success.html.php'); ?>
                     <div class="button-area text-center backtohome">
                         <button class="cta cta-primary cta-big cta-see buttonnext backtohome" id="button7" 
-                            type="button" onclick="return checkStatusPengajuan()"><?= $this->translate('backtohome') ?></button>
+                            type="button" onclick="return checkStatusPengajuan()"></?= $this->translate('backtohome') ?></button>
                     </div>
-                </div>
+                </div> -->
             </fieldset>
 
         </form>

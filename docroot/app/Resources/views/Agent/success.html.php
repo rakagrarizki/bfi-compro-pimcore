@@ -6,11 +6,7 @@
  * @var \Pimcore\Templating\GlobalVariables $app
  */
 
-// $this->extend('layout.html.php');
-$blogList = new Pimcore\Model\DataObject\BlogArticle\Listing();
-$blogList->setOrderKey("Date");
-$blogList->setOrder("desc");
-$blogList->setLimit(4);
+$this->extend('layout.html.php');
 ?>
 
 <div class="container">
@@ -31,23 +27,26 @@ $blogList->setLimit(4);
             <p class="subtitle"><?= $this->t('berita_sub_head'); ?></p>
         </article>
         <div class="list-card success-news">
-            <?php foreach ($blogList as $blog) : ?>
-                <a href="<?= '/' . $this->getLocale() . '/blog/' . $blog->getSlug(); ?>" class="card-item">
-                    <picture>
-                        <img src="<?= $blog->getImage(); ?>" alt="">
-                    </picture>
-                    <div class="caption">
-                        <h3 class="tag"><?= $blog->getBlogCategory()->getName(); ?></h3>
-                        <h2 class="title"><?= $blog->getTitle(); ?></h2>
-                        <p class="date"><?= date('d.m.y', strtotime($blog->getDate())); ?> | <i class="fa fa-eye"></i> <?= $blog->getViews(); ?></p>
-                        <!-- <div class="dateview">
-                                                            <span class="date"></?= date('d.m.y', strtotime($blog->getDate())); ?></span>
-                                                            <span class="view"><i class="fa fa-eye"></i></?= $blog->getViews(); ?></span>
-                                                        </div> -->
-                    </div>
-                </a>
+            <?php foreach ($this->blog as $blog) : ?>
+            <a href="<?= '/' . $this->getLocale() . '/blog/' . $blog->getSlug(); ?>" class="card-item">
+                <picture>
+                    <img src="<?= $blog->getImage(); ?>" alt="">
+                </picture>
+                <div class="caption">
+                    <h3 class="tag"><?= $blog->getBlogCategory()->getName(); ?></h3>
+                    <h2 class="title"><?= $blog->getTitle(); ?></h2>
+                    <p class="date"><?= date('d.m.y', strtotime($blog->getDate())); ?> | <i class="fa fa-eye"></i>
+                        <?= $blog->getViews(); ?></p>
+                    <!-- <div class="dateview">
+                        <span class="date"></?= date('d.m.y', strtotime($blog->getDate())); ?></span>
+                        <span class="view"><i class="fa fa-eye"></i></?= $blog->getViews(); ?></span>
+                    </div> -->
+                </div>
+            </a>
             <?php endforeach; ?>
         </div>
     </div>
+    <div class="button-area text-center backtohome">
+    <a href="<?php echo "/" . $this->getLocale(); ?>" class="cta cta-primary cta-big cta-see buttonnext backtohome"><span><?= $this->translate('backtohome') ?></span></a>
+    </div>
 </div>
- 
