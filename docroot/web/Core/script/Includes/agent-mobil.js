@@ -556,7 +556,7 @@ var isValidOtp = false;
 
   $(document).on('change', 'input[type="hidden"]', checkValid);
   $(document).on('focusout keyup', 'input, textarea, select', checkValid);
-
+  $(document).on('click', 'input[name="are_member"]', checkValid);
   $(document).on('change', 'input[name="are_member"]', toggleAreMember);
   $(document).on('click', '#agentOtp-verification', agentVerifiedOtp)
 

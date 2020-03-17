@@ -596,6 +596,31 @@ var isValidOtp = false;
     }
   });
 
+  $('#step-otp').find('input').each(function() {
+    $(this).attr('maxlength', 1);
+    $(this).on('keypress', function(e) {
+        var parent = $($(this).parent());
+        
+        if(e.keyCode === 8) {
+            var prev = parent.find('input#' + $(this).data('previous'));
+            
+            if(prev.length) {
+                $(prev).select().val("");
+            }
+        }
+        else if((e.keyCode >= 48 && e.keyCode <= 57) || (e.keyCode >= 96 && e.keyCode <= 105)) {
+            var next = parent.find('input#' + $(this).data('next'));
+            
+            if(next.length) {
+                $(next).removeAttr("disabled").select();
+            }
+            else {
+                $("#agentOtp-verification").removeAttr("disabled").removeAttr("style");
+              }
+          }
+      });
+  });
+
   $("#recalc").click(function (e) {
     e.preventDefault();
     if (form.valid()) {
