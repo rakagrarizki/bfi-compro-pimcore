@@ -159,7 +159,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                             <p class="otp-resend"><?= $this->translate('dont-get-otp') ?> <span id="otp-resend" class="countdown">Resend</span></p>
                         </div>
                         <div class="otp-button margin-top-50">
-                            <button class="cta cta-orange cta-big cta-see btn-verifikasi buttonnext" id="agentOtp-verification" type="button"><?= $this->translate('verifikasi') ?></button>
+                            <button class="cta cta-orange cta-big cta-see btn-verifikasi buttonnext" id="agentOtp-verification" disabled type="button"><?= $this->translate('verifikasi') ?></button>
                         </div>
                     </div>
                 </div>
@@ -208,7 +208,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                         <div class="error-wrap"></div>
                     </div>
                     <div class="form-group">
-                        <label for="alamat_lengkap"><?= $this->translate('label-place') ?></label>
+                        <label class="label-place" for="alamat_lengkap"><?= $this->translate('label-place') ?></label>
                         <textarea class="form-control formRequired formAddress" name="alamat_lengkap" id="alamat_lengkap" placeholder="<?= $this->translate('placeholder-place') ?> Contoh: Jalan Rajawali 1 Blok A no.11 RT 01 RW 02"></textarea>
                         <div class="error-wrap"></div>
                     </div>
@@ -500,19 +500,20 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                         </div>
                     </div>
                 </div>
-                <div id="otp-success" class="success-wrapper">
-                    <div class="img-wrap">
+                <!-- <div id="otp-success" class="success-wrapper"> -->
+                    <!-- <div class="img-wrap">
                         <img class="icon-thank-page" src="/static/images/icon/m_thank_you.png" alt="">
                     </div>
                     <div class="text-wrap text-center">
-                        <h3><?= $this->translate('tq-text-1') ?></h3>
-                        <p><?= $this->translate('tq-text-2') ?></p>
-                    </div>
+                        <h3></?= $this->translate('tq-text-1') ?></h3>
+                        <p></?= $this->translate('tq-text-2') ?></p>
+                    </div> -->
+                    <!-- </?= $this->template('Agent/success.html.php'); ?>
                     <div class="button-area text-center backtohome">
                         <button class="cta cta-primary cta-big cta-see buttonnext backtohome" id="button7" 
-                            type="button" onclick="return checkStatusPengajuan()"><?= $this->translate('cek-status-aplikasi') ?></button>
+                            type="button" onclick="return checkStatusPengajuan()"></?= $this->translate('backtohome') ?></button>
                     </div>
-                </div>
+                </div> -->
             </fieldset>
 
         </form>

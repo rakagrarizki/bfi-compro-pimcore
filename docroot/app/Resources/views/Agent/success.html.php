@@ -8,11 +8,7 @@
 
 $this->extend('layout.html.php');
 ?>
-
-<?php
-$this->headScript()->offsetSetFile(100, '/static/js/Includes/contact-us.js');
-?>
-
+<?php if (!$this->success) { ?>
 <div class="container">
     <div class="row">
         <div id="success" class="contact-us success-wrapper corporate">
@@ -20,42 +16,40 @@ $this->headScript()->offsetSetFile(100, '/static/js/Includes/contact-us.js');
                 <img class="icon-thank-page" src="/static/images/icon/m_thank_you.png" alt="">
             </div>
             <div class="text-wrap text-center">
-                <h3><?= $this->t('thankyou_msg'); ?></h3>
-                <p><?= $this->t('success_msg'); ?></p>
+                <h3><?= $this->t('thankyou_msg_agent'); ?></h3>
+                <p><?= $this->t('success_msg_agent'); ?></p>
             </div>
         </div>
     </div>
-    <div id="news" class="news">
-        <div class="row">
-            <div class="sect-title text-center">
-                <h2><?= $this->t('berita_head'); ?></h2>
-                <p><?= $this->t('berita_sub_head'); ?></p>
-            </div>
-        </div>
-        <div class="row list-news-container">
+    <div class="blog-promo">
+        <article class="sect-title text-center">
+            <h2 class="title"><?= $this->t('berita_head'); ?></h2>
+            <p class="subtitle"><?= $this->t('berita_sub_head'); ?></p>
+        </article>
+        <div class="list-card success-news">
             <?php foreach ($this->blog as $blog) : ?>
-                <div class="col-md-3 col-xs-6">
-                    <article class="article__post">
-                        <div class="article__post__img" style="background-image: url('<?= $blog->getImage(); ?>')">
-                        </div>
-                        <div class="article__post__text">
-                            <p><?= $blog->getBlogCategory()->getName(); ?></p>
-                            <h4><a href="<?= '/' . $this->getLocale() . '/blog/' . $blog->getSlug(); ?>"><?= $blog->getTitle(); ?></a></h4>
-                            <div class="dateview">
-                                <span class="date"><?= date('Y-m-d', strtotime($blog->getDate())); ?></span>
-                                <span class="view"><i class="fa fa-eye"></i><?= $blog->getViews(); ?></span>
-                            </div>
-                        </div>
-                    </article>
+            <a href="<?= '/' . $this->getLocale() . '/blog/' . $blog->getSlug(); ?>" class="card-item">
+                <picture>
+                    <img src="<?= $blog->getImage(); ?>" alt="">
+                </picture>
+                <div class="caption">
+                    <h3 class="tag"><?= $blog->getBlogCategory()->getName(); ?></h3>
+                    <h2 class="title"><?= $blog->getTitle(); ?></h2>
+                    <p class="date"><?= date('d.m.y', strtotime($blog->getDate())); ?> | <i class="fa fa-eye"></i>
+                        <?= $blog->getViews(); ?></p>
+                    <!-- <div class="dateview">
+                        <span class="date"></?= date('d.m.y', strtotime($blog->getDate())); ?></span>
+                        <span class="view"><i class="fa fa-eye"></i></?= $blog->getViews(); ?></span>
+                    </div> -->
                 </div>
+            </a>
             <?php endforeach; ?>
         </div>
-        <div class="row">
-            <div class="button-area text-center btn-beranda">
-                <a href="<?php echo "/" . $this->getLocale() . '/' . $link; ?>" class="cta cta-primary cta-big">
-                    <i class="icon-home"></i>
-                    <span><?= $this->translate('backtohome') ?></span></a>
-            </div>
-        </div>
+    </div>
+    <div class="button-area text-center backtohome">
+    <a href="<?php echo "/" . $this->getLocale(); ?>" class="cta cta-primary cta-big cta-see buttonnext backtohome"><span><?= $this->translate('backtohome') ?></span></a>
     </div>
 </div>
+<?php } else { ?>
+    <?= $this->template('Agent/success.html.php') ?>
+<?php } ?>
