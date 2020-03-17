@@ -34,8 +34,10 @@ function checkValid() {
   if (isValidStep()) {
     // do something
     nextButton("active");
+    finishButton("active");
   } else {
     nextButton("inactive");
+    finishButton("inactive");
   }
 }
 
@@ -49,6 +51,32 @@ function nextButton(action) {
     }
   }
 }
+
+function finishButton(action) {
+  var finishBtn = $(".actions > ul li a[href$='finish']").parent();
+  if (action === "active") {
+    finishBtn.removeClass("inactive");
+  } else {
+    if (!finishBtn.hasClass("inactive")) {
+      finishBtn.addClass("inactive");
+    }
+  }
+}
+
+
+$(".biaya-agunan .form-group").on("click", function() {
+  setTimeout(function() {
+      if (
+          $("input#agreement1")
+              .parent()
+              .hasClass("jcf-checked")
+      ) {
+        finishButton("active");
+      } else {
+        finishButton("inactive");
+      }
+  }, 500);
+});
 
 function sendLeadData() {
   if (form.valid()) {
@@ -494,7 +522,7 @@ form.steps({
       setTimeout(initBank, 500);
     }
     if (currentIndex > priorIndex && currentIndex === 3) {
-      setTimeout(initAdditionalInfo, 500);
+      setTimeoutnama_lengkap(initAdditionalInfo, 500);
     }
     if (currentIndex > priorIndex && currentIndex === 4) {
       initSummary();
