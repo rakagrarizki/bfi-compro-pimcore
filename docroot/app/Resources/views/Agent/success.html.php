@@ -8,7 +8,7 @@
 
 $this->extend('layout.html.php');
 ?>
-
+<?php if (!$this->success) { ?>
 <div class="container">
     <div class="row">
         <div id="success" class="contact-us success-wrapper corporate">
@@ -50,3 +50,6 @@ $this->extend('layout.html.php');
     <a href="<?php echo "/" . $this->getLocale(); ?>" class="cta cta-primary cta-big cta-see buttonnext backtohome"><span><?= $this->translate('backtohome') ?></span></a>
     </div>
 </div>
+<?php } else { ?>
+    <?= $this->template('Agent/success.html.php') ?>
+<?php } ?>
