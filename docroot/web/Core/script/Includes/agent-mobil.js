@@ -34,8 +34,10 @@ function checkValid() {
   if (isValidStep()) {
     // do something
     nextButton("active");
+    finishButton("active");
   } else {
     nextButton("inactive");
+    finishButton("inactive");
   }
 }
 
@@ -49,6 +51,32 @@ function nextButton(action) {
     }
   }
 }
+
+function finishButton(action) {
+  var finishBtn = $(".actions > ul li a[href$='finish']").parent();
+  if (action === "active") {
+    finishBtn.removeClass("inactive");
+  } else {
+    if (!finishBtn.hasClass("inactive")) {
+      finishBtn.addClass("inactive");
+    }
+  }
+}
+
+
+$(".biaya-agunan .form-group").on("click", function() {
+  setTimeout(function() {
+      if (
+          $("input#agreement1")
+              .parent()
+              .hasClass("jcf-checked")
+      ) {
+        finishButton("active");
+      } else {
+        finishButton("inactive");
+      }
+  }, 500);
+});
 
 function sendLeadData() {
   if (form.valid()) {
@@ -528,7 +556,7 @@ var isValidOtp = false;
 
   $(document).on('change', 'input[type="hidden"]', checkValid);
   $(document).on('focusout keyup', 'input, textarea, select', checkValid);
-
+  $(document).on('click', 'input[name="are_member"]', checkValid);
   $(document).on('change', 'input[name="are_member"]', toggleAreMember);
   $(document).on('click', '#agentOtp-verification', agentVerifiedOtp)
 
