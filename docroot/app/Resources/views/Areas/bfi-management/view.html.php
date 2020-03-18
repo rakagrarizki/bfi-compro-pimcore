@@ -1,5 +1,6 @@
 <?php
     $this->headScript()->offsetSetFile(100, '/static/js/Includes/management.js');
+    $this->headScript()->offsetSetFile(100, '/static/js/Includes/tabbing.js');
 ?>
 
 <div class="container management-container">
