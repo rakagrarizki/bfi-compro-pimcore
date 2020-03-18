@@ -4,6 +4,7 @@ var formGroup = [];
 formGroup[0] = ["#nama_lengkap", "#email_pemohon", "#no_handphone"];
 formGroup[1] = ["#provinsi", "#kota", "#kecamatan", "#kelurahan", "#kode_pos", "#alamat_lengkap"];
 formGroup[2] = ["#bank", "#account_number", "#account_name"];
+var lang = document.documentElement.lang;
 
 
 function isValidStep() {
@@ -541,10 +542,11 @@ form.steps({
     }
   },
   onFinished: function (event, currentIndex) {
-    $("#otp-success").show();
+    // $("#otp-success").show();
     $("#step-summary").hide();
     $(".wizard .steps, .wizard .actions").hide();
     // alert("Submitted!");
+    window.location.href = "/" + lang + "/agent/success";
   }
 });
 
