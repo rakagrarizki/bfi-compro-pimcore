@@ -14,15 +14,15 @@
             display: -webkit-box;
             display: -moz-box;
         }
-        
-        .arrow{
+
+        .arrow {
             min-width: auto;
             padding: 1px;
             width: auto;
             color: $grey-dark-color;
         }
 
-        .arrow-outer{
+        .arrow-outer {
             display: none;
 
             @include breakpoint(mobile) {
@@ -62,9 +62,10 @@
                 left: 0;
                 bottom: 0;
             }
-            
-            &:hover{
+
+            &:hover {
                 background-color: #eee;
+
                 @include breakpoint(mobile) {
                     background-color: transparent;
                 }
@@ -72,6 +73,7 @@
 
             &.active {
                 background-color: $white;
+
                 &:after {
                     content: '';
                     width: 100%;
@@ -81,6 +83,7 @@
                     left: 0;
                     bottom: 0;
                 }
+
                 >a {
                     // font-family: HelveticaNeue-Bold;
                     color: $blue;
@@ -102,24 +105,72 @@
         }
     }
 
-    .tabs-outer{
+    .tabs-outer {
         display: table;
         width: 100%;
 
-        @include breakpoint(mobile){
+        @include breakpoint(mobile) {
             display: block;
+            position: relative;
         }
-        ul{
+
+        ul {
             display: table-row;
-            @include breakpoint(mobile){
+
+            @include breakpoint(mobile) {
                 display: -webkit-box;
                 display: -moz-box;
             }
 
-            li{
+            li {
                 vertical-align: middle;
                 display: table-cell;
                 float: unset;
+            }
+        }
+
+        .arrow-wrapper {
+            .arrow {
+                min-width: auto;
+                padding: 1px;
+                // width: auto;
+                width: 54px;
+                height: 54px;
+                color: $grey-dark-color;
+                position: absolute;
+                vertical-align: middle;
+                display: table-cell;
+                float: unset;
+                background-color: white;
+
+                &.left-arrow {
+                    top: 15px;
+                    left: 0;
+                }
+
+                &.right-arrow {
+                    top: 15px;
+                    right: 0;
+                }
+            }
+
+            .arrow-outer {
+                display: none;
+
+                @include breakpoint(mobile) {
+                    display: block;
+                }
+            }
+
+            a {
+                margin: 0;
+                border: none;
+                border-radius: 0;
+                text-align: center;
+                position: relative;
+                font-family: HelveticaNeue-Medium;
+                font-size: 16px;
+                color: rgba($grey-dark-color, .5);
             }
         }
     }
