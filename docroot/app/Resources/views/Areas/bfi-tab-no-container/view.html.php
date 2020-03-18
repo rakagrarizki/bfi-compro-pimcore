@@ -23,9 +23,9 @@ $tab = $this->getParam("tab");
         </article>
         <div id="<?= $this->select("group")->getData();?>" class="tabs-outer container">
             <ul class="nav nav-tabs" role="tablist" id="outer-choice">
-                <li style="display: none" role="presentation" onclick="prev()" class="arrow" onclick="scrollPosition('<?= $id;?>')" id="prevButton">
+                <!-- <li style="display: none" role="presentation" onclick="prev()" class="arrow" onclick="scrollPosition('<?= $id;?>')" id="prevButton">
                     <a class="arrow-outer"><i class="icon-left-arrow"></i></a>
-                </li>
+                </li> -->
                 <?php while ($this->block("tab")->loop()) { ?>
                     <?php
                     $pattern = '/\W/';
@@ -50,13 +50,18 @@ $tab = $this->getParam("tab");
                         </li>
 
                 <?php }?>
-                <li role="presentation" class="arrow" onclick="next()" id="nextButton">
+                <!-- <li role="presentation" class="arrow" onclick="next()" id="nextButton">
                     <a class="arrow-outer"><i class="icon-right-arrow"></i></a>
-                </li>
-
+                </li> -->
             </ul>
-
-
+            <div class="arrow-wrapper">
+                <div style="display: none" onclick="prev()" class="arrow left-arrow" onclick="scrollPosition('<?= $id;?>')" id="prevButton">
+                    <a class="arrow-outer"><i class="icon-left-arrow"></i></a>
+                </div>
+                <div class="arrow right-arrow" onclick="next()" id="nextButton">
+                    <a class="arrow-outer"><i class="icon-right-arrow"></i></a>
+                </div>
+            </div>
         </div>
         <div class="tab-content">
             <?php while ($this->block("tab")->loop()) { ?>
