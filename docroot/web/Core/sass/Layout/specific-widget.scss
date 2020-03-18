@@ -222,3 +222,22 @@ select option:disabled {
 .disapper-label{
     padding-top: 1em !important;
 }
+ 
+.article-content {
+    ul {
+        li:nth-child(5)  {
+            ul {
+                list-style-type: none; 
+                position: relative;
+                li:nth-child(1),
+                li:nth-child(2){
+                    &:before{
+                        content: '-';
+                        position: absolute;
+                        left: -20px;
+                    }
+                }
+            }
+        }
+    }
+}  
