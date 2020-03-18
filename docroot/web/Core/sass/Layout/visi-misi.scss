@@ -123,7 +123,6 @@
         font-family: 'HelveticaNeue';
         letter-spacing: 0.5px;
         color:#565656;
-
         @include breakpoint(mobile){
             font-size: 1rem;
         }

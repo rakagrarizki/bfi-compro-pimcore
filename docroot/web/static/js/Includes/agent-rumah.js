@@ -510,10 +510,11 @@ form.steps({
     }
   },
   onFinished: function (event, currentIndex) {
-    $("#otp-success").show();
+    // $("#otp-success").show();
     $("#step-summary").hide();
     $(".wizard .steps, .wizard .actions").hide();
     // alert("Submitted!");
+    window.location.href = "/" + lang + "/agent/success";
   }
 });
 
