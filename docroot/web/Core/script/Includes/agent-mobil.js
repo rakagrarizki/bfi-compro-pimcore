@@ -362,10 +362,10 @@ function showFormOTP() {
   }
 }
 
-function successAgentOTP() {
-  $(".actions > ul li a[href$='next']").text('Selanjutnya');
-  $("#personal-detail").show();
-}
+// function successAgentOTP() {
+//   $(".actions > ul li a[href$='next']").text('Selanjutnya');
+//   $("#personal-detail").show();
+// }
 
 function otpAgentVerified() {
   var otp1Value = $('input[name=otp1]').val().toString(),
@@ -419,10 +419,10 @@ function agentVerifiedOtp() {
 
 function successAgentOTP() {
   var _data = {
-    "submission_id": "",
+    "submission_id": submission_id,
     "collateral_type_id": $('#collateral_type').val().toString(),
-    "name": $('#nama_lengkap').val().toString(),
-    "email": $('#email_pemohon').val().toString(),
+    "name": $('#nama_lengkap').val(),
+    "email": $('#email_pemohon').val(),
     "phone_number": $('#no_handphone').val().toString()
   }
   var register = postData("/agent/save-agent-candidate-step1", _data);
