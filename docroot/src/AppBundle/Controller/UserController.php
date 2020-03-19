@@ -238,6 +238,7 @@ class UserController extends FrontendController
     public function verifyEmailConfirmJsonAction(Request $request)
     {
         $success = false;
+        $lang = $request->getLocale();
         $token = htmlentities(addslashes($request->get("token")));
         
         $param['email_verify_code'] = $token;
@@ -258,7 +259,7 @@ class UserController extends FrontendController
         }
 
         if ($data->header->status == 200) {
-            $redirect = BASEURL."/id/user/dashboard";
+            $redirect = "/id/user/dashboard";
             $success = true;
         }
         // return new JsonResponse([
@@ -268,9 +269,8 @@ class UserController extends FrontendController
         // ]);
         // /* Redirect to dashboard */
         // $this->view->success = $success;
-        header("Location:{$redirect}");
-        // return $this->redirect($redirect);
-        exit;
+        // header("Location:{$redirect}");
+        return $this->redirect($redirect);
 
     }
 
