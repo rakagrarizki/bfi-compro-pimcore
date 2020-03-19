@@ -28,6 +28,17 @@ $.validator.addClassRules({
     }
 });
 
+if (lang === "id") {
+    jQuery.extend(jQuery.validator.messages, {
+        required: "Isian wajib diisi.",
+        emailCust: "Silakan isi alamat email yang valid."
+    });
+}
+
+jQuery.validator.addMethod("emailCust", function (value, element, param) {
+    return param.test(value);
+  });
+
 function verify(){
     var token = window.localStorage.getItem("token");
     var dataEmail = {
