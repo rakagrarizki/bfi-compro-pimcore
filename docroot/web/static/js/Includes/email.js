@@ -19,6 +19,15 @@
 //     }
 // }
 
+$.validator.addClassRules({
+    formRequired: {
+        required: true
+    },
+    formEmail: {
+        emailCust: /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/
+    }
+});
+
 function verify(){
     var token = window.localStorage.getItem("token");
     var dataEmail = {

@@ -16,7 +16,8 @@ $this->extend('layout.html.php');
         <div class="input-login">
             <div class="input-text-group">
                 <label id="email-label" class="input-label">EMAIL</label>
-                <input id="email-input" class="style-input" type="email" placeholder="<?= $this->translate('email-input') ?>" required>
+                <input id="email-input" class="style-input formRequired formEmail" type="email" placeholder="<?= $this->translate('email-input') ?>" required>
+                <div class="error-wrap"></div>
             </div>
         </div>
         <button id="btn-verify" type="button" class="button-login" onclick="verify()" disabled style="opacity: .5;"><?= $this->translate('send-email') ?></button>
