@@ -57,7 +57,11 @@
       }
     }
 }
-
+.table-responsive{
+  tbody{
+    background-color: #ffffff;
+  }
+}
 .accordion {
   .sect-title {
 
@@ -116,7 +120,7 @@
 
       &:last-child {
         .panel-body {
-          background-color: #FCFCFC;
+          background-color: #eaeaea;
           padding-top: 35px;
 
           .block-payment {
@@ -137,7 +141,7 @@
 
       .panel-body {
         padding: 20px 110px;
-        background: #FCFCFC;
+        background: #eaeaea;
         @include breakpoint(mobile) {
           padding: 20px 20px;
         }

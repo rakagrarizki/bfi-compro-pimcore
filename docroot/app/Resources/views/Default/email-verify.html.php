@@ -14,9 +14,9 @@ $this->extend('layout.html.php');
     <p><?= $this->translate('verifikasi-email-sub') ?></p>
     <form action="" id="login-form">
         <div class="input-login">
-            <div class="input-text-group">
+            <div class="input-text-group form-group">
                 <label id="email-label" class="input-label">EMAIL</label>
-                <input id="email-input" class="style-input formRequired formEmail" type="email" placeholder="<?= $this->translate('email-input') ?>" required>
+                <input id="email-input" class="style-input form-control formRequired formEmail" type="email" placeholder="<?= $this->translate('email-input') ?>" >
                 <div class="error-wrap"></div>
             </div>
         </div>
