@@ -70,8 +70,10 @@ $this->extend('layout.html.php');
         <div class="sect-list">
             <div class="heading">
                 <h3><?= $this->translate('cara-bayar'); ?></h3>
-                <button class="cta cta-primary cta-big cta-see full" type="button" onlick="window.location.href='<?= "/" . $lang . "/user/layanan"; ?>'"><?= $this->translate('more'); ?></button>
-                <button class="cta cta-primary cta-big cta-see short" type="button" onlick="window.location.href='<?= "/" . $lang . "/user/layanan"; ?>'">Lihat</button>
+                <form action="<?= "/" . $lang . "/user/layanan"; ?>">
+                    <button class="cta cta-primary cta-big cta-see full" type="submit"><?= $this->translate('more'); ?></button>
+                    <button class="cta cta-primary cta-big cta-see short" type="submit"><?= $this->translate('lihat'); ?></button>
+                </form>
             </div>
             <div class="list">
                 <div class="list-wrapper">
