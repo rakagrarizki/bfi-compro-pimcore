@@ -166,18 +166,6 @@ $blogList->setLimit(4);
               <div class="error-wrap"></div>
           </div>
           <div class="form-group">
-              <label for="machine_qty"><?= $this->translate('label-machine-qty')?></label>
-              <input type="text" class="form-control" name="machine_qty" id="machine_qty"
-                      placeholder="<?= $this->translate('placeholder-machine-qty')?>">
-              <div class="error-wrap"></div>
-          </div>
-          <div class="form-group">
-              <label for="machine_estimated"><?= $this->translate('label-estimated-price')?></label>
-              <input type="text" class="form-control formEstimate formatRibuan" name="machine_estimated" id="machine_estimated"
-                      placeholder="<?= $this->translate('placeholder-estimated-price')?>">
-              <div class="error-wrap"></div>
-          </div>
-          <div class="form-group">
               <label><?= $this->translate('brand')?></label>
               <select class="form-control formRequired" id="brand" name="brand"
                       placeholder="<?= $this->translate('choose-brand')?>" multiple="multiple">
@@ -201,7 +189,17 @@ $blogList->setLimit(4);
               </select>
               <div class="error-wrap"></div>
           </div>
-      
+          <div class="form-group">
+              <label for="machine_qty"><?= $this->translate('label-machine-qty')?></label>
+              <input type="text" class="form-control" name="machine_qty" id="machine_qty"
+                      placeholder="<?= $this->translate('placeholder-machine-qty')?>">
+              <div class="error-wrap"></div>
+          </div>
+          <div class="form-group">
+              <label for="machine_estimated" style="display: block; padding: 15px 15px 5px;">Estimasi Harga</label>
+              <input type="text" class="form-control formEstimate formatRibuan valid" name="machine_estimated" id="machine_estimated" placeholder="Masukkan estimasi harga" aria-invalid="false" style="padding-top: 35px; padding-bottom: 15px;">
+              <div class="error-wrap"></div>
+          </div>
         </fieldset>
 
         <!-- STEP 4 -->
