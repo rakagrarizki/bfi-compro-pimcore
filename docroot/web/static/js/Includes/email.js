@@ -19,6 +19,18 @@
 //     }
 // }
 
+function validateFormRequired(elementParam) {
+    $(elementParam).validate({
+        errorPlacement: function(error, element) {
+            console.log(element);
+            element
+                .closest(".form-group")
+                .find(".error-wrap")
+                .html(error);
+        }
+    });
+}
+
 $.validator.addClassRules({
     formRequired: {
         required: true
@@ -27,6 +39,17 @@ $.validator.addClassRules({
         emailCust: /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/
     }
 });
+
+if (lang === "id") {
+    jQuery.extend(jQuery.validator.messages, {
+        required: "Isian wajib diisi.",
+        emailCust: "Silakan isi alamat email yang valid."
+    });
+}
+
+jQuery.validator.addMethod("emailCust", function (value, element, param) {
+    return param.test(value);
+  });
 
 function verify(){
     var token = window.localStorage.getItem("token");
