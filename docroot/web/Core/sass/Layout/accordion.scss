@@ -3,6 +3,9 @@
 .pimcore_area_bfi-tab-accordion-wysiwyg {
   &:first-of-type {
     padding-top: 40px;
+    @include breakpoint(mobile){
+      padding-top: 0;
+    }
   }
   .panel-default{
      margin:0;
