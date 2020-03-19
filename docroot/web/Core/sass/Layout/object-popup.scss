@@ -175,4 +175,8 @@ $mobile: 750px;
     color: #04559F;
     margin-top: 50px;
     margin-bottom: 50px;
+
+    @include breakpoint(mobile){
+        font-size: 20px;
+    }
 }
