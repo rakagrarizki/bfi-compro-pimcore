@@ -19,6 +19,18 @@
 //     }
 // }
 
+function validateFormRequired(elementParam) {
+    $(elementParam).validate({
+        errorPlacement: function(error, element) {
+            console.log(element);
+            element
+                .closest(".form-group")
+                .find(".error-wrap")
+                .html(error);
+        }
+    });
+}
+
 $.validator.addClassRules({
     formRequired: {
         required: true
