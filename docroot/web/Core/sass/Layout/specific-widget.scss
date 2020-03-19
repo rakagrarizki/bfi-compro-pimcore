@@ -274,3 +274,18 @@ select option:disabled {
         }
     }
 }
+
+#email-verify{
+    #login-form{
+        #email-input-error{
+            display: inline-block;
+            position: relative;
+            font-size: 12px;
+            font-weight: bold;
+            font-style: normal;
+            color: #E00909;
+            width: 100%;
+            text-align: left;
+        }
+    }
+}
