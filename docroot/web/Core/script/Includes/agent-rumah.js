@@ -510,10 +510,11 @@ form.steps({
     }
   },
   onFinished: function (event, currentIndex) {
-    $("#otp-success").show();
+    // $("#otp-success").show();
     $("#step-summary").hide();
     $(".wizard .steps, .wizard .actions").hide();
     // alert("Submitted!");
+    window.location.href = "/" + lang + "/agent/success";
   }
 });
 
@@ -594,6 +595,31 @@ var isValidOtp = false;
       $("#kode_pos").val("");
       $("#kode_pos").data("value", "");
     }
+  });
+
+  $('#step-otp').find('input').each(function() {
+    $(this).attr('maxlength', 1);
+    $(this).on('keypress', function(e) {
+        var parent = $($(this).parent());
+        
+        if(e.keyCode === 8) {
+            var prev = parent.find('input#' + $(this).data('previous'));
+            
+            if(prev.length) {
+                $(prev).select().val("");
+            }
+        }
+        else if((e.keyCode >= 48 && e.keyCode <= 57) || (e.keyCode >= 96 && e.keyCode <= 105)) {
+            var next = parent.find('input#' + $(this).data('next'));
+            
+            if(next.length) {
+                $(next).removeAttr("disabled").select();
+            }
+            else {
+                $("#agentOtp-verification").removeAttr("disabled").removeAttr("style");
+              }
+          }
+      });
   });
 
   $("#recalc").click(function (e) {

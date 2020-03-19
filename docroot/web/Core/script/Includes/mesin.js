@@ -633,9 +633,10 @@ var isValidOtp = false;
     } else {
       tenorMsg = "Field is required.";
     }
+
     if (isNaN(tenor)){
-      console.log("kosong")
       $("#error-tenor").append("<div class='text-error-tenor'>"+tenorMsg+"</div>");
+      $(this).off("click");
     }
     if (post.success === "1") {
       // console.log("CALC", post)

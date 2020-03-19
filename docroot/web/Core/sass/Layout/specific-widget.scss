@@ -49,7 +49,7 @@
 #tabel-pembiayaan-travel-wisata{
     @include breakpoint(mobile){
         td {
-            padding-right: 0.5rem;
+            padding: 10px 0 0 5px;
         }
     }
 }
@@ -181,7 +181,7 @@ select option:disabled {
                 p{
                     margin-bottom: 20px;
                     span{
-                        font-size: 21px !important;
+                        font-size: 12px !important;
                     }
                 }
             }
@@ -221,4 +221,56 @@ select option:disabled {
 
 .disapper-label{
     padding-top: 1em !important;
+}
+ 
+.article-content {
+    ul {
+        li:nth-child(5)  {
+            ul {
+                list-style-type: none; 
+                position: relative;
+                li:nth-child(1),
+                li:nth-child(2){
+                    &:before{
+                        content: '-';
+                        position: absolute;
+                        left: -20px;
+                    }
+                }
+            }
+        }
+    }
+}  
+
+.custom-widget{
+    h1{
+        padding: 0 90px;
+        @include breakpoint(mobile){
+            padding: 0;
+        }
+    }
+    p{
+        margin-bottom: 30px;
+        ul{
+            margin-bottom: 30px;
+        }
+    }
+}
+
+.table-responsive{
+    td{
+        @include breakpoint(mobile){
+            padding: 0 12px 0;
+        }
+        div{
+            p{
+                margin-left: 0;
+                span{
+                    @include breakpoint(mobile){
+                        font-size: 12px !important;
+                    }
+                }
+            }
+        }
+    }
 }
