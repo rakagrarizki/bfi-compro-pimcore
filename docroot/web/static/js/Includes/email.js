@@ -39,7 +39,7 @@ $.validator.addClassRules({
         emailCust: /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/
     }
 });
-
+var lang = document.documentElement.lang;
 if (lang === "id") {
     jQuery.extend(jQuery.validator.messages, {
         required: "Isian wajib diisi.",
