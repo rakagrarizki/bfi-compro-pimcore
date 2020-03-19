@@ -5746,9 +5746,6 @@ var leavePage = false;
             });
     });
   
-    // $("#produk").hover(function() {
-    // 	$(".header-link-menu").addClass("active");
-    // });
   
     $(".dark-back").hover(
         function() {

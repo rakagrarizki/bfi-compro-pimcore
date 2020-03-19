@@ -18,6 +18,31 @@
 //         email_label_element.textContent = default_email_label;
 //     }
 // }
+var isInvalid = function() {
+    return   $("#email-input").val() == "" 
+        ? true
+        : false;
+};
+
+function disableButton(button) {
+    $(button).css("background-color", "#dddddd");
+    $(button).css("border-color", "#dddddd");
+    $(button).attr("disabled", "disabled");
+}
+
+function enableButton(button) {
+    $(button).css("background-color", "#F8991D");
+    $(button).css("border-color", "#F8991D");
+    $(button).removeAttr("disabled");
+}
+
+$("#email-input").on("keyup", function(e) {
+    if (isInvalid()) {
+        disableButton("#btn-verify");
+    } else {
+        enableButton("#btn-verify");
+    }
+});
 
 function validateFormRequired(elementParam) {
     $(elementParam).validate({
@@ -56,6 +81,7 @@ function verify(){
     var dataEmail = {
         'email' : $('#email-input').val()
     };
+
     console.log(dataEmail);
     $.ajax({
         type: 'POST',
