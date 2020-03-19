@@ -547,6 +547,7 @@ form.steps({
     // $(".wizard .steps, .wizard .actions").hide();
     // alert("Submitted!");
     window.location.href = "/" + lang + "/agent/success";
+    console.log("finish");
   }
 });
 
