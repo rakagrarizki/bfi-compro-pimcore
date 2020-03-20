@@ -26,6 +26,9 @@ function isValidStep() {
     if ($('input[name="are_member"]:checked').val() === "1" && $("#areCode").val() === "") {
       isValid = false;
     }
+    if ($('input[name="haveSmartphone"]:checked').val() === undefined) {
+      isValid = false;
+    }
   }
   return isValid;
 }
@@ -553,10 +556,11 @@ var isValidOtp = false;
 (function ($) {
   $(document).on("click", "#otp-verification", otpAgentVerified)
 
-  $("#step-otp").hide();
+  $("#step-otp").hide(); checkValid
 
   $(document).on('change', 'input[type="hidden"]', checkValid);
   $(document).on('focusout keyup', 'input, textarea, select', checkValid);
+  $(document).on('change', 'input[name="haveSmartphone"]', checkValid);
   $(document).on('click', 'input[name="are_member"]', checkValid);
   $(document).on('change', 'input[name="are_member"]', toggleAreMember);
   $(document).on('click', '#agentOtp-verification', agentVerifiedOtp)
