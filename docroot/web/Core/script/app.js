@@ -6058,6 +6058,7 @@ var leavePage = false;
   
         success: function(dataObj) {
             if (dataObj.success === true) {
+                var token = localStorage.getItem("token");
                 if(dataObj.result.header.status == 200){
                     console.log("berhasil login");
                     requestOTP(dataPhone);
