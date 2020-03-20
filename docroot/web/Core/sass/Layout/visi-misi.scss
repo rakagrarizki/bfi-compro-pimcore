@@ -131,6 +131,9 @@
             font-family: 'HelveticaNeue-Light';
             strong{
                 color:#565656;
+                @include breakpoint(mobile){
+                    font-size: 22px;
+                }
             }
         }
     }
