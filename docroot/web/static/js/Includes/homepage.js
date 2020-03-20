@@ -234,14 +234,6 @@ $(document).ready(function() {
     $("#nama_lengkap").attr('disabled','disabled');
     $("#email_pemohon").attr('disabled','disabled');
     $("#no_handphone").attr('disabled','disabled');
-    $("#upload-ktp-button").attr('disabled','disabled');
-    $("#upload-ktp-button").css("background-color", "#dddddd");
-    $("#upload-ktp-button").css("border-color", "#dddddd");
-    $("input[type=radio]").attr('disabled','disabled');
-    $("#tgl_lahir").attr('disabled','disabled');
-    $(".ui-datepicker-trigger").attr('disabled','disabled');
-    $("#pekerjaan").attr('disabled','disabled');
-    $("#penghasilan").attr('disabled','disabled');
     $(".label-cekLogin").removeClass('hide');
   }
 
@@ -268,6 +260,7 @@ $(document).ready(function() {
                 $("#email_pemohon").val(data.email);
                 $("#no_handphone").val(data.phone_number);
                 enableButton("#button1");
+                nextButton("active");
                 disabled;
             }else{
                 !disabled;
@@ -281,4 +274,11 @@ $(document).ready(function() {
     $(button).css("border-color", "#F8991D");
     $(button).removeAttr("disabled");
   }
-  
+
+  function nextButton(action) {
+    var nextBtn = $(".actions > ul li a[href$='next']").parent();
+    if (action === "inactive") {
+        nextBtn.removeClass("inactive");
+        nextBtn.addClass("active");
+      } 
+    }
