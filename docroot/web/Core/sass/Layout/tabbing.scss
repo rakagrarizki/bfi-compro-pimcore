@@ -574,7 +574,16 @@
         padding-right: 47px;
         color: $white;
         @include breakpoint(mobile){
-            padding: 20px 8px;
+            padding: 19px 0;
+            font-size: 14px;
+            width: 100%;
+            text-align: center;
+            padding-right: 12px;
+        }
+        i.icon-next {
+            @include breakpoint(mobile){
+                padding-right: 3px;
+            }
         }
         .arrow-right{
             color: $white;
