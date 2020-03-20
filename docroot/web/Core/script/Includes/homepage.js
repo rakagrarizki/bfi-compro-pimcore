@@ -230,6 +230,8 @@ $(document).ready(function() {
     }
   });
 
+  $("#category-2").prop('disabled', true);
+  
   function disabledField(){
     $("#nama_lengkap").attr('disabled','disabled');
     $("#email_pemohon").attr('disabled','disabled');
