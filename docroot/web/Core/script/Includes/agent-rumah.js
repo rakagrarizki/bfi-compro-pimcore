@@ -1,6 +1,7 @@
 var form, submission_id;
 var formAfterOTP = ["#education", "#meried", "#burden", "#profession", "#npwp", "#noKtp", "#ktp", "#haveSmartphone"];
 var formGroup = [];
+var lang = document.documentElement.lang;
 formGroup[0] = ["#nama_lengkap", "#email_pemohon", "#no_handphone"];
 formGroup[1] = ["#provinsi", "#kota", "#kecamatan", "#kelurahan", "#kode_pos", "#alamat_lengkap"];
 formGroup[2] = ["#bank", "#account_number", "#account_name"];
@@ -24,6 +25,9 @@ function isValidStep() {
       }
     });
     if ($('input[name="are_member"]:checked').val() === "1" && $("#areCode").val() === "") {
+      isValid = false;
+    }
+    if ($('input[name="haveSmartphone"]:checked').val() === undefined) {
       isValid = false;
     }
   }
@@ -511,8 +515,8 @@ form.steps({
   },
   onFinished: function (event, currentIndex) {
     // $("#otp-success").show();
-    $("#step-summary").hide();
-    $(".wizard .steps, .wizard .actions").hide();
+    // $("#step-summary").hide();
+    // $(".wizard .steps, .wizard .actions").hide();
     // alert("Submitted!");
     window.location.href = "/" + lang + "/agent/success";
   }
@@ -524,9 +528,8 @@ var isValidOtp = false;
 
   $("#step-otp").hide();
 
-  $(document).on('change', 'input[type="hidden"]', checkValid);
+  $(document).on('change', 'input[type="hidden"], input[name="haveSmartphone"]', checkValid);
   $(document).on('focusout keyup', 'input, textarea, select', checkValid);
-
   $(document).on('change', 'input[name="are_member"]', toggleAreMember);
   $(document).on('click', '#agentOtp-verification', agentVerifiedOtp)
 

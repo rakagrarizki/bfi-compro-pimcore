@@ -131,6 +131,9 @@
             font-family: 'HelveticaNeue-Light';
             strong{
                 color:#565656;
+                @include breakpoint(mobile){
+                    font-size: 21px;
+                }
             }
         }
     }
@@ -161,7 +164,8 @@
     
     ol{
         padding-left: 35px;
-
+        font-size: 25px;
+        font-weight: bold;
         li::before {
             font-weight: bolder;
         }

@@ -3,6 +3,9 @@
 .pimcore_area_bfi-tab-accordion-wysiwyg {
   &:first-of-type {
     padding-top: 40px;
+    @include breakpoint(mobile){
+      padding-top: 0;
+    }
   }
   .panel-default{
      margin:0;
@@ -54,7 +57,11 @@
       }
     }
 }
-
+.table-responsive{
+  tbody{
+    background-color: #ffffff;
+  }
+}
 .accordion {
   .sect-title {
 
@@ -113,7 +120,7 @@
 
       &:last-child {
         .panel-body {
-          background-color: #FCFCFC;
+          background-color: #eaeaea;
           padding-top: 35px;
 
           .block-payment {
@@ -134,7 +141,7 @@
 
       .panel-body {
         padding: 20px 110px;
-        background: #FCFCFC;
+        background: #eaeaea;
         @include breakpoint(mobile) {
           padding: 20px 20px;
         }

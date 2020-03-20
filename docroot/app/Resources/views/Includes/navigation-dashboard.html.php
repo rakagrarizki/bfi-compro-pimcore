@@ -26,7 +26,7 @@ if($_COOKIE["customer"] != "null") {
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 col-sm-6 left-side-top">
-                        <a href="<?php echo "/" . $this->getLocale() . '/user/dashboard'; ?>" class="text-btn"><?= $this->translate("back") ?></a>
+                        <a href="<?php echo "/" . $this->getLocale(); ?>" class="text-btn"><?= $this->translate("backtohome") ?></a>
                     </div>
                     <div class="col-md-6 col-sm-6 right-side-top">
                         <div class="link-log">

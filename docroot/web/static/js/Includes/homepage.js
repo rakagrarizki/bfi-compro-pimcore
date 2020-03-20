@@ -68,16 +68,7 @@ $(document).ready(function() {
     }
   });
   
-  function hoverDropdown() {
-    // $("body").css("background-color", "yellow");
-    document.getElementById("overlay").classList.add("greyout");
-  }
-  
-  function closeDropdown() {
-    // $("body").css("background-color", "#fff");
-    document.getElementById("overlay").classList.remove("greyout");
-  }
-  
+
   function getListCategory() {
     dataListCat = [];
     $("#category-1").empty();
@@ -238,8 +229,24 @@ $(document).ready(function() {
         }, 100);
     }
   });
-  
+
+  function disabledField(){
+    $("#nama_lengkap").attr('disabled','disabled');
+    $("#email_pemohon").attr('disabled','disabled');
+    $("#no_handphone").attr('disabled','disabled');
+    $("#upload-ktp-button").attr('disabled','disabled');
+    $("#upload-ktp-button").css("background-color", "#dddddd");
+    $("#upload-ktp-button").css("border-color", "#dddddd");
+    $("input[type=radio]").attr('disabled','disabled');
+    $("#tgl_lahir").attr('disabled','disabled');
+    $(".ui-datepicker-trigger").attr('disabled','disabled');
+    $("#pekerjaan").attr('disabled','disabled');
+    $("#penghasilan").attr('disabled','disabled');
+    $(".label-cekLogin").removeClass('hide');
+  }
+
   function getDataStorage(token) {
+    disabled = disabledField();
     $.ajax({
         type: "GET",
         url: "/user/data-customer",
@@ -254,7 +261,6 @@ $(document).ready(function() {
         fail: function(xhr, textStatus, error) {
             console.log("request failed");
         },
-  
         success: function(dataObj) {
             if (dataObj.success === true) {
                 var data = dataObj.result.data;
@@ -262,6 +268,9 @@ $(document).ready(function() {
                 $("#email_pemohon").val(data.email);
                 $("#no_handphone").val(data.phone_number);
                 enableButton("#button1");
+                disabled;
+            }else{
+                !disabled;
             }
         }
     });

@@ -1,6 +1,7 @@
 var form, submission_id;
 var formAfterOTP = ["#education", "#meried", "#burden", "#profession", "#npwp", "#noKtp", "#ktp", "#haveSmartphone"];
 var formGroup = [];
+var lang = document.documentElement.lang;
 formGroup[0] = ["#nama_lengkap", "#email_pemohon", "#no_handphone"];
 formGroup[1] = ["#provinsi", "#kota", "#kecamatan", "#kelurahan", "#kode_pos", "#alamat_lengkap"];
 formGroup[2] = ["#bank", "#account_number", "#account_name"];
@@ -24,6 +25,9 @@ function isValidStep() {
       }
     });
     if ($('input[name="are_member"]:checked').val() === "1" && $("#areCode").val() === "") {
+      isValid = false;
+    }
+    if ($('input[name="haveSmartphone"]:checked').val() === undefined) {
       isValid = false;
     }
   }
@@ -362,10 +366,10 @@ function showFormOTP() {
   }
 }
 
-function successAgentOTP() {
-  $(".actions > ul li a[href$='next']").text('Selanjutnya');
-  $("#personal-detail").show();
-}
+// function successAgentOTP() {
+//   $(".actions > ul li a[href$='next']").text('Selanjutnya');
+//   $("#personal-detail").show();
+// }
 
 function otpAgentVerified() {
   var otp1Value = $('input[name=otp1]').val().toString(),
@@ -419,10 +423,10 @@ function agentVerifiedOtp() {
 
 function successAgentOTP() {
   var _data = {
-    "submission_id": "",
+    "submission_id": submission_id,
     "collateral_type_id": $('#collateral_type').val().toString(),
-    "name": $('#nama_lengkap').val().toString(),
-    "email": $('#email_pemohon').val().toString(),
+    "name": $('#nama_lengkap').val(),
+    "email": $('#email_pemohon').val(),
     "phone_number": $('#no_handphone').val().toString()
   }
   var register = postData("/agent/save-agent-candidate-step1", _data);
@@ -542,10 +546,11 @@ form.steps({
   },
   onFinished: function (event, currentIndex) {
     // $("#otp-success").show();
-    $("#step-summary").hide();
-    $(".wizard .steps, .wizard .actions").hide();
+    // $("#step-summary").hide();
+    // $(".wizard .steps, .wizard .actions").hide();
     // alert("Submitted!");
     window.location.href = "/" + lang + "/agent/success";
+    console.log("finish");
   }
 });
 
@@ -553,10 +558,11 @@ var isValidOtp = false;
 (function ($) {
   $(document).on("click", "#otp-verification", otpAgentVerified)
 
-  $("#step-otp").hide();
+  $("#step-otp").hide(); checkValid
 
   $(document).on('change', 'input[type="hidden"]', checkValid);
   $(document).on('focusout keyup', 'input, textarea, select', checkValid);
+  $(document).on('change', 'input[name="haveSmartphone"]', checkValid);
   $(document).on('click', 'input[name="are_member"]', checkValid);
   $(document).on('change', 'input[name="are_member"]', toggleAreMember);
   $(document).on('click', '#agentOtp-verification', agentVerifiedOtp)

@@ -592,8 +592,8 @@ var leavePage = false;
                             asuransi_arr_txt[rowke - 1] = $(this)
                                 .find("option:selected")
                                 .text();
-  
-                            disableButton("#button4");
+
+                            disableNextButton();
                             disableButton(".hidesavebutton");
                             if (countCalculate > 0) {
                                 $(".warning-calculate").removeClass("hide");
@@ -1856,6 +1856,14 @@ var leavePage = false;
         $(button).css("border-color", "#F8991D");
         $(button).removeAttr("disabled");
     }
+    
+    function disableNextButton() {
+      if ($("#button4rumah").length > 0) {
+        disableButton("#button4rumah");
+      } else {
+        disableButton("#button4");
+      }
+    }
   
     function stepAction() {
       disableButton("#button1");
@@ -2439,7 +2447,7 @@ var leavePage = false;
                     $(".currency[tahun='1']").text("Rp " + 0);
                     $(".total").text("Rp " + 0);
                     getpriceminmax(credits);
-                    disableButton("#button4");
+                    disableNextButton();
                     status_edit = false;
                     // }
                 } else {
@@ -5598,6 +5606,8 @@ var leavePage = false;
                     "selected",
                     "selected"
                 );
+
+               disableNextButton();
             }
         });
     }
@@ -5670,6 +5680,7 @@ var leavePage = false;
   
     $("#jangka_waktu").change(function() {
         objCredits.jangka_waktu = $(this).val();
+        disableNextButton();
     });
   
     $(document).on("click", "#recalc", function(e) {
@@ -5746,9 +5757,6 @@ var leavePage = false;
             });
     });
   
-    // $("#produk").hover(function() {
-    // 	$(".header-link-menu").addClass("active");
-    // });
   
     $(".dark-back").hover(
         function() {
@@ -6061,6 +6069,7 @@ var leavePage = false;
   
         success: function(dataObj) {
             if (dataObj.success === true) {
+                var token = localStorage.getItem("token");
                 if(dataObj.result.header.status == 200){
                     console.log("berhasil login");
                     requestOTP(dataPhone);

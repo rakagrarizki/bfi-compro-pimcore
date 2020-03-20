@@ -49,7 +49,7 @@
 #tabel-pembiayaan-travel-wisata{
     @include breakpoint(mobile){
         td {
-            padding-right: 0.5rem;
+            padding: 10px 0 0 5px;
         }
     }
 }
@@ -94,6 +94,7 @@
             width: 100%;
             margin: 0 20px 20px;
             font-size: 16px;
+            padding-right: 10px;
         }
         p{
             font-size: 16px;
@@ -181,7 +182,7 @@ select option:disabled {
                 p{
                     margin-bottom: 20px;
                     span{
-                        font-size: 21px !important;
+                        font-size: 12px !important;
                     }
                 }
             }
@@ -227,8 +228,10 @@ select option:disabled {
     ul {
         li:nth-child(5)  {
             ul {
-                list-style-type: none; 
+                list-style-type: none !important;
                 position: relative;
+                padding-right: 20px;
+                margin-bottom: 10px;
                 li:nth-child(1),
                 li:nth-child(2){
                     &:before{
@@ -241,3 +244,77 @@ select option:disabled {
         }
     }
 }  
+
+.custom-widget{
+    h1{
+        padding: 0 90px;
+        @include breakpoint(mobile){
+            padding: 0;
+        }
+    }
+    p{
+        margin-bottom: 30px;
+        ul{
+            margin-bottom: 30px;
+        }
+    }
+}
+
+.table-responsive{
+    td{
+        @include breakpoint(mobile){
+            padding: 0 12px 0;
+        }
+        div{
+            p{
+                margin-left: 0;
+                span{
+                    @include breakpoint(mobile){
+                        font-size: 12px !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+#email-verify{
+    #login-form{
+        #email-input-error{
+            display: inline-block;
+            position: relative;
+            font-size: 12px;
+            font-weight: bold;
+            font-style: normal;
+            color: #E00909;
+            width: 100%;
+            text-align: left;
+            @include breakpoint (mobile){
+                font-size: 10px;
+            }
+        }
+    }
+}
+
+.label-cekLogin{
+    font-size: 18px;
+    color: #565656;
+    padding-top: 18px;
+    a{
+        font-weight: bold;
+        color: #565656;
+    }
+}
+
+#getCredit-p-0{
+    .label-cekLogin{
+        font-size: 18px;
+        color: #565656;
+        padding-top: 0;
+        a{
+            font-weight: bold;
+            color: #F9991c;
+            text-decoration: underline;
+        }
+    }
+}
