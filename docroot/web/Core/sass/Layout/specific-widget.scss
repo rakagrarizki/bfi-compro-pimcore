@@ -274,3 +274,44 @@ select option:disabled {
         }
     }
 }
+
+#email-verify{
+    #login-form{
+        #email-input-error{
+            display: inline-block;
+            position: relative;
+            font-size: 12px;
+            font-weight: bold;
+            font-style: normal;
+            color: #E00909;
+            width: 100%;
+            text-align: left;
+            @include breakpoint (mobile){
+                font-size: 10px;
+            }
+        }
+    }
+}
+
+.label-cekLogin{
+    font-size: 18px;
+    color: #565656;
+    padding-top: 18px;
+    a{
+        font-weight: bold;
+        color: #565656;
+    }
+}
+
+#getCredit-p-0{
+    .label-cekLogin{
+        font-size: 18px;
+        color: #565656;
+        padding-top: 0;
+        a{
+            font-weight: bold;
+            color: #F9991c;
+            text-decoration: underline;
+        }
+    }
+}

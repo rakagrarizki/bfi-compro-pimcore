@@ -16,11 +16,11 @@ $this->extend('layout.html.php');
         <div class="input-login">
             <div class="input-text-group form-group">
                 <label id="email-label" class="input-label">EMAIL</label>
-                <input id="email-input" class="style-input form-control formRequired formEmail" type="email" placeholder="<?= $this->translate('email-input') ?>" >
+                <input id="email-input" class="form-control formRequired formEmail" type="email" placeholder="<?= $this->translate('email-input') ?>" >
                 <div class="error-wrap"></div>
             </div>
         </div>
-        <button id="btn-verify" type="button" class="button-login" onclick="verify()" disabled style="opacity: .5;"><?= $this->translate('send-email') ?></button>
+        <button id="btn-verify" type="button" class="button-login"  style="background-color: rgb(221, 221, 221); border-color: rgb(221, 221, 221);" disabled="disabled"><?= $this->translate('send-email') ?></button>
     </form>
 </section>
 
