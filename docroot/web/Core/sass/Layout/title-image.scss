@@ -7,6 +7,10 @@
         margin: 80px 0 50px 0;
         text-align: center;
         color: #04559F;
+
+        @include breakpoint(mobile){
+            font-size: 20px;
+        }
     }
 
     img{

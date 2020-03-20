@@ -57,8 +57,8 @@ $this->extend('layout.html.php');
                 </div>
                 <div class="detail-wrapper">
                     <span class="label"><?= $this->translate('photo-ktp'); ?></span>
-                    <span class="value-data identity-img">
-                        <!-- here position list from API --></span>
+                    <span class="value-data identity-img verified-false" style="display:none;">Belum diverifikasi</span>
+                    <span class="value-data identity-img verified-true" style="display:none;">Diverifikasi</span>
                 </div>
             </div>
         </div>

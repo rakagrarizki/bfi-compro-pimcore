@@ -18,6 +18,29 @@
 //         email_label_element.textContent = default_email_label;
 //     }
 // }
+var isInvalid = function() {
+    return   $("#email-input").val() == "" ? true: false;
+};
+
+function disableButton(button) {
+    $(button).css("background-color", "#dddddd");
+    $(button).css("border-color", "#dddddd");
+    $(button).attr("disabled", "disabled");
+}
+
+function enableButton(button) {
+    $(button).css("background-color", "#F8991D");
+    $(button).css("border-color", "#F8991D");
+    $(button).removeAttr("disabled");
+}
+
+$("#email-input").on("keyup", function(e) {
+    if (isInvalid()) {
+        disableButton("#btn-verify");
+    } else {
+        enableButton("#btn-verify");
+    }
+});
 
 function validateFormRequired(elementParam) {
     $(elementParam).validate({
@@ -37,6 +60,9 @@ $.validator.addClassRules({
     },
     formEmail: {
         emailCust: /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/
+    },
+    submitHandler: function(form) {
+        form.submit();
     }
 });
 var lang = document.documentElement.lang;
@@ -51,12 +77,19 @@ jQuery.validator.addMethod("emailCust", function (value, element, param) {
     return param.test(value);
   });
 
-function verify(){
+  $("#btn-verify").on("click", function(e) {
+    e.preventDefault();
     var token = window.localStorage.getItem("token");
     var dataEmail = {
         'email' : $('#email-input').val()
     };
+
     console.log(dataEmail);
+    if (
+        $(this)
+            .closest("form")
+            .valid()
+    ) {
     $.ajax({
         type: 'POST',
         url: '/user/verify-email-request',
@@ -77,10 +110,11 @@ function verify(){
                 console.log(dataObj.result.data)
                 $("#email-sent").removeClass("hide");
                 $("#email-verify").addClass("hide");
+                }
             }
-        }
-    })
-}
+        })
+    }
+});
 
 function dataCustomer(token){
     $.ajax({
