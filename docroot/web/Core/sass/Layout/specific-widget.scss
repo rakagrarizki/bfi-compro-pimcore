@@ -286,6 +286,9 @@ select option:disabled {
             color: #E00909;
             width: 100%;
             text-align: left;
+            @include breakpoint (mobile){
+                font-size: 10px;
+            }
         }
     }
 }
