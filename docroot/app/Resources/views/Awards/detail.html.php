@@ -25,7 +25,7 @@ $this->headMeta('BFI - ' . $data->getYear());
 </div>
 <div class="container main-card">
     <div class="page-title"><?= $this->t("award-title"); ?></div>
-    <div class="page-sub-title"><?= $data->getYear(); ?></div>
+    <div class="page-sub-title"><?= $this->translate("year"); ?> <?= $data->getYear(); ?></div>
 </div>
 
 

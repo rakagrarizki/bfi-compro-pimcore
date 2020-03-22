@@ -68,8 +68,7 @@ $(document).ready(function() {
     }
   });
   
- 
-  
+
   function getListCategory() {
     dataListCat = [];
     $("#category-1").empty();
@@ -230,8 +229,18 @@ $(document).ready(function() {
         }, 100);
     }
   });
+
+  $("#category-2").prop('disabled', true);
   
+  function disabledField(){
+    $("#nama_lengkap").attr('disabled','disabled');
+    $("#email_pemohon").attr('disabled','disabled');
+    $("#no_handphone").attr('disabled','disabled');
+    $(".label-cekLogin").removeClass('hide');
+  }
+
   function getDataStorage(token) {
+    disabled = disabledField();
     $.ajax({
         type: "GET",
         url: "/user/data-customer",
@@ -246,7 +255,6 @@ $(document).ready(function() {
         fail: function(xhr, textStatus, error) {
             console.log("request failed");
         },
-  
         success: function(dataObj) {
             if (dataObj.success === true) {
                 var data = dataObj.result.data;
@@ -254,6 +262,10 @@ $(document).ready(function() {
                 $("#email_pemohon").val(data.email);
                 $("#no_handphone").val(data.phone_number);
                 enableButton("#button1");
+                nextButton("active");
+                disabled;
+            }else{
+                !disabled;
             }
         }
     });
@@ -264,4 +276,11 @@ $(document).ready(function() {
     $(button).css("border-color", "#F8991D");
     $(button).removeAttr("disabled");
   }
-  
+
+  function nextButton(action) {
+    var nextBtn = $(".actions > ul li a[href$='next']").parent();
+    if (action === "inactive") {
+        nextBtn.removeClass("inactive");
+        nextBtn.addClass("active");
+      } 
+    }
