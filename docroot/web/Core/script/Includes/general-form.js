@@ -175,6 +175,7 @@ function separatordot(o) {
 }
 
 function showOtp() {
+  scrollToTop();
   $(".wizard .steps, .wizard .actions").hide();
   $("#otp-success").hide();
   $("#step-summary").hide();
@@ -304,6 +305,15 @@ function reInitJcf() {
   $('input[type="radio"], input[type="checkbox"]').unwrap();
   // jcf.destroyAll();
   jcf.replaceAll();
+}
+
+function scrollToTop() {
+  $("html, body").animate(
+    {
+      scrollTop: 0
+    },
+    400
+  );
 }
 
 (function ($) {
@@ -459,11 +469,10 @@ function reInitJcf() {
         thisval = "";
       } else {
         if (parseInt(thisval) <= parseInt(pricelimit)) {
-          thisval = thisval;
+          post_val_inputan = thisval;
         } else {
           thisval = post_val_inputan;
         }
-        post_val_inputan = thisval;
       }
     }
 
@@ -529,12 +538,14 @@ function reInitJcf() {
     });
   }
 
-  $('#down_payment').on("change", function(){
-    nextButton("inactive");
-    if(countCalculate > 0){
-      $(".warning-calculate").removeClass("hide");
-    }
-  });
+  // if ($("#down_payment").length > 0) {
+    $('#down_payment').on("change", function(){
+      nextButton("inactive");
+      if(countCalculate > 0){
+        $(".warning-calculate").removeClass("hide");
+      }
+    });
+  // }
 
   $('#pocket_money').on("change", function(){
     nextButton("inactive");

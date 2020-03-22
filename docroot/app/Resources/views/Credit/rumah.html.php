@@ -310,7 +310,7 @@ $blogList->setLimit(4);
                                                 <label for="estimasi_harga"><?= $this->translate('label-estimasi-harga') ?></label>
                                                 <div class="input-group inputform">
                                                     <span class="input-group-addon" id="basic-addon1">Rp</span>
-                                                    <input type="text" id="estimasi_harga" class="formatRibuan form-control formRequired c-input-trans" value="0">
+                                                    <input type="text" id="estimasi_harga" class="formatRibuan form-control formRequired c-input-trans" value="100000000">
                                                     <div class="error-wrap"></div>
                                                 </div>
                                             </div>
@@ -574,12 +574,12 @@ $blogList->setLimit(4);
                                         </div>
                                         <div class="biaya-agunan">
                                             <div class="form-group">
-                                                <input type="checkbox" id="agreement1" class="agreement">
+                                                <input type="checkbox" id="agreement1" class="agreement" checked>
                                                 <label for="agreement1" class="label-agreement agreement1"><?= $this->translate('term-condition') ?></label>
                                                 <div class="error-wrap"></div>
                                             </div>
                                             <div class="form-group">
-                                                <input type="checkbox" id="agreement2" class="agreement">
+                                                <input type="checkbox" id="agreement2" class="agreement" checked>
                                                 <label for="agreement2" class="label-agreement agreement2"><?= $this->translate('term-condition-2') ?></label>
                                                 <div class="error-wrap"></div>
                                             </div>
