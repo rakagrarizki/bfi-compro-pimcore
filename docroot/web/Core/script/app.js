@@ -6513,7 +6513,8 @@ var isAjaxActive = false;
   
     $("#category-2").select2({
         placeholder: placeholderProd,
-        minimumResultsForSearch: -1
+        minimumResultsForSearch: -1,
+        disabled: true
     });
   
     window.onload = function() {
@@ -6573,9 +6574,11 @@ var isAjaxActive = false;
     });
   });
   
-  var input = document.querySelector("#nama_lengkap");
-  console.log(input);
-  input.addEventListener("keydown", function(e) {
+  
+  // var input = document.querySelector("#nama_lengkap");
+  // console.log(input);
+if ($("#nama_lengkap").length > 0) {
+  $("#nama_lengkap").on("keydown", function(e) {
     if (e.which === 9) {
         var self = $(this),
             form = self.parents("form:eq(0)"),
@@ -6593,6 +6596,7 @@ var isAjaxActive = false;
         return false;
     }
   });
+}
   
   function isNumberKey(evt) {
     var charCode = evt.which ? evt.which : evt.keyCode;
@@ -6648,21 +6652,23 @@ $('#alamat_lengkap').keypress(function(event){
     $('.label-place').fadeOut();
 });
 
-var all = document.getElementById("wrapList").childElementCount;
-var mid = Math.round(all/2);
-var child = document.getElementById("wrapList").children;
+if ($("wrapList").length > 0) {
+  var all = document.getElementById("wrapList").childElementCount;
+  var mid = Math.round(all/2);
+  var child = document.getElementById("wrapList").children;
 
-for (var i = 0; i < all; i++) {
-	if (i==0){
-  	child[i].setAttribute("style", "order: "+i+"; -webkit-order: "+i+";");
-  }
-  if (i<=mid){
-    for (var k = 0; k < i; k++){
-    child[i].setAttribute("style", "order: "+((i+1)+(k+1))+"; -webkit-order: "+((i+1)+(k+1))+";");
+  for (var i = 0; i < all; i++) {
+    if (i==0){
+      child[i].setAttribute("style", "order: "+i+"; -webkit-order: "+i+";");
     }
-  }
-  if (i>=mid){
-    var z= all-i-1;
-    child[i].setAttribute("style", "order: "+(i-z)+"; -webkit-order: "+(i-z)+";");
+    if (i<=mid){
+      for (var k = 0; k < i; k++){
+      child[i].setAttribute("style", "order: "+((i+1)+(k+1))+"; -webkit-order: "+((i+1)+(k+1))+";");
+      }
+    }
+    if (i>=mid){
+      var z= all-i-1;
+      child[i].setAttribute("style", "order: "+(i-z)+"; -webkit-order: "+(i-z)+";");
+    }
   }
 }
