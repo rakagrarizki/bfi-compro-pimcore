@@ -191,6 +191,10 @@
         width: max-content !important;
         height: max-content;
         position: relative;
+        @include breakpoint (mobile){
+            margin: 0 auto;
+            width: 100% !important;
+        }
         .modal-content{
             padding: 70px 180px 40px 180px;
             border-radius: 0;
@@ -198,9 +202,10 @@
             -moz-border-radius: 0;
             -ms-border-radius: 0;
             -o-border-radius: 0;
-
+           
             @include breakpoint(mobile){
                 padding: 70px 10px 40px 10px;
+                margin: 0 auto;
             }
             h3,p{
                 margin: 0;
@@ -230,6 +235,9 @@
                 margin: 0 auto 0 auto;
                 width: 400px;
                 margin-bottom: 40px;
+                @include breakpoint(mobile){
+                    width: 100%;
+                }
                 .input-text-group{
                     position: relative;
                     margin: 0 auto 30px auto;
@@ -485,6 +493,9 @@
                 color: #fff;
                 font-weight: bold;
                 font-size: 14px;
+                @include breakpoint(mobile){
+                    margin: 20px auto 25px auto;
+                }
             }
         }
     }

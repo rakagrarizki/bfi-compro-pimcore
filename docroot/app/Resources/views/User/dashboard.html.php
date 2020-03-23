@@ -172,7 +172,9 @@ $this->extend('layout.html.php');
 
 <!-- Pop-up -->
 <div class="modal fade" id="popup-ktp">
-    <div class="modal-dialog">
+
+    
+    <div class="modal-dialog ">
         <div class="modal-content">
             <h3><?= $this->translate('lengkapi-data-pemohon'); ?></h3>
             <p><?= $this->translate('lengkapi-data-pemohon-sub'); ?></p>
