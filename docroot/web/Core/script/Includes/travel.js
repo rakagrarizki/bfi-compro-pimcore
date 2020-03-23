@@ -15,6 +15,9 @@ function isValidStep() {
       }
     });
   }
+  if (typeof (formGroup[currentStep]) !== "undefined" && currentStep === 2 && countCalculate > 0) {
+      isValid = false;
+  }
   return isValid;
 }
 
@@ -371,12 +374,16 @@ var isValidOtp = false;
 
 
   $('.main-package-price').on('input propertychange paste', function (e) {
-    if(parseInt($("#ex7SliderVal").val().replace(/[.]/g, ""),10)/10 >= parseInt($(".valuemin").text().replace(/\./g,''),10)/10){
-      $("#down_payment").val((parseInt($("#ex7SliderVal").val().replace(/[.]/g, ""),10)/10).toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
-      $("#pocket_money").val((parseInt($("#ex7SliderVal").val().replace(/[.]/g, ""),10)/10).toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+    var _val = parseInt($("#ex7SliderVal").val().replace(/[.]/g, ""), 10);
+    var _valMin = parseInt($(".valuemin").text().replace(/\./g, ''), 10);
+    var _valMax = parseInt($(".valuemax").text().replace(/\./g, ''), 10);
+    if (_valMin <= _val && _val <= _valMax){
+      $("#down_payment").val((_val/10).toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+      $("#pocket_money").val((_val/10).toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
     } else {
-      $("#down_payment").val((parseInt($(".valuemin").text().replace(/\./g,''),10)/10).toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
-      $("#pocket_money").val((parseInt($(".valuemin").text().replace(/\./g,''),10)/10).toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+      e.preventDefault();
+      // $("#down_payment").val(_valMin.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+      // $("#pocket_money").val(_valMin.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
     }
   });
 
@@ -440,36 +447,45 @@ var isValidOtp = false;
   });
 
   $("#recalc").click(function (e) {
-    nextButton("inactive");
-    e.preventDefault();
-    var leisure_package_price = $("#ex7SliderVal").val().replace(/[.]/g, "");
-    var tenor = $("#jangka_waktu").val()[0];
-    var down_payment = parseInt($("#down_payment").val().replace(/[.]/g, ""),10);
-    var pocket_money = $("#pocket_money").val().replace(/[.]/g, "");
-    var _data = {
-      "submission_id": submission_id,
-      "leisure_package_price": leisure_package_price,
-      "tenor": tenor,
-      "down_payment": down_payment,
-      "pocket_money" : pocket_money
+    if ($("#jangka_waktu").valid()) {
+      nextButton("inactive");
+      e.preventDefault();
+      var leisure_package_price = $("#ex7SliderVal").val().replace(/[.]/g, "");
+      var tenor = $("#jangka_waktu").val()[0];
+      var down_payment = parseInt($("#down_payment").val().replace(/[.]/g, ""),10);
+      var pocket_money = $("#pocket_money").val().replace(/[.]/g, "");
+      var _data = {
+        "submission_id": submission_id,
+        "leisure_package_price": leisure_package_price,
+        "tenor": tenor,
+        "down_payment": down_payment,
+        "pocket_money" : pocket_money
+      }
+      var post = postData("/credit/leisure-calculator", _data);
+      if (post.success === "1") {
+      //   console.log("CALC", post)
+          nextButton("active");
+          finishButton("inactive");
+          $("#totalFinance").text(post.data.total_funding.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+          $("#pocketMoney").text(post.data.pocket_money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+          $("#labelTotal").text(post.data.monthly_installment.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+          $("#lifeInsurance").text(post.data.life_insurance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+          $("#administrativeCode").text(post.data.admin_fee.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+          $("#totalMonthly").text(post.data.monthly_installment_est_total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+          $("#summary-angsuran-bulanan").text('Rp. '+post.data.monthly_installment_est_total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+          $("#summary-total-pembiayaan").text('Rp. '+post.data.total_funding.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+          $("#summary-harga-paket-pendidikan").text('Rp. '+$("#ex7SliderVal").val());
+      }
+      $(".warning-calculate").addClass("hide");
     }
-    var post = postData("/credit/leisure-calculator", _data);
-    if (post.success === "1") {
-    //   console.log("CALC", post)
-        nextButton("active");
-        finishButton("inactive");
-        $("#totalFinance").text(post.data.total_funding.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
-        $("#pocketMoney").text(post.data.pocket_money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
-        $("#labelTotal").text(post.data.monthly_installment.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
-        $("#lifeInsurance").text(post.data.life_insurance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
-        $("#administrativeCode").text(post.data.admin_fee.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
-        $("#totalMonthly").text(post.data.monthly_installment_est_total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
-        $("#summary-angsuran-bulanan").text('Rp. '+post.data.monthly_installment_est_total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
-        $("#summary-total-pembiayaan").text('Rp. '+post.data.total_funding.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
-        $("#summary-harga-paket-pendidikan").text('Rp. '+$("#ex7SliderVal").val());
-    }
-    $(".warning-calculate").addClass("hide");
     countCalculate += 1;
+  });
+
+  $('#jangka_waktu').on("select2:select", function () {
+    nextButton("inactive");
+    if (countCalculate > 0) {
+      $(".warning-calculate").removeClass("hide");
+    }
   });
 
   setTimeout(function () { reInitJcf(); }, 2000); 
