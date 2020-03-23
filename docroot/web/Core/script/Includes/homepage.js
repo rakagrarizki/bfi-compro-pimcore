@@ -119,6 +119,7 @@ $(document).ready(function() {
                     $(".select2-selection__rendered").removeAttr("title");
                 });
                 changeSelected($("#category-1")[0]);
+                $("#category-2").prop('disabled', true);
             }
         }
     });
@@ -229,8 +230,6 @@ $(document).ready(function() {
         }, 100);
     }
   });
-
-  $("#category-2").prop('disabled', true);
   
   function disabledField(){
     $("#nama_lengkap").attr('disabled','disabled');

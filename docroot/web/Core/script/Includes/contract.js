@@ -1,6 +1,10 @@
 $(document).ready(function(){
     var token = window.localStorage.getItem("token");
     var lang = document.documentElement.lang
+
+    if(token == null){
+        window.location = "/" + lang + "/login";
+    }
     
     // <--- if using param to get contract_number
     var urlParams = new URLSearchParams(location.search);  
