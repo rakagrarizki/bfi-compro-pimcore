@@ -67,12 +67,12 @@ var isAjaxActive = false;
 (function($) {
     var lang = document.documentElement.lang;
 
-  $(document).bind("ajaxSend", function () {
+  $(document).bind("ajaxStart", function () {
     if (!isAjaxActive) {
       isAjaxActive = true;
     $("#loader-container").stop(true, true).fadeIn("fast");
     }
-  }).bind("ajaxComplete", function () {
+  }).bind("ajaxStop", function () {
     if (isAjaxActive) {
       isAjaxActive = false;
     $("#loader-container").stop(true, true).fadeOut("fast");
