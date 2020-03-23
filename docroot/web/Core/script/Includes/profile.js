@@ -2,6 +2,10 @@ $(document).ready(function(){
     var token = window.localStorage.getItem("token");
     var lang = document.documentElement.lang
 
+    if(token == null){
+        window.location = "/" + lang + "/login";
+    }
+
     contractStatusList(lang, token);
     dataCustomer(token);
     checkStatusVerify(token);
