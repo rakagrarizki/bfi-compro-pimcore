@@ -3059,8 +3059,8 @@ var isAjaxActive = false;
   
         var _url = "";
         var type = $("#jenis_form")
-            .val()
-            .toLowerCase();
+            .val();
+            // .toLowerCase();
   
         if (type == "mobil") {
             //_url = 'https://bfi.staging7.salt.id/credit/send-mobil';
