@@ -16,6 +16,9 @@ function isValidStep() {
       }
     });
   }
+  if (typeof (formGroup[currentStep]) !== "undefined" && currentStep === 2) {
+    isValid = false;
+  }
   return isValid;
 }
 
@@ -461,37 +464,46 @@ var isValidOtp = false;
 });
 
   $("#recalc").click(function (e) {
-    nextButton("inactive");
-    e.preventDefault();
-    if (form.valid()) {
-      var edu_package_price = $("#ex7SliderVal").val().replace(/[.]/g, "");
-      var tenor = $("#jangka_waktu").val()[0];
-      var down_payment = $("#down_payment").val().replace(/[.]/g, "");
-      var _data = {
-        "submission_id": submission_id,
-        "edu_package_price": edu_package_price,
-        "tenor": tenor,
-        "down_payment": down_payment
-      }
-      var post = postData("/credit/edu-calculator", _data);
-      if (post.success === "1") {
-        nextButton("active");
-        finishButton("inactive");
-        var admin_fee = "Rp. "+ separatordot(post.data.admin_fee);
-        var life_insurance = "Rp. " + separatordot(post.data.life_insurance);
-        var monthly_installment = "Rp. " + separatordot(post.data.monthly_installment);
-        var monthly_installment_est_total = "Rp. " + separatordot(post.data.monthly_installment_est_total);
-        var total_funding = "Rp. " + separatordot(post.data.total_funding);
+    if ($("#jangka_waktu").valid()) {
+      nextButton("inactive");
+      e.preventDefault();
+      if (form.valid()) {
+        var edu_package_price = $("#ex7SliderVal").val().replace(/[.]/g, "");
+        var tenor = $("#jangka_waktu").val()[0];
+        var down_payment = $("#down_payment").val().replace(/[.]/g, "");
+        var _data = {
+          "submission_id": submission_id,
+          "edu_package_price": edu_package_price,
+          "tenor": tenor,
+          "down_payment": down_payment
+        }
+        var post = postData("/credit/edu-calculator", _data);
+        if (post.success === "1") {
+          nextButton("active");
+          finishButton("inactive");
+          var admin_fee = "Rp. "+ separatordot(post.data.admin_fee);
+          var life_insurance = "Rp. " + separatordot(post.data.life_insurance);
+          var monthly_installment = "Rp. " + separatordot(post.data.monthly_installment);
+          var monthly_installment_est_total = "Rp. " + separatordot(post.data.monthly_installment_est_total);
+          var total_funding = "Rp. " + separatordot(post.data.total_funding);
 
-        $("#administrasi, #summary-administrasi").text(admin_fee);
-        $("#life_insurance, #summary-life-insurance").text(life_insurance);
-        $("#monthly_installment, #summary-angsuran-bulanan").text(monthly_installment);
-        $("#monthly_installment_est_total, #summary-funding").text(monthly_installment_est_total);
-        $("#total_funding, #summary-total-pembiayaan").text(total_funding);
+          $("#administrasi, #summary-administrasi").text(admin_fee);
+          $("#life_insurance, #summary-life-insurance").text(life_insurance);
+          $("#monthly_installment, #summary-angsuran-bulanan").text(monthly_installment);
+          $("#monthly_installment_est_total, #summary-funding").text(monthly_installment_est_total);
+          $("#total_funding, #summary-total-pembiayaan").text(total_funding);
+        }
       }
+      $(".warning-calculate").addClass("hide");
     }
-    $(".warning-calculate").addClass("hide");
     countCalculate += 1;
+  });
+
+  $('#jangka_waktu').on("select2:select", function () {
+    nextButton("inactive");
+    if (countCalculate > 0) {
+      $(".warning-calculate").removeClass("hide");
+    }
   });
 
   setTimeout(function() { reInitJcf(); }, 2000);

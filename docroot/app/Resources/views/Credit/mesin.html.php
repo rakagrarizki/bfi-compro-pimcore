@@ -218,9 +218,7 @@ $blogList->setLimit(4);
                       <div class="input-group inputform">
                           <span class="input-group-addon" id="basic-addon1">Rp</span>
                           <input type="tel" pattern="\d*" id="ex7SliderVal" class="form-control formRequired formPrice c-input-trans" style="text-align: right;"
-                                  aria-describedby="basic-addon1">
-
-                          <div class="error-wrap"></div>
+                                  aria-describedby="basic-addon1">                          
                       </div>
                       <div class="slidecontainer ">
                           <input id="calcSlider" class="calcslide" type="tel" pattern="\d*" data-slider-handle="custom" data-slider-tooltip="hide" />
@@ -228,12 +226,13 @@ $blogList->setLimit(4);
                           <div class="value-right valuemax"></div>
                           <input type="hidden" id="otr">
                       </div>
+                      <div class="error-wrap"></div>
                   </div>
                   <div class="form-group inputsimulasi mesin-down-payment">
                       <label for="jml-biaya"><?= $this->translate('label-edu-downpayment')?></label>
                       <div class="input-group inputform">
                           <span class="input-group-addon">Rp</span>
-                          <input type="text" id="down_payment" name="down_payment" class="form-control minDownPaymentMachine formatRibuan">
+                          <input type="text" id="down_payment" name="down_payment" class="form-control downPaymentMachine formatRibuan" data-minVal="0" data-maxVal="0" data-minPercentage="0" data-maxPercentage="0">
                       </div>
                       <small><?= $this->translate('label-edu-downpayment-note')?></small>
                       <div class="error-wrap"></div>
