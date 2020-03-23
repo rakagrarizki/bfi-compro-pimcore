@@ -4070,6 +4070,7 @@ var isAjaxActive = false;
     });
   
     $("#kelurahan").on("select2:select", function(e) {
+        var thisVal = $(this).val()[0];
         resetSameAddress();
         console.log("===#kelurahan select ganti2");
         showDefaultButton();
@@ -4148,7 +4149,7 @@ var isAjaxActive = false;
   
                     if (
                         $("#kode_pos").val() == "" ||
-                        $(this).val() == "" ||
+                        thisVal == "" ||
                         $("#alamat_lengkap").val() == "" ||
                         $("#provinsi").val() == "" ||
                         $("#kota").val() == "" ||
@@ -6647,10 +6648,10 @@ if ($("#nama_lengkap").length > 0) {
     });
 });
 
-$('#alamat_lengkap').keypress(function(event){
-    $('#alamat_lengkap').addClass('disapper-label');
-    $('.label-place').fadeOut();
-});
+// $('#alamat_lengkap').keypress(function(event){
+//     $('#alamat_lengkap').addClass('disapper-label');
+//     $('.label-place').fadeOut();
+// });
 
 if ($("wrapList").length > 0) {
   var all = document.getElementById("wrapList").childElementCount;
