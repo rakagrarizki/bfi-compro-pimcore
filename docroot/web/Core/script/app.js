@@ -6444,6 +6444,7 @@ var leavePage = false;
                 window.localStorage.clear();
                 document.cookie =
                     "customer=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                window.history.go(-window.history.length);
                 window.location = "/" + language + "/login";
             }
         }
