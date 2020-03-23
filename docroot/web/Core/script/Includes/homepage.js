@@ -119,7 +119,7 @@ $(document).ready(function() {
                     $(".select2-selection__rendered").removeAttr("title");
                 });
                 changeSelected($("#category-1")[0]);
-                $("#category-2").prop('disabled', true);
+                // $("#category-2").prop('disabled', true);
             }
         }
     });
@@ -180,7 +180,7 @@ $(document).ready(function() {
   
   $("#category-1").change(function() {
     changeSelected(this.value);
-    $("#category-2").removeAttr("disabled");
+    // $("#category-2").removeAttr("disabled");
   });
   
   $("#selection-form").validate({
