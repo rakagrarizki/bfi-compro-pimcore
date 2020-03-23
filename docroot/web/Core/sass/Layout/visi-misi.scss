@@ -129,6 +129,7 @@
 
         span{
             font-family: 'HelveticaNeue-Light';
+            font-weight: normal;
             strong{
                 color:#565656;
                 @include breakpoint(mobile){
