@@ -20,7 +20,7 @@
                         </select>
                     </div>
                     <div class="selection-2">
-                    <select id="category-2" class="c-custom-select-home form-control formRequired" name="category-2" disabled="disabled">
+                    <select id="category-2" class="c-custom-select-home form-control formRequired" name="category-2">
                         </select>
                     </div>
                 </div>
@@ -30,4 +30,3 @@
     </div>
 </section>
 <!-- template -->
-
