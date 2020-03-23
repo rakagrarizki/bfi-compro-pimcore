@@ -71,6 +71,9 @@
 <!-- FOOTER -->
 <?= $this->inc("/".$this->getLocale()."/shared/includes/footer-credit") ?>
 <!-- FOOTER -->
+<!-- LOADER -->
+<div id="loader-container">dadasda</div>
+<!-- LOADER -->
 
 <?php $this->headScript()->prependFile('/static/js/Includes/homepage.js'); ?>
 <?php $this->headScript()->prependFile('/static/js/custom.js'); ?>

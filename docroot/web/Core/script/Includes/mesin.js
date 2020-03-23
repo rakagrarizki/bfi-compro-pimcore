@@ -3,7 +3,7 @@ var formGroup = [];
 formGroup[0] = ["#nama_lengkap", "#email_pemohon", "#no_handphone"]
 formGroup[1] = ["#provinsi", "#kota", "#kecamatan", "#kelurahan", "#kode_pos", "#alamat_lengkap"]
 formGroup[2] = ["#layanan", "#industri", "#type", "#machine_qty", "#brand", "#model", "#year", "#machine_estimated"]
-formGroup[3] = ["#machine_estimated", "#machine_estimated", "#machine_estimated"]
+formGroup[3] = ["#down_payment", "#jangka_waktu"]
 var countCalculate = 0;
 
 function isValidStep() {
@@ -16,11 +16,29 @@ function isValidStep() {
       }
     });
   }
+
+  if (typeof (formGroup[currentStep]) !== "undefined" && currentStep === 3 && countCalculate > 0) {
+    // if (!$('#down_payment').valid()) {
+    //   isValid = false;
+    // }
+    // if ($('#jangka_waktu').val()[0]==="") {
+      isValid = false;
+    // }
+  }
   return isValid;
 }
 
 function checkValid() {
   if (isValidStep()) {
+    // do something
+    nextButton("active");
+  } else {
+    nextButton("inactive");
+  }
+}
+
+function showNextButton(isShow) {
+  if (isShow) {
     // do something
     nextButton("active");
   } else {
@@ -37,7 +55,7 @@ function getService() {
 function setService(){
     var selElm = $('#layanan');
     var dataArr = getService();
-    console.log("CITY", dataArr)
+    // console.log("CITY", dataArr)
     // selElm.empty();
     selElm.select2({
       placeholder: selElm.attr('placeholder'),
@@ -56,7 +74,7 @@ function getIndustry() {
 function setIndustry(){
     var selElm = $('#industri');
     var dataArr = getIndustry();
-    console.log("CITY", dataArr)
+    // console.log("CITY", dataArr)
     // selElm.empty();
     selElm.select2({
       placeholder: selElm.attr('placeholder'),
@@ -75,7 +93,7 @@ function getType() {
 function setType(){
     var selElm = $('#type');
     var dataArr = getType();
-    console.log("CITY", dataArr)
+    // console.log("CITY", dataArr)
     // selElm.empty();
     selElm.select2({
       placeholder: selElm.attr('placeholder'),
@@ -94,7 +112,7 @@ function getBrand() {
 function setBrand(){
     var selElm = $('#brand');
     var dataArr = getBrand();
-    console.log("CITY", dataArr)
+    // console.log("CITY", dataArr)
     // selElm.empty();
     selElm.select2({
       placeholder: selElm.attr('placeholder'),
@@ -265,7 +283,16 @@ function initCalculate() {
       "submission_id" : submission_id
     });
     $('.mesin-down-payment').show();
-    var rawDownPayment = parseInt(down_payment.data.down_payment_min_value);
+    var rawDownPayment = parseInt(down_payment.data.down_payment_min_value),
+      rawMinDPVal = parseInt(down_payment.data.down_payment_min_value),
+      rawMaxDPVal = parseInt(down_payment.data.down_payment_max_value),
+      rawMinDPPercent = parseFloat(down_payment.data.down_payment_min_percent),
+      rawMaxDPPercent = parseFloat(down_payment.data.down_payment_max_percent);
+
+    $('#down_payment').data("minVal", rawMinDPVal);
+    $('#down_payment').data("maxVal", rawMaxDPVal);
+    $('#down_payment').data("minPercentage", rawMinDPPercent);
+    $('#down_payment').data("maxPercentage", rawMaxDPPercent);
   }else{
     $('.mesin-down-payment').hide();
     var rawDownPayment = 0;
@@ -282,8 +309,9 @@ function initCalculate() {
     maxprice = separatordot(rawMaxPrice), 
     downPayment = separatordot(rawDownPayment);
 
-  $("#ex7SliderVal").val(minprice);
   $('#down_payment').val(downPayment);
+
+  $("#ex7SliderVal").val(minprice);
   $(".valuemin").text(minprice);
   $(".valuemax").text(maxprice);
   $("#otr").val(otr_price);
@@ -488,7 +516,7 @@ var isValidOtp = false;
   $("#provinsi").change(function () {
     var selElm = $('#kota');
     var dataArr = getCity($(this).val()[0]);
-    console.log("CITY", dataArr)
+    // console.log("CITY", dataArr)
     selElm.empty();
     selElm.select2({
       placeholder: selElm.attr('placeholder'),
@@ -501,7 +529,7 @@ var isValidOtp = false;
   $("#kota").change(function () {
     var selElm = $('#kecamatan');
     var dataArr = getDistrict($(this).val()[0]);
-    console.log("CITY", dataArr)
+    // console.log("CITY", dataArr)
     selElm.empty();
     selElm.select2({
       placeholder: selElm.attr('placeholder'),
@@ -514,7 +542,7 @@ var isValidOtp = false;
   $("#kecamatan").change(function () {
     var selElm = $('#kelurahan');
     var dataArr = getSubdistrict($(this).val()[0]);
-    console.log("CITY", dataArr)
+    // console.log("CITY", dataArr)
     selElm.empty();
     selElm.select2({
       placeholder: selElm.attr('placeholder'),
@@ -527,7 +555,7 @@ var isValidOtp = false;
   $("#brand").change(function () {
     var selElm = $('#model');
     var dataArr = getModel($(this).val()[0]);
-    console.log("CITY", dataArr)
+    // console.log("CITY", dataArr)
     selElm.empty();
     selElm.select2({
       placeholder: selElm.attr('placeholder'),
@@ -547,7 +575,7 @@ var isValidOtp = false;
         text: item.year
         });
     })
-    console.log("CITY", dataArr)
+    // console.log("CITY", dataArr)
     selElm.empty();
     selElm.select2({
       placeholder: selElm.attr('placeholder'),
@@ -582,7 +610,7 @@ var isValidOtp = false;
   $("#kelurahan").change(function () {
     var selElm = $('#kelurahan');
     var dataArr = getZipcode($(this).val()[0]);
-    console.log("CITY", dataArr)
+    // console.log("CITY", dataArr)
     var postcodeGen = dataArr[0].postal_code;
     if (postcodeGen !== 'null') {
       $("#kode_pos").val(postcodeGen);
@@ -662,6 +690,15 @@ var isValidOtp = false;
             $("#nama_perusahaan").prop('disabled', false);
         }
   });
+
+  // if ($("#jangka_waktu").length > 0) {
+    // $('#jangka_waktu').on('select2:select', function (e) {
+    //   nextButton("inactive");
+    //   if (countCalculate > 0) {
+    //     $(".warning-calculate").removeClass("hide");
+    //   }
+    // });
+  // }
   setTimeout(function () { reInitJcf(); }, 2000);
 
 })(jQuery);

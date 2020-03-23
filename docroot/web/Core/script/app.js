@@ -62,9 +62,22 @@ var objCredits = {
 var credType = "";
 var submission_id = "";
 var leavePage = false;
+var isAjaxActive = false;
 
 (function($) {
     var lang = document.documentElement.lang;
+
+  $(document).bind("ajaxSend", function () {
+    if (!isAjaxActive) {
+      isAjaxActive = true;
+    $("#loader-container").stop(true, true).fadeIn("fast");
+    }
+  }).bind("ajaxComplete", function () {
+    if (isAjaxActive) {
+      isAjaxActive = false;
+    $("#loader-container").stop(true, true).fadeOut("fast");
+    }
+  });
   
     $(".panel-collapse").on("shown.bs.collapse", function(e) {
         var $panel = $(this).closest(".panel");
@@ -273,8 +286,8 @@ var leavePage = false;
     } else if ($(".top-nav--mobille").height() > 0) {
         var _marginTop = 90;
     }
-    var _marginTop = 130;
-    var _footerHeight = 80;
+    var _marginTop = 140;
+    var _footerHeight = 90;
     var _cleanDocHeight = _docHeight - _marginTop - _footerHeight;
   
     if (_siteContainer < _cleanDocHeight) {
@@ -724,6 +737,12 @@ var leavePage = false;
             required: true,
             minDpMachine: 30
         },
+
+        downPaymentMachine: {
+          required: true,
+          minDpMachineVal: true,
+          maxDpMachineVal: true
+        },
   
         maxPocketMoney: {
             required: true,
@@ -751,6 +770,32 @@ var leavePage = false;
         },
         "Minimal 10% dari jumlah pembiayaan"
     );
+
+    jQuery.validator.addMethod(
+      "minDpMachineVal",
+      function (value, element, param) {
+        var thisval = parseInt(value.replace(/\./g, ""));
+        var minVal = parseInt($(element).data("minVal"));
+        return thisval >= minVal ? true : false;
+      },
+      function (params, element) {
+        var estPercentage = parseFloat($(element).data("minPercentage")) * 100;
+        return "Minimal " + estPercentage + "% dari total estimasi harga";
+      }
+  )
+
+  jQuery.validator.addMethod(
+    "maxDpMachineVal",
+    function (value, element, param) {
+      var thisval = parseInt(value.replace(/\./g, ""));
+      var maxVal = parseInt($(element).data("maxVal"));
+      return thisval <= maxVal ? true : false;
+    },
+    function (params, element) {
+      var estPercentage = parseFloat($(element).data("maxPercentage")) * 100;
+      return "Maximal " + estPercentage + "% dari total estimasi harga";
+    }
+  )
   
     jQuery.validator.addMethod(
         "minDpMachine",
@@ -2431,7 +2476,6 @@ var leavePage = false;
             // $(".inputsimulasi .valuemax").text(
             //     "10.000.000"
             // );
-            $("#estimasi_harga").val("0");
             $("#estimasi_harga").change(function() {
                 var _val = $(this).val();
                 _val = parseInt(_val.replace(/[.]/g, ""));
@@ -2454,6 +2498,7 @@ var leavePage = false;
                     // $(".inputsimulasi").addClass("hidden");
                 }
             });
+            $("#estimasi_harga").val("20.000.000");
         }
         // if ($("#estimasi_harga").length == 0) {
         //   $("#estimasi_harga").val("10.000.000");
