@@ -564,8 +564,11 @@
         background-color: $orange-color;
         padding: 20px 24px;
         color: $white;
+        font-size: 22px;
         @include breakpoint(mobile){
-            padding: 20px 8px;
+            padding: 19px 0;
+            font-size: 14px;
+            text-align: center;
         }
         .arrow-left{
             color: $white;
@@ -579,17 +582,13 @@
         padding: 20px 24px;
         padding-right: 47px;
         color: $white;
+        font-size: 22px;
         @include breakpoint(mobile){
             padding: 19px 0;
             font-size: 14px;
             width: 100%;
             text-align: center;
             padding-right: 12px;
-        }
-        i.icon-next {
-            @include breakpoint(mobile){
-                padding-right: 3px;
-            }
         }
         .arrow-right{
             color: $white;
