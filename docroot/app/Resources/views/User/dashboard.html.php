@@ -179,23 +179,23 @@ $this->extend('layout.html.php');
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">×</span>
             </button>
-            <form action="">
+            <form action="" id="validate-ktp" name="validate-ktp" enctype="multipart/form-data" >
                 <div class="form-wrapper">
                     <div class="input-text-group">
                         <label id="name-label" class="input-label"><?= $this->translate('fullname'); ?></label>
-                        <input id="name-input" class="style-input" type="text" placeholder="<?= $this->translate('form-name'); ?>" required>
+                        <input id="name-input" class="style-input formAlphabet formName formRequired" type="text" placeholder="<?= $this->translate('form-name'); ?>" required>
                     </div>
                     <div class="input-text-group">
                         <label id="email-label" class="input-label"><?= $this->translate('email'); ?></label>
-                        <input id="email-input" class="style-input" type="email" placeholder="<?= $this->translate('email'); ?>" required>
+                        <input id="email-input" class="style-input formEmail formRequired" type="email" placeholder="<?= $this->translate('email'); ?>" required>
                     </div>
                     <div class="input-text-group">
                         <label id="phone-label" class="input-label"><?= $this->translate('form-hp'); ?></label>
-                        <input id="phone-input" class="style-input" type="number" placeholder="<?= $this->translate('form-hp'); ?>" required>
+                        <input id="phone-input" class="style-input formRequired formPhoneNumber" type="number" placeholder="<?= $this->translate('form-hp'); ?>" required>
                     </div>
                     <div class="input-text-group">
                         <label id="ktp-label" class="input-label"><?= $this->translate('label-ktp-new'); ?></label>
-                        <input id="ktp-input" class="style-input" type="number" placeholder="<?= $this->translate('label-ktp'); ?>">
+                        <input id="ktp-input" class="style-input formRequired" type="number" placeholder="<?= $this->translate('label-ktp'); ?>" required>
                     </div>
                     <div id="upload-ktp">
                         <h5 id="upload-text"><?= $this->translate('labelNoktp'); ?></h5>
@@ -205,7 +205,7 @@ $this->extend('layout.html.php');
                                 <button id="upload-button" class="btn-upload">
                                     <?= $this->translate('choose-file') ?>
                                 </button>
-                                <input id="file-upload" class="hide-input" accept="image/*" type="file" name="myfile" onchange=" document.getElementById('upload-button').innerHTML = 'Ubah File';">
+                                <input id="file-upload" class="hide-input formRequired" accept="image/*" type="file" name="myfile" onchange=" document.getElementById('upload-button').innerHTML = 'Ubah File';">
                             </div>
                             <span id="file-upload-filename"></span>
                         </div>

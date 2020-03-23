@@ -28,6 +28,10 @@ $(document).ready(function(){
     var token = window.localStorage.getItem("token");
     var lang = document.documentElement.lang
 
+    if(token == null){
+        window.location = "/" + lang + "/login";
+    }
+
     $('ul.contract-wrapper').hide();
     checkStatusVerify(token);
     dataCustomer(token);
@@ -112,6 +116,17 @@ $(document).ready(function(){
         };
         console.log(formData)
 
+        if($('#name-input').val() == '' || $('#email-input').val() == '' || $('#phone-input').val() == '' || $('#ktp-input').val() == '' || $('#file-upload').val() == ''){
+            var errorMsg;
+            if(lang == 'id'){
+                errorMsg = "Verifikasi ktp gagal, silahkan periksa kembali data ktp.";
+            }else{
+                errorMsg = "ID card verification failed, please re-check your ID card data.";
+            }
+            $(".error-wrap").html('<label id="verify-ktp-error" class="error" for="verify-ktp" style="display: inline-block;">' + errorMsg + '</label>');
+            return;
+        }
+
         var dataKTP = {
             'no_ktp' : $('#ktp-input').val(),
             'path_ktp' : $('#file-upload').val()
@@ -150,6 +165,96 @@ $(document).ready(function(){
             }
         })
     });
+
+    validateFormRequired($('#validate-ktp'));
+
+    $.validator.addClassRules({
+
+        formRequired: {
+            required: true
+        },
+    
+        formAlphabet: {
+            acceptAlphabet: "[a-zA-Z]+"
+        },
+    
+        formEmail:- {
+            emailCust: /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/
+        },
+    
+        formNumber: {
+            required: true,
+            number: true
+        },
+
+        formPhoneNumber: {
+            required: true,
+            number: true,
+            maxlength: 13,
+            minlength: 9
+        },
+    
+        uploadImage: {
+            accept: "image/*",
+            filesize: 500   //max size 1MB
+        },
+    
+        submitHandler: function (form) {
+            form.submit();
+        }
+    });
+
+    $(".formNumber").on("keydown", function (e) {
+        if (e.which != 8 && e.which != 0 && e.which != 144 && (e.which < 46 || e.which > 57) && (e.which < 96 || e.which > 105)) {
+            return false;
+        }
+    });
+    
+    jQuery.validator.addMethod("acceptAlphabet", function (value, element, param) {
+        // console.log(value.match(new RegExp("." + param + "$")));
+        // console.log(/^[a-z]+$/i.test(value));
+        return /^[a-z ]+$/i.test(value);
+    }, "Please Enter Only Letters");
+    
+    jQuery.validator.addMethod("emailCust", function (value, element, param) {
+        return param.test(value);
+    }, "Please enter a valid email address.");
+
+    jQuery.validator.addMethod("filesize", function (value, element, param) {
+        console.log("test", this.optional(element) || (element.files[0].size <= param), element.files[0], param)
+        return this.optional(element) || (element.files[0].size <= param)
+    }, "File size must be less than 500 KB.");
+
+    function validateFormRequired(elementParam) {
+        $(elementParam).validate({
+            errorPlacement: function (error, element) {
+            console.log(element)
+            console.log(error)
+            element.closest('.input-text-group').find('.error-wrap').html(error);
+            }
+        });
+    }
+    
+    if(lang === 'id'){
+        jQuery.extend(jQuery.validator.messages, {
+            required: "Isian wajib diisi.",
+            remote: "Harap perbaiki isian ini.",
+            email: "Silakan isi alamat email yang valid.",
+            url: "Silakan masukkan URL yang valid.",
+            date: "Silakan masukkan tanggal yang valid.",
+            dateISO: "Silakan masukkan tanggal yang valid (ISO).",
+            number: "Silakan masukkan nomor yang valid.",
+            digits: "Masukkan hanya berupa digit.",
+            creditcard: "Harap masukkan nomor kartu kredit yang benar.",
+            equalTo: "Silakan masukkan nilai yang sama sekali lagi.",
+            accept: "Silakan masukkan nilai dengan ekstensi yang valid.",
+            maxlength: jQuery.validator.format("Harap masukkan tidak lebih dari {0} karakter."),
+            minlength: jQuery.validator.format("Silakan masukkan setidaknya {0} karakter."),
+            acceptAlphabet: "Masukkan hanya berupa huruf alfabet.",
+            emailCust : "Silakan isi alamat email yang valid.",
+            filesize : "Ukuran file harus kurang dari 500 Kb."
+        });
+    }
 });
 
 function checkStatusVerify(token) {

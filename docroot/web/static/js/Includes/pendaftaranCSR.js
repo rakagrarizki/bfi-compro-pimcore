@@ -339,13 +339,13 @@ $(document).ready(function(){
     }, "Please enter a different handphone number, handphone number must not be the same." );
 
     function validateFormRequired(elementParam) {
-    $(elementParam).validate({
-        errorPlacement: function (error, element) {
-        console.log(element)
-        console.log(error)
-        element.closest('.input-text-group').find('.error-wrap').html(error);
-        }
-    });
+        $(elementParam).validate({
+            errorPlacement: function (error, element) {
+            console.log(element)
+            console.log(error)
+            element.closest('.input-text-group').find('.error-wrap').html(error);
+            }
+        });
     }
     
     if(lang === 'id'){
@@ -374,6 +374,7 @@ $(document).ready(function(){
             filesize : "Ukuran file harus kurang dari 500 Kb."
         });
     }
+
     $(".alert-danger").fadeTo(3000, 500).slideUp(500, function(){
         $(".alert-danger").slideUp(500);
     });
