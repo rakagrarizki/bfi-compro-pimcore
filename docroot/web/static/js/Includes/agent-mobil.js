@@ -27,6 +27,9 @@ function isValidStep() {
     if ($('input[name="are_member"]:checked').val() === "1" && $("#areCode").val() === "") {
       isValid = false;
     }
+    if ($('input[name="haveSmartphone"]:checked').val() === undefined) {
+      isValid = false;
+    }
   }
   return isValid;
 }
@@ -363,10 +366,10 @@ function showFormOTP() {
   }
 }
 
-function successAgentOTP() {
-  $(".actions > ul li a[href$='next']").text('Selanjutnya');
-  $("#personal-detail").show();
-}
+// function successAgentOTP() {
+//   $(".actions > ul li a[href$='next']").text('Selanjutnya');
+//   $("#personal-detail").show();
+// }
 
 function otpAgentVerified() {
   var otp1Value = $('input[name=otp1]').val().toString(),
@@ -420,10 +423,10 @@ function agentVerifiedOtp() {
 
 function successAgentOTP() {
   var _data = {
-    "submission_id": "",
+    "submission_id": submission_id,
     "collateral_type_id": $('#collateral_type').val().toString(),
-    "name": $('#nama_lengkap').val().toString(),
-    "email": $('#email_pemohon').val().toString(),
+    "name": $('#nama_lengkap').val(),
+    "email": $('#email_pemohon').val(),
     "phone_number": $('#no_handphone').val().toString()
   }
   var register = postData("/agent/save-agent-candidate-step1", _data);
@@ -555,10 +558,11 @@ var isValidOtp = false;
 (function ($) {
   $(document).on("click", "#otp-verification", otpAgentVerified)
 
-  $("#step-otp").hide();
+  $("#step-otp").hide(); checkValid
 
   $(document).on('change', 'input[type="hidden"]', checkValid);
   $(document).on('focusout keyup', 'input, textarea, select', checkValid);
+  $(document).on('change', 'input[name="haveSmartphone"]', checkValid);
   $(document).on('click', 'input[name="are_member"]', checkValid);
   $(document).on('change', 'input[name="are_member"]', toggleAreMember);
   $(document).on('click', '#agentOtp-verification', agentVerifiedOtp)

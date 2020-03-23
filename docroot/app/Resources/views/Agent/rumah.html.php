@@ -45,7 +45,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                         <input type="tel" pattern="\d*" class="form-control formPhoneNumber" name="no_handphone" id="no_handphone" maxlength="13" placeholder="<?= $this->translate('placeholder-hp') ?>">
                         <div class="error-wrap"></div>
                     </div>
-
+                    <div class="text-center label-cekLogin hide"><?= $this->translate('text-cekLogin') ?><a href="#" class="logout" onclick="return logout('id');"><?= $this->translate('status-login') ?></a></div>
                     <div id="personal-detail" style="display: none;">
 
                         <div class="form-group">

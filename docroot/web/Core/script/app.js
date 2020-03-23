@@ -592,8 +592,8 @@ var leavePage = false;
                             asuransi_arr_txt[rowke - 1] = $(this)
                                 .find("option:selected")
                                 .text();
-  
-                            disableButton("#button4");
+
+                            disableNextButton();
                             disableButton(".hidesavebutton");
                             if (countCalculate > 0) {
                                 $(".warning-calculate").removeClass("hide");
@@ -1856,6 +1856,14 @@ var leavePage = false;
         $(button).css("border-color", "#F8991D");
         $(button).removeAttr("disabled");
     }
+    
+    function disableNextButton() {
+      if ($("#button4rumah").length > 0) {
+        disableButton("#button4rumah");
+      } else {
+        disableButton("#button4");
+      }
+    }
   
     function stepAction() {
       disableButton("#button1");
@@ -2439,7 +2447,7 @@ var leavePage = false;
                     $(".currency[tahun='1']").text("Rp " + 0);
                     $(".total").text("Rp " + 0);
                     getpriceminmax(credits);
-                    disableButton("#button4");
+                    disableNextButton();
                     status_edit = false;
                     // }
                 } else {
@@ -5598,6 +5606,8 @@ var leavePage = false;
                     "selected",
                     "selected"
                 );
+
+               disableNextButton();
             }
         });
     }
@@ -5670,6 +5680,7 @@ var leavePage = false;
   
     $("#jangka_waktu").change(function() {
         objCredits.jangka_waktu = $(this).val();
+        disableNextButton();
     });
   
     $(document).on("click", "#recalc", function(e) {
@@ -6058,6 +6069,7 @@ var leavePage = false;
   
         success: function(dataObj) {
             if (dataObj.success === true) {
+                var token = localStorage.getItem("token");
                 if(dataObj.result.header.status == 200){
                     console.log("berhasil login");
                     requestOTP(dataPhone);
@@ -6590,3 +6602,22 @@ $('#alamat_lengkap').keypress(function(event){
     $('#alamat_lengkap').addClass('disapper-label');
     $('.label-place').fadeOut();
 });
+
+var all = document.getElementById("wrapList").childElementCount;
+var mid = Math.round(all/2);
+var child = document.getElementById("wrapList").children;
+
+for (var i = 0; i < all; i++) {
+	if (i==0){
+  	child[i].setAttribute("style", "order: "+i+"; -webkit-order: "+i+";");
+  }
+  if (i<=mid){
+    for (var k = 0; k < i; k++){
+    child[i].setAttribute("style", "order: "+((i+1)+(k+1))+"; -webkit-order: "+((i+1)+(k+1))+";");
+    }
+  }
+  if (i>=mid){
+    var z= all-i-1;
+    child[i].setAttribute("style", "order: "+(i-z)+"; -webkit-order: "+(i-z)+";");
+  }
+}
