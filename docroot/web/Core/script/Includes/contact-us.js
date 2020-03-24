@@ -1,6 +1,44 @@
+
+function autofillContact(elm, val) {
+  if (elm.length > 0 && val !== "" && val !== undefined && val !== null) {
+    elm.val(val).prop("readonly", true);
+  }
+}
+
+function getContactDataStorage(token) {
+  $.ajax({
+    type: "GET",
+    url: "/user/data-customer",
+    crossDomain: true,
+    dataType: "json",
+    headers: { sessionId: token },
+
+    error: function (data) {
+      console.log("error" + data);
+    },
+
+    fail: function (xhr, textStatus, error) {
+      console.log("request failed");
+    },
+    success: function (dataObj) {
+      if (dataObj.success === true) {
+        var data = dataObj.result.data;
+        autofillContact($("#contact_nama_lengkap"), data.full_name);
+        autofillContact($("#contact_email_pemohon"), data.email);
+        autofillContact($("#contact_no_handphone"), data.phone_number);
+      }
+    }
+  });
+}
+
 $(document).ready(function(){
 
     var lang = document.documentElement.lang;
+
+    var token = localStorage.getItem("token");
+    if (token != null) {
+      getContactDataStorage(token);
+    }
 
     var type_message_placeholder = $('#type_message').attr('placeholder');
     $('#type_message').select2({
@@ -278,21 +316,27 @@ $(document).ready(function(){
         });
     }
 
-    $( '#submitPersonal' ).click(function(){
-        var $captcha = $( '#g-recaptcha' ),
-            response = grecaptcha.getResponse();
-        
-        if (response.length === 0) {
-          $( '.msg-error').text( "reCAPTCHA wajib diisi" );
-          if( !$captcha.hasClass( "error" ) ){
-            $captcha.addClass( "error" );
-            return false;
-          }
-        } else {
-          $( '.msg-error' ).text('');
-          $captcha.removeClass( "error" );
-        }
-      })
+  $('#submitPersonal').click(function (e) {
+    e.preventDefault();
+    var $captcha = $('#g-recaptcha'),
+      response = grecaptcha.getResponse();
+
+    if (response.length === 0) {
+      $('.msg-error').text("reCAPTCHA wajib diisi");
+      if (!$captcha.hasClass("error")) {
+        $captcha.addClass("error");
+        return false;
+      }
+    } else {
+      $('.msg-error').text('');
+      $captcha.removeClass("error");
+      if ($("#contact").valid()) {
+        $("#contact").submit();
+      } else {
+        return false;
+      }
+    }
+  })
 
     //   Sort Select
 
