@@ -485,6 +485,10 @@
             font-family: HelveticaNeue-Light;
             font-size: 20px;
             color: $grey-dark-color;
+            ol{
+                @include breakpoint (mobile)
+                padding-left:20px;
+            }
         }
 
         .share,

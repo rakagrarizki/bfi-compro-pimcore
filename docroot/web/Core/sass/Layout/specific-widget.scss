@@ -337,3 +337,12 @@ select option:disabled {
     }
 } 
 
+.Table{
+    td{
+        span{
+            @include breakpoint(mobile){
+                font-size: 12px;
+            }
+        }
+    }
+}
