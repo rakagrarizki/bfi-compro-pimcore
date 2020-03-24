@@ -316,41 +316,4 @@ $(document).ready(function(){
         $('#message').addClass('label-padding');
         $('.label-messages').addClass('disapper-label');
     });
-
-     var token = localStorage.getItem("token");
-    if (token != null) {
-        getDataStorage(token);
-    }
-
-    function getDataStorage(token) {
-        disabled = disabledField();
-        $.ajax({
-            type: "GET",
-            url: "/user/data-customer",
-            crossDomain: true,
-            dataType: "json",
-            headers: { sessionId: token },
-      
-            error: function(data) {
-                console.log("error" + data);
-            },
-      
-            fail: function(xhr, textStatus, error) {
-                console.log("request failed");
-            },
-            success: function(dataObj) {
-                if (dataObj.success === true) {
-                    var data = dataObj.result.data;
-                    $("#nama_lengkap").val(data.full_name);
-                    $("#email_pemohon").val(data.email);
-                    $("#no_handphone").val(data.phone_number);
-                    // enableButton("#button1");
-                    // nextButton("active");
-                    disabled;
-                }else{
-                    !disabled;
-                }
-            }
-        });
-      }
 });
