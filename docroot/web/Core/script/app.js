@@ -6648,10 +6648,10 @@ if ($("#nama_lengkap").length > 0) {
     });
 });
 
-// $('#alamat_lengkap').keypress(function(event){
-//     $('#alamat_lengkap').addClass('disapper-label');
-//     $('.label-place').fadeOut();
-// });
+$('#alamat_lengkap').keypress(function(event){
+    $('#alamat_lengkap').addClass('label-padding');
+    $('.label-place').addClass('disapper-label');
+});
 
 if ($("wrapList").length > 0) {
   var all = document.getElementById("wrapList").childElementCount;
