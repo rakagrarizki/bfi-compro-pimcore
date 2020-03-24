@@ -388,7 +388,7 @@ function toggleAreMember() {
   if (_val === "1") {
     $("#frmAreCode").show();
   } else if (_val === "0") {
-    $("#frmAreCode").show().setAttribute('disabled', true);
+    $("#frmAreCode").setAttribute('disabled', true);
   }
 }
 
