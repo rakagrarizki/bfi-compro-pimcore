@@ -31,6 +31,12 @@ function isValidStep() {
       isValid = false;
     }
   }
+
+  if (currentStep === 3) {
+    if (!$('input[name="agreement1"]').is(':checked')) {
+      isValid = false;
+    }
+  }
   return isValid;
 }
 
@@ -38,8 +44,10 @@ function checkValid() {
   if (isValidStep()) {
     // do something
     nextButton("active");
+    finishButton("active");
   } else {
     nextButton("inactive");
+    finishButton("inactive");
   }
 }
 
@@ -50,6 +58,17 @@ function nextButton(action) {
   } else {
     if (!nextBtn.hasClass("inactive")) {
       nextBtn.addClass("inactive");
+    }
+  }
+}
+
+function finishButton(action) {
+  var finishBtn = $(".actions > ul li a[href$='finish']").parent();
+  if (action === "active") {
+    finishBtn.removeClass("inactive");
+  } else {
+    if (!finishBtn.hasClass("inactive")) {
+      finishBtn.addClass("inactive");
     }
   }
 }
@@ -531,7 +550,8 @@ var isValidOtp = false;
   $(document).on('change', 'input[type="hidden"], input[name="haveSmartphone"]', checkValid);
   $(document).on('focusout keyup', 'input, textarea, select', checkValid);
   $(document).on('change', 'input[name="are_member"]', toggleAreMember);
-  $(document).on('click', '#agentOtp-verification', agentVerifiedOtp)
+  $(document).on('click', '#agentOtp-verification', agentVerifiedOtp);
+  $(document).on('change', 'input[name="agreement1"]', checkValid);
 
   $('input[name="applicant_position"]').change(function () {
     console.log($(this).val())

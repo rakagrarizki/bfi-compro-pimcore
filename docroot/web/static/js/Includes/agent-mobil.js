@@ -31,6 +31,12 @@ function isValidStep() {
       isValid = false;
     }
   }
+
+  if (currentStep === 4) {
+    if (!$('input[name="agreement1"]').is(':checked')) {
+      isValid = false;
+    }
+  }
   return isValid;
 }
 
@@ -68,19 +74,19 @@ function finishButton(action) {
 }
 
 
-$(".biaya-agunan .form-group").on("click", function() {
-  setTimeout(function() {
-      if (
-          $("input#agreement1")
-              .parent()
-              .hasClass("jcf-checked")
-      ) {
-        finishButton("active");
-      } else {
-        finishButton("inactive");
-      }
-  }, 500);
-});
+// $(".biaya-agunan .form-group").on("click", function() {
+//   setTimeout(function() {
+//       if (
+//           $("input#agreement1")
+//               .parent()
+//               .hasClass("jcf-checked")
+//       ) {
+//         finishButton("active");
+//       } else {
+//         finishButton("inactive");
+//       }
+//   }, 500);
+// });
 
 function sendLeadData() {
   if (form.valid()) {
@@ -194,6 +200,7 @@ function getDataTenor() {
 }
 
 function initSummary() {
+  checkValid();
   // PERSONAL
   $("#showFullName").text($("#nama_lengkap").val());
   $("#showEmail").text($("#email_pemohon").val());
@@ -563,6 +570,7 @@ var isValidOtp = false;
   $(document).on('change', 'input[type="hidden"]', checkValid);
   $(document).on('focusout keyup', 'input, textarea, select', checkValid);
   $(document).on('change', 'input[name="haveSmartphone"]', checkValid);
+  $(document).on('change', 'input[name="agreement1"]', checkValid);
   $(document).on('click', 'input[name="are_member"]', checkValid);
   $(document).on('change', 'input[name="are_member"]', toggleAreMember);
   $(document).on('click', '#agentOtp-verification', agentVerifiedOtp)

@@ -94,7 +94,7 @@ $(document).ready(function() {
   
         success: function(dataObj) {
       
-            if (dataObj.message === "Sukses") {
+          if (dataObj.message === "Sukses" && $("#category-1").length > 0) {
                 $.each(dataObj.data, function(key, valListCategory) {
                     if (valListCategory.desc != "") {
                         dataListCat.push({
@@ -118,7 +118,7 @@ $(document).ready(function() {
                 $("#category-1").on("hover", function() {
                     $(".select2-selection__rendered").removeAttr("title");
                 });
-                changeSelected($("#category-1")[0]);
+                changeSelected($("#category-1").val()[0]);
                 // $("#category-2").prop('disabled', true);
             }
         }
