@@ -117,7 +117,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
 
                         <div class="form-group" id="frmAreCode">
                             <label><?= $this->translate('areCode') ?></label>
-                            <input type="text" class="form-control" name="areCode" id="areCode" placeholder="<?= $this->translate('placeholder-areCode') ?>">
+                            <input type="text" disabled class="form-control" name="areCode" id="areCode" placeholder="<?= $this->translate('placeholder-areCode') ?>">
                             <div class="error-wrap"></div>
                         </div>
 
