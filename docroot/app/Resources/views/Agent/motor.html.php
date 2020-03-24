@@ -108,7 +108,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                                     <label for="are-member"><?= $this->translate('sudah') ?></label>
                                 </div>
                                 <div class="radio-inside">
-                                    <input type="radio" value="0" id="not-member" checked="checked" name="are_member">
+                                    <input type="radio" value="0" id="not-member" checked="checked" name="are_member" >
                                     <label for="not-member"><?= $this->translate('belum') ?></label>
                                 </div>
                             </div>
@@ -117,7 +117,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
 
                         <div class="form-group" id="frmAreCode">
                             <label><?= $this->translate('areCode') ?></label>
-                            <input type="text" class="form-control" name="areCode" id="areCode" placeholder="<?= $this->translate('placeholder-areCode') ?>">
+                            <input type="text" disabled class="form-control" name="areCode" id="areCode" placeholder="<?= $this->translate('placeholder-areCode') ?>">
                             <div class="error-wrap"></div>
                         </div>
 
