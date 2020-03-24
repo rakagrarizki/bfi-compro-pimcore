@@ -173,6 +173,7 @@ $(document).ready(function() {
                         placeholder: placeholderProd,
                         minimumResultsForSearch: -1
                     });
+                $("#category-2").removeAttr("disabled");
             }
         }
     });
@@ -232,9 +233,9 @@ $(document).ready(function() {
   });
   
   function disabledField(){
-    $("#nama_lengkap").attr('disabled','disabled');
-    $("#email_pemohon").attr('disabled','disabled');
-    $("#no_handphone").attr('disabled','disabled');
+    $("#nama_lengkap").prop('readonly',true);
+    $("#email_pemohon").prop('readonly',true);
+    $("#no_handphone").prop('readonly',true);
     $(".label-cekLogin").removeClass('hide');
   }
 
