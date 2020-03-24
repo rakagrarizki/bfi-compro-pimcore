@@ -403,7 +403,8 @@ function toggleAreMember() {
   // console.log("ARE", _val)
   if (_val === "1") {
     $("#frmAreCode").show();
-  } else if (_val === "0") {
+  }
+  if (_val === "0") {
     $("input#areCode").prop( "disabled", true );
   }
 }
