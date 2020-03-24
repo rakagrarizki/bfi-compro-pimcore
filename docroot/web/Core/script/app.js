@@ -1062,25 +1062,6 @@ var isAjaxActive = false;
         }
     }
     setCreditType();
-  
-    function reformatDate(_date) {
-        var subDate = _date.split("/");
-        var theDate = new Date(subDate[2], subDate[1] - 1, subDate[0]);
-  
-        // 01, 02, 03, ... 29, 30, 31
-        var dd = (theDate.getDate() < 10 ? "0" : "") + theDate.getDate();
-        // 01, 02, 03, ... 10, 11, 12
-        var MM =
-            (theDate.getMonth() + 1 < 10 ? "0" : "") + (theDate.getMonth() + 1);
-        // 1970, 1971, ... 2015, 2016, ...
-        var yyyy = theDate.getFullYear();
-  
-        return yyyy + "-" + MM + "-" + dd;
-    }
-  
-    function reformatMoney(number) {
-        return number.replace(/[.]/g, "");
-    }
 
     function pushDataPemohon2(cb) {
         submission_id = "";
@@ -6050,6 +6031,27 @@ var isAjaxActive = false;
 
   })(jQuery); // tanda tutup
   
+
+
+function reformatDate(_date) {
+  var subDate = _date.split("/");
+  var theDate = new Date(subDate[2], subDate[1] - 1, subDate[0]);
+
+  // 01, 02, 03, ... 29, 30, 31
+  var dd = (theDate.getDate() < 10 ? "0" : "") + theDate.getDate();
+  // 01, 02, 03, ... 10, 11, 12
+  var MM =
+    (theDate.getMonth() + 1 < 10 ? "0" : "") + (theDate.getMonth() + 1);
+  // 1970, 1971, ... 2015, 2016, ...
+  var yyyy = theDate.getFullYear();
+
+  return yyyy + "-" + MM + "-" + dd;
+}
+
+function reformatMoney(number) {
+  return number.replace(/[.]/g, "");
+}
+
   function copyURL(url) {
     var $temp = $("<input>");
     $("body").append($temp);
@@ -6289,17 +6291,17 @@ var isAjaxActive = false;
     }
     
   function disabledField(){
-    $("#nama_lengkap").attr('disabled','disabled');
-    $("#email_pemohon").attr('disabled','disabled');
-    $("#no_handphone").attr('disabled','disabled');
-    $("#upload-ktp-button").attr('disabled','disabled');
+    $("#nama_lengkap").prop('readonly',true);
+    $("#email_pemohon").prop('readonly',true);
+    $("#no_handphone").prop('readonly',true);
+    $("#upload-ktp-button").prop('readonly',true);
     $("#upload-ktp-button").css("background-color", "#dddddd");
     $("#upload-ktp-button").css("border-color", "#dddddd");
-    $("input[type=radio]").attr('disabled','disabled');
-    $("#tgl_lahir").attr('disabled','disabled');
-    $(".ui-datepicker-trigger").attr('disabled','disabled');
-    $("#pekerjaan").attr('disabled','disabled');
-    $("#penghasilan").attr('disabled','disabled');
+    $("input[type=radio]").prop('readonly',true);
+    $("#tgl_lahir").prop('readonly',true);
+    $(".ui-datepicker-trigger").prop('readonly',true);
+    $("#pekerjaan").prop('readonly',true);
+    $("#penghasilan").prop('readonly',true);
     $(".label-cekLogin").removeClass('hide');
   }
 
