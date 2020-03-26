@@ -6463,7 +6463,7 @@ function reformatMoney(number) {
                 var data = dataObj.result.data;
                 var location = window.location.hostname;
 
-                document.cookie = "customer=" + location+'_'+data.phone_number + "; path=/";
+                document.cookie = "customer=" + data.full_name + "; path=/";
             }
         }
     });
