@@ -397,14 +397,14 @@ function otpAgentVerified() {
   }
 }
 
-$("#frmAreCode").hide();
+$("#frmAreCode").show();
 function toggleAreMember() {
   var _val = $('input[name="are_member"]:checked').val();
   // console.log("ARE", _val)
   if (_val === "1") {
-    $("#frmAreCode").show();
-  } else {
-    $("#frmAreCode").hide();
+    $("input#areCode").prop( "disabled", false );
+  }else if (_val === "0") {
+    $("input#areCode").prop( "disabled", true );
   }
 }
 

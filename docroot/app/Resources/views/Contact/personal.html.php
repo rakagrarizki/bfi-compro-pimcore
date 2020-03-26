@@ -29,17 +29,17 @@ $this->extend('layout.html.php');
 
                 <div class="form-group">
                     <label for="nama_lengkap"><?= $this->translate('form-name') ?></label>
-                    <input type="text" class="form-control formRequired formAlphabet formName" name="personal[name]" id="nama_lengkap" placeholder="<?= $this->translate('placeholder-name') ?>">
+                    <input type="text" class="form-control formRequired formAlphabet formName" name="personal[name]" id="contact_nama_lengkap" placeholder="<?= $this->translate('placeholder-name') ?>">
                     <div class="error-wrap"></div>
                 </div>
                 <div class="form-group">
                     <label for="no_handphone"><?= $this->translate('form-hp') ?></label>
-                    <input type="text" class="form-control formRequired formPhoneNumber" name="personal[phone]" id="no_handphone" maxlength="13" placeholder="<?= $this->translate('placeholder-phone') ?>">
+                    <input type="text" class="form-control formRequired formPhoneNumber" name="personal[phone]" id="contact_no_handphone" maxlength="13" placeholder="<?= $this->translate('placeholder-phone') ?>">
                     <div class="error-wrap"></div>
                 </div>
                 <div class="form-group">
-                    <label for="email_penanya"><?= $this->translate('form-email') ?></label>
-                    <input type="email" class="form-control formRequired formEmail" name="personal[email]" id="email_penanya" placeholder="<?= $this->translate('placeholder-email') ?>">
+                    <label for="contact_email_pemohon"><?= $this->translate('form-email') ?></label>
+                    <input type="email" class="form-control formRequired formEmail" name="personal[email]" id="contact_email_pemohon" placeholder="<?= $this->translate('placeholder-email') ?>">
                     <div class="error-wrap"></div>
                 </div>
                 <div class="form-group customer-type">
@@ -107,7 +107,7 @@ $this->extend('layout.html.php');
                 </div>
             </div>
             <div class="button-area text-center">
-                <button id="submitPersonal" class="cta cta-primary cta-big" type="submit"><?= $this->translate('submit-contact'); ?></button>
+                <button id="submitPersonal" class="cta cta-primary cta-big" type="button"><?= $this->translate('submit-contact'); ?></button>
             </div>
         </form>
     </div>
@@ -115,5 +115,3 @@ $this->extend('layout.html.php');
 <?php } else { ?>
     <?= $this->template('Contact/success.html.php') ?>
 <?php } ?>
-
-
