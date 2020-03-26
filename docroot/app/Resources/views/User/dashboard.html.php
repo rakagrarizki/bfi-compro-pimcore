@@ -34,6 +34,9 @@ $this->extend('layout.html.php');
                             <p class="email"><?= $this->translate('label-ktp') ?></p>
                             <p class="verifikasi"><u><?= $this->translate('verifikasi') ?></u> &#62;</p>
                         </a>
+                        <a id="ktp-false" class="tool-tip">
+                            <p class="email">Silahkan menunggu verifikasi dari tim BFI</p>
+                        </a>
                     </li>
                 </ul>
             </div>

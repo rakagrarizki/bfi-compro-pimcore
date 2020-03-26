@@ -6461,8 +6461,9 @@ function reformatMoney(number) {
         success: function(dataObj) {
             if (dataObj.success === true) {
                 var data = dataObj.result.data;
-                console.log(data.full_name);
-                document.cookie = "customer=" + data.full_name + "; path=/";
+                var location = window.location.hostname;
+
+                document.cookie = "customer=" + location+'_'+data.phone_number + "; path=/";
             }
         }
     });

@@ -162,6 +162,42 @@
                             }
                         }
                     }
+
+                    #ktp-false{
+                        &.tool-tip{
+                            position: absolute;
+                            width: 140px;
+                            top: 150%;
+                            right: 30%;
+                            background-color: #f9991c;
+                            padding: 12px;
+                            border-radius: 5px;
+                            -webkit-border-radius: 5px;
+                            -moz-border-radius: 5px;
+                            -ms-border-radius: 5px;
+                            -o-border-radius: 5px;
+                            @include breakpoint(mobile){
+                                padding: 8px;
+                                width: 88px;
+                            }
+                            
+                            &::before{
+                                content: "";
+                                position: absolute;
+                                top: -11%;
+                                left: 60%;
+                                width: 0; 
+                                height: 0; 
+                                border-left: 7px solid transparent;
+                                border-right: 7px solid transparent;
+                                border-bottom: 7px solid #f9991c;
+                                @include breakpoint(mobile){
+                                    top: -7%;
+                                    left: 62%;
+                                }
+                            }
+                        }
+                    }
                 }
     
                 .active{
