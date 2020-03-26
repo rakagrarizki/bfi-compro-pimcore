@@ -269,6 +269,11 @@ select option:disabled {
         margin-bottom: 30px;
         font-size: 18px;
         color: #565656;
+        padding-left: 20px;
+        list-style-type: square;
+        li{
+            padding-left: 0;
+        }
     }
 }
 
