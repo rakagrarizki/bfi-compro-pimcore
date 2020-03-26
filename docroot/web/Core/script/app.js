@@ -704,7 +704,7 @@ var isAjaxActive = false;
             required: true,
             number: true
         },
-  
+
         formPhoneNumber: {
             required: true,
             number: true,
@@ -870,6 +870,18 @@ var isAjaxActive = false;
         },
         errormin
     );
+
+    jQuery.validator.addMethod(
+        "maxSalary",
+        function(value, element, param) {
+            var thisval = value.replace(/\./g, "");
+            if (parseInt(thisval) < param) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+    );
   
     jQuery.validator.addMethod("minEstimatePrice", function (value, element, param) {
       var thisval = value.replace(/\./g, "");
@@ -932,6 +944,9 @@ var isAjaxActive = false;
             accept: "Silakan masukkan nilai dengan ekstensi yang valid.",
             maxlength: jQuery.validator.format(
                 "Harap masukkan tidak lebih dari {0} karakter."
+            ),
+            maxsalary: jQuery.validator.format(
+                "Harap masukkan tidak lebih dari {0} digit."
             ),
             minlength: jQuery.validator.format(
                 "Silakan masukkan setidaknya {0} karakter."
@@ -5055,6 +5070,10 @@ var isAjaxActive = false;
                     formPrice1000: {
                         minPrice1000: 1000000,
                         required: true
+                    },
+                    formMaxSalary: {
+                        required: true,
+                        maxlength:13,
                     }
                 });
                 // $(".opsiasuransi").append(opsiasuransi);
@@ -5875,6 +5894,9 @@ var isAjaxActive = false;
             .parent()
             .addClass("select-wrapper");
     });
+
+    // SALARY formSalary
+
   
     // PHONE NUMBER formPhoneNumber
     $(".formPhoneNumber").focus(function() {

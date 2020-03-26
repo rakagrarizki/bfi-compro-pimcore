@@ -360,3 +360,9 @@ select option:disabled {
         }
     }
 }
+
+.sect-title.text-center h2 {
+    @include breakpoint(mobile){
+        font-size: 21px;
+    }
+}

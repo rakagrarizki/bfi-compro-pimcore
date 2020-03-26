@@ -92,7 +92,7 @@ $blogList->setLimit(4);
                                         </div>
                                         <div class="form-group">
                                             <label for="penghasilan"><?= $this->translate('form-penghasilan') ?></label>
-                                            <input type="text" class="formatRibuan form-control formRequired" name="penghasilan" id="penghasilan" placeholder="<?= $this->translate('placeholder-penghasilan') ?>">
+                                            <input type="text" class="formatRibuan formMaxSalary form-control formRequired" name="penghasilan" id="penghasilan" maxlength="13" placeholder="<?= $this->translate('placeholder-penghasilan') ?>">
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
