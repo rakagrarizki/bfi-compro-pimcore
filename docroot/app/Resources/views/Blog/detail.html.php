@@ -77,7 +77,7 @@ $urlTwitter = " https://twitter.com/share?text=$titleshare&url=$fixedurl&wrap_li
         </article>
         <div class="list-card">
         <?php foreach($relatedBlogs as $relatedBlog) :?>
-            <a href="<?= '/'.$lang.'/blog/'.$blog->getSlug();?>" class="card-item">
+            <a href="<?= '/'.$lang.'/blog/'.$relatedBlog->getSlug();?>" class="card-item">
                 <picture>
                     <img src="<?= $relatedBlog->getImage();?>" alt="">
                 </picture>
