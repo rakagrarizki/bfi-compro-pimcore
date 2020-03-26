@@ -6634,7 +6634,12 @@ if ($("#nama_lengkap").length > 0) {
         charCode > 90
     );
   }
-  
+
+  $('#alamat_lengkap').keypress(function(event){
+        $('#alamat_lengkap').addClass('label-padding');
+        $('#label_alamat').addClass('disapper-label');
+    });
+
   function alamatFocus() {
     $("#label_alamat").css({
         display: "block",
@@ -6671,11 +6676,6 @@ if ($("#nama_lengkap").length > 0) {
             }
         }
     });
-});
-
-$('#alamat_lengkap').keypress(function(event){
-    $('#alamat_lengkap').addClass('label-padding');
-    $('.label-place').addClass('disapper-label');
 });
 
 if ($("wrapList").length > 0) {
