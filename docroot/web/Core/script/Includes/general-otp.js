@@ -1,4 +1,4 @@
-function otp() {
+function otpCustom() {
     var timeleft = 90;
     var timer = setInterval(function() {
         document.getElementById("resend").innerHTML =
@@ -14,17 +14,17 @@ function otp() {
     }, 1000);
   }
   
-  function resendOTP() {
+  function resendOTPCustom() {
     var dataPhone = {
         phone_number: $("#phone-input").val()
     };
-    otp();
-    requestOTP(dataPhone);
+    otpCustom();
+    requestOTPCustom(dataPhone);
     document.getElementById("resend-notice").textContent =
         "4-digit kode telah dikirimkan ke nomor handphone anda";
   }
   
-  function requestOTP(phone) {
+  function requestOTPCustom(phone) {
     $.ajax({
         type: "POST",
         url: "/user/otp-request",
@@ -44,7 +44,7 @@ function otp() {
     });
   }
   
-  function verified(language) {
+  function verifiedCustom(language) {
     var otpInput = $("input[name='digit[]']")
         .map(function() {
             return $(this).val();
@@ -61,7 +61,7 @@ function otp() {
     verifiedOTP(language, dataOTP);
   }
   
-  function diabledField(){
+  function diabledFieldCustom(){
     $("#nama_lengkap").attr('disabled','disabled');
     $("#email_pemohon").attr('disabled','disabled');
     $("#no_handphone").attr('disabled','disabled');
@@ -74,7 +74,7 @@ function otp() {
   }
   
   var isKnownNumber = false;
-  function checkLogin(){
+  function checkLoginCustom(){
       var dataPhone = {
         phone_number: $("#no_handphone").val()
       };
@@ -92,10 +92,10 @@ function otp() {
                     $("#getCredit").hide();
                     $("#otp").removeClass("hide");
                     console.log(dataPhone);
-                    requestOTP(dataPhone);
+                    requestOTPCustom(dataPhone);
                     $("#phone-input").val($("#no_handphone").val());
                     console.log("checklogin true");
-                    otp();
+                    otpCustom();
                 }
               }
           }
@@ -133,11 +133,11 @@ function otp() {
                 var token = dataObj.result.data.customer_token;
                 localStorage.setItem("token", token);
                 console.log("token : " + token);
-                getCustomer(token);
+                getCustomerCustom(token);
                 $("#otp").addClass("hide");
                 $("#getCredit").show();
                 goToStep(1);
-                diabledField();
+                diabledFieldCustom();
             } else {
                 console.log("otp salah, masukkan otp yang valid");
             }
@@ -145,7 +145,7 @@ function otp() {
     });
   }
   
-  function getCustomer(token) {
+  function getCustomerCustom(token) {
     $.ajax({
         type: "GET",
         url: "/user/data-customer",
@@ -172,7 +172,7 @@ function otp() {
     });
   }
 
-  function postOTP(url, data) {
+  function postOTPCustom(url, data) {
     var _ret;
     $.ajax({
       type: 'POST',
@@ -205,6 +205,6 @@ function otp() {
     var _data = {
       phone_number: $('#no_handphone').val().toString()
     }
-    postOTP("/otp/send-otp", _data);
+    postOTPCustom("/otp/send-otp", _data);
     cb();
   }

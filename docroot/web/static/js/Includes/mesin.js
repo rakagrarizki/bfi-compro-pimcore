@@ -467,11 +467,12 @@ var isValidOtp = false;
       if( currentIndex === 0){
           if (localStorage.getItem('token') === null ) {
              if(!isKnownNumber) {
-               checkLogin(); 
-            }else{
+               checkLoginCustom(); 
+               return isKnownNumber;
+            }else if (localStorage.getItem('token') != null ){
               sendLeadData1Mesin();
             }
-            //  return isKnownNumber;
+             
            } else {
               console.log("currentIndex false");
            }
