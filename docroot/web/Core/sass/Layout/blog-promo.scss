@@ -486,8 +486,10 @@
             font-size: 20px;
             color: $grey-dark-color;
             ol{
-                @include breakpoint (mobile)
+                @include breakpoint (mobile){
                 padding-left:20px;
+                font-size: 16px;
+                }
             }
         }
 
