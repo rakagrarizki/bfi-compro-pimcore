@@ -196,7 +196,7 @@ $this->extend('layout.html.php');
                         <input id="phone-input" class="style-input formRequired formPhoneNumber" type="number" placeholder="<?= $this->translate('form-hp'); ?>" required>
                     </div>
                     <div class="input-text-group">
-                        <label id="ktp-label" class="input-label"><?= $this->translate('label-ktp-new'); ?></label>
+                        <label id="ktp-label" class="input-label"><?= $this->translate('label-ktp'); ?></label>
                         <input id="ktp-input" class="style-input formRequired" type="number" placeholder="<?= $this->translate('label-ktp'); ?>" required>
                     </div>
                     <div id="upload-ktp">
