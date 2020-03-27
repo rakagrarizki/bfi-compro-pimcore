@@ -87,6 +87,7 @@ $(document).ready(function(){
             window.location="/"+lang+"/user/dashboard";
         }
     }
+  
 });
 
 

@@ -42,10 +42,10 @@ $this->headScript()->offsetSetFile(100, '/static/js/Includes/login.js');
     <p><?= $this->translate('text-confirmation-otp'); ?></p>
 
     <form action="" id="otp-form">
-        <input type="number" id="digit-1" maxlength="1" name="digit[]" data-next="digit-2" onkeydown="return isNumberKey(event);"/>
-	    <input type="number" id="digit-2" maxlength="1" name="digit[]" data-next="digit-3" data-previous="digit-1" disabled onkeydown="return isNumberKey(event);"/>
-        <input type="number" id="digit-3" maxlength="1" name="digit[]" data-next="digit-4" data-previous="digit-2" disabled onkeydown="return isNumberKey(event);"/>
-        <input type="number" id="digit-4" maxlength="1" name="digit[]" data-next="digit-5" data-previous="digit-3" disabled onkeydown="return isNumberKey(event);"/>
+        <input type="tel" id="digit-1" maxlength="1" name="digit[]" data-next="digit-2" onkeydown="return isNumberKey(event);"/>
+	    <input type="tel" id="digit-2" maxlength="1" name="digit[]" data-next="digit-3" data-previous="digit-1" disabled onkeydown="return isNumberKey(event);"/>
+        <input type="tel" id="digit-3" maxlength="1" name="digit[]" data-next="digit-4" data-previous="digit-2" disabled onkeydown="return isNumberKey(event);"/>
+        <input type="tel" id="digit-4" maxlength="1" name="digit[]" data-next="digit-5" data-previous="digit-3" disabled onkeydown="return isNumberKey(event);"/>
     </form>
 
     <p id="resend"><?= $this->translate('wait-otp'); ?></p>
