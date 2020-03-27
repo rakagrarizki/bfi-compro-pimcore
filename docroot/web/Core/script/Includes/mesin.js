@@ -692,6 +692,11 @@ var isValidOtp = false;
         }
   });
 
+  $('#alamat_lengkap').keypress(function(event){
+    $('#alamat_lengkap').addClass('label-padding');
+    $('.label-place').addClass('disapper-label');
+  });
+  
   // if ($("#jangka_waktu").length > 0) {
     // $('#jangka_waktu').on('select2:select', function (e) {
     //   nextButton("inactive");

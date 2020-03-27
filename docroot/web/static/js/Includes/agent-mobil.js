@@ -408,6 +408,14 @@ function toggleAreMember() {
   }
 }
 
+function togglehaveSmartphone(){
+  var _valsmart = $('input[name="haveSmartphone"]:checked').val();
+
+  if (_valsmart === null) {
+    
+  }
+}
+
 function agentVerifiedOtp() {
   var otp1Value = $('input[name=otp1]').val().toString(),
     otp2Value = $('input[name=otp2]').val().toString(),
@@ -573,6 +581,7 @@ var isValidOtp = false;
   $(document).on('change', 'input[name="agreement1"]', checkValid);
   $(document).on('click', 'input[name="are_member"]', checkValid);
   $(document).on('change', 'input[name="are_member"]', toggleAreMember);
+  $(document).on('change', 'input[name="haveSmartphone"]', togglehaveSmartphone);
   $(document).on('click', '#agentOtp-verification', agentVerifiedOtp)
 
   $('input[name="applicant_position"]').change(function () {
@@ -692,6 +701,11 @@ var isValidOtp = false;
         $("#total_funding, #summary-total-pembiayaan").text(total_funding);
       }
     }
+  });
+
+  $('#alamat_lengkap').keypress(function(event){
+    $('#alamat_lengkap').addClass('label-padding');
+    $('.label-place').addClass('disapper-label');
   });
 
 })(jQuery);

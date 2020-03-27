@@ -6637,7 +6637,7 @@ if ($("#nama_lengkap").length > 0) {
 
   $('#alamat_lengkap').keypress(function(event){
         $('#alamat_lengkap').addClass('label-padding');
-        $('#label_alamat').addClass('disapper-label');
+        $('.label-place').addClass('disapper-label');
     });
 
   function alamatFocus() {
