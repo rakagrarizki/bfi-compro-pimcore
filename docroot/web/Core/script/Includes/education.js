@@ -481,6 +481,11 @@ var isValidOtp = false;
     }
   });
 
+  $('#alamat_lengkap').keypress(function(event){
+    $('#alamat_lengkap').addClass('label-padding');
+    $('.label-place').addClass('disapper-label');
+  });
+
   setTimeout(function() { reInitJcf(); }, 2000);
 
 })(jQuery);

@@ -131,7 +131,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                                     <label for="smartphone-yes"><?= $this->translate('yes') ?></label>
                                 </div>
                                 <div class="radio-inside">
-                                    <input type="radio" value="0" id="smartphone-no" name="haveSmartphone">
+                                    <input type="radio" value="0" id="smartphone-no" checked="checked" name="haveSmartphone">
                                     <label for="smartphone-no"><?= $this->translate('no') ?></label>
                                 </div>
                             </div>
