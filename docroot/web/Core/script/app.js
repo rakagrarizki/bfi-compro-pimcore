@@ -6683,6 +6683,8 @@ if ($("wrapList").length > 0) {
   var mid = Math.round(all/2);
   var child = document.getElementById("wrapList").children;
 
+  console.log(all);
+
   for (var i = 0; i < all; i++) {
     if (i==0){
       child[i].setAttribute("style", "order: "+i+"; -webkit-order: "+i+";");
