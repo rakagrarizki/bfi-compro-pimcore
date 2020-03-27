@@ -6678,23 +6678,29 @@ if ($("#nama_lengkap").length > 0) {
     });
 });
 
-if ($("wrapList").length > 0) {
-  var all = document.getElementById("wrapList").childElementCount;
-  var mid = Math.round(all/2);
-  var child = document.getElementById("wrapList").children;
+$(document).ready(function() {
+    var menu_count = $(".re-sort").length;
+  
+  for   (var a = 1; a <= menu_count; a++){
+    $(".re-sort").eq(a-1).attr('id', 'wrapList'+a);
+  
+    var all = document.getElementById("wrapList"+a).childElementCount;
+    var mid = Math.round(all/2);
+    var child = document.getElementById("wrapList"+a).children;
 
-  for (var i = 0; i < all; i++) {
-    if (i==0){
-      child[i].setAttribute("style", "order: "+i+"; -webkit-order: "+i+";");
-    }
-    if (i<=mid){
-      for (var k = 0; k < i; k++){
-      child[i].setAttribute("style", "order: "+((i+1)+(k+1))+"; -webkit-order: "+((i+1)+(k+1))+";");
+    for (var i = 0; i < all; i++) {
+      if (i==0){
+        child[i].setAttribute("style", "order: "+i+"; -webkit-order: "+i+";");
+      }
+      if (i<=mid){
+        for (var k = 0; k < i; k++){
+        child[i].setAttribute("style", "order: "+((i+1)+(k+1))+"; -webkit-order: "+((i+1)+(k+1))+";");
+        }
+      }
+      if (i>=mid){
+        var z= all-i-1;
+        child[i].setAttribute("style", "order: "+(i-z)+"; -webkit-order: "+(i-z)+";");
       }
     }
-    if (i>=mid){
-      var z= all-i-1;
-      child[i].setAttribute("style", "order: "+(i-z)+"; -webkit-order: "+(i-z)+";");
-    }
-  }
-}
+  }      
+});

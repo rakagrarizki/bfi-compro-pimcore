@@ -1,7 +1,9 @@
 <div class="container image-title">
     <?php $asset = $this->image("image");?>
 
-    <h3><?= $this->input('title');?></h3>
+    <?php if (!$this->input("title")->isEmpty()) { ?>
+        <h3><?= $this->input('title');?></h3>
+    <?php } ?>
     <img src="<?= $asset->getImage()?>">
 
 </div>

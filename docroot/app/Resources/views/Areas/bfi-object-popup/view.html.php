@@ -6,11 +6,13 @@ $this->headScript()->offsetSetFile(100, '/static/js/Includes/management.js');
 
 <!-- Template -->
 <div class="container">
+<?php if (!$this->input("title")->isEmpty()) { ?>
   <div class="row">
     <div class="col-lg-12 text-center">
       <h2 class="section-heading"><?= $this->input("title") ?></h2>
     </div>
   </div>
+<?php } ?>
   <div class="row">
     <?php $element = $this->href("myHref")->getElement(); ?>
     <?php if ($element) : ?>
