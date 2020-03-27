@@ -6678,7 +6678,7 @@ if ($("#nama_lengkap").length > 0) {
     });
 });
 
-if ($("wrapList").length > 0) {
+$(document).ready(function() {
   var all = document.getElementById("wrapList").childElementCount;
   var mid = Math.round(all/2);
   var child = document.getElementById("wrapList").children;
@@ -6698,5 +6698,8 @@ if ($("wrapList").length > 0) {
       var z= all-i-1;
       child[i].setAttribute("style", "order: "+(i-z)+"; -webkit-order: "+(i-z)+";");
     }
-  }
-}
+  }    
+});
+
+// if ($("wrapList").length > 0) {
+// }
