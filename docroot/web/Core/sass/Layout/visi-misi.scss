@@ -165,13 +165,17 @@
     
     ol{
         padding-left: 35px;
-        font-weight: bold;
+        font-weight: normal;
         li::before {
             font-weight: bolder;
         }
         li{
             margin-bottom: 12px;
-            padding-left: 20px;
+            // padding-left: 20px;
+            ol{
+                padding-left: 20px;
+                padding-top: 10px;
+            }
         }
     }
 
