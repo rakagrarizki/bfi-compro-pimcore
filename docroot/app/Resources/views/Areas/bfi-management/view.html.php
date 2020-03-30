@@ -10,7 +10,7 @@
             /** @var \Pimcore\Model\Element\ElementInterface $element */
             ?>
             <div class="col-md-4 management-box">
-                <div class="cards-type-14" onclick="getDetail(<?= $element->getId(); ?>, <?= $this->getLocale(); ?>)" data-toggle="modal" data-target="#myModal" style="background-image: url('<?= $element->getImage() ? $element->getImage()->getFullPath() : ""; ?>')">
+                <div class="cards-type-14" onclick="getDetail('<?= $element->getId(); ?>', '<?= $this->getLocale(); ?>')" data-toggle="modal" data-target="#myModal" style="background-image: url('<?= $element->getImage() ? $element->getImage()->getFullPath() : ""; ?>')">
                     <div class="information">
                         <div class="information-name"><?= $element->getNama(); ?></div>
                         <div class="information-position"> <?= $element->getJabatan(); ?></div>
