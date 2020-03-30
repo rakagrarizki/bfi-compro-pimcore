@@ -17,12 +17,12 @@ function isValidStep() {
     });
   }
 
-  if (typeof (formGroup[currentStep]) !== "undefined" && currentStep === 3 && countCalculate > 0) {
-    // if (!$('#down_payment').valid()) {
-    //   isValid = false;
+  if (typeof (formGroup[currentStep]) !== "undefined" && currentStep === 3) {
+    // if (!$('#jangka_waktu').valid()) {
+    isValid = false;
     // }
     // if ($('#jangka_waktu').val()[0]==="") {
-      isValid = false;
+      // isValid = false;
     // }
   }
   return isValid;
@@ -150,12 +150,16 @@ function getEstimatePrice(yearId){
 
 function nextButton(action) {
   var nextBtn = $(".actions > ul li a[href$='next']").parent();
+  var warnElm = $(".warning-calculate");
+  var isWarn = warnElm.hasClass("hide");
   if (action === "active") {
     nextBtn.removeClass("inactive");
+    if (!isWarn && countCalculate > 0) { warnElm.addClass("hide") }
   } else {
     if (!nextBtn.hasClass("inactive")) {
       nextBtn.addClass("inactive");
     }
+    if (isWarn && countCalculate > 0) { warnElm.removeClass("hide") }
   }
 }
 
@@ -641,42 +645,43 @@ var isValidOtp = false;
     }
   });
 
-  $("#recalc").click(function (e) {
+  $("#recalcMesin").click(function (e) {
     nextButton("inactive");
     e.preventDefault();
-    var edu_package_price = parseInt($("#ex7SliderVal").val().replace(/[.]/g, ""),10);
-    var tenor = parseInt($("#jangka_waktu").val()[0],10);
-    var down_payment = parseInt($("#down_payment").val().replace(/[.]/g, ""),10);
-    var _data = {
-      "submission_id": submission_id,
-      "funding": edu_package_price,
-      "tenor": tenor,
-      "down_payment": down_payment
-    }
-    var post = postData("/credit/machinery-calculate", _data);
-   
-    var lang = document.documentElement.lang;
-    var tenorMsg;
-    if (lang == "id") {
-      tenorMsg = "Isian wajib diisi";
-    } else {
-      tenorMsg = "Field is required.";
-    }
+    if ($("#jangka_waktu").valid()) {
+      var edu_package_price = parseInt($("#ex7SliderVal").val().replace(/[.]/g, ""),10);
+      var tenor = parseInt($("#jangka_waktu").val()[0],10);
+      var down_payment = parseInt($("#down_payment").val().replace(/[.]/g, ""),10);
+      var _data = {
+        "submission_id": submission_id,
+        "funding": edu_package_price,
+        "tenor": tenor,
+        "down_payment": down_payment
+      }
+      var post = postData("/credit/machinery-calculate", _data);
+    
+      // var lang = document.documentElement.lang;
+      // var tenorMsg;
+      // if (lang == "id") {
+      //   tenorMsg = "Isian wajib diisi";
+      // } else {
+      //   tenorMsg = "Field is required.";
+      // }
 
-    if (isNaN(tenor)){
-      $("#error-tenor").append("<div class='text-error-tenor'>"+tenorMsg+"</div>");
-      $(this).off("click");
+      // if (isNaN(tenor)){
+      //   $("#error-tenor").append("<div class='text-error-tenor'>"+tenorMsg+"</div>");
+      //   $(this).off("click");
+      // }
+      if (post.success === "1") {
+        // console.log("CALC", post)
+        nextButton("active");
+        finishButton("inactive");
+        $("#permonth-estimation").text(post.data.monthly_installment_est_total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+        $("#summary-angsuran-bulanan").text(post.data.monthly_installment_est_total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+      }
+      $(".warning-calculate").addClass("hide");
     }
-    if (post.success === "1") {
-      // console.log("CALC", post)
-      nextButton("active");
-      finishButton("inactive");
-      $("#permonth-estimation").text(post.data.monthly_installment_est_total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
-      $("#summary-angsuran-bulanan").text(post.data.monthly_installment_est_total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
-    }
-    $(".warning-calculate").addClass("hide");
     countCalculate += 1;
-
     
   });
 

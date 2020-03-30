@@ -253,7 +253,7 @@ $blogList->setLimit(4);
                           <p class="title-angsuran"><?= $this->translate('label-estimate')?></p>
                           <p class="total">Rp <span id="permonth-estimation">0</span></p>
                           <p class="infotext">*<?= $this->translate('text-estimate')?></p>
-                          <button class="cta cta-primary cta-big absolutebutcalc" id="recalc"
+                          <button class="cta cta-primary cta-big absolutebutcalc" id="recalcMesin"
                                   type="button"><?= $this->translate('hitung')?></button>
                       </div>
                   </div>
