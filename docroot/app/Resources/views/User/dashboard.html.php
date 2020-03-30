@@ -189,18 +189,22 @@ $this->extend('layout.html.php');
                     <div class="input-text-group">
                         <label id="name-label" class="input-label"><?= $this->translate('fullname'); ?></label>
                         <input id="name-input" class="style-input formAlphabet formName formRequired" type="text" placeholder="<?= $this->translate('form-name'); ?>" required>
+                        <div class="error-wrap"></div>
                     </div>
                     <div class="input-text-group">
                         <label id="email-label" class="input-label"><?= $this->translate('email'); ?></label>
                         <input id="email-input" class="style-input formEmail formRequired" type="email" placeholder="<?= $this->translate('email'); ?>" required>
+                        <div class="error-wrap"></div>
                     </div>
                     <div class="input-text-group">
                         <label id="phone-label" class="input-label"><?= $this->translate('form-hp'); ?></label>
-                        <input id="phone-input" class="style-input formRequired formPhoneNumber" type="number" placeholder="<?= $this->translate('form-hp'); ?>" required>
+                        <input id="phone-input" class="style-input formRequired formPhoneNumber" type="number" maxlength="13" placeholder="<?= $this->translate('form-hp'); ?>" required>
+                        <div class="error-wrap"></div>
                     </div>
                     <div class="input-text-group">
                         <label id="ktp-label" class="input-label"><?= $this->translate('label-ktp'); ?></label>
-                        <input id="ktp-input" class="style-input formRequired" type="number" placeholder="<?= $this->translate('label-ktp'); ?>" required>
+                        <input id="ktp-input" class="style-input formRequired" type="number" maxlength="16" placeholder="<?= $this->translate('label-ktp'); ?>" required>
+                        <div class="error-wrap"></div>
                     </div>
                     <div id="upload-ktp">
                         <h5 id="upload-text"><?= $this->translate('labelNoktp'); ?></h5>
