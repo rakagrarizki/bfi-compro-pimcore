@@ -79,7 +79,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                         </div>
                         <div class="form-group">
                             <label><?= $this->translate('label-ktp') ?></label>
-                            <input type="text" class="form-control formRequired formNoKtp" name="noKtp" id="noKtp"  minlength="16" maxlength="17" placeholder="<?= $this->translate('label-ktp'); ?>">
+                            <input type="text" class="form-control formRequired formNoKtp" maxlength="16" minlength="16" name="noKtp" id="noKtp"  minlength="16" maxlength="16" placeholder="<?= $this->translate('label-ktp'); ?>">
                             <div class="error-wrap"></div>
                         </div>
 
@@ -131,7 +131,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                                     <label for="smartphone-yes"><?= $this->translate('yes') ?></label>
                                 </div>
                                 <div class="radio-inside">
-                                    <input type="radio" value="0" id="smartphone-no" name="haveSmartphone">
+                                    <input type="radio" value="0" id="smartphone-no" checked="checked" name="haveSmartphone">
                                     <label for="smartphone-no"><?= $this->translate('no') ?></label>
                                 </div>
                             </div>
