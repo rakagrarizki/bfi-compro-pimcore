@@ -203,7 +203,7 @@ $this->extend('layout.html.php');
                     </div>
                     <div class="input-text-group">
                         <label id="ktp-label" class="input-label"><?= $this->translate('label-ktp'); ?></label>
-                        <input id="ktp-input" class="style-input formRequired" type="number" maxlength="16" placeholder="<?= $this->translate('label-ktp'); ?>" required>
+                        <input id="ktp-input" class="style-input formRequired" type="number" minlength="16" maxlength="16" placeholder="<?= $this->translate('label-ktp'); ?>" required>
                         <div class="error-wrap"></div>
                     </div>
                     <div id="upload-ktp">
