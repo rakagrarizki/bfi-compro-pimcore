@@ -708,4 +708,40 @@ var isValidOtp = false;
     $('.label-place').addClass('disapper-label');
   });
 
+  function validateFormRequired(elementParam) {
+    $(elementParam).validate({
+        errorPlacement: function (error, element) {
+        console.log(element)
+        console.log(error)
+        element.closest('.form-group').find('.error-wrap').html(error);
+        }
+    });
+  }
+
+  if(lang === 'id'){
+    jQuery.extend(jQuery.validator.messages, {
+        required: "Isian wajib diisi.",
+        maxlength: jQuery.validator.format("Harap masukkan tidak lebih dari {0} karakter."),
+        minlength: jQuery.validator.format("Silakan masukkan setidaknya {0} karakter.")
+    });
+  }
+
+  validateFormRequired($('#personal-detail'));
+
+    $.validator.addClassRules({
+
+        formRequired: {
+            required: true
+        },
+
+        formNoKtp:{
+            maxlength:16,
+            minlength:16
+        },
+    
+        submitHandler: function (form) {
+            form.submit();
+        }
+    });
+
 })(jQuery);
