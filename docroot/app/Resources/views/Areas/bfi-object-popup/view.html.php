@@ -17,7 +17,7 @@ $this->headScript()->offsetSetFile(100, '/static/js/Includes/management.js');
     <?php $element = $this->href("myHref")->getElement(); ?>
     <?php if ($element) : ?>
       <div class="col-lg-4 col-md-4 col-12">
-        <button type="button" class="photo-frame" onclick="getDetail(<?= $element->getId(); ?>)" data-toggle="modal" data-target="#myModal">
+        <button type="button" class="photo-frame" onclick="getDetail('<?= $element->getId(); ?>', '<?= $this->getLocale(); ?>')" data-toggle="modal" data-target="#myModal">
           <img src="<?= $element->getImage() ? $element->getImage()->getFullPath() : ""; ?>" alt="">
           <div class="photo-description">
             <div class="text-box">
