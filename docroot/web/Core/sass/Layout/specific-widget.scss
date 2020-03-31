@@ -407,3 +407,27 @@ select option:disabled {
         }
     }
 }
+
+.desc-cont{
+    p{
+        font-size: 18px;
+        color: #565656;
+    }
+    a{
+        font-size: 14px;
+        text-transform: uppercase;
+        color: #565656;
+        text-decoration: underline;
+        font-weight: 700;
+        letter-spacing: 2px;
+        position: relative;
+        padding-right: 20px;
+            &:before {
+            content: '\f105';
+            font-family: FontAwesome;
+            position: absolute;
+            right: 0;
+            text-decoration: none;
+        }
+    }
+}
