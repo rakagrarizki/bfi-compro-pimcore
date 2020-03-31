@@ -338,15 +338,30 @@ select option:disabled {
 }
 
 .pimcore_area_bfi-image-right-wysiwyg-left{
+    p{
+        font-size: 24px;
+    }
     div:nth-child(2),
     div:nth-child(3){
         p:nth-child(2),
-        p:nth-child(4){
+        p:nth-child(3){
+            font-size: 18px;
+            strong{
+                span{
+                    span{
+                        color:#2980b9 !important;
+                        font-weight: bold;
+                    }
+                }
+            }
             span{
                 strong{
                     color:#2980b9 !important;
                 }
             }
+        }
+        p:nth-child(4){
+            font-size: 18px;
         }
     }
 } 
@@ -369,4 +384,26 @@ select option:disabled {
 
 .input-group{
     width: 100%;
+}
+
+.widget-custom{
+    .pimcore_area_bfi-object-popup,
+    .pimcore_area_bfi-widget-wysiwyg{
+        .about-us-page{
+            h1{
+                font-size: 24px;
+            }
+        }
+        p{
+            font-size: 18px;
+        }
+        ol{
+            padding-left: 23px;
+            font-size: 18px;
+            li{
+                font-size: 18px;
+                padding-left: 10px;
+            }
+        }
+    }
 }
