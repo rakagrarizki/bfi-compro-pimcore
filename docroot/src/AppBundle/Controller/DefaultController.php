@@ -12,4 +12,8 @@ class DefaultController extends FrontendController
     public function defaultAction(Request $request)
     {
     }
+
+    public function contentAction(Request $request)
+    {
+    }
 }
