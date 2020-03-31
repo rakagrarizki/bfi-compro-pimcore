@@ -84,7 +84,7 @@
     <?php else : ?>
         <?php echo $this->template('Includes/navigation.html.php', ['documentInitiator' => $this->document->getId()]) ?>
     <?php endif ?>
-    <div id="site-container">
+    <div id="site-container" class="widget-custom">
         <?php $this->slots()->output('_content'); ?>
         <a class="backtoTop" href="#"><i class="icon-back-to-top"></i></a>
     </div>
