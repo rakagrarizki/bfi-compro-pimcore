@@ -335,7 +335,8 @@
 
 .page-title{
     font-size: 40px;
-    font-family: 'HelveticaNeue-Bold';
+    font-family: $font_default;
+    font-weight: bold;
     text-align: center;
     // padding: 55px 30px;
     margin: 60px 0 40px 0;
@@ -346,7 +347,8 @@
     }
 
     .page-title-content{
-        font-family: 'HelveticaNeue-Bold';
+        font-family: $font_default;
+        font-weight: bold;
         font-size: 40px;
         text-align: center;
         color: #04559f;
@@ -375,17 +377,18 @@
     background-color: #f5f5f5;
 
     .header-text{
-        font-family: 'HelveticaNeue';
+        font-family: $font_default;
         margin-bottom: 10px;
     }
     .header-title{
-        font-family: 'HelveticaNeue-Bold';
+        font-family: $font_default;
+        font-weight: bold;
         font-size: 28px;
         margin-bottom: 40px;
         color: $blue-dark-color;
     }
     .header-contain{
-        font-family: 'HelveticaNeue-Light';
+        font-family: $font_default;
         margin-bottom: 10px;
         padding-left: 40px;
         position: relative;
@@ -428,13 +431,14 @@
         }
 
         .information-name{
-            font-family: 'HelveticaNeue-Bold';
+            font-family: $font_default;
+            font-weight: bold;
             font-size: 18px;
             margin-bottom: 5px;
             color: $blue-dark-color;
         }
         .information-position{
-            font-family: 'HelveticaNeue';
+            font-family: $font_default;
         }
     }
 }
@@ -472,31 +476,34 @@
                 padding-top: 15px;
             }
             .primary-letter{
-                font-family: 'HelveticaNeue-Bold';
+                font-family: $font_default;
+                font-weight: bold;
                 font-size: 100px;
                 @include breakpoint(mobile){
                     font-size: 34px;
                 }
             }
             .content-title{
-                font-family: 'HelveticaNeue-Bold';
+                font-family: $font_default;
+                font-weight: bold;
                 font-size: 18px;
                 color: #565656;
             }
             .content-description{
-                font-family: 'HelveticaNeue-Light';
+                font-family: $font_default;
                 font-size: 18px;
                 color: #565656;
             }
             .content-detail{
                 margin-bottom: 12px;
                 .content-detail-title{
-                    font-family: 'HelveticaNeue-Bold';
+                    font-family: $font_default;
+                    font-weight: bold;
                     font-size: 18px;
                     color: $blue-dark-color;
                 }
                 .content-detail-desc{
-                    font-family: 'HelveticaNeue-Light';
+                    font-family: $font_default;
                     font-size: 18px;
                     color: #565656;
                 }
@@ -517,7 +524,8 @@
     padding: 20px 24px;
     margin-bottom: 12px;
     color: $grey-dark-color;
-    font-family: 'HelveticaNeue-Bold';
+    font-family: $font_default;
+    font-weight: bold;
     position: relative;
     font-size: 22px;
     @include breakpoint (mobile){
@@ -538,7 +546,8 @@
     .page-title{
         margin-top: 40px;
         margin-bottom: 0;
-        font-family: 'HelveticaNeue-Bold';
+        font-family: $font_default;
+        font-weight: bold;
         text-align: center;
         color: $blue-dark-color;
     }
@@ -550,7 +559,8 @@
 }
 
 .button-type-18{
-    font-family: 'HelveticaNeue-Bold';
+    font-family: $font_default;
+    font-weight: bold;
     margin-bottom: 70px;
 
     a{
@@ -614,7 +624,8 @@
             margin-bottom: 0;
         }
         .title{
-            font-family: 'HelveticaNeue-Bold';
+            font-family: $font_default;
+            font-weight: bold;
             font-size: 1.5rem;
             margin-bottom: 8px;
             text-align: left;
@@ -668,7 +679,8 @@
     }
 
     .title-profile{
-        font-family: 'HelveticaNeue-Bold';
+        font-family: $font_default;
+        font-weight: bold;
         font-size: 1.5rem;
         margin-bottom: 8px;
         color: $blue-dark-color;

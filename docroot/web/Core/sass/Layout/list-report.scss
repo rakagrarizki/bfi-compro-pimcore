@@ -93,7 +93,8 @@
                 }
 
                 span{
-                    font-family: HelveticaNeue-Bold;
+                    font-family: $font_default;
+                    font-weight: bold;
                     font-size: 14px;
                     text-transform: uppercase;
                     color: #565656;

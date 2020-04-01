@@ -98,7 +98,8 @@
         }
 
         h3{
-            font-family: 'HelveticaNeue-Bold';
+            font-family: $font_default;
+            font-weight: bold;
             color: #04559f;
             margin-bottom: 10px;
         }
@@ -235,7 +236,7 @@
                         // -moz-transition: 0.2s ease all;
                         // -ms-transition: 0.2s ease all;
                         // -o-transition: 0.2s ease all;
-                        font-family: 'HelveticaNeue';
+                        font-family: $font_default;
                         font-size: 12px;
                         letter-spacing: 1px;
                         padding: 5px 15px;

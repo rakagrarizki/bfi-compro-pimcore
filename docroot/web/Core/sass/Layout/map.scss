@@ -82,7 +82,7 @@
 		padding: 15px 10px;
 		background: $white;
 		border: 1px solid $grey-light-color;
-		font-family: 'HelveticaNeue';
+		font-family: $font_default;
 		padding-right: 50px;
 		font-size:22px;
    }
@@ -144,7 +144,7 @@
 
 		.col-md-10.branchlist p{
 			margin:0;
-			font-family: 'HelveticaNeue';
+			font-family: $font_default;
 			font-size:12px;
 
 			@include breakpoint(mobile) {
@@ -188,7 +188,7 @@
 
    a {
 	   	display: block;
-		font-family: 'HelveticaNeue';
+		font-family: $font_default;
 	   	font-weight: 600;
 	   	color:#565656;
 	   	font-size:14px;
@@ -224,7 +224,7 @@
 }
 .col-md-8.branchlist p{
 	margin:0;
-	font-family: 'HelveticaNeue';
+	font-family: $font_default;
 	font-size:14px;
 
 	@include breakpoint(mobile) {

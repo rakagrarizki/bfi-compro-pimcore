@@ -28,7 +28,8 @@
             margin-top: 40px;
         }
         h1{
-            font-family: 'HelveticaNeue-Bold';
+            font-family: $font_default;
+            font-weight: bold;
             color: #04559f;
             font-size: 40px;
             margin: 0;
@@ -40,7 +41,7 @@
         p{
             font-size: 20px;
             color: #565656;
-            font-family: 'HelveticaNeue-Light';
+            font-family: $font_default;
             @include breakpoint(mobile){
                 font-size: 14px;
             }
