@@ -198,7 +198,7 @@ $this->extend('layout.html.php');
                     </div>
                     <div class="input-text-group">
                         <label id="phone-label" class="input-label"><?= $this->translate('form-hp'); ?></label>
-                        <input id="phone-input" class="style-input formRequired formPhoneNumber" type="number" maxlength="13" placeholder="<?= $this->translate('form-hp'); ?>" required>
+                        <input id="phone-input" class="style-input formRequired formPhoneNumber" type="number" minlength="9" maxlength="13" placeholder="<?= $this->translate('form-hp'); ?>" required>
                         <div class="error-wrap"></div>
                     </div>
                     <div class="input-text-group">
