@@ -21,8 +21,11 @@
 
                 <li class="active"><a href="javascript:void(0)"><?= $page; ?></a></li>
             <?php else : ?>
-
-                <li><a href="<?= $this->pimcoreUrl(['page' => $page]); ?>"><?= $page; ?></a></li>
+                <?php if($page == 1 && $p == "") { ?>
+                    <li class="active"><a href="javascript:void(0)"><?= $page; ?></a></li>
+                <?php } else { ?>
+                    <li><a href="<?= $this->pimcoreUrl(['page' => $page]); ?>"><?= $page; ?></a></li>
+                <?php } ?>
             <?php endif; ?>
         <?php endforeach; ?>
         <?php if (isset($this->next)) { ?>
