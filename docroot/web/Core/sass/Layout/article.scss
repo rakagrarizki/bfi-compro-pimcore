@@ -42,13 +42,13 @@
 
         p {
             font-size: 10px;
-            font-family: 'HelveticaNeue';
+            font-family: $font_default;
 
             &.tag{
                 color: #F8991D;
                 font-size: 12px;
-                font-weight: 600;
-                font-family: 'HelveticaNeue-Bold';
+                font-weight: bold;
+                font-family: $font_default;
             }
 
             &.dateview{
@@ -63,8 +63,8 @@
         h4 {
             width: 100%;
             font-size: 1.115em;
-            font-family: 'HelveticaNeue-Bold';
-            // font-weight: 600;
+            font-family: $font_default;
+            font-weight: bold;
             // line-height: 1.4;
             height: 54px !important;
             margin: 10px 0 24px;
@@ -166,13 +166,13 @@
 
         p {
             font-size: 10px;
-            font-family: 'HelveticaNeue';
+            font-family: $font_default;
             
             .tag{
                 color: #F8991D;
                 font-size: 12px;
-                font-weight: 600;
-                font-family: 'HelveticaNeue-Bold';
+                font-weight: bold;
+                font-family: $font_default;
             }
 
             .dateview{
@@ -187,8 +187,8 @@
         h4 {
             width: 100%;
             font-size: 1.115em;
-            font-family: 'HelveticaNeue-Bold';
-            // font-weight: 600;
+            font-family: $font_default;
+            font-weight: bold;
             // line-height: 1.4;
             height: 54px !important;
             margin: 10px 0 24px;

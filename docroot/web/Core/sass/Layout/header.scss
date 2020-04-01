@@ -17,7 +17,7 @@ body{
 
 #site-header {
     border-bottom: none;
-    font-family: 'HelveticaNeue';
+    font-family: $font_default;
 
     .navbar-fixed-top {
         z-index: 99991;
@@ -124,7 +124,7 @@ body{
                 // float: left;
 
                 a {
-                    font-family: 'HelveticaNeue';
+                    font-family: $font_default;
                     padding-right: 30px;
 
                     &:hover {
@@ -205,7 +205,7 @@ body{
                 // float: right;
 
                 a {
-                    font-family: 'HelveticaNeue';
+                    font-family: $font_default;
                     padding: 0 5px;
 
                     &._EN {
@@ -393,7 +393,7 @@ body{
 
                     li {
                         a {
-                            font-family: 'HelveticaNeue';
+                            font-family: $font_default;
                             font-size: 18px;
                             font-weight: 600;
                             text-transform: capitalize;
@@ -471,7 +471,7 @@ body{
 
                                     .label-title {
                                         font-size: 20px;
-                                        font-family: 'HelveticaNeue';
+                                        font-family: $font_default;
                                         font-weight: 700;
                                         text-align: left;
                                         // margin-bottom: 30px;
@@ -493,7 +493,7 @@ body{
                                         // line-height: 1.8;
 
                                         a {
-                                            font-family: 'HelveticaNeue';
+                                            font-family: $font_default;
                                             color: $grey-dark-color;
                                             font-size: 20px;
                                             font-weight: 500;

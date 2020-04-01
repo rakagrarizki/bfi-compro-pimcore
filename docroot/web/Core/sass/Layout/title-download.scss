@@ -5,7 +5,7 @@
     }
 
     h3 {
-        font-family: 'HelveticaNeue';
+        font-family: $font_default;
         font-weight: 600;
         font-size: 24px;
         color: #04559F;
@@ -52,7 +52,8 @@
                 }
 
                 span{
-                    font-family: HelveticaNeue-Bold;
+                    font-family: $font_default;
+                    font-weight: bold;
                     font-size: 14px;
                     text-transform: uppercase;
                     color: #565656;

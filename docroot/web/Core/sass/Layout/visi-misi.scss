@@ -12,7 +12,8 @@
 
         h2 {
             margin: 0;
-            font-family: HelveticaNeue-Bold;
+            font-family: $font_default;
+            font-weight: bold;
             font-size: 52px;
             color: $white;
 
@@ -23,7 +24,7 @@
         }
 
         p {
-            font-family: HelveticaNeue-Light;
+            font-family: $font_default;
             font-size: 24px;
             line-height: 42px;
             color: $white;
@@ -90,7 +91,7 @@
         }
 
         .pagingInfo {
-            font-family: HelveticaNeue-Light;
+            font-family: $font_default;
             font-size: 1.2rem;
             color: $white;
             margin: 0 20px;
@@ -103,12 +104,12 @@
 
 .about-us-page{
     color: $grey-dark-color;
-    font-family: 'HelveticaNeue-Light';
+    font-family: $font_default;
     .page-title{
         margin-top: 40px;
         margin-bottom: 0;
-        font-family: 'HelveticaNeue-Bold';
-        font-weight: bolder;
+        font-family: $font_default;
+        font-weight: bold;
         text-align: center;
         padding: 8px;
         color: $blue-dark-color;
@@ -120,7 +121,7 @@
     }
     p,ol,ul{
         font-size: 1.2rem;
-        font-family: 'HelveticaNeue';
+        font-family: $font_default;
         letter-spacing: 0.5px;
         color:#565656;
         @include breakpoint(mobile){
@@ -128,7 +129,7 @@
         }
 
         span{
-            font-family: 'HelveticaNeue-Light';
+            font-family: $font_default;
             font-weight: normal;
             strong{
                 color:#565656;
@@ -223,7 +224,7 @@
     }
     .activities-title{
         font-size: 1.4rem;
-        font-family: 'HelveticaNeue';
+        font-family: $font_default;
         font-weight: bolder;
         margin-bottom: 20px;
     }
@@ -234,7 +235,7 @@
         }
     }
     .activities-highlight{
-        font-family: 'HelveticaNeue';
+        font-family: $font_default;
         font-weight: bolder;
         font-size: 3rem;
         margin-top: 40px;
@@ -265,7 +266,7 @@
             text-align: center;
             font-size: 2rem;
             color: $white;
-            font-family: 'HelveticaNeue';
+            font-family: $font_default;
             font-weight: bolder;
 
             .chat-button{
@@ -273,7 +274,7 @@
                 font-weight: normal;
                 border: solid 1px;
                 padding: 16px;
-                font-family: 'HelveticaNeue-Light';
+                font-family: $font_default;
                 margin-left: 20px;            
             }
 
