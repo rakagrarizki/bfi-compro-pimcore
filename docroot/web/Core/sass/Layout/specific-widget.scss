@@ -432,3 +432,10 @@ select option:disabled {
         }
     }
 }
+
+.pimcore_area_bfi-title-image{
+    margin-top: 25px;
+    @include breakpoint(mobile){
+        margin-top: 0;
+    }
+}
