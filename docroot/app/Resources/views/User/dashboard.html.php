@@ -203,7 +203,7 @@ $this->extend('layout.html.php');
                     </div>
                     <div class="input-text-group">
                         <label id="ktp-label" class="input-label"><?= $this->translate('label-ktp'); ?></label>
-                        <input id="ktp-input" class="style-input formRequired" type="number" minlength="16" maxlength="16" placeholder="<?= $this->translate('label-ktp'); ?>" required>
+                        <input id="ktp-input" class="style-input formRequired fromKtp" type="number" minlength="16" maxlength="16" placeholder="<?= $this->translate('label-ktp'); ?>" required>
                         <div class="error-wrap"></div>
                     </div>
                     <div id="upload-ktp">
@@ -222,7 +222,7 @@ $this->extend('layout.html.php');
                     </div>
                     <div class="error-wrap"></div>
                 </div>
-                <input id="btn-submit" class="button-login" type="button" value="SIMPAN">
+                <input id="btn-submit" class="button-login" type="button" value="SIMPAN" disabled="disabled" style="background-color: rgb(221, 221, 221); border-color: rgb(221, 221, 221);">
             </form>
         </div>
     </div>
