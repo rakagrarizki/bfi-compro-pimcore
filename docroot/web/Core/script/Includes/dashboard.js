@@ -105,7 +105,79 @@ $(document).ready(function(){
             });
         }
     });
+
+    function disableButton(button) {
+        $(button).css("background-color", "#dddddd");
+        $(button).css("border-color", "#dddddd");
+        $(button).attr("disabled", "disabled");
+    }
+  
+    function enableButton(button) {
+        $(button).css("background-color", "#F8991D");
+        $(button).css("border-color", "#F8991D");
+        $(button).removeAttr("disabled");
+    }
     
+    var isInvalid = function() {
+        return $('#name-input').val() == "" || 
+            $('#email-input').val() == "" || 
+            $('#phone-input').val() == "" ||
+            $('#ktp-input').val() == "" ||
+            $('#file-upload').val() == ""
+            ? true
+            : false;
+    };
+    $("#name-input").on("keyup", function(e) {
+        if (isInvalid()) {
+            disableButton("#btn-submit");
+        } else {
+            enableButton("#btn-submit");
+        }
+    });
+    $("#email-input").on("keyup", function(e) {
+        if (isInvalid()) {
+            disableButton("#btn-submit");
+        } else {
+            enableButton("#btn-submit");
+        }
+    });
+    $("#phone-input").on("keyup", function(e) {
+        if (isInvalid()) {
+            disableButton("#btn-submit");
+        } else {
+            enableButton("#btn-submit");
+        }
+    });
+    $("#file-upload").change(function(e) {
+        if (isInvalid()) {
+            disableButton("#btn-submit");
+        } else {
+            enableButton("#btn-submit");
+        }
+    });
+    $("input").on("keyup", function(e) {
+        if ($('#name-input').val() == '' || 
+        $('#email-input').val() == '' || 
+        $('#phone-input').val() == '' || 
+        $('#ktp-input').val() == '' || 
+        $('#file-upload').val() == '') {
+            disableButton("#btn-submit");
+        } else {
+            enableButton("#btn-submit");
+        }
+    });
+    
+    if($('#name-input').val() == '' || 
+    $('#email-input').val() == '' || 
+    $('#phone-input').val() == '' || 
+    $('#ktp-input').val() == '' || 
+    $('#file-upload').val() == '')
+    {
+        disableButton("#btn-submit");
+    } else {
+        enableButton("#btn-submit");
+    }
+
     $('#btn-submit').click(function(event) { 
         var formData = {
             'name' : $('#name-input').val(),
@@ -115,17 +187,6 @@ $(document).ready(function(){
             'path_ktp' : $('#file-upload').val()
         };
         console.log(formData)
-
-        if($('#name-input').val() == '' || $('#email-input').val() == '' || $('#phone-input').val() == '' || $('#ktp-input').val() == '' || $('#file-upload').val() == ''){
-            var errorMsg;
-            if(lang == 'id'){
-                errorMsg = "Verifikasi ktp gagal, silahkan periksa kembali data ktp.";
-            }else{
-                errorMsg = "ID card verification failed, please re-check your ID card data.";
-            }
-            $(".error-wrap").html('<label id="verify-ktp-error" class="error" for="verify-ktp" style="display: inline-block;">' + errorMsg + '</label>');
-            return;
-        }
 
         var dataKTP = {
             'no_ktp' : $('#ktp-input').val(),
@@ -185,6 +246,10 @@ $(document).ready(function(){
         formNumber: {
             required: true,
             number: true
+        },
+
+        fromKtp: {
+            required:true
         },
 
         formPhoneNumber: {
