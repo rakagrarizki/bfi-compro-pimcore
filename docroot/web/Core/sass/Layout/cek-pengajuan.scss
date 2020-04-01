@@ -124,7 +124,7 @@
         p {
             color: #04559F;
             text-align: center;
-            font-family: 'HelveticaNeue';
+            font-family: $font_default;
             font-weight: 600;
             font-size: 2em;
             margin-bottom: 30px;
@@ -146,13 +146,13 @@
                 background-color: $light;
                 color: black;
                 border-radius: 2px;
-                font-family: 'HelveticaNeue';
+                font-family: $font_default;
             }
 
             .form-control:last-child {
                 height: 60px;
                 border-radius: 2px;
-                font-family: 'HelveticaNeue';
+                font-family: $font_default;
             }
 
             .select-center {
@@ -256,7 +256,7 @@
                 word-break: break-word;
 
                 span {
-                    font-family: 'HelveticaNeue';
+                    font-family: $font_default;
                     color: gray;
                 }
 

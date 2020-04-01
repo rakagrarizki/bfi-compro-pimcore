@@ -137,7 +137,8 @@
 
                 .tag {
                     margin: 0;
-                    font-family: HelveticaNeue-Bold;
+                    font-family: $font_default;
+                    font-weight: bold;
                     color: $orange-color;
                     font-size: 12px;
 
@@ -149,7 +150,8 @@
                 .title {
                     height: 51px !important;
                     margin: 10px 0 24px;
-                    font-family: HelveticaNeue-Bold;
+                    font-family: $font_default;
+                    font-weight: bold;
                     color: $grey-dark-color;
                     font-size: 16px;
                     text-align: left;
@@ -167,7 +169,7 @@
                 }
 
                 .dateview {
-                    font-family: HelveticaNeue;
+                    font-family: $font_default;
                     color: $grey-dark-color;
                     font-size: 10px;
 
@@ -250,7 +252,8 @@
     
                     .tag {
                         margin: 0;
-                        font-family: HelveticaNeue-Bold;
+                        font-family: $font_default;
+                        font-weight: bold;
                         color: $orange-color;
                         font-size: 12px;
     
@@ -262,7 +265,8 @@
                     .title {
                         height: 54px !important;
                         margin: 10px 0 24px;
-                        font-family: HelveticaNeue-Bold;
+                        font-family: $font_default;
+                        font-weight: bold;
                         color: $grey-dark-color;
                         font-size: 16px;
                         text-align: left;
@@ -279,7 +283,7 @@
                     }
     
                     .dateview {
-                        font-family: HelveticaNeue;
+                        font-family: $font_default;
                         color: $grey-dark-color;
                         font-size: 10px;
     
@@ -357,7 +361,8 @@
                     >a {
                         color: $white;
                         background-color: $orange-color;
-                        font-family: HelveticaNeue-Bold;
+                        font-family: $font_default;
+                        font-weight: bold;
                     }
                 }
             }
@@ -378,7 +383,7 @@
 
             .tag {
                 font-size: 1.6rem;
-                font-family: HelveticaNeue-Medium;
+                font-family: $font_default;
                 color: $orange-color;
                 margin-bottom: 20px;
 
@@ -391,7 +396,8 @@
             .title {
                 // color: $blue;
                 font-size: 2.5rem;
-                font-family: HelveticaNeue-Bold;
+                font-family: $font_default;
+                font-weight: bold;
                 margin-bottom: 10px;
 
                 @include breakpoint(mobile) {
@@ -482,7 +488,7 @@
         }
 
         .article-content {
-            font-family: HelveticaNeue-Light;
+            font-family: $font_default;
             font-size: 20px;
             color: $grey-dark-color;
             ol{

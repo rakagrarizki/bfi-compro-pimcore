@@ -5,7 +5,7 @@
     vertical-align: middle;
     position: relative;
     text-align: center;
-    font-family: 'HelveticaNeue';
+    font-family: $font_default;
     transition: all cubic-bezier(0.455, 0.03, 0.515, 0.955) .3s;
     letter-spacing: 1px;
 
@@ -39,7 +39,7 @@
     
     &-orange { 
         position: relative;
-        font-family: 'HelveticaNeue';
+        font-family: $font_default;
         background-color: $orange-color;
         color: $white;
 
@@ -312,5 +312,3 @@
         }
     }
 }
-
-

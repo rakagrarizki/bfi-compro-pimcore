@@ -109,7 +109,7 @@
 
     h4 {
       font-size: 1.3em;
-      font-family: 'HelveticaNeue';
+      font-family: $font_default;
       @include breakpoint(mobile){
         font-size: 20px !important;
       }
@@ -169,7 +169,7 @@
                 ul {
                     list-style: square;
                     color:#565656;
-                    font-family: 'HelveticaNeue';
+                    font-family: $font_default;
                     font-size: 20px;
                     margin: 0;
 
@@ -214,7 +214,7 @@
         ul {
           list-style: square;
           // color: #04559F;
-          font-family: 'HelveticaNeue';
+          font-family: $font_default;
           font-size: 20px;
           margin: 0;
 
@@ -325,7 +325,8 @@
                 }
 
                 span {
-                  font-family: HelveticaNeue-Bold;
+                  font-family: $font_default;
+                  font-weight: bold;
                   font-size: 14px;
                   text-transform: uppercase;
                   color: #F9991C;
@@ -347,7 +348,7 @@
       // -->
 
       p {
-        font-family: 'HelveticaNeue';
+        font-family: $font_default;
         font-size: 20px;
         line-height: 30px;
         color: #565656;
@@ -413,7 +414,7 @@
             font-size: 15px;
           }
             td {
-                font-family: 'HelveticaNeue';
+                font-family: $font_default;
                 padding: 10px 20px;
                 font-size: 1.1em;
                 color:#565656;
@@ -524,7 +525,7 @@
       th {
         text-align: center;
         padding: 10px;
-        font-family: 'HelveticaNeue';
+        font-family: $font_default;
         font-size: 1.2em;
         color: $white;
         background: $blue-dark-color;
@@ -537,7 +538,7 @@
       }
 
       td {
-        font-family: 'HelveticaNeue';
+        font-family: $font_default;
         padding: 10px 20px;
         font-size: 1.1em;
 
@@ -572,7 +573,8 @@
 
     h4 {
       font-size: 20px;
-      font-family: 'HelveticaNeue-Italic';
+      font-family: $font_default;
+      font-style: italic;
       color: $blue-dark-color;
 
       @include breakpoint(mobile) {

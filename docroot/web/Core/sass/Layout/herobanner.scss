@@ -59,7 +59,7 @@
             // }
 
             p {
-                font-family: 'HelveticaNeue';
+                font-family: $font_default;
 
                 &.title {
                     font-size: 40px;
@@ -85,7 +85,7 @@
             }
 
             .desc-slide2 a {
-                font-family: 'HelveticaNeue';
+                font-family: $font_default;
                 outline: none;
                 color: $grey-dark-color;
                 text-decoration: underline;
@@ -193,7 +193,7 @@
             h3 {
                 margin: 0;
                 margin-bottom: 20px;
-                font-family: 'HelveticaNeue';
+                font-family: $font_default;
                 font-weight: bold;
                 font-size: 20px;
                 // width: 85%;
@@ -214,7 +214,7 @@
             h1 {
                 font-weight: bold;
                 // opacity: 0.9;
-                font-family: 'HelveticaNeue';
+                font-family: $font_default;
                 font-size: 44px;
                 // width: 85%;
                 // margin-left: auto;
@@ -531,7 +531,7 @@
 
             p {
                 &.name {
-                    font-family: 'HelveticaNeue';
+                    font-family: $font_default;
                     font-size: 18px;
                     font-weight: bold;
                     text-transform: uppercase;

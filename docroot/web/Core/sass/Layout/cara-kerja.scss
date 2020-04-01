@@ -17,7 +17,7 @@
 
         .title-cara-kerja {
             font-size: 40px;
-            font-family: 'HelveticaNeue';
+            font-family: $font_default;
             font-weight: bold;
             color: #04559F;
 
@@ -28,7 +28,7 @@
 
         .step-cara {
             font-size: 20px;
-            font-family: 'HelveticaNeue';
+            font-family: $font_default;
             margin-bottom: 60px;
             color:#565656;
 
