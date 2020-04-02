@@ -5,7 +5,7 @@
         </div>
         <div class="download-btn">
             <div class="down-box">
-                <a href="<?= $this->link("link")->getHref(); ?>" target="_blank" class="cta cta-down" download>
+                <a href="<?= $this->link("link")->getHref(); ?>" target="_blank" class="cta cta-down">
                     <span><?= $this->t("Unduh Dokumen") ?></span>
                 </a>
             </div>
