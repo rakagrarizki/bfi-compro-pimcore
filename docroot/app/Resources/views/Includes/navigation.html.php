@@ -33,7 +33,11 @@ if($_COOKIE["customer"] != "null") {
                     </div>
                     <div class="col-md-6 col-sm-6 right-side-top">
                             <div class="link-about-top">
-                                <a href="<?= "/" . $lang . "/tentang-kami" ?>">
+                                <?php if($lang == "id") : ?>
+                                    <a href="<?= "/" . $lang . "/tentang-bfi" ?>">
+                                <?php else : ?>
+                                    <a href="<?= "/" . $lang . "/about-bfi" ?>">
+                                <?php endif; ?>
                                     <?= $this->translate("tentang-kami") ?></a>
                                 <a href="<?= "/" . $lang . "/blog" ?>">
                                     <?= $this->translate("blog") ?></a>
