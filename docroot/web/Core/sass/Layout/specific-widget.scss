@@ -441,3 +441,12 @@ select option:disabled {
         margin-top: 0;
     }
 }
+
+.input-type-autocomplete {
+    .form-autocomplete {
+        margin-left: 7.8em;
+        @include breakpoint(mobile){
+            margin-left: -1em;
+        }
+    }
+}
