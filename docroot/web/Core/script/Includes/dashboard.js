@@ -127,8 +127,9 @@ $(document).ready(function(){
             ? true
             : false;
     };
+
     $("#name-input").on("keyup", function(e) {
-        if (isInvalid()) {
+        if (isInvalid()){
             disableButton("#btn-submit");
         } else {
             enableButton("#btn-submit");
@@ -143,7 +144,9 @@ $(document).ready(function(){
     });
     $("#phone-input").on("keyup", function(e) {
         if (isInvalid()) {
+            if($('#phone-input').hasClass("error")){
             disableButton("#btn-submit");
+            }
         } else {
             enableButton("#btn-submit");
         }
@@ -163,6 +166,7 @@ $(document).ready(function(){
         }
     });
 
+ 
     $('#btn-submit').click(function(e) { 
         e.preventDefault();
         var formData = {
@@ -171,21 +175,17 @@ $(document).ready(function(){
             'phone': $('#phone-input').val(),
             'no_ktp' : $('#ktp-input').val(),
             'path_ktp' : $('#file-upload').val()
+            
         };
-        
         console.log(formData)
-
-            var dataKTP = {
+          var dataKTP = {
                 'no_ktp' : $('#ktp-input').val(),
                 'path_ktp' : $('#file-upload').val()
             }
-     
-        console.log(dataKTP)
-            
+        console.log(dataKTP)      
         if (
             $(this)
-                .closest("form")
-                .valid()
+                .closest("form").valid()
         ) {
         $.ajax({
             type: 'POST',
@@ -204,7 +204,7 @@ $(document).ready(function(){
             success: function (dataObj) {
                 if (dataObj.success === true) {
                     console.log('berhasil verify ktp')
-                  
+                    
                          $('#popup-ktp').modal('hide');
                     
                     location.reload();
@@ -221,6 +221,7 @@ $(document).ready(function(){
             })
         }
     });
+   
 
     validateFormRequired($('#validate-ktp'));
 
@@ -243,8 +244,9 @@ $(document).ready(function(){
             number: true
         },
 
-        fromKtp: {
+        formKtp: {
             required:true,
+            number: true,
             maxlength: 13,
             minlength:13
         },
@@ -260,9 +262,9 @@ $(document).ready(function(){
             accept: "image/*",
             filesize: 500   //max size 1MB
         },
-    
+        
         submitHandler: function (form) {
-            form.submit();
+        form.submit();
         }
     });
 
