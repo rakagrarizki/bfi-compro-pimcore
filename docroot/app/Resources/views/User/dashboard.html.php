@@ -222,7 +222,7 @@ $this->extend('layout.html.php');
                     </div>
                     <div class="error-wrap"></div>
                 </div>
-                <input id="btn-submit" class="button-login" type="button" value="SIMPAN" disabled="disabled" style="background-color: rgb(221, 221, 221); border-color: rgb(221, 221, 221);">
+                <input id="btn-submit" class="button-login" type="button" value="SIMPAN" disabled="disabled">
             </form>
         </div>
     </div>

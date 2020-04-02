@@ -129,48 +129,45 @@ $(document).ready(function(){
     };
 
     $("#name-input").on("keyup", function(e) {
-        if (isInvalid()){
+        if ( isInvalid ()){
             disableButton("#btn-submit");
         } else {
             enableButton("#btn-submit");
         }
     });
     $("#email-input").on("keyup", function(e) {
-        if (isInvalid()) {
+        if ( isInvalid ()) {
             disableButton("#btn-submit");
         } else {
             enableButton("#btn-submit");
         }
     });
     $("#phone-input").on("keyup", function(e) {
-        if (isInvalid()) {
-            if($('#phone-input').hasClass("error")){
+        if ( isInvalid ()) {
             disableButton("#btn-submit");
-            }
         } else {
             enableButton("#btn-submit");
         }
     });
     $("#ktp-input").on("keyup", function(e) {
-        if (isInvalid()) {
+        if ( isInvalid ()) {
             disableButton("#btn-submit");
         } else {
             enableButton("#btn-submit");
         }
     });
     $("#file-upload").change(function(e) {
-        if (isInvalid()) {
+        if ( isInvalid ()) {
             disableButton("#btn-submit");
         } else {
             enableButton("#btn-submit");
         }
     });
 
- 
     $('#btn-submit').click(function(e) { 
         e.preventDefault();
         var formData = {
-            'name' : $('#name-input').val(),
+            'name' : $('#name-input').val() ,
             'email' : $('#email-input').val(),
             'phone': $('#phone-input').val(),
             'no_ktp' : $('#ktp-input').val(),
@@ -183,10 +180,7 @@ $(document).ready(function(){
                 'path_ktp' : $('#file-upload').val()
             }
         console.log(dataKTP)      
-        if (
-            $(this)
-                .closest("form").valid()
-        ) {
+  
         $.ajax({
             type: 'POST',
             url: '/user/verify-no-ktp',
@@ -204,9 +198,7 @@ $(document).ready(function(){
             success: function (dataObj) {
                 if (dataObj.success === true) {
                     console.log('berhasil verify ktp')
-                    
-                         $('#popup-ktp').modal('hide');
-                    
+                    $('#popup-ktp').modal('hide');
                     location.reload();
                 }else{
                     var errorMsg;
@@ -218,13 +210,12 @@ $(document).ready(function(){
                     $(".error-wrap").html('<label id="verify-ktp-error" class="error" for="verify-ktp" style="display: inline-block;">' + errorMsg + '</label>');
                     }
                 }
-            })
-        }
-    });
+            })    
+        });
    
 
     validateFormRequired($('#validate-ktp'));
-
+    
     $.validator.addClassRules({
 
         formRequired: {
