@@ -127,8 +127,9 @@ $(document).ready(function(){
             ? true
             : false;
     };
+
     $("#name-input").on("keyup", function(e) {
-        if (isInvalid()) {
+        if (isInvalid()){
             disableButton("#btn-submit");
         } else {
             enableButton("#btn-submit");
@@ -143,6 +144,15 @@ $(document).ready(function(){
     });
     $("#phone-input").on("keyup", function(e) {
         if (isInvalid()) {
+            if($('#phone-input').hasClass("error")){
+            disableButton("#btn-submit");
+            }
+        } else {
+            enableButton("#btn-submit");
+        }
+    });
+    $("#ktp-input").on("keyup", function(e) {
+        if (isInvalid()) {
             disableButton("#btn-submit");
         } else {
             enableButton("#btn-submit");
@@ -155,46 +165,28 @@ $(document).ready(function(){
             enableButton("#btn-submit");
         }
     });
-    $("input").on("keyup", function(e) {
-        if ($('#name-input').val() == '' || 
-        $('#email-input').val() == '' || 
-        $('#phone-input').val() == '' || 
-        $('#ktp-input').val() == '' || 
-        $('#file-upload').val() == '') {
-            disableButton("#btn-submit");
-        } else {
-            enableButton("#btn-submit");
-        }
-    });
-    
-    if($('#name-input').val() == '' || 
-    $('#email-input').val() == '' || 
-    $('#phone-input').val() == '' || 
-    $('#ktp-input').val() == '' || 
-    $('#file-upload').val() == '')
-    {
-        disableButton("#btn-submit");
-    } else {
-        enableButton("#btn-submit");
-    }
 
-    $('#btn-submit').click(function(event) { 
+ 
+    $('#btn-submit').click(function(e) { 
+        e.preventDefault();
         var formData = {
             'name' : $('#name-input').val(),
             'email' : $('#email-input').val(),
             'phone': $('#phone-input').val(),
             'no_ktp' : $('#ktp-input').val(),
             'path_ktp' : $('#file-upload').val()
+            
         };
         console.log(formData)
-
-        var dataKTP = {
-            'no_ktp' : $('#ktp-input').val(),
-            'path_ktp' : $('#file-upload').val()
-
-        }
-        console.log(dataKTP)
-
+          var dataKTP = {
+                'no_ktp' : $('#ktp-input').val(),
+                'path_ktp' : $('#file-upload').val()
+            }
+        console.log(dataKTP)      
+        if (
+            $(this)
+                .closest("form").valid()
+        ) {
         $.ajax({
             type: 'POST',
             url: '/user/verify-no-ktp',
@@ -212,7 +204,9 @@ $(document).ready(function(){
             success: function (dataObj) {
                 if (dataObj.success === true) {
                     console.log('berhasil verify ktp')
-                    $('#popup-ktp').modal('hide');
+                    
+                         $('#popup-ktp').modal('hide');
+                    
                     location.reload();
                 }else{
                     var errorMsg;
@@ -222,10 +216,12 @@ $(document).ready(function(){
                         errorMsg = "ID card verification failed, please re-check your ID card data.";
                     }
                     $(".error-wrap").html('<label id="verify-ktp-error" class="error" for="verify-ktp" style="display: inline-block;">' + errorMsg + '</label>');
+                    }
                 }
-            }
-        })
+            })
+        }
     });
+   
 
     validateFormRequired($('#validate-ktp'));
 
@@ -248,8 +244,11 @@ $(document).ready(function(){
             number: true
         },
 
-        fromKtp: {
-            required:true
+        formKtp: {
+            required:true,
+            number: true,
+            maxlength: 13,
+            minlength:13
         },
 
         formPhoneNumber: {
@@ -263,9 +262,9 @@ $(document).ready(function(){
             accept: "image/*",
             filesize: 500   //max size 1MB
         },
-    
+        
         submitHandler: function (form) {
-            form.submit();
+        form.submit();
         }
     });
 
@@ -292,10 +291,12 @@ $(document).ready(function(){
 
     function validateFormRequired(elementParam) {
         $(elementParam).validate({
-            errorPlacement: function (error, element) {
-            console.log(element)
-            console.log(error)
-            element.closest('.input-text-group').find('.error-wrap').html(error);
+            errorPlacement: function(error, element) {
+                console.log(element);
+                element
+                    .closest(".input-text-group")
+                    .find(".error-wrap")
+                    .html(error);
             }
         });
     }
