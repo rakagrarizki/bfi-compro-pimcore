@@ -24,7 +24,7 @@ $reports->addConditionParam("Category__id = ?",$category,"AND");
             <div class="card-content">
                 <h6><?= $data->getDate()->formatLocalized("%Y");?></h6>
                 <h3><?= $data->getFilename();?></h3>
-                <a href="<?= $data->getUrl();?>">
+                <a href="<?= $data->getUrl();?>" target="_blank" download>
                     <img src="/static/images/download.png" alt="">
                     <span><u><?= $this->t("download-document")?></u></span>
                 </a>
