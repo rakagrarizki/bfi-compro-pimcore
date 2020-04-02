@@ -398,13 +398,22 @@ select option:disabled {
         }
         p{
             font-size: 18px;
+            @include breakpoint(mobile){
+                font-size: 14px;
+            }
         }
         ol{
             padding-left: 23px;
             font-size: 18px;
+            @include breakpoint(mobile){
+                font-size: 14px;
+            }
             li{
                 font-size: 18px;
                 padding-left: 10px;
+                @include breakpoint(mobile){
+                    font-size: 14px;
+                }
             }
         }
     }
@@ -415,6 +424,9 @@ select option:disabled {
         font-size: 18px;
         color: #565656;
         margin-top: 25px;
+        @include breakpoint(mobile){
+            font-size: 14px;
+        }
     }
     a{
         font-size: 14px;
