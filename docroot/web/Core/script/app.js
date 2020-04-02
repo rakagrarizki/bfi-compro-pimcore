@@ -2163,6 +2163,10 @@ var isAjaxActive = false;
                     $("input#agreement1")
                         .parent()
                         .hasClass("jcf-checked")
+                        &&
+                  ($("input#agreement2") && $("input#agreement2")
+                    .parent()
+                    .hasClass("jcf-checked"))
                 ) {
                     enableButton("#button5");
                 } else {
