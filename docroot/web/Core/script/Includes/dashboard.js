@@ -118,46 +118,46 @@ $(document).ready(function(){
         $(button).removeAttr("disabled");
     }
     
-    var isInvalid = function() {
-        return $('#name-input').val() == "" || 
-            $('#email-input').val() == "" || 
-            $('#phone-input').val() == "" ||
-            $('#ktp-input').val() == "" ||
-            $('#file-upload').val() == ""
+    var isValid = function() {
+        return $('#name-input').valid()&& 
+            $('#email-input').valid() && 
+            $('#phone-input').valid() &&
+            $('#ktp-input').valid() &&
+            $('#file-upload').valid()
             ? true
             : false;
     };
 
     $("#name-input").on("keyup", function(e) {
-        if ( isInvalid ()){
+        if ( isValid()){
             disableButton("#btn-submit");
         } else {
             enableButton("#btn-submit");
         }
     });
     $("#email-input").on("keyup", function(e) {
-        if ( isInvalid ()) {
+        if ( !isValid()) {
             disableButton("#btn-submit");
         } else {
             enableButton("#btn-submit");
         }
     });
     $("#phone-input").on("keyup", function(e) {
-        if ( isInvalid ()) {
+        if ( !isValid()) {
             disableButton("#btn-submit");
         } else {
             enableButton("#btn-submit");
         }
     });
     $("#ktp-input").on("keyup", function(e) {
-        if ( isInvalid ()) {
+        if ( !isValid()) {
             disableButton("#btn-submit");
         } else {
             enableButton("#btn-submit");
         }
     });
     $("#file-upload").change(function(e) {
-        if ( isInvalid ()) {
+        if ( !isValid()) {
             disableButton("#btn-submit");
         } else {
             enableButton("#btn-submit");
