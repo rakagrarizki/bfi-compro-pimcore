@@ -9,7 +9,7 @@
 <div class="container wysiwyg-list-right hidden-xs">
     <div class="row">
         <div class="col-lg-4 col-md-4 col-12 desktop-img">
-            <img src="<?= $asset->getImage()?>">
+            <a href="<?= $asset->getImage()?>" target="_blank"><img src="<?= $asset->getImage()?>"></a>
         </div>
         <div class="col-lg-8 col-md-8 col-12 desktop-details">
             <?= $this->wysiwyg("text"); ?>
@@ -22,7 +22,7 @@
 <div class="container wysiwyg-list-right mobile-view hidden-md hidden-lg hidden-sm hidden-md">
     <div class="row">
     <div class="col-12 img-responsive img-mobile-view">
-            <img src="<?= $asset->getImage()?>">
+            <a href="<?= $asset->getImage()?>" target="_blank"><img src="<?= $asset->getImage()?>"></a>
         </div>
     </div>
     <div class="row">
