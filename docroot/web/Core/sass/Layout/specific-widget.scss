@@ -482,9 +482,10 @@ select option:disabled {
         margin-top: -15px;
         .col-md-6{
             h4{
+            font-size: 28px;
             margin: 0 0 20px;
             @include breakpoint(mobile){
-                    font-size: 16px;
+                font-size: 16px;
                 }
             }
             p:nth-child(3){
@@ -500,7 +501,7 @@ select option:disabled {
                         font-size: 14px;
                     }
                 }
-                u{
+                span{
                     margin-left: 10px;
                     @include breakpoint(mobile){
                         font-size: 14px;
@@ -520,6 +521,15 @@ select option:disabled {
             @include breakpoint(mobile){
                 margin-bottom: 0;
             }
+        }
+    }
+}
+
+.table-responsive{
+    .nilai-dasar{
+        padding: 20px 18px 0;
+        @include breakpoint(mobile){
+            padding: 0 15px 0;
         }
     }
 }
