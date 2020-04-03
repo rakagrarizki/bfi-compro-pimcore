@@ -2139,7 +2139,8 @@ var isAjaxActive = false;
             }
             showDefaultButton();
         });
-  
+        
+      if ($("#button4rumah").length >0) {
         $(".biaya-agunan .form-group").on("click", function() {
             setTimeout(function() {
                 if (
@@ -2156,24 +2157,30 @@ var isAjaxActive = false;
                 }
             }, 500);
         });
-  
+      }
+      
+      if ($("#button5").length > 0) {
         $(".biaya-agunan .form-group").on("click", function() {
             setTimeout(function() {
-                if (
-                    $("input#agreement1")
-                        .parent()
-                        .hasClass("jcf-checked")
+              if ($("input#agreement2").length > 0) {
+                if ($("input#agreement1").parent().hasClass("jcf-checked")
                         &&
-                  ($("input#agreement2") && $("input#agreement2")
-                    .parent()
-                    .hasClass("jcf-checked"))
+                    $("input#agreement2").parent().hasClass("jcf-checked")
                 ) {
                     enableButton("#button5");
                 } else {
                     disableButton("#button5");
                 }
+              } else {
+                if ($("input#agreement1").parent().hasClass("jcf-checked")) {
+                  enableButton("#button5");
+                } else {
+                  disableButton("#button5");
+                }
+              }
             }, 500);
         });
+      }
   
         $(".hidesavebutton").on("click", function(e) {
             e.preventDefault();
