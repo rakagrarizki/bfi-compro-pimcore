@@ -120,12 +120,12 @@
         font-size: 1.3rem;
     }
     p,ol,ul{
-        font-size: 1.2rem;
+        font-size: 18px;
         font-family: $font_default;
         letter-spacing: 0.5px;
         color:#565656;
         @include breakpoint(mobile){
-            font-size: 1rem;
+            font-size: 14px;
         }
 
         span{
@@ -157,7 +157,7 @@
     }
     td:nth-child(1){
         span{
-            color:#565656 !important;
+            color:#565656;
             strong{
                 color:#565656;
             }
