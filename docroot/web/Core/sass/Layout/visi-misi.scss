@@ -194,9 +194,12 @@
       
     .side-image{
         width: 100%;
-        padding-top: 100%;
-        background-size: cover;
-        background-position: center;
+        // padding-top: 100%;
+        // background-size: cover;
+        // background-position: center;
+        img{
+            width: 100%;
+        }
     }
     .activities-section{
         margin-top: 50px;
