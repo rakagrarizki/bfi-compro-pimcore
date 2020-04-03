@@ -471,7 +471,7 @@ var isAjaxActive = false;
                 // console.log("Asuransi Result", data);
                 // console.log("asuransi = "+ data.data.insurance_list);
   
-                if (typeof data.data !== "undefined") {
+                if (data.success === "1") {
                     var jumlah_loop = data.data.count;
   
                     list_asuransi = [];
@@ -2139,7 +2139,8 @@ var isAjaxActive = false;
             }
             showDefaultButton();
         });
-  
+        
+      if ($("#button4rumah").length >0) {
         $(".biaya-agunan .form-group").on("click", function() {
             setTimeout(function() {
                 if (
@@ -2156,24 +2157,30 @@ var isAjaxActive = false;
                 }
             }, 500);
         });
-  
+      }
+      
+      if ($("#button5").length > 0) {
         $(".biaya-agunan .form-group").on("click", function() {
             setTimeout(function() {
-                if (
-                    $("input#agreement1")
-                        .parent()
-                        .hasClass("jcf-checked")
+              if ($("input#agreement2").length > 0) {
+                if ($("input#agreement1").parent().hasClass("jcf-checked")
                         &&
-                  ($("input#agreement2") && $("input#agreement2")
-                    .parent()
-                    .hasClass("jcf-checked"))
+                    $("input#agreement2").parent().hasClass("jcf-checked")
                 ) {
                     enableButton("#button5");
                 } else {
                     disableButton("#button5");
                 }
+              } else {
+                if ($("input#agreement1").parent().hasClass("jcf-checked")) {
+                  enableButton("#button5");
+                } else {
+                  disableButton("#button5");
+                }
+              }
             }, 500);
         });
+      }
   
         $(".hidesavebutton").on("click", function(e) {
             e.preventDefault();
@@ -5559,7 +5566,9 @@ var isAjaxActive = false;
             },
             success: function(result) {
               console.log("Calculator Result", asuransi_arr, _param, result)
-  
+              
+              if(result.success === "1") {
+
                 var angsuranFinal = result.data.monthly_installment_est_total,
                     angsuranFinal_txt = separatordot(angsuranFinal),
                     // insuranceCarTot = result.data.monthly_insurance / parseInt(_param.tenor),
@@ -5577,6 +5586,8 @@ var isAjaxActive = false;
                 $(".currency[tahun='0']").text(totalbiaya_txt);
                 $(".currency[tahun='1']").text(insuranceCarTot_txt);
                 $(".total").text(angsuranFinal_txt);
+
+              }
   
                 // if($(".textsubcurrency").length > 0){
                 // 	var start_delRow = 2;

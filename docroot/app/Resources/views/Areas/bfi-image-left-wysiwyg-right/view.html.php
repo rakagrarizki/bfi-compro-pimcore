@@ -6,7 +6,9 @@
                 <h2><?= $this->input('title');?></h2>
             </div>
             <div class="col-md-6">
-                <div class="side-image"><a href="<?= $asset->getImage()?>" target="_blank"><img src="<?= $asset->getImage()?>"></a></div>
+            <div class="side-image" >
+                <a href="<?= $asset->getImage()?>" target="_blank"> 
+                <img src="<?= $asset->getImage()?>"></a></div>
             </div>
             <div class="col-md-6">
                 <?= $this->wysiwyg("text"); ?>

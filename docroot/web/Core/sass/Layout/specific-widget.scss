@@ -58,7 +58,6 @@
   .title-wrapper,
   .paragraf-title{  
     text-align: left;
-    // padding-left: 15px !important;
     padding: 0 !important;
   }
     @include breakpoint(mobile){
@@ -113,7 +112,7 @@
 .mobile-view{
         position: relative;
     .img-mobile-view{
-            margin: 60px 0 -40px;
+            margin: 80px 0 -40px;
             padding:0 15px;
         img{
             margin-bottom: 0;
@@ -129,10 +128,12 @@
             right: 50px;
             left: 50px;
             text-align: center;
-            margin:0;
+            margin:30px 0;
+            font-size: 21px;
         }
     }
     ol {
+        font-size: 18px;
         li > div {
             font-weight: normal;
             span{
@@ -339,10 +340,14 @@ select option:disabled {
 
 .pimcore_area_bfi-image-right-wysiwyg-left{
     p{
-        font-size: 24px;
+        font-size: 18px;
+        @include breakpoint(mobile){
+            font-size: 14px;
+        }
     }
     div:nth-child(2),
     div:nth-child(3){
+        p:nth-child(1),
         p:nth-child(2),
         p:nth-child(3){
             font-size: 18px;
@@ -357,11 +362,13 @@ select option:disabled {
                         font-size: 46px !important;
                     }
                 }
-            } 
+            }
             span{
-                strong{
-                    color:#2980b9 !important;
-                    font-size: 46px !important;
+                span{
+                    strong{
+                        color:#2980b9 !important;
+                        font-size: 46px !important;
+                    }
                 }
             }
         }
@@ -373,6 +380,7 @@ select option:disabled {
         }
     }
 } 
+ div:nth-child(2) > p:nth-child(1) > span > span > strong
 
 .Table{
     td{
@@ -465,6 +473,53 @@ select option:disabled {
         margin-left: 7.8em;
         @include breakpoint(mobile){
             margin-left: -1em;
+        }
+    }
+}
+
+.pimcore_area_bfi-image-left-wysiwyg-right{
+    .activities-section{
+        margin-top: -15px;
+        .col-md-6{
+            h4{
+            margin: 0 0 20px;
+            @include breakpoint(mobile){
+                    font-size: 16px;
+                }
+            }
+            p:nth-child(3){
+                margin-left: 46px;
+                margin-bottom: 15px;
+                @include breakpoint(mobile){
+                    font-size: 14px;
+                }
+            }
+            p:nth-child(4){
+                a{
+                    @include breakpoint(mobile){
+                        font-size: 14px;
+                    }
+                }
+                u{
+                    margin-left: 10px;
+                    @include breakpoint(mobile){
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.pimcore_area_bfi-wysiwyg-left-right{
+    .card-group{
+        @include breakpoint(mobile){
+            padding: 25px 25px 0;
+        }
+        .card-body{
+            @include breakpoint(mobile){
+                margin-bottom: 0;
+            }
         }
     }
 }
