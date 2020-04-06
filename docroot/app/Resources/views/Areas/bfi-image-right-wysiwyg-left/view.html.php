@@ -7,9 +7,11 @@
 <div class="about-us-page hidden-xs">
     <div class="container">
         <div class="row activities-section contact-hi">
+        <?php if (!$this->input("title")->isEmpty()) : ?>
             <div class="sect-title text-center">
                 <h2><?= $this->input('title');?></h2>
             </div>
+        <?php endif; ?>
             <div class="col-md-6">
                 <?= $this->wysiwyg("text"); ?>
                 <?php if(!$this->link("link")->isEmpty()) : ?>

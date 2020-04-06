@@ -2,9 +2,11 @@
 <div class="about-us-page" id="about-us-page">
     <div class="container">
         <div class="row activities-section">
+        <?php if (!$this->input("title")->isEmpty()) : ?>
             <div class="sect-title text-center">
                 <h2><?= $this->input('title');?></h2>
             </div>
+        <?php endif; ?>
             <div class="col-md-6">
                 <div class="side-image"><a href="<?= $asset->getImage()?>" target="_blank"><img src="<?= $asset->getImage()?>"></a></div>
             </div>
