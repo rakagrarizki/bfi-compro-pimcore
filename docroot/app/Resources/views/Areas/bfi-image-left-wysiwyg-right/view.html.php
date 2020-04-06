@@ -8,9 +8,11 @@
             </div>
         <?php endif; ?>
             <div class="col-md-6">
-                <div class="side-image"><a href="<?= $asset->getImage()?>" target="_blank"><img src="<?= $asset->getImage()?>"></a></div>
+            <div class="side-image" >
+                <a href="<?= $asset->getImage()?>" target="_blank"> 
+                <img src="<?= $asset->getImage()?>"></a></div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 text">
                 <?= $this->wysiwyg("text"); ?>
                 <?php if (!$this->link("link")->isEmpty()) : ?>
                     <br><br>

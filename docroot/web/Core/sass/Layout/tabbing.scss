@@ -386,6 +386,9 @@
         font-size: 28px;
         margin-bottom: 40px;
         color: $blue-dark-color;
+        @include breakpoint(mobile){
+            font-size: 16px;
+        }
     }
     .header-contain{
         font-family: $font_default;

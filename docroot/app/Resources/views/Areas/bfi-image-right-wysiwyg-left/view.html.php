@@ -7,12 +7,9 @@
 <div class="about-us-page hidden-xs">
     <div class="container">
         <div class="row activities-section contact-hi">
-        <?php if (!$this->input("title")->isEmpty()) : ?>
-            <div class="sect-title text-center">
-                <h2><?= $this->input('title');?></h2>
-            </div>
-        <?php endif; ?>
-            <div class="col-md-6">
+            <!-- <div class="sect-title text-center"></div> -->
+            <div class="col-md-6 text">
+            <h2><?= $this->input('title');?></h2>
                 <?= $this->wysiwyg("text"); ?>
                 <?php if(!$this->link("link")->isEmpty()) : ?>
                     <br><br>
@@ -24,7 +21,9 @@
                 <?php endif?>
             </div>
             <div class="col-md-6">
-                <div class="side-image"><a href="<?= $asset->getImage()?>" target="_blank"><img src="<?= $asset->getImage()?>"></a></div>
+                <div class="side-image" >
+                <a href="<?= $asset->getImage()?>" target="_blank"> 
+                <img src="<?= $asset->getImage()?>"></a></div>
             </div>
         </div>
     </div>
@@ -39,10 +38,12 @@
                 <h2><?= $this->input('title');?></h2>
             </div>
             <div class="col-md-6">
-                <div class="side-image"><a href="<?= $asset->getImage()?>" target="_blank"><img src="<?= $asset->getImage()?>"></a></div>
+            <div class="side-image" >
+                <a href="<?= $asset->getImage()?>" target="_blank"> 
+                <img src="<?= $asset->getImage()?>"></a></div>
             </div>
         
-            <div class="col-md-6">
+            <div class="col-md-6 text">
                 
                 <?= $this->wysiwyg("text"); ?>
                 <?php if(!$this->link("link")->isEmpty()) : ?>
