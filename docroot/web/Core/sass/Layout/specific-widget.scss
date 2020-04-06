@@ -344,6 +344,9 @@ select option:disabled {
         h2{
             font-size: 24px;
             font-weight: bold;
+            @include breakpoint(mobile){
+                font-size: 16px;
+            }
         }
     }
     p{
@@ -367,6 +370,9 @@ select option:disabled {
                         color:#2980b9 !important;
                         font-weight: bold;
                         font-size: 46px !important;
+                        @include breakpoint(mobile){
+                            font-size: 24px !important;
+                        }
                     }
                 }
             }
@@ -375,6 +381,9 @@ select option:disabled {
                     strong{
                         color:#2980b9 !important;
                         font-size: 46px !important;
+                        @include breakpoint(mobile){
+                            font-size: 24px !important;
+                        }
                     }
                 }
             }
