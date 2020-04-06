@@ -63,12 +63,6 @@
     @include breakpoint(mobile){
         h2.title-wrapper{
             margin-top: 1.5rem;
-            margin-right: 20%;
-            margin-left: 20%;
-        }
-        .paragraf-title{
-            margin-right: 15%;
-            margin-left: 15%;
         }
     }
 }
@@ -178,10 +172,15 @@ select option:disabled {
 .about-us-page{
     .table-responsive{
         @include breakpoint(mobile){
+           tr:nth-child(1){
+               p{
+                   padding: 0;;
+               }
+           }
             div{
                 margin-top: 30px !important;
                 p{
-                    margin-bottom: 20px;
+                    padding: 10px 0 10px;
                     span{
                         font-size: 12px !important;
                     }
@@ -282,6 +281,8 @@ select option:disabled {
     td{
         @include breakpoint(mobile){
             padding: 0 12px 0;
+            vertical-align: middle;
+            line-height: 1;
         }
         div{
             p{
@@ -339,6 +340,12 @@ select option:disabled {
 }
 
 .pimcore_area_bfi-image-right-wysiwyg-left{
+    .text{
+        h2{
+            font-size: 24px;
+            font-weight: bold;
+        }
+    }
     p{
         font-size: 18px;
         @include breakpoint(mobile){
