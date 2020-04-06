@@ -8,7 +8,7 @@
     <div class="container">
         <div class="row activities-section contact-hi">
             <div class="sect-title text-center"></div>
-            <div class="col-md-6">
+            <div class="col-md-6 text">
             <h2><?= $this->input('title');?></h2>
                 <?= $this->wysiwyg("text"); ?>
                 <?php if(!$this->link("link")->isEmpty()) : ?>
@@ -43,7 +43,7 @@
                 <img src="<?= $asset->getImage()?>"></a></div>
             </div>
         
-            <div class="col-md-6">
+            <div class="col-md-6 text">
                 
                 <?= $this->wysiwyg("text"); ?>
                 <?php if(!$this->link("link")->isEmpty()) : ?>
