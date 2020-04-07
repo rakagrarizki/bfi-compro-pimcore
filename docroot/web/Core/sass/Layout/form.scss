@@ -1028,6 +1028,7 @@
                   width: 20px;
                   height: 10px;
                   margin: -10px 0 0 -7px;
+                  padding: 0 !important;
                 }
 
                 label{
@@ -1253,6 +1254,7 @@
                     width: 25px;
                     top: -5%;
                     left: 35%;
+                    padding: 0 !important;
                 }
             }
 
@@ -1300,11 +1302,11 @@
                 }
 
                 &.jcf-checked span {
-                    height: 13px;
-                    width: 33px;
-                    top: 0%;
-                    left: 22%;
-                    border-color: #565656 !important;
+                    // border-color: #565656 !important;
+                    width: 20px;
+                    height: 10px;
+                    margin: -10px 0 0 -7px;
+                    padding: 0 !important;
                 }
             }
           }
