@@ -402,8 +402,9 @@
             color: $blue-dark-color;
         }
         a{
-            color: $grey-dark-color;
-            text-decoration: underline;
+            // color: $grey-dark-color;
+            color: $blue-dark-color;
+            text-decoration: none;
         }
     }
 }
@@ -509,6 +510,7 @@
                     font-family: $font_default;
                     font-size: 18px;
                     color: #565656;
+                    padding-left: 18px;
                 }
             }
         }
