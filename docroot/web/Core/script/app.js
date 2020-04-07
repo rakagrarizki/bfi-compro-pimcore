@@ -915,12 +915,12 @@ var isAjaxActive = false;
         "Jumlah maksimum file adalah 1MB"
     );
   
-    console.log($.validator.classRuleSettings);
+    // console.log($.validator.classRuleSettings);
   
     function validateFormRequired(elementParam) {
         $(elementParam).validate({
             errorPlacement: function(error, element) {
-                console.log(element);
+                // console.log(element);
                 element
                     .closest(".form-group")
                     .find(".error-wrap")
