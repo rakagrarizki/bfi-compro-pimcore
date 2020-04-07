@@ -6,12 +6,13 @@
 
 <!-- Desktop View -->
 
-<div class="container wysiwyg-list-right hidden-xs">
+<div class="container wysiwyg-list-right responsive-list-card hidden-xs">
     <div class="row">
         <div class="col-lg-4 col-md-4 col-12 desktop-img">
             <a href="<?= $asset->getImage()?>" target="_blank"><img src="<?= $asset->getImage()?>"></a>
         </div>
         <div class="col-lg-8 col-md-8 col-12 desktop-details">
+            <h3 class="main-title"><?= $this->wysiwyg("title"); ?></h3>
             <?= $this->wysiwyg("text"); ?>
         </div>
     </div>
@@ -19,7 +20,10 @@
 
 <!-- Mobile view -->
 
-<div class="container wysiwyg-list-right mobile-view hidden-md hidden-lg hidden-sm hidden-md">
+<div class="container wysiwyg-list-right responsive-list-card mobile-view hidden-md hidden-lg hidden-sm hidden-md">
+    <div class="row">
+      <div class="col-12"><h3 class="main-title"><?= $this->wysiwyg("title"); ?></h3></div>
+    </div>
     <div class="row">
     <div class="col-12 img-responsive img-mobile-view">
             <a href="<?= $asset->getImage()?>" target="_blank"><img src="<?= $asset->getImage()?>"></a>
