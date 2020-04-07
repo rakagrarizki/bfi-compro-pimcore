@@ -63,6 +63,8 @@ if($tab != null) {
                                     <ul>
                                         <?php
                                         $reports->addConditionParam("YEAR(FROM_UNIXTIME(DATE)) = ? ", (int)$y,"AND");
+                                        $reports->setOrderKey("Date");
+                                        $reports->setOrder('desc');
                                         $reports->load();
                                         $total = count($reports);
                                         foreach($reports as $i => $data):?>

@@ -11,7 +11,9 @@
                 <img src="<?= $asset->getImage()?>"></a></div>
             </div>
             <div class="col-md-6 text">
+                <?php if (!$this->input("title")->isEmpty()) : ?>
                 <h3 class="activities-content-title"><?= $this->input('title');?></h3>
+                <?php endif; ?>
                 <?= $this->wysiwyg("text"); ?>
                 <?php if (!$this->link("link")->isEmpty()) : ?>
                     <br><br>
