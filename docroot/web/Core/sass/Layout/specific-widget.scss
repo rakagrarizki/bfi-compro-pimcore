@@ -116,15 +116,15 @@
         font-weight: bold;
         padding:0 15px;
         font-weight: bold;
-        h1{
-            position: absolute;
-            top: 0.2em;
-            right: 50px;
-            left: 50px;
-            text-align: center;
-            margin:30px 0;
-            font-size: 21px;
-        }
+        // h1{
+        //     position: absolute;
+        //     top: 0.2em;
+        //     right: 50px;
+        //     left: 50px;
+        //     text-align: center;
+        //     margin:30px 0;
+        //     font-size: 21px;
+        // }
     }
     ol {
         font-size: 18px;
@@ -496,6 +496,10 @@ select option:disabled {
 .pimcore_area_bfi-image-left-wysiwyg-right{
     .activities-section{
         margin-top: -15px;
+        h3.activities-content-title {
+          font-size: 24px;
+          font-weight: bold;
+        }
         .col-md-6{
             h4{
             font-size: 28px;
@@ -548,4 +552,16 @@ select option:disabled {
             padding: 0 15px 0;
         }
     }
+}
+
+.pimcore_area_bfi-small-image-left-wysiwyg-right {
+  h3.main-title {
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 40px;
+    margin-bottom: 20px;
+  }
+  .mobile-view .img-mobile-view {
+    margin: 0;
+  }
 }

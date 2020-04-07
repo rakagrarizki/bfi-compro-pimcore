@@ -1,18 +1,19 @@
 <?php $asset = $this->image("image"); ?>
 <div class="about-us-page" id="about-us-page">
     <div class="container">
-        <div class="row activities-section">
-        <?php if (!$this->input("title")->isEmpty()) : ?>
-            <div class="sect-title text-center">
+        <div class="row activities-section" style="margin-top: 50px;">
+            <!-- <div class="sect-title text-center">
                 <h2><?= $this->input('title');?></h2>
-            </div>
-        <?php endif; ?>
+            </div> -->
             <div class="col-md-6">
             <div class="side-image" >
                 <a href="<?= $asset->getImage()?>" target="_blank"> 
                 <img src="<?= $asset->getImage()?>"></a></div>
             </div>
             <div class="col-md-6 text">
+                <?php if (!$this->input("title")->isEmpty()) : ?>
+                <h3 class="activities-content-title"><?= $this->input('title');?></h3>
+                <?php endif; ?>
                 <?= $this->wysiwyg("text"); ?>
                 <?php if (!$this->link("link")->isEmpty()) : ?>
                     <br><br>
