@@ -531,7 +531,7 @@ select option:disabled {
 .pimcore_area_bfi-wysiwyg-left-right{
     .card-group{
         @include breakpoint(mobile){
-            padding: 25px 25px 0;
+            padding: 30px;
         }
         .card-body{
             @include breakpoint(mobile){
