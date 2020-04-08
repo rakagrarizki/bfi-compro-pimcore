@@ -574,12 +574,12 @@ $blogList->setLimit(4);
                                         </div>
                                         <div class="biaya-agunan">
                                             <div class="form-group">
-                                                <input type="checkbox" id="agreement1" class="agreement">
+                                                <input type="checkbox" id="agreement1" name="agreement1" class="form-control formRequired agreement">
                                                 <label for="agreement1" class="label-agreement agreement1"><?= $this->translate('term-condition') ?></label>
                                                 <div class="error-wrap"></div>
                                             </div>
                                             <div class="form-group">
-                                                <input type="checkbox" id="agreement2" class="agreement">
+                                                <input type="checkbox" id="agreement2" name="agreement2" class="form-control formRequired agreement">
                                                 <label for="agreement2" class="label-agreement agreement2"><?= $this->translate('term-condition-2') ?></label>
                                                 <div class="error-wrap"></div>
                                             </div>

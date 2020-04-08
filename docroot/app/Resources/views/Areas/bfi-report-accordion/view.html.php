@@ -63,21 +63,25 @@ if($tab != null) {
                                     <ul>
                                         <?php
                                         $reports->addConditionParam("YEAR(FROM_UNIXTIME(DATE)) = ? ", (int)$y,"AND");
+                                        $reports->setOrderKey("Date");
+                                        $reports->setOrder('desc');
                                         $reports->load();
                                         $total = count($reports);
                                         foreach($reports as $i => $data):?>
-                                        <div class="content-list">
                                             <li>
-                                                <?= $data->getFileName();?>
-                                            </li>
-                                            <div class="download-btn">
-                                                <div class="down-box">
-                                                    <a href="<?= $data->getUrl(); ?>" target="_blank" class="cta cta-down">
-                                                        <span><?=  $this->t("download-document")?></span>
-                                                    </a>
+                                              <div class="content-list">
+                                                <div class="content-list-item">
+                                                  <?= $data->getFileName();?>
                                                 </div>
-                                            </div>
-                                        </div>
+                                                <div class="download-btn">
+                                                    <div class="down-box">
+                                                        <a href="<?= $data->getUrl(); ?>" target="_blank" class="cta cta-down">
+                                                            <span><?=  $this->t("download-document")?></span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                              </div>
+                                            </li>
                                         <?php echo  $i < $total ? "<hr>" : ""?>
                                         <?php endforeach;?>
                                     </ul>
@@ -131,4 +135,3 @@ if($tab != null) {
         </div>
     </div>
 </div>
-

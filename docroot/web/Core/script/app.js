@@ -915,12 +915,12 @@ var isAjaxActive = false;
         "Jumlah maksimum file adalah 1MB"
     );
   
-    console.log($.validator.classRuleSettings);
+    // console.log($.validator.classRuleSettings);
   
     function validateFormRequired(elementParam) {
         $(elementParam).validate({
             errorPlacement: function(error, element) {
-                console.log(element);
+                // console.log(element);
                 element
                     .closest(".form-group")
                     .find(".error-wrap")
@@ -1889,13 +1889,21 @@ var isAjaxActive = false;
     function disableButton(button) {
         $(button).css("background-color", "#dddddd");
         $(button).css("border-color", "#dddddd");
-        $(button).attr("disabled", "disabled");
+        if(button === "#button5") {
+          $(button).addClass("btn-disabled");
+        } else {
+          $(button).prop("disabled", true);
+        }
     }
   
     function enableButton(button) {
         $(button).css("background-color", "#F8991D");
         $(button).css("border-color", "#F8991D");
-        $(button).removeAttr("disabled");
+        if (button === "#button5") {
+          $(button).removeClass("btn-disabled");
+        } else {
+          $(button).removeAttr("disabled");
+        }
     }
     
     function disableNextButton() {
@@ -2573,22 +2581,34 @@ var isAjaxActive = false;
                 scrollToTop();
             });
         });
+
+      // $(document).on("click", ".btn-disabled", function(e){
+      //     e.preventDefault();
+      //     $("#agreement1").valid();
+      //   });
   
         $("#button5").on("click", function(e) {
             e.preventDefault();
-  
-            sendLeads5(function() {
-                showTab6();
-                hideTab5();
-                scrollToTop();
-  
-                $(".input-number:first-child").focus();
-                $(".horizontal-scroll").hide();
-                // $('#showPhone span').html(credits.pemohon.no_handphone);
-                $("#otpPhone").val(credits.pemohon.no_handphone);
-                countDown();
-                requestOtp(credits);
-            });
+          
+          if (!$(this).hasClass("btn-disabled")) {
+              sendLeads5(function() {
+                  showTab6();
+                  hideTab5();
+                  scrollToTop();
+    
+                  $(".input-number:first-child").focus();
+                  $(".horizontal-scroll").hide();
+                  // $('#showPhone span').html(credits.pemohon.no_handphone);
+                  $("#otpPhone").val(credits.pemohon.no_handphone);
+                  countDown();
+                  requestOtp(credits);
+              });
+            } else {
+              $("#agreement1").valid();
+              if($("#agreement2").length > 0){
+                $("#agreement2").valid();
+              }
+            }
         });
   
         $("#button6").on("click", function(e) {

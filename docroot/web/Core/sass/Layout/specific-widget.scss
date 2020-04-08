@@ -116,15 +116,15 @@
         font-weight: bold;
         padding:0 15px;
         font-weight: bold;
-        h1{
-            position: absolute;
-            top: 0.2em;
-            right: 50px;
-            left: 50px;
-            text-align: center;
-            margin:30px 0;
-            font-size: 21px;
-        }
+        // h1{
+        //     position: absolute;
+        //     top: 0.2em;
+        //     right: 50px;
+        //     left: 50px;
+        //     text-align: center;
+        //     margin:30px 0;
+        //     font-size: 21px;
+        // }
     }
     ol {
         font-size: 18px;
@@ -344,6 +344,7 @@ select option:disabled {
         h2{
             font-size: 24px;
             font-weight: bold;
+            margin-bottom: 20px;
             @include breakpoint(mobile){
                 font-size: 16px;
             }
@@ -496,6 +497,10 @@ select option:disabled {
 .pimcore_area_bfi-image-left-wysiwyg-right{
     .activities-section{
         margin-top: -15px;
+        h3.activities-content-title {
+          font-size: 24px;
+          font-weight: bold;
+        }
         .col-md-6{
             h4{
             font-size: 28px;
@@ -505,7 +510,7 @@ select option:disabled {
                 }
             }
             p:nth-child(3){
-                margin-left: 46px;
+                // margin-left: 46px;
                 margin-bottom: 15px;
                 @include breakpoint(mobile){
                     font-size: 14px;
@@ -531,7 +536,7 @@ select option:disabled {
 .pimcore_area_bfi-wysiwyg-left-right{
     .card-group{
         @include breakpoint(mobile){
-            padding: 25px 25px 0;
+            padding: 30px;
         }
         .card-body{
             @include breakpoint(mobile){
@@ -548,4 +553,37 @@ select option:disabled {
             padding: 0 15px 0;
         }
     }
+}
+
+.pimcore_area_bfi-small-image-left-wysiwyg-right {
+  .desktop-details {
+    font-weight: normal;
+    font-size: 18px;
+  }
+  h3.main-title {
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 40px;
+    margin-bottom: 20px;
+  }
+  .mobile-view .img-mobile-view {
+    margin: 0;
+  }
+}
+
+.pimcore_area_bfi-report-accordion {
+  .accordion .accordion__wrap .panel .panel-body {
+    .report-accordion {
+      padding: 50px 80px;
+    }
+    .content-list {
+      .content-list-item {
+        width: calc( 100% - 225px );
+        padding-right: 15px;
+      }
+      .download-btn {
+        width: 225px;
+      }
+    }
+  }
 }
