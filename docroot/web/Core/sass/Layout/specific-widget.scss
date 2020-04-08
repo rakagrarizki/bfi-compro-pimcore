@@ -344,6 +344,7 @@ select option:disabled {
         h2{
             font-size: 24px;
             font-weight: bold;
+            margin-bottom: 20px;
             @include breakpoint(mobile){
                 font-size: 16px;
             }
@@ -509,7 +510,7 @@ select option:disabled {
                 }
             }
             p:nth-child(3){
-                margin-left: 46px;
+                // margin-left: 46px;
                 margin-bottom: 15px;
                 @include breakpoint(mobile){
                     font-size: 14px;
@@ -555,6 +556,10 @@ select option:disabled {
 }
 
 .pimcore_area_bfi-small-image-left-wysiwyg-right {
+  .desktop-details {
+    font-weight: normal;
+    font-size: 18px;
+  }
   h3.main-title {
     font-size: 40px;
     font-weight: bold;
@@ -563,5 +568,22 @@ select option:disabled {
   }
   .mobile-view .img-mobile-view {
     margin: 0;
+  }
+}
+
+.pimcore_area_bfi-report-accordion {
+  .accordion .accordion__wrap .panel .panel-body {
+    .report-accordion {
+      padding: 50px 80px;
+    }
+    .content-list {
+      .content-list-item {
+        width: calc( 100% - 225px );
+        padding-right: 15px;
+      }
+      .download-btn {
+        width: 225px;
+      }
+    }
   }
 }
