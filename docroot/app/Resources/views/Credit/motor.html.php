@@ -585,7 +585,7 @@ $blogList->setLimit(4);
 
                                     <div class="button-area text-center">
                                         <button class="cta cta-primary cta-big cta-see btn-verifikasi buttonnext" id="button6"
-                                                type="button"><?= $this->translate('verifikasi')?></button>
+                                                type="button" style="background-color: rgb(221, 221, 221); border-color: rgb(221, 221, 221);" disabled="disabled"><?= $this->translate('verifikasi')?></button>
                                     </div>
 
                                 </div>
