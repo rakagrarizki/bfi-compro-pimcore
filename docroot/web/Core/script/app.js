@@ -6273,22 +6273,25 @@ function reformatMoney(number) {
         dataType: "json",
         error: function(data) {
             console.log("error" + data);
+            $("#wrongOtp").modal("show");
         },
   
         fail: function(xhr, textStatus, error) {
             console.log("request failed");
+            $("#failedOtp").modal("show");
         },
   
         success: function(dataObj) {
             if (dataObj.success === true) {
-                console.log("berhasil verified otp");
+                // console.log("berhasil verified otp");
                 var token = dataObj.result.data.customer_token;
                 localStorage.setItem("token", token);
-                console.log("token : " + token);
+                // console.log("token : " + token);
                 getCustomer(token);
                 window.location = "/" + language + "/user/dashboard";
             } else {
-                console.log("otp salah, masukkan otp yang valid");
+                // console.log("otp salah, masukkan otp yang valid");
+                $("#wrongOtp").modal("show");
             }
         }
     });
@@ -6738,4 +6741,12 @@ $(document).ready(function() {
       }
     }
   }      
+});
+
+$("input.input-number").on('focusout', function () {
+    if ($(this).val() == "") {
+        $("#button6").css({"backgroundColor": "#dddddd", "color": "white"});
+    }else{
+        $("#button6").removeAttr("disabled").css({"backgroundColor": "#f9991c", "color": "white"});
+    }
 });
