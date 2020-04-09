@@ -6739,3 +6739,11 @@ $(document).ready(function() {
     }
   }      
 });
+
+$("input.input-number").on('focusout', function () {
+    if ($(this).val() == "") {
+        $("#button6").css({"backgroundColor": "#dddddd", "color": "white"});
+    }else{
+        $("#button6").removeAttr("disabled").css({"backgroundColor": "#f9991c", "color": "white"});
+    }
+});

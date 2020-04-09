@@ -361,7 +361,7 @@ $blogList->setLimit(4);
                             <p class="otp-resend"><?= $this->translate('dont-get-otp') ?> <span id="otp-resend" class="countdown"><?= $this->translate('resend')?></span></p>
                         </div>
                         <div class="otp-button margin-top-50">
-                            <button class="cta cta-orange cta-big btn-verifikasi buttonnext" id="otp-verification" type="button"><?= $this->translate('verifikasi') ?></button>
+                            <button class="cta cta-orange cta-big btn-verifikasi buttonnext" id="otp-verification" type="button" style="background-color: rgb(221, 221, 221); border-color: rgb(221, 221, 221);" disabled="disabled"><?= $this->translate('verifikasi') ?></button>
                         </div>
                     </div>
                 </div>
