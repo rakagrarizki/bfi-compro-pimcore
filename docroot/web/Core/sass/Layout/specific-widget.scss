@@ -603,9 +603,34 @@ select option:disabled {
     }
   }
 }
-
-#wrongOtp-label{
-    color :#E00909;
-    font-size: 12px;
-    padding: 10px 0 0;
+.custom-rups{
+    ol,
+    p,
+    table{
+        padding-left: 25px;
+        margin: 10px;
+        @include breakpoint(mobile){
+            padding-left:0;
+            margin: 0;
+        }
+        li{
+            margin: 10px 20px;
+            @include breakpoint(mobile){
+                width: 100%;
+                font-size: 17px;
+            }
+        }
+        span{
+            strong{
+                @include breakpoint(mobile){
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+    ul{
+        li{
+            padding-left: 5px;
+        }
+    }
 }

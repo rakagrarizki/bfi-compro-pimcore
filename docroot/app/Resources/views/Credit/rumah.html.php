@@ -311,8 +311,8 @@ $blogList->setLimit(4);
                                                 <div class="input-group inputform">
                                                     <span class="input-group-addon" id="basic-addon1">Rp</span>
                                                     <input type="text" id="estimasi_harga" class="formatRibuan form-control formRequired c-input-trans" value="100000000">
-                                                    <div class="error-wrap"></div>
                                                 </div>
+                                                <div class="error-wrap"></div>
                                             </div>
                                             <div class="form-group sliderGroup inputsimulasi">
                                                 <label for="jml-biaya"><?= $this->translate('label-data-funding') ?></label>
