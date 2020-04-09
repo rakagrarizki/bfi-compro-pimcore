@@ -51,4 +51,30 @@ $this->headScript()->offsetSetFile(100, '/static/js/Includes/login.js');
     <p id="resend"><?= $this->translate('wait-otp'); ?></p>
     <p><small id="resend-notice"></small></p>
     <button id="btn-verify" class="button-login" onclick="verified('<?= $lang; ?>')" disabled style="opacity: .5;"> <?= $this->translate('verifikasi'); ?></button>
-</section> <?php $this->headScript()->prependFile('/static/js/Includes/login.js'); ?>
+</section> 
+
+<div id="wrongOtp" class="modal modal--failed fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content text-center">
+            <div class="modal-body">
+                <p><?= $this->translate('wrong-otp') ?></p>
+                <button type="button" class="cta cta-orange" data-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="failedOtp" class="modal modal--failed fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content text-center">
+            <div class="modal-body">
+                <p><?= $this->translate('wrong-server') ?></p>
+                <button type="button" class="cta cta-orange" data-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php $this->headScript()->prependFile('/static/js/Includes/login.js'); ?>
