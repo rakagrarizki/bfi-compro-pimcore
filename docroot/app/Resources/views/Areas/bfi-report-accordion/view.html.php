@@ -4,6 +4,8 @@ $tab = $this->document->getProperty("tab");
 $id = $this->document->getId();
 $reports = new \Pimcore\Model\DataObject\Report\Listing();
 $reports->addConditionParam("Category__id = ?",$category,"AND");
+$reports->setOrderKey("Date");
+$reports->setOrder('desc');
 $years = [];
 $p = htmlentities(addslashes($_GET["page".$id]));
 foreach($reports as $year){
@@ -14,7 +16,6 @@ foreach($reports as $year){
     }
 
 }
-
 $key = 0;
 
 $randId = rand(10,100);
@@ -63,8 +64,6 @@ if($tab != null) {
                                     <ul>
                                         <?php
                                         $reports->addConditionParam("YEAR(FROM_UNIXTIME(DATE)) = ? ", (int)$y,"AND");
-                                        $reports->setOrderKey("Date");
-                                        $reports->setOrder('desc');
                                         $reports->load();
                                         $total = count($reports);
                                         foreach($reports as $i => $data):?>
