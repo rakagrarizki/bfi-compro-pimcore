@@ -169,12 +169,18 @@ class UserController extends FrontendController
         if ($data->status == "success") {
             $result = $data->data->customer_token;
             $this->get('session')->set('token', ['key' => $result]);
+
+            return new JsonResponse([
+                'success' => true,
+                'result' => $data
+            ]);
+        } else {
+            return new JsonResponse([
+                'success' => false,
+                'result' => $data
+            ]);
         }
 
-        return new JsonResponse([
-            'success' => true,
-            'result' => $data
-        ]);
     }
 
     public function checkVerifyStatusJsonAction()
