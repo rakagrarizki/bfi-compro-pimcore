@@ -508,12 +508,28 @@ select option:disabled {
             @include breakpoint(mobile){
                 font-size: 16px;
                 }
+                strong {
+                    span{
+                        @include breakpoint(mobile){
+                            font-size: 16px !important;
+                        }
+                    }
+                }
+            }
+             
+            p:nth-child(2){
+                span{
+                    @include breakpoint(mobile){
+                        margin-left: 2px;
+                    }
+                }
             }
             p:nth-child(3){
-                // margin-left: 46px;
+                margin-left: 46px;
                 margin-bottom: 15px;
                 @include breakpoint(mobile){
                     font-size: 14px;
+                    margin-left: 45px;
                 }
             }
             p:nth-child(4){
@@ -586,4 +602,10 @@ select option:disabled {
       }
     }
   }
+}
+
+#wrongOtp-label{
+    color :#E00909;
+    font-size: 12px;
+    padding: 10px 0 0;
 }

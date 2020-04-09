@@ -42,13 +42,42 @@ $this->headScript()->offsetSetFile(100, '/static/js/Includes/login.js');
     <p><?= $this->translate('text-confirmation-otp'); ?></p>
 
     <form action="" id="otp-form">
-        <input type="tel" id="digit-1" maxlength="1" name="digit[]" data-next="digit-2" onkeydown="return isNumberKey(event);"/>
-	    <input type="tel" id="digit-2" maxlength="1" name="digit[]" data-next="digit-3" data-previous="digit-1" disabled onkeydown="return isNumberKey(event);"/>
-        <input type="tel" id="digit-3" maxlength="1" name="digit[]" data-next="digit-4" data-previous="digit-2" disabled onkeydown="return isNumberKey(event);"/>
-        <input type="tel" id="digit-4" maxlength="1" name="digit[]" data-next="digit-5" data-previous="digit-3" disabled onkeydown="return isNumberKey(event);"/>
+        <input type="tel" class="input-number" id="digit-1" maxlength="1" name="digit[]" data-next="digit-2" onkeydown="return isNumberKey(event);"/>
+	    <input type="tel" class="input-number" id="digit-2" maxlength="1" name="digit[]" data-next="digit-3" data-previous="digit-1" disabled onkeydown="return isNumberKey(event);"/>
+        <input type="tel" class="input-number" id="digit-3" maxlength="1" name="digit[]" data-next="digit-4" data-previous="digit-2" disabled onkeydown="return isNumberKey(event);"/>
+        <input type="tel" class="input-number"  id="digit-4" maxlength="1" name="digit[]" data-next="digit-5" data-previous="digit-3" disabled onkeydown="return isNumberKey(event);"/>
     </form>
 
     <p id="resend"><?= $this->translate('wait-otp'); ?></p>
     <p><small id="resend-notice"></small></p>
-    <button id="btn-verify" class="button-login" onclick="verified('<?= $lang; ?>')" disabled style="opacity: .5;"> <?= $this->translate('verifikasi'); ?></button>
-</section> <?php $this->headScript()->prependFile('/static/js/Includes/login.js'); ?>
+    
+    <button id="btn-verify" class="button-login" onclick="verified('<?= $lang; ?>')" style="background-color: rgb(221, 221, 221); border-color: rgb(221, 221, 221);" disabled="disabled">  <?= $this->translate('verifikasi'); ?></button>
+
+</section> 
+
+<div id="wrongOtp" class="modal modal--failed fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content text-center">
+            <div class="modal-body">
+                <p><?= $this->translate('wrong-otp') ?></p>
+                <button type="button" class="cta cta-orange" data-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="failedOtp" class="modal modal--failed fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content text-center">
+            <div class="modal-body">
+                <p><?= $this->translate('wrong-server') ?></p>
+                <button type="button" class="cta cta-orange" data-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php $this->headScript()->prependFile('/static/js/Includes/login.js'); ?>
+

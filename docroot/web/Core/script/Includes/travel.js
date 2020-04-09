@@ -495,4 +495,12 @@ var isValidOtp = false;
 
   setTimeout(function () { reInitJcf(); }, 2000); 
 
+  $("input.input-number").on('focusout', function () {
+    if ($(this).val() == "") {
+        $("#otp-verification").css({"backgroundColor": "#dddddd", "color": "white"});
+    }else{
+        $("#otp-verification").removeAttr("disabled").css({"backgroundColor": "#f9991c", "color": "white"});
+    }
+});
+
 })(jQuery);

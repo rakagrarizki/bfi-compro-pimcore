@@ -158,8 +158,9 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                             <p class="otp-wait"><?= $this->translate('wait-otp') ?> <span id="otp-counter" class="countdown"></span> </p>
                             <p class="otp-resend"><?= $this->translate('dont-get-otp') ?> <span id="otp-resend" class="countdown">Resend</span></p>
                         </div>
+                        
                         <div class="otp-button margin-top-50">
-                            <button class="cta cta-orange cta-big cta-see btn-verifikasi buttonnext" id="agentOtp-verification" disabled type="button"><?= $this->translate('verifikasi') ?></button>
+                            <button class="cta cta-orange cta-big cta-see btn-verifikasi buttonnext" id="agentOtp-verification" type="button" style="background-color: rgb(221, 221, 221); border-color: rgb(221, 221, 221);" disabled="disabled"><?= $this->translate('verifikasi') ?></button>
                         </div>
                     </div>
                 </div>
@@ -412,9 +413,9 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
 
                     <div class="biaya-agunan">
                         <div class="form-group">
-                            <div class="checkbox-group formRequired">
+                            <div class="checkbox-group">
                                 <div class="checkbox-inside full">
-                                    <input type="checkbox" id="agreement1" name="agreement1" class="agreement">
+                                    <input type="checkbox" id="agreement1" name="agreement1" class="form-control formRequired agreement">
                                     <label for="agreement1" class="label-agreement"><?= $this->translate('term-condition') ?></label>
                                 </div>
                             </div>
