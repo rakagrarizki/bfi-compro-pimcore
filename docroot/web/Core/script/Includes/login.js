@@ -87,6 +87,15 @@ $(document).ready(function(){
             window.location="/"+lang+"/user/dashboard";
         }
     }
+
+    $("input.input-number").on('focusout', function () {
+        if ($(this).val() == "") {
+            $("#btn-verify").css({"backgroundColor": "#dddddd", "color": "white"});
+        }else{
+            $("#btn-verify").removeAttr("disabled").css({"backgroundColor": "#f9991c", "color": "white"});
+        }
+    });
+    
   
 });
 

@@ -20,7 +20,7 @@ $this->extend('layout.html.php');
                 <div class="error-wrap"></div>
             </div>
         </div>
-        <button id="btn-verify" type="button" class="button-login"  style="background-color: rgb(221, 221, 221); border-color: rgb(221, 221, 221);" disabled="disabled"><?= $this->translate('send-email') ?></button>
+        <button id="btn-verify" type="button" class="button-login" disabled="disabled"><?= $this->translate('send-email') ?></button>
     </form>
 </section>
 
