@@ -629,6 +629,12 @@ select option:disabled {
         }
     }
     ul{
+        padding-left: 52px;
+        list-style-type: square;
+        @include breakpoint(mobile){
+            padding-left: 15px;
+            list-style-type: square;
+        }
         li{
             padding-left: 5px;
         }
