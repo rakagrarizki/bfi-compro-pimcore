@@ -32,6 +32,7 @@ function postOTP(url, data) {
     },
     fail: function (xhr, textStatus, error) {
       // retryAjax(this, xhr);
+      $('#failedOtp').modal('show');
     },
     success: function (result) {
       // console.log("RESULT", result);
@@ -39,6 +40,7 @@ function postOTP(url, data) {
         _ret = result;
       } else {
         // console.log('error' + result.message);
+        $('#wrongOtp').modal('show');
       }
     }
   })
