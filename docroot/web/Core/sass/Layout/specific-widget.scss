@@ -671,3 +671,45 @@ select option:disabled {
         }
     }
 }
+
+.error-text{
+    .text-404{
+        font-size: 32px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.38;
+        letter-spacing: normal;
+        text-align: center;
+        color: #565656;
+    }
+    .cta-primary {
+        height: 50px;
+        width: 185px;
+        padding: 13px 0px;
+        background-color: #F8991D;
+        border: 1px solid #F8991D;
+        font-weight: bold;
+        font-size: 16px;
+        text-transform: uppercase;
+        &.backtohome {
+            width: auto;
+            height: auto;
+            padding: 13px 10px 13px 50px;
+            &:before{
+                content: "";
+                background-image: url(/static/images/icon/button_home.png);
+                position: absolute;
+                top: 10px;
+                left: 15px;
+                right: auto;
+                height: 25px;
+                width: 25px;
+                -webkit-background-size: 25px 25px;
+                -moz-background-size: 25px;
+                 background-size: 25px;
+            }
+        }
+    }
+}
+
