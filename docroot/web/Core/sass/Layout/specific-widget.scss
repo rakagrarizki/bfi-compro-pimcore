@@ -667,7 +667,7 @@ select option:disabled {
 .info-dividen {
     strong{
         @include breakpoint(mobile){
-            font-size: 12px;
+            font-size: 12px !important;
         }
     }
 }
