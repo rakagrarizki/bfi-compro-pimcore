@@ -15,7 +15,7 @@ $this->extend('layout.html.php');
             <div class="col-md-12 ">
                 <div class="error-text">
                     <div class="img-404">
-                        <img src="/_default_upload_bucket/404.png" class="img-responsive" alt="">
+                        <img src="/static/images/icon/404.png" class="img-responsive" alt="">
                     </div>
                     <div class="text-404">
                     Maaf, Halaman yang Anda cari tidak dapat ditemukan</div>
