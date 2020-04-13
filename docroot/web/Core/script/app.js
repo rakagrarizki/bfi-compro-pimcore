@@ -5120,7 +5120,7 @@ var isAjaxActive = false;
   
                   objCredits.funding = rawMinPrice; 
                   objCredits.installment = rawMinPrice;
-                  objCredits.jangka_waktu = 6;
+                  // objCredits.jangka_waktu = 6;
                 }
   
                 post_val_inputan = rawMinPrice;
@@ -5707,6 +5707,7 @@ var isAjaxActive = false;
                     var tenor = value.tenor;
                     var tenor_text = value.desc;
                     // console.log(tenor_text, tenor)
+                  if (index === 0) { objCredits.jangka_waktu = parseInt(tenor); }
                     $("#jangka_waktu").append(
                         $("<option>", {
                             value: tenor,
