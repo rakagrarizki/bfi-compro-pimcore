@@ -640,3 +640,34 @@ select option:disabled {
         }
     }
 }
+
+.content-list{
+    .content-list-item{
+        @include breakpoint(mobile){
+            width: 100% !important;
+        }
+    }
+}
+
+.down-box{
+    @include breakpoint(mobile){
+        width: 100%;
+        margin-top: 10px;
+        margin-left: -10px;
+    }
+    .cta-down{
+        span{
+            @include breakpoint(mobile){
+                font-size: 10px !important;
+            }
+        }
+    } 
+}
+
+.info-dividen {
+    strong{
+        @include breakpoint(mobile){
+            font-size: 12px;
+        }
+    }
+}
