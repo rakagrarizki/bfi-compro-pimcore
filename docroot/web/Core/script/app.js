@@ -2516,7 +2516,7 @@ var isAjaxActive = false;
                     // $(".inputsimulasi").addClass("hidden");
                 }
             });
-            $("#estimasi_harga").val("20.000.000");
+            $("#estimasi_harga").val("100.000.000");
         }
         // if ($("#estimasi_harga").length == 0) {
         //   $("#estimasi_harga").val("10.000.000");
@@ -5010,6 +5010,7 @@ var isAjaxActive = false;
                     $("#funding").slider({
                         min: rawMinPrice,
                         max: rawMaxPrice,
+                        value: rawMinPrice,
                         step: 100000
                     });
                 } else {
@@ -5086,12 +5087,18 @@ var isAjaxActive = false;
                     newoptionAsuransi(12, raw_select);
   
                     objCredits.installment = rawMinPrice;
-                    objCredits.jangka_waktu = 12;
+                  objCredits.jangka_waktu = 12;
                 } else if ($("#jenis_form").val() == "MOTOR") {
+                  newoptionAsuransi(6, raw_select);
+
+                  objCredits.installment = rawMinPrice;
+                  objCredits.jangka_waktu = 6;
+                } else if ($("#jenis_form").val() == "SURAT BANGUNAN") {
                     newoptionAsuransi(6, raw_select);
   
-                    objCredits.installment = rawMinPrice;
-                    objCredits.jangka_waktu = 6;
+                  objCredits.funding = rawMinPrice; 
+                  objCredits.installment = rawMinPrice;
+                  objCredits.jangka_waktu = 6;
                 }
   
                 post_val_inputan = rawMinPrice;
