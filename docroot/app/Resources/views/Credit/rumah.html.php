@@ -310,7 +310,9 @@ $blogList->setLimit(4);
                                                 <label for="estimasi_harga"><?= $this->translate('label-estimasi-harga') ?></label>
                                                 <div class="input-group inputform">
                                                     <span class="input-group-addon" id="basic-addon1">Rp</span>
-                                                    <input type="text" id="estimasi_harga" class="formatRibuan form-control formRequired c-input-trans" value="100000000">
+                                                    <input type="text" id="estimasi_harga" class="formatRibuan form-control formRequired minValue c-input-trans" 
+                                                    data-minVal="100000000" 
+                                                    value="100000000">
                                                 </div>
                                                 <div class="error-wrap"></div>
                                             </div>
