@@ -734,6 +734,9 @@ select option:disabled {
 
 .pimcore_area_bfi-visi-misi{
     margin-bottom: 50px;
+    @include breakpoint(mobile){
+        margin-bottom: 0;
+    }
 }
 
 .main-title-csr{
