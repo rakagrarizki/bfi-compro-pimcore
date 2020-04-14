@@ -13,7 +13,7 @@
         </div>
         <div class="col-lg-8 col-md-8 col-12 desktop-details">
         <?php if (!$this->input("title")->isEmpty()) : ?>
-            <h3 class="main-title"><?= $this->wysiwyg("title"); ?></h3>
+            <h3 class="main-title"><?= $this->input("title"); ?></h3>
         <?php endif; ?>
             <?= $this->wysiwyg("text"); ?>
         </div>
@@ -25,7 +25,7 @@
 <div class="container wysiwyg-list-right responsive-list-card mobile-view hidden-md hidden-lg hidden-sm hidden-md">
 <?php if (!$this->input("title")->isEmpty()) : ?>
     <div class="row">
-      <div class="col-12"><h3 class="main-title"><?= $this->wysiwyg("title"); ?></h3></div>
+      <div class="col-12"><h3 class="main-title"><?= $this->input("title"); ?></h3></div>
     </div>
 <?php endif; ?>
     <div class="row">
