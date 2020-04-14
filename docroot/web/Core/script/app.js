@@ -6728,7 +6728,7 @@ if ($("#nama_lengkap").length > 0) {
   }
   $('#otp-form').find('input').each(function() {
     $(this).attr('maxlength', 1);
-    $(this).on('keypress', function(e) {
+    $(this).on('keyup', function(e) {
         var parent = $($(this).parent());
         
         if(e.keyCode === 8) {
