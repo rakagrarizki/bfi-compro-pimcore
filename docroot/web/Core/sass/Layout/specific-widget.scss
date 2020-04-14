@@ -116,15 +116,6 @@
         font-weight: bold;
         padding:0 15px;
         font-weight: bold;
-        // h1{
-        //     position: absolute;
-        //     top: 0.2em;
-        //     right: 50px;
-        //     left: 50px;
-        //     text-align: center;
-        //     margin:30px 0;
-        //     font-size: 21px;
-        // }
     }
     ol {
         font-size: 18px;
@@ -468,13 +459,13 @@ select option:disabled {
         letter-spacing: 2px;
         position: relative;
         padding-right: 20px;
-            &:before {
-            content: '\f105';
-            font-family: FontAwesome;
-            position: absolute;
-            right: 0;
-            text-decoration: none;
-        }
+        //     &:before {
+        //     content: '\f105';
+        //     font-family: FontAwesome;
+        //     position: absolute;
+        //     right: 0;
+        //     text-decoration: none;
+        // }
     }
 }
 
@@ -524,14 +515,14 @@ select option:disabled {
                     }
                 }
             }
-            p:nth-child(3){
-                margin-left: 46px;
-                margin-bottom: 15px;
-                @include breakpoint(mobile){
-                    font-size: 14px;
-                    margin-left: 45px;
-                }
-            }
+            // p:nth-child(3){
+            //     margin-left: 46px;
+            //     margin-bottom: 15px;
+            //     @include breakpoint(mobile){
+            //         font-size: 14px;
+            //         margin-left: 45px;
+            //     }
+            // }
             p:nth-child(4){
                 a{
                     @include breakpoint(mobile){
@@ -672,44 +663,75 @@ select option:disabled {
     }
 }
 
-.error-text{
-    .text-404{
-        font-size: 32px;
-        font-weight: bold;
-        font-stretch: normal;
-        font-style: normal;
-        line-height: 1.38;
-        letter-spacing: normal;
-        text-align: center;
-        color: #565656;
+.wrap-404{
+    @include breakpoint (mobile){
+        padding: 0;
     }
-    .cta-primary {
-        height: 50px;
-        width: 185px;
-        padding: 13px 0px;
-        background-color: #F8991D;
-        border: 1px solid #F8991D;
-        font-weight: bold;
-        font-size: 16px;
-        text-transform: uppercase;
-        &.backtohome {
-            width: auto;
+    .error-text{
+        .text-404{
+            font-size: 32px;
+            font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.38;
+            letter-spacing: normal;
+            text-align: center;
+            color: #565656;
+            width: 466px;
+            height: 82px;
+            text-align: center;
+            margin: 0 auto;
+            @include breakpoint (mobile){
+                width: 100%;
+                height: auto;
+                font-size: 25px;
+            }
+        }
+        .img-responsive-404{
+            display: block;
+            max-width: 100%;
             height: auto;
-            padding: 13px 10px 13px 50px;
-            &:before{
-                content: "";
-                background-image: url(/static/images/icon/button_home.png);
-                position: absolute;
-                top: 10px;
-                left: 15px;
-                right: auto;
-                height: 25px;
-                width: 25px;
-                -webkit-background-size: 25px 25px;
-                -moz-background-size: 25px;
-                 background-size: 25px;
+            margin: 31px auto 24px;
+        }
+        .btn-beranda{
+            margin-top: 40px;
+            .cta-primary {
+                height: 50px;
+                width: 185px;
+                padding: 13px 0px;
+                background-color: #F8991D;
+                border: 1px solid #F8991D;
+                text-transform: uppercase;
+                font-size: 14px;
+                font-weight: bold;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: 1.21;
+                letter-spacing: 1.4px;
+                text-align: left;
+                &.backtohome {
+                    width: auto;
+                    height: auto;
+                    padding: 13px 10px 13px 50px;
+                    &:before{
+                        content: "";
+                        background-image: url(/static/images/icon/button_home.png);
+                        position: absolute;
+                        top: 10px;
+                        left: 15px;
+                        right: auto;
+                        height: 25px;
+                        width: 25px;
+                        -webkit-background-size: 25px 25px;
+                        -moz-background-size: 25px;
+                         background-size: 25px;
+                    }
+                }
             }
         }
     }
 }
 
+.pimcore_area_bfi-visi-misi{
+    margin-bottom: 50px;
+}
