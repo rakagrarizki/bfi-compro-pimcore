@@ -734,9 +734,6 @@ select option:disabled {
 
 .pimcore_area_bfi-visi-misi{
     margin-bottom: 50px;
-    @include breakpoint(mobile){
-        margin-bottom: 0;
-    }
 }
 
 .main-title-csr{
@@ -750,6 +747,6 @@ select option:disabled {
     color: #04559F; 
     @include breakpoint(mobile){
         font-size: 21px;
-        margin: 30px 0 30px 0;
+        margin: -30px 0 30px 0;
     }
 }
