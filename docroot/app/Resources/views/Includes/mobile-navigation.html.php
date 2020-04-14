@@ -120,7 +120,7 @@ if($_COOKIE["customer"] != "null") {
                 } else {
                 ?>
                     <li class="<?php echo $page->getActive() ? 'active' : '' ?>">
-                        <a href="<?= $page->getHref() ?>">
+                        <a href="<?= $page->getHref() ?>" target="<?= $page->getTarget() ?>">
                             <?= $page->getLabel() ?>
                         </a>
                     </li>
