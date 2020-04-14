@@ -120,11 +120,13 @@ function otpCustom() {
         data: dataOTP,
         dataType: "json",
         error: function(data) {
-            console.log("error" + data);
+          // console.log("error" + data);
+          $('#wrongOtp').modal('show');
         },
   
         fail: function(xhr, textStatus, error) {
-            console.log("request failed");
+          // console.log("request failed");
+          $('#failedOtp').modal('show');
         },
   
         success: function(dataObj) {
@@ -139,7 +141,8 @@ function otpCustom() {
                 goToStep(1);
                 diabledFieldCustom();
             } else {
-                console.log("otp salah, masukkan otp yang valid");
+              // console.log("otp salah, masukkan otp yang valid");
+              $('#wrongOtp').modal('show');
             }
         }
     });
@@ -188,6 +191,7 @@ function otpCustom() {
       },
       fail: function (xhr, textStatus, error) {
         // retryAjax(this, xhr);
+        $("#failedOtp").modal("show");
       },
       success: function (result) {
         // console.log("RESULT", result);
@@ -195,6 +199,7 @@ function otpCustom() {
           _ret = result;
         } else {
           // console.log('error' + result.message);
+          $('#wrongOtp').modal('show');
         }
       }
     })

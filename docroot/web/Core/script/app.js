@@ -748,11 +748,30 @@ var isAjaxActive = false;
             required: true,
             maxPocket: 20
         },
+
+        minValue: {
+          required: true,
+          minimumValue: true
+        },
   
         submitHandler: function(form) {
             form.submit();
         }
     });
+
+    jQuery.validator.addMethod(
+      "minimumValue",
+      function (value, element, param) {
+        var minVal = parseInt($(element).data("minVal"));
+        var thisval = parseInt(value.replace(/\./g, ""));
+        return minVal <= thisval ? true : false;
+        // return false
+      },
+      function (params, element) {
+        var estValue = $(element).data("minVal");
+        return "Nilai harus diatas " + separatordot(estValue);
+      }
+    );
   
     jQuery.validator.addMethod(
         "minDp",
@@ -2495,6 +2514,7 @@ var isAjaxActive = false;
             //     "10.000.000"
             // );
             $("#estimasi_harga").change(function() {
+              if($(this).valid()) {
                 var _val = $(this).val();
                 _val = parseInt(_val.replace(/[.]/g, ""));
                 isPrice = _val > 0 ? true : false;
@@ -2515,8 +2535,10 @@ var isAjaxActive = false;
                 } else {
                     // $(".inputsimulasi").addClass("hidden");
                 }
+              }
             });
             $("#estimasi_harga").val("100.000.000");
+            $("#estimasi_harga").data("minVal", "100000000");
         }
         // if ($("#estimasi_harga").length == 0) {
         //   $("#estimasi_harga").val("10.000.000");
@@ -5098,7 +5120,7 @@ var isAjaxActive = false;
   
                   objCredits.funding = rawMinPrice; 
                   objCredits.installment = rawMinPrice;
-                  objCredits.jangka_waktu = 6;
+                  // objCredits.jangka_waktu = 6;
                 }
   
                 post_val_inputan = rawMinPrice;
@@ -5685,6 +5707,7 @@ var isAjaxActive = false;
                     var tenor = value.tenor;
                     var tenor_text = value.desc;
                     // console.log(tenor_text, tenor)
+                  if (index === 0) { objCredits.jangka_waktu = parseInt(tenor); }
                     $("#jangka_waktu").append(
                         $("<option>", {
                             value: tenor,
@@ -5776,17 +5799,19 @@ var isAjaxActive = false;
   
     $(document).on("click", "#recalc", function(e) {
         e.preventDefault();
-        $(this).text("HITUNG ULANG");
-        calculatePremi();
-        if ($("#button4rumah").length > 0) {
-            enableButton("#button4rumah");
-        } else {
-            enableButton("#button4");
+        if($("#getCredit").valid()) {
+          $(this).text("HITUNG ULANG");
+          calculatePremi();
+          if ($("#button4rumah").length > 0) {
+              enableButton("#button4rumah");
+          } else {
+              enableButton("#button4");
+          }
+          enableButton(".hidesavebutton");
+          flag_sudahcalc = true;
+          countCalculate += 1;
+          $(".warning-calculate").addClass("hide");
         }
-        enableButton(".hidesavebutton");
-        flag_sudahcalc = true;
-        countCalculate += 1;
-        $(".warning-calculate").addClass("hide");
     });
   
     $(document).on("click", ".countdown--reload", function(e) {
