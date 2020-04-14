@@ -19,11 +19,11 @@ $this->extend('layout.html.php');
                     </div>
                     <div class="text-404">
                     <?= $this->translate('text404') ?>
+                    </div>
                     <div class="button-area text-center btn-beranda">
                         <a href="/id/" class="cta cta-primary cta-big cta-see buttonnext backtohome">
                         <span>  <?= $this->translate('backtohome') ?></span></a>
                     </div>
-                </div>
             </div>
         </div>
     </div>
