@@ -7,6 +7,7 @@
 <!-- Desktop View -->
 
 <div class="container wysiwyg-list-right responsive-list-card hidden-xs">
+    <h3 class="main-title-csr"><?= $this->input("title"); ?></h3>
     <div class="row">
         <div class="col-lg-4 col-md-4 col-12 desktop-img">
             <a href="<?= $asset->getImage()?>" target="_blank"><img src="<?= $asset->getImage()?>"></a>
