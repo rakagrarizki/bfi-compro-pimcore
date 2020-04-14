@@ -13,9 +13,6 @@
             <a href="<?= $asset->getImage()?>" target="_blank"><img src="<?= $asset->getImage()?>"></a>
         </div>
         <div class="col-lg-8 col-md-8 col-12 desktop-details">
-        <!-- <?php if (!$this->input("title")->isEmpty()) : ?>
-            <h3 class="main-title"><?= $this->input("title"); ?></h3>
-        <?php endif; ?> -->
             <?= $this->wysiwyg("text"); ?>
         </div>
     </div>
