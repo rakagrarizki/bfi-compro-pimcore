@@ -595,14 +595,20 @@ select option:disabled {
   }
 }
 .custom-rups{
-    ol,
+    ol{
+        margin-left: 42px;
+        @include breakpoint(mobile){
+            padding-left:0 !important;
+            margin: 0 !important;
+        }
+    }
     p,
     table{
-        padding-left: 25px;
+        padding-left: 0;
         margin: 10px;
         @include breakpoint(mobile){
-            padding-left:0;
-            margin: 0;
+            padding-left:0 !important;
+            margin: 0 !important;
         }
         li{
             margin: 10px 20px;
@@ -620,10 +626,10 @@ select option:disabled {
         }
     }
     ul{
-        padding-left: 52px;
+        padding-left: 74px;
         list-style-type: square;
         @include breakpoint(mobile){
-            padding-left: 15px;
+            padding-left: 35px;
             list-style-type: square;
         }
         li{
