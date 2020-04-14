@@ -1,7 +1,7 @@
 <?php $asset = $this->image("image"); ?>
 <div class="about-us-page" id="about-us-page">
     <div class="container">
-        <div class="row activities-section" style="margin-top: 50px;">
+        <div class="row activities-section">
             <!-- <div class="sect-title text-center">
                 <h2><?= $this->input('title');?></h2>
             </div> -->

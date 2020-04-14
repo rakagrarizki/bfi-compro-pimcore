@@ -9,19 +9,19 @@
 $this->extend('layout.html.php');
 ?>
 
-<<div class="error-content">
+<div class="error-content">
     <div class="container">
         <div class="row">
-            <div class="col-md-12 ">
+            <div class="col-xs-12 wrap-404">
                 <div class="error-text">
                     <div class="img-404">
-                        <img src="/static/images/icon/404.png" class="img-responsive" alt="">
+                        <img src="/static/images/icon/404.png" class="img-responsive-404" alt="">
                     </div>
                     <div class="text-404">
-                    Maaf, Halaman yang Anda cari tidak dapat ditemukan</div>
+                    <?= $this->translate('text404') ?>
                     <div class="button-area text-center btn-beranda">
                         <a href="/id/" class="cta cta-primary cta-big cta-see buttonnext backtohome">
-                        <span>Kembali ke Beranda</span></a>
+                        <span>  <?= $this->translate('backtohome') ?></span></a>
                     </div>
                 </div>
             </div>
