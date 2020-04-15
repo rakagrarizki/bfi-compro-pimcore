@@ -282,6 +282,7 @@ $(document).ready(function(){
         formPhoneNumber: {
             required: true,
             number: true,
+            leadingZero: true,
             maxlength: 13,
             minlength: 9
         },
@@ -307,6 +308,15 @@ $(document).ready(function(){
             form.submit();
         }
     });
+
+    jQuery.validator.addMethod(
+      "leadingZero",
+      function (value, element, param) {
+        var thisVal = $(element).val().toString().slice(0, 1);
+        return thisVal === "0" ? true : false;
+      },
+      "Harus dimulai dengan angka 0"
+    )
  
     $(".formNumber").on("keydown", function (e) {
         if (e.which != 8 && e.which != 0 && e.which != 144 && (e.which < 46 || e.which > 57) && (e.which < 96 || e.which > 105)) {
