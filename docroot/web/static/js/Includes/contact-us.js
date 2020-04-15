@@ -240,6 +240,7 @@ $(document).ready(function(){
         formPhoneNumber: {
             required: true,
             number: true,
+            leadingZero: true,
             maxlength: 13,
             minlength: 9
         },
@@ -261,6 +262,15 @@ $(document).ready(function(){
             form.submit();
         }
     });
+
+    jQuery.validator.addMethod(
+      "leadingZero",
+      function (value, element, param) {
+        var thisVal = $(element).val().toString().slice(0, 1);
+        return thisVal === "0" ? true : false;
+      },
+      "Harus dimulai dengan angka 0"
+    )
     
     jQuery.validator.addMethod("acceptAlphabet", function (value, element, param) {
         //console.log(value.match(new RegExp("." + param + "$")));
