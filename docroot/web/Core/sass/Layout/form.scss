@@ -2540,6 +2540,10 @@ select::-ms-expand {
 .ui-datepicker{
     border-radius: 0;
     width: 400px;
+    @include breakpoint (mobile){
+        width: 100%;
+        left: 0 !important;
+    }
 }
 
 #wrongOtp{
