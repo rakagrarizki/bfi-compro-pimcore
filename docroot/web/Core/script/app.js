@@ -2536,8 +2536,9 @@ var isAjaxActive = false;
             // $(".inputsimulasi .valuemax").text(
             //     "10.000.000"
             // );
-            // $("#estimasi_harga").change(function() {
-            $(document).on('change', '#estimasi_harga', function() {
+            $(document).ready(function(){          
+            $("#estimasi_harga").change(function() {
+            // $(document).on('change', '#estimasi_harga', function() {
               if($(this).valid()) {
                 var _val = $(this).val();
                 _val = parseInt(_val.replace(/[.]/g, ""));
@@ -2560,7 +2561,8 @@ var isAjaxActive = false;
                     // $(".inputsimulasi").addClass("hidden");
                 }
               }
-            });
+            })
+        })
             
             $("#estimasi_harga").val("100.000.000");
             $("#estimasi_harga").data("minVal", "100000000");
