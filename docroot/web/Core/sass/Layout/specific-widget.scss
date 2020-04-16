@@ -765,3 +765,16 @@ select option:disabled {
 .ui-state-active{
     background-color: #F9991C !important;
 }
+
+.tab-get--credit{
+    .cta-primary{
+        @media screen and (max-width: 375px) {
+            padding: 13px 28px 13px 15px;
+        }
+        &.buttonback{
+            @media screen and (max-width: 375px) {
+             padding:13px 20px;
+            }
+        }
+    }
+}
