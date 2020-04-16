@@ -3831,9 +3831,11 @@ var isAjaxActive = false;
             $("#alamat_lengkap_sertificate").css("background-color", "#F4F4F4");
   
             if (
+                $("#jenis_properti").val() == "" ||
                 $("#status_sertificate").val() == "" ||
+                $("#property_condition").val() == "" ||
                 $("#own_sertificate").val() == "" ||
-                $("#kode_pos_sertificate").val() == "" ||
+                $("#kode_pos_sertificate").val() == ""||
                 $(this).val() == null ||
                 $("#alamat_lengkap_sertificate").val() == "" ||
                 $("#provinsi_sertificate").val() == null ||
@@ -4554,7 +4556,7 @@ var isAjaxActive = false;
             $(
                 "#provinsi_sertificate, #kota_sertificate, #kecamatan_sertificate, #kelurahan_sertificate, #kode_pos_sertificate, #alamat_lengkap_sertificate"
             ).prop("disabled", true);
-            enableButton("#button3rumah");
+            // enableButton("#button3rumah");
         } else {
             $("#kota_sertificate").select2({
                 placeholder: $("#kota_sertificate").attr("placeholder"),
