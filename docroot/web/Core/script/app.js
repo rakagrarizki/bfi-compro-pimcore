@@ -2528,41 +2528,30 @@ var isAjaxActive = false;
   
         if ($("#estimasi_harga").length > 0) {
             var isPrice = false;
-            // $(".inputsimulasi").addClass("hidden");
-            // $(".inputsimulasi #ex6SliderVal").val("1.000.000");
-            // $(".inputsimulasi .valuemin").text(
-            //     "1.000.000"
-            // );
-            // $(".inputsimulasi .valuemax").text(
-            //     "10.000.000"
-            // );
-            $(document).ready(function(){          
-            $("#estimasi_harga").change(function() {
-            // $(document).on('change', '#estimasi_harga', function() {
-              if($(this).valid()) {
-                var _val = $(this).val();
-                _val = parseInt(_val.replace(/[.]/g, ""));
-                isPrice = _val > 0 ? true : false;
-  
-                if (isPrice) {
-                    $(".inputsimulasi").removeClass("hidden");
-                    // if (status_edit) {
-                    $("#jangka_waktu").each(function() {
-                        this.selectedIndex = 0;
-                    });
-                    $(".currency[tahun='0']").text("Rp " + 0);
-                    $(".currency[tahun='1']").text("Rp " + 0);
-                    $(".total").text("Rp " + 0);
-                    getpriceminmax(credits);
-                    disableNextButton();
-                    status_edit = false;
-                    // }
-                } else {
-                    // $(".inputsimulasi").addClass("hidden");
-                }
-              }
-            })
-        })
+        $('#estimasi_harga').bind('change blur',function(){
+                 if($(this).valid()) {
+                        var _val = $(this).val();
+                        _val = parseInt(_val.replace(/[.]/g, ""));
+                        isPrice = _val > 0 ? true : false;
+          
+                        if (isPrice) {
+                            $(".inputsimulasi").removeClass("hidden");
+                            // if (status_edit) {
+                            $("#jangka_waktu").each(function() {
+                                this.selectedIndex = 0;
+                            });
+                            $(".currency[tahun='0']").text("Rp " + 0);
+                            $(".currency[tahun='1']").text("Rp " + 0);
+                            $(".total").text("Rp " + 0);
+                            getpriceminmax(credits);
+                            disableNextButton();
+                            status_edit = false;
+                            // }
+                        } else {
+                            // $(".inputsimulasi").addClass("hidden");
+                        }
+                      }
+                    })
             
             $("#estimasi_harga").val("100.000.000");
             $("#estimasi_harga").data("minVal", "100000000");
