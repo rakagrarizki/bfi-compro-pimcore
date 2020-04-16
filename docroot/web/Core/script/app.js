@@ -901,6 +901,19 @@ var isAjaxActive = false;
     );
 
     jQuery.validator.addMethod(
+        "minPrice50jt",
+        function(value, element, param) {
+            var thisval = value.replace(/\./g, "");
+            if (parseInt(thisval) < param) {
+                return false;
+            } else {
+                return true;
+            }
+        },
+        errormin
+    );
+
+    jQuery.validator.addMethod(
         "maxSalary",
         function(value, element, param) {
             var thisval = value.replace(/\./g, "");
@@ -5142,6 +5155,10 @@ var isAjaxActive = false;
                     },
                     formPrice1000: {
                         minPrice1000: 1000000,
+                        required: true
+                    },
+                    formPrice50jt: {
+                        minPrice1000: 50000000,
                         required: true
                     },
                     formMaxSalary: {
