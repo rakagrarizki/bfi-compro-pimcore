@@ -111,7 +111,9 @@
             position: absolute;
             left: 15px;
             transition: all cubic-bezier(0.455, 0.03, 0.515, 0.955) .5s;
-
+            @include breakpoint(mobile){
+                left: 10px;
+            }
         }
 
         &:hover {
