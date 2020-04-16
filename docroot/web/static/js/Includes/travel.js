@@ -21,8 +21,17 @@ function isValidStep() {
   return isValid;
 }
 
+var chkValid = function() {
+  return $('#nama_lengkap').valid()&& 
+      $('#email_pemohon').valid() && 
+      $('#no_handphone').valid() &&
+      $('#upload-ktp-button').valid()
+      ? true
+      : false;
+};
+
 function checkValid() {
-  if (isValidStep()) {
+  if (isValidStep()&&chkValid()) {
     // do something
     nextButton("active");
   } else {

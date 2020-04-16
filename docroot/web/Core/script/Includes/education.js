@@ -23,13 +23,22 @@ function isValidStep() {
 }
 
 function checkValid() {
-  if (isValidStep()) {
+  if (isValidStep()&&chkValid()) {
     // do something
     nextButton("active");
   } else {
     nextButton("inactive");
   }
 }
+
+var chkValid = function() {
+  return $('#nama_lengkap').valid()&& 
+      $('#email_pemohon').valid() && 
+      $('#no_handphone').valid() &&
+      $('#upload-ktp-button').valid()
+      ? true
+      : false;
+};
 
 function nextButton(action) {
   var nextBtn = $(".actions > ul li a[href$='next']").parent();
