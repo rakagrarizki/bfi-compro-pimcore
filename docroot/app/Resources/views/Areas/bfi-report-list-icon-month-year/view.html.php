@@ -9,7 +9,7 @@ $reports->setOrder('desc');
 
 $paginator = new \Zend\Paginator\Paginator($reports);
 $paginator->setCurrentPageNumber($p);
-$paginator->setItemCountPerPage(5);
+$paginator->setItemCountPerPage(8);
 
 
 $t =  $_GET["t"];
