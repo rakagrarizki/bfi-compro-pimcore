@@ -35,9 +35,11 @@ function nextButton(action) {
   var nextBtn = $(".actions > ul li a[href$='next']").parent();
   if (action === "active"){
     nextBtn.removeClass("inactive");
+    nextBtn.attr('disabled', false); 
   } else{
     if (!nextBtn.hasClass("inactive")) {
       nextBtn.addClass("inactive");
+      nextBtn.attr('disabled', true); 
     }
   }
 }
