@@ -2326,7 +2326,6 @@ select::-ms-expand {
       li {
         float: right;
         margin: 0;
-
         &:first-child {
           float: left;
           a:before {
@@ -2394,12 +2393,19 @@ select::-ms-expand {
 
         &.disabled {
           display: none;
+          cursor: not-allowed;
+          pointer-events: none;
+          
           a {
             border-color: #aaa;
+            cursor: not-allowed;
+            pointer-events: none;
           }
         }
 
         &.inactive {
+            cursor: not-allowed;
+            pointer-events: none;
           a {
             &, &:visited, &:active {
               background: rgb(221, 221, 221);
