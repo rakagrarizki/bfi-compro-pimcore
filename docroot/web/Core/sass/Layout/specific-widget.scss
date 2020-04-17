@@ -778,3 +778,25 @@ select option:disabled {
         }
     }
 }
+
+.pimcore_area_bfi-image-left-wysiwyg-right-new{
+    .activities-section{
+        margin-top: 20px;
+        @include breakpoint (mobile){
+            margin-top: -10px;
+        }
+        .text{
+            h4{
+                margin-top: 0;
+            }
+            p:nth-child(4) {
+                a {
+                    span{
+                        margin-left: 12px;
+                    }
+                } 
+            }
+        }
+         
+    }
+}
