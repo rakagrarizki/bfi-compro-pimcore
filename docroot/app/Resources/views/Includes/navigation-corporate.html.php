@@ -15,7 +15,7 @@ use Pimcore\Model\Document\Page;
 $pageCurrent = $this->getParam('page', 1);
 $lang = $this->getLocale();
 ?>
-<meta name="format-detection" content="telephone=no"/>
+
 <nav id="site-header">
     <div class="navbar-fixed-top hidden-xs">
         <div class="header-top">
