@@ -257,8 +257,9 @@
 
         .content-list {
           justify-content: space-between;
-          display: flex;
+          display: inline-flex;
           align-items: center;
+          width: 100%;
 
           @include breakpoint(mobile) {
             display: block;
