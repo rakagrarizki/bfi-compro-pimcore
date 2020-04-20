@@ -800,3 +800,10 @@ select option:disabled {
          
     }
 }
+
+#pekerjaan{
+    &::-webkit-input-placeholder {
+        color: inherit;
+        opacity: .54;
+      }
+}
