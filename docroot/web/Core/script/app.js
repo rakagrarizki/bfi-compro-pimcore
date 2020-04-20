@@ -6810,3 +6810,9 @@ $("input.input-number").on('focusout', function () {
         $("#button6").removeAttr("disabled").css({"backgroundColor": "#f9991c", "color": "white"});
     }
 });
+
+$(document).ready(function () {   
+    $('body').on('change','#pekerjaan', function() {
+         $('.select2-search__field').hide();
+    });
+}); 
