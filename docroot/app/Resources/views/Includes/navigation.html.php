@@ -20,6 +20,7 @@ if($_COOKIE["customer"] != "null") {
     $name = "Dashboard";
 }
 ?>
+
 <nav id="site-header">
     <div class="navbar-fixed-top hidden-xs">
 
