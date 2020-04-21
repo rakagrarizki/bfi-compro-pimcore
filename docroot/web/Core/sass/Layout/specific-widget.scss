@@ -787,11 +787,29 @@ select option:disabled {
         .text{
             h4{
                 margin-top: 0;
+                margin-bottom: 22px;
+                @include breakpoint (mobile){
+                    font-size: 18px;
+                }
+            }
+            h5:nth-child(2){
+                margin-bottom: 0;
+            }
+            h5:nth-child(3){
+                font-size: 18px;
+                font-family: "HelveticaNeue","HelveticaNeueLTStd","sans-serif";
+                letter-spacing: 0.5px;
+                color: #565656;
+                line-height: 1.8;
+                margin-left: 40px;
+                @include breakpoint (mobile){
+                    font-size: 14px;
+                }
             }
             p:nth-child(4) {
                 a {
                     span{
-                        margin-left: 12px;
+                        margin-left: 10px;
                     }
                 } 
             }
