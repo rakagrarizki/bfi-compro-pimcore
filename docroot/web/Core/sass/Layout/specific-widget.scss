@@ -445,7 +445,6 @@ select option:disabled {
     p{
         font-size: 18px;
         color: #565656;
-        margin-top: 25px;
         @include breakpoint(mobile){
             font-size: 14px;
         }
