@@ -1,5 +1,5 @@
 <div>
-    <div id="article" class="article">
+    <div id="article" class="article padding-bottom-5">
         <div class="container">
             <div class="row">
                 <div class="sect-title text-center">
