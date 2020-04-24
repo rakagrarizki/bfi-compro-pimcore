@@ -10,7 +10,6 @@ use Pimcore\Model\Document;
 use Pimcore\Model\Document\Page;
 ?>
 
-
 <?php
 $pageCurrent = $this->getParam('page', 1);
 $lang = $this->getLocale();
@@ -33,11 +32,6 @@ $lang = $this->getLocale();
                                 <?= $this->translate("career"); ?></a>
 
                         </div>
-
-                        <!--<div class="link-log">
-                            <a href="#" class="login"><?/*= $this->translate("login") */ ?></a>
-                            <a href="#" class="register"><?/*= $this->translate("register") */ ?></a>
-                        </div>-->
 
                         <?php echo $this->template("Includes/language.html.php") ?>
 
@@ -62,14 +56,9 @@ $lang = $this->getLocale();
 
                                 $listMenu = Document::getByPath("/" . $this->getLocale() . "/corporate");
                                 $subPage = $this->navigation()->buildNavigation($this->document, $listMenu);
-                                //dump($listMenu);exit;
                                 if ($subPage) {
                                     foreach ($subPage as $page) {
-                                        //$hasChildren = $page->hasChildren();
-
                                         $hasChildren = $page->hasPages();
-
-
                                         if ($hasChildren) {
                                 ?>
                                             <div class="dropdown col-md-3 col-sm-3 dark-back" id="produk">
@@ -119,12 +108,12 @@ $lang = $this->getLocale();
 
                     </div>
                     <div class="col-md-3 col-sm-3 search-button-container">
-                            <?php if ($site == "search") : ?>
-                                <a href="javascript:history.back()"><i class="fa fa-times"></i></a>
-                            <?php else : ?>
-                                <a href="<?= "/" . $lang . "/search" ?>"><i class="fa fa-search"></i></a>
-                            <?php endif; ?>
-                    </div>                  
+                        <?php if ($site == "search") : ?>
+                            <a href="javascript:history.back()"><i class="fa fa-times"></i></a>
+                        <?php else : ?>
+                            <a href="<?= "/" . $lang . "/search" ?>"><i class="fa fa-search"></i></a>
+                        <?php endif; ?>
+                    </div>
                 </div>
             </div>
         </div>

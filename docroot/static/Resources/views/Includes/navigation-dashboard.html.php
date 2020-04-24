@@ -50,7 +50,6 @@ $name = $_COOKIE["customer"]; ?>
 
                                 $listMenu = Document::getByPath("/" . $this->getLocale() . "/user");
                                 $subPage = $this->navigation()->buildNavigation($this->document, $listMenu);
-                                //dump($listMenu);exit;
                                 if ($subPage) {
                                     foreach ($subPage as $page) {
                                         //$hasChildren = $page->hasChildren();

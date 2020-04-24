@@ -24,8 +24,6 @@ class ImportReportCommand extends AbstractCommand
     {
         $this
             ->setName('importreport:command')
-//            ->addArgument('category','InputArgument::REQUIRED', 'Report category id')
-//            ->addArgument('filename','InputArgument::REQUIRED','Csv File name')
             ->setDescription('import report command')
             ->setDefinition(
                 new InputDefinition(array(
@@ -33,7 +31,6 @@ class ImportReportCommand extends AbstractCommand
                     new InputArgument('file', InputArgument::REQUIRED)
                 ))
             );
-
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -43,7 +40,6 @@ class ImportReportCommand extends AbstractCommand
         $category = $input->getArgument('category');
         $reportcategory = DataObject\ReportCategory::getById($category);
         $filename = $input->getArgument('file');
-        //$filename = "report.csv";
 
         if ($parent == null) {
             die("/Report path not found");
@@ -51,32 +47,19 @@ class ImportReportCommand extends AbstractCommand
 
         $file = new \SplFileObject(tmp . "/" . $filename);
 
-//        $report = new DataObject\Report\Listing();
-//        $report->load();
-//        if(count($report) != 0){
-//            $this->dump("Deleting old Data ...");
-//            foreach($report as $data){
-//                $data->delete();
-//            }
-//        }
-
         $this->dump("Uploading Data ...");
         while (!$file->eof() && ($row = $file->fgetcsv(",")) && $row[0] !== null) {
-
-            //list($name, $address, $map) = $row;
             list($url, $d) = $row;
-//            $this->dump($url);
-//            $this->dump($d);
             $guzzleClient = new Client();
             $getAssets = $guzzleClient->request('GET', $url, [
                 'verify' => false,
                 'debug' => true,
             ]);
             $urlname = basename($url);
-            $noExtension = basename($url,".pdf");
+            $noExtension = basename($url, ".pdf");
             $date = Carbon::now()->timestamp;
             $newAsset = new Asset();
-            $newAsset->setFilename($date."-".$urlname);
+            $newAsset->setFilename($date . "-" . $urlname);
             $newAsset->setData($getAssets->getBody()->getContents());
             $newAsset->setParent(Asset::getByPath("/pdf"));
             $newAsset->save();
@@ -92,7 +75,7 @@ class ImportReportCommand extends AbstractCommand
             $r->setKey($key);
             $r->setPublished(true);
             $r->setFileName($noExtension);
-            $r->setDate(Carbon::createFromFormat("Y-m-d",$d));
+            $r->setDate(Carbon::createFromFormat("Y-m-d", $d));
             $r->setCategory($reportcategory);
             $r->setUrl($url);
             $r->setPdf($newAsset);
@@ -105,7 +88,6 @@ class ImportReportCommand extends AbstractCommand
             } catch (\Exception $exception) {
                 $this->writeError("Failed save " . $url . " because " . $exception->getMessage());
             }
-
         }
     }
 }
