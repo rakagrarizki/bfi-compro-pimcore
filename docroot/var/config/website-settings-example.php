@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 return [
     1 => [
@@ -1086,7 +1086,7 @@ return [
         "name" => "HOST",
         "language" => "",
         "type" => "text",
-        "data" => "http://172.16.4.36",
+        "data" => "http://domain.com",
         "siteId" => 0,
         "creationDate" => 0,
         "modificationDate" => 1583905139
