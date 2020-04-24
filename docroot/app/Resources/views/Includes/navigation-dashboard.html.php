@@ -10,11 +10,10 @@ use Pimcore\Model\Document;
 use Pimcore\Model\Document\Page;
 ?>
 
-
 <?php
 $pageCurrent = $this->getParam('page', 1);
 $name = "";
-if($_COOKIE["customer"] != "null") {
+if ($_COOKIE["customer"] != "null") {
     $name = $_COOKIE["customer"];
 } else {
     $name = "Dashboard";
@@ -56,12 +55,8 @@ if($_COOKIE["customer"] != "null") {
 
                                 $listMenu = Document::getByPath("/" . $this->getLocale() . "/user");
                                 $subPage = $this->navigation()->buildNavigation($this->document, $listMenu);
-                                //dump($listMenu);exit;
                                 if ($subPage) {
                                     foreach ($subPage as $page) {
-                                        //$hasChildren = $page->hasChildren();
-
-
                                 ?>
                                         <div class="col-md-3 col-sm-3" id="produk">
                                             <a href="<?= $page->getHref(); ?>" class="<?php echo $page->getActive() ? 'active' : '' ?>"><?= $page->getLabel() ?></a>

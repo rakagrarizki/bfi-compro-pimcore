@@ -61,7 +61,6 @@ $lang = $this->getLocale();
 
                                 $listMenu = Document::getByPath("/" . $this->getLocale() . "/corporate");
                                 $subPage = $this->navigation()->buildNavigation($this->document, $listMenu);
-                                //dump($listMenu);exit;
                                 if ($subPage) {
                                     foreach ($subPage as $page) {
                                         //$hasChildren = $page->hasChildren();

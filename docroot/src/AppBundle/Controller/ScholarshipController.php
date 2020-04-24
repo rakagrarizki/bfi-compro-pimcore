@@ -32,7 +32,6 @@ class ScholarshipController extends FrontendController
                     $scholarship = DataObject\Scholarship::getByPhone($phone, 1);
                     if (!$scholarship) {
                         $scholarship = new DataObject\Scholarship;
-                        // $filename = File::getValidFilename($name);
                         $filename = File::getValidFilename($phone . "-" . $periode);
 
                         $scholarship->setParent(DataObject\AbstractObject::getByPath('/Scholarship')); // we store all objects in /Scholarship
@@ -48,9 +47,7 @@ class ScholarshipController extends FrontendController
                                 $status1 = move_uploaded_file($photoTmp, tmp . $phone . "-" . $periode);
                                 $filePhoto = tmp . $phone . "-" . $periode;
                                 if (!$status1) {
-                                    dump($_FILES);
-                                    dump($status1);
-                                    exit();
+                                    // error save
                                 } else {
                                     $asset1->setData(file_get_contents($filePhoto));
                                     $asset1->setParent(Asset::getByPath("/Scholarship/Ktp"));
@@ -64,9 +61,7 @@ class ScholarshipController extends FrontendController
                                 $status2 = move_uploaded_file($transcriptTmp, tmp . $phone . "-" . $periode);
                                 $fileTranscript = tmp . $phone . "-" . $periode;
                                 if (!$status2) {
-                                    dump($_FILES);
-                                    dump($status2);
-                                    exit();
+                                    // error save
                                 } else {
                                     $asset2->setData(file_get_contents($fileTranscript));
                                     $asset2->setParent(Asset::getByPath("/Scholarship/Transcript"));
@@ -74,7 +69,6 @@ class ScholarshipController extends FrontendController
                                     unlink($fileTranscript);
                                 }
                             }
-
 
                             $scholarship->setName($name);
                             $scholarship->setEmail($email);

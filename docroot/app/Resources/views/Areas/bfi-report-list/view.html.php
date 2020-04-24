@@ -10,24 +10,15 @@ $paginator = new \Zend\Paginator\Paginator($reports);
 $paginator->setCurrentPageNumber($p);
 $paginator->setItemCountPerPage(5);
 
-
 $t =  $_GET["t"];
 
 $s = $this->pimcoreUrl();
 $u = parse_url($s);
 $u = array_shift($u);
-// if(isset($t)){
-//     $url = $u . '?t='.$t.'&page'.$id.'=';
-// }
-//dump($tab);exit;
 $url = $u . '?page' . $id . '=';
 if ($tab != null) {
     $url = $u . '?t=' . $tab . '&page' . $id . '=';
 }
-
-
-
-
 ?>
 
 <div class="container report-list-wrapper" id=<?= $id; ?>>
@@ -80,8 +71,6 @@ if ($tab != null) {
                     ?>
                     <?php foreach ($pages->pagesInRange as $page) : ?>
                         <?php if ($page == $p) : ?>
-                            <?php dump($page);
-                            dump($p); ?>
                             <li class="active"><a href="javascript:void(0)"><?= $page; ?></a></li>
                         <?php else : ?>
                             <?php if ($page == 1 && $p == "") { ?>
@@ -100,8 +89,6 @@ if ($tab != null) {
                     <?php } ?>
                 </ul>
             </nav>
-
-
         <?php endif; ?>
     </div>
 </div>

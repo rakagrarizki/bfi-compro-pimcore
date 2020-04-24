@@ -29,7 +29,6 @@ class ContactController extends FrontendController
 
             if ($name != "" && $email != "" && $message != "") {
                 $contactCorporate = new DataObject\ContactCorporate;
-                // $filename = File::getValidFilename($name);
                 $filename = File::getValidFilename($email . $time);
 
                 $contactCorporate->setParent(DataObject\AbstractObject::getByPath('/Contact/Corporate')); // we store all objects in /Contact/Corporate
@@ -50,7 +49,6 @@ class ContactController extends FrontendController
                 $msg_error = $this->get("translator")->trans("contact-error");
             }
         }
-        // $this->view->url = "/". $lang . "/corporate/hubungan-investor/berita-informasi";
         $this->view->success = $success;
         $this->view->msg_error = $msg_error;
     }
@@ -59,7 +57,6 @@ class ContactController extends FrontendController
     {
         $success = false;
         $msg_error = false;
-        $lang = $request->getLocale();
 
         if ($request->isMethod('POST')) {
             $time = time();
@@ -87,9 +84,7 @@ class ContactController extends FrontendController
                         $status = move_uploaded_file($documentTmp, tmp . $email . "-" . $document);
                         $fileDocument = tmp . $email . "-" . $document;
                         if (!$status) {
-                            dump($_FILES);
-                            dump($status);
-                            exit();
+                            // error save
                         } else {
                             $asset->setData(file_get_contents($fileDocument));
                             $asset->setParent(Asset::getByPath("/Contact/Document"));
@@ -120,7 +115,6 @@ class ContactController extends FrontendController
                 $msg_error = $this->get("translator")->trans("contact-error");
             }
         }
-        // $this->view->url = "/". $lang . "/blog";
         $this->view->success = $success;
         $this->view->msg_error = $msg_error;
     }

@@ -34,12 +34,6 @@ class SearchController extends FrontendController
         $queryString = htmlentities($request->get("q"));
         $page = htmlentities($request->get("page",1));
         $lang = $request->getLocale();
-        //$lang = htmlentities($request->get("lang"));
-
-
-        //$cse = WebsiteSetting::getByName("cse")->getData();
-
-
       /*  if (!empty($queryString)) {
             $page = (int)$request->get('page', 1);
             $perPage = 10;
@@ -54,28 +48,14 @@ class SearchController extends FrontendController
             $this->view->paginator   = $paginator;
             $this->view->result      = $result;
         }*/
-
         if(!empty($queryString)){
             $document = $this->searchDocument("document",$lang, $queryString, $page);
-            //$object = $this->searchObject("document",$lang, $queryString,$page);
-
             $this->view->queryString = $queryString;
             $this->view->page = $page;
             $this->view->totalResult = $document['totalItem'];
             $this->view->totalPage = $document["totalPage"];
-            //dump($document);exit;
             $this->view->paginator = $document;
-
-//            $paginator = new Paginator($document);
-//            $paginator->setCurrentPageNumber($page);
-//            $paginator->setItemCountPerPage(3);
-//            $this->view->paginator = $paginator;
-            //dump($document);exit;
         }
-
-//        $this->view->blog = $blog;
-//        $this->view->news = $news;
-
     }
 
     public function searchDocument($index,$lang, $query, $page){
@@ -118,28 +98,7 @@ class SearchController extends FrontendController
 
         $resultRaw = $client->search($params);
         $results = $resultRaw['hits']['hits'];
-//        $adapter = new Callback(
-//            function ($offset, $itemsPerPage) use ($resultRaw){
-//                $return = [];
-//                foreach ($results as $hit){
-//                    $return[] = new Hal\Entity($hit["_source"]);
-//                }
-//                return $return;
-//            },
-//            function () use ($resultRaw){
-//                return $return["hits"]["total"];
-//            }
-//        );
-//        $paginator = new Paginator($adapter);
-//        $paginator->setItemCountPerPage($itemsPerPage);
-//        $paginator->setCurrentPageNumber($page);
-
-//        $hal = new Hal\Collection();
-//        $hal->setCollectionName("listing");
-
-
         $pagination['items'] = $results;
-
         $pagination['totalPage'] = (integer)ceil($resultRaw['hits']['total'] / $itemsPerPage);
         $pagination['totalItem'] = $resultRaw['hits']['total'];
         return $pagination;

@@ -51,10 +51,6 @@ class ServiceController extends FrontendController
             $emailSuccess = 'Sukses';
             $emailFailed = 'Gagal Mendaftarkan email newslettter';
         }
-        //        $translation = $translator->trans("email",[],'',$lang);
-
-        //        $request->setLocale($lang);
-        //        dump($this->get("translator")->trans("email-had-been-registered"));exit;
         $sendAPI = new SendApi();
 
         try {

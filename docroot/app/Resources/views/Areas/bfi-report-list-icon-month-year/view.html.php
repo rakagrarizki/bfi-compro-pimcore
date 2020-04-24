@@ -17,10 +17,6 @@ $t =  $_GET["t"];
 $s = $this->pimcoreUrl();
 $u = parse_url($s);
 $u = array_shift($u);
-// if(isset($t)){
-//     $url = $u . '?t='.$t.'&page'.$id.'=';
-// }
-//dump($tab);exit;
 $url = $u . '?page' . $id . '=';
 if ($tab != null) {
     $url = $u . '?t=' . $tab . '&page' . $id . '=';

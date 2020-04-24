@@ -51,7 +51,6 @@ if($_COOKIE["customer"] != "null") {
                                 <a href="/<?= $this->getLocale() ?>/user/dashboard" class="full_name"><?= $name?></a> | <a href="#" class="logout" onclick="return logout('<?= $this->getLocale() ?>');"><?= $this->translate("logout") ?></a>
                             </div>
                             <?php }?>
-                            <!-- <a href="#" class="register"><?/*= $this->translate("register") */ ?></a> -->
                             <?php echo $this->template("Includes/language.html.php") ?>
                         </div>
                     </div>
@@ -76,7 +75,6 @@ if($_COOKIE["customer"] != "null") {
 
                                 $listMenu = Document::getByPath("/" . $this->getLocale() . "/");
                                 $subPage = $this->navigation()->buildNavigation($this->document, $listMenu);
-                                //dump($subPage);exit;
 
                                 if ($subPage) {
                                     foreach ($subPage as $page) {

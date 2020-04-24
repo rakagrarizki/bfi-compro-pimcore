@@ -14,24 +14,23 @@ class AwardsController extends FrontendController
 {
     public function defaultAction(Request $request)
     {
-        $page = $request->get("page",1);
+        $page = $request->get("page", 1);
         $managements = "";
         $awards = new Penghargaan\Listing();
         $awards->setOrderKey("Year");
         $awards->setOrder("desc");
         $awards->load();
         $paginator = new \Zend\Paginator\Paginator($awards);
-        $paginator->setCurrentPageNumber( $page );
+        $paginator->setCurrentPageNumber($page);
         $paginator->setItemCountPerPage(5);
         $this->view->paginator = $paginator;
-
     }
 
-    public function detailAction(Request $request){
+    public function detailAction(Request $request)
+    {
         $year = htmlentities(addslashes($request->get("year")));
-        //dump($id);exit;
         $data = Penghargaan::getByYear($year, 1);
 
-       $this->view->data = $data;
+        $this->view->data = $data;
     }
 }
