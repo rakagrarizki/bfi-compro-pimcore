@@ -501,7 +501,7 @@ function contractStatusList(lang, token) {
                 }
                 $.each(data, function( index, value ) {
                     var options = { year: 'numeric', month: 'long', day: 'numeric' };
-                    var date = new Date(data[0].tanggal_jatuh_tempo);
+                    var date = new Date(value.tanggal_jatuh_tempo);
                     var now = new Date();
                     now.setHours(0,0,0,0);
 
