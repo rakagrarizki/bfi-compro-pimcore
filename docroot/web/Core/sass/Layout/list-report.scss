@@ -38,16 +38,16 @@
         -webkit-box-align: center;
         align-items: center;
         -webkit-box-pack: justify;
+            .title{
+                font-weight: 900;
+                color: #04559F;
+                margin: 0;
+                text-align: left;
 
-        .title{
-            font-weight: 900;
-            color: #04559F;
-            margin: 0;
-            text-align: left;
-
-            @include breakpoint(mobile) {
-                font-size: 16px;
-                width: 150px;
+                @include breakpoint(mobile) {
+                    font-size: 16px;
+                    width: 150px;
+                }
             }
         }
     }
@@ -107,7 +107,6 @@
                     
                     @include breakpoint(mobile) {
                         visibility: hidden;
-                        }
                     }
                 }
             }
