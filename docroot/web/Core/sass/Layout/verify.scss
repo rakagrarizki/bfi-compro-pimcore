@@ -854,6 +854,7 @@
                 }
             
                 .status {
+                    display: none;
                     margin: auto 0px;
 
                     @include breakpoint(mobile) {
@@ -930,6 +931,7 @@
                 }
 
                 .warning {
+                    display: none;
                     font-size : 10px;
                     color : #E00909;
                     font-style : italic;
