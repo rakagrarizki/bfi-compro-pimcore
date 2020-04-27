@@ -931,13 +931,13 @@
                 }
 
                 .warning {
-                    display: none;
+                    display: none !important;
                     font-size : 10px;
                     color : #E00909;
                     font-style : italic;
                     padding : 5px 0px;
                     position : relative;
-                    display: flex;
+                    // display: flex;
                     margin-bottom: 5px;
 
                     .circle{
