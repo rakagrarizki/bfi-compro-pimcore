@@ -486,7 +486,7 @@ var isValidOtp = false;
             }
              
            } else {
-              console.log("currentIndex false");
+              // console.log("currentIndex false");
            }
         }
       form.validate().settings.ignore = ":disabled,:hidden";

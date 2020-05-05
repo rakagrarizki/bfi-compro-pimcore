@@ -80,7 +80,7 @@ $(document).ready(function(){
     function validateFormRequired(elementParam) {
         $(elementParam).validate({
             errorPlacement: function(error, element) {
-                console.log(element);
+                // console.log(element);
                 element
                     .closest(".input-login")
                     .find(".error-wrap")

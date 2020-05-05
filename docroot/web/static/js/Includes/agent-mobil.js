@@ -224,7 +224,7 @@ function initSummary() {
 
   var areMember = $('input[name="are_member"]:checked');
   var haveSmartphone = $('input[name="haveSmartphone"]:checked');
-  console.log("MEMBER", areMember)
+  // console.log("MEMBER", areMember)
   $("#showAre_member").text(areMember[0].labels[0].innerText);
   $("#showAreCode").text((areMember.val() === "1" ? $("#areCode").val() : "-"));
   $("#showHaveSmartphone").text(haveSmartphone[0].labels[0].innerText);
@@ -247,7 +247,7 @@ function initSummary() {
   var workingHour = $('input[name="waktu-kerja"]:checked')[0].labels[0].innerText;
   $("#showChannel").empty();
   $.each($('input[name="channel"]:checked'), function (idx, item) {
-    console.log("CHOOSE", $(this));
+    // console.log("CHOOSE", $(this));
     $("#showChannel").append("<li>" + $(this)[0].labels[0].innerText + "</li>");
   });
 
@@ -573,7 +573,7 @@ form.steps({
     // $(".wizard .steps, .wizard .actions").hide();
     // alert("Submitted!");
     window.location.href = "/" + lang + "/agent/success";
-    console.log("finish");
+    // console.log("finish");
   }
 });
 
@@ -719,8 +719,8 @@ var isValidOtp = false;
   function validateFormRequired(elementParam) {
     $(elementParam).validate({
         errorPlacement: function (error, element) {
-        console.log(element)
-        console.log(error)
+        // console.log(element)
+        // console.log(error)
         element.closest('.form-group').find('.error-wrap').html(error);
         }
     });

@@ -1,7 +1,7 @@
 var idnext = 1;
 var idprev = 0;
 var idclick = 'perkembangan-perusahaan';
-console.log('tabbing js');
+// console.log('tabbing js');
 
 function scrollPosition(id) {
     $("#outer-choice").scrollLeft($("#div" + id).position().left + document.getElementById('outer-choice').scrollLeft)
@@ -21,7 +21,7 @@ function setPreviewId(prev, next) {
     } else {
         $('#prevButton').hide();
     }
-    console.log('setpriview');
+    // console.log('setpriview');
 }
 
 function next() {
@@ -48,7 +48,7 @@ function getDetail(id, lang) {
     document.getElementById('profileBio').innerHTML = JSON.parse(xmlHttp.responseText).data.Biodata;
     document.getElementById('profileHistory').innerHTML = JSON.parse(xmlHttp.responseText).data.RiwayatKerja;
     document.getElementById('profileEducation').innerHTML = JSON.parse(xmlHttp.responseText).data.RiwayatPekerjaan;
-    console.log(JSON.parse(xmlHttp.responseText).data);
+    // console.log(JSON.parse(xmlHttp.responseText).data);
     return xmlHttp.responseText;
 }
 

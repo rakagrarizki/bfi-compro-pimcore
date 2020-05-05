@@ -85,11 +85,11 @@ $(document).ready(function() {
         url: "/simulation/get-list-product-category",
         dataType: "json",
         error: function(data) {
-            console.log("error" + data);
+            // console.log("error" + data);
         },
   
         fail: function(xhr, textStatus, error) {
-            console.log("request failed");
+            // console.log("request failed");
         },
   
         success: function(dataObj) {
@@ -143,11 +143,11 @@ $(document).ready(function() {
         data: params_getCategory,
         dataType: "json",
         error: function(data) {
-            console.log("[GET product]error" + data);
+            // console.log("[GET product]error" + data);
         },
   
         fail: function(xhr, textStatus, error) {
-            console.log("request failed");
+            // console.log("request failed");
         },
   
         success: function(dataObj) {
@@ -248,11 +248,11 @@ $(document).ready(function() {
         headers: { sessionId: token },
   
         error: function(data) {
-            console.log("error" + data);
+            // console.log("error" + data);
         },
   
         fail: function(xhr, textStatus, error) {
-            console.log("request failed");
+            // console.log("request failed");
         },
         success: function(dataObj) {
             if (dataObj.success === true) {
