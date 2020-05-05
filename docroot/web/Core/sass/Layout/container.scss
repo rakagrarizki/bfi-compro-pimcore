@@ -2,12 +2,19 @@
     margin-top: 130px;
     min-height: 575px;
 
-    &.active {
+    // &.active {
         
-    }
+    // }
 
     @include breakpoint (mobile) {
         margin-top: 95px;
+    }
+
+    .container{
+        .container{
+            padding: 0;
+            width: 100% !important;
+        }
     }
 }
 a {
@@ -24,7 +31,7 @@ a {
     background-color: #f1f1f1;
     padding: 24px 0 30px;
     position:relative;
-
+    margin-bottom: -5em;
     &:before{
         position: absolute;
         content: "";
@@ -36,7 +43,7 @@ a {
     }
 
     h2 {
-        font-family: 'HelveticaNeue';
+        font-family: $font_default;
         font-weight: 600;
         color:white;
         display: flex;
@@ -45,7 +52,7 @@ a {
         position:relative;
         font-size:36px;
         @include breakpoint(mobile){
-            font-size: 1.4em;
+            font-size: 20px;
             letter-spacing: 1px;
             flex-direction: column;
         }
@@ -58,16 +65,19 @@ a {
         a {
             margin-left: 40px;
             // margin-top:15px;
-            font-family: 'HelveticaNeue';
+            font-family: $font_default;
             font-weight: normal;
             background-color:transparent;
             border:1px solid white;
             @include breakpoint(mobile){
-                display: block;
-                font-size: 14px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 11px;
                 margin: 0;
-                width: 60%;
-                padding: 13px 15px;
+                padding: 0;
+                height: 35px;
+                width: 150px;
                 &:before{
                     right: 15px;
                 }
@@ -88,9 +98,9 @@ a {
 }
 
 .title-wrapper {
-    font-family: 'HelveticaNeue';
-    font-weight: 600;
-    font-size: 37px;
+    font-family: $font_default;
+    font-weight: bold;
+    font-size: 40px;
     color:#04559F;
     margin-top:60px;
     padding:0 8%;
@@ -100,17 +110,23 @@ a {
     }
 
     @include breakpoint(mobile){
-        font-size: 1.8em;
+        // font-size: 1.8em;
+        font-size: 20px;
     }
 
     @include breakpoint(tablet){
-        font-size: 1.8em;
+        // font-size: 1.8em;
+        font-size: 20px;
     }
 }
 .paragraf-title {
-    font-size: 1.45em;
-    font-family: 'HelveticaNeue';
+    font-size: 20px;
+    font-family: $font_default;
     color:#565656;
+
+    .t-p{
+      padding-left: 10px!important;
+    }
     @include breakpoint(mobile){
         font-size: 1em;
     }
@@ -152,11 +168,48 @@ a {
     margin-bottom:50px;
     margin-top:20px;
 
+    p{
+        color:#565656;
+    }
+
     span{
         display:block;
     }
 
     strong{
         color:#04559F;
+    }
+}
+
+@media (min-width: 1200px){
+    .container {
+        width: 970px!important;
+    }
+}
+#site-container {
+    .backtoTop {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    overflow: hidden;
+    z-index: 999;
+    position: fixed;
+    bottom: 12%;
+    right: 4%;
+    border-color: #F8991D;
+    background-color: #F8991D;
+    border-radius: 0;
+    color: #ffffff;
+    text-align: center;
+    font-size: 30px;
+    display: none;
+        .icon-back-to-top:before {
+            content: "";
+            background: url(../images/icon/backtotop.png) no-repeat;
+            color: #04559F;
+            height: 25px;
+            width: 25px;
+            font-size: 40px;
+        }
     }
 }

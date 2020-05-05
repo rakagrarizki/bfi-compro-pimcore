@@ -1,4 +1,4 @@
-<?php
+`<?php
 /**
  * @var \Pimcore\Templating\PhpEngine $this
  * @var \Pimcore\Templating\PhpEngine $view
@@ -6,6 +6,12 @@
  */
 
 $this->extend('layout-credit.html.php');
+// echo $this->headScript()->prependFile('/static/js/Includes/homepage1.js');
+
+$blogList = new Pimcore\Model\DataObject\BlogArticle\Listing();
+$blogList->setOrderKey("Date");
+$blogList->setOrder("desc");
+$blogList->setLimit(4);
 ?>
 <div id="myModal">
     <div class="form-dialog">
@@ -58,10 +64,10 @@ $this->extend('layout-credit.html.php');
                         <form action="#" id="getCredit" method="POST" class="form-get--credit" role="form">
                             <input type="hidden" id="jenis_form" name="jenis_form" value="MOTOR">
                             <div class="tab-content">
-                                <div id="menu1" class="tab-pane fade in active form-group">
+                                <div id="menu1" class="tab-pane fade in active">
                                     <div class="form-body--credit">
                                         <div class="text-head">
-                                            <h2 class="text-center"><?= $this->translate('data-name')?></h2>
+                                            <h2 class="text-center"><?= $this->translate('data-name'), $this->translate('data-name-motor')?></h2>
                                             <h2 class="text-center-edit"><?= $this->translate('change-data-name')?></h2>
                                             <p class="text-center"><?= $this->translate('input-data-name')?></p>
                                         </div>
@@ -79,9 +85,10 @@ $this->extend('layout-credit.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label for="no_handphone"><?= $this->translate('form-hp')?></label>
-                                            <input type="text" class="form-control formPhoneNumber" name="no_handphone" id="no_handphone" maxlength="13"
+                                            <input type="tel" pattern="\d*" class="form-control formPhoneNumber" name="no_handphone" id="no_handphone" maxlength="13"
                                                    placeholder="<?= $this->translate('placeholder-hp')?>">
                                             <div class="error-wrap"></div>
+                                            <div class="label-cekLogin hide"><?= $this->translate('text-cekLogin') ?><a href="#" class="logout" onclick="return logout('id');"><?= $this->translate('status-login') ?></a></div>
                                         </div>
                                         <!-- <div class="form-group">
                                             <label for="foto_ktp">Unggah Foto KTP</label>
@@ -107,7 +114,7 @@ $this->extend('layout-credit.html.php');
                                     </div>
 
                                 </div>
-                                <div id="menu2" class="tab-pane slide-left form-group ">
+                                <div id="menu2" class="tab-pane slide-left">
                                     <div class="form-body--credit">
                                         <div class="text-head">
                                             <h2 class="text-center"><?= $this->translate('data-place')?></h2>
@@ -149,11 +156,11 @@ $this->extend('layout-credit.html.php');
                                         <div class="form-group">
                                             <label for="kode_pos"><?= $this->translate('label-postcode')?></label>
                                             <input type="text" class="form-control formKodePos" name="kode_pos" id="kode_pos"
-                                                   placeholder="<?= $this->translate('placeholder-postcode')?>">
+                                                   placeholder="<?= $this->translate('placeholder-postcode')?>" disabled>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="alamat_lengkap"><?= $this->translate('label-place')?></label>
+                                            <label class="label-place" for="alamat_lengkap"><?= $this->translate('label-place')?></label>
                                             <textarea class="form-control formRequired formAddress" name="alamat_lengkap" id="alamat_lengkap"
                                                       placeholder="<?= $this->translate('placeholder-place')?>, Contoh: Jalan Rajawali 1 Blok A no.11 RT 01 RW 02"></textarea>
                                             <div class="error-wrap"></div>
@@ -175,6 +182,15 @@ $this->extend('layout-credit.html.php');
                                             <h2 class="text-center"><?= $this->translate('data-vehicle')?></h2>
                                             <h2 class="text-center-edit"><?= $this->translate('change-data-vehicle')?></h2>
                                             <p class="text-center"><?= $this->translate('input-data-vehicle')?></p>
+                                        </div>
+                                        <div class="form-group">
+                                            <label><?= $this->translate('label-type-motor')?></label>
+                                            <select class="c-custom-select-trans form-control formRequired"
+                                                    placeholder="<?= $this->translate('placeholder-type-motor')?>" id="type_kendaraan"
+                                                    name="type_kendaraan" multiple="multiple">
+                                                <option value="" disabled selected> <?= $this->translate('placeholder-type-motor')?></option>
+                                            </select>
+                                            <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
                                             <label><?= $this->translate('label-merk')?></label>
@@ -211,8 +227,8 @@ $this->extend('layout-credit.html.php');
                                         </div>
                                         <div class="form-group">
                                             <label><?= $this->translate('label-status')?></label>
-                                            <select class="c-custom-select-trans form-control formRequired" 
-                                                    placeholder="<?= $this->translate('placeholder-status')?>" id="status_kep" 
+                                            <select class="c-custom-select-trans form-control formRequired"
+                                                    placeholder="<?= $this->translate('placeholder-status')?>" id="status_kep"
                                                     name="status_kep" multiple="multiple" data-status-self="<?= $this->translate('placeholder-status-self')?>" data-status-other="<?=$this->translate('placeholder-status-other');?>">
                                                 <option value="" disabled selected> <?= $this->translate('placeholder-status')?></option>
                                             </select>
@@ -246,16 +262,16 @@ $this->extend('layout-credit.html.php');
                                         <div class="col-md-6">
                                             <div class="form-group sliderGroup inputsimulasi">
                                                 <label for="jml-biaya"><?= $this->translate('label-data-funding')?></label>
-                                                <div class="input-group inputform">
+                                                <div class="input-group inputform ">
                                                     <span class="input-group-addon" id="basic-addon1">Rp</span>
-                                                    <input type="text" id="ex6SliderVal" class="form-control formRequired c-input-trans"
+                                                    <input type="tel" pattern="\d*" id="ex6SliderVal" class="form-control formPrice1000 formRequired c-input-trans"
                                                            aria-describedby="basic-addon1">
 
                                                     <div class="error-wrap"></div>
 
                                                 </div>
                                                 <div class="slidecontainer ">
-                                                    <input id="ex11" class="customslide" type="text" data-slider-handle="custom" data-slider-tooltip="hide" />
+                                                    <input id="ex11" class="customslide" type="tel" pattern="\d*" data-slider-handle="custom" data-slider-tooltip="hide" />
                                                     <div class="value-left valuemin"></div>
                                                     <div class="value-right valuemax"></div>
                                                 </div>
@@ -290,7 +306,7 @@ $this->extend('layout-credit.html.php');
                                         </div>
                                         <div class="col-md-6">
                                             <div class="rincian">
-                                                <div class="rincian--content">
+                                                <div class="rincian--content hide">
                                                     <p class="title-angsuran"><?= $this->translate('label-rincian')?></p>
                                                     <table class="tableangsuran">
                                                         <tr>
@@ -327,7 +343,7 @@ $this->extend('layout-credit.html.php');
                                                          </tr> -->
                                                     </table>
                                                 </div>
-                                                <div class="total-estimate">
+                                                <div class="total-estimate mt-30">
                                                     <p class="title-angsuran"><?= $this->translate('label-estimate')?></p>
                                                     <p class="total">Rp 0</p>
                                                     <p class="infotext">*<?= $this->translate('text-estimate')?></p>
@@ -335,6 +351,7 @@ $this->extend('layout-credit.html.php');
                                                             type="button"><?= $this->translate('hitung')?></button>
                                                 </div>
                                             </div>
+                                            <div class="warning-calculate hide"><label><?= $this->translate("calculate-again"); ?></label></div>
                                         </div>
                                     </div>
 
@@ -515,7 +532,7 @@ $this->extend('layout-credit.html.php');
                                         </div>
                                         <div class="biaya-agunan">
                                             <div class="form-group">
-                                                <input type="checkbox" id="agreement1" class="agreement">
+                                                <input type="checkbox" id="agreement1" name="agreement1" class="form-control formRequired agreement">
                                                 <label for="agreement1" class="label-agreement"><?= $this->translate('term-condition')?></label>
                                                 <div class="error-wrap"></div>
                                             </div>
@@ -548,14 +565,14 @@ $this->extend('layout-credit.html.php');
                                         <p class="text-center"><?= $this->translate('text-confirmation-otp')?></p>
 
                                         <div class="otp-number form-group">
-                                            <div class="otp-number__phone disabled">
-                                                <p id="showPhone"> <input type="text" id="otpPhone" disabled /> <img id="otpEditPhone" src="/static/images/icon/pencils.png" alt=""></p>
-                                            </div>
+                                            <!-- <div class="otp-number__phone disabled">
+                                                <p id="showPhone"> <input type="tel" pattern="\d*" id="otpPhone" disabled /> <img id="otpEditPhone" src="/static/images/icon/pencils.png" alt=""></p>
+                                            </div> -->
                                             <div class="otp-number__verify">
-                                                <input type="text" class="input-number formRequired" maxlength="1" name="otp1">
-                                                <input type="text" class="input-number formRequired" maxlength="1" name="otp2">
-                                                <input type="text" class="input-number formRequired" maxlength="1" name="otp3">
-                                                <input type="text" class="input-number formRequired" maxlength="1" name="otp4">
+                                                <input type="tel" pattern="\d*" class="input-number formRequired" maxlength="1" name="otp1">
+                                                <input type="tel" pattern="\d*" class="input-number formRequired" maxlength="1" name="otp2">
+                                                <input type="tel" pattern="\d*" class="input-number formRequired" maxlength="1" name="otp3">
+                                                <input type="tel" pattern="\d*" class="input-number formRequired" maxlength="1" name="otp4">
                                             </div>
                                             <div class="error-wrap"></div>
                                             <div class="otp-number__text">
@@ -566,26 +583,56 @@ $this->extend('layout-credit.html.php');
                                     </div>
 
 
-                                    <div class="button-area text-right next">
+                                    <div class="button-area text-center">
                                         <button class="cta cta-primary cta-big cta-see btn-verifikasi buttonnext" id="button6"
-                                                type="button"><?= $this->translate('verifikasi')?></button>
+                                                type="button" style="background-color: rgb(221, 221, 221); border-color: rgb(221, 221, 221);" disabled="disabled"><?= $this->translate('verifikasi')?></button>
                                     </div>
 
                                 </div>
 
                                 <div id="success" class="success-wrapper">
-                                    <div class="img-wrap">
-                                        <img class="icon-thank-page" src="/static/images/icon/m_thank_you.png" alt="">
+                                    <div class="wrapper">
+                                        <div class="img-wrap">
+                                            <img class="icon-thank-page" src="/static/images/icon/m_thank_you.png" alt="">
+                                        </div>
+                                        <div class="text-wrap text-center">
+                                            <h3><?= $this->translate('tq-text-1')?></h3>
+                                            <p><?= $this->translate('tq-text-2')?></p>
+                                        </div>
+                                        <div class="button-area text-center backtohome">
+                                            <button class="cta cta-primary cta-big cta-see buttonnext btn-check" id="button7"
+                                                    type="button" onclick="return checkStatusPengajuan()"><?= $this->translate('cek-status-aplikasi')?></button>
+                                        </div>
                                     </div>
-                                    <div class="text-wrap text-center">
-                                        <h3><?= $this->translate('tq-text-1')?></h3>
-                                        <p><?= $this->translate('tq-text-2')?></p>
+                                    <div class="blog-promo">
+                                        <article class="sect-title text-center">
+                                            <h2 class="title"><?= $this->t('berita_head'); ?></h2>
+                                            <p class="subtitle"><?= $this->t('berita_sub_head'); ?></p>
+                                        </article>
+                                        <div class="list-card success-news">
+                                            <?php foreach($blogList as $blog) : ?>
+                                                <a href="<?= '/' . $this->getLocale() . '/blog/' . $blog->getSlug(); ?>" class="card-item">
+                                                    <picture>
+                                                        <img src="<?= $blog->getImage(); ?>" alt="">
+                                                    </picture>
+                                                    <div class="caption">
+                                                        <h3 class="tag"><?= $blog->getBlogCategory()->getName(); ?></h3>
+                                                        <h2 class="title"><?= $blog->getTitle(); ?></h2>
+                                                        <p class="date"><?= date('d.m.y', strtotime($blog->getDate())); ?> | <i class="fa fa-eye"></i> <?= $blog->getViews(); ?></p>
+                                                        <!-- <div class="dateview">
+                                                            <span class="date"></?= date('d.m.y', strtotime($blog->getDate())); ?></span>
+                                                            <span class="view"><i class="fa fa-eye"></i></?= $blog->getViews(); ?></span>
+                                                        </div> -->
+                                                    </div>
+                                                </a>
+                                            <?php endforeach; ?>
+                                        </div>
                                     </div>
-                                    <div class="button-area text-center backtohome">
-                                        <a href="/<?php echo $this->getLocale() ?>">
-                                            <button class="cta cta-primary cta-big cta-see buttonnext backtohome" id="button7"
-                                                    type="button"><?= $this->translate('backtohome')?></button>
-                                        </a>
+                                    <div class="row">
+                                        <div class="button-area text-center btn-beranda">
+                                            <a href="<?php echo "/" . $this->getLocale() . '/' . $link; ?>" class="cta cta-primary cta-big cta-see buttonnext backtohome">
+                                                <span><?= $this->translate('backtohome') ?></span></a>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -623,3 +670,35 @@ $this->extend('layout-credit.html.php');
         </div>
     </div>
 </div>
+
+<!-- Modal-branch -->
+<div class="modal fade" id="modal-branch" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content branch">
+      <div class="modal-body">
+        <h4><?= $this->translate('Branch not available')?></h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end Modal branch -->
+
+<!-- Modal-pricing -->
+<div class="modal fade" id="modal-pricing" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content branch">
+      <div class="modal-body">
+        <h4><?= $this->translate('pricing-not-found')?></h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal"><?= $this->translate('close')?></button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end modal pricing -->
+
+<?= $this->template('Includes/request-otp.html.php'); ?>

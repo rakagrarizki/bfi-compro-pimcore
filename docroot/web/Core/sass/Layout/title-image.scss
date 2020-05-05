@@ -1,0 +1,22 @@
+.image-title{
+    margin-bottom: 80px;
+
+    h3{
+        font-size: 40px;
+        font-family: $font_default;
+        font-weight: bold;
+        margin: 80px 0 30px 0;
+        text-align: center;
+        color: #04559F;
+
+        @include breakpoint(mobile){
+            font-size: 20px;
+        }
+    }
+
+    img{
+        margin: 0;
+        width: 100%;
+        height: auto;
+    }
+}

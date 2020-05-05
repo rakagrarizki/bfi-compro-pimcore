@@ -1,0 +1,146 @@
+#blog-news{
+    text-align: center;
+    h2{
+        font-size: 40px;
+        font-weight: bold;
+        line-height: 54px;
+        color: #04559f;
+        margin-bottom: 10px;
+    }
+    .subtitle{
+        font-size: 20px;
+        line-height: 24px;
+        color: #565656;
+        margin-bottom: 50px;
+    }
+
+    .card{
+        border: solid 1px #E2E2E2;
+        .img-card{
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+        }
+        .card-content-wrapper{
+            padding: 15px 20px 20px 20px;
+            text-align: left;
+            .category{
+                font-weight: bold;
+                font-size: 12px;
+                color: #f9991c;
+                margin-bottom: 10px;
+            }
+            h6{
+                font-weight: bold;
+                font-size: 16px;
+                color: #565656;
+                margin: 0 0 20px 0;
+            }
+            .date-and-seen{
+                display: flex;
+                flex-wrap: wrap;
+                .date, .separator, .seen{
+                    font-size: 10px;
+                    color: #565656;
+                    margin: 0;
+                }
+                .separator{
+                    margin: 0 10px 0 10px;
+                }
+                .seen{
+                    .fa{
+                        margin-right: 3px;
+                    }
+                }
+            }
+        }
+    }
+    .main-blog{
+        .img-card{
+            height: 175px;
+        }
+    }
+    .alt-blog{
+        .img-card{
+            height: 140px;
+        }
+    }
+    .btn-wrap{
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;
+        .cta{
+            font-weight: bold;
+            width: 220px;
+            height: 60px;
+            font-size: 14px;
+            color: #fff;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}
+
+#informasi-inspiratif {
+    margin-bottom: 80px;
+    .title-wrapper{
+        margin-bottom: 10px !important;
+    }
+    .col-md-6.col-sm-12.col-xs-12.thumbnail-infor{
+        .thumbnail-infomation{
+            a{
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                -o-text-overflow: ellipsis;
+                text-overflow: ellipsis;
+                color: #565656;
+                font-size: 18px;
+                
+                @include breakpoint(mobile){
+                    font-size: 14px;
+                }
+            }
+            p{
+                font-size: 12px;
+                color: #f9991c;
+            }
+            .date{
+                font-size: 10px;
+                color: #565656;
+                font-weight: 400;
+            }
+        }
+    }
+    .col-md-3.col-sm-6.col-xs-6.thumbnail-infor{
+        .thumbnail-infomation{
+            a{
+                display: -webkit-box;
+                -webkit-line-clamp: 4;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                -o-text-overflow: ellipsis;
+                text-overflow: ellipsis;
+                color: #565656;
+                font-size: 18px;
+                
+                @include breakpoint(mobile){
+                    font-size: 14px;
+                }
+            }
+            p{
+                font-size: 12px;
+                color: #f9991c;
+            }
+            .date{
+                font-size: 10px;
+                color: #565656;
+                font-weight: 400;
+            }
+        }
+    }
+}

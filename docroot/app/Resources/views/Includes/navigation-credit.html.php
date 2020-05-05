@@ -9,6 +9,13 @@
 use Pimcore\Model\Document;
 use Pimcore\Model\Document\Page;
 
+$lang = $this->getLocale();
+$name = "";
+if($_COOKIE["customer"] != "null") {
+    $name = $_COOKIE["customer"];
+} else {
+    $name = "Dashboard";
+}
 ?>
 <nav id="site-header">
     <div class="navbar-fixed-top hidden-xs">
@@ -18,8 +25,22 @@ use Pimcore\Model\Document\Page;
                     <div class="col-md-6 col-sm-6 left-side-top">
                         <a href="/<?php echo $this->getLocale() ?>" class="backtohome"><?= $this->translate("backtohome") ?></a>
                     </div>
-                    <div class="col-md-5 col-sm-5 right-side-top">
-                        <?php echo $this->template("Includes/language.html.php") ?>
+                    <div class="col-md-6 col-sm-6 right-side-top">
+                    <div class="link-log">
+                    <?php if (isset($_COOKIE["customer"])) { ?>
+                            <!-- <div class="link-about-top">
+                                <a href="</?= "/" . $lang . "/tentang-kami" ?>">
+                                    </?= $this->translate("tentang-kami") ?></a>
+                                <a href="<?= "/" . $lang . "/blog" ?>">
+                                    </?= $this->translate("blog") ?></a>
+                            </div>
+                        </?php } else { ?> -->
+                            <div class="user">
+                                <a href="/<?= $this->getLocale() ?>/user/dashboard" class="full_name"><?= $name?></a> | <a href="#" class="logout" onclick="return logout('<?= $this->getLocale() ?>');"><?= $this->translate("logout") ?></a>
+                            </div>
+                        <?php } ?>
+                            <?php echo $this->template("Includes/language.html.php") ?>
+                        </div>
                     </div>
                 </div>
             </div>

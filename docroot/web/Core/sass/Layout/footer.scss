@@ -1,52 +1,66 @@
 footer {
     background-color: #404040;
-    padding: 50px 0 30px;
+    padding: 40px 0 40px;
     color: #000;
+    margin-top: 70px;
 
     .footer-left {
         h3 {
-            font-family: 'HelveticaNeue';
-            margin: 10px 0;
+            font-family: $font_default;
+            margin: 0 0 20px 0;
             font-weight: 600;
             font-size: 1.4em;
             color: white;
         }
 
         p {
-            font-family: 'HelveticaNeue';
+            font-family: $font_default;
+            margin: 0 0 20px 0;
             font-size: 1.1em;
             color: #9A9A9A;
+            &:last-child{
+                margin: 0;
+            }
         }
     }
 
     .footer-center {
         span {
             font-size: 13px;
-            font-family: 'HelveticaNeue';
+            font-family: $font_default;
             display: block;
             // width: calc(100% - 80px);
-            width: 60%;
-            background: #d88417;
+            width: fit-content;
             color: $light;
             padding: 10px 15px;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
+            border: solid 1px #fff;
             cursor: pointer;
 
             @include breakpoint(mobile) {
-                width: 75%;
+                // width: 75%;
+                vertical-align: baseline;
+                width: fit-content;
+                margin-top: 15px;
+                margin-bottom: 15px;
             }
 
             a {
                 color: white;
             }
+            img{
+                width: 15px;
+                height: 15px;
+                margin: 0 5px 0 5px;
+            }
         }
 
         label {
-            font-family: 'HelveticaNeue';
+            font-family: $font_default;
             display: block;
             font-size: 14px;
-            padding-top: 15px;
             color: white;
+            margin-bottom: 10px;
         }
 
         .form-inline {
@@ -70,11 +84,11 @@ footer {
                 width: 100%;
                 height: 100%;
                 border: none;
-                font-family: 'HelveticaNeue';
+                font-family: $font_default;
                 border-radius: 0;
                 background: transparent;
                 box-shadow: none;
-                padding: 0 4px !important;
+                padding: 0 10px !important;
             }
         }
     }
@@ -86,7 +100,22 @@ footer {
             >a {
                 margin-right: 10px;
 
-                >span {
+                // >span {
+                //     width: 40px;
+                //     height: 40px;
+                //     line-height: 40px;
+                //     text-align: center;
+                //     color: #404040;
+                //     font-size: 1.3em;
+                //     transition: all .2s ease-in-out;
+                //     background-color: #A0A0A0;
+                  
+                //     &:hover {
+                //         background-color: $white;
+                //         color: #000;
+                //     }
+                // }
+                i{
                     width: 40px;
                     height: 40px;
                     line-height: 40px;
@@ -94,27 +123,7 @@ footer {
                     color: #404040;
                     font-size: 1.3em;
                     transition: all .2s ease-in-out;
-
-                    &.fa-facebook {
-                        background-color: #A0A0A0;
-                    }
-
-                    &.fa-twitter {
-                        background-color: #A0A0A0;
-                    }
-
-                    &.fa-instagram {
-                        background-color: #A0A0A0;
-                    }
-
-                    &.fa-youtube-play {
-                        background-color: #A0A0A0;
-                    }
-
-                    &.fa-linkedin {
-                        background-color: #A0A0A0;
-                    }
-
+                    background-color: #A0A0A0;
                     &:hover {
                         background-color: $white;
                         color: #000;
@@ -125,7 +134,7 @@ footer {
 
         >span {
             font-size: 15px;
-            font-family: 'HelveticaNeue';
+            font-family: $font_default;
             color: #9A9A9A;
 
             @include breakpoint(mobile) {
@@ -151,7 +160,15 @@ footer {
     background-color: #404040;
     border-top: 1px solid #4E4E4E;
     padding: 20px 0 40px 0;
-    font-family: 'HelveticaNeue';
+    font-family: $font_default;
+
+    @include breakpoint(mobile){
+        padding: 15px 0 15px 0;        
+    }
+
+    .row{
+        padding: 0 5px 0 5px;
+    }
 
     &.footer-credit {
         position: fixed;
@@ -165,7 +182,7 @@ footer {
 
     span {
         color: #fff;
-        font-family: 'HelveticaNeue';
+        font-family: $font_default;
         font-weight: 600;
         letter-spacing: .5px;
 
@@ -180,11 +197,11 @@ footer {
     }
 
     .nav-footer {
-        position: absolute;
-        list-style: none;
-        display: block;
-        right: 0;
-        top: 0;
+        // position: absolute;
+        // list-style: none;
+        // display: block;
+        // right: 0;
+        // top: 0;
 
         >li {
             display: inline-block;
@@ -203,7 +220,7 @@ footer {
                 color: #9A9A9A;
 
                 @include breakpoint(mobile) {
-                    font-size: 10px;
+                    font-size: 14px;
                 }
             }
         }
@@ -214,4 +231,26 @@ footer {
             margin: 15px 0;
         }
     }
+}
+
+#loader-container {
+
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: transparent;
+
+  &:before {
+    content: "";
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    top: 0;bottom: 0;
+    left: 0;right: 0;
+    margin: auto;
+    background: url(../images/ajax-loader.gif);
+  }
+
 }

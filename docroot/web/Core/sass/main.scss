@@ -9,10 +9,11 @@
 
 /* BASE */
 @import
-    'base/fonts',
-    'base/reset',
-    'base/helper',
-    'base/flaticon';
+    'Base/fonts',
+    'Base/reset',
+    'Base/helper',
+    'Base/flaticon',
+    'Base/fontello';
 
 /* COMPONENT */
 @import
@@ -41,4 +42,29 @@
     'Layout/article',
     'Layout/slider',
     'Layout/map',
-    'Layout/pengajuan';
+    'Layout/pengajuan',
+    'Layout/download-box',
+    'Layout/steps',
+    'Layout/tabs-accordion',
+    'Layout/visi-misi',
+    'Layout/blog-promo',
+    'Layout/datepicker',
+    'Layout/report-list-icon-year',
+    'Layout/list-title',
+    'Layout/object-popup',
+    'Layout/list-report',
+    'Layout/title-download',
+    'Layout/card-left-right',
+    'Layout/image-left-wysiwyg-right',
+    'Layout/pendaftaran-csr',
+    'Layout/profile',
+    'Layout/login',
+    'Layout/verify',
+    'Layout/search',
+    'Layout/blog-news',
+    'Layout/title-image',
+    'Layout/specific-widget',
+    'Layout/hubungi-kami',
+    'Layout/detail-transaksi',
+    'Layout/custom-pagination',
+    'Layout/custom-detail-kontrak';

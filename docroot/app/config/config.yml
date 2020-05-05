@@ -16,8 +16,9 @@ pimcore:
             redis:
                 enabled: true
                 connection:
-                    server: localhost
+                    server: !php/const REDIS
                     database: 14
+                    password: !php/const PASSREDIS
 
 #### FEATURE FLAGS
 #    flags:
@@ -67,4 +68,16 @@ framework:
 #### USE SESSION HANDLER CONFIGURED IN php.ini
 #    session:
 #        handler_id: null
+
+monolog:
+    handlers:
+        # this "file_log" key could be anything
+        file_log:
+            type: rotating_file
+            # log to var/logs/(environment).log
+            path: "%kernel.logs_dir%/%kernel.environment%.log"
+            # log *all* messages (debug is lowest level)
+            level: debug
+            max_files: 10
+
 

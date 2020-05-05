@@ -1,13 +1,14 @@
 .cont-credit {
     text-align: center;
-    padding: 90px 50px 50px;
+    margin-bottom: 60px;
+    // padding: 90px 50px 50px;
     @include breakpoint(mobile){
-        padding: 20px 15px;
+        padding: 0px 15px;
     }
 
-    @include breakpoint(tablet){
-        padding: 20px 15px;
-    }
+    // @include breakpoint(tablet){
+    //     padding: 20px 15px;
+    // }
 
     @include breakpoint(desktop){
         &.modif{
@@ -21,14 +22,41 @@
         }
     }
 
+    .title-wrapper{
+        margin-top: 50px;
+
+        @include breakpoint(mobile){
+            margin-top: 30px;
+        }
+    }
+    .paragraf-title{
+        margin: 0;
+    }
+
     .list-credit {
-        padding: 40px 60px 80px 60px;
+        padding: 50px 60px 0 60px;
         @include breakpoint(mobile){
             padding: 0;
         }
 
         @include breakpoint(tablet){
             padding: 0;
+        }
+
+        h3 {
+          font-family: $font_default;
+          font-weight: 600;
+          font-size: 20px;
+          color: #04559F;
+          margin-top: 20px;
+          padding: 0 15px;
+          text-align: left;
+          margin-bottom: 20px;
+
+          @include breakpoint(mobile){
+              margin-top: 30px;
+              margin-bottom: 10px;
+          }
         }
         
         .list-credit--icon {
@@ -77,13 +105,13 @@
 
                 @include breakpoint(tablet){
                     flex: 1 0 21%;
-                    margin: 15px -1px;
+                    margin: 15px -10px;
                     min-width:auto;
                     min-height:auto;
                 }
 
                 @media only screen and (max-width: 323px) {
-                    min-width:100px;
+                    // min-width:100px;
                 }
 
                 a {
@@ -95,42 +123,46 @@
                         height: 165px;
                         padding: 10px;
                         border: 1px solid;
-                        @include breakpoint(mobile){
-                            width: 100%;
-                            height: auto;
-                        }
-
                         @include breakpoint(tablet){
                             width: 100%;
                             height: auto;
                         }
 
+                        @include breakpoint(mobile){
+                            width: 100%;
+                            height: 180px;
+                        }
+
+
                         .imggetcredit{
                             vertical-align: middle;
                             margin-bottom: 20px;
                             width: 90px;
-                            margin-top: 10px;
                             height: 90px;
+                            margin-top: 10px;
+                            
                             @include breakpoint(mobile){
-                                width:80px;
-                                height:80px;
+                                width: 100%;
+                                height: auto;
                             }
 
-                            @include breakpoint(tablet){
-                                width:80px;
-                                height:80px;
-                            }
+                            // @include breakpoint(tablet){
+                            //     width:80px;
+                            //     height:80px;
+                            // }
                         }
 
                         p{
                             font-weight:bold;
                             color: #9C9C9C;
                             @include breakpoint(mobile){
-                                height:40px;
+                                // height:40px;
+                                font-size: 8px;
+                                line-height: 11px;
                             }
 
                             @include breakpoint(tablet){
-                                height:40px;
+                                height: 30px;
                             }
                         }
 
@@ -158,4 +190,28 @@
             }
         }
     }
+}
+
+.selection-1,
+.selection-2{
+    .select2-selection--multiple{
+    height: 60px;
+    border-radius: 0;
+    border: 0;
+    box-shadow: 0px 3px 8px rgba(4,85,159,0.1);
+    .select2-search__field{
+        margin-top: 12px;
+        }
+    .select2-selection__choice{
+        margin-top:13px;
+        }
+    }
+}
+
+.newsletter{
+    margin: 0 auto;
+    text-align: center;
+}
+.help-block{
+    margin-bottom: -24px;
 }

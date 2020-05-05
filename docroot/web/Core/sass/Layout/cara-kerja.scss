@@ -6,7 +6,7 @@
         text-align: center;
         margin-top: 15px;
         margin-bottom: 60px;
-
+        color:#565656;
         a {
             &:before {
                 @include breakpoint(mobile) {
@@ -16,44 +16,53 @@
         }
 
         .title-cara-kerja {
-            font-size: 3em;
-            font-family: 'HelveticaNeue';
-            font-weight: 600;
+            font-size: 40px;
+            font-family: $font_default;
+            font-weight: bold;
             color: #04559F;
 
             @include breakpoint(mobile) {
-                font-size: 2em;
+                font-size: 20px;
             }
         }
 
         .step-cara {
-            font-size: 1.5em;
-            font-family: 'HelveticaNeue';
+            font-size: 20px;
+            font-family: $font_default;
+            margin-bottom: 60px;
+            color:#565656;
 
             @include breakpoint(mobile) {
-                font-size: 1.2em;
+                font-size: 13px;
+                margin-bottom: 30px;
             }
         }
 
         .list-step {
-            display: block;
+            display: flex;
             text-align: center;
-            flex-wrap: nowrap;
+            flex-wrap: wrap;
+            justify-content: space-between;
 
             li {
+                width: 20%;
                 list-style: none;
                 display: inline-block;
                 vertical-align: top;
-                margin: 20px 50px;
+                // margin: 20px 50px;
                 text-align: center;
                 cursor: default !important;
 
                 @include breakpoint(mobile) {
-                    margin: 20px 30px;
+                    // &:first-child{
+                    //     margin-left: 50px;
+                    // }
+                    margin: 0;
+                    // width: 15% !important;
                 }
 
                 .img-step {
-                    padding: 20px;
+                    padding: 10px;
                     transition: all .5s ease-in-out;
 
                     img {
@@ -82,12 +91,12 @@
 
                 p {
                     font-size: 1.2em;
-                    max-width: 155px;
-                    max-height: 85px;
+                    // max-width: 155px;
+                    // max-height: 85px;
                     //transform: translateY(20px);
 
                     @include breakpoint(mobile) {
-                        font-size: 1em;
+                        font-size: 15px;
                     }
                 }
 

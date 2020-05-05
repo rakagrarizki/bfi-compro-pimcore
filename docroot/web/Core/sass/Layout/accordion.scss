@@ -1,272 +1,612 @@
-.pimcore_area_bfi-title-accordion {
-    &:first-of-type {
-        padding-top: 40px;
+.pimcore_area_bfi-title-accordion,
+.pimcore_area_bfi-report-accordion,
+.pimcore_area_bfi-tab-accordion-wysiwyg {
+  &:first-of-type {
+    padding-top: 40px;
+    @include breakpoint(mobile){
+      padding-top: 0;
+    }
+  }
+  .panel-default{
+     margin:0;
+     border-color:transparent;
+     border: 1px solid transparent;
+    .panel-heading{
+      color: #565656;
+      background-color: unset;
+      border-color: unset;
+      padding: 25px 20px;
+      border-bottom: solid 1px #dddddd;
+      cursor: pointer;
+        h4{
+          font-size: 22px !important;
+          position: relative;
+          .a-reportheading{
+            &:focus{
+              text-decoration: none;
+            }
+          }
+          :after{
+              content: "\f107";
+              font-family: FontAwesome;
+              color: #565656;
+              position: absolute;
+              font-size: 40px;
+              font-weight: 100;
+              right: 0;
+              top:0;
+              @include breakpoint (mobile){
+                font-size: 30px;
+                top: -5px;
+              }
+             }
+          }
+        }
+      }
+      .panel-default.active a:after {
+        -webkit-transform: rotate(180deg);
+        -moz-transform: rotate(180deg);
+        transform: rotate(180deg);
+      } 
+    .panel+.panel {
+      margin-top: 0;
+    }
+    .panel-heading+.panel-collapse{
+      .panel-body{
+        border-top: unset;
+      }
     }
 }
-
+.table-responsive{
+  tbody{
+    background-color: #ffffff;
+  }
+}
 .accordion {
-    .sect-title {
+  .sect-title {
 
-        @include breakpoint(mobile) {
-            width: 90%;
-        }
-
-        h2,
-        p {
-            color: $grey-dark-color;
-        }
+    @include breakpoint(mobile) {
+      width: 90%;
     }
 
-    .accordion__wrap {
-        margin: 30px 0;
+    h2,
+    p {
+      color: $grey-dark-color;
+    }
+  }
 
-        @include breakpoint(mobile) {
-            padding: 0 15px;
+  .accordion__wrap {
+    margin: 30px 0;
+
+    // @include breakpoint(mobile) {
+    //     padding: 0 5px;
+    // }
+
+    &.produk {
+      margin-top: 60px;
+      margin-bottom: 80px;
+
+      @include breakpoint(mobile) {
+        margin-top: 40px;
+      }
+
+      h4 {
+        font-size: 28px;
+
+        @include breakpoint(tablet) {
+          font-size: 24px;
         }
 
-        &.produk {
-            margin-top: 60px;
-            margin-bottom: 80px;
+        @include breakpoint(mobile) {
+          font-size: 20px !important;
+        }
 
-            h4 {
-                font-size: 28px;
+        @include breakpoint(small-mobile) {
+          font-size: 20px;
+        }
+      }
+    }
 
-                @include breakpoint(tablet) {
-                    font-size: 24px;
+    h4 {
+      font-size: 1.3em;
+      font-family: $font_default;
+      @include breakpoint(mobile){
+        font-size: 20px !important;
+      }
+    }
+
+    .panel {
+      box-shadow: none;
+
+      &:last-child {
+        .panel-body {
+          background-color: #eaeaea;
+          padding-top: 35px;
+
+          .block-payment {
+            text-align: center;
+
+            .payment-wrap {
+              width: 90%;
+              display: inline-block;
+
+              h4,
+              .block-payment__item {
+                text-align: left;
+              }
+            }
+          }
+        }
+      }
+
+      .panel-body {
+        padding: 20px 110px;
+        background: #eaeaea;
+        @include breakpoint(mobile) {
+          padding: 20px 20px;
+        }
+
+        .container {
+          width: 100% !important;
+          padding: 0;
+        }
+
+        // M. Muhyidin Amin
+
+        &.report-accordion {
+          color: #565656;
+          font-size: 20px;
+          padding: 50px 110px;
+          background-color: #FCFCFC;
+
+          @include breakpoint(mobile) {
+            padding: 20px 0 0 0;
+            padding-left: 40px;
+            display: block;
+          }
+        }
+                
+                ul {
+                    list-style: square;
+                    color:#565656;
+                    font-family: $font_default;
+                    font-size: 20px;
+                    margin: 0;
+
+                    hr{
+                        margin-left: -20;
+                    }
                 }
+
+                li {
+                    padding-bottom: 0px;
+                    padding-left: 10px;
+                    // width: 70%;
+                    color:#565656;
+                    // &::before {
+                    //     margin-right: 25px;
+                    //     content: '\25AA';
+                    //     color: #04559F;
+                    //     font-size: 150%;
+
+                    //     @include breakpoint(mobile) {
+                    //         margin-right: 25px;
+                    //         padding: 0px;
+                    //     }
+                    // }
+
+                    @include breakpoint(tablet) {
+                        width: 60%;
+                        padding-left: 25px;
+                        // text-indent: -40px;
+                    }
+
+                    @include breakpoint(mobile) {
+                        font-size: 15px;
+                        width: 100%;
+                        padding-left: 10px;
+                        color: #545454;
+                        // text-indent: -40px;
+                    }
+                }
+
+
+        ul {
+          list-style: square;
+          // color: #04559F;
+          font-family: $font_default;
+          font-size: 20px;
+          margin: 0;
+
+          hr {
+            margin-left: -20;
+          }
+        }
+
+        li {
+          padding-bottom: 0px;
+          padding-left: 10px;
+          width: 100%;
+          // width: 70%;
+
+          // &::before {
+          //     margin-right: 25px;
+          //     content: '\25AA';
+          //     color: #04559F;
+          //     font-size: 150%;
+
+          //     @include breakpoint(mobile) {
+          //         margin-right: 25px;
+          //         padding: 0px;
+          //     }
+          // }
+
+          @include breakpoint(tablet) {
+            width: 60%;
+            padding-left: 25px;
+            // text-indent: -40px;
+          }
+
+          @include breakpoint(mobile) {
+            font-size: 15px;
+            width: 100%;
+            padding-left: 10px;
+            color: #545454;
+            // text-indent: -40px;
+          }
+        }
+
+        .content-list {
+          justify-content: space-between;
+          display: inline-flex;
+          align-items: center;
+          width: 100%;
+
+          @include breakpoint(mobile) {
+            display: block;
+          }
+
+          .download-btn {
+            margin: auto 0;
+            // width: 30%;
+            width: 50%;
+
+            @include breakpoint(mobile) {
+              width: 100%;
+            }
+
+            .down-box {
+              float: right;
+
+              @include breakpoint(mobile){
+                float: none;
+              }
+
+              .cta-down {
+                position: relative;
+                padding: 0 0 0 50px;
+                letter-spacing: 0;
 
                 @include breakpoint(mobile) {
-                    font-size: 24px;
+                  padding-left: 25px;
+                  left: 10px;
+                  // text-decoration: underline;
+                  text-transform: uppercase;
+                  color: #565656;
+                  font-weight: 700;
                 }
 
-                @include breakpoint(small-mobile) {
-                    font-size: 20px;
+                &::before {
+                  content: "\f019";
+                  display: block;
+                  width: 40px;
+                  height: 40px;
+                  text-align: center;
+                  line-height: 40px;
+                  font-family: FontAwesome;
+                  font-size: 14px;
+                  color: #F9991C;
+                  background-color: #fff;
+                  position: absolute;
+                  top: -10px;
+                  left: 0;
+
+                  @include breakpoint(mobile) {
+                    width: 15px;
+                    height: 15px;
+                  }
                 }
-            }
-        }
-
-        h4 {
-            font-size: 1.3em;
-            font-family: 'HelveticaNeue';
-        }
-
-        .panel {
-            box-shadow: none;
-
-            &:last-child {
-                .panel-body {
-                    background-color: #FCFCFC;
-                    padding-top: 35px;
-
-                    .block-payment {
-                        text-align: center;
-
-                        .payment-wrap {
-                            width: 90%;
-                            display: inline-block;
-
-                            h4,
-                            .block-payment__item {
-                                text-align: left;
-                            }
-                        }
-                    }
-                }
-            }
-
-            .panel-body {
-                padding: 25px 15px;
-            }
-
-            p {
-                font-family: 'HelveticaNeue';
-                font-size: 1.1em;
-            }
-        }
-
-        .panel-default {
-            border-color: transparent;
-            border-bottom: 1px solid $grey-light-color;
-
-            &.active {
-                h4 {
-                    font-weight: 600;
-                    color: $blue-dark-color;
-                }
-
-                >.panel-heading {
-                    a {
-                        &::after {
-                            content: "\f106";
-                        }
-                    }
-                }
-            }
-
-            a {
-                text-decoration: none;
-            }
-        }
-
-        .panel-default>.panel-heading {
-            background-color: transparent;
-            border-color: transparent;
-            padding: 0;
-
-            a {
-                position: relative;
-                display: block;
-                padding: 22px 15px;
-
-                @include breakpoint(small-mobile) {
-                    padding-right: 35px;
-                }
-
+                
                 &.a-panelheading {
-                    padding-bottom: 40px;
+                    padding-bottom: 35px;
+                    color:#565656;
+                    @include breakpoint(mobile) {
+                        padding-bottom: 20px;
+                        font-size: 15px;
+                    }
                 }
 
-                &::after {
-                    position: absolute;
-                    content: '\f107';
-                    font-family: "FontAwesome";
-                    right: 15px;
-                    top: 15px;
-                    font-size: 1.3em;
-                    opacity: 0.4;
+                span {
+                  font-family: $font_default;
+                  font-weight: bold;
+                  font-size: 14px;
+                  text-transform: uppercase;
+                  color: #F9991C;
+                  border-bottom: 2px solid #F9991C;
                 }
+              }
             }
+          }
         }
-    }
 
-    .document-table {
-        padding: 0 20px;
+      // M. Muhyidin Amin
+      .content-accord {
+        color: #565656;
+        font-size: 20px;
+        padding: 50px 110px;
+        background-color: #FCFCFC;
+      }
+
+      // -->
+
+      p {
+        font-family: $font_default;
+        font-size: 20px;
+        line-height: 30px;
+        color: #565656;
 
         @include breakpoint(mobile) {
-            padding: 0;
-            overflow: scroll;
-            position: relative;
-            width: 100%;
-            z-index: 1;
-            max-height: 400px;
-
-            p {
-                position: sticky;
-                position: -webkit-sticky;
-                left: 0;
-            }
-
-            ul,
-            ol {
-                padding-left: 20px;
-            }
-
-            th:first-child,
-            td:first-child {
-                position: sticky;
-                position: -webkit-sticky;
-                left: 0;
-                z-index: 2;
-                width: 5%;
-            }
-
-            thead th:first-child {
-                z-index: 5;
-            }
-
-            tbody {
-                tr:nth-child(odd) {
-                    td:first-child {
-                        background: #ffffff;
-                    }
-                }
-
-                tr:nth-child(even) {
-                    td:first-child {
-                        background: #F0F0F0;
-                    }
-                }
-            }
+          font-size: 13px;
+          line-height: 20px;
         }
-
-        table {
-            width: 100%;
-
-            th {
-                text-align: center;
-                padding: 10px;
-                font-family: 'HelveticaNeue';
-                font-size: 1.2em;
-                color: $white;
-                background: $blue-dark-color;
-            }
-
-            td {
-                font-family: 'HelveticaNeue';
-                padding: 10px 20px;
-                font-size: 1.1em;
-
-                &:nth-child(2n),
-                &:nth-child(3n) {
-                    text-align: center;
-                }
-            }
-        }
-
-        tbody tr:nth-child(even) {
-            background-color: #F0F0F0;
-        }
+      }
     }
 
-    .block-payment {
+    .panel-default {
+      border-color: transparent;
+      border-bottom: 1px solid $grey-light-color;
 
-        .payment-wrap {
-            width: 60%;
-            margin-bottom: 20px;
-            border-bottom: 1px solid $grey-light-color;
+      &.active {
+        // h4 {
+        //     font-weight: 600;
+        //     color: $blue-dark-color;
+        // }
 
-            @include breakpoint(mobile) {
-                width: 100%;
-                text-align: center;
-            }
-
-            &:last-child {
-                border-bottom: none;
-            }
-        }
-
-        h4 {
-            font-size: 1em;
-            font-family: 'HelveticaNeue';
+        >.panel-heading {
+          a {
+            font-weight: 600;
             color: $blue-dark-color;
 
-            @include breakpoint(mobile) {
-                text-align: left;
+            &::after {
+              content: "\f106";
             }
+          }
         }
+      }
 
-        .block-payment__item {
-            margin: 30px 20px;
-
-            @include breakpoint(mobile) {
-                margin: 30px 0;
-            }
-        }
-
-        a {
-            position: relative;
-            margin: 0 10px 50px;
-            display: inline-block;
-            vertical-align: middle;
-
-            @include breakpoint(mobile) {
-                display: block;
-                margin: 0 0 20px;
-            }
-        }
-
-        img {
-            max-width: 100%;
-        }
+      a {
+        text-decoration: none;
+      }
     }
+
+    .panel-default>.panel-heading {
+      background-color: transparent;
+      border-color: transparent;
+      padding: 0;
+
+      a {
+        position: relative;
+        display: block;
+        padding: 35px 95px 35px 70px;
+        color: #565656;
+
+        @include breakpoint(small-mobile) {
+          padding-right: 35px;
+        }
+
+        @include breakpoint(mobile) {
+          padding: 20px 30px 20px 10px;
+        }
+
+        &.a-panelheading {
+          padding-bottom: 35px;
+
+          @include breakpoint(mobile) {
+            padding-bottom: 20px;
+            font-size: 15px;
+          }
+            td {
+                font-family: $font_default;
+                padding: 10px 20px;
+                font-size: 1.1em;
+                color:#565656;
+                &:nth-child(2n),
+                &:nth-child(3n) {
+                    text-align: left;
+                }
+            }
+        }
+
+        &::after {
+          position: absolute;
+          content: '\f107';
+          font-family: "FontAwesome";
+          right: 70px;
+          top: 35px;
+          font-size: 28px;
+          opacity: 0.4;
+
+          @include breakpoint(mobile) {
+            right: 10px;
+            top: 25%;
+          }
+        }
+
+        // M. Muhyidin Amin
+        &.a-reportheading {
+          padding: 35px 70px;
+
+          &::after {
+            padding-right: 35px;
+            top: 30px;
+
+            @include breakpoint(mobile) {
+              padding-right: 10px;
+              top: 25px;
+            }
+          }
+
+          @include breakpoint(mobile) {
+            padding: 30px 20px;
+            font-size: 24px;
+          }
+        }
+
+        // -->
+
+      }
+    }
+  }
+
+  .document-table {
+    // padding: 0 20px;
+
+    @include breakpoint(mobile) {
+      padding: 0;
+      overflow: scroll;
+      position: relative;
+      width: 100%;
+      z-index: 1;
+      max-height: 400px;
+
+      p {
+        position: sticky;
+        position: -webkit-sticky;
+        left: 0;
+      }
+
+      ul,
+      ol {
+        padding-left: 20px;
+      }
+
+      th:first-child,
+      td:first-child {
+        position: inherit;
+        left: 0;
+        z-index: 2;
+        width: 5%;
+      }
+
+      thead th:first-child {
+        z-index: 5;
+      }
+
+      tbody {
+        tr:nth-child(odd) {
+          td:first-child {
+            background: #ffffff;
+            @include breakpoint(mobile) {
+              z-index: 4;
+            }
+          }
+        }
+
+        tr:nth-child(even) {
+          td:first-child {
+            background: #F0F0F0;
+          }
+        }
+      }
+    }
+
+    table {
+      width: 100%;
+      border: unset!important;
+
+      th {
+        text-align: center;
+        padding: 10px;
+        font-family: $font_default;
+        font-size: 1.2em;
+        color: $white;
+        background: $blue-dark-color;
+
+        .pembiayaan {
+          @include breakpoint(mobile) {
+            font-size: 0.9em;
+          }
+        }
+      }
+
+      td {
+        font-family: $font_default;
+        padding: 10px 20px;
+        font-size: 1.1em;
+
+        &:nth-child(2n),
+        &:nth-child(3n) {
+          text-align: center;
+        }
+      }
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: #F0F0F0;
+    }
+  }
+
+  .block-payment {
+
+    .payment-wrap {
+      width: 100%;
+      margin-bottom: 20px;
+      border-bottom: 1px solid $grey-light-color;
+
+      @include breakpoint(mobile) {
+        width: 100%;
+        text-align: center;
+      }
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+
+    h4 {
+      font-size: 20px;
+      font-family: $font_default;
+      font-style: italic;
+      color: $blue-dark-color;
+
+      @include breakpoint(mobile) {
+        text-align: left;
+      }
+    }
+
+    .block-payment__item {
+      margin: 30px 20px;
+
+      @include breakpoint(mobile) {
+        margin: 30px 0;
+      }
+    }
+
+    a {
+      position: relative;
+      margin: 0 0 50px;
+      display: inline-block;
+      vertical-align: middle;
+
+      @include breakpoint(mobile) {
+        display: block;
+        margin: 0 0 20px;
+      }
+    }
+
+    img {
+      max-width: 100%;
+    }
+  }
+}
 }

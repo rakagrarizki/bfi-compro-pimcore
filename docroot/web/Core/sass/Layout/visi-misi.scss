@@ -1,0 +1,306 @@
+.visi-misi {
+    padding: 40px 0 60px 0;
+    background-color: $blue-dark-color;
+
+    .visi{
+        margin-bottom: 50px;
+    }
+    .misi{
+        margin-bottom: 10px;
+    }
+    .visi , .misi {
+
+        h2 {
+            margin: 0;
+            font-family: $font_default;
+            font-weight: bold;
+            font-size: 52px;
+            color: $white;
+
+            @include breakpoint(mobile) {
+                margin-bottom: 10px;
+                font-size: 30px;
+            }
+        }
+
+        p {
+            font-family: $font_default;
+            font-size: 24px;
+            line-height: 42px;
+            color: $white;
+            @include breakpoint(mobile) {
+                font-size: 18px;
+            }
+        }
+
+        .slick-slide {
+            outline: none;
+        }
+    }
+
+    .counter {
+        margin-left: auto;
+        display: inline-flex;
+        float: right;
+        align-items: center;
+        justify-content: flex-end;
+
+        @include breakpoint(mobile) {
+            justify-content: center;
+        }
+
+        .cta-orange{
+            background-color: #ffffff;
+            color: $blue-dark-color;
+        }
+
+        .slick-arrow {
+            display: block;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            padding: 0;
+            outline: none;
+
+            @include breakpoint(mobile) {
+                width: 30px;
+                height: 30px;
+                line-height: 60px;
+            }
+
+            &:after {
+                display: none;
+            }
+            i.fa-angle-left{
+                @include breakpoint(mobile) {
+                    top: 7px;
+                    position: absolute;
+                    left: 10px;
+                    font-size: 18px;
+                }
+            }
+            i.fa-angle-right{
+                @include breakpoint(mobile) {
+                    top: 7px;
+                    position: absolute;
+                    right: 10px;
+                    font-size: 18px;
+                }
+            }
+        }
+
+        .pagingInfo {
+            font-family: $font_default;
+            font-size: 1.2rem;
+            color: $white;
+            margin: 0 20px;
+            @include breakpoint(mobile) {
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+.about-us-page{
+    color: $grey-dark-color;
+    font-family: $font_default;
+    .page-title{
+        margin-top: 40px;
+        margin-bottom: 0;
+        font-family: $font_default;
+        font-weight: bold;
+        text-align: center;
+        padding: 8px;
+        color: $blue-dark-color;
+    }
+    .page-sub-title{
+        text-align: center;
+        margin-bottom: 50px;
+        font-size: 1.3rem;
+    }
+    p,ol,ul{
+        font-size: 18px;
+        font-family: $font_default;
+        letter-spacing: 0.5px;
+        color:#565656;
+        @include breakpoint(mobile){
+            font-size: 14px;
+        }
+
+        span{
+            font-family: $font_default;
+            font-weight: normal;
+            strong{
+                color:#565656;
+                @include breakpoint(mobile){
+                    font-size: 21px;
+                }
+            }
+        }
+    }
+    tr:nth-child(1){
+        td{
+            span{
+                color:#ffffff !important;
+            }
+        }
+    }
+    #skema-angsuran{
+        tr:nth-child(1){
+            td{
+                span{
+                    color:#565656 !important;
+                }
+            }
+        }
+    }
+    td:nth-child(1){
+        span{
+            color:#565656;
+            strong{
+                color:#565656;
+            }
+        }
+    }
+    
+    ol{
+        padding-left: 35px;
+        font-weight: normal;
+        li::before {
+            font-weight: bolder;
+        }
+        li{
+            margin-bottom: 12px;
+            // padding-left: 20px;
+            ol{
+                padding-left: 20px;
+                padding-top: 10px;
+                li{
+                    padding-left: 10px;
+                }
+            }
+        }
+    }
+
+    ul{
+        padding-left:20px;
+        list-style-type: square;
+        li{
+            margin-bottom: 12px;
+            padding-left: 20px;
+        }
+    }
+      
+    .side-image{
+        width: 100%;
+        // padding-top: 100%;
+        // background-size: cover;
+        // background-position: center;
+        img{
+            width: 100%;
+        }
+    }
+    .activities-section{
+        margin-top: 50px;
+        // margin-bottom: 50px;
+        @include breakpoint(tablet) {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        &.contact-hi {
+            margin-top: 0px;
+
+            .button-left {
+                margin-left: 15px;
+
+                @include breakpoint(tablet){
+                    margin-left: 0;
+                    text-align: center;
+                }
+            }
+            
+            span {
+                line-height: 1.6;
+            }
+        }
+    }
+    .activities-title{
+        font-size: 1.4rem;
+        font-family: $font_default;
+        font-weight: bolder;
+        margin-bottom: 20px;
+    }
+    .col-md-6{
+        @include breakpoint(tablet) {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+    }
+    .activities-highlight{
+        font-family: $font_default;
+        font-weight: bolder;
+        font-size: 3rem;
+        margin-top: 40px;
+        margin-bottom: 0;
+
+        @include breakpoint(tablet) {
+            margin-top: 0px;
+        }
+    }
+    .list-activities{
+        padding-left: 2rem;
+        text-indent: -2rem;
+        strong{
+            margin-right: 6px;
+        }
+    }
+    .great-highlight{
+        font-size: 2.5rem;
+        margin-right: 10px;
+    }
+    .background-consult{
+        background-size: cover;
+        background-position: center;
+
+        .blue-filter{
+            padding: 50px 20px;
+            background-color: #04559F80;
+            text-align: center;
+            font-size: 2rem;
+            color: $white;
+            font-family: $font_default;
+            font-weight: bolder;
+
+            .chat-button{
+                font-size: 1rem;
+                font-weight: normal;
+                border: solid 1px;
+                padding: 16px;
+                font-family: $font_default;
+                margin-left: 20px;            
+            }
+
+            .chat-button-outer{
+                @include breakpoint(tablet) {
+                    display: block;
+                    text-align: center;
+                    margin-top: 12px;
+                }
+            }
+        }
+    }
+}
+.informasi-saham{
+    @include breakpoint(mobile) {
+        td{
+            p{
+                margin: 0;
+                text-align: center !important;
+            }
+        }
+        span{
+            font-size: 12px;
+        }
+    }
+}

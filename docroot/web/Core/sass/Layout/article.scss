@@ -2,7 +2,7 @@
     padding: 70px 0;
 
     .sect-title {
-        width: 41%;
+        width: 70%;
         margin: auto;
 
         @include breakpoint(mobile) {
@@ -19,6 +19,9 @@
         height: 300px;
         box-shadow: 0px 0px 10px 0px rgba(203,203,203,1);
         
+        @include breakpoint(mobile) {
+            height: auto;
+        }
         &:hover {
             img {
                 transform: scale(1.2);
@@ -27,26 +30,57 @@
 
         a {
             text-decoration: none;
-            color: #04559F;
+            // color: #04559F;
             font-weight:bold;
             font-size:16px;
+            color: #565656;
+
+            @include breakpoint(mobile){
+                font-size: 14px;
+            }
         }
 
         p {
             font-size: 10px;
-            font-family: 'HelveticaNeue';
-            color: #F8991D;
+            font-family: $font_default;
+
+            &.tag{
+                color: #F8991D;
+                font-size: 12px;
+                font-weight: bold;
+                font-family: $font_default;
+            }
+
+            &.dateview{
+                color: #565656;
+
+                .fa{
+                    margin-right: 5px;
+                }
+            }
         }
 
         h4 {
-            width: 65%;
+            width: 100%;
             font-size: 1.115em;
-            font-family: 'HelveticaNeue';
-            font-weight: 600;
-            line-height: 1.4;
+            font-family: $font_default;
+            font-weight: bold;
+            // line-height: 1.4;
+            height: 54px !important;
+            margin: 10px 0 24px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
 
             @include breakpoint(mobile) {
                 width: 100%;
+                display: -webkit-box;
+                -webkit-line-clamp: 4;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                -o-text-overflow: ellipsis;
+                text-overflow: ellipsis;
             }
         }
 
@@ -73,6 +107,179 @@
 
     .article__post__text {
         padding: 10px 15px;
-        margin-top: 10px;
+        // margin-top: 10px;
+
+    }
+}
+
+.news {
+
+    .sect-title {
+        margin: auto;
+
+        &.text-center h2{
+            margin-top : 0;
+            margin-bottom : 20px;
+        }
+
+        &.text-center p{
+            margin-bottom : 0;
+        }
+
+        @include breakpoint(mobile) {
+            width: 100%;
+        }
+
+        h2, p {
+            color: #565656;
+        }
+    }
+    
+    .list-news-container {
+        padding: 50px 0;
+    }
+
+    .article__post {
+        margin: 30px 0 0;
+        background: $white;
+        height: 300px;
+        box-shadow: 0px 0px 10px 0px rgba(203,203,203,1);
+        position: relative;
+        
+        &:hover {
+            img {
+                transform: scale(1.2);
+            }
+        }
+
+        a {
+            text-decoration: none;
+            // color: #04559F;
+            font-weight:bold;
+            font-size:16px;
+            color: #565656;
+
+            // @include breakpoint(mobile) {
+            //     font-size: 14px;
+            // }
+        }
+
+        p {
+            font-size: 10px;
+            font-family: $font_default;
+            
+            .tag{
+                color: #F8991D;
+                font-size: 12px;
+                font-weight: bold;
+                font-family: $font_default;
+            }
+
+            .dateview{
+                color: #565656;
+
+                .fa{
+                    margin-right: 5px;
+                }
+            }
+        }
+
+        h4 {
+            width: 100%;
+            font-size: 1.115em;
+            font-family: $font_default;
+            font-weight: bold;
+            // line-height: 1.4;
+            height: 54px !important;
+            margin: 10px 0 24px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+
+            @include breakpoint(mobile) {
+                width: 100%;
+                display: -webkit-box;
+                -webkit-line-clamp: 4;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                -o-text-overflow: ellipsis;
+                text-overflow: ellipsis;
+            }
+        }
+
+    }
+
+    .article__post__img {
+        height: 150px;
+        overflow: hidden;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: top center;
+
+        img {
+            transition: all .3s ease-in-out;
+            max-width: 100%;
+        }
+    }
+
+    .article__post__text {
+        padding: 10px 15px;
+        // margin-top: 10px;
+
+        @include breakpoint(mobile) {
+            padding: 0 0 0 15px;
+        }
+
+        .dateview {
+            position: absolute;
+            bottom: 0px;
+            display: flex;
+            margin-bottom: 10px;
+
+            @include breakpoint(mobile) {
+                margin-top: 15px;
+                margin-bottom: 15px;
+            }
+
+            span {
+                color : #565656;
+                font-size: 10px;
+                margin-right: 10px;
+
+                &.date {
+                    position: relative;
+                    padding-right: 11px;
+                    &:after {
+                        content: '';
+                        width: 1px;
+                        height: 10px;
+                        background-color: #565656;
+                        position: absolute;
+                        right: 0;
+                        top: 50%;
+                        transform: translateY(-50%);
+                    }
+                }
+                
+
+                i {
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+
+    .btn-beranda {
+        margin-bottom: 70px;
+        a {
+            border: 1px solid #F8991C;
+            background: #F9991C;
+            text-transform: uppercase;
+        }
+        
+        span {
+            margin-left: 10px;
+        }
     }
 }

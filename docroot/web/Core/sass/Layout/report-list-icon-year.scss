@@ -1,0 +1,80 @@
+.card-list-box{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    .card-list{
+        padding: 10px;
+        width: 25%;
+        margin-bottom: 40px;
+        @include breakpoint(mobile) {
+            width: 50%;
+            margin-bottom: 20px;
+        }
+        img{
+            margin: 0 auto 20px auto;
+            width: 150px;
+            height: 200px;
+            @include breakpoint(mobile) {
+                width: calc(.75 * 150px);
+                height: 150px;
+            }
+        }
+        .card-content{
+            margin: 0 auto 0 auto;
+            h6{
+                margin-top: 0;
+                margin-bottom: 10px;
+                font-size: 14px;
+                color: #565656;
+                @include breakpoint(mobile) {
+                    font-size: 14px;
+                }
+            }
+            h3{
+                margin-top: 0;
+                margin-bottom: 20px;
+                font-weight: bold;
+                font-size: 20px;
+                color: #04559f;
+                // min-height: 50px;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                height: 45px;
+
+                @include breakpoint(mobile) {
+                    font-size: 14px;
+                    margin-bottom: 15px;
+                    -webkit-line-clamp: 1;
+                    height: 15px;
+                }
+            }
+            a{
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                img{
+                    margin: 0 10px 0 0;
+                    width: 20px;
+                    height: 20px;
+                    @include breakpoint(mobile) {
+                        width: 30px;
+                        height: 28px;
+                    }
+                }
+                span{
+                    font-size: 12px;
+                    color: #f9991c;
+                    @include breakpoint(mobile) {
+                        font-size: 11px;
+                    }
+                }   
+            }
+        }
+    }
+}

@@ -8,30 +8,39 @@
 <!--[if gt IE 8]><!-->
 <html class="no-js" lang="<?= $this->getLocale() ?>">
 <!--<![endif]-->
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/png"
-          href="<?= \Pimcore\Tool::getHostUrl() . '/static/images/favicon/favicon.png' ?>"/>
-    <link rel="shortcut icon" type="image/x-icon"
-          href="<?= \Pimcore\Tool::getHostUrl() . '/static/images/favicon/favicon.ico' ?>" />
+    <meta name="format-detection" content="telephone=no"/>
+    <link rel="shortcut icon" type="image/png" href="<?= \Pimcore\Tool::getHostUrl() . '/static/images/favicon/favicon.png' ?>" />
+    <link rel="shortcut icon" type="image/x-icon" href="<?= \Pimcore\Tool::getHostUrl() . '/static/images/favicon/favicon.ico' ?>" />
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
     <?php
-
+    $site = $this->document->getProperty("site");
+    $hal = $this->document->getProperty("hal");
     if ($this->document instanceof \Pimcore\Model\Document\Page) {
-        if ($this->document->getTitle()) {
-            // use the manually set title if available
-            $this->headTitle()->set($this->document->getTitle());
+        $slug = $this->getParam("slug");
+        $year = $this->getParam("year");
 
+        if (!$slug && !$year) {
+            if ($this->document->getTitle()) {
+                // use the manually set title if available
+                $this->headTitle()->set($this->document->getTitle());
+                $this->headMeta()->appendName('title', $this->document->getTitle());
+            }
         }
     }
-    if ($this->document == '/') {
-        $this->headTitle()->set($this->document->getTitle());
 
-    }
 
-    if ($this->document->getDescription()) {
+    //    if ($this->document == '/') {
+    //        $this->headTitle()->set($this->document->getTitle());
+    //
+    //    }
+
+    if ($this->document instanceof Document\Page && $this->document->getDescription()) {
         // use the manually set description if available
         $this->headMeta()->appendName('description', $this->document->getDescription());
     }
@@ -66,22 +75,45 @@
     <![endif]-->
 
 </head>
+
 <body>
-<?php echo $this->template('Includes/navigation.html.php', ['documentInitiator' => $this->document->getId()]) ?>
+    <div id="overlay"></div>
+    <?php if ($site == "corporate") : ?>
+        <?php echo $this->template('Includes/navigation-corporate.html.php') ?>
+    <?php elseif ($site == "user") : ?>
+        <?php echo $this->template('Includes/navigation-dashboard.html.php') ?>
+    <?php else : ?>
+        <?php echo $this->template('Includes/navigation.html.php', ['documentInitiator' => $this->document->getId()]) ?>
+    <?php endif ?>
+    <div id="site-container">
+        <?php $this->slots()->output('_content'); ?>
+        <a class="backtoTop" href="#"><i class="icon-back-to-top"></i></a>
+    </div>
+    <!-- CONTAINER -->
+    <!-- FOOTER -->
+    <?php if ($site == "corporate") : ?>
+        <?php if ($hal == "contact") { ?>
+            <?= $this->inc("/" . $this->getLocale() . "/shared/includes/footer-corporate-contact") ?>
+        <?php } else { ?>
+            <?= $this->inc("/" . $this->getLocale() . "/shared/includes/footer-corporate") ?>
+        <?php } ?>
+    <?php elseif ($site == "user" || $hal == "contact") : ?>
+        <?= $this->inc("/" . $this->getLocale() . "/shared/includes/footer-dashboard") ?>
+    <?php else : ?>
+        <?= $this->inc("/" . $this->getLocale() . "/shared/includes/footer") ?>
+    <?php endif; ?>
+    <!-- FOOTER -->
+    <!-- LOADER -->
+    <div id="loader-container">dadasda</div>
+    <!-- LOADER -->
+    <?php $this->headScript()->prependFile('/static/js/Includes/homepage.js'); ?>
+    <?php $this->headScript()->prependFile('/static/js/custom.js'); ?>
+    <?php $this->headScript()->prependFile('/static/js/app.min.js'); ?>
+    <?php $this->headScript()->prependFile('/static/js/plugins.min.js'); ?>
+    <?php $this->headScript()->prependFile('/static/js/vendor.min.js'); ?>
+    <script async="" charset="utf-8" src="https://v2.zopim.com/?5baILLmEUPUCClge2ay2fXXPtgbifxof" type="text/javascript"></script>
 
-<div id="site-container">
-    <?php $this->slots()->output('_content'); ?>
-</div>
-<!-- CONTAINER -->
-<!-- FOOTER -->
-<?= $this->inc("/" . $this->getLocale() . "/shared/includes/footer") ?>
-<!-- FOOTER -->
-<?php $this->headScript()->prependFile('/static/js/Includes/homepage.js'); ?>
-<?php $this->headScript()->prependFile('/static/js/custom.js'); ?>
-<?php $this->headScript()->prependFile('/static/js/app.min.js'); ?>
-<?php $this->headScript()->prependFile('/static/js/plugins.min.js'); ?>
-<?php $this->headScript()->prependFile('/static/js/vendor.min.js'); ?>
-
-<?php echo $this->headScript(); ?>
+    <?php echo $this->headScript(); ?>
 </body>
+
 </html>

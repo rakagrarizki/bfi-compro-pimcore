@@ -1,19 +1,20 @@
 // FONT FAMILY
 $font_idx: 1;
-$font_default: HelveticaNeue, Arial, sans-serif !default;
+$font_default: 'HelveticaNeue', 'HelveticaNeueLTStd', 'sans-serif' !default;
 
 // Font Family Ex. (name, 'fonts/path')
 $font_family: (
-    FuturaStd-Book: 'fonts/FuturaStd-Book_gdi',
-    FuturaStd-Light: 'fonts/FuturaStd-Light_gdi',
-    FuturaStd-Medium: 'fonts/FuturaStd-Medium_gdi',
-    FuturaStd-Bold: 'fonts/FuturaStd-Bold_gdi',
-    FuturaStd-Heavy: 'fonts/FuturaStd-Heavy_gdi',
-    HelveticaNeue-Light: 'fonts/HelveticaNeue-Light',
-    HelveticaNeue-Medium: 'fonts/HelveticaNeue-Medium',
-    HelveticaNeue-Italic: 'fonts/HelveticaNeue-Italic',
-    HelveticaNeue-Bold: 'fonts/HelveticaNeue-Bold',
-    HelveticaNeue: 'fonts/HelveticaNeue',
+    // FuturaStd-Book: 'fonts/FuturaStd-Book_gdi',
+    // FuturaStd-Light: 'fonts/FuturaStd-Light_gdi',
+    // FuturaStd-Medium: 'fonts/FuturaStd-Medium_gdi',
+    // FuturaStd-Bold: 'fonts/FuturaStd-Bold_gdi',
+    // FuturaStd-Heavy: 'fonts/FuturaStd-Heavy_gdi',
+    // HelveticaNeue-Light: 'fonts/HelveticaNeue-Light',
+    // HelveticaNeue-Medium: 'fonts/HelveticaNeue-Medium',
+    // HelveticaNeue-Italic: 'fonts/HelveticaNeue-Italic',
+    // HelveticaNeue-Bold: 'fonts/HelveticaNeue-Bold',
+    // HelveticaNeue: 'fonts/HelveticaNeue',
+    fontello: 'fonts/fontello'
 ); 
 
 // Custom Font Family

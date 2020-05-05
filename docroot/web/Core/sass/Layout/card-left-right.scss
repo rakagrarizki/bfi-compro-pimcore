@@ -1,0 +1,54 @@
+.card-group {
+    padding: 50px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #eaeaea;
+    width: 100%;
+    // height: auto;
+    overflow: hidden;
+
+
+    @include breakpoint(mobile) {
+        display: block;
+        width: 100%;
+        padding: 50px 0 50px 50px;
+        // justify-content: space-between; 
+        // height: 645px;
+    }
+
+    .card {
+        float: left;
+        width: 35%;
+
+        @include breakpoint(mobile) {
+            width: 100%;
+        }
+
+        .card-body {
+            margin-bottom: 45px;
+
+            @include breakpoint(mobile) {
+                margin-bottom: 40px;
+            }
+
+            .card-title {
+                font-size: 24px;
+                color: #04559F;
+                font-weight: 600;
+                margin-bottom: 15px;
+                margin-top: 0;
+
+                @include breakpoint(mobile) {
+                    margin-bottom: 30px;
+                    margin-top: 0;
+                }
+            }
+
+            .card-text {
+                font-size: 18px;
+                color : #565656;
+                margin: 0;
+            }
+        }
+    }
+}

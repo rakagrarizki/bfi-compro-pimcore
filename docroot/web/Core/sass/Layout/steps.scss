@@ -1,0 +1,113 @@
+.steps {
+    p {
+        &.title {
+            font-size: 2em;
+            font-weight: 600;
+            color: #04559F;
+            margin-top: 40px;
+        }
+    }
+
+    .steps-list {
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+
+        @include breakpoint(mobile) {
+            overflow-y: auto;
+            padding: 20px 0;
+            justify-content: unset;
+        }
+
+        .steps-item {
+            flex-grow: 1;
+            display: block;
+            position: relative;
+            text-align: center;
+
+            @include breakpoint(mobile) {
+                flex-grow: 0;
+                width: 200px;
+            }
+
+            &:before {
+                content: '';
+                width: 100%;
+                height: 0;
+                position: absolute;
+                left: 50%;
+                top: 48px;
+                border-top: 4px dashed $blue;
+            }
+
+            picture {
+                display: block;
+                width: 100px;
+                height: 100px;
+                text-align: center;
+                line-height: 96px;
+                background-color: $white;
+                border: 2px solid $blue;
+                margin: 0 auto 25px;
+                border-radius: 50%;
+                position: relative;
+                z-index: 1;
+
+                img {
+                    max-width: 80px;
+                    max-height: 80px;
+                }
+            }
+
+            .text-wrap {
+                width: 160px;
+                display: block;
+                margin: 0 auto;
+
+                @include breakpoint(mobile) {
+                    margin: 0 20px;
+                }
+
+                p{
+                    color:#565656;
+                    @include breakpoint(mobile) {
+                        font-size: 14px;
+                    }
+                }
+            }
+
+            &:last-child {
+                &:before {
+                    display: none;
+                }
+
+                picture {
+                    background-color: $blue;
+
+                    &:before,
+                    &:after {
+                        content: '';
+                        position: absolute;
+                        left: 50%;
+                        top: 50%;
+                        transform: translate(-50%, -50%);
+                        border-radius: 50%;
+                    }
+
+                    &:before {
+                        width: 110px;
+                        height: 110px;
+                        border: 5px solid $white;
+                    }
+                    
+                    &:after {
+                        width: 114px;
+                        height: 114px;
+                        border: 2px solid $blue;
+                    }
+                }
+            }
+        }
+    }
+}
