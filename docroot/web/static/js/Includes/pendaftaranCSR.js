@@ -340,7 +340,7 @@ $(document).ready(function(){
     }, "Please enter a valid email address.");
 
     jQuery.validator.addMethod("filesize", function (value, element, param) {
-        console.log("test", this.optional(element) || (element.files[0].size <= param), element.files[0], param)
+        // console.log("test", this.optional(element) || (element.files[0].size <= param), element.files[0], param)
         return this.optional(element) || (element.files[0].size <= param)
     }, "File size must be less than 500 KB.");
 
@@ -351,8 +351,8 @@ $(document).ready(function(){
     function validateFormRequired(elementParam) {
         $(elementParam).validate({
             errorPlacement: function (error, element) {
-            console.log(element)
-            console.log(error)
+            // console.log(element)
+            // console.log(error)
             element.closest('.input-text-group').find('.error-wrap').html(error);
             }
         });

@@ -174,12 +174,12 @@ $(document).ready(function(){
             'path_ktp' : $('#file-upload').val()
             
         };
-        console.log(formData)
+        // console.log(formData)
           var dataKTP = {
                 'no_ktp' : $('#ktp-input').val(),
                 'path_ktp' : $('#file-upload').val()
             }
-        console.log(dataKTP)      
+        // console.log(dataKTP)      
   
         $.ajax({
             type: 'POST',
@@ -188,16 +188,16 @@ $(document).ready(function(){
             dataType: 'json',
             headers: { 'sessionId': token },
             error: function (data) {
-                console.log('error' + data);
+                // console.log('error' + data);
             },
     
             fail: function (xhr, textStatus, error) {
-                console.log('request failed')
+                // console.log('request failed')
             },
     
             success: function (dataObj) {
                 if (dataObj.success === true) {
-                    console.log('berhasil verify ktp')
+                    // console.log('berhasil verify ktp')
                     $('#popup-ktp').modal('hide');
                     location.reload();
                 }else{
@@ -286,14 +286,14 @@ $(document).ready(function(){
     }, "Please enter a valid email address.");
 
     jQuery.validator.addMethod("filesize", function (value, element, param) {
-        console.log("test", this.optional(element) || (element.files[0].size <= param), element.files[0], param)
+        // console.log("test", this.optional(element) || (element.files[0].size <= param), element.files[0], param)
         return this.optional(element) || (element.files[0].size <= param)
     }, "File size must be less than 500 KB.");
 
     function validateFormRequired(elementParam) {
         $(elementParam).validate({
             errorPlacement: function(error, element) {
-                console.log(element);
+                // console.log(element);
                 element
                     .closest(".input-text-group")
                     .find(".error-wrap")
@@ -333,11 +333,11 @@ function checkStatusVerify(token) {
         headers: { 'sessionId': token },
 
         error: function (data) {
-            console.log('error' + data);
+            // console.log('error' + data);
         },
 
         fail: function (xhr, textStatus, error) {
-            console.log('request failed')
+            // console.log('request failed')
         },
 
         success: function (dataObj) {
@@ -382,17 +382,17 @@ function dataCustomer(token){
         headers: {'sessionId': token},
 
         error: function(data) {
-            console.log('error' + data);
+            // console.log('error' + data);
         },
 
         fail: function(xhr, textStatus, error) {
-            console.log('request failed')
+            // console.log('request failed')
         },
 
         success: function(dataObj){
             if(dataObj.success === true) {
                 var data = dataObj.result.data;
-                console.log(data);
+                // console.log(data);
                 $('#name-input').val(data.full_name);
                 $('#email-input').val(data.email);
                 $('#phone-input').val(data.phone_number);
@@ -410,11 +410,11 @@ function checkAssignmentList(token) {
         headers: { 'sessionId': token },
 
         error: function (data) {
-            console.log('error' + data);
+            // console.log('error' + data);
         },
 
         fail: function (xhr, textStatus, error) {
-            console.log('request failed')
+            // console.log('request failed')
         },
 
         success: function (dataObj) {
@@ -449,11 +449,11 @@ function applicationStep(token) {
         headers: {'sessionId': token },
 
         error: function (data) {
-            console.log('error' + data);
+            // console.log('error' + data);
         },
 
         fail: function (xhr, textStatus, error) {
-            console.log('request failed')
+            // console.log('request failed')
         },
 
         success: function (dataObj) {
@@ -483,11 +483,11 @@ function contractStatusList(lang, token) {
         headers: {'sessionId': token},
 
         error: function (data) {
-            console.log('error' + data);
+            // console.log('error' + data);
         },
 
         fail: function (xhr, textStatus, error) {
-            console.log('request failed')
+            // console.log('request failed')
         },
 
         success: function (dataObj) {
@@ -544,7 +544,7 @@ function applicationStatus(token, statusNumber, assignmentId) {
         'assignment_id': assignmentId
     }
 
-    console.log(dataAssignment)
+    // console.log(dataAssignment)
 
     $.ajax({
         type: 'POST',
@@ -556,11 +556,11 @@ function applicationStatus(token, statusNumber, assignmentId) {
         headers: {'sessionId': token},
 
         error: function (data) {
-            console.log('error' + data);
+            // console.log('error' + data);
         },
 
         fail: function (xhr, textStatus, error) {
-            console.log('request failed')
+            // console.log('request failed')
         },
 
         success: function (dataObj) {
@@ -579,7 +579,7 @@ function applicationStatus(token, statusNumber, assignmentId) {
                 
                 //add icon done and fail
                 for(var i=0;i<data.length;i++){
-                    console.log(statusNumber + 'span.step'+(i+1), data[i].step_id, data[i].status_id, )
+                    // console.log(statusNumber + 'span.step'+(i+1), data[i].step_id, data[i].status_id, )
                     if(data[i].status_id == 1 && (i+1)==data[i].step_id){
                         $(statusNumber).find('span.step'+(i+1)).parent().addClass('done');
                         $(statusNumber).find('span.step'+(i+1)).parent().addClass('active')
@@ -592,7 +592,7 @@ function applicationStatus(token, statusNumber, assignmentId) {
                         $(statusNumber).find('span.step'+(i+1)).text((i+1));
                     }
                 }
-                console.log(data)
+                // console.log(data)
             }
         }
     })

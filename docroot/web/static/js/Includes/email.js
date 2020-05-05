@@ -45,7 +45,7 @@ $("#email-input").on("keyup", function(e) {
 function validateFormRequired(elementParam) {
     $(elementParam).validate({
         errorPlacement: function(error, element) {
-            console.log(element);
+            // console.log(element);
             element
                 .closest(".form-group")
                 .find(".error-wrap")
@@ -84,7 +84,7 @@ jQuery.validator.addMethod("emailCust", function (value, element, param) {
         'email' : $('#email-input').val()
     };
 
-    console.log(dataEmail);
+    // console.log(dataEmail);
     if (
         $(this)
             .closest("form")
@@ -97,17 +97,17 @@ jQuery.validator.addMethod("emailCust", function (value, element, param) {
         dataType: 'json',
         headers: { 'sessionId': token },
         error: function (data) {
-            console.log('error' + data);
+            // console.log('error' + data);
         },
 
         fail: function (xhr, textStatus, error) {
-            console.log('request failed')
+            // console.log('request failed')
         },
 
         success: function (dataObj) {
             if (dataObj.success === true) {
                 // var verify_code = dataObj.result.data.email_verify_code
-                console.log(dataObj.result.data)
+                // console.log(dataObj.result.data)
                 $("#email-sent").removeClass("hide");
                 $("#email-verify").addClass("hide");
                 }
@@ -126,17 +126,17 @@ function dataCustomer(token){
         headers: {'sessionId': token},
 
         error: function(data) {
-            console.log('error' + data);
+            // console.log('error' + data);
         },
 
         fail: function(xhr, textStatus, error) {
-            console.log('request failed')
+            // console.log('request failed')
         },
 
         success: function(dataObj){
             if(dataObj.success === true) {
                 var data = dataObj.result.data;
-                console.log(data);
+                // console.log(data);
                 // $("#email-input").focus();
                 $('#email-input').val(data.email);
             }

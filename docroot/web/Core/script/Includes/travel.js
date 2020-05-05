@@ -328,7 +328,7 @@ var isValidOtp = false;
           }
            return isKnownNumber;
          } else {
-            console.log("currentIndex false");
+            // console.log("currentIndex false");
          }
       }
       form.validate().settings.ignore = ":disabled,:hidden";
@@ -371,7 +371,7 @@ var isValidOtp = false;
   $("#provinsi").change(function () {
     var selElm = $('#kota');
     var dataArr = getCity($(this).val()[0]);
-    console.log("CITY", dataArr)
+    // console.log("CITY", dataArr)
     selElm.empty();
     selElm.select2({
       placeholder: selElm.attr('placeholder'),
@@ -399,7 +399,7 @@ var isValidOtp = false;
   $("#kota").change(function () {
     var selElm = $('#kecamatan');
     var dataArr = getDistrict($(this).val()[0]);
-    console.log("CITY", dataArr)
+    // console.log("CITY", dataArr)
     selElm.empty();
     selElm.select2({
       placeholder: selElm.attr('placeholder'),
@@ -412,7 +412,7 @@ var isValidOtp = false;
   $("#kecamatan").change(function () {
     var selElm = $('#kelurahan');
     var dataArr = getSubdistrict($(this).val()[0]);
-    console.log("CITY", dataArr)
+    // console.log("CITY", dataArr)
     selElm.empty();
     selElm.select2({
       placeholder: selElm.attr('placeholder'),
@@ -425,7 +425,7 @@ var isValidOtp = false;
   $("#kelurahan").change(function () {
     var selElm = $('#kelurahan');
     var dataArr = getZipcode($(this).val()[0]);
-    console.log("CITY", dataArr)
+    // console.log("CITY", dataArr)
     var postcodeGen = dataArr[0].postal_code;
     if (postcodeGen !== 'null') {
       $("#kode_pos").val(postcodeGen);

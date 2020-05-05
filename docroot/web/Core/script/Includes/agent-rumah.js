@@ -208,7 +208,7 @@ function initSummary() {
 
   var areMember = $('input[name="are_member"]:checked');
   var haveSmartphone = $('input[name="haveSmartphone"]:checked');
-  console.log("MEMBER", areMember)
+  // console.log("MEMBER", areMember)
   $("#showAre_member").text(areMember[0].labels[0].innerText);
   $("#showAreCode").text((areMember.val() === "1" ? $("#areCode").val() : "-"));
   $("#showHaveSmartphone").text(haveSmartphone[0].labels[0].innerText);
@@ -562,7 +562,7 @@ var isValidOtp = false;
   $(document).on('change', 'input[name="agreement1"]', checkValid);
 
   $('input[name="applicant_position"]').change(function () {
-    console.log($(this).val())
+    // console.log($(this).val())
   });
 
   $("#provinsi").change(function () {

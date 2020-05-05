@@ -324,7 +324,7 @@ var isValidOtp = false;
               }
                return isKnownNumber;
              } else {
-                console.log("currentIndex false");
+                // console.log("currentIndex false");
              }
           }
       if ($(".actions > ul li a[href$='next']").parent().hasClass("inactive")) {
