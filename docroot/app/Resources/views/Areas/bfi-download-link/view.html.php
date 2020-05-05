@@ -3,7 +3,7 @@
 
         <div class="down-box">
             <h3><?= $this->link('url')->getText(); ?></h3>
-            <a href="<?= $this->link('url')->getHref(); ?>" target="<?= $this->link('url')->getTarget(); ?>" class="cta cta-down" download>
+            <a href="<?= $this->link('url')->getHref(); ?>" target="<?= $this->link('url')->getTarget(); ?>" class="cta cta-down">
                 <span><?= $this->t("download") ?></span>
             </a>
         </div>
