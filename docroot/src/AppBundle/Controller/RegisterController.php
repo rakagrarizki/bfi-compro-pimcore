@@ -27,7 +27,8 @@ class RegisterController extends FrontendController
 
     public function registerAction(Request $request)
     {
-        $url = HOST . WebsiteSetting::getByName('URL_REGISTER')->getData();
+        $host = WebsiteSetting::getByName("HOST")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_REGISTER')->getData();
         $param["full_name"] = htmlentities(addslashes($request->get('full_name')));
         $param["email"] = htmlentities(addslashes($request->get('email')));
         $param["phone_number"] = htmlentities(addslashes($request->get('phone_number')));
@@ -57,7 +58,8 @@ class RegisterController extends FrontendController
 
     public function registerSubmissionAction(Request $request)
     {
-        $url = HOST . WebsiteSetting::getByName('URL_REGISTER_SUBMISSION')->getData();
+        $host = WebsiteSetting::getByName("HOST")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_REGISTER_SUBMISSION')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
 
         try {
@@ -85,7 +87,8 @@ class RegisterController extends FrontendController
 
     public function loginSubmissionAction(Request $request)
     {
-        $url = HOST . WebsiteSetting::getByName('URL_LOGIN_SUBMISSION')->getData();
+        $host = WebsiteSetting::getByName("HOST")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_LOGIN_SUBMISSION')->getData();
         $param["phone_number"] = htmlentities(addslashes($request->get('phone_number')));
 
         try {
