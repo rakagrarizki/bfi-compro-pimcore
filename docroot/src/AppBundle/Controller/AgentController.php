@@ -250,12 +250,10 @@ class AgentController extends FrontendController
         $param["stream_ktp"] = htmlentities(addslashes($request->get('stream_ktp')));
         $param["code_are"] = htmlentities(addslashes($request->get('code_are')));
         $param["have_smartphone"] = htmlentities(addslashes($request->get('have_smartphone')));
-
         $limitTime = WebsiteSetting::getByName('LIMIT_TIME')->getData();
         $limit = $limitTime * 3600;
 
-
-        $redis = new \Credis_Client("localhost", 6379, null, '', 1);
+        $redis = new \Credis_Client(REDIS, 6379, null, '', 1, PASSREDIS);
         $dateSend = $redis->hGet($param['phone_number'], "time-send");
         $attempts = $redis->hGet($param['phone_number'], "attempt-hit");
         $timenow = time();

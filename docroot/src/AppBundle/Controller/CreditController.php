@@ -347,13 +347,11 @@ class CreditController extends FrontendController
 
     public function sendOtpRequestAction(Request $request)
     {
-        //$nama_lengkap = htmlentities(addslashes($request->get('nama_lengkap')));
         $handphone = htmlentities(addslashes($request->get('phone_number')));
         $limitTime = WebsiteSetting::getByName('LIMIT_TIME')->getData();
         $limit = $limitTime * 3600;
 
-
-        $redis = new \Credis_Client("localhost", 6379, null, '', 1);
+        $redis = new \Credis_Client(REDIS, 6379, null, '', 1, PASSREDIS);
         $dateSend = $redis->hGet($handphone, "time-send");
         $attempts = $redis->hGet($handphone, "attempt-hit");
         $timenow = time();

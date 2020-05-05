@@ -16,8 +16,9 @@ pimcore:
             redis:
                 enabled: true
                 connection:
-                    server: localhost
+                    server: !php/const REDIS
                     database: 14
+                    password: !php/const PASSREDIS
 
 #### FEATURE FLAGS
 #    flags:

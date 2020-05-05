@@ -61,15 +61,11 @@ class UserController extends FrontendController
     public function otpRequestJsonAction(Request $request)
     {
         $params['phone_number'] = htmlentities($request->get('phone_number'));
-
         $host = WebsiteSetting::getByName("HOST")->getData();
         $url = $host . WebsiteSetting::getByName('LOGIN_OTP_REQUEST')->getData();
-
         $limitTime = WebsiteSetting::getByName('LIMIT_TIME')->getData();
         $limit = $limitTime * 3600;
-
-
-        $redis = new \Credis_Client("localhost", 6379, null, '', 1);
+        $redis = new \Credis_Client(REDIS, 6379, null, '', 1, PASSREDIS);
         $dateSend = $redis->hGet($params['phone_number'], "time-send");
         $attempts = $redis->hGet($params['phone_number'], "attempt-hit");
         $timenow = time();
