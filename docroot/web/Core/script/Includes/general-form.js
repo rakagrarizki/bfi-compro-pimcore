@@ -96,18 +96,18 @@ function getData(url, data, cb) {
       if (result.success === "1") {
         _ret = result;
       } else {
-        console.log('error' + result.message);
+        // console.log('error' + result.message);
       }
     }
   })
   return _ret;
 }
 
-function getProvince() {
-  var url = "/credit/get-province";
-  var data = {};
-  return transformData(getData(url, data).data);
-}
+// function getProvince() {
+//   var url = "/credit/get-province";
+//   var data = {};
+//   return transformData(getData(url, data).data);
+// }
 
 function getCity(provinceId) {
   if (provinceId) {
@@ -285,7 +285,7 @@ function successOTP() {
 }
 
 function checkStatus() {
-  console.log(phone_number);
+  // console.log(phone_number);
   var lang = document.documentElement.lang;
   var data = {
     'phone_number' : phone_number
@@ -294,11 +294,11 @@ function checkStatus() {
   if (check.success === "1"){
     var token = check.data.customer_token
     localStorage.setItem("token", token);
-    console.log ('token : ' + token);
+    // console.log ('token : ' + token);
     getCustomer(token);
     window.location="/"+lang+"/user/dashboard";
   }else{
-    console.log("login after submission failed");
+    // console.log("login after submission failed");
   }
 }
 
@@ -495,10 +495,10 @@ function scrollToTop() {
 
   if (typeof ($('#ex7SliderVal').parents(".sliderGroup").find(".calcslide").slider()) !== 'undefined') {
     if($('#ex7SliderVal').parents(".machine-funding").length == 1){
-      console.log('DP changed');
+      // console.log('DP changed');
     }else{
       $('#ex7SliderVal').parents(".sliderGroup").find(".calcslide").slider().on('slideStop', function (ev) {
-        console.log(ev)
+        // console.log(ev)
         var rawDownPayment = ev.value * 0.1;
         var downPayment = separatordot(rawDownPayment);
         $('#down_payment').val(downPayment);
@@ -557,7 +557,7 @@ function scrollToTop() {
   });
 
   $('.otp-number__verify input[type="tel"]').on("keyup", function () {
-    console.log(this.value.length, this.maxLength)
+    // console.log(this.value.length, this.maxLength)
     if (this.value.length == this.maxLength) {
       var $next = $(this).next('.input-number');
       if ($next.length) {
@@ -577,7 +577,7 @@ function scrollToTop() {
 
   $(".formNoKtp").on("keydown", function (e) {
     if (e.which != 8 && e.which != 0 && e.which != 144 && (e.which < 46 || e.which > 57) && (e.which < 96 || e.which > 105)) {
-      console.log('masuk sini')
+      // console.log('masuk sini')
       return false;
     }
   });

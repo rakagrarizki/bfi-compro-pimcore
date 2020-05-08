@@ -31,15 +31,15 @@ function otpCustom() {
         data: phone,
         dataType: "json",
         error: function(data) {
-            console.log("error" + data);
+            // console.log("error" + data);
         },
   
         fail: function(xhr, textStatus, error) {
-            console.log("request failed");
+            // console.log("request failed");
         },
   
         success: function(dataObj) {
-            console.log(dataObj.result.data);
+            // console.log(dataObj.result.data);
         }
     });
   }
@@ -57,7 +57,7 @@ function otpCustom() {
         otp_code: otpInput
     };
 
-    console.log(dataOTP);
+    // console.log(dataOTP);
     verifiedOTP(language, dataOTP);
   }
   
@@ -91,10 +91,10 @@ function otpCustom() {
                 } else {
                     $("#getCredit").hide();
                     $("#otp").removeClass("hide");
-                    console.log(dataPhone);
+                    // console.log(dataPhone);
                     requestOTPCustom(dataPhone);
                     $("#phone-input").val($("#no_handphone").val());
-                    console.log("checklogin true");
+                    // console.log("checklogin true");
                     otpCustom();
                 }
               }
@@ -112,7 +112,7 @@ function otpCustom() {
             phone_number: $("#phone-input").val(),
             otp_code: otpInput
         };
-        console.log(dataOTP);
+        // console.log(dataOTP);
         
     $.ajax({
         type: "POST",
@@ -131,10 +131,10 @@ function otpCustom() {
   
         success: function(dataObj) {
             if (dataObj.success === true) {
-                console.log("berhasil verified otp");
+                // console.log("berhasil verified otp");
                 var token = dataObj.result.data.customer_token;
                 localStorage.setItem("token", token);
-                console.log("token : " + token);
+                // console.log("token : " + token);
                 getCustomerCustom(token);
                 $("#otp").addClass("hide");
                 $("#getCredit").show();
@@ -158,17 +158,17 @@ function otpCustom() {
         headers: { sessionId: token },
   
         error: function(data) {
-            console.log("error" + data);
+            // console.log("error" + data);
         },
   
         fail: function(xhr, textStatus, error) {
-            console.log("request failed");
+            // console.log("request failed");
         },
   
         success: function(dataObj) {
             if (dataObj.success === true) {
                 var data = dataObj.result.data;
-                console.log(data.full_name);
+                // console.log(data.full_name);
                 document.cookie = "customer=" + data.full_name + "; path=/";
             }
         }

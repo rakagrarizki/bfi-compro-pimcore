@@ -463,10 +463,10 @@ var isAjaxActive = false;
             data: _param,
             dataType: "json",
             error: function(data) {
-                console.log("error" + data);
+                // console.log("error" + data);
             },
             fail: function(xhr, textStatus, error) {
-                console.log("request failed");
+                // console.log("request failed");
             },
             success: function(data) {
                 // console.log("Asuransi Result", data);
@@ -794,7 +794,7 @@ var isAjaxActive = false;
                     .replace(/\./g, "")
             );
             var minPayment = payment * (param / 100);
-            console.log("DP ", payment, thisval, minPayment);
+            // console.log("DP ", payment, thisval, minPayment);
             return minPayment <= thisval ? true : false;
             // return false
         },
@@ -837,7 +837,7 @@ var isAjaxActive = false;
                     .replace(/\./g, "")
             );
             var minPayment = payment * (param / 100);
-            console.log("DP ", payment, thisval, minPayment);
+            // console.log("DP ", payment, thisval, minPayment);
             return minPayment <= thisval ? true : false;
             // return false
         },
@@ -854,7 +854,7 @@ var isAjaxActive = false;
                     .replace(/\./g, "")
             );
             var maxPocketMoney = payment * (param / 100);
-            console.log("Pocket ", payment, thisval, maxPocketMoney);
+            // console.log("Pocket ", payment, thisval, maxPocketMoney);
             return maxPocketMoney >= thisval ? true : false;
             // return false
         },
@@ -947,12 +947,12 @@ var isAjaxActive = false;
             // param = size (in bytes)
             // element = element to validate (<input>)
             // value = value of the element (file name)
-            console.log(
-                "test",
-                this.optional(element) || element.files[0].size <= param,
-                element.files[0],
-                param
-            );
+            // console.log(
+            //     "test",
+            //     this.optional(element) || element.files[0].size <= param,
+            //     element.files[0],
+            //     param
+            // );
             return this.optional(element) || element.files[0].size <= param;
         },
         "Jumlah maksimum file adalah 1MB"
@@ -1091,12 +1091,12 @@ var isAjaxActive = false;
         if (xhr.status == 500) {
             _this.tryCount++;
             if (_this.tryCount <= _this.retryLimit) {
-                console.log("TRY " + _this.tryCount);
+                // console.log("TRY " + _this.tryCount);
                 //try again
                 $.ajax(_this);
                 return;
             } else {
-                console.log("LAST TRY");
+                // console.log("LAST TRY");
                 // _this.url = '/credit/save-car-leads1';
                 return;
             }
@@ -1182,7 +1182,7 @@ var isAjaxActive = false;
                         credits.pemohon.no_handphone = htmlEntities(no_telepon);
                         cb();
                     } else {
-                        console.log("error" + result.message);
+                        // console.log("error" + result.message);
                     }
                 }
             });
@@ -1232,14 +1232,14 @@ var isAjaxActive = false;
                 tryCount: 0,
                 retryLimit: retryLimit,
                 error: function(xhr, textStatus, errorThrown) {
-                    console.log("error", textStatus);
+                    // console.log("error", textStatus);
                     retryAjax(this, xhr);
                 },
                 fail: function(xhr, textStatus, error) {
-                    console.log("request failed");
+                    // console.log("request failed");
                 },
                 success: function(result) {
-                    console.log('masuk 1');
+                    // console.log('masuk 1');
                     if (result.success === "1") {
                         submission_id = result.data.submission_id;
                         credits.angunan.jenis_angunan = htmlEntities(
@@ -1255,7 +1255,7 @@ var isAjaxActive = false;
                             $("#showPhone").html(credits.pemohon.no_handphone);
                         }
                     } else {
-                        console.log("error" + result.message);
+                        // console.log("error" + result.message);
                     }
                 }
             });
@@ -1306,10 +1306,10 @@ var isAjaxActive = false;
             data: _data,
             dataType: "json",
             error: function(data) {
-                console.log("error" + data);
+                // console.log("error" + data);
             },
             fail: function(xhr, textStatus, error) {
-                console.log("request failed");
+                // console.log("request failed");
             },
             success: function(data) {
                 if (data.success === "1") {
@@ -1382,10 +1382,10 @@ var isAjaxActive = false;
             url: "/credit/get-pbf-property-type",
             dataType: "json",
             error: function(data) {
-                console.log("error" + data);
+                // console.log("error" + data);
             },
             fail: function(xhr, textStatus, error) {
-                console.log("request failed");
+                // console.log("request failed");
             },
             success: function(result) {
                 if (result.success === "1") {
@@ -1414,10 +1414,10 @@ var isAjaxActive = false;
             url: "/credit/get-pbf-certificate-type",
             dataType: "json",
             error: function(data) {
-                console.log("error" + data);
+                // console.log("error" + data);
             },
             fail: function(xhr, textStatus, error) {
-                console.log("request failed");
+                // console.log("request failed");
             },
             success: function(result) {
                 if (result.success === "1") {
@@ -1448,10 +1448,10 @@ var isAjaxActive = false;
             url: "/credit/get-pbf-certificate-on-behalf",
             dataType: "json",
             error: function(data) {
-                console.log("error" + data);
+                // console.log("error" + data);
             },
             fail: function(xhr, textStatus, error) {
-                console.log("request failed");
+                // console.log("request failed");
             },
             success: function(result) {
                 if (result.success === "1") {
@@ -1486,7 +1486,7 @@ var isAjaxActive = false;
             submission_id: submission_id,
             bpkb_atas_nama: status_pemilik === "Milik Pribadi" ? true : false
         };
-        console.log("DATA", _data);
+        // console.log("DATA", _data);
   
         switch (credType) {
             case "mobil":
@@ -1525,10 +1525,10 @@ var isAjaxActive = false;
             data: _data,
             dataType: "json",
             error: function(data) {
-                console.log("error" + data);
+                // console.log("error" + data);
             },
             fail: function(xhr, textStatus, error) {
-                console.log("request failed");
+                // console.log("request failed");
             },
             success: function(data) {
                 if (data.success === "1") {
@@ -1595,10 +1595,10 @@ var isAjaxActive = false;
             data: _data,
             dataType: "json",
             error: function(data) {
-                console.log("error" + data);
+                // console.log("error" + data);
             },
             fail: function(xhr, textStatus, error) {
-                console.log("request failed");
+                // console.log("request failed");
             },
             success: function(data) {
                 if (data.success === "1") {
@@ -1632,10 +1632,10 @@ var isAjaxActive = false;
             data: _data,
             dataType: "json",
             error: function(data) {
-                console.log("error" + data);
+                // console.log("error" + data);
             },
             fail: function(xhr, textStatus, error) {
-                console.log("request failed");
+                // console.log("request failed");
             },
             success: function(data) {
                 if (data.success === "1") {
@@ -1669,10 +1669,10 @@ var isAjaxActive = false;
             data: _data,
             dataType: "json",
             error: function(data) {
-                console.log("error" + data);
+                // console.log("error" + data);
             },
             fail: function(xhr, textStatus, error) {
-                console.log("request failed");
+                // console.log("request failed");
             },
             success: function(data) {
                 if (data.success === "1") {
@@ -1695,10 +1695,10 @@ var isAjaxActive = false;
             data: _data,
             dataType: "json",
             error: function(data) {
-                console.log("error" + data);
+                // console.log("error" + data);
             },
             fail: function(xhr, textStatus, error) {
-                console.log("request failed");
+                // console.log("request failed");
             },
             success: function(data) {
                 if (data.success === "1") {
@@ -1776,10 +1776,10 @@ var isAjaxActive = false;
                 data: _data,
                 dataType: "json",
                 error: function(data) {
-                    console.log("error" + data);
+                    // console.log("error" + data);
                 },
                 fail: function(xhr, textStatus, error) {
-                    console.log("request failed");
+                    // console.log("request failed");
                 },
                 success: function(data) {
                     if (data.success === "1") {
@@ -2020,11 +2020,11 @@ var isAjaxActive = false;
                 url: "/credit/get-pbf-profession",
                 dataType: "json",
                 error: function(data) {
-                    console.log("error" + data);
+                    // console.log("error" + data);
                 },
   
                 fail: function(xhr, textStatus, error) {
-                    console.log("request failed");
+                    // console.log("request failed");
                 },
   
                 success: function(result) {
@@ -3032,14 +3032,14 @@ var isAjaxActive = false;
             data: _data,
             dataType: "json",
             error: function(data) {
-                console.log("error" + data);
+                // console.log("error" + data);
             },
             fail: function(xhr, textStatus, error) {
-                console.log("request failed");
+                // console.log("request failed");
             },
             success: function(data) {
                 if (data.success != "1") {
-                    console.log("failed");
+                    // console.log("failed");
                 } else {
                     //console.log(data)
                 }
@@ -3067,11 +3067,11 @@ var isAjaxActive = false;
             data: _data,
             dataType: "json",
             error: function(data) {
-                console.log("error" + data);
+                // console.log("error" + data);
                 $("#wrongOtp").modal("show");
             },
             fail: function(xhr, textStatus, error) {
-                console.log("request failed");
+                // console.log("request failed");
             },
             success: function(data) {
                 // console.log(data.success)
@@ -3148,11 +3148,11 @@ var isAjaxActive = false;
             data: objCredits,
             dataType: "json",
             error: function(data) {
-                console.log("error" + data);
+                // console.log("error" + data);
             },
   
             fail: function(xhr, textStatus, error) {
-                console.log("request failed");
+                // console.log("request failed");
             },
   
             success: function(data) {
@@ -3208,15 +3208,15 @@ var isAjaxActive = false;
             url: _urlType,
             dataType: "json",
             error: function(data) {
-                console.log("error", data);
+                // console.log("error", data);
             },
   
             fail: function(xhr, textStatus, error) {
-                console.log("request failed");
+                // console.log("request failed");
             },
   
             success: function(dataObj) {
-                console.log("TYPE KENDARAAN", dataObj);
+                // console.log("TYPE KENDARAAN", dataObj);
                 if (dataObj.success === "1") {
                     $.each(dataObj.data, function(idMobilmotor, valMobilmotor) {
                         if ($("#type_kendaraan option").length > 1) {
@@ -3243,15 +3243,15 @@ var isAjaxActive = false;
             url: _url,
             dataType: "json",
             error: function(data) {
-                console.log("error" + data);
+                // console.log("error" + data);
             },
   
             fail: function(xhr, textStatus, error) {
-                console.log("request failed");
+                // console.log("request failed");
             },
   
             success: function(dataObj) {
-                console.log("MERK KENDARAAN", dataObj);
+                // console.log("MERK KENDARAAN", dataObj);
                 if (dataObj.success === "1") {
                     $.each(dataObj.data, function(idMobilmotor, valMobilmotor) {
                         if ($("#merk_kendaraan option").length > 1) {
@@ -3306,6 +3306,7 @@ var isAjaxActive = false;
     var dataKotaSertificate = [];
     var dataKecamatanSertificate = [];
     var dataKelurahanSertificate = [];
+
     function getProvinsi(element, element2) {
         dataProvince = [];
   
@@ -3326,11 +3327,11 @@ var isAjaxActive = false;
             url: "/credit/get-province",
             dataType: "json",
             error: function(data) {
-                console.log("error" + data);
+                // console.log("error" + data);
             },
   
             fail: function(xhr, textStatus, error) {
-                console.log("request failed");
+                // console.log("request failed");
             },
   
             success: function(dataObj) {
@@ -3387,7 +3388,12 @@ var isAjaxActive = false;
             }
         });
     }
-  
+   
+    if (window.location.pathname.includes("credit/form")||
+        window.location.pathname.includes("agent/form")) {
+        getProvinsi($("#provinsi"), $("#provinsi_sertificate"));
+    }   
+    
     $("#kota").attr("disabled", "disabled");
     $("#kota")
         .next()
@@ -3451,7 +3457,7 @@ var isAjaxActive = false;
     $("#provinsi").change(function() {
         // console.log('#provinsi change working...');
         leavePage = true;
-        console.log('leavePage', leavePage);
+        // console.log('leavePage', leavePage);
   
         resetSameAddress();
   
@@ -3544,11 +3550,11 @@ var isAjaxActive = false;
             data: params_getCity,
             dataType: "json",
             error: function(data) {
-                console.log("[GET city]error" + data);
+                // console.log("[GET city]error" + data);
             },
   
             fail: function(xhr, textStatus, error) {
-                console.log("request failed");
+                // console.log("request failed");
             },
   
             success: function(dataObj) {
@@ -3653,11 +3659,11 @@ var isAjaxActive = false;
                 data: params_getCity,
                 dataType: "json",
                 error: function(data) {
-                    console.log("error" + data);
+                    // console.log("error" + data);
                 },
   
                 fail: function(xhr, textStatus, error) {
-                    console.log("request failed");
+                    // console.log("request failed");
                 },
   
                 success: function(dataObj) {
@@ -3763,11 +3769,11 @@ var isAjaxActive = false;
             data: param_getKecamatan,
             dataType: "json",
             error: function(data) {
-                console.log("error" + data);
+                // console.log("error" + data);
             },
   
             fail: function(xhr, textStatus, error) {
-                console.log("request failed");
+                // console.log("request failed");
             },
   
             success: function(dataObj) {
@@ -3869,11 +3875,11 @@ var isAjaxActive = false;
                 data: params_getCity,
                 dataType: "json",
                 error: function(data) {
-                    console.log("error" + data);
+                    // console.log("error" + data);
                 },
   
                 fail: function(xhr, textStatus, error) {
-                    console.log("request failed");
+                    // console.log("request failed");
                 },
   
                 success: function(dataObj) {
@@ -3978,11 +3984,11 @@ var isAjaxActive = false;
             dataType: "json",
             data: params_getSubdistrict,
             error: function(data) {
-                console.log("error" + data);
+                // console.log("error" + data);
             },
   
             fail: function(xhr, textStatus, error) {
-                console.log("request failed");
+                // console.log("request failed");
             },
   
             success: function(dataObj) {
@@ -4092,11 +4098,11 @@ var isAjaxActive = false;
                 data: param_getKecamatan,
                 dataType: "json",
                 error: function(data) {
-                    console.log("error" + data);
+                    // console.log("error" + data);
                 },
   
                 fail: function(xhr, textStatus, error) {
-                    console.log("request failed");
+                    // console.log("request failed");
                 },
   
                 success: function(dataObj) {
@@ -4143,7 +4149,7 @@ var isAjaxActive = false;
     $("#kelurahan").on("select2:select", function(e) {
         var thisVal = $(this).val()[0];
         resetSameAddress();
-        console.log("===#kelurahan select ganti2");
+        // console.log("===#kelurahan select ganti2");
         showDefaultButton();
         change_addres = true;
         if ($(".nav-item-2").hasClass("done")) {
@@ -4188,16 +4194,16 @@ var isAjaxActive = false;
             dataType: "json",
             data: { subdistrict_id: this.value },
             error: function(data) {
-                console.log("error" + data);
+                // console.log("error" + data);
             },
   
             fail: function(xhr, textStatus, error) {
-                console.log("request failed");
+                // console.log("request failed");
             },
   
             success: function(dataObj) {
                 if (dataObj.success == true) {
-                    console.log("ZIP CODE", dataObj);
+                    // console.log("ZIP CODE", dataObj);
                     var postcodeGen = dataObj.data[0].postal_code;
   
                     if (postcodeGen !== "null") {
@@ -4359,16 +4365,16 @@ var isAjaxActive = false;
                 dataType: "json",
                 data: { subdistrict_id: this.value },
                 error: function(data) {
-                    console.log("error" + data);
+                    // console.log("error" + data);
                 },
   
                 fail: function(xhr, textStatus, error) {
-                    console.log("request failed");
+                    // console.log("request failed");
                 },
   
                 success: function(dataObj) {
                     if (dataObj.success == "1") {
-                        console.log("ZIP CODE", dataObj);
+                        // console.log("ZIP CODE", dataObj);
                         var postcodeGen = dataObj.data[0].postal_code;
   
                         if (postcodeGen !== "null") {
@@ -4598,13 +4604,8 @@ var isAjaxActive = false;
             disableButton("#button3rumah");
         }
     });
-  
-    if ($("#provinsi_sertificate").length > 0) {
-        getProvinsi($("#provinsi"), $("#provinsi_sertificate"));
-    } else {
-        getProvinsi($("#provinsi"));
-    }
-  
+
+    
     $("#merk_kendaraan, #type_kendaraan").change(function() {
         // console.log("CHANGE",$('#type_kendaraan').val(),$('#merk_kendaraan').val())
         if (
@@ -4703,11 +4704,11 @@ var isAjaxActive = false;
                 data: _data,
                 dataType: "json",
                 error: function(data) {
-                    console.log("error" + data);
+                    // console.log("error" + data);
                 },
   
                 fail: function(xhr, textStatus, error) {
-                    console.log("request failed");
+                    // console.log("request failed");
                 },
   
                 success: function(dataObj) {
@@ -4817,15 +4818,15 @@ var isAjaxActive = false;
             data: _data,
             dataType: "json",
             error: function(data) {
-                console.log("error" + data);
+                // console.log("error" + data);
             },
   
             fail: function(xhr, textStatus, error) {
-                console.log("request failed");
+                // console.log("request failed");
             },
   
             success: function(dataObj) {
-                console.log("YEAR", dataObj);
+                // console.log("YEAR", dataObj);
                 if (dataObj.success == "1") {
                     if (dataObj.data) {
                         $.each(dataObj.data, function(index, dataYear) {
@@ -5028,24 +5029,24 @@ var isAjaxActive = false;
             data: _data,
             dataType: "json",
             error: function(data) {
-                console.log("error" + data);
+                // console.log("error" + data);
             },
             fail: function(xhr, textStatus, error) {
-                console.log("request failed");
+                // console.log("request failed");
             },
             success: function(data) {
                 var rawMinPrice = parseInt(data.data.minimum_funding),
                     rawMaxPrice = parseInt(data.data.maximum_funding),
                     otr_price = parseInt(data.data.minimum_funding);
   
-                console.log(otr_price);
-                console.log(
-                    "LOG",
-                    $("#ex6SliderVal")
-                        .parents(".sliderGroup")
-                        .find(".customslide")
-                        .data("slider")
-                );
+                // console.log(otr_price);
+                // console.log(
+                //     "LOG",
+                //     $("#ex6SliderVal")
+                //         .parents(".sliderGroup")
+                //         .find(".customslide")
+                //         .data("slider")
+                // );
   
                 if ($("#funding").length > 0) {
                     $("#funding").slider({
@@ -5181,7 +5182,7 @@ var isAjaxActive = false;
             url: params,
             dataType: "json",
             error: function(data) {
-                console.log("error" + data);
+                // console.log("error" + data);
             },
             success: function(data) {
                 var dataraw = [];
@@ -5428,7 +5429,7 @@ var isAjaxActive = false;
             $(".parent-brachlist").css("background-color", "white");
             var idMarker = $(this).data("id");
   
-            console.log(idMarker);
+            // console.log(idMarker);
   
             google.maps.event.trigger(markers[parseInt(idMarker)], "click");
   
@@ -5503,7 +5504,7 @@ var isAjaxActive = false;
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showPosition);
         } else {
-            console.log("Geolocation is not supported by this browser.");
+            // console.log("Geolocation is not supported by this browser.");
         }
   
         var input = document.getElementById("searchTextField");
@@ -5634,13 +5635,13 @@ var isAjaxActive = false;
             data: _param,
             dataType: "json",
             error: function(data) {
-                console.log("error" + data);
+                // console.log("error" + data);
             },
             fail: function(xhr, textStatus, error) {
-                console.log("request failed");
+                // console.log("request failed");
             },
             success: function(result) {
-              console.log("Calculator Result", asuransi_arr, _param, result)
+            //   console.log("Calculator Result", asuransi_arr, _param, result)
               
               if(result.success === "1") {
 
@@ -5719,10 +5720,10 @@ var isAjaxActive = false;
             data: _param,
             dataType: "json",
             error: function(data) {
-                console.log("error" + data);
+                // console.log("error" + data);
             },
             fail: function(xhr, textStatus, error) {
-                console.log("request failed");
+                // console.log("request failed");
             },
             success: function(data) {
                 // console.log("Tenor Result", data);
@@ -5755,14 +5756,14 @@ var isAjaxActive = false;
     // }
   
     $("#ex6SliderVal").change(function() {
-        console.log(parseInt($(this).val()));
+        // console.log(parseInt($(this).val()));
         var _val = $(this).val();
         var _reform = _val.replace(/[.]/g, "");
         var _toInt = parseInt(_reform);
         _toInt = _toInt > 0 ? _toInt : 0;
         objCredits.funding = _toInt;
   
-        console.log(_toInt);
+        // console.log(_toInt);
         $("#jangka_waktu").empty();
         getTenor();
     });
@@ -6106,7 +6107,7 @@ var isAjaxActive = false;
             var errorMsg = "";
             switch (false) {
                 case file.size <= sizeLimit:
-                    console.log("app");
+                    // console.log("app");
                     if (lang === "id") {
                         errorMsg = "Ukuran file harus kurang dari 1 MB.";
                     } else {
@@ -6180,7 +6181,7 @@ function reformatMoney(number) {
   }
   
   function checkStatusPengajuan() {
-    console.log(phone_number);
+    // console.log(phone_number);
     var lang = document.documentElement.lang;
     var _url = "/submission-login";
     var _data = {
@@ -6193,20 +6194,20 @@ function reformatMoney(number) {
         data: _data,
         dataType: "json",
         error: function(data) {
-            console.log("error" + data);
+            // console.log("error" + data);
         },
         fail: function(xhr, textStatus, error) {
-            console.log("request failed");
+            // console.log("request failed");
         },
         success: function(data) {
             if (data.success === "1") {
                 var token = data.data.customer_token;
                 localStorage.setItem("token", token);
-                console.log("token : " + token);
+                // console.log("token : " + token);
                 getCustomer(token);
                 window.location = "/" + lang + "/user/dashboard";
             } else {
-                console.log("login after submission failed");
+                // console.log("login after submission failed");
             }
         }
     });
@@ -6216,25 +6217,25 @@ function reformatMoney(number) {
     var dataPhone = {
         phone_number: $("#phone-input").val()
     };
-    console.log(dataPhone);
+    // console.log(dataPhone);
     $.ajax({
         type: "POST",
         url: "/user/login",
         data: dataPhone,
         dataType: "json",
         error: function(data) {
-            console.log("error" + data);
+            // console.log("error" + data);
         },
   
         fail: function(xhr, textStatus, error) {
-            console.log("request failed");
+            // console.log("request failed");
         },
   
         success: function(dataObj) {
             if (dataObj.success === true) {
                 var token = localStorage.getItem("token");
                 if(dataObj.result.header.status == 200){
-                    console.log("berhasil login");
+                    // console.log("berhasil login");
                     requestOTP(dataPhone);
                     $("#login").addClass("hide");
                     $("#otp").removeClass("hide");
@@ -6252,7 +6253,7 @@ function reformatMoney(number) {
                             errorMsg +
                             "</label>"
                     );
-                    console.log("gagal login");
+                    // console.log("gagal login");
                 }
             }
         }
@@ -6292,15 +6293,15 @@ function reformatMoney(number) {
         data: phone,
         dataType: "json",
         error: function(data) {
-            console.log("error" + data);
+            // console.log("error" + data);
         },
   
         fail: function(xhr, textStatus, error) {
-            console.log("request failed");
+            // console.log("request failed");
         },
   
         success: function(dataObj) {
-            console.log(dataObj.result.data);
+            // console.log(dataObj.result.data);
         }
     });
   }
@@ -6318,7 +6319,7 @@ function reformatMoney(number) {
         otp_code: otpInput
     };
 
-    console.log(dataOTP);
+    // console.log(dataOTP);
     verifiedOTP(language, dataOTP);
     
   }
@@ -6330,12 +6331,12 @@ function reformatMoney(number) {
         data: dataOTP,
         dataType: "json",
         error: function(data) {
-            console.log("error" + data);
+            // console.log("error" + data);
             $("#wrongOtp").modal("show");
         },
   
         fail: function(xhr, textStatus, error) {
-            console.log("request failed");
+            // console.log("request failed");
             $("#failedOtp").modal("show");
         },
   
@@ -6483,7 +6484,7 @@ function reformatMoney(number) {
                     credits.pemohon.no_handphone = htmlEntities(no_telepon);
                     cb();
                 } else {
-                    console.log("error" + result.message);
+                    // console.log("error" + result.message);
                 }
             }
         });
@@ -6500,7 +6501,7 @@ function reformatMoney(number) {
             phone_number: $("#phone-input").val(),
             otp_code: otpInput
         };
-        console.log(dataOTP);
+        // console.log(dataOTP);
         
     $.ajax({
         type: "POST",
@@ -6508,22 +6509,22 @@ function reformatMoney(number) {
         data: dataOTP,
         dataType: "json",
         error: function(data) {
-          console.log("error" + data);
+        //   console.log("error" + data);
           $("#wrongOtp").modal("show");
         },
   
         fail: function(xhr, textStatus, error) {
-          console.log("request failed");
+        //   console.log("request failed");
           $("#failedOtp").modal("show");
         },
   
         success: function(dataObj) {
             if (dataObj.success === true) {
                 pushDataPemohon3(function() {
-                    console.log("berhasil verified otp");
+                    // console.log("berhasil verified otp");
                     var token = dataObj.result.data.customer_token;
                     localStorage.setItem("token", token);
-                    console.log("token : " + token);
+                    // console.log("token : " + token);
                     getCustomer(token);
                     $("#otp").addClass("hide");
                     $("#myModal").show();
@@ -6555,7 +6556,7 @@ function reformatMoney(number) {
                     }
                 });                
             } else {
-              console.log("otp salah, masukkan otp yang valid");
+            //   console.log("otp salah, masukkan otp yang valid");
               $("#wrongOtp").modal("show");
             }
         }
@@ -6572,11 +6573,11 @@ function reformatMoney(number) {
         headers: { sessionId: token },
   
         error: function(data) {
-            console.log("error" + data);
+            // console.log("error" + data);
         },
   
         fail: function(xhr, textStatus, error) {
-            console.log("request failed");
+            // console.log("request failed");
         },
   
         success: function(dataObj) {
@@ -6601,16 +6602,16 @@ function reformatMoney(number) {
         headers: { sessionId: token },
   
         error: function(data) {
-            console.log("error" + data);
+            // console.log("error" + data);
         },
   
         fail: function(xhr, textStatus, error) {
-            console.log("request failed");
+            // console.log("request failed");
         },
   
         success: function(dataObj) {
             if (dataObj.success === true) {
-                console.log("berhasil logout");
+                // console.log("berhasil logout");
                 window.localStorage.clear();
                 document.cookie =
                     "customer=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
@@ -6620,42 +6621,7 @@ function reformatMoney(number) {
         }
     });
   }
-  $(document).ready(function() {
   
-    var lang = document.documentElement.lang;  
-    if ( lang === 'id'){
-      placeholderCat = 'Pilih jenis pembiayaan';
-      placeholderProd = 'Pembiayaan apa yang dibutuhkan?';
-     }else{
-      placeholderCat = 'Choose the type of financing';
-      placeholderProd = 'What funding is needed?';
-     }
-     
-    $("#category-1").select2({
-        placeholder: "Pilih jenis pembiayaan?",
-        minimumResultsForSearch: -1
-    });
-  
-    $("#category-2").select2({
-        placeholder: placeholderProd,
-        minimumResultsForSearch: -1,
-        disabled: true
-    });
-  
-    window.onload = function() {
-        var lang = document.documentElement.lang;
-        var options = { year: "numeric", month: "long", day: "numeric" };
-        var date = new Date(
-            $(".blog-promo")
-                .find(".dateview > span.date")
-                .html()
-        );
-        var blogDate = date.toLocaleDateString(lang + "-" + lang, options);
-        $(".blog-promo")
-            .find(".dateview > span.date")
-            .text(blogDate);
-    };
-  });
   
   $(document).ready(function() {
     // if ($('#btn-burger').attr('aria-expanded') === 'true') {

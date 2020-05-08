@@ -10,6 +10,6 @@ function getDetail(id, lang) {
     document.getElementById('profileBio').innerHTML = JSON.parse(xmlHttp.responseText).data.Biodata;
     document.getElementById('profileHistory').innerHTML = JSON.parse(xmlHttp.responseText).data.RiwayatKerja;
     document.getElementById('profileEducation').innerHTML = JSON.parse(xmlHttp.responseText).data.RiwayatPekerjaan;
-    console.log(JSON.parse(xmlHttp.responseText).data);
+    // console.log(JSON.parse(xmlHttp.responseText).data);
     return xmlHttp.responseText;
 }

@@ -8,7 +8,7 @@ $(document).ready(function(){
     
     // <--- if using param to get contract_number
     var urlParams = new URLSearchParams(location.search);  
-    console.log(urlParams.get('contract_number'));
+    // console.log(urlParams.get('contract_number'));
     //--->
 
     var dataContract = {
@@ -24,7 +24,7 @@ $(document).ready(function(){
 });
 
 function contractDetail(data) {
-    console.log(data)
+    // console.log(data)
     var options = { year: 'numeric', month: 'long', day: 'numeric' };
     var date = new Date(data.tanggal_jatuh_tempo);
     var lang = document.documentElement.lang
@@ -48,11 +48,11 @@ function contractDetailTransactionAll(lang, token, dataContract){
         headers: { 'sessionId': token },
 
         error: function (data) {
-            console.log('error' + data);
+            // console.log('error' + data);
         },
 
         fail: function (xhr, textStatus, error) {
-            console.log('request failed')
+            // console.log('request failed')
         },
 
         success: function (dataObj) {
@@ -101,17 +101,17 @@ function contractDetailList(token, dataContract) {
         headers: { 'sessionId': token },
 
         error: function (data) {
-            console.log('error' + data);
+            // console.log('error' + data);
         },
 
         fail: function (xhr, textStatus, error) {
-            console.log('request failed')
+            // console.log('request failed')
         },
 
         success: function (dataObj) {
             if (dataObj.success === true) {
                 var data = dataObj.result.data
-                console.log(data);
+                // console.log(data);
                 contractDetail(data);
                 var due_date = new Date(data.tanggal_jatuh_tempo);
 
@@ -153,17 +153,17 @@ function detailAgunanRumah(token, dataContract) {
         headers: { 'sessionId': token },
 
         error: function (data) {
-            console.log('error' + data);
+            // console.log('error' + data);
         },
 
         fail: function (xhr, textStatus, error) {
-            console.log('request failed')
+            // console.log('request failed')
         },
 
         success: function (dataObj) {
             if (dataObj.success === true) {
                 var data = dataObj.result.data
-                console.log(data);
+                // console.log(data);
                 $('.address').text(data.alamat);
                 $('.building-area').text(data.luas_bangunan).append("m<sup>2</sup>");
                 $('.surface-area').text(data.luas_tanah).append("m<sup>2</sup>");
@@ -183,17 +183,17 @@ function detailAgunanMobil(token, dataContract) {
         headers: { 'sessionId': token },
 
         error: function (data) {
-            console.log('error' + data);
+            // console.log('error' + data);
         },
 
         fail: function (xhr, textStatus, error) {
-            console.log('request failed')
+            // console.log('request failed')
         },
 
         success: function (dataObj) {
             if (dataObj.success === true) {
                 var data = dataObj.result.data
-                console.log(data);
+                // console.log(data);
                 $('.brand').text(data.merk_desc);
                 $('.type').text(data.tipe_desc);
                 $('.model').text(data.model_desc);
@@ -215,17 +215,17 @@ function detailAgunanMotor(token, dataContract) {
         headers: { 'sessionId': token },
 
         error: function (data) {
-            console.log('error' + data);
+            // console.log('error' + data);
         },
 
         fail: function (xhr, textStatus, error) {
-            console.log('request failed')
+            // console.log('request failed')
         },
 
         success: function (dataObj) {
             if (dataObj.success === true) {
                 var data = dataObj.result.data
-                console.log(data);
+                // console.log(data);
                 $('.brand').text(data.merk_desc);
                 $('.type').text(data.tipe_desc);
                 $('.model').text(data.model_desc);
@@ -247,17 +247,17 @@ function detailAgunanAlatBerat(token, dataContract) {
         headers: { 'sessionId': token },
 
         error: function (data) {
-            console.log('error' + data);
+            // console.log('error' + data);
         },
 
         fail: function (xhr, textStatus, error) {
-            console.log('request failed')
+            // console.log('request failed')
         },
 
         success: function (dataObj) {
             if (dataObj.success === true) {
                 var data = dataObj.result.data
-                console.log(data);
+                // console.log(data);
                 $('.asset-brand').text(data.merk_desc);
                 $('.asset-type').text(data.tipe_desc);
                 $('.asset-model').text(data.model_desc);
@@ -284,11 +284,11 @@ function contractStatusList(lang, token) {
         headers: {'sessionId': token},
 
         error: function (data) {
-            console.log('error' + data);
+            // console.log('error' + data);
         },
 
         fail: function (xhr, textStatus, error) {
-            console.log('request failed')
+            // console.log('request failed')
         },
 
         success: function (dataObj) {

@@ -14,11 +14,11 @@ function getContactDataStorage(token) {
     headers: { sessionId: token },
 
     error: function (data) {
-      console.log("error" + data);
+    //   console.log("error" + data);
     },
 
     fail: function (xhr, textStatus, error) {
-      console.log("request failed");
+    //   console.log("request failed");
     },
     success: function (dataObj) {
       if (dataObj.success === true) {
@@ -133,7 +133,7 @@ $(document).ready(function(){
             var errorMsg = '';
             switch (false) {
                 case (file.size <= sizeLimit):
-                    console.log('contact-us')
+                    // console.log('contact-us')
                     if(lang === 'id'){
                         errorMsg = 'Ukuran file harus kurang dari 500 KB.';
                     }else{
@@ -189,7 +189,7 @@ $(document).ready(function(){
                 var errorMsg = '';
                 switch (false) {
                     case (file.size <= sizeLimit):
-                        console.log('contact-us')
+                        // console.log('contact-us')
                         if(lang === 'id'){
                             errorMsg = 'Ukuran file harus kurang dari 500 KB.';
                         }else{
@@ -287,14 +287,14 @@ $(document).ready(function(){
     }, "Please enter a valid email address.");
 
     jQuery.validator.addMethod("filesize", function (value, element, param) {
-        console.log("test", this.optional(element) || (element.files[0].size <= param), element.files[0], param)
+        // console.log("test", this.optional(element) || (element.files[0].size <= param), element.files[0], param)
         return this.optional(element) || (element.files[0].size <= param)
     }, "File size must be less than 500 KB.");
 
     function validateFormRequired(elementParam) {
     $(elementParam).validate({
         errorPlacement: function (error, element) {
-            console.log(element)
+            // console.log(element)
             element.closest('.form-group').find('.error-wrap').html(error);
         }
     });
@@ -361,7 +361,7 @@ $(document).ready(function(){
         return o1.t > o2.t ? 1 : o1.t < o2.t ? -1 : 0;
     });
     options.each(function(i, o) {
-        console.log(i);
+        // console.log(i);
         o.value = arr[i].v;
         $(o).text(arr[i].t);
     });
