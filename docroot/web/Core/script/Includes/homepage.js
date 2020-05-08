@@ -27,7 +27,44 @@ $(document).ready(function() {
         if (selVal === 0) btnSubmitFormCredit.attr("disabled", "disabled");
         else btnSubmitFormCredit.removeAttr("disabled");
     });
+    
+    $(document).ready(function() {
   
+    var lang = document.documentElement.lang;  
+    if ( lang === 'id'){
+      placeholderCat = 'Pilih jenis pembiayaan';
+      placeholderProd = 'Pembiayaan apa yang dibutuhkan?';
+     }else{
+      placeholderCat = 'Choose the type of financing';
+      placeholderProd = 'What funding is needed?';
+     }
+     
+    $("#category-1").select2({
+        placeholder: "Pilih jenis pembiayaan?",
+        minimumResultsForSearch: -1
+    });
+  
+    $("#category-2").select2({
+        placeholder: placeholderProd,
+        minimumResultsForSearch: -1,
+        disabled: true
+    });
+  
+    window.onload = function() {
+        var lang = document.documentElement.lang;
+        var options = { year: "numeric", month: "long", day: "numeric" };
+        var date = new Date(
+            $(".blog-promo")
+                .find(".dateview > span.date")
+                .html()
+        );
+        var blogDate = date.toLocaleDateString(lang + "-" + lang, options);
+        $(".blog-promo")
+            .find(".dateview > span.date")
+            .text(blogDate);
+    };
+  });
+
     btnNext.click(e => {
         var _url = "";
         var el = document.getElementById("category-2");
@@ -61,6 +98,7 @@ $(document).ready(function() {
             window.location.href = _url;
         }
     });
+    
     getListCategory();
     var token = localStorage.getItem("token");
     if (token != null) {
