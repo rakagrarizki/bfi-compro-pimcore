@@ -1490,5 +1490,15 @@ return [
         "siteId" => 0,
         "creationDate" => 0,
         "modificationDate" => 1581493851
+    ],
+    156 => [
+        "id" => 156,
+        "name" => "CAPTCHA_KEY",
+        "language" => NULL,
+        "type" => "text",
+        "data" => "input_key_capthca_disini",
+        "siteId" => NULL,
+        "creationDate" => NULL,
+        "modificationDate" => 1588921858
     ]
 ];
