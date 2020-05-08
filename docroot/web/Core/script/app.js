@@ -3306,6 +3306,7 @@ var isAjaxActive = false;
     var dataKotaSertificate = [];
     var dataKecamatanSertificate = [];
     var dataKelurahanSertificate = [];
+
     function getProvinsi(element, element2) {
         dataProvince = [];
   
@@ -3387,7 +3388,12 @@ var isAjaxActive = false;
             }
         });
     }
-  
+   
+    if (window.location.pathname.includes("credit/form")||
+        window.location.pathname.includes("agent/form")) {
+        getProvinsi($("#provinsi"), $("#provinsi_sertificate"));
+    }   
+    
     $("#kota").attr("disabled", "disabled");
     $("#kota")
         .next()
@@ -4598,13 +4604,8 @@ var isAjaxActive = false;
             disableButton("#button3rumah");
         }
     });
-  
-    if ($("#provinsi_sertificate").length > 0) {
-        getProvinsi($("#provinsi"), $("#provinsi_sertificate"));
-    } else {
-        getProvinsi($("#provinsi"));
-    }
-  
+
+    
     $("#merk_kendaraan, #type_kendaraan").change(function() {
         // console.log("CHANGE",$('#type_kendaraan').val(),$('#merk_kendaraan').val())
         if (
@@ -6620,42 +6621,7 @@ function reformatMoney(number) {
         }
     });
   }
-  $(document).ready(function() {
   
-    var lang = document.documentElement.lang;  
-    if ( lang === 'id'){
-      placeholderCat = 'Pilih jenis pembiayaan';
-      placeholderProd = 'Pembiayaan apa yang dibutuhkan?';
-     }else{
-      placeholderCat = 'Choose the type of financing';
-      placeholderProd = 'What funding is needed?';
-     }
-     
-    $("#category-1").select2({
-        placeholder: "Pilih jenis pembiayaan?",
-        minimumResultsForSearch: -1
-    });
-  
-    $("#category-2").select2({
-        placeholder: placeholderProd,
-        minimumResultsForSearch: -1,
-        disabled: true
-    });
-  
-    window.onload = function() {
-        var lang = document.documentElement.lang;
-        var options = { year: "numeric", month: "long", day: "numeric" };
-        var date = new Date(
-            $(".blog-promo")
-                .find(".dateview > span.date")
-                .html()
-        );
-        var blogDate = date.toLocaleDateString(lang + "-" + lang, options);
-        $(".blog-promo")
-            .find(".dateview > span.date")
-            .text(blogDate);
-    };
-  });
   
   $(document).ready(function() {
     // if ($('#btn-burger').attr('aria-expanded') === 'true') {

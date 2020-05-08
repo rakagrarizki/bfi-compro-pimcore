@@ -103,11 +103,11 @@ function getData(url, data, cb) {
   return _ret;
 }
 
-function getProvince() {
-  var url = "/credit/get-province";
-  var data = {};
-  return transformData(getData(url, data).data);
-}
+// function getProvince() {
+//   var url = "/credit/get-province";
+//   var data = {};
+//   return transformData(getData(url, data).data);
+// }
 
 function getCity(provinceId) {
   if (provinceId) {
