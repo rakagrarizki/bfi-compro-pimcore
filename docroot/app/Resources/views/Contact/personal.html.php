@@ -102,8 +102,8 @@ $this->extend('layout.html.php');
                     <span><?= $this->translate('max-size') ?></span>
                 </div>
                 <div class="form-group captcha formRequired">
-                    <div class="g-recaptcha" id="g-recaptcha" data-sitekey="6Ldb1c8UAAAAALZP6FbNJAM7z8T-tPpkbJvjbJBW"></div>
-                      <span class="msg-error error"></span>
+                    <div class="g-recaptcha" id="g-recaptcha" data-sitekey="<?= $this->captcha; ?>"></div>
+                    <span class="msg-error error"></span>
                 </div>
             </div>
             <div class="button-area text-center">

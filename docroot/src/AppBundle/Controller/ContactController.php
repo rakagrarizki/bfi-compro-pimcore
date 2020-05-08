@@ -7,6 +7,7 @@ use Pimcore\Model\DataObject;
 use Pimcore\File;
 use Pimcore\Controller\FrontendController;
 use Symfony\Component\HttpFoundation\Request;
+use Pimcore\Model\WebsiteSetting;
 
 class ContactController extends FrontendController
 {
@@ -16,6 +17,7 @@ class ContactController extends FrontendController
 
     public function corporateAction(Request $request)
     {
+        $captcha = WebsiteSetting::getByName("CAPTCHA_KEY")->getData();
         $success = false;
         $msg_error = false;
         $lang = $request->getLocale();
@@ -51,10 +53,12 @@ class ContactController extends FrontendController
         }
         $this->view->success = $success;
         $this->view->msg_error = $msg_error;
+        $this->view->captcha = $captcha;
     }
 
     public function personalAction(Request $request)
     {
+        $captcha = WebsiteSetting::getByName("CAPTCHA_KEY")->getData();
         $success = false;
         $msg_error = false;
 
@@ -117,6 +121,7 @@ class ContactController extends FrontendController
         }
         $this->view->success = $success;
         $this->view->msg_error = $msg_error;
+        $this->view->captcha = $captcha;
     }
 
     private function _success()
