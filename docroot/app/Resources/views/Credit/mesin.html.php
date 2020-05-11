@@ -234,7 +234,7 @@ $blogList->setLimit(4);
                           <span class="input-group-addon">Rp</span>
                           <input type="text" id="down_payment" name="down_payment" class="form-control downPaymentMachine formatRibuan" data-minVal="0" data-maxVal="0" data-minPercentage="0" data-maxPercentage="0">
                       </div>
-                      <small><?= $this->translate('label-edu-downpayment-note')?></small>
+                      <small><?= $this->translate('label-machine-downpayment-note')?></small>
                       <div class="error-wrap"></div>
                   </div>
                   <div class="form-group sliderGroup inputsimulasi">
