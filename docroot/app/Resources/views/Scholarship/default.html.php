@@ -210,7 +210,7 @@ $this->extend('layout-credit.html.php');
                                 <h4 class="title"><?= $this->translate('data-univ') ?></h4>
                                 <a href="#stepper-csr-2" onclick="jumpToStep2()">
                                     <!-- <i class="fa fa-pencil"></i> -->
-                                    <span>Ubah</span>
+                                    <span><?= $this->translate('ubah') ?></span>
                                 </a>
                             </div>
                             <div class="data-detail">

@@ -818,3 +818,9 @@ select option:disabled {
          
     }
 }
+
+#getCredit{
+    .select2-search__field{
+        display: inline !important;
+    }
+}

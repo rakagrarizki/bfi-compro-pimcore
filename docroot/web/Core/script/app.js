@@ -761,15 +761,27 @@ var isAjaxActive = false;
         }
     });
 
+    var lang = document.documentElement.lang;
+    if ( lang === 'id'){
+        leadZero = "Harus dimulai dengan angka 0";
+    }else{
+        leadZero = "Must start with the number 0";
+    }
     jQuery.validator.addMethod(
       "leadingZero",
       function(value, element, param) {
         var thisVal = $(element).val().toString().slice(0, 1);
         return thisVal === "0" ? true : false;
       },
-      "Harus dimulai dengan angka 0"
+      leadZero
     )
 
+    var lang = document.documentElement.lang;
+    if ( lang === 'id'){
+        minimalValue = "Nilai harus diatas ";
+    }else{
+        minimalValue = "Value must be above ";
+    }
     jQuery.validator.addMethod(
       "minimumValue",
       function (value, element, param) {
@@ -780,10 +792,16 @@ var isAjaxActive = false;
       },
       function (params, element) {
         var estValue = $(element).data("minVal");
-        return "Nilai harus diatas " + separatordot(estValue);
+        return minimalValue + separatordot(estValue);
       }
     );
-  
+
+    var lang = document.documentElement.lang;
+    if ( lang === 'id'){
+        minimalDP = 'Minimal 10% dari jumlah pembiayaan';
+    }else{
+        minimalDP = 'a minimum of 10% of the total financing';
+    }
     jQuery.validator.addMethod(
         "minDp",
         function(value, element, param) {
@@ -798,35 +816,56 @@ var isAjaxActive = false;
             return minPayment <= thisval ? true : false;
             // return false
         },
-        "Minimal 10% dari jumlah pembiayaan"
+        minimalDP
     );
 
+        var lang = document.documentElement.lang;
+        if ( lang === 'id'){
+            minimaDownpaymentMinimal = "Minimal ";
+            minimaDownpaymentEstimasi = "% dari total estimasi harga";
+        }else{
+            minimaDownpaymentMinimal = "a minimum ";
+            minimaDownpaymentEstimasi = "% of the total estimated price";
+        }    
+        jQuery.validator.addMethod(
+        "minDpMachineVal",
+        function (value, element, param) {
+            var thisval = parseInt(value.replace(/\./g, ""));
+            var minVal = parseInt($(element).data("minVal"));
+            return thisval >= minVal ? true : false;
+        },
+        function (params, element) {
+            var estPercentage = parseFloat($(element).data("minPercentage")) * 100;
+            return minimaDownpaymentMinimal + estPercentage + minimaDownpaymentEstimasi;
+        }
+    )
+    var lang = document.documentElement.lang;
+    if ( lang === 'id'){
+        maxDownpaymentMax = "Maximal ";
+        maxDownpaymentEstimasi = "% dari total estimasi harga";
+    }else{
+        maxDownpaymentMax = "a maximum ";
+        maxDownpaymentEstimasi = "% of the total estimated price";
+    }          
     jQuery.validator.addMethod(
-      "minDpMachineVal",
-      function (value, element, param) {
+        "maxDpMachineVal",
+        function (value, element, param) {
         var thisval = parseInt(value.replace(/\./g, ""));
-        var minVal = parseInt($(element).data("minVal"));
-        return thisval >= minVal ? true : false;
-      },
-      function (params, element) {
-        var estPercentage = parseFloat($(element).data("minPercentage")) * 100;
-        return "Minimal " + estPercentage + "% dari total estimasi harga";
-      }
-  )
-
-  jQuery.validator.addMethod(
-    "maxDpMachineVal",
-    function (value, element, param) {
-      var thisval = parseInt(value.replace(/\./g, ""));
-      var maxVal = parseInt($(element).data("maxVal"));
-      return thisval <= maxVal ? true : false;
-    },
-    function (params, element) {
-      var estPercentage = parseFloat($(element).data("maxPercentage")) * 100;
-      return "Maximal " + estPercentage + "% dari total estimasi harga";
+        var maxVal = parseInt($(element).data("maxVal"));
+        return thisval <= maxVal ? true : false;
+        },
+        function (params, element) {
+        var estPercentage = parseFloat($(element).data("maxPercentage")) * 100;
+        return maxDownpaymentMax + estPercentage + maxDownpaymentEstimasi;
+        }
+    )
+    
+    var lang = document.documentElement.lang;
+    if ( lang === 'id'){
+        minimalDpPrice = "Minimal 30% dari jumlah pembiayaan";
+    }else{
+        minimalDpPrice = "Minimum of 30% of the total financing";
     }
-  )
-  
     jQuery.validator.addMethod(
         "minDpMachine",
         function(value, element, param) {
@@ -841,9 +880,15 @@ var isAjaxActive = false;
             return minPayment <= thisval ? true : false;
             // return false
         },
-        "Minimal 30% dari jumlah pembiayaan"
+        minimalDpPrice
     );
-  
+    
+    var lang = document.documentElement.lang;
+    if ( lang === 'id'){
+        maxDpPrice = "Maksimum uang saku adalah 20% dari jumlah pembiayaan";
+    }else{
+        maxDpPrice = "The maximum allowance is 20% of the total financing";
+    }
     jQuery.validator.addMethod(
         "maxPocket",
         function(value, element, param) {
@@ -858,18 +903,30 @@ var isAjaxActive = false;
             return maxPocketMoney >= thisval ? true : false;
             // return false
         },
-        "Maksimum uang saku adalah 20% dari jumlah pembiayaan"
+        maxDpPrice
     );
-  
+
+    var lang = document.documentElement.lang;
+    if ( lang === 'id'){
+        acceptAlphabetOnly = "Masukkan hanya huruf";
+    }else{
+        acceptAlphabetOnly = "Enter only letters";
+    }
     jQuery.validator.addMethod(
         "acceptAlphabet",
         function(value, element, param) {
             //console.log(value.match(new RegExp("." + param + "$")));
             return value.match(new RegExp("." + param + "$"));
         },
-        "Masukkan hanya huruf"
+        acceptAlphabetOnly
     );
-  
+
+    var lang = document.documentElement.lang;
+    if ( lang === 'id'){
+        priceMin = "Jumlah pembiayaan harus lebih besar dari jumlah minimum pembiayaan";
+    }else{
+        priceMin = "The amount of financing must be greater than the minimum amount of financing";
+    }    
     jQuery.validator.addMethod(
         "minPrice",
         function(value, element, param) {
@@ -880,8 +937,9 @@ var isAjaxActive = false;
                 return true;
             }
         },
-        "Jumlah pembiayaan harus lebih besar dari jumlah minimum pembiayaan"
+        priceMin
     );
+
     var lang = document.documentElement.lang;
     if ( lang === 'id'){
         errormin = 'Jumlah pembiayaan tidak sesuai dengan minimun';
@@ -925,7 +983,13 @@ var isAjaxActive = false;
             }
         }
     );
-  
+    
+    var lang = document.documentElement.lang;
+    if ( lang === 'id'){
+        greater = "Jumlah pembiayaan harus lebih besar dari ";
+    }else{
+        greater = "The amount of financing must be greater than ";
+    }
     jQuery.validator.addMethod("minEstimatePrice", function (value, element, param) {
       var thisval = value.replace(/\./g, "");
       if (parseInt(thisval) < param) {
@@ -934,13 +998,25 @@ var isAjaxActive = false;
         return true;
       }
     }, function(params, element) {
-      return 'Jumlah pembiayaan harus lebih besar dari '+ separatordot(params) +'.'
+      return greater + separatordot(params) +'.'
     });
-  
+    
+    var lang = document.documentElement.lang;
+    if ( lang === 'id'){
+        emailActive = "Masukkan email yang aktif";
+    }else{
+        emailActive = "Enter the active email";
+    }
     jQuery.validator.addMethod("emailCust", function (value, element, param) {
       return param.test(value);
-    }, "Masukkan email yang aktif");
+    }, emailActive);
   
+    var lang = document.documentElement.lang;
+    if ( lang === 'id'){
+        filesMin = "Ukuran file harus kurang dari 1 MB.";
+    }else{
+        filesMin = "File size must be less than 1MB.";
+    }
     jQuery.validator.addMethod(
         "filesize",
         function(value, element, param) {
@@ -955,7 +1031,7 @@ var isAjaxActive = false;
             // );
             return this.optional(element) || element.files[0].size <= param;
         },
-        "Jumlah maksimum file adalah 1MB"
+        filesMin
     );
   
     // console.log($.validator.classRuleSettings);
@@ -5824,7 +5900,12 @@ var isAjaxActive = false;
     $(document).on("click", "#recalc", function(e) {
         e.preventDefault();
         if($("#getCredit").valid()) {
-          $(this).text("HITUNG ULANG");
+            var lang = document.documentElement.lang;
+                if (lang === "id") {
+                    $(this).text("HITUNG ULANG");
+                } else {
+                    $(this).text("RECALCULATE");
+                }
           calculatePremi();
           if ($("#button4rumah").length > 0) {
               enableButton("#button4rumah");
