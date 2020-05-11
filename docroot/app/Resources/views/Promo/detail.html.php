@@ -81,8 +81,8 @@ $this->headMeta()->appendName('twitter:description', $promo->getDescription());
             </div>
             <div class="share">
                 <span><?= $this->t("share") ?>:</span>
-                <a href="<?= $urlFacebook; ?>" class="share-fb" target="_blank"><i class="fa fa-facebook"></i></a>
-                <a href="<?= $urlTwitter; ?>" class="share-tw" target="_blank"><i class="fa fa-twitter"></i></a>
+                <a href="<?= $urlFacebook; ?>" class="share-fb" target="_blank"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                <a href="<?= $urlTwitter; ?>" class="share-tw" target="_blank"><i class="fab fa-twitter" aria-hidden="true"></i></a>
                 <a class="share-cp" id="copy" onclick="copyURL('<?= $fixedurl ?>')"><i class="fa fa-chain"></i></a>
                 <div style="display: none;padding: 0px 20px;" id="copied">Copied</div>
             </div>
