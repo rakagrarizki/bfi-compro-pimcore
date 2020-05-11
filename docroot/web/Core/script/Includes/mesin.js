@@ -653,7 +653,7 @@ var isValidOtp = false;
     }
   });
 
-  $("#recalcMesin").click(function (e) {
+  $("#recalc").click(function (e) {
     nextButton("inactive");
     e.preventDefault();
     if ($("#jangka_waktu").valid()) {
