@@ -18,6 +18,25 @@ foreach (\Pimcore\Tool::getValidLanguages() as $language) {
             $target = $localizedDocument->getFullPath();
         }
     }
+    if (preg_match("/.\/blog/", $page) || preg_match("/.\/news/", $page)) {
+        if (isset($this->blog)) {
+            $target = '/'.$language.'/blog/'.$this->blog->getSlug(true, $language);
+        } else if (isset($this->news)) {
+            $target = '/'.$language.'/news/'.$this->news->getSlug(true, $language);
+        } else if (isset($translations[$language])) {
+            $localizedDocument = \Pimcore\Model\Document::getById($translations[$language]);
+            if ($localizedDocument) {
+                $target = $localizedDocument->getFullPath();
+            }
+        }
+    } else {
+        if (isset($translations[$language])) {
+            $localizedDocument = \Pimcore\Model\Document::getById($translations[$language]);
+            if ($localizedDocument) {
+                $target = $localizedDocument->getFullPath();
+            }
+        }
+    }
     $links[$language] = $target;
 }
 ?>
