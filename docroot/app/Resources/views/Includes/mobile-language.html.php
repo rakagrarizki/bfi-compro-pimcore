@@ -4,6 +4,7 @@ $service = new \Pimcore\Model\Document\Service;
 $translations = $service->getTranslations($this->document);
 $links = [];
 $site = $this->document->getProperty("site");
+$page = $_SERVER['REQUEST_URI'];
 foreach (\Pimcore\Tool::getValidLanguages() as $language) {
     if ($site == "corporate") {
         $target = "/" . $language . "/corporate";
