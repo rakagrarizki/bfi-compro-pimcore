@@ -12,12 +12,6 @@ foreach (\Pimcore\Tool::getValidLanguages() as $language) {
     } else {
         $target = "/" . $language;
     }
-    if (isset($translations[$language])) {
-        $localizedDocument = \Pimcore\Model\Document::getById($translations[$language]);
-        if ($localizedDocument) {
-            $target = $localizedDocument->getFullPath();
-        }
-    }
     if (preg_match("/.\/blog/", $page) || preg_match("/.\/news/", $page)) {
         if (isset($this->blog)) {
             $target = '/'.$language.'/blog/'.$this->blog->getSlug(true, $language);
