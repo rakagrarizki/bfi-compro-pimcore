@@ -80,10 +80,10 @@
 <?php } ?>
 <!-- FOOTER -->
 <!-- LOADER -->
-<div id="loader-container">dadasda</div>
+<div id="loader-container" style="display: none;"></div>
 <!-- LOADER -->
 
-<?php $this->headScript()->prependFile('/static/js/Includes/homepage.js'); ?>
+<?php $this->headScript()->appendFile('/static/js/Includes/homepage.js'); ?>
 <?php $this->headScript()->prependFile('/static/js/custom.js'); ?>
 <?php $this->headScript()->prependFile('/static/js/app.min.js'); ?>
 <?php $this->headScript()->prependFile('/static/js/plugins.min.js'); ?>

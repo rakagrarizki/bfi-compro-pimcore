@@ -72,11 +72,13 @@ var isAjaxActive = false;
     if (!isAjaxActive) {
       isAjaxActive = true;
     $("#loader-container").stop(true, true).fadeIn("fast");
+   
     }
   }).bind("ajaxStop", function () {
     if (isAjaxActive) {
       isAjaxActive = false;
     $("#loader-container").stop(true, true).fadeOut("fast");
+    console.log("loading");
     }
   });
   

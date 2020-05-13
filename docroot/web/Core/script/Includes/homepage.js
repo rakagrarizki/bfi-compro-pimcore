@@ -98,15 +98,17 @@ $(document).ready(function() {
             window.location.href = _url;
         }
     });
-    
-    getListCategory();
-    var token = localStorage.getItem("token");
-    if (token != null) {
-        getDataStorage(token);
-    }
   });
   
+    var token = localStorage.getItem("token");
+        if (token != null) {
+        getDataStorage(token);
+    }
 
+    if(document.getElementById("pengajuan")){
+        getListCategory();
+    } 
+  
   function getListCategory() {
     dataListCat = [];
     $("#category-1").empty();
