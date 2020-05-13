@@ -11,7 +11,6 @@ use Pimcore\Model\Document\Page;
 
 $page = $_SERVER['REQUEST_URI'];
 $site = $this->document->getProperty("site");
-$lang = $this->getLocale();
 $name = "";
 if($_COOKIE["customer"] != "null") {
     $name = $_COOKIE["customer"];
@@ -36,13 +35,6 @@ if($_COOKIE["customer"] != "null") {
                     <div class="col-md-6 col-sm-6 right-side-top">
                     <div class="link-log">
                     <?php if (isset($_COOKIE["customer"])) { ?>
-                            <!-- <div class="link-about-top">
-                                <a href="</?= "/" . $lang . "/tentang-kami" ?>">
-                                    </?= $this->translate("tentang-kami") ?></a>
-                                <a href="</?= "/" . $lang . "/blog" ?>">
-                                    </?= $this->translate("blog") ?></a>
-                            </div>
-                        </?php } else { ?> -->
                             <div class="user">
                                 <a href="/<?= $this->getLocale() ?>/user/dashboard" class="full_name"><?= $name?></a> | <a href="#" class="logout" onclick="return logout('<?= $this->getLocale() ?>');"><?= $this->translate("logout") ?></a>
                             </div>
