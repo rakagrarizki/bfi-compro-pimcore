@@ -12,7 +12,7 @@ class ScholarshipController extends FrontendController
 {
     public function defaultAction(Request $request)
     {
-        $success = false;
+        $lang = $request->getLocale();
 
         if ($request->isMethod('POST')) {
             $data = $request->get('scholarship');
@@ -90,27 +90,22 @@ class ScholarshipController extends FrontendController
                             $scholarship->setPeriode($periode);
                             $scholarship->save();
 
-                            $this->_successCorporate();
-                            $success = true;
+                            return $this->redirect("/{$lang}/csr/success");
                         }
                     } else {
-                        $success = false;
                         $msg_error = $this->get("translator")->trans("scholarship-email-periode");
                     }
                 } else {
-                    $success = false;
                     $msg_error = $this->get("translator")->trans("scholarship-file-error");
                 }
             } else {
-                $success = false;
                 $msg_error = $this->get("translator")->trans("scholarship-error");
             }
         }
-        $this->view->success = $success;
         $this->view->msg_error = $msg_error;
     }
 
-    private function _successCorporate()
+    public function successAction()
     {
         $news = new DataObject\News\Listing();
         $news->setOrderKey("Date");
@@ -118,6 +113,6 @@ class ScholarshipController extends FrontendController
         $news->setLimit(4);
         $news->load();
 
-        return $this->view->news = $news;
+        $this->view->news = $news;
     }
 }

@@ -4,6 +4,7 @@ var listStep1 = document.getElementById("list-step1");
 var listStep2 = document.getElementById("list-step2");
 var listStep3 = document.getElementById("list-step3");
 var listStep4 = document.getElementById("list-step4");
+var lang = document.documentElement.lang;
 
 
 ////// switch stepper //////
@@ -25,8 +26,13 @@ function nextToStep2(){
     listStep1.classList.remove("active");
     listStep2.classList.add("active");
     document.getElementById("poin1").innerHTML = "<i class='fa fa-check'></i>";
-    stepTitle.textContent = "Data Universitas";
-    stepSubtitle.textContent = "Silahkan masukkan data universitas anda";
+    if ( lang === 'id'){
+        stepTitle.textContent = "Data Universitas";
+        stepSubtitle.textContent = "Silahkan masukkan data universitas anda";
+    }else{
+        stepTitle.textContent = "University Data";
+        stepSubtitle.textContent = "Please enter your university information.";
+    }
 }
 
 function nextToStep3(){
@@ -44,8 +50,13 @@ function nextToStep3(){
     listStep3.classList.add("active");
     document.getElementById("poin1").innerHTML = "<i class='fa fa-check'></i>";
     document.getElementById("poin2").innerHTML = "<i class='fa fa-check'></i>";
-    stepTitle.textContent = "Data Akademik";
-    stepSubtitle.textContent = "Silahkan masukkan data akademik tiga semester terakhir anda";
+    if ( lang === 'id'){
+        stepTitle.textContent = "Data Akademik";
+        stepSubtitle.textContent = "Silahkan masukkan data akademik tiga semester terakhir anda";
+    }else{
+        stepTitle.textContent = "Academic Data";
+        stepSubtitle.textContent = "Please enter your academic data for the last three semesters";
+    }
 }
 
 function nextToStep4(){
@@ -59,8 +70,13 @@ function nextToStep4(){
     document.getElementById("poin1").innerHTML = "<i class='fa fa-check'></i>";
     document.getElementById("poin2").innerHTML = "<i class='fa fa-check'></i>";
     document.getElementById("poin3").innerHTML = "<i class='fa fa-check'></i>";
-    stepTitle.textContent = "Konfirmasi Data";
-    stepSubtitle.textContent = "Pastikan data yang anda masukkan sudah benar";
+    if ( lang === 'id'){
+        stepTitle.textContent = "Konfirmasi Data";
+        stepSubtitle.textContent = "Pastikan data yang anda masukkan sudah benar";
+    }else{
+        stepTitle.textContent = "Data Confirmation";
+        stepSubtitle.textContent = "Make sure the data you entered is correct";
+    }
 }
 //// prev ////
 
@@ -70,8 +86,13 @@ function backToStep1(){
     listStep1.classList.add("active");
     listStep2.classList.remove("active");
     document.getElementById("poin1").textContent = "1";
-    stepTitle.textContent = "Data Pemohon";
-    stepSubtitle.textContent = "Silahkan masukkan data diri anda";
+    if ( lang === 'id'){
+        stepTitle.textContent = "Data Pemohon";
+        stepSubtitle.textContent = "Silahkan masukkan data diri anda";
+    }else{
+        stepTitle.textContent = "Applicant Data";
+        stepSubtitle.textContent = "Please enter your personal information.";
+    }
 }
 
 function backToStep2(){
@@ -80,8 +101,13 @@ function backToStep2(){
     listStep2.classList.add("active");
     listStep3.classList.remove("active");
     document.getElementById("poin2").textContent = "2";
-    stepTitle.textContent = "Data Universitas";
-    stepSubtitle.textContent = "Silahkan masukkan data universitas anda";
+    if ( lang === 'id'){
+        stepTitle.textContent = "Data Universitas";
+        stepSubtitle.textContent = "Silahkan masukkan data universitas anda";
+    }else{
+        stepTitle.textContent = "University Data";
+        stepSubtitle.textContent = "Please enter your university information.";
+    }
     $("#form-semester-ipk .ipk-wrapper").remove();
 }
 
@@ -92,8 +118,13 @@ function backToStep3(){
     listStep4.classList.remove("active");
     $('.content-ipk-looping').remove();
     document.getElementById("poin3").textContent = "3";
-    stepTitle.textContent = "Data Akademik";
-    stepSubtitle.textContent = "Silahkan masukkan data akademik tiga semester terakhir anda";
+    if ( lang === 'id'){
+        stepTitle.textContent = "Data Akademik";
+        stepSubtitle.textContent = "Silahkan masukkan data akademik tiga semester terakhir anda";
+    }else{
+        stepTitle.textContent = "Academic Data";
+        stepSubtitle.textContent = "Please enter your academic data for the last three semesters";
+    }
     $('#list-ipk #ipk').empty();
 }
 

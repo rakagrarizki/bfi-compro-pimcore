@@ -13,7 +13,7 @@
     <link rel="shortcut icon" type="image/png" href="<?=\Pimcore\Tool::getHostUrl().'/static/images/favicon/favicon.png'?>"/>
 
     <?php
-
+    $site = $this->document->getProperty("site");
     if($this->document instanceof \Pimcore\Model\Document\Page){
         if ($this->document->getTitle()) {
             // use the manually set title if available
@@ -62,14 +62,22 @@
 
 </head>
 <body>
-<?php echo $this->template('Includes/navigation-credit.html.php', ['documentInitiator' => $this->document->getId()]) ?>
+<!-- </?php if ($site == "corporate") { ?>
+    </?php echo $this->template('Includes/navigation-csr.html.php', ['documentInitiator' => $this->document->getId()]) ?>
+</?php } else { ?> -->
+    <?php echo $this->template('Includes/navigation-credit.html.php', ['documentInitiator' => $this->document->getId()]) ?>
+<!-- </?php } ?> -->
 
 <div id="site-container">
     <?php $this->slots()->output('_content'); ?>
 </div>
 <!-- CONTAINER -->
 <!-- FOOTER -->
-<?= $this->inc("/".$this->getLocale()."/shared/includes/footer-credit") ?>
+<?php if ($site == "corporate") { ?>
+    <?= $this->inc("/" . $this->getLocale() . "/shared/includes/footer-corporate-contact") ?>
+<?php } else { ?>
+    <?= $this->inc("/".$this->getLocale()."/shared/includes/footer-credit") ?>
+<?php } ?>
 <!-- FOOTER -->
 <!-- LOADER -->
 <div id="loader-container"></div>

@@ -467,7 +467,11 @@ function showSuccessAgentOtp() {
   $("#personal-detail").show();
   $("#step-summary").show();
   nextButton("inactive");
-  $(".actions > ul li a[href$='next']").text('Selanjutnya');
+  if ( lang === 'id'){
+    $(".actions > ul li a[href$='next']").text('Selanjutnya');
+  }else{
+    $(".actions > ul li a[href$='next']").text('Next');
+  }
   isValidOtp = true;
 }
 
@@ -497,6 +501,17 @@ function initAdditionalInfo() {
 }
 
 form = $("#getCredit").show();
+if ( lang === 'id'){
+  var selesai = 'Selesai';
+  var selanjutnya = 'Selanjutnya';
+  var previous = 'Sebelumnya';
+  var load = 'Loading ...';
+}else{
+  var selesai = 'Finish';
+  var selanjutnya = 'Next';
+  var previous = 'Previous';
+  var load = 'Loading ...';
+}
 
 form.steps({
   headerTag: "h3",
@@ -505,10 +520,10 @@ form.steps({
   titleTemplate: '<span class="number"><i class="fa fa-check" aria-hidden="true"></i><b>#index#</b></span> <p>#title#</p>',
   /* Labels */
   labels: {
-    finish: "Selesai",
-    next: "Selanjutnya",
-    previous: "Sebelumnya",
-    loading: "Loading ..."
+    finish: selesai,
+    next: selanjutnya,
+    previous: previous,
+    loading: load
   },
   onInit: function () {
     nextButton("inactive");
