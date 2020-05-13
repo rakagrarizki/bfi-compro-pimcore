@@ -5,12 +5,8 @@
  * @var \Pimcore\Templating\PhpEngine $view
  * @var \Pimcore\Templating\GlobalVariables $app
  */
-
 $this->extend('layout-credit.html.php');
-
 ?>
-
-<?php if (!$this->success) { ?>
 
     <div class="stepper-wrapper container">
         <nav>
@@ -288,8 +284,3 @@ $this->extend('layout-credit.html.php');
     <?php $this->headScript()->prependFile('/static/js/Includes/formStep2.js'); ?>
     <?php $this->headScript()->prependFile('/static/js/Includes/formStep3.js'); ?>
     <?php $this->headScript()->prependFile('/static/js/Includes/formStep4.js'); ?>
-
-
-<?php } else { ?>
-    <?= $this->template('Scholarship/success-scholar.html.php') ?>
-<?php } ?>

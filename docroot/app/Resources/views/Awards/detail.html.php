@@ -8,9 +8,9 @@
 
 $this->extend('layout.html.php');
 $this->document->setProperty("site", "Text", "corporate", true);
-$this->headTitle()->append('BFI - ' . $data->getYear());
+$this->headTitle()->append('BFI - ' . $award->getYear());
 
-$this->headMeta('BFI - ' . $data->getYear());
+$this->headMeta('BFI - ' . $award->getYear());
 
 
 ?>
@@ -25,28 +25,28 @@ $this->headMeta('BFI - ' . $data->getYear());
 </div>
 <div class="container main-card">
     <div class="page-title"><?= $this->t("award-title"); ?></div>
-    <div class="page-sub-title"><?= $this->translate("year"); ?> <?= $data->getYear(); ?></div>
+    <div class="page-sub-title"><?= $this->translate("year"); ?> <?= $award->getYear(); ?></div>
 </div>
 
 
 <div class="container award-page">
     <picture>
-        <img src="<?= $data->getImage(); ?>" alt="">
+        <img src="<?= $award->getImage(); ?>" alt="">
     </picture>
-    <?php $awards = $data->getAwards();
+    <?php $awards = $award->getAwards();
     $i = 1;
     ?>
     <?php if ($awards) { ?>
-        <?php foreach ($awards as $key => $award) { ?>
+        <?php foreach ($awards as $key => $data) { ?>
             <?php if ($i == 1) { ?>
                 <div class="row">
                 <?php } ?>
                 <div class="awards-card col-xs-12">
                     <div class="title">
-                        <?= $award->getTitle(); ?>
+                        <?= $data->getTitle(); ?>
                     </div>
                     <div class="desc">
-                        <?= $award->getDescription(); ?>
+                        <?= $data->getDescription(); ?>
                     </div>
                 </div>
                 <?php if ($i == 3) { ?>
@@ -58,8 +58,8 @@ $this->headMeta('BFI - ' . $data->getYear());
     <?php } ?>
 </div>
 
-<?php $past = $data->getYear() - 1;
-$next = $data->getYear() + 1;
+<?php $past = $award->getYear() - 1;
+$next = $award->getYear() + 1;
 ?>
 
 <div class="container">
