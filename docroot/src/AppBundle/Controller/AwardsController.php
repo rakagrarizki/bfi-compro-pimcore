@@ -29,8 +29,8 @@ class AwardsController extends FrontendController
     public function detailAction(Request $request)
     {
         $year = htmlentities(addslashes($request->get("year")));
-        $data = Penghargaan::getByYear($year, 1);
+        $award = Penghargaan::getByYear($year, 1);
 
-        $this->view->data = $data;
+        $this->view->award = $award;
     }
 }
