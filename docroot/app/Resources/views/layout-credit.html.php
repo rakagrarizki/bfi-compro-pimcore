@@ -80,7 +80,7 @@
 <?php } ?>
 <!-- FOOTER -->
 <!-- LOADER -->
-<div id="loader-container"></div>
+<div id="loader-container" style="display: none;"></div>
 <!-- LOADER -->
 
 <?php $this->headScript()->appendFile('/static/js/Includes/homepage.js'); ?>
