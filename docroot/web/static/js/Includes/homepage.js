@@ -98,15 +98,24 @@ $(document).ready(function() {
             window.location.href = _url;
         }
     });
-    
-    getListCategory();
-    var token = localStorage.getItem("token");
-    if (token != null) {
-        getDataStorage(token);
-    }
   });
   
-
+    var token = localStorage.getItem("token");
+        if (token != null) {
+        getDataStorage(token);
+    }
+    // getListCategory();
+    if ( window.location.pathname == '/' ){
+        getListCategory();
+    }  else{
+        $(document).bind("ajaxStop", function () {
+            if (isAjaxActive) {
+              isAjaxActive = false;
+            $("#loader-container").stop(true, true).fadeOut("fast");
+            }
+          });
+    }
+  
   function getListCategory() {
     dataListCat = [];
     $("#category-1").empty();
