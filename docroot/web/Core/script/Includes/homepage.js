@@ -104,17 +104,10 @@ $(document).ready(function() {
         if (token != null) {
         getDataStorage(token);
     }
-    // getListCategory();
-    if ( window.location.pathname == '/' ){
+
+    if(document.getElementById("pengajuan")){
         getListCategory();
-    }  else{
-        $(document).bind("ajaxStop", function () {
-            if (isAjaxActive) {
-              isAjaxActive = false;
-            $("#loader-container").stop(true, true).fadeOut("fast");
-            }
-          });
-    }
+    } 
   
   function getListCategory() {
     dataListCat = [];
