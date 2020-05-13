@@ -13,11 +13,13 @@ foreach (\Pimcore\Tool::getValidLanguages() as $language) {
     } else {
         $target = "/" . $language;
     }
-    if (preg_match("/.\/blog/", $page) || preg_match("/.\/news/", $page)) {
+    if (preg_match("/.\/blog/", $page) || preg_match("/.\/news/", $page) ||  preg_match("/.\/promo/", $page)) {
         if (isset($this->blog)) {
             $target = '/'.$language.'/blog/'.$this->blog->getSlug(true, $language);
         } else if (isset($this->news)) {
             $target = '/'.$language.'/news/'.$this->news->getSlug(true, $language);
+        } else if (isset($this->promo)) {
+            $target = '/'.$language.'/promo/'.$this->promo->getSlug(true, $language);
         } else if (isset($translations[$language])) {
             $localizedDocument = \Pimcore\Model\Document::getById($translations[$language]);
             if ($localizedDocument) {
