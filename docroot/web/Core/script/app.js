@@ -72,7 +72,6 @@ var isAjaxActive = false;
     if (!isAjaxActive) {
       isAjaxActive = true;
     $("#loader-container").stop(true, true).fadeIn("fast");
-   
     }
   }).bind("ajaxStop", function () {
     if (isAjaxActive) {
