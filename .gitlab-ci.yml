@@ -8,7 +8,7 @@ build_staging:
   script:
     - .ci/build-development.sh
   only:
-    - hotfix-1.1
+    - hotfix-1.2
   allow_failure: true
 deploy_staging:
   stage: deploy
@@ -20,4 +20,4 @@ deploy_staging:
     name: staging
     url: http://bfi.staging7.salt.id
   only:
-    - hotfix-1.1
+    - hotfix-1.2
