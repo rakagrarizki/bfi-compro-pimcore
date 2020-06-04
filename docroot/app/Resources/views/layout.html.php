@@ -40,7 +40,7 @@
     //
     //    }
 
-    if ($this->document instanceof Document\Page && $this->document->getDescription()) {
+    if ($this->document instanceof \Pimcore\Model\Document\Page && $this->document->getDescription()) {
         // use the manually set description if available
         $this->headMeta()->appendName('description', $this->document->getDescription());
     }

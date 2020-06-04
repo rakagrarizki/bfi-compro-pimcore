@@ -11,35 +11,28 @@ use Pimcore\Model\Asset;
 $this->extend('layout.html.php');
 $promo = $this->promo;
 
-
-
-
-
-?>
-<?php
-$this->headTitle()->append('BFI - ' . $promo->getTitle());
+$this->headTitle()->append($promo->getTitle());
 
 // setting content type and character set
 $this->headMeta()->appendHttpEquiv('Content-Type', 'text/html; charset=UTF-8')->appendHttpEquiv('Content-Language', 'en-US');
 
 $this->headMeta()->appendName('description', $promo->getDescription());
-$this->headMeta('BFI - ' . $promo->getTitle(), "title");
+$this->headMeta($promo->getTitle(), "title");
 
 // setting open graph tags
 // <!-- Open Graph / Facebook -->
 $this->headMeta()->appendName('og:url', BASEURL . '/' . $lang . $url . $promo->getSlug());
 $this->headMeta()->appendName('og:type', 'article');
-$this->headMeta()->appendName('og:title', 'BFI - ' . $promo->getTitle());
+$this->headMeta()->appendName('og:title', $promo->getTitle());
 $this->headMeta()->appendName('og:description', $promo->getDescription());
 $this->headMeta()->appendName('og:image', BASEURL . $promo->getImage());
 
 // <!-- Twitter -->
 $this->headMeta()->appendName('twitter:card', 'summary');
-$this->headMeta()->appendName('twitter:title', 'BFI - ' . $promo->getTitle());
+$this->headMeta()->appendName('twitter:title', $promo->getTitle());
 $this->headMeta()->appendName('twitter:url', BASEURL . '/' . $lang . $url . $promo->getSlug());
 $this->headMeta()->appendName('twitter:image', BASEURL . $promo->getImage());
 $this->headMeta()->appendName('twitter:description', $promo->getDescription());
-
 ?>
 
 <div class="blog-promo detail">

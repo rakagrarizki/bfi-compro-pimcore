@@ -8,9 +8,26 @@
 
 $this->extend('layout.html.php');
 $this->document->setProperty("site", "Text", "corporate", true);
-$this->headTitle()->append('BFI - ' . $award->getYear());
+$this->headTitle()->append($award->getTitle());
 
-$this->headMeta('BFI - ' . $award->getYear());
+$this->headMeta($award->getTitle());
+// setting content type and character set
+$this->headMeta()->appendHttpEquiv('Content-Type', 'text/html; charset=UTF-8')->appendHttpEquiv('Content-Language', 'en-US');
+$this->headMeta()->appendName('description', $award->getDescription());
+// setting open graph tags
+// <!-- Open Graph / Facebook -->
+$this->headMeta()->appendName('og:url', BASEURL . '/' . $lang . $url . $award->getYear());
+$this->headMeta()->appendName('og:type', 'article');
+$this->headMeta()->appendName('og:title', $award->getTitle());
+$this->headMeta()->appendName('og:description', $award->getDescription());
+$this->headMeta()->appendName('og:image', BASEURL . $award->getImage());
+
+// <!-- Twitter -->
+$this->headMeta()->appendName('twitter:card', 'summary');
+$this->headMeta()->appendName('twitter:title', $award->getTitle());
+$this->headMeta()->appendName('twitter:url', BASEURL . '/' . $lang . $url . $award->getYear());
+$this->headMeta()->appendName('twitter:image', BASEURL . $award->getImage());
+$this->headMeta()->appendName('twitter:description', $award->getDescription());
 
 
 ?>

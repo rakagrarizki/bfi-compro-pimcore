@@ -23,9 +23,26 @@ $urlcheck = Pimcore\Model\Asset::getByPath($imagethumbnail);
 $urlFacebook = " https://www.facebook.com/sharer/sharer.php?u=" . $fixedurl . "&title=" . $titleshare . "&picture=" . $imagethumbnail;
 $urlTwitter = " https://twitter.com/share?text=$titleshare&url=$fixedurl&wrap_links=true ";
 ?>
-<?php $this->headTitle()->append('BFI - '.$news->getTitle());
+<?php 
+$this->headTitle()->append($news->getTitle());
+$this->headMeta($news->getTitle(), "title");
+// setting content type and character set
+$this->headMeta()->appendHttpEquiv('Content-Type', 'text/html; charset=UTF-8')->appendHttpEquiv('Content-Language', 'en-US');
+$this->headMeta()->appendName('description', $news->getDescription());
+// setting open graph tags
+// <!-- Open Graph / Facebook -->
+$this->headMeta()->appendName('og:url', BASEURL . '/' . $lang . $url . $news->getSlug());
+$this->headMeta()->appendName('og:type', 'article');
+$this->headMeta()->appendName('og:title',$news->getTitle());
+$this->headMeta()->appendName('og:description', $news->getDescription());
+$this->headMeta()->appendName('og:image', BASEURL . $news->getImage());
 
- $this->headMeta('BFI - '. $news->getTitle(), "title");
+// <!-- Twitter -->
+$this->headMeta()->appendName('twitter:card', 'summary');
+$this->headMeta()->appendName('twitter:title',$news->getTitle());
+$this->headMeta()->appendName('twitter:url', BASEURL . '/' . $lang . $url . $news->getSlug());
+$this->headMeta()->appendName('twitter:image', BASEURL . $news->getImage());
+$this->headMeta()->appendName('twitter:description', $news->getDescription());
 
 ?>
 
