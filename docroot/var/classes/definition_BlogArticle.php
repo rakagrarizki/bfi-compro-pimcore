@@ -1,7 +1,7 @@
 <?php 
 
 /** 
-* Generated at: 2020-06-25T06:11:06+02:00
+* Generated at: 2020-06-29T10:01:16+02:00
 * Inheritance: no
 * Variants: no
 * Changed by: admin (2)
@@ -15,6 +15,7 @@ Fields Summary:
 - localizedfields [localizedfields]
 -- Title [input]
 -- Description [input]
+-- Keyword [input]
 -- Content [wysiwyg]
 - Image [image]
 - Views [numeric]
@@ -27,7 +28,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'BlogArticle',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1593058266,
+   'modificationDate' => 1593417676,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -223,6 +224,31 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'visibleSearch' => false,
               )),
               2 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                 'fieldtype' => 'input',
+                 'width' => NULL,
+                 'queryColumnType' => 'varchar',
+                 'columnType' => 'varchar',
+                 'columnLength' => 190,
+                 'phpdocType' => 'string',
+                 'regex' => '',
+                 'unique' => false,
+                 'name' => 'Keyword',
+                 'title' => 'Keyword',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => NULL,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+              )),
+              3 => 
               Pimcore\Model\DataObject\ClassDefinition\Data\Wysiwyg::__set_state(array(
                  'fieldtype' => 'wysiwyg',
                  'width' => '',
