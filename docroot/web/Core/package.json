@@ -17,18 +17,18 @@
     "autoprefixer": "^6.3.6",
     "browser-sync": "^2.26.7",
     "gulp": "^3.9.1",
-    "gulp-clean": "^0.3.2",
+    "gulp-clean": "^0.4.0",
     "gulp-concat": "^2.6.0",
     "gulp-postcss": "^6.1.1",
     "gulp-processhtml": "^1.1.0",
-    "gulp-sass": "^4.0.2",
+    "gulp-sass": "^4.1.0",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglifycss": "^1.0.6",
     "gulp-uglifyjs": "^0.6.2",
     "gulp-util": "^3.0.7",
     "gulp-watch": "^4.3.6",
     "node-bourbon": "^4.2.8",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.14.1",
     "run-sequence": "^1.2.1"
   },
   "repository": {
@@ -38,6 +38,6 @@
   "dependencies": {
     "bourbon": "^4.2.7",
     "gulp-file-include": "^1.1.0",
-    "gulp-inject-partials": "^1.0.2"
+    "gulp-inject-partials": "^1.0.5"
   }
 }

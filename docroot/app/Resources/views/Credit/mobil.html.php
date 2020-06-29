@@ -61,7 +61,7 @@ $blogList->setLimit(4);
                                 </li>
                             </ul>
                         </nav>
-                        <form action="#" id="getCredit" method="POST" class="form-get--credit" role="form">
+                        <form action="#" id="getCredit" method="POST" class="form-get--c    redit" role="form">
                             <input type="hidden" id="jenis_form" name="jenis_form" value="MOBIL">
                             <div class="tab-content">
                                 <div id="menu1" class="tab-pane fade in active">

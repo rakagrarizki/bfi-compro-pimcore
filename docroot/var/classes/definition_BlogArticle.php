@@ -1,7 +1,7 @@
 <?php 
 
 /** 
-* Generated at: 2020-06-02T05:05:52+02:00
+* Generated at: 2020-06-25T06:11:06+02:00
 * Inheritance: no
 * Variants: no
 * Changed by: admin (2)
@@ -27,7 +27,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'BlogArticle',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1591067152,
+   'modificationDate' => 1593058266,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -213,7 +213,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'mandatory' => false,
                  'noteditable' => false,
                  'index' => false,
-                 'locked' => NULL,
+                 'locked' => false,
                  'style' => '',
                  'permissions' => NULL,
                  'datatype' => 'data',
@@ -250,7 +250,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'name' => 'localizedfields',
              'region' => NULL,
              'layout' => NULL,
-             'title' => NULL,
+             'title' => '',
              'width' => '',
              'height' => '',
              'maxTabs' => NULL,

@@ -5,6 +5,8 @@ $(document).ready(function() {
     let selFormCreditCategory = $("#category-1");
     let sel_placeholder = selFormCredit.attr("data-placeholder");
   
+    console.log("JS PIMCORE WORKS")
+
     selFormCredit.select2({
         placeholder: sel_placeholder,
         dropdownParent: selFormCredit.parent()

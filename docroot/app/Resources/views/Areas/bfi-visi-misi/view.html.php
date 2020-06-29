@@ -7,9 +7,9 @@
                 <h2><?= $this->translate("visi"); ?></h2>
             </div>
             <div class="col-md-9">
-                <p>
+                <h3>
                     <?= $this->input("visi"); ?>
-                </p>
+                </h3>
             </div>
         </div>
         <div class="misi">
@@ -22,7 +22,7 @@
                     <!-- loop disini -->
                     <?php while($this->block("contentblock")->loop()) { ?>
                     <div>
-                        <p><?= $this->input("input-misi"); ?></p>
+                        <h3><?= $this->input("input-misi"); ?></p>
                     </div>
                     <?php } ?>
                     <!--  -->

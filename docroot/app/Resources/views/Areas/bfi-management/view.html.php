@@ -5,18 +5,25 @@
 
 <div class="container management-container">
     <div class="row">
-        <h2><?= $this->input('title'); ?></h2>
+        <?php 
+        if($this->input('title') == '') { ?>
+        <?php } else {?>
+        <h2 class=""><?= $this->input('title');?></h2>
+        <?php }?>
+
         <?php foreach($this->multihref("objectPaths") as $element):
             /** @var \Pimcore\Model\Element\ElementInterface $element */
             ?>
-            <div class="col-md-4 management-box">
-                <div class="cards-type-14" onclick="getDetail('<?= $element->getId(); ?>', '<?= $this->getLocale(); ?>')" data-toggle="modal" data-target="#myModal" style="background-image: url('<?= $element->getImage() ? $element->getImage()->getFullPath() : ""; ?>')">
-                    <div class="information">
-                        <div class="information-name"><?= $element->getNama(); ?></div>
-                        <div class="information-position"> <?= $element->getJabatan(); ?></div>
-                    </div>
+        <div class="col-md-4 management-box">
+            <div class="cards-type-14" onclick="getDetail('<?= $element->getId(); ?>', '<?= $this->getLocale(); ?>')"
+                data-toggle="modal" data-target="#myModal"
+                style="background-image: url('<?= $element->getImage() ? $element->getImage()->getFullPath() : ""; ?>')">
+                <div class="information">
+                    <div class="information-name"><?= $element->getNama(); ?></div>
+                    <div class="information-position"> <?= $element->getJabatan(); ?></div>
                 </div>
             </div>
+        </div>
         <?php endforeach; ?>
     </div>
 </div>
@@ -25,8 +32,8 @@
 <!-- <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog"> -->
 
-    <!-- Modal content-->
-    <!-- <div class="modal-content">
+<!-- Modal content-->
+<!-- <div class="modal-content">
         <div class="modal-body modal-profile">
             <div class="button-box"><button type="button" class="close" data-dismiss="modal">&times;</button></div>
             <div class="row">
@@ -50,4 +57,3 @@
 
   </div>
 </div> -->
-

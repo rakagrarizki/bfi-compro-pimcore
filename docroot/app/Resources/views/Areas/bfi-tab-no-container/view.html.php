@@ -18,8 +18,11 @@ $tab = $this->getParam("tab");
 <div class="tabs-accor">
     <div class="container-fluids">
         <article class="sect-title text-center">
-            <h1 style="text-align:justify">&nbsp;</h1>
+        <?php 
+            if($this->input('title') == '') { ?>
+            <?php } else {?>
             <h2 class=""><?= $this->input('title');?></h2>
+        <?php }?>
         </article>
         <div id="<?= $this->select("group")->getData();?>" class="tabs-outer container">
             <ul class="nav nav-tabs" role="tablist" id="outer-choice">

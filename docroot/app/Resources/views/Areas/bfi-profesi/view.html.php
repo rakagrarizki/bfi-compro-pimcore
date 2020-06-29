@@ -4,8 +4,16 @@
         <?php while ($this->block("contentblock")->loop()) { ?>
             <div class="col-md-6 profesi-box">
                 <div class="cards-type-13">
-                    <div class="header-text"> <?= $this->input('subtitle'); ?></div>
-                    <div class="header-title"><?= $this->input('title-profesi'); ?></div>
+                    <div class="header-text">
+                        <h2>
+                            <?= $this->input('subtitle'); ?>
+                        </h2>
+                    </div>
+                    <div class="header-title">
+                        <h3>
+                            <?= $this->input('title-profesi'); ?>
+                        </h3>
+                    </div>
                     <?php if (!$this->input("address")->isEmpty()) { ?>
                         <div class="header-contain">
                             <i class="icon-maps-and-flags"></i><?= $this->input('address'); ?>

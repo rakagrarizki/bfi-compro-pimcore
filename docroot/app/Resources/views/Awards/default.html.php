@@ -10,21 +10,23 @@ $this->extend('layout.html.php');
 ?>
 <div class="container">
     <div class="page-title">
-        <h2 class="page-title-content"><?= $this->t("award-title")?></h2>
+        <h1 class="page-title-content"><?= $this->t("award-title")?></h1>
     </div>
     <div class="row">
         <?php foreach($this->paginator as $key => $award) :?>
-            <a href = "<?= '/'. $this->getLocale(). '/award/'.$award->getYear(); ?>">
-                <div class="button-type-17 col-md-12">
+        <a href="<?= '/'. $this->getLocale(). '/award/'.$award->getYear(); ?>">
+            <div class="button-type-17 col-md-12">
+                <h2>
                     <?= $this->translate("year"); ?> <?php echo $award->getYear();?>
                     <span class="arrow-right"><i class="icon-next"></i></span>
-                </div>
-            </a>
+                </h2>
+            </div>
+        </a>
         <?php endforeach; ?>
 
     </div>
     <?php if (count($paginator) > 1) : ?>
-        <?= $this->render("Includes/paging.html.php", get_object_vars($paginator->getPages("Sliding")), [
+    <?= $this->render("Includes/paging.html.php", get_object_vars($paginator->getPages("Sliding")), [
             'urlprefix' => $this->document->getFullPath() . '?page=', // just example (this parameter could be used in paging.php to construct the URL)
             'appendQueryString' => true // just example (this parameter could be used in paging.php to construct the URL)
         ]); ?>

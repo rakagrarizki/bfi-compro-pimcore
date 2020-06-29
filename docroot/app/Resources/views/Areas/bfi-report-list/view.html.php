@@ -24,8 +24,14 @@ if ($tab != null) {
 <div class="container report-list-wrapper" id=<?= $id; ?>>
     <div class="">
         <article class="sect-title text-center">
-            <h2 class=""><?= $this->input("title") ?></h2>
-            <p><?= $this->textarea('text'); ?></p>
+        <?php   if($this->input('title') == '') { ?>
+        <?php } else {?>
+        <h2 class="">
+        <?= $this->input('title');?>
+        </h2>
+        <p><?= $this->textarea('text'); ?></p>
+        <?php }?>
+        
         </article>
 
         <?php foreach ($paginator as $data) : ?>
