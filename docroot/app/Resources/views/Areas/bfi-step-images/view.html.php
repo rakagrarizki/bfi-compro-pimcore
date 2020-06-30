@@ -8,7 +8,7 @@
             <?php while ($this->block("contentblock")->loop()) { ?>
                 <?php $asset = $this->image("sub-image");?>
                 <div class="sect-step__item">
-                    <a href="<?= $asset->getImage()?>" target="_blank"><img src="<?= $asset->getImage()?>"></a>
+                    <a href="<?= $asset->getImage()?>" target="_blank"><img src="<?= $asset->getImage()?>" alt="<?= $this->input("alt-img")?>"></a>
                     <div class="text-wrap">
                         <p><?= $this->input('sub-title');?></p>
                     </div>

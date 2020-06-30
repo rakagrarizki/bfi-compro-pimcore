@@ -7,7 +7,7 @@
                 <?php $asset = $this->image("image-step"); ?>
                 <li>
                     <div class="img-step">
-                        <img src="<?= $asset->getImage() ?>" class="img-responsive" alt="">
+                        <img src="<?= $asset->getImage() ?>" class="img-responsive" alt="<?= $this->input("alt-img")?>">
                     </div>
                     <p><?= $this->input('text'); ?></p>
                 </li>
@@ -18,7 +18,7 @@
             <div class="row">
                 <div class="button-area text-center no-padding">
                     <a href="<?= $this->link('url')->getHref(); ?>" class="cta cta-orange cta-see cta-big"><?= $this->link('url')->getText(); ?></a>
-                </div>
+                </div> 
             </div>
         <?php endif; ?>
     </div>

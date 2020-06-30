@@ -9,7 +9,7 @@
                 <?php $asset = $this->image("sub-image");?>
                 <div class="steps-item">
                     <picture>
-                        <img src="<?= $asset->getImage()?>" alt="">
+                        <img src="<?= $asset->getImage()?>" alt="<?= $this->input("alt-img")?>">
                     </picture>
                     <div class="text-wrap">
                         <p><?= $this->input('sub-title');?></p>

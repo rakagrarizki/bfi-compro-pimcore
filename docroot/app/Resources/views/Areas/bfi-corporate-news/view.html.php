@@ -35,7 +35,7 @@ $news->load();
                 }
                 ?>
 
-                            <img src="<?= $data->getImage();?>">
+                            <img src="<?= $data->getImage();?>" alt="<?= $data->getSlug(); ?>">
                         </div>
                         <div class="thumbnail-infomation">
                             <?php

@@ -26,6 +26,10 @@
                 <div class="col-sm-8"><?= $this->image('image-author');?></div>
             </div>
             <div class="row">
+                <div class="col-sm-4">Alt Image</div>
+                <div class="col-sm-8"><?= $this->input("alt-img"); ?></div>
+            </div>
+            <div class="row">
                 <div class="col-sm-4">Image</div>
                 <div class="col-sm-8"><?= $this->image('image');?></div>
             </div>

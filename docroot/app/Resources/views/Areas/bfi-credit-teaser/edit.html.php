@@ -13,7 +13,7 @@
             <div class="col-sm-8"><?= $this->input("title"); ?></div>
         </div>
         <div class="row">
-            <div class="col-sm-4">Text</div>
+            <div class="col-sm-4">Text</div> 
             <div class="col-sm-8"><?= $this->textarea("text"); ?></div>
         </div>
         <div class="row">
@@ -37,6 +37,10 @@
             <div class="col-sm-8"><?= $this->image('image-rumah');?></div>
         </div>
         <div class="row">
+                <div class="col-sm-4">Alt Image Rumah</div>
+                <div class="col-sm-8"><?= $this->input("alt-img-rumah"); ?></div>
+            </div>
+        <div class="row">
             <div class="col-sm-4">link mobil</div>
             <div class="col-sm-8"><?= $this->link("url-mobil"); ?></div>
         </div>
@@ -49,6 +53,10 @@
             <div class="col-sm-8"><?= $this->image('image-mobil');?></div>
         </div>
         <div class="row">
+                <div class="col-sm-4">Alt Image Mobil</div>
+                <div class="col-sm-8"><?= $this->input("alt-img-mobil"); ?></div>
+            </div>
+        <div class="row">
             <div class="col-sm-4">link motor</div>
             <div class="col-sm-8"><?= $this->link("url-motor"); ?></div>
         </div>
@@ -60,8 +68,11 @@
             <div class="col-sm-4">Image Motor</div>
             <div class="col-sm-8"><?= $this->image('image-motor');?></div>
         </div>
-
-		    <div class="row">
+        <div class="row">
+                <div class="col-sm-4">Alt Image Motor</div>
+                <div class="col-sm-8"><?= $this->input("alt-img-motor"); ?></div>
+            </div>
+        <div class="row">
             <div class="col-sm-4">title Education</div>
             <div class="col-sm-8"><?= $this->input("title-education"); ?></div>
         </div>
@@ -69,6 +80,10 @@
             <div class="col-sm-4">Image Education</div>
             <div class="col-sm-8"><?= $this->image('image-education');?></div>
         </div>
+        <div class="row">
+                <div class="col-sm-4">Alt Image Education</div>
+                <div class="col-sm-8"><?= $this->input("alt-img-education"); ?></div>
+            </div>
         <div class="row">
             <div class="col-sm-4">link Education</div>
             <div class="col-sm-8"><?= $this->link("url-education"); ?></div>
@@ -83,6 +98,10 @@
             <div class="col-sm-8"><?= $this->image('image-travel');?></div>
         </div>
         <div class="row">
+                <div class="col-sm-4">Alt Image Travel</div>
+                <div class="col-sm-8"><?= $this->input("alt-img-travel"); ?></div>
+            </div>
+        <div class="row">
             <div class="col-sm-4">link Travel</div>
             <div class="col-sm-8"><?= $this->link("url-travel"); ?></div>
         </div>
@@ -95,6 +114,10 @@
             <div class="col-sm-4">Image Mesin</div>
             <div class="col-sm-8"><?= $this->image('image-mesin');?></div>
         </div>
+        <div class="row">
+                <div class="col-sm-4">Alt Image Mesin</div>
+                <div class="col-sm-8"><?= $this->input("alt-img-mesin"); ?></div>
+            </div>
         <div class="row">
             <div class="col-sm-4">link Mesin</div>
             <div class="col-sm-8"><?= $this->link("url-mesin"); ?></div>

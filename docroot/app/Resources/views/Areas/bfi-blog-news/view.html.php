@@ -23,7 +23,7 @@
                                     <div class="thumbnail-body--content">
                                         <div class="thumbnail-image">
                                         <?php } ?>
-                                        <img src="<?= $news->getImage(); ?>">
+                                        <img src="<?= $news->getImage(); ?>" alt="<?= $news->getSlug(); ?>">
                                         </div>
                                         <div class="thumbnail-infomation">
                                             <?php
