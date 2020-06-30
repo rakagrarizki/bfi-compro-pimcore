@@ -16,8 +16,6 @@ $this->headTitle()->append($promo->getTitle());
 // setting content type and character set
 $this->headMeta()->appendHttpEquiv('Content-Type', 'text/html; charset=UTF-8')->appendHttpEquiv('Content-Language', 'en-US');
 
-$this->headMeta()->appendName('description', $promo->getDescription());
-$this->headMeta($promo->getTitle(), "title");
 
 // setting open graph tags
 // <!-- Open Graph / Facebook -->
@@ -25,7 +23,12 @@ $this->headMeta()->appendName('og:url', BASEURL . '/' . $lang . $url . $promo->g
 $this->headMeta()->appendName('og:type', 'article');
 $this->headMeta()->appendName('og:title', $promo->getTitle());
 $this->headMeta()->appendName('og:description', $promo->getDescription());
+$this->headMeta()->appendName('og:keyword', $promo->getKeyword());
 $this->headMeta()->appendName('og:image', BASEURL . $promo->getImage());
+
+$this->headMeta()->appendName('title',$promo->getTitle());
+$this->headMeta()->appendName('description', $promo->getDescription());
+$this->headMeta()->appendName('keyword', $promo->getKeyword());
 
 // <!-- Twitter -->
 $this->headMeta()->appendName('twitter:card', 'summary');

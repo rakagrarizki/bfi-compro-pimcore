@@ -25,17 +25,20 @@ $urlTwitter = " https://twitter.com/share?text=$titleshare&url=$fixedurl&wrap_li
 ?>
 <?php 
 $this->headTitle()->append($news->getTitle());
-$this->headMeta($news->getTitle(), "title");
 // setting content type and character set
 $this->headMeta()->appendHttpEquiv('Content-Type', 'text/html; charset=UTF-8')->appendHttpEquiv('Content-Language', 'en-US');
-$this->headMeta()->appendName('description', $news->getDescription());
 // setting open graph tags
 // <!-- Open Graph / Facebook -->
 $this->headMeta()->appendName('og:url', BASEURL . '/' . $lang . $url . $news->getSlug());
 $this->headMeta()->appendName('og:type', 'article');
 $this->headMeta()->appendName('og:title',$news->getTitle());
 $this->headMeta()->appendName('og:description', $news->getDescription());
+$this->headMeta()->appendName('og:keyword', $news->getKeyword());
 $this->headMeta()->appendName('og:image', BASEURL . $news->getImage());
+
+$this->headMeta()->appendName('title',$news->getTitle());
+$this->headMeta()->appendName('description', $news->getDescription());
+$this->headMeta()->appendName('keyword', $news->getKeyword());
 
 // <!-- Twitter -->
 $this->headMeta()->appendName('twitter:card', 'summary');

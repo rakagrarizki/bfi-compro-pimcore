@@ -24,17 +24,21 @@ $urlTwitter = " https://twitter.com/share?text=$titleshare&url=$fixedurl&wrap_li
 ?>
 <?php 
 $this->headTitle()->append($blog->getTitle());
-$this->headMeta($blog->getTitle(), "title");
 // setting content type and character set
 $this->headMeta()->appendHttpEquiv('Content-Type', 'text/html; charset=UTF-8')->appendHttpEquiv('Content-Language', 'en-US');
-$this->headMeta()->appendName('description', $blog->getDescription());
 // setting open graph tags
 // <!-- Open Graph / Facebook -->
 $this->headMeta()->appendName('og:url', BASEURL . '/' . $lang . $url . $blog->getSlug());
 $this->headMeta()->appendName('og:type', 'article');
 $this->headMeta()->appendName('og:title',$blog->getTitle());
 $this->headMeta()->appendName('og:description', $blog->getDescription());
+$this->headMeta()->appendName('og:keyword', $blog->getKeyword());
 $this->headMeta()->appendName('og:image', BASEURL . $blog->getImage());
+// ------ 
+$this->headMeta()->appendName('title',$blog->getTitle());
+$this->headMeta()->appendName('description', $blog->getDescription());
+$this->headMeta()->appendName('keyword', $blog->getKeyword());
+// ------
 
 // <!-- Twitter -->
 $this->headMeta()->appendName('twitter:card', 'summary');
