@@ -29,6 +29,10 @@
                 <div class="col-sm-4">Image - Step</div>
                 <div class="col-sm-8"><?= $this->image('image-step');?></div>
             </div>
+            <div class="row">
+                <div class="col-sm-4">Alt Image</div>
+                <div class="col-sm-8"><?= $this->input("alt-img"); ?></div>
+            </div>
             <!--<div class="row">
                 <div class="col-sm-4">Icon</div>
                 <div class="col-sm-8"><?php /*echo $this->select("icon", [

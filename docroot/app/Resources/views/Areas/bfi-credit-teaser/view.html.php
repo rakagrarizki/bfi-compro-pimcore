@@ -11,7 +11,7 @@
                         <?php $assetMobil = $this->image("image-mobil");?>
                         <a href="<?= $this->link('url-mobil')->getHref(); ?>">
                             <div class="icon">
-                                <img class="imggetcredit" src="<?= $assetMobil->getImage()?>" alt="">
+                                <img class="imggetcredit" src="<?= $assetMobil->getImage()?>" alt="<?= $assetMobil = $this->input("alt-img-mobil")?>">
                                 <p><?= $this->input("title-mobil"); ?></p>
                             </div>
                         </a>
@@ -20,7 +20,7 @@
                         <?php $assetMotor = $this->image("image-motor");?>
                         <a href="<?= $this->link('url-motor')->getHref(); ?>">
                             <div class="icon">
-                                <img class="imggetcredit" src="<?= $assetMotor->getImage()?>" alt="">
+                                <img class="imggetcredit" src="<?= $assetMotor->getImage()?>" alt="<?= $assetMotor = $this->input("alt-img-motor")?>">
                                 <p><?= $this->input("title-motor"); ?></p>
                             </div>
 
@@ -30,7 +30,7 @@
                         <?php $assetRumah = $this->image("image-rumah");?>
                         <a href="<?= $this->link('url-rumah')->getHref(); ?>">
                             <div class="icon">
-                                <img class="imggetcredit" src="<?= $assetRumah->getImage()?>" alt="">
+                                <img class="imggetcredit" src="<?= $assetRumah->getImage()?>" alt="<?=$assetRumah =  $this->input("alt-img-rumah")?>">
                                 <p><?= $this->input("title-rumah"); ?></p>
                             </div>
 
@@ -47,7 +47,7 @@
                           <?php $assetMobil = $this->image("image-education");?>
                           <a href="<?= $this->link('url-education')->getHref(); ?>">
                               <div class="icon">
-                                  <img class="imggetcredit" src="<?= $assetMobil->getImage()?>" alt="">
+                                  <img class="imggetcredit" src="<?= $assetMobil->getImage()?>" alt="<?= $assetMobil = $this->input("alt-img-education")?>">
                                   <p><?= $this->input("title-education"); ?></p>
                               </div>
                           </a>
@@ -59,7 +59,7 @@
                         <?php $assetMotor = $this->image("image-travel");?>
                         <a href="<?= $this->link('url-travel')->getHref(); ?>">
                             <div class="icon">
-                                <img class="imggetcredit" src="<?= $assetMotor->getImage()?>" alt="">
+                                <img class="imggetcredit" src="<?= $assetMotor->getImage()?>" alt="<?= $assetMotor = $this->input("alt-img-travel")?>">
                                 <p><?= $this->input("title-travel"); ?></p>
                             </div>
 
@@ -72,7 +72,7 @@
                         <?php $assetRumah = $this->image("image-mesin");?>
                         <a href="<?= $this->link('url-mesin')->getHref(); ?>">
                             <div class="icon">
-                                <img class="imggetcredit" src="<?= $assetRumah->getImage()?>" alt="">
+                                <img class="imggetcredit" src="<?= $assetRumah->getImage()?>" alt="<?= $assetRumah = $this->input("alt-img-mesin")?>">
                                 <p><?= $this->input("title-mesin"); ?></p>
                             </div>
 

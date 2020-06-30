@@ -11,7 +11,7 @@
                     </div>
                     <div class="author-wrap">
                         <div class="img-wrap">
-                            <img class="img-produk" src="<?= $assetAuthor->getImage()?>" alt="">
+                            <img class="img-produk" src="<?= $assetAuthor->getImage()?>" alt="<?= $this->input("alt-img"); ?>">
                         </div>
                         <div class="text-wrapper">
                             <div class="author">
