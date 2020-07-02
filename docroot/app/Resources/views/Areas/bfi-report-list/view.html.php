@@ -24,7 +24,7 @@ if ($tab != null) {
 <div class="container report-list-wrapper" id=<?= $id; ?>>
     <div class="">
         <article class="sect-title text-center">
-        <?php   if($this->input('title') == '') { ?>
+        <?php   if($this->input('title')->isEmpty()) { ?>
         <?php } else {?>
         <h2 class="">
         <?= $this->input('title');?>
@@ -45,8 +45,10 @@ if ($tab != null) {
                         </div>
                     <?php endif; ?>
                     <div class="report-download-container">
-                        <div class="title">
-                            <?= $data->getFilename(); ?>
+                        <div >
+                            <h2 class="title">
+                                <?=$data->getFilename(); ?>
+                            </h2>
                         </div>
                     </div>
                 </div>

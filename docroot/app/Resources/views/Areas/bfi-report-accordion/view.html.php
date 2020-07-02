@@ -47,10 +47,10 @@ if ($tab != null) {
                     ?>
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h4 class="panel-title">
+                                <p class="panel-title">
                                     <a class="a-reportheading" data-toggle="collapse" data-parent="#<?= $randId ?>" href="#<?= $randId . '-' . $key ?>">
                                         <?= $y ?></a>
-                                </h4>
+                                </p>
                             </div>
                             <div id="<?= $randId . '-' . $key ?>" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
                                 <div class="panel-body report-accordion">
@@ -63,7 +63,9 @@ if ($tab != null) {
                                             <li>
                                                 <div class="content-list">
                                                     <div class="content-list-item">
-                                                        <?= $data->getFileName(); ?>
+                                                        <h3>
+                                                            <?= $data->getFileName(); ?>
+                                                        </h3>
                                                     </div>
                                                     <div class="download-btn">
                                                         <div class="down-box">

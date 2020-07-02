@@ -4,17 +4,17 @@
     <div class="container">
         <div class="visi">
             <div class="col-md-3">
-                <h2><?= $this->translate("visi"); ?></h2>
+                <h3><?= $this->translate("visi"); ?></h3>
             </div>
             <div class="col-md-9">
-                <h3>
+                <h4>
                     <?= $this->input("visi"); ?>
-                </h3>
+                </h4>
             </div>
         </div>
         <div class="misi">
             <div class="col-md-3">
-                <h2><?= $this->translate("misi"); ?></h2>
+                <h3><?= $this->translate("misi"); ?></h3>
             </div>
             <div class="col-md-9">
 
@@ -22,7 +22,7 @@
                     <!-- loop disini -->
                     <?php while($this->block("contentblock")->loop()) { ?>
                     <div>
-                        <h3><?= $this->input("input-misi"); ?></p>
+                        <h4><?= $this->input("input-misi"); ?></h4>
                     </div>
                     <?php } ?>
                     <!--  -->

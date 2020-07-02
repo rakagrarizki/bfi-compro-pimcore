@@ -400,7 +400,7 @@ select option:disabled {
     }
 }
 
-.sect-title.text-center h2 {
+.sect-title.text-center h1 {
     @include breakpoint(mobile){
         font-size: 21px;
     }

@@ -9,9 +9,9 @@
         <li>
             <a href="<?= $this->link("url")->isEmpty() ? "#" : $this->link("url")->getHref();?>">
                 <div class="right-content">
-                    <h6> <?= $this->date("date", [
+                    <p> <?= $this->date("date", [
                             "format" => "%d %B %Y"
-                        ]); ?></h6>
+                        ]); ?></p>
                     <h3> <?= $this->input("detail-title");?></h3>
                 </div>
                 <div class="left-content">

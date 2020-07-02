@@ -83,7 +83,7 @@ if($this->editmode) : ?>
     <div class="container">
         <div class="row">
             <div class="col-md-4 footer-left">
-                <h3>PT BFI Finance Indonesia Tbk</h3>
+                <p>PT BFI Finance Indonesia Tbk</p>
                 <p>
                     BFI Tower <br>
                     Sunburst CBD Lot. 1.2 <br>
