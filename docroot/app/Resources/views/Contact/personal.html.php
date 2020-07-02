@@ -23,7 +23,7 @@ $this->extend('layout.html.php');
                     <?php if ($this->msg_error) {
                         echo '<div class="alert alert-danger" role="alert">' . $msg_error . '</div>';
                     } ?>
-                    <h2 class="text-center"><?= $this->translate('contact'); ?></h2>
+                    <h1 class="text-center"><?= $this->translate('contact'); ?></h1>
                     <p class="text-center"><?= $this->translate('contact-sub'); ?></p>
                 </div>
 

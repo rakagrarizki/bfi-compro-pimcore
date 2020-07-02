@@ -12,7 +12,7 @@
                         <img src="<?= $asset->getImage()?>" alt="<?= $this->input("alt-img")?>">
                     </picture>
                     <div class="text-wrap">
-                        <p><?= $this->input('sub-title');?></p>
+                        <h3><?= $this->input('sub-title');?></h3>
                     </div>
                 </div>
             <?php } ?>
