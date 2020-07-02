@@ -18,6 +18,22 @@
         width: 100%;
     }
 
+    h1 {
+        font-family: $font_default;
+        font-weight: bold;
+        color: #04559F;
+        font-size: 26px;
+
+        @include breakpoint(mobile){
+            font-size: 20px;
+        }
+
+        &.text-center-edit {
+            display: none;
+            text-align: center;
+        }
+    }
+
     h2 {
         font-family: $font_default;
         font-weight: bold;
@@ -1912,6 +1928,14 @@ select::-ms-expand {
                 margin : 35px auto;
             }
             
+            h1 {
+                margin-top: 60px;
+    
+                @include breakpoint(mobile) {
+                    font-size: 20px;
+                    margin-top: inherit;
+                }
+            }
             h2 {
                 margin-top: 60px;
     

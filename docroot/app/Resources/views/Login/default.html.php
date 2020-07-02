@@ -19,9 +19,9 @@ $this->headScript()->offsetSetFile(100, '/static/js/Includes/login.js');
 ?>
 
 <section id="login" class="container">
-    <!-- <h3></?= $this->translate('welcome-login'); ?></h3>
+    <!-- <h1></?= $this->translate('welcome-login'); ?></h1>
     <p></?= $this->translate('welcome-login-sub'); ?></p> -->
-    <h3><?= $this->trans1; ?></h3>
+    <h1><?= $this->trans1; ?></h1>
     <p><?= $this->trans2; ?></p>
     <form action="" id="login-form">
         <div class="input-login">
@@ -38,7 +38,7 @@ $this->headScript()->offsetSetFile(100, '/static/js/Includes/login.js');
     </form>
 </section>
 <section id="otp" class="container hide">
-    <h3><?= $this->translate('confirmation-otp'); ?></h3>
+    <h1><?= $this->translate('confirmation-otp'); ?></h1>
     <p><?= $this->translate('text-confirmation-otp'); ?></p>
 
     <form action="" id="otp-form">

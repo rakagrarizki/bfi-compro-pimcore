@@ -12,7 +12,7 @@ $lang = $this->getLocale();
 <div class="blog-promo">
     <div class="container">
         <article class="sect-title text-center">
-            <h2 class="margin-top-10"><?= $this->t("promo-title");?></h2>
+            <h1 class="margin-top-10"><?= $this->t("promo-title");?></h1>
             <p><?= $this->t("promo-text1");?></p>
             <p><?= $this->t("promo-text2");?></p>
         </article>
@@ -49,8 +49,8 @@ $lang = $this->getLocale();
                     <div class="card-content card-static-promo" style="background-image: url(<?= $promo->getImage();?>)">
                     </div>
                     <div class="caption">
-                        <h3 class="tag"><?= $promo->getPromoCategory() ? $promo->getPromoCategory()->getName(): "";?></h3>
-                        <h2 class="title"><?= $promo->getTitle();?></h2>
+                        <h2 class="tag"><?= $promo->getPromoCategory() ? $promo->getPromoCategory()->getName(): "";?></h2>
+                        <h3 class="title"><?= $promo->getTitle();?></h3>
                         <div class="dateview periode">
                             <div><?= $this->t("period-promo"); ?> : </div>
                             <?php

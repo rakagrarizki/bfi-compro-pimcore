@@ -1,11 +1,11 @@
 <div class="container">
     <div class="row">
         <div class="cont-credit">
-            <h2 class="title-wrapper"><?= $this->input("title"); ?></h2>
+            <h1 class="title-wrapper"><?= $this->input("title"); ?></h1>
             <p class="paragraf-title"><?= $this->textarea('text');?></p>
 
             <div class="list-credit">
-              <h3><?= $this->input("credit-jaminan-title"); ?></h3>
+              <h2><?= $this->input("credit-jaminan-title"); ?></h2>
                 <div class="list-credit--icon">
                     <div class="credit--icon col-md-3 col-xs-3">
                         <?php $assetMobil = $this->image("image-mobil");?>
@@ -40,7 +40,7 @@
             </div>
 
             <div class="list-credit">
-              <h3><?= $this->input("credit-lainnya-title"); ?></h3>
+              <h2><?= $this->input("credit-lainnya-title"); ?></h2>
                 <div class="list-credit--icon">
                     <?php if(!$this->input("title-education")->isEmpty()) { ?>
                       <div class="credit--icon col-md-3 col-xs-3">

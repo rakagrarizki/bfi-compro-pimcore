@@ -11,8 +11,8 @@
                                 <div class="row">
                                     <div class="col-md-10 col-md-offset-1">
                                         <div class="desc-cont">
-                                            <h3><?= $this->input('title');?></h3>
-                                            <h1><?= $this->input('text'); ?></h1>
+                                            <p><?= $this->input('title');?></p>
+                                            <p class="title-banner"><?= $this->input('text'); ?></p>
                                         </div>
                                     </div>
                                 </div>
@@ -27,8 +27,8 @@
                                 <div class="row">
                                     <div class="col-xs-12">
                                         <div class="desc-cont">
-                                            <h3><?= $this->input('title');?></h3>
-                                            <h1><?= $this->input('text'); ?></h1>
+                                            <p><?= $this->input('title');?></p>
+                                            <p class="title-banner"><?= $this->input('text'); ?></p>
                                         </div>
                                     </div>
                                 </div>

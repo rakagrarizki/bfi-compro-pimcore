@@ -110,6 +110,18 @@
                         height: 30px !important;
                     }
                 }
+                h3.title{
+                    height: 34px !important;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    -o-text-overflow: ellipsis;
+                    text-overflow: ellipsis;
+                    @include breakpoint(mobile) {
+                        height: 30px !important;
+                    }
+                }
             }
 
             picture {

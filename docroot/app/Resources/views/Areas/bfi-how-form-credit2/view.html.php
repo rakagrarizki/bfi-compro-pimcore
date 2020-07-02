@@ -12,7 +12,7 @@
 <section id="pengajuan">
     <div class="container">
         <div class="submission-wrapper">
-            <h4><?= $this->input('title'); ?></h4>
+            <h1><?= $this->input('title'); ?></h1>
             <form action="" id="selection-form">
                 <div class="selection-wrapper">
                     <div class="selection-1">
