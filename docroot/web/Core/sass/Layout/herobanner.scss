@@ -11,7 +11,7 @@
     }
 
     &.herobanner--static {
-        h2 {
+        h2, .title-banner {
             color: $primary;
             font-size: 44px;
             margin-bottom: 30px;
@@ -58,7 +58,7 @@
             //     opacity: .8;
             // }
 
-            p {
+            p, h2, h3 {
                 font-family: $font_default;
 
                 &.title {
@@ -188,9 +188,13 @@
                 //     width: 47%;
                 //     margin-left: 43.5%;
                 // }
+
+                p {
+                    color: $primary;
+                }
             }
 
-            h3 {
+            h3, p {
                 margin: 0;
                 margin-bottom: 20px;
                 font-family: $font_default;
@@ -211,7 +215,7 @@
                 }
             }
 
-            h1 {
+            h1, .title-banner {
                 font-weight: bold;
                 // opacity: 0.9;
                 font-family: $font_default;

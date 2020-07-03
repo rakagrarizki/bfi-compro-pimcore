@@ -18,7 +18,7 @@
       padding: 25px 20px;
       border-bottom: solid 1px #dddddd;
       cursor: pointer;
-        h4{
+        h4, h3{
           font-size: 22px !important;
           position: relative;
           .a-reportheading{
@@ -90,7 +90,7 @@
         margin-top: 40px;
       }
 
-      p {
+      h4, h3, p {
         font-size: 28px;
 
         @include breakpoint(tablet) {
@@ -107,7 +107,7 @@
       }
     }
 
-    h4 {
+    h4, h3 {
       font-size: 1.3em;
       font-family: $font_default;
       @include breakpoint(mobile){

@@ -105,16 +105,16 @@ if ($this->editmode) : ?>
 
                     </div>
                     <div id="ajax-loading"></div>
-                    <button type="submit" class="cta cta-primary submitfoot"><?= $this->translate("submit") ?></button>
+                    <button id="submitNewsletter" type="submit" class="cta cta-primary submitfoot"><?= $this->translate("submit") ?></button>
                 </form>
             </div>
             <div class="col-md-4 footer-right">
                 <div class="social-media">
-                    <a target="<?= $this->link('facebook') != "" ? $this->link('facebook')->getTarget() : '' ?>" href="<?= $this->link('facebook') != "" ? $this->link('facebook')->getHref() : '' ?>"><span><i class="fab fa-facebook-f fa-lg" aria-hidden="true"></i></span></a>
-                    <a target="<?= $this->link('twitter') != "" ? $this->link('twitter')->getTarget() : '' ?>" href="<?= $this->link('twitter') != "" ? $this->link('twitter')->getHref() : '' ?>"><span> <i class="fab fa-twitter fa-lg" aria-hidden="true"></i></span></a>
-                    <a target="<?= $this->link('instagram') != "" ? $this->link('instagram')->getTarget() : '' ?>" href="<?= $this->link('instagram') != "" ? $this->link('instagram')->getHref() : '' ?>"><span><i class="fab fa-instagram fa-lg" aria-hidden="true"></i></span></a>
-                    <a target="<?= $this->link('youtube') != "" ? $this->link('youtube')->getTarget() : '' ?>" href="<?= $this->link('youtube') != "" ? $this->link('youtube')->getHref() : '' ?>"><span><i class="fab fa-youtube fa-lg" aria-hidden="true"></i></span></a>
-                    <a target="<?= $this->link('linkedin') != "" ? $this->link('linkedin')->getTarget() : '' ?>" href="<?= $this->link('linkedin') != "" ? $this->link('linkedin')->getHref() : '' ?>"><span><i class="fab fa-linkedin-in fa-lg" aria-hidden="true"></i></span></a>
+                    <a id="<?= $this->link('facebook')->getParameters()?>" target="<?= $this->link('facebook') != "" ? $this->link('facebook')->getTarget() : '' ?>" href="<?= $this->link('facebook') != "" ? $this->link('facebook')->getHref() : '' ?>"><span><i class="fab fa-facebook-f fa-lg" aria-hidden="true"></i></span></a>
+                    <a id="<?= $this->link('twitter')->getParameters()?>" target="<?= $this->link('twitter') != "" ? $this->link('twitter')->getTarget() : '' ?>" href="<?= $this->link('twitter') != "" ? $this->link('twitter')->getHref() : '' ?>"><span> <i class="fab fa-twitter fa-lg" aria-hidden="true"></i></span></a>
+                    <a id="<?= $this->link('instagram')->getParameters()?>" target="<?= $this->link('instagram') != "" ? $this->link('instagram')->getTarget() : '' ?>" href="<?= $this->link('instagram') != "" ? $this->link('instagram')->getHref() : '' ?>"><span><i class="fab fa-instagram fa-lg" aria-hidden="true"></i></span></a>
+                    <a id="<?= $this->link('youtube')->getParameters()?>" target="<?= $this->link('youtube') != "" ? $this->link('youtube')->getTarget() : '' ?>" href="<?= $this->link('youtube') != "" ? $this->link('youtube')->getHref() : '' ?>"><span><i class="fab fa-youtube fa-lg" aria-hidden="true"></i></span></a>
+                    <a id="<?= $this->link('linkedin')->getParameters()?>" target="<?= $this->link('linkedin') != "" ? $this->link('linkedin')->getTarget() : '' ?>" href="<?= $this->link('linkedin') != "" ? $this->link('linkedin')->getHref() : '' ?>"><span><i class="fab fa-linkedin-in fa-lg" aria-hidden="true"></i></span></a>
                 </div>
                 <span><?= $this->translate("text-pengawasan") ?>:</span>
                 <?php $asset = $this->image("ojk-image"); ?>
@@ -131,12 +131,12 @@ if ($this->editmode) : ?>
             </div>
             <div class="col-sm-8">
                 <ul class="nav-footer">
-                    <li><a href="<?= $this->link('career')->getHref(); ?>"><?= $this->translate("career"); ?></a></li>
-                    <li><a href="<?= $this->link('peluang-bisnis')->getHref(); ?>"><?= $this->translate("peluang-bisnis"); ?></a></li>
-                    <li><a href="<?= $this->link('contact')->getHref(); ?>"><?= $this->translate("contact"); ?></a></li>
-                    <li><a href="<?= $this->link('branch')->getHref(); ?>"><?= $this->translate("branch"); ?></a></li>
-                    <li><a href="<?= $this->link('term')->getHref(); ?>"><?= $this->translate("term"); ?></a></li>
-                    <li><a href="<?= $this->link('privacy')->getHref(); ?>"><?= $this->translate("privacy"); ?></a></li>
+                    <li><a id="<?= $this->link('career')->getParameters()?>" href="<?= $this->link('career')->getHref(); ?>"><?= $this->translate("career"); ?></a></li>
+                    <li><a id="<?= $this->link('peluang-bisnis')->getParameters()?>" href="<?= $this->link('peluang-bisnis')->getHref(); ?>"><?= $this->translate("peluang-bisnis"); ?></a></li>
+                    <li><a id="<?= $this->link('contact')->getParameters()?>" href="<?= $this->link('contact')->getHref(); ?>"><?= $this->translate("contact"); ?></a></li>
+                    <li><a id="<?= $this->link('branch')->getParameters()?>" href="<?= $this->link('branch')->getHref(); ?>"><?= $this->translate("branch"); ?></a></li>
+                    <li><a id="<?= $this->link('term')->getParameters()?>" href="<?= $this->link('term')->getHref(); ?>"><?= $this->translate("term"); ?></a></li>
+                    <li><a id="<?= $this->link('privacy')->getParameters()?>" href="<?= $this->link('privacy')->getHref(); ?>"><?= $this->translate("privacy"); ?></a></li>
                 </ul>
             </div>
         </div>

@@ -17,10 +17,10 @@
                         <?php while($this->block('accord')->loop()){ ?>
                             <div class="panel panel-default">
                                 <div class="panel-heading"  data-toggle="collapse" data-parent="#<?php echo $unik;?>" href="#<?php echo $unik."-".$a;?>">
-                                    <h4 class="panel-title">
+                                    <h3 class="panel-title">
                                         <a class="a-panelheading">
                                             <?= $this->input('title-accord');?></a>
-                                    </h4>
+                                    </h3>
                                 </div>
                                 <div id="<?php echo $unik."-".$a;?>" class="panel-collapse collapse">
                                     <div class="panel-body">

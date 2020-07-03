@@ -13,7 +13,7 @@ $lang = $this->getLocale();
 <div class="blog-promo">
     <div class="container">
         <article class="sect-title text-center">
-            <h2 class="title"><?= $this->t("blog-title"); ?></h2>
+            <h1 class="title"><?= $this->t("blog-title"); ?></h1>
             <p class="subtitle"><?= $this->t("blog-text1"); ?></p>
             <p><?php //echo $this->t("blog-text2");
                 ?></p>
@@ -56,8 +56,8 @@ $lang = $this->getLocale();
                                 $date = date("d.m.y", $dateUnix);
                             ?>
                         <div class="caption">
-                            <h3 class="tag"><?= $blog->getBlogCategory()->getName(); ?></h3>
-                            <h2 class="title"><?= $blog->getTitle(); ?></h2>
+                            <h2 class="tag"><?= $blog->getBlogCategory()->getName(); ?></h2>
+                            <h3 class="title"><?= $blog->getTitle(); ?></h3>
                             <p class="date"><?= $date; ?> | <i class="fa fa-eye"></i> <?= $blog->getViews(); ?></p>
                             <!-- <div class="dateview">
                                 <span class="date"></?= $date; ?></span>

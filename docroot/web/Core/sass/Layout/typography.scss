@@ -58,6 +58,16 @@
     }
   }
 
+  &.text-center h1 {
+    color: #04559F !important;
+    font-size: 40px;
+    font-weight: bold;
+
+    @include breakpoint(mobile) {
+      font-size: 20px;
+    }
+  }
+
   &.text-center p {
     color: #565656;
     font-size: 20px;

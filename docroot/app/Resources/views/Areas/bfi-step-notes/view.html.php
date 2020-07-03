@@ -1,6 +1,6 @@
 <div class="container cont-cara">
     <div class="cara-kerja">
-        <p class="title-cara-kerja"><?= $this->input('title'); ?></p>
+        <h2 class="title-cara-kerja"><?= $this->input('title'); ?></h2>
         <p class="step-cara"><?= $this->input('sub-title'); ?></p>
         <ul class="list-step">
             <?php while ($this->block("contentblock")->loop()) { ?>
@@ -9,7 +9,7 @@
                     <div class="img-step">
                         <img src="<?= $asset->getImage() ?>" class="img-responsive" alt="<?= $this->input("alt-img")?>">
                     </div>
-                    <p><?= $this->input('text'); ?></p>
+                    <h3><?= $this->input('text'); ?></h3>
                 </li>
             <?php } ?>
         </ul>
@@ -17,7 +17,7 @@
         <?php if (!$this->link("url")->isEmpty()) : ?>
             <div class="row">
                 <div class="button-area text-center no-padding">
-                    <a href="<?= $this->link('url')->getHref(); ?>" class="cta cta-orange cta-see cta-big"><?= $this->link('url')->getText(); ?></a>
+                    <a id="<?= $this->link('url')->getParameters()?>" href="<?= $this->link('url')->getHref(); ?>" class="cta cta-orange cta-see cta-big"><?= $this->link('url')->getText(); ?></a>
                 </div> 
             </div>
         <?php endif; ?>

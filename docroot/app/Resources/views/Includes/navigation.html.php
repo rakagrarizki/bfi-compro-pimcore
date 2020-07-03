@@ -28,27 +28,27 @@ if($_COOKIE["customer"] != "null") {
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 col-sm-6 left-side-top">
-                        <a class="_personal" href="/<?php echo $this->getLocale() ?>"><?= $this->translate("personal") ?></a>
-                        <a class="_grup" href="<?= "/" . $lang . "/corporate" ?>">
+                        <a id="" class="_personal" href="/<?php echo $this->getLocale() ?>"><?= $this->translate("personal") ?></a>
+                        <a id="" class="_grup" href="<?= "/" . $lang . "/corporate" ?>">
                             <?= $this->translate("corporate") ?></a>
                     </div>
                     <div class="col-md-6 col-sm-6 right-side-top">
                             <div class="link-about-top">
                                 <?php if($lang == "id") : ?>
-                                    <a href="<?= "/" . $lang . "/tentang-bfi" ?>">
+                                    <a id="" href="<?= "/" . $lang . "/tentang-bfi" ?>">
                                 <?php else : ?>
-                                    <a href="<?= "/" . $lang . "/about-bfi" ?>">
+                                    <a id="" href="<?= "/" . $lang . "/about-bfi" ?>">
                                 <?php endif; ?>
                                     <?= $this->translate("tentang-kami") ?></a>
-                                <a href="<?= "/" . $lang . "/blog" ?>">
+                                <a id="" href="<?= "/" . $lang . "/blog" ?>">
                                     <?= $this->translate("blog") ?></a>
                             </div>
                         <div class="link-log">
                             <?php if (!isset($_COOKIE["customer"])) { ?>
-                                <a href="<?= "/" . $lang . "/login"; ?>" class="login"><?= $this->translate("login") ?></a>
+                                <a id="" href="<?= "/" . $lang . "/login"; ?>" class="login"><?= $this->translate("login") ?></a>
                             <?php } else { ?>
                             <div class="user">
-                                <a href="/<?= $this->getLocale() ?>/user/dashboard" class="full_name"><?= $name?></a> | <a href="#" class="logout" onclick="return logout('<?= $this->getLocale() ?>');"><?= $this->translate("logout") ?></a>
+                                <a id="" href="/<?= $this->getLocale() ?>/user/dashboard" class="full_name"><?= $name?></a> | <a href="#" class="logout" onclick="return logout('<?= $this->getLocale() ?>');"><?= $this->translate("logout") ?></a>
                             </div>
                             <?php }?>
                             <?php echo $this->template("Includes/language.html.php") ?>
@@ -64,7 +64,7 @@ if($_COOKIE["customer"] != "null") {
                 <div class="row">
 
                     <div class="col-md-3 col-sm-3 header-bottom-logo">
-                        <a href="<?php echo "/" . $this->getLocale(); ?>">
+                        <a id="" href="<?php echo "/" . $this->getLocale(); ?>">
                             <img src="/static/images/logo-bfi.png" class="img-responsive" alt="">
                         </a>
                     </div>
@@ -90,7 +90,7 @@ if($_COOKIE["customer"] != "null") {
                                 ?>
 
                                             <div class="dropdown col-md-3 col-sm-3" id="produk" onmouseover="hoverDropdown()" onmouseout="closeDropdown()">
-                                                <a href="#" class="<?php echo $page->getActive() ? 'active' : '' ?> produk"><?= $page->getLabel() ?></a>
+                                                <a id="" href="#" class="<?php echo $page->getActive() ? 'active' : '' ?> produk"><?= $page->getLabel() ?></a>
                                                 <div class="dropdown-content main">
                                                     <div class="produk-hover container">
                                                         <div class="">
@@ -111,7 +111,7 @@ if($_COOKIE["customer"] != "null") {
                                                                         ?>
                                                                                 <?php if ($grandChild->getDocumentType() != "link") : ?>
                                                                                     <li>
-                                                                                        <a class="<?php echo $grandChild->getActive() ? 'active' : '' ?>" href="<?= $grandChild->getHref() ?>"><?= $grandChild->getLabel() ?></a>
+                                                                                        <a id="" class="<?php echo $grandChild->getActive() ? 'active' : '' ?>" href="<?= $grandChild->getHref() ?>"><?= $grandChild->getLabel() ?></a>
                                                                                     </li>
                                                                                 <?php else : ?>
                                                                                     <li>
@@ -124,7 +124,7 @@ if($_COOKIE["customer"] != "null") {
                                                                                     foreach ($grandChild->getPages() as $greatGrandChild) {
                                                                                 ?>
                                                                                         <li>
-                                                                                            <a class="<?php echo $greatGrandChild->getActive() ? 'active' : '' ?>" href="<?= $greatGrandChild->getHref() ?>"><?= $greatGrandChild->getLabel() ?></a>
+                                                                                            <a id="" class="<?php echo $greatGrandChild->getActive() ? 'active' : '' ?>" href="<?= $greatGrandChild->getHref() ?>"><?= $greatGrandChild->getLabel() ?></a>
                                                                                         </li>
                                                                         <?php }
                                                                                 }
@@ -144,7 +144,7 @@ if($_COOKIE["customer"] != "null") {
                                         } else {
                                         ?>
                                             <div class=" col-md-3 col-sm-3 <?php echo $page->getActive() ? 'active' : '' ?>">
-                                                <a href="<?= $page->getHref() ?>" target="<?= $page->getTarget() ?>">
+                                                <a id="" href="<?= $page->getHref() ?>" target="<?= $page->getTarget() ?>">
                                                     <?= $page->getLabel() ?>
                                                 </a>
                                             </div>
@@ -158,9 +158,9 @@ if($_COOKIE["customer"] != "null") {
                     </div>
                     <div class="col-md-3 col-sm-3 search-button-container">
                             <?php if ($site == "search") : ?>
-                                <a href="javascript:history.back()"><i class="fa fa-times"></i></a>
+                                <a id="" href="javascript:history.back()"><i class="fa fa-times"></i></a>
                             <?php else : ?>
-                                <a href="<?= "/" . $lang . "/search" ?>"><i class="fa fa-search"></i></a>
+                                <a id="" href="<?= "/" . $lang . "/search" ?>"><i class="fa fa-search"></i></a>
                             <?php endif; ?>
                     </div>
                 </div>

@@ -17,7 +17,7 @@
                     <br><br>
                     <div class="row">
                         <div class="button-area no-padding button-left">
-                            <a href="<?= $this->link("link")->getHref();?>" class="cta cta-orange cta-see cta-big"><?= $this->link("link")->getText();?></a>
+                            <a id="<?= $this->link('url')->getParameters()?>" href="<?= $this->link("link")->getHref();?>" class="cta cta-orange cta-see cta-big"><?= $this->link("link")->getText();?></a>
                         </div>
                     </div>
                 <?php endif?>
@@ -54,7 +54,7 @@
                     <br><br>
                     <div class="row">
                         <div class="button-area text-center no-padding">
-                            <a href="<?= $this->link("link")->getHref();?>" class="cta cta-orange cta-see cta-big"><?= $this->link("link")->getText();?></a>
+                            <a id="<?= $this->link('url')->getParameters()?>" href="<?= $this->link("link")->getHref();?>" class="cta cta-orange cta-see cta-big"><?= $this->link("link")->getText();?></a>
                         </div>
                     </div>
                 <?php endif?>

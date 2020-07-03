@@ -7,7 +7,7 @@
         <div class="herobanner__noslider hidden-xs"
              style="background-image: url('<?= $asset->getImage() ?>')">
             <div class="sect-title middle-position">
-                <h2><?= $this->input('title'); ?></h2>
+                <p class="title-banner"><?= $this->input('title'); ?></p>
                 <p><?= $this->input('text'); ?></p>
                 <?php if(!$this->link("link")->isEmpty()) :?>
                 <div class="button">
@@ -19,7 +19,7 @@
         <div class="herobanner__noslider visible-xs"
              style="background-image: url('<?= $assetMobile->getImage() ?>')">
             <div class="sect-title middle-position">
-                <h2><?= $this->input('title'); ?></h2>
+                <p class="title-banner"><?= $this->input('title'); ?></p>
                 <p><?= $this->input('text'); ?></p>
                 <?php if(!$this->link("link")->isEmpty()) :?>
                 <div class="button">

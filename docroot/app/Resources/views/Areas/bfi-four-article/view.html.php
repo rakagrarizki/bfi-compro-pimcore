@@ -26,7 +26,7 @@
                                     $date = date("d.m.y", $dateUnix);
                                     ?>
                                     <p class="tag"><?= $blog->getBlogCategory()->getName(); ?></p>
-                                    <h4><a href="/<?= $this->getLocale() . "/blog"; ?>/<?= $blog->getSlug(); ?>"><?= $blog->getTitle();?></a></h4>
+                                    <h3><a href="/<?= $this->getLocale() . "/blog"; ?>/<?= $blog->getSlug(); ?>"><?= $blog->getTitle();?></a></h4>
                                     <p class="dateview"><?= $date;?> | <i class="fa fa-eye"></i> <?= $blog->getViews(); ?></p>
                                 </div>
                             </article>
@@ -43,7 +43,7 @@
                                     $date = date("d.m.y", $dateUnix);
                                     ?>
                                     <p class="tag"><?= $blog->getBlogCategory()->getName(); ?></p>
-                                    <h4><a href="/<?= $this->getLocale() . "/blog"; ?>/<?= $blog->getSlug(); ?>"><?= $blog->getTitle();?></a></h4>
+                                    <h3><a href="/<?= $this->getLocale() . "/blog"; ?>/<?= $blog->getSlug(); ?>"><?= $blog->getTitle();?></a></h3>
                                     <p class="dateview"><?= $date;?> | <i class="fa fa-eye"></i> <?= $blog->getViews(); ?></p>
                                 </div>
                             </article>
@@ -59,7 +59,7 @@
             </div>
             <div class="row">
                 <div class="btn-ajukan text-center margin-top-50 margin-bottom-50">
-                    <a href="<?= $this->link('url')->getHref(); ?>" class="cta cta-orange">
+                    <a href="<?= $this->link('url')->getHref(); ?>" class="cta cta-orange" id="<?= $this->link('url')->getParameters()?>">
                         <?= $this->link('url')->getText(); ?>
                     </a>
                 </div>

@@ -36,6 +36,11 @@ footer {
             margin-bottom: 20px;
             border: solid 1px #fff;
             cursor: pointer;
+            transition: all .2s ease-in-out;
+
+            &:hover {
+                background-color: #d88417;
+            }
 
             @include breakpoint(mobile) {
                 // width: 75%;

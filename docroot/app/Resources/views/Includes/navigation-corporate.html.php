@@ -21,14 +21,14 @@ $lang = $this->getLocale();
             <div class="container">
                 <div class="row">
                     <div class="col-md-9 col-sm-8 left-side-top">
-                        <a class="_grup" href="/<?php echo $this->getLocale() ?>"><?= $this->translate("personal") ?></a>
-                        <a class="_personal" target="<?= $this->link('corporate') != "" ? $this->link('corporate')->getTarget() : '' ?>" href="<?= '/' . $this->getLocale() . '/corporate' ?>">
+                        <a id="" class="_grup" href="/<?php echo $this->getLocale() ?>"><?= $this->translate("personal") ?></a>
+                        <a id="" class="_personal" target="<?= $this->link('corporate') != "" ? $this->link('corporate')->getTarget() : '' ?>" href="<?= '/' . $this->getLocale() . '/corporate' ?>">
                             <?= $this->translate("corporate") ?></a>
                     </div>
                     <div class="col-md-3 col-sm-4 right-side-top clearfix">
                         <div class="link-about-top">
 
-                            <a href="<?= $this->websiteConfig("career_link") ? $this->websiteConfig("career_link") : "#"; ?>">
+                            <a id="" href="<?= $this->websiteConfig("career_link") ? $this->websiteConfig("career_link") : "#"; ?>">
                                 <?= $this->translate("career"); ?></a>
 
                         </div>
@@ -45,7 +45,7 @@ $lang = $this->getLocale();
                 <div class="row">
 
                     <div class="col-md-3 col-sm-3 header-bottom-logo">
-                        <a href="<?php echo "/" . $this->getLocale() . '/corporate'; ?>">
+                        <a id="" href="<?php echo "/" . $this->getLocale() . '/corporate'; ?>">
                             <img src="/static/images/logo-bfi.png" class="img-responsive" alt="">
                         </a>
                     </div>
@@ -62,7 +62,7 @@ $lang = $this->getLocale();
                                         if ($hasChildren) {
                                 ?>
                                             <div class="dropdown col-md-3 col-sm-3 dark-back" id="produk">
-                                                <a href="#" class="<?php echo $page->getActive() ? 'active' : '' ?> produk has-child"><?= $page->getLabel() ?></a>
+                                                <a id="" href="#" class="<?php echo $page->getActive() ? 'active' : '' ?> produk has-child"><?= $page->getLabel() ?></a>
                                                 <div class="dropdown-content main">
                                                     <div class="produk-hover container">
                                                         <div class="re-sort">
@@ -72,7 +72,7 @@ $lang = $this->getLocale();
                                                                 <div class="col-md-6">
                                                                     <ul>
                                                                         <li>
-                                                                            <a class="<?php echo $child->getActive() ? 'active' : '' ?>" href="<?= $child->getHref() ?>"><?= $child->getLabel() ?></a>
+                                                                            <a id="" class="<?php echo $child->getActive() ? 'active' : '' ?>" href="<?= $child->getHref() ?>"><?= $child->getLabel() ?></a>
                                                                         </li>
                                                                         <?php
 
@@ -91,7 +91,7 @@ $lang = $this->getLocale();
                                         } else {
                                         ?>
                                             <div class=" col-md-3 col-sm-3<?php echo $page->getActive() ? 'active' : '' ?>">
-                                                <a href="<?= $page->getHref() ?>">
+                                                <a id="" href="<?= $page->getHref() ?>">
                                                     <?= $page->getLabel() ?>
                                                 </a>
                                             </div>
@@ -109,9 +109,9 @@ $lang = $this->getLocale();
                     </div>
                     <div class="col-md-3 col-sm-3 search-button-container">
                         <?php if ($site == "search") : ?>
-                            <a href="javascript:history.back()"><i class="fa fa-times"></i></a>
+                            <a id="" href="javascript:history.back()"><i class="fa fa-times"></i></a>
                         <?php else : ?>
-                            <a href="<?= "/" . $lang . "/search" ?>"><i class="fa fa-search"></i></a>
+                            <a id="" href="<?= "/" . $lang . "/search" ?>"><i class="fa fa-search"></i></a>
                         <?php endif; ?>
                     </div>
                 </div>
