@@ -11,7 +11,11 @@
 <div class="tabs-accor">
     <div class="container">
         <article class="sect-title text-center">
-            <h2 class="margin-top-10"><?= $this->input('title');?></h2>
+        <?php 
+            if($this->input('title') == '') { ?>
+            <?php } else {?>
+            <h2 class=""><?= $this->input('title');?></h2>
+        <?php }?>
         </article>
         <div>
             <ul class="nav nav-tabs" role="tablist" id="tabsAccor">
@@ -26,7 +30,7 @@
                     ?>
 
                 <li role="presentation">
-                    <a href="#<?= $last;?>" aria-controls="<?= $last;?>" role="tab" data-toggle="tab"><?= $this->input("text");?></a>
+                    <a href="#<?= $last;?>" aria-controls="<?= $last;?>" role="tab" data-toggle="tab"><h2><?= $this->input("text");?></h2></a>
                 </li>
                 <?php }?>
 
@@ -59,10 +63,10 @@
                                         <?php while($this->block('accordion')->loop()){ ?>
                                             <div class="panel panel-default">
                                                 <div class="panel-heading" data-toggle="collapse" data-parent="#<?php echo $unik;?>" href="#<?php echo $unik."-".$a;?>">
-                                                    <h4 class="panel-title">
+                                                    <h3 class="panel-title">
                                                         <a class="a-panelheading" >
                                                             <?= $this->input("text1"); ?></a>
-                                                    </h4>
+                                                    </h3>
                                                 </div>
                                                 <div id="<?php echo $unik."-".$a;?>" class="panel-collapse collapse">
                                                     <div class="panel-body">
