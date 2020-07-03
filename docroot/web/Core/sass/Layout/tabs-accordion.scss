@@ -48,9 +48,12 @@
                 text-align: center;
                 position: relative;
                 font-family: $font_default;
+                padding-bottom: 20px;
+
+                h2 {
                 font-size: 16px;
                 color: rgba($grey-dark-color, .5);
-                padding-bottom: 20px;
+                }
             }
 
             &:after {

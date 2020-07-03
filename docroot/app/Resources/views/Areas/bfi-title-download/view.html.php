@@ -1,7 +1,7 @@
 <div class="container">
     <div class="title-download">
         <div class="title">
-            <h3><?= $this->input("title"); ?></h3>
+            <p><?= $this->input("title"); ?></p>
         </div>
         <div class="download-btn">
             <div class="down-box">

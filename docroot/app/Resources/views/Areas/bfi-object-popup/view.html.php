@@ -21,7 +21,7 @@ $this->headScript()->offsetSetFile(100, '/static/js/Includes/management.js');
           <img src="<?= $element->getImage() ? $element->getImage()->getFullPath() : ""; ?>" alt="">
           <div class="photo-description">
             <div class="text-box">
-              <h5><?= $element->getNama(); ?></h5>
+              <p class = "main-p"><?= $element->getNama(); ?></p>
               <p><?= $element->getJabatan(); ?></p>
             </div>
           </div>
@@ -57,59 +57,7 @@ $this->headScript()->offsetSetFile(100, '/static/js/Includes/management.js');
             <img src="image/content-image/card-image.png" alt="" class="w-100">
           </div>
           <div class="col-lg-8 col-md-8 col-12">
-            <div id="head-profile">
-              <h1>Kusmayanto Kadiman</h1>
-              <p>Presiden Komisaris</p>
-            </div>
-            <hr>
-            <div id="body-profile">
-              <h3>Biodata</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Soluta ex eum nam ullam. Id, quia, obcaecati corrupti delectus expedita vitae mollitia repellat vel numquam,
-                voluptatum soluta praesentium minus optio officiis!
-              </p>
-
-              <h3>Riwayat Kerja</h3>
-              <ul>
-                <li>
-                  <i class="fas fa-square-full"></i>
-                  <p>Pernah Bekerja di..........</p>
-                </li>
-                <li>
-                  <i class="fas fa-square-full"></i>
-                  <p>Pernah Bekerja di..........</p>
-                </li>
-                <li>
-                  <i class="fas fa-square-full"></i>
-                  <p>Pernah Bekerja di..........</p>
-                </li>
-                <li>
-                  <i class="fas fa-square-full"></i>
-                  <p>Pernah Bekerja di..........</p>
-                </li>
-              </ul>
-
-              <h3>Riwayat Pendidikan</h3>
-              <ul>
-                <li>
-                  <i class="fas fa-square-full"></i>
-                  <p>Pernah Bekerja di..........</p>
-                </li>
-                <li>
-                  <i class="fas fa-square-full"></i>
-                  <p>Pernah Bekerja di..........</p>
-                </li>
-                <li>
-                  <i class="fas fa-square-full"></i>
-                  <p>Pernah Bekerja di..........</p>
-                </li>
-                <li>
-                  <i class="fas fa-square-full"></i>
-                  <p>Pernah Bekerja di..........</p>
-                </li>
-              </ul>
-            </div>
+           
           </div>
         </div>
       </div>

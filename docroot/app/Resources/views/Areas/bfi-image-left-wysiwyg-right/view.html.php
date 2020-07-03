@@ -2,9 +2,9 @@
 <div class="about-us-page" id="about-us-page">
     <div class="container">
         <div class="row activities-section">
-            <!-- <div class="sect-title text-center">
-                <h2><?= $this->input('title');?></h2>
-            </div> -->
+            <div class="sect-title text-center">
+                <h3><?= $this->input('title');?></h3>
+            </div>
             <div class="col-md-6">
             <div class="side-image" >
                 <a href="<?= $asset->getImage()?>" target="_blank"> 
@@ -12,7 +12,7 @@
             </div>
             <div class="col-md-6 text">
                 <?php if (!$this->input("title")->isEmpty()) : ?>
-                <h3 class="activities-content-title"><?= $this->input('title');?></h3>
+                <h4 class="activities-content-title"><?= $this->input('title');?></h4>
                 <?php endif; ?>
                 <?= $this->wysiwyg("text"); ?>
                 <?php if (!$this->link("link")->isEmpty()) : ?>

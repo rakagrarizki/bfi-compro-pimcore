@@ -8,8 +8,12 @@ $reports->addConditionParam("Category__id = ?",$category,"AND");
 <div class="container report-list-wrapper" id =<?= $id;?>>
     <div class="">
         <article class="sect-title text-center">
-            <h2 class=""><?= $this->input("title")?></h2>
+        <?php 
+            if($this->input('title') == '') { ?>
+            <?php } else {?>
+            <h2 class=""><?= $this->input('title');?></h2>
             <p><?= $this->textarea('text');?></p>
+            <?php }?>
         </article>
 
         <?php foreach($reports as $data):?>
@@ -24,7 +28,9 @@ $reports->addConditionParam("Category__id = ?",$category,"AND");
                 <?php endif; ?>
                 <div class="report-download-container">
                     <div class="title">
-                        <?= $data->getFilename();?>
+                        <h2>
+                            <?= $data->getFilename();?>
+                        </h2>
                     </div>
                 </div>
             </div>

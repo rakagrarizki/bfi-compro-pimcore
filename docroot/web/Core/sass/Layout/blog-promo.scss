@@ -7,6 +7,11 @@
             width: 100%;
         }
 
+        h1{
+            color: #04559F !important;
+            font-size: 40px;
+            font-weight: bold;
+        }
         h2{
             @include breakpoint(mobile){
                 margin-bottom: 10px;
@@ -98,7 +103,7 @@
                     height: 175px;
                 }
 
-                h2.title{
+                h3.title{
                     height: 34px !important;
                     display: -webkit-box;
                     -webkit-line-clamp: 2;

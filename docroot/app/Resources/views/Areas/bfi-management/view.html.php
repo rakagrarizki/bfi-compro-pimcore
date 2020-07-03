@@ -6,9 +6,9 @@
 <div class="container management-container">
     <div class="row">
         <?php 
-        if($this->input('title') == '') { ?>
+        if($this->input('title')->isEmpty()) { ?>
         <?php } else {?>
-        <h2 class=""><?= $this->input('title');?></h2>
+        <h3 class=""><?= $this->input('title');?></h3>
         <?php }?>
 
         <?php foreach($this->multihref("objectPaths") as $element):
