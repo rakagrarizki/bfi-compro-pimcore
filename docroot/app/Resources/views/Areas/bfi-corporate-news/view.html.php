@@ -57,7 +57,7 @@ $news->load();
         </div>
         <div class="row">
             <div class="button-area text-center no-padding">
-                <a href="<?= $this->link('url')->getHref(); ?>" class="cta cta-orange cta-see cta-big"><?= $this->translate('more'); ?></a>
+                <a id="<?= $this->link('url')->getParameters()?>" href="<?= $this->link('url')->getHref(); ?>" class="cta cta-orange cta-see cta-big"><?= $this->translate('more'); ?></a>
             </div>
         </div>
     </div>

@@ -24,7 +24,7 @@
                         </select>
                     </div>
                 </div>
-                <button class="btn-next"><?= $this->translate('ajukan-sekarang'); ?><i class="fa fa-angle-right" type="submit"></i></button>
+                <button id="SelectFInancing"class="btn-next"><?= $this->translate('ajukan-sekarang'); ?><i class="fa fa-angle-right" type="submit"></i></button>
             </form>
         </div>
     </div>

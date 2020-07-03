@@ -7,8 +7,8 @@
                     <?php $asset = $this->image("image"); ?>
                     <div class="col-md-4 col-sm-4 textalign-center">
                         <div class="three-box__item">
-                            <h2><?= $this->input('title'); ?></h2>
-                            <a class="<?= $this->link('url')->getClass(); ?>"
+                            <h4><?= $this->input('title'); ?></h4>
+                            <a id="<?= $this->link('url')->getParameters()?>" class="<?= $this->link('url')->getClass(); ?>"
                                href="<?= $this->link('url')->getHref(); ?>" <?= $this->link('url')->getAttributes(); ?> >
                                 <?= $this->link('url')->getText(); ?>
                             </a>

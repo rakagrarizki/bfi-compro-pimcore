@@ -59,7 +59,7 @@
             </div>
             <div class="row">
                 <div class="btn-ajukan text-center margin-top-50 margin-bottom-50">
-                    <a href="<?= $this->link('url')->getHref(); ?>" class="cta cta-orange">
+                    <a href="<?= $this->link('url')->getHref(); ?>" class="cta cta-orange" id="<?= $this->link('url')->getParameters()?>">
                         <?= $this->link('url')->getText(); ?>
                     </a>
                 </div>

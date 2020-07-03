@@ -40,7 +40,7 @@
         </div> -->
 
         <div class="button-area text-center">
-            <a href="<?= $this->link('url')->getHref(); ?>" class="cta cta-primary cta-big cta-see"><?= $this->translate("more") ?></a>
+            <a href="<?= $this->link('url')->getHref(); ?>" class="cta cta-primary cta-big cta-see" id="<?= $this->link('url')->getParameters()?>"><?= $this->translate("more") ?></a>
         </div>
 
         <div class="jamoperasional">
