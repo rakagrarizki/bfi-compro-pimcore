@@ -1,3 +1,8 @@
 # To get started with security, check out the documentation:
 # http://symfony.com/doc/current/security.html
 security:
+# ...
+    access_control:
+        #
+        # the 'ips' option supports IP addresses and subnet masks
+        - { path: '^/admin', roles: BFI_HO, ips: [127.0.0.1, ::1, 117.102.79.20/27, 36.89.226.246/27, 139.255.84.44/29] }
