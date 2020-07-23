@@ -6,7 +6,7 @@ use Pimcore\Model\Document;
 ?>
 <?php $name = "";
 if($_COOKIE["customer"] != "null") {
-    $name = $_COOKIE["customer"];
+    $name = htmlspecialchars($_COOKIE["customer"]);
 } else {
     $name = "Dashboard";
 } ?>

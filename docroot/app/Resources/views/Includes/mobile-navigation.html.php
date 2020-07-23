@@ -9,7 +9,7 @@ use Pimcore\Model\Document;
 $site = $this->document->getProperty("site");
 $name = "";
 if($_COOKIE["customer"] != "null") {
-    $name = $_COOKIE["customer"];
+    $name = htmlspecialchars($_COOKIE["customer"]);
 } else {
     $name = "Dashboard";
 }

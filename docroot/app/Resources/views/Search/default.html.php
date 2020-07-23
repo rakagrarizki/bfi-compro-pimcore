@@ -66,7 +66,7 @@ $page = $this->page;
                     $prev = (int)$page - 1;
                     if($prev != 0) :?>
                         <li>
-                            <a href="<?= urldecode($this->pimcoreUrl(['page' => $prev])); ?>" aria-label="Previous">
+                            <a href="<?= htmlspecialchars(urldecode($this->pimcoreUrl(['page' => $prev]))); ?>" aria-label="Previous">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         </li>
