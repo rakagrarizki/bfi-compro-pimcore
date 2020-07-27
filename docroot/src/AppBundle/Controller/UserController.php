@@ -64,6 +64,7 @@ class UserController extends FrontendController
         $host = WebsiteSetting::getByName("HOST")->getData();
         $url = $host . WebsiteSetting::getByName('LOGIN_OTP_REQUEST')->getData();
         $limitTime = WebsiteSetting::getByName('LIMIT_TIME')->getData();
+        $differentTime = WebsiteSetting::getByName('DIFF_TIME')->getData();
         $limit = $limitTime * 3600;
         $redis = new \Credis_Client(REDIS, 6379, null, '', 1, PASSREDIS);
         $dateSend = $redis->hGet($params['phone_number'], "time-send");
@@ -79,7 +80,7 @@ class UserController extends FrontendController
         $clear = false;
         if($attempts){
             $diff = $timenow - $dateSend;
-            if($diff >= 600){
+            if($diff >= $differentTime){
                 $send = true;
                 $clear = true;
             }else{

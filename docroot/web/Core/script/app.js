@@ -6343,7 +6343,7 @@ function reformatMoney(number) {
   }
   
   function otp() {
-    var timeleft = 90;
+    var timeleft = 90; 
     var timer = setInterval(function() {
         document.getElementById("resend").innerHTML =
             "Mohon menunggu <b>" +

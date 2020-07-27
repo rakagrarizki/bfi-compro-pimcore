@@ -251,6 +251,7 @@ class AgentController extends FrontendController
         $param["code_are"] = htmlentities(addslashes($request->get('code_are')));
         $param["have_smartphone"] = htmlentities(addslashes($request->get('have_smartphone')));
         $limitTime = WebsiteSetting::getByName('LIMIT_TIME')->getData();
+        $differentTime = WebsiteSetting::getByName('DIFF_TIME')->getData();
         $limit = $limitTime * 3600;
 
         $redis = new \Credis_Client(REDIS, 6379, null, '', 1, PASSREDIS);
@@ -267,7 +268,7 @@ class AgentController extends FrontendController
         $clear = false;
         if ($attempts) {
             $diff = $timenow - $dateSend;
-            if ($diff >= 600) {
+            if ($diff >= $differentTime) {
                 $send = true;
                 $clear = true;
             } else {
