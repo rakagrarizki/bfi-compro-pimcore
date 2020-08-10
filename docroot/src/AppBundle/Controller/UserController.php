@@ -107,7 +107,7 @@ class UserController extends FrontendController
         } 
 
         try {
-            // $data = $this->sendApi->loginRequestOtp($url, $params);
+            $data = $this->sendApi->loginRequestOtp($url, $params);
             $this->redis->hSet($params['phone_number'], 'time-send', time());
         } catch (\Exception $e) {
             return new JsonResponse([
