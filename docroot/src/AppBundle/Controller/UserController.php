@@ -11,10 +11,13 @@ use Pimcore\Bundle\AdminBundle\HttpFoundation\JsonResponse;
 class UserController extends FrontendController
 {
     private $sendApi;
+    private $redis;
 
     public function __construct()
     {
         $this->sendApi = new SendApi;
+        $this->redis = new \Credis_Client(REDIS, 6379, null, '', 1, PASSREDIS);
+        
     }
 
     public function defaultAction(Request $request)
@@ -64,36 +67,36 @@ class UserController extends FrontendController
         $host = WebsiteSetting::getByName("HOST")->getData();
         $url = $host . WebsiteSetting::getByName('LOGIN_OTP_REQUEST')->getData();
         $limitTime = WebsiteSetting::getByName('LIMIT_TIME')->getData();
-        $differentTime = WebsiteSetting::getByName('DIFF_TIME')->getData();
+        
         $limit = $limitTime * 3600;
-        $redis = new \Credis_Client(REDIS, 6379, null, '', 1, PASSREDIS);
-        $dateSend = $redis->hGet($params['phone_number'], "time-send");
-        $attempts = $redis->hGet($params['phone_number'], "attempt-hit");
-        $timenow = time();
-        /*$a = "attemp =".$attempts;
 
-        return new JsonResponse([
-            'success' => "0",
-            'message' => $a
-        ]);*/
-
-        $clear = false;
-        if($attempts){
-            $diff = $timenow - $dateSend;
-            if($diff >= $differentTime){
-                $send = true;
-                $clear = true;
-            }else{
-                if($attempts < 3){
-                    $send = true;
-                }else{
-                    $redis->setEx($params['phone_number'],$limit,"expiry");
+        $expireTime = $this->redis->ttl($params['phone_number']);
+        if($expireTime === false || $expireTime === -2 ){
+            $attempts = $this->redis->hGet($params['phone_number'], "attempt-hit");
+            $dateSend = $this->redis->hGet($params['phone_number'], "time-send");
+            $timenow = time();
+            $clear = false;
+            if($attempts && $attempts <= 25){
+                $diff = $timenow - $dateSend;
+                if($diff >= 80){
+                    if($attempts < 25){
+                        $send = true;
+                    }else{
+                        $this->redis->setEx($params['phone_number'], $limit, "expiry");
+                        $send = false;
+                    }
+                } else {
                     $send = false;
                 }
+            }else {
+                $clear = true;
+                $send = true;
             }
-        }else{
-            $clear = true;
-            $send = true;
+        } else {
+            return new JsonResponse([
+                'success' => '0',
+                'message' => 'Your reached limit, please contact the administrator',
+            ]);
         }
 
         if(!$send){
@@ -101,36 +104,36 @@ class UserController extends FrontendController
                 'success' => "0",
                 'message' => "error multiple request otp",
             ]);
-        }
+        } 
 
         try {
-            $data = $this->sendApi->loginRequestOtp($url, $params);
-            $redis->hSet($params['phone_number'], 'time-send', time());
+            // $data = $this->sendApi->loginRequestOtp($url, $params);
+            $this->redis->hSet($params['phone_number'], 'time-send', time());
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
                 'message' => "Failed to retrieve the data!",
-                'data' => $url
+                'data' => $url,
             ]);
         }
 
         if($clear){
-            $redis->hSet($params['phone_number'], 'attempt-hit', 1);
+            $this->redis->hSet($params['phone_number'], 'attempt-hit', 1);
         }else{
-            $redis->hSet($params['phone_number'], 'attempt-hit', $attempts + 1);
+            $this->redis->hSet($params['phone_number'], 'attempt-hit', $attempts + 1);
         }
 
-        if($data->header->status != 200){
+        if ($data->header->status == 200) {
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "success",
+            ]);
+        } else {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $this->get("translator")->trans("api-error")
+                'message' => $this->get("translator")->trans("api-error"),
             ]);
         }
-
-        return new JsonResponse([
-            'success' => true,
-            'result' => $data
-        ]);
     }
 
     public function otpConfirmJsonAction(Request $request)

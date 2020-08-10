@@ -13,12 +13,13 @@ use Symfony\Component\HttpFoundation\Request;
 class AgentController extends FrontendController
 {
     protected $sendAPI;
-
     protected $randomNumber;
+    private $redis;
 
     public function __construct(SendApi $sendAPI, sendApiDummy $sendApiDummy)
     {
         $this->sendAPI = $sendAPI;
+        $this->redis = new \Credis_Client(REDIS, 6379, null, '', 1, PASSREDIS);
     }
     public function defaultAction(Request $request)
     {
@@ -49,7 +50,7 @@ class AgentController extends FrontendController
         if ($data->header->status == 200) {
             return new JsonResponse([
                 'success' => "1",
-                'message' => "Sukses",
+                'message' => "success",
                 'data' => $data->data
             ]);
         } else {
@@ -73,7 +74,7 @@ class AgentController extends FrontendController
         if ($data->header->status == 200) {
             return new JsonResponse([
                 'success' => "1",
-                'message' => "Sukses",
+                'message' => "success",
                 'data' => $data->data
             ]);
         } else {
@@ -97,7 +98,7 @@ class AgentController extends FrontendController
         if ($data->header->status == 200) {
             return new JsonResponse([
                 'success' => "1",
-                'message' => "Sukses",
+                'message' => "success",
                 'data' => $data->data
             ]);
         } else {
@@ -121,7 +122,7 @@ class AgentController extends FrontendController
         if ($data->header->status == 200) {
             return new JsonResponse([
                 'success' => "1",
-                'message' => "Sukses",
+                'message' => "success",
                 'data' => $data->data
             ]);
         } else {
@@ -145,7 +146,7 @@ class AgentController extends FrontendController
         if ($data->header->status == 200) {
             return new JsonResponse([
                 'success' => "1",
-                'message' => "Sukses",
+                'message' => "success",
                 'data' => $data->data
             ]);
         } else {
@@ -169,7 +170,7 @@ class AgentController extends FrontendController
         if ($data->header->status == 200) {
             return new JsonResponse([
                 'success' => "1",
-                'message' => "Sukses",
+                'message' => "success",
                 'data' => $data->data
             ]);
         } else {
@@ -193,7 +194,7 @@ class AgentController extends FrontendController
         if ($data->header->status == 200) {
             return new JsonResponse([
                 'success' => "1",
-                'message' => "Sukses",
+                'message' => "success",
                 'data' => $data->data
             ]);
         } else {
@@ -223,7 +224,7 @@ class AgentController extends FrontendController
         if ($data->header->status == 200) {
             return new JsonResponse([
                 'success' => "1",
-                'message' => "Sukses",
+                'message' => "success",
                 'data' => $data->data
             ]);
         } else {
@@ -254,34 +255,33 @@ class AgentController extends FrontendController
         $differentTime = WebsiteSetting::getByName('DIFF_TIME')->getData();
         $limit = $limitTime * 3600;
 
-        $redis = new \Credis_Client(REDIS, 6379, null, '', 1, PASSREDIS);
-        $dateSend = $redis->hGet($param['phone_number'], "time-send");
-        $attempts = $redis->hGet($param['phone_number'], "attempt-hit");
-        $timenow = time();
-        /*$a = "attemp =".$attempts;
-
-        return new JsonResponse([
-            'success' => "0",
-            'message' => $a
-        ]);*/
-
-        $clear = false;
-        if ($attempts) {
-            $diff = $timenow - $dateSend;
-            if ($diff >= $differentTime) {
-                $send = true;
-                $clear = true;
-            } else {
-                if ($attempts < 3) {
-                    $send = true;
+        $expireTime = $this->redis->ttl($param["phone_number"]);
+        if($expireTime === false || $expireTime === -2 ){
+            $dateSend = $this->redis->hGet($param["phone_number"], "time-send");
+            $attempts = $this->redis->hGet($param["phone_number"], "attempt-hit");
+            $timenow = time();
+            $clear = false;
+            if($attempts && $attempts <= 25){
+                $diff = $timenow - $dateSend;
+                if($diff >= 80){
+                    if($attempts < 25){
+                        $send = true;
+                    }else{
+                        $this->redis->setEx($param["phone_number"], $limit, "expiry");
+                        $send = false;
+                    }
                 } else {
-                    $redis->setEx($param['phone_number'], $limit, "expiry");
                     $send = false;
                 }
+            }else {
+                $clear = true;
+                $send = true;
             }
         } else {
-            $clear = true;
-            $send = true;
+            return new JsonResponse([
+                'success' => '0',
+                'message' => 'Your reached limit, please contact the administrator',
+            ]);
         }
 
         if (!$send) {
@@ -293,22 +293,21 @@ class AgentController extends FrontendController
 
         try {
             $data = $this->sendAPI->saveAgentCandidateStep1AfterOtp($url, $param);
-            $redis->hSet($param['phone_number'], 'time-send', time());
+            $this->redis->hSet($param['phone_number'], 'time-send', time());
         } catch (\Exception $e) {
             throw new \Exception('Something went wrong!');
         }
 
         if ($clear) {
-            $redis->hSet($param['phone_number'], 'attempt-hit', 1);
+            $this->redis->hSet($param['phone_number'], 'attempt-hit', 1);
         } else {
-            $redis->hSet($param['phone_number'], 'attempt-hit', $attempts + 1);
+            $this->redis->hSet($param['phone_number'], 'attempt-hit', $attempts + 1);
         }
 
         if ($data->header->status == 200) {
             return new JsonResponse([
                 'success' => "1",
-                'message' => "Sukses",
-                'data' => $data->data
+                'message' => "success",
             ]);
         } else {
             return new JsonResponse([
@@ -340,7 +339,7 @@ class AgentController extends FrontendController
         if ($data->header->status == 200) {
             return new JsonResponse([
                 'success' => "1",
-                'message' => "Sukses",
+                'message' => "success",
                 'data' => $data->data
             ]);
         } else {
@@ -369,7 +368,7 @@ class AgentController extends FrontendController
         if ($data->header->status == 200) {
             return new JsonResponse([
                 'success' => "1",
-                'message' => "Sukses",
+                'message' => "success",
                 'data' => $data->data
             ]);
         } else {
@@ -400,7 +399,7 @@ class AgentController extends FrontendController
         if ($data->header->status == 200) {
             return new JsonResponse([
                 'success' => "1",
-                'message' => "Sukses",
+                'message' => "success",
                 'data' => $data->data
             ]);
         } else {
@@ -427,7 +426,7 @@ class AgentController extends FrontendController
         if ($data->header->status == 200) {
             return new JsonResponse([
                 'success' => "1",
-                'message' => "Sukses",
+                'message' => "success",
                 'data' => $data->data
             ]);
         } else {
