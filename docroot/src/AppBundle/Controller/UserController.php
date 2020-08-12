@@ -12,12 +12,13 @@ class UserController extends FrontendController
 {
     private $sendApi;
     private $redis;
+    private $isDev;
 
     public function __construct()
     {
         $this->sendApi = new SendApi;
         $this->redis = new \Credis_Client(REDIS, 6379, null, '', 1, PASSREDIS);
-        
+        $this->isDev = ENV === 'dev';
     }
 
     public function defaultAction(Request $request)
@@ -125,9 +126,9 @@ class UserController extends FrontendController
 
         if ($data->header->status == 200) {
             return new JsonResponse([
-                'success' => "1",
-                'message' => "success",
-            ]);
+                'success' => true,
+             ] + ($this->isDev ? ['code_otp' => $data->data->opt_code] : [])
+            );
         } else {
             return new JsonResponse([
                 'success' => "0",
@@ -158,8 +159,7 @@ class UserController extends FrontendController
 
             return new JsonResponse([
                 'success' => true,
-                'result' => $data
-            ]);
+            ] + ($this->isDev ? ['code_otp' => $data->data->opt_code] : []));
         } else {
             return new JsonResponse([
                 'success' => false,

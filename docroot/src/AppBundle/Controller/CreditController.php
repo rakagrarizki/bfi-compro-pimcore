@@ -16,14 +16,14 @@ class CreditController extends FrontendController
     protected $sendAPI;
     protected $randomNumber;
     private $redis;
-
+    private $isDev;
 
     public function __construct(SendApi $sendAPI, sendApiDummy $sendApiDummy)
     {
         $this->sendAPI = $sendAPI;
         $this->randomNumber = rand(000001, 999999);
         $this->redis = new \Credis_Client(REDIS, 6379, null, '', 1, PASSREDIS);
-
+        $this->isDev = ENV === 'dev';
     }
 
     public function mobilAction(Request $request)
@@ -404,9 +404,9 @@ class CreditController extends FrontendController
 
         if ($data->header->status == 200) {
             return new JsonResponse([
-                'success' => "1",
-                'message' => "success",
-            ]);
+                'success' => true,
+             ] + ($this->isDev ? ['code_otp' => $data->data->opt_code] : [])
+            );
         } else {
             return new JsonResponse([
                 'success' => "0",
