@@ -1,19 +1,18 @@
 <?php 
 
 /** 
-* Generated at: 2019-12-09T13:20:08+01:00
+* Generated at: 2020-08-10T07:51:26+02:00
 * Inheritance: no
 * Variants: no
 * Changed by: admin (2)
-* IP: ::1
 
 
 Fields Summary: 
 - FileName [input]
 - Date [date]
-- Category [href]
+- Category [manyToOneRelation]
 - Url [input]
-- Pdf [href]
+- Pdf [manyToOneRelation]
 */ 
 
 
@@ -22,13 +21,18 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'Report',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1575894008,
+   'modificationDate' => 1597038686,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
+   'implementsInterfaces' => NULL,
    'listingParentClass' => '',
    'useTraits' => '',
    'listingUseTraits' => '',
+   'encryption' => false,
+   'encryptedTables' => 
+  array (
+  ),
    'allowInherit' => false,
    'allowVariants' => NULL,
    'showVariants' => false,
@@ -37,6 +41,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
      'fieldtype' => 'panel',
      'labelWidth' => 100,
      'layout' => NULL,
+     'border' => false,
      'name' => 'pimcore_root',
      'type' => NULL,
      'region' => NULL,
@@ -55,6 +60,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
          'fieldtype' => 'panel',
          'labelWidth' => 100,
          'layout' => NULL,
+         'border' => false,
          'name' => 'Layout',
          'type' => NULL,
          'region' => NULL,
@@ -78,6 +84,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'phpdocType' => 'string',
              'regex' => '',
              'unique' => false,
+             'showCharCount' => NULL,
              'name' => 'FileName',
              'title' => 'File Name',
              'tooltip' => '',
@@ -117,8 +124,8 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'visibleSearch' => false,
           )),
           2 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Href::__set_state(array(
-             'fieldtype' => 'href',
+          Pimcore\Model\DataObject\ClassDefinition\Data\ManyToOneRelation::__set_state(array(
+             'fieldtype' => 'manyToOneRelation',
              'width' => '',
              'assetUploadPath' => '',
              'relationType' => true,
@@ -137,7 +144,6 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'documentTypes' => 
             array (
             ),
-             'lazyLoading' => true,
              'classes' => 
             array (
               0 => 
@@ -156,7 +162,6 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'columnType' => NULL,
              'invisible' => false,
              'visibleGridView' => false,
              'visibleSearch' => false,
@@ -171,6 +176,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'phpdocType' => 'string',
              'regex' => '',
              'unique' => false,
+             'showCharCount' => NULL,
              'name' => 'Url',
              'title' => 'Url',
              'tooltip' => '',
@@ -187,8 +193,8 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'visibleSearch' => false,
           )),
           4 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Href::__set_state(array(
-             'fieldtype' => 'href',
+          Pimcore\Model\DataObject\ClassDefinition\Data\ManyToOneRelation::__set_state(array(
+             'fieldtype' => 'manyToOneRelation',
              'width' => '',
              'assetUploadPath' => '',
              'relationType' => true,
@@ -211,7 +217,6 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'documentTypes' => 
             array (
             ),
-             'lazyLoading' => false,
              'classes' => 
             array (
             ),
@@ -226,16 +231,17 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'columnType' => NULL,
              'invisible' => false,
              'visibleGridView' => false,
              'visibleSearch' => false,
           )),
         ),
          'locked' => false,
+         'icon' => NULL,
       )),
     ),
      'locked' => false,
+     'icon' => NULL,
   )),
    'icon' => '',
    'previewUrl' => '',

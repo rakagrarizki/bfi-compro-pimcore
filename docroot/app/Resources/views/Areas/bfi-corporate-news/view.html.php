@@ -1,7 +1,6 @@
 <?php  $category = $this->document->getProperty("category")->getId();
 $news = new Pimcore\Model\DataObject\News\Listing();
 $news->addConditionParam("Category__id = ?", $category);
-$news->load();
 ?>
 
 <section id="informasi-inspiratif">

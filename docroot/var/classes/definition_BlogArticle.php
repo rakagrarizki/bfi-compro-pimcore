@@ -1,16 +1,15 @@
 <?php 
 
 /** 
-* Generated at: 2020-06-29T10:01:16+02:00
+* Generated at: 2020-08-10T07:51:24+02:00
 * Inheritance: no
 * Variants: no
 * Changed by: admin (2)
-* IP: 127.0.0.1
 
 
 Fields Summary: 
 - Slug [input]
-- BlogCategory [href]
+- BlogCategory [manyToOneRelation]
 - Date [date]
 - localizedfields [localizedfields]
 -- Title [input]
@@ -28,13 +27,18 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'BlogArticle',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1593417676,
+   'modificationDate' => 1597038684,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
+   'implementsInterfaces' => NULL,
    'listingParentClass' => '',
    'useTraits' => '',
    'listingUseTraits' => '',
+   'encryption' => false,
+   'encryptedTables' => 
+  array (
+  ),
    'allowInherit' => false,
    'allowVariants' => NULL,
    'showVariants' => false,
@@ -43,6 +47,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
      'fieldtype' => 'panel',
      'labelWidth' => 100,
      'layout' => NULL,
+     'border' => false,
      'name' => 'pimcore_root',
      'type' => NULL,
      'region' => NULL,
@@ -61,6 +66,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
          'fieldtype' => 'panel',
          'labelWidth' => 100,
          'layout' => NULL,
+         'border' => false,
          'name' => 'Layout',
          'type' => NULL,
          'region' => NULL,
@@ -84,6 +90,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'phpdocType' => 'string',
              'regex' => '',
              'unique' => false,
+             'showCharCount' => NULL,
              'name' => 'Slug',
              'title' => 'slug',
              'tooltip' => '',
@@ -100,8 +107,8 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'visibleSearch' => false,
           )),
           1 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Href::__set_state(array(
-             'fieldtype' => 'href',
+          Pimcore\Model\DataObject\ClassDefinition\Data\ManyToOneRelation::__set_state(array(
+             'fieldtype' => 'manyToOneRelation',
              'width' => '',
              'assetUploadPath' => '',
              'relationType' => true,
@@ -120,7 +127,6 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'documentTypes' => 
             array (
             ),
-             'lazyLoading' => true,
              'classes' => 
             array (
               0 => 
@@ -139,7 +145,6 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'columnType' => NULL,
              'invisible' => false,
              'visibleGridView' => false,
              'visibleSearch' => false,
@@ -183,6 +188,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'phpdocType' => 'string',
                  'regex' => '',
                  'unique' => false,
+                 'showCharCount' => NULL,
                  'name' => 'Title',
                  'title' => 'title',
                  'tooltip' => '',
@@ -208,6 +214,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'phpdocType' => 'string',
                  'regex' => '',
                  'unique' => false,
+                 'showCharCount' => NULL,
                  'name' => 'Description',
                  'title' => 'Description',
                  'tooltip' => '',
@@ -233,13 +240,14 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'phpdocType' => 'string',
                  'regex' => '',
                  'unique' => false,
+                 'showCharCount' => NULL,
                  'name' => 'Keyword',
                  'title' => 'Keyword',
                  'tooltip' => '',
                  'mandatory' => false,
                  'noteditable' => false,
                  'index' => false,
-                 'locked' => NULL,
+                 'locked' => false,
                  'style' => '',
                  'permissions' => NULL,
                  'datatype' => 'data',
@@ -257,6 +265,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'columnType' => 'longtext',
                  'phpdocType' => 'string',
                  'toolbarConfig' => '',
+                 'excludeFromSearchIndex' => false,
                  'name' => 'Content',
                  'title' => 'Content',
                  'tooltip' => '',
@@ -281,6 +290,9 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'height' => '',
              'maxTabs' => NULL,
              'labelWidth' => NULL,
+             'border' => false,
+             'provideSplitView' => NULL,
+             'tabPosition' => 'top',
              'hideLabelsWhenTabsReached' => NULL,
              'referencedFields' => 
             array (
@@ -293,8 +305,6 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'columnType' => NULL,
-             'queryColumnType' => NULL,
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => true,
@@ -364,6 +374,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'phpdocType' => 'string',
              'regex' => '',
              'unique' => false,
+             'showCharCount' => NULL,
              'name' => 'Source',
              'title' => 'Source',
              'tooltip' => '',
@@ -381,9 +392,11 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
           )),
         ),
          'locked' => false,
+         'icon' => NULL,
       )),
     ),
      'locked' => false,
+     'icon' => NULL,
   )),
    'icon' => '',
    'previewUrl' => '',

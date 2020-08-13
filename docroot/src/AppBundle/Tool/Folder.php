@@ -4,7 +4,7 @@
 namespace AppBundle\Tool;
 
 use Pimcore\Model\Asset;
-use Pimcore\Model\Object;
+use Pimcore\Model\DataObject;
 use Pimcore\Model\DataObject\Folder as FolderObjectAbstract;
 use Pimcore\Model\Asset\Folder as FolderAssetAbstract;
 

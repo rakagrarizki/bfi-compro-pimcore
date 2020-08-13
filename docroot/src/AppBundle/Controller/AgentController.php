@@ -33,7 +33,6 @@ class AgentController extends FrontendController
         $blog->setOrderKey("Date");
         $blog->setOrder("desc");
         $blog->setLimit(4);
-        $blog->load();
 
         $this->view->blog = $blog;
     }

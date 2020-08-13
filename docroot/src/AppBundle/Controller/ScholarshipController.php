@@ -111,7 +111,6 @@ class ScholarshipController extends FrontendController
         $news->setOrderKey("Date");
         $news->setOrder("desc");
         $news->setLimit(4);
-        $news->load();
 
         $this->view->news = $news;
     }

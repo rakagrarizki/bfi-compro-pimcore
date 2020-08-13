@@ -19,7 +19,6 @@ class AwardsController extends FrontendController
         $awards = new Penghargaan\Listing();
         $awards->setOrderKey("Year");
         $awards->setOrder("desc");
-        $awards->load();
         $paginator = new \Zend\Paginator\Paginator($awards);
         $paginator->setCurrentPageNumber($page);
         $paginator->setItemCountPerPage(5);

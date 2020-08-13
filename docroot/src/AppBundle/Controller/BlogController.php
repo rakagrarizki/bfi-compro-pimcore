@@ -17,7 +17,6 @@ class BlogController extends FrontendController
         $page = htmlentities(addslashes($request->get("page")));
 
         $blogCategories = new BlogCategory\Listing();
-        $blogCategories->load();
 
         $blogs = new BlogArticle\Listing();
         if ($category != "") {
@@ -25,7 +24,6 @@ class BlogController extends FrontendController
         }
         $blogs->setOrderKey("Date");
         $blogs->setOrder("desc");
-        $blogs->load();
 
         $paginator = new \Zend\Paginator\Paginator($blogs);
         $paginator->setCurrentPageNumber($page);
@@ -55,7 +53,6 @@ class BlogController extends FrontendController
             $relatedBlogs->addConditionParam("BlogCategory__id = ?", $blog->getBlogCategory()->getId(), "AND");
             $relatedBlogs->addConditionParam("oo_id != ?", $blog->getId(), "AND");
             $relatedBlogs->setLimit(4);
-            $relatedBlogs->load();
             $this->view->relatedBlogs = $relatedBlogs;
         }
     }

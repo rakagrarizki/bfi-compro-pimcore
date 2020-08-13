@@ -130,7 +130,6 @@ class ContactController extends FrontendController
         $blog->setOrderKey("Date");
         $blog->setOrder("desc");
         $blog->setLimit(4);
-        $blog->load();
 
         return $this->view->blog = $blog;
     }
@@ -141,7 +140,6 @@ class ContactController extends FrontendController
         $news->setOrderKey("Date");
         $news->setOrder("desc");
         $news->setLimit(4);
-        $news->load();
 
         return $this->view->news = $news;
     }

@@ -17,7 +17,6 @@ class NewsController extends FrontendController
         $page = htmlentities(addslashes($request->get("page")));
 
         $newsCategories = new NewsCategory\Listing();
-        $newsCategories->load();
 
         $news = new News\Listing();
         if($category != ""){
@@ -25,7 +24,6 @@ class NewsController extends FrontendController
         }
         $news->setOrderKey("Date");
         $news->setOrder("desc");
-        $news->load();
 
         $paginator = new \Zend\Paginator\Paginator($news);
         $paginator->setCurrentPageNumber( $page );
@@ -55,7 +53,6 @@ class NewsController extends FrontendController
             $relatedNews->addConditionParam("Category__id = ?",$news->getCategory()->getId(),"AND");
             $relatedNews->addConditionParam("oo_id != ?", $news->getId(),"AND");
             $relatedNews->setLimit(4);
-            $relatedNews->load();
             $this->view->relatedNews = $relatedNews;
         }
 

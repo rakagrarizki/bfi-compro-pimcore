@@ -1,11 +1,10 @@
 <?php 
 
 /** 
-* Generated at: 2020-02-09T09:47:13+01:00
+* Generated at: 2020-08-10T07:51:27+02:00
 * Inheritance: no
 * Variants: no
 * Changed by: admin (2)
-* IP: 127.0.0.1
 
 
 Fields Summary: 
@@ -25,7 +24,7 @@ Fields Summary:
 - Ipk2 [input]
 - AcademicSemester3 [input]
 - Ipk3 [input]
-- Transcript [href]
+- Transcript [manyToOneRelation]
 - Periode [input]
 */ 
 
@@ -35,13 +34,18 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'Scholarship',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1581238030,
+   'modificationDate' => 1597038686,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
+   'implementsInterfaces' => NULL,
    'listingParentClass' => '',
    'useTraits' => '',
    'listingUseTraits' => '',
+   'encryption' => false,
+   'encryptedTables' => 
+  array (
+  ),
    'allowInherit' => false,
    'allowVariants' => NULL,
    'showVariants' => false,
@@ -50,6 +54,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
      'fieldtype' => 'panel',
      'labelWidth' => 100,
      'layout' => NULL,
+     'border' => false,
      'name' => 'pimcore_root',
      'type' => NULL,
      'region' => NULL,
@@ -68,6 +73,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
          'fieldtype' => 'panel',
          'labelWidth' => 100,
          'layout' => NULL,
+         'border' => false,
          'name' => 'Layout',
          'type' => NULL,
          'region' => NULL,
@@ -91,6 +97,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'phpdocType' => 'string',
              'regex' => '',
              'unique' => false,
+             'showCharCount' => NULL,
              'name' => 'Name',
              'title' => 'Name',
              'tooltip' => '',
@@ -116,6 +123,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'phpdocType' => 'string',
              'regex' => '',
              'unique' => false,
+             'showCharCount' => NULL,
              'name' => 'Email',
              'title' => 'Email',
              'tooltip' => '',
@@ -141,6 +149,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'phpdocType' => 'string',
              'regex' => '',
              'unique' => false,
+             'showCharCount' => NULL,
              'name' => 'Phone',
              'title' => 'Phone',
              'tooltip' => '',
@@ -166,6 +175,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'phpdocType' => 'string',
              'regex' => '',
              'unique' => false,
+             'showCharCount' => NULL,
              'name' => 'Phone2',
              'title' => 'Phone Alternative',
              'tooltip' => '',
@@ -215,6 +225,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'phpdocType' => 'string',
              'regex' => '',
              'unique' => false,
+             'showCharCount' => NULL,
              'name' => 'UniversityName',
              'title' => 'UniversityName',
              'tooltip' => '',
@@ -240,6 +251,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'phpdocType' => 'string',
              'regex' => '',
              'unique' => false,
+             'showCharCount' => NULL,
              'name' => 'Nim',
              'title' => 'Nim',
              'tooltip' => '',
@@ -265,6 +277,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'phpdocType' => 'string',
              'regex' => '',
              'unique' => false,
+             'showCharCount' => NULL,
              'name' => 'Faculty',
              'title' => 'Faculty',
              'tooltip' => '',
@@ -290,6 +303,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'phpdocType' => 'string',
              'regex' => '',
              'unique' => false,
+             'showCharCount' => NULL,
              'name' => 'ProgramStudy',
              'title' => 'ProgramStudy',
              'tooltip' => '',
@@ -315,6 +329,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'phpdocType' => 'string',
              'regex' => '',
              'unique' => false,
+             'showCharCount' => NULL,
              'name' => 'Semester',
              'title' => 'Semester',
              'tooltip' => '',
@@ -340,6 +355,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'phpdocType' => 'string',
              'regex' => '',
              'unique' => false,
+             'showCharCount' => NULL,
              'name' => 'AcademicSemester1',
              'title' => 'AcademicSemester1',
              'tooltip' => '',
@@ -365,6 +381,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'phpdocType' => 'string',
              'regex' => '',
              'unique' => false,
+             'showCharCount' => NULL,
              'name' => 'Ipk1',
              'title' => 'Ipk1',
              'tooltip' => '',
@@ -390,6 +407,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'phpdocType' => 'string',
              'regex' => '',
              'unique' => false,
+             'showCharCount' => NULL,
              'name' => 'AcademicSemester2',
              'title' => 'AcademicSemester2',
              'tooltip' => '',
@@ -415,6 +433,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'phpdocType' => 'string',
              'regex' => '',
              'unique' => false,
+             'showCharCount' => NULL,
              'name' => 'Ipk2',
              'title' => 'Ipk2',
              'tooltip' => '',
@@ -440,6 +459,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'phpdocType' => 'string',
              'regex' => '',
              'unique' => false,
+             'showCharCount' => NULL,
              'name' => 'AcademicSemester3',
              'title' => 'AcademicSemester3',
              'tooltip' => '',
@@ -465,6 +485,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'phpdocType' => 'string',
              'regex' => '',
              'unique' => false,
+             'showCharCount' => NULL,
              'name' => 'Ipk3',
              'title' => 'Ipk3',
              'tooltip' => '',
@@ -481,8 +502,8 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'visibleSearch' => false,
           )),
           16 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Href::__set_state(array(
-             'fieldtype' => 'href',
+          Pimcore\Model\DataObject\ClassDefinition\Data\ManyToOneRelation::__set_state(array(
+             'fieldtype' => 'manyToOneRelation',
              'width' => '',
              'assetUploadPath' => '',
              'relationType' => true,
@@ -505,7 +526,6 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'documentTypes' => 
             array (
             ),
-             'lazyLoading' => false,
              'classes' => 
             array (
             ),
@@ -520,7 +540,6 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'columnType' => NULL,
              'invisible' => false,
              'visibleGridView' => false,
              'visibleSearch' => false,
@@ -535,13 +554,14 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'phpdocType' => 'string',
              'regex' => '',
              'unique' => false,
+             'showCharCount' => NULL,
              'name' => 'Periode',
              'title' => 'Periode',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
@@ -552,9 +572,11 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
           )),
         ),
          'locked' => false,
+         'icon' => NULL,
       )),
     ),
      'locked' => false,
+     'icon' => NULL,
   )),
    'icon' => '',
    'previewUrl' => '',

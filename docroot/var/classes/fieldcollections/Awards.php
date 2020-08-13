@@ -1,8 +1,7 @@
 <?php 
 
 /** 
-* Generated at: 2020-02-12T04:11:16+01:00
-* IP: 127.0.0.1
+* Generated at: 2020-07-30T10:42:40+02:00
 
 
 Fields Summary: 
@@ -67,6 +66,7 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
                  'phpdocType' => 'string',
                  'regex' => '',
                  'unique' => false,
+                 'showCharCount' => NULL,
                  'name' => 'Title',
                  'title' => 'Title',
                  'tooltip' => '',
@@ -87,6 +87,9 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
                  'fieldtype' => 'textarea',
                  'width' => '',
                  'height' => '',
+                 'maxLength' => NULL,
+                 'showCharCount' => NULL,
+                 'excludeFromSearchIndex' => false,
                  'queryColumnType' => 'longtext',
                  'columnType' => 'longtext',
                  'phpdocType' => 'string',
@@ -127,8 +130,6 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'columnType' => NULL,
-             'queryColumnType' => NULL,
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => true,

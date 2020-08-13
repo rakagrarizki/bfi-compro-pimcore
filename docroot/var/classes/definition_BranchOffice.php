@@ -1,11 +1,10 @@
 <?php 
 
 /** 
-* Generated at: 2018-12-21T10:34:37+01:00
+* Generated at: 2020-08-10T07:51:24+02:00
 * Inheritance: no
 * Variants: no
 * Changed by: admin (2)
-* IP: 127.0.0.1
 
 
 Fields Summary: 
@@ -22,13 +21,18 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'BranchOffice',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1545384874,
+   'modificationDate' => 1597038684,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
+   'implementsInterfaces' => NULL,
    'listingParentClass' => '',
    'useTraits' => '',
    'listingUseTraits' => '',
+   'encryption' => false,
+   'encryptedTables' => 
+  array (
+  ),
    'allowInherit' => false,
    'allowVariants' => NULL,
    'showVariants' => false,
@@ -37,6 +41,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
      'fieldtype' => 'panel',
      'labelWidth' => 100,
      'layout' => NULL,
+     'border' => false,
      'name' => 'pimcore_root',
      'type' => NULL,
      'region' => NULL,
@@ -55,6 +60,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
          'fieldtype' => 'panel',
          'labelWidth' => 100,
          'layout' => NULL,
+         'border' => false,
          'name' => 'Layout',
          'type' => NULL,
          'region' => NULL,
@@ -78,6 +84,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'phpdocType' => 'string',
              'regex' => '',
              'unique' => false,
+             'showCharCount' => NULL,
              'name' => 'Name',
              'title' => 'Name',
              'tooltip' => '',
@@ -98,6 +105,9 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'fieldtype' => 'textarea',
              'width' => '',
              'height' => '',
+             'maxLength' => NULL,
+             'showCharCount' => NULL,
+             'excludeFromSearchIndex' => false,
              'queryColumnType' => 'longtext',
              'columnType' => 'longtext',
              'phpdocType' => 'string',
@@ -126,6 +136,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'phpdocType' => 'string',
              'regex' => '',
              'unique' => false,
+             'showCharCount' => NULL,
              'name' => 'Telephone',
              'title' => 'Telephone',
              'tooltip' => '',
@@ -177,7 +188,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
           4 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\Checkbox::__set_state(array(
              'fieldtype' => 'checkbox',
-             'defaultValue' => 0,
+             'defaultValue' => NULL,
              'queryColumnType' => 'tinyint(1)',
              'columnType' => 'tinyint(1)',
              'phpdocType' => 'boolean',
@@ -187,7 +198,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
@@ -198,9 +209,11 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
           )),
         ),
          'locked' => false,
+         'icon' => NULL,
       )),
     ),
      'locked' => false,
+     'icon' => NULL,
   )),
    'icon' => '',
    'previewUrl' => '',

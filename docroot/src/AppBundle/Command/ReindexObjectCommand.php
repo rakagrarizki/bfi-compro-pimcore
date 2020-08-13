@@ -77,7 +77,6 @@ class ReindexObjectCommand extends AbstractCommand
     public function insertNews()
     {
         $news = new DataObject\News\Listing();
-        $news->load();
         $index = "document";
         foreach ($news as $key => $value) {
             $data = $this->getData($value);
@@ -91,7 +90,6 @@ class ReindexObjectCommand extends AbstractCommand
     {
 
         $article = new DataObject\BlogArticle\Listing();
-        $article->load();
         $index = "document";
         foreach ($article as $key => $value) {
             $data = $this->getData($value);

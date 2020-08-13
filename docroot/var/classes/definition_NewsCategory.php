@@ -1,11 +1,10 @@
 <?php 
 
 /** 
-* Generated at: 2019-11-08T11:11:46+01:00
+* Generated at: 2020-08-10T07:51:26+02:00
 * Inheritance: no
 * Variants: no
 * Changed by: admin (2)
-* IP: ::1
 
 
 Fields Summary: 
@@ -18,13 +17,18 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'NewsCategory',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1573207904,
+   'modificationDate' => 1597038686,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
+   'implementsInterfaces' => NULL,
    'listingParentClass' => '',
    'useTraits' => '',
    'listingUseTraits' => '',
+   'encryption' => false,
+   'encryptedTables' => 
+  array (
+  ),
    'allowInherit' => false,
    'allowVariants' => NULL,
    'showVariants' => false,
@@ -33,6 +37,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
      'fieldtype' => 'panel',
      'labelWidth' => 100,
      'layout' => NULL,
+     'border' => false,
      'name' => 'pimcore_root',
      'type' => NULL,
      'region' => NULL,
@@ -51,6 +56,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
          'fieldtype' => 'panel',
          'labelWidth' => 100,
          'layout' => NULL,
+         'border' => false,
          'name' => 'Layout',
          'type' => NULL,
          'region' => NULL,
@@ -74,6 +80,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'phpdocType' => 'string',
              'regex' => '',
              'unique' => false,
+             'showCharCount' => NULL,
              'name' => 'Name',
              'title' => 'Name',
              'tooltip' => '',
@@ -91,9 +98,11 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
           )),
         ),
          'locked' => false,
+         'icon' => NULL,
       )),
     ),
      'locked' => false,
+     'icon' => NULL,
   )),
    'icon' => '',
    'previewUrl' => '',

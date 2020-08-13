@@ -46,7 +46,6 @@ class ImportAreacodeCommand extends AbstractCommand
                 $data->addConditionParam("Name LIKE ?", "%" . $nameKota . "%", "AND");
                 $data->setOrderKey("Name");
                 $data->setOrder("DESC");
-                $data->load();
 
                 if($data->getObjects()){
                     foreach($data->getObjects() as $city){

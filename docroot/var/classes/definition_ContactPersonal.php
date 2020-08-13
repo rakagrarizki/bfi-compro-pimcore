@@ -1,11 +1,10 @@
 <?php 
 
 /** 
-* Generated at: 2020-01-23T11:40:50+01:00
+* Generated at: 2020-08-10T07:51:25+02:00
 * Inheritance: no
 * Variants: no
 * Changed by: admin (2)
-* IP: 127.0.0.1
 
 
 Fields Summary: 
@@ -17,7 +16,7 @@ Fields Summary:
 - Customer_name [input]
 - Type_message [select]
 - Message [textarea]
-- File [href]
+- File [manyToOneRelation]
 */ 
 
 
@@ -26,13 +25,18 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'ContactPersonal',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1579776048,
+   'modificationDate' => 1597038685,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
+   'implementsInterfaces' => NULL,
    'listingParentClass' => '',
    'useTraits' => '',
    'listingUseTraits' => '',
+   'encryption' => false,
+   'encryptedTables' => 
+  array (
+  ),
    'allowInherit' => false,
    'allowVariants' => NULL,
    'showVariants' => false,
@@ -41,6 +45,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
      'fieldtype' => 'panel',
      'labelWidth' => 100,
      'layout' => NULL,
+     'border' => false,
      'name' => 'pimcore_root',
      'type' => NULL,
      'region' => NULL,
@@ -59,6 +64,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
          'fieldtype' => 'panel',
          'labelWidth' => 100,
          'layout' => NULL,
+         'border' => false,
          'name' => 'Layout',
          'type' => NULL,
          'region' => NULL,
@@ -82,6 +88,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'phpdocType' => 'string',
              'regex' => '',
              'unique' => false,
+             'showCharCount' => NULL,
              'name' => 'Name',
              'title' => 'Name',
              'tooltip' => '',
@@ -107,6 +114,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'phpdocType' => 'string',
              'regex' => '',
              'unique' => false,
+             'showCharCount' => NULL,
              'name' => 'Phone',
              'title' => 'Phone',
              'tooltip' => '',
@@ -132,6 +140,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'phpdocType' => 'string',
              'regex' => '',
              'unique' => false,
+             'showCharCount' => NULL,
              'name' => 'email',
              'title' => 'Email',
              'tooltip' => '',
@@ -171,6 +180,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'columnType' => 'varchar',
              'columnLength' => 190,
              'phpdocType' => 'string',
+             'dynamicOptions' => false,
              'name' => 'Identity',
              'title' => 'Identity',
              'tooltip' => '',
@@ -196,6 +206,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'phpdocType' => 'string',
              'regex' => '',
              'unique' => false,
+             'showCharCount' => NULL,
              'name' => 'No_kontrak',
              'title' => 'No_kontrak',
              'tooltip' => '',
@@ -221,6 +232,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'phpdocType' => 'string',
              'regex' => '',
              'unique' => false,
+             'showCharCount' => NULL,
              'name' => 'Customer_name',
              'title' => 'Customer_name',
              'tooltip' => '',
@@ -270,6 +282,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'columnType' => 'varchar',
              'columnLength' => 190,
              'phpdocType' => 'string',
+             'dynamicOptions' => false,
              'name' => 'Type_message',
              'title' => 'Type_message',
              'tooltip' => '',
@@ -290,6 +303,9 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'fieldtype' => 'textarea',
              'width' => '',
              'height' => '',
+             'maxLength' => NULL,
+             'showCharCount' => NULL,
+             'excludeFromSearchIndex' => false,
              'queryColumnType' => 'longtext',
              'columnType' => 'longtext',
              'phpdocType' => 'string',
@@ -309,8 +325,8 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'visibleSearch' => false,
           )),
           8 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Href::__set_state(array(
-             'fieldtype' => 'href',
+          Pimcore\Model\DataObject\ClassDefinition\Data\ManyToOneRelation::__set_state(array(
+             'fieldtype' => 'manyToOneRelation',
              'width' => '',
              'assetUploadPath' => '',
              'relationType' => true,
@@ -333,7 +349,6 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'documentTypes' => 
             array (
             ),
-             'lazyLoading' => false,
              'classes' => 
             array (
             ),
@@ -348,16 +363,17 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'columnType' => NULL,
              'invisible' => false,
              'visibleGridView' => false,
              'visibleSearch' => false,
           )),
         ),
          'locked' => false,
+         'icon' => NULL,
       )),
     ),
      'locked' => false,
+     'icon' => NULL,
   )),
    'icon' => '',
    'previewUrl' => '',

@@ -17,14 +17,12 @@ class PromoController extends FrontendController
         $page = htmlentities(addslashes($request->get("page")));
 
         $promoCategories = new PromoCategory\Listing();
-        $promoCategories->load();
 
         $promos = new Promo\Listing();
         if($category != ""){
             $promos->addConditionParam("PromoCategory__id = ?", $category,'AND');
         }
         $promos->addConditionParam("PromoEndDate > ?",time(),'AND');
-        $promos->load();
 
         $paginator = new \Zend\Paginator\Paginator($promos);
         $paginator->setCurrentPageNumber( $page );
