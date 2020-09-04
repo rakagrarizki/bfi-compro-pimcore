@@ -44,13 +44,13 @@ class SimulationController extends FrontendController
         if($data->header->status == 200){
             return new JsonResponse([
                 'success' => "1",
-                'message' => "Sukses",
+                'message' => "success",
                 'data' => $data->data
             ]);
         }else{
             return new JsonResponse([
                 'success' => "0",
-                'message' => "Gagal"
+                'message' => "fail"
             ]);
         }
     }

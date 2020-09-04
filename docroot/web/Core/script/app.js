@@ -3412,7 +3412,7 @@ var isAjaxActive = false;
             },
   
             success: function(dataObj) {
-                if (dataObj.message === "Sukses") {
+                if (dataObj.message === "success") {
                     $.each(dataObj.data, function(idProvince, valProvince) {
                         if (valProvince.desc != "") {
                             dataProvince.push({
@@ -3635,7 +3635,7 @@ var isAjaxActive = false;
             },
   
             success: function(dataObj) {
-                if (dataObj.message === "Sukses") {
+                if (dataObj.message === "success") {
                     $.each(dataObj.data, function(idCity, valCity) {
                         if (valCity.desc != "") {
                             dataCity.push({
@@ -3855,7 +3855,7 @@ var isAjaxActive = false;
   
             success: function(dataObj) {
                 // console.log("(OK)[onChange Kota]dataObj: ", dataObj);
-                if (dataObj.message === "Sukses") {
+                if (dataObj.message === "success") {
                     $.each(dataObj.data, function(idKec, valKec) {
                         if (valKec.desc != "") {
                             dataKec.push({
@@ -4070,7 +4070,7 @@ var isAjaxActive = false;
   
             success: function(dataObj) {
                 // console.log("[onChange kecamatan]dataObj: ", dataObj);
-                if (dataObj.message === "Sukses") {
+                if (dataObj.message === "success") {
                     $.each(dataObj.data, function(idKel, valKel) {
                         if (valKel.desc != "") {
                             dataKel.push({

@@ -135,8 +135,7 @@ $(document).ready(function() {
         },
   
         success: function(dataObj) {
-      
-          if (dataObj.message === "Sukses" && $("#category-1").length > 0) {
+          if (dataObj.message === "success" && $("#category-1").length > 0) {
                 $.each(dataObj.data, function(key, valListCategory) {
                     if (valListCategory.desc != "") {
                         dataListCat.push({
@@ -193,7 +192,7 @@ $(document).ready(function() {
         },
   
         success: function(dataObj) {
-            if (dataObj.message === "Sukses") {
+            if (dataObj.message === "success") {
                 $.each(dataObj.data, function(key, valListProduct) {
                     if (valListProduct.desc != "") {
                         dataListPro.push({

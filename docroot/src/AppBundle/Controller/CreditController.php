@@ -404,7 +404,8 @@ class CreditController extends FrontendController
 
         if ($data->header->status == 200) {
             return new JsonResponse([
-                'success' => true,
+                'success' => "1",
+                'message' => "success",
              ] + ($this->isDev ? ['code_otp' => $data->data->opt_code] : [])
             );
         } else {
