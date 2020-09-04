@@ -160,6 +160,7 @@ class UserController extends FrontendController
 
             return new JsonResponse([
                 'success' => true,
+                'result' => $data,
             ] + ($this->isDev ? ['code_otp' => $data->data->opt_code] : []));
         } else {
             return new JsonResponse([
