@@ -84,9 +84,9 @@ doctrine:
     dbal:
         connections:
             default:
-                user: digital
-                password: digital
-                dbname: compro
-                host: localhost
+                user: devsalt
+                password: dev1234lupa
+                dbname: compro_staging
+                host: 172.16.4.32
                 port: 3306
 
