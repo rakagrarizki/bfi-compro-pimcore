@@ -1267,6 +1267,7 @@ var isAjaxActive = false;
     }
   
     function pushDataPemohon() {
+        var edit_id = submission_id;
         submission_id = "";
         var _URL = "";
         var _data = {};
@@ -1295,7 +1296,7 @@ var isAjaxActive = false;
   
         if (_URL !== "") {
             _data = Object.assign(_data, {
-                submission_id: submission_id,
+                submission_id: edit_id,
                 name: nama_lengkap,
                 email: email_pemohon,
                 phone_number: no_telepon
@@ -1632,6 +1633,7 @@ var isAjaxActive = false;
                             credits.kendaraan.status_pemilik = htmlEntities(
                                 status_pemilik
                             );
+                            console.log("push Kendaraaan 1");
                             cb();
                         } else {
                             showTab3();
