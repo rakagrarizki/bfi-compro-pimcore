@@ -49,24 +49,22 @@ var chkValid = function() {
 };
 
 function checkValid() {
-  if (isValidStep()&&chkValid()) {
-    // do something
-    nextButton("active");
+  if (isValidStep() && chkValid()) {
+    actButton("active");
     finishButton("active");
   } else {
-    nextButton("inactive");
+    actButton("inactive");
     finishButton("inactive");
   }
 }
 
-function nextButton(action) {
+
+function actButton(action) {
   var nextBtn = $(".actions > ul li a[href$='next']").parent();
   if (action === "active") {
     nextBtn.removeClass("inactive");
   } else {
-    if (!nextBtn.hasClass("inactive")) {
-      nextBtn.addClass("inactive");
-    }
+    nextBtn.addClass("inactive");
   }
 }
 
@@ -158,7 +156,7 @@ function sendLeadData() {
     }
     var sendData = postData(_url, _data);
     if (currentStep === 0) {
-      submission_id = sendData.data.submission_id;
+      submission_id
     }
     if (sendData.success === "1") {
       return true;
@@ -466,7 +464,7 @@ function showSuccessAgentOtp() {
   $("#step-otp").hide();
   $("#personal-detail").show();
   $("#step-summary").show();
-  nextButton("inactive");
+  actButton("inactive");
   if ( lang === 'id'){
     $(".actions > ul li a[href$='next']").text('Selanjutnya');
   }else{
@@ -526,8 +524,8 @@ form.steps({
     loading: load
   },
   onInit: function () {
-    nextButton("inactive");
-    setTimeout(initForm, 500);
+    actButton("inactive");
+    setTimeout(initForm, 100);
   },
   onStepChanging: function (event, currentIndex, newIndex) {
     // Allways allow previous action even if the current form is not valid!
