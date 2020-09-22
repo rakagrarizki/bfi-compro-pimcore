@@ -18,7 +18,7 @@ class AgentController extends FrontendController
     private $isDev;
 
     public function __construct(SendApi $sendAPI, sendApiDummy $sendApiDummy)
-    {
+    { 
         $this->sendAPI = $sendAPI;
         $this->redis = new \Credis_Client(REDIS, 6379, null, '', 1, PASSREDIS);
         $this->isDev = ENV === 'dev';
@@ -264,7 +264,7 @@ class AgentController extends FrontendController
             $clear = false;
             if($attempts && $attempts <= 25){
                 $diff = $timenow - $dateSend;
-                if($diff >= 80){
+                if($diff >= 20){
                     if($attempts < 25){
                         $send = true;
                     }else{
