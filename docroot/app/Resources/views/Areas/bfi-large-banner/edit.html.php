@@ -17,6 +17,10 @@
                 <div class="col-sm-4">Text</div>
                 <div class="col-sm-8"><?= $this->input("text"); ?></div>
             </div>
+            <div class="row">
+                <div class="col-sm-4">Link</div>
+                <div class="col-sm-8"><?= $this->input("link"); ?></div>
+            </div>
 
             <div class="row">
                 <div class="col-sm-4">Image Desktop</div>

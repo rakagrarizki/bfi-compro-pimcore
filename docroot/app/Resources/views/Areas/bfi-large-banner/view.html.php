@@ -4,6 +4,7 @@
             <?php $asset = $this->image("image");?>
             <?php $assetMobile = $this->image("imageMobile");?>
             <div>
+                <a href="<?= $this->input('link');?>" target="_blank">
                 <div class="slide hidden-xs" style="background-image: url('<?= $asset->getImage()?>')">
                     <div class="slide-cont">
                         <div class="desc-slide">
@@ -20,6 +21,8 @@
                         </div>
                     </div>
                 </div>
+                </a>
+                <a href="<?= $this->input('link');?>" target="_blank">
                 <div class="slide visible-xs" style="background-image: url('<?= $assetMobile->getImage()?>')">
                     <div class="slide-cont">
                         <div class="desc-slide">
@@ -36,6 +39,7 @@
                         </div>
                     </div>
                 </div>
+                </a>
             </div>
         <?php } ?>
     </div>
