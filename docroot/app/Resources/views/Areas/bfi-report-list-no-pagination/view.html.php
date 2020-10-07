@@ -3,6 +3,7 @@ $category = $this->document->getProperty("category")->getId();
 $id = $this->document->getId();
 $reports = new \Pimcore\Model\DataObject\Report\Listing();
 $reports->addConditionParam("Category__id = ?",$category,"AND");
+$reports->setOrderKey("Date");
 ?>
 
 <div class="container report-list-wrapper" id =<?= $id;?>>
@@ -21,11 +22,6 @@ $reports->addConditionParam("Category__id = ?",$category,"AND");
 
         <div class="list-container">
             <div class="information">
-                <?php if($data->getDate() != null) : ?>
-                    <div class="year">
-                        <?= $data->getDate()->formatLocalized("%Y");?>
-                    </div>
-                <?php endif; ?>
                 <div class="report-download-container">
                     <div class="title">
                         <h2>
