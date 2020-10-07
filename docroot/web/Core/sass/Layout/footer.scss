@@ -34,12 +34,12 @@ footer {
             color: $light;
             padding: 10px 15px;
             margin-bottom: 20px;
-            border: solid 1px #fff;
+            border: solid 1px $light;
             cursor: pointer;
             transition: all .2s ease-in-out;
 
             &:hover {
-                background-color: #d88417;
+                background-color: $orange-color;
             }
 
             @include breakpoint(mobile) {
@@ -70,8 +70,11 @@ footer {
 
         .form-inline {
             .submitfoot {
-                background-color: #d88417;
+                background-color: $orange-color;
                 border: 1px solid #d88417;
+                &:hover{
+                    opacity: 0.8;
+                }
             }
 
             height: 41px;
@@ -103,8 +106,7 @@ footer {
             margin-bottom: 20px;
 
             >a {
-                margin-right: 10px;
-
+                margin-right: 16px;
                 // >span {
                 //     width: 40px;
                 //     height: 40px;
@@ -124,14 +126,15 @@ footer {
                     width: 40px;
                     height: 40px;
                     line-height: 40px;
+                    margin-bottom: 14px;
                     text-align: center;
                     color: #404040;
                     font-size: 1.3em;
                     transition: all .2s ease-in-out;
                     background-color: #A0A0A0;
                     &:hover {
-                        background-color: $white;
-                        color: #000;
+                        background-color: $orange-color;
+                        color: $light;
                     }
                 }
             }
@@ -186,7 +189,7 @@ footer {
     }
 
     span {
-        color: #fff;
+        color: $light;
         font-family: $font_default;
         font-weight: 600;
         letter-spacing: .5px;

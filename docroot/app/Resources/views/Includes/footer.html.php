@@ -5,6 +5,14 @@ if ($this->editmode) : ?>
     <div class="row">
         <div class="col-lg-12">
             <div class="row">
+                <div class="col-lg-4">Whatsapp</div>
+                <div class="col-lg-8"><?= $this->link('whatsapp'); ?></div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">E-mail</div>
+                <div class="col-lg-8"><?= $this->link('email'); ?></div>
+            </div>
+            <div class="row">
                 <div class="col-lg-4">Facebook</div>
                 <div class="col-lg-8"><?= $this->link('facebook'); ?></div>
             </div>
@@ -110,11 +118,13 @@ if ($this->editmode) : ?>
             </div>
             <div class="col-md-4 footer-right">
                 <div class="social-media">
-                    <a id="<?= $this->link('facebook')->getParameters()?>" target="<?= $this->link('facebook') != "" ? $this->link('facebook')->getTarget() : '' ?>" href="<?= $this->link('facebook') != "" ? $this->link('facebook')->getHref() : '' ?>"><span><i class="fab fa-facebook-f fa-lg" aria-hidden="true"></i></span></a>
-                    <a id="<?= $this->link('twitter')->getParameters()?>" target="<?= $this->link('twitter') != "" ? $this->link('twitter')->getTarget() : '' ?>" href="<?= $this->link('twitter') != "" ? $this->link('twitter')->getHref() : '' ?>"><span> <i class="fab fa-twitter fa-lg" aria-hidden="true"></i></span></a>
-                    <a id="<?= $this->link('instagram')->getParameters()?>" target="<?= $this->link('instagram') != "" ? $this->link('instagram')->getTarget() : '' ?>" href="<?= $this->link('instagram') != "" ? $this->link('instagram')->getHref() : '' ?>"><span><i class="fab fa-instagram fa-lg" aria-hidden="true"></i></span></a>
-                    <a id="<?= $this->link('youtube')->getParameters()?>" target="<?= $this->link('youtube') != "" ? $this->link('youtube')->getTarget() : '' ?>" href="<?= $this->link('youtube') != "" ? $this->link('youtube')->getHref() : '' ?>"><span><i class="fab fa-youtube fa-lg" aria-hidden="true"></i></span></a>
-                    <a id="<?= $this->link('linkedin')->getParameters()?>" target="<?= $this->link('linkedin') != "" ? $this->link('linkedin')->getTarget() : '' ?>" href="<?= $this->link('linkedin') != "" ? $this->link('linkedin')->getHref() : '' ?>"><span><i class="fab fa-linkedin-in fa-lg" aria-hidden="true"></i></span></a>
+                    <a  target="<?= $this->link('facebook') != "" ? $this->link('facebook')->getTarget() : '' ?>" href="<?= $this->link('facebook') != "" ? $this->link('facebook')->getHref() : '' ?>"><span><i class="fab fa-facebook-f fa-lg" aria-hidden="true"></i></span></a>
+                    <a  target="<?= $this->link('instagram') != "" ? $this->link('instagram')->getTarget() : '' ?>" href="<?= $this->link('instagram') != "" ? $this->link('instagram')->getHref() : '' ?>"><span><i class="fab fa-instagram fa-lg" aria-hidden="true"></i></span></a>
+                    <a  target="<?= $this->link('youtube') != "" ? $this->link('youtube')->getTarget() : '' ?>" href="<?= $this->link('youtube') != "" ? $this->link('youtube')->getHref() : '' ?>"><span><i class="fab fa-youtube fa-lg" aria-hidden="true"></i></span></a>
+                    <a  target="<?= $this->link('twitter') != "" ? $this->link('twitter')->getTarget() : '' ?>" href="<?= $this->link('twitter') != "" ? $this->link('twitter')->getHref() : '' ?>"><span> <i class="fab fa-twitter fa-lg" aria-hidden="true"></i></span></a>
+                    <a  target="<?= $this->link('linkedin') != "" ? $this->link('linkedin')->getTarget() : '' ?>" href="<?= $this->link('linkedin') != "" ? $this->link('linkedin')->getHref() : '' ?>"><span><i class="fab fa-linkedin-in fa-lg" aria-hidden="true"></i></span></a>
+                    <a  target="<?= $this->link('whatsapp') != "" ? $this->link('whatsapp')->getTarget() : '' ?>" href="<?= $this->link('whatsapp') != "" ? $this->link('whatsapp')->getHref() : '' ?>"><span><i class="fab fa-whatsapp fa-lg" aria-hidden="true"></i></span></a>
+                    <a  target="<?= $this->link('email') != "" ? $this->link('email')->getTarget() : '' ?>" href="<?= $this->link('email') != "" ? $this->link('email')->getHref() : '' ?>"><span><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></span></a>
                 </div>
                 <span><?= $this->translate("text-pengawasan") ?>:</span>
                 <?php $asset = $this->image("ojk-image"); ?>
