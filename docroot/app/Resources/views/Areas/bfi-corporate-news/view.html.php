@@ -1,6 +1,8 @@
 <?php  $category = $this->document->getProperty("category")->getId();
 $news = new Pimcore\Model\DataObject\News\Listing();
 $news->addConditionParam("Category__id = ?", $category);
+$news->setOrderKey("Date");
+$news->setOrder('desc');
 ?>
 
 <section id="informasi-inspiratif">
@@ -15,7 +17,6 @@ $news->addConditionParam("Category__id = ?", $category);
             <?php
             $i = 0;
             foreach ($news as $data){
-
                 if($i>2){
                     break;
                 }
