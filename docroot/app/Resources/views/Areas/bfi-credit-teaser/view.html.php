@@ -42,31 +42,6 @@
             <div class="list-credit">
               <h2><?= $this->input("credit-lainnya-title"); ?></h2>
                 <div class="list-credit--icon">
-                    <?php if(!$this->input("title-education")->isEmpty()) { ?>
-                      <div class="credit--icon col-md-3 col-xs-3">
-                          <?php $assetMobil = $this->image("image-education");?>
-                          <a href="<?= $this->link('url-education')->getHref(); ?>" id="<?= $this->link('url-education')->getParameters()?>">
-                              <div class="icon">
-                                  <img class="imggetcredit" src="<?= $assetMobil->getImage()?>" alt="<?= $assetMobil = $this->input("alt-img-education")?>">
-                                  <p><?= $this->input("title-education"); ?></p>
-                              </div>
-                          </a>
-                      </div>
-                    <?php } ?>
-
-                    <?php if(!$this->input("title-travel")->isEmpty()) { ?>
-                    <div class="credit--icon col-md-3 col-xs-3">
-                        <?php $assetMotor = $this->image("image-travel");?>
-                        <a href="<?= $this->link('url-travel')->getHref(); ?>" id="<?= $this->link('url-travel')->getParameters()?>">
-                            <div class="icon">
-                                <img class="imggetcredit" src="<?= $assetMotor->getImage()?>" alt="<?= $assetMotor = $this->input("alt-img-travel")?>">
-                                <p><?= $this->input("title-travel"); ?></p>
-                            </div>
-
-                        </a>
-                    </div>
-                    <?php } ?>
-
                     <?php if(!$this->input("title-mesin")->isEmpty()) { ?>
                     <div class="credit--icon col-md-3 col-xs-3">
                         <?php $assetRumah = $this->image("image-mesin");?>
@@ -79,6 +54,32 @@
                         </a>
                     </div>
                     <?php } ?>
+                      <div class="credit--icon col-md-3 col-xs-3">
+                    <?php if(!$this->input("title-education")->isEmpty()) { ?>
+                          <?php $assetMobil = $this->image("image-education");?>
+                          <a href="<?= $this->link('url-education')->getHref(); ?>" id="<?= $this->link('url-education')->getParameters()?>">
+                              <div class="icon">
+                                  <img class="imggetcredit" src="<?= $assetMobil->getImage()?>" alt="<?= $assetMobil = $this->input("alt-img-education")?>">
+                                  <p><?= $this->input("title-education"); ?></p>
+                              </div>
+                          </a>
+                    <?php } ?>
+                      </div>
+
+                    <div class="credit--icon col-md-3 col-xs-3">
+                    <?php if(!$this->input("title-travel")->isEmpty()) { ?>
+                        <?php $assetMotor = $this->image("image-travel");?>
+                        <a href="<?= $this->link('url-travel')->getHref(); ?>" id="<?= $this->link('url-travel')->getParameters()?>">
+                            <div class="icon">
+                                <img class="imggetcredit" src="<?= $assetMotor->getImage()?>" alt="<?= $assetMotor = $this->input("alt-img-travel")?>">
+                                <p><?= $this->input("title-travel"); ?></p>
+                            </div>
+
+                        </a>
+                    <?php } ?>
+                    </div>
+
+                    
 
                 </div>
             </div>
