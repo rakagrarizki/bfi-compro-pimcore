@@ -105,7 +105,7 @@ $blogList->setLimit(4);
                                             <input type="tel" pattern="\d*" class="form-control formPhoneNumber" name="no_handphone" id="no_handphone" maxlength="13" placeholder="<?= $this->translate('placeholder-hp') ?>">
                                             <div class="error-wrap"></div>
                                         </div>
-                                        <div class="form-group upload-image">
+                                       <!-- <div class="form-group upload-image">
                                             <label><?= $this->translate('label-ktp-new') ?></label>
                                             <div class="upload-file">
                                                 <img src="" />
@@ -119,7 +119,7 @@ $blogList->setLimit(4);
                                             <div class="error-wrap"></div>
                                             <span class="notif-ktp"><?= $this->translate('placeholderNoktp') ?></span>
                                             <div class="label-cekLogin hide"><?= $this->translate('text-cekLogin') ?><a href="#" class="logout" onclick="return logout('id');"><?= $this->translate('status-login') ?></a></div>
-                                        </div>
+                                        </div>-->
                                     </div>
                                     <div class="button-area text-right next">
 
