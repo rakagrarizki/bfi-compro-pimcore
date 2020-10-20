@@ -10,7 +10,11 @@
             <?php            
             $lang = $this->getLocale();
             $i = 0;
-            foreach ($this->news as $news) {
+            $blog = $this->news;
+            $blog->setOrderKey("Date");
+            $blog->setOrder("desc");
+
+            foreach ($blog as $news) {
                 if ($i > 3) {
                     break;
                 }
