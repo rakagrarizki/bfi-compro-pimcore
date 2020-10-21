@@ -83,7 +83,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                             <div class="error-wrap"></div>
                         </div>
 
-                        <div class="form-group upload-image">
+                      <!--  <div class="form-group upload-image">
                             <label><?= $this->translate('form-ktp') ?></label>
                             <div class="upload-file">
                                 <img src="" />
@@ -96,7 +96,7 @@ $this->headScript()->offsetSetFile(101, '/static/js/Includes/general-form.js');
                             <input type="hidden" class="form-control formRequired" name="ktp" id="ktp">
                             <div class="error-wrap"></div>
                             <span><?= $this->translate('placeholderNoktp') ?></span>
-                        </div>
+                        </div> -->
 
                         <div class="form-group">
                             <div class="title-input">

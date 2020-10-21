@@ -89,7 +89,7 @@ $this->extend('layout.html.php');
                     <textarea class="form-control formRequired formMessage" name="personal[message]" id="message" placeholder="<?= $this->translate('Pesan') ?>"></textarea>
                     <div class="error-wrap"></div>
                 </div>
-                <div class="form-group upload-image">
+                <!--<div class="form-group upload-image">
                     <label><?= $this->translate('Dokumen Pendukung') ?></label>
                     <div class="upload-file">
                         <div class="upload-btn">
@@ -100,7 +100,7 @@ $this->extend('layout.html.php');
                     <input type="hidden" class="form-control formRequired" name="document" id="document">
                     <div class="error-wrap"></div>
                     <span><?= $this->translate('max-size') ?></span>
-                </div>
+                </div>-->
                 <div class="form-group captcha formRequired">
                     <div class="g-recaptcha" id="g-recaptcha" data-sitekey="<?= $this->captcha; ?>"></div>
                     <span class="msg-error error"></span>
