@@ -23,7 +23,7 @@ $reports->setOrder('desc');
                 ?>
 
 
-            <img src="<?php echo $asset->getImageThumbnail('tes'); ?>" alt="">
+            <!-- <img src="<?php //echo $asset->getImageThumbnail('tes'); ?>" alt=""> -->
             <div class="card-content">
                 <p><?= $data->getDate()->formatLocalized("%Y"); ?></p>
                 <h3><?= $data->getFilename(); ?></h3>

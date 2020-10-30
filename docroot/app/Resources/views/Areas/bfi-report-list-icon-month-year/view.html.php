@@ -41,7 +41,7 @@ if ($tab != null) {
                 ?>
 
 
-                <img src="<?php echo $asset->getImageThumbnail('tes'); ?>" alt="">
+                <!-- <img src="<?php // echo $asset->getImageThumbnail('tes'); ?>" alt=""> -->
                 <div class="card-content">
                     <h6><?= $data->getDate()->formatLocalized("%B %Y") ?></h6>
                     <h3><?= $data->getFilename(); ?></h3>
