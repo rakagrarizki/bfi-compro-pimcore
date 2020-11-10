@@ -27,7 +27,7 @@ class NewsController extends FrontendController
 
         $paginator = new \Zend\Paginator\Paginator($news);
         $paginator->setCurrentPageNumber( $page );
-        $paginator->setItemCountPerPage(9);
+        $paginator->setItemCountPerPage(10);
 
         $this->view->newsCategories = $newsCategories;
         $this->view->paginator = $paginator;

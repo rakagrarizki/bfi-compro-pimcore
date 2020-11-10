@@ -27,7 +27,7 @@ class BlogController extends FrontendController
 
         $paginator = new \Zend\Paginator\Paginator($blogs);
         $paginator->setCurrentPageNumber($page);
-        $paginator->setItemCountPerPage(14);
+        $paginator->setItemCountPerPage(10);
 
         $this->view->blogCategories = $blogCategories;
         $this->view->paginator = $paginator;
