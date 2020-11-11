@@ -9,7 +9,7 @@
                     <div class="img-step">
                         <img src="<?= $asset->getImage() ?>" class="img-responsive" alt="<?= $this->input("alt-img")?>">
                     </div>
-                    <h3><?= $this->input('text'); ?></h3>
+                    <p><?= $this->input('text'); ?></p>
                 </li>
             <?php } ?>
         </ul>

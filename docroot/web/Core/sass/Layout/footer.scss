@@ -12,6 +12,13 @@ footer {
             font-size: 1.4em;
             color: white;
         }
+        p:first-child{
+            font-family: $font_default;
+            margin: 0 0 20px 0;
+            font-weight: 600;
+            font-size: 1.4em;
+            color: white;
+        }
 
         p {
             font-family: $font_default;

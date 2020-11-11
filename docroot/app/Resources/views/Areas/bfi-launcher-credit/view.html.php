@@ -2,14 +2,14 @@
 <section id="credit" style="background-image:url('<?= $asset->getImage()?>')">
     <div class="container">
         <div class="credit-body">
-            <h2 class="text-center">
+            <p class="text-center launcher-credit-text">
                 <?= $this->input('title');?>
                 <?php $asset = $this->image("image");?>
                 <a id="<?= $this->link('url')->getParameters()?>" href="<?= $this->link('url')->getHref(); ?>" 
 					class="cta cta-primary cta-big <?= $this->link('url')->getClass();?>">
 					<?= $this->input('button');?>
 				</a>
-            </h2>
+            </p>
         </div>
     </div>
 </section>
