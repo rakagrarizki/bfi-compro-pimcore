@@ -6501,10 +6501,6 @@ function reformatMoney(number) {
     $("#upload-ktp-button").css("background-color", "#dddddd");
     $("#upload-ktp-button").css("border-color", "#dddddd");
     $("input[type=radio]").prop('readonly',true);
-    $("#tgl_lahir").prop('readonly',true);
-    $(".ui-datepicker-trigger").prop('readonly',true);
-    $("#pekerjaan").prop('readonly',true);
-    $("#penghasilan").prop('readonly',true);
     $(".label-cekLogin").removeClass('hide');
   }
 
