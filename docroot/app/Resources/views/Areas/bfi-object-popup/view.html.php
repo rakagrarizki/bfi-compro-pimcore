@@ -54,7 +54,6 @@ $this->headScript()->offsetSetFile(100, '/static/js/Includes/management.js');
       <div class="modal-body">
         <div class="row">
           <div class="col-lg-4 col-md-4 col-12">
-            <img src="image/content-image/card-image.png" alt="" class="w-100">
           </div>
           <div class="col-lg-8 col-md-8 col-12">
            
