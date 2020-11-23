@@ -18,7 +18,7 @@
                                             <div class="bungkus-img-people"><img src="<?= $assetFounder->getImage()?>" class="img-responsive img-people" alt=""></div> -->
                                             <p class="title"><?= $this->input('title'); ?></p>
                                             <a class="lihat-produk" href="<?= $this->link("url")->getHref(); ?>"><?= $this->link("url")->getText(); ?></a>
-                                            <h3 class="quotes"><?= $this->textarea('text'); ?></h3>
+                                            <p class="quotes"><?= $this->textarea('text'); ?></p>
                                             <div class="bungkus-img-people"><img src="<?= $assetFounder->getImage() ?>" class="img-responsive img-people" alt=""></div>
                                             <div class="cont-name">
                                                 <p class="name"><?= $this->input('founder'); ?></p>

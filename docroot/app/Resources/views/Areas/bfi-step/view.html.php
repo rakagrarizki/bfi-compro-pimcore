@@ -1,4 +1,4 @@
-<div class="steps">
+<div class="steps mb-5">
     <div class="container">
         <div class="sect-title text-center">
             <h2><?= $this->input('title');?></p>

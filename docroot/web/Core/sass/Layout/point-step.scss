@@ -20,6 +20,10 @@
                     margin-top: 72px;
                     margin-bottom: 10px;
 
+                    span {
+                        display: block;
+                    }
+
                     @include breakpoint(mobile) {
                         font-size: 20px;
                         line-height: 30px;

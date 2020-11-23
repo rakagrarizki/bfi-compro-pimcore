@@ -12,7 +12,11 @@
 <section id="pengajuan">
     <div class="container">
         <div class="submission-wrapper">
-            <h1><?= $this->input('title'); ?></h1>
+            <h1><?= $this->input('title'); ?>
+            <?php if (!$this->input("additional-title")->isEmpty()) { ?>
+                <span><?= $this->input('additional-title');?></span>
+            <?php } ?>
+            </h1>
             <form action="" id="selection-form">
                 <div class="selection-wrapper">
                     <div class="selection-1">

@@ -362,7 +362,9 @@
         font-weight: bold;
         text-align: center;
         margin-bottom: 40px;
-
+        span {
+            display: block;
+        }
         @include breakpoint(mobile) {
             font-size: 20px;
         }

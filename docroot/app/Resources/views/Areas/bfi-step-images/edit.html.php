@@ -13,6 +13,10 @@
             <div class="col-sm-8"><?= $this->input("title"); ?></div>
         </div>
         <div class="row">
+            <div class="col-sm-4">Addtional Title</div>
+            <div class="col-sm-8"><?= $this->input("additional-title"); ?></div>
+        </div>
+        <div class="row">
             <div class="col-sm-4">Text</div>
             <div class="col-sm-8"><?= $this->input("text"); ?></div>
         </div>

@@ -38,7 +38,7 @@ $this->headScript()->offsetSetFile(100, '/static/js/Includes/login.js');
     </form>
 </section>
 <section id="otp" class="container hide">
-    <h1><?= $this->translate('confirmation-otp'); ?></h1>
+    <h2><?= $this->translate('confirmation-otp'); ?></h2>
     <p><?= $this->translate('text-confirmation-otp'); ?></p>
 
     <form action="" id="otp-form">

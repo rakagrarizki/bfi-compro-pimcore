@@ -1,8 +1,12 @@
 <div>
     <div id="ajukan-sekarang" class="point-step container">
         <div class="sect-title text-center">
-            <h1 class="title"><?= $this->input('title');?></h1>
-            <h2 class="sub-title"><?= $this->input('text'); ?></h2>
+            <h1 class="title"><?= $this->input('title');?>
+            <?php if (!$this->input("additional-title")->isEmpty()) { ?>
+                <span><?= $this->input('additional-title');?></span>
+            <?php } ?>
+            </h1>
+            <p class="sub-title"><?= $this->input('text'); ?></p>
         </div>
         <div class="sect-step">
             <?php while ($this->block("contentblock")->loop()) { ?>
