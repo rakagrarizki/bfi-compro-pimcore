@@ -126,6 +126,7 @@
         color:#565656;
         @include breakpoint(mobile){
             font-size: 14px;
+            margin-left: 10px;
         }
 
         span{
