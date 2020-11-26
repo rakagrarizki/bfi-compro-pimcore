@@ -135,7 +135,6 @@ $(document).ready(function() {
         },
   
         success: function(dataObj) {
-      
           if (dataObj.message === "success" && $("#category-1").length > 0) {
                 $.each(dataObj.data, function(key, valListCategory) {
                     if (valListCategory.desc != "") {

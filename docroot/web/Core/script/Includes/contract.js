@@ -66,18 +66,22 @@ function contractDetailTransactionAll(lang, token, dataContract){
                     var paymentDateRaw = new Date(value.tanggal_pembayaran); 
                     var due_date = dueDateRaw.toLocaleDateString(lang+'-'+lang, options);
                     var payment_date = paymentDateRaw.toLocaleDateString(lang+'-'+lang, options);
+                    var transaction_row="<tr> <td class='installment_no'></td><td class='tanggal_jatuh_tempo'></td><td class='angsuran_per_bulan'></td><td class='angsuran_telah_dibayar'></td> <td class='tanggal_pembayaran'></td> <td class='denda_keterlambatan'></td> <td class='sisa_angsuran'></td> </tr>"
 
-                    $('td.installment_no').text(value.installment_no);
-                    $('td.tanggal_jatuh_tempo').text(due_date);
-                    $('td.angsuran_per_bulan').text(convertInttoCurrency(value.angsuran_per_bulan));
-                    $('td.angsuran_telah_dibayar').text(convertInttoCurrency(value.angsuran_telah_dibayar));
-                    $('td.tanggal_pembayaran').text(payment_date);
-                    $('td.denda_keterlambatan').text(convertInttoCurrency(value.denda_keterlambatan));
-                    $('td.sisa_angsuran').text(convertInttoCurrency(value.sisa_angsuran));
-
+                    $('tbody').append(transaction_row);
+                    $('td.installment_no').last().text(value.installment_no);
+                    $('td.tanggal_jatuh_tempo').last().text(due_date);
+                    $('td.angsuran_per_bulan').last().text(convertInttoCurrency(value.angsuran_per_bulan));
+                    $('td.angsuran_telah_dibayar').last().text(convertInttoCurrency(value.angsuran_telah_dibayar));
+                    $('td.tanggal_pembayaran').last().text(payment_date);
+                    $('td.denda_keterlambatan').last().text(convertInttoCurrency(value.denda_keterlambatan));
+                    $('td.sisa_angsuran').last().text(convertInttoCurrency(value.sisa_angsuran));
+                    
                     total_installments += value.angsuran_per_bulan;
                     total_late_charge += value.denda_keterlambatan;
                 })
+                var total_transaction_row="<tr class='total'> <td></td><td>Total</td><td class='total_installment'></td><td></td><td></td><td class='total_late_charge'></td><td></td></tr>";
+                $('tbody').append(total_transaction_row);
 
                 $('td.total_installment').text(convertInttoCurrency(total_installments));
                 $('td.total_late_charge').text(convertInttoCurrency(total_late_charge));
