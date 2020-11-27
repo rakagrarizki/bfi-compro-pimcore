@@ -6858,8 +6858,21 @@ $("input.input-number").on('focusout', function () {
     }
 });
 
+function masonryLayout(){
+    var maxHeight = 0;
+    $(".mp-list").each(function(){
+        $(this).children(".xs-6").each(function(){
+            if ($(this).height() > maxHeight) { maxHeight = $(this).height(); }
+        });
+        $(this).css('max-height',maxHeight*2.1);
+    })
+}
+
+
 $(document).ready(function () {   
     $('body').on('change','#pekerjaan', function() {
          $('.select2-search__field').hide();
     });
+    masonryLayout();
 }); 
+
