@@ -43,6 +43,7 @@
     }
 
     .title-small{
+        margin-bottom: 16px;
         @extend h3;
         color: $blue-dark-color;
         border-bottom: solid 1px $blue-dark-color;
@@ -54,11 +55,17 @@
         font-size: 16px;
         margin: 5px 0;
         text-decoration: none;
+        line-height: 32px;
         
         @include breakpoint(mobile){
             font-size: 14px;
-            padding-right: 10px;;
+        line-height: 24px;
+        padding-right: 10px;
         }
+    }
+
+    .col-md-3{
+        padding-right: 0px;
     }
 
     div[class^="col-"]{
