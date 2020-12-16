@@ -20,11 +20,6 @@ $blogList->setLimit(4);
             <div class="row">
 
                 <div class="col-md-12 no-padding">
-                    <a href="index.html">
-                        <button type="button" class="close" data-dismiss="modal">
-                            <span class="flaticon-cancel"></span>
-                        </button>
-                    </a>
 
                     <div class="tab-get--credit">
                         <nav class="horizontal-scroll">
