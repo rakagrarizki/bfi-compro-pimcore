@@ -8,6 +8,8 @@ use Pimcore\File;
 use Pimcore\Controller\FrontendController;
 use Symfony\Component\HttpFoundation\Request;
 use Pimcore\Model\WebsiteSetting;
+use AppBundle\Service\SendMail;
+use Pimcore\Bundle\AdminBundle\HttpFoundation\JsonResponse;
 
 class ContactController extends FrontendController
 {
@@ -43,7 +45,19 @@ class ContactController extends FrontendController
                 $contactCorporate->setSubject(htmlentities($data['subject']));
                 $contactCorporate->setMessage($message);
                 $contactCorporate->save();
-
+                
+                $contactUsData = array(
+                    "name"=>$name,
+                    "phoneNumber"=>htmlentities($data['phone']),
+                    "email"=>$email,
+                    "subject"=>htmlentities($data['subject']),
+                    "message"=>$message,
+                    "type"=>"corporate"
+                );
+               
+                $subject = "Data Hubungi Kami - Corporate";
+                $mail = SendMail::contactUsMail($subject, $contactUsData);
+                 
                 $this->_successCorporate();
                 $success = true;
             } else {
@@ -106,6 +120,22 @@ class ContactController extends FrontendController
                     $contactPersonal->setType_message(htmlentities($data['type_message']));
                     $contactPersonal->setMessage($message);
                     $contactPersonal->setFile($asset);
+                    $contactUsData = array(
+                        "name"=>$name,
+                        "phoneNumber"=>htmlentities($data['phone']),
+                        "email"=>$email,
+                        "identity"=>htmlentities($data['identity']),
+                        "contractNumber"=>htmlentities($data['no_kontrak']),
+                        "customerName"=>htmlentities($data['customer_name']),
+                        "messageType"=>htmlentities($data['type_message']),
+                        "message"=>$message,
+                        "type"=>"personal"
+
+                    );
+                   
+                    $subject = "Data Hubungi Kami - Personal";
+                    $mail = SendMail::contactUsMail($subject, $contactUsData);
+                     
                     $contactPersonal->save();
 
                     $this->_success();
