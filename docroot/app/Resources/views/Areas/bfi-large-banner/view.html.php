@@ -1,10 +1,18 @@
 <div>
     <div id="herobanner" class="herobanner">
-        <?php while ($this->block("contentblock")->loop()) { ?>
+        <?php  
+        $counter = 0;  
+        while ($this->block("contentblock")->loop()) { ?>
             <?php $asset = $this->image("image");?>
-            <?php $assetMobile = $this->image("imageMobile");?>
+            <?php $assetMobile = $this->image("imageMobile");            ?>
             <div>
-                <div class="slide hidden-xs" style="background-image: url('<?= $asset->getImage()?>')">
+
+        <?php if ($counter==0){?>
+            <div class="slide hidden-xs" style="background-image: url('<?= $asset->getImage()?>')">
+            <?php } else { ?>
+            <div class="slide hidden-xs lazy-slider" style="background-image: url('/System/white.gif')" data-src="<?= $asset->getImage()?>">
+        <?php } ?>
+
                     <div class="slide-cont">
                         <div class="desc-slide">
                             <div class="container">
@@ -20,7 +28,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="slide visible-xs" style="background-image: url('<?= $assetMobile->getImage()?>')">
+
+        <?php if ($counter==0){?>
+            <div class="slide visible-xs" style="background-image: url('<?= $assetMobile->getImage()?>')">
+            <?php } else { ?>
+            <div class="slide visible-xs lazy-slider" style="background-image: url('  /System/white.gif')" data-src="<?= $assetMobile->getImage()?>">
+        <?php } ?>
+
                     <div class="slide-cont">
                         <div class="desc-slide">
                             <div class="container">
@@ -37,7 +51,7 @@
                     </div>
                 </div>
             </div>
-        <?php } ?>
+        <?php $counter = 1; } ?>
     </div>
     <div class="navigation">
         <div class="row">

@@ -10,7 +10,6 @@
 
     
 
-    console.log("Slick = " + typeof(slick));
 
 
     // if(typeof(jcf)!=="undefined") {

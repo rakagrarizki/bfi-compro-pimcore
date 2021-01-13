@@ -5,7 +5,7 @@
             <?php $assetFounder = $this->image("image-founder"); ?>
             <div>
                 <!-- desktop -->
-                <div class="slide slidemodif hidden-xs" style="background-image: url('<?= $asset->getImage() ?>')">
+                <div class="slide slidemodif hidden-xs lazy-slide" style="background-image: url('/System/white.gif')" data-src="<?= $asset->getImage() ?>">
                     <div class="slide-cont">
                         <div class="desc-slide2">
                             <div class="desc-cont container">
@@ -15,11 +15,11 @@
                                             <!-- <p class="title"><?= $this->input('title');?></p>
                                             <a class="lihat-produk" href="#">LIHAT PRODUK<i class="fa fa-angle-right"></i></a>
                                             <p class="quotes"><?= $this->textarea('text');?></p>
-                                            <div class="bungkus-img-people"><img src="<?= $assetFounder->getImage()?>" class="img-responsive img-people" alt=""></div> -->
+                                            <div class="bungkus-img-people"><img data-src="<?= $assetFounder->getImage()?>" class="img-responsive img-people lazy" alt=""></div> -->
                                             <h2 class="title"><?= $this->input('title'); ?></h2>
                                             <a class="lihat-produk" href="<?= $this->link("url")->getHref(); ?>"><?= $this->link("url")->getText(); ?></a>
                                             <h3 class="quotes"><?= $this->textarea('text'); ?></h3>
-                                            <div class="bungkus-img-people"><img src="<?= $assetFounder->getImage() ?>" class="img-responsive img-people" alt=""></div>
+                                            <div class="bungkus-img-people"><img src="/System/white.gif" data-src="<?= $assetFounder->getImage() ?>" class="img-responsive img-people lazy" alt=""></div>
                                             <div class="cont-name">
                                                 <p class="name"><?= $this->input('founder'); ?></p>
                                                 <p class="position"><?= $this->input('position'); ?></p>
@@ -37,7 +37,7 @@
 
                 <!-- mobile -->
                 <?php $assetMobile = $this->image('mobile-image'); ?>
-                <div class="slide slidemodif visible-xs" style="background-image: url('<?= $assetMobile->getImage() ?>')">
+                <div class="slide slidemodif visible-xs lazy-slide" style="background-image: url('/System/white.gif')" data-src="<?= $assetMobile->getImage() ?>">
                     <div class="slide-cont">
                         <div class="desc-slide2">
                             <div class="desc-cont container">
@@ -46,7 +46,7 @@
                                         <p class="title"><?= $this->input('title');?></p>
                                         <a class="lihat-produk" href="#">LIHAT PRODUK<i class="fa fa-angle-right"></i></a>
                                         <p class="quotes"><?= $this->textarea('text');?></p>
-                                        <div class="bungkus-img-people"><img src="<?= $assetFounder->getImage()?>" class="img-responsive img-people" alt=""></div>
+                                        <div class="bungkus-img-people"><img src="/System/white.gif" data-src="<?= $assetFounder->getImage()?>" class="img-responsive img-people lazy" alt=""></div>
                                         <div class="cont-name">
                                             <p class="name"><?= $this->input('founder'); ?></p>
                                             <p class="position"><?= $this->input('position'); ?></p>

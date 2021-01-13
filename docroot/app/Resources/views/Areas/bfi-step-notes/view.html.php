@@ -7,7 +7,7 @@
                 <?php $asset = $this->image("image-step"); ?>
                 <li>
                     <div class="img-step">
-                        <img src="<?= $asset->getImage() ?>" class="img-responsive" alt="<?= $this->input("alt-img")?>">
+                        <img src="/System/white.gif" data-src="<?= $asset->getImage() ?>" class="img-responsive lazy" alt="<?= $this->input("alt-img")?>">
                     </div>
                     <h3><?= $this->input('text'); ?></h3>
                 </li>

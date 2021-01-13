@@ -34,7 +34,7 @@ $news->addConditionParam("Category__id = ?", $category);
                 }
                 ?>
 
-                            <img src="<?= $data->getImage();?>" alt="<?= $data->getSlug(); ?>">
+                            <img class="lazy" src="/System/white.gif" data-src="<?= $data->getImage();?>" alt="<?= $data->getSlug(); ?>">
                         </div>
                         <div class="thumbnail-infomation">
                             <?php

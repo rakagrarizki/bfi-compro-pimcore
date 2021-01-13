@@ -25,7 +25,7 @@
             <div class="col-md-6">
                 <div class="side-image" >
                 <a href="<?= $asset->getImage()?>" target="_blank"> 
-                <img src="<?= $asset->getImage()?>" alt="<?= $this->input("alt-img")?>"></a></div>
+                <img class="lazy" src="/System/white.gif" data-src="<?= $asset->getImage()?>" alt="<?= $this->input("alt-img")?>"></a></div>
             </div>
         </div>
     </div>

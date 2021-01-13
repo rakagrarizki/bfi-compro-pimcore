@@ -8,7 +8,7 @@
             <div class="col-md-6">
             <div class="side-image" >
                 <a href="<?= $asset->getImage()?>" target="_blank"> 
-                <img src="<?= $asset->getImage()?>" alt="<?= $this->input("alt-img")?>"></a></div>
+                <img class="lazy" src="/System/white.gif"src="<?= $asset->getImage()?>" alt="<?= $this->input("alt-img")?>"></a></div>
             </div>
             <div class="col-md-6 text">
                 <?php if (!$this->input("title")->isEmpty()) : ?>

@@ -1,5 +1,5 @@
 <?php $asset = $this->image("image");?>
-<section id="credit" style="background-image:url('<?= $asset->getImage()?>')">
+<div id="credit" class="lazy-slide" style="background-image:url('/System/white.gif')" data-src="<?= $asset->getImage()?>">
     <div class="container">
         <div class="credit-body">
             <h2 class="text-center">
@@ -12,4 +12,4 @@
             </h2>
         </div>
     </div>
-</section>
+</div>
