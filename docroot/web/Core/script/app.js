@@ -218,6 +218,7 @@ var isAjaxActive = false;
   
     $(document).ready(function(e) {
         res();
+        tidyArticle();
     });
   
     var input = document.getElementById("file_upload");
@@ -2409,6 +2410,11 @@ var isAjaxActive = false;
                     url: "user/login",
                     data: dataPhone,
                     dataType: "json",
+                    error: function(data){
+                        $(".label-cekLogin").html("Maaf Server Sedang Bermasalah. Silahkan Coba Lain Waktu").css("color","red").removeClass("hide");
+                    },
+                    fail: function(data){
+                    },
                     success: function(data) {
                         if (data.success === true) {
                             var token = localStorage.getItem("token");
@@ -6232,6 +6238,61 @@ var isAjaxActive = false;
   })(jQuery); // tanda tutup
   
 
+  function tidyArticle() {
+
+    $(".article-content").find("table").addClass("table");
+
+    $(".article-content").find("table").addClass("table-striped");
+
+    $(".article-content").find("table").wrapAll("<div class='table-responsive'/>");
+
+    $(".article-content").wrapInner('<div class="row">');
+
+  
+
+    $(".article-content p img, .article-content p span").unwrap("p");
+
+    $(".article-content .row").addClass("flexColumn");
+
+    $(".article-content img").each(function (index) {
+        $(this).css("width", "100%");
+
+        if ($(this).next("span").length) {
+            $(this).next("span").addBack().wrapAll('<div class="col-12 col-md-6 col-xs-12 flexItem" style="padding:10px; text-align:center">');
+        } else {
+            $(this).wrap('<div class="col-12 col-md-6 col-xs-12 flexItem" style="padding:10px; text-align:center">');
+        }
+        $(this).wrap('<div class="img-frame" style="max-height: 500px; overflow:hidden">')
+    });
+
+    var cnt = 0;
+    var odd = true;
+    $(".article-content .col-12").each(function (index) {
+        cnt++;
+        if (!$(this).next(".col-md-6").length) {
+            if (cnt % 2 === 0) {
+                if (odd) {
+                    odd = true;
+                    // console.log("even true : img - " + cnt);
+                } else {
+                    odd = true;
+                    $(this).removeClass("col-md-6");
+                    $(this).addClass("col-md-12");
+                    // console.log("even false: img - " + cnt);
+                }
+            } else {
+                if (!odd) {
+                    // console.log("odd false: img - " + cnt);
+                } else {
+                    // console.log("odd true: img - " + cnt);
+                    odd = false;
+                    $(this).removeClass("col-md-6");
+                    $(this).addClass("col-md-12");
+                }
+            }
+        }
+    });
+}
 
 function reformatDate(_date) {
   var subDate = _date.split("/");
@@ -6704,6 +6765,7 @@ function reformatMoney(number) {
   
   
   $(document).ready(function() {
+      
     // if ($('#btn-burger').attr('aria-expanded') === 'true') {
     //   console.log("ada");
     //   $('#btn-credit').css({ display: "none" });
@@ -6875,4 +6937,24 @@ $(document).ready(function () {
     });
     masonryLayout();
 }); 
+
+
+//Vertical, Horizontal Adjustment
+
+$('.blog-promo .card-img img').each(function() {
+    // image is loaded now
+    image = $(this);
+
+    if($(image).width() / $(image).height() > 1) {
+        console.log($(this).parent("picture"));
+    }
+    else {
+        $(this).css("width","inherit");
+        $(this).css("height","100%");
+        $(this).parent("picture").css("width","inherit");
+        $(this).parent("picture").css("height","100%");
+
+        console.log("Tall");
+    }
+});
 
