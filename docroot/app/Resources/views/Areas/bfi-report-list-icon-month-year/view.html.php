@@ -38,10 +38,12 @@ if ($tab != null) {
         <?php foreach ($paginator as $data) : ?>
             <li class="card-list">
                 <?php $asset = Pimcore\Model\Asset::getById($data->getPdf()->getId());
-                ?>
+                if (!!!$data->getImage() == null){ ?>
+                    <img src="<?php echo $asset->getImageThumbnail('tes'); ?>" alt=""> 
+                <?php } else { ?>
+                    <img src="<?= $data->getImage(); ?>" alt="">
+                <?php }?>
 
-
-                <img src="<?php echo $asset->getImageThumbnail('tes'); ?>" alt="">
                 <div class="card-content">
                     <h6><?= $data->getDate()->formatLocalized("%B %Y") ?></h6>
                     <h3><?= $data->getFilename(); ?></h3>

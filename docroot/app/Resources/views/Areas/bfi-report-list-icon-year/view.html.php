@@ -20,10 +20,12 @@ $reports->setOrder('desc');
         <?php foreach ($reports as $data) : ?>
         <li class="card-list">
             <?php $asset = Pimcore\Model\Asset::getById($data->getPdf()->getId());
-                ?>
+            if (!!!$data->getImage()){ ?>
+                <img src="<?php echo $asset->getImageThumbnail('tes'); ?>" alt=""> 
+            <?php } else { ?>
+                <img src="<?= $data->getImage(); ?>" alt="">
+            <?php }?>
 
-
-            <img src="<?php echo $asset->getImageThumbnail('tes'); ?>" alt="">
             <div class="card-content">
                 <p><?= $data->getDate()->formatLocalized("%Y"); ?></p>
                 <h3><?= $data->getFilename(); ?></h3>
