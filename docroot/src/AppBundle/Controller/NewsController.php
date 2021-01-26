@@ -39,7 +39,8 @@ class NewsController extends FrontendController
 
         $slug = htmlentities(addslashes($request->get("slug")));
 
-        $news = News::getBySlug($slug,["limit"=>1]);
+        $news = News::getByLocalizedfields('Slug',$slug,null,1);
+
 
         $totalViews = $news->getViews() + 1;
         $news->setViews($totalViews);

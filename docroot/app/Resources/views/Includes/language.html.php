@@ -9,9 +9,9 @@ foreach (\Pimcore\Tool::getValidLanguages() as $language) {
     $target = "/" . $language;
     if (preg_match("/.\/blog/", $page) || preg_match("/.\/news/", $page) ||  preg_match("/.\/promo/", $page) || preg_match("/.\/award/", $page)) {
         if (isset($this->blog)) {
-            $target = '/'.$language.'/blog/'.$this->blog->getSlug(true, $language);
+            $target = '/'.$language.'/blog/'.$this->blog->getSlug($language);
         } else if (isset($this->news)) {
-            $target = '/'.$language.'/news/'.$this->news->getSlug(true, $language);
+            $target = '/'.$language.'/news/'.$this->news->getSlug($language);
         } else if (isset($this->promo)) {
             $target = '/'.$language.'/promo/'.$this->promo->getSlug(true, $language);
         } else if (isset($award)) {

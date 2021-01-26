@@ -39,7 +39,7 @@ class BlogController extends FrontendController
 
         $slug = htmlentities(addslashes($request->get("slug")));
 
-        $blog = BlogArticle::getBySlug($slug, ["limit" => 1]);
+        $blog = BlogArticle::getByLocalizedfields('Slug',$slug,null,1);
 
         $totalViews = $blog->getViews() + 1;
         $blog->setViews($totalViews);
