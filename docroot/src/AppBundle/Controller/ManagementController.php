@@ -40,7 +40,7 @@ class ManagementController extends FrontendController
         if($data){
             $allData = ["id" => $data->getId(),
                 "Nama"=> $data->getNama(),
-                "Jabatan" => $data->getJabatan(),
+                "Jabatan" => $data->getJabatan($lang),
                 "Biodata" => $data->getBiodata($lang),
                 "RiwayatKerja" => $data->getRiwayatkerja($lang),
                 "RiwayatPekerjaan" =>$data->getRiwayatPendidikan($lang),
