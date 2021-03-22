@@ -34,12 +34,9 @@ if($_COOKIE["customer"] != "null") {
                     </div>
                     <div class="col-md-6 col-sm-6 right-side-top">
                             <div class="link-about-top">
-                                <?php if($lang == "id") : ?>
-                                    <a id="" href="<?= "/" . $lang . "/tentang-bfi" ?>">
-                                <?php else : ?>
-                                    <a id="" href="<?= "/" . $lang . "/about-bfi" ?>">
-                                <?php endif; ?>
-                                    <?= $this->translate("tentang-kami") ?></a>
+                                <a id="" href="<?=$lang == "id" ? "/id/tentang-bfi" : "/en/about-bfi"  ?>"><?= $this->translate("tentang-kami") ?></a>
+                                <a id="" href="<?=$lang == "id" ? "/id/karir" : "/en/career"  ?>"><?= $this->translate("karir") ?></a>
+                                    
                                 <a id="" href="<?= "/" . $lang . "/blog" ?>">
                                     <?= $this->translate("blog") ?></a>
                             </div>
