@@ -78,7 +78,7 @@ $(document).ready(function() {
                 _url = lang + "/credit/form-mobil";
                 break;
             case selectedText.includes("Motor"):
-                _url = lang + "/credit/form-motor";
+                _url = "https://form-dev30.bfi.co.id/";
                 break;
             case selectedText.includes("Rumah"):
                 _url = lang + "/credit/form-rumah";
