@@ -82,7 +82,11 @@
 <!-- LOADER -->
 <div id="loader-container" style="display: none;"></div>
 <!-- LOADER -->
-
+<?php 
+    if ($this->editmode) {
+        $this->headScript()->prependFile('/static/js/Includes/edit-mode-setting.js'); 
+    }
+?>
 <?php $this->headScript()->appendFile('/static/js/Includes/homepage.js'); ?>
 <?php $this->headScript()->prependFile('/static/js/custom.js'); ?>
 <?php $this->headScript()->prependFile('/static/js/app.min.js'); ?>

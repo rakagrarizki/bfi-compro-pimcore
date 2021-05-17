@@ -1,0 +1,34 @@
+.pimcore_area_editmode{
+    & >.row > .col-sm-12{
+        border: 1px solid black;
+    }
+    .col-sm-12{
+        overflow: scroll;
+        margin:10px;
+        .row{
+            padding: 10px 5px;
+            &:nth-child(even){
+                background : #77777730;
+            }
+            .col-sm-4::after{
+                content: ":";
+            }
+            .col-sm-8{
+                .x-panel-body{
+                    width: 100% !important;
+                }
+            }
+            img{
+                max-height: 200px;
+            }
+        }
+    }
+}   
+
+.pimcore_area_buttons.top{
+    filter: opacity(0.3);
+    z-index: 10029 !important;
+    &:hover{
+        filter:opacity(1);
+    }
+}
