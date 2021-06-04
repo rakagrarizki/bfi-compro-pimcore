@@ -45,9 +45,12 @@ $lang = $this->getLocale();
         <div class="list-card">
         <?php foreach($this->paginator as $news) : ?>
             <a href="<?= '/'.$lang.'/news/'.$news->getSlug();?>" class="card-item">
-                <picture>
-                    <img src="<?= $news->getImage();?>" alt="">
-                </picture>
+                <div class="card-img" >
+                    <div class="blur-filter" style="background-image: url('<?= $news->getImage();?>');">/>
+                    <picture>
+                        <img src="<?= $news->getImage();?>" alt="">
+                    </picture>
+                </div>
                 <?php
                     $timestampDate = \Carbon\Carbon::parse($news->getDate());
                     $dateUnix = $timestampDate->timestamp;
