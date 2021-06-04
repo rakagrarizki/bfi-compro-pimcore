@@ -47,9 +47,13 @@ $lang = $this->getLocale();
             <div class="list-card">
                 <?php foreach ($this->paginator as $blog) : ?>
                     <a href="<?= '/' . $lang . '/blog/' . $blog->getSlug(); ?>" class="card-item">
-                        <picture>
-                            <img src="<?= $blog->getImage(); ?>" alt="">
-                        </picture>
+                        <div class="card-img" >
+                            <div class="blur-filter" style="background-image: url('<?= $blog->getImage();?>');">/>
+                            <picture>
+                                <img src="<?= $blog->getImage(); ?>" alt="">
+                            </picture>
+                        </div>
+                        
                             <?php
                                 $timestampDate = \Carbon\Carbon::parse($blog->getDate());
                                 $dateUnix = $timestampDate->timestamp;
