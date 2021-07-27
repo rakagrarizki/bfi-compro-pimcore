@@ -73,7 +73,7 @@ function contractDetailTransactionAll(lang, token, dataContract){
                     $('td.tanggal_jatuh_tempo').last().text(due_date);
                     $('td.angsuran_per_bulan').last().text(convertInttoCurrency(value.angsuran_per_bulan));
                     $('td.angsuran_telah_dibayar').last().text(convertInttoCurrency(value.angsuran_telah_dibayar));
-                    $('td.tanggal_pembayaran').last().text(payment_date);
+                    $('td.tanggal_pembayaran').last().text(dateValidChecker(payment_date));
                     $('td.denda_keterlambatan').last().text(convertInttoCurrency(value.denda_keterlambatan));
                     $('td.sisa_angsuran').last().text(convertInttoCurrency(value.sisa_angsuran));
                     
@@ -88,6 +88,16 @@ function contractDetailTransactionAll(lang, token, dataContract){
             }
         }
     })
+}
+
+function dateValidChecker(date){
+    var dateVar = Date.parse(date);
+    
+        if (isNaN(dateVar)) {
+            return date;
+        } else {
+            return "-";
+        }
 }
 
 function convertInttoCurrency(int){
