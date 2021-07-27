@@ -29,16 +29,12 @@ if($_COOKIE["customer"] != "null") {
                 <div class="row">
                     <div class="col-md-6 col-sm-6 left-side-top">
                         <a id="" class="_personal" href="/<?php echo $this->getLocale() ?>"><?= $this->translate("personal") ?></a>
-                        <a id="" class="_grup" href="<?= "/" . $lang . "/corporate" ?>">
-                            <?= $this->translate("corporate") ?></a>
+                        <a class="_grup" href="<?= $this->translate("bfiConnectUrl") ?>" target="_blank"><?= $this->translate("Bisnis") ?></a>
                     </div>
                     <div class="col-md-6 col-sm-6 right-side-top">
                             <div class="link-about-top">
-                                <a id="" href="<?=$lang == "id" ? "/id/tentang-bfi" : "/en/about-bfi"  ?>"><?= $this->translate("tentang-kami") ?></a>
+                                <a id="" class="_personal" href="<?= '/' . $this->getLocale() . '/corporate' ?>"><?= $this->translate("corporate") ?></a>
                                 <a id="" href="<?=$lang == "id" ? "/id/karir" : "/en/career"  ?>"><?= $this->translate("karir") ?></a>
-                                    
-                                <a id="" href="<?= "/" . $lang . "/blog" ?>">
-                                    <?= $this->translate("blog") ?></a>
                             </div>
                         <div class="link-log">
                             <?php if (!isset($_COOKIE["customer"])) { ?>

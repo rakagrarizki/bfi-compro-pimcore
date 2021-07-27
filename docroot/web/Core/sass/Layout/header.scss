@@ -773,6 +773,10 @@ body{
                     &.active{
                         color: $green-color;
                     }
+
+                    &.page-active{
+                        color: $primary;
+                    }
                 }
 
                 .about {
