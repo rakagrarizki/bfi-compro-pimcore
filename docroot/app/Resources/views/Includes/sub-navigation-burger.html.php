@@ -23,6 +23,5 @@
         </div>
     </div>
 <?php endif; ?>
-<li><a href="<?=$this->link('about')!=""?$this->link('about')->getHref():"#";?>" class="about"><?= $this->translate("tentang-kami") ?></a></li>
-<li><a href="<?=$this->link('karir')!=""?$this->link('karir')->getHref():"#";?>" class="about"><?= $this->translate("karir") ?></a></li>
-<li><a href="<?=$this->link('blog')!=""?$this->link('blog')->getHref():"#";?>" class="about"><?= $this->translate("blog") ?></a></li>
+<li><a href="<?= '/' . $this->getLocale() . '/corporate' ?>" class="secondary-menu"><?= $this->translate("corporate") ?></a></li>
+<li><a href="<?=$this->link('blog')!=""?$this->link('blog')->getHref():"#";?>" class="secondary-menu"><?= $this->translate("blog") ?></a></li>

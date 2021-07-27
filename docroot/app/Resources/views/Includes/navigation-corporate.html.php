@@ -20,14 +20,14 @@ $lang = $this->getLocale();
         <div class="header-top">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-9 col-sm-8 left-side-top">
+                    <div class="col-md-5 col-sm-8 left-side-top">
                         <a id="" class="_grup" href="/<?php echo $this->getLocale() ?>"><?= $this->translate("personal") ?></a>
-                        <a id="" class="_personal" target="<?= $this->link('corporate') != "" ? $this->link('corporate')->getTarget() : '' ?>" href="<?= '/' . $this->getLocale() . '/corporate' ?>">
-                            <?= $this->translate("corporate") ?></a>
+                        <a class="_grup" href="<?= $this->translate("bfiConnectUrl") ?>"><?= $this->translate("Bisnis") ?></a>
+                        
                     </div>
-                    <div class="col-md-3 col-sm-4 right-side-top clearfix">
+                    <div class="col-md-7 col-sm-4 right-side-top clearfix">
                         <div class="link-about-top">
-
+                            <a id="" class="_personal" href="<?= '/' . $this->getLocale() . '/corporate' ?>"><?= $this->translate("corporate") ?></a>
                             <a id="" href="<?= $this->websiteConfig("career_link") ? $this->websiteConfig("career_link") : "#"; ?>">
                                 <?= $this->translate("career"); ?></a>
 

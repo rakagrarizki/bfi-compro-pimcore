@@ -12,7 +12,7 @@ use Pimcore\Model\Document;
 
             <div class="col-xs-8">
                 <a class="_grup" href="/<?= $lang; ?>" class="cta-top-nav "><?= $this->translate("personal") ?></a>
-                <a class="_personal" href="/<?= $lang . '/corporate'; ?>" class="cta-top-nav active"><?= $this->translate("corporate") ?></a>
+                <a class="_grup" href="<?= $this->translate("bfiConnectUrl") ?>" target="_blank"><?= $this->translate("Bisnis") ?></a>
             </div>
 
             <div class="col-xs-4 text-right">
@@ -95,6 +95,7 @@ use Pimcore\Model\Document;
         ?>
         <li role="separator" class="divider"></li>
         <li> 
+            <a class="secondary-menu page-active" href="/<?= $lang . '/corporate'; ?>"><?= $this->translate("corporate") ?></a>
             <a class="secondary-menu" href="<?= $this->websiteConfig("career_link") ? $this->websiteConfig("career_link") : "#"; ?>">
                 <?= $this->translate("career"); ?>
             </a>
