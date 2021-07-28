@@ -33,7 +33,7 @@ if($_COOKIE["customer"] != "null") {
                     </div>
                     <div class="col-md-6 col-sm-6 right-side-top">
                             <div class="link-about-top">
-                                <a id="" class="_personal" href="<?= '/' . $this->getLocale() . '/corporate' ?>"><?= $this->translate("corporate") ?></a>
+                                <a id="" class="_grup" href="<?= '/' . $this->getLocale() . '/corporate' ?>"><?= $this->translate("corporate") ?></a>
                                 <a id="" href="<?=$lang == "id" ? "/id/karir" : "/en/career"  ?>"><?= $this->translate("karir") ?></a>
                             </div>
                         <div class="link-log">
