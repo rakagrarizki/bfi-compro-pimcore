@@ -46,7 +46,7 @@ $lang = $this->getLocale();
         <?php foreach($this->paginator as $news) : ?>
             <a href="<?= '/'.$lang.'/news/'.$news->getSlug();?>" class="card-item">
                 <div class="card-img" >
-                    <div class="blur-filter" style="background-image: url('<?= $news->getImage();?>');">/>
+                    <div class="blur-filter" style="background-image: url('<?= $news->getImage();?>');"></div>
                     <picture>
                         <img src="<?= $news->getImage();?>" alt="">
                     </picture>
