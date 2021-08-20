@@ -35,6 +35,7 @@ if($_COOKIE["customer"] != "null") {
                             <div class="link-about-top">
                                 <a id="" class="_grup" href="<?= '/' . $this->getLocale() . '/corporate' ?>"><?= $this->translate("corporate") ?></a>
                                 <a id="" href="<?=$lang == "id" ? "/id/karir" : "/en/career"  ?>"><?= $this->translate("karir") ?></a>
+                                <a id="" href="<?=$lang == "id" ? "/id/blog" : "/en/blog"  ?>"><?= $this->translate("blog") ?></a>
                             </div>
                         <div class="link-log">
                             <?php if (!isset($_COOKIE["customer"])) { ?>
