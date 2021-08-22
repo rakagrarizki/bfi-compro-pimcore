@@ -218,7 +218,7 @@ var isAjaxActive = false;
   
     $(document).ready(function(e) {
         res();
-        tidyArticle();
+        // tidyArticle();
     });
   
     var input = document.getElementById("file_upload");
