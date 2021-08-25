@@ -30,6 +30,7 @@ class BranchController extends FrontendController
             foreach ($branch as $item) {
                 $temp['name'] = $item->getName();
                 $temp['address'] = $item->getAddress();
+                $temp['telephone'] = $item->getTelephone();
                 $temp['gerai'] = $item->getIsGerai();
                 $temp['latitude'] = $item->getMap() ? $item->getMap()->getLatitude() : '';
                 $temp['longitude'] = $item->getMap() ? $item->getMap()->getLongitude() : '';

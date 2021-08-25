@@ -5281,7 +5281,7 @@ var isAjaxActive = false;
                             map: map,
                             icon: _marker
                         });
-  
+                        
                         if (valListing.gerai) {
                             var icondynamic = "/static/images/icon/gerai.png";
                         } else {
@@ -5312,8 +5312,14 @@ var isAjaxActive = false;
                             '<p class="desc-branch">' +
                             valListing.address +
                             "</p>";
+                        if(valListing.telephone != null){
+                            contentString +=
+                                '<p class="desc-branch">Phone: ' +
+                                valListing.telephone +
+                                "</p>";
+                        }
                         contentString +=
-                            '<a href="#" class="margin-top-20">PETUNJUK ARAH <i class="fa fa-angle-right arrowlink" aria-hidden="true"></i></a>';
+                            '<a href="https://www.google.com/maps/search/?api=1&query='+valListing.latitude+','+valListing.longitude+'" class="margin-top-20">PETUNJUK ARAH <i class="fa fa-angle-right arrowlink" aria-hidden="true"></i></a>';
                         contentString += "</div>";
                         contentString += "</div>";
                         contentString += "</div>";
@@ -5462,8 +5468,14 @@ var isAjaxActive = false;
                                     '<p class="desc-branch">' +
                                     dataraw[i].address +
                                     "</p>";
+                                if(dataraw[i].telephone != null){
+                                    html +=
+                                        '<p class="desc-branch">Phone: ' +
+                                        dataraw[i].telephone +
+                                        "</p>";                                    
+                                }
                                 html +=
-                                    '<a href="#" class="margin-top-20">PETUNJUK ARAH <i class="fa fa-angle-right arrowlink" aria-hidden="true"></i></a>';
+                                    '<a href="https://www.google.com/maps/search/?api=1&query='+dataraw[i].latitude+','+dataraw[i].longitude+'" class="margin-top-20">PETUNJUK ARAH <i class="fa fa-angle-right arrowlink" aria-hidden="true"></i></a>';
                                 html += "</div>";
                                 html +=
                                     '<div class="col-md-2 branchlist"><i class="fa fa-angle-right" aria-hidden="true"></i></div>';
