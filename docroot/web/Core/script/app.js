@@ -6235,6 +6235,7 @@ var isAjaxActive = false;
 
   function tidyArticle() {
 
+    // table tidy 
     $(".article-content").find("table").addClass("table");
 
     $(".article-content").find("table").addClass("table-striped");
@@ -6247,7 +6248,7 @@ var isAjaxActive = false;
     })
 
 
-  
+  //blog image
 
     $(".article-content p img, .article-content p span").unwrap("p");
 
@@ -6261,29 +6262,25 @@ var isAjaxActive = false;
         } else {
             $(this).wrap('<div class="col-12 col-md-6 col-xs-12 flexItem" style="padding:10px; text-align:center">');
         }
-        $(this).wrap('<div class="img-frame" style="max-height: 500px; overflow:hidden">')
+        $(this).wrap('<div class="img-frame" style="max-height: 400px;">')
     });
 
     var cnt = 0;
     var odd = true;
-    $(".article-content .col-12").each(function (index) {
+    $(".article-content .col-12").each(function () {
         cnt++;
         if (!$(this).next(".col-md-6").length) {
             if (cnt % 2 === 0) {
                 if (odd) {
                     odd = true;
-                    // console.log("even true : img - " + cnt);
                 } else {
                     odd = true;
                     $(this).removeClass("col-md-6");
                     $(this).addClass("col-md-12");
-                    // console.log("even false: img - " + cnt);
                 }
             } else {
                 if (!odd) {
-                    // console.log("odd false: img - " + cnt);
                 } else {
-                    // console.log("odd true: img - " + cnt);
                     odd = false;
                     $(this).removeClass("col-md-6");
                     $(this).addClass("col-md-12");

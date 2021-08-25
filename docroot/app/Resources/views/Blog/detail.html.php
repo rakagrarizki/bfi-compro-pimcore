@@ -75,6 +75,30 @@ $this->headMeta()->appendName('twitter:description', $blog->getDescription());
 
                 <?= $blog->getContent();?>
             </div>
+            <div class="article-gallery">
+                <?php 
+                $galleryCount = count($blog->getGallery()->getItems()) - 1;
+                foreach( $blog->getGallery()->getItems() as $key => $galleryitem ):                    
+                        if ($key % 2 == 0 && $key == $galleryCount) : 
+                ?>
+                        <div class='article-items col-12 col-md-12 col-xs-12'>
+                            <div class="item-img"> 
+                                <img src="<?= $galleryitem->getImage() ?>" alt="">
+                            </div>
+                            <div class="item-break"></div>
+                            <p><?= $galleryitem->getImage()->getMetadata('Caption',$lang)?></p>
+                        </div>    
+                        <?php else: 
+                        ?>
+                        <div class='article-items col-6 col-md-6 col-xs-12'>
+                            <div class="item-img"> 
+                                <img src="<?= $galleryitem->getImage() ?>" alt="">
+                            </div>
+                            <p><?= $galleryitem->getImage()->getMetadata('Caption',$lang)?></p>
+                        </div>
+                    <?php endif;
+                endforeach; ?>
+            </div>
             <div class="share">
                 <span>Share:</span>
                 <a href="<?= $urlFacebook;?>" class="share-fb" target="_blank"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
