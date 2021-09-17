@@ -83,7 +83,7 @@ if($_COOKIE["customer"] != "null") {
                                         if ($hasChildren && (strpos($page->getUri(), '#product') !== false)) {
                                 ?>
 
-                                            <div class="dropdown col-md-3 col-sm-3" id="produk" onmouseover="hoverDropdown()" onmouseout="closeDropdown()">
+                                            <div class="dropdown col-md-3 col-sm-3" id="produk">
                                                 <a id="" href="#" class="<?php echo $page->getActive() ? 'active' : '' ?> produk"><?= $page->getLabel() ?></a>
                                                 <div class="dropdown-content main">
                                                     <div class="produk-hover container">
