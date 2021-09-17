@@ -21,7 +21,7 @@
     "gulp-concat": "^2.6.0",
     "gulp-postcss": "^6.1.1",
     "gulp-processhtml": "^1.1.0",
-    "gulp-sass": "^4.1.0",
+    "gulp-sass": "^4.1.1",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglifycss": "^1.0.6",
     "gulp-uglifyjs": "^0.6.2",

@@ -12,6 +12,7 @@
     "ongr/elasticsearch-dsl": "^6.0",
     "guzzlehttp/guzzle": "^6.3",
     "monolog/monolog": "^1.24",
+    "symfony/monolog-bundle": "3.5.0",
     "symfony/symfony": "^3.4.17",
     "pimcore/pimcore": "~6.6.4",
     "predis/predis": "^1.1",
