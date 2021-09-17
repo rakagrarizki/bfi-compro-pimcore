@@ -60,20 +60,23 @@
         justify-content: center;
 
         @include breakpoint(mobile) {
-            margin: 20px 0;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            flex-flow: row wrap;
+            justify-content: space-around;
         }
 
         .sect-step__item {
-            margin: 0 20px;
             display: inline-block;
-            vertical-align: top;
-            vertical-align: top;
-            width: 20%;
-
+            margin: 0 1rem;
             .text-wrap {
                 max-width: 155px;
                 max-height: 85px;
             }
+            @include breakpoint(mobile) {
+                margin-bottom: 1.5rem;
+                padding: 0;
+            } 
         }
 
         p, h3 {
@@ -82,8 +85,8 @@
             color:#565656;
             margin-top: 0 ;
             @include breakpoint(mobile) {
-                font-size: 15px;
-                line-height: 25px;
+                font-size: 14px;
+                line-height: 140%;
             }
         }
 
