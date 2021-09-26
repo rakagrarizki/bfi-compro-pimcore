@@ -64,6 +64,7 @@ var credType = "";
 var submission_id = "";
 var leavePage = false;
 var isAjaxActive = false;
+var urlLocation = window.location;
 
 (function($) {
     var lang = document.documentElement.lang;
@@ -92,6 +93,22 @@ var isAjaxActive = false;
     });
   
     $(document).ready(function() {
+
+        (urlLocation.pathname == '/id/credit/form-motor' || urlLocation.pathname == '/en/credit/form-motocycle') && parsToRP();
+
+        var utm_campaign = sessionStorage.getItem("utm_campaign");
+        if (utm_campaign == null || utm_campaign == 'undefined'){
+            var urlParams = getAllUrlParams(urlLocation.href);
+
+            sessionStorage.setItem("utm_source", urlParams.utm_source);
+            sessionStorage.setItem("utm_campaign", urlParams.utm_campaign);
+            sessionStorage.setItem("utm_term", urlParams.utm_term);
+            sessionStorage.setItem("utm_medium", urlParams.utm_medium);
+            sessionStorage.setItem("utm_content", urlParams.utm_content);
+
+        }
+
+
         $(".sect-title .button a").click(function() {
             var aid = $(this).data("key");
             $("html,body").animate(
@@ -1210,6 +1227,12 @@ var isAjaxActive = false;
             email_pemohon = $("#email_pemohon").val(),
             no_telepon = $("#no_handphone").val(),
             jenis_kredit = $("#jenis_form").val();
+            utm_source = sessionStorage.getItem('utm_source');
+            utm_campaign = sessionStorage.getItem('utm_campaign');
+            utm_term = sessionStorage.getItem('utm_term');
+            utm_medium = sessionStorage.getItem('utm_medium');
+            utm_content = sessionStorage.getItem('utm_content');
+            
         switch (jenis_kredit) {
             case "MOBIL":
                 _URL = "/credit/save-car-leads1";
@@ -1233,7 +1256,12 @@ var isAjaxActive = false;
                 submission_id: submission_id,
                 name: nama_lengkap,
                 email: email_pemohon,
-                phone_number: no_telepon
+                phone_number: no_telepon,
+                utm_source: utm_source,
+                utm_campaign: utm_campaign,
+                utm_term: utm_term,
+                utm_medium: utm_medium,
+                utm_content: utm_content
             });
   
             $.ajax({
@@ -6582,6 +6610,11 @@ function reformatMoney(number) {
         email_pemohon = $("#email_pemohon").val(),
         no_telepon = $("#no_handphone").val(),
         jenis_kredit = $("#jenis_form").val();
+        utm_source = sessionStorage.getItem('utm_source');
+        utm_campaign = sessionStorage.getItem('utm_campaign');
+        utm_term = sessionStorage.getItem('utm_term');
+        utm_medium = sessionStorage.getItem('utm_medium');
+        utm_content = sessionStorage.getItem('utm_content');
 
     switch (jenis_kredit) {
         case "MOBIL":
@@ -6606,7 +6639,12 @@ function reformatMoney(number) {
             submission_id: submission_id,
             name: nama_lengkap,
             email: email_pemohon,
-            phone_number: no_telepon
+            phone_number: no_telepon,
+            utm_source: utm_source,
+            utm_campaign: utm_campaign,
+            utm_term: utm_term,
+            utm_medium: utm_medium,
+            utm_content: utm_content
         });
 
         $.ajax({
@@ -6965,4 +7003,36 @@ $('.blog-promo .card-img img').each(function() {
         console.log("Tall");
     }
 });
+
+function parsToRP() {
+    var utm_campaign = 'utm_campaign=' +sessionStorage.getItem("utm_campaign")
+    var utm_medium = 'utm_medium=' +sessionStorage.getItem("utm_medium")
+    var utm_source = 'utm_source=' +sessionStorage.getItem("utm_source")
+    var utm_term = 'utm_term=' +sessionStorage.getItem("utm_term")
+    var utm_content = 'utm_content=' +sessionStorage.getItem("utm_content");
+
+    querySearch = utm_campaign +"&"+ utm_medium +"&"+ utm_source +"&"+ utm_term +"&"+ utm_content;
+
+    if(sessionStorage.getItem("utm_campaign")) {
+        window.location = 'https://form.bfi.co.id/step-1?' + querySearch;
+    } else window.location = 'https://form.bfi.co.id/step-1';;
+};
+
+function getAllUrlParams(url) {
+
+    var obj = {};
+    var url = new  URL(url);
+    var params = new URLSearchParams(url.search);
+    var string = params.toString().split("&");
+    
+    for (var i = 0; i < string.length; i++) {
+        var a = string[i].split("=");
+        var paramName = a[0];
+        var paramValue = typeof a[1] === "undefined" ? true : a[1];
+        obj[paramName] = [paramValue];
+    }
+
+    return obj;
+
+  }
 
