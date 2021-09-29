@@ -75,7 +75,7 @@ $this->headMeta()->appendName('twitter:description', $blog->getDescription());
 
                 <?= $blog->getContent();?>
             </div>
-            <div class="article-gallery">
+            <div class="article-gallery row">
                 <?php 
                 $galleryCount = count($blog->getGallery()->getItems()) - 1;
                 foreach( $blog->getGallery()->getItems() as $key => $galleryitem ):                    

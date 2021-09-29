@@ -593,20 +593,15 @@
                 width: 100%;
             }
             &-items{
-                display: flex;
-                flex-flow: row wrap;
-                justify-content: center;
-                align-content: space-between;
-                width: 48%;
                 text-align: center;
                 margin-top: 30px;
                 margin-bottom: 10px;
-                height: 350px;
                 padding: 0px 10px;
                 .item-img{
                     width: 100%;
                     background-color: #ddd4;
-                    display: inherit;
+                    display: flex;
+                    justify-content: center;
                     align-items: center;
                     height: 300px;
                     justify-content: center;
@@ -631,8 +626,10 @@
                 }
 
                 p{
-                    display: inline-block;
-                    height: 30px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 48px;
                     margin-top: 10px;
                     margin-bottom: 0px;
                 }
