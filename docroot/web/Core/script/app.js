@@ -94,8 +94,6 @@ var urlLocation = window.location;
   
     $(document).ready(function() {
 
-        (urlLocation.pathname == '/id/credit/form-motor' || urlLocation.pathname == '/en/credit/form-motocycle') && parsToRP();
-
         var utm_campaign = sessionStorage.getItem("utm_campaign");
         if (utm_campaign == null || utm_campaign == 'undefined'){
             var urlParams = getAllUrlParams(urlLocation.href);
@@ -7003,20 +7001,6 @@ $('.blog-promo .card-img img').each(function() {
         console.log("Tall");
     }
 });
-
-function parsToRP() {
-    var utm_campaign = 'utm_campaign=' +sessionStorage.getItem("utm_campaign")
-    var utm_medium = 'utm_medium=' +sessionStorage.getItem("utm_medium")
-    var utm_source = 'utm_source=' +sessionStorage.getItem("utm_source")
-    var utm_term = 'utm_term=' +sessionStorage.getItem("utm_term")
-    var utm_content = 'utm_content=' +sessionStorage.getItem("utm_content");
-
-    querySearch = utm_campaign +"&"+ utm_medium +"&"+ utm_source +"&"+ utm_term +"&"+ utm_content;
-
-    if(sessionStorage.getItem("utm_campaign")) {
-        window.location = 'https://form.bfi.co.id/step-1?' + querySearch;
-    } else window.location = 'https://form.bfi.co.id/step-1';;
-};
 
 function getAllUrlParams(url) {
 
