@@ -3095,15 +3095,7 @@ var urlLocation = window.location;
         }
     });
   
-    if (isMobile) {
-        $(".sect-step").slick({
-            dots: false,
-            prevArrow: false,
-            nextArrow: false,
-            infinite: false,
-            slidesToShow: 2.5
-        });
-  
+    if (isMobile) {  
         $("ul.list-step").slick({
             dots: false,
             prevArrow: false,
