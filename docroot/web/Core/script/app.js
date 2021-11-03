@@ -102,10 +102,14 @@ var urlLocation = window.location;
             sessionStorage.setItem("utm_campaign", urlParams.utm_campaign);
             sessionStorage.setItem("utm_term", urlParams.utm_term);
             sessionStorage.setItem("utm_medium", urlParams.utm_medium);
-            sessionStorage.setItem("utm_content", urlParams.utm_content);
-
+            sessionStorage.setItem("utm_content", urlParams.utm_content);  
+                    
         }
-
+        $('#utm_source').val(sessionStorage.getItem('utm_source'))
+        $('#utm_campaign').val(sessionStorage.getItem('utm_campaign'))
+        $('#utm_term').val(sessionStorage.getItem('utm_term'))
+        $('#utm_medium').val(sessionStorage.getItem('utm_medium'))
+        $('#utm_content').val(sessionStorage.getItem('utm_content'))
 
         $(".sect-title .button a").click(function() {
             var aid = $(this).data("key");
@@ -1224,11 +1228,11 @@ var urlLocation = window.location;
         var nama_lengkap = $("#nama_lengkap").val(),
             email_pemohon = $("#email_pemohon").val(),
             no_telepon = $("#no_handphone").val(),
-            jenis_kredit = $("#jenis_form").val();
-            utm_source = sessionStorage.getItem('utm_source');
-            utm_campaign = sessionStorage.getItem('utm_campaign');
-            utm_term = sessionStorage.getItem('utm_term');
-            utm_medium = sessionStorage.getItem('utm_medium');
+            jenis_kredit = $("#jenis_form").val(),
+            utm_source = sessionStorage.getItem('utm_source'),
+            utm_campaign = sessionStorage.getItem('utm_campaign'),
+            utm_term = sessionStorage.getItem('utm_term'),
+            utm_medium = sessionStorage.getItem('utm_medium'),
             utm_content = sessionStorage.getItem('utm_content');
             
         switch (jenis_kredit) {
@@ -6607,11 +6611,11 @@ function reformatMoney(number) {
     var nama_lengkap = $("#nama_lengkap").val(),
         email_pemohon = $("#email_pemohon").val(),
         no_telepon = $("#no_handphone").val(),
-        jenis_kredit = $("#jenis_form").val();
-        utm_source = sessionStorage.getItem('utm_source');
-        utm_campaign = sessionStorage.getItem('utm_campaign');
-        utm_term = sessionStorage.getItem('utm_term');
-        utm_medium = sessionStorage.getItem('utm_medium');
+        jenis_kredit = $("#jenis_form").val(),
+        utm_source = sessionStorage.getItem('utm_source'),
+        utm_campaign = sessionStorage.getItem('utm_campaign'),
+        utm_term = sessionStorage.getItem('utm_term'),
+        utm_medium = sessionStorage.getItem('utm_medium'),
         utm_content = sessionStorage.getItem('utm_content');
 
     switch (jenis_kredit) {

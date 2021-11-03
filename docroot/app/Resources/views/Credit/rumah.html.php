@@ -101,6 +101,31 @@ $blogList->setLimit(4);
                                             <div class="error-wrap"></div>
                                             <div class="label-cekLogin hide"><?= $this->translate('text-cekLogin') ?><a href="#" class="logout" onclick="return logout('id');"><?= $this->translate('status-login') ?></a></div>
                                         </div>
+                                        <div class="form-group" hidden>
+                                            <label for="utm_source">utm_source</label>
+                                            <input type="utm_source" class="form-control" name="utm_source" id="utm_source" placeholder="utm_source" readonly>
+                                            <div class="error-wrap"></div>
+                                        </div>
+                                        <div class="form-group" hidden>
+                                            <label for="utm_campaign">utm_campaign</label>
+                                            <input type="utm_campaign" class="form-control" name="utm_campaign" id="utm_campaign" placeholder="utm_campaign" readonly>
+                                            <div class="error-wrap"></div>
+                                        </div>
+                                        <div class="form-group" hidden>
+                                            <label for="utm_term">utm_term</label>
+                                            <input type="utm_term" class="form-control" name="utm_term" id="utm_term" placeholder="utm_term" readonly>
+                                            <div class="error-wrap"></div>
+                                        </div>
+                                        <div class="form-group" hidden>
+                                            <label for="utm_medium">utm_medium</label>
+                                            <input type="utm_medium" class="form-control" name="utm_medium" id="utm_medium" placeholder="utm_medium" readonly>
+                                            <div class="error-wrap"></div>
+                                        </div>
+                                        <div class="form-group" hidden>
+                                            <label for="utm_content">utm_content</label>
+                                            <input type="utm_content" class="form-control" name="utm_content" id="utm_content" placeholder="utm_content" readonly>
+                                            <div class="error-wrap"></div>
+                                        </div>
                                        <!-- <div class="form-group upload-image">
                                             <label><?= $this->translate('label-ktp-new') ?></label>
                                             <div class="upload-file">

@@ -795,6 +795,11 @@ class CreditController extends FrontendController
         $param["name"] = htmlentities(addslashes($request->get('name')));
         $param["email"] = htmlentities(addslashes($request->get('email')));
         $param["phone_number"] = htmlentities(addslashes($request->get('phone_number')));
+        $param["utm_source"] = htmlentities(addslashes($request->get('utm_source')));
+        $param["utm_campaign"] = htmlentities(addslashes($request->get('utm_campaign')));
+        $param["utm_term"] = htmlentities(addslashes($request->get('utm_term')));
+        $param["utm_medium"] = htmlentities(addslashes($request->get('utm_medium')));
+        $param["utm_content"] = htmlentities(addslashes($request->get('utm_content')));
 
         try {
             $data = $this->sendAPI->saveCarLeads1($url, $param);
@@ -1161,7 +1166,12 @@ class CreditController extends FrontendController
         $param["name"] = htmlentities(addslashes($request->get('name')));
         $param["email"] = htmlentities(addslashes($request->get('email')));
         $param["phone_number"] = htmlentities(addslashes($request->get('phone_number')));
-
+        $param["utm_source"] = htmlentities(addslashes($request->get('utm_source')));
+        $param["utm_campaign"] = htmlentities(addslashes($request->get('utm_campaign')));
+        $param["utm_term"] = htmlentities(addslashes($request->get('utm_term')));
+        $param["utm_medium"] = htmlentities(addslashes($request->get('utm_medium')));
+        $param["utm_content"] = htmlentities(addslashes($request->get('utm_content')));
+        
         try {
             $data = $this->sendAPI->saveMotorcycleLeads1($url, $param);
         } catch (\Exception $e) {
@@ -1517,6 +1527,11 @@ class CreditController extends FrontendController
         $param["email"] = htmlentities(addslashes($request->get('email')));
         $param["phone_number"] = htmlentities(addslashes($request->get('phone_number')));
         $param["path_ktp"] = htmlentities(addslashes($request->get('path_ktp')));
+        $param["utm_source"] = htmlentities(addslashes($request->get('utm_source')));
+        $param["utm_campaign"] = htmlentities(addslashes($request->get('utm_campaign')));
+        $param["utm_term"] = htmlentities(addslashes($request->get('utm_term')));
+        $param["utm_medium"] = htmlentities(addslashes($request->get('utm_medium')));
+        $param["utm_content"] = htmlentities(addslashes($request->get('utm_content')));
 
         try {
             $data = $this->sendAPI->savePbfLeads1($url, $param);
