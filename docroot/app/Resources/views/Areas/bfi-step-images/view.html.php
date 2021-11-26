@@ -12,9 +12,15 @@
             <?php while ($this->block("contentblock")->loop()) { ?>
                 <?php $asset = $this->image("sub-image");?>
                 <div class="sect-step__item">
-                    <a href="<?= $asset->getImage()?>" target="_blank"><img src="<?= $asset->getImage()?>" alt="<?= $this->input("alt-img")?>"></a>
-                    <div class="text-wrap">
-                        <h3><?= $this->input('sub-title');?></h3>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <a href="<?= $asset->getImage()?>" target="_blank"><img src="<?= $asset->getImage()?>" alt="<?= $this->input("alt-img")?>"></a>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="text-wrap">
+                                <h3><?= $this->input('sub-title');?></h3>
+                            </div>
+                        </div>
                     </div>
                 </div>
             <?php } ?>
