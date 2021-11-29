@@ -37,6 +37,7 @@
 .point-step {
     position: relative;
     background: $white;
+    padding: 0;
 
     .sect-title {
         margin: 0 auto 80px auto;
@@ -68,26 +69,29 @@
         }
 
         .sect-step__item {
-            margin: 17px 1rem;
+            margin: 16px 0;
             background-color: #F5FAFF;
             border-radius: 4px;
-            padding: 6px 8px;
-
+            padding: 8px 8px;
+            width: 300px;
+            
             .text-wrap {
                 max-width: 180px;
                 max-height: 85px;
             }
-
+            
             .row{
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                height: 100%;
             }
 
             @include breakpoint(mobile) {
-                margin-bottom: 1.5rem;
-                padding: 0;
-                width: 40%;
+                margin-bottom: .4rem;
+                padding: 8px 0;
+                height: min-content;
+                width: 45%;
                 .row{
                     display: block;
                 }
@@ -96,7 +100,7 @@
 
         p, h3 {
             font-family: $font_default;
-            font-size: 1.250em;
+            font-size: 16px;
             line-height: 23px;
             color:#565656;
             margin-top: 0 ;
@@ -108,7 +112,7 @@
 
         img {
             display: block;
-            height: 65px;
+            height: 40px;
             margin: auto;
             @include breakpoint(mobile) {
                 margin-bottom: 20px;

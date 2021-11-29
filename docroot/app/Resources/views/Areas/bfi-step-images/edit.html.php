@@ -24,7 +24,7 @@
             <div class="col-sm-4">link</div>
             <div class="col-sm-8"><?= $this->link("url"); ?></div>
         </div>
-        <?php while($this->block("contentblock")->loop()) { ?>
+        <?php while($this->block("contentblock",["limit" => 6])->loop()) { ?>
             <div class="row">
                 <div class="col-sm-4">Title</div>
                 <div class="col-sm-8"><?= $this->input("sub-title"); ?></div>
