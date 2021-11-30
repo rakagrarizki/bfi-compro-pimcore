@@ -24,6 +24,7 @@
         }
         @include breakpoint(mobile){
             padding: 18px;
+            margin-top: 44px;
             h1{
                 font-weight: 500;
                 font-size: 17px;
@@ -48,16 +49,19 @@
             text-align: center;
             cursor: pointer;
             background: #FFFFFF;
+            border: 2px solid #FFFFFF;
             color: #8B8B8B;
+            box-sizing: border-box;
             border-radius: 4px;
             font-weight: normal;
             font-size: 14px;
-            padding: 10px 18px;
+            padding: 8px 18px;
         }
         
         input[type=radio]:checked + label{
             color: #FFFFFF;
             background: #04549F;
+            border: 2px solid #0085D5;
         }
         
         .radio-group {
@@ -67,6 +71,7 @@
             @include breakpoint(mobile){
                 label{
                     width: 138px;
+                    margin-bottom: 16px;
                 }
             }
         }
@@ -90,6 +95,7 @@
             letter-spacing: 0.25px;
         }
         @include breakpoint(mobile) {
+            margin-top: 0;
             p{
                 font-size: 15px;
             }
@@ -99,10 +105,12 @@
         }
     }
     .desc-sect{
-        padding: 48px;
+        padding: 48px 58px;
         .desc-title{
             font-weight: 600;
             font-size: 38px;
+            line-height: 62px;
+            letter-spacing: -1.2px;
             color: #04549F;
         }
         .desc-text{
@@ -116,6 +124,7 @@
             .desc-title{
                 font-weight: 600;
                 font-size: 24px;
+                line-height: 39px;
             }
         }
     }
@@ -138,7 +147,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 32px 0;
             border-radius: 8px;
 
             &::after {
@@ -152,6 +160,21 @@
                 padding: 0;
                 margin: 0 auto;
             }
+        }
+    }
+    #desk-btn{
+        display: block;
+        margin-top: 48px;
+        @include breakpoint(mobile){
+            display: none;
+        }
+    }
+    #mobile-btn{
+        display: none;
+        margin-top: 24px;
+        margin-bottom: 0;
+        @include breakpoint(mobile){
+            display: block;
         }
     }
 }

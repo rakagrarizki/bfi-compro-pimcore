@@ -1,10 +1,13 @@
+<?php
+    $this->headScript()->offsetSetFile(100, '/static/js/Includes/simulasi-pbf.js');
+?>
 <div class="simulasi_pbf">
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-push-6 desc-sect">
                 <h1 class="desc-title"><?= $this->input("title"); ?></h1>
                 <p class="desc-text"><?= $this->input("desc") ?></p>
-                <div class="btn-ajukan">
+                <div class="btn-ajukan" id="desk-btn">
                     <a href="<?= $this->link('url')->getHref(); ?>" class="cta cta-orange <?= $this->link('url')->getClass(); ?>" id="<?= $this->link('url')->getParameters()?>"><?= $this->link('url')->getText(); ?></a>
                 </div>
             </div>
@@ -37,11 +40,14 @@
                         </div>
                         <div class="estimasi">
                             <p class="text-center">Estimasi Angsuran per Bulan</p>
-                            <p id="result-estimasi" class="text-center">Rp 7.331.500</p>
+                            <p id="result-estimasi" class="text-center">Rp 0</p>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="btn-ajukan" id="mobile-btn">
+            <a href="<?= $this->link('url')->getHref(); ?>" class="cta cta-orange <?= $this->link('url')->getClass(); ?>" id="<?= $this->link('url')->getParameters()?>"><?= $this->link('url')->getText(); ?></a>
         </div>
     </div>
 </div>
