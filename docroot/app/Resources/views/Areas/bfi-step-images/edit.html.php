@@ -24,6 +24,20 @@
             <div class="col-sm-4">link</div>
             <div class="col-sm-8"><?= $this->link("url"); ?></div>
         </div>
+        <div class="row">
+            <div class="col-sm-4">Text</div>
+            <div class="col-sm-8">
+                <?= $this->input("terms"); ?>
+                <div class="row">
+                    <div class="col-sm-4">
+                        Show
+                    </div>
+                    <div class="col-sm-8">
+                        <?=  $this->checkbox("show-terms") ?>
+                    </div>
+                </div>
+            </div>
+        </div>
         <?php while($this->block("contentblock")->loop()) { ?>
             <div class="row">
                 <div class="col-sm-4">Title</div>

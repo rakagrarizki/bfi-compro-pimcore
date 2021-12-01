@@ -12,17 +12,21 @@
             <?php while ($this->block("contentblock")->loop()) { ?>
                 <?php $asset = $this->image("sub-image");?>
                 <div class="sect-step__item">
-                    <a href="<?= $asset->getImage()?>" target="_blank"><img src="<?= $asset->getImage()?>" alt="<?= $this->input("alt-img")?>"></a>
-                    <div class="text-wrap">
-                        <h3><?= $this->input('sub-title');?></h3>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <a href="<?= $asset->getImage()?>" target="_blank"><img src="<?= $asset->getImage()?>" alt="<?= $this->input("alt-img")?>"></a>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="text-wrap">
+                                <h3><?= $this->input('sub-title');?></h3>
+                            </div>
+                        </div>
                     </div>
                 </div>
             <?php } ?>
         </div>
-
-        <div class="btn-ajukan margin-bottom-85 margin-top-70">
-            <a href="<?= $this->link('url')->getHref(); ?>" class="cta cta-orange <?= $this->link('url')->getClass(); ?>" id="<?= $this->link('url')->getParameters()?>"><?= $this->link('url')->getText(); ?></a>
-        </div>
-
+        <?php if($this->checkbox("show-terms")->isChecked()) { ?>
+            <div class="terms">*<?= $this->input("terms"); ?></div>
+        <?php } ?>
     </div>
 </div>
