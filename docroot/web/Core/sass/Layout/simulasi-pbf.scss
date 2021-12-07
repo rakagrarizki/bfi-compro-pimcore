@@ -1,0 +1,193 @@
+.simulasi_pbf{
+    margin: 56px auto;
+    padding: 56px 0;
+    .row{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    @include breakpoint(mobile){
+        padding: 0;
+        .row{
+            display: block;
+        }
+    }
+    .calc-sect{
+        background: linear-gradient(293.35deg, #04559F -34.66%, #257CCB 100%);
+        border-radius: 16px;
+        color: #FFFFFF;
+        padding: 32px 48px;
+        h1{
+            margin-bottom: 28px;
+            font-weight: 600;
+            font-size: 33px;
+        }
+        p{
+            font-weight: normal;
+            font-size: 14px;
+        }
+        .price{
+            font-weight: 600;
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+        .row{
+            margin-bottom: 8px;
+        }
+        @include breakpoint(mobile){
+            padding: 18px 0;
+            margin-top: 44px;
+            h1{
+                font-weight: 500;
+                font-size: 17px;
+            }
+            p{
+                font-size: 13px;
+            }
+            .price{
+                font-weight: bold;
+                font-size: 16px;
+            }
+        }
+    }
+    .tenor{
+        input[type=radio] {
+            position: absolute;
+            visibility: hidden;
+            display: none;
+        }
+        
+        label {
+            text-align: center;
+            cursor: pointer;
+            background: #FFFFFF;
+            border: 2px solid #FFFFFF;
+            color: #8B8B8B;
+            box-sizing: border-box;
+            border-radius: 4px;
+            font-weight: normal;
+            font-size: 14px;
+            padding: 8px 18px;
+            transition: .2s;
+        }
+        
+        input[type=radio]:checked + label{
+            color: #FFFFFF;
+            background: #04549F;
+            border: 2px solid #0085D5;
+        }
+        
+        .radio-group {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+            @include breakpoint(mobile){
+                label{
+                    width: 138px;
+                    margin-bottom: 16px;
+                }
+            }
+        }
+    }
+    .estimasi{
+        margin-top: 16px;
+        background: #FFFFFF;
+        border-radius: 8px;
+        color: #04549F;
+        padding: 32px;
+        p{
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 26px;
+            letter-spacing: 0.15px;
+        }
+        #result-estimasi{
+            font-weight: 600;
+            font-size: 33px;
+            line-height: 53px;
+            letter-spacing: 0.25px;
+        }
+        @include breakpoint(mobile) {
+            margin-top: 0;
+            p{
+                font-size: 15px;
+            }
+            #result-estimasi{
+                font-size: 28px;
+            }
+        }
+    }
+    .desc-sect{
+        padding: 0 58px;
+        .desc-title{
+            font-weight: 600;
+            font-size: 38px;
+            line-height: 62px;
+            letter-spacing: -1.2px;
+            color: #04549F;
+        }
+        .desc-text{
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 32px;
+        }
+        @include breakpoint(mobile){
+            text-align: center;
+            padding: 0 8px;
+            .desc-title{
+                font-weight: 600;
+                font-size: 24px;
+                line-height: 39px;
+            }
+        }
+    }
+
+    .btn-ajukan {
+        @include breakpoint(mobile) {
+            margin-bottom: 90px;
+        }
+
+        @include breakpoint(tablet) {
+            margin-bottom: 90px;
+        }
+
+        text-align: center;
+
+        .cta-orange {
+            text-transform: uppercase;
+            width: 220px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+
+            &::after {
+                top: 19px;
+            }
+
+            @include breakpoint(mobile) {
+                font-size: 9px;
+                height: 35px;
+                width: 150px;
+                padding: 0;
+                margin: 0 auto;
+            }
+        }
+    }
+    #desk-btn{
+        display: block;
+        margin-top: 48px;
+        @include breakpoint(mobile){
+            display: none;
+        }
+    }
+    #mobile-btn{
+        display: none;
+        margin-top: 24px;
+        margin-bottom: 0;
+        @include breakpoint(mobile){
+            display: block;
+        }
+    }
+}
