@@ -23,6 +23,8 @@ class PromoController extends FrontendController
             $promos->addConditionParam("PromoCategory__id = ?", $category,'AND');
         }
         $promos->addConditionParam("PromoEndDate > ?",time(),'AND');
+        $promos->setOrderKey("o_creationDate");
+        $promos->setOrder("desc");
 
         $paginator = new \Zend\Paginator\Paginator($promos);
         $paginator->setCurrentPageNumber( $page );
@@ -37,8 +39,6 @@ class PromoController extends FrontendController
 
         $promo = Promo::getBySlug($slug,["limit"=>1]);
         $this->view->promo = $promo;
-
-
 
     }
 }
