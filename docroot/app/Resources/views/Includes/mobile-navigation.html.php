@@ -19,35 +19,21 @@ if($_COOKIE["customer"] != "null") {
         <div class="row top-nav">
 
             <?= $this->inc("/" . $this->getLocale() . "/shared/includes/sub-navigation-mobile") ?>
-            <div class="col-xs-6 text-right no-padding-mobile">
-                <div class="link-log">
-                    <?php if (!isset($_COOKIE["customer"])) { ?>
-                        <a href="<?= "/" . $lang . "/login"; ?>" class="login"><?= $this->translate("login") ?></a>
-                    <?php } else { ?>
-                    <div class="user">
-                        <a href="/<?= $this->getLocale() ?>/user/dashboard" class="full_name"><?= $name; ?></a> | <a href="#" class="logout" onclick="return logout('<?= $this->getLocale() ?>');"><?= $this->translate("logout") ?></a>
-                    </div>
-                    <?php } ?>
-                </div>
+            <div class="col-xs-6 text-right">
+            <div class="lang">
+                <?php echo $this->template("Includes/mobile-language.html.php") ?>
+            </div>
             </div>
         </div>
         <div class="navbar-header">
             <a class="navbar-brand" href="<?php echo "/" . $this->getLocale(); ?>">
                 <img src="/static/images/logo-bfi.png" alt="logo-bfi" class="img-responsive">
+                <div class="ojk">
+                    <p class="top-desc">BFI terdaftar dan diawasi oleh</p>
+                    <img src="/static/images/ojk.png" alt="logo-ojk" class="img-responsive">
+                </div>
             </a>
             <div class="header-button-wrapper">
-                <div class="button-area--nav" id="btn-credit">
-                    <?php $credit = Document::getByPath("/" . $this->getLocale() . "/credit/"); ?>
-                    <a href="<?php echo $credit->getHref(); ?>" class="cta cta-orange"><?php echo $credit->getTitle(); ?>
-                    </a>
-                </div>
-                <div class="search-button">
-                    <?php if ($site == "search") : ?>
-                        <a href="javascript:history.back()"><i class="fa fa-times"></i></a>
-                    <?php else : ?>
-                        <a href="<?= "/" . $lang . "/search" ?>"><i class="fa fa-search"></i></a>
-                    <?php endif; ?>
-                </div>
                 <button type="button" id="btn-burger" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
@@ -76,7 +62,7 @@ if($_COOKIE["customer"] != "null") {
                 if ($page->getHref() == "/" . $this->getLocale() . "/corporate") {
                     break;
                 }
-                if ($hasChildren && strpos($page->getUri(), '#product') !== false) {
+                if ($hasChildren && (strpos($page->getUri(), '#product') !== false || strpos($page->getUri(), '#layanan') !== false)) {
         ?>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle <?= $page->getActive() ? "active" : "" ?>" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -93,7 +79,9 @@ if($_COOKIE["customer"] != "null") {
                                     foreach ($child->getPages() as $grandChild) {
                                 ?>
                                         <?php if ($grandChild->getDocumentType() != "link") : ?>
-                                            <li><a class="grandchild <?= $grandChild->getActive() ? 'active' : ''; ?>" href="<?= $grandChild->getHref() ?>"><?= $grandChild->getLabel() ?></a>
+                                            <li>
+                                                <a class="grandchild <?= $grandChild->getActive() ? 'active' : ''; ?>" href="<?= $grandChild->getHref() ?>"><?= $grandChild->getLabel() ?></a>
+                                                <p class="desc-title"><?= $grandChild->document->getProperty("description"); ?></p>
                                             </li>
                                         <?php else : ?>
                                             <li><a href="#" class="title-dropdown"><?= $grandChild->getLabel() ?></a></li>
@@ -119,7 +107,7 @@ if($_COOKIE["customer"] != "null") {
                 <?php
                 } else {
                 ?>
-                    <li class="<?php echo $page->getActive() ? 'active' : '' ?>">
+                    <li class="<?php echo $page->getActive() ? 'active' : '' ?> no-dropdown">
                         <a href="<?= $page->getHref() ?>" target="<?= $page->getTarget() ?>">
                             <?= $page->getLabel() ?>
                         </a>
@@ -132,8 +120,14 @@ if($_COOKIE["customer"] != "null") {
         <li role="separator" class="divider"></li>
         <?= $this->inc("/" . $this->getLocale() . "/shared/includes/sub-navigation-burger") ?>
         <li role="separator" class="divider"></li>
-        <div class="lang">
-            <?php echo $this->template("Includes/mobile-language.html.php") ?>
+        <div class="link-log">
+            <?php if (!isset($_COOKIE["customer"])) { ?>
+                <a href="<?= "/" . $lang . "/login"; ?>" class="login"><?= $this->translate("login") ?></a>
+            <?php } else { ?>
+            <div class="user">
+                <a href="/<?= $this->getLocale() ?>/user/dashboard" class="full_name"><?= $name; ?></a> | <a href="#" class="logout" onclick="return logout('<?= $this->getLocale() ?>');"><?= $this->translate("logout") ?></a>
+            </div>
+            <?php } ?>
         </div>
     </ul>
 </div>

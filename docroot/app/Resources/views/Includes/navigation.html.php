@@ -27,28 +27,20 @@ if($_COOKIE["customer"] != "null") {
         <div class="header-top">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6 col-sm-6 left-side-top">
+                    <div class="col-md-4 col-sm-4 left-side-top">
                         <a id="" class="_personal" href="/<?php echo $this->getLocale() ?>"><?= $this->translate("personal") ?></a>
                         <a class="_grup" href="<?= $this->translate("bfiConnectUrl") ?>" target="_blank"><?= $this->translate("Bisnis") ?></a>
                     </div>
-                    <div class="col-md-6 col-sm-6 right-side-top">
-                            <div class="link-about-top">
-                                <a id="" class="_grup" href="<?= '/' . $this->getLocale() . '/corporate' ?>"><?= $this->translate("corporate") ?></a>
-                                <a id="" href="<?=$lang == "id" ? "/id/karir" : "/en/career"  ?>"><?= $this->translate("karir") ?></a>
-                                <a id="" href="<?=$lang == "id" ? "/id/blog" : "/en/blog"  ?>"><?= $this->translate("blog") ?></a>
-                            </div>
-                        <div class="link-log">
-                            <?php if (!isset($_COOKIE["customer"])) { ?>
-                                <a id="" href="<?= "/" . $lang . "/login"; ?>" class="login"><?= $this->translate("login") ?></a>
-                            <?php } else { ?>
-                            <div class="user">
-                                <a id="" href="/<?= $this->getLocale() ?>/user/dashboard" class="full_name"><?= $name?></a> | <a href="#" class="logout" onclick="return logout('<?= $this->getLocale() ?>');"><?= $this->translate("logout") ?></a>
-                            </div>
-                            <?php }?>
-                            <?php echo $this->template("Includes/language.html.php") ?>
+                    <div class="col-md-4 col-sm-4 right-side-top">
+                        <div class="link-about-top">
+                            <a id="" class="_grup" href="<?= '/' . $this->getLocale() . '/corporate' ?>"><?= $this->translate("corporate") ?></a>
+                            <a id="" href="<?=$lang == "id" ? "/id/karir" : "/en/career"  ?>"><?= $this->translate("career") ?></a>
+                            <a id="" href="<?=$lang == "id" ? "/id/blog" : "/en/blog"  ?>"><?= $this->translate("blog") ?></a>
                         </div>
                     </div>
-
+                    <div class="col-md-4 col-sm-4 link-log">
+                        <?php echo $this->template("Includes/language.html.php") ?>
+                    </div>
                 </div>
             </div>
         </div>
@@ -56,11 +48,14 @@ if($_COOKIE["customer"] != "null") {
         <div class="header-bottom">
             <div class="container">
                 <div class="row">
-
                     <div class="col-md-3 col-sm-3 header-bottom-logo">
                         <a id="" href="<?php echo "/" . $this->getLocale(); ?>">
-                            <img src="/static/images/logo-bfi.png" class="img-responsive" alt="">
+                            <img src="/static/images/logo-bfi.png" class="img-responsive" alt="logo-bfi">
                         </a>
+                        <div class="ojk">
+                            <p class="top-desc">BFI terdaftar dan diawasi oleh</p>
+                            <img src="/static/images/ojk.png" alt="logo-ojk" class="img-responsive">
+                        </div>
                     </div>
                     <div class="col-md-6 col-sm-6 header-bottom-menu">
                         <div class="row header-link-menu">
@@ -80,7 +75,7 @@ if($_COOKIE["customer"] != "null") {
                                         if ($page->getHref() == "/" . $this->getLocale() . "/corporate") {
                                             break;
                                         }
-                                        if ($hasChildren && (strpos($page->getUri(), '#product') !== false)) {
+                                        if ($hasChildren && (strpos($page->getUri(), '#product') !== false || strpos($page->getUri(), '#layanan') !== false)) {
                                 ?>
 
                                             <div class="dropdown col-md-3 col-sm-3" id="produk">
@@ -91,21 +86,25 @@ if($_COOKIE["customer"] != "null") {
                                                             <?php
                                                             foreach ($page->getPages() as $child) {
                                                             ?>
-                                                                <div class="col-md-6">
+                                                                <div class="col-md-12">
                                                                     <ul>
                                                                         <li>
                                                                             <div class="label-title"><?= $child->getLabel() ?></div>
                                                                         </li>
                                                                         <?php
+                                                                            $hasGrandChildren = $child->hasPages();
 
-                                                                        $hasGrandChildren = $child->hasPages();
-
-                                                                        if ($hasGrandChildren) {
-                                                                            foreach ($child->getPages() as $grandChild) {
+                                                                            if ($hasGrandChildren) {
                                                                         ?>
+                                                                        <div class="row">
+                                                                            <?php
+                                                                                foreach ($child->getPages() as $grandChild) {
+                                                                            ?>
+                                                                            <div class="<?= (strpos($page->getUri(), '#product') !== false) ? 'col-md-6' : 'col-md-4' ?>">
                                                                                 <?php if ($grandChild->getDocumentType() != "link") : ?>
                                                                                     <li>
-                                                                                        <a id="" class="<?php echo $grandChild->getActive() ? 'active' : '' ?>" href="<?= $grandChild->getHref() ?>"><?= $grandChild->getLabel() ?></a>
+                                                                                        <a id="" class="<?php echo $grandChild->getActive() ? 'active' : '' ?> sub-title" href="<?= $grandChild->getHref() ?>"><?= $grandChild->getLabel() ?></a>
+                                                                                        <p class="desc-title"><?= $grandChild->document->getProperty("description"); ?></p>
                                                                                     </li>
                                                                                 <?php else : ?>
                                                                                     <li>
@@ -113,23 +112,24 @@ if($_COOKIE["customer"] != "null") {
                                                                                     </li>
                                                                                 <?php endif ?>
                                                                                 <?php
-                                                                                $hasGreatGrandChild = $grandChild->hasPages();
-                                                                                if ($hasGreatGrandChild) {
-                                                                                    foreach ($grandChild->getPages() as $greatGrandChild) {
+                                                                                    $hasGreatGrandChild = $grandChild->hasPages();
+                                                                                    if ($hasGreatGrandChild) {
+                                                                                        foreach ($grandChild->getPages() as $greatGrandChild) {
                                                                                 ?>
                                                                                         <li>
                                                                                             <a id="" class="<?php echo $greatGrandChild->getActive() ? 'active' : '' ?>" href="<?= $greatGrandChild->getHref() ?>"><?= $greatGrandChild->getLabel() ?></a>
                                                                                         </li>
-                                                                        <?php }
-                                                                                }
-                                                                            }
-                                                                        }
-                                                                        ?>
+                                                                                <?php
+                                                                                        }
+                                                                                    }
+                                                                                ?>
+                                                                            </div>                                                             
+                                                                                <?php } ?>
+                                                                        </div>
+                                                                            <?php } ?>
                                                                     </ul>
                                                                 </div>
-                                                            <?php
-                                                            }
-                                                            ?>
+                                                            <?php } ?>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -150,12 +150,14 @@ if($_COOKIE["customer"] != "null") {
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-3 search-button-container">
-                            <?php if ($site == "search") : ?>
-                                <a id="" href="javascript:history.back()"><i class="fa fa-times"></i></a>
-                            <?php else : ?>
-                                <a id="" href="<?= "/" . $lang . "/search" ?>"><i class="fa fa-search"></i></a>
-                            <?php endif; ?>
+                    <div class="col-md-3 col-sm-3 header-bottom-login">
+                            <?php if (!isset($_COOKIE["customer"])) { ?>
+                                <a id="" href="<?= "/" . $lang . "/login"; ?>" class="login"><?= $this->translate("login") ?></a>
+                            <?php } else { ?>
+                            <div class="user">
+                                <a id="" href="/<?= $this->getLocale() ?>/user/dashboard" class="full_name"><?= $name?></a> | <a href="#" class="logout" onclick="return logout('<?= $this->getLocale() ?>');"><?= $this->translate("logout") ?></a>
+                            </div>
+                            <?php }?>
                     </div>
                 </div>
             </div>

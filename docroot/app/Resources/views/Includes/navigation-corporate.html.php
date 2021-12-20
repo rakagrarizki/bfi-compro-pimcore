@@ -48,6 +48,10 @@ $lang = $this->getLocale();
                         <a id="" href="<?php echo "/" . $this->getLocale() . '/corporate'; ?>">
                             <img src="/static/images/logo-bfi.png" class="img-responsive" alt="">
                         </a>
+                        <div class="ojk">
+                            <p class="top-desc">BFI terdaftar dan diawasi oleh</p>
+                            <img src="/static/images/ojk.png" alt="logo-ojk" class="img-responsive">
+                        </div>
                     </div>
                     <div class="col-md-6 col-sm-6 header-bottom-menu">
                         <div class="row header-link-menu">
@@ -107,12 +111,8 @@ $lang = $this->getLocale();
                         </div>
 
                     </div>
-                    <div class="col-md-3 col-sm-3 search-button-container">
-                        <?php if ($site == "search") : ?>
-                            <a id="" href="javascript:history.back()"><i class="fa fa-times"></i></a>
-                        <?php else : ?>
-                            <a id="" href="<?= "/" . $lang . "/search" ?>"><i class="fa fa-search"></i></a>
-                        <?php endif; ?>
+                    <div class="col-md-3 col-sm-3">
+                        
                     </div>
                 </div>
             </div>

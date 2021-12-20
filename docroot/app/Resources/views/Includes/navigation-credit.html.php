@@ -33,13 +33,13 @@ if($_COOKIE["customer"] != "null") {
                         <?php endif; ?>
                     </div>
                     <div class="col-md-6 col-sm-6 right-side-top">
-                    <div class="link-log">
-                    <?php if (isset($_COOKIE["customer"])) { ?>
-                            <div class="user">
-                                <a href="/<?= $this->getLocale() ?>/user/dashboard" class="full_name"><?= $name?></a> | <a href="#" class="logout" onclick="return logout('<?= $this->getLocale() ?>');"><?= $this->translate("logout") ?></a>
-                            </div>
-                        <?php } ?>
-                            <?php echo $this->template("Includes/language.html.php") ?>
+                        <div class="link-log">
+                            <?php if (isset($_COOKIE["customer"])) { ?>
+                                <div class="user">
+                                    <a href="/<?= $this->getLocale() ?>/user/dashboard" class="full_name"><?= $name?></a> | <a href="#" class="logout" onclick="return logout('<?= $this->getLocale() ?>');"><?= $this->translate("logout") ?></a>
+                                </div>
+                            <?php } ?>
+                            <?php echo (strpos($this->getHref(),'form') == false) ? $this->template("Includes/language.html.php") : "" ?>
                         </div>
                     </div>
                 </div>
@@ -59,6 +59,10 @@ if($_COOKIE["customer"] != "null") {
                                 <img src="/static/images/logo-bfi.png" class="img-responsive" alt="">
                             </a>
                         <?php endif; ?>
+                        <div class="ojk">
+                            <p class="top-desc">BFI terdaftar dan diawasi oleh</p>
+                            <img src="/static/images/ojk.png" alt="logo-ojk" class="img-responsive">
+                        </div>
                     </div>
                 </div>
             </div>

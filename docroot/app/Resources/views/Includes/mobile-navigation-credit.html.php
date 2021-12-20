@@ -26,14 +26,25 @@ $site = $this->document->getProperty("site");
         </div>
         <div class="navbar-header row">
             <?php if ($site == "corporate") : ?>
-                <a class="navbar-brand col-xs-12" href="<?php echo "/".$this->getLocale()."/corporate"; ?>">
+            <a class="navbar-brand col-xs-12" href="<?php echo "/".$this->getLocale()."/corporate"; ?>">
                 <img src="/static/images/logo-bfi.png" alt="logo-bfi" class="img-responsive header-image-product">
+                <div class="ojk">
+                    <p class="top-desc">BFI terdaftar dan diawasi oleh</p>
+                    <img src="/static/images/ojk.png" alt="logo-ojk" class="img-responsive">
+                </div>
             </a>
             <?php else : ?>
-                <a class="navbar-brand col-xs-12" href="<?php echo "/".$this->getLocale(); ?>">
+            <a class="navbar-brand col-xs-12" href="<?php echo "/".$this->getLocale(); ?>">
                 <img src="/static/images/logo-bfi.png" alt="logo-bfi" class="img-responsive header-image-product">
+                <div class="ojk">
+                    <p class="top-desc">BFI terdaftar dan diawasi oleh</p>
+                    <img src="/static/images/ojk.png" alt="logo-ojk" class="img-responsive">
+                </div>
             </a>
             <?php endif; ?>
+            <div>
+                &nbsp;
+            </div>
         </div>
     </div>
 </div>
