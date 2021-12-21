@@ -1551,7 +1551,7 @@ class CreditController extends FrontendController
             return new JsonResponse([
                 'success' => "0",
                 'message' => $this->get("translator")->trans("api-error")
-            ]);
+            ], + ($this->isDev ? ['message' => $data->data] : []));
         }
     }
 
@@ -1604,7 +1604,7 @@ class CreditController extends FrontendController
             return new JsonResponse([
                 'success' => "0",
                 'message' => $this->get("translator")->trans("api-error")
-            ]);
+            ], + ($this->isDev ? ['message' => $data->data] : []));
         }
     }
 
@@ -1647,7 +1647,7 @@ class CreditController extends FrontendController
                 'success' => "0",
                 'message' => $this->get("translator")->trans("api-error"),
                 'param' => $param
-            ]);
+            ], + ($this->isDev ? ['message' => $data->data] : []));
         }
     }
 
@@ -1674,7 +1674,7 @@ class CreditController extends FrontendController
             return new JsonResponse([
                 'success' => "0",
                 'message' => $this->get("translator")->trans("api-error")
-            ]);
+            ], + ($this->isDev ? ['message' => $data->data] : []));
         }
     }
 
@@ -1700,7 +1700,7 @@ class CreditController extends FrontendController
             return new JsonResponse([
                 'success' => "0",
                 'message' => $this->get("translator")->trans("api-error")
-            ]);
+            ], + ($this->isDev ? ['message' => $data->data] : []));
         }
     }
 
@@ -1727,7 +1727,7 @@ class CreditController extends FrontendController
             return new JsonResponse([
                 'success' => "0",
                 'message' => $this->get("translator")->trans("api-error")
-            ]);
+            ], + ($this->isDev ? ['message' => $data->data] : []));
         }
     }
 
@@ -2877,7 +2877,7 @@ class CreditController extends FrontendController
             return new JsonResponse([
                 'success' => "0",
                 'message' => $this->get("translator")->trans("api-error")
-            ]);
+            ], + ($this->isDev ? ['message' => $data->data] : []));
         }
     }
 }
