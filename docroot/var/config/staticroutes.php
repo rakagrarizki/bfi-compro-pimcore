@@ -2376,5 +2376,77 @@ return [
         "legacy" => FALSE,
         "creationDate" => 1581494082,
         "modificationDate" => 1581494171
+    ],
+    137 => [
+        "id" => 137,
+        "name" => "get profession",
+        "pattern" => "/\\/credit\\/get-list-profession/",
+        "reverse" => "/credit/get-list-profession",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getListProfession",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1581494082,
+        "modificationDate" => 1581224171
+    ],
+    138 => [
+        "id" => 138,
+        "name" => "get employee status",
+        "pattern" => "/\\/credit\\/get-list-employee-status/",
+        "reverse" => "/credit/get-list-employee-status",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getListEmployeeStatus",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1581494082,
+        "modificationDate" => 1581224171
+    ],
+    139 => [
+        "id" => 139,
+        "name" => "get marital status",
+        "pattern" => "/\\/credit\\/get-list-marital-status/",
+        "reverse" => "/credit/get-list-marital-status",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getListMaritalStatus2",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1581494082,
+        "modificationDate" => 1581224171
+    ],
+    140 => [
+        "id" => 140,
+        "name" => "get spouse profession",
+        "pattern" => "/\\/credit\\/get-list-spouse-profession/",
+        "reverse" => "/credit/get-list-spouse-profession",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getListSpouseProfession",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1581494082,
+        "modificationDate" => 1581224171
     ]
 ];

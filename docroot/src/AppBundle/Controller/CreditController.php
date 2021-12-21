@@ -58,6 +58,11 @@ class CreditController extends FrontendController
     {
     }
 
+    public function failedAction(Request $request)
+    {
+
+    }
+
     public function getBranchBfi($postCode)
     {
         $value = null;
@@ -1462,9 +1467,9 @@ class CreditController extends FrontendController
 
     public function getPbfTenorAction(Request $request)
     {
-        $param['submission_id'] = (string) htmlentities(addslashes($request->get('submission_id')));
         $host = WebsiteSetting::getByName("HOST")->getData();
         $url = $host . WebsiteSetting::getByName('URL_GET_PBF_TENOR_LIST')->getData();
+        $param['submission_id'] = (string)htmlentities(addslashes($request->get('submission_id')));
 
         try {
             $data = $this->sendAPI->getPbfTenor($url, $param);
@@ -1481,7 +1486,8 @@ class CreditController extends FrontendController
         } else {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $this->get("translator")->trans("api-error")
+                'message' => $this->get("translator")->trans("api-error"),
+                'params' => $param
             ]);
         }
     }
@@ -1519,14 +1525,10 @@ class CreditController extends FrontendController
     {
         $host = WebsiteSetting::getByName("HOST")->getData();
         $url = $host . WebsiteSetting::getByName('URL_SAVE_PBF_LEADS_STEP_1')->getData();
-        $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+        // $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["name"] = htmlentities(addslashes($request->get('name')));
-        $param["dob"] = htmlentities(addslashes($request->get('dob')));
-        $param["profession_id"] = htmlentities(addslashes($request->get('profession_id')));
-        $param["salary"] = htmlentities(addslashes($request->get('salary')));
         $param["email"] = htmlentities(addslashes($request->get('email')));
         $param["phone_number"] = htmlentities(addslashes($request->get('phone_number')));
-        $param["path_ktp"] = htmlentities(addslashes($request->get('path_ktp')));
         $param["utm_source"] = htmlentities(addslashes($request->get('utm_source')));
         $param["utm_campaign"] = htmlentities(addslashes($request->get('utm_campaign')));
         $param["utm_term"] = htmlentities(addslashes($request->get('utm_term')));
@@ -1543,7 +1545,7 @@ class CreditController extends FrontendController
             return new JsonResponse([
                 'success' => "1",
                 'message' => "success",
-                'data' => $data->data
+                'data' => $data->data,
             ]);
         } else {
             return new JsonResponse([
@@ -1557,13 +1559,34 @@ class CreditController extends FrontendController
     {
         $host = WebsiteSetting::getByName("HOST")->getData();
         $url = $host . WebsiteSetting::getByName('URL_SAVE_PBF_LEADS_STEP_2')->getData();
+
+        $info_address = $request->get('info_address');
+        $info_assets = $request->get('info_assets');
+
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
-        $param["province_id"] = htmlentities(addslashes($request->get('province_id')));
-        $param["city_id"] = htmlentities(addslashes($request->get('city_id')));
-        $param["district_id"] = htmlentities(addslashes($request->get('district_id')));
-        $param["subdistrict_id"] = htmlentities(addslashes($request->get('subdistrict_id')));
-        $param["zipcode_id"] = htmlentities(addslashes($request->get('zipcode_id')));
-        $param["address"] = htmlentities(addslashes($request->get('address')));
+        $param["info_address"]["province_id"] = htmlentities(addslashes($info_address['province_id']));
+        $param["info_address"]["city_id"] = htmlentities(addslashes($info_address['city_id']));
+        $param["info_address"]["district_id"] = htmlentities(addslashes($info_address['district_id']));
+        $param["info_address"]["subdistrict_id"] = htmlentities(addslashes($info_address['subdistrict_id']));
+        $param["info_address"]["rt"] = htmlentities(addslashes($info_address['rt']));
+        $param["info_address"]["rw"] = htmlentities(addslashes($info_address['rw']));
+        $param["info_address"]["zipcode_id"] = htmlentities(addslashes($info_address['zipcode_id']));
+        $param["info_address"]["address"] = htmlentities(addslashes($info_address['address']));
+        $param["info_assets"]["province_id"] = htmlentities(addslashes($info_assets['province_id']));
+        $param["info_assets"]["city_id"] = htmlentities(addslashes($info_assets['city_id']));
+        $param["info_assets"]["district_id"] = htmlentities(addslashes($info_assets['district_id']));
+        $param["info_assets"]["subdistrict_id"] = htmlentities(addslashes($info_assets['subdistrict_id']));
+        $param["info_assets"]["rt"] = htmlentities(addslashes($info_assets['rt']));
+        $param["info_assets"]["rw"] = htmlentities(addslashes($info_assets['rw']));
+        $param["info_assets"]["zipcode_id"] = htmlentities(addslashes($info_assets['zipcode_id']));
+        $param["info_assets"]["address"] = htmlentities(addslashes($info_assets['address']));
+        $param["profession_id"] = htmlentities(addslashes($request->get('profession_id')));
+        $param["salary"] = htmlentities(addslashes($request->get('salary')));
+        $param["employee_status"] = htmlentities(addslashes($request->get('employee_status')));
+        $param["age"] = htmlentities(addslashes($request->get('age')));
+        $param["marital_status_id"] = htmlentities(addslashes($request->get('marital_status_id')));
+        $param["spouse_name"] = htmlentities(addslashes($request->get('spouse_name')));
+        $param["spouse_profession"] = htmlentities(addslashes($request->get('spouse_profession')));
 
         try {
             $data = $this->sendAPI->savePbfLeads2($url, $param);
@@ -1590,16 +1613,22 @@ class CreditController extends FrontendController
         $host = WebsiteSetting::getByName("HOST")->getData();
         $url = $host . WebsiteSetting::getByName('URL_SAVE_PBF_LEADS_STEP_3')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
-        $param["province_id"] = htmlentities(addslashes($request->get('province_id')));
-        $param["city_id"] = htmlentities(addslashes($request->get('city_id')));
-        $param["district_id"] = htmlentities(addslashes($request->get('district_id')));
-        $param["subdistrict_id"] = htmlentities(addslashes($request->get('subdistrict_id')));
-        $param["zipcode_id"] = htmlentities(addslashes($request->get('zipcode_id')));
-        $param["address"] = htmlentities(addslashes($request->get('address')));
-        $param["certificate_type_id"] = htmlentities(addslashes($request->get('certificate_type_id')));
-        $param["certificate_on_behalf_id"] = htmlentities(addslashes($request->get('certificate_on_behalf_id')));
         $param["property_type_id"] = htmlentities(addslashes($request->get('property_type_id')));
+        $param["certificate_type_id"] = htmlentities(addslashes($request->get('certificate_type_id')));
+        $param["certificatie_in_the_name_id"] = htmlentities(addslashes($request->get('certificatie_in_the_name_id')));
+        $param["where_certificate"] = htmlentities(addslashes($request->get('where_certificate')));
+        $param["is_have_imb"] = htmlentities(addslashes($request->get('is_have_imb')));
+        $param["is_pbb_uptodate"] = htmlentities(addslashes($request->get('is_pbb_uptodate')));
+        $param["is_sales_period_last_year"] = htmlentities(addslashes($request->get('is_sales_period_last_year')));
         $param["is_dihuni"] = htmlentities(addslashes($request->get('is_dihuni')));
+        $param["asset_location"] = htmlentities(addslashes($request->get('asset_location')));
+        $param["other_assets"] = htmlentities(addslashes($request->get('other_assets')));
+        $param["is_vehicle_road"] = htmlentities(addslashes($request->get('is_vehicle_road')));
+        $param["is_near_river"] = htmlentities(addslashes($request->get('is_near_river')));
+        $param["is_near_railroads"] = htmlentities(addslashes($request->get('is_near_railroads')));
+        $param["is_near_silk_tower"] = htmlentities(addslashes($request->get('is_near_silk_tower')));
+        $param["is_near_provider_tower"] = htmlentities(addslashes($request->get('is_near_provider_tower')));
+        $param["is_near_grave"] = htmlentities(addslashes($request->get('is_near_grave')));
 
         try {
             $data = $this->sendAPI->savePbfLeads3($url, $param);
@@ -1616,7 +1645,8 @@ class CreditController extends FrontendController
         } else {
             return new JsonResponse([
                 'success' => "0",
-                'message' => $this->get("translator")->trans("api-error")
+                'message' => $this->get("translator")->trans("api-error"),
+                'param' => $param
             ]);
         }
     }
@@ -1626,6 +1656,7 @@ class CreditController extends FrontendController
         $host = WebsiteSetting::getByName("HOST")->getData();
         $url = $host . WebsiteSetting::getByName('URL_SAVE_PBF_LEADS_STEP_4')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+        $param["disclaimer"] = htmlentities(addslashes($request->get('disclaimer')));
 
         try {
             $data = $this->sendAPI->savePbfLeads4($url, $param);
@@ -2726,6 +2757,112 @@ class CreditController extends FrontendController
 
         try {
             $data = $this->sendAPI->getProduct($url, $param);
+        } catch (\Exception $e) {
+            throw new \Exception('Something went wrong!');
+        }
+
+        if ($data->header->status == 200) {
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "success",
+                'data' => $data->data
+            ]);
+        } else {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $this->get("translator")->trans("api-error")
+            ]);
+        }
+    }
+
+    //getlist
+    public function getListProfessionAction(Request $request)
+    {
+        $host = WebsiteSetting::getByName("HOST")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_LIST_PROFESSION')->getData();
+        $param["category"] = htmlentities(addslashes($request->get('category')));
+
+        try {
+            $data = $this->sendAPI->getListProfession($url, $param);
+        } catch (\Exception $e) {
+            throw new \Exception('Something went wrong!');
+        }
+
+        if ($data->header->status == 200) {
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "success",
+                'data' => $data->data,
+            ]);
+        } else {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $this->get("translator")->trans("api-error")
+                
+            ]);
+        }
+    }
+
+    public function getListEmployeeStatusAction(Request $request)
+    {
+        $host = WebsiteSetting::getByName("HOST")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_EMPLOYEE_STATUS')->getData();
+        $param["category"] = htmlentities(addslashes($request->get('category')));
+
+        try {
+            $data = $this->sendAPI->getListEmployeeStatus($url, $param);
+        } catch (\Exception $e) {
+            throw new \Exception('Something went wrong!');
+        }
+
+        if ($data->header->status == 200) {
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "success",
+                'data' => $data->data
+            ]);
+        } else {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $this->get("translator")->trans("api-error")
+            ]);
+        }
+    }
+
+    public function getListMaritalStatus2Action(Request $request)
+    {
+        $host = WebsiteSetting::getByName("HOST")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_MARITAL_STATUS')->getData();
+        $param["category"] = htmlentities(addslashes($request->get('category')));
+
+        try {
+            $data = $this->sendAPI->getListMaritalStatus2($url, $param);
+        } catch (\Exception $e) {
+            throw new \Exception('Something went wrong!');
+        }
+
+        if ($data->header->status == 200) {
+            return new JsonResponse([
+                'success' => "1",
+                'message' => "success",
+                'data' => $data->data
+            ]);
+        } else {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $this->get("translator")->trans("api-error")
+            ]);
+        }
+    }
+
+    public function getListSpouseProfessionAction(Request $request)
+    {
+        $host = WebsiteSetting::getByName("HOST")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_SPOUSE_PROFESSION')->getData();
+        $param["category"] = htmlentities(addslashes($request->get('category')));
+
+        try {
+            $data = $this->sendAPI->getListSpouseProfession($url, $param);
         } catch (\Exception $e) {
             throw new \Exception('Something went wrong!');
         }

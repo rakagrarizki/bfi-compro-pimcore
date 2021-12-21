@@ -1,5 +1,7 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+<!-- START Mobille -->
 <?php
-
 /**
  * @var \Pimcore\Templating\PhpEngine $this
  * @var \Pimcore\Templating\PhpEngine $view
@@ -7,99 +9,125 @@
  */
 
 $this->extend('layout-credit.html.php');
+$this->headScript()
+    ->offsetSetFile(100, '/static/js/Includes/rumah.js');
+$this->headScript()
+    ->offsetSetFile(101, '/static/js/Includes/general-form.js');
+$this->headScript()
+    ->offsetSetFile(102, '/static/js/Includes/general-otp.js');
 
-$blogList = new Pimcore\Model\DataObject\BlogArticle\Listing();
-$blogList->setOrderKey("Date");
-$blogList->setOrder("desc");
-$blogList->setLimit(4);
 ?>
-<div id="myModal">
-    <div class="form-dialog">
 
         <div class="container">
             <div class="row">
 
                 <div class="col-md-12 no-padding">
-
                     <div class="tab-get--credit">
-                        <nav class="horizontal-scroll">
-                            <ul class="nav nav-tabs">
+                        <nav class="step-list">
+                            <ul class="nav nav-tab">
                                 <li class="nav-item-1 active">
-                                    <a href="#" id="tab1">
-                                        <span class="number"><i class="fa fa-check" aria-hidden="true"></i><b>1</b></span>
-                                        <p><?= $this->translate('data-name') ?></p>
+                                    <a>
+                                        <span class="nav-icon">
+                                            <i class="fas fa-check" aria-hidden="true"></i>
+                                            <b><i class="fas fa-file-signature"></i></b>
+                                        </span>
+                                        <div class="nav-content">
+                                            <span class="nav-step-text">Step 1</span>
+                                            <p class="nav-step-desc"><?=$this->translate('data-pbf-step-1') ?></p>
+                                            <span class="nav-step-tag"><?=$this->translate('state-step') ?></span>
+                                        </div>
                                     </a>
                                 </li>
-                                <li class="nav-item-2 disabled">
-                                    <a href="#" id="tab2">
-                                        <span class="number"><i class="fa fa-check" aria-hidden="true"></i><b>2</b></span>
-                                        <p><?= $this->translate('data-place') ?></p>
+                                <li class="nav-item-2">
+                                    <a>
+                                        <span class="nav-icon">
+                                            <i class="fas fa-check" aria-hidden="true"></i>
+                                            <b><i class="fas fa-house-user"></i></b>
+                                        </span>
+                                        <div class="nav-content">
+                                            <span class="nav-step-text">Step 2</span>
+                                            <p class="nav-step-desc"><?=$this->translate('data-pbf-step-2') ?></p>
+                                            <span class="nav-step-tag"><?=$this->translate('state-step') ?></span>
+                                        </div>
                                     </a>
                                 </li>
-                                <li class="nav-item-3 disabled">
-                                    <a href="#" id="tab3">
-                                        <span class="number"><i class="fa fa-check" aria-hidden="true"></i><b>3</b></span>
-                                        <p><?= $this->translate('data-bangunan') ?></p>
+                                <li class="nav-item-3">
+                                    <a>
+                                        <span class="nav-icon">
+                                            <i class="fas fa-check" aria-hidden="true"></i>
+                                            <b><i class="fas fa-copy"></i></b>
+                                        </span>
+                                        <div class="nav-content">
+                                            <span class="nav-step-text">Step 3</span>
+                                            <p class="nav-step-desc"><?=$this->translate('data-pbf-step-3') ?></p>
+                                            <span class="nav-step-tag"><?=$this->translate('state-step') ?></span>
+                                        </div>
                                     </a>
                                 </li>
-                                <li class="nav-item-4 disabled">
-                                    <a href="#">
-                                        <span class="number"><i class="fa fa-check" aria-hidden="true"></i><b>4</b></span>
-                                        <p><?= $this->translate('data-funding') ?></p>
+                                <li class="nav-item-4">
+                                    <a>
+                                        <span class="nav-icon">
+                                            <i class="fas fa-check" aria-hidden="true"></i>
+                                            <b><i class="fas fa-calculator" aria-hidden="true"></i></b>
+                                        </span>
+                                        <div class="nav-content">
+                                            <span class="nav-step-text">Step 4</span>
+                                            <p class="nav-step-desc"><?=$this->translate('data-pbf-step-4') ?></p>
+                                            <span class="nav-step-tag"><?=$this->translate('state-step') ?></span>
+                                        </div>
                                     </a>
                                 </li>
-                                <li class="nav-item-5 disabled">
-                                    <a href="#" id="tab4">
-                                        <span class="number"><i class="fa fa-check" aria-hidden="true"></i><b>5</b></span>
-                                        <p><?= $this->translate('data-confirmation') ?></p>
+                                <li class="nav-item-5">
+                                    <a>
+                                        <span class="nav-icon">
+                                            <i class="fas fa-check" aria-hidden="true"></i>
+                                            <b><i class="fas fa-clipboard-check"></i></b>
+                                        </span>
+                                        <div class="nav-content">
+                                            <span class="nav-step-text">Step 5</span>
+                                            <p class="nav-step-desc"><?=$this->translate('data-confirmation') ?>
+                                            </p>
+                                            <span class="nav-step-tag"><?=$this->translate('state-step') ?></span>
+                                        </div>
                                     </a>
                                 </li>
                             </ul>
                         </nav>
                         <form action="#" id="getCredit" method="POST" class="form-get--credit" role="form">
-                            <input type="hidden" id="jenis_form" name="jenis_form" value="SURAT BANGUNAN">
                             <div class="tab-content">
                                 <div id="menu1" class="tab-pane fade in active">
                                     <div class="form-body--credit">
                                         <div class="text-head">
-                                            <h2 class="text-center"><?= $this->translate('data-name'), $this->translate('data-name-rumah') ?></h2>
-                                            <h2 class="text-center-edit"><?= $this->translate('change-data-name') ?></h2>
-                                            <p class="text-center"><?= $this->translate('input-data-name') ?></p>
+                                            <h2 class="text-center">
+                                                <?=$this->translate('data-name') , $this->translate('data-name-rumah') ?>
+                                            </h2>
+                                            <p class="text-center"><?=$this->translate('input-data-name') ?></p>
                                         </div>
                                         <div class="form-group">
-                                            <label for="nama_lengkap"><?= $this->translate('form-name') ?></label>
-                                            <input type="text" class="form-control formRequired formAlphabet" name="nama_lengkap" id="nama_lengkap" placeholder="<?= $this->translate('placeholder-name') ?>">
+                                            <label for="nama_lengkap"><?=$this->translate('form-name') ?></label>
+                                            <input type="text" class="form-control inputs formRequired formAlphabet"
+                                                name="nama_lengkap" id="nama_lengkap"
+                                                placeholder="<?=$this->translate('placeholder-name') ?>">
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
-                                            <div class="input-group date">
-                                                <label for="tgl_lahir"><?= $this->translate('form-birthDate') ?></label>
-                                                <input type="text" class="iptDate form-control formRequired" name="tgl_lahir" id="tgl_lahir" placeholder="<?= $this->translate('placeholder-birthDate') ?>">
+                                            <label for="no_handphone"><?=$this->translate('form-hp') ?></label>
+                                            <input type="tel" pattern="\d*" class="form-control inputs formPhoneNumber"
+                                                name="no_handphone" id="no_handphone" maxlength="13"
+                                                placeholder="<?=$this->translate('placeholder-hp') ?>">
+                                            <div class="error-wrap"></div>
+                                            <div class="label-cekLogin hide">
+                                                <?=$this->translate('text-cekLogin') ?><a href="#" class="logout"
+                                                    onclick="return logout('id');"><?=$this->translate('status-login') ?></a>
                                             </div>
-                                            <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
-                                            <label><?= $this->translate('form-work') ?></label>
-                                            <select class="form-control formRequired" id="pekerjaan" name="pekerjaan" placeholder="<?= $this->translate('placeholder-work') ?>" multiple="multiple" />
-                                            <option value="" disabled selected><?= $this->translate('placeholder-work') ?></option>
-                                            </select>
+                                            <label for="email"><?=$this->translate('form-email') ?></label>
+                                            <input type="email" class="form-control inputs formRequired formEmail"
+                                                name="email_pemohon" id="email_pemohon"
+                                                placeholder="<?=$this->translate('placeholder-email') ?>">
                                             <div class="error-wrap"></div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="penghasilan"><?= $this->translate('form-penghasilan') ?></label>
-                                            <input type="text" class="formatRibuan formMaxSalary form-control formRequired" name="penghasilan" id="penghasilan" maxlength="13" placeholder="<?= $this->translate('placeholder-penghasilan') ?>">
-                                            <div class="error-wrap"></div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="email"><?= $this->translate('form-email') ?></label>
-                                            <input type="email" class="form-control formRequired formEmail" name="email" id="email_pemohon" placeholder="<?= $this->translate('placeholder-email') ?>">
-                                            <div class="error-wrap"></div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="no_handphone"><?= $this->translate('form-hp') ?></label>
-                                            <input type="tel" pattern="\d*" class="form-control formPhoneNumber" name="no_handphone" id="no_handphone" maxlength="13" placeholder="<?= $this->translate('placeholder-hp') ?>">
-                                            <div class="error-wrap"></div>
-                                            <div class="label-cekLogin hide"><?= $this->translate('text-cekLogin') ?><a href="#" class="logout" onclick="return logout('id');"><?= $this->translate('status-login') ?></a></div>
+                                            <span><?=$this->translate('form-email-helper') ?></span>
                                         </div>
                                         <div class="form-group" hidden>
                                             <label for="utm_source">utm_source</label>
@@ -126,516 +154,631 @@ $blogList->setLimit(4);
                                             <input type="utm_content" class="form-control" name="utm_content" id="utm_content" placeholder="utm_content" readonly>
                                             <div class="error-wrap"></div>
                                         </div>
-                                       <!-- <div class="form-group upload-image">
-                                            <label><?= $this->translate('label-ktp-new') ?></label>
-                                            <div class="upload-file">
-                                                <img src="" />
-                                                <div class="upload-btn">
-                                                    <input type="file" class="file-input" accept="image/*" data-id="ktp" onchange=" document.getElementById('upload-ktp-button').innerHTML = '<?= $this->translate('Ubah Foto KTP') ?>';" />
-                                                    <button type="button" id="upload-ktp-button"><?= $this->translate('form-ktp') ?></button>
-                                                    <b></b>
+                                        <div class="form-group" hidden>
+                                            <label for="category">category</label>
+                                            <input type="category" class="form-control" name="category" id="category" placeholder="category" value="PBF" readonly>
+                                            <div class="error-wrap"></div>
+                                        </div>
+                                        <div class="form-group form-btn side-right">
+                                            <button class="cta cta-primary cta-big cta-see buttonnext" id="next1"
+                                                type="button"><?=$this->translate('next') ?></button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div id="menu2" class="tab-pane slide-left ">
+                                    <div class="form-body--credit">
+                                        <div class="text-head">
+                                            <h2 class="text-center"><?=$this->translate('title-pbf-step-2') ?></h2>
+                                            <p class="text-center"><?=$this->translate('sub-pbf-step-2') ?></p>
+                                        </div>
+                                        <div class="text-title-form">
+                                            <h3><?=$this->translate('title-form-address') ?></h3>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="provinsi"><?=$this->translate('label-provinsi') ?></label>
+                                            <select class="form-control inputs formRequired" id="provinsi"
+                                                name="provinsi" placeholder="<?=$this->translate('placeholder-provinsi') ?>"
+                                                multiple="multiple" >
+                                            <option value="" disabled selected>Provinsi</option>
+                                            </select>
+                                            <div class="error-wrap"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label><?=$this->translate('label-kota') ?></label>
+                                            <select class="form-control inputs formRequired" id="kota" name="kota"
+                                                placeholder="<?=$this->translate('placeholder-kota') ?>"
+                                                multiple="multiple" />
+                                            <option value="" disabled selected>
+                                                <?=$this->translate('choose-kota') ?>
+                                            </option>
+                                            </select>
+                                            <div class="error-wrap"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label><?=$this->translate('label-kecamatan') ?></label>
+                                            <select class="form-control inputs formRequired" id="kecamatan"
+                                                name="kecamatan"
+                                                placeholder="<?=$this->translate('placeholder-kecamatan') ?>"
+                                                multiple="multiple" />
+                                            <option value="" disabled selected>
+                                                <?=$this->translate('choose-kecamatan') ?></option>
+                                            </select>
+                                            <div class="error-wrap"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label><?=$this->translate('label-kelurahan') ?></label>
+                                            <select class="form-control inputs formRequired" id="kelurahan"
+                                                name="kelurahan"
+                                                placeholder="<?=$this->translate('placeholder-kelurahan') ?>"
+                                                multiple="multiple" />
+                                            <option value="" disabled selected>
+                                                <?=$this->translate('choose-kelurahan') ?></option>
+                                            </select>
+                                            <div class="error-wrap"></div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-md-6 col-xs-6">
+                                                <div class="form-group-row">
+                                                    <label for="rt"><?=$this->translate('label-rt') ?></label>
+                                                    <input type="text" class="form-control inputs formRequired formNumber" maxlength="3" name="rt"
+                                                        id="rt" placeholder="<?=$this->translate('placeholder-rt') ?>"
+                                                        >
+                                                        <div class="error-wrap"></div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <input type="hidden" class="form-control formRequired" name="ktp" id="ktp">
-                                            <div class="error-wrap"></div>
-                                            <span class="notif-ktp"><?= $this->translate('placeholderNoktp') ?></span>
-                                        </div>-->
-                                    </div>
-                                    <div class="button-area text-right next">
-
-                                        <button class="cta cta-primary cta-big cta-see buttonnext" id="button1" type="button"><?= $this->translate('next') ?></button>
-                                        <button class="cta cta-primary cta-big cta-see buttonnext hidesavebuttonhome" type="button"><?= $this->translate('save') ?></button>
-
-                                    </div>
-
-                                </div>
-                                <div id="menu2" class="tab-pane slide-left">
-                                    <div class="form-body--credit">
-                                        <div class="text-head">
-                                            <h2 class="text-center"><?= $this->translate('data-place') ?></h2>
-                                            <h2 class="text-center-edit"><?= $this->translate('change-data-place') ?></h2>
-                                            <p class="text-center"><?= $this->translate('input-data-place') ?></p>
-                                        </div>
-                                        <div class="form-group">
-                                            <label><?= $this->translate('label-provinsi') ?></label>
-                                            <select class="form-control formRequired" id="provinsi" name="provinsi" placeholder="<?= $this->translate('choose-provinsi') ?>" multiple="multiple" />
-                                            <option value="" disabled selected><?= $this->translate('choose-provinsi') ?></option>
-                                            </select>
-                                            <div class="error-wrap"></div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label><?= $this->translate('label-kota') ?></label>
-                                            <select class="form-control formRequired" id="kota" name="kota" placeholder="<?= $this->translate('choose-kota') ?>" multiple="multiple" />
-                                            <option value="" disabled selected><?= $this->translate('choose-kota') ?></option>
-                                            </select>
-                                            <div class="error-wrap"></div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label><?= $this->translate('label-kecamatan') ?></label>
-                                            <select class="form-control formRequired" id="kecamatan" name="kecamatan" placeholder="<?= $this->translate('choose-kecamatan') ?>" multiple="multiple" />
-                                            <option value="" disabled selected><?= $this->translate('choose-kecamatan') ?></option>
-                                            </select>
-                                            <div class="error-wrap"></div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label><?= $this->translate('label-kelurahan') ?></label>
-                                            <select class="form-control formRequired" id="kelurahan" name="kelurahan" placeholder="<?= $this->translate('choose-kelurahan') ?>" multiple="multiple" />
-                                            <option value="" disabled selected><?= $this->translate('choose-kelurahan') ?></option>
-                                            </select>
-                                            <div class="error-wrap"></div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="kode_pos"><?= $this->translate('label-postcode') ?></label>
-                                            <input type="text" class="form-control formKodePos" name="kode_pos" id="kode_pos" placeholder="<?= $this->translate('placeholder-postcode') ?>" disabled>
-                                            <div class="error-wrap"></div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="label-place" for="alamat_lengkap"><?= $this->translate('label-place') ?></label>
-                                            <textarea class="form-control formRequired formAddress" name="alamat_lengkap" id="alamat_lengkap" placeholder="<?= $this->translate('placeholder-place') ?> Contoh: Jalan Rajawali 1 Blok A no.11 RT 01 RW 02"></textarea>
-                                            <div class="error-wrap"></div>
-                                        </div>
-                                    </div>
-                                    <div class="button-area text-left back">
-                                        <button class="cta cta-primary cta-big cta-back buttonback" id="buttonback2" type="button"><?= $this->translate('before') ?></button>
-                                    </div>
-                                    <div class="button-area text-right next">
-                                        <button class="cta cta-primary cta-big cta-see buttonnext" id="button2" type="button"><?= $this->translate('next') ?></button>
-                                        <button class="cta cta-primary cta-big cta-see buttonnext hidesavebuttonhome" type="button"><?= $this->translate('save') ?></button>
-                                    </div>
-
-                                </div>
-                                <div id="menu3" class="tab-pane slide-left">
-                                    <div class="form-body--credit">
-                                        <div class="text-head">
-                                            <h2 class="text-center"><?= $this->translate('data-bangunan') ?></h2>
-                                            <h2 class="text-center-edit"><?= $this->translate('change-data-bangunan') ?></h2>
-                                            <p class="text-center"><?= $this->translate('input-data-bangunan') ?></p>
-                                        </div>
-
-                                        <div class="form-group chk-label">
-                                            <input type="checkbox" id="chkSameAddress" value="true" class="agreement" />
-                                            <label for="chkSameAddress" class="label-agreement agreement1"><?= $this->translate('same-address') ?></label>
-                                            <div class="error-wrap"></div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label><?= $this->translate('label-provinsi') ?></label>
-                                            <select class="form-control formRequired" id="provinsi_sertificate" name="provinsi_sertificate" placeholder="<?= $this->translate('choose-provinsi') ?>" multiple="multiple" />
-                                            <option value="" disabled selected><?= $this->translate('choose-provinsi') ?></option>
-                                            </select>
-                                            <div class="error-wrap"></div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label><?= $this->translate('label-kota') ?></label>
-                                            <select class="form-control formRequired" id="kota_sertificate" name="kota_sertificate" placeholder="<?= $this->translate('choose-kota') ?>" multiple="multiple" />
-                                            <option value="" disabled selected><?= $this->translate('choose-kota') ?></option>
-                                            </select>
-                                            <div class="error-wrap"></div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label><?= $this->translate('label-kecamatan') ?></label>
-                                            <select class="form-control formRequired" id="kecamatan_sertificate" name="kecamatan_sertificate" placeholder="<?= $this->translate('choose-kecamatan') ?>" multiple="multiple" />
-                                            <option value="" disabled selected><?= $this->translate('choose-kecamatan') ?></option>
-                                            </select>
-                                            <div class="error-wrap"></div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label><?= $this->translate('label-kelurahan') ?></label>
-                                            <select class="form-control formRequired" id="kelurahan_sertificate" name="kelurahan_sertificate" placeholder="<?= $this->translate('choose-kelurahan') ?>" multiple="multiple" />
-                                            <option value="" disabled selected><?= $this->translate('choose-kelurahan') ?></option>
-                                            </select>
-                                            <div class="error-wrap"></div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="kode_pos"><?= $this->translate('label-postcode') ?></label>
-                                            <input type="text" class="form-control formKodePos" name="kode_pos_sertificate" id="kode_pos_sertificate" placeholder="<?= $this->translate('placeholder-postcode') ?>">
-                                            <div class="error-wrap"></div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="alamat_lengkap"><?= $this->translate('label-place') ?></label>
-                                            <textarea class="form-control formRequired formAddress" name="alamat_lengkap_sertificate" id="alamat_lengkap_sertificate" placeholder="<?= $this->translate('placeholder-place') ?>"></textarea>
-                                            <div class="error-wrap"></div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label><?= $this->translate('label-jenis-property') ?></label>
-                                            <select class="c-custom-select-trans form-control formRequired" placeholder="<?= $this->translate('placeholder-jenis-property') ?>" id="jenis_properti" name="jenis_properti" multiple="multiple">
-                                            </select>
-                                            <div class="error-wrap"></div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label><?= $this->translate('label-status-bangunan') ?></label>
-                                            <select class="c-custom-select-trans form-control formRequired" placeholder="<?= $this->translate('placeholder-bangunan') ?>" id="status_sertificate" name="status_sertificate" multiple="multiple">
-                                            </select>
-                                            <div class="error-wrap"></div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label><?= $this->translate('label-property-condition') ?></label>
-                                            <select class="c-custom-select-trans form-control formRequired" placeholder="<?= $this->translate('placeholder-property-condition') ?>" id="property_condition" name="property_condition" multiple="multiple">
-                                            </select>
-                                            <div class="error-wrap"></div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label><?= $this->translate('label-status-sertifikat') ?></label>
-                                            <select class="c-custom-select-trans form-control formRequired" placeholder="<?= $this->translate('placeholder-sertifikat') ?>" id="own_sertificate" name="own_sertificate" multiple="multiple">
-                                            </select>
-                                            <div class="error-wrap"></div>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="button-area text-left back">
-                                        <button class="cta cta-primary cta-big cta-back buttonback" id="buttonback3" type="button"><?= $this->translate('before') ?></button>
-                                    </div>
-
-                                    <div class="button-area text-right next">
-                                        <button class="cta cta-primary cta-big cta-see buttonnext" id="button3rumah" type="button"><?= $this->translate('next') ?></button>
-                                        <button class="cta cta-primary cta-big cta-see buttonnext hidesavebuttonhome" type="button"><?= $this->translate('save') ?></button>
-                                    </div>
-
-                                </div>
-
-
-                                <div id="menu4" class="tab-pane slide-left">
-                                    <div class="form-body--credit-simulasi row">
-
-                                        <div class="text-head">
-                                            <h2 class="text-center"><?= $this->translate('data-funding') ?></h2>
-                                            <h2 class="text-center-edit"><?= $this->translate('change-data-funding') ?></h2>
-                                            <p class="text-center"><?= $this->translate('input-data-funding') ?></p>
-                                        </div>
-
-                                        <div class="col-md-6 no-padding-mobile">
-                                            <!-- <div class="form-group">
-                                                <label for="tipe_paket"><?= $this->translate('label-tipe-paket') ?></label>
-                                                <div class="input-group inputform">
-                                                    <div class="ipt-radio">
-                                                        <label>
-                                                            <span>
-                                                                <input type="radio" name="tipe_paket" value="apprisal" checked />
-                                                            </span>
-                                                            Apprisal
-                                                        </label>
+                                            <div class="col-md-6 col-xs-6">
+                                                <div class="form-group-row">
+                                                    <label for="rw"><?=$this->translate('label-rw') ?></label>
+                                                    <input type="text" class="form-control inputs formRequired formNumber" maxlength="3" name="rw"
+                                                        id="rw" placeholder="<?=$this->translate('placeholder-rw') ?>"
+                                                        >
+                                                        <div class="error-wrap"></div>
                                                     </div>
-                                                    <div class="ipt-radio">
-                                                        <label>
-                                                            <span>
-                                                                <input type="radio" name="tipe_paket" value="non-apprisal" />
-                                                            </span>
-                                                            Non-Apprisal
-                                                        </label>
-                                                    </div>
+                                                </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="kode_pos"><?=$this->translate('label-postcode') ?></label>
+                                            <input type="text" class="form-control inputs formKodePos" name="kode_pos"
+                                                id="kode_pos"
+                                                placeholder="<?=$this->translate('placeholder-postcode') ?>" readonly>
+                                            <div class="error-wrap"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="label-place"
+                                                for="alamat_lengkap"><?=$this->translate('label-place') ?></label>
+                                            <textarea class="form-control inputs formAddress"
+                                                name="alamat_lengkap" id="alamat_lengkap"
+                                                placeholder="<?=$this->translate('placeholder-place') ?> Contoh: Jalan Rajawali 1 Blok A no.11 RT 01 RW 02"></textarea>
+                                            <div class="error-wrap"></div>
+                                        </div>
+                                        <div class="form-group radio-group">
+                                            <label for="addres_same"><?=$this->translate('title-form-address-asset') ?></label>
+                                            <div class="radio-button">
+                                                <div class="radio-wrap">
+                                                    <input type="radio" class="inputs formRequired" id="addres_same"
+                                                        name="addres_same" value="true">
+                                                    <label
+                                                        for="addres_same"><?=$this->translate('option-text-yes') ?></label>
+                                                </div>
+                                                <div class="radio-wrap">
+                                                    <input type="radio" class="inputs formRequired" id="addres_same1"
+                                                        name="addres_same" value="false">
+                                                    <label
+                                                        for="addres_same1"><?=$this->translate('option-text-no') ?></label>
                                                 </div>
                                                 <div class="error-wrap"></div>
-                                            </div> -->
+                                            </div>
+
+                                        </div>
+                                        <div class="same-address" hidden>
+                                            <div class="text-title-form">
+                                                <h3><?= $this->translate('title-address-asset') ?></h3>
+                                            </div>
                                             <div class="form-group">
-                                                <label for="estimasi_harga"><?= $this->translate('label-estimasi-harga') ?></label>
-                                                <div class="input-group inputform">
-                                                    <span class="input-group-addon" id="basic-addon1">Rp</span>
-                                                    <input type="text" id="estimasi_harga" class="formatRibuan form-control formRequired minValue c-input-trans" 
-                                                    data-minVal="100000000" 
-                                                    value="100000000">
-                                                </div>
-                                                <div class="error-wrap"></div>
-                                            </div>
-                                            <div class="form-group sliderGroup inputsimulasi">
-                                                <label for="jml-biaya"><?= $this->translate('label-data-funding') ?></label>
-                                                <div class="input-group inputform">
-                                                    <span class="input-group-addon" id="basic-addon1">Rp</span>
-                                                    <input type="tel" pattern="\d*" id="ex6SliderVal" class="form-control formPrice50jt formRequired c-input-trans" aria-describedby="basic-addon1">
-
-                                                    <div class="error-wrap"></div>
-
-                                                </div>
-                                                <div class="slidecontainer ">
-                                                    <input id="funding" class="customslide" type="tel" pattern="\d*" data-slider-handle="custom" data-slider-tooltip="hide" />
-                                                    <div class="value-left valuemin"></div>
-                                                    <div class="value-right valuemax"></div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group sliderGroup inputsimulasi">
-                                                <label><?= $this->translate('label-funding-year') ?></label>
-                                                <select class="c-custom-select-trans form-control formRequired" id="jangka_waktu" name="jangka-waktu">
-                                                    <?php
-                                                    // for ($i = 6 ; $i <= 24; $i++) {
-                                                    //     if($i % 6 == 0){
-                                                    //         echo '<option value="' . $i . '">' . $i . ' ' .$this->translate('label-month') .'</option>';
-                                                    //     }
-                                                    // }
-                                                    ?>
+                                                <label><?=$this->translate('label-provinsi') ?></label>
+                                                <select class="form-control inputs formRequired"
+                                                    id="provinsi_sertificate" name="provinsi_sertificate"
+                                                    placeholder="<?=$this->translate('placeholder-provinsi') ?>"
+                                                    multiple="multiple" />
+                                                <option value="" disabled selected>
+                                                    <?=$this->translate('placeholder-provinsi') ?></option>
                                                 </select>
                                                 <div class="error-wrap"></div>
                                             </div>
-                                            <!-- <div class="form-group inputsimulasi asuransi hidden">
-                                                <label><?= $this->translate('label-asuransi') ?></label>
-                                                <div class="columnselect" ke="0">
-                                                    <div class="list-select">
-                                                        <label><?= $this->translate('label-next-year') ?> - 1</label>
-                                                    </div>
-                                                    <div class="list-select">
-                                                        <select class="c-custom-select-trans form-control formRequired opsiasuransi"
-                                                                name="status"></select>
+                                            <div class="form-group">
+                                                <label><?=$this->translate('label-kota') ?></label>
+                                                <select class="form-control inputs formRequired" id="kota_sertificate"
+                                                    name="kota_sertificate"
+                                                    placeholder="<?=$this->translate('placeholder-kota') ?>"
+                                                    multiple="multiple" />
+                                                <option value="" disabled selected>
+                                                    <?=$this->translate('placeholder-kota') ?>
+                                                </option>
+                                                </select>
+                                                <div class="error-wrap"></div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label><?=$this->translate('label-kecamatan') ?></label>
+                                                <select class="form-control inputs formRequired"
+                                                    id="kecamatan_sertificate" name="kecamatan_sertificate"
+                                                    placeholder="<?=$this->translate('placeholder-kecamatan') ?>"
+                                                    multiple="multiple" />
+                                                <option value="" disabled selected>
+                                                    <?=$this->translate('placeholder-kecamatan') ?></option>
+                                                </select>
+                                                <div class="error-wrap"></div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label><?=$this->translate('label-kelurahan') ?></label>
+                                                <select class="form-control inputs formRequired"
+                                                    id="kelurahan_sertificate" name="kelurahan_sertificate"
+                                                    placeholder="<?=$this->translate('placeholder-kelurahan') ?>"
+                                                    multiple="multiple" />
+                                                <option value="" disabled selected>
+                                                    <?=$this->translate('placeholder-kelurahan') ?></option>
+                                                </select>
+                                                <div class="error-wrap"></div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-md-6 col-xs-6">
+                                                    <div class="form-group-row">
+                                                        <label for="rt"><?=$this->translate('label-rt') ?></label>
+                                                        <input type="text" class="form-control inputs formRequired formNumber" maxlength="4" name="rt_sertificate"
+                                                            id="rt_sertificate" placeholder="<?=$this->translate('placeholder-rt') ?>"
+                                                            >
+                                                        </div>
                                                     </div>
                                                     <div class="error-wrap"></div>
-                                                </div>
-                                            </div> -->
-                                        </div>
-                                        <div class="col-md-6 no-padding-mobile">
-                                            <div class="rincian">
-                                                <div class="rincian--content">
-                                                    <p class="title-angsuran"><?= $this->translate('label-rincian') ?></p>
-                                                    <table class="tableangsuran">
-                                                        <tr>
-                                                            <td>
-                                                                <?= $this->translate('label-total') ?> *
-                                                            </td>
-                                                            <td class="currency" tahun="0">
-                                                                Rp 0
-                                                            </td>
-                                                        </tr>
-                                                        <!-- <tr>
-                                                            <td>
-                                                                </?= $this->translate('label-edu-biaya-adm') ?>
-                                                            </td>
-                                                            <td class="currency" tahun="1">
-                                                                Rp 0
-                                                            </td>
-                                                        </tr> -->
-                                                        <!--  <tr>
-                                                             <td class="textsubcurrency">
-                                                                 Tahun ke-1 [All Risk Only*]
-                                                             </td>
-                                                             <td class="currency" tahun="1">
-                                                                 Rp 0
-                                                             </td>
-                                                         </tr> -->
-                                                        <!--  <tr>
-                                                             <td class="textsubcurrency">
-                                                                 Tahun ke-2 [Total Cost Only*]
-                                                             </td>
-                                                             <td class="currency" tahun="2">
-                                                                 Rp 205.000
-                                                             </td>
-                                                         </tr> -->
-                                                    </table>
-                                                </div>
-                                                <div class="total-estimate">
-                                                    <p class="title-angsuran"><?= $this->translate('label-estimate') ?></p>
-                                                    <p class="total">Rp 0</p>
-                                                    <p class="infotext">*<?= $this->translate('text-estimate') ?></p>
-                                                    <button class="cta cta-primary cta-big absolutebutcalc" id="recalc" type="button"><?= $this->translate('hitung') ?></button>
-                                                </div>
-                                            </div>
-                                            <div class="warning-calculate hide"><label><?= $this->translate("calculate-again"); ?></label></div>
-                                        </div>
-                                    </div>
-
-                                    <div class="button-area text-left back">
-                                        <button class="cta cta-primary cta-big cta-back buttonback" id="buttonback4" type="button"><?= $this->translate('before') ?></button>
-                                    </div>
-
-                                    <div class="button-area text-right next">
-                                        <button class="cta cta-primary cta-big cta-see buttonnext" id="button4rumah" type="button"><?= $this->translate('next') ?></button>
-                                        <button class="cta cta-primary cta-big cta-see buttonnext hidesavebuttonhome" type="button"><?= $this->translate('save') ?></button>
-                                    </div>
-
-                                </div>
-
-                                <div id="menu5" class="tab-pane slide-left">
-                                    <div class="form-body--credit-simulasi">
-                                        <div class="text-head">
-                                            <h2 class="text-center"><?= $this->translate('label-confirmation') ?></h2>
-                                            <p class="text-center"><?= $this->translate('text-confirmation') ?></p>
-                                        </div>
-                                        <div class="biaya-agunan">
-                                            <div class="cont-agunan">
-                                                <p class="title-agunan">
-                                                    A. <?= $this->translate('label-angunan') ?>
-                                                </p>
-                                                <table>
-                                                    <tr>
-                                                        <td><?= $this->translate('label-jenis') ?></td>
-
-                                                        <td id="showAngunan" class="jenis_jaminan"><?= $this->translate('jenis-jaminan-rumah') ?></td>
-                                                    </tr>
-                                                </table>
-                                            </div>
-                                        </div>
-                                        <div class="biaya-agunan">
-                                            <div class="cont-agunan">
-                                                <p class="title-agunan">
-                                                    B. <?= $this->translate('data-name') ?>
-                                                </p>
-                                                <div class="button-area text-right button-angsur">
-                                                    <button id="btnDataPemohon" class="cta cta-primary cta-big cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"></i><b><?= $this->translate('ubah') ?></b></button>
-                                                </div>
-                                                <table>
-                                                    <tr>
-                                                        <td><?= $this->translate('fullname') ?></td>
-
-                                                        <td id="showFullName" class="nama_lengkap"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><?= $this->translate('email') ?></td>
-
-                                                        <td id="showEmail" class="email"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><?= $this->translate('handphone') ?></td>
-
-                                                        <td id="showPhone" class="email"></td>
-                                                    </tr>
-                                                    <!--<tr>
-                                                        <td>Unggah Foto KTP</td>
-
-                                                        <td class="unggah"></td>
-                                                    </tr>-->
-                                                </table>
-                                            </div>
-
-                                        </div>
-                                        <div class="biaya-agunan">
-                                            <div class="cont-agunan">
-                                                <p class="title-agunan">
-                                                    C. <?= $this->translate('data-place') ?>
-                                                </p>
-                                                <div class="button-area text-right button-angsur">
-                                                    <button id="btnDataTempatTinggal" class="cta cta-primary cta-big cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"></i><b><?= $this->translate('ubah') ?></b></button>
-                                                </div>
-                                                <table>
-                                                    <tr>
-                                                        <td><?= $this->translate('provinsi') ?></td>
-
-                                                        <td id="showProvinsi" class="provinsi"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><?= $this->translate('kota') ?></td>
-
-                                                        <td id="showKota" class="kota"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><?= $this->translate('kecamatan') ?></td>
-
-                                                        <td id="showKecamatan" class="kecamatan"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><?= $this->translate('postcode') ?></td>
-
-                                                        <td id="showKodePos" class="kodepos"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><?= $this->translate('address') ?></td>
-
-                                                        <td id="showAddress" class="address"></td>
-                                                    </tr>
-                                                </table>
-                                            </div>
-
-                                        </div>
-                                        <div class="biaya-agunan">
-                                            <div class="cont-agunan">
-                                                <p class="title-agunan">
-                                                    D. <?= $this->translate('data-bangunan') ?>
-                                                </p>
-                                                <div class="button-area text-right button-angsur">
-                                                    <button id="btnDataBangunan" class="cta cta-primary cta-big cta-ubah" type="button"><i class="fa fa-pencil" aria-hidden="true"></i><b><?= $this->translate('ubah') ?></b></button>
-                                                </div>
-                                                <table>
-                                                    <tr>
-                                                        <td><?= $this->translate('label-jenis-property') ?></td>
-
-                                                        <td id="showJenis_properti" class="jenis_properti"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><?= $this->translate('provinsi') ?></td>
-
-                                                        <td id="showProvinsi_sertificate" class="provinsi_sertificate"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><?= $this->translate('kota') ?></td>
-
-                                                        <td id="showKota_sertificate" class="kota_sertificate"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><?= $this->translate('kecamatan') ?></td>
-
-                                                        <td id="showKecamatan_sertificate" class="kecamatan_sertificate"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><?= $this->translate('kelurahan') ?></td>
-
-                                                        <td id="showKelurahan_sertificate" class="kelurahan_sertificate"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><?= $this->translate('postcode') ?></td>
-
-                                                        <td id="showKode_pos_sertificate" class="kode_pos_sertificate"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><?= $this->translate('address') ?></td>
-
-                                                        <td id="showAlamat_lengkap_sertificate" class="alamat_lengkap_sertificate"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><?= $this->translate('label-status-bangunan') ?></td>
-
-                                                        <td id="showStatus_sertificate" class="status_sertificate"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><?= $this->translate('label-property-condition') ?></td>
-
-                                                        <td id="showProperty_condition" class="showProperty_condition"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><?= $this->translate('label-status-sertifikat') ?></td>
-
-                                                        <td id="showOwn_sertificate" class="own_sertificate"></td>
-                                                    </tr>
-
-                                                </table>
-                                            </div>
-
-                                        </div>
-                                        <div class="biaya-agunan">
-                                            <div class="form-group">
-                                                <input type="checkbox" id="agreement1" name="agreement1" class="form-control formRequired agreement">
-                                                <label for="agreement1" class="label-agreement agreement1"><?= $this->translate('term-condition') ?></label>
-                                                <div class="error-wrap"></div>
+                                                <div class="col-md-6 col-xs-6">
+                                                    <div class="form-group-row">
+                                                        <label for="rw"><?=$this->translate('label-rw') ?></label>
+                                                        <input type="text" class="form-control inputs formRequired formNumber" maxlength="4" name="rw_sertificate"
+                                                            id="rw_sertificate" placeholder="<?=$this->translate('placeholder-rw') ?>"
+                                                            >
+                                                        </div>
+                                                    </div>
+                                                    <div class="error-wrap"></div>
                                             </div>
                                             <div class="form-group">
-                                                <input type="checkbox" id="agreement2" name="agreement2" class="form-control formRequired agreement">
-                                                <label for="agreement2" class="label-agreement agreement2"><?= $this->translate('term-condition-2') ?></label>
+                                                <label for="kode_pos"><?=$this->translate('label-postcode') ?></label>
+                                                <input type="text" class="form-control inputs formKodePos" name="kode_pos_sertificate"
+                                                    id="kode_pos_sertificate"
+                                                    placeholder="<?=$this->translate('placeholder-postcode') ?>" readonly>
+                                            <div class="error-wrap"></div>
+                                        </div>
+                                        <div class="form-group">
+                                                <label
+                                                    for="alamat_sertificate"><?=$this->translate('label-place') ?></label>
+                                                <textarea class="form-control inputs formRequired formAddress"
+                                                    name="alamat_sertificate" id="alamat_sertificate"
+                                                    placeholder="<?=$this->translate('placeholder-place') ?>"></textarea>
                                                 <div class="error-wrap"></div>
-                                            </div>
+                                        </div>
+                                        </div>
+                                        <div class="text-title-form">
+                                            <h3><?=$this->translate('title-form-job') ?></h3>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="occupation"><?=$this->translate('label-work') ?></label>
+                                            <select class="form-control inputs formRequired" id="occupation"
+                                                name="occupation" placeholder="<?=$this->translate('placeholder-work') ?>" multiple="multiple">
+                                                <option value="" disabled selected><?=$this->translate('placeholder-work') ?></option>
+                                            </select>
+                                            <div class="error-wrap"></div>
+                                        </div>
+                                        <div class="form-group employee_status" hidden>
+                                            <label for="employee_status"><?=$this->translate('label-employee-status') ?></label>
+                                            <select class="form-control inputs formRequired" id="employee_status"
+                                                name="employee_status" placeholder="<?=$this->translate('placeholder-employee-status') ?>" multiple="multiple">
+                                                <option value="" disabled selected><?=$this->translate('placeholder-employee-status') ?></option>
+                                            </select>
+                                            <div class="error-wrap"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="penghasilan"><?=$this->translate('label-income') ?></label>
+                                            <input type="text"
+                                                class="formatRibuan formMaxSalary form-control inputs formRequired"
+                                                name="penghasilan" id="penghasilan"
+                                                placeholder="<?=$this->translate('placeholder-income') ?>">
+                                            <div class="error-wrap"></div>
+                                            <span><?=$this->translate('helper-income') ?></span>
+                                        </div>
+                                        <div class="text-title-form">
+                                            <h3><?=$this->translate('title-form-status-job') ?></h3>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="umur"><?=$this->translate('label-age') ?></label>
+                                            <input type="text" class="form-control inputs formRequired formNumber"
+                                                name="umur" id="umur" maxlength="2" placeholder="<?=$this->translate('placeholder-age') ?>">
+                                            <div class="error-wrap"></div>
+                                        </div>
+                                        <div class="form-group">    
+                                            <label for="marital_status"><?= $this->translate('label-marital-state') ?></label>
+                                            <select class="form-control inputs formRequired" id="marital_status"
+                                                name="marital_status" placeholder="<?= $this->translate('placeholder-marital-state') ?>"
+                                                multiple="multiple">
+                                                <option value="" disabled selected><?= $this->translate('placeholder-marital-state') ?></option>
+                                            </select>
+                                            <div class="error-wrap"></div>
+                                        </div>
+                                        <div class="form-group spouse_name" hidden>
+                                            <label for="spouse_name"><?= $this->translate('label-couple-name') ?></label>
+                                            <input type="text" class="form-control inputs formRequired formAlphabet"
+                                                name="spouse_name" id="spouse_name" placeholder="<?= $this->translate('placeholder-couple-name') ?>">
+                                            <div class="error-wrap"></div>
+                                        </div>
+                                        <div class="form-group spouse_job" hidden>
+                                            <label><?= $this->translate('label-couple-job') ?></label>
+                                            <select class="form-control inputs formRequired" id="spouse_job"
+                                                name="spouse_job" placeholder="<?= $this->translate('placeholder-couple-job') ?>" multiple="multiple">
+                                                <option value="" disabled selected><?= $this->translate('placeholder-couple-job') ?></option>
+                                            </select>
+                                            <div class="error-wrap"></div>
+                                        </div>
+                                        <div class="form-group form-btn space-btn">
+                                            <button class="cta cta-primary-outline cta-big cta-back buttonback"
+                                                id="back2" type="button"><?=$this->translate('before') ?></button>
+                                           <button class="cta cta-primary cta-big cta-see buttonnext" id="next2"
+                                                type="button"><?=$this->translate('next') ?></button>
                                         </div>
                                     </div>
-
-                                    <div class="button-area text-left back">
-                                        <button class="cta cta-primary cta-big cta-back buttonback" id="buttonback5" type="button"><?= $this->translate('before') ?></button>
-                                    </div>
-
-                                    <div class="button-area text-right next">
-                                        <button class="cta cta-primary cta-big cta-see buttonnext" id="button5" type="button"><?= $this->translate('next') ?></button>
-                                    </div>
-
                                 </div>
-
-                                <div id="menu6" class="tab-pane slide-left">
+                                <div id="menu3" class="tab-pane slide-left ">
                                     <div class="form-body--credit">
-                                        <h2 class="text-center"><?= $this->translate('confirmation-otp') ?></h2>
-                                        <p class="text-center"><?= $this->translate('text-confirmation-otp') ?></p>
+                                        <div class="text-head">
+                                            <h2 class="text-center"><?=$this->translate('title-pbf-step-3') ?></h2>
+                                            <p class="text-center"><?=$this->translate('sub-pbf-step-3') ?>
+                                            </p>
+                                        </div>
+                                        <div class="text-title-form">
+                                            <h3><?= $this->translate('title-asset-information') ?></h3>
+                                        </div>
+                                        <div class="form-group radio-group">
+                                            <label><?= $this->translate('label-asset-type') ?></label>
+                                            <div class="radio-button PropertyType">
+                                            </div>
+                                            <div class="error-wrap"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="certificate_status"><?= $this->translate('label-jenis-sertifikat') ?></label>
+                                            <select class=" form-control inputs formRequired"
+                                                placeholder="<?= $this->translate('placeholder-jenis-sertifikat') ?>" id="certificate_status"
+                                                name="certificate_status" multiple="multiple">
+                                                <option value="" disabled selected><?= $this->translate('placeholder-jenis-sertifikat') ?></option>
+                                            </select>
+                                            <div class="error-wrap"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="certificate_by_name"><?= $this->translate('label-atasnama-sertifikat') ?>a</label>
+                                            <select class=" form-control inputs formRequired"
+                                                placeholder=<?= $this->translate('placeholder-atasnama-sertifikat') ?>" id="certificate_by_name"" name="
+                                                certificate_by_name"" multiple="multiple">
+                                            </select>
+                                            <div class="error-wrap"></div>
+                                        </div>
+                                        <div class="form-group radio-group">
+                                            <label for="addres_same"><?= $this->translate('label-certificate-resence') ?>t</label>
+                                            <div class="radio-button">
+                                                <div class="radio-wrap">
+                                                    <input type="radio" class="inputs formRequired" id="where_certificate"
+                                                        name="where_certificate" value="on hand">
+                                                    <label for="where_certificate">On hand</label>
+                                                </div>
+                                                <div class="radio-wrap">
+                                                    <input type="radio" class="inputs formRequired" id="where_certificate1"
+                                                        name="where_certificate" value="take over">
+                                                    <label for="where_certificate1">Take Over</label>
+                                                </div>
+                                                 <div class="error-wrap"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group radio-group">
+                                            <label for="addres_same"><?= $this->translate('label-imb') ?></label>
+                                            <div class="radio-button">
+                                                <div class="radio-wrap">
+                                                    <input type="radio" class="inputs formRequired" id="is_have_imb"
+                                                        name="is_have_imb" value="true">
+                                                    <label
+                                                        for="is_have_imb"><?=$this->translate('option-text-yes') ?></label>
+                                                </div>
+                                                <div class="radio-wrap">
+                                                    <input type="radio" class="inputs formRequired" id="is_have_imb1"
+                                                        name="is_have_imb" value="false">
+                                                    <label
+                                                        for="is_have_imb1"><?=$this->translate('option-text-no') ?></label>
+                                                </div>
+                                                 <div class="error-wrap"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group radio-group">
+                                            <label for="addres_same"><?= $this->translate('label-pbb-uptodate') ?></label>
+                                            <div class="radio-button">
+                                                <div class="radio-wrap">
+                                                    <input type="radio" class="inputs formRequired" id="is_pbb_uptodate"
+                                                        name="is_pbb_uptodate" value="true">
+                                                    <label
+                                                        for="is_pbb_uptodate"><?=$this->translate('option-text-yes') ?></label>
+                                                </div>
+                                                <div class="radio-wrap">
+                                                    <input type="radio" class="inputs formRequired" id="is_pbb_uptodate1"
+                                                        name="is_pbb_uptodate" value="false">
+                                                    <label
+                                                        for="is_pbb_uptodate1"><?=$this->translate('option-text-no') ?></label>
+                                                </div>
+                                                 <div class="error-wrap"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group radio-group">
+                                            <label for="addres_same"><?= $this->translate('label-sales-period') ?></label>
+                                            <div class="radio-button">
+                                                <div class="radio-wrap">
+                                                    <input type="radio" class="inputs formRequired"
+                                                        id="is_sales_period_last_year_not"
+                                                        name="is_sales_period_last_year_not" value="true">
+                                                    <label
+                                                        for="is_sales_period_last_year_not"><?=$this->translate('option-text-yes') ?></label>
+                                                </div>
+                                                <div class="radio-wrap">
+                                                    <input type="radio" class="inputs formRequired"
+                                                        id="is_sales_period_last_year_not1"
+                                                        name="is_sales_period_last_year_not" value="false">
+                                                    <label
+                                                        for="is_sales_period_last_year_not1"><?=$this->translate('option-text-no') ?></label>
+                                                </div>
+                                                 <div class="error-wrap"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="selectDihuni"><?= $this->translate('label-selectDihuni') ?></label>
+                                            <select class=" form-control inputs formRequired" placeholder="<?= $this->translate('placeholder-selectDihuni') ?>"
+                                                id="selectDihuni" name="selectDihuni" multiple="multiple">
+                                            </select>
+                                            <div class="error-wrap"></div>
+                                        </div>
+                                        <div class="text-title-form">
+                                            <h3><?= $this->translate('title-asset-location') ?></h3>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="asset_location"><?= $this->translate('label-asset-location') ?></label>
+                                            <select class=" form-control inputs formRequired" placeholder="<?= $this->translate('placeholder-asset-location') ?>"
+                                                id="asset_location" name="asset_location" multiple="multiple">
+                                            </select>
+                                            <div class="error-wrap"></div>
+                                        </div>
+                                        <div class="form-group radio-group">
+                                            <label for="addres_same"><?= $this->translate('label-other-asset') ?></label>
+                                            <div class="radio-button">
+                                                <div class="radio-wrap">
+                                                    <input type="checkbox" class="inputs formRequired" id="other_assets-mbl"
+                                                        name="other_assets" value="motor">
+                                                    <label for="other_assets-mbl"><?= $this->translate('option-other-asset2') ?></label>
+                                                </div>
+                                                <div class="radio-wrap">
+                                                    <input type="checkbox" class="inputs formRequired" id="other_assets-mbl1"
+                                                        name="other_assets" value="mobil">
+                                                    <label for="other_assets-mbl1"><?= $this->translate('option-other-asset1') ?></label>
+                                                </div>
+                                                <div class="radio-wrap">
+                                                    <input type="checkbox" class="inputs formRequired" id="other_assets-mbl2"
+                                                        name="other_assets" value="rumah">
+                                                    <label for="other_assets-mbl2"><?= $this->translate('option-other-asset3') ?></label>
+                                                </div>
+                                                <div class="radio-wrap">
+                                                    <input type="checkbox" class="inputs formRequired" id="other_assets-mbl3"
+                                                        name="other_assets" value="apartment">
+                                                    <label for="other_assets-mbl3"><?= $this->translate('option-other-asset4') ?></label>
+                                                </div>
+                                                 <div class="error-wrap"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group radio-group">
+                                            <label for="addres_same"><?= $this->translate('label-vehicle-road') ?></label>
+                                            <div class="radio-button">
+                                                <div class="radio-wrap">
+                                                    <input type="radio" class="inputs formRequired" id="is_vehicle_road"
+                                                        name="is_vehicle_road" value="true">
+                                                    <label
+                                                        for="is_vehicle_road"><?=$this->translate('option-text-yes') ?></label>
+                                                </div>
+                                                <div class="radio-wrap">
+                                                    <input type="radio" class="inputs formRequired" id="is_vehicle_road1"
+                                                        name="is_vehicle_road" value="false">
+                                                    <label
+                                                        for="is_vehicle_road1"><?=$this->translate('option-text-no') ?></label>
+                                                </div>
+                                                 <div class="error-wrap"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group radio-group">
+                                            <label for="addres_same"><?= $this->translate('label-near-river') ?></label>
+                                            <div class="radio-button">
+                                                <div class="radio-wrap">
+                                                    <input type="radio" class="inputs formRequired" id="is_near_river"
+                                                        name="is_near_river" value="true">
+                                                    <label
+                                                        for="is_near_river"><?=$this->translate('option-text-yes') ?></label>
+                                                </div>
+                                                <div class="radio-wrap">
+                                                    <input type="radio" class="inputs formRequired" id="is_near_river1"
+                                                        name="is_near_river" value="false">
+                                                    <label
+                                                        for="is_near_river1"><?=$this->translate('option-text-no') ?></label>
+                                                </div>
+                                                 <div class="error-wrap"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group radio-group">
+                                            <label for="addres_same"><?= $this->translate('label-near-railroad') ?></label>
+                                            <div class="radio-button">
+                                                <div class="radio-wrap">
+                                                    <input type="radio" class="inputs formRequired" id="is_near_railroads"
+                                                        name="is_near_railroads" value="true">
+                                                    <label
+                                                        for="is_near_railroads"><?=$this->translate('option-text-yes') ?></label>
+                                                </div>
+                                                <div class="radio-wrap">
+                                                    <input type="radio" class="inputs formRequired" id="is_near_railroads1"
+                                                        name="is_near_railroads" value="false">
+                                                    <label
+                                                        for="is_near_railroads1"><?=$this->translate('option-text-no') ?></label>
+                                                </div>
+                                                 <div class="error-wrap"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group radio-group">
+                                            <label for="addres_same"><?= $this->translate('label-near-sliktower') ?></label>
+                                            <div class="radio-button">
+                                                <div class="radio-wrap">
+                                                    <input type="radio" class="inputs formRequired" id="is_near_silk_tower"
+                                                        name="is_near_silk_tower" value="true">
+                                                    <label
+                                                        for="is_near_silk_tower"><?=$this->translate('option-text-yes') ?></label>
+                                                </div>
+                                                <div class="radio-wrap">
+                                                    <input type="radio" class="inputs formRequired" id="is_near_silk_tower1"
+                                                        name="is_near_silk_tower" value="false">
+                                                    <label
+                                                        for="is_near_silk_tower1"><?=$this->translate('option-text-no') ?></label>
+                                                </div>
+                                                 <div class="error-wrap"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group radio-group">
+                                            <label for="addres_same"><?= $this->translate('label-near-provide-tower') ?></label>
+                                            <div class="radio-button">
+                                                <div class="radio-wrap">
+                                                    <input type="radio" class="inputs formRequired" id="is_near_provider_tower"
+                                                        name="is_near_provider_tower" value="true">
+                                                    <label
+                                                        for="is_near_provider_tower"><?=$this->translate('option-text-yes') ?></label>
+                                                </div>
+                                                <div class="radio-wrap">
+                                                    <input type="radio" class="inputs formRequired" id="is_near_provider_tower1"
+                                                        name="is_near_provider_tower" value="false">
+                                                    <label
+                                                        for="is_near_provider_tower1"><?=$this->translate('option-text-no') ?></label>
+                                                </div>
+                                                 <div class="error-wrap"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group radio-group">
+                                            <label for="addres_same"><?= $this->translate('label-near-grave') ?></label>
+                                            <div class="radio-button">
+                                                <div class="radio-wrap">
+                                                    <input type="radio" class="inputs formRequired" id="is_near_grave"
+                                                        name="is_near_grave" value="true">
+                                                    <label
+                                                        for="is_near_grave"><?=$this->translate('option-text-yes') ?></label>
+                                                </div>
+                                                <div class="radio-wrap">
+                                                    <input type="radio" class="inputs formRequired" id="is_near_grave1"
+                                                        name="is_near_grave" value="false">
+                                                    <label
+                                                        for="is_near_grave1"><?=$this->translate('option-text-no') ?></label>
+                                                </div>
+                                                 <div class="error-wrap"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group form-btn space-btn">
+                                            <button class="cta cta-primary-outline cta-big cta-back buttonback3"
+                                                id="back3" type="button"><?=$this->translate('before') ?></button>
+                                                 <button class="cta cta-primary cta-big cta-see buttonnext" id="next3"
+                                                type="button"><?=$this->translate('next') ?></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="menu4" class="tab-pane slide-left ">
+                                    <div class="form-body--credit">
+                                        <div class="text-head">
+                                            <h2 class="text-center"><?= $this->translate('title-pbf-step-4') ?></h2>
+                                            <p class="text-center"><?= $this->translate('sub-pbf-step-4') ?></p>
+                                        </div>
+                                        <div class="text-title-form">
+                                            <h3><?= $this->translate('title-estimate-installment') ?></h3>
+                                        </div>
+                                        <div class="form-group simulasi-group">
+                                            <label for="estimasi_harga"><?= $this->translate('estimated-house-price') ?></label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon" id="basic-addon1">Rp</span>
+                                                <input type="text" id="estimate_price"
+                                                    class="formatRibuan form-control inputs formRequired addonInput c-input-trans"
+                                                    placeholder="<?= $this->translate('estimated-house-price') ?>">
+                                            </div>
+                                            <div class="error-wrap"></div>
+                                        </div>
+                                        <div class="form-group simulasi-group sliderGroup inputsimulasi">
+                                            <label for="PengajuanBiaya"><?= $this->translate('desired-financing') ?></label>
+                                            <input type="tel" pattern="\d*" id="PengajuanBiaya"
+                                                class="form-control inputs formRequired c-input-trans"
+                                                aria-describedby="basic-addon1"
+                                                placeholder="<?= $this->translate('desired-financing') ?>">
+                                            <div class="slidecontainer ">
+                                                <input id="funding" class="customslide" type="tel" pattern="\d*"
+                                                    data-slider-handle="custom" data-slider-tooltip="hide" />
+                                                <div class="value-left valuemin">0</div>
+                                                <div class="value-right valuemax">0</div>
+                                            </div>
+                                            <div class="error-wrap"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="tenorPbf">Tenor</label>
+                                            <select class="form-control inputs formRequired" id="tenorPbf"
+                                                name="tenorPbf" placeholder="Pilih Tenor"
+                                                multiple="multiple" >
+                                            <option value="" disabled selected>Tenor</option>
+                                            </select>
+                                            <div class="error-wrap"></div>
+                                        </div>
+                                        <div class="form-group  simulasi-group rincian">
+                                            <div class="total-estimate">
+                                                <p class="title-angsuran"><?=$this->translate('label-estimate') ?>
+                                                </p>
+                                                <p class="total">Rp 0</p>
+                                                <button class="cta cta-primary cta-big absolutebutcalc" id="calcLoan"
+                                                    type="button" disabled><?=$this->translate('hitung') ?></button>
+                                            </div>
+                                            <p class="infotext"><?= $this->translate('estimated-Installments-info-pbf') ?></p>
+                                        </div>
+                                        <div class="form-group form-check">
+                                            <input class="form-check-input formRequired" type="checkbox" value="true"
+                                                id="disclaimer" name="disclaimer">
+                                            <label class="form-check-label" for="disclaimer"> Data yang saya input
+                                                adalah benar, saya bersedia dilakukan survey dan juga di lakukan
+                                                pengecekan informasi debitur (BI Checking) guna mendukung proses
+                                                pengajuan saya saat ini.
+                                                <div class="error-wrap"></div>
+                                            </label>
+                                        </div>
+                                        <div class="form-group form-btn space-btn">
+                                            <button class="cta cta-primary-outline cta-big cta-back buttonback"
+                                                id="back4" type="button"><?=$this->translate('before') ?>
+                                            </button>
+                                            <button class="cta cta-primary cta-big cta-see buttonnext" id="next4"
+                                                type="button"><?=$this->translate('next') ?></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="menu5" class="tab-pane slide-left ">
+                                    <div class="form-body--credit">
+                                        <h2 class="text-center"><?=$this->translate('confirmation-otp') ?></h2>
+                                        <p class="text-center"><?=$this->translate('text-confirmation-otp') ?></p>
 
                                         <div class="otp-number form-group">
-                                            <!-- <div class="otp-number__phone disabled">
-                                                <p id="showPhone"> <input type="tel" pattern="\d*" id="otpPhone" disabled /> <img id="otpEditPhone" src="/static/images/icon/pencils.png" alt=""></p>
-                                            </div> -->
                                             <div class="otp-number__verify">
-                                                <input type="tel" pattern="\d*" class="input-number formRequired" maxlength="1" name="otp1">
-                                                <input type="tel" pattern="\d*" class="input-number formRequired" maxlength="1" name="otp2">
-                                                <input type="tel" pattern="\d*" class="input-number formRequired" maxlength="1" name="otp3">
-                                                <input type="tel" pattern="\d*" class="input-number formRequired" maxlength="1" name="otp4">
+                                                <input type="tel" pattern="\d*" class="input-number formRequired"
+                                                    maxlength="1" name="otp1">
+                                                <input type="tel" pattern="\d*" class="input-number formRequired"
+                                                    maxlength="1" name="otp2">
+                                                <input type="tel" pattern="\d*" class="input-number formRequired"
+                                                    maxlength="1" name="otp3">
+                                                <input type="tel" pattern="\d*" class="input-number formRequired"
+                                                    maxlength="1" name="otp4">
                                             </div>
                                             <div class="error-wrap"></div>
                                             <div class="otp-number__text">
-                                                <p><?= $this->translate('dont-get-otp') ?> <span class="countdown"></span> </p>
+                                                <p class="otp-wait"><?= $this->translate('wait-otp')?> <span id="otp-counter" class="countdown"></span> </p>
+                                                <p class="otp-resend"><?= $this->translate('dont-get-otp')?> <span id="resendOTP" class="countdown">Resend</span></p>
                                             </div>
                                         </div>
 
@@ -643,7 +786,8 @@ $blogList->setLimit(4);
 
 
                                     <div class="button-area text-center">
-                                        <button class="cta cta-primary cta-big cta-see btn-verifikasi buttonnext" id="button6" type="button"  style="background-color: rgb(221, 221, 221); border-color: rgb(221, 221, 221);"  disabled="disabled"><?= $this->translate('verifikasi') ?></button>
+                                        <button class="cta cta-primary cta-big cta-see buttonnext" id="next5"
+                                            type="button"><?=$this->translate('verifikasi') ?></button>
                                     </div>
 
                                 </div>
@@ -651,57 +795,110 @@ $blogList->setLimit(4);
                                 <div id="success" class="success-wrapper">
                                     <div class="wrapper">
                                         <div class="img-wrap">
-                                            <img class="icon-thank-page" src="/static/images/icon/m_thank_you.png" alt="">
+                                            <img class="icon-thank-page" src="/static/images/icon/m_thank_you.png"
+                                                alt="">
                                         </div>
                                         <div class="text-wrap text-center">
-                                            <h3><?= $this->translate('tq-text-1') ?></h3>
-                                            <p><?= $this->translate('tq-text-2') ?></p>
+                                            <h3>Terima kasih telah melakukan pengajuan di BFI Finance</h3>
+                                            <p>Anda akan segera dihubungi pada jam 08:00 - 17:00 di hari senin - jumat
+                                                dan jam 08:00 - 11:00 di hari sabtu. </p>
                                         </div>
-                                        <div class="button-area text-center backtohome">
-                                            <button class="cta cta-primary cta-big cta-see buttonnext btn-check" id="button7" 
-                                                type="button" onclick="return checkStatusPengajuan()"><?= $this->translate('cek-status-aplikasi') ?></button>
-                                        </div>
-                                    </div>
-                                    <div class="blog-promo">
-                                        <article class="sect-title text-center">
-                                            <h2 class="title"><?= $this->t('berita_head'); ?></h2>
-                                            <p class="subtitle"><?= $this->t('berita_sub_head'); ?></p>
-                                        </article>
-                                        <div class="list-card success-news">
-                                            <?php foreach($blogList as $blog) : ?>
-                                                <a href="<?= '/' . $this->getLocale() . '/blog/' . $blog->getSlug(); ?>" class="card-item">
-                                                    <picture>
-                                                        <img src="<?= $blog->getImage(); ?>" alt="">
-                                                    </picture>
-                                                    <div class="caption">
-                                                        <h3 class="tag"><?= $blog->getBlogCategory()->getName(); ?></h3>
-                                                        <h2 class="title"><?= $blog->getTitle(); ?></h2>
-                                                        <p class="date"><?= date('d.m.y', strtotime($blog->getDate())); ?> | <i class="fa fa-eye"></i> <?= $blog->getViews(); ?></p>
-                                                        <!-- <div class="dateview">
-                                                            <span class="date"></?= date('d.m.y', strtotime($blog->getDate())); ?></span>
-                                                            <span class="view"><i class="fa fa-eye"></i></?= $blog->getViews(); ?></span>
-                                                        </div> -->
+                                        <div id="box-document">
+                                            <p>Berikut Dokumen Persyaratan-nya</p>
+                                            <div class="row">
+                                                <div class="col-md-6 col-xs-12">
+                                                    <div class=" box-item">
+                                                        <div class="wrap-icon">
+                                                            <i class="fa fa-check" aria-hidden="true"></i>
+                                                        </div>
+                                                        <div class="wrap-text">
+                                                            <p>KTP Pemohon & Pasangan (Jika sudah menikah)</p>
+                                                        </div>
                                                     </div>
-                                                </a>
-                                            <?php endforeach; ?>
+                                                </div>
+                                                <div class="col-md-6 col-xs-12">
+                                                    <div class=" box-item">
+                                                        <div class="wrap-icon">
+                                                            <i class="fa fa-check" aria-hidden="true"></i>
+                                                        </div>
+                                                        <div class="wrap-text">
+                                                            <p>NPWP</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-xs-12">
+                                                    <div class=" box-item">
+                                                        <div class="wrap-icon">
+                                                            <i class="fa fa-check" aria-hidden="true"></i>
+                                                        </div>
+                                                        <div class="wrap-text">
+                                                            <p>Kartu Keluarga</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-xs-12">
+                                                    <div class=" box-item">
+                                                        <div class="wrap-icon">
+                                                            <i class="fa fa-check" aria-hidden="true"></i>
+                                                        </div>
+                                                        <div class="wrap-text">
+                                                            <p>Buku Rekening 3 bulan terakhir</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-xs-12">
+                                                    <div class=" box-item">
+                                                        <div class="wrap-icon">
+                                                            <i class="fa fa-check" aria-hidden="true"></i>
+                                                        </div>
+                                                        <div class="wrap-text">
+                                                            <p>Buku Kepemilikan Rumah</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-xs-12">
+                                                    <div class=" box-item">
+                                                        <div class="wrap-icon">
+                                                            <i class="fa fa-check" aria-hidden="true"></i>
+                                                        </div>
+                                                        <div class="wrap-text">
+                                                            <p>Foto selfie Anda</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-xs-12">
+                                                    <div class=" box-item">
+                                                        <div class="wrap-icon">
+                                                            <i class="fa fa-check" aria-hidden="true"></i>
+                                                        </div>
+                                                        <div class="wrap-text">
+                                                            <p>Foto Rumah Anda</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="button-area text-center btn-beranda">
-                                            <a href="<?php echo "/" . $this->getLocale() . '/' . $link; ?>" class="cta cta-primary cta-big cta-see buttonnext backtohome">
-                                                <span><?= $this->translate('backtohome') ?></span></a>
+                                        <div class="box-button">
+                                            <p>Pertanyaan seputar pengajuan chat via Whatsapp di</p>
+                                            <div class="button-area text-center">
+                                                <a href="/id/" class="cta cta-success cta-big">
+                                                    <i class="fab fa-whatsapp"></i>
+                                                    <span>082342423432423</span></a>
+                                            </div>
+                                            <div class="button-area text-center">
+                                                <a href="/id/" class="cta cta-primary-outline cta-big ">
+                                                    <span>CEK STATUS PENGAJUAN</span></a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+
 
 
 <div id="wrongOtp" class="modal modal--failed fade" role="dialog">
@@ -709,7 +906,7 @@ $blogList->setLimit(4);
         <!-- Modal content-->
         <div class="modal-content text-center">
             <div class="modal-body">
-                <p><?= $this->translate('wrong-otp') ?></p>
+                <p><?=$this->translate('wrong-otp') ?></p>
                 <button type="button" class="cta cta-orange" data-dismiss="modal">Ok</button>
             </div>
         </div>
@@ -721,11 +918,9 @@ $blogList->setLimit(4);
         <!-- Modal content-->
         <div class="modal-content text-center">
             <div class="modal-body">
-                <p><?= $this->translate('wrong-server') ?></p>
+                <p><?=$this->translate('wrong-server') ?></p>
                 <button type="button" class="cta cta-orange" data-dismiss="modal">Ok</button>
             </div>
         </div>
     </div>
 </div>
-
-<?= $this->template('Includes/request-otp.html.php'); ?>

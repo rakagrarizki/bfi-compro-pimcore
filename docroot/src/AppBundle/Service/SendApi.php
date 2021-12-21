@@ -721,4 +721,25 @@ class SendApi
     {
         return $this->executeApi('api-save-agent-candidate5', $url, $params, "POST");
     }
+
+    //getList
+    public function getListProfession($url, $params)
+    {
+        return $this->executeApi('api-list-prosession', $url, $params, "POST");
+    }
+
+    public function getListEmployeeStatus($url, $params)
+    {
+        return $this->executeApi('api-list-employee-status', $url, $params, "POST");
+    }
+
+    public function getListMaritalStatus2($url, $params)
+    {
+        return $this->executeApi('api-list-marital-status', $url, $params, "POST");
+    }
+
+    public function getListSpouseProfession($url, $params)
+    {
+        return $this->executeApi('api-list-spouse-profession', $url, $params, "POST");
+    }
 }
