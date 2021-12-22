@@ -368,7 +368,7 @@ function pushDataStep2(cb) {
         },
         profession_id: $("#occupation").val().toString(),
         salary: clearDot($("#penghasilan").val()),
-        employee_status: $("#employee_status").val().toString(),
+        employee_status_id: $("#employee_status").val().toString(),
         age: $("#umur").val(),
         marital_status_id: $("#marital_status").val().toString(),
         spouse_name: $("#spouse_name").val(),

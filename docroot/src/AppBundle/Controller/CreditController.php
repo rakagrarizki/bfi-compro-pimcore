@@ -397,27 +397,29 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->requestOtp($handphone);
             $this->redis->hSet($handphone, 'time-send', time());
+            if ($data->header->status == 200) {
+                return new JsonResponse([
+                    'success' => "1",
+                    'message' => "success",
+                ] + ($this->isDev ? ['code_otp' => $data->data->opt_code] : [])
+                );
+            } else {
+                return new JsonResponse([
+                    'success' => "0",
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
         } catch (\Exception $e) {
-            throw new \Exception('Something went wrong!');
+            return new JsonResponse([
+                 'success' => "0",
+                 'message' => $e->getMessage()
+            ]);
         }
 
         if ($clear) {
             $this->redis->hSet($handphone, 'attempt-hit', 1);
         } else {
             $this->redis->hSet($handphone, 'attempt-hit', $attempts + 1);
-        }
-
-        if ($data->header->status == 200) {
-            return new JsonResponse([
-                'success' => "1",
-                'message' => "success",
-             ] + ($this->isDev ? ['code_otp' => $data->data->opt_code] : [])
-            );
-        } else {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => $this->get("translator")->trans("api-error")
-            ]);
         }
     }
 
@@ -428,19 +430,21 @@ class CreditController extends FrontendController
 
         try {
             $data = $this->sendAPI->validateOtp($handphone, $code);
+            if ($data->header->status == 200) {
+                return new JsonResponse([
+                    'success' => "1",
+                    'message' => "success"
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => "0",
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
         } catch (\Exception $e) {
-            throw new \Exception('Something went wrong!');
-        }
-
-        if ($data->header->status == 200) {
             return new JsonResponse([
-                'success' => "1",
-                'message' => "success"
-            ]);
-        } else {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => $this->get("translator")->trans("api-error")
+                 'success' => "0",
+                 'message' => $e->getMessage()
             ]);
         }
     }
@@ -453,22 +457,26 @@ class CreditController extends FrontendController
 
         try {
             $data = $this->sendAPI->getTenor($url, $param);
+            if ($data->header->status == 200) { 
+                return new JsonResponse([
+                    'success' => "1",
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => "0",
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
         } catch (\Exception $e) {
-            throw new \Exception('Something went wrong!');
+            return new JsonResponse([
+                 'success' => "0",
+                 'message' => $e->getMessage()
+            ]);
         }
 
-        if ($data->header->status == 200) {
-            return new JsonResponse([
-                'success' => "1",
-                'message' => "success",
-                'data' => $data->data
-            ]);
-        } else {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => $this->get("translator")->trans("api-error")
-            ]);
-        }
+        
     }
 
     public function getInsuranceAction(Request $request)
@@ -481,20 +489,22 @@ class CreditController extends FrontendController
 
         try {
             $data = $this->sendAPI->getInsurance($url, $param);
+            if ($data->header->status == 200) {
+                return new JsonResponse([
+                    'success' => "1",
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => "0",
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
         } catch (\Exception $e) {
-            throw new \Exception('Something went wrong!');
-        }
-
-        if ($data->header->status == 200) {
             return new JsonResponse([
-                'success' => "1",
-                'message' => "success",
-                'data' => $data->data
-            ]);
-        } else {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => $this->get("translator")->trans("api-error")
+                 'success' => "0",
+                 'message' => $e->getMessage()
             ]);
         }
     }
@@ -1537,22 +1547,25 @@ class CreditController extends FrontendController
 
         try {
             $data = $this->sendAPI->savePbfLeads1($url, $param);
-        } catch (\Exception $e) {
-            throw new \Exception('Something went wrong!');
-        }
-
-        if ($data->header->status == 200) {
+            if ($data->header->status == 200) {
             return new JsonResponse([
                 'success' => "1",
                 'message' => "success",
                 'data' => $data->data,
             ]);
-        } else {
+            } else {
+                return new JsonResponse([
+                    'success' => "0",
+                    'message' => $this->get("translator")->trans("api-error")
+                ], + ($this->isDev ? ['message' => $data->data] : []));
+            }
+        } catch (\Exception $e) {
             return new JsonResponse([
-                'success' => "0",
-                'message' => $this->get("translator")->trans("api-error")
-            ], + ($this->isDev ? ['message' => $data->data] : []));
+                 'url' => $url,
+                 'param' => $param
+            ]);
         }
+
     }
 
     public function savePbfLeads2Action(Request $request)
@@ -1582,7 +1595,7 @@ class CreditController extends FrontendController
         $param["info_assets"]["address"] = htmlentities(addslashes($info_assets['address']));
         $param["profession_id"] = htmlentities(addslashes($request->get('profession_id')));
         $param["salary"] = htmlentities(addslashes($request->get('salary')));
-        $param["employee_status"] = htmlentities(addslashes($request->get('employee_status')));
+        $param["employee_status_id"] = htmlentities(addslashes($request->get('employee_status_id')));
         $param["age"] = htmlentities(addslashes($request->get('age')));
         $param["marital_status_id"] = htmlentities(addslashes($request->get('marital_status_id')));
         $param["spouse_name"] = htmlentities(addslashes($request->get('spouse_name')));
@@ -1590,21 +1603,23 @@ class CreditController extends FrontendController
 
         try {
             $data = $this->sendAPI->savePbfLeads2($url, $param);
-        } catch (\Exception $e) {
-            throw new \Exception('Something went wrong!');
-        }
-
-        if ($data->header->status == 200) {
+            if ($data->header->status == 200) {
             return new JsonResponse([
                 'success' => "1",
                 'message' => "success",
                 'data' => $data->data
             ]);
-        } else {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => $this->get("translator")->trans("api-error")
-            ], + ($this->isDev ? ['message' => $data->data] : []));
+            } else {
+                return new JsonResponse([
+                    'success' => "0",
+                    'message' => $this->get("translator")->trans("api-error")
+                ], + ($this->isDev ? ['message' => $data->data] : []));
+            }
+        } catch (\Exception $e) {
+             return new JsonResponse([
+                 'success' => "0",
+                 'message' => $e->getMessage()
+            ]);
         }
     }
 
@@ -1632,22 +1647,24 @@ class CreditController extends FrontendController
 
         try {
             $data = $this->sendAPI->savePbfLeads3($url, $param);
-        } catch (\Exception $e) {
-            throw new \Exception('Something went wrong!');
-        }
-
-        if ($data->header->status == 200) {
-            return new JsonResponse([
-                'success' => "1",
-                'message' => "success",
-                'data' => $data->data
+            if ($data->header->status == 200) {
+                return new JsonResponse([
+                    'success' => "1",
+                    'message' => "success",
+                    'data' => $data->data
             ]);
-        } else {
+            } else {
+                return new JsonResponse([
+                    'success' => "0",
+                    'message' => $this->get("translator")->trans("api-error"),
+                    'param' => $param
+                ], + ($this->isDev ? ['message' => $data->data] : []));
+            }
+        } catch (\Exception $e) {
             return new JsonResponse([
-                'success' => "0",
-                'message' => $this->get("translator")->trans("api-error"),
-                'param' => $param
-            ], + ($this->isDev ? ['message' => $data->data] : []));
+                 'success' => "0",
+                 'message' => $e->getMessage()
+            ]);
         }
     }
 
@@ -1660,22 +1677,25 @@ class CreditController extends FrontendController
 
         try {
             $data = $this->sendAPI->savePbfLeads4($url, $param);
+            if ($data->header->status == 200) {
+                return new JsonResponse([
+                    'success' => "1",
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => "0",
+                    'message' => $this->get("translator")->trans("api-error")
+                ], + ($this->isDev ? ['message' => $data->data] : []));
+            }
         } catch (\Exception $e) {
-            throw new \Exception('Something went wrong!');
+            return new JsonResponse([
+                 'success' => "0",
+                 'message' => $e->getMessage()
+            ]);
         }
 
-        if ($data->header->status == 200) {
-            return new JsonResponse([
-                'success' => "1",
-                'message' => "success",
-                'data' => $data->data
-            ]);
-        } else {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => $this->get("translator")->trans("api-error")
-            ], + ($this->isDev ? ['message' => $data->data] : []));
-        }
     }
 
     public function savePbfLeads5Action(Request $request)
@@ -1686,21 +1706,23 @@ class CreditController extends FrontendController
 
         try {
             $data = $this->sendAPI->savePbfLeads5($url, $param);
+            if ($data->header->status == 200) {
+                return new JsonResponse([
+                    'success' => "1",
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => "0",
+                    'message' => $this->get("translator")->trans("api-error")
+                ], + ($this->isDev ? ['message' => $data->data] : []));
+            }
         } catch (\Exception $e) {
-            throw new \Exception('Something went wrong!');
-        }
-
-        if ($data->header->status == 200) {
             return new JsonResponse([
-                'success' => "1",
-                'message' => "success",
-                'data' => $data->data
+                 'success' => "0",
+                 'message' => $e->getMessage()
             ]);
-        } else {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => $this->get("translator")->trans("api-error")
-            ], + ($this->isDev ? ['message' => $data->data] : []));
         }
     }
 
@@ -1713,21 +1735,23 @@ class CreditController extends FrontendController
 
         try {
             $data = $this->sendAPI->savePbfLeads6($url, $param);
+            if ($data->header->status == 200) {
+                return new JsonResponse([
+                    'success' => "1",
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => "0",
+                    'message' => $this->get("translator")->trans("api-error")
+                ], + ($this->isDev ? ['message' => $data->data] : []));
+            }
         } catch (\Exception $e) {
-            throw new \Exception('Something went wrong!');
-        }
-
-        if ($data->header->status == 200) {
             return new JsonResponse([
-                'success' => "1",
-                'message' => "success",
-                'data' => $data->data
+                 'success' => "0",
+                 'message' => $e->getMessage()
             ]);
-        } else {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => $this->get("translator")->trans("api-error")
-            ], + ($this->isDev ? ['message' => $data->data] : []));
         }
     }
 
@@ -2784,21 +2808,23 @@ class CreditController extends FrontendController
 
         try {
             $data = $this->sendAPI->getListProfession($url, $param);
+            if ($data->header->status == 200) {
+                return new JsonResponse([
+                    'success' => "1",
+                    'message' => "success",
+                    'data' => $data->data,
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => "0",
+                    'message' => $this->get("translator")->trans("api-error")
+                    
+                ]);
+            }
         } catch (\Exception $e) {
-            throw new \Exception('Something went wrong!');
-        }
-
-        if ($data->header->status == 200) {
             return new JsonResponse([
-                'success' => "1",
-                'message' => "success",
-                'data' => $data->data,
-            ]);
-        } else {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => $this->get("translator")->trans("api-error")
-                
+                 'success' => "0",
+                 'message' => $e->getMessage()
             ]);
         }
     }
@@ -2811,20 +2837,22 @@ class CreditController extends FrontendController
 
         try {
             $data = $this->sendAPI->getListEmployeeStatus($url, $param);
+            if ($data->header->status == 200) {
+                return new JsonResponse([
+                    'success' => "1",
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => "0",
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
         } catch (\Exception $e) {
-            throw new \Exception('Something went wrong!');
-        }
-
-        if ($data->header->status == 200) {
             return new JsonResponse([
-                'success' => "1",
-                'message' => "success",
-                'data' => $data->data
-            ]);
-        } else {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => $this->get("translator")->trans("api-error")
+                 'success' => "0",
+                 'message' => $e->getMessage()
             ]);
         }
     }
@@ -2837,22 +2865,26 @@ class CreditController extends FrontendController
 
         try {
             $data = $this->sendAPI->getListMaritalStatus2($url, $param);
+            if ($data->header->status == 200) {
+                return new JsonResponse([
+                    'success' => "1",
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => "0",
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
         } catch (\Exception $e) {
-            throw new \Exception('Something went wrong!');
+            return new JsonResponse([
+                 'success' => "0",
+                 'message' => $e->getMessage()
+            ]);
         }
 
-        if ($data->header->status == 200) {
-            return new JsonResponse([
-                'success' => "1",
-                'message' => "success",
-                'data' => $data->data
-            ]);
-        } else {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => $this->get("translator")->trans("api-error")
-            ]);
-        }
+
     }
 
     public function getListSpouseProfessionAction(Request $request)
@@ -2863,21 +2895,25 @@ class CreditController extends FrontendController
 
         try {
             $data = $this->sendAPI->getListSpouseProfession($url, $param);
+            if ($data->header->status == 200) {
+                return new JsonResponse([
+                    'success' => "1",
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => "0",
+                    'message' => $this->get("translator")->trans("api-error")
+                ], + ($this->isDev ? ['message' => $data->data] : []));
+            }
         } catch (\Exception $e) {
-            throw new \Exception('Something went wrong!');
+            return new JsonResponse([
+                 'success' => "0",
+                 'message' => $e->getMessage()
+            ]);
         }
 
-        if ($data->header->status == 200) {
-            return new JsonResponse([
-                'success' => "1",
-                'message' => "success",
-                'data' => $data->data
-            ]);
-        } else {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => $this->get("translator")->trans("api-error")
-            ], + ($this->isDev ? ['message' => $data->data] : []));
-        }
+
     }
 }
