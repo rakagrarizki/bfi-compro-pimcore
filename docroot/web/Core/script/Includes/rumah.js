@@ -2,6 +2,8 @@ var lang = document.documentElement.lang;
 var submission_id = "";
 var phoneNumber = "";
 
+window.dataLayer = window.dataLayer || [];
+
 let productType = {
     category: undefined,
 };
@@ -178,6 +180,9 @@ $("#next1").on("click", function (e) {
                 getEmployeeStatus();
                 getMaritalStatus();
                 getPropertyType();
+                window.dataLayer.push({
+                    event: "ValidFormStep1",
+                });
             }
         });
     }
@@ -200,6 +205,9 @@ $("#next2").on("click", function (e) {
                 getCertificateOnBehalf();
                 getAssetInHabited();
                 getAssetLocation();
+                window.dataLayer.push({
+                    event: "ValidFormStep2",
+                });
             }
         });
     }
@@ -209,6 +217,9 @@ $("#next3").on("click", function (e) {
     if ($(this).closest("form").valid()) {
         pushDataStep3(function () {
             step("next", 3);
+            window.dataLayer.push({
+                event: "ValidFormStep3",
+            });
         });
     }
 });
@@ -260,6 +271,9 @@ $("#next4").on("click", function (e) {
     if ($(this).closest("form").valid()) {
         pushDataStep4(function () {
             showOtpVer2();
+            window.dataLayer.push({
+                event: "ValidFormStep4",
+            });
         });
     }
 });
@@ -511,6 +525,9 @@ function pushDataStep5(cb) {
         },
         success: function (result) {
             if (result.message === "success") {
+                window.dataLayer.push({
+                    event: "ValidFormStepOTP",
+                });
                 $("#menu5").removeClass("active");
                 $("#success").addClass("active");
                 cb();
