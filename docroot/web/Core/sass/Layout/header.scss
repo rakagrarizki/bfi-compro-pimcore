@@ -305,7 +305,12 @@ body{
                 font-size: 18px;
                 font-weight: bold;
                 text-align: right;
+                text-decoration: none;
                 padding: 10px 20px;
+                &:hover, &:focus{
+                    background: none;
+                    color: #7AC143;
+                }
             }
             .header-link-menu {
                 display: flex;

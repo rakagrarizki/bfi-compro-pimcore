@@ -41,6 +41,9 @@
 
     .sect-title {
         margin: 0 auto 80px auto;
+        @include breakpoint(mobile){
+            margin-bottom: 0;
+        }
         h2 {
             color: #04559F;
             font-size: 40px;
