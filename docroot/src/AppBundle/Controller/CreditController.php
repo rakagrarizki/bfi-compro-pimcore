@@ -1513,21 +1513,23 @@ class CreditController extends FrontendController
 
         try {
             $data = $this->sendAPI->getPbfCalculate($url, $param);
+            if ($data->header->status == 200) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error"),
+                ]);
+            }
         } catch (\Exception $e) {
-            throw new \Exception('Something went wrong!');
-        }
-
-        if ($data->header->status == 200) {
             return new JsonResponse([
-                'success' => "1",
-                'message' => "success",
-                'data' => $data->data
-            ]);
-        } else {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => $this->get("translator")->trans("api-error")
-            ]);
+                'success' => 0,
+                'message' => $e->getMessage()
+           ]);
         }
     }
 
@@ -1599,7 +1601,7 @@ class CreditController extends FrontendController
         $param["age"] = htmlentities(addslashes($request->get('age')));
         $param["marital_status_id"] = htmlentities(addslashes($request->get('marital_status_id')));
         $param["spouse_name"] = htmlentities(addslashes($request->get('spouse_name')));
-        $param["spouse_profession"] = htmlentities(addslashes($request->get('spouse_profession')));
+        $param["spouse_profession_id"] = htmlentities(addslashes($request->get('spouse_profession_id')));
 
         try {
             $data = $this->sendAPI->savePbfLeads2($url, $param);

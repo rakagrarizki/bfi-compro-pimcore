@@ -45,7 +45,7 @@ let dataStep2 = {
     age: undefined,
     marital_status_id: undefined,
     spouse_name: undefined,
-    spouse_profession: undefined,
+    spouse_profession_id: undefined,
 };
 let dataStep3 = {
     submission_id: undefined,
@@ -334,6 +334,8 @@ function pushDataStep1(cb) {
 
 function pushDataStep2(cb) {
     var addres_same = $("input[name='addres_same']:checked").val();
+    var PNS_ID = "6D91616D-2117-4050-AB4B-0D97FF416732";
+    var PNS_ID_STATUS_TETAP = "595D0BAA-60E7-45B8-AA6A-6443749D7069";
     let result = (dataStep2 = {
         submission_id: submission_id,
         info_address: {
@@ -382,11 +384,14 @@ function pushDataStep2(cb) {
         },
         profession_id: $("#occupation").val().toString(),
         salary: clearDot($("#penghasilan").val()),
-        employee_status_id: $("#employee_status").val().toString(),
+        employee_status_id: 
+            $("#occupation").val() == PNS_ID
+                ? PNS_ID_STATUS_TETAP
+                : $("#employee_status").val().toString(),
         age: $("#umur").val(),
         marital_status_id: $("#marital_status").val().toString(),
         spouse_name: $("#spouse_name").val(),
-        spouse_profession: $("#spouse_job").val().toString(),
+        spouse_profession_id: $("#spouse_job").val().toString(),
     });
     $.ajax({
         type: "POST",
@@ -451,9 +456,10 @@ function pushDataStep3(cb) {
             $("input[name='is_near_silk_tower']:checked").val() == "true"
                 ? true
                 : false,
-        is_near_provider_tower: $(
-            "input[name='is_near_provider_tower']:checked"
-        ).val(),
+        is_near_provider_tower:
+            $("input[name='is_near_provider_tower']:checked").val() == "true"
+                ? true
+                : false,
         is_near_grave:
             $("input[name='is_near_grave']:checked").val() == "true"
                 ? true
@@ -509,7 +515,7 @@ function pushDataStep4(cb) {
     });
 }
 
-function pushDataStep5(cb) {
+function pushDataStep5() {
     $.ajax({
         type: "POST",
         url: "/credit/save-pbf-leads5",
@@ -530,7 +536,6 @@ function pushDataStep5(cb) {
                 });
                 $("#menu5").removeClass("active");
                 $("#success").addClass("active");
-                cb();
             }
         },
     });
@@ -972,7 +977,7 @@ function PostCalculate() {
             retryAjax(this, xhr);
         },
         success: function (result) {
-            if (result.success === "1") {
+            if (result.success === 1) {
                 $(".total").text(currency(result.data.monthly_installment));
             }
         },

@@ -458,7 +458,7 @@ $this->headScript()
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group radio-group">
-                                            <label for="addres_same"><?= $this->translate('label-certificate-resence') ?>t</label>
+                                            <label for="addres_same"><?= $this->translate('label-certificate-resence') ?></label>
                                             <div class="radio-button">
                                                 <div class="radio-wrap">
                                                     <input type="radio" class="inputs formRequired" id="where_certificate"
