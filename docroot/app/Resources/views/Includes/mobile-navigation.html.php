@@ -28,10 +28,6 @@ if($_COOKIE["customer"] != "null") {
         <div class="navbar-header">
             <a class="navbar-brand" href="<?php echo "/" . $this->getLocale(); ?>">
                 <img src="/static/images/logo-bfi.png" alt="logo-bfi" class="img-responsive">
-                <div class="ojk">
-                    <p class="top-desc">BFI terdaftar dan diawasi oleh</p>
-                    <img src="/static/images/ojk.png" alt="logo-ojk" class="img-responsive">
-                </div>
             </a>
             <div class="header-button-wrapper">
                 <button type="button" id="btn-burger" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">

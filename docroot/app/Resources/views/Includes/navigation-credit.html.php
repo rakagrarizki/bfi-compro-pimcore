@@ -59,10 +59,6 @@ if($_COOKIE["customer"] != "null") {
                                 <img src="/static/images/logo-bfi.png" class="img-responsive" alt="">
                             </a>
                         <?php endif; ?>
-                        <div class="ojk">
-                            <p class="top-desc">BFI terdaftar dan diawasi oleh</p>
-                            <img src="/static/images/ojk.png" alt="logo-ojk" class="img-responsive">
-                        </div>
                     </div>
                 </div>
             </div>
