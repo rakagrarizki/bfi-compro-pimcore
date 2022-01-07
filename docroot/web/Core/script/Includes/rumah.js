@@ -173,7 +173,10 @@ $("#next1").on("click", function (e) {
     if ($(this).closest("form").valid()) {
         pushDataStep1(function (result) {
             if (result.data.is_dupcheck == true) {
-                window.location = "/" + lang + "/credit/pengajuan-gagal";
+                window.location =
+                    "/" +
+                    lang +
+                    "/credit/pengajuan-gagal?dupcheck=true&product=pbf";
             } else {
                 step("next", 1);
                 getProfesion();
@@ -384,7 +387,7 @@ function pushDataStep2(cb) {
         },
         profession_id: $("#occupation").val().toString(),
         salary: clearDot($("#penghasilan").val()),
-        employee_status_id: 
+        employee_status_id:
             $("#occupation").val() == PNS_ID
                 ? PNS_ID_STATUS_TETAP
                 : $("#employee_status").val().toString(),

@@ -6,17 +6,23 @@
  */
 
 $this->extend('layout-credit.html.php');
-$this->headScript()
-    ->offsetSetFile(100, '/static/js/Includes/dupcheck.js');
+
+$is_dupcheck = $_GET['dupcheck'];
+$is_product = $_GET['product'];
 ?>
 <div class="container">
     <div class="form-body--credit fluid">
         <div class="text-head">
-            <h2 class="text-center">
-                Mohon maaf, Anda sudah terdaftar pengajuan pembiayaan <span class="type"></span> di BFI Finance.
+            <h2 class="text-center product-title">
+                <?php if($is_product == "pbf"){?>
+                    <?=$this->translate('failedPBF')?>
+                <?php } ?>
             </h2>
-            <p class="text-center">Untuk sementara waktu Anda tidak dapat melakukan pengajuan dengan jaminan yang sama.
-                Mohon menunggu status terbaru pengajuan Anda.</p>
+            <p class="text-center product-subtitle">
+                <?php if($is_dupcheck == "true"){?>
+                    <?=$this->translate('dupcheck')?>
+                <?php } ?>
+            </p>
         </div>
         <div class="wrap-content-fail">
             <img src="/static/images/fail.png" class="img-responsive" alt="">
