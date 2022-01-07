@@ -99,8 +99,10 @@ if($_COOKIE["customer"] != "null") {
                                                                             <div class="<?= (strpos($page->getUri(), '#product') !== false) ? 'col-md-6' : 'col-md-4' ?>">
                                                                                 <?php if ($grandChild->getDocumentType() != "link") : ?>
                                                                                     <li>
-                                                                                        <a id="" class="<?php echo $grandChild->getActive() ? 'active' : '' ?> sub-title" href="<?= $grandChild->getHref() ?>"><?= $grandChild->getLabel() ?></a>
-                                                                                        <p class="desc-title"><?= $grandChild->document->getProperty("description"); ?></p>
+                                                                                        <a id="" class="<?php echo $grandChild->getActive() ? 'active' : '' ?>" href="<?= $grandChild->getHref() ?>">
+                                                                                            <p class="sub-title"><?= $grandChild->getLabel() ?></p>
+                                                                                            <p class="desc-title"><?= $grandChild->document->getProperty("description"); ?></p>
+                                                                                        </a>
                                                                                     </li>
                                                                                 <?php else : ?>
                                                                                     <li>
@@ -151,7 +153,7 @@ if($_COOKIE["customer"] != "null") {
                                 <a id="" href="<?= "/" . $lang . "/login"; ?>" class="login"><?= $this->translate("login") ?></a>
                             <?php } else { ?>
                             <div class="user">
-                                <a id="" href="/<?= $this->getLocale() ?>/user/dashboard" class="full_name"><?= $name?></a> | <a href="#" class="logout" onclick="return logout('<?= $this->getLocale() ?>');"><?= $this->translate("logout") ?></a>
+                                <a id="" href="/<?= $this->getLocale() ?>/user/dashboard" class="full_name login"><?= strlen($name) > 5 ? substr($name,0,4) . ".." : $name ?></a> | <a href="#" class="logout login" onclick="return logout('<?= $this->getLocale() ?>');"><?= $this->translate("logout") ?></a>
                             </div>
                             <?php }?>
                     </div>

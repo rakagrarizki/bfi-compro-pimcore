@@ -29,9 +29,6 @@ if ($_COOKIE["customer"] != "null") {
                     </div>
                     <div class="col-md-6 col-sm-6 right-side-top">
                         <div class="link-log">
-                            <div class="user">
-                                <a href="/<?= $this->getLocale() ?>/user/dashboard" class="full_name icon"><?= $name; ?></a> | <a href="#" class="logout" onclick="return logout('<?= $this->getLocale() ?>');"><?= $this->translate("logout") ?></a>
-                            </div>
                             <?php echo $this->template("Includes/language.html.php") ?>
                         </div>
                     </div>
@@ -71,7 +68,11 @@ if ($_COOKIE["customer"] != "null") {
                         </div>
 
                     </div>
-
+                    <div class="col-md-3 col-sm-3 header-bottom-login">
+                        <div class="user">
+                            <a href="/<?= $this->getLocale() ?>/user/dashboard" class="full_name icon login"><?= strlen($name) > 5 ? substr($name,0,4) . ".." : $name ?></a> | <a href="#" class="logout login" onclick="return logout('<?= $this->getLocale() ?>');"><?= $this->translate("logout") ?></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,6 +1,5 @@
-body{
+body {
     position: relative;
-    
 }
 .greyout {
     position: absolute;
@@ -11,7 +10,7 @@ body{
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.5);
     z-index: 99;
 }
 
@@ -19,14 +18,12 @@ body{
     border-bottom: none;
     font-family: $font_default;
 
-    
-
     .backtohome {
         position: relative;
         padding-left: 16px;
 
         &:before {
-            content: '\f104';
+            content: "\f104";
             font-family: FontAwesome;
             position: absolute;
             left: -1px;
@@ -35,23 +32,24 @@ body{
             opacity: 0.5;
         }
     }
-    
+
     &.active {
         .header-bottom {
             height: 80px;
-            transition: all .3s ease-in-out;
+            transition: all 0.3s ease-in-out;
 
-            .header-bottom-menu, .header-bottom-login {
+            .header-bottom-menu,
+            .header-bottom-login {
                 height: 80px;
-                transition: all .3s ease-in-out;
+                transition: all 0.3s ease-in-out;
 
                 .header-link-menu .nav {
                     // padding-top: 15px;
-                    transition: all .3s ease-in-out;
+                    transition: all 0.3s ease-in-out;
 
                     #produk .dropdown-content.main {
                         margin-top: 12px;
-                        transition: all .3s ease-in-out;
+                        transition: all 0.3s ease-in-out;
                         top: 108px;
                     }
                 }
@@ -59,11 +57,11 @@ body{
 
             .header-bottom-logo {
                 height: 80px;
-                transition: all .3s ease-in-out;
+                transition: all 0.3s ease-in-out;
 
                 img {
                     width: 50px;
-                    transition: all .3s ease-in-out;
+                    transition: all 0.3s ease-in-out;
                 }
             }
         }
@@ -79,7 +77,7 @@ body{
             color: grey;
 
             &._personal {
-                color: #04559F;
+                color: #04559f;
                 font-weight: bold;
 
                 @include breakpoint(mobile) {
@@ -101,7 +99,7 @@ body{
                 padding-right: 10px;
 
                 &:hover {
-                    color: #04559F;
+                    color: #04559f;
                     font-weight: bold;
                 }
             }
@@ -113,10 +111,9 @@ body{
                 justify-content: space-between;
                 a {
                     font-family: $font_default;
-                    padding-right: 30px;
 
                     &:hover {
-                        color: #04559F;
+                        color: #04559f;
                         text-shadow: 1px 0px 0px #04559f;
                     }
                 }
@@ -129,34 +126,34 @@ body{
                 float: right;
                 margin-left: auto;
 
-                .login{
+                .login {
                     margin-right: 20px;
                     font-weight: bold;
                 }
 
                 .user {
                     a.full_name {
-                        text-decoration : underline;
-                        font-weight : bold;
-                        color: #04559F;
+                        text-decoration: underline;
+                        font-weight: bold;
+                        color: #04559f;
                         padding: 0 10px 0 0;
                         &:before {
-                            content: '';
+                            content: "";
                             display: inline-block;
                             width: 10px;
                             height: 10px;
                             -moz-border-radius: 7.5px;
                             -webkit-border-radius: 7.5px;
                             border-radius: 7.5px;
-                            background-color: #04559F;
-                            margin-right : 10px;
+                            background-color: #04559f;
+                            margin-right: 10px;
                         }
                     }
-                    a.logout{
+                    a.logout {
                         padding: 0 65px 0 10px;
                     }
 
-                    .icon{
+                    .icon {
                         &:after {
                             content: "";
                             position: absolute;
@@ -165,16 +162,15 @@ body{
                             margin-left: -5px;
                             border-width: 8px;
                             border-style: solid;
-                            border-color: #fff transparent transparent transparent;
+                            border-color: #fff transparent transparent
+                                transparent;
                         }
                     }
                 }
 
                 a {
-                    padding: 0 65px 0 0;
-    
                     &:hover {
-                        color: #04559F;
+                        color: #04559f;
                     }
 
                     &:focus {
@@ -191,7 +187,6 @@ body{
                     // }
                 }
             }
-
         }
         .lang {
             position: absolute;
@@ -205,7 +200,7 @@ body{
                     color: grey;
 
                     &.active {
-                        color: #04559F;
+                        color: #04559f;
                         font-weight: bold;
                     }
                 }
@@ -214,18 +209,18 @@ body{
                     color: grey;
 
                     &.active {
-                        color: #04559F;
+                        color: #04559f;
                         font-weight: bold;
                     }
                 }
 
                 &:hover {
-                    color: #04559F !important;
+                    color: #04559f !important;
                     font-weight: bold;
                 }
-                
-                &.active{
-                    color: #04559F;
+
+                &.active {
+                    color: #04559f;
                     font-weight: bold;
                 }
             }
@@ -240,7 +235,7 @@ body{
 
     .header-bottom {
         background-color: #04559f;
-        transition: all .3s ease-in-out;
+        transition: all 0.3s ease-in-out;
         height: 100px;
         display: flex;
         align-items: center;
@@ -268,21 +263,21 @@ body{
                     max-height: 70px;
                 }
             }
-            .ojk{
+            .ojk {
                 padding: 0 8px;
-                .top-desc{
+                .top-desc {
                     margin-bottom: 4px;
                     font-size: 9px;
                     line-height: 8px;
-                    color: #FFFFFF;
+                    color: #ffffff;
                 }
-                img{
+                img {
                     width: 85px;
                     margin-left: 0;
                 }
             }
         }
-        .header-bottom-login{
+        .header-bottom-login {
             height: 100px;
             display: flex;
             justify-content: flex-end;
@@ -291,34 +286,43 @@ body{
                 &:hover,
                 &:focus {
                     background: none;
-                    color: #7AC143;
+                    color: #7ac143;
                 }
             }
         }
 
-        .header-bottom-menu, .header-bottom-login {
+        .header-bottom-menu,
+        .header-bottom-login {
             height: 100px;
-            transition: all .3s ease-in-out;
+            transition: all 0.3s ease-in-out;
             padding: 0;
-            a.login{
+            .user {
+                color: #ffffff;
+                font-size: 18px;
+            }
+            a.login {
                 color: #fff;
                 font-size: 18px;
                 font-weight: bold;
                 text-align: right;
                 text-decoration: none;
                 padding: 10px 20px;
-                &:hover, &:focus{
+                &.full_name,
+                &.logout {
+                    padding: 10px 4px;
+                }
+                &:hover,
+                &:focus {
                     background: none;
-                    color: #7AC143;
+                    color: #7ac143;
                 }
             }
             .header-link-menu {
                 display: flex;
-                align-items: center; 
+                align-items: center;
                 justify-content: space-between;
-                
-                .search-button{
-                    a{
+                .search-button {
+                    a {
                         color: #fff;
                         font-size: 16px;
                     }
@@ -340,7 +344,7 @@ body{
                 }
 
                 height: 100%;
-                transition: all .3s ease-in-out;
+                transition: all 0.3s ease-in-out;
 
                 .nav {
                     height: 100%;
@@ -352,7 +356,7 @@ body{
                     text-align: center;
                     // position: relative;
 
-                    >.col-md-3 {
+                    > .col-md-3 {
                         // padding: 0;
                         // display: inline-block;
                         height: 100%;
@@ -367,7 +371,7 @@ body{
                         //     margin-right: 50px;
                         // }
 
-                        &.dropdown:hover::before{
+                        &.dropdown:hover::before {
                             content: "";
                             position: absolute;
                             bottom: -40px;
@@ -383,7 +387,7 @@ body{
                             -o-transform: translate(435px, -40px);
                         }
 
-                        >a {
+                        > a {
                             color: $light;
                             font-family: $bold;
                             font-size: 1.1em;
@@ -397,28 +401,26 @@ body{
                             &:hover,
                             &:focus {
                                 background: none;
-                                color: #7AC143;
+                                color: #7ac143;
                             }
 
                             &.produk {
                                 &:after {
-                                    content: '\f107';
+                                    content: "\f107";
                                     font-family: "FontAwesome";
                                     position: absolute;
                                     right: -10px;
                                     font-weight: 400;
                                 }
                             }
-
                         }
 
                         // @include breakpoint(wide) {
-                            
+
                         //     .has-child{
                         //         padding: 10px 20px 10px 0;
                         //     }
                         // }
-
                     }
 
                     .col-md-3 {
@@ -426,7 +428,7 @@ body{
                             font-family: $font_default;
                             font-size: 18px;
                             font-weight: 600;
-                            text-transform: none;
+                            text-transform: capitalize;
                             margin: 0 auto;
                             height: 100%;
                             // width: 100%;
@@ -437,7 +439,6 @@ body{
                             &:hover {
                                 text-decoration: none;
                             }
-
                         }
                     }
 
@@ -453,10 +454,10 @@ body{
                             .produk-hover {
                                 background: $white;
                                 padding: 40px 50px 20px 50px;
-                                box-shadow: 0px 3px 10px rgba(0,0,0,.15);
+                                box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.15);
                                 text-align: left;
                                 border-radius: 8px;
-                                
+
                                 // &:before {
                                 //     content: '';
                                 //     position: absolute;
@@ -495,27 +496,28 @@ body{
 
                                 li {
                                     color: #04559f;
-                                    margin-bottom: 20px;
                                     list-style-type: none !important;
                                     list-style: none !important;
                                     list-style-position: outside;
                                     overflow: hidden;
 
                                     .label-title {
-                                        font-size: 14px;
+                                        font-size: 20px;
                                         font-family: $font_default;
-                                        font-weight: 700;
+                                        font-weight: 500;
                                         text-align: left;
-                                        // margin-bottom: 30px;
+                                        margin-bottom: 18px;
                                     }
-                                    a{
+                                    a {
                                         font-weight: 600;
                                         font-size: 18px;
                                         margin-bottom: 8px;
                                     }
-                                    .desc-title{
+                                    .desc-title {
                                         font-size: 16px;
                                         color: #646464;
+                                        font-weight: normal;
+                                        margin-bottom: 0;
                                     }
                                 }
                             }
@@ -532,26 +534,27 @@ body{
                                 .produk-hover {
                                     li {
                                         // line-height: 1.8;
-
                                         a {
-                                            font-family: $font_default;
-                                            color: #333333;
-                                            font-size: 18px;
-                                            font-weight: 500;
-
-                                            &:hover {
-                                                color: #7AC143;
+                                            display: unset;
+                                            &:hover > .sub-title {
+                                                color: #7ac143;
                                                 // font-weight: bold;
                                             }
 
-                                            &.active {
-                                                color: #7AC143;
+                                            &.active > .sub-title {
+                                                color: #7ac143;
                                                 // font-weight: bold;
                                             }
                                         }
+                                        .sub-title {
+                                            font-family: $font_default;
+                                            color: #333333;
+                                            font-size: 18px;
+                                            font-weight: bold;
+                                            margin-bottom: 0;
+                                        }
                                     }
                                 }
-
                             }
                         }
                     }
@@ -588,10 +591,8 @@ body{
                 }
 
                 &._personal {
-                    color: #04559F;
+                    color: #04559f;
                     font-weight: bold;
-
-
                 }
 
                 // &._grup {}
@@ -599,36 +600,36 @@ body{
 
             .active {
                 font-weight: bold;
-                color: #04559F;
+                color: #04559f;
             }
 
             .link-log {
-                .login{
+                .login {
                     padding-right: 15px;
                 }
                 .user {
                     display: flex;
                     justify-content: flex-end;
                     a.full_name {
-                        text-decoration : underline;
-                        font-weight : bold;
-                        color: #04559F;
-                        margin-right : 10px;
+                        text-decoration: underline;
+                        font-weight: bold;
+                        color: #04559f;
+                        margin-right: 10px;
                         width: 54px;
                         overflow: hidden;
                         text-overflow: ellipsis;
                         white-space: nowrap;
-                        
+
                         &:before {
-                            content: '';
+                            content: "";
                             display: inline-block;
                             width: 10px;
                             height: 10px;
                             -moz-border-radius: 7.5px;
                             -webkit-border-radius: 7.5px;
                             border-radius: 7.5px;
-                            background-color: #04559F;
-                            margin-right : 10px;
+                            background-color: #04559f;
+                            margin-right: 10px;
                             position: absolute;
                             top: 5px;
                             left: 0;
@@ -636,14 +637,14 @@ body{
                     }
 
                     a.logout {
-                        margin-left : 10px;
+                        margin-left: 10px;
                         margin-right: 10px;
                     }
                 }
 
                 a {
                     &:hover {
-                        color: #04559F;
+                        color: #04559f;
                     }
 
                     &:focus {
@@ -661,7 +662,7 @@ body{
             align-items: center;
             justify-content: flex-start;
 
-            >a {
+            > a {
                 padding: 0;
                 line-height: 65px;
                 height: 65px;
@@ -674,43 +675,43 @@ body{
                     width: 45px;
                     margin-left: 10px;
                     // margin: 10px;
-                    &.header-image-product{
+                    &.header-image-product {
                         margin-left: 15px;
                     }
                 }
             }
-            .ojk{
+            .ojk {
                 padding: 0 8px;
-                .top-desc{
+                .top-desc {
                     margin-bottom: 4px;
                     font-size: 8px;
                     line-height: 8px;
-                    color: #FFFFFF;
+                    color: #ffffff;
                 }
-                img{
+                img {
                     width: 75px;
                     margin-left: 0;
                 }
             }
 
-            .header-button-wrapper{
+            .header-button-wrapper {
                 display: flex;
                 flex-wrap: wrap;
                 align-items: center;
                 justify-content: flex-end;
                 width: 50%;
-                >.navbar-toggle[aria-expanded="true"] {
+                > .navbar-toggle[aria-expanded="true"] {
                     line-height: 65px;
                     height: 60px;
                     padding: 0 15px;
                     margin: 0;
                     width: 55px;
-    
+
                     .icon-bar {
                         background: $light;
                         display: none;
                     }
-    
+
                     .close-bar {
                         display: block;
                         font-size: 30px;
@@ -720,42 +721,42 @@ body{
                         // left: 6px;
                     }
                 }
-    
-                >.navbar-toggle[aria-expanded="false"] {
+
+                > .navbar-toggle[aria-expanded="false"] {
                     line-height: 65px;
                     height: 60px;
                     padding: 0 15px;
                     margin: 0;
                     width: 55px;
-    
+
                     .icon-bar {
                         background: $light;
                         display: block;
                     }
-    
+
                     .close-bar {
                         display: none;
                     }
                 }
-    
+
                 .button-area--nav {
                     display: block;
                     // float: right;
                     // margin: 12px 0px 12px 15px;
-    
+
                     a {
                         font-size: 12px;
                         text-transform: uppercase;
-    
+
                         &:before {
                             right: 10px;
                         }
                     }
                 }
-                .search-button{
+                .search-button {
                     margin-left: 20px;
                     margin-right: 5px;
-                    a{
+                    a {
                         font-size: 18px;
                         color: #fff;
                     }
@@ -764,17 +765,17 @@ body{
         }
     }
 
-    .search-button-container{
+    .search-button-container {
         display: flex;
-        align-items: center; 
+        align-items: center;
         justify-content: space-between;
         position: relative;
-        a{
+        a {
             font-size: 16px;
             color: #fff;
             position: absolute;
             right: 17px;
-            top:35px;
+            top: 35px;
         }
     }
 
@@ -788,9 +789,9 @@ body{
         top: 95px;
         height: 100%;
 
-        .nav .open>a,
-        .nav>li>a:hover,
-        .nav>li>a:focus {
+        .nav .open > a,
+        .nav > li > a:hover,
+        .nav > li > a:focus {
             background-color: transparent;
         }
 
@@ -802,8 +803,8 @@ body{
             padding-bottom: 25px;
             display: none;
 
-            .no-dropdown{
-                a{
+            .no-dropdown {
+                a {
                     padding-left: 20px;
                 }
             }
@@ -812,27 +813,28 @@ body{
                 display: block !important;
             }
 
-            >li {
-                >a {
+            > li {
+                > a {
                     font-weight: bold;
                     font-size: 18px;
                     color: $grey-dark-color;
-                    @include breakpoint(mobile){
+                    text-transform: capitalize;
+                    @include breakpoint(mobile) {
                         padding-left: 0;
                     }
 
-                    &.secondary-menu{
+                    &.secondary-menu {
                         padding-left: 20px;
-                        @include breakpoint(mobile){
+                        @include breakpoint(mobile) {
                             font-size: 16px;
                         }
                     }
 
-                    &.active{
+                    &.active {
                         color: $green-color;
                     }
 
-                    &.page-active{
+                    &.page-active {
                         color: $primary;
                     }
                 }
@@ -849,10 +851,10 @@ body{
             }
 
             .dropdown {
-                a{
+                a {
                     padding-left: 20px;
                 }
-                >.dropdown-toggle[aria-expanded="false"] {
+                > .dropdown-toggle[aria-expanded="false"] {
                     position: relative;
                     background-image: url("/static/images/down_arrow.png");
                     background-size: 20px 12px;
@@ -887,91 +889,103 @@ body{
                 }
 
                 .dropdown-menu {
-                    background-color: #F5FAFF;
-                    padding: 0 32px 20px 32px;
+                    background-color: #f5faff;
+                    padding: 0 20px 20px 20px;
                     li {
                         a {
                             color: #565656;
-                            padding-top: 0px;
-                            padding-bottom: 15px;
-                            font-size: 16px;
+                            padding-top: 0;
+                            padding-left: 0;
+                            padding-right: 0;
 
-                            &.active{
+                            &.active > .grandchild {
                                 color: $green-color;
                             }
-                            &.grandchild{
+                            .grandchild {
                                 margin-bottom: 0;
-                                padding: 0 0 10px 0;
-                                font-weight: 600;
+                                padding: 0 0 4px 0;
+                                font-size: 16px;
+                                font-weight: bold;
+                            }
+                            .desc-title {
+                                font-size: 14px;
+                                font-weight: 400;
+                                word-break: break-word;
+                                white-space: normal;
                             }
                         }
 
                         .title-dropdown {
                             color: #04559f;
-                            padding: 10px 0;
+                            padding: 20px 0 16px 0;
                             font-weight: bold;
-                            font-size: 14px;
-                            word-break: break-word;
+                            font-size: 16px;
                             white-space: initial;
                         }
                     }
                 }
 
-                .grand-child{
+                .grand-child {
                     li::before {
                         content: "\25A0";
                         color: $grey-dark-color;
                         font-weight: bold;
-                        display: inline-block; 
+                        display: inline-block;
                         width: 1em;
                         margin-left: -1em;
                     }
-            
-                    li{
+
+                    li {
                         padding-left: 50px;
                         margin-bottom: 5px;
 
-                        a{
+                        a {
                             padding-left: 8px;
-                            font-weight: normal!important;
+                            font-weight: normal !important;
                         }
                     }
                 }
             }
-            .lang{
+            .lang {
                 padding: 15px;
-                a{
+                a {
                     color: #565656;
                     font-size: 14px;
                     padding: 0 15px 0 15px;
 
-                    &:first-child{
+                    &:first-child {
                         padding-left: 0;
                         border-right: solid 1px #565656;
                     }
                 }
             }
-            .link-log{
+            .link-log {
                 font-size: 16px;
-                a{
+                .user {
+                    font-size: 18px;
+                    color: #565656;
+                }
+                a {
                     font-weight: bold;
                     padding-left: 20px;
                     color: #565656;
+                    &.logout {
+                        padding-left: 0;
+                    }
                 }
             }
         }
     }
-
 }
 
-.clearfix{
+.clearfix {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
 }
 
-.re-sort{
+.re-sort {
     display: flex;
     flex-wrap: wrap;
 }

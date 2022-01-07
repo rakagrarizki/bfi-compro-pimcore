@@ -17,12 +17,11 @@ if($_COOKIE["customer"] != "null") {
 <div class="top-nav--mobille hidden-md">
     <div class="container">
         <div class="row top-nav">
-
             <?= $this->inc("/" . $this->getLocale() . "/shared/includes/sub-navigation-mobile") ?>
             <div class="col-xs-6 text-right">
-            <div class="lang">
-                <?php echo $this->template("Includes/mobile-language.html.php") ?>
-            </div>
+                <div class="lang">
+                    <?php echo $this->template("Includes/mobile-language.html.php") ?>
+                </div>
             </div>
         </div>
         <div class="navbar-header">
@@ -61,7 +60,7 @@ if($_COOKIE["customer"] != "null") {
                 if ($hasChildren && (strpos($page->getUri(), '#product') !== false || strpos($page->getUri(), '#layanan') !== false)) {
         ?>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle <?= $page->getActive() ? "active" : "" ?>" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                             <?= $page->getLabel() ?>
                         </a>
                         <ul class="dropdown-menu">
@@ -76,8 +75,10 @@ if($_COOKIE["customer"] != "null") {
                                 ?>
                                         <?php if ($grandChild->getDocumentType() != "link") : ?>
                                             <li>
-                                                <a class="grandchild <?= $grandChild->getActive() ? 'active' : ''; ?>" href="<?= $grandChild->getHref() ?>"><?= $grandChild->getLabel() ?></a>
-                                                <p class="desc-title"><?= $grandChild->document->getProperty("description"); ?></p>
+                                                <a class="<?php echo $grandChild->getActive() ? 'active' : '' ?>" href="<?= $grandChild->getHref() ?>">
+                                                    <p class="grandchild"><?= $grandChild->getLabel() ?></p>
+                                                    <p class="desc-title"><?= $grandChild->document->getProperty('description'); ?></p>
+                                                </a>
                                             </li>
                                         <?php else : ?>
                                             <li><a href="#" class="title-dropdown"><?= $grandChild->getLabel() ?></a></li>
@@ -121,7 +122,7 @@ if($_COOKIE["customer"] != "null") {
                 <a href="<?= "/" . $lang . "/login"; ?>" class="login"><?= $this->translate("login") ?></a>
             <?php } else { ?>
             <div class="user">
-                <a href="/<?= $this->getLocale() ?>/user/dashboard" class="full_name"><?= $name; ?></a> | <a href="#" class="logout" onclick="return logout('<?= $this->getLocale() ?>');"><?= $this->translate("logout") ?></a>
+                <a href="/<?= $this->getLocale() ?>/user/dashboard" class="full_name"><?= strlen($name) > 5 ? substr($name,0,4) . ".." : $name ?></a> | <a href="#" class="logout" onclick="return logout('<?= $this->getLocale() ?>');"><?= $this->translate("logout") ?></a>
             </div>
             <?php } ?>
         </div>

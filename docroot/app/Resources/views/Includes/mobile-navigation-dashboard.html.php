@@ -13,16 +13,12 @@ if($_COOKIE["customer"] != "null") {
 <div class="top-nav--mobille hidden-md">
     <div class="container">
         <div class="row top-nav">
-
             <div class="col-xs-6 left-side-top">
                 <a href="<?php echo "/" . $this->getLocale(); ?>" class="text-btn"><?= $this->translate("backtohome") ?></a>
             </div>
-
             <div class="col-xs-6 text-right">
-                <div class="link-log">
-                    <div class="user">
-                        <a href="/<?= $this->getLocale() ?>/user/dashboard" class="full_name"><?= $name; ?></a> | <a href="#" class="logout" onclick="return logout('<?= $this->getLocale() ?>');"><?= $this->translate("logout") ?></a>
-                    </div>
+                <div class="lang">
+                    <?php echo $this->template("Includes/mobile-language.html.php") ?>
                 </div>
             </div>
         </div>
@@ -66,6 +62,16 @@ if($_COOKIE["customer"] != "null") {
             }
         }
         ?>
+        <li role="separator" class="divider"></li>
+        <div class="link-log">
+            <?php if (!isset($_COOKIE["customer"])) { ?>
+                <a href="<?= "/" . $lang . "/login"; ?>" class="login"><?= $this->translate("login") ?></a>
+            <?php } else { ?>
+            <div class="user">
+                <a href="/<?= $this->getLocale() ?>/user/dashboard" class="full_name"><?= strlen($name) > 5 ? substr($name,0,4) . ".." : $name ?></a> | <a href="#" class="logout" onclick="return logout('<?= $this->getLocale() ?>');"><?= $this->translate("logout") ?></a>
+            </div>
+            <?php } ?>
+        </div>
     </ul>
 </div>
 <!-- END Mobile -->

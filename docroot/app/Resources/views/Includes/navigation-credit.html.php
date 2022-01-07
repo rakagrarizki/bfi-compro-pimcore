@@ -34,11 +34,6 @@ if($_COOKIE["customer"] != "null") {
                     </div>
                     <div class="col-md-6 col-sm-6 right-side-top">
                         <div class="link-log">
-                            <?php if (isset($_COOKIE["customer"])) { ?>
-                                <div class="user">
-                                    <a href="/<?= $this->getLocale() ?>/user/dashboard" class="full_name"><?= $name?></a> | <a href="#" class="logout" onclick="return logout('<?= $this->getLocale() ?>');"><?= $this->translate("logout") ?></a>
-                                </div>
-                            <?php } ?>
                             <?php echo (strpos($this->getHref(),'form') == false) ? $this->template("Includes/language.html.php") : "" ?>
                         </div>
                     </div>
