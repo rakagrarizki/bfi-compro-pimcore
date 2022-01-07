@@ -20,23 +20,22 @@ $lang = $this->getLocale();
         <div class="header-top">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-5 col-sm-8 left-side-top">
+                    <div class="col-md-4 col-sm-4 left-side-top">
                         <a id="" class="_grup" href="/<?php echo $this->getLocale() ?>"><?= $this->translate("personal") ?></a>
                         <a class="_grup" href="<?= $this->translate("bfiConnectUrl") ?>"><?= $this->translate("Bisnis") ?></a>
                         
                     </div>
-                    <div class="col-md-7 col-sm-4 right-side-top clearfix">
-                        <div class="link-about-top">
-                            <a id="" class="_personal" href="<?= '/' . $this->getLocale() . '/corporate' ?>"><?= $this->translate("corporate") ?></a>
-                            <a id="" href="<?= $this->websiteConfig("career_link") ? $this->websiteConfig("career_link") : "#"; ?>">
+                    <div class="col-md-4 col-sm-4 right-side-top">
+                        <div class="link-about-top corporate-nav">
+                            <a id="" class="_personal text-center" href="<?= '/' . $this->getLocale() . '/corporate' ?>"><?= $this->translate("corporate") ?></a>
+                            <a id="" class="text-center" href="<?= $this->websiteConfig("career_link") ? $this->websiteConfig("career_link") : "#"; ?>">
                                 <?= $this->translate("career"); ?></a>
-
+                            <!-- <a href=""></a> -->
                         </div>
-
-                        <?php echo $this->template("Includes/language.html.php") ?>
-
                     </div>
-
+                    <div class="col-md-4 col-sm-4 link-log">
+                        <?php echo $this->template("Includes/language.html.php") ?>
+                    </div>
                 </div>
             </div>
         </div>

@@ -8,11 +8,11 @@
                 <h1 class="desc-title"><?= $this->input("title"); ?></h1>
                 <p class="desc-text"><?= $this->input("desc") ?></p>
                 <div class="btn-ajukan" id="desk-btn">
-                    <a href="<?= $this->link('url')->getHref(); ?>" class="cta cta-orange <?= $this->link('url')->getClass(); ?>" id="<?= $this->link('url')->getParameters()?>"><?= $this->link('url')->getText(); ?></a>
+                    <a href="<?= $this->link('url')->getHref(); ?>" class="cta cta-orange <?= $this->link('url')->getClass(); ?>" id="<?= $this->link('url')->getParameters()?>"><?= $this->link('url')->getText(); ?><i class="fa fa-angle-right"></i></a>
                 </div>
             </div>
             <div class="col-md-6 col-md-pull-6 calc-sect">
-                <h1 class="calc-title text-center">Kalkulator Pinjaman</h1>
+                <h1 class="calc-title text-center"><?= $this->input("card-title"); ?></h1>
                 <?php while($this->block("sub-titles")->loop()) { ?>
                     <div class="row">
                         <div class="col-xs-6">
@@ -27,7 +27,7 @@
                 <?php } ?>
                 <div class="row">
                     <div class="col-sm-12">
-                        <p>Pilih Tenor</p>
+                        <p><?= $this->input("tenor-title"); ?></p>
                         <div class="tenor">
                             <div class="radio-group">
                                 <?php while($this->block("tenors")->loop()) { ?>
@@ -37,15 +37,18 @@
                             </div>
                         </div>
                         <div class="estimasi">
-                            <p class="text-center">Estimasi Angsuran per Bulan</p>
-                            <p id="result-estimasi" class="text-center">Rp 0</p>
+                            <p class="text-center"><?= $this->input("estimasi-text"); ?></p>
+                            <p id="result-estimasi" class="text-center">Rp 0 <span>*</span></p>
+                        </div>
+                        <p class="desclaimer">
+                            <span>*</span> <?= $this->input("desclaimer-text"); ?>
+                        </p>
+                        <div class="btn-ajukan" id="mobile-btn">
+                            <a href="<?= $this->link('url')->getHref(); ?>" class="cta cta-orange <?= $this->link('url')->getClass(); ?>" id="<?= $this->link('url')->getParameters()?>"><?= $this->link('url')->getText(); ?></a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="btn-ajukan" id="mobile-btn">
-            <a href="<?= $this->link('url')->getHref(); ?>" class="cta cta-orange <?= $this->link('url')->getClass(); ?>" id="<?= $this->link('url')->getParameters()?>"><?= $this->link('url')->getText(); ?></a>
         </div>
     </div>
 </div>

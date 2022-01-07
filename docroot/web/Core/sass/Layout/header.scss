@@ -109,6 +109,12 @@ body {
             .link-about-top {
                 display: flex;
                 justify-content: space-between;
+                &.corporate-nav {
+                    justify-content: center;
+                    a {
+                        padding: 0 8px;
+                    }
+                }
                 a {
                     font-family: $font_default;
 
