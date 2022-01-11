@@ -41,7 +41,9 @@
                             <p id="result-estimasi" class="text-center">Rp 0 <span>*</span></p>
                         </div>
                         <p class="desclaimer">
-                            <span>*</span> <?= $this->input("desclaimer-text"); ?>
+                            <?php if (!$this->input("desclaimer-text")->isEmpty()) { ?>
+                                <span>*</span> <?= $this->input('desclaimer-text');?>
+                            <?php } ?>
                         </p>
                         <div class="btn-ajukan" id="mobile-btn">
                             <a href="<?= $this->link('url')->getHref(); ?>" class="cta cta-orange <?= $this->link('url')->getClass(); ?>" id="<?= $this->link('url')->getParameters()?>"><?= $this->link('url')->getText(); ?></a>

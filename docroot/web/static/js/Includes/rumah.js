@@ -176,7 +176,8 @@ $("#next1").on("click", function (e) {
                 window.location =
                     "/" +
                     lang +
-                    "/credit/pengajuan-gagal?dupcheck=true&product=pbf";
+                    "/credit/pengajuan-gagal?dupcheck=true&product=" +
+                    sessionStorage.getItem("loanType");
             } else {
                 step("next", 1);
                 getProfesion();
@@ -201,7 +202,11 @@ $("#next2").on("click", function (e) {
                 result.data.leads_status == "UNPROSPECT" ||
                 result.data.leads_status == "RAW"
             ) {
-                window.location = "/" + lang + "/credit/pengajuan-gagal";
+                window.location =
+                    "/" +
+                    lang +
+                    "/credit/pengajuan-gagal?product=" +
+                    sessionStorage.getItem("loanType");
             } else {
                 step("next", 2);
                 getCertificateType();

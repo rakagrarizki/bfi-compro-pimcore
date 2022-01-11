@@ -6,6 +6,7 @@
  */
 
 $this->extend('layout-credit.html.php');
+$this->headScript()->offsetSetFile(100, '/static/js/Includes/failed-apply.js');
 
 $is_dupcheck = $_GET['dupcheck'];
 $is_product = $_GET['product'];
@@ -16,6 +17,10 @@ $is_product = $_GET['product'];
             <h2 class="text-center product-title">
                 <?php if($is_product == "pbf"){?>
                     <?=$this->translate('failedPBF')?>
+                <?php } else if($is_product == "ndfc"){   ?>
+                    <?=$this->translate('failedNDFC')?>
+                <?php } else {   ?>
+                    <?=$this->translate('failedNDFM')?>
                 <?php } ?>
             </h2>
             <p class="text-center product-subtitle">
@@ -26,12 +31,15 @@ $is_product = $_GET['product'];
         </div>
         <div class="wrap-content-fail">
             <img src="/static/images/fail.png" class="img-responsive" alt="">
-            <p class="text-center">Klik nomor di bawah ini untuk chat pertanyaan seputar proses pengajuan:</p>
-            <a href="tel:02150860777">(021) 50860777</a>
+            <p class="text-center" hidden>Klik nomor di bawah ini untuk chat pertanyaan seputar proses pengajuan:</p>
+            <a href="tel:02150860777" hidden>(021) 50860777</a>
         </div>
     </div>
     <div class="simulasi_pbf">
-        <div class="container">
+        <div class="container form-body--credit">
+            <div class="text-head">
+                <h2 class="text-center product-title">Lihat produk lainnya</h2>
+            </div>
             <div class="row">
                 <div class="col-md-4 calc-sect smallContent" id="ctaNDFM" hidden>
                     <div class="list-item">
@@ -57,7 +65,7 @@ $is_product = $_GET['product'];
                                 <p id="result-estimasi" class="text-center">Rp 148.500</p>
                             </div>
                      <div class="wrap-btn">
-                         <a href="" class="cta cta-orange" id="">Ajukan Pengajuan</a>
+                         <a href="https://www.bfi.co.id/id/produk/jaminan-bpkb-motor" class="cta cta-orange" id="">Lihat Selengkapnya</a>
                      </div>
                 </div>
                 <div class="col-md-4 calc-sect smallContent" id="ctaNDFC" hidden>
@@ -84,7 +92,7 @@ $is_product = $_GET['product'];
                                 <p id="result-estimasi" class="text-center">Rp 1.358.000</p>
                             </div>
                      <div class="wrap-btn">
-                         <a href="" class="cta cta-orange" id="">Ajukan Pengajuan</a>
+                         <a href="https://www.bfi.co.id/id/produk/jaminan-bpkb-mobil" class="cta cta-orange" id="">Lihat Selengkapnya</a>
                      </div>
                 </div>
                 <div class="col-md-4 calc-sect smallContent" id="ctaPBF" hidden>
@@ -111,7 +119,7 @@ $is_product = $_GET['product'];
                                 <p id="result-estimasi" class="text-center">Rp 5.668.500</p>
                             </div>
                      <div class="wrap-btn">
-                         <a href="" class="cta cta-orange" id="">Ajukan Pengajuan</a>
+                         <a href="https://www.bfi.co.id/id/produk/jaminan-sertifikat-rumah" class="cta cta-orange" id="">Lihat Selengkapnya</a>
                      </div>
                 </div>
             </div>
