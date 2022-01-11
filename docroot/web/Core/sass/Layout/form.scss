@@ -58,7 +58,7 @@
     }
 
     p {
-        font-size: 18px;
+        font-size: 16px;
         color: #565656;
         @include breakpoint(mobile) {
             font-size: 13px;
@@ -2886,7 +2886,7 @@ select::-ms-expand {
 
 .select2-search__field {
     &::placeholder {
-        font-style: italic;
+        font-style: normal;
     }
 }
 
@@ -2999,7 +2999,98 @@ select::-ms-expand {
         margin: auto;
     }
 }
+#addressModal {
+    .modal-dialog {
+        justify-content: center;
+        @include breakpoint(mobile) {
+            margin: 30px auto;
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: none;
+            padding-bottom: 0;
+            h5 {
+                color: $blue-dark-color;
+                font-weight: bold;
+                font-size: 15px;
+                width: 100%;
+            }
+            span {
+                font-size: 24px;
+            }
+        }
+        .modal-content {
+            background-color: #fff;
+            border: none;
+            box-shadow: 0 3px 9px rgba(255, 255, 255, 0.4);
+            width: calc(40%);
+            @include breakpoint(mobile) {
+                width: calc(90%);
+            }
+            .form-group {
+                margin-bottom: unset;
+                display: flex;
+                justify-content: space-between;
+                .form-control {
+                    height: 60px;
+                    width: 90%;
+                    margin-right: 6px;
+                    font-size: 16px;
+                    border-radius: 4px;
+                    padding: 20px 15px;
+                    border-color: $blue-dark-color;
+                    box-shadow: inset 0px 0.5px 4px rgba(100, 100, 100, 0.32);
 
+                    &.valid {
+                        background-color: #e7f5e6;
+                        border-color: #007f00;
+                        position: relative;
+                        &::before {
+                            content: "\f00c";
+                            font-size: 1.2rem;
+                            font-family: "FontAwesome";
+                            font-weight: 900;
+                            color: rgb(40, 167, 69);
+                            display: block;
+                            position: absolute;
+                            right: 1rem;
+                            background: #e7f5e6;
+                            width: 24px;
+                            height: 24px;
+                        }
+                    }
+
+                    &:disabled {
+                        background: #f7f7f7;
+                        border: 1px solid #acacac;
+
+                        &::placeholder {
+                            font-style: normal;
+                            color: #acacac;
+                            opacity: 1;
+                        }
+                    }
+
+                    &:focus {
+                        padding: 20px 15px !important;
+                    }
+
+                    &::placeholder {
+                        font-style: normal;
+                        color: #333;
+                        opacity: 1;
+                    }
+
+                    &.error {
+                        border-color: red;
+                    }
+                }
+            }
+        }
+    }
+}
 #box-document {
     display: flex;
     flex-direction: column;

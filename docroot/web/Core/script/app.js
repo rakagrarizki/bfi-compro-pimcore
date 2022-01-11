@@ -1753,8 +1753,8 @@ var urlLocation = window.location;
     }
 
     function enableButton(button) {
-        $(button).css("background-color", "#F8991D");
-        $(button).css("border-color", "#F8991D");
+        $(button).css("background-color", "#04559F");
+        $(button).css("border-color", "#04559F");
         if (button === "#button5") {
             $(button).removeClass("btn-disabled");
         } else {
@@ -2092,6 +2092,7 @@ var urlLocation = window.location;
                                     hideTab1();
                                     showTab2();
                                     scrollToTop();
+                                    getmobilormotor(null, credits);
                                     step1Done = true;
                                     $(".nav-item-1").removeClass("active");
                                     $(".nav-item-1").addClass("done");
@@ -5464,6 +5465,19 @@ var urlLocation = window.location;
     });
 })(jQuery); // tanda tutup
 
+function reInitBtn() {
+    $('input[name="is-wa-number"]').parent().find("span").remove();
+    $('input[name="is-wa-number"]').unwrap();
+    // jcf.destroyAll();
+    jcf.replace();
+    $('input[name="is-wa-number"]')
+        .parent()
+        .parent()
+        .css("padding-top", "20px");
+}
+
+reInitBtn();
+
 function tidyArticle() {
     // table tidy
     $(".article-content").find("table").addClass("table");
@@ -6063,6 +6077,15 @@ if ($("#nama_lengkap").length > 0) {
         }
     });
 }
+
+$("input[name='is-wa-number']").click(function () {
+    var is_WA = $(this).val();
+    {
+        is_WA == "false"
+            ? $(".wa-numbers").removeAttr("hidden")
+            : $(".wa-numbers").attr("hidden", true);
+    }
+});
 
 function isNumberKey(evt) {
     var charCode = evt.which ? evt.which : evt.keyCode;
