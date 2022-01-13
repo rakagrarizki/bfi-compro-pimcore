@@ -24,7 +24,7 @@ $this->headScript()
             <div class="tab-get--credit">
                 <nav class="step-list">
                     <ul class="nav nav-tab">
-                        <li class="nav-item-1 active">
+                        <li class="nav-item-2 active">
                             <a>
                                 <span class="nav-icon">
                                     <i class="fas fa-check" aria-hidden="true"></i>
@@ -37,7 +37,7 @@ $this->headScript()
                                 </div>
                             </a>
                         </li>
-                        <li class="nav-item-2">
+                        <li class="nav-item-3">
                             <a>
                                 <span class="nav-icon">
                                     <i class="fas fa-check" aria-hidden="true"></i>
@@ -50,7 +50,7 @@ $this->headScript()
                                 </div>
                             </a>
                         </li>
-                        <li class="nav-item-3">
+                        <li class="nav-item-4">
                             <a>
                                 <span class="nav-icon">
                                     <i class="fas fa-check" aria-hidden="true"></i>
@@ -63,7 +63,7 @@ $this->headScript()
                                 </div>
                             </a>
                         </li>
-                        <li class="nav-item-4">
+                        <li class="nav-item-5">
                             <a>
                                 <span class="nav-icon">
                                     <i class="fas fa-check" aria-hidden="true"></i>
@@ -81,7 +81,7 @@ $this->headScript()
                 <form action="#" id="getCredit" method="POST" class="form-get--credit" role="form">
                     <input type="hidden" id="jenis_form" name="jenis_form" value="MOBIL">
                     <div class="tab-content">
-                        <div id="menu1" class="tab-pane fade in active">
+                        <div id="menu2" class="tab-pane fade in active">
                             <div class="form-body--credit">
                                 <div class="text-head">
                                     <h2 class="text-center">
@@ -160,7 +160,7 @@ $this->headScript()
                                 </div>
                             </div>
                         </div>
-                        <div id="menu2" class="tab-pane slide-left">
+                        <div id="menu3" class="tab-pane slide-left">
                             <div class="form-body--credit">
                                 <div class="text-head">
                                     <h2 class="text-center">
@@ -263,7 +263,7 @@ $this->headScript()
                                 </div>
                             </div>
                         </div>
-                        <div id="menu3" class="tab-pane slide-left">
+                        <div id="menu4" class="tab-pane slide-left">
                             <div class="form-body--credit">
                                 <div class="text-head">
                                     <h2 class="text-center">Tambahan Informasi & Perhitungan</h2>
@@ -430,127 +430,14 @@ $this->headScript()
                                 </div>
                                 <div class="form-group form-btn space-btn">
                                     <button class="cta cta-primary-outline cta-big cta-back buttonback"
-                                        id="back4" type="button"><?=$this->translate('before') ?>
+                                        id="back3" type="button"><?=$this->translate('before') ?>
                                     </button>
-                                    <button class="cta cta-primary cta-big cta-see buttonnext" id="next4"
+                                    <button class="cta cta-primary cta-big cta-see buttonnext" id="next3"
                                         type="button"><?=$this->translate('next') ?></button>
                                 </div>
                             </div>
                         </div>
-                        <div id="menu4" class="tab-pane slide-left">
-                            <div class="form-body--credit-simulasi row">
-                                <div class="text-head">
-                                    <h2 class="text-center"><?= $this->translate('data-funding') ?></h2>
-                                    <h2 class="text-center-edit"><?= $this->translate('change-data-funding') ?></h2>
-                                    <p class="text-center"><?= $this->translate('input-data-funding') ?></p>
-                                </div>
-                                <div class="col-md-6 col-xs-12 no-padding-mobile">
-                                    <div class="form-group sliderGroup inputsimulasi">
-                                        <label for="jml-biaya"><?= $this->translate('label-data-funding') ?></label>
-                                        <div class="input-group inputform">
-                                            <span class="input-group-addon" id="basic-addon1">Rp</span>
-                                            <input type="tel" pattern="\d*" id="ex6SliderVal" class="form-control formRequired formPrice formPrice1000 c-input-trans" aria-describedby="basic-addon1">
-                                            <div class="error-wrap"></div>
-                                        </div>
-                                        <div class="slidecontainer ">
-                                            <input id="funding" class="customslide" type="tel" pattern="\d*" data-slider-handle="custom" data-slider-tooltip="hide" />
-                                            <div class="value-left valuemin"></div>
-                                            <div class="value-right valuemax"></div>
-                                            <input type="hidden" id="otr">
-                                        </div>
-                                    </div>
-                                    <div class="form-group sliderGroup inputsimulasi">
-                                        <label><?= $this->translate('label-funding-year') ?></label>
-                                        <select class="c-custom-select-trans form-control formRequired" id="jangka_waktu" name="jangka-waktu">
-                                            <?php
-                                            // for ($i = 12 ; $i <= 48; $i++) {
-                                            //     if($i % 12 == 0){
-                                            //         echo '<option value="' . $i . '">' . $i . ' ' .$this->translate('label-month') .'</option>';
-                                            //     }
-                                            // }
-                                            ?>
-                                        </select>
-                                        <div class="error-wrap"></div>
-                                        <!-- <div class="slidecontainer">
-                                            <input id="installment" class="customslide" type="text" data-slider-handle="custom"
-                                                   data-slider-min="12" data-slider-max="60" data-slider-step="12"
-                                                   data-slider-tooltip="hide" />
-                                            <div class="value-left">12 Bulan</div>
-                                            <div class="value-right">60 Bulan</div>
-                                        </div> -->
-                                    </div>
-                                    <input type="hidden" id="tahunke" value="<?= $this->translate('label-next-year') ?>">
-                                    <div class="form-group inputsimulasi asuransi">
-                                        <label><?= $this->translate('label-asuransi') ?></label>
-                                        <div class="columnselect" ke="0">
-                                            <div class="list-select">
-                                                <label><?= $this->translate('label-next-year') ?> - 1</label>
-                                            </div>
-                                            <div class="list-select">
-                                                <select class="c-custom-select-trans form-control formRequired opsiasuransi" name="status"></select>
-                                            </div>
-                                        </div>
-                                        <div class="error-wrap"></div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-xs-12 no-padding-mobile">
-                                    <div class="rincian">
-                                        <div class="rincian--content">
-                                            <p class="title-angsuran"><?= $this->translate('label-rincian') ?></p>
-                                            <table class="tableangsuran">
-                                                <tr>
-                                                    <td>
-                                                        <?= $this->translate('label-total') ?> *
-                                                    </td>
-                                                    <td class="currency" tahun="0">
-                                                        Rp 0
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <?= $this->translate('label-total-asuransi') ?> *
-                                                    </td>
-                                                    <td class="currency" tahun="1">
-                                                        Rp 0
-                                                    </td>
-                                                </tr>
-                                                <!-- <tr>
-                                                    <td class="textsubcurrency">
-                                                        Tahun ke-1 [All Risk Only*]
-                                                    </td>
-                                                    <td class="currency" tahun="1">
-                                                        Rp 0
-                                                    </td>
-                                                </tr> -->
-                                                <!-- <tr>
-                                                    <td class="textsubcurrency">
-                                                        Tahun ke-2 [Total Cost Only*]
-                                                    </td>
-                                                    <td class="currency" tahun="2">
-                                                        Rp 205.000
-                                                    </td>
-                                                </tr> -->
-                                            </table>
-                                        </div>
-                                        <div class="total-estimate">
-                                            <p class="title-angsuran"><?= $this->translate('label-estimate') ?></p>
-                                            <p class="total">Rp 0</p>
-                                            <p class="infotext">*<?= $this->translate('text-estimate') ?></p>
-                                            <button class="cta cta-primary cta-big absolutebutcalc" id="recalc" type="button"><?= $this->translate('hitung') ?></button>
-                                        </div>
-                                    </div>
-                                    <div class="warning-calculate hide"><label><?= $this->translate("calculate-again"); ?></label></div>
-                                </div>
-                            </div>
-                            <div class="button-area text-left back">
-                                <button class="cta cta-primary cta-big cta-back buttonback" id="buttonback4" type="button"><?= $this->translate('before') ?></button>
-                            </div>
-                            <div class="button-area text-right next">
-                                <button class="cta cta-primary cta-big cta-see buttonnext" id="button4" type="button"><?= $this->translate('next') ?></button>
-                                <button class="cta cta-primary cta-big cta-see buttonnext hidesavebutton" type="button"><?= $this->translate('save') ?></button>
-                            </div>
-                        </div>
-                        <div id="menu6" class="tab-pane slide-left">
+                        <div id="menu5" class="tab-pane slide-left">
                             <div class="form-body--credit">
                                 <h2 class="text-center"><?= $this->translate('confirmation-otp') ?></h2>
                                 <p class="text-center"><?= $this->translate('text-confirmation-otp') ?></p>
