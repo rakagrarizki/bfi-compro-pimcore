@@ -647,3 +647,58 @@ $("input.form-control").on("keyup change", function () {
         ? $(this).prev("label").addClass("valids")
         : $(this).prev("label").removeClass("valids");
 });
+
+function step(action, val) {
+    scrollToTop();
+    if (action == "next") {
+        $(".nav-item-" + val).removeClass("active");
+        $(".nav-item-" + val).addClass("done");
+        $(`.nav-item-${val + 1}`).addClass("active");
+
+        lang == "id"
+            ? $(".nav-item-" + val)
+                  .find(".nav-step-tag")
+                  .text("Selesai")
+            : $(".nav-item-" + val)
+                  .find(".nav-step-tag")
+                  .text("Done");
+
+        lang == "id"
+            ? $(`.nav-item-${val + 1}`)
+                  .find(".nav-step-tag")
+                  .text("Sedang Isi")
+            : $(`.nav-item-${val + 1}`)
+                  .find(".nav-step-tag")
+                  .text("Onprogress");
+
+        $("#menu" + val).removeClass("active");
+        $(`#menu${val + 1}`)
+            .addClass("active")
+            .fadeIn();
+    } else {
+        $(`.nav-item-${val + 1}`).removeClass("active");
+        $(".nav-item-" + val).removeClass("done");
+        $(".nav-item-" + val).addClass("active");
+
+        lang == "id"
+            ? $(`.nav-item-${val + 1}`)
+                  .find(".nav-step-tag")
+                  .text("Belum Isi")
+            : $(`.nav-item-${val + 1}`)
+                  .find(".nav-step-tag")
+                  .text("Pending");
+
+        lang == "id"
+            ? $(".nav-item-" + val)
+                  .find(".nav-step-tag")
+                  .text("Sedang Isi")
+            : $(".nav-item-" + val)
+                  .find(".nav-step-tag")
+                  .text("Onprogress");
+
+        $("#menu" + val)
+            .addClass("active")
+            .fadeIn();
+        $(`#menu${val + 1}`).removeClass("active");
+    }
+}
