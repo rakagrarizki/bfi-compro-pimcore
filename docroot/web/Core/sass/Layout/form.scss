@@ -2161,6 +2161,37 @@
             }
         }
     }
+
+    .modal-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 24px;
+        text-align: center;
+        .modal-body-title {
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 32px;
+            letter-spacing: 0.15px;
+            color: $blue-dark-color;
+        }
+        .modal-body-text {
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 20px;
+        }
+    }
+
+    .modal-footer {
+        display: flex;
+        justify-content: space-between;
+        border: none;
+
+        button {
+            margin: 5px;
+        }
+    }
 }
 
 .chosen-container {
@@ -2898,7 +2929,7 @@ select::-ms-expand {
 }
 .modal-dialog {
     height: 100%;
-    width: 100%;
+    width: 440px;
     display: flex;
     align-items: center;
 }
