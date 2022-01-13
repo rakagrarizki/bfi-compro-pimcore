@@ -319,6 +319,29 @@ $this->headScript()
                                 <div class="text-title-form">
                                     <h3>Perhitungan Pembiayaan</h3>
                                 </div>
+                                <div class="form-group  simulasi-group rincian">
+                                    <div class="total-estimate ndfc-simulasi">
+                                        <div class="simulasi-header">
+                                            <h4>Mobil yang Anda Jaminkan</h4>
+                                            <div class="row">
+                                                <div class="col-xs-3">
+                                                    <p class="title">Merk</p>
+                                                    <p class="subtitle">Toyota</p>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <p class="title">Model</p>
+                                                    <p class="subtitle">TOYOTA-AGYA-G 1.0 AT</p>
+                                                </div>
+                                                <div class="col-xs-3">
+                                                    <p class="title">Tahun</p>
+                                                    <p class="subtitle">2015</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="title-angsuran text-center">Jumlah Maksimum Pembiayaan</p>
+                                        <p class="total text-center">Rp 0</p>
+                                    </div>
+                                </div>
                                 <div class="form-group simulasi-group sliderGroup inputsimulasi">
                                     <label for="pembiayaan">Pembiayaan yang diinginkan</label>
                                     <input type="tel" pattern="\d*" id="pembiayaan"
@@ -351,16 +374,16 @@ $this->headScript()
                                     <label>Asuransi Tahun 1</label>
                                     <div class="radio-button">
                                         <div class="radio-wrap">
-                                            <input type="radio" class="inputs formRequired" id="occupation"
-                                                name="occupation" value="All Risk">
+                                            <input type="radio" class="inputs formRequired" id="allRisk1"
+                                                name="assurance1" value="All Risk">
                                             <label
-                                                for="occupation">All Risk</label>
+                                                for="allRisk1">All Risk</label>
                                         </div>
                                         <div class="radio-wrap">
-                                            <input type="radio" class="inputs formRequired" id="occupation1"
-                                                name="occupation" value="Total Lost Only">
+                                            <input type="radio" class="inputs formRequired" id="totalLost1"
+                                                name="assurance1" value="Total Lost Only">
                                             <label
-                                                for="occupation1">Total Lost Only</label>
+                                                for="totalLost1">Total Lost Only</label>
                                         </div>
                                          <div class="error-wrap"></div>
                                     </div>
@@ -369,16 +392,16 @@ $this->headScript()
                                     <label>Asuransi Tahun 2</label>
                                     <div class="radio-button">
                                         <div class="radio-wrap">
-                                            <input type="radio" class="inputs formRequired" id="occupation"
-                                                name="occupation" value="All Risk">
+                                            <input type="radio" class="inputs formRequired" id="allRisk2"
+                                                name="assurance2" value="All Risk">
                                             <label
-                                                for="occupation">All Risk</label>
+                                                for="allRisk2">All Risk</label>
                                         </div>
                                         <div class="radio-wrap">
-                                            <input type="radio" class="inputs formRequired" id="occupation1"
-                                                name="occupation" value="Total Lost Only">
+                                            <input type="radio" class="inputs formRequired" id="totalLost2"
+                                                name="assurance2" value="Total Lost Only">
                                             <label
-                                                for="occupation1">Total Lost Only</label>
+                                                for="totalLost2">Total Lost Only</label>
                                         </div>
                                          <div class="error-wrap"></div>
                                     </div>
@@ -387,16 +410,16 @@ $this->headScript()
                                     <label>Asuransi Tahun 3</label>
                                     <div class="radio-button">
                                         <div class="radio-wrap">
-                                            <input type="radio" class="inputs formRequired" id="occupation"
-                                                name="occupation" value="All Risk">
+                                            <input type="radio" class="inputs formRequired" id="allRisk3"
+                                                name="assurance3" value="All Risk">
                                             <label
-                                                for="occupation">All Risk</label>
+                                                for="allRisk3">All Risk</label>
                                         </div>
                                         <div class="radio-wrap">
-                                            <input type="radio" class="inputs formRequired" id="occupation1"
-                                                name="occupation" value="Total Lost Only">
+                                            <input type="radio" class="inputs formRequired" id="totalLost3"
+                                                name="assurance3" value="Total Lost Only">
                                             <label
-                                                for="occupation1">Total Lost Only</label>
+                                                for="totalLost3">Total Lost Only</label>
                                         </div>
                                          <div class="error-wrap"></div>
                                     </div>
@@ -405,16 +428,16 @@ $this->headScript()
                                     <label>Asuransi Tahun 4</label>
                                     <div class="radio-button">
                                         <div class="radio-wrap">
-                                            <input type="radio" class="inputs formRequired" id="occupation"
-                                                name="occupation" value="All Risk">
+                                            <input type="radio" class="inputs formRequired" id="allRisk4"
+                                                name="assurance4" value="All Risk">
                                             <label
-                                                for="occupation">All Risk</label>
+                                                for="allRisk4">All Risk</label>
                                         </div>
                                         <div class="radio-wrap">
-                                            <input type="radio" class="inputs formRequired" id="occupation1"
-                                                name="occupation" value="Total Lost Only">
+                                            <input type="radio" class="inputs formRequired" id="totalLost4"
+                                                name="assurance4" value="Total Lost Only">
                                             <label
-                                                for="occupation1">Total Lost Only</label>
+                                                for="totalLost4">Total Lost Only</label>
                                         </div>
                                          <div class="error-wrap"></div>
                                     </div>
@@ -439,45 +462,142 @@ $this->headScript()
                         </div>
                         <div id="menu5" class="tab-pane slide-left">
                             <div class="form-body--credit">
-                                <h2 class="text-center"><?= $this->translate('confirmation-otp') ?></h2>
-                                <p class="text-center"><?= $this->translate('text-confirmation-otp') ?></p>
+                                <h2 class="text-center"><?=$this->translate('confirmation-otp') ?></h2>
+                                <p class="text-center"><?=$this->translate('text-confirmation-otp') ?></p>
                                 <div class="otp-number form-group">
-                                    <!-- <div class="otp-number__phone disabled" hidden>
-                                        <p id="showPhone"> <input type="tel" pattern="\d*" id="otpPhone" disabled /> <img id="otpEditPhone" src="/static/images/icon/pencils.png" alt=""></p>
-                                    </div> -->
                                     <div class="otp-number__verify">
-                                        <input type="tel" pattern="\d*" class="input-number formRequired" maxlength="1" name="otp1">
-                                        <input type="tel" pattern="\d*" class="input-number formRequired" maxlength="1" name="otp2">
-                                        <input type="tel" pattern="\d*" class="input-number formRequired" maxlength="1" name="otp3">
-                                        <input type="tel" pattern="\d*" class="input-number formRequired" maxlength="1" name="otp4">
+                                        <input type="tel" pattern="\d*" class="input-number formRequired"
+                                            maxlength="1" name="otp1">
+                                        <input type="tel" pattern="\d*" class="input-number formRequired"
+                                            maxlength="1" name="otp2">
+                                        <input type="tel" pattern="\d*" class="input-number formRequired"
+                                            maxlength="1" name="otp3">
+                                        <input type="tel" pattern="\d*" class="input-number formRequired"
+                                            maxlength="1" name="otp4">
                                     </div>
                                     <div class="error-wrap"></div>
                                     <div class="otp-number__text">
-                                        <p><?= $this->translate('dont-get-otp') ?> <span class="countdown"></span> </p>
+                                        <p class="otp-wait"><?= $this->translate('wait-otp')?> <span id="otp-counter" class="countdown"></span> </p>
+                                        <p class="otp-resend"><?= $this->translate('dont-get-otp')?> <span id="resendOTP" class="countdown">Resend</span></p>
                                     </div>
                                 </div>
                             </div>
                             <div class="button-area text-center">
-                                <button class="cta cta-primary cta-big cta-see btn-verifikasi buttonnext" id="button6" type="button" style="background-color: rgb(221, 221, 221); border-color: rgb(221, 221, 221);" disabled="disabled"><?= $this->translate('verifikasi') ?></button>
+                                <button class="cta cta-primary cta-big cta-see buttonnext" id="next5"
+                                    type="button"><?=$this->translate('verifikasi') ?></button>
                             </div>
                         </div>
                         <div id="success" class="success-wrapper">
                             <div class="wrapper">
                                 <div class="img-wrap">
-                                    <img class="icon-thank-page" src="/static/images/icon/m_thank_you.png" alt="">
+                                    <img class="icon-thank-page" src="/static/images/icon/m_thank_you.png"
+                                        alt="">
                                 </div>
                                 <div class="text-wrap text-center">
-                                    <h3><?= $this->translate('tq-text-1') ?></h3>
-                                    <p><?= $this->translate('tq-text-2') ?></p>
+                                    <h3>Terima kasih telah melakukan pengajuan di BFI Finance</h3>
+                                    <p>Anda akan segera dihubungi pada jam 08:00 - 17:00 di hari senin - jumat
+                                        dan jam 08:00 - 11:00 di hari sabtu. </p>
                                 </div>
-                                <div class="button-area text-center backtohome">
-                                    <button class="cta cta-primary cta-big cta-see buttonnext btn-check" id="button7" type="button" onclick="return checkStatusPengajuan()"><?= $this->translate('cek-status-aplikasi') ?></button>
+                                <div id="box-document">
+                                    <p>Berikut Dokumen Persyaratan-nya</p>
+                                    <div class="row">
+                                        <div class="col-md-6 col-xs-12">
+                                            <div class=" box-item">
+                                                <div class="wrap-icon">
+                                                    <i class="fa fa-check" aria-hidden="true"></i>
+                                                </div>
+                                                <div class="wrap-text">
+                                                    <p>KTP Pemohon & Pasangan (Jika sudah menikah)</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-xs-12">
+                                            <div class=" box-item">
+                                                <div class="wrap-icon">
+                                                    <i class="fa fa-check" aria-hidden="true"></i>
+                                                </div>
+                                                <div class="wrap-text">
+                                                    <p>Kartu Keluarga</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-xs-12">
+                                            <div class=" box-item">
+                                                <div class="wrap-icon">
+                                                    <i class="fa fa-check" aria-hidden="true"></i>
+                                                </div>
+                                                <div class="wrap-text">
+                                                    <p>STNK</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-xs-12">
+                                            <div class=" box-item">
+                                                <div class="wrap-icon">
+                                                    <i class="fa fa-check" aria-hidden="true"></i>
+                                                </div>
+                                                <div class="wrap-text">
+                                                    <p>BPKB</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-xs-12">
+                                            <div class=" box-item">
+                                                <div class="wrap-icon">
+                                                    <i class="fa fa-check" aria-hidden="true"></i>
+                                                </div>
+                                                <div class="wrap-text">
+                                                    <p>NPWP</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-xs-12">
+                                            <div class=" box-item">
+                                                <div class="wrap-icon">
+                                                    <i class="fa fa-check" aria-hidden="true"></i>
+                                                </div>
+                                                <div class="wrap-text">
+                                                    <p>Fotokopi Rek. Tabungan/Koran 6 Bulan Terakhir</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-xs-12">
+                                            <div class=" box-item">
+                                                <div class="wrap-icon">
+                                                    <i class="fa fa-check" aria-hidden="true"></i>
+                                                </div>
+                                                <div class="wrap-text">
+                                                    <p>Fotokopi Akta Nikah (Jika sudah menikah)</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-xs-12">
+                                            <div class=" box-item">
+                                                <div class="wrap-icon">
+                                                    <i class="fa fa-check" aria-hidden="true"></i>
+                                                </div>
+                                                <div class="wrap-text">
+                                                    <p>Slip Gaji 6 Bulan Terakhir/SPTT Terakhir</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="button-area text-center btn-beranda">
-                                    <a href="<?php echo "/" . $this->getLocale() . '/' . $link; ?>" class="cta cta-primary cta-big cta-see buttonnext backtohome">
-                                        <span><?= $this->translate('backtohome') ?></span></a>
+                                <div class="box-button">
+                                    <p>Pertanyaan seputar pengajuan chat via Whatsapp di</p>
+                                    <div class="button-area text-center">
+                                        <a href="/id/" class="cta cta-success cta-big">
+                                            <i class="fab fa-whatsapp"></i>
+                                            <span>082342423432423</span></a>
+                                    </div>
+                                    <div class="button-area text-center">
+                                        <a href="/id/" class="cta cta-primary-outline cta-big ">
+                                            <span>CEK STATUS PENGAJUAN</span></a>
+                                    </div>
+                                    <div class="button-area text-center">
+                                        <a href="/id/" class="cta cta-primary-outline cta-big ">
+                                            <span>Kembali ke Beranda</span></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -529,7 +649,7 @@ $this->headScript()
             </div>
             <div class="modal-footer">
                 <button type="button" class="cta cta-block cta-primary-outline" data-dismiss="modal">Cek Kembali</button>
-                <button type="button" class="cta cta-block cta-primary" data-dismiss="modal">Ya, Lanjutkan</button>
+                <button type="button" class="cta cta-block cta-primary" data-dismiss="modal" id="confirm-data">Ya, Lanjutkan</button>
             </div>
         </div>
     </div>

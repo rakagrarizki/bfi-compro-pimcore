@@ -1147,6 +1147,35 @@
                     }
                 }
             }
+            .ndfc-simulasi {
+                background-color: #ebf5fe;
+                border-color: $blue-dark-color;
+                .simulasi-header {
+                    border-bottom: 1px solid #04559f;
+                    margin-bottom: 16px;
+                }
+                h4 {
+                    margin-top: 0;
+                    font-size: 16px;
+                    font-weight: bold;
+                    color: $blue-dark-color;
+                }
+                p {
+                    font-size: 14px;
+                    text-align: left;
+                    &.title {
+                        margin-bottom: 0 !important;
+                    }
+                    &.subtitle,
+                    &.title-angsuran {
+                        color: $blue-dark-color;
+                        font-weight: bold;
+                    }
+                }
+                .col-xs-6 {
+                    padding: 0;
+                }
+            }
             .infotext {
                 margin-bottom: 30px;
                 font-size: 12px;
@@ -2927,11 +2956,19 @@ select::-ms-expand {
 .absolutebutcalc {
     width: 100%;
 }
+.modal {
+    padding-right: 0 !important;
+}
 .modal-dialog {
     height: 100%;
-    width: 440px;
     display: flex;
     align-items: center;
+    justify-content: center;
+    width: calc(80%);
+    margin: auto;
+    @include breakpoint(mobile) {
+        width: 90%;
+    }
 }
 
 .modal-content.branch {
