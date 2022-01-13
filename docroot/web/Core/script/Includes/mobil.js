@@ -69,14 +69,24 @@ $("#next2").on("click", function (e) {
 });
 $("#next3").on("click", function (e) {
     e.preventDefault();
+    $("#modal-konfirmasi").modal("show");
+});
+$("#confirm-data").on("click", function (e) {
+    e.preventDefault();
     step("next", 4);
+    $(".step-list").attr("hidden", "true");
+});
+$("#next5").on("click", function (e) {
+    e.preventDefault();
+    $("#menu5").removeClass("active");
+    $("#success").addClass("active");
 });
 
 $("#back2").on("click", function (e) {
     e.preventDefault();
-    step("back", 1);
+    step("back", 2);
 });
 $("#back3").on("click", function (e) {
     e.preventDefault();
-    step("back", 2);
+    step("back", 3);
 });
