@@ -14,8 +14,8 @@ let dataStep1 = {
 
 $(document).ready(function () {
     lang == "id"
-        ? $(".nav-item-1.active").find(".nav-step-tag").text("Sedang Isi")
-        : $(".nav-item-1.active").find(".nav-step-tag").text("Onprogress");
+        ? $(".nav-item-2.active").find(".nav-step-tag").text("Sedang Isi")
+        : $(".nav-item-2.active").find(".nav-step-tag").text("Onprogress");
 
     sessionStorage.setItem("loanType", "NDFC");
 });
@@ -61,15 +61,15 @@ $("#kepemilikan_rumah").select2({
 
 $("#next1").on("click", function (e) {
     e.preventDefault();
-    step("next", 1);
+    step("next", 2);
 });
 $("#next2").on("click", function (e) {
     e.preventDefault();
-    step("next", 2);
+    step("next", 3);
 });
 $("#next3").on("click", function (e) {
     e.preventDefault();
-    step("next", 3);
+    step("next", 4);
 });
 
 $("#back2").on("click", function (e) {
