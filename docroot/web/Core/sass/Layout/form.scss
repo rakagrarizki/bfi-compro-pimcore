@@ -1044,7 +1044,7 @@
             }
 
             .slidecontainer {
-                margin-top: 20px;
+                margin-top: 8px;
                 overflow: hidden;
                 padding-right: 10px;
                 padding-left: 10px;
@@ -1072,7 +1072,12 @@
 
                 .slider-horizontal {
                     width: 100%;
-
+                    .slider-track {
+                        border-radius: 8px;
+                    }
+                    .slider-track-high {
+                        background-color: #eef1f3;
+                    }
                     @include breakpoint(mobile) {
                         margin: 0 0px 10px;
                         width: 100%;
