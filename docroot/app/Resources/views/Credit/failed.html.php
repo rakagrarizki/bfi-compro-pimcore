@@ -38,7 +38,7 @@ $is_product = $_GET['product'];
     <div class="simulasi_pbf">
         <div class="container form-body--credit">
             <div class="text-head">
-                <h2 class="text-center product-title">Lihat produk lainnya</h2>
+                <h2 class="text-center product-title"><?= $this->translate('anotherProduct')?></h2>
             </div>
             <div class="row">
                 <div class="col-md-4 calc-sect smallContent" id="ctaNDFM" hidden>
