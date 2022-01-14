@@ -343,11 +343,14 @@ $this->headScript()
                                     </div>
                                 </div>
                                 <div class="form-group simulasi-group sliderGroup inputsimulasi">
-                                    <label for="pembiayaan">Pembiayaan yang diinginkan</label>
-                                    <input type="tel" pattern="\d*" id="pembiayaan"
-                                        class="form-control inputs formRequired c-input-trans"
-                                        aria-describedby="basic-addon1"
-                                        placeholder="Pembiayaan yang diinginkan">
+                                    <div class="input-group">
+                                        <span class="input-group-addon" id="basic-addon1">Rp</span>
+                                        <label for="pembiayaan">Pembiayaan yang diinginkan</label>
+                                        <input type="tel" pattern="\d*" id="pembiayaan"
+                                            class="form-control inputs formRequired c-input-trans"
+                                            aria-describedby="basic-addon1"
+                                            placeholder="Pembiayaan yang diinginkan">
+                                    </div>
                                     <div class="slidecontainer ">
                                         <div class="value-left valuemin">Rp 10.000.000</div>
                                         <div class="value-right valuemax">Rp 64.190.000</div>
