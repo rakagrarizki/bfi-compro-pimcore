@@ -322,7 +322,6 @@
         text-transform: uppercase;
 
         @include breakpoint(mobile) {
-            margin-bottom: 1.5rem;
             font-size: 14px;
             height: 48px;
             padding: 13px 28px 13px 28px;

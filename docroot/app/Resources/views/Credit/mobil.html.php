@@ -349,10 +349,10 @@ $this->headScript()
                                         aria-describedby="basic-addon1"
                                         placeholder="Pembiayaan yang diinginkan">
                                     <div class="slidecontainer ">
+                                        <div class="value-left valuemin">Rp 10.000.000</div>
+                                        <div class="value-right valuemax">Rp 64.190.000</div>
                                         <input id="funding" class="customslide" type="tel" pattern="\d*"
                                             data-slider-handle="custom" data-slider-tooltip="hide" />
-                                        <div class="value-left valuemin">0</div>
-                                        <div class="value-right valuemax">0</div>
                                     </div>
                                     <div class="error-wrap"></div>
                                 </div>
@@ -363,10 +363,10 @@ $this->headScript()
                                         aria-describedby="basic-addon1"
                                         placeholder="Masa Pembiayaan yang diinginkan">
                                     <div class="slidecontainer ">
+                                        <div class="value-left valuemin">12 Bulan</div>
+                                        <div class="value-right valuemax">18 Bulan</div>
                                         <input id="tenor2" class="customslide" type="tel" pattern="\d*"
                                             data-slider-handle="custom" data-slider-tooltip="hide" />
-                                        <div class="value-left valuemin">0</div>
-                                        <div class="value-right valuemax">0</div>
                                     </div>
                                     <div class="error-wrap"></div>
                                 </div>
