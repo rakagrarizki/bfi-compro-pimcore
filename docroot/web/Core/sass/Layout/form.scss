@@ -1019,6 +1019,12 @@
             }
 
             .input-group {
+                label {
+                    z-index: 4;
+                    &.valids::before {
+                        right: 4.8rem;
+                    }
+                }
                 .input-group-addon:first-child {
                     font-family: $font_default;
                     padding: 20px;
@@ -1033,7 +1039,7 @@
 
                 .form-control:last-child {
                     font-family: $font_default;
-                    padding: 25px;
+                    padding: 25px 25px 25px 14px;
                     height: 60px;
                     border-radius: 2px;
                     -webkit-border-radius: 2px;
