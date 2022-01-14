@@ -1,6 +1,6 @@
 // FONT FAMILY
 $font_idx: 1;
-$font_default: 'HelveticaNeue', 'HelveticaNeueLTStd', 'sans-serif' !default;
+$font_default: "HelveticaNeue", "HelveticaNeueLTStd", "sans-serif" !default;
 
 // Font Family Ex. (name, 'fonts/path')
 $font_family: (
@@ -14,41 +14,37 @@ $font_family: (
     // HelveticaNeue-Italic: 'fonts/HelveticaNeue-Italic',
     // HelveticaNeue-Bold: 'fonts/HelveticaNeue-Bold',
     // HelveticaNeue: 'fonts/HelveticaNeue',
-    fontello: 'fonts/fontello'
-); 
+    fontello: "fonts/fontello"
+);
 
 // Custom Font Family
-$thin      : 'FuturaStd-Light', serif, sans-serif;
-$medium     : 'FuturaStd-Medium', serif, sans-serif;
-$bold       : 'FuturaStd-Bold', serif, sans-serif;
+$thin: "FuturaStd-Light", serif, sans-serif;
+$medium: "FuturaStd-Medium", serif, sans-serif;
+$bold: "FuturaStd-Bold", serif, sans-serif;
 
 //Colors
-$white : #FFFFFF;
-$blue : #0069aa;
-$primary : #0069aa;
-$light : #FFFFFF;
-$dark : #000000;
-$grey-light : #f4f4f4;
-$grey-dark :  #ccc;
-
+$white: #ffffff;
+$blue: #0069aa;
+$blue50: #ecf6ff;
+$primary: #0069aa;
+$light: #ffffff;
+$dark: #000000;
+$grey-light: #f4f4f4;
+$grey-dark: #ccc;
 
 // color kit
 
-$blue-dark-color: #04559F;
-$orange-color: #F9991C;
-$green-color: #7AC143;
+$blue-dark-color: #04559f;
+$orange-color: #f9991c;
+$green-color: #7ac143;
 $grey-dark-color: #565656;
 $grey-light-color: #ddd4;
-$red-color: #E00909;
-
-
+$red-color: #e00909;
 
 // BUTTONS
 // Default Button Ex. (button-class, background-code, font-color)
-$buttons:
-    ('btn-red', #D9534F, #FFFFFF),
-    ('btn-blue', #337AB7, #FFFFFF),
-    ('btn-green', #5CB85C, #FFFFFF);
+$buttons: ("btn-red", #d9534f, #ffffff), ("btn-blue", #337ab7, #ffffff),
+    ("btn-green", #5cb85c, #ffffff);
 
 // text-align
 $align: left center right;
@@ -63,11 +59,49 @@ $float: left right;
 $position: top right bottom left;
 
 // media-query
-$media-query:
-    (big-screen, (min-width: 1800px)),
-    (laptop, (min-width: 1366px)),
-    (desktop, (min-width: 1200px)),
-    (wide, (min-width: 992px)),
-    (tablet, (min-width: 768px) and (max-width: 991px)),
-    (mobile, (max-width: 767px)),
-    (small-mobile, (max-width: 360px));
+$media-query: (
+        big-screen,
+        (
+            min-width: 1800px,
+        )
+    ),
+    (
+        laptop,
+        (
+            min-width: 1366px,
+        )
+    ),
+    (
+        desktop,
+        (
+            min-width: 1200px,
+        )
+    ),
+    (
+        wide,
+        (
+            min-width: 992px,
+        )
+    ),
+    (
+        tablet,
+        (
+                min-width: 768px,
+            )
+            and
+            (
+                max-width: 991px,
+            )
+    ),
+    (
+        mobile,
+        (
+            max-width: 767px,
+        )
+    ),
+    (
+        small-mobile,
+        (
+            max-width: 360px,
+        )
+    );

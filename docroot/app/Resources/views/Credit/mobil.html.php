@@ -595,7 +595,7 @@ $this->headScript()
                                             <span>CEK STATUS PENGAJUAN</span></a>
                                     </div>
                                     <div class="button-area text-center">
-                                        <a href="/id/" class="cta cta-primary-outline cta-big ">
+                                        <a href="<?php echo "/" . $this->getLocale() . '/' . $link; ?>" class="cta cta-primary-text cta-big ">
                                             <span>Kembali ke Beranda</span></a>
                                     </div>
                                 </div>
