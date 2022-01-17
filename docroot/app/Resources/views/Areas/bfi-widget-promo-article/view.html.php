@@ -14,8 +14,8 @@
                         </div>
                         <div class="card-content-wrapper">
                             <p class="category"><?= ($data['category'] == 'blog') ? $data['contents']->getBlogCategory()->getName() : $data['contents']->getPromoCategory()->getName(); ?></p>
-                            <h6><?= substr($data['contents']->getTitle(),0,40) . '...'; ?></h6>
-                            <p><?= substr($data['contents']->getContent(),0,50) . '...'; ?></p>
+                            <h6><?= strlen($data['contents']->getTitle()) > 40 ? substr($data['contents']->getTitle(),0,40) . '...' : $data['contents']->getTitle(); ?></h6>
+                            <p><?= strlen($data['contents']->getDescription()) > 50 ? substr($data['contents']->getDescription(),0,50) . '...' : $data['contents']->getDescription(); ?></p>
                             <div class="date-and-seen">
                                 <p class="date"><?= $data['contentsDate']; ?></p>
                                 <p class="seen"><?php if($data['category'] == 'blog') : ?><i class="fa fa-eye"></i> <?= $data['contents']->getViews(); endif; ?></p>
@@ -41,8 +41,8 @@
                                     <div class="col-xs-7 article-content">
                                         <div class="card-content-wrapper">
                                             <p class="category"><?= $item->getBlogCategory()->getName(); ?></p>
-                                            <h6><?= substr($item->getTitle(),0,23) . '...'; ?></h6>
-                                            <p><?= substr($item->getContent(),0,60) . '...'; ?></p>
+                                            <h6><?= strlen($item->getTitle()) > 23 ? substr($item->getTitle(),0,23) . '...' : $item->getTitle(); ?></h6>
+                                            <p><?= strlen($item->getDescription()) > 60 ? substr($item->getDescription(),0,60) . '...' : $item->getDescription(); ?></p>
                                             <div class="date-and-seen">
                                                 <p class="date"><?= $data['newsDate'][$key]; ?></p> 
                                                 <p class="seen"><i class="fa fa-eye"></i> <?= $item->getViews(); ?></p>
