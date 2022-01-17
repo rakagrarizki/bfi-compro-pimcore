@@ -698,9 +698,9 @@ $this->headScript()
                                             <h3><?= $this->translate('title-estimate-installment') ?></h3>
                                         </div>
                                         <div class="form-group simulasi-group">
-                                            <label for="estimasi_harga"><?= $this->translate('estimated-house-price') ?></label>
                                             <div class="input-group">
                                                 <span class="input-group-addon" id="basic-addon1">Rp</span>
+                                                <label for="estimasi_harga"><?= $this->translate('estimated-house-price') ?></label>
                                                 <input type="text" id="estimate_price"
                                                     class="formatRibuan form-control inputs formRequired addonInput c-input-trans"
                                                     placeholder="<?= $this->translate('estimated-house-price') ?>">
