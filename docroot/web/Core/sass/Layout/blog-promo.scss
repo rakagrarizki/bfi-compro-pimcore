@@ -3,44 +3,44 @@
 
     .sect-title {
         margin-bottom: 0;
-        @include breakpoint(mobile){
+        @include breakpoint(mobile) {
             width: 100%;
         }
 
-        h1{
-            color: #04559F !important;
+        h1 {
+            color: #04559f !important;
             font-size: 40px;
             font-weight: bold;
         }
-        h2{
-            @include breakpoint(mobile){
+        h2 {
+            @include breakpoint(mobile) {
                 margin-bottom: 10px;
             }
         }
         p {
             margin: 0;
-            @include breakpoint(mobile){
+            @include breakpoint(mobile) {
                 margin: 0;
             }
         }
-        .title{
+        .title {
             font-size: 40px;
             font-weight: bold;
             line-height: normal;
             color: #04559f;
             margin-bottom: 10px;
 
-            @include breakpoint(mobile){
+            @include breakpoint(mobile) {
                 font-size: 20px;
                 line-height: 30px;
             }
         }
-        .subtitle{
+        .subtitle {
             font-size: 20px;
             line-height: 46px;
             color: #565656;
 
-            @include breakpoint(mobile){
+            @include breakpoint(mobile) {
                 font-size: 13px;
                 line-height: 20px;
             }
@@ -64,24 +64,22 @@
     .select2-selection__arrow {
         display: none;
     }
-    
+
     .list-card {
         display: flex;
         flex-wrap: wrap;
-        justify-content: flex-start;
+        justify-content: space-between;
         align-items: flex-start;
         align-content: flex-start;
         padding: 40px 0;
-        margin-left: -20px;
 
         .card-item {
             width: calc(25% - 20px);
             margin-bottom: 20px;
-            margin-left: 20px;
             border: 1px solid #e2e2e2;
             min-height: 300px;
 
-            .card-static-promo{
+            .card-static-promo {
                 height: 140px;
                 background-size: cover;
                 background-position: center;
@@ -91,7 +89,6 @@
             @include breakpoint(mobile) {
                 width: calc(50% - 20px);
                 min-height: 253px;
-            
             }
 
             .blur-filter {
@@ -104,7 +101,7 @@
                 background-size: cover;
             }
             .card-img {
-                overflow:  hidden ;
+                overflow: hidden;
                 display: flex;
                 position: relative;
                 height: 230px;
@@ -118,11 +115,11 @@
                 @include breakpoint(mobile) {
                     width: 100%;
                 }
-                .card-static-promo{
+                .card-static-promo {
                     height: 175px;
                 }
 
-                h3.title{
+                h3.title {
                     height: 34px !important;
                     display: -webkit-box;
                     -webkit-line-clamp: 2;
@@ -134,7 +131,7 @@
                         height: 30px !important;
                     }
                 }
-                h3.title{
+                h3.title {
                     height: 34px !important;
                     display: -webkit-box;
                     -webkit-line-clamp: 2;
@@ -150,10 +147,8 @@
                     height: 450px;
                     @include breakpoint(mobile) {
                         max-height: 253px;
-                
                     }
                 }
-    
             }
 
             picture {
@@ -183,7 +178,7 @@
                     color: $orange-color;
                     font-size: 12px;
 
-                    @include breakpoint(mobile){
+                    @include breakpoint(mobile) {
                         font-size: 10px;
                     }
                 }
@@ -202,8 +197,8 @@
                     overflow: hidden;
                     -o-text-overflow: ellipsis;
                     text-overflow: ellipsis;
-                    
-                    @include breakpoint(mobile){
+
+                    @include breakpoint(mobile) {
                         font-size: 14px;
                         height: 45px !important;
                     }
@@ -219,7 +214,7 @@
                         padding-right: 6px;
 
                         &:after {
-                            content: '';
+                            content: "";
                             width: 1px;
                             height: 16px;
                             background-color: $grey-dark-color;
@@ -235,7 +230,7 @@
 
                         .fa {
                             font-size: 12px;
-                            opacity: .5;
+                            opacity: 0.5;
                             margin-right: 5px;
                         }
                     }
@@ -250,19 +245,19 @@
                 margin-left: 20px;
                 border: 1px solid #e2e2e2;
                 min-height: 300px;
-    
-                .card-static-promo{
+
+                .card-static-promo {
                     height: 458px;
                     background-size: contain;
                     background-position: center;
                     background-repeat: no-repeat;
                 }
-    
+
                 @include breakpoint(mobile) {
                     width: calc(50% - 20px);
                     min-height: 253px;
                 }
-    
+
                 picture {
                     display: block;
                     position: relative;
@@ -271,7 +266,7 @@
                     // padding-bottom: 56.25%;
                     overflow: hidden;
                     background-color: $grey-light-color;
-    
+
                     img {
                         width: 100%;
                         max-width: 100%;
@@ -290,19 +285,19 @@
                 .caption {
                     padding: 15px 20px;
                     background-color: $white;
-    
+
                     .tag {
                         margin: 0;
                         font-family: $font_default;
                         font-weight: bold;
                         color: $orange-color;
                         font-size: 12px;
-    
-                        @include breakpoint(mobile){
+
+                        @include breakpoint(mobile) {
                             font-size: 10px;
                         }
                     }
-    
+
                     .title {
                         height: 54px !important;
                         margin: 10px 0 24px;
@@ -317,23 +312,23 @@
                         overflow: hidden;
                         -o-text-overflow: ellipsis;
                         text-overflow: ellipsis;
-                        
-                        @include breakpoint(mobile){
+
+                        @include breakpoint(mobile) {
                             font-size: 14px;
                         }
                     }
-    
+
                     .dateview {
                         font-family: $font_default;
                         color: $grey-dark-color;
                         font-size: 10px;
-    
+
                         .date {
                             position: relative;
                             padding-right: 6px;
-    
+
                             &:after {
-                                content: '';
+                                content: "";
                                 width: 1px;
                                 height: 16px;
                                 background-color: $grey-dark-color;
@@ -343,13 +338,13 @@
                                 transform: translateY(-50%);
                             }
                         }
-    
+
                         .view {
                             padding-left: 5px;
-    
+
                             .fa {
                                 font-size: 12px;
-                                opacity: .5;
+                                opacity: 0.5;
                                 margin-right: 5px;
                             }
                         }
@@ -361,11 +356,11 @@
 
     .btn-beranda {
         a {
-            border: 1px solid #F8991C;
-            background: #F9991C;
+            border: 1px solid #f8991c;
+            background: #f9991c;
             text-transform: uppercase;
         }
-        
+
         span {
             margin-left: 10px;
         }
@@ -378,10 +373,10 @@
             margin: 70px 0 70px 0 !important;
             border-radius: 0;
 
-            >li {
+            > li {
                 display: inline-block;
 
-                >a {
+                > a {
                     padding: 0;
                     color: $grey-dark-color;
                     background-color: $white;
@@ -394,12 +389,12 @@
                     border-radius: 0;
 
                     &:hover {
-                        background-color: rgba($grey-dark-color, .15);
+                        background-color: rgba($grey-dark-color, 0.15);
                     }
                 }
 
                 &.active {
-                    >a {
+                    > a {
                         color: $white;
                         background-color: $orange-color;
                         font-family: $font_default;
@@ -452,7 +447,7 @@
                 font-size: 1.2rem;
 
                 @include breakpoint(mobile) {
-                    font-size: .8rem;
+                    font-size: 0.8rem;
                 }
 
                 .date {
@@ -464,7 +459,7 @@
                     }
 
                     &:after {
-                        content: '';
+                        content: "";
                         width: 1px;
                         height: 20px;
                         background-color: $grey-dark-color;
@@ -488,11 +483,11 @@
 
                     .fa {
                         font-size: 1.2rem;
-                        opacity: .5;
+                        opacity: 0.5;
                         margin-right: 5px;
 
                         @include breakpoint(mobile) {
-                            font-size: .8rem;
+                            font-size: 0.8rem;
                         }
                     }
                 }
@@ -532,72 +527,72 @@
             font-family: $font_default;
             font-size: 20px;
             color: $grey-dark-color;
-            ol{
-                @include breakpoint (mobile){
-                padding-left:20px;
-                font-size: 16px;
+            img {
+                width: 100% !important;
+            }
+            ol {
+                @include breakpoint(mobile) {
+                    padding-left: 20px;
+                    font-size: 16px;
                 }
             }
-            ul{
+            ul {
                 margin: 20px 0 0 20px;
             }
-            .table{
+            .table {
                 font-size: 14px;
                 > tbody {
-                    >tr:first-child{
-                      >td{
-                        text-align: center;
-                        vertical-align: middle;
-                        padding: 10px;
-                        font-family: $font_default;
-                        color: $white;
-                        background: $blue-dark-color;
-                      }
+                    > tr:first-child {
+                        > td {
+                            text-align: center;
+                            vertical-align: middle;
+                            padding: 10px;
+                            font-family: $font_default;
+                            color: $white;
+                            background: $blue-dark-color;
+                        }
                     }
-                    >tr{
-                        >td{
+                    > tr {
+                        > td {
                             white-space: normal !important;
                         }
                     }
-                  }
+                }
             }
 
-            p{
+            p {
                 text-align: justify;
             }
 
-            span{
+            span {
                 background-color: white !important;
                 font-size: 16px;
             }
 
-            .flexColumn{
+            .flexColumn {
                 display: flex;
                 flex-wrap: wrap;
 
-                .flexItem{
+                .flexItem {
                     flex-direction: column;
                 }
             }
-
-
         }
 
-        .article{
-
-            &-gallery{
+        .article {
+            &-gallery {
                 display: flex;
                 flex-flow: row wrap;
                 justify-content: space-around;
                 align-items: center;
                 width: 100%;
             }
-            &-items{
+            &-items {
                 text-align: center;
                 margin-top: 30px;
                 margin-bottom: 10px;
                 padding: 0px 10px;
-                .item-img{
+                .item-img {
                     width: 100%;
                     background-color: #ddd4;
                     display: flex;
@@ -605,27 +600,26 @@
                     align-items: center;
                     height: 300px;
                     justify-content: center;
-                    
 
-                    img{ 
+                    img {
                         max-height: 300px;
                         max-width: 100%;
                     }
                 }
 
-                .item-break{
+                .item-break {
                     flex-basis: 100%;
                     width: 0;
                 }
-                &.col-12{
+                &.col-12 {
                     width: 100%;
 
-                    img{
+                    img {
                         width: auto;
                     }
                 }
 
-                p{
+                p {
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -634,26 +628,24 @@
                     margin-bottom: 0px;
                 }
 
-                @include breakpoint(mobile){
+                @include breakpoint(mobile) {
                     width: 95%;
                     height: auto;
-                    .item-img{
+                    .item-img {
                         height: auto;
                     }
 
-                    &.col-12{
-                        img{
+                    &.col-12 {
+                        img {
                             width: 100%;
                         }
                     }
                 }
-
-                
             }
         }
 
-        .img-frame{
-            img{
+        .img-frame {
+            img {
                 width: auto !important;
             }
         }
@@ -682,7 +674,7 @@
                 line-height: 40px;
                 margin: 0 5px;
                 color: $white;
-                background-color: rgba($grey-dark-color, .3);
+                background-color: rgba($grey-dark-color, 0.3);
 
                 &.share-fb {
                     &:hover {
@@ -692,7 +684,7 @@
 
                 &.share-tw {
                     &:hover {
-                        background-color: #38A1F3;
+                        background-color: #38a1f3;
                     }
                 }
 
@@ -734,7 +726,7 @@
                         width: calc(50% - 10px);
                         margin-right: 20px;
 
-                        &:nth-child(2n+2) {
+                        &:nth-child(2n + 2) {
                             margin-right: 0;
                         }
                     }
