@@ -568,7 +568,6 @@
                     flex-direction: column;
                 }
             }
-<<<<<<< HEAD
             .toc-panel {
                 border: none;
                 .panel-heading {
@@ -636,8 +635,6 @@
                     }
                 }
             }
-=======
->>>>>>> 712791e8 ([Bug Fix] Fixing related article list on detail page)
         }
 
         .article {
@@ -656,10 +653,15 @@
                 .item-img {
 <<<<<<< HEAD
                     overflow: hidden;
+<<<<<<< HEAD
 =======
                     width: 100%;
                     background-color: #ddd4;
 >>>>>>> 712791e8 ([Bug Fix] Fixing related article list on detail page)
+=======
+                    width: 100%;
+                    background-color: #ddd4;
+>>>>>>> dfe7abcc ([Bug Fix] Fixing related article list on detail page)
                     display: flex;
                     position: relative;
                     height: 300px;
