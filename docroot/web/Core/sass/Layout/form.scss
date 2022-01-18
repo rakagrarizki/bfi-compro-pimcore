@@ -63,6 +63,9 @@
         @include breakpoint(mobile) {
             font-size: 13px;
         }
+        a {
+            font-weight: 700;
+        }
     }
 
     .text-head {
@@ -79,7 +82,7 @@
         align-items: center;
         img {
             width: 300px;
-            margin-bottom: 8px;
+            margin-bottom: 32px;
             @include breakpoint(mobile) {
                 width: 200px;
             }
