@@ -25,10 +25,6 @@ $site = $this->document->getProperty("site");
             <?php else : ?>
             <a class="navbar-brand col-xs-12" href="<?php echo "/".$this->getLocale(); ?>">
                 <img src="/static/images/logo-bfi.png" alt="logo-bfi" class="img-responsive header-image-product">
-                <div class="ojk">
-                    <p class="top-desc">BFI terdaftar dan diawasi oleh</p>
-                    <img src="/static/images/ojk.png" alt="logo-ojk" class="img-responsive">
-                </div>
             </a>
             <?php endif; ?>
             <div>
