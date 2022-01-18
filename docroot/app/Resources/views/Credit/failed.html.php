@@ -10,29 +10,51 @@ $this->headScript()->offsetSetFile(100, '/static/js/Includes/failed-apply.js');
 
 $is_dupcheck = $_GET['dupcheck'];
 $is_product = $_GET['product'];
+
 ?>
 <div class="container">
     <div class="form-body--credit fluid">
         <div class="text-head">
             <h2 class="text-center product-title">
-                <?php if($is_product == "pbf"){?>
-                    <?=$this->translate('failedPBF')?>
-                <?php } else if($is_product == "ndfc"){   ?>
-                    <?=$this->translate('failedNDFC')?>
-                <?php } else {   ?>
-                    <?=$this->translate('failedNDFM')?>
-                <?php } ?>
+                <?php if($is_dupcheck == "true"){?>
+                    <?php if($is_product == "PBF"){?>
+                        <?=$this->translate('failedPBF')?>
+                    <?php } else if($is_product == "NDFC"){   ?>
+                        <?=$this->translate('failedNDFC')?>
+                    <?php } else {   ?>
+                        <?=$this->translate('failedNDFM')?>
+                    <?php } ?>
+                <?php } else {?>
+                     <?php if($is_product == "PBF"){?>
+                        <?=$this->translate('rejectPBF')?>
+                    <?php } else if($is_product == "NDFC"){   ?>
+                        <?=$this->translate('rejectNDFC')?>
+                    <?php } else {   ?>
+                        <?=$this->translate('rejectNDFM')?>
+                    <?php } ?>
+                <?php }?>
             </h2>
             <p class="text-center product-subtitle">
                 <?php if($is_dupcheck == "true"){?>
                     <?=$this->translate('dupcheck')?>
+                <?php } else { ?>
+                    <?=$this->translate('reject')?>
+                    <?php if($is_product == "PBF"){?>
+                        <a href="<?= $this->translate('goPagePBF') ?>" target="_blank"><?= $this->translate('clickHere')?></a>
+                    <?php } else if($is_product == "NDFC"){   ?>
+                        <a href="<?= $this->translate('goPageNDFC') ?>" target="_blank"><?= $this->translate('clickHere')?></a>
+                    <?php } else {?>
+                        <a href="<?= $this->translate('goPageNDFM') ?>" target="_blank"><?= $this->translate('clickHere')?></a>
+                    <?php } ?>
                 <?php } ?>
             </p>
         </div>
         <div class="wrap-content-fail">
             <img src="/static/images/fail.png" class="img-responsive" alt="">
-            <p class="text-center" hidden>Klik nomor di bawah ini untuk chat pertanyaan seputar proses pengajuan:</p>
-            <a href="tel:02150860777" hidden>(021) 50860777</a>
+            <?php if($is_dupcheck == "true"){?>
+            <p class="text-center" >Anda akan dihubungi oleh tim kami dengan nomor:</p>
+            <a >(021) 50860777</a>
+            <?php } ?>
         </div>
     </div>
     <div class="simulasi_pbf">
