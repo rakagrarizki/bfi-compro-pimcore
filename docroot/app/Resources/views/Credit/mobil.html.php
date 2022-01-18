@@ -32,8 +32,8 @@ $this->headScript()
                                 </span>
                                 <div class="nav-content">
                                     <span class="nav-step-text">Step 1</span>
-                                    <p class="nav-step-desc">Data Pemohon</p>
-                                    <span class="nav-step-tag"><?=$this->translate('state-step') ?></span>
+                                    <p class="nav-step-desc"><?= $this->translate('data-ndfc-step-1') ?></p>
+                                    <span class="nav-step-tag"><?= $this->translate('state-step') ?></span>
                                 </div>
                             </a>
                         </li>
@@ -45,8 +45,8 @@ $this->headScript()
                                 </span>
                                 <div class="nav-content">
                                     <span class="nav-step-text">Step 2</span>
-                                    <p class="nav-step-desc">Data Alamat & Asset</p>
-                                    <span class="nav-step-tag"><?=$this->translate('state-step') ?></span>
+                                    <p class="nav-step-desc"><?= $this->translate('data-ndfc-step-2') ?></p>
+                                    <span class="nav-step-tag"><?= $this->translate('state-step') ?></span>
                                 </div>
                             </a>
                         </li>
@@ -58,8 +58,8 @@ $this->headScript()
                                 </span>
                                 <div class="nav-content">
                                     <span class="nav-step-text">Step 3</span>
-                                    <p class="nav-step-desc">Data Pendukung & Perhitungan</p>
-                                    <span class="nav-step-tag"><?=$this->translate('state-step') ?></span>
+                                    <p class="nav-step-desc"><?= $this->translate('data-ndfc-step-3') ?></p>
+                                    <span class="nav-step-tag"><?= $this->translate('state-step') ?></span>
                                 </div>
                             </a>
                         </li>
@@ -71,8 +71,8 @@ $this->headScript()
                                 </span>
                                 <div class="nav-content">
                                     <span class="nav-step-text">Step 4</span>
-                                    <p class="nav-step-desc">Verifikasi Pengajuan</p>
-                                    <span class="nav-step-tag"><?=$this->translate('state-step') ?></span>
+                                    <p class="nav-step-desc"><?= $this->translate('data-ndfc-step-4') ?></p>
+                                    <span class="nav-step-tag"><?= $this->translate('state-step') ?></span>
                                 </div>
                             </a>
                         </li>
@@ -85,9 +85,9 @@ $this->headScript()
                             <div class="form-body--credit">
                                 <div class="text-head">
                                     <h2 class="text-center">
-                                        Data Pemohon Jaminan BPKB Mobil
+                                        <?= $this->translate('ndfc-title-step-1') ?>
                                     </h2>
-                                    <p class="text-center">Silahkan masukkan data diri Anda.</p>
+                                    <p class="text-center"><?= $this->translate('data-name-sub') ?></p>
                                 </div>
                                 <div class="form-group">
                                     <label for="nama_lengkap"><?= $this->translate('form-name') ?></label>
@@ -100,7 +100,7 @@ $this->headScript()
                                     <div class="error-wrap"></div>
                                 </div>
                                 <div class="form-group radio-group">
-                                    <label>Apakah nomor ini terhubung dengan whatsapp ?</label>
+                                    <label><?= $this->translate('is-wa-number') ?></label>
                                     <div class="radio-button">
                                         <div class="radio-wrap">
                                             <input type="radio" class="inputs formRequired" id="is-wa-number"
@@ -118,8 +118,8 @@ $this->headScript()
                                     </div>
                                 </div>
                                 <div class="form-group wa-numbers" hidden>
-                                    <label for="wa-number">Nomor Whatsapp</label>
-                                    <input type="tel" pattern="\d*" class="form-control formPhoneNumber" name="wa-number" id="wa-number" maxlength="13" placeholder="Ketik Nomor Whatsapp">
+                                    <label for="wa-number"><?= $this->translate('label-wa-number') ?></label>
+                                    <input type="tel" pattern="\d*" class="form-control formPhoneNumber" name="wa-number" id="wa-number" maxlength="13" placeholder="<?= $this->translate('placeholder-wa-number') ?>">
                                     <div class="error-wrap"></div>
                                 </div>
                                 <div class="form-group">
@@ -164,13 +164,13 @@ $this->headScript()
                             <div class="form-body--credit">
                                 <div class="text-head">
                                     <h2 class="text-center">
-                                        Alamat Lengkap & Asset Kendaraan
+                                        <?= $this->translate('ndfc-title-step-2') ?>
                                     </h2>
-                                    <p class="text-center">Isi alamat lengkap Anda, untuk dapat melanjutkan step selanjutnya</p>
+                                    <p class="text-center"><?= $this->translate('ndfc-subtitle-step-2') ?></p>
                                 </div>
                                 <div class="text-title-form">
-                                    <h3>Data Domisili Saat Ini</h3>
-                                    <p>Isi data alamat domisili Anda untuk cek ketersediaan profil mobil yang akan dijaminkan</p>
+                                    <h3><?= $this->translate('data-address-title') ?></h3>
+                                    <p><?= $this->translate('data-address-subtitle') ?></p>
                                 </div>
                                 <div class="form-group">
                                     <button type="button" class="cta cta-primary cta-block" id="address-btn" data-toggle="modal" data-target="#addressModal"><i class="fas fa-search"></i> CARI ALAMAT</button>
@@ -213,8 +213,8 @@ $this->headScript()
                                     <div class="error-wrap"></div>
                                 </div>
                                 <div class="text-title-form">
-                                    <h3>Data Asset Mobil</h3>
-                                    <p>Isi profil mobil Anda sesuai STNK untuk hitung simulasi pinjaman pada step selanjutnya</p>
+                                    <h3><?= $this->translate('data-ndfc-title') ?></h3>
+                                    <p><?= $this->translate('data-ndfc-subtitle') ?></p>
                                 </div>
                                 <div class="form-group">
                                     <label><?= $this->translate('label-type') ?></label>
@@ -236,7 +236,7 @@ $this->headScript()
                                         <option value="" disabled selected> <?= $this->translate('placeholder-model') ?></option>
                                     </select>
                                     <div class="error-wrap"></div>
-                                    <span>Lihat STNK untuk memudahkan pencarian</span>
+                                    <span><?= $this->translate('model-helper') ?></span>
                                 </div>
                                  <div class="form-group">
                                     <label for="tahun_kendaraan"><?= $this->translate('label-tahun') ?></label>
@@ -244,14 +244,14 @@ $this->headScript()
                                     <div class="error-wrap"></div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="plat-no">Plat Nomor Kendaraan</label>
-                                    <input type="text" class="form-control formRequired" name="plat-no" id="plat-no" placeholder="Plat Nomor Kendaraan">
+                                    <label for="plat-no"><?= $this->translate('label-number-plat') ?></label>
+                                    <input type="text" class="form-control formRequired" name="plat-no" id="plat-no" placeholder="<?= $this->translate('placeholder-number-plat') ?>">
                                     <div class="error-wrap"></div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="kepemilikan_bpkb">Kepemilikan BPKB</label>
-                                    <select class="c-custom-select-trans form-control formRequired" placeholder="Pilih Kepemilikan BPKB" id="kepemilikan_bpkb" name="kepemilikan_bpkb" multiple="multiple" >
-                                        <option value="" disabled selected> <?= $this->translate('placeholder-status') ?></option>
+                                    <label for="kepemilikan_bpkb"><?= $this->translate('label-bpkb-ownership') ?></label>
+                                    <select class="c-custom-select-trans form-control formRequired" placeholder="<?= $this->translate('placeholder-bpkb-ownership') ?>" id="kepemilikan_bpkb" name="kepemilikan_bpkb" multiple="multiple" >
+                                        <option value="" disabled selected> <?= $this->translate('placeholder-bpkb-ownership') ?></option>
                                     </select>
                                     <div class="error-wrap"></div>
                                 </div>
@@ -266,22 +266,22 @@ $this->headScript()
                         <div id="menu4" class="tab-pane slide-left">
                             <div class="form-body--credit">
                                 <div class="text-head">
-                                    <h2 class="text-center">Tambahan Informasi & Perhitungan</h2>
-                                    <p class="text-center">Lengkapi data dan hitung pembiayaan yang Anda inginkan</p>
+                                    <h2 class="text-center"><?= $this->translate('ndfc-title-step-3') ?></h2>
+                                    <p class="text-center"><?= $this->translate('ndfc-subtitle-step-3') ?></p>
                                 </div>
                                 <div class="text-title-form">
-                                    <h3>Informasi Tambahan</h3>
-                                    <p>Mohon isi beberapa informasi singkat berikut untuk proses persetujuan pengajuan</p>
+                                    <h3><?= $this->translate('additional-data-title') ?></h3>
+                                    <p><?= $this->translate('additional-data-subtitle') ?></p>
                                 </div>
                                 <div class="form-group">
-                                    <label for="kepemilikan_rumah">Kepemilikan Rumah</label>
-                                    <select class="c-custom-select-trans form-control formRequired" placeholder="Pilih Kepemikikan Rumah" id="kepemilikan_rumah" name="kepemilikan_rumah" multiple="multiple">
+                                    <label for="kepemilikan_rumah"><?= $this->translate('label-house-ownership') ?></label>
+                                    <select class="c-custom-select-trans form-control formRequired" placeholder="<?= $this->translate('placeholder-house-ownership') ?>" id="kepemilikan_rumah" name="kepemilikan_rumah" multiple="multiple">
                                         <option value="" disabled selected></option>
                                     </select>
                                     <div class="error-wrap"></div>
                                 </div>
                                 <div class="form-group radio-group">
-                                    <label >Alamat sesuai dengan KTP</label>
+                                    <label><?= $this->translate('title-form-address-asset') ?></label>
                                     <div class="radio-button">
                                         <div class="radio-wrap">
                                             <input type="radio" class="inputs formRequired" id="addres_same"
@@ -299,7 +299,7 @@ $this->headScript()
                                     </div>
                                 </div>
                                 <div class="form-group radio-group">
-                                    <label >Pekerjaan</label>
+                                    <label><?= $this->translate('label-work') ?></label>
                                     <div class="radio-button">
                                         <div class="radio-wrap">
                                             <input type="radio" class="inputs formRequired" id="occupation"
@@ -317,39 +317,39 @@ $this->headScript()
                                     </div>
                                 </div>
                                 <div class="text-title-form">
-                                    <h3>Perhitungan Pembiayaan</h3>
+                                    <h3><?= $this->translate('label-financing-calculation') ?></h3>
                                 </div>
                                 <div class="form-group  simulasi-group rincian">
                                     <div class="total-estimate ndfc-simulasi">
                                         <div class="simulasi-header">
-                                            <h4>Mobil yang Anda Jaminkan</h4>
+                                            <h4><?= $this->translate('guaranteed-car') ?></h4>
                                             <div class="row">
                                                 <div class="col-xs-3">
-                                                    <p class="title">Merk</p>
+                                                    <p class="title"><?= $this->translate('brand') ?></p>
                                                     <p class="subtitle">Toyota</p>
                                                 </div>
                                                 <div class="col-xs-6">
-                                                    <p class="title">Model</p>
+                                                    <p class="title"><?= $this->translate('model') ?></p>
                                                     <p class="subtitle">TOYOTA-AGYA-G 1.0 AT</p>
                                                 </div>
                                                 <div class="col-xs-3">
-                                                    <p class="title">Tahun</p>
+                                                    <p class="title"><?= $this->translate('year') ?></p>
                                                     <p class="subtitle">2015</p>
                                                 </div>
                                             </div>
                                         </div>
-                                        <p class="title-angsuran text-center">Jumlah Maksimum Pembiayaan</p>
+                                        <p class="title-angsuran text-center"><?= $this->translate('label-max-financing') ?></p>
                                         <p class="total text-center">Rp 0</p>
                                     </div>
                                 </div>
                                 <div class="form-group simulasi-group sliderGroup inputsimulasi">
                                     <div class="input-group">
                                         <span class="input-group-addon" id="basic-addon1">Rp</span>
-                                        <label for="pembiayaan">Pembiayaan yang diinginkan</label>
+                                        <label for="pembiayaan"><?= $this->translate('desired-financing') ?></label>
                                         <input type="tel" pattern="\d*" id="pembiayaan"
                                             class="form-control inputs formRequired c-input-trans"
                                             aria-describedby="basic-addon1"
-                                            placeholder="Pembiayaan yang diinginkan">
+                                            placeholder="<?= $this->translate('desired-financing') ?>">
                                     </div>
                                     <div class="slidecontainer ">
                                         <div class="value-left valuemin">Rp 10.000.000</div>
@@ -360,11 +360,11 @@ $this->headScript()
                                     <div class="error-wrap"></div>
                                 </div>
                                 <div class="form-group simulasi-group sliderGroup inputsimulasi">
-                                    <label for="tenor">Masa Pembiayaan yang diinginkan</label>
+                                    <label for="tenor"><?= $this->translate('desired-tenor') ?></label>
                                     <input type="tel" pattern="\d*" id="tenor"
                                         class="form-control inputs formRequired c-input-trans"
                                         aria-describedby="basic-addon1"
-                                        placeholder="Masa Pembiayaan yang diinginkan">
+                                        placeholder="<?= $this->translate('desired-tenor') ?>">
                                     <div class="slidecontainer ">
                                         <div class="value-left valuemin">12 Bulan</div>
                                         <div class="value-right valuemax">18 Bulan</div>
@@ -447,12 +447,12 @@ $this->headScript()
                                 </div>
                                 <div class="form-group  simulasi-group rincian">
                                     <div class="total-estimate">
-                                        <p class="title-angsuran">Estimasi Angsuran per Bulan</p>
+                                        <p class="title-angsuran"><?= $this->translate('estimated-monthly-installment') ?></p>
                                         <p class="total">Rp 0</p>
                                         <button class="cta cta-primary cta-big absolutebutcalc" id="calcLoan"
                                             type="button" disabled><?=$this->translate('hitung') ?></button>
                                     </div>
-                                    <p class="infotext">*Biaya angsuran dapat berubah sesuai dengan hasil verifikasi kondisi fisik kendaraan di kantor cabang.</p>
+                                    <p class="infotext"><?= $this->translate('installment-disclaimer') ?></p>
                                 </div>
                                 <div class="form-group form-btn space-btn">
                                     <button class="cta cta-primary-outline cta-big cta-back buttonback"
@@ -616,14 +616,14 @@ $this->headScript()
   <div class="modal-dialog" role="document">
     <div class="modal-content address-modal">
       <div class="modal-header">
-        <h5 class="modal-title" id="addressModalLabel">Cari Alamat</h5>
+        <h5 class="modal-title" id="addressModalLabel"><?= $this->translate('search-address') ?></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <div class="form-group">
-            <input type="text" class="form-control formAlphabet" name="nama_lengkap" id="nama_lengkap" placeholder="<?= $this->translate('placeholder-name') ?>">
+            <input type="text" class="form-control formAlphabet" name="nama_lengkap" id="nama_lengkap" placeholder="<?= $this->translate('placeholder-search-address') ?>">
             <button class="cta cta-primary"><i class="fas fa-search"></i></button>
         </div>
       </div>
@@ -710,6 +710,3 @@ $this->headScript()
         </div>
     </div>
 </div>
-<!-- end modal pricing -->
-
-<?= $this->template('Includes/request-otp.html.php'); ?>
