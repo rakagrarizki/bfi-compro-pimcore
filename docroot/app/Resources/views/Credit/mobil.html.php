@@ -176,6 +176,11 @@ $this->headScript()
                                     <button type="button" class="cta cta-primary cta-block" id="address-btn" data-toggle="modal" data-target="#addressModal"><i class="fas fa-search"></i> CARI ALAMAT</button>
                                 </div>
                                 <div class="form-group" hidden>
+                                    <label for="kelurahan2"><?= $this->translate('label-kelurahan') ?></label>
+                                    <input type="text" class="form-control formRequired formAlphabet" name="kelurahan2" id="kelurahan2" placeholder="<?= $this->translate('placeholder-kelurahan') ?>" readonly>
+                                    <div class="error-wrap"></div>
+                                </div>
+                                <div class="form-group" hidden>
                                     <label><?= $this->translate('label-provinsi') ?></label>
                                     <select class="form-control formRequired" id="provinsi" name="provinsi" placeholder="<?= $this->translate('choose-provinsi') ?>" multiple="multiple">
                                     </select>
@@ -192,13 +197,6 @@ $this->headScript()
                                     <label><?= $this->translate('label-kecamatan') ?></label>
                                     <select class="form-control formRequired" id="kecamatan" name="kecamatan" placeholder="<?= $this->translate('choose-kecamatan') ?>" multiple="multiple">
                                         <option value="" disabled selected><?= $this->translate('choose-kecamatan') ?></option>
-                                    </select>
-                                    <div class="error-wrap"></div>
-                                </div>
-                                <div class="form-group" hidden>
-                                    <label><?= $this->translate('label-kelurahan') ?></label>
-                                    <select class="form-control formRequired" id="kelurahan" name="kelurahan" placeholder="<?= $this->translate('choose-kelurahan') ?>" multiple="multiple">
-                                        <option value="" disabled selected><?= $this->translate('choose-kelurahan') ?></option>
                                     </select>
                                     <div class="error-wrap"></div>
                                 </div>
@@ -623,8 +621,14 @@ $this->headScript()
       </div>
       <div class="modal-body">
         <div class="form-group">
-            <input type="text" class="form-control formAlphabet" name="nama_lengkap" id="nama_lengkap" placeholder="<?= $this->translate('placeholder-search-address') ?>">
-            <button class="cta cta-primary"><i class="fas fa-search"></i></button>
+            <input type="text" class="form-control formAlphabet" name="search-address" id="search-address-input" placeholder="<?= $this->translate('placeholder-search-address') ?>">
+            <button class="cta cta-primary" id="search-address-btn"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="row result-address">
+            <div class="col-xs-12">
+                <div id="data-container"></div>
+                <div id="pagination-container"></div>
+            </div>
         </div>
       </div>
     </div>

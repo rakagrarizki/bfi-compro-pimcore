@@ -90,3 +90,79 @@ $("#back3").on("click", function (e) {
     e.preventDefault();
     step("back", 3);
 });
+
+function paginationList(data) {
+    var html = "<ul>";
+    $.each(data, function (index, item) {
+        html +=
+            "<li class='data-list' data-dismiss='modal'>" +
+            item.subdistrict +
+            "<p>" +
+            item.disctrict +
+            "</p></li>";
+    });
+    html += "</ul>";
+    $(".paginationjs-page").wrapAll("<div></div>");
+    return html;
+}
+
+function clearPagination() {
+    var pageContainer = $("#pagination-container");
+    pageContainer.prev().html("");
+    pageContainer.pagination("destroy");
+}
+
+$("#search-address-btn").on("click", () => {
+    $("#pagination-container").pagination({
+        dataSource: [
+            {
+                subdistrict: "Legok",
+                disctrict: "England",
+            },
+            {
+                subdistrict: "Legok",
+                disctrict: "Belgium",
+            },
+            {
+                subdistrict: "Legok",
+                disctrict: "Ulan Bator",
+            },
+            {
+                subdistrict: "Legok",
+                disctrict: "Wuhan",
+            },
+            {
+                subdistrict: "Legok",
+                disctrict: "Pyongyang",
+            },
+            {
+                subdistrict: "Legok",
+                disctrict: "Bali",
+            },
+            {
+                subdistrict: "Legok",
+                disctrict: "Tangsel",
+            },
+            {
+                subdistrict: "Legok",
+                disctrict: "NTT",
+            },
+        ],
+        pageSize: 5,
+        pageRange: 1,
+        callback: function (data, pagination) {
+            var html = paginationList(data);
+            $("#data-container").html(html);
+        },
+    });
+});
+
+$("body").on("click", ".data-list", (e) => {
+    var kelurahan = e.currentTarget.firstChild.textContent;
+    $("#kelurahan2").parent().removeAttr("hidden");
+    $("#kelurahan2").val(kelurahan);
+    $("#kelurahan2").addClass("valid");
+    $("#kelurahan2").prev("label").addClass("valids");
+    $("#kelurahan2").focus();
+    $("#address-btn").parent().attr("hidden", true);
+});
