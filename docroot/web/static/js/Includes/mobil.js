@@ -2,14 +2,72 @@ let lang = document.documentElement.lang;
 
 let dataStep1 = {
     name: undefined,
+    email: undefined,
     phone_number: undefined,
     wa_number: undefined,
-    email: undefined,
     utm_source: undefined,
     utm_campaign: undefined,
     utm_term: undefined,
     utm_medium: undefined,
     utm_content: undefined,
+};
+
+let dataStep2 = {
+    submission_id: undefined,
+    info_address: {
+        province_id_bfi: undefined,
+        province_desc_bfi: undefined,
+        city_id_bfi: undefined,
+        city_desc_bfi: undefined,
+        district_id_bfi: undefined,
+        district_desc_bfi: undefined,
+        subdistrict_id_bfi: undefined,
+        subdistrict_desc_bfi: undefined,
+        zipcode_id_bfi: undefined,
+        zipcode_desc_bfi: undefined,
+        full_address: undefined,
+    },
+    info_assets: {
+        type_id_bfi: undefined,
+        type_desc_bfi: undefined,
+        brand_id_bfi: undefined,
+        brand_desc_bfi: undefined,
+        model_id_bfi: undefined,
+        model_desc_bfi: undefined,
+        vehicle_year_bfi: undefined,
+        license_plate: undefined,
+        asset_ownership_id_bfi: undefined,
+        asset_ownership_desc_bfi: undefined,
+    },
+};
+
+let dataStep3 = {
+    submission_id: undefined,
+    info_customer: {
+        profession_id_bfi: undefined,
+        profession_desc_bfi: undefined,
+        salary: undefined,
+        dob: undefined,
+        marital_status_id_bfi: undefined,
+        media_contact_option: undefined,
+    },
+    info_assets: {
+        asset_province_id_bfi: undefined,
+        asset_province_desc_bfi: undefined,
+        asset_city_id_bfi: undefined,
+        asset_city_desc_bfi: undefined,
+        asset_district_id_bfi: undefined,
+        asset_district_desc_bfi: undefined,
+        asset_subdistrict_id_bfi: undefined,
+        asset_subdistrict_desc_bfi: undefined,
+        asset_zipcode_id_bfi: undefined,
+        asset_zipcode_desc_bfi: undefined,
+        asset_full_address: undefined,
+    },
+    funding: undefined,
+    tenor: undefined,
+    monthly_installment: undefined,
+    vehicle_insurance: undefined,
 };
 
 $(document).ready(function () {
@@ -89,4 +147,80 @@ $("#back2").on("click", function (e) {
 $("#back3").on("click", function (e) {
     e.preventDefault();
     step("back", 3);
+});
+
+function paginationList(data) {
+    var html = "<ul>";
+    $.each(data, function (index, item) {
+        html +=
+            "<li class='data-list' data-dismiss='modal'>" +
+            item.subdistrict +
+            "<p>" +
+            item.district +
+            "</p></li>";
+    });
+    html += "</ul>";
+    $(".paginationjs-page").wrapAll("<div></div>");
+    return html;
+}
+
+function clearPagination() {
+    var pageContainer = $("#pagination-container");
+    pageContainer.prev().html("");
+    pageContainer.pagination("destroy");
+}
+
+$("#search-address-btn").on("click", () => {
+    $("#pagination-container").pagination({
+        dataSource: [
+            {
+                subdistrict: "Legok",
+                district: "England",
+            },
+            {
+                subdistrict: "Legok",
+                district: "Belgium",
+            },
+            {
+                subdistrict: "Legok",
+                district: "Ulan Bator",
+            },
+            {
+                subdistrict: "Legok",
+                district: "Wuhan",
+            },
+            {
+                subdistrict: "Legok",
+                district: "Pyongyang",
+            },
+            {
+                subdistrict: "Legok",
+                district: "Bali",
+            },
+            {
+                subdistrict: "Legok",
+                district: "Tangsel",
+            },
+            {
+                subdistrict: "Legok",
+                district: "NTT",
+            },
+        ],
+        pageSize: 5,
+        pageRange: 1,
+        callback: function (data, pagination) {
+            var html = paginationList(data);
+            $("#data-container").html(html);
+        },
+    });
+});
+
+$("body").on("click", ".data-list", (e) => {
+    var kelurahan = e.currentTarget.firstChild.textContent;
+    $("#kelurahan2").parent().removeAttr("hidden");
+    $("#kelurahan2").val(kelurahan);
+    $("#kelurahan2").addClass("valid");
+    $("#kelurahan2").prev("label").addClass("valids");
+    $("#kelurahan2").focus();
+    $("#address-btn").parent().attr("hidden", true);
 });
