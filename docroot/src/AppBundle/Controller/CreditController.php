@@ -840,10 +840,11 @@ class CreditController extends FrontendController
     {
         $host = WebsiteSetting::getByName("HOST")->getData();
         $url = $host . WebsiteSetting::getByName('URL_GET_SAVE_CAR_LEADS_1')->getData();
-        $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+        // $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["name"] = htmlentities(addslashes($request->get('name')));
         $param["email"] = htmlentities(addslashes($request->get('email')));
         $param["phone_number"] = htmlentities(addslashes($request->get('phone_number')));
+        $param["wa_number"] = htmlentities(addslashes($request->get('wa_number')));
         $param["utm_source"] = htmlentities(addslashes($request->get('utm_source')));
         $param["utm_campaign"] = htmlentities(addslashes($request->get('utm_campaign')));
         $param["utm_term"] = htmlentities(addslashes($request->get('utm_term')));
@@ -852,21 +853,23 @@ class CreditController extends FrontendController
 
         try {
             $data = $this->sendAPI->saveCarLeads1($url, $param);
+            if ($data->header->status == 200) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data,
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
         } catch (\Exception $e) {
-            throw new \Exception('Something went wrong!');
-        }
-
-        if ($data->header->status == 200) {
             return new JsonResponse([
-                'success' => "1",
-                'message' => "success",
-                'data' => $data->data
-            ]);
-        } else {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => $this->get("translator")->trans("api-error")
-            ]);
+                'success' => 0,
+                'message' => $e->getMessage()
+           ]);
         }
     }
 
@@ -881,7 +884,6 @@ class CreditController extends FrontendController
         $param["subdistrict_id"] = htmlentities(addslashes($request->get('subdistrict_id')));
         $param["zipcode_id"] = htmlentities(addslashes($request->get('zipcode_id')));
         $param["address"] = htmlentities(addslashes($request->get('address')));
-
 
         try {
             $data = $this->sendAPI->saveCarLeads2($url, $param);
