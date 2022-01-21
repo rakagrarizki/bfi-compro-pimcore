@@ -1197,10 +1197,6 @@ var urlLocation = window.location;
         var _path = window.location.pathname;
 
         switch (true) {
-            case _path.includes("car"):
-            case _path.includes("mobil"):
-                credType = "mobil";
-                break;
             case _path.includes("motor"):
             case _path.includes("motocycle"):
                 credType = "motor";
@@ -1224,9 +1220,6 @@ var urlLocation = window.location;
             utm_content = sessionStorage.getItem("utm_content");
 
         switch (jenis_kredit) {
-            case "MOBIL":
-                _URL = "/credit/save-car-leads1";
-                break;
             case "MOTOR":
                 _URL = "/credit/save-motorcycle-leads1";
                 break;
@@ -1286,9 +1279,6 @@ var urlLocation = window.location;
             jenis_kredit = $("#jenis_form").val();
 
         switch (jenis_kredit) {
-            case "MOBIL":
-                _URL = "/credit/save-car-leads1";
-                break;
             case "MOTOR":
                 _URL = "/credit/save-motorcycle-leads1";
                 break;
@@ -1366,9 +1356,6 @@ var urlLocation = window.location;
         var _url = "";
 
         switch (credType) {
-            case "mobil":
-                _url = "/credit/save-car-leads2";
-                break;
             case "motor":
                 _url = "/credit/save-motorcycle-leads2";
                 break;
@@ -1430,15 +1417,6 @@ var urlLocation = window.location;
         // console.log("DATA", _data);
 
         switch (credType) {
-            case "mobil":
-                _url = "/credit/save-car-leads3";
-                _data = Object.assign(_data, {
-                    car_type_id: type_kendaraan,
-                    car_brand_id: merk_kendaraan,
-                    car_model_id: model_kendaraan,
-                    car_year_id: tahun_kendaraan,
-                });
-                break;
             case "motor":
                 _url = "/credit/save-motorcycle-leads3";
                 _data = Object.assign(_data, {
@@ -1473,7 +1451,7 @@ var urlLocation = window.location;
             },
             success: function (data) {
                 if (data.success === "1") {
-                    if (credType === "motor" || credType === "mobil") {
+                    if (credType === "motor") {
                         if (data.data.is_pricing) {
                             credits.kendaraan.merk_kendaraan =
                                 htmlEntities(merk_kendaraan);
@@ -1513,9 +1491,6 @@ var urlLocation = window.location;
         };
 
         switch (credType) {
-            case "mobil":
-                _url = "/credit/save-car-leads4";
-                break;
             case "motor":
                 _url = "/credit/save-motorcycle-leads4";
                 break;
@@ -1547,9 +1522,6 @@ var urlLocation = window.location;
         };
 
         switch (credType) {
-            case "mobil":
-                _url = "/credit/save-car-leads5";
-                break;
             case "motor":
                 _url = "/credit/save-motorcycle-leads5";
                 break;
@@ -1581,9 +1553,6 @@ var urlLocation = window.location;
         };
 
         switch (credType) {
-            case "mobil":
-                _url = "/credit/save-car-leads6";
-                break;
             case "motor":
                 _url = "/credit/save-motorcycle-leads6";
                 break;

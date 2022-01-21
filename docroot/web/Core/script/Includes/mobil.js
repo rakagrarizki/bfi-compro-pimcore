@@ -1,4 +1,5 @@
 let lang = document.documentElement.lang;
+var submission_id = "";
 
 let dataStep1 = {
     name: undefined,
@@ -119,7 +120,11 @@ $("#kepemilikan_rumah").select2({
 
 $("#next1").on("click", function (e) {
     e.preventDefault();
-    step("next", 2);
+    if ($(this).closest("form").valid()) {
+        pushDataStep1(() => {
+            step("next", 2);
+        });
+    }
 });
 $("#next2").on("click", function (e) {
     e.preventDefault();
@@ -148,6 +153,41 @@ $("#back3").on("click", function (e) {
     e.preventDefault();
     step("back", 3);
 });
+
+function pushDataStep1(cb) {
+    let result = (dataStep1 = {
+        name: $("#nama_lengkap").val(),
+        email: $("#email_pemohon").val(),
+        phone_number: $("#no_handphone").val(),
+        wa_number: $("#wa_number").val(),
+        utm_source: sessionStorage.getItem("utm_source"),
+        utm_campaign: sessionStorage.getItem("utm_campaign"),
+        utm_term: sessionStorage.getItem("utm_term"),
+        utm_medium: sessionStorage.getItem("utm_medium"),
+        utm_content: sessionStorage.getItem("utm_content"),
+    });
+
+    $.ajax({
+        type: "POST",
+        url: "/credit/save-car-leads1",
+        data: result,
+        dataType: "json",
+        tryCount: 0,
+        retryLimit: retryLimit,
+        error: (xhr, textStatus, err) => {
+            retryAjax(this, xhr);
+        },
+        fail: (xhr, textStatus, err) => {
+            retryAjax(this, xhr);
+        },
+        success: (res) => {
+            if (res.message === "success") {
+                submission_id = res.data.submission_id;
+                cb(res);
+            }
+        },
+    });
+}
 
 function paginationList(data) {
     var html = "<ul>";

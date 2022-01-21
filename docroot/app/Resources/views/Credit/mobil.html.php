@@ -118,8 +118,8 @@ $this->headScript()
                                     </div>
                                 </div>
                                 <div class="form-group wa-numbers" hidden>
-                                    <label for="wa-number"><?= $this->translate('label-wa-number') ?></label>
-                                    <input type="tel" pattern="\d*" class="form-control formPhoneNumber" name="wa-number" id="wa-number" maxlength="13" placeholder="<?= $this->translate('placeholder-wa-number') ?>">
+                                    <label for="wa_number"><?= $this->translate('label-wa-number') ?></label>
+                                    <input type="tel" pattern="\d*" class="form-control formPhoneNumber" name="wa-number" id="wa_number" maxlength="13" placeholder="<?= $this->translate('placeholder-wa-number') ?>">
                                     <div class="error-wrap"></div>
                                 </div>
                                 <div class="form-group">
