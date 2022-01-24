@@ -44,10 +44,12 @@ class SendApi
         ]);
         
         try {
+            var_dump($name, $url, $method);         
             $data = $client->request($method, $url, [
                 "json" => $params
             ]);
         } catch (ClientException $e) {
+            var_dump($e);
             $response = $e->getResponse();
             return json_decode($response->getBody());
         }
