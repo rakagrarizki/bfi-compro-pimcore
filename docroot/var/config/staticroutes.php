@@ -2448,5 +2448,23 @@ return [
         "legacy" => FALSE,
         "creationDate" => 1581494082,
         "modificationDate" => 1581224171
+    ],
+    141 => [
+        "id" => 141,
+        "name" => "get gateway token",
+        "pattern" => "/\\/credit\\/get_gateway_token/",
+        "reverse" => "/credit/get_gateway_token",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getGatewayToken",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1581494082,
+        "modificationDate" => 1581224171
     ]
 ];
