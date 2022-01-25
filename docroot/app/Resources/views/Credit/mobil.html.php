@@ -621,7 +621,7 @@ $this->headScript()
       </div>
       <div class="modal-body">
         <div class="form-group">
-            <input type="text" class="form-control formAlphabet" name="search-address" id="search-address-input" placeholder="<?= $this->translate('placeholder-search-address') ?>">
+            <input type="text" class="form-control" name="search-address" id="search-address-input" placeholder="<?= $this->translate('placeholder-search-address') ?>">
             <button class="cta cta-primary" id="search-address-btn"><i class="fas fa-search"></i></button>
         </div>
         <div class="row result-address">

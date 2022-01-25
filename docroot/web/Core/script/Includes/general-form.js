@@ -638,17 +638,53 @@ function scrollToTop() {
 
 $(".form-control").on("select2:select", function (e) {
     var data = e.params.data;
-    data.selected == true
-        ? $(this).next().find(".select2-selection").addClass("valid")
-        : {};
+    var nextEl = $(this)
+        .parent()
+        .nextAll(".form-group:eq(0)")
+        .find(".input-step");
+    if (data.selected == true) {
+        $(this).next().find(".select2-selection").addClass("valid");
+        nextEl.removeAttr("disabled");
+    } else {
+        {
+        }
+        nextEl.attr("disabled", true);
+    }
 });
 
-$("input.form-control").on("keyup change", function () {
+$("input.form-control, textarea.form-control").on("keyup change", function () {
     var data = $(this).valid();
-    data == true
-        ? $(this).prev("label").addClass("valids")
-        : $(this).prev("label").removeClass("valids");
+    var nextEl = $(this)
+        .parent()
+        .nextAll(".form-group:eq(0)")
+        .find(".input-step");
+    if (data == true) {
+        $(this).prev("label").addClass("valids");
+        nextEl.removeAttr("disabled");
+    } else {
+        $(this).prev("label").removeClass("valids");
+        nextEl.attr("disabled", true);
+    }
 });
+
+$("input[type='radio'], input[type='checkbox']").on("change", function () {
+    var nextEl = $(this)
+        .closest(".form-group")
+        .next(".form-group")
+        .find(".input-step");
+    nextEl.removeAttr("disabled");
+});
+
+inputDisabled();
+function inputDisabled() {
+    $("input, select, textarea").addClass("input-step");
+    $(".form-body--credit")
+        .find(".input-step:not(:eq(0))")
+        .attr("disabled", true);
+    $(".form-body--credit .otp-number")
+        .find(".input-step")
+        .removeAttr("disabled");
+}
 
 function step(action, val) {
     scrollToTop();
