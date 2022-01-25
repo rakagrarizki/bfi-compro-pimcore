@@ -93,18 +93,25 @@ $(document).ready(function () {
 
 $("input[name$='addres_same']").click(function () {
     var addresSameVal = $(this).val();
-    {
-        addresSameVal == "false"
-            ? $(".same-address").removeAttr("hidden")
-            : $(".same-address").attr("hidden", true);
+    if (addresSameVal == "false") {
+        $(".same-address").removeAttr("hidden");
+        $(".same-address")
+            .find(".input-step:eq(0), textarea.input-step")
+            .removeAttr("disabled");
+    } else {
+        $(".same-address").attr("hidden", true);
+        $(".same-address").find(".input-step:eq(0)").attr("disabled", true);
     }
+    $("#occupation").removeAttr("disabled");
 });
 
 $("#occupation").on("change", function () {
     $(this).val() == "5865706C-32D0-4BE0-9395-B50887DC8FF0" ||
     $(this).val() == "0A960193-B704-4FA6-85C1-D3EDAE18B6C2"
-        ? $(".employee_status").removeAttr("hidden")
-        : $(".employee_status").attr("hidden", true);
+        ? ($(".employee_status").removeAttr("hidden"),
+          $("#penghasilan").attr("disabled", true))
+        : ($(".employee_status").attr("hidden", true),
+          $("#penghasilan").removeAttr("disabled"));
 });
 
 $("#marital_status").on("change", function () {
@@ -257,7 +264,6 @@ $("#tenorPbf").on("change", function (e) {
 });
 
 $("#calcLoan").on("click", function (e) {
-    console.log("calcLoan");
     e.preventDefault();
     if (lang === "id") {
         $(this).text("HITUNG ULANG");
@@ -266,12 +272,11 @@ $("#calcLoan").on("click", function (e) {
     }
     CalcBtn("hide");
     PostCalculate();
+    $("#disclaimer").removeAttr("disabled");
 });
 
 $("#estimate_price").on("change", function () {
     getFunding();
-    // console.log($(this).val());
-    console.log("test");
 });
 
 $("#next4").on("click", function (e) {
@@ -931,6 +936,7 @@ function getFunding() {
                     step: 100000,
                 });
             }
+            $("#PengajuanBiaya").removeAttr("disabled");
             $("#PengajuanBiaya").val(currency(rawMinPrice));
             $(".valuemin").text("Rp " + currency(rawMinPrice));
             $(".valuemax").text("Rp " + currency(rawMaxPrice));
@@ -963,6 +969,7 @@ function getTenor() {
                         });
                     }
                 });
+                $("#tenorPbf").removeAttr("disabled");
                 $("#tenorPbf").select2({
                     placeholder: $("#tenorPbf").attr("placeholder"),
                     dropdownParent: $("#tenorPbf").parent(),

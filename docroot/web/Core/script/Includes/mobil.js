@@ -81,10 +81,13 @@ $(document).ready(function () {
 
 $("input[name='is-wa-number']").click(function () {
     var is_WA = $(this).val();
-    {
-        is_WA == "false"
-            ? $(".wa-numbers").removeAttr("hidden")
-            : $(".wa-numbers").attr("hidden", true);
+    $(".wa-numbers").find("input").removeAttr("disabled");
+    if (is_WA == "false") {
+        $(".wa-numbers").removeAttr("hidden");
+        $("#email_pemohon").attr("disabled", true);
+    } else {
+        $(".wa-numbers").attr("hidden", true);
+        $("#email_pemohon").removeAttr("disabled");
     }
 });
 
@@ -258,6 +261,7 @@ $("#search-address-btn").on("click", () => {
 $("body").on("click", ".data-list", (e) => {
     var kelurahan = e.currentTarget.firstChild.textContent;
     $("#kelurahan2").parent().removeAttr("hidden");
+    $("#kelurahan2").removeAttr("disabled");
     $("#kelurahan2").val(kelurahan);
     $("#kelurahan2").addClass("valid");
     $("#kelurahan2").prev("label").addClass("valids");
