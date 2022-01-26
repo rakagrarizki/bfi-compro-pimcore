@@ -172,15 +172,46 @@ $this->headScript()
                                     <h3><?= $this->translate('data-address-title') ?></h3>
                                     <p><?= $this->translate('data-address-subtitle') ?></p>
                                 </div>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <button type="button" class="cta cta-primary cta-block" id="address-btn" data-toggle="modal" data-target="#addressModal"><i class="fas fa-search"></i> CARI ALAMAT</button>
                                 </div>
                                 <div class="form-group" hidden>
                                     <label for="kelurahan2"><?= $this->translate('label-kelurahan') ?></label>
                                     <input type="text" class="form-control formRequired formAlphabet" name="kelurahan2" id="kelurahan2" placeholder="<?= $this->translate('placeholder-kelurahan') ?>" readonly>
                                     <div class="error-wrap"></div>
+                                </div> -->
+                                <div class="form-group">
+                                    <label for="provinsi"><?=$this->translate('label-provinsi') ?></label>
+                                    <select class="form-control inputs formRequired" id="provinsi"
+                                        name="provinsi" placeholder="<?=$this->translate('placeholder-provinsi') ?>"
+                                        multiple="multiple" >
+                                    <option value="" disabled selected>Provinsi</option>
+                                    </select>
+                                    <div class="error-wrap"></div>
                                 </div>
-                                <div class="form-group" hidden>
+                                <div class="form-group">
+                                    <label><?=$this->translate('label-kota') ?></label>
+                                    <select class="form-control inputs formRequired" id="kota" name="kota"
+                                        placeholder="<?=$this->translate('placeholder-kota') ?>"
+                                        multiple="multiple" />
+                                    <option value="" disabled selected>
+                                        <?=$this->translate('choose-kota') ?>
+                                    </option>
+                                    </select>
+                                    <div class="error-wrap"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label><?=$this->translate('label-kecamatan') ?></label>
+                                    <select class="form-control inputs formRequired" id="kecamatan"
+                                        name="kecamatan"
+                                        placeholder="<?=$this->translate('placeholder-kecamatan') ?>"
+                                        multiple="multiple" />
+                                    <option value="" disabled selected>
+                                        <?=$this->translate('choose-kecamatan') ?></option>
+                                    </select>
+                                    <div class="error-wrap"></div>
+                                </div>
+                                <!-- <div class="form-group" hidden>
                                     <label><?= $this->translate('label-provinsi') ?></label>
                                     <select class="form-control formRequired" id="provinsi" name="provinsi" placeholder="<?= $this->translate('choose-provinsi') ?>" multiple="multiple">
                                     </select>
@@ -199,7 +230,7 @@ $this->headScript()
                                         <option value="" disabled selected><?= $this->translate('choose-kecamatan') ?></option>
                                     </select>
                                     <div class="error-wrap"></div>
-                                </div>
+                                </div> -->
                                 <div class="form-group" hidden>
                                     <label for="kode_pos"><?= $this->translate('label-postcode') ?></label>
                                     <input type="text" class="form-control formKodePos" name="kode_pos" id="kode_pos" placeholder="<?= $this->translate('placeholder-postcode') ?>" disabled>
