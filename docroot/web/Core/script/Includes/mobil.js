@@ -125,6 +125,8 @@ $("#next1").on("click", function (e) {
     e.preventDefault();
     if ($(this).closest("form").valid()) {
         pushDataStep1(() => {
+            getAuthorizationToken();
+            getListProvinsi("#provinsi");
             step("next", 2);
         });
     }
