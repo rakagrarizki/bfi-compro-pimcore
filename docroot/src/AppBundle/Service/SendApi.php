@@ -44,12 +44,10 @@ class SendApi
         ]);
         
         try {
-            var_dump($name, $url, $method);         
             $data = $client->request($method, $url, [
                 "json" => $params
             ]);
         } catch (ClientException $e) {
-            var_dump($e);
             $response = $e->getResponse();
             return json_decode($response->getBody());
         }
@@ -110,6 +108,7 @@ class SendApi
             $response = $e->getResponse();
             return json_decode($response->getBody());
         }
+
 
         return $this->getData($data);
     }
@@ -768,5 +767,63 @@ class SendApi
     public function getListSpouseProfession($url, $params)
     {
         return $this->executeApi('api-list-spouse-profession', $url, $params, "POST");
+    }
+
+    public function executeApiSignature($name, $withSignature, $url, $method, $token)
+    {
+        $logger = new Logger($name);
+        $logger->pushHandler(new StreamHandler(PIMCORE_LOG_DIRECTORY . DIRECTORY_SEPARATOR . date('d') . date('m') . date("Y") . "-" . $name . ".log"), Logger::DEBUG);
+        $stack = HandlerStack::create();
+        $stack->push(Middleware::log(
+            $logger,
+            new MessageFormatter('{url} - {req_body} - {res_body}')
+        ));
+
+        $Signature = 'GET|||/bfiredphoenix/chain/core/api/v1/master/city?provinsi=PROVINSI%20BANTEN|||'; // comingsoon
+        $key = 'hmacKeyTest'; // comingsoon
+ 
+        $Sig = base64_encode(hash_hmac('sha256', $Signature, $key, true)); // comingsoon
+
+        $client = new Client([
+            "base_uri" => $url,
+            "verify" => false,
+            'handler' => $stack
+        ]);
+        
+        try {
+            if($withSignature == false){
+                $data = $client->request(
+                    $method,
+                    $url,
+                    [
+                        RequestOptions::HEADERS => [
+                            'Authorization' => 'Bearer ' . $token
+                        ]
+                    ]
+                );
+            }
+
+            if($withSignature == true){
+                $data = $client->request(
+                    $method,
+                    $url,
+                    [
+                        RequestOptions::HEADERS => [
+                            'Authorization' => 'Bearer ' . $token,
+                            'BFI-Signature' => 'Bearer ' . $token
+                        ]
+                    ]
+                );
+            }
+        } catch (ClientException $e) {
+           $response = $e->getResponse();
+           return json_decode($response->getBody());
+        }
+        return $this->getData($data);
+    }
+
+    public function getListProvince($url, $token)
+    {  
+        return $this->executeApiSignature('getListProvince', false, $url, "GET", $token);
     }
 }

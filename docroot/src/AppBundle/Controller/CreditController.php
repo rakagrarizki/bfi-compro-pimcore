@@ -26,12 +26,6 @@ class CreditController extends FrontendController
         $this->isDev = ENV === 'dev';
     }
 
-    public function getToken()
-    {
-        $token = $this->get('session')->get('token');
-        return $token;
-    }
-
     public function mobilAction(Request $request)
     {
     }
@@ -808,6 +802,8 @@ class CreditController extends FrontendController
         }
     }
 
+    // new api 
+
     public function getGatewayTokenAction(Request $request)
     {
         $host = WebsiteSetting::getByName("HOST")->getData();
@@ -816,6 +812,7 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getGatewayToken($url);
             if ($data->header->status == 200) {
+                $this->get('session')->set('tokenBearer', $data->data->access_token);
                 return new JsonResponse([
                     'success' => 1,
                     'message' => "success",
@@ -835,6 +832,40 @@ class CreditController extends FrontendController
         }
         
     }
+
+    public function getListProvinceAction(Request $request)
+    {
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_DATALIST_PROVINCE')->getData();
+
+        try {
+            $data = $this->sendAPI->getListProvince($url, $token);
+
+            if (empty($data->error)) {
+                return new JsonResponse([
+                'success' => 1,
+                'message' => "success",
+                'data' => $data->data
+            ]);
+            } else {
+                return new JsonResponse([
+                'success' => 0,
+                'message' => $this->get("translator")->trans("api-error")
+            ]);
+        }
+        } catch (\Exception $e) {
+            throw new \Exception('Something went wrong!');
+        }
+    }
+
+    public function getTokenBearer()
+    {
+        $tokenBearer = $this->get('session')->get('tokenBearer');
+        return $tokenBearer;
+    }
+
+    // end of new api
 
     public function saveCarLeads1Action(Request $request)
     {

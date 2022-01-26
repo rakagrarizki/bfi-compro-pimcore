@@ -2466,5 +2466,23 @@ return [
         "legacy" => FALSE,
         "creationDate" => 1581494082,
         "modificationDate" => 1581224171
-    ]
+    ],
+    142 => [
+        "id" => 142,
+        "name" => "get list province",
+        "pattern" => "/\\/credit\\/get-list-province/",
+        "reverse" => "/credit/get-list-province",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getListProvince",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
 ];

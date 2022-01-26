@@ -1,6 +1,7 @@
 var retryLimit = 3;
 
 let currentToken = undefined;
+let expiredDate = undefined;
 
 function retryAjax(_this, xhr) {
     if (xhr.status == 500) {
@@ -742,19 +743,65 @@ function step(action, val) {
 }
 
 function getAuthorizationToken() {
+    if (!currentToken || new Date(expiredDate).getTime() < Date.now()) {
+        $.ajax({
+            type: "POST",
+            url: "/credit/get_gateway_token",
+            tryCount: 0,
+            retryLimit: retryLimit,
+            error: function (xhr, textStatus, errorThrown) {
+                retryAjax(this, xhr);
+            },
+            fail: function (xhr, textStatus, error) {
+                retryAjax(this, xhr);
+            },
+            success: function (result) {
+                currentToken = result.data.access_token;
+                expiredDate = result.data.expired_date;
+
+                sessionStorage.setItem("token", currentToken);
+                sessionStorage.setItem("expiredDate", expiredDate);
+            },
+        });
+    }
+    return currentToken;
+}
+
+function getListProvinsi(element, element2) {
+    dataProvinsi = [];
+    $(element).empty();
+    var provinsi_placeholder = $("#provinsi").attr("placeholder");
+
     $.ajax({
-        type: "POST",
-        url: "/credit/get_gateway_token",
-        tryCount: 0,
-        retryLimit: retryLimit,
-        error: function (xhr, textStatus, errorThrown) {
+        type: "GET",
+        url: "/credit/get-list-province",
+        headers: { Authorization: "Basic " + currentToken },
+        dataType: "json",
+        error: function (xhr) {
             retryAjax(this, xhr);
         },
         fail: function (xhr, textStatus, error) {
             retryAjax(this, xhr);
         },
         success: function (result) {
-            console.log(result);
+            $.each(result.data, function (id, val) {
+                dataProvinsi.push({
+                    id: val.id,
+                    text: val.description,
+                });
+            });
+            $(element).select2({
+                placeholder: provinsi_placeholder,
+                dropdownParent: $(element).parent(),
+                data: dataProvinsi,
+                language: {
+                    noResults: function () {
+                        return lang === "id"
+                            ? "Tidak Ada Hasil yang Ditemukan"
+                            : "No Result Found";
+                    },
+                },
+            });
         },
     });
 }
