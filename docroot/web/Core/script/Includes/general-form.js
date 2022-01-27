@@ -805,3 +805,43 @@ function getListProvinsi(element, element2) {
         },
     });
 }
+
+function getListCity(element, element2) {
+    dataCity = [];
+    $(element).empty();
+    var city_placeholder = $("#kota").attr("placeholder");
+    var prov = $("#provinsi").select2("val");
+    $.ajax({
+        type: "POST",
+        url: "/credit/get-list-city",
+        headers: { Authorization: "Basic " + currentToken },
+        data: { provinsi: prov },
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            $.each(result.data, function (id, val) {
+                dataCity.push({
+                    id: id,
+                    text: val.city,
+                });
+            });
+            $(element).select2({
+                placeholder: city_placeholder,
+                dropdownParent: $(element).parent(),
+                data: dataCity,
+                language: {
+                    noResults: function () {
+                        return lang === "id"
+                            ? "Tidak Ada Hasil yang Ditemukan"
+                            : "No Result Found";
+                    },
+                },
+            });
+        },
+    });
+}

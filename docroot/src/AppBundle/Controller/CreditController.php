@@ -859,6 +859,34 @@ class CreditController extends FrontendController
         }
     }
 
+    public function getListCityAction(Request $request)
+    {
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $param['path'] = WebsiteSetting::getByName('URL_GET_DATALIST_CITY')->getData();
+        $param['query'] = "provinsi=" . rawurlencode($request->get('provinsi')[0]);
+        $url = $host . $param['path'] . "?" . $param['query'];
+
+        try {
+            $data = $this->sendAPI->getListCity($url, $param, $token);
+
+            if (empty($data->error)) {
+                return new JsonResponse([
+                'success' => 1,
+                'message' => "success",
+                'data' => $data->data
+            ]);
+            } else {
+                return new JsonResponse([
+                'success' => 0,
+                'message' => $this->get("translator")->trans("api-error")
+            ]);
+        }
+        } catch (\Exception $e) {
+            throw new \Exception('Something went wrong!');
+        }
+    }
+
     public function getTokenBearer()
     {
         $tokenBearer = $this->get('session')->get('tokenBearer');
