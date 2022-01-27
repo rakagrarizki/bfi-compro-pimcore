@@ -809,7 +809,7 @@ class SendApi
             }
 
             if($withSignature == true){
-                $BFISign = $this->generateSignature('GET', $param['path'], $param['query'],'');
+                $BFISign = $this->generateSignature($method, $param['path'], $param['query'],'');
                 $data = $client->request(
                     $method,
                     $url,
