@@ -2485,4 +2485,22 @@ return [
         "creationDate" => 1567583908,
         "modificationDate" => 1567583948
     ],
+    143 => [
+        "id" => 143,
+        "name" => "get list city",
+        "pattern" => "/\\/credit\\/get-list-city/",
+        "reverse" => "/credit/get-list-city",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getListCity",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
 ];

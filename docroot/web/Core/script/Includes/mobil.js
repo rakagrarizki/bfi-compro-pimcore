@@ -260,6 +260,10 @@ $("#search-address-btn").on("click", () => {
     });
 });
 
+$("#provinsi").change(() => {
+    getListCity("#kota");
+});
+
 $("body").on("click", ".data-list", (e) => {
     var kelurahan = e.currentTarget.firstChild.textContent;
     $("#kelurahan2").parent().removeAttr("hidden");

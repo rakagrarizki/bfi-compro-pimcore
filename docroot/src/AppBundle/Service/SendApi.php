@@ -769,7 +769,17 @@ class SendApi
         return $this->executeApi('api-list-spouse-profession', $url, $params, "POST");
     }
 
-    public function executeApiSignature($name, $withSignature, $url, $method, $token)
+    public function generateSignature($method, $url, $params, $body)
+    {
+        $endpoint = "$method|||$url?$params|||$body";
+        $key = 'hmacKeyTest';
+ 
+        $signature = base64_encode(hash_hmac('sha256', $endpoint, $key, true));
+
+        return $signature;
+    }
+
+    public function executeApiSignature($name, $withSignature, $url, $param, $method, $token)
     {
         $logger = new Logger($name);
         $logger->pushHandler(new StreamHandler(PIMCORE_LOG_DIRECTORY . DIRECTORY_SEPARATOR . date('d') . date('m') . date("Y") . "-" . $name . ".log"), Logger::DEBUG);
@@ -778,11 +788,6 @@ class SendApi
             $logger,
             new MessageFormatter('{url} - {req_body} - {res_body}')
         ));
-
-        $Signature = 'GET|||/bfiredphoenix/chain/core/api/v1/master/city?provinsi=PROVINSI%20BANTEN|||'; // comingsoon
-        $key = 'hmacKeyTest'; // comingsoon
- 
-        $Sig = base64_encode(hash_hmac('sha256', $Signature, $key, true)); // comingsoon
 
         $client = new Client([
             "base_uri" => $url,
@@ -804,13 +809,14 @@ class SendApi
             }
 
             if($withSignature == true){
+                $BFISign = $this->generateSignature('GET', $param['path'], $param['query'],'');
                 $data = $client->request(
                     $method,
                     $url,
                     [
                         RequestOptions::HEADERS => [
                             'Authorization' => 'Bearer ' . $token,
-                            'BFI-Signature' => 'Bearer ' . $token
+                            'BFI-Signature' => $BFISign
                         ]
                     ]
                 );
@@ -824,6 +830,11 @@ class SendApi
 
     public function getListProvince($url, $token)
     {  
-        return $this->executeApiSignature('getListProvince', false, $url, "GET", $token);
+        return $this->executeApiSignature('getListProvince', false, $url, '', "GET", $token);
+    }
+
+    public function getListCity($url, $param, $token)
+    {
+        return $this->executeApiSignature('getListCity', true, $url, $param, "GET", $token);
     }
 }
