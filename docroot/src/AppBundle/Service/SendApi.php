@@ -772,7 +772,7 @@ class SendApi
     public function generateSignature($method, $url, $params, $body)
     {
         $endpoint = "$method|||$url?$params|||$body";
-        $key = 'hmacKeyTest';
+        $key = KEY;
  
         $signature = base64_encode(hash_hmac('sha256', $endpoint, $key, true));
 
@@ -836,5 +836,20 @@ class SendApi
     public function getListCity($url, $param, $token)
     {
         return $this->executeApiSignature('getListCity', true, $url, $param, "GET", $token);
+    }
+
+    public function getListDistrict($url, $param, $token)
+    {
+        return $this->executeApiSignature('getListDistrict', true, $url, $param, "GET", $token);
+    }
+
+    public function getListSubdistrict($url, $param, $token)
+    {
+        return $this->executeApiSignature('getListSubdistrict', true, $url, $param, "GET", $token);
+    }
+
+    public function getListZipcode($url, $param, $token)
+    {
+        return $this->executeApiSignature('getListZipcode', true, $url, $param, "GET", $token);
     }
 }

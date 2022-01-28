@@ -211,6 +211,29 @@ $this->headScript()
                                     </select>
                                     <div class="error-wrap"></div>
                                 </div>
+                                <div class="form-group">
+                                    <label><?=$this->translate('label-kelurahan') ?></label>
+                                    <select class="form-control inputs formRequired" id="kelurahan"
+                                        name="kelurahan"
+                                        placeholder="<?=$this->translate('placeholder-kelurahan') ?>"
+                                        multiple="multiple" />
+                                    <option value="" disabled selected>
+                                        <?=$this->translate('choose-kelurahan') ?></option>
+                                    </select>
+                                    <div class="error-wrap"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="kode_pos"><?=$this->translate('label-postcode') ?></label>
+                                    <input type="text" class="form-control inputs formKodePos" name="kode_pos"
+                                        id="kode_pos"
+                                        placeholder="<?=$this->translate('placeholder-postcode') ?>" readonly>
+                                    <div class="error-wrap"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="label-place" for="alamat_lengkap"><?= $this->translate('label-place') ?></label>
+                                    <textarea class="form-control formRequired formAddress" name="alamat_lengkap" id="alamat_lengkap" placeholder="<?= $this->translate('placeholder-place') ?> Contoh: Jalan Rajawali 1 Blok A no.11 RT 01 RW 02"></textarea>
+                                    <div class="error-wrap"></div>
+                                </div>
                                 <!-- <div class="form-group" hidden>
                                     <label><?= $this->translate('label-provinsi') ?></label>
                                     <select class="form-control formRequired" id="provinsi" name="provinsi" placeholder="<?= $this->translate('choose-provinsi') ?>" multiple="multiple">
@@ -231,16 +254,11 @@ $this->headScript()
                                     </select>
                                     <div class="error-wrap"></div>
                                 </div> -->
-                                <div class="form-group" hidden>
+                                <!-- <div class="form-group" hidden>
                                     <label for="kode_pos"><?= $this->translate('label-postcode') ?></label>
                                     <input type="text" class="form-control formKodePos" name="kode_pos" id="kode_pos" placeholder="<?= $this->translate('placeholder-postcode') ?>" disabled>
                                     <div class="error-wrap"></div>
-                                </div>
-                                <div class="form-group" hidden>
-                                    <label class="label-place" for="alamat_lengkap"><?= $this->translate('label-place') ?></label>
-                                    <textarea class="form-control formRequired formAddress" name="alamat_lengkap" id="alamat_lengkap" placeholder="<?= $this->translate('placeholder-place') ?> Contoh: Jalan Rajawali 1 Blok A no.11 RT 01 RW 02"></textarea>
-                                    <div class="error-wrap"></div>
-                                </div>
+                                </div> -->
                                 <div class="text-title-form">
                                     <h3><?= $this->translate('data-ndfc-title') ?></h3>
                                     <p><?= $this->translate('data-ndfc-subtitle') ?></p>

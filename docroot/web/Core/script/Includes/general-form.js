@@ -767,7 +767,7 @@ function getAuthorizationToken() {
     return currentToken;
 }
 
-function getListProvinsi(element, element2) {
+function getListProvinsi(element) {
     dataProvinsi = [];
     $(element).empty();
     var provinsi_placeholder = $("#provinsi").attr("placeholder");
@@ -806,7 +806,7 @@ function getListProvinsi(element, element2) {
     });
 }
 
-function getListCity(element, element2) {
+function getListCity(element) {
     dataCity = [];
     $(element).empty();
     var city_placeholder = $("#kota").attr("placeholder");
@@ -815,7 +815,7 @@ function getListCity(element, element2) {
         type: "POST",
         url: "/credit/get-list-city",
         headers: { Authorization: "Basic " + currentToken },
-        data: { provinsi: prov },
+        data: { province: prov },
         dataType: "json",
         error: function (xhr) {
             retryAjax(this, xhr);
@@ -826,7 +826,7 @@ function getListCity(element, element2) {
         success: function (result) {
             $.each(result.data, function (id, val) {
                 dataCity.push({
-                    id: id,
+                    id: val.city,
                     text: val.city,
                 });
             });
@@ -842,6 +842,115 @@ function getListCity(element, element2) {
                     },
                 },
             });
+        },
+    });
+}
+
+function getListDistrict(element) {
+    dataDistrict = [];
+    $(element).empty();
+    var district_placeholder = $(element).attr("placeholder");
+    var prov = $("#provinsi").select2("val");
+    var city = $("#kota").select2("val");
+    $.ajax({
+        type: "POST",
+        url: "/credit/get-list-district",
+        headers: { Authorization: "Basic " + currentToken },
+        data: { province: prov, city: city },
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            $.each(result.data, function (id, val) {
+                dataDistrict.push({
+                    id: val.kecamatan,
+                    text: val.kecamatan,
+                });
+            });
+            $(element).select2({
+                placeholder: district_placeholder,
+                dropdownParent: $(element).parent(),
+                data: dataDistrict,
+                language: {
+                    noResults: function () {
+                        return lang === "id"
+                            ? "Tidak Ada Hasil yang Ditemukan"
+                            : "No Result Found";
+                    },
+                },
+            });
+        },
+    });
+}
+
+function getListSubdistrict(element) {
+    dataSubdistrict = [];
+    $(element).empty();
+    var subdistrict_placeholder = $(element).attr("placeholder");
+    var prov = $("#provinsi").select2("val");
+    var city = $("#kota").select2("val");
+    var district = $("#kecamatan").select2("val");
+    $.ajax({
+        type: "POST",
+        url: "/credit/get-list-subdistrict",
+        headers: { Authorization: "Basic " + currentToken },
+        data: { province: prov, city: city, district: district },
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            $.each(result.data, function (id, val) {
+                dataSubdistrict.push({
+                    id: val.kelurahan,
+                    text: val.kelurahan,
+                });
+            });
+            $(element).select2({
+                placeholder: subdistrict_placeholder,
+                dropdownParent: $(element).parent(),
+                data: dataSubdistrict,
+                language: {
+                    noResults: function () {
+                        return lang === "id"
+                            ? "Tidak Ada Hasil yang Ditemukan"
+                            : "No Result Found";
+                    },
+                },
+            });
+        },
+    });
+}
+
+function getListZipcode() {
+    var city = $("#kota").select2("val");
+    var district = $("#kecamatan").select2("val");
+    var subdistrict = $("#kelurahan").select2("val");
+    $.ajax({
+        type: "POST",
+        url: "/credit/get-list-zipcode",
+        headers: { Authorization: "Basic " + currentToken },
+        data: { city: city, district: district, subdistrict: subdistrict },
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            if (result.message === "success") {
+                $.each(result.data, function (id, val) {
+                    $("#kode_pos").val(val.zip_code);
+                });
+            }
         },
     });
 }
