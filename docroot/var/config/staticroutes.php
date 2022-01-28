@@ -2503,4 +2503,58 @@ return [
         "creationDate" => 1567583908,
         "modificationDate" => 1567583948
     ],
+    144 => [
+        "id" => 144,
+        "name" => "get list district",
+        "pattern" => "/\\/credit\\/get-list-district/",
+        "reverse" => "/credit/get-list-district",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getListDistrict",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+    145 => [
+        "id" => 145,
+        "name" => "get list subdistrict",
+        "pattern" => "/\\/credit\\/get-list-subdistrict/",
+        "reverse" => "/credit/get-list-subdistrict",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getListSubdistrict",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+    146 => [
+        "id" => 146,
+        "name" => "get list zipcode",
+        "pattern" => "/\\/credit\\/get-list-zipcode/",
+        "reverse" => "/credit/get-list-zipcode",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getListZipcode",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
 ];

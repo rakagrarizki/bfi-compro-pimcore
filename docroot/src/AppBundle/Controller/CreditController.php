@@ -864,7 +864,7 @@ class CreditController extends FrontendController
         $token = $this->getTokenBearer();
         $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
         $param['path'] = WebsiteSetting::getByName('URL_GET_DATALIST_CITY')->getData();
-        $param['query'] = "provinsi=" . rawurlencode($request->get('provinsi')[0]);
+        $param['query'] = "provinsi=" . rawurlencode($request->get('province')[0]);
         $url = $host . $param['path'] . "?" . $param['query'];
 
         try {
@@ -883,7 +883,108 @@ class CreditController extends FrontendController
             ]);
         }
         } catch (\Exception $e) {
-            throw new \Exception('Something went wrong!');
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
+    public function getListDistrictAction(Request $request)
+    {
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $param['path'] = WebsiteSetting::getByName('URL_GET_DATALIST_DISTRICT')->getData();
+        $param['query'] = "provinsi=" . rawurlencode($request->get('province')[0]);
+        $param['query'] .= "&city=" . rawurlencode($request->get('city')[0]);
+        $url = $host . $param['path'] . "?" . $param['query'];
+
+        try {
+            $data = $this->sendAPI->getListDistrict($url, $param, $token);
+
+            if (empty($data->error)) {
+                return new JsonResponse([
+                'success' => 1,
+                'message' => "success",
+                'data' => $data->data
+            ]);
+            } else {
+                return new JsonResponse([
+                'success' => 0,
+                'message' => $this->get("translator")->trans("api-error")
+            ]);
+        }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
+    public function getListSubdistrictAction(Request $request)
+    {
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $param['path'] = WebsiteSetting::getByName('URL_GET_DATALIST_SUBDISTRICT')->getData();
+        $param['query'] = "provinsi=" . rawurlencode($request->get('province')[0]);
+        $param['query'] .= "&city=" . rawurlencode($request->get('city')[0]);
+        $param['query'] .= "&kecamatan=" . rawurlencode($request->get('district')[0]);
+        $url = $host . $param['path'] . "?" . $param['query'];
+
+        try {
+            $data = $this->sendAPI->getListSubdistrict($url, $param, $token);
+
+            if (empty($data->error)) {
+                return new JsonResponse([
+                'success' => 1,
+                'message' => "success",
+                'data' => $data->data
+            ]);
+            } else {
+                return new JsonResponse([
+                'success' => 0,
+                'message' => $this->get("translator")->trans("api-error")
+            ]);
+        }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
+    public function getListZipcodeAction(Request $request)
+    {
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $param['path'] = WebsiteSetting::getByName('URL_GET_DATALIST_ZIPCODE')->getData();
+        $param['query'] .= "city=" . rawurlencode($request->get('city')[0]);
+        $param['query'] .= "&kecamatan=" . rawurlencode($request->get('district')[0]);
+        $param['query'] .= "&kelurahan=" . rawurlencode($request->get('subdistrict')[0]);
+        $url = $host . $param['path'] . "?" . $param['query'];
+
+        try {
+            $data = $this->sendAPI->getListZipcode($url, $param, $token);
+
+            if (empty($data->error)) {
+                return new JsonResponse([
+                'success' => 1,
+                'message' => "success",
+                'data' => $data->data
+            ]);
+            } else {
+                return new JsonResponse([
+                'success' => 0,
+                'message' => $this->get("translator")->trans("api-error")
+            ]);
+        }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
         }
     }
 
