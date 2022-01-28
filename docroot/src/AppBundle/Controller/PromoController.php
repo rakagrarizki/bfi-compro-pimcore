@@ -28,7 +28,7 @@ class PromoController extends FrontendController
 
         $paginator = new \Zend\Paginator\Paginator($promos);
         $paginator->setCurrentPageNumber( $page );
-        $paginator->setItemCountPerPage(9);
+        $paginator->setItemCountPerPage(10);
 
         $this->view->promoCategories = $promoCategories;
         $this->view->paginator = $paginator;
