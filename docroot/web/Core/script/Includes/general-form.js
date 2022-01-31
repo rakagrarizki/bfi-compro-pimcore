@@ -810,7 +810,7 @@ function getListCity(element) {
     dataCity = [];
     $(element).empty();
     var city_placeholder = $("#kota").attr("placeholder");
-    var prov = $("#provinsi").select2("val");
+    var prov = $("#provinsi").val().toString();
     $.ajax({
         type: "POST",
         url: "/credit/get-list-city",
@@ -850,8 +850,8 @@ function getListDistrict(element) {
     dataDistrict = [];
     $(element).empty();
     var district_placeholder = $(element).attr("placeholder");
-    var prov = $("#provinsi").select2("val");
-    var city = $("#kota").select2("val");
+    var prov = $("#provinsi").val().toString();
+    var city = $("#kota").val().toString();
     $.ajax({
         type: "POST",
         url: "/credit/get-list-district",
@@ -891,9 +891,9 @@ function getListSubdistrict(element) {
     dataSubdistrict = [];
     $(element).empty();
     var subdistrict_placeholder = $(element).attr("placeholder");
-    var prov = $("#provinsi").select2("val");
-    var city = $("#kota").select2("val");
-    var district = $("#kecamatan").select2("val");
+    var prov = $("#provinsi").val().toString();
+    var city = $("#kota").val().toString();
+    var district = $("#kecamatan").val().toString();
     $.ajax({
         type: "POST",
         url: "/credit/get-list-subdistrict",
@@ -930,9 +930,9 @@ function getListSubdistrict(element) {
 }
 
 function getListZipcode() {
-    var city = $("#kota").select2("val");
-    var district = $("#kecamatan").select2("val");
-    var subdistrict = $("#kelurahan").select2("val");
+    var city = $("#kota").val().toString();
+    var district = $("#kecamatan").val().toString();
+    var subdistrict = $("#kelurahan").val().toString();
     $.ajax({
         type: "POST",
         url: "/credit/get-list-zipcode",

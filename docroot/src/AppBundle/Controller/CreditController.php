@@ -870,7 +870,7 @@ class CreditController extends FrontendController
         $token = $this->getTokenBearer();
         $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
         $param['path'] = WebsiteSetting::getByName('URL_GET_DATALIST_CITY')->getData();
-        $param['query'] = "provinsi=" . rawurlencode($request->get('province')[0]);
+        $param['query'] = "provinsi=" . rawurlencode($request->get('province'));
         $url = $host . $param['path'] . "?" . $param['query'];
 
         try {
@@ -901,8 +901,8 @@ class CreditController extends FrontendController
         $token = $this->getTokenBearer();
         $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
         $param['path'] = WebsiteSetting::getByName('URL_GET_DATALIST_DISTRICT')->getData();
-        $param['query'] = "provinsi=" . rawurlencode($request->get('province')[0]);
-        $param['query'] .= "&city=" . rawurlencode($request->get('city')[0]);
+        $param['query'] = "provinsi=" . rawurlencode($request->get('province'));
+        $param['query'] .= "&city=" . rawurlencode($request->get('city'));
         $url = $host . $param['path'] . "?" . $param['query'];
 
         try {
@@ -933,9 +933,9 @@ class CreditController extends FrontendController
         $token = $this->getTokenBearer();
         $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
         $param['path'] = WebsiteSetting::getByName('URL_GET_DATALIST_SUBDISTRICT')->getData();
-        $param['query'] = "provinsi=" . rawurlencode($request->get('province')[0]);
-        $param['query'] .= "&city=" . rawurlencode($request->get('city')[0]);
-        $param['query'] .= "&kecamatan=" . rawurlencode($request->get('district')[0]);
+        $param['query'] = "provinsi=" . rawurlencode($request->get('province'));
+        $param['query'] .= "&city=" . rawurlencode($request->get('city'));
+        $param['query'] .= "&kecamatan=" . rawurlencode($request->get('district'));
         $url = $host . $param['path'] . "?" . $param['query'];
 
         try {
@@ -966,9 +966,9 @@ class CreditController extends FrontendController
         $token = $this->getTokenBearer();
         $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
         $param['path'] = WebsiteSetting::getByName('URL_GET_DATALIST_ZIPCODE')->getData();
-        $param['query'] .= "city=" . rawurlencode($request->get('city')[0]);
-        $param['query'] .= "&kecamatan=" . rawurlencode($request->get('district')[0]);
-        $param['query'] .= "&kelurahan=" . rawurlencode($request->get('subdistrict')[0]);
+        $param['query'] .= "city=" . rawurlencode($request->get('city'));
+        $param['query'] .= "&kecamatan=" . rawurlencode($request->get('district'));
+        $param['query'] .= "&kelurahan=" . rawurlencode($request->get('subdistrict'));
         $url = $host . $param['path'] . "?" . $param['query'];
 
         try {
