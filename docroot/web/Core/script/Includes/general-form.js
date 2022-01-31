@@ -810,7 +810,7 @@ function getListCity(element) {
     dataCity = [];
     $(element).empty();
     var city_placeholder = $("#kota").attr("placeholder");
-    var prov = $("#provinsi").select2("val");
+    var prov = $("#provinsi").val().toString();
     $.ajax({
         type: "POST",
         url: "/credit/get-list-city",
@@ -850,8 +850,8 @@ function getListDistrict(element) {
     dataDistrict = [];
     $(element).empty();
     var district_placeholder = $(element).attr("placeholder");
-    var prov = $("#provinsi").select2("val");
-    var city = $("#kota").select2("val");
+    var prov = $("#provinsi").val().toString();
+    var city = $("#kota").val().toString();
     $.ajax({
         type: "POST",
         url: "/credit/get-list-district",
@@ -891,9 +891,9 @@ function getListSubdistrict(element) {
     dataSubdistrict = [];
     $(element).empty();
     var subdistrict_placeholder = $(element).attr("placeholder");
-    var prov = $("#provinsi").select2("val");
-    var city = $("#kota").select2("val");
-    var district = $("#kecamatan").select2("val");
+    var prov = $("#provinsi").val().toString();
+    var city = $("#kota").val().toString();
+    var district = $("#kecamatan").val().toString();
     $.ajax({
         type: "POST",
         url: "/credit/get-list-subdistrict",
@@ -930,9 +930,9 @@ function getListSubdistrict(element) {
 }
 
 function getListZipcode() {
-    var city = $("#kota").select2("val");
-    var district = $("#kecamatan").select2("val");
-    var subdistrict = $("#kelurahan").select2("val");
+    var city = $("#kota").val().toString();
+    var district = $("#kecamatan").val().toString();
+    var subdistrict = $("#kelurahan").val().toString();
     $.ajax({
         type: "POST",
         url: "/credit/get-list-zipcode",
@@ -951,6 +951,123 @@ function getListZipcode() {
                     $("#kode_pos").val(val.zip_code);
                 });
             }
+        },
+    });
+}
+
+let dataAssets = [];
+let rawAssetBrand = [];
+
+function getListAssets(assetType) {
+    $.ajax({
+        type: "POST",
+        url: "/credit/get-list-assets",
+        headers: { Authorization: "Basic " + currentToken },
+        data: { asset_type: assetType },
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            if (result.message === "success") {
+                $.each(result.data.data, (i, val) => {
+                    dataAssets.push({
+                        category: val.category_id,
+                        model: val.model,
+                        model_desc: val.model_desc,
+                        brand: val.brand,
+                        brand_desc: val.brand_desc,
+                    });
+                });
+                filterAssetType();
+            }
+        },
+    });
+}
+
+function filterAssetType() {
+    var dataType = [];
+    var type_placeholder = $("#type_kendaraan").attr("placeholder");
+
+    // remove duplicate
+    let assetType = dataAssets
+        .map((item) => item.category)
+        .filter((val, i, e) => e.indexOf(val) === i);
+
+    $.each(assetType, function (id, val) {
+        dataType.push({
+            id: val,
+            text: val,
+        });
+    });
+    $("#type_kendaraan").select2({
+        placeholder: type_placeholder,
+        dropdownParent: $("#type_kendaraan").parent(),
+        data: dataType,
+        language: {
+            noResults: function () {
+                return lang === "id"
+                    ? "Tidak Ada Hasil yang Ditemukan"
+                    : "No Result Found";
+            },
+        },
+    });
+}
+
+function filterAssetBrand(category) {
+    var dataBrand = [];
+    var brand_placeholder = $("#merk_kendaraan").attr("placeholder");
+    rawAssetBrand = dataAssets.filter((e) => e.category === category);
+
+    // remove duplicate
+    let assetBrand = rawAssetBrand
+        .map((item) => item.brand)
+        .filter((val, i, e) => e.indexOf(val) === i);
+
+    $.each(assetBrand, function (id, val) {
+        dataBrand.push({
+            id: val,
+            text: val,
+        });
+    });
+    $("#merk_kendaraan").select2({
+        placeholder: brand_placeholder,
+        dropdownParent: $("#merk_kendaraan").parent(),
+        data: dataBrand,
+        language: {
+            noResults: function () {
+                return lang === "id"
+                    ? "Tidak Ada Hasil yang Ditemukan"
+                    : "No Result Found";
+            },
+        },
+    });
+}
+
+function filterAssetModel(brand) {
+    var dataModel = [];
+    var model_placeholder = $("#model_kendaraan").attr("placeholder");
+    let assetModel = rawAssetBrand.filter((e) => e.brand === brand);
+
+    $.each(assetModel, function (id, val) {
+        dataModel.push({
+            id: val.model,
+            text: val.model_desc,
+        });
+    });
+    $("#model_kendaraan").select2({
+        placeholder: model_placeholder,
+        dropdownParent: $("#model_kendaraan").parent(),
+        data: dataModel,
+        language: {
+            noResults: function () {
+                return lang === "id"
+                    ? "Tidak Ada Hasil yang Ditemukan"
+                    : "No Result Found";
+            },
         },
     });
 }

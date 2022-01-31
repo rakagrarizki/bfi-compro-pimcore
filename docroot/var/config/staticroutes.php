@@ -2557,4 +2557,22 @@ return [
         "creationDate" => 1567583908,
         "modificationDate" => 1567583948
     ],
+    147 => [
+        "id" => 147,
+        "name" => "get list assets",
+        "pattern" => "/\\/credit\\/get-list-assets/",
+        "reverse" => "/credit/get-list-assets",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getListAssets",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
 ];

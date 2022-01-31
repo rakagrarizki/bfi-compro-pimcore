@@ -127,10 +127,20 @@ $("#next1").on("click", function (e) {
         pushDataStep1(() => {
             getAuthorizationToken();
             getListProvinsi("#provinsi");
+            getListAssets("mobil");
             step("next", 2);
         });
     }
 });
+
+$("#type_kendaraan").change(() => {
+    filterAssetBrand($("#type_kendaraan").val().toString());
+});
+
+$("#merk_kendaraan").change(() => {
+    filterAssetModel($("#merk_kendaraan").val().toString());
+});
+
 $("#next2").on("click", function (e) {
     e.preventDefault();
     step("next", 3);
