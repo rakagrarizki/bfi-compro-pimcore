@@ -1111,6 +1111,47 @@ function getListBpkbOwnership(element) {
     });
 }
 
+function getListHouseOwnership(element) {
+    dataHouseOwnership = [];
+    $(element).empty();
+    var house_placeholder = $(element).attr("placeholder");
+
+    $.ajax({
+        type: "GET",
+        url: "/credit/get-list-house-ownership",
+        headers: { Authorization: "Basic " + currentToken },
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            $.each(result.data, function (id, val) {
+                if (val.is_active === true) {
+                    dataHouseOwnership.push({
+                        id: val.id,
+                        text: val.description,
+                    });
+                }
+            });
+            $(element).select2({
+                placeholder: house_placeholder,
+                dropdownParent: $(element).parent(),
+                data: dataHouseOwnership,
+                language: {
+                    noResults: function () {
+                        return lang === "id"
+                            ? "Tidak Ada Hasil yang Ditemukan"
+                            : "No Result Found";
+                    },
+                },
+            });
+        },
+    });
+}
+
 function bpkbOwnershipTranslate(status) {
     switch (status) {
         case "Brother/Sister":

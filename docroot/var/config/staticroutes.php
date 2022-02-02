@@ -2593,4 +2593,22 @@ return [
         "creationDate" => 1567583908,
         "modificationDate" => 1567583948
     ],
+    149 => [
+        "id" => 149,
+        "name" => "get list house ownership",
+        "pattern" => "/\\/credit\\/get-list-house-ownership/",
+        "reverse" => "/credit/get-list-house-ownership",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getListHouseOwnership",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
 ];
