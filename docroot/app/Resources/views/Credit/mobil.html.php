@@ -287,7 +287,7 @@ $this->headScript()
                                 </div>
                                  <div class="form-group">
                                     <label for="tahun_kendaraan"><?= $this->translate('label-tahun') ?></label>
-                                    <input type="text" class="form-control formRequired" name="tahun_kendaraan" id="tahun_kendaraan" placeholder="<?= $this->translate('placeholder-tahun') ?>">
+                                    <input type="text" class="form-control formNumber formRequired" name="tahun_kendaraan" id="tahun_kendaraan" maxlength="4" placeholder="<?= $this->translate('placeholder-tahun') ?>">
                                     <div class="error-wrap"></div>
                                 </div>
                                 <div class="form-group">

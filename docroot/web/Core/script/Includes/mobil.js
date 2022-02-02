@@ -145,6 +145,7 @@ $("#merk_kendaraan").change(() => {
 $("#next2").on("click", function (e) {
     e.preventDefault();
     step("next", 3);
+    getListHouseOwnership("#kepemilikan_rumah");
 });
 $("#next3").on("click", function (e) {
     e.preventDefault();
