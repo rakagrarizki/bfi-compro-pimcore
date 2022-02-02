@@ -1071,3 +1071,63 @@ function filterAssetModel(brand) {
         },
     });
 }
+
+function getListBpkbOwnership(element) {
+    dataBpkbOwnership = [];
+    $(element).empty();
+    var bpkb_placeholder = $(element).attr("placeholder");
+
+    $.ajax({
+        type: "GET",
+        url: "/credit/get-list-bpkb-ownership",
+        headers: { Authorization: "Basic " + currentToken },
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            $.each(result.data, function (id, val) {
+                dataBpkbOwnership.push({
+                    id: val.id,
+                    text: bpkbOwnershipTranslate(val.description),
+                });
+            });
+            $(element).select2({
+                placeholder: bpkb_placeholder,
+                dropdownParent: $(element).parent(),
+                data: dataBpkbOwnership,
+                language: {
+                    noResults: function () {
+                        return lang === "id"
+                            ? "Tidak Ada Hasil yang Ditemukan"
+                            : "No Result Found";
+                    },
+                },
+            });
+        },
+    });
+}
+
+function bpkbOwnershipTranslate(status) {
+    switch (status) {
+        case "Brother/Sister":
+            return "Saudara kandung";
+        case "Children":
+            return "Anak";
+        case "Family":
+            return "Keluarga";
+        case "Owner":
+            return "Sendiri";
+        case "Parent":
+            return "Orang Tua";
+        case "Spouse":
+            return "Pasangan";
+        case "Other":
+            return "Lainnya";
+        default:
+            return status;
+    }
+}

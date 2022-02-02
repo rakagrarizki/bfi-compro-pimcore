@@ -128,6 +128,7 @@ $("#next1").on("click", function (e) {
             getAuthorizationToken();
             getListProvinsi("#provinsi");
             getListAssets("mobil");
+            getListBpkbOwnership("#kepemilikan_bpkb");
             step("next", 2);
         });
     }

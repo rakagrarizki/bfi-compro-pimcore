@@ -857,4 +857,9 @@ class SendApi
     {
         return $this->executeApiSignature('getListAssets', true, $url, $param, "GET", $token);
     }
+
+    public function getListBpkbOwnership($url, $token)
+    {
+        return $this->executeApiSignature('getListBpkbOwnership', false, $url, '', "GET", $token);
+    }
 }

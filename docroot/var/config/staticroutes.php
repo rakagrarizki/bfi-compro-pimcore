@@ -2575,4 +2575,22 @@ return [
         "creationDate" => 1567583908,
         "modificationDate" => 1567583948
     ],
+    148 => [
+        "id" => 148,
+        "name" => "get list bpkb ownership",
+        "pattern" => "/\\/credit\\/get-list-bpkb-ownership/",
+        "reverse" => "/credit/get-list-bpkb-ownership",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getListBpkbOwnership",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
 ];

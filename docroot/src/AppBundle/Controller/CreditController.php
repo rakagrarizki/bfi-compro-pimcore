@@ -1020,6 +1020,35 @@ class CreditController extends FrontendController
         }
     }
 
+    public function getListBpkbOwnershipAction(Request $request)
+    {
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_DATALIST_BPKB_OWNERSHIP')->getData();
+
+        try {
+            $data = $this->sendAPI->getListBpkbOwnership($url, $token);
+
+            if (empty($data->error)) {
+                return new JsonResponse([
+                'success' => 1,
+                'message' => "success",
+                'data' => $data->data
+            ]);
+            } else {
+                return new JsonResponse([
+                'success' => 0,
+                'message' => $this->get("translator")->trans("api-error")
+            ]);
+        }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
     public function getTokenBearer()
     {
         $tokenBearer = $this->get('session')->get('tokenBearer');
