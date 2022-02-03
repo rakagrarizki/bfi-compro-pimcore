@@ -26,6 +26,12 @@ class CreditController extends FrontendController
         $this->isDev = ENV === 'dev';
     }
 
+    public function getToken()
+    {
+        $token = $this->get('session')->get('token');
+        return $token;
+    }
+
     public function mobilAction(Request $request)
     {
     }
@@ -802,6 +808,34 @@ class CreditController extends FrontendController
         }
     }
 
+    public function getGatewayTokenAction(Request $request)
+    {
+        $host = WebsiteSetting::getByName("HOST")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_AUTH_BASIC_TOKEN')->getData();
+
+        try {
+            $data = $this->sendAPI->getGatewayToken($url);
+            if ($data->header->status == 200) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ], + ($this->isDev ? ['message' => $data->data] : []));
+            }
+        } catch (\Exception $e) {
+             return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+        
+    }
+
     public function saveCarLeads1Action(Request $request)
     {
         $host = WebsiteSetting::getByName("HOST")->getData();
@@ -1563,8 +1597,8 @@ class CreditController extends FrontendController
             }
         } catch (\Exception $e) {
             return new JsonResponse([
-                 'success' => "0",
-                 'message' => $e->getMessage()
+                'success' => "0",
+                'message' => $e->getMessage()
             ]);
         }
 

@@ -42,12 +42,14 @@ class SendApi
             'handler' => $stack,
             'auth' => [USERNAME, PASSWORD]
         ]);
-
+        
         try {
+            var_dump($name, $url, $method);         
             $data = $client->request($method, $url, [
                 "json" => $params
             ]);
         } catch (ClientException $e) {
+            var_dump($e);
             $response = $e->getResponse();
             return json_decode($response->getBody());
         }
@@ -77,6 +79,31 @@ class SendApi
                         'Authorization' => 'Bearer ' . $token,
                     ],
                     "json" => $params
+                ]
+            );
+        } catch (ClientException $e) {
+            $response = $e->getResponse();
+            return json_decode($response->getBody());
+        }
+
+        return $this->getData($data);
+    }
+
+    public function getGatewayToken($url){
+
+        $client = new Client([
+            "base_uri" => $url,
+            "verify" => false
+        ]);
+
+        try {
+            $data = $client->request(
+                'POST',
+                $url,
+                [
+                    RequestOptions::HEADERS => [
+                        'Authorization' => 'Basic ' . Authorization
+                    ]
                 ]
             );
         } catch (ClientException $e) {

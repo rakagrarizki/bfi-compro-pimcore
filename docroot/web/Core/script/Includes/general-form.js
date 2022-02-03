@@ -1,5 +1,7 @@
 var retryLimit = 3;
 
+let currentToken = undefined;
+
 function retryAjax(_this, xhr) {
     if (xhr.status == 500) {
         _this.tryCount++;
@@ -701,4 +703,22 @@ function step(action, val) {
             .fadeIn();
         $(`#menu${val + 1}`).removeClass("active");
     }
+}
+
+function getAuthorizationToken() {
+    $.ajax({
+        type: "POST",
+        url: "/credit/get_gateway_token",
+        tryCount: 0,
+        retryLimit: retryLimit,
+        error: function (xhr, textStatus, errorThrown) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            console.log(result);
+        },
+    });
 }
