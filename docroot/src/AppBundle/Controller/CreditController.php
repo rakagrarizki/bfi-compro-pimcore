@@ -26,6 +26,12 @@ class CreditController extends FrontendController
         $this->isDev = ENV === 'dev';
     }
 
+    public function getToken()
+    {
+        $token = $this->get('session')->get('token');
+        return $token;
+    }
+
     public function mobilAction(Request $request)
     {
     }
