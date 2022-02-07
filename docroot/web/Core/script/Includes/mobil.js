@@ -125,11 +125,11 @@ $("#next1").on("click", function (e) {
     e.preventDefault();
     if ($(this).closest("form").valid()) {
         pushDataStep1(() => {
+            step("next", 2);
             getAuthorizationToken();
             getListProvinsi("#provinsi");
             getListAssets("mobil");
             getListBpkbOwnership("#kepemilikan_bpkb");
-            step("next", 2);
         });
     }
 });
@@ -227,8 +227,8 @@ function pushDataStep2(cb) {
             full_address: $("#alamat_lengkap").val(),
         },
         info_assets: {
-            category_id_bfi: asset_group, // ambil dari asset group
-            category_desc_bfi: asset_group, // ambil dari asset group
+            category_id_bfi: rawAssetBrand[0].asset_group,
+            category_desc_bfi: rawAssetBrand[0].asset_group,
             type_id_bfi: $("#type_kendaraan").val().toString(),
             type_desc_bfi: $("#type_kendaraan").val().toString(),
             brand_id_bfi: $("#merk_kendaraan").val().toString(),

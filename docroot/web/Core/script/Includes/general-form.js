@@ -980,6 +980,7 @@ function getListAssets(assetType) {
                         model_desc: val.model_desc,
                         brand: val.brand,
                         brand_desc: val.brand_desc,
+                        asset_group: val.asset_group,
                     });
                 });
                 filterAssetType();
@@ -1023,14 +1024,14 @@ function filterAssetBrand(category) {
     rawAssetBrand = dataAssets.filter((e) => e.category === category);
 
     // remove duplicate
-    let assetBrand = rawAssetBrand
-        .map((item) => item.brand)
-        .filter((val, i, e) => e.indexOf(val) === i);
+    let assetBrand = rawAssetBrand.filter(
+        (val, i, e) => i === e.findIndex((t) => t.brand === val.brand)
+    );
 
     $.each(assetBrand, function (id, val) {
         dataBrand.push({
-            id: val,
-            text: val,
+            id: val.brand,
+            text: val.brand_desc,
         });
     });
     $("#merk_kendaraan").select2({
