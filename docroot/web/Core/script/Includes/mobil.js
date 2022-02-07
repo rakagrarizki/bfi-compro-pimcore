@@ -1,5 +1,5 @@
 let lang = document.documentElement.lang;
-var submission_id = "";
+var submission_id = undefined;
 
 let dataStep1 = {
     name: undefined,
@@ -144,8 +144,12 @@ $("#merk_kendaraan").change(() => {
 
 $("#next2").on("click", function (e) {
     e.preventDefault();
-    step("next", 3);
-    getListHouseOwnership("#kepemilikan_rumah");
+    if ($(this).closest("form").valid()) {
+        pushDataStep2(() => {
+            step("next", 3);
+            getListHouseOwnership("#kepemilikan_rumah");
+        });
+    }
 });
 $("#next3").on("click", function (e) {
     e.preventDefault();
@@ -200,6 +204,61 @@ function pushDataStep1(cb) {
         success: (res) => {
             if (res.message === "success") {
                 submission_id = res.data.submission_id;
+                cb(res);
+            }
+        },
+    });
+}
+
+function pushDataStep2(cb) {
+    let result = (dataStep2 = {
+        submission_id: submission_id,
+        info_address: {
+            province_id_bfi: $("#provinsi").val().toString(),
+            province_desc_bfi: $("#provinsi option:selected").html(),
+            city_id_bfi: $("#kota").val().toString(),
+            city_desc_bfi: $("#kota").val().toString(),
+            district_id_bfi: $("#kecamatan").val().toString(),
+            district_desc_bfi: $("#kecamatan option:selected").html(),
+            subdistrict_id_bfi: $("#kelurahan").val().toString(),
+            subdistrict_desc_bfi: $("#kelurahan option:selected").html(),
+            zipcode_id_bfi: $("#kode_pos").val().toString(),
+            zipcode_desc_bfi: $("#kode_pos").val().toString(),
+            full_address: $("#alamat_lengkap").val(),
+        },
+        info_assets: {
+            category_id_bfi: asset_group, // ambil dari asset group
+            category_desc_bfi: asset_group, // ambil dari asset group
+            type_id_bfi: $("#type_kendaraan").val().toString(),
+            type_desc_bfi: $("#type_kendaraan").val().toString(),
+            brand_id_bfi: $("#merk_kendaraan").val().toString(),
+            brand_desc_bfi: $("#merk_kendaraan").val().toString(),
+            model_id_bfi: $("#model_kendaraan").val().toString(),
+            model_desc_bfi: $("#model_kendaraan option:selected").html(),
+            vehicle_year_bfi: $("#tahun_kendaraan").val(), // setelah dupcheck baru cek pricelist
+            license_plate: $("#plat-no").val(), // cek update dupcheck dulu
+            asset_ownership_id_bfi: $("#kepemilikan_bpkb").val().toString(),
+            asset_ownership_desc_bfi: $(
+                "#kepemilikan_bpkb option:selected"
+            ).html(),
+        },
+    });
+
+    $.ajax({
+        type: "POST",
+        url: "/credit/save-car-leads2",
+        data: result,
+        dataType: "json",
+        tryCount: 0,
+        retryLimit: retryLimit,
+        error: (xhr, textStatus, err) => {
+            retryAjax(this, xhr);
+        },
+        fail: (xhr, textStatus, err) => {
+            retryAjax(this, xhr);
+        },
+        success: (res) => {
+            if (res.message === "success") {
                 cb(res);
             }
         },
