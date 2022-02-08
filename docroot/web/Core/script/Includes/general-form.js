@@ -448,6 +448,11 @@ function scrollToTop() {
         parent.find(".file-input").click();
     });
 
+    $(".formLicensePlate").on("keyup", () => {
+        let elm = $(".formLicensePlate");
+        elm.val(elm.val().toUpperCase());
+    });
+
     // PHONE NUMBER formPhoneNumber
     $(".formPhoneNumber").focus(function () {
         if ($.trim($(this).val()) == "") {

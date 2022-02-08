@@ -725,6 +725,10 @@ var urlLocation = window.location;
             minlength: 5,
         },
 
+        formLicensePlate: {
+            licensePlate: /^[A-Za-z]{1,2}\s{1}\d{1,4}\s{1}[A-Za-z]{1,3}$/,
+        },
+
         formAddress: {
             required: true,
             minlength: 15,
@@ -1015,6 +1019,19 @@ var urlLocation = window.location;
         emailActive
     );
 
+    if (lang === "id") {
+        licenseValid = "Masukkan nomor plat yang valid";
+    } else {
+        licenseValid = "Enter the valid license plate";
+    }
+    jQuery.validator.addMethod(
+        "licensePlate",
+        function (value, element, param) {
+            return param.test(value);
+        },
+        licenseValid
+    );
+
     var lang = document.documentElement.lang;
     if (lang === "id") {
         filesMin = "Ukuran file harus kurang dari 1 MB.";
@@ -1102,6 +1119,7 @@ var urlLocation = window.location;
             acceptAlphabet: "Masukkan hanya berupa huruf alfabet.",
             minPrice: "Silakan masukkan harga lebih dari harga minimum.",
             emailCust: "Silakan isi alamat email yang valid.",
+            licensePlate: "Silakan isi nomor plat kendaraan yang valid.",
             filesize: "Ukuran file harus kurang dari 1 MB.",
         });
     }
