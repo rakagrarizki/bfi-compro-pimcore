@@ -292,7 +292,7 @@ $this->headScript()
                                 </div>
                                 <div class="form-group">
                                     <label for="plat-no"><?= $this->translate('label-number-plat') ?></label>
-                                    <input type="text" class="form-control formRequired" name="plat-no" id="plat-no" placeholder="<?= $this->translate('placeholder-number-plat') ?>">
+                                    <input type="text" class="form-control formRequired formLicensePlate" name="plat-no" id="plat-no" placeholder="<?= $this->translate('placeholder-number-plat') ?>">
                                     <div class="error-wrap"></div>
                                 </div>
                                 <div class="form-group">
