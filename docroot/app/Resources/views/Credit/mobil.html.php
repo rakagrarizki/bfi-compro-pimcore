@@ -294,6 +294,7 @@ $this->headScript()
                                     <label for="plat-no"><?= $this->translate('label-number-plat') ?></label>
                                     <input type="text" class="form-control formRequired formLicensePlate" name="plat-no" id="plat-no" placeholder="<?= $this->translate('placeholder-number-plat') ?>">
                                     <div class="error-wrap"></div>
+                                    <span><?=$this->translate('form-plat-number-helper') ?></span>
                                 </div>
                                 <div class="form-group">
                                     <label for="kepemilikan_bpkb"><?= $this->translate('label-bpkb-ownership') ?></label>
@@ -695,6 +696,21 @@ $this->headScript()
         </div>
     </div>
 </div>
+
+<!-- Modal notcover -->
+<div class="modal fade" id="modal-not-cover" tabindex="-1" role="dialog" aria-labelledby="AssetNotCover" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h4 class="modal-body-title">Mohon Maaf Aset Anda tidak tercover</h4>
+            </div>
+             <div class="modal-footer">
+                <button type="button" class="cta cta-primary go-to-home" data-dismiss="modal" >Kembali ke Beranda</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Modal Konfirmasi -->
 <div class="modal fade" id="modal-konfirmasi" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
