@@ -148,6 +148,9 @@ $("#next2").on("click", function (e) {
         pushDataStep2(() => {
             step("next", 3);
             getListHouseOwnership("#kepemilikan_rumah");
+            getBranchCoverage(() => {
+                getAssetYear($("#model_kendaraan").val().toString(), branch_id);
+            });
         });
     }
 });
