@@ -987,6 +987,13 @@ function getListZipcode() {
     });
 }
 
+<<<<<<< HEAD
+=======
+let dataAssets = [];
+let rawAssetBrand = [];
+let branch_id = "";
+
+>>>>>>> 7183c685 (integration API get branch coverage & get asset year)
 function getListAssets(assetType) {
     // TODO : add paging to fetch all data
     $.ajax({

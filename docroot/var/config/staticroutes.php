@@ -2654,7 +2654,7 @@ return [
         "reverse" => "/credit/get-duplicate-leads",
         "module" => "AppBundle",
         "controller" => "@AppBundle\\Controller\\CreditController",
-        "action" => "getDuplicateLeads",
+        "action" => "getAssetYear",
         "variables" => "",
         "defaults" => NULL,
         "siteId" => [
