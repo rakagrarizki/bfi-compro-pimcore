@@ -1113,6 +1113,72 @@ class CreditController extends FrontendController
         }
     }
 
+    public function getBranchCoverageAction(Request $request)
+    {
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $param['path'] = WebsiteSetting::getByName('URL_GET_BRANCH_COVERAGE')->getData();
+        $param['query'] = "kelurahan=" . rawurlencode($request->get('kelurahan'));
+        $param['query'] .= "&kecamatan=" . rawurlencode($request->get('kecamatan'));
+        $param['query'] .= "&city=" . rawurlencode($request->get('city'));
+        $param['query'] .= "&zip_code=" . rawurlencode($request->get('zip_code'));
+        $url = $host . $param['path'] . "?" . $param['query'];
+
+        try {
+            $data = $this->sendAPI->getBranchCoverage($url, $param, $token);
+
+            if (empty($data->error)) {
+                return new JsonResponse([
+                'success' => 1,
+                'message' => "success",
+                'data' => $data->data
+            ]);
+            } else {
+                return new JsonResponse([
+                'success' => 0,
+                'message' => $this->get("translator")->trans("api-error")
+            ]);
+        }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
+    public function getAssetYearAction(Request $request)
+    {
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $param['path'] = WebsiteSetting::getByName('URL_GET_ASSET_YEAR')->getData();
+        $param['query'] = "asset_code=" . rawurlencode($request->get('asset_code'));
+        $param['query'] .= "&branch_id=" . rawurlencode($request->get('branch_id'));
+        $url = $host . $param['path'] . "?" . $param['query'];
+
+        try {
+            $data = $this->sendAPI->getAssetYear($url, $param, $token);
+
+            if (empty($data->error)) {
+                return new JsonResponse([
+                'success' => 1,
+                'message' => "success",
+                'data' => $data->data
+            ]);
+            } else {
+                return new JsonResponse([
+                'success' => 0,
+                'message' => $this->get("translator")->trans("api-error")
+            ]);
+        }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
     public function getTokenBearer()
     {
         $tokenBearer = $this->get('session')->get('tokenBearer');

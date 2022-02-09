@@ -875,4 +875,13 @@ class SendApi
         return $this->executeApiSignature('getDuplicateLeads', false, $url, '', "GET", $token);
     }
 
+    public function getAssetYear($url, $param, $token)
+    {
+        return $this->executeApiSignature('getAssetYear', true, $url, $param, "GET", $token);
+    }
+
+    public function getBranchCoverage($url, $param, $token)
+    {
+        return $this->executeApiSignature('getBranchCoverage', true, $url, $param, "GET", $token);
+    }
 }

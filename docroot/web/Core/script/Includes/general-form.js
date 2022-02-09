@@ -962,6 +962,7 @@ function getListZipcode() {
 
 let dataAssets = [];
 let rawAssetBrand = [];
+let branch_id = "";
 
 function getListAssets(assetType) {
     $.ajax({
@@ -1159,6 +1160,67 @@ function getListHouseOwnership(element) {
                     },
                 },
             });
+        },
+    });
+}
+
+function getBranchCoverage(fn) {
+    let kelurahan = $("#kelurahan").val().toString();
+    let kecamatan = $("#kecamatan").val().toString();
+    let city = $("#kota").val().toString();
+    let zipcode = $("#kode_pos").val();
+
+    $.ajax({
+        type: "POST",
+        url: "/credit/get-branch-coverage",
+        headers: { Authorization: "Basic " + currentToken },
+        data: {
+            kelurahan: kelurahan,
+            kecamatan: kecamatan,
+            city: city,
+            zip_code: zipcode,
+        },
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            if (result.message === "success") {
+                branch_id = result.data[0].branch_id;
+                fn();
+            }
+        },
+    });
+}
+
+function getAssetYear(asset_model, branch_id) {
+    let assetYears = [];
+    let customerAssetYear = parseInt($("#tahun_kendaraan").val());
+    $.ajax({
+        type: "POST",
+        url: "/credit/get-asset-year",
+        headers: { Authorization: "Basic " + currentToken },
+        // asset_code still static and need to be changed to parameter asset_model
+        data: { asset_code: "CHEVROLET.SPARK.LS10MT", branch_id: branch_id },
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            $.each(result.data.data, (i, val) => {
+                assetYears.push(val.manufacturing_year);
+            });
+            if (assetYears.includes(customerAssetYear)) {
+                console.log("year is covered");
+            } else {
+                console.log("year is not covered");
+            }
         },
     });
 }

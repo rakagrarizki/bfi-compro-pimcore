@@ -2613,12 +2613,30 @@ return [
     ],
     150 => [
         "id" => 150,
-        "name" => "get duplicate leads",
-        "pattern" => "/\\/credit\\/get-duplicate-leads/",
-        "reverse" => "/credit/get-duplicate-leads",
+        "name" => "get asset year",
+        "pattern" => "/\\/credit\\/get-asset-year/",
+        "reverse" => "/credit/get-asset-year",
         "module" => "AppBundle",
         "controller" => "@AppBundle\\Controller\\CreditController",
-        "action" => "getDuplicateLeads",
+        "action" => "getAssetYear",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+    151 => [
+        "id" => 151,
+        "name" => "get branch coverage",
+        "pattern" => "/\\/credit\\/get-branch-coverage/",
+        "reverse" => "/credit/get-branch-coverage",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getBranchCoverage",
         "variables" => "",
         "defaults" => NULL,
         "siteId" => [
