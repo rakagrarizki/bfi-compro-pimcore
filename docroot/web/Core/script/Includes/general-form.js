@@ -1191,9 +1191,11 @@ function getBranchCoverage(fn) {
     });
 }
 
-function getAssetYear(asset_model, branch_id) {
+function getAssetYear(asset_model, branch_id, fn) {
     let assetYears = [];
     let customerAssetYear = parseInt($("#tahun_kendaraan").val());
+    var assetYearExists;
+
     $.ajax({
         type: "POST",
         url: "/credit/get-asset-year",
@@ -1212,13 +1214,19 @@ function getAssetYear(asset_model, branch_id) {
                 assetYears.push(val.manufacturing_year);
             });
             if (assetYears.includes(customerAssetYear)) {
-                console.log("year is covered");
+                assetYearExists = true;
+                fn();
             } else {
-                console.log("year is not covered");
+                assetYearExists = false;
+                $("#modal-not-cover").modal("show");
             }
         },
     });
 }
+
+$(".go-to-home").on("click", () => {
+    window.location.href = "/";
+});
 
 function bpkbOwnershipTranslate(status) {
     switch (status) {

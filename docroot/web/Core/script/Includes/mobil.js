@@ -146,10 +146,17 @@ $("#next2").on("click", function (e) {
     e.preventDefault();
     if ($(this).closest("form").valid()) {
         pushDataStep2(() => {
-            step("next", 3);
-            getListHouseOwnership("#kepemilikan_rumah");
             getBranchCoverage(() => {
-                getAssetYear($("#model_kendaraan").val().toString(), branch_id);
+                getAssetYear(
+                    $("#model_kendaraan").val().toString(),
+                    "401",
+                    () => {
+                        if ((assetYearExists = true)) {
+                            step("next", 3);
+                            getListHouseOwnership("#kepemilikan_rumah");
+                        }
+                    }
+                );
             });
         });
     }
