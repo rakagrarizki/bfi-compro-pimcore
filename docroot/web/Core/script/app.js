@@ -445,9 +445,6 @@ var urlLocation = window.location;
         };
 
         switch (credits.angunan.jenis_angunan) {
-            case "MOBIL":
-                _url = "/credit/get-insurance";
-                break;
             case "MOTOR":
                 _url = "/credit/get-motorcycle-calculate";
                 break;
@@ -2797,10 +2794,7 @@ var urlLocation = window.location;
         var type = $("#jenis_form").val();
         // .toLowerCase();
 
-        if (type == "mobil") {
-            //_url = 'https://bfi.staging7.salt.id/credit/send-mobil';
-            _url = "/credit/send-mobil";
-        } else if (type == "motor") {
+        if (type == "motor") {
             //_url = 'https://bfi.staging7.salt.id/credit/send-motor';
             _url = "/credit/send-motor";
         }
@@ -2852,10 +2846,6 @@ var urlLocation = window.location;
             tipe_attr = params.angunan.jenis_angunan;
 
         switch (tipe_attr) {
-            case "MOBIL":
-                _url = "/credit/get-car-brand";
-                _urlType = "/credit/get-car-type";
-                break;
             case "MOTOR":
                 _url = "/credit/get-motorcycle-brand";
                 _urlType = "/credit/get-motorcycle-type";
@@ -4142,9 +4132,6 @@ var urlLocation = window.location;
 
         // console.log(brand_attr, $(this).val())
         switch (tipe_attr) {
-            case "MOBIL":
-                _url = "/credit/get-car-year";
-                break;
             case "MOTOR":
                 _url = "/credit/get-motorcycle-year";
                 break;
@@ -4317,17 +4304,8 @@ var urlLocation = window.location;
         var _data = {};
 
         switch (params.angunan.jenis_angunan) {
-            case "MOBIL":
-                _url = "/credit/get-car-funding";
-                break;
             case "MOTOR":
                 _url = "/credit/get-motorcycle-funding";
-                break;
-            case "SURAT BANGUNAN":
-                var _val = $("#estimasi_harga").val();
-                _val = parseInt(_val.replace(/[.]/g, ""));
-                _url = "/credit/get-pbf-funding";
-                _data = { estimasi_harga: _val };
                 break;
         }
 
@@ -4953,9 +4931,6 @@ var urlLocation = window.location;
 
         // console.log(brand_attr, $(this).val())
         switch (credits.angunan.jenis_angunan) {
-            case "MOBIL":
-                _url = "/credit/get-car-calculate";
-                break;
             case "MOTOR":
                 _url = "/credit/get-motorcycle-calculate";
                 break;
@@ -4965,9 +4940,7 @@ var urlLocation = window.location;
         }
 
         if (_param.funding == 0) {
-            if ($("#jenis_form").val() == "MOBIL") {
-                _param.funding = 10000000;
-            } else if ($("#jenis_form").val() == "MOTOR") {
+            if ($("#jenis_form").val() == "MOTOR") {
                 _param.funding = 1000000;
             } else if ($("#jenis_form").val() == "SURAT BANGUNAN") {
                 _param.funding = 10000000;
@@ -5045,9 +5018,6 @@ var urlLocation = window.location;
             submission_id: submission_id,
         };
         switch (jenis_kredit) {
-            case "MOBIL":
-                _url = "/credit/get-tenor";
-                break;
             case "MOTOR":
                 _url = "/credit/get-motorcycle-tenor";
                 break;
@@ -5092,11 +5062,6 @@ var urlLocation = window.location;
             },
         });
     }
-    // if($("#jangka_waktu").length){
-    //     if ($("#jenis_form").val() == "MOBIL") {
-    //         getInsurance();
-    //     }
-    // }
 
     $("#ex6SliderVal").change(function () {
         // console.log(parseInt($(this).val()));
@@ -5799,9 +5764,6 @@ function pushDataPemohon3(cb) {
         utm_content = sessionStorage.getItem("utm_content");
 
     switch (jenis_kredit) {
-        case "MOBIL":
-            _URL = "/credit/save-car-leads1";
-            break;
         case "MOTOR":
             _URL = "/credit/save-motorcycle-leads1";
             break;
