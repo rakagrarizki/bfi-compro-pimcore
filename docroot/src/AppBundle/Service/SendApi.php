@@ -874,6 +874,11 @@ class SendApi
         return $this->executeApiSignature('getListHouseOwnership', false, $url, '', "GET", $token);
     }
 
+    public function getListDataMaritalStatus($url, $token)
+    {
+        return $this->executeApiSignature('getListDataMaritalStatus', false, $url, '', "GET", $token);
+    }
+
     public function getAssetYear($url, $param, $token)
     {
         return $this->executeApiSignature('getAssetYear', true, $url, $param, "GET", $token);

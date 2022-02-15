@@ -1166,6 +1166,45 @@ function getListHouseOwnership(element) {
     });
 }
 
+function getListMaritalStatus(element) {
+    dataMaritalStatus = [];
+    $(element).empty();
+    var marital_status_placeholder = $(element).attr("placeholder");
+
+    $.ajax({
+        type: "GET",
+        url: "/credit/get-list-data-marital-status",
+        headers: { Authorization: "Basic " + currentToken },
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            $.each(result.data, function (id, val) {
+                dataMaritalStatus.push({
+                    id: val.id,
+                    text: maritalStatusTranslate(val.description),
+                });
+            });
+            $(element).select2({
+                placeholder: marital_status_placeholder,
+                dropdownParent: $(element).parent(),
+                data: dataMaritalStatus,
+                language: {
+                    noResults: function () {
+                        return lang === "id"
+                            ? "Tidak Ada Hasil yang Ditemukan"
+                            : "No Result Found";
+                    },
+                },
+            });
+        },
+    });
+}
+
 function getBranchCoverage(fn) {
     let kelurahan = $("#kelurahan").val().toString();
     let kecamatan = $("#kecamatan").val().toString();
@@ -1281,4 +1320,29 @@ function bpkbOwnershipTranslate(status) {
         default:
             return status;
     }
+}
+function maritalStatusTranslate(status) {
+    switch (status) {
+        case "Divorce":
+            return "Cerai";
+        case "Married":
+            return "Menikah";
+        case "Single":
+            return "Belum Menikah";
+        case "Widow":
+            return "Janda";
+        default:
+            return status;
+    }
+}
+
+function clearDot(x) {
+    let removeDot = x.replace(/\./g, "");
+    let result = validNumber(parseInt(removeDot));
+    return result;
+}
+
+function validNumber(value) {
+    var clearVal = "";
+    return Number.isInteger(value) == true ? value : clearVal;
 }
