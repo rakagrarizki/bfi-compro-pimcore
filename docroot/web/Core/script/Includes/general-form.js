@@ -747,11 +747,18 @@ function step(action, val) {
     }
 }
 
-function getAuthorizationToken() {
-    if (!currentToken || new Date(expiredDate).getTime() < Date.now()) {
+function getAuthorizationToken(auth) {
+    let author = "";
+    if (
+        auth != author ||
+        !currentToken ||
+        new Date(expiredDate).getTime() < Date.now()
+    ) {
+        author = auth;
         $.ajax({
             type: "POST",
             url: "/credit/get_gateway_token",
+            data: { author: author },
             tryCount: 0,
             retryLimit: retryLimit,
             error: function (xhr, textStatus, errorThrown) {
@@ -1224,6 +1231,33 @@ function getAssetYear(asset_model, branch_id, fn) {
             } else {
                 assetYearExists = false;
                 $("#modal-not-cover").modal("show");
+            }
+        },
+    });
+}
+
+function getDupcheck() {
+    let phone = "081322324173";
+    let license_plate = "";
+
+    $.ajax({
+        type: "POST",
+        url: "/credit/get-duplicate-leads",
+        headers: { Authorization: "Basic " + currentToken },
+        data: {
+            mobile_phone: phone,
+            product_category: "mobil",
+        },
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            if (result.message === "success") {
+                console.log(result);
             }
         },
     });
