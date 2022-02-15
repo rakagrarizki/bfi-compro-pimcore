@@ -1015,17 +1015,6 @@ function PostCalculate() {
     });
 }
 
-function clearDot(x) {
-    let removeDot = x.replace(/\./g, "");
-    let result = validNumber(parseInt(removeDot));
-    return result;
-}
-
-function validNumber(value) {
-    var clearVal = "";
-    return Number.isInteger(value) == true ? value : clearVal;
-}
-
 function currency(x) {
     var x = new Intl.NumberFormat("id-Id").format(x);
     return x;
