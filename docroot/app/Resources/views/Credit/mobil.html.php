@@ -81,7 +81,7 @@ $this->headScript()
                 <form action="#" id="getCredit" method="POST" class="form-get--credit" role="form">
                     <input type="hidden" id="jenis_form" name="jenis_form" value="MOBIL">
                     <div class="tab-content">
-                        <div id="menu2" class="tab-pane fade in active">
+                        <div id="menu2" class="tab-pane fade in ">
                             <div class="form-body--credit">
                                 <div class="text-head">
                                     <h2 class="text-center">
@@ -311,7 +311,7 @@ $this->headScript()
                                 </div>
                             </div>
                         </div>
-                        <div id="menu4" class="tab-pane slide-left">
+                        <div id="menu4" class="tab-pane slide-left active">
                             <div class="form-body--credit">
                                 <div class="text-head">
                                     <h2 class="text-center"><?= $this->translate('ndfc-title-step-3') ?></h2>
@@ -363,6 +363,31 @@ $this->headScript()
                                         </div>
                                          <div class="error-wrap"></div>
                                     </div>
+                                </div>
+                                <div class="form-group">    
+                                    <label for="marital_status"><?= $this->translate('label-marital-state') ?></label>
+                                    <select class="form-control inputs formRequired" id="marital_status"
+                                        name="marital_status" placeholder="<?= $this->translate('placeholder-marital-state') ?>"
+                                        multiple="multiple">
+                                        <option value="" disabled selected><?= $this->translate('placeholder-marital-state') ?></option>
+                                    </select>
+                                    <div class="error-wrap"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="penghasilan"><?=$this->translate('label-income') ?></label>
+                                    <input type="text"
+                                        class="formatRibuan formMaxSalary form-control inputs formRequired"
+                                        name="penghasilan" id="penghasilan"
+                                        placeholder="<?=$this->translate('placeholder-income') ?>">
+                                    <div class="error-wrap"></div>
+                                    <span><?=$this->translate('helper-income') ?></span>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group date">
+                                        <label for="tgl_lahir"><?= $this->translate('form-birthDate') ?></label>
+                                        <input type="text" class="iptDate form-control formRequired" name="tgl_lahir" id="tgl_lahir" placeholder="<?= $this->translate('placeholder-birthDate') ?>">
+                                    </div>
+                                    <div class="error-wrap"></div>
                                 </div>
                                 <div class="text-title-form">
                                     <h3><?= $this->translate('label-financing-calculation') ?></h3>
