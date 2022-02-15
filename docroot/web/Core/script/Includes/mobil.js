@@ -53,6 +53,9 @@ let dataStep3 = {
         media_contact_option: undefined,
     },
     info_assets: {
+        is_ktp_domicile_same: undefined,
+        home_ownership_id_bfi: undefined,
+        home_ownership_desc_bfi: undefined,
         asset_province_id_bfi: undefined,
         asset_province_desc_bfi: undefined,
         asset_city_id_bfi: undefined,
@@ -65,10 +68,14 @@ let dataStep3 = {
         asset_zipcode_desc_bfi: undefined,
         asset_full_address: undefined,
     },
-    funding: undefined,
-    tenor: undefined,
-    monthly_installment: undefined,
-    vehicle_insurance: undefined,
+    info_calculator: {
+        funding: undefined,
+        tenor: undefined,
+        monthly_installment: undefined,
+        vehicle_insurance: undefined,
+        ltv_max: undefined,
+        ntf_max: undefined,
+    },
 };
 
 $(document).ready(function () {
@@ -76,6 +83,11 @@ $(document).ready(function () {
         ? $(".nav-item-2.active").find(".nav-step-tag").text("Sedang Isi")
         : $(".nav-item-2.active").find(".nav-step-tag").text("Onprogress");
 
+    getAuthorizationToken();
+    setTimeout(function () {
+        getListHouseOwnership("#kepemilikan_rumah");
+        getListMaritalStatus("#marital_status");
+    }, 1000);
     sessionStorage.setItem("loanType", "NDFC");
 });
 
@@ -121,6 +133,12 @@ $("#kepemilikan_rumah").select2({
     dropdownParent: $("#kepemilikan_rumah").parent(),
 });
 
+var marital_status = $("#marital_status").attr("placeholder");
+$("#marital_status").select2({
+    placeholder: marital_status,
+    dropdownParent: $("#marital_status").parent(),
+});
+
 $("#next1").on("click", function (e) {
     e.preventDefault();
     if ($(this).closest("form").valid()) {
@@ -154,6 +172,7 @@ $("#next2").on("click", function (e) {
                         if ((assetYearExists = true)) {
                             step("next", 3);
                             getListHouseOwnership("#kepemilikan_rumah");
+                            getListMaritalStatus("#marital_status");
                             getAuthorizationToken("bfidigital");
                             getDupcheck();
                         }
@@ -169,8 +188,9 @@ $("#next3").on("click", function (e) {
 });
 $("#confirm-data").on("click", function (e) {
     e.preventDefault();
-    step("next", 4);
-    $(".step-list").attr("hidden", "true");
+    pushDataStep3();
+    // step("next", 4);
+    // $(".step-list").attr("hidden", "true");
 });
 $("#next5").on("click", function (e) {
     e.preventDefault();
@@ -229,7 +249,7 @@ function pushDataStep2(cb) {
             province_id_bfi: $("#provinsi").val().toString(),
             province_desc_bfi: $("#provinsi option:selected").html(),
             city_id_bfi: $("#kota").val().toString(),
-            city_desc_bfi: $("#kota").val().toString(),
+            city_desc_bfi: $("#kota option:selected").html(),
             district_id_bfi: $("#kecamatan").val().toString(),
             district_desc_bfi: $("#kecamatan option:selected").html(),
             subdistrict_id_bfi: $("#kelurahan").val().toString(),
@@ -275,6 +295,71 @@ function pushDataStep2(cb) {
             }
         },
     });
+}
+
+function pushDataStep3(cb) {
+    var addres_same = $("input[name='addres_same']:checked").val();
+
+    let result = (dataStep3 = {
+        submission_id: submission_id,
+        info_customer: {
+            profession_id_bfi: $("input[name='occupation']:checked").val(),
+            profession_desc_bfi: $("input[name='occupation']:checked").val(),
+            salary: clearDot($("#penghasilan").val()),
+            dob: $("#tgl_lahir").val(),
+            marital_status_id_bfi: $("#marital_status").val().toString(),
+            media_contact_option: "test",
+        },
+        info_assets: {
+            is_ktp_domicile_same: addres_same,
+            home_ownership_id_bfi: $("#kepemilikan_rumah").val().toString(),
+            home_ownership_desc_bfi: $(
+                "#kepemilikan_rumah option:selected"
+            ).html(),
+            asset_province_id_bfi:
+                addres_same == "true" ? $("#provinsi").val().toString() : null,
+            asset_province_desc_bfi:
+                addres_same == "true"
+                    ? $("#provinsi option:selected").html()
+                    : null,
+            asset_city_id_bfi:
+                addres_same == "true" ? $("#kota").val().toString() : null,
+            asset_city_desc_bfi:
+                addres_same == "true"
+                    ? $("#kota option:selected").html()
+                    : null,
+            asset_district_id_bfi:
+                addres_same == "true" ? $("#kecamatan").val().toString() : null,
+            asset_district_desc_bfi:
+                addres_same == "true"
+                    ? $("#kecamatan option:selected").html()
+                    : null,
+            asset_subdistrict_id_bfi:
+                addres_same == "true" ? $("#kelurahan").val().toString() : null,
+            asset_subdistrict_desc_bfi:
+                addres_same == "true"
+                    ? $("#kelurahan option:selected").html()
+                    : null,
+            asset_zipcode_id_bfi:
+                addres_same == "true" ? $("#kode_pos").val().toString() : null,
+            asset_zipcode_desc_bfi:
+                addres_same == "true" ? $("#kode_pos").val().toString() : null,
+            asset_full_address:
+                addres_same == "true"
+                    ? $("#alamat_lengkap").val().toString()
+                    : null,
+        },
+        info_calculator: {
+            funding: clearDot($("#pembiayaan").val()),
+            tenor: $("#tenor").val().toString(),
+            monthly_installment: undefined,
+            vehicle_insurance: undefined,
+            ltv_max: undefined,
+            ntf_max: undefined,
+        },
+    });
+
+    console.log(result);
 }
 
 function paginationList(data) {
