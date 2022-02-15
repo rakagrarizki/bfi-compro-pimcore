@@ -154,6 +154,8 @@ $("#next2").on("click", function (e) {
                         if ((assetYearExists = true)) {
                             step("next", 3);
                             getListHouseOwnership("#kepemilikan_rumah");
+                            getAuthorizationToken("bfidigital");
+                            getDupcheck();
                         }
                     }
                 );

@@ -808,9 +808,10 @@ class CreditController extends FrontendController
     {
         $host = WebsiteSetting::getByName("HOST")->getData();
         $url = $host . WebsiteSetting::getByName('URL_GET_AUTH_BASIC_TOKEN')->getData();
+        $author = htmlentities(addslashes($request->get('author')));
 
         try {
-            $data = $this->sendAPI->getGatewayToken($url);
+            $data = $this->sendAPI->getGatewayToken($url, $author);
             if ($data->header->status == 200) {
                 $this->get('session')->set('tokenBearer', $data->data->access_token);
                 return new JsonResponse([
@@ -1124,6 +1125,38 @@ class CreditController extends FrontendController
         try {
             $data = $this->sendAPI->getAssetYear($url, $param, $token);
 
+            if (empty($data->error)) {
+                return new JsonResponse([
+                'success' => 1,
+                'message' => "success",
+                'data' => $data->data
+            ]);
+            } else {
+                return new JsonResponse([
+                'success' => 0,
+                'message' => $this->get("translator")->trans("api-error")
+            ]);
+        }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
+    public function getDuplicateLeadsAction(Request $request)
+    {
+        $token = $this->getTokenBearer();
+        $host = 'https://gateway-dev.bfi.co.id';
+        $param['path'] = WebsiteSetting::getByName('URL_GET_DUPLICATE_LEADS')->getData();
+        $param['query'] = "mobile_phone=" . rawurlencode($request->get('mobile_phone'));
+        $param['query'] .= "&product_category=" . rawurlencode($request->get('product_category'));
+        $url = $host . $param['path'] . "?" . $param['query'];
+
+        try {
+            $data = $this->sendAPI->getDuplicateLeads($url, $param, $token);
+            var_dump($data);
             if (empty($data->error)) {
                 return new JsonResponse([
                 'success' => 1,

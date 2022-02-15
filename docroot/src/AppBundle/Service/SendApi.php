@@ -87,7 +87,13 @@ class SendApi
         return $this->getData($data);
     }
 
-    public function getGatewayToken($url){
+    public function getGatewayToken($url, $author){
+
+        // this condition credential need to be adjusted in the future
+        $auth = Authorization;
+        if($author === "bfidigital"){
+            $auth = "RnVva0hZSGRiUFZaRDRMZzI0RUc1U0lYdFBUR0JFekc6S0FCOTFJMlI5R1JNY3Q5NQ==";
+        }
 
         $client = new Client([
             "base_uri" => $url,
@@ -100,7 +106,7 @@ class SendApi
                 $url,
                 [
                     RequestOptions::HEADERS => [
-                        'Authorization' => 'Basic ' . Authorization
+                        'Authorization' => 'Basic ' . $auth
                     ]
                 ]
             );
@@ -876,5 +882,10 @@ class SendApi
     public function getBranchCoverage($url, $param, $token)
     {
         return $this->executeApiSignature('getBranchCoverage', true, $url, $param, "GET", $token);
+    }
+
+    public function getDuplicateLeads($url, $param, $token)
+    {
+        return $this->executeApiSignature('getDuplicateLeads', false, $url, $param, "GET", $token);
     }
 }

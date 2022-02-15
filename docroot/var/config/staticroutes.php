@@ -2647,4 +2647,22 @@ return [
         "creationDate" => 1567583908,
         "modificationDate" => 1567583948
     ],
+    152 => [
+        "id" => 152,
+        "name" => "get duplicate leads",
+        "pattern" => "/\\/credit\\/get-duplicate-leads/",
+        "reverse" => "/credit/get-duplicate-leads",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getDuplicateLeads",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
 ];
