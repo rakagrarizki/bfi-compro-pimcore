@@ -359,7 +359,25 @@ function pushDataStep3(cb) {
         },
     });
 
-    console.log(result);
+    $.ajax({
+        type: "POST",
+        url: "/credit/save-car-leads3",
+        data: result,
+        dataType: "json",
+        tryCount: 0,
+        retryLimit: retryLimit,
+        error: (xhr, textStatus, err) => {
+            retryAjax(this, xhr);
+        },
+        fail: (xhr, textStatus, err) => {
+            retryAjax(this, xhr);
+        },
+        success: (res) => {
+            if (res.message === "success") {
+                cb(res);
+            }
+        },
+    });
 }
 
 function paginationList(data) {
