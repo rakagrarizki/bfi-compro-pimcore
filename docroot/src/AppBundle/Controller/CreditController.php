@@ -1826,7 +1826,7 @@ class CreditController extends FrontendController
     {
         $host = WebsiteSetting::getByName("HOST")->getData();
         $url = $host . WebsiteSetting::getByName('URL_SAVE_MOTORCYCLE_LEADS_1')->getData();
-        $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+        // $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["name"] = htmlentities(addslashes($request->get('name')));
         $param["email"] = htmlentities(addslashes($request->get('email')));
         $param["phone_number"] = htmlentities(addslashes($request->get('phone_number')));
@@ -1837,22 +1837,24 @@ class CreditController extends FrontendController
         $param["utm_content"] = htmlentities(addslashes($request->get('utm_content')));
         
         try {
-            $data = $this->sendAPI->saveMotorcycleLeads1($url, $param);
+            $data = $this->sendAPI->saveCarLeads1($url, $param);
+            if ($data->header->status == 200) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data,
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
         } catch (\Exception $e) {
-            throw new \Exception('Something went wrong!');
-        }
-
-        if ($data->header->status == 200) {
             return new JsonResponse([
-                'success' => "1",
-                'message' => "success",
-                'data' => $data->data
-            ]);
-        } else {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => $this->get("translator")->trans("api-error")
-            ]);
+                'success' => 0,
+                'message' => $e->getMessage()
+           ]);
         }
     }
 
