@@ -1,6 +1,8 @@
 let lang = document.documentElement.lang;
 var submission_id = undefined;
 
+window.dataLayer = window.dataLayer || [];
+
 let dataStep1 = {
     name: undefined,
     email: undefined,
@@ -144,6 +146,9 @@ $("#next1").on("click", function (e) {
     if ($(this).closest("form").valid()) {
         pushDataStep1(() => {
             step("next", 2);
+            window.dataLayer.push({
+                event: "ValidFormNDFCStep1",
+            });
             getAuthorizationToken();
             getListProvinsi("#provinsi");
             getListAssets("mobil");
@@ -167,10 +172,13 @@ $("#next2").on("click", function (e) {
             getBranchCoverage(() => {
                 getAssetYear(
                     $("#model_kendaraan").val().toString(),
-                    "401",
+                    branch_id,
                     () => {
                         if ((assetYearExists = true)) {
                             step("next", 3);
+                            window.dataLayer.push({
+                                event: "ValidFormNDFCStep2",
+                            });
                             getListHouseOwnership("#kepemilikan_rumah");
                             getListMaritalStatus("#marital_status");
                             getAuthorizationToken("bfidigital");
@@ -184,16 +192,26 @@ $("#next2").on("click", function (e) {
 });
 $("#next3").on("click", function (e) {
     e.preventDefault();
-    $("#modal-konfirmasi").modal("show");
+    if ($(this).closest("form").valid()) {
+        $("#modal-konfirmasi").modal("show");
+    }
 });
 $("#confirm-data").on("click", function (e) {
     e.preventDefault();
     pushDataStep3();
+    window.dataLayer.push({
+        event: "ValidFormNDFCStep3",
+    });
     // step("next", 4);
     // $(".step-list").attr("hidden", "true");
 });
 $("#next5").on("click", function (e) {
     e.preventDefault();
+
+    // send data layer if otp success
+    window.dataLayer.push({
+        event: "ValidFormNDFCStepOTP",
+    });
     $("#menu5").removeClass("active");
     $("#success").addClass("active");
 });
@@ -308,6 +326,9 @@ function pushDataStep3(cb) {
             salary: clearDot($("#penghasilan").val()),
             dob: $("#tgl_lahir").val(),
             marital_status_id_bfi: $("#marital_status").val().toString(),
+            marital_status_desc_bfi: $(
+                "#marital_status option:selected"
+            ).html(),
             media_contact_option: "test",
         },
         info_assets: {
