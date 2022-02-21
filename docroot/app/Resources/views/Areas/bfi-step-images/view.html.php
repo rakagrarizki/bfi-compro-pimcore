@@ -25,6 +25,11 @@
                 </div>
             <?php } ?>
         </div>
+        <?php if($this->checkbox("show-btn")->isChecked()) { ?>
+             <div class="btn-ajukan margin-bottom-85 margin-top-70">
+            <a href="<?= $this->link('url')->getHref(); ?>" class="cta cta-orange <?= $this->link('url')->getClass(); ?>" id="<?= $this->link('url')->getParameters()?>"><?= $this->link('url')->getText(); ?></a>
+        </div>
+            <?php } ?>
         <?php if($this->checkbox("show-terms")->isChecked()) { ?>
             <div class="terms">*<?= $this->input("terms"); ?></div>
         <?php } ?>
