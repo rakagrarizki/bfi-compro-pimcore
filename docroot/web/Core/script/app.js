@@ -6194,6 +6194,23 @@ $(document).ready(function () {
     masonryLayout();
 });
 
+// toc
+$("#table-of-contents").initTOC({
+    selector: "h2, h3, h4, h5, h6",
+    scope: ".article-content",
+    prefix: "toc",
+});
+
+$("#table-of-contents li a").on("click", function () {
+    var linkHead = $(this).attr("href");
+    $("html,body").animate(
+        {
+            scrollTop: $(linkHead).offset().top - 130,
+        },
+        "slow"
+    );
+});
+
 //Vertical, Horizontal Adjustment Funuction
 
 $(".blog-promo .card-img img").each(function () {

@@ -577,6 +577,73 @@
                     flex-direction: column;
                 }
             }
+            .toc-panel {
+                border: none;
+                .panel-heading {
+                    border-radius: 8px 8px 0 0;
+                    padding: 16px 28px;
+                    background-color: #eeeeee;
+                    .a-panelheading {
+                        font-size: 18px;
+                        position: relative;
+                        display: block;
+                        width: 100%;
+                        &:after {
+                            content: "\f107";
+                            font-family: FontAwesome;
+                            color: #565656;
+                            font-size: 20px;
+                            position: absolute;
+                            font-weight: 100;
+                            right: 0;
+                            transform: rotate(180deg);
+                        }
+                    }
+                    &.collapsed {
+                        border-radius: 8px;
+                        .a-panelheading::after {
+                            transform: rotate(360deg);
+                        }
+                    }
+                }
+                .panel-body {
+                    padding: 0;
+                    background-color: #f7f7f7;
+                    border-radius: 0 0 8px 8px;
+                }
+            }
+            #table-of-contents {
+                color: $blue-dark-color;
+                padding: 20px 28px;
+                ol {
+                    counter-reset: item;
+                    ol {
+                        margin-left: 28px;
+                    }
+                    li {
+                        display: block;
+                        &:before {
+                            content: counters(item, ".") ". ";
+                            counter-increment: item;
+                        }
+                    }
+                }
+                li {
+                    margin: 8px auto;
+                    a {
+                        color: $blue-dark-color;
+                    }
+                }
+                @include breakpoint(mobile) {
+                    padding: 16px;
+                    ol {
+                        padding: 8px;
+                        ol {
+                            margin-left: 14px;
+                        }
+                    }
+                }
+            }
         }
 
         .article {
