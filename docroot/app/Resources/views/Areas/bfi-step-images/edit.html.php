@@ -23,6 +23,14 @@
         <div class="row">
             <div class="col-sm-4">link</div>
             <div class="col-sm-8"><?= $this->link("url"); ?></div>
+            <div class="row">
+                    <div class="col-sm-4">
+                        Show
+                    </div>
+                    <div class="col-sm-8">
+                        <?=  $this->checkbox("show-btn") ?>
+                    </div>
+                </div>
         </div>
         <div class="row">
             <div class="col-sm-4">Text</div>
