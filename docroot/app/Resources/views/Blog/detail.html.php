@@ -72,7 +72,22 @@ $this->headMeta()->appendName('twitter:description', $blog->getDescription());
                 <img src="<?= $blog->getImage();?>" alt="">
             </picture>
             <div class="article-content">
-
+                <div class="panel-group" id="toc-dropdown">
+                    <div class="panel panel-default toc-panel active">
+                        <div class="panel-heading"  data-toggle="collapse" data-parent="#toc-dropdown" href="#toc-content">
+                            <p class="panel-title">
+                                <a class="a-panelheading">
+                                    <?= $this->translate('table-of-content') ?>
+                                </a>
+                            </p>
+                        </div>
+                        <div id="toc-content" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <div id="table-of-contents"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <?= $blog->getContent();?>
             </div>
             <div class="article-gallery row">
