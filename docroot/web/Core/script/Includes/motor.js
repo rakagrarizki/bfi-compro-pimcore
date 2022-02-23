@@ -145,3 +145,19 @@ $("input[name='is-wa-number-same']").click(function () {
         $(".wa-numbers").attr("hidden", true);
     }
 });
+
+$("#provinsi").change(() => {
+    getListCity("#kota");
+});
+
+$("#kota").change(() => {
+    getListDistrict("#kecamatan");
+});
+
+$("#kecamatan").change(() => {
+    getListSubdistrict("#kelurahan");
+});
+
+$("#kelurahan").change(() => {
+    getListZipcode();
+});
