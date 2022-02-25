@@ -852,4 +852,19 @@ class SendApi
     {
         return $this->executeApiSignature('getListZipcode', true, $url, $param, "GET", $token);
     }
+
+    public function getListAssets($url, $param, $token)
+    {
+        return $this->executeApiSignature('getListAssets', true, $url, $param, "GET", $token);
+    }
+
+    public function getListBpkbOwnership($url, $token)
+    {
+        return $this->executeApiSignature('getListBpkbOwnership', false, $url, '', "GET", $token);
+    }
+
+    public function getListHouseOwnership($url, $token)
+    {
+        return $this->executeApiSignature('getListHouseOwnership', false, $url, '', "GET", $token);
+    }
 }

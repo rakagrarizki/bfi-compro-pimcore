@@ -2557,4 +2557,59 @@ return [
         "creationDate" => 1567583908,
         "modificationDate" => 1567583948
     ],
+    147 => [
+        "id" => 147,
+        "name" => "get list assets",
+        "pattern" => "/\\/credit\\/get-list-assets/",
+        "reverse" => "/credit/get-list-assets",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getListAssets",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+    148 => [
+        "id" => 148,
+        "name" => "get list bpkb ownership",
+        "pattern" => "/\\/credit\\/get-list-bpkb-ownership/",
+        "reverse" => "/credit/get-list-bpkb-ownership",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getListBpkbOwnership",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+    149 => [
+        "id" => 149,
+        "name" => "get list house ownership",
+        "pattern" => "/\\/credit\\/get-list-house-ownership/",
+        "reverse" => "/credit/get-list-house-ownership",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getListHouseOwnership",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
 ];

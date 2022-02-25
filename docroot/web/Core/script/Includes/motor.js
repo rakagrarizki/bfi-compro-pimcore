@@ -5,11 +5,47 @@ let dataStep1 = {
     name: undefined,
     email: undefined,
     phone_number: undefined,
+    wa_number: undefined,
     utm_source: undefined,
     utm_campaign: undefined,
     utm_term: undefined,
     utm_medium: undefined,
     utm_content: undefined,
+};
+
+let dataStep2 = {
+    submission_id: undefined,
+    info_address: {
+        province_id_bfi: undefined,
+        province_desc_bfi: undefined,
+        city_id_bfi: undefined,
+        city_desc_bfi: undefined,
+        district_id_bfi: undefined,
+        district_desc_bfi: undefined,
+        subdistrict_id_bfi: undefined,
+        subdistrict_desc_bfi: undefined,
+        zipcode_id_bfi: undefined,
+        zipcode_desc_bfi: undefined,
+        full_address: undefined,
+    },
+    info_assets: {
+        type_id_bfi: undefined,
+        type_desc_bfi: undefined,
+        brand_id_bfi: undefined,
+        brand_desc_bfi: undefined,
+        model_id_bfi: undefined,
+        model_desc_bfi: undefined,
+        vehicle_year_bfi: undefined,
+        license_plate: undefined,
+        asset_ownership_id_bfi: undefined,
+        asset_ownership_desc_bfi: undefined,
+    },
+    info_customer: {
+        profession_id_bfi: undefined,
+        profession_desc_bfi: undefined,
+        salary: undefined,
+        dob: undefined,
+    },
 };
 
 $(document).ready(function () {
@@ -61,14 +97,24 @@ $("#occupation").select2({
     dropdownParent: $("#occupation").parent(),
 });
 
+$("#merk_kendaraan").change(() => {
+    filterAssetModel($("#merk_kendaraan").val().toString());
+});
+
 $("#next1").on("click", function (e) {
     e.preventDefault();
-    if ($(this).closest("form").valid()) {
-        pushDataStep1(() => {
-            step("next", 2);
-            getAuthorizationToken();
-        });
-    }
+    step("next", 2);
+    getAuthorizationToken();
+    getListProvinsi("#provinsi");
+    getListAssets("motor");
+    getListBpkbOwnership("#kepemilikan_bpkb");
+    getListHouseOwnership("#kepemilikan_rumah");
+    // if ($(this).closest("form").valid()) {
+    //     pushDataStep1(() => {
+    //         getAuthorizationToken();
+    //         getListProvinsi("#provinsi");
+    //     });
+    // }
 });
 $("#next2").on("click", function (e) {
     e.preventDefault();

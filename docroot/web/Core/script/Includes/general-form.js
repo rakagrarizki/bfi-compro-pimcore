@@ -954,3 +954,227 @@ function getListZipcode() {
         },
     });
 }
+
+let dataAssets = [];
+let rawAssetBrand = [];
+
+function getListAssets(assetType) {
+    $.ajax({
+        type: "POST",
+        url: "/credit/get-list-assets",
+        headers: { Authorization: "Basic " + currentToken },
+        data: { asset_type: assetType },
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            if (result.message === "success") {
+                $.each(result.data.data, (i, val) => {
+                    dataAssets.push({
+                        category: val.category_id,
+                        model: val.model,
+                        model_desc: val.model_desc,
+                        brand: val.brand,
+                        brand_desc: val.brand_desc,
+                        asset_group: val.asset_group,
+                    });
+                });
+                assetType === "motor"
+                    ? filterAssetBrand("")
+                    : filterAssetType();
+            }
+        },
+    });
+}
+
+function filterAssetType() {
+    var dataType = [];
+    var type_placeholder = $("#type_kendaraan").attr("placeholder");
+
+    // remove duplicate
+    let assetType = dataAssets
+        .map((item) => item.category)
+        .filter((val, i, e) => e.indexOf(val) === i);
+
+    $.each(assetType, function (id, val) {
+        dataType.push({
+            id: val,
+            text: val,
+        });
+    });
+    $("#type_kendaraan").select2({
+        placeholder: type_placeholder,
+        dropdownParent: $("#type_kendaraan").parent(),
+        data: dataType,
+        language: {
+            noResults: function () {
+                return lang === "id"
+                    ? "Tidak Ada Hasil yang Ditemukan"
+                    : "No Result Found";
+            },
+        },
+    });
+}
+
+function filterAssetBrand(category) {
+    var dataBrand = [];
+    var brand_placeholder = $("#merk_kendaraan").attr("placeholder");
+    rawAssetBrand =
+        category != ""
+            ? dataAssets.filter((e) => e.category === category)
+            : dataAssets;
+
+    // remove duplicate
+    let assetBrand = rawAssetBrand.filter(
+        (val, i, e) => i === e.findIndex((t) => t.brand === val.brand)
+    );
+
+    $.each(assetBrand, function (id, val) {
+        dataBrand.push({
+            id: val.brand,
+            text: val.brand_desc,
+        });
+    });
+    $("#merk_kendaraan").select2({
+        placeholder: brand_placeholder,
+        dropdownParent: $("#merk_kendaraan").parent(),
+        data: dataBrand,
+        language: {
+            noResults: function () {
+                return lang === "id"
+                    ? "Tidak Ada Hasil yang Ditemukan"
+                    : "No Result Found";
+            },
+        },
+    });
+}
+
+function filterAssetModel(brand) {
+    var dataModel = [];
+    var model_placeholder = $("#model_kendaraan").attr("placeholder");
+    let assetModel = dataAssets.filter((e) => e.brand === brand);
+
+    $.each(assetModel, function (id, val) {
+        dataModel.push({
+            id: val.model,
+            text: val.model_desc,
+        });
+    });
+    $("#model_kendaraan").select2({
+        placeholder: model_placeholder,
+        dropdownParent: $("#model_kendaraan").parent(),
+        data: dataModel,
+        language: {
+            noResults: function () {
+                return lang === "id"
+                    ? "Tidak Ada Hasil yang Ditemukan"
+                    : "No Result Found";
+            },
+        },
+    });
+}
+
+function getListBpkbOwnership(element) {
+    dataBpkbOwnership = [];
+    $(element).empty();
+    var bpkb_placeholder = $(element).attr("placeholder");
+
+    $.ajax({
+        type: "GET",
+        url: "/credit/get-list-bpkb-ownership",
+        headers: { Authorization: "Basic " + currentToken },
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            $.each(result.data, function (id, val) {
+                dataBpkbOwnership.push({
+                    id: val.id,
+                    text: bpkbOwnershipTranslate(val.description),
+                });
+            });
+            $(element).select2({
+                placeholder: bpkb_placeholder,
+                dropdownParent: $(element).parent(),
+                data: dataBpkbOwnership,
+                language: {
+                    noResults: function () {
+                        return lang === "id"
+                            ? "Tidak Ada Hasil yang Ditemukan"
+                            : "No Result Found";
+                    },
+                },
+            });
+        },
+    });
+}
+
+function getListHouseOwnership(element) {
+    dataHouseOwnership = [];
+    $(element).empty();
+    var house_placeholder = $(element).attr("placeholder");
+
+    $.ajax({
+        type: "GET",
+        url: "/credit/get-list-house-ownership",
+        headers: { Authorization: "Basic " + currentToken },
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            $.each(result.data, function (id, val) {
+                if (val.is_active === true) {
+                    dataHouseOwnership.push({
+                        id: val.id,
+                        text: val.description,
+                    });
+                }
+            });
+            $(element).select2({
+                placeholder: house_placeholder,
+                dropdownParent: $(element).parent(),
+                data: dataHouseOwnership,
+                language: {
+                    noResults: function () {
+                        return lang === "id"
+                            ? "Tidak Ada Hasil yang Ditemukan"
+                            : "No Result Found";
+                    },
+                },
+            });
+        },
+    });
+}
+
+function bpkbOwnershipTranslate(status) {
+    switch (status) {
+        case "Brother/Sister":
+            return "Saudara kandung";
+        case "Children":
+            return "Anak";
+        case "Family":
+            return "Keluarga";
+        case "Owner":
+            return "Sendiri";
+        case "Parent":
+            return "Orang Tua";
+        case "Spouse":
+            return "Pasangan";
+        case "Other":
+            return "Lainnya";
+        default:
+            return status;
+    }
+}
