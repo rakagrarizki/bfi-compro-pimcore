@@ -897,4 +897,19 @@ class SendApi
     public function getEstimateInstallment($url, $param, $token){
         return $this->executeApiSignature('getEstimateInstallment', true, $url, $param, "POST", $token);
     }
+
+    public function getListAssets($url, $param, $token)
+    {
+        return $this->executeApiSignature('getListAssets', true, $url, $param, "GET", $token);
+    }
+
+    public function getListBpkbOwnership($url, $token)
+    {
+        return $this->executeApiSignature('getListBpkbOwnership', false, $url, '', "GET", $token);
+    }
+
+    public function getListHouseOwnership($url, $token)
+    {
+        return $this->executeApiSignature('getListHouseOwnership', false, $url, '', "GET", $token);
+    }
 }

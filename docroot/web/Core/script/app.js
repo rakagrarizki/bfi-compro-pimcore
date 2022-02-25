@@ -3969,126 +3969,129 @@ var urlLocation = window.location;
         }
     });
 
-    $("#merk_kendaraan, #type_kendaraan").change(function () {
-        // console.log("CHANGE",$('#type_kendaraan').val(),$('#merk_kendaraan').val())
-        if (
-            $("#type_kendaraan").val()[0] !== "" &&
-            $("#merk_kendaraan").val()[0] !== ""
-        ) {
-            showDefaultButton();
+    // $("#merk_kendaraan, #type_kendaraan").change(function () {
+    //     // console.log("CHANGE",$('#type_kendaraan').val(),$('#merk_kendaraan').val())
+    //     if (
+    //         $("#type_kendaraan").val()[0] !== "" &&
+    //         $("#merk_kendaraan").val()[0] !== ""
+    //     ) {
+    //         showDefaultButton();
 
-            if ($(".nav-item-3").hasClass("done")) {
-                $(".nav-item-3").removeClass("done");
-                $(".nav-item-3").addClass("disabled");
-            }
-            if ($(".nav-item-4").hasClass("done")) {
-                $(".nav-item-4").removeClass("done");
-                $(".nav-item-4").addClass("disabled");
-            }
-            $(".nav-item-5").addClass("disabled");
-            if (changeDataKendaraan) {
-                $(".nav-item-3").addClass("active");
-                $(".nav-item-4").addClass("disabled").off("click");
-                $(".nav-item-5").removeClass("active");
-                $(".nav-item-5").addClass("disabled").off("click");
-            }
-            $("#model_kendaraan").removeAttr("disabled");
-            $("#model_kendaraan").next().css("background-color", "white");
-            // $('#model_kendaraan').next().find(".jcf-select-opener").css("background-color", "white");
+    //         if ($(".nav-item-3").hasClass("done")) {
+    //             $(".nav-item-3").removeClass("done");
+    //             $(".nav-item-3").addClass("disabled");
+    //         }
+    //         if ($(".nav-item-4").hasClass("done")) {
+    //             $(".nav-item-4").removeClass("done");
+    //             $(".nav-item-4").addClass("disabled");
+    //         }
+    //         $(".nav-item-5").addClass("disabled");
+    //         if (changeDataKendaraan) {
+    //             $(".nav-item-3").addClass("active");
+    //             $(".nav-item-4").addClass("disabled").off("click");
+    //             $(".nav-item-5").removeClass("active");
+    //             $(".nav-item-5").addClass("disabled").off("click");
+    //         }
+    //         $("#model_kendaraan").removeAttr("disabled");
+    //         $("#model_kendaraan").next().css("background-color", "white");
+    //         // $('#model_kendaraan').next().find(".jcf-select-opener").css("background-color", "white");
 
-            $("#tahun_kendaraan").attr("disabled", "disabled");
-            $("#tahun_kendaraan").next().css("background-color", "#F4F4F4");
-            // $('#tahun_kendaraan').next().find(".jcf-select-opener").css("background-color", "#F4F4F4");
+    //         $("#tahun_kendaraan").attr("disabled", "disabled");
+    //         $("#tahun_kendaraan").next().css("background-color", "#F4F4F4");
+    //         // $('#tahun_kendaraan').next().find(".jcf-select-opener").css("background-color", "#F4F4F4");
 
-            $("#status_kep").attr("disabled", "disabled");
-            $("#status_kep").next().css("background-color", "#F4F4F4");
-            // $('#status_kep').next().find(".jcf-select-opener").css("background-color", "#F4F4F4");
+    //         $("#status_kep").attr("disabled", "disabled");
+    //         $("#status_kep").next().css("background-color", "#F4F4F4");
+    //         // $('#status_kep').next().find(".jcf-select-opener").css("background-color", "#F4F4F4");
 
-            var dataModel = [];
+    //         var dataModel = [];
 
-            var model_kendaraan_placeholder =
-                $("#model_kendaraan").attr("placeholder");
-            $("#model_kendaraan").empty();
+    //         var model_kendaraan_placeholder =
+    //             $("#model_kendaraan").attr("placeholder");
+    //         $("#model_kendaraan").empty();
 
-            var tahun_kendaraan_placeholder =
-                $("#tahun_kendaraan").attr("placeholder");
-            $("#tahun_kendaraan").empty();
-            $("#tahun_kendaraan").append(
-                "<option value='' disabled selected>" +
-                    tahun_kendaraan_placeholder +
-                    "</option>"
-            );
+    //         var tahun_kendaraan_placeholder =
+    //             $("#tahun_kendaraan").attr("placeholder");
+    //         $("#tahun_kendaraan").empty();
+    //         $("#tahun_kendaraan").append(
+    //             "<option value='' disabled selected>" +
+    //                 tahun_kendaraan_placeholder +
+    //                 "</option>"
+    //         );
 
-            var status_kep_placeholder = $("#status_kep").attr("placeholder");
-            $("#status_kep").empty();
-            $("#status_kep").append(
-                "<option value='' disabled selected>" +
-                    status_kep_placeholder +
-                    "</option>"
-            );
+    //         var status_kep_placeholder = $("#status_kep").attr("placeholder");
+    //         $("#status_kep").empty();
+    //         $("#status_kep").append(
+    //             "<option value='' disabled selected>" +
+    //                 status_kep_placeholder +
+    //                 "</option>"
+    //         );
 
-            //var id = this.value;
-            var _url = "";
-            var post_code_attr = credits.tempat_tinggal.kode_pos,
-                tipe_attr = credits.angunan.jenis_angunan,
-                type_attr = $("#type_kendaraan").val()[0],
-                brand_attr = $("#merk_kendaraan").val()[0];
+    //         //var id = this.value;
+    //         var _url = "";
+    //         var post_code_attr = credits.tempat_tinggal.kode_pos,
+    //             tipe_attr = credits.angunan.jenis_angunan,
+    //             type_attr = $("#type_kendaraan").val()[0],
+    //             brand_attr = $("#merk_kendaraan").val()[0];
 
-            var _data = {
-                type_id: type_attr,
-                brand_id: brand_attr,
-            };
+    //         var _data = {
+    //             type_id: type_attr,
+    //             brand_id: brand_attr,
+    //         };
 
-            // console.log(brand_attr, $(this).val())
-            switch (tipe_attr) {
-                case "MOTOR":
-                    _url = "/credit/get-motorcycle-model";
-                    break;
-            }
+    //         // console.log(brand_attr, $(this).val())
+    //         switch (tipe_attr) {
+    //             case "MOBIL":
+    //                 _url = "/credit/get-car-model";
+    //                 break;
+    //             case "MOTOR":
+    //                 _url = "/credit/get-motorcycle-model";
+    //                 break;
+    //         }
 
-            $.ajax({
-                type: "POST",
-                url: _url,
-                data: _data,
-                dataType: "json",
-                error: function (data) {
-                    // console.log("error" + data);
-                },
+    //         $.ajax({
+    //             type: "POST",
+    //             url: _url,
+    //             data: _data,
+    //             dataType: "json",
+    //             error: function (data) {
+    //                 // console.log("error" + data);
+    //             },
 
-                fail: function (xhr, textStatus, error) {
-                    // console.log("request failed");
-                },
+    //             fail: function (xhr, textStatus, error) {
+    //                 // console.log("request failed");
+    //             },
 
-                success: function (dataObj) {
-                    if (dataObj.success === "1") {
-                        $.each(
-                            dataObj.data,
-                            function (idKendaraan, valKendaraan) {
-                                if (valKendaraan.desc != "") {
-                                    dataModel.push({
-                                        id: valKendaraan.id,
-                                        text: valKendaraan.desc,
-                                    });
-                                }
-                            }
-                        );
+    //             success: function (dataObj) {
+    //                 if (dataObj.success === "1") {
+    //                     $.each(
+    //                         dataObj.data,
+    //                         function (idKendaraan, valKendaraan) {
+    //                             if (valKendaraan.desc != "") {
+    //                                 dataModel.push({
+    //                                     id: valKendaraan.id,
+    //                                     text: valKendaraan.desc,
+    //                                 });
+    //                             }
+    //                         }
+    //                     );
 
-                        $("#model_kendaraan").select2({
-                            placeholder: model_kendaraan_placeholder,
-                            dropdownParent: $("#model_kendaraan").parent(),
-                            data: dataModel,
-                        });
+    //                     $("#model_kendaraan").select2({
+    //                         placeholder: model_kendaraan_placeholder,
+    //                         dropdownParent: $("#model_kendaraan").parent(),
+    //                         data: dataModel,
+    //                     });
 
-                        // $('#status_kep').val("");
-                        // var customFormInstance = jcf.getInstance($('#status_kep'));
-                        // customFormInstance.refresh();
-                        // $('#status_kep').empty();
-                    }
-                },
-            });
-            disableButton("#button3");
-        }
-    });
+    //                     // $('#status_kep').val("");
+    //                     // var customFormInstance = jcf.getInstance($('#status_kep'));
+    //                     // customFormInstance.refresh();
+    //                     // $('#status_kep').empty();
+    //                 }
+    //             },
+    //         });
+    //         disableButton("#button3");
+    //     }
+    // });
 
     $("#model_kendaraan").change(function () {
         showDefaultButton();
