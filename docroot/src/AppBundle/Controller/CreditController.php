@@ -1427,8 +1427,6 @@ class CreditController extends FrontendController
                 return new JsonResponse([
                     'success' => "0",
                     'message' => $this->get("translator")->trans("api-error"),
-                    'data' => $data,
-                    'param' => $param
                 ]);
             }
         } catch (\Exception $e) {
@@ -1441,24 +1439,24 @@ class CreditController extends FrontendController
         $host = WebsiteSetting::getByName("HOST")->getData();
         $url = $host . WebsiteSetting::getByName('URL_GET_SAVE_CAR_LEADS_4')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+        $param["disclaimer"] = htmlentities(addslashes($request->get('disclaimer')));
 
         try {
             $data = $this->sendAPI->saveCarLeads4($url, $param);
+            if ($data->header->status == 200) {
+                return new JsonResponse([
+                    'success' => "1",
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => "0",
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
         } catch (\Exception $e) {
             throw new \Exception('Something went wrong!');
-        }
-
-        if ($data->header->status == 200) {
-            return new JsonResponse([
-                'success' => "1",
-                'message' => "success",
-                'data' => $data->data
-            ]);
-        } else {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => $this->get("translator")->trans("api-error")
-            ]);
         }
     }
 
@@ -1470,21 +1468,20 @@ class CreditController extends FrontendController
 
         try {
             $data = $this->sendAPI->saveCarLeads5($url, $param);
+            if ($data->header->status == 200) {
+                return new JsonResponse([
+                    'success' => "1",
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => "0",
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
         } catch (\Exception $e) {
             throw new \Exception('Something went wrong!');
-        }
-
-        if ($data->header->status == 200) {
-            return new JsonResponse([
-                'success' => "1",
-                'message' => "success",
-                'data' => $data->data
-            ]);
-        } else {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => $this->get("translator")->trans("api-error")
-            ]);
         }
     }
 

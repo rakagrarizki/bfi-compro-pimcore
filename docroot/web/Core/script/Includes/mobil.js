@@ -80,6 +80,11 @@ let dataStep3 = {
     },
 };
 
+let dataStep4 = {
+    submission_id: undefined,
+    disclaimer: undefined,
+};
+
 $(document).ready(function () {
     lang == "id"
         ? $(".nav-item-2.active").find(".nav-step-tag").text("Sedang Isi")
@@ -232,7 +237,9 @@ $("#next5").on("click", function (e) {
     $("#success").addClass("active");
 =======
     pushDataStep3(() => {
-        showOtpVer2();
+        pushDataStep4(() => {
+            showOtpVer2();
+        });
         // step("next", 4);
         // $(".step-list").attr("hidden", "true");
     });
@@ -241,8 +248,6 @@ $("#next5").on("click", function (e) {
     e.preventDefault();
     if ($(this).closest("form").valid()) {
         verificationOTP();
-        $("#menu5").removeClass("active");
-        $("#success").addClass("active");
     }
 >>>>>>> bc4c445b (integration API submit step 3)
 });
@@ -427,6 +432,55 @@ function pushDataStep3(cb) {
         success: (res) => {
             if (res.message === "success") {
                 cb(res);
+            }
+        },
+    });
+}
+
+function pushDataStep4(cb) {
+    let result = (dataStep4 = {
+        submission_id: submission_id,
+        disclaimer: true,
+    });
+    $.ajax({
+        type: "POST",
+        url: "/credit/save-car-leads4",
+        data: result,
+        dataType: "json",
+        tryCount: 0,
+        retryLimit: retryLimit,
+        error: function (xhr, textStatus, errorThrown) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            if (result.message === "success") {
+                cb();
+            }
+        },
+    });
+}
+
+function pushDataStep5() {
+    $.ajax({
+        type: "POST",
+        url: "/credit/save-car-leads5",
+        data: { submission_id: submission_id },
+        dataType: "json",
+        tryCount: 0,
+        retryLimit: retryLimit,
+        error: function (xhr, textStatus, errorThrown) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            if (result.message === "success") {
+                $("#menu5").removeClass("active");
+                $("#success").addClass("active");
             }
         },
     });
