@@ -1086,7 +1086,7 @@ class CreditController extends FrontendController
         $url = $host . WebsiteSetting::getByName('URL_GET_DATALIST_MARITAL_STATUS')->getData();
 
         try {
-            $data = $this->sendAPI->getListBpkbOwnership($url, $token);
+            $data = $this->sendAPI->getListDataMaritalStatus($url, $token);
 
             if (empty($data->error)) {
                 return new JsonResponse([
@@ -1311,30 +1311,58 @@ class CreditController extends FrontendController
     {
         $host = WebsiteSetting::getByName("HOST")->getData();
         $url = $host . WebsiteSetting::getByName('URL_GET_SAVE_CAR_LEADS_3')->getData();
+
+        $info_customer = $request->get('info_customer');
+        $info_assets = $request->get('info_assets');
+        $info_calculator = $request->get('info_calculator');
+
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
-        $param["car_type_id"] = htmlentities(addslashes($request->get('car_type_id')));
-        $param["car_brand_id"] = htmlentities(addslashes($request->get('car_brand_id')));
-        $param["car_model_id"] = htmlentities(addslashes($request->get('car_model_id')));
-        $param["car_year_id"] = htmlentities(addslashes($request->get('car_year_id')));
-        $param["bpkb_atas_nama"] = htmlentities(addslashes($request->get('bpkb_atas_nama')));
+        $param["info_customer"]["profession_id_bfi"] = htmlentities(addslashes($info_customer['profession_id_bfi']));
+        $param["info_customer"]["profession_desc_bfi"] = htmlentities(addslashes($info_customer['profession_desc_bfi']));
+        $param["info_customer"]["salary"] = htmlentities(addslashes($info_customer['salary']));
+        $param["info_customer"]["dob"] = htmlentities(addslashes($info_customer['dob']));
+        $param["info_customer"]["marital_status_id_bfi"] = htmlentities(addslashes($info_customer['marital_status_id_bfi']));
+        $param["info_customer"]["marital_status_desc_bfi"] = htmlentities(addslashes($info_customer['marital_status_desc_bfi']));
+        $param["info_customer"]["media_contact_option"] = htmlentities(addslashes($info_customer['media_contact_option']));
+        $param["info_assets"]["is_ktp_domicile_same"] = htmlentities(addslashes($info_assets['is_ktp_domicile_same']));
+        $param["info_assets"]["home_ownership_id_bfi"] = htmlentities(addslashes($info_assets['home_ownership_id_bfi']));
+        $param["info_assets"]["home_ownership_desc_bfi"] = htmlentities(addslashes($info_assets['home_ownership_desc_bfi']));
+        $param["info_assets"]["asset_province_id_bfi"] = htmlentities(addslashes($info_assets['asset_province_id_bfi']));
+        $param["info_assets"]["asset_province_desc_bfi"] = htmlentities(addslashes($info_assets['asset_province_desc_bfi']));
+        $param["info_assets"]["asset_city_id_bfi"] = htmlentities(addslashes($info_assets['asset_city_id_bfi']));
+        $param["info_assets"]["asset_city_desc_bfi"] = htmlentities(addslashes($info_assets['asset_city_desc_bfi']));
+        $param["info_assets"]["asset_district_id_bfi"] = htmlentities(addslashes($info_assets['asset_district_id_bfi']));
+        $param["info_assets"]["asset_district_desc_bfi"] = htmlentities(addslashes($info_assets['asset_district_desc_bfi']));
+        $param["info_assets"]["asset_subdistrict_id_bfi"] = htmlentities(addslashes($info_assets['asset_subdistrict_id_bfi']));
+        $param["info_assets"]["asset_subdistrict_desc_bfi"] = htmlentities(addslashes($info_assets['asset_subdistrict_desc_bfi']));
+        $param["info_assets"]["asset_zipcode_id_bfi"] = htmlentities(addslashes($info_assets['asset_zipcode_id_bfi']));
+        $param["info_assets"]["asset_zipcode_desc_bfi"] = htmlentities(addslashes($info_assets['asset_zipcode_desc_bfi']));
+        $param["info_assets"]["asset_full_address"] = htmlentities(addslashes($info_assets['asset_full_address']));
+        $param["info_calculator"]["funding"] = htmlentities(addslashes($info_calculator['funding']));
+        $param["info_calculator"]["tenor"] = htmlentities(addslashes($info_calculator['tenor']));
+        $param["info_calculator"]["monthly_installment"] = htmlentities(addslashes($info_calculator['monthly_installment']));
+        $param["info_calculator"]["vehicle_insurance"] = htmlentities(addslashes($info_calculator['vehicle_insurance']));
+        $param["info_calculator"]["ltv_max"] = htmlentities(addslashes($info_calculator['ltv_max']));
+        $param["info_calculator"]["ntf_max"] = htmlentities(addslashes($info_calculator['ntf_max']));
 
         try {
             $data = $this->sendAPI->saveCarLeads3($url, $param);
+            if ($data->header->status == 200) {
+                return new JsonResponse([
+                    'success' => "1",
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => "0",
+                    'message' => $this->get("translator")->trans("api-error"),
+                    'data' => $data,
+                    'param' => $param
+                ]);
+            }
         } catch (\Exception $e) {
             throw new \Exception('Something went wrong!');
-        }
-
-        if ($data->header->status == 200) {
-            return new JsonResponse([
-                'success' => "1",
-                'message' => "success",
-                'data' => $data->data
-            ]);
-        } else {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => $this->get("translator")->trans("api-error")
-            ]);
         }
     }
 

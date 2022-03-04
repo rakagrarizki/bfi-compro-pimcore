@@ -81,7 +81,7 @@ $this->headScript()
                 <form action="#" id="getCredit" method="POST" class="form-get--credit" role="form">
                     <input type="hidden" id="jenis_form" name="jenis_form" value="MOBIL">
                     <div class="tab-content">
-                        <div id="menu2" class="tab-pane fade in ">
+                        <div id="menu2" class="tab-pane fade in active">
                             <div class="form-body--credit">
                                 <div class="text-head">
                                     <h2 class="text-center">
@@ -311,7 +311,7 @@ $this->headScript()
                                 </div>
                             </div>
                         </div>
-                        <div id="menu4" class="tab-pane slide-left active">
+                        <div id="menu4" class="tab-pane slide-left">
                             <div class="form-body--credit">
                                 <div class="text-head">
                                     <h2 class="text-center"><?= $this->translate('ndfc-title-step-3') ?></h2>
