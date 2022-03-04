@@ -179,31 +179,17 @@ $("#next2").on("click", function (e) {
     if ($(this).closest("form").valid()) {
         pushDataStep2(() => {
             getBranchCoverage(() => {
-<<<<<<< HEAD
-                getAssetYear(
-                    $("#model_kendaraan").val().toString(),
-                    branch_id,
-                    () => {
-                        if ((assetYearExists = true)) {
-                            step("next", 3);
-                            window.dataLayer.push({
-                                event: "ValidFormNDFCStep2",
-                            });
-                            getListHouseOwnership("#kepemilikan_rumah");
-                            getListMaritalStatus("#marital_status");
-                            getAuthorizationToken("bfidigital");
-                            getDupcheck();
-                        }
-=======
                 getAssetYear("CHEVROLET.SPARK.LS10MT", "401", () => {
                     if ((assetYearExists = true)) {
                         step("next", 3);
+                        window.dataLayer.push({
+                            event: "ValidFormNDFCStep2",
+                        });
                         getAuthorizationToken();
                         getListHouseOwnership("#kepemilikan_rumah");
                         getListMaritalStatus("#marital_status");
                         // getAuthorizationToken("bfidigital");
                         // getDupcheck();
->>>>>>> bc4c445b (integration API submit step 3)
                     }
                 });
             });
@@ -218,38 +204,28 @@ $("#next3").on("click", function (e) {
 });
 $("#confirm-data").on("click", function (e) {
     e.preventDefault();
-<<<<<<< HEAD
-    pushDataStep3();
-    window.dataLayer.push({
-        event: "ValidFormNDFCStep3",
+    pushDataStep3(() => {
+        window.dataLayer.push({
+            event: "ValidFormNDFCStep3",
+        });
+        pushDataStep4(() => {
+            showOtpVer2();
+        });
     });
     // step("next", 4);
     // $(".step-list").attr("hidden", "true");
 });
 $("#next5").on("click", function (e) {
     e.preventDefault();
-
-    // send data layer if otp success
-    window.dataLayer.push({
-        event: "ValidFormNDFCStepOTP",
-    });
-    $("#menu5").removeClass("active");
-    $("#success").addClass("active");
-=======
-    pushDataStep3(() => {
-        pushDataStep4(() => {
-            showOtpVer2();
-        });
-        // step("next", 4);
-        // $(".step-list").attr("hidden", "true");
-    });
-});
-$("#next5").on("click", function (e) {
-    e.preventDefault();
     if ($(this).closest("form").valid()) {
         verificationOTP();
+        // send data layer if otp success
+        window.dataLayer.push({
+            event: "ValidFormNDFCStepOTP",
+        });
+        $("#menu5").removeClass("active");
+        $("#success").addClass("active");
     }
->>>>>>> bc4c445b (integration API submit step 3)
 });
 
 $("#back2").on("click", function (e) {
@@ -479,6 +455,9 @@ function pushDataStep5() {
         },
         success: function (result) {
             if (result.message === "success") {
+                window.dataLayer.push({
+                    event: "ValidFormStepOTP",
+                });
                 $("#menu5").removeClass("active");
                 $("#success").addClass("active");
             }
