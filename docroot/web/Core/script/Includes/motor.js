@@ -174,6 +174,14 @@ function pushDataStep1(cb) {
         },
     });
 }
+$("#back2").on("click", function (e) {
+    e.preventDefault();
+    step("back", 2);
+});
+$("#back3").on("click", function (e) {
+    e.preventDefault();
+    step("back", 3);
+});
 
 $("input[name='action-call']").click(function () {
     var isWa = $(this).val();

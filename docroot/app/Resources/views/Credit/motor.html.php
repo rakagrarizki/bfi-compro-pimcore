@@ -143,47 +143,6 @@ $this->headScript()
                                             <p class="text-center"><?= $this->translate('ndfm-subtitle-step-2') ?></p>
                                         </div>
                                         <div class="text-title-form">
-                                            <h3><?= $this->translate('data-asset-title') ?></h3>
-                                            <p><?= $this->translate('data-asset-subtitle') ?></p>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="near_branch"><?= $this->translate('label-near-branch')?></label>
-                                            <select class="form-control formRequired" id="near_branch" name="near_branch"
-                                                    placeholder="<?= $this->translate('choose-near-branch')?>" multiple="multiple" />
-                                                <option value="" disabled selected><?= $this->translate('choose-near-branch')?></option>
-                                            </select>
-                                            <div class="error-wrap"></div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label><?= $this->translate('label-merk') ?></label>
-                                            <select class="c-custom-select-trans form-control formRequired" placeholder="<?= $this->translate('placeholder-merk') ?>" id="merk_kendaraan" name="merk_kendaraan" multiple="multiple">
-                                                <option value="" disabled selected> <?= $this->translate('placeholder-merk') ?></option>
-                                            </select>
-                                            <div class="error-wrap"></div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label><?= $this->translate('label-model') ?></label>
-                                            <select class="c-custom-select-trans form-control formRequired" placeholder="<?= $this->translate('placeholder-model') ?>" id="model_kendaraan" name="model_kendaraan" multiple="multiple">
-                                                <option value="" disabled selected> <?= $this->translate('placeholder-model') ?></option>
-                                            </select>
-                                            <div class="error-wrap"></div>
-                                            <span><?= $this->translate('model-helper') ?></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="tahun_kendaraan"><?= $this->translate('label-tahun') ?></label>
-                                            <select class="c-custom-select-trans form-control formRequired" placeholder="<?= $this->translate('placeholder-tahun') ?>" id="tahun_kendaraan" name="tahun_kendaraan" multiple="multiple">
-                                                <option value="" disabled selected> <?= $this->translate('placeholder-tahun') ?></option>
-                                            </select>
-                                            <div class="error-wrap"></div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="kepemilikan_bpkb"><?= $this->translate('label-bpkb-ownership') ?></label>
-                                            <select class="c-custom-select-trans form-control formRequired" placeholder="<?= $this->translate('placeholder-bpkb-ownership') ?>" id="kepemilikan_bpkb" name="kepemilikan_bpkb" multiple="multiple" >
-                                                <option value="" disabled selected> <?= $this->translate('placeholder-bpkb-ownership') ?></option>
-                                            </select>
-                                            <div class="error-wrap"></div>
-                                        </div>
-                                        <div class="text-title-form">
                                             <h3><?= $this->translate('data-address-title') ?></h3>
                                             <p><?= $this->translate('data-address-subtitle') ?></p>
                                         </div>
@@ -229,6 +188,47 @@ $this->headScript()
                                             <label class="label-place" for="alamat_lengkap"><?= $this->translate('label-place')?></label>
                                             <textarea class="form-control formRequired formAddress" name="alamat_lengkap" id="alamat_lengkap"
                                                       placeholder="<?= $this->translate('placeholder-place')?>, Contoh: Jalan Rajawali 1 Blok A no.11 RT 01 RW 02"></textarea>
+                                            <div class="error-wrap"></div>
+                                        </div>
+                                        <div class="text-title-form">
+                                            <h3><?= $this->translate('data-asset-title') ?></h3>
+                                            <p><?= $this->translate('data-asset-subtitle') ?></p>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="near_branch"><?= $this->translate('label-near-branch')?></label>
+                                            <select class="form-control formRequired" id="near_branch" name="near_branch"
+                                                    placeholder="<?= $this->translate('choose-near-branch')?>" multiple="multiple" />
+                                                <option value="" disabled selected><?= $this->translate('choose-near-branch')?></option>
+                                            </select>
+                                            <div class="error-wrap"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label><?= $this->translate('label-merk') ?></label>
+                                            <select class="c-custom-select-trans form-control formRequired" placeholder="<?= $this->translate('placeholder-merk') ?>" id="merk_kendaraan" name="merk_kendaraan" multiple="multiple">
+                                                <option value="" disabled selected> <?= $this->translate('placeholder-merk') ?></option>
+                                            </select>
+                                            <div class="error-wrap"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label><?= $this->translate('label-model') ?></label>
+                                            <select class="c-custom-select-trans form-control formRequired" placeholder="<?= $this->translate('placeholder-model') ?>" id="model_kendaraan" name="model_kendaraan" multiple="multiple">
+                                                <option value="" disabled selected> <?= $this->translate('placeholder-model') ?></option>
+                                            </select>
+                                            <div class="error-wrap"></div>
+                                            <span><?= $this->translate('model-helper') ?></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="tahun_kendaraan"><?= $this->translate('label-tahun') ?></label>
+                                            <select class="c-custom-select-trans form-control formRequired" placeholder="<?= $this->translate('placeholder-tahun') ?>" id="tahun_kendaraan" name="tahun_kendaraan" multiple="multiple">
+                                                <option value="" disabled selected> <?= $this->translate('placeholder-tahun') ?></option>
+                                            </select>
+                                            <div class="error-wrap"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="kepemilikan_bpkb"><?= $this->translate('label-bpkb-ownership') ?></label>
+                                            <select class="c-custom-select-trans form-control formRequired" placeholder="<?= $this->translate('placeholder-bpkb-ownership') ?>" id="kepemilikan_bpkb" name="kepemilikan_bpkb" multiple="multiple" >
+                                                <option value="" disabled selected> <?= $this->translate('placeholder-bpkb-ownership') ?></option>
+                                            </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="text-title-form">
