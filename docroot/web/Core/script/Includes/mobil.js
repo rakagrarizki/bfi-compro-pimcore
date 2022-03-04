@@ -93,6 +93,10 @@ $(document).ready(function () {
     sessionStorage.setItem("loanType", "NDFC");
 });
 
+$("#tgl_lahir").datepicker({
+    dateFormat: "yy-mm-dd",
+});
+
 $("input[name='is-wa-number']").click(function () {
     var is_WA = $(this).val();
     $(".wa-numbers").find("input").removeAttr("disabled");
@@ -170,6 +174,7 @@ $("#next2").on("click", function (e) {
     if ($(this).closest("form").valid()) {
         pushDataStep2(() => {
             getBranchCoverage(() => {
+<<<<<<< HEAD
                 getAssetYear(
                     $("#model_kendaraan").val().toString(),
                     branch_id,
@@ -184,8 +189,18 @@ $("#next2").on("click", function (e) {
                             getAuthorizationToken("bfidigital");
                             getDupcheck();
                         }
+=======
+                getAssetYear("CHEVROLET.SPARK.LS10MT", "401", () => {
+                    if ((assetYearExists = true)) {
+                        step("next", 3);
+                        getAuthorizationToken();
+                        getListHouseOwnership("#kepemilikan_rumah");
+                        getListMaritalStatus("#marital_status");
+                        // getAuthorizationToken("bfidigital");
+                        // getDupcheck();
+>>>>>>> bc4c445b (integration API submit step 3)
                     }
-                );
+                });
             });
         });
     }
@@ -198,6 +213,7 @@ $("#next3").on("click", function (e) {
 });
 $("#confirm-data").on("click", function (e) {
     e.preventDefault();
+<<<<<<< HEAD
     pushDataStep3();
     window.dataLayer.push({
         event: "ValidFormNDFCStep3",
@@ -214,6 +230,21 @@ $("#next5").on("click", function (e) {
     });
     $("#menu5").removeClass("active");
     $("#success").addClass("active");
+=======
+    pushDataStep3(() => {
+        showOtpVer2();
+        // step("next", 4);
+        // $(".step-list").attr("hidden", "true");
+    });
+});
+$("#next5").on("click", function (e) {
+    e.preventDefault();
+    if ($(this).closest("form").valid()) {
+        verificationOTP();
+        $("#menu5").removeClass("active");
+        $("#success").addClass("active");
+    }
+>>>>>>> bc4c445b (integration API submit step 3)
 });
 
 $("#back2").on("click", function (e) {
@@ -373,10 +404,10 @@ function pushDataStep3(cb) {
         info_calculator: {
             funding: clearDot($("#pembiayaan").val()),
             tenor: $("#tenor").val().toString(),
-            monthly_installment: undefined,
-            vehicle_insurance: undefined,
-            ltv_max: undefined,
-            ntf_max: undefined,
+            monthly_installment: "40000000",
+            vehicle_insurance: "ARS-TLO",
+            ltv_max: 0.9,
+            ntf_max: 100000000,
         },
     });
 
