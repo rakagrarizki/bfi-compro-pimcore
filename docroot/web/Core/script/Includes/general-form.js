@@ -747,18 +747,11 @@ function step(action, val) {
     }
 }
 
-function getAuthorizationToken(auth) {
-    let author = "";
-    if (
-        auth != author ||
-        !currentToken ||
-        new Date(expiredDate).getTime() < Date.now()
-    ) {
-        author = auth;
+function getAuthorizationToken() {
+    if (!currentToken || new Date(expiredDate).getTime() < Date.now()) {
         $.ajax({
             type: "POST",
             url: "/credit/get_gateway_token",
-            data: { author: author },
             tryCount: 0,
             retryLimit: retryLimit,
             error: function (xhr, textStatus, errorThrown) {
@@ -1142,10 +1135,10 @@ function getListHouseOwnership(element) {
             retryAjax(this, xhr);
         },
         success: function (result) {
-            $.each(result.data, function (id, val) {
+            $.each(result.data.data, function (id, val) {
                 if (val.is_active === true) {
                     dataHouseOwnership.push({
-                        id: val.id,
+                        id: val.an_bkr_id,
                         text: val.description,
                     });
                 }
