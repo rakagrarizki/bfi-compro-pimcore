@@ -89,14 +89,8 @@ class SendApi
         return $this->getData($data);
     }
 
-    public function getGatewayToken($url, $author){
-
-        // this condition credential need to be adjusted in the future
-        $auth = Authorization;
-        if($author === "bfidigital"){
-            $auth = "RnVva0hZSGRiUFZaRDRMZzI0RUc1U0lYdFBUR0JFekc6S0FCOTFJMlI5R1JNY3Q5NQ==";
-        }
-
+    public function getGatewayToken($url)
+    {
         $client = new Client([
             "base_uri" => $url,
             "verify" => false
@@ -108,7 +102,7 @@ class SendApi
                 $url,
                 [
                     RequestOptions::HEADERS => [
-                        'Authorization' => 'Basic ' . $auth
+                        'Authorization' => 'Basic ' . Authorization
                     ]
                 ]
             );

@@ -814,10 +814,9 @@ class CreditController extends FrontendController
     {
         $host = WebsiteSetting::getByName("HOST")->getData();
         $url = $host . WebsiteSetting::getByName('URL_GET_AUTH_BASIC_TOKEN')->getData();
-        $author = htmlentities(addslashes($request->get('author')));
 
         try {
-            $data = $this->sendAPI->getGatewayToken($url, $author);
+            $data = $this->sendAPI->getGatewayToken($url);
             if ($data->header->status == 200) {
                 $this->get('session')->set('tokenBearer', $data->data->access_token);
                 return new JsonResponse([

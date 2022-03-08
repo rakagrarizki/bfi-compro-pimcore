@@ -91,10 +91,6 @@ $(document).ready(function () {
         : $(".nav-item-2.active").find(".nav-step-tag").text("Onprogress");
 
     getAuthorizationToken();
-    setTimeout(function () {
-        getListHouseOwnership("#kepemilikan_rumah");
-        getListMaritalStatus("#marital_status");
-    }, 1000);
     sessionStorage.setItem("loanType", "NDFC");
 });
 
@@ -185,10 +181,8 @@ $("#next2").on("click", function (e) {
                         window.dataLayer.push({
                             event: "ValidFormNDFCStep2",
                         });
-                        getAuthorizationToken();
                         getListHouseOwnership("#kepemilikan_rumah");
                         getListMaritalStatus("#marital_status");
-                        // getAuthorizationToken("bfidigital");
                         // getDupcheck();
                     }
                 });
