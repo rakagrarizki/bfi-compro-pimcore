@@ -93,6 +93,7 @@ $this->headMeta()->appendName('twitter:description', $news->getDescription());
                         ?>
                         <div class='article-items col-6 col-md-6 col-xs-12'>
                             <div class="item-img"> 
+                                <div class="blur-filter" style="background-image: url('<?= $galleryitem->getImage();?>');"></div>
                                 <img src="<?= $galleryitem->getImage() ?>" alt="">
                             </div>
                             <p><?= $galleryitem->getImage()->getMetadata('Caption',$lang)?></p>
