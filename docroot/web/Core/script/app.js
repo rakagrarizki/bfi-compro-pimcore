@@ -6161,6 +6161,9 @@ $("#table-of-contents li a").on("click", function () {
     );
 });
 
+var tocContent = $("#toc-dropdown");
+$("#toc-container").append(tocContent);
+
 //Vertical, Horizontal Adjustment Funuction
 
 $(".blog-promo .card-img img").each(function () {
