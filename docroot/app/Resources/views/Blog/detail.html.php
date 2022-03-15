@@ -23,7 +23,7 @@ $urlFacebook = " https://www.facebook.com/sharer/sharer.php?u=" . $fixedurl . "&
 $urlTwitter = " https://twitter.com/share?text=$titleshare&url=$fixedurl&wrap_links=true ";
 ?>
 <?php 
-$this->headTitle()->append($blog->getTitle());
+($blog->getMetaTitle()) ? $this->headTitle()->append($blog->getMetaTitle()) : $this->headTitle()->append($blog->getTitle() . " - BFI Finance");
 // setting content type and character set
 $this->headMeta()->appendHttpEquiv('Content-Type', 'text/html; charset=UTF-8')->appendHttpEquiv('Content-Language', 'en-US');
 // setting open graph tags
@@ -69,7 +69,7 @@ $this->headMeta()->appendName('twitter:description', $blog->getDescription());
                 </div>
             </div>
             <picture>
-                <img src="<?= $blog->getImage();?>" alt="">
+                <img src="<?= $blog->getImage();?>" alt="<?= $blog->getTitle() ?>">
             </picture>
             <div class="article-content">
                 <div class="panel-group" id="toc-dropdown">
