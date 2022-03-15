@@ -434,7 +434,7 @@ body {
                             font-family: $font_default;
                             font-size: 18px;
                             font-weight: 600;
-                            text-transform: capitalize;
+                            text-transform: normal;
                             margin: 0 auto;
                             height: 100%;
                             // width: 100%;
@@ -524,6 +524,15 @@ body {
                                         color: #646464;
                                         font-weight: normal;
                                         margin-bottom: 0;
+                                    }
+                                }
+                                .corporate-menu {
+                                    li,
+                                    a {
+                                        color: #333333 !important;
+                                        &:hover {
+                                            color: #04559f !important;
+                                        }
                                     }
                                 }
                             }
@@ -927,6 +936,11 @@ body {
                             font-weight: bold;
                             font-size: 16px;
                             white-space: initial;
+                        }
+                    }
+                    &.corporate-dropdown {
+                        .grandchild {
+                            font-size: 16px !important;
                         }
                     }
                 }

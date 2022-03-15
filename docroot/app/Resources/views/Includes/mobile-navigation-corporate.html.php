@@ -9,14 +9,11 @@ use Pimcore\Model\Document;
 <div class="top-nav--mobille hidden-md">
     <div class="container">
         <div class="row top-nav">
-
             <div class="col-xs-8">
                 <a class="_grup" href="/<?= $lang; ?>" class="cta-top-nav "><?= $this->translate("personal") ?></a>
                 <a class="_grup" href="<?= $this->translate("bfiConnectUrl") ?>" target="_blank"><?= $this->translate("Bisnis") ?></a>
             </div>
-
             <div class="col-xs-4 text-right">
-                
             </div>
         </div>
         <div class="navbar-header">
@@ -38,7 +35,6 @@ use Pimcore\Model\Document;
 <div id="navbar" class="navbar-collapse collapse collapse-mobile" aria-expanded="false">
     <ul class="nav navbar-nav">
         <?php
-
         $listMenu = Document::getByPath("/" . $this->getLocale() . "/corporate");
         $subPage = $this->navigation()->buildNavigation($this->document, $listMenu);
 
@@ -49,14 +45,13 @@ use Pimcore\Model\Document;
                 if (strpos($page->getUri(), 'branch-office') !== false) {
                     continue;
                 }
-
                 if ($hasChildren) {
         ?>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle <?= $page->getActive() ? "active" : "" ?>" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                             <?= $page->getLabel() ?>
                         </a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu corporate-dropdown">
                             <?php
                             foreach ($page->getPages() as $child) {
                             ?>
