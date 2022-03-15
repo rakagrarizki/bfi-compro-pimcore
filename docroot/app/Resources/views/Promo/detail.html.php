@@ -11,7 +11,7 @@ use Pimcore\Model\Asset;
 $this->extend('layout.html.php');
 $promo = $this->promo;
 
-$this->headTitle()->append($promo->getTitle());
+$this->headTitle()->append($promo->getTitle() . " - BFI Finance");
 
 // setting content type and character set
 $this->headMeta()->appendHttpEquiv('Content-Type', 'text/html; charset=UTF-8')->appendHttpEquiv('Content-Language', 'en-US');
@@ -69,7 +69,7 @@ $this->headMeta()->appendName('twitter:description', $promo->getDescription());
                 <p><?= $promo->getDescription(); ?></p>
             </div>
             <picture>
-                <img src="<?= $promo->getImage(); ?>" alt="">
+                <img src="<?= $promo->getImage(); ?>" alt="<?= $promo->getTitle() ?>">
             </picture>
             <div class="article-content">
 
