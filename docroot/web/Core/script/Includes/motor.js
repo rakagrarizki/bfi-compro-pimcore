@@ -39,6 +39,8 @@ let dataStep2 = {
         license_plate: undefined,
         asset_ownership_id_bfi: undefined,
         asset_ownership_desc_bfi: undefined,
+        home_ownership_id_bfi: undefined,
+        home_ownership_desc_bfi: undefined,
     },
     info_customer: {
         profession_id_bfi: undefined,
@@ -46,6 +48,19 @@ let dataStep2 = {
         salary: undefined,
         dob: undefined,
     },
+};
+
+let dataStep3 = {
+    submission_id: undefined,
+    info_calculator: {
+        funding: undefined,
+        tenor: undefined,
+        monthly_installment: undefined,
+    },
+};
+let dataStep4 = {
+    submission_id: undefined,
+    disclaimer: undefined,
 };
 
 $(document).ready(function () {
@@ -73,11 +88,11 @@ $("#model_kendaraan").select2({
     placeholder: model_kendaraan,
     dropdownParent: $("#model_kendaraan").parent(),
 });
-var tahun_kendaraan = $("#tahun_kendaraan").attr("placeholder");
-$("#tahun_kendaraan").select2({
-    placeholder: tahun_kendaraan,
-    dropdownParent: $("#tahun_kendaraan").parent(),
-});
+// var tahun_kendaraan = $("#tahun_kendaraan").attr("placeholder");
+// $("#tahun_kendaraan").select2({
+//     placeholder: tahun_kendaraan,
+//     dropdownParent: $("#tahun_kendaraan").parent(),
+// });
 
 var kepemilikan_bpkb = $("#kepemilikan_bpkb").attr("placeholder");
 $("#kepemilikan_bpkb").select2({
@@ -103,27 +118,27 @@ $("#merk_kendaraan").change(() => {
 
 $("#next1").on("click", function (e) {
     e.preventDefault();
-    step("next", 2);
-    getAuthorizationToken();
-    getListProvinsi("#provinsi");
-    getListAssets("motor");
-    getListBpkbOwnership("#kepemilikan_bpkb");
-    getListHouseOwnership("#kepemilikan_rumah");
-    // if ($(this).closest("form").valid()) {
-    //     pushDataStep1(() => {
-    //         getAuthorizationToken();
-    //         getListProvinsi("#provinsi");
-    //     });
-    // }
+    if ($(this).closest("form").valid()) {
+        pushDataStep1(() => {
+            step("next", 2);
+            getAuthorizationToken();
+            getListProvinsi("#provinsi");
+            getListAssets("motor");
+            getListBpkbOwnership("#kepemilikan_bpkb");
+            getListHouseOwnership("#kepemilikan_rumah");
+        });
+    }
 });
 $("#next2").on("click", function (e) {
     e.preventDefault();
-    step("next", 3);
+    // step("next", 3);
+    if ($(this).closest("form").valid()) {
+        pushDataStep2(() => {
+            step("next", 3);
+        });
+    }
 });
-$("#next2").on("click", function (e) {
-    e.preventDefault();
-    step("next", 3);
-});
+
 $("#next3").on("click", function (e) {
     e.preventDefault();
     $("#modal-konfirmasi").modal("show");
@@ -131,14 +146,22 @@ $("#next3").on("click", function (e) {
 
 $("#confirm-data").on("click", function (e) {
     e.preventDefault();
-    step("next", 4);
-    $(".step-list").attr("hidden", "true");
+    pushDataStep3(() => {
+        pushDataStep4(() => {
+            showOtpVer2();
+        });
+    });
+    // step("next", 4);
+    // $(".step-list").attr("hidden", "true");
 });
 
 $("#next5").on("click", function (e) {
     e.preventDefault();
-    $("#menu5").removeClass("active");
-    $("#success").addClass("active");
+    if ($(this).closest("form").valid()) {
+        verificationOTP();
+        $("#menu5").removeClass("active");
+        $("#success").addClass("active");
+    }
 });
 
 function pushDataStep1(cb) {
@@ -174,6 +197,152 @@ function pushDataStep1(cb) {
         },
     });
 }
+
+function pushDataStep2(cb) {
+    let result = (dataStep2 = {
+        submission_id: submission_id,
+        info_address: {
+            province_id_bfi: $("#provinsi").val().toString(),
+            province_desc_bfi: $("#provinsi option:selected").html(),
+            city_id_bfi: $("#kota").val().toString(),
+            city_desc_bfi: $("#kota option:selected").html(),
+            district_id_bfi: $("#kecamatan").val().toString(),
+            district_desc_bfi: $("#kecamatan option:selected").html(),
+            subdistrict_id_bfi: $("#kelurahan").val().toString(),
+            subdistrict_desc_bfi: $("#kelurahan option:selected").html(),
+            zipcode_id_bfi: $("#kode_pos").val().toString(),
+            zipcode_desc_bfi: $("#kode_pos").val().toString(),
+            full_address: $("#alamat_lengkap").val(),
+        },
+
+        info_assets: {
+            type_id_bfi: rawAssetBrand[0].asset_group,
+            type_desc_bfi: rawAssetBrand[0].asset_group,
+            brand_id_bfi: $("#merk_kendaraan").val().toString(),
+            brand_desc_bfi: $("#merk_kendaraan").val().toString(),
+            model_id_bfi: $("#model_kendaraan").val().toString(),
+            model_desc_bfi: $("#model_kendaraan option:selected").html(),
+            vehicle_year_bfi: $("#tahun_kendaraan").val(), // setelah dupcheck baru cek pricelist
+            license_plate: "B9283LPT", // cek update dupcheck dulu
+            asset_ownership_id_bfi: $("#kepemilikan_bpkb").val().toString(),
+            asset_ownership_desc_bfi: $(
+                "#kepemilikan_bpkb option:selected"
+            ).html(),
+            home_ownership_id_bfi: $("#kepemilikan_rumah").val().toString(),
+            home_ownership_desc_bfi: $(
+                "#kepemilikan_rumah option:selected"
+            ).html(),
+        },
+        info_customer: {
+            profession_id_bfi: "KRY",
+            profession_desc_bfi: "Karyawan Swasta",
+            salary: "12000000",
+            dob: "1995-12-28",
+        },
+    });
+
+    $.ajax({
+        type: "POST",
+        url: "/credit/save-motorcycle-leads2",
+        data: result,
+        dataType: "json",
+        tryCount: 0,
+        retryLimit: retryLimit,
+        error: (xhr, textStatus, err) => {
+            retryAjax(this, xhr);
+        },
+        fail: (xhr, textStatus, err) => {
+            retryAjax(this, xhr);
+        },
+        success: (res) => {
+            if (res.message === "success") {
+                cb(res);
+            }
+        },
+    });
+}
+
+function pushDataStep3(cb) {
+    let result = (dataStep3 = {
+        submission_id: submission_id,
+        info_calculator: {
+            funding: "500000000",
+            tenor: "24",
+            monthly_installment: "40000000",
+        },
+    });
+
+    $.ajax({
+        type: "POST",
+        url: "/credit/save-motorcycle-leads3",
+        data: result,
+        dataType: "json",
+        tryCount: 0,
+        retryLimit: retryLimit,
+        error: (xhr, textStatus, err) => {
+            retryAjax(this, xhr);
+        },
+        fail: (xhr, textStatus, err) => {
+            retryAjax(this, xhr);
+        },
+        success: (res) => {
+            if (res.message === "success") {
+                cb(res);
+            }
+        },
+    });
+}
+
+function pushDataStep4(cb) {
+    let result = (dataStep4 = {
+        submission_id: submission_id,
+        disclaimer: true,
+    });
+
+    $.ajax({
+        type: "POST",
+        url: "/credit/save-motorcycle-leads4",
+        data: result,
+        dataType: "json",
+        tryCount: 0,
+        retryLimit: retryLimit,
+        error: (xhr, textStatus, err) => {
+            retryAjax(this, xhr);
+        },
+        fail: (xhr, textStatus, err) => {
+            retryAjax(this, xhr);
+        },
+        success: (res) => {
+            if (res.message === "success") {
+                cb();
+            }
+        },
+    });
+}
+
+function pushDataStep5() {
+    $.ajax({
+        type: "POST",
+        url: "/credit/save-motorcycle-leads5",
+        data: { submission_id: submission_id },
+        dataType: "json",
+        tryCount: 0,
+        retryLimit: retryLimit,
+        error: (xhr, textStatus, err) => {
+            retryAjax(this, xhr);
+        },
+        fail: (xhr, textStatus, err) => {
+            retryAjax(this, xhr);
+        },
+        success: (res) => {
+            if (res.message === "success") {
+                $("#menu5").removeClass("active");
+                $("#success").addClass("active");
+            }
+        },
+    });
+}
+
 $("#back2").on("click", function (e) {
     e.preventDefault();
     step("back", 2);

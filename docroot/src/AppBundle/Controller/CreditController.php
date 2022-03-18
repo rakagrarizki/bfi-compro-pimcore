@@ -1474,7 +1474,7 @@ class CreditController extends FrontendController
         $param["utm_content"] = htmlentities(addslashes($request->get('utm_content')));
         
         try {
-            $data = $this->sendAPI->saveCarLeads1($url, $param);
+            $data = $this->sendAPI->saveMotorcycleLeads1($url, $param);
             if ($data->header->status == 200) {
                 return new JsonResponse([
                     'success' => 1,
@@ -1491,7 +1491,7 @@ class CreditController extends FrontendController
             return new JsonResponse([
                 'success' => 0,
                 'message' => $e->getMessage()
-           ]);
+            ]);
         }
     }
 
@@ -1499,30 +1499,58 @@ class CreditController extends FrontendController
     {
         $host = WebsiteSetting::getByName("HOST")->getData();
         $url = $host . WebsiteSetting::getByName('URL_SAVE_MOTORCYCLE_LEADS_2')->getData();
+
+        $info_address = $request->get('info_address');
+        $info_assets = $request->get('info_assets');
+        $info_customer = $request->get('info_customer');
+
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
-        $param["province_id"] = htmlentities(addslashes($request->get('province_id')));
-        $param["city_id"] = htmlentities(addslashes($request->get('city_id')));
-        $param["district_id"] = htmlentities(addslashes($request->get('district_id')));
-        $param["subdistrict_id"] = htmlentities(addslashes($request->get('subdistrict_id')));
-        $param["zipcode_id"] = htmlentities(addslashes($request->get('zipcode_id')));
-        $param["address"] = htmlentities(addslashes($request->get('address')));
+        $param["info_address"]["province_id_bfi"] = htmlentities(addslashes($info_address['province_id_bfi']));
+        $param["info_address"]["province_desc_bfi"] = htmlentities(addslashes($info_address['province_desc_bfi']));
+        $param["info_address"]["city_id_bfi"] = htmlentities(addslashes($info_address['city_id_bfi']));
+        $param["info_address"]["city_desc_bfi"] = htmlentities(addslashes($info_address['city_desc_bfi']));
+        $param["info_address"]["district_id_bfi"] = htmlentities(addslashes($info_address['district_id_bfi']));
+        $param["info_address"]["district_desc_bfi"] = htmlentities(addslashes($info_address['district_desc_bfi']));
+        $param["info_address"]["subdistrict_id_bfi"] = htmlentities(addslashes($info_address['subdistrict_id_bfi']));
+        $param["info_address"]["subdistrict_desc_bfi"] = htmlentities(addslashes($info_address['subdistrict_desc_bfi']));
+        $param["info_address"]["zipcode_id_bfi"] = htmlentities(addslashes($info_address['zipcode_id_bfi']));
+        $param["info_address"]["zipcode_desc_bfi"] = htmlentities(addslashes($info_address['zipcode_desc_bfi']));
+        $param["info_address"]["full_address"] = htmlentities(addslashes($info_address['full_address']));
+        $param["info_assets"]["type_id_bfi"] = htmlentities(addslashes($info_assets['type_id_bfi']));
+        $param["info_assets"]["type_desc_bfi"] = htmlentities(addslashes($info_assets['type_desc_bfi']));
+        $param["info_assets"]["brand_id_bfi"] = htmlentities(addslashes($info_assets['brand_id_bfi']));
+        $param["info_assets"]["brand_desc_bfi"] = htmlentities(addslashes($info_assets['brand_desc_bfi']));
+        $param["info_assets"]["model_id_bfi"] = htmlentities(addslashes($info_assets['model_id_bfi']));
+        $param["info_assets"]["model_desc_bfi"] = htmlentities(addslashes($info_assets['model_desc_bfi']));
+        $param["info_assets"]["vehicle_year_bfi"] = htmlentities(addslashes($info_assets['vehicle_year_bfi']));
+        $param["info_assets"]["license_plate"] = htmlentities(addslashes($info_assets['license_plate']));
+        $param["info_assets"]["asset_ownership_id_bfi"] = htmlentities(addslashes($info_assets['asset_ownership_id_bfi']));
+        $param["info_assets"]["asset_ownership_desc_bfi"] = htmlentities(addslashes($info_assets['asset_ownership_desc_bfi']));
+        $param["info_assets"]["home_ownership_id_bfi"] = htmlentities(addslashes($info_assets['home_ownership_id_bfi']));
+        $param["info_assets"]["home_ownership_desc_bfi"] = htmlentities(addslashes($info_assets['home_ownership_desc_bfi']));
+        $param["info_customer"]["profession_id_bfi"] = htmlentities(addslashes($info_customer['profession_id_bfi']));
+        $param["info_customer"]["profession_desc_bfi"] = htmlentities(addslashes($info_customer['profession_desc_bfi']));
+        $param["info_customer"]["salary"] = htmlentities(addslashes($info_customer['salary']));
+        $param["info_customer"]["dob"] = htmlentities(addslashes($info_customer['dob']));
 
         try {
             $data = $this->sendAPI->saveMotorcycleLeads2($url, $param);
+            if ($data->header->status == 200) {
+                return new JsonResponse([
+                    'success' => "1",
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => "0",
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
         } catch (\Exception $e) {
-            throw new \Exception('Something went wrong!');
-        }
-
-        if ($data->header->status == 200) {
             return new JsonResponse([
-                'success' => "1",
-                'message' => "success",
-                'data' => $data->data
-            ]);
-        } else {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => $this->get("translator")->trans("api-error")
+                'success' => 0,
+                'message' => $e->getMessage()
             ]);
         }
     }
@@ -1531,29 +1559,32 @@ class CreditController extends FrontendController
     {
         $host = WebsiteSetting::getByName("HOST")->getData();
         $url = $host . WebsiteSetting::getByName('URL_SAVE_MOTORCYCLE_LEADS_3')->getData();
+
+        $info_calculator = $request->get('info_calculator');
+
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
-        $param["motorcycle_type_id"] = htmlentities(addslashes($request->get('motorcycle_type_id')));
-        $param["motorcycle_brand_id"] = htmlentities(addslashes($request->get('motorcycle_brand_id')));
-        $param["motorcycle_model_id"] = htmlentities(addslashes($request->get('motorcycle_model_id')));
-        $param["motorcycle_year_id"] = htmlentities(addslashes($request->get('motorcycle_year_id')));
-        $param["bpkb_atas_nama"] = htmlentities(addslashes($request->get('bpkb_atas_nama')));
+        $param["info_calculator"]["funding"] = htmlentities(addslashes($info_calculator['funding']));
+        $param["info_calculator"]["tenor"] = htmlentities(addslashes($info_calculator['tenor']));
+        $param["info_calculator"]["monthly_installment"] = htmlentities(addslashes($info_calculator['monthly_installment']));
 
         try {
             $data = $this->sendAPI->saveMotorcycleLeads3($url, $param);
+            if ($data->header->status == 200) {
+                return new JsonResponse([
+                    'success' => "1",
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => "0",
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
         } catch (\Exception $e) {
-            throw new \Exception('Something went wrong!');
-        }
-
-        if ($data->header->status == 200) {
             return new JsonResponse([
-                'success' => "1",
-                'message' => "success",
-                'data' => $data->data
-            ]);
-        } else {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => $this->get("translator")->trans("api-error")
+                'success' => 0,
+                'message' => $e->getMessage()
             ]);
         }
     }
@@ -1563,23 +1594,26 @@ class CreditController extends FrontendController
         $host = WebsiteSetting::getByName("HOST")->getData();
         $url = $host . WebsiteSetting::getByName('URL_SAVE_MOTORCYCLE_LEADS_4')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+        $param["disclaimer"] = htmlentities(addslashes($request->get('disclaimer')));
 
         try {
             $data = $this->sendAPI->saveMotorcycleLeads4($url, $param);
+            if ($data->header->status == 200) {
+                return new JsonResponse([
+                    'success' => "1",
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => "0",
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
         } catch (\Exception $e) {
-            throw new \Exception('Something went wrong!');
-        }
-
-        if ($data->header->status == 200) {
             return new JsonResponse([
-                'success' => "1",
-                'message' => "success",
-                'data' => $data->data
-            ]);
-        } else {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => $this->get("translator")->trans("api-error")
+                'success' => 0,
+                'message' => $e->getMessage()
             ]);
         }
     }
@@ -1592,20 +1626,22 @@ class CreditController extends FrontendController
 
         try {
             $data = $this->sendAPI->saveMotorcycleLeads5($url, $param);
+            if ($data->header->status == 200) {
+                return new JsonResponse([
+                    'success' => "1",
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => "0",
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
         } catch (\Exception $e) {
-            throw new \Exception('Something went wrong!');
-        }
-
-        if ($data->header->status == 200) {
             return new JsonResponse([
-                'success' => "1",
-                'message' => "success",
-                'data' => $data->data
-            ]);
-        } else {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => $this->get("translator")->trans("api-error")
+                'success' => 0,
+                'message' => $e->getMessage()
             ]);
         }
     }

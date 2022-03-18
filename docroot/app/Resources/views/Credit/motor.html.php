@@ -219,9 +219,7 @@ $this->headScript()
                                         </div>
                                         <div class="form-group">
                                             <label for="tahun_kendaraan"><?= $this->translate('label-tahun') ?></label>
-                                            <select class="c-custom-select-trans form-control formRequired" placeholder="<?= $this->translate('placeholder-tahun') ?>" id="tahun_kendaraan" name="tahun_kendaraan" multiple="multiple">
-                                                <option value="" disabled selected> <?= $this->translate('placeholder-tahun') ?></option>
-                                            </select>
+                                            <input type="text" class="form-control formRequired" name="tahun_kendaraan" id="tahun_kendaraan" placeholder="<?= $this->translate('placeholder-tahun') ?>">
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">

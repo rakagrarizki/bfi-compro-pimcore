@@ -1134,10 +1134,10 @@ function getListHouseOwnership(element) {
             retryAjax(this, xhr);
         },
         success: function (result) {
-            $.each(result.data, function (id, val) {
+            $.each(result.data.data, function (id, val) {
                 if (val.is_active === true) {
                     dataHouseOwnership.push({
-                        id: val.id,
+                        id: val.an_bkr_id,
                         text: val.description,
                     });
                 }
