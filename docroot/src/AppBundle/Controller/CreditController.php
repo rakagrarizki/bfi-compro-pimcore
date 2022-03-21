@@ -1211,20 +1211,23 @@ class CreditController extends FrontendController
     public function getDuplicateLeadsAction(Request $request)
     {
         $token = $this->getTokenBearer();
-        $host = 'https://gateway-dev.bfi.co.id';
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
         $param['path'] = WebsiteSetting::getByName('URL_GET_DUPLICATE_LEADS')->getData();
-        $param['query'] = "mobile_phone=" . rawurlencode($request->get('mobile_phone'));
-        $param['query'] .= "&product_category=" . rawurlencode($request->get('product_category'));
+        $param['query'] = "is_prospect=" . rawurlencode($request->get('is_prospect'));
+        $param['query'] .= "&lead_program_id=" . rawurlencode($request->get('lead_program_id'));
+        $param['query'] .= "&data_type_2=" . rawurlencode($request->get('data_type_2'));
+        $param['query'] .= "&customer_type=" . rawurlencode($request->get('customer_type'));
+        $param['query'] .= "&license_plate=" . rawurlencode($request->get('license_plate'));
+        $param['query'] .= "&mobile_phone_1=" . rawurlencode($request->get('mobile_phone_1'));
         $url = $host . $param['path'] . "?" . $param['query'];
 
         try {
             $data = $this->sendAPI->getDuplicateLeads($url, $param, $token);
-            var_dump($data);
             if (empty($data->error)) {
                 return new JsonResponse([
                 'success' => 1,
                 'message' => "success",
-                'data' => $data->data
+                'data' => $data->data,
             ]);
             } else {
                 return new JsonResponse([

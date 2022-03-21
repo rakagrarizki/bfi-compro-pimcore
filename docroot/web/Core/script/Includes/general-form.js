@@ -1268,33 +1268,6 @@ function getAssetYear(asset_model, branch_id, fn) {
     });
 }
 
-function getDupcheck() {
-    let phone = "081322324173";
-    let license_plate = "";
-
-    $.ajax({
-        type: "POST",
-        url: "/credit/get-duplicate-leads",
-        headers: { Authorization: "Basic " + currentToken },
-        data: {
-            mobile_phone: phone,
-            product_category: "mobil",
-        },
-        dataType: "json",
-        error: function (xhr) {
-            retryAjax(this, xhr);
-        },
-        fail: function (xhr, textStatus, error) {
-            retryAjax(this, xhr);
-        },
-        success: function (result) {
-            if (result.message === "success") {
-                console.log(result);
-            }
-        },
-    });
-}
-
 $(".go-to-home").on("click", () => {
     window.location.href = "/";
 });
