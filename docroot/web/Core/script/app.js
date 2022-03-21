@@ -132,7 +132,7 @@ var urlLocation = window.location;
                 buttonText: "",
                 changeMonth: true,
                 changeYear: true,
-                dateFormat: "dd/mm/yy",
+                dateFormat: "yy-mm-dd",
                 yearRange: "-56:+0",
             });
         }

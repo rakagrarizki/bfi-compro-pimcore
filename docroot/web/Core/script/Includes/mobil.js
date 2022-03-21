@@ -94,10 +94,6 @@ $(document).ready(function () {
     sessionStorage.setItem("loanType", "NDFC");
 });
 
-$("#tgl_lahir").datepicker({
-    dateFormat: "yy-mm-dd",
-});
-
 $("input[name='is-wa-number']").click(function () {
     var is_WA = $(this).val();
     $(".wa-numbers").find("input").removeAttr("disabled");
@@ -174,7 +170,9 @@ $("#next2").on("click", function (e) {
     e.preventDefault();
     if ($(this).closest("form").valid()) {
         pushDataStep2(() => {
+            getDupcheck();
             getBranchCoverage(() => {
+                // TODO: change this parameter below with asset brand & branch coverage from API
                 getAssetYear("CHEVROLET.SPARK.LS10MT", "401", () => {
                     if ((assetYearExists = true)) {
                         step("next", 3);
@@ -183,7 +181,6 @@ $("#next2").on("click", function (e) {
                         });
                         getListHouseOwnership("#kepemilikan_rumah");
                         getListMaritalStatus("#marital_status");
-                        // getDupcheck();
                     }
                 });
             });
@@ -335,6 +332,7 @@ function pushDataStep3(cb) {
             marital_status_desc_bfi: $(
                 "#marital_status option:selected"
             ).html(),
+            // TODO: change data below
             media_contact_option: "test",
         },
         info_assets: {
@@ -379,6 +377,7 @@ function pushDataStep3(cb) {
         info_calculator: {
             funding: clearDot($("#pembiayaan").val()),
             tenor: $("#tenor").val().toString(),
+            // TODO: change data below
             monthly_installment: "40000000",
             vehicle_insurance: "ARS-TLO",
             ltv_max: 0.9,
@@ -454,6 +453,38 @@ function pushDataStep5() {
                 });
                 $("#menu5").removeClass("active");
                 $("#success").addClass("active");
+            }
+        },
+    });
+}
+
+function getDupcheck() {
+    let license_plate = $("#plat-no").val().replaceAll(" ", "");
+    let phone_number = parseInt(dataStep1.phone_number);
+    let dataDupcheck = {
+        is_prospect: false,
+        lead_program_id: "1",
+        data_type_2: "Database",
+        customer_type: "P",
+        license_plate: license_plate,
+        mobile_phone_1: phone_number,
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "/credit/get-duplicate-leads",
+        headers: { Authorization: "Basic " + currentToken },
+        data: dataDupcheck,
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            if (result.message === "success") {
+                console.log(result);
             }
         },
     });
