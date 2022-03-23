@@ -134,7 +134,9 @@ $("#next2").on("click", function (e) {
     // step("next", 3);
     if ($(this).closest("form").valid()) {
         pushDataStep2(() => {
-            step("next", 3);
+            getDupcheck(() => {
+                step("next", 3);
+            });
         });
     }
 });
@@ -223,7 +225,7 @@ function pushDataStep2(cb) {
             model_id_bfi: $("#model_kendaraan").val().toString(),
             model_desc_bfi: $("#model_kendaraan option:selected").html(),
             vehicle_year_bfi: $("#tahun_kendaraan").val(), // setelah dupcheck baru cek pricelist
-            license_plate: "B9283LPT", // cek update dupcheck dulu
+            license_plate: $("#plat-no").val(), // cek update dupcheck dulu
             asset_ownership_id_bfi: $("#kepemilikan_bpkb").val().toString(),
             asset_ownership_desc_bfi: $(
                 "#kepemilikan_bpkb option:selected"
@@ -338,6 +340,47 @@ function pushDataStep5() {
             if (res.message === "success") {
                 $("#menu5").removeClass("active");
                 $("#success").addClass("active");
+            }
+        },
+    });
+}
+
+function getDupcheck(cb) {
+    let license_plate = $("#plat-no").val().replaceAll(" ", "");
+    let phone_number = parseInt(dataStep1.phone_number);
+    let dataDupcheck = {
+        is_prospect: false,
+        lead_program_id: "2",
+        data_type_2: "Database",
+        customer_type: "P",
+        license_plate: license_plate,
+        mobile_phone_1: phone_number,
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "/credit/get-duplicate-leads",
+        headers: { Authorization: "Basic " + currentToken },
+        data: dataDupcheck,
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            if (result.message === "success") {
+                if (result.data.is_duplicate == true) {
+                    window.location =
+                        "/" +
+                        lang +
+                        "/credit/pengajuan-gagal?dupcheck=true&product=" +
+                        sessionStorage.getItem("loanType");
+                } else {
+                    cb();
+                    console.log(result);
+                }
             }
         },
     });
