@@ -2588,7 +2588,6 @@ return [
         "siteId" => [
 
         ],
-
         "priority" => 0,
         "legacy" => FALSE,
         "creationDate" => 1567583908,
@@ -2602,6 +2601,24 @@ return [
         "module" => "AppBundle",
         "controller" => "@AppBundle\\Controller\\CreditController",
         "action" => "getListHouseOwnership",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+    150 => [
+        "id" => 150,
+        "name" => "get duplicate leads",
+        "pattern" => "/\\/credit\\/get-duplicate-leads/",
+        "reverse" => "/credit/get-duplicate-leads",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getDuplicateLeads",
         "variables" => "",
         "defaults" => NULL,
         "siteId" => [
