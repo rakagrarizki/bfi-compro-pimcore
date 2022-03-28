@@ -867,4 +867,10 @@ class SendApi
     {
         return $this->executeApiSignature('getListHouseOwnership', false, $url, '', "GET", $token);
     }
+
+    public function getDuplicateLeads($url, $param, $token)
+    {
+        return $this->executeApiSignature('getDuplicateLeads', false, $url, '', "GET", $token);
+    }
+
 }
