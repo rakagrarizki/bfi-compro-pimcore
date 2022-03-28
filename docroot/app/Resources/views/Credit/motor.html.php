@@ -194,14 +194,14 @@ $this->headScript()
                                             <h3><?= $this->translate('data-asset-title') ?></h3>
                                             <p><?= $this->translate('data-asset-subtitle') ?></p>
                                         </div>
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <label for="near_branch"><?= $this->translate('label-near-branch')?></label>
                                             <select class="form-control formRequired" id="near_branch" name="near_branch"
                                                     placeholder="<?= $this->translate('choose-near-branch')?>" multiple="multiple" />
                                                 <option value="" disabled selected><?= $this->translate('choose-near-branch')?></option>
                                             </select>
                                             <div class="error-wrap"></div>
-                                        </div>
+                                        </div> -->
                                         <div class="form-group">
                                             <label><?= $this->translate('label-merk') ?></label>
                                             <select class="c-custom-select-trans form-control formRequired" placeholder="<?= $this->translate('placeholder-merk') ?>" id="merk_kendaraan" name="merk_kendaraan" multiple="multiple">
@@ -223,11 +223,34 @@ $this->headScript()
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
+                                            <label for="plat-no"><?= $this->translate('label-number-plat') ?></label>
+                                            <input type="text" class="form-control formRequired" name="plat-no" id="plat-no" placeholder="<?= $this->translate('placeholder-number-plat') ?>">
+                                            <div class="error-wrap"></div>
+                                        </div>
+                                        <div class="form-group">
                                             <label for="kepemilikan_bpkb"><?= $this->translate('label-bpkb-ownership') ?></label>
                                             <select class="c-custom-select-trans form-control formRequired" placeholder="<?= $this->translate('placeholder-bpkb-ownership') ?>" id="kepemilikan_bpkb" name="kepemilikan_bpkb" multiple="multiple" >
                                                 <option value="" disabled selected> <?= $this->translate('placeholder-bpkb-ownership') ?></option>
                                             </select>
                                             <div class="error-wrap"></div>
+                                        </div>
+                                        <div class="form-group radio-group">
+                                            <label>Pajak</label>
+                                            <div class="radio-button">
+                                                <div class="radio-wrap">
+                                                    <input type="radio" class="inputs formRequired" id="action-call"
+                                                        name="action-call" value="true">
+                                                    <label
+                                                        for="action-call"><?=$this->translate('option-text-wa') ?></label>
+                                                </div>
+                                                <div class="radio-wrap">
+                                                    <input type="radio" class="inputs formRequired" id="action-call1"
+                                                        name="action-call" value="false">
+                                                    <label
+                                                        for="action-call1"><?=$this->translate('option-text-tlfn') ?></label>
+                                                </div>
+                                                <div class="error-wrap"></div>
+                                            </div>
                                         </div>
                                         <div class="text-title-form">
                                             <h3><?= $this->translate('data-aditional-title') ?></h3>
@@ -246,24 +269,6 @@ $this->headScript()
                                                 <option value="" disabled selected><?=$this->translate('placeholder-work') ?></option>
                                             </select>
                                             <div class="error-wrap"></div>
-                                        </div>
-                                        <div class="form-group radio-group">
-                                            <label><?= $this->translate('action-call') ?></label>
-                                            <div class="radio-button">
-                                                <div class="radio-wrap">
-                                                    <input type="radio" class="inputs formRequired" id="action-call"
-                                                        name="action-call" value="whatsapp">
-                                                    <label
-                                                        for="action-call"><?=$this->translate('option-text-wa') ?></label>
-                                                </div>
-                                                <div class="radio-wrap">
-                                                    <input type="radio" class="inputs formRequired" id="action-call1"
-                                                        name="action-call" value="telepon">
-                                                    <label
-                                                        for="action-call1"><?=$this->translate('option-text-tlfn') ?></label>
-                                                </div>
-                                                <div class="error-wrap"></div>
-                                            </div>
                                         </div>
                                         <div class="form-group radio-group wa-number-same" hidden>
                                             <label><?= $this->translate('is-wa-number-same') ?></label>
