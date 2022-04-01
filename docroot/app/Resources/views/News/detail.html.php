@@ -24,7 +24,7 @@ $urlFacebook = " https://www.facebook.com/sharer/sharer.php?u=" . $fixedurl . "&
 $urlTwitter = " https://twitter.com/share?text=$titleshare&url=$fixedurl&wrap_links=true ";
 ?>
 <?php 
-$this->headTitle()->append($news->getTitle());
+($news->getMetaTitle()) ? $this->headTitle()->append($news->getMetaTitle()) : $this->headTitle()->append($news->getTitle() . " - BFI Finance");
 // setting content type and character set
 $this->headMeta()->appendHttpEquiv('Content-Type', 'text/html; charset=UTF-8')->appendHttpEquiv('Content-Language', 'en-US');
 // setting open graph tags
