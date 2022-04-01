@@ -44,7 +44,7 @@
         // use the manually set description if available
         $this->headMeta()->appendName('description', $this->document->getDescription());
     }
-
+    $this->document->getProperty('keyword') ? $this->headMeta()->appendName('keyword', $this->document->getProperty('keyword')) : "";
     echo $this->headTitle();
     echo $this->headMeta();
     ?>
