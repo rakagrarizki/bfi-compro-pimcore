@@ -5,7 +5,7 @@
  * @var \Pimcore\Templating\GlobalVariables $app
  */
 
-    $this->extend('layout-content.html.php');
+$this->extend('layout-content.html.php');
 
 ?>
 <?= $this->areablock('areaBlock');?>

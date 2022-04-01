@@ -11,7 +11,7 @@ use Pimcore\Model\Asset;
 $this->extend('layout.html.php');
 $promo = $this->promo;
 
-$this->headTitle()->append($promo->getTitle() . " - BFI Finance");
+($promo->getMetaTitle()) ? $this->headTitle()->append($promo->getMetaTitle()) : $this->headTitle()->append($promo->getTitle() . " - BFI Finance");
 
 // setting content type and character set
 $this->headMeta()->appendHttpEquiv('Content-Type', 'text/html; charset=UTF-8')->appendHttpEquiv('Content-Language', 'en-US');
