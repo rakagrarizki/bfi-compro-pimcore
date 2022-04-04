@@ -146,10 +146,10 @@ $("#next1").on("click", function (e) {
     e.preventDefault();
     if ($(this).closest("form").valid()) {
         pushDataStep1(() => {
-            step("next", 2);
             window.dataLayer.push({
                 event: "ValidFormNDFCStep1",
             });
+            step("next", 2);
             getAuthorizationToken();
             getListProvinsi("#provinsi");
             getListAssets("mobil");
@@ -170,18 +170,19 @@ $("#next2").on("click", function (e) {
     e.preventDefault();
     if ($(this).closest("form").valid()) {
         pushDataStep2(() => {
-            getDupcheck();
-            getBranchCoverage(() => {
-                // TODO: change this parameter below with asset brand & branch coverage from API
-                getAssetYear("CHEVROLET.SPARK.LS10MT", "401", () => {
-                    if ((assetYearExists = true)) {
-                        step("next", 3);
-                        window.dataLayer.push({
-                            event: "ValidFormNDFCStep2",
-                        });
-                        getListHouseOwnership("#kepemilikan_rumah");
-                        getListMaritalStatus("#marital_status");
-                    }
+            getDupcheck(() => {
+                getBranchCoverage(() => {
+                    // TODO: change this parameter below with asset brand & branch coverage from API
+                    getAssetYear("CHEVROLET.SPARK.LS10MT", "401", () => {
+                        if ((assetYearExists = true)) {
+                            window.dataLayer.push({
+                                event: "ValidFormNDFCStep2",
+                            });
+                            step("next", 3);
+                            getListHouseOwnership("#kepemilikan_rumah");
+                            getListMaritalStatus("#marital_status");
+                        }
+                    });
                 });
             });
         });
@@ -458,7 +459,7 @@ function pushDataStep5() {
     });
 }
 
-function getDupcheck() {
+function getDupcheck(cb) {
     let license_plate = $("#plat-no").val().replaceAll(" ", "");
     let phone_number = parseInt(dataStep1.phone_number);
     let dataDupcheck = {
@@ -484,7 +485,16 @@ function getDupcheck() {
         },
         success: function (result) {
             if (result.message === "success") {
-                console.log(result);
+                if (result.data.is_duplicate === true) {
+                    window.location =
+                        "/" +
+                        lang +
+                        "credit/pengajuan-gagal?dupcheck=true&product=" +
+                        sessionStorage.getItem("loanType");
+                } else {
+                    cb();
+                    console.log(result);
+                }
             }
         },
     });
