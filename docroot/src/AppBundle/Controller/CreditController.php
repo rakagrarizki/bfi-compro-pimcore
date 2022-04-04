@@ -1243,6 +1243,142 @@ class CreditController extends FrontendController
         }
     }
 
+    public function getProductDetailAction(Request $request){
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $param['path'] = WebsiteSetting::getByName('URL_GET_PRODUCT_DETAIL')->getData();
+        $param['query'] = "product_id=" . rawurlencode($request->get('product_id'));
+        $param['query'] .= "&asset_group=" . rawurlencode($request->get('asset_group'));
+        $param['query'] .= "&customer_rating=" . rawurlencode($request->get('customer_rating'));
+        $param['query'] .= "&asset_age=" . rawurlencode($request->get('asset_age'));
+        $param['query'] .= "&tenor=" . rawurlencode($request->get('tenor'));
+        $param['query'] .= "&amount_funding_to=" . rawurlencode($request->get('amount_funding_to'));
+        $url = $host . $param['path'] . "?" . $param['query'];
+
+        try{
+            $data = $this->sendAPI->getProductDetail($url, $param, $token);
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data,
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
+    public function getProductBranchDetailAction(Request $request){
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $param['path'] = WebsiteSetting::getByName('URL_GET_PRODUCT_BRANCH_DETAIL')->getData();
+        $param['query'] = "branch_id=" . rawurlencode($request->get('branch_id'));
+        $param['query'] .= "&product_id=" . rawurlencode($request->get('product_id'));
+        $param['query'] .= "&asset_group=" . rawurlencode($request->get('asset_group'));
+        $param['query'] .= "&customer_rating=" . rawurlencode($request->get('customer_rating'));
+        $param['query'] .= "&asset_age=" . rawurlencode($request->get('asset_age'));
+        $param['query'] .= "&tenor=" . rawurlencode($request->get('tenor'));
+        $param['query'] .= "&amount_funding_to=" . rawurlencode($request->get('amount_funding_to'));
+        $url = $host . $param['path'] . "?" . $param['query'];
+
+        try{
+            $data = $this->sendAPI->getProductBranchDetail($url, $param, $token);
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data,
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
+    public function getListPromoCriteriaAction(Request $request){
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $param['path'] = WebsiteSetting::getByName('URL_GET_LIST_PROMO_CRITERIA')->getData();
+        $param['query'] = "branch_id=" . rawurlencode($request->get('branch_id'));
+        $param['query'] .= "&manufacturing_year=" . rawurlencode($request->get('manufacturing_year'));
+        $param['query'] .= "&funding=" . rawurlencode($request->get('funding'));
+        $param['query'] .= "&age=" . rawurlencode($request->get('age'));
+        $param['query'] .= "&otr=" . rawurlencode($request->get('otr'));
+        $param['query'] .= "&tenor=" . rawurlencode($request->get('tenor'));
+        $param['query'] .= "&asset_category=" . rawurlencode($request->get('asset_category'));
+        $url = $host . $param['path'] . "?" . $param['query'];
+
+        try{
+            $data = $this->sendAPI->getListPromoCriteria($url, $param, $token);
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data,
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
+    public function getFiduciaFeeAction(Request $request){
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $param['path'] = WebsiteSetting::getByName('URL_GET_FIDUCIA_FEE')->getData();
+        $param['query'] = "branch_id=" . rawurlencode($request->get('branch_id'));
+        $param['query'] .= "&asset_type_id=" . rawurlencode($request->get('asset_type_id'));
+        $param['query'] .= "&category_id=" . rawurlencode($request->get('category_id'));
+        $param['query'] .= "&otr=" . rawurlencode($request->get('otr'));
+        $url = $host . $param['path'] . "?" . $param['query'];
+
+        try{
+            $data = $this->sendAPI->getFiduciaFee($url, $param, $token);
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data,
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
     public function getTokenBearer()
     {
         $tokenBearer = $this->get('session')->get('tokenBearer');

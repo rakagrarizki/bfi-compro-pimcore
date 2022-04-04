@@ -2683,4 +2683,76 @@ return [
         "creationDate" => 1567583908,
         "modificationDate" => 1567583948
     ],
+    154 => [
+        "id" => 154,
+        "name" => "get list product detail",
+        "pattern" => "/\\/credit\\/get-list-product-detail/",
+        "reverse" => "/credit/get-list-product-detail",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getProductDetail",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+    155 => [
+        "id" => 155,
+        "name" => "get list product branch detail",
+        "pattern" => "/\\/credit\\/get-list-product-branch-detail/",
+        "reverse" => "/credit/get-list-product-branch-detail",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getProductBranchDetail",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+    156 => [
+        "id" => 156,
+        "name" => "get list promo criteria",
+        "pattern" => "/\\/credit\\/get-list-promo-criteria/",
+        "reverse" => "/credit/get-list-promo-criteria",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getListPromoCriteria",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+    157 => [
+        "id" => 157,
+        "name" => "get fiducia fee",
+        "pattern" => "/\\/credit\\/get-fiducia-fee/",
+        "reverse" => "/credit/get-fiducia-fee",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getFiduciaFee",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
 ];

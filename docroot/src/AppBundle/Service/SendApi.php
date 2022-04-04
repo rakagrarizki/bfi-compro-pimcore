@@ -889,4 +889,25 @@ class SendApi
     {
         return $this->executeApiSignature('getDuplicateLeads', false, $url, $param, "GET", $token);
     }
+
+    public function getProductDetail($url, $param, $token){
+        return $this->executeApiSignature('getProductDetail', false, $url, $param, "GET", $token);
+    }
+
+    public function getProductBranchDetail($url, $param, $token){
+        return $this->executeApiSignature('getProductBranchDetail', false, $url, $param, "GET", $token);
+    }
+
+    public function getListPromoCriteria($url, $param, $token){
+        return $this->executeApiSignature('getListPromoCriteria', false, $url, $param, "GET", $token);
+    }
+
+    public function getFiduciaFee($url, $param, $token)
+    {
+        return $this->executeApiSignature('getFiduciaFee', false, $url, $param, "GET", $token);
+    }
+
+    public function getEstimateInstallment($url, $param, $token){
+        return $this->executeApiSignature('getEstimateInstallment', false, $url, $param, "POST", $token);
+    }
 }
