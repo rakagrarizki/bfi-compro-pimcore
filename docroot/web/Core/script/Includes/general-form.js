@@ -1263,6 +1263,108 @@ function getAssetYear(asset_model, branch_id, fn) {
     });
 }
 
+function getProductDetail() {
+    let param = {
+        product_id: "2221",
+        asset_group: "",
+        customer_rating: "",
+        asset_age: "5",
+        tenor: "12",
+        amount_funding_to: "",
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "/credit/get-list-product-detail",
+        headers: { Authorization: "Basic " + currentToken },
+        data: param,
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            console.log(result);
+        },
+    });
+}
+
+function getProductBranchDetail() {
+    let param = {
+        branch_id: "401",
+        product_id: "2221",
+        asset_group: "",
+        customer_rating: "",
+        asset_age: "5",
+        tenor: "12",
+        amount_funding_to: "",
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "/credit/get-list-product-branch-detail",
+        headers: { Authorization: "Basic " + currentToken },
+        data: param,
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            console.log(result);
+        },
+    });
+}
+
+function getListPromoCriteria() {
+    $.ajax({
+        type: "POST",
+        url: "/credit/get-list-promo-criteria",
+        headers: { Authorization: "Basic " + currentToken },
+        data: { branch_id: "" },
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            console.log(result);
+        },
+    });
+}
+
+function getFiduciaFee() {
+    let param = {
+        product_id: "2221",
+        asset_type_id: "",
+        category_id: "",
+        otr: "",
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "/credit/get-fiducia-fee",
+        headers: { Authorization: "Basic " + currentToken },
+        data: param,
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            console.log(result);
+        },
+    });
+}
+
 $(".go-to-home").on("click", () => {
     window.location.href = "/";
 });
@@ -1300,6 +1402,10 @@ function maritalStatusTranslate(status) {
         default:
             return status;
     }
+}
+function productCarFilter(category) {
+    const categorySJMB = ["SEDAN", "JEEP", "MINI BUS"];
+    return categorySJMB.includes(category) ? "2221" : "2222";
 }
 
 function clearDot(x) {
