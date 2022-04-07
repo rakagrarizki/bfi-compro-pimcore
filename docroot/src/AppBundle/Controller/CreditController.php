@@ -1379,6 +1379,35 @@ class CreditController extends FrontendController
         }
     }
 
+    public function getPricelistPagingAction(Request $request){
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $param['path'] = WebsiteSetting::getByName('URL_GET_PRICELIST_PAGING')->getData();
+        $param['query'] = "asset_code=" . rawurlencode($request->get('asset_code'));
+        $url = $host . $param['path'] . "?" . $param['query'];
+
+        try{
+            $data = $this->sendAPI->getPricelistPaging($url, $param, $token);
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data,
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
     public function getTokenBearer()
     {
         $tokenBearer = $this->get('session')->get('tokenBearer');
