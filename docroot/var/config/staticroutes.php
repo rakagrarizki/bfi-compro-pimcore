@@ -2755,4 +2755,22 @@ return [
         "creationDate" => 1567583908,
         "modificationDate" => 1567583948
     ],
+    158 => [
+        "id" => 158,
+        "name" => "get pricelist paging",
+        "pattern" => "/\\/credit\\/get-pricelist-paging/",
+        "reverse" => "/credit/get-pricelist-paging",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getPricelistPaging",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
 ];

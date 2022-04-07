@@ -1365,6 +1365,25 @@ function getFiduciaFee() {
     });
 }
 
+function getPricelistPaging() {
+    $.ajax({
+        type: "POST",
+        url: "/credit/get-pricelist-paging",
+        headers: { Authorization: "Basic " + currentToken },
+        data: { asset_code: "" },
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            console.log(result);
+        },
+    });
+}
+
 $(".go-to-home").on("click", () => {
     window.location.href = "/";
 });

@@ -905,6 +905,11 @@ class SendApi
         return $this->executeApiSignature('getFiduciaFee', false, $url, $param, "GET", $token);
     }
 
+    public function getPricelistPagin($url, $param, $token)
+    {
+        return $this->executeApiSignature('getPricelistPagin', false, $url, $param, "GET", $token);
+    }
+
     public function getEstimateInstallment($url, $param, $token){
         return $this->executeApiSignature('getEstimateInstallment', false, $url, $param, "POST", $token);
     }
