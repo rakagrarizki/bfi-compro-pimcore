@@ -181,6 +181,15 @@ $("#next2").on("click", function (e) {
                             step("next", 3);
                             getListHouseOwnership("#kepemilikan_rumah");
                             getListMaritalStatus("#marital_status");
+                            $("#brand-caption").text(
+                                $("#merk_kendaraan").val().toString()
+                            );
+                            $("#model-caption").text(
+                                $("#model_kendaraan option:selected").html()
+                            );
+                            $("#year-caption").text(
+                                $("#tahun_kendaraan").val()
+                            );
                         }
                     });
                 });
