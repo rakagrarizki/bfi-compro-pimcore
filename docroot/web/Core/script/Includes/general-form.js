@@ -987,13 +987,6 @@ function getListZipcode() {
     });
 }
 
-<<<<<<< HEAD
-=======
-let dataAssets = [];
-let rawAssetBrand = [];
-let branch_id = "";
-
->>>>>>> 7183c685 (integration API get branch coverage & get asset year)
 function getListAssets(assetType) {
     // TODO : add paging to fetch all data
     $.ajax({
@@ -1625,10 +1618,6 @@ function bpkbOwnershipTranslate(status) {
             return status;
     }
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> 09552f14 (update push data step 3)
 function maritalStatusTranslate(status) {
     switch (status) {
         case "Divorce":

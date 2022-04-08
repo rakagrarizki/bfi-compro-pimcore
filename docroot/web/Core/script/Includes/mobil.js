@@ -215,6 +215,11 @@ $("#next2").on("click", function (e) {
 $("#next3").on("click", function (e) {
     e.preventDefault();
     if ($(this).closest("form").valid()) {
+        getFiduciaFee();
+        getPricelistPaging();
+        getProductDetail();
+        getProductBranchDetail();
+        getListPromoCriteria();
         $("#modal-konfirmasi").modal("show");
     }
 });
