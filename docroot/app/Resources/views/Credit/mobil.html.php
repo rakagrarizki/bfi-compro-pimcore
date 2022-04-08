@@ -399,15 +399,15 @@ $this->headScript()
                                             <div class="row">
                                                 <div class="col-xs-3">
                                                     <p class="title"><?= $this->translate('brand') ?></p>
-                                                    <p class="subtitle">Toyota</p>
+                                                    <p class="subtitle" id="brand-caption">Toyota</p>
                                                 </div>
                                                 <div class="col-xs-6">
                                                     <p class="title"><?= $this->translate('model') ?></p>
-                                                    <p class="subtitle">TOYOTA-AGYA-G 1.0 AT</p>
+                                                    <p class="subtitle" id="model-caption">TOYOTA-AGYA-G 1.0 AT</p>
                                                 </div>
                                                 <div class="col-xs-3">
                                                     <p class="title"><?= $this->translate('year') ?></p>
-                                                    <p class="subtitle">2015</p>
+                                                    <p class="subtitle" id="year-caption">2015</p>
                                                 </div>
                                             </div>
                                         </div>
