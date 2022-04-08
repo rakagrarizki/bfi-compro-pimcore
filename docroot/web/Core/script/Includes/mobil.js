@@ -191,6 +191,11 @@ $("#next2").on("click", function (e) {
 $("#next3").on("click", function (e) {
     e.preventDefault();
     if ($(this).closest("form").valid()) {
+        getFiduciaFee();
+        getPricelistPaging();
+        getProductDetail();
+        getProductBranchDetail();
+        getListPromoCriteria();
         $("#modal-konfirmasi").modal("show");
     }
 });
@@ -211,12 +216,6 @@ $("#next5").on("click", function (e) {
     e.preventDefault();
     if ($(this).closest("form").valid()) {
         verificationOTP();
-        // send data layer if otp success
-        window.dataLayer.push({
-            event: "ValidFormNDFCStepOTP",
-        });
-        $("#menu5").removeClass("active");
-        $("#success").addClass("active");
     }
 });
 
@@ -450,7 +449,7 @@ function pushDataStep5() {
         success: function (result) {
             if (result.message === "success") {
                 window.dataLayer.push({
-                    event: "ValidFormStepOTP",
+                    event: "ValidFormNDFCStepOTP",
                 });
                 $("#menu5").removeClass("active");
                 $("#success").addClass("active");
@@ -493,7 +492,6 @@ function getDupcheck(cb) {
                         sessionStorage.getItem("loanType");
                 } else {
                     cb();
-                    console.log(result);
                 }
             }
         },
