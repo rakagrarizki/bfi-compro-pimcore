@@ -962,6 +962,7 @@ function getListZipcode() {
 
 let dataAssets = [];
 let rawAssetBrand = [];
+let assetCode = "";
 let branch_id = "";
 
 function getListAssets(assetType) {
@@ -986,7 +987,9 @@ function getListAssets(assetType) {
                         model_desc: val.model_desc,
                         brand: val.brand,
                         brand_desc: val.brand_desc,
+                        asset_code: val.asset_code,
                         asset_group: val.asset_group,
+                        asset_type_id: val.asset_type_id,
                     });
                 });
                 filterAssetType();
@@ -1223,7 +1226,9 @@ function getBranchCoverage(fn) {
         },
         success: function (result) {
             if (result.message === "success") {
-                branch_id = result.data[0].branch_id;
+                if (result.data !== null) {
+                    branch_id = result.data[0].branch_id;
+                }
                 fn();
             }
         },
@@ -1266,11 +1271,11 @@ function getAssetYear(asset_model, branch_id, fn) {
 function getProductDetail() {
     let param = {
         product_id: "2221",
-        asset_group: "",
-        customer_rating: "",
+        asset_group: rawAssetBrand[0].asset_group,
+        customer_rating: "2",
         asset_age: "5",
         tenor: "12",
-        amount_funding_to: "",
+        amount_funding_to: "200000",
     };
 
     $.ajax({
@@ -1295,11 +1300,11 @@ function getProductBranchDetail() {
     let param = {
         branch_id: "401",
         product_id: "2221",
-        asset_group: "",
-        customer_rating: "",
+        asset_group: rawAssetBrand[0].asset_group,
+        customer_rating: "2",
         asset_age: "5",
         tenor: "12",
-        amount_funding_to: "",
+        amount_funding_to: "200000",
     };
 
     $.ajax({
@@ -1325,7 +1330,7 @@ function getListPromoCriteria() {
         type: "POST",
         url: "/credit/get-list-promo-criteria",
         headers: { Authorization: "Basic " + currentToken },
-        data: { branch_id: "" },
+        data: { branch_id: "401" },
         dataType: "json",
         error: function (xhr) {
             retryAjax(this, xhr);
@@ -1341,10 +1346,10 @@ function getListPromoCriteria() {
 
 function getFiduciaFee() {
     let param = {
-        product_id: "2221",
-        asset_type_id: "",
-        category_id: "",
-        otr: "",
+        branch_id: "401",
+        asset_type_id: rawAssetBrand[0].asset_type_id,
+        category_id: rawAssetBrand[0].category,
+        otr: "12000000",
     };
 
     $.ajax({
@@ -1370,7 +1375,7 @@ function getPricelistPaging() {
         type: "POST",
         url: "/credit/get-pricelist-paging",
         headers: { Authorization: "Basic " + currentToken },
-        data: { asset_code: "" },
+        data: { asset_code: "MTRBAJAJ.PULSAR.220DTS" },
         dataType: "json",
         error: function (xhr) {
             retryAjax(this, xhr);
@@ -1423,7 +1428,7 @@ function maritalStatusTranslate(status) {
     }
 }
 function productCarFilter(category) {
-    const categorySJMB = ["SEDAN", "JEEP", "MINI BUS"];
+    const categorySJMB = ["SEDAN", "JEEP", "MNBUS"];
     return categorySJMB.includes(category) ? "2221" : "2222";
 }
 
