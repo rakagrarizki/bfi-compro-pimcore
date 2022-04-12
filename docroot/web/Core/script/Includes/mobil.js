@@ -154,11 +154,7 @@ $("#next1").on("click", function (e) {
                 window.dataLayer.push({
                     event: "ValidFormNDFCStep1",
                 });
-                // sessionStorage.setItem("submitStep1", true);
-                console.log("belum pernah submit");
                 sessionStorage.setItem("submitStep1", "true");
-            }else{
-                console.log("udah pernah submit");
             }
             step("next", 2);
             getAuthorizationToken();
