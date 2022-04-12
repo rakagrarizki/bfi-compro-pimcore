@@ -1426,41 +1426,6 @@ class CreditController extends FrontendController
         return $tokenBearer;
     }
 
-    public function getDuplicateLeadsAction(Request $request)
-    {
-        $token = $this->getTokenBearer();
-        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
-        $param['path'] = WebsiteSetting::getByName('URL_GET_DUPLICATE_LEADS')->getData();
-        $param['query'] = "is_prospect=" . rawurlencode($request->get('is_prospect'));
-        $param['query'] .= "&lead_program_id=" . rawurlencode($request->get('lead_program_id'));
-        $param['query'] .= "&data_type_2=" . rawurlencode($request->get('data_type_2'));
-        $param['query'] .= "&customer_type=" . rawurlencode($request->get('customer_type'));
-        $param['query'] .= "&license_plate=" . rawurlencode($request->get('license_plate'));
-        $param['query'] .= "&mobile_phone_1=" . rawurlencode($request->get('mobile_phone_1'));
-        $url = $host . $param['path'] . "?" . $param['query'];
-
-        try {
-            $data = $this->sendAPI->getDuplicateLeads($url, $param, $token);
-            if (empty($data->error)) {
-                return new JsonResponse([
-                'success' => 1,
-                'message' => "success",
-                'data' => $data->data,
-            ]);
-            } else {
-                return new JsonResponse([
-                'success' => 0,
-                'message' => $this->get("translator")->trans("api-error")
-            ]);
-        }
-        } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => $e->getMessage()
-            ]);
-        }
-    }
-
     // end of new api
 
     public function saveCarLeads1Action(Request $request)
