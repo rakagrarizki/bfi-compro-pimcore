@@ -92,6 +92,10 @@ $(document).ready(function () {
 
     getAuthorizationToken();
     sessionStorage.setItem("loanType", "NDFC");
+    sessionStorage.setItem("submitStep1", "false");
+    sessionStorage.setItem("submitStep2", "false");
+    sessionStorage.setItem("submitStep3", "false");
+    sessionStorage.setItem("submitStepOtp", "false");
 });
 
 $("input[name='is-wa-number']").click(function () {
@@ -146,9 +150,16 @@ $("#next1").on("click", function (e) {
     e.preventDefault();
     if ($(this).closest("form").valid()) {
         pushDataStep1(() => {
-            window.dataLayer.push({
-                event: "ValidFormNDFCStep1",
-            });
+            if(sessionStorage.getItem("submitStep1") === "false"){
+                window.dataLayer.push({
+                    event: "ValidFormNDFCStep1",
+                });
+                // sessionStorage.setItem("submitStep1", true);
+                console.log("belum pernah submit");
+                sessionStorage.setItem("submitStep1", "true");
+            }else{
+                console.log("udah pernah submit");
+            }
             step("next", 2);
             getAuthorizationToken();
             getListProvinsi("#provinsi");
@@ -175,9 +186,12 @@ $("#next2").on("click", function (e) {
                     // TODO: change this parameter below with asset brand & branch coverage from API
                     getAssetYear("CHEVROLET.SPARK.LS10MT", "401", () => {
                         if ((assetYearExists = true)) {
-                            window.dataLayer.push({
-                                event: "ValidFormNDFCStep2",
-                            });
+                            if(sessionStorage.getItem("submitStep2") === "false"){
+                                window.dataLayer.push({
+                                    event: "ValidFormNDFCStep2",
+                                });
+                                sessionStorage.setItem("submitStep2", "true");
+                            }
                             step("next", 3);
                             getListHouseOwnership("#kepemilikan_rumah");
                             getListMaritalStatus("#marital_status");
@@ -211,9 +225,12 @@ $("#next3").on("click", function (e) {
 $("#confirm-data").on("click", function (e) {
     e.preventDefault();
     pushDataStep3(() => {
-        window.dataLayer.push({
-            event: "ValidFormNDFCStep3",
-        });
+        if(sessionStorage.getItem("submitStep3") === "false"){
+            window.dataLayer.push({
+                event: "ValidFormNDFCStep3",
+            });
+            sessionStorage.setItem("submitStep3", "true");
+        }
         pushDataStep4(() => {
             showOtpVer2();
         });
@@ -457,9 +474,12 @@ function pushDataStep5() {
         },
         success: function (result) {
             if (result.message === "success") {
-                window.dataLayer.push({
-                    event: "ValidFormNDFCStepOTP",
-                });
+                if(sessionStorage.getItem("submitStepOtp") === "false"){
+                    window.dataLayer.push({
+                        event: "ValidFormNDFCStepOTP",
+                    });
+                    sessionStorage.setItem("submitStepOtp", "true");
+                }
                 $("#menu5").removeClass("active");
                 $("#success").addClass("active");
             }
