@@ -1270,7 +1270,7 @@ function getAssetYear(asset_model, branch_id, fn) {
 
 function getProductDetail() {
     let param = {
-        product_id: "2221",
+        product_id: productIdFilter(rawAssetBrand[0].category),
         asset_group: rawAssetBrand[0].asset_group,
         customer_rating: "2",
         asset_age: "5",
@@ -1299,7 +1299,7 @@ function getProductDetail() {
 function getProductBranchDetail() {
     let param = {
         branch_id: "401",
-        product_id: "2221",
+        product_id: productIdFilter(rawAssetBrand[0].category),
         asset_group: rawAssetBrand[0].asset_group,
         customer_rating: "2",
         asset_age: "5",
@@ -1375,7 +1375,7 @@ function getPricelistPaging() {
         type: "POST",
         url: "/credit/get-pricelist-paging",
         headers: { Authorization: "Basic " + currentToken },
-        data: { asset_code: "MTRBAJAJ.PULSAR.220DTS" },
+        data: { asset_code: assetCode },
         dataType: "json",
         error: function (xhr) {
             retryAjax(this, xhr);
@@ -1427,9 +1427,26 @@ function maritalStatusTranslate(status) {
             return status;
     }
 }
-function productCarFilter(category) {
+
+function productIdFilter(category) {
     const categorySJMB = ["SEDAN", "JEEP", "MNBUS"];
+    if (sessionStorage.getItem("loanType") === "NDFM") {
+        return "3178";
+    }
     return categorySJMB.includes(category) ? "2221" : "2222";
+}
+
+// TODO: need to be adjusted
+function PMT(ir, np, pv, fv = 0) {
+    // ir: interest rate
+    // np: number of payment
+    // pv: present value or loan amount
+    // fv: future value. default is 0
+    var presentValueInterstFector = Math.pow(1 + ir, np);
+    var pmt =
+        (ir * pv * (presentValueInterstFector + fv)) /
+        (presentValueInterstFector - 1);
+    return pmt;
 }
 
 function clearDot(x) {
