@@ -95,6 +95,11 @@ $this->headScript()
                                     <div class="error-wrap"></div>
                                 </div>
                                 <div class="form-group">
+                                    <label for="idnumber"><?= $this->translate('form-idnumber') ?></label>
+                                    <input type="text" class="form-control formIdnumber" name="idnumber" id="idnumber" placeholder="<?= $this->translate('placeholder-idnumber') ?>">
+                                    <div class="error-wrap"></div>
+                                </div>
+                                <div class="form-group">
                                     <label for="no_handphone"><?= $this->translate('form-hp') ?></label>
                                     <input type="tel" pattern="\d*" class="form-control formPhoneNumber" name="no_handphone" id="no_handphone" maxlength="13" placeholder="<?= $this->translate('placeholder-hp') ?>">
                                     <div class="error-wrap"></div>

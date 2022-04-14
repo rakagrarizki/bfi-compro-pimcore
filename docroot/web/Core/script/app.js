@@ -726,6 +726,13 @@ var urlLocation = window.location;
             licensePlate: /^[A-Za-z]{1,2}\s{1}\d{1,4}\s{1}[A-Za-z]{1,3}$/,
         },
 
+        formIdnumber: {
+            required: true,
+            number: true,
+            minlength: 16,
+            maxlength: 16,
+        },
+
         formAddress: {
             required: true,
             minlength: 15,
