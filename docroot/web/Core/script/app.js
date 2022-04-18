@@ -3135,47 +3135,48 @@ var urlLocation = window.location;
 
         var id = this.value;
         var params_getCity = { province_id: id };
+        if (sessionStorage.getItem("loanType") === "PBF") {
+            $.ajax({
+                type: "POST",
+                // url: '/service/city/listJson?id=' + id,
+                url: "/credit/get-city",
+                data: params_getCity,
+                dataType: "json",
+                error: function (data) {
+                    // console.log("[GET city]error" + data);
+                },
 
-        $.ajax({
-            type: "POST",
-            // url: '/service/city/listJson?id=' + id,
-            url: "/credit/get-city",
-            data: params_getCity,
-            dataType: "json",
-            error: function (data) {
-                // console.log("[GET city]error" + data);
-            },
+                fail: function (xhr, textStatus, error) {
+                    // console.log("request failed");
+                },
 
-            fail: function (xhr, textStatus, error) {
-                // console.log("request failed");
-            },
-
-            success: function (dataObj) {
-                if (dataObj.message === "success") {
-                    $.each(dataObj.data, function (idCity, valCity) {
-                        if (valCity.desc != "") {
-                            dataCity.push({
-                                id: valCity.id,
-                                text: valCity.desc,
-                            });
-                        }
-                    });
-                    $("#kota").select2({
-                        placeholder: kota_placeholder,
-                        dropdownParent: $("#kota").parent(),
-                        data: dataCity,
-                        language: {
-                            noResults: function () {
-                                return lang === "id"
-                                    ? "Tidak Ada Hasil yang Ditemukan"
-                                    : "No Result Found";
+                success: function (dataObj) {
+                    if (dataObj.message === "success") {
+                        $.each(dataObj.data, function (idCity, valCity) {
+                            if (valCity.desc != "") {
+                                dataCity.push({
+                                    id: valCity.id,
+                                    text: valCity.desc,
+                                });
+                            }
+                        });
+                        $("#kota").select2({
+                            placeholder: kota_placeholder,
+                            dropdownParent: $("#kota").parent(),
+                            data: dataCity,
+                            language: {
+                                noResults: function () {
+                                    return lang === "id"
+                                        ? "Tidak Ada Hasil yang Ditemukan"
+                                        : "No Result Found";
+                                },
                             },
-                        },
-                    });
-                    dataKotaSertificate = dataCity;
-                }
-            },
-        });
+                        });
+                        dataKotaSertificate = dataCity;
+                    }
+                },
+            });
+        }
     });
 
     $("#provinsi_sertificate").change(function () {
@@ -3325,47 +3326,49 @@ var urlLocation = window.location;
         var id = this.value;
         var param_getKecamatan = { city_id: id };
 
-        $.ajax({
-            type: "POST",
-            // url: '/service/kecamatan/listJson?id=' + id,
-            url: "/credit/get-district",
-            data: param_getKecamatan,
-            dataType: "json",
-            error: function (data) {
-                // console.log("error" + data);
-            },
+        if (sessionStorage.getItem("loanType") === "PBF") {
+            $.ajax({
+                type: "POST",
+                // url: '/service/kecamatan/listJson?id=' + id,
+                url: "/credit/get-district",
+                data: param_getKecamatan,
+                dataType: "json",
+                error: function (data) {
+                    // console.log("error" + data);
+                },
 
-            fail: function (xhr, textStatus, error) {
-                // console.log("request failed");
-            },
+                fail: function (xhr, textStatus, error) {
+                    // console.log("request failed");
+                },
 
-            success: function (dataObj) {
-                // console.log("(OK)[onChange Kota]dataObj: ", dataObj);
-                if (dataObj.message === "success") {
-                    $.each(dataObj.data, function (idKec, valKec) {
-                        if (valKec.desc != "") {
-                            dataKec.push({
-                                id: valKec.id,
-                                text: valKec.desc,
-                            });
-                        }
-                    });
-                    $("#kecamatan").select2({
-                        placeholder: kecamatan_placeholder,
-                        dropdownParent: $("#kecamatan").parent(),
-                        data: dataKec,
-                        language: {
-                            noResults: function () {
-                                return lang === "id"
-                                    ? "Tidak Ada Hasil yang Ditemukan"
-                                    : "No Result Found";
+                success: function (dataObj) {
+                    // console.log("(OK)[onChange Kota]dataObj: ", dataObj);
+                    if (dataObj.message === "success") {
+                        $.each(dataObj.data, function (idKec, valKec) {
+                            if (valKec.desc != "") {
+                                dataKec.push({
+                                    id: valKec.id,
+                                    text: valKec.desc,
+                                });
+                            }
+                        });
+                        $("#kecamatan").select2({
+                            placeholder: kecamatan_placeholder,
+                            dropdownParent: $("#kecamatan").parent(),
+                            data: dataKec,
+                            language: {
+                                noResults: function () {
+                                    return lang === "id"
+                                        ? "Tidak Ada Hasil yang Ditemukan"
+                                        : "No Result Found";
+                                },
                             },
-                        },
-                    });
-                    dataKecamatanSertificate = dataKec;
-                }
-            },
-        });
+                        });
+                        dataKecamatanSertificate = dataKec;
+                    }
+                },
+            });
+        }
     });
 
     $("#kota_sertificate").change(function () {
@@ -3513,65 +3516,67 @@ var urlLocation = window.location;
         // save and send the district id to get-car-year / get-motorcycle-year
         kecamatanForCarYear = id;
 
-        $.ajax({
-            type: "POST",
-            // url: '/service/kelurahan/listJson?id=' + id,
-            url: "/credit/get-subdistrict",
-            dataType: "json",
-            data: params_getSubdistrict,
-            error: function (data) {
-                // console.log("error" + data);
-            },
+        if (sessionStorage.getItem("loanType") === "PBF") {
+            $.ajax({
+                type: "POST",
+                // url: '/service/kelurahan/listJson?id=' + id,
+                url: "/credit/get-subdistrict",
+                dataType: "json",
+                data: params_getSubdistrict,
+                error: function (data) {
+                    // console.log("error" + data);
+                },
 
-            fail: function (xhr, textStatus, error) {
-                // console.log("request failed");
-            },
+                fail: function (xhr, textStatus, error) {
+                    // console.log("request failed");
+                },
 
-            success: function (dataObj) {
-                // console.log("[onChange kecamatan]dataObj: ", dataObj);
-                if (dataObj.message === "success") {
-                    $.each(dataObj.data, function (idKel, valKel) {
-                        if (valKel.desc != "") {
-                            dataKel.push({
-                                id: valKel.id,
-                                text: valKel.desc,
-                                // postcode: valKel.postcode
-                            });
+                success: function (dataObj) {
+                    // console.log("[onChange kecamatan]dataObj: ", dataObj);
+                    if (dataObj.message === "success") {
+                        $.each(dataObj.data, function (idKel, valKel) {
+                            if (valKel.desc != "") {
+                                dataKel.push({
+                                    id: valKel.id,
+                                    text: valKel.desc,
+                                    // postcode: valKel.postcode
+                                });
+                            }
+                        });
+
+                        function formatState(state) {
+                            if (!state.postcode) {
+                                return state.text;
+                            }
+                            var $state = $(
+                                '<span class="selected-kelurahan" postcode="' +
+                                    state.postcode +
+                                    '">' +
+                                    state.text +
+                                    "</span>"
+                            );
+                            return $state;
                         }
-                    });
 
-                    function formatState(state) {
-                        if (!state.postcode) {
-                            return state.text;
-                        }
-                        var $state = $(
-                            '<span class="selected-kelurahan" postcode="' +
-                                state.postcode +
-                                '">' +
-                                state.text +
-                                "</span>"
-                        );
-                        return $state;
-                    }
-
-                    $("#kelurahan").select2({
-                        placeholder: kelurahan_placeholder,
-                        templateSelection: formatState,
-                        dropdownParent: $("#kelurahan").parent(),
-                        data: dataKel,
-                        language: {
-                            noResults: function () {
-                                return lang === "id"
-                                    ? "Tidak Ada Hasil yang Ditemukan"
-                                    : "No Result Found";
+                        $("#kelurahan").select2({
+                            placeholder: kelurahan_placeholder,
+                            templateSelection: formatState,
+                            dropdownParent: $("#kelurahan").parent(),
+                            data: dataKel,
+                            language: {
+                                noResults: function () {
+                                    return lang === "id"
+                                        ? "Tidak Ada Hasil yang Ditemukan"
+                                        : "No Result Found";
+                                },
                             },
-                        },
-                    });
+                        });
 
-                    dataKelurahanSertificate = dataKel;
-                }
-            },
-        });
+                        dataKelurahanSertificate = dataKel;
+                    }
+                },
+            });
+        }
     });
 
     $("#kecamatan_sertificate").change(function () {
@@ -3713,55 +3718,57 @@ var urlLocation = window.location;
         $("#alamat_lengkap").removeAttr("disabled");
         $("#alamat_lengkap").css("background-color", "white");
 
-        $.ajax({
-            type: "POST",
-            url: "/credit/get-zipcode",
-            dataType: "json",
-            data: { subdistrict_id: this.value },
-            error: function (data) {
-                // console.log("error" + data);
-            },
+        if (sessionStorage.getItem("loanType") === "PBF") {
+            $.ajax({
+                type: "POST",
+                url: "/credit/get-zipcode",
+                dataType: "json",
+                data: { subdistrict_id: this.value },
+                error: function (data) {
+                    // console.log("error" + data);
+                },
 
-            fail: function (xhr, textStatus, error) {
-                // console.log("request failed");
-            },
+                fail: function (xhr, textStatus, error) {
+                    // console.log("request failed");
+                },
 
-            success: function (dataObj) {
-                if (dataObj.success == true) {
-                    // console.log("ZIP CODE", dataObj);
-                    var postcodeGen = dataObj.data[0].postal_code;
+                success: function (dataObj) {
+                    if (dataObj.success == true) {
+                        // console.log("ZIP CODE", dataObj);
+                        var postcodeGen = dataObj.data[0].postal_code;
 
-                    if (postcodeGen !== "null") {
-                        $("#kode_pos").val(postcodeGen);
-                        $("#kode_pos").data("value", dataObj.data[0].id);
-                        $("#kode_pos").prev().css({
-                            display: "block",
-                            padding: "15px 15px 5px",
-                        });
-                        $("#kode_pos").css({
-                            "padding-top": "35px",
-                            "padding-bottom": "15px",
-                        });
-                    } else {
-                        $("#kode_pos").val("");
-                        $("#kode_pos").data("value", "");
+                        if (postcodeGen !== "null") {
+                            $("#kode_pos").val(postcodeGen);
+                            $("#kode_pos").data("value", dataObj.data[0].id);
+                            $("#kode_pos").prev().css({
+                                display: "block",
+                                padding: "15px 15px 5px",
+                            });
+                            $("#kode_pos").css({
+                                "padding-top": "35px",
+                                "padding-bottom": "15px",
+                            });
+                        } else {
+                            $("#kode_pos").val("");
+                            $("#kode_pos").data("value", "");
+                        }
+
+                        if (
+                            $("#kode_pos").val() == "" ||
+                            thisVal == "" ||
+                            $("#alamat_lengkap").val() == "" ||
+                            $("#provinsi").val() == "" ||
+                            $("#kota").val() == "" ||
+                            $("#kecamatan").val() == ""
+                        ) {
+                            disableButton("#button2");
+                        } else {
+                            enableButton("#button2");
+                        }
                     }
-
-                    if (
-                        $("#kode_pos").val() == "" ||
-                        thisVal == "" ||
-                        $("#alamat_lengkap").val() == "" ||
-                        $("#provinsi").val() == "" ||
-                        $("#kota").val() == "" ||
-                        $("#kecamatan").val() == ""
-                    ) {
-                        disableButton("#button2");
-                    } else {
-                        enableButton("#button2");
-                    }
-                }
-            },
-        });
+                },
+            });
+        }
     });
 
     $("#kode_pos").change(function () {
