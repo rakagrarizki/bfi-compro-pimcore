@@ -2758,8 +2758,8 @@ return [
     158 => [
         "id" => 158,
         "name" => "get pricelist paging",
-        "pattern" => "/\\/credit\\/get-pricelist-paging/",
-        "reverse" => "/credit/get-pricelist-paging",
+        "pattern" => "/\\/credit\\/get-list-price/",
+        "reverse" => "/credit/get-list-price",
         "module" => "AppBundle",
         "controller" => "@AppBundle\\Controller\\CreditController",
         "action" => "getPricelistPaging",

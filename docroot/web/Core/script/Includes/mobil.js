@@ -150,7 +150,7 @@ $("#next1").on("click", function (e) {
     e.preventDefault();
     if ($(this).closest("form").valid()) {
         pushDataStep1(() => {
-            if(sessionStorage.getItem("submitStep1") === "false"){
+            if (sessionStorage.getItem("submitStep1") === "false") {
                 window.dataLayer.push({
                     event: "ValidFormNDFCStep1",
                 });
@@ -182,7 +182,10 @@ $("#next2").on("click", function (e) {
                     // TODO: change this parameter below with asset brand & branch coverage from API
                     getAssetYear("CHEVROLET.SPARK.LS10MT", "401", () => {
                         if ((assetYearExists = true)) {
-                            if(sessionStorage.getItem("submitStep2") === "false"){
+                            if (
+                                sessionStorage.getItem("submitStep2") ===
+                                "false"
+                            ) {
                                 window.dataLayer.push({
                                     event: "ValidFormNDFCStep2",
                                 });
@@ -210,18 +213,15 @@ $("#next2").on("click", function (e) {
 $("#next3").on("click", function (e) {
     e.preventDefault();
     if ($(this).closest("form").valid()) {
-        getFiduciaFee();
         getPricelistPaging();
-        getProductDetail();
-        getProductBranchDetail();
-        getListPromoCriteria();
+        getCalculationParams();
         $("#modal-konfirmasi").modal("show");
     }
 });
 $("#confirm-data").on("click", function (e) {
     e.preventDefault();
     pushDataStep3(() => {
-        if(sessionStorage.getItem("submitStep3") === "false"){
+        if (sessionStorage.getItem("submitStep3") === "false") {
             window.dataLayer.push({
                 event: "ValidFormNDFCStep3",
             });
@@ -470,7 +470,7 @@ function pushDataStep5() {
         },
         success: function (result) {
             if (result.message === "success") {
-                if(sessionStorage.getItem("submitStepOtp") === "false"){
+                if (sessionStorage.getItem("submitStepOtp") === "false") {
                     window.dataLayer.push({
                         event: "ValidFormNDFCStepOTP",
                     });

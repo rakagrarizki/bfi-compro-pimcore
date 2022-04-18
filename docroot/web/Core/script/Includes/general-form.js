@@ -3,6 +3,19 @@ var retryLimit = 3;
 let currentToken = undefined;
 let expiredDate = undefined;
 
+let dataAssets = [];
+let rawAssetBrand = [];
+let assetCode = "";
+let branch_id = "";
+let calculationParam = {
+    effective_rate: 0,
+    flat_rate: 0,
+    nilai_transaksi: 0,
+    max_ltv: 0,
+    admin_fee: 0,
+    fiducia_fee: 0,
+};
+
 function retryAjax(_this, xhr) {
     if (xhr.status == 500) {
         _this.tryCount++;
@@ -960,11 +973,6 @@ function getListZipcode() {
     });
 }
 
-let dataAssets = [];
-let rawAssetBrand = [];
-let assetCode = "";
-let branch_id = "";
-
 function getListAssets(assetType) {
     $.ajax({
         type: "POST",
@@ -1278,7 +1286,7 @@ function getProductDetail() {
         amount_funding_to: "200000",
     };
 
-    $.ajax({
+    return $.ajax({
         type: "POST",
         url: "/credit/get-list-product-detail",
         headers: { Authorization: "Basic " + currentToken },
@@ -1291,7 +1299,7 @@ function getProductDetail() {
             retryAjax(this, xhr);
         },
         success: function (result) {
-            console.log(result);
+            // console.log(result);
         },
     });
 }
@@ -1307,7 +1315,7 @@ function getProductBranchDetail() {
         amount_funding_to: "200000",
     };
 
-    $.ajax({
+    return $.ajax({
         type: "POST",
         url: "/credit/get-list-product-branch-detail",
         headers: { Authorization: "Basic " + currentToken },
@@ -1320,13 +1328,13 @@ function getProductBranchDetail() {
             retryAjax(this, xhr);
         },
         success: function (result) {
-            console.log(result);
+            // console.log(result);
         },
     });
 }
 
 function getListPromoCriteria() {
-    $.ajax({
+    return $.ajax({
         type: "POST",
         url: "/credit/get-list-promo-criteria",
         headers: { Authorization: "Basic " + currentToken },
@@ -1339,7 +1347,7 @@ function getListPromoCriteria() {
             retryAjax(this, xhr);
         },
         success: function (result) {
-            console.log(result);
+            // console.log(result);
         },
     });
 }
@@ -1365,17 +1373,24 @@ function getFiduciaFee() {
             retryAjax(this, xhr);
         },
         success: function (result) {
-            console.log(result);
+            if (result.success === 1) {
+                calculationParam.fiducia_fee = result.data.data[0].fiducia_fee;
+            }
         },
     });
 }
 
 function getPricelistPaging() {
+    let assetYear = $("#year-caption").text();
     $.ajax({
         type: "POST",
-        url: "/credit/get-pricelist-paging",
+        url: "/credit/get-list-price",
         headers: { Authorization: "Basic " + currentToken },
-        data: { asset_code: assetCode },
+        data: {
+            // branch_id: "401",
+            asset_code: "MTRBAJAJ.PULSAR.220DTS",
+            // manufacturing_year: assetYear,
+        },
         dataType: "json",
         error: function (xhr) {
             retryAjax(this, xhr);
@@ -1387,6 +1402,46 @@ function getPricelistPaging() {
             console.log(result);
         },
     });
+}
+
+function getCalculationParams() {
+    getFiduciaFee();
+    $.when(
+        getProductDetail(),
+        getProductBranchDetail(),
+        getListPromoCriteria()
+    ).then(function (res1, res2, res3) {
+        // TODO : list promo criteria belum dimasukkan ke dalam perhitungan karena response datanya masih null
+        console.log(res3);
+        calculationParam.effective_rate =
+            (res1[0].data.data[0].min_effective_rate +
+                res2[0].data.data[0].min_effective_rate) /
+            100;
+        calculationParam.admin_fee =
+            res1[0].data.data[0].admin_fee + res2[0].data.data[0].admin_fee;
+        console.log(calculationParam);
+    });
+}
+
+function productIdFilter(category) {
+    const categorySJMB = ["SEDAN", "JEEP", "MNBUS"];
+    if (sessionStorage.getItem("loanType") === "NDFM") {
+        return "3178";
+    }
+    return categorySJMB.includes(category) ? "2221" : "2222";
+}
+
+// TODO: need to be adjusted
+function PMT(ir, np, pv, fv = 0) {
+    // ir: interest rate
+    // np: number of payment
+    // pv: present value or loan amount
+    // fv: future value. default is 0
+    var presentValueInterstFector = Math.pow(1 + ir, np);
+    var pmt =
+        (ir * pv * (presentValueInterstFector + fv)) /
+        (presentValueInterstFector - 1);
+    return pmt;
 }
 
 $(".go-to-home").on("click", () => {
@@ -1413,6 +1468,7 @@ function bpkbOwnershipTranslate(status) {
             return status;
     }
 }
+
 function maritalStatusTranslate(status) {
     switch (status) {
         case "Divorce":
@@ -1426,27 +1482,6 @@ function maritalStatusTranslate(status) {
         default:
             return status;
     }
-}
-
-function productIdFilter(category) {
-    const categorySJMB = ["SEDAN", "JEEP", "MNBUS"];
-    if (sessionStorage.getItem("loanType") === "NDFM") {
-        return "3178";
-    }
-    return categorySJMB.includes(category) ? "2221" : "2222";
-}
-
-// TODO: need to be adjusted
-function PMT(ir, np, pv, fv = 0) {
-    // ir: interest rate
-    // np: number of payment
-    // pv: present value or loan amount
-    // fv: future value. default is 0
-    var presentValueInterstFector = Math.pow(1 + ir, np);
-    var pmt =
-        (ir * pv * (presentValueInterstFector + fv)) /
-        (presentValueInterstFector - 1);
-    return pmt;
 }
 
 function clearDot(x) {
