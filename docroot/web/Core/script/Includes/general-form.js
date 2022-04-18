@@ -1282,7 +1282,7 @@ function getProductDetail() {
         asset_group: rawAssetBrand[0].asset_group,
         customer_rating: "2",
         asset_age: "5",
-        tenor: "12",
+        tenor: $("#tenor").val().toString(),
         amount_funding_to: "200000",
     };
 
@@ -1311,7 +1311,7 @@ function getProductBranchDetail() {
         asset_group: rawAssetBrand[0].asset_group,
         customer_rating: "2",
         asset_age: "5",
-        tenor: "12",
+        tenor: $("#tenor").val().toString(),
         amount_funding_to: "200000",
     };
 
@@ -1387,9 +1387,9 @@ function getPricelistPaging() {
         url: "/credit/get-list-price",
         headers: { Authorization: "Basic " + currentToken },
         data: {
-            // branch_id: "401",
             asset_code: "MTRBAJAJ.PULSAR.220DTS",
-            // manufacturing_year: assetYear,
+            manufacturing_year: assetYear,
+            branch_id: "401",
         },
         dataType: "json",
         error: function (xhr) {
@@ -1399,13 +1399,16 @@ function getPricelistPaging() {
             retryAjax(this, xhr);
         },
         success: function (result) {
-            console.log(result);
+            if (result.success === 1 && result.data !== null) {
+                calculationParam.nilai_transaksi = result.data.data[0].price;
+            }
         },
     });
 }
 
 function getCalculationParams() {
     getFiduciaFee();
+    getPricelistPaging();
     $.when(
         getProductDetail(),
         getProductBranchDetail(),

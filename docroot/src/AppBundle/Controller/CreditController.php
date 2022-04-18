@@ -1349,8 +1349,8 @@ class CreditController extends FrontendController
         $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
         $param['path'] = WebsiteSetting::getByName('URL_GET_PRICELIST_PAGING')->getData();
         $param['query'] = "asset_code=" . rawurlencode($request->get('asset_code'));
-        // $param['query'] .= "manufacturing_year" . rawurlencode($request->get('manufacturing_year'));
-        // $param['query'] .= "branch_id" . rawurlencode($request->get('branch_id'));
+        $param['query'] .= "&manufacturing_year=" . rawurlencode($request->get('manufacturing_year'));
+        $param['query'] .= "&branch_id=" . rawurlencode($request->get('branch_id'));
         $url = $host . $param['path'] . "?" . $param['query'];
 
         try{
@@ -1359,7 +1359,7 @@ class CreditController extends FrontendController
                 return new JsonResponse([
                     'success' => 1,
                     'message' => "success",
-                    'data' => $data->data,
+                    'data' => $data->data
                 ]);
             } else {
                 return new JsonResponse([
