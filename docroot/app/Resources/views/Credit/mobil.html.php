@@ -103,6 +103,7 @@ $this->headScript()
                                     <label for="no_handphone"><?= $this->translate('form-hp') ?></label>
                                     <input type="tel" pattern="\d*" class="form-control formPhoneNumber" name="no_handphone" id="no_handphone" maxlength="13" placeholder="<?= $this->translate('placeholder-hp') ?>">
                                     <div class="error-wrap"></div>
+                                    <span><?=$this->translate('form-handphone-helper') ?></span>
                                 </div>
                                 <div class="form-group radio-group">
                                     <label><?= $this->translate('is-wa-number') ?></label>
