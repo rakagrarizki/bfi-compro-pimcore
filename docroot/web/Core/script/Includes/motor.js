@@ -120,6 +120,12 @@ $("#next1").on("click", function (e) {
     e.preventDefault();
     if ($(this).closest("form").valid()) {
         pushDataStep1(() => {
+            if (sessionStorage.getItem("submitStep1") === "false") {
+                window.dataLayer.push({
+                    event: "ValidFormNDFMStep1",
+                });
+                sessionStorage.setItem("submitStep1", "true");
+            }
             step("next", 2);
             getAuthorizationToken();
             getListProvinsi("#provinsi");
@@ -131,10 +137,15 @@ $("#next1").on("click", function (e) {
 });
 $("#next2").on("click", function (e) {
     e.preventDefault();
-    // step("next", 3);
     if ($(this).closest("form").valid()) {
         pushDataStep2(() => {
             getDupcheck(() => {
+                if (sessionStorage.getItem("submitStep2") === "false") {
+                    window.dataLayer.push({
+                        event: "ValidFormNDFMStep2",
+                    });
+                    sessionStorage.setItem("submitStep2", "true");
+                }
                 step("next", 3);
             });
         });
@@ -149,6 +160,12 @@ $("#next3").on("click", function (e) {
 $("#confirm-data").on("click", function (e) {
     e.preventDefault();
     pushDataStep3(() => {
+        if (sessionStorage.getItem("submitStep3") === "false") {
+            window.dataLayer.push({
+                event: "ValidFormNDFMStep3",
+            });
+            sessionStorage.setItem("submitStep3", "true");
+        }
         pushDataStep4(() => {
             showOtpVer2();
         });
@@ -338,6 +355,12 @@ function pushDataStep5() {
         },
         success: (res) => {
             if (res.message === "success") {
+                if (sessionStorage.getItem("submitStepOtp") === "false") {
+                    window.dataLayer.push({
+                        event: "ValidFormNDFMStepOTP",
+                    });
+                    sessionStorage.setItem("submitStepOtp", "true");
+                }
                 $("#menu5").removeClass("active");
                 $("#success").addClass("active");
             }
