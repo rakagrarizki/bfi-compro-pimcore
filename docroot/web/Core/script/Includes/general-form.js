@@ -1221,7 +1221,6 @@ function getBranchCoverage(fn) {
         type: "POST",
         url: "/credit/get-branch-coverage",
         headers: { Authorization: "Basic " + currentToken },
-        contentType: "application/json",
         data: {
             customer_type: "P",
             lead_program_id: 1,
@@ -1246,7 +1245,7 @@ function getBranchCoverage(fn) {
             console.log(result);
             if (result.message === "success") {
                 if (result.data !== null) {
-                    branch_id = result.data[0].branch_id;
+                    branch_id = result.data.branch_booking_id;
                 }
                 fn();
             }
@@ -1430,9 +1429,6 @@ function getCalculationParams() {
         getFiduciaFee(),
         getPricelistPaging()
     ).then(function (res1, res2, res3, res4, res5) {
-        // TODO : list promo criteria belum dimasukkan ke dalam perhitungan karena response datanya masih null
-        console.log(res3);
-
         calculationParam.effective_rate =
             (res1[0].data.data[0].min_effective_rate +
                 res2[0].data.data[0].min_effective_rate) /

@@ -255,6 +255,7 @@ function pushDataStep1(cb) {
         email: $("#email_pemohon").val(),
         phone_number: $("#no_handphone").val(),
         wa_number: $("#wa_number").val(),
+        no_ktp: $("#idnumber").val(),
         utm_source: sessionStorage.getItem("utm_source"),
         utm_campaign: sessionStorage.getItem("utm_campaign"),
         utm_term: sessionStorage.getItem("utm_term"),
