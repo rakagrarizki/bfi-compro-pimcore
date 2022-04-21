@@ -2773,4 +2773,22 @@ return [
         "creationDate" => 1567583908,
         "modificationDate" => 1567583948
     ],
+    159 => [
+        "id" => 159,
+        "name" => "get estimate installment",
+        "pattern" => "/\\/credit\\/get-estimate-installment/",
+        "reverse" => "/credit/get-estimate-installment",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getEstimateInstallment",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
 ];

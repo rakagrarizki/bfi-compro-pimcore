@@ -16,6 +16,8 @@ let calculationParam = {
     fiducia_fee: 0,
 };
 
+const CURRENT_YEAR = new Date().getFullYear();
+
 function retryAjax(_this, xhr) {
     if (xhr.status == 500) {
         _this.tryCount++;
@@ -1219,11 +1221,19 @@ function getBranchCoverage(fn) {
         type: "POST",
         url: "/credit/get-branch-coverage",
         headers: { Authorization: "Basic " + currentToken },
+        contentType: "application/json",
         data: {
+            customer_type: "P",
+            lead_program_id: 1,
             kelurahan: kelurahan,
             kecamatan: kecamatan,
             city: city,
             zip_code: zipcode,
+            is_branch_ho: true,
+            customer_status: "NEW",
+            is_ro_exp: false,
+            lead_id: 0,
+            idnumber: "7534273642556772",
         },
         dataType: "json",
         error: function (xhr) {
@@ -1233,6 +1243,7 @@ function getBranchCoverage(fn) {
             retryAjax(this, xhr);
         },
         success: function (result) {
+            console.log(result);
             if (result.message === "success") {
                 if (result.data !== null) {
                     branch_id = result.data[0].branch_id;
@@ -1277,11 +1288,13 @@ function getAssetYear(asset_model, branch_id, fn) {
 }
 
 function getProductDetail() {
+    let assetYear = parseInt($("#tahun_kendaraan").val());
+    let assetAge = CURRENT_YEAR - assetYear;
     let param = {
         product_id: productIdFilter(rawAssetBrand[0].category),
         asset_group: rawAssetBrand[0].asset_group,
         customer_rating: "2",
-        asset_age: "5",
+        asset_age: assetAge,
         tenor: $("#tenor").val().toString(),
         amount_funding_to: "200000",
     };
@@ -1305,12 +1318,14 @@ function getProductDetail() {
 }
 
 function getProductBranchDetail() {
+    let assetYear = parseInt($("#tahun_kendaraan").val());
+    let assetAge = CURRENT_YEAR - assetYear;
     let param = {
         branch_id: "401",
         product_id: productIdFilter(rawAssetBrand[0].category),
         asset_group: rawAssetBrand[0].asset_group,
         customer_rating: "2",
-        asset_age: "5",
+        asset_age: assetAge,
         tenor: $("#tenor").val().toString(),
         amount_funding_to: "200000",
     };
@@ -1407,22 +1422,79 @@ function getPricelistPaging() {
 }
 
 function getCalculationParams() {
-    getFiduciaFee();
-    getPricelistPaging();
+    var tenor = parseInt($("#tenor").val().toString());
     $.when(
         getProductDetail(),
         getProductBranchDetail(),
-        getListPromoCriteria()
-    ).then(function (res1, res2, res3) {
+        getListPromoCriteria(),
+        getFiduciaFee(),
+        getPricelistPaging()
+    ).then(function (res1, res2, res3, res4, res5) {
         // TODO : list promo criteria belum dimasukkan ke dalam perhitungan karena response datanya masih null
         console.log(res3);
+
         calculationParam.effective_rate =
             (res1[0].data.data[0].min_effective_rate +
                 res2[0].data.data[0].min_effective_rate) /
             100;
+
         calculationParam.admin_fee =
             res1[0].data.data[0].admin_fee + res2[0].data.data[0].admin_fee;
+
+        calculationParam.max_ltv =
+            (res2[0].data.data[0].max_funding_percentage / 100) *
+            calculationParam.nilai_transaksi;
+
+        calculationParam.flat_rate = pmt(
+            calculationParam.effective_rate / 12,
+            tenor,
+            (1 * (-1 * tenor - 1) * 12) / tenor,
+            1,
+            0
+        );
+
         console.log(calculationParam);
+        getEstimateInstallment();
+    });
+}
+
+function getEstimateInstallment() {
+    let param = {
+        funding_amount: 4000000,
+        tenor: 18,
+        effective_rate: calculationParam.effective_rate,
+        flat_rate: calculationParam.flat_rate,
+        installment_type: 0,
+        payment_fequency: 1,
+        calcualte_by: 1,
+        grace_periode_type: 0,
+        grace_periode: 0,
+        nilai_taksaksi: calculationParam.nilai_transaksi,
+        max_ltv: calculationParam.max_ltv,
+        admin_fee: calculationParam.admin_fee,
+        fiducia_fee: calculationParam.fiducia_fee,
+        provisi_fee: 0,
+        other_fee: 0,
+        survey_fee: 0,
+        notary_fee: 0,
+        round: 500,
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "/credit/get-estimate-installment",
+        headers: { Authorization: "Basic " + currentToken },
+        data: param,
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            console.log(result);
+        },
     });
 }
 
@@ -1434,17 +1506,29 @@ function productIdFilter(category) {
     return categorySJMB.includes(category) ? "2221" : "2222";
 }
 
-// TODO: need to be adjusted
-function PMT(ir, np, pv, fv = 0) {
-    // ir: interest rate
-    // np: number of payment
-    // pv: present value or loan amount
-    // fv: future value. default is 0
-    var presentValueInterstFector = Math.pow(1 + ir, np);
-    var pmt =
-        (ir * pv * (presentValueInterstFector + fv)) /
-        (presentValueInterstFector - 1);
-    return pmt;
+function pmt(
+    rate_per_period,
+    number_of_payments,
+    present_value,
+    future_value,
+    type
+) {
+    future_value = typeof future_value !== "undefined" ? future_value : 0;
+    type = typeof type !== "undefined" ? type : 0;
+
+    if (rate_per_period != 0.0) {
+        // Interest rate exists
+        var q = Math.pow(1 + rate_per_period, number_of_payments);
+        return (
+            -(rate_per_period * (future_value + q * present_value)) /
+            ((-1 + q) * (1 + rate_per_period * type))
+        );
+    } else if (number_of_payments != 0.0) {
+        // No interest rate, but number of payments exists
+        return -(future_value + present_value) / number_of_payments;
+    }
+
+    return 0;
 }
 
 $(".go-to-home").on("click", () => {

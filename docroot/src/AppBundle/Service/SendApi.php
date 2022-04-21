@@ -802,8 +802,10 @@ class SendApi
                     $url,
                     [
                         RequestOptions::HEADERS => [
-                            'Authorization' => 'Bearer ' . $token
-                        ]
+                            'Authorization' => 'Bearer ' . $token,
+                            'Accept' => 'application/json'
+                        ],
+                        "json" => $param
                     ]
                 );
             }
@@ -880,7 +882,7 @@ class SendApi
 
     public function getBranchCoverage($url, $param, $token)
     {
-        return $this->executeApiSignature('getBranchCoverage', true, $url, $param, "GET", $token);
+        return $this->executeApiSignature('getBranchCoverage', false, $url, $param, "PATCH", $token);
     }
 
     public function getDuplicateLeads($url, $param, $token)

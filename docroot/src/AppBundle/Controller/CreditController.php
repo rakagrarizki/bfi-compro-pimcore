@@ -1111,12 +1111,18 @@ class CreditController extends FrontendController
     {
         $token = $this->getTokenBearer();
         $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
-        $param['path'] = WebsiteSetting::getByName('URL_GET_BRANCH_COVERAGE')->getData();
-        $param['query'] = "kelurahan=" . rawurlencode($request->get('kelurahan'));
-        $param['query'] .= "&kecamatan=" . rawurlencode($request->get('kecamatan'));
-        $param['query'] .= "&city=" . rawurlencode($request->get('city'));
-        $param['query'] .= "&zip_code=" . rawurlencode($request->get('zip_code'));
-        $url = $host . $param['path'] . "?" . $param['query'];
+        $url = $host . WebsiteSetting::getByName('URL_GET_BRANCH_COVERAGE')->getData();
+        $param['customer_type'] = htmlentities(addslashes($request->get('customer_type')));
+        $param['lead_program_id'] = htmlentities(addslashes($request->get('lead_program_id')));
+        $param['kelurahan'] = htmlentities(addslashes($request->get('kelurahan')));
+        $param['kecamatan'] = htmlentities(addslashes($request->get('kecamatan')));
+        $param['city'] = htmlentities(addslashes($request->get('city')));
+        $param['zip_code'] = htmlentities(addslashes($request->get('zip_code')));
+        $param['is_branch_ho'] = htmlentities(addslashes($request->get('is_branch_ho')));
+        $param['customer_status'] = htmlentities(addslashes($request->get('customer_status')));
+        $param['is_ro_exp'] = htmlentities(addslashes($request->get('is_ro_exp')));
+        $param['lead_id'] = htmlentities(addslashes($request->get('lead_id')));
+        $param['idnumber'] = htmlentities(addslashes($request->get('idnumber')));
 
         try {
             $data = $this->sendAPI->getBranchCoverage($url, $param, $token);
@@ -1135,7 +1141,7 @@ class CreditController extends FrontendController
         }
         } catch (\Exception $e) {
             return new JsonResponse([
-                'success' => "0",
+                'success' => 0,
                 'message' => $e->getMessage()
             ]);
         }
@@ -1355,6 +1361,52 @@ class CreditController extends FrontendController
 
         try{
             $data = $this->sendAPI->getPricelistPaging($url, $param, $token);
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => 0,
+                'message' => $e
+            ]);
+        }
+    }
+
+    public function getEstimateInstallmentAction(Request $request){
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_ESTIMATE_INSTALLMENT')->getData();
+
+        $param['funding_amount'] = htmlentities(addslashes($request->get('funding_amount')));
+        $param['tenor'] = htmlentities(addslashes($request->get('tenor')));
+        $param['effective_rate'] = htmlentities(addslashes($request->get('effective_rate')));
+        $param['flat_rate'] = htmlentities(addslashes($request->get('flat_rate')));
+        $param['installment_type'] = htmlentities(addslashes($request->get('installment_type')));
+        $param['payment_fequency'] = htmlentities(addslashes($request->get('payment_fequency')));
+        $param['calcualte_by'] = htmlentities(addslashes($request->get('calcualte_by')));
+        $param['grace_periode_type'] = htmlentities(addslashes($request->get('grace_periode_type')));
+        $param['grace_periode'] = htmlentities(addslashes($request->get('grace_periode')));
+        $param['nilai_taksaksi'] = htmlentities(addslashes($request->get('nilai_taksaksi')));
+        $param['max_ltv'] = htmlentities(addslashes($request->get('max_ltv')));
+        $param['admin_fee'] = htmlentities(addslashes($request->get('admin_fee')));
+        $param['fiducia_fee'] = htmlentities(addslashes($request->get('fiducia_fee')));
+        $param['provisi_fee'] = htmlentities(addslashes($request->get('provisi_fee')));
+        $param['other_fee'] = htmlentities(addslashes($request->get('other_fee')));
+        $param['survey_fee'] = htmlentities(addslashes($request->get('survey_fee')));
+        $param['notary_fee'] = htmlentities(addslashes($request->get('notary_fee')));
+        $param['round'] = htmlentities(addslashes($request->get('round')));
+
+        try{
+            $data = $this->sendAPI->getEstimateInstallment($url, $param, $token);
             if (empty($data->error)) {
                 return new JsonResponse([
                     'success' => 1,
