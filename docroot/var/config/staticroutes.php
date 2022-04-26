@@ -2721,24 +2721,6 @@ return [
     ],
     156 => [
         "id" => 156,
-        "name" => "get list promo criteria",
-        "pattern" => "/\\/credit\\/get-list-promo-criteria/",
-        "reverse" => "/credit/get-list-promo-criteria",
-        "module" => "AppBundle",
-        "controller" => "@AppBundle\\Controller\\CreditController",
-        "action" => "getListPromoCriteria",
-        "variables" => "",
-        "defaults" => NULL,
-        "siteId" => [
-
-        ],
-        "priority" => 0,
-        "legacy" => FALSE,
-        "creationDate" => 1567583908,
-        "modificationDate" => 1567583948
-    ],
-    157 => [
-        "id" => 157,
         "name" => "get fiducia fee",
         "pattern" => "/\\/credit\\/get-fiducia-fee/",
         "reverse" => "/credit/get-fiducia-fee",
@@ -2755,8 +2737,8 @@ return [
         "creationDate" => 1567583908,
         "modificationDate" => 1567583948
     ],
-    158 => [
-        "id" => 158,
+    157 => [
+        "id" => 157,
         "name" => "get pricelist paging",
         "pattern" => "/\\/credit\\/get-list-price/",
         "reverse" => "/credit/get-list-price",
@@ -2773,8 +2755,8 @@ return [
         "creationDate" => 1567583908,
         "modificationDate" => 1567583948
     ],
-    159 => [
-        "id" => 159,
+    158 => [
+        "id" => 158,
         "name" => "get estimate installment",
         "pattern" => "/\\/credit\\/get-estimate-installment/",
         "reverse" => "/credit/get-estimate-installment",

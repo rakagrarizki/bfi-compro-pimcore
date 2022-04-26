@@ -1275,40 +1275,6 @@ class CreditController extends FrontendController
         }
     }
 
-    public function getListPromoCriteriaAction(Request $request){
-        $token = $this->getTokenBearer();
-        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_LIST_PROMO_CRITERIA')->getData();
-        $param['branch_id'] = htmlentities(addslashes($request->get('branch_id')));
-        $param['manufacturing_year'] = htmlentities(addslashes($request->get('manufacturing_year')));
-        $param['funding'] = htmlentities(addslashes($request->get('funding')));
-        $param['age'] = htmlentities(addslashes($request->get('age')));
-        $param['otr'] = htmlentities(addslashes($request->get('otr')));
-        $param['tenor'] = htmlentities(addslashes($request->get('tenor')));
-        $param['asset_category'] = htmlentities(addslashes($request->get('asset_category')));
-
-        try{
-            $data = $this->sendAPI->getListPromoCriteria($url, $param, $token);
-            if (empty($data->error)) {
-                return new JsonResponse([
-                    'success' => 1,
-                    'message' => "success",
-                    'data' => $data->data,
-                ]);
-            } else {
-                return new JsonResponse([
-                    'success' => 0,
-                    'message' => $this->get("translator")->trans("api-error")
-                ]);
-            }
-        } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => $e->getMessage()
-            ]);
-        }
-    }
-
     public function getFiduciaFeeAction(Request $request){
         $token = $this->getTokenBearer();
         $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();

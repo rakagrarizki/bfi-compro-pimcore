@@ -769,16 +769,6 @@ class SendApi
         return $this->executeApi('api-list-spouse-profession', $url, $params, "POST");
     }
 
-    public function generateSignature($method, $url, $params, $body)
-    {
-        $endpoint = "$method|||$url?$params|||$body";
-        $key = KEY;
- 
-        $signature = base64_encode(hash_hmac('sha256', $endpoint, $key, true));
-
-        return $signature;
-    }
-
     public function executeApiSignature($name, $withBody, $url, $param, $method, $token)
     {
         $logger = new Logger($name);
@@ -820,7 +810,6 @@ class SendApi
             }
         } catch (ClientException $e) {
            $response = $e->getResponse();
-           var_dump($response->getBody()->getContents());
            return json_decode($response->getBody());
         }
         return $this->getData($data);
@@ -892,10 +881,6 @@ class SendApi
 
     public function getProductBranchDetail($url, $param, $token){
         return $this->executeApiSignature('getProductBranchDetail', false, $url, $param, "GET", $token);
-    }
-
-    public function getListPromoCriteria($url, $param, $token){
-        return $this->executeApiSignature('getListPromoCriteria', false, $url, $param, "GET", $token);
     }
 
     public function getFiduciaFee($url, $param, $token)
