@@ -16,6 +16,8 @@ let calculationParam = {
     fiducia_fee: 0,
 };
 
+const NDFC_TENOR = [12, 24, 36, 48];
+
 const CURRENT_YEAR = new Date().getFullYear();
 
 function retryAjax(_this, xhr) {
@@ -696,16 +698,16 @@ $("input[type='radio'], input[type='checkbox']").on("change", function () {
     nextEl.removeAttr("disabled");
 });
 
-inputDisabled();
-function inputDisabled() {
-    $("input, select, textarea").addClass("input-step");
-    $(".form-body--credit")
-        .find(".input-step:not(:eq(0))")
-        .attr("disabled", true);
-    $(".form-body--credit .otp-number")
-        .find(".input-step")
-        .removeAttr("disabled");
-}
+// inputDisabled();
+// function inputDisabled() {
+//     $("input, select, textarea").addClass("input-step");
+//     $(".form-body--credit")
+//         .find(".input-step:not(:eq(0))")
+//         .attr("disabled", true);
+//     $(".form-body--credit .otp-number")
+//         .find(".input-step")
+//         .removeAttr("disabled");
+// }
 
 function step(action, val) {
     scrollToTop();
@@ -1294,7 +1296,7 @@ function getProductDetail() {
         asset_group: rawAssetBrand[0].asset_group,
         customer_rating: "2",
         asset_age: assetAge,
-        tenor: $("#tenor").val().toString(),
+        tenor: reverseTenorFormatter($("#tenor").val()),
         amount_funding_to: "200000",
     };
 
@@ -1325,7 +1327,7 @@ function getProductBranchDetail() {
         asset_group: rawAssetBrand[0].asset_group,
         customer_rating: "2",
         asset_age: assetAge,
-        tenor: $("#tenor").val().toString(),
+        tenor: reverseTenorFormatter($("#tenor").val()),
         amount_funding_to: "200000",
     };
 
@@ -1352,7 +1354,7 @@ function getFiduciaFee() {
         branch_id: "401",
         asset_type_id: rawAssetBrand[0].asset_type_id,
         category_id: rawAssetBrand[0].category,
-        otr: "12000000",
+        otr: calculationParam.nilai_transaksi,
     };
 
     $.ajax({
@@ -1396,19 +1398,19 @@ function getPricelistPaging() {
         success: function (result) {
             if (result.success === 1 && result.data !== null) {
                 calculationParam.nilai_transaksi = result.data.data[0].price;
+                getFiduciaFee();
             }
         },
     });
 }
 
 function getCalculationParams() {
-    var tenor = parseInt($("#tenor").val().toString());
+    var tenor = parseInt(reverseTenorFormatter($("#tenor").val()));
     $.when(
         getProductDetail(),
         getProductBranchDetail(),
-        getFiduciaFee(),
         getPricelistPaging()
-    ).then(function (res1, res2, res3, res4) {
+    ).then(function (res1, res2, res3) {
         calculationParam.effective_rate =
             (res1[0].data.data[0].min_effective_rate +
                 res2[0].data.data[0].min_effective_rate) /
@@ -1424,9 +1426,9 @@ function getCalculationParams() {
         calculationParam.flat_rate = pmt(
             calculationParam.effective_rate / 12,
             tenor,
-            (1 * (-1 * tenor - 1) * 12) / tenor,
             1,
-            0
+            0,
+            (1 * (-1 * tenor - 1) * 12) / tenor
         );
         getEstimateInstallment();
     });
@@ -1435,7 +1437,7 @@ function getCalculationParams() {
 function getEstimateInstallment() {
     let param = {
         funding_amount: 4000000,
-        tenor: 18,
+        tenor: reverseTenorFormatter($("#tenor").val()),
         effective_rate: calculationParam.effective_rate,
         flat_rate: calculationParam.flat_rate,
         installment_type: 0,
@@ -1555,3 +1557,28 @@ function validNumber(value) {
     var clearVal = "";
     return Number.isInteger(value) == true ? value : clearVal;
 }
+
+function tenorFormatter(x) {
+    x = x + " Bulan";
+    return x;
+}
+
+function reverseTenorFormatter(x) {
+    try {
+        x = parseInt(x.replace(" Bulan", ""));
+    } catch (e) {
+        x = 0;
+    }
+    return x;
+}
+
+$("#tenor2").slider({
+    min: 1,
+    max: 4,
+    value: 1,
+});
+
+$("#tenor2").on("change", function () {
+    let selectedTenor = parseInt($(this).val());
+    $("#tenor").val(tenorFormatter(NDFC_TENOR[selectedTenor - 1]));
+});

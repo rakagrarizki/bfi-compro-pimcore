@@ -447,7 +447,7 @@ $this->headScript()
                                     <div class="slidecontainer ">
                                         <div class="value-left valuemin">12 Bulan</div>
                                         <div class="value-right valuemax">18 Bulan</div>
-                                        <input id="tenor2" class="customslide" type="tel" pattern="\d*"
+                                        <input id="tenor2" class="customslide" type="range"
                                             data-slider-handle="custom" data-slider-tooltip="hide" />
                                     </div>
                                     <div class="error-wrap"></div>

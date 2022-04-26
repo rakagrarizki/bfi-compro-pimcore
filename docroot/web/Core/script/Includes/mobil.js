@@ -286,6 +286,7 @@ function pushDataStep1(cb) {
 }
 
 function pushDataStep2(cb) {
+    assetCode = $("#model_kendaraan").val().toString();
     let result = (dataStep2 = {
         submission_id: submission_id,
         info_address: {
@@ -550,34 +551,6 @@ $("#search-address-btn").on("click", () => {
             {
                 subdistrict: "Legok",
                 district: "England",
-            },
-            {
-                subdistrict: "Legok",
-                district: "Belgium",
-            },
-            {
-                subdistrict: "Legok",
-                district: "Ulan Bator",
-            },
-            {
-                subdistrict: "Legok",
-                district: "Wuhan",
-            },
-            {
-                subdistrict: "Legok",
-                district: "Pyongyang",
-            },
-            {
-                subdistrict: "Legok",
-                district: "Bali",
-            },
-            {
-                subdistrict: "Legok",
-                district: "Tangsel",
-            },
-            {
-                subdistrict: "Legok",
-                district: "NTT",
             },
         ],
         pageSize: 5,
