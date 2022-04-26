@@ -1232,7 +1232,7 @@ function getBranchCoverage(fn) {
             customer_status: "NEW",
             is_ro_exp: false,
             lead_id: 0,
-            idnumber: "7534273642556772",
+            idnumber: $("#idnumber").val(),
         },
         dataType: "json",
         error: function (xhr) {
@@ -1425,10 +1425,9 @@ function getCalculationParams() {
     $.when(
         getProductDetail(),
         getProductBranchDetail(),
-        getListPromoCriteria(),
         getFiduciaFee(),
         getPricelistPaging()
-    ).then(function (res1, res2, res3, res4, res5) {
+    ).then(function (res1, res2, res3, res4) {
         calculationParam.effective_rate =
             (res1[0].data.data[0].min_effective_rate +
                 res2[0].data.data[0].min_effective_rate) /
@@ -1448,8 +1447,6 @@ function getCalculationParams() {
             1,
             0
         );
-
-        console.log(calculationParam);
         getEstimateInstallment();
     });
 }
