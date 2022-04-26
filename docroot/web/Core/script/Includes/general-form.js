@@ -1347,25 +1347,6 @@ function getProductBranchDetail() {
     });
 }
 
-function getListPromoCriteria() {
-    return $.ajax({
-        type: "POST",
-        url: "/credit/get-list-promo-criteria",
-        headers: { Authorization: "Basic " + currentToken },
-        data: { branch_id: "401" },
-        dataType: "json",
-        error: function (xhr) {
-            retryAjax(this, xhr);
-        },
-        fail: function (xhr, textStatus, error) {
-            retryAjax(this, xhr);
-        },
-        success: function (result) {
-            // console.log(result);
-        },
-    });
-}
-
 function getFiduciaFee() {
     let param = {
         branch_id: "401",
