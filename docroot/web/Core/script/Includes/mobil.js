@@ -84,13 +84,14 @@ let dataStep4 = {
     submission_id: undefined,
     disclaimer: undefined,
 };
-
+window.onbeforeunload = null;
 $(document).ready(function () {
     lang == "id"
         ? $(".nav-item-2.active").find(".nav-step-tag").text("Sedang Isi")
         : $(".nav-item-2.active").find(".nav-step-tag").text("Onprogress");
 
     getAuthorizationToken();
+    $("#calcLoan").prop("disabled", false);
     sessionStorage.setItem("loanType", "NDFC");
     sessionStorage.setItem("submitStep1", "false");
     sessionStorage.setItem("submitStep2", "false");
@@ -103,7 +104,7 @@ $("input[name='is-wa-number']").click(function () {
     $(".wa-numbers").find("input").removeAttr("disabled");
     if (is_WA == "false") {
         $(".wa-numbers").removeAttr("hidden");
-        $("#email_pemohon").attr("disabled", true);
+        // $("#email_pemohon").attr("disabled", true);
     } else {
         $(".wa-numbers").attr("hidden", true);
         $("#email_pemohon").removeAttr("disabled");
@@ -179,8 +180,7 @@ $("#next2").on("click", function (e) {
         pushDataStep2(() => {
             getDupcheck(() => {
                 getBranchCoverage(() => {
-                    // TODO: change this parameter below with asset brand & branch coverage from API
-                    getAssetYear("CHEVROLET.SPARK.LS10MT", "401", () => {
+                    getAssetYear(assetCode, branch_id, () => {
                         if ((assetYearExists = true)) {
                             if (
                                 sessionStorage.getItem("submitStep2") ===
@@ -194,6 +194,8 @@ $("#next2").on("click", function (e) {
                             step("next", 3);
                             getListHouseOwnership("#kepemilikan_rumah");
                             getListMaritalStatus("#marital_status");
+                            getMaxFunding();
+                            $("#calcLoan").prop("disabled", false);
                             $("#brand-caption").text(
                                 $("#merk_kendaraan").val().toString()
                             );
@@ -213,10 +215,14 @@ $("#next2").on("click", function (e) {
 $("#next3").on("click", function (e) {
     e.preventDefault();
     if ($(this).closest("form").valid()) {
-        getCalculationParams();
         $("#modal-konfirmasi").modal("show");
     }
 });
+
+$("#calcLoan").on("click", function () {
+    getCalculationParams();
+});
+
 $("#confirm-data").on("click", function (e) {
     e.preventDefault();
     pushDataStep3(() => {
@@ -399,12 +405,12 @@ function pushDataStep3(cb) {
         },
         info_calculator: {
             funding: clearDot($("#pembiayaan").val()),
-            tenor: $("#tenor").val().toString(),
+            tenor: reverseTenorFormatter($("#tenor").val()),
             // TODO: change data below
-            monthly_installment: "40000000",
+            monthly_installment: calculationParam.installment_amount,
             vehicle_insurance: "ARS-TLO",
-            ltv_max: 0.9,
-            ntf_max: 100000000,
+            ltv_max: calculationParam.max_ltv,
+            ntf_max: total_ntf,
         },
     });
 
@@ -544,6 +550,46 @@ function clearPagination() {
     pageContainer.prev().html("");
     pageContainer.pagination("destroy");
 }
+
+function hideInsurance(element) {
+    element.prop("checked", false);
+    element.closest(".form-group").prop("hidden", true);
+    console.log(element.closest(".form-group"));
+}
+
+function showInsurance(element) {
+    element.closest(".form-group").prop("hidden", false);
+}
+
+$("#tenor2").on("change", function () {
+    let tenorValue = $(this).val();
+    if (tenorValue === 1) {
+        showInsurance($('input[name="assurance1"]'));
+        hideInsurance($('input[name="assurance2"]'));
+        hideInsurance($('input[name="assurance3"]'));
+        hideInsurance($('input[name="assurance4"]'));
+    } else if (tenorValue === 2) {
+        showInsurance($('input[name="assurance1"]'));
+        showInsurance($('input[name="assurance2"]'));
+        hideInsurance($('input[name="assurance3"]'));
+        hideInsurance($('input[name="assurance4"]'));
+    } else if (tenorValue === 3) {
+        showInsurance($('input[name="assurance1"]'));
+        showInsurance($('input[name="assurance2"]'));
+        showInsurance($('input[name="assurance3"]'));
+        hideInsurance($('input[name="assurance4"]'));
+    } else {
+        showInsurance($('input[name="assurance1"]'));
+        showInsurance($('input[name="assurance2"]'));
+        showInsurance($('input[name="assurance3"]'));
+        showInsurance($('input[name="assurance4"]'));
+    }
+    getMaxFunding();
+});
+
+$("#funding").on("change", function () {
+    getMaxFunding();
+});
 
 $("#search-address-btn").on("click", () => {
     $("#pagination-container").pagination({

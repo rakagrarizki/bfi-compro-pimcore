@@ -7,6 +7,13 @@ let dataAssets = [];
 let rawAssetBrand = [];
 let assetCode = "";
 let branch_id = "";
+let admin_fee = 0;
+let admin_fee2 = 0;
+let min_effective_rate = 0;
+let min_effective_rate2 = 0;
+let max_funding_percentage = 0;
+let total_ntf = 0;
+
 let calculationParam = {
     effective_rate: 0,
     flat_rate: 0,
@@ -14,10 +21,11 @@ let calculationParam = {
     max_ltv: 0,
     admin_fee: 0,
     fiducia_fee: 0,
+    installment_amount: 0,
 };
 
 const NDFC_TENOR = [12, 24, 36, 48];
-
+const ASSET_SIZE = 11637;
 const CURRENT_YEAR = new Date().getFullYear();
 
 function retryAjax(_this, xhr) {
@@ -972,17 +980,25 @@ function getListZipcode() {
                 $.each(result.data, function (id, val) {
                     $("#kode_pos").val(val.zip_code);
                 });
+            } else {
+                console.log("Data not found");
             }
         },
     });
 }
 
 function getListAssets(assetType) {
+    // TODO : add paging to fetch all data
     $.ajax({
         type: "POST",
         url: "/credit/get-list-assets",
         headers: { Authorization: "Basic " + currentToken },
-        data: { asset_type: assetType },
+        data: {
+            isactive: true,
+            asset_type: assetType,
+            page: 1,
+            size: ASSET_SIZE,
+        },
         dataType: "json",
         error: function (xhr) {
             retryAjax(this, xhr);
@@ -1005,6 +1021,8 @@ function getListAssets(assetType) {
                     });
                 });
                 filterAssetType();
+            } else {
+                console.log("Data not found");
             }
         },
     });
@@ -1229,7 +1247,7 @@ function getBranchCoverage(fn) {
             kelurahan: kelurahan,
             kecamatan: kecamatan,
             city: city,
-            zip_code: zipcode,
+            zipcode: zipcode,
             is_branch_ho: true,
             customer_status: "NEW",
             is_ro_exp: false,
@@ -1244,12 +1262,15 @@ function getBranchCoverage(fn) {
             retryAjax(this, xhr);
         },
         success: function (result) {
-            console.log(result);
             if (result.message === "success") {
                 if (result.data !== null) {
                     branch_id = result.data.branch_booking_id;
+                } else {
+                    console.log("Branch not coverage");
                 }
                 fn();
+            } else {
+                console.log("Data not found");
             }
         },
     });
@@ -1265,7 +1286,7 @@ function getAssetYear(asset_model, branch_id, fn) {
         url: "/credit/get-asset-year",
         headers: { Authorization: "Basic " + currentToken },
         // asset_code still static and need to be changed to parameter asset_model
-        data: { asset_code: "CHEVROLET.SPARK.LS10MT", branch_id: branch_id },
+        data: { asset_code: asset_model, branch_id: branch_id },
         dataType: "json",
         error: function (xhr) {
             retryAjax(this, xhr);
@@ -1274,9 +1295,14 @@ function getAssetYear(asset_model, branch_id, fn) {
             retryAjax(this, xhr);
         },
         success: function (result) {
-            $.each(result.data.data, (i, val) => {
-                assetYears.push(val.manufacturing_year);
-            });
+            if (result.message === "success" && result.data !== null) {
+                $.each(result.data.data, (i, val) => {
+                    assetYears.push(val.manufacturing_year);
+                });
+            } else {
+                assetYears = [];
+                console.log("Data not found");
+            }
             if (assetYears.includes(customerAssetYear)) {
                 assetYearExists = true;
                 fn();
@@ -1291,13 +1317,21 @@ function getAssetYear(asset_model, branch_id, fn) {
 function getProductDetail() {
     let assetYear = parseInt($("#tahun_kendaraan").val());
     let assetAge = CURRENT_YEAR - assetYear;
+    let tenor =
+        $("#tenor").val() === ""
+            ? NDFC_TENOR[0]
+            : NDFC_TENOR[$("#tenor").val() - 1];
+    let amount_funding =
+        $("#pembiayaan").val() === ""
+            ? 10000000
+            : clearDot($("#pembiayaan").val());
     let param = {
         product_id: productIdFilter(rawAssetBrand[0].category),
         asset_group: rawAssetBrand[0].asset_group,
         customer_rating: "2",
         asset_age: assetAge,
-        tenor: reverseTenorFormatter($("#tenor").val()),
-        amount_funding_to: "200000",
+        tenor: tenor,
+        amount_funding_to: amount_funding,
     };
 
     return $.ajax({
@@ -1313,7 +1347,9 @@ function getProductDetail() {
             retryAjax(this, xhr);
         },
         success: function (result) {
-            // console.log(result);
+            if (result.message !== "success") {
+                console.log("Failed to fetch data");
+            }
         },
     });
 }
@@ -1321,14 +1357,22 @@ function getProductDetail() {
 function getProductBranchDetail() {
     let assetYear = parseInt($("#tahun_kendaraan").val());
     let assetAge = CURRENT_YEAR - assetYear;
+    let tenor =
+        $("#tenor").val() === ""
+            ? NDFC_TENOR[0]
+            : NDFC_TENOR[$("#tenor").val() - 1];
+    let amount_funding =
+        $("#pembiayaan").val() === ""
+            ? 10000000
+            : clearDot($("#pembiayaan").val());
     let param = {
-        branch_id: "401",
+        branch_id: branch_id,
         product_id: productIdFilter(rawAssetBrand[0].category),
         asset_group: rawAssetBrand[0].asset_group,
         customer_rating: "2",
         asset_age: assetAge,
-        tenor: reverseTenorFormatter($("#tenor").val()),
-        amount_funding_to: "200000",
+        tenor: tenor,
+        amount_funding_to: amount_funding,
     };
 
     return $.ajax({
@@ -1344,20 +1388,22 @@ function getProductBranchDetail() {
             retryAjax(this, xhr);
         },
         success: function (result) {
-            // console.log(result);
+            if (result.message !== "success") {
+                console.log("Failed to fetch data");
+            }
         },
     });
 }
 
 function getFiduciaFee() {
     let param = {
-        branch_id: "401",
+        branch_id: branch_id,
         asset_type_id: rawAssetBrand[0].asset_type_id,
         category_id: rawAssetBrand[0].category,
         otr: calculationParam.nilai_transaksi,
     };
 
-    $.ajax({
+    return $.ajax({
         type: "POST",
         url: "/credit/get-fiducia-fee",
         headers: { Authorization: "Basic " + currentToken },
@@ -1371,22 +1417,29 @@ function getFiduciaFee() {
         },
         success: function (result) {
             if (result.success === 1) {
-                calculationParam.fiducia_fee = result.data.data[0].fiducia_fee;
+                if (result.data !== null) {
+                    calculationParam.fiducia_fee =
+                        result.data.data[0].fiducia_fee;
+                } else {
+                    console.log("Data not found");
+                }
+            } else {
+                console.log("Failed to fetch data");
             }
         },
     });
 }
 
 function getPricelistPaging() {
-    let assetYear = $("#year-caption").text();
-    $.ajax({
+    let assetYear = $("#tahun_kendaraan").val();
+    return $.ajax({
         type: "POST",
         url: "/credit/get-list-price",
         headers: { Authorization: "Basic " + currentToken },
         data: {
-            asset_code: "MTRBAJAJ.PULSAR.220DTS",
+            asset_code: assetCode,
             manufacturing_year: assetYear,
-            branch_id: "401",
+            branch_id: branch_id,
         },
         dataType: "json",
         error: function (xhr) {
@@ -1396,47 +1449,73 @@ function getPricelistPaging() {
             retryAjax(this, xhr);
         },
         success: function (result) {
-            if (result.success === 1 && result.data !== null) {
-                calculationParam.nilai_transaksi = result.data.data[0].price;
-                getFiduciaFee();
+            if (result.success === 1) {
+                if (result.data !== null) {
+                    calculationParam.nilai_transaksi =
+                        result.data.data[0].price;
+                } else {
+                    console.log("Data not found");
+                }
+            } else {
+                console.log("Failed to fetch data");
             }
         },
     });
 }
 
-function getCalculationParams() {
-    var tenor = parseInt(reverseTenorFormatter($("#tenor").val()));
+function getMaxFunding() {
     $.when(
-        getProductDetail(),
+        getPricelistPaging(),
         getProductBranchDetail(),
-        getPricelistPaging()
+        getProductDetail()
     ).then(function (res1, res2, res3) {
-        calculationParam.effective_rate =
-            (res1[0].data.data[0].min_effective_rate +
-                res2[0].data.data[0].min_effective_rate) /
-            100;
+        admin_fee = res2[0].data.data[0].admin_fee;
+        min_effective_rate = res2[0].data.data[0].min_effective_rate;
+        admin_fee2 = res3[0].data.data[0].admin_fee;
+        min_effective_rate2 = res3[0].data.data[0].min_effective_rate;
 
-        calculationParam.admin_fee =
-            res1[0].data.data[0].admin_fee + res2[0].data.data[0].admin_fee;
-
+        calculationParam.nilai_transaksi = res1[0].data.data[0].price;
+        max_funding_percentage =
+            res2[0].data.data[0].max_funding_percentage +
+            res3[0].data.data[0].max_funding_percentage;
         calculationParam.max_ltv =
-            (res2[0].data.data[0].max_funding_percentage / 100) *
-            calculationParam.nilai_transaksi;
+            (max_funding_percentage / 100) * calculationParam.nilai_transaksi;
 
-        calculationParam.flat_rate = pmt(
-            calculationParam.effective_rate / 12,
-            tenor,
-            1,
-            0,
-            (1 * (-1 * tenor - 1) * 12) / tenor
+        $(".ndfc-simulasi .total").text(
+            "Rp " + separatordot(calculationParam.max_ltv)
         );
+
+        $("#funding").slider({
+            min: 10000000,
+            max: calculationParam.max_ltv,
+            step: 100000,
+        });
+
+        $(".min-fund").text("Rp " + separatordot(10000000));
+        $(".max-fund").text("Rp " + separatordot(calculationParam.max_ltv));
+    });
+}
+
+function getCalculationParams() {
+    let tenor = reverseTenorFormatter($("#tenor").val());
+    $.when(getFiduciaFee()).then(function (res1) {
+        calculationParam.effective_rate =
+            (min_effective_rate2 + min_effective_rate) / 100;
+        calculationParam.admin_fee = admin_fee2 + admin_fee;
+        calculationParam.flat_rate =
+            ((pmt(calculationParam.effective_rate / 12, tenor, 1, 0, 0) *
+                -1 *
+                tenor -
+                1) *
+                12) /
+            tenor;
         getEstimateInstallment();
     });
 }
 
 function getEstimateInstallment() {
     let param = {
-        funding_amount: 4000000,
+        funding_amount: clearDot($("#pembiayaan").val()),
         tenor: reverseTenorFormatter($("#tenor").val()),
         effective_rate: calculationParam.effective_rate,
         flat_rate: calculationParam.flat_rate,
@@ -1469,7 +1548,15 @@ function getEstimateInstallment() {
             retryAjax(this, xhr);
         },
         success: function (result) {
-            console.log(result);
+            if (result.message === "success") {
+                calculationParam.installment_amount = result.data.installment;
+                total_ntf = result.data.total_ntf;
+                $("p.estimate-installment").text(
+                    "Rp " + separatordot(calculationParam.installment_amount)
+                );
+            } else {
+                console.log("Data not found");
+            }
         },
     });
 }
@@ -1577,6 +1664,9 @@ $("#tenor2").slider({
     max: 4,
     value: 1,
 });
+
+$(".min-tenor").text(NDFC_TENOR[0] + " Bulan");
+$(".max-tenor").text(NDFC_TENOR[3] + " Bulan");
 
 $("#tenor2").on("change", function () {
     let selectedTenor = parseInt($(this).val());

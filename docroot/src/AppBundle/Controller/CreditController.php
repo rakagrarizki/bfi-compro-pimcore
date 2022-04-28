@@ -989,8 +989,10 @@ class CreditController extends FrontendController
         $token = $this->getTokenBearer();
         $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
         $url = $host . WebsiteSetting::getByName("URL_GET_DATALIST_ASSETS")->getData();
-        $param['isactive'] = "true";
+        $param['isactive'] = htmlentities(addslashes($request->get('isactive')));
         $param['asset_type'] = htmlentities(addslashes($request->get('asset_type')));
+        $param['page'] = (int) htmlentities(addslashes($request->get('page')));
+        $param['size'] = (int) htmlentities(addslashes($request->get('size')));
 
         try {
             $data = $this->sendAPI->getListAssets($url, $param, $token);
@@ -1113,7 +1115,7 @@ class CreditController extends FrontendController
         $param["kelurahan"] = htmlentities(addslashes($request->get('kelurahan')));
         $param["kecamatan"] = htmlentities(addslashes($request->get('kecamatan')));
         $param["city"] = htmlentities(addslashes($request->get('city')));
-        $param["zipcode"] = htmlentities(addslashes($request->get('zip_code')));
+        $param["zipcode"] = htmlentities(addslashes($request->get('zipcode')));
         $param["is_branch_ho"] = htmlentities(addslashes($request->get('is_branch_ho')));
         $param["customer_status"] = htmlentities(addslashes($request->get('customer_status')));
         $param["is_ro_exp"] = htmlentities(addslashes($request->get('is_ro_exp')));
@@ -1343,8 +1345,8 @@ class CreditController extends FrontendController
 
         $param['funding_amount'] = (int) htmlentities(addslashes($request->get('funding_amount')));
         $param['tenor'] = (int) htmlentities(addslashes($request->get('tenor')));
-        $param['effective_rate'] = (int) htmlentities(addslashes($request->get('effective_rate')));
-        $param['flat_rate'] = (int) htmlentities(addslashes($request->get('flat_rate')));
+        $param['effective_rate'] = (double) htmlentities(addslashes($request->get('effective_rate')));
+        $param['flat_rate'] = (double) htmlentities(addslashes($request->get('flat_rate')));
         $param['installment_type'] = (int) htmlentities(addslashes($request->get('installment_type')));
         $param['payment_fequency'] = (int) htmlentities(addslashes($request->get('payment_fequency')));
         $param['calcualte_by'] = (int) htmlentities(addslashes($request->get('calcualte_by')));
@@ -1366,7 +1368,8 @@ class CreditController extends FrontendController
                 return new JsonResponse([
                     'success' => 1,
                     'message' => "success",
-                    'data' => $data->data
+                    'data' => $data->data,
+                    'inputan' => $param
                 ]);
             } else {
                 return new JsonResponse([
