@@ -1672,3 +1672,25 @@ $("#tenor2").on("change", function () {
     let selectedTenor = parseInt($(this).val());
     $("#tenor").val(tenorFormatter(NDFC_TENOR[selectedTenor - 1]));
 });
+
+function loginCust(phone) {
+    var dataPhone = {
+        phone_number: phone,
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "/user/login",
+        data: dataPhone,
+        dataType: "json",
+        error: function (data) {
+            // console.log("error" + data);
+        },
+        fail: function (xhr, textStatus, error) {
+            // console.log("request failed");
+        },
+        success: function (dataObj) {
+            console.log(dataObj);
+        },
+    });
+}

@@ -477,6 +477,7 @@ function pushDataStep5() {
         },
         success: function (result) {
             if (result.message === "success") {
+                loginCust(dataStep1.phone_number);
                 if (sessionStorage.getItem("submitStepOtp") === "false") {
                     window.dataLayer.push({
                         event: "ValidFormNDFCStepOTP",

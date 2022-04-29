@@ -673,7 +673,7 @@ $this->headScript()
                                             <span>082342423432423</span></a>
                                     </div>
                                     <div class="button-area text-center">
-                                        <a href="/id/" class="cta cta-primary-outline cta-big ">
+                                        <a href="/id/user/dashboard" class="cta cta-primary-outline cta-big ">
                                             <span>CEK STATUS PENGAJUAN</span></a>
                                     </div>
                                     <div class="button-area text-center">
