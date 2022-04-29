@@ -552,9 +552,8 @@ function clearPagination() {
 }
 
 function hideInsurance(element) {
-    element.prop("checked", false);
     element.closest(".form-group").prop("hidden", true);
-    console.log(element.closest(".form-group"));
+    element.prop("checked", false);
 }
 
 function showInsurance(element) {
@@ -563,17 +562,17 @@ function showInsurance(element) {
 
 $("#tenor2").on("change", function () {
     let tenorValue = $(this).val();
-    if (tenorValue === 1) {
+    if (tenorValue === "1") {
         showInsurance($('input[name="assurance1"]'));
         hideInsurance($('input[name="assurance2"]'));
         hideInsurance($('input[name="assurance3"]'));
         hideInsurance($('input[name="assurance4"]'));
-    } else if (tenorValue === 2) {
+    } else if (tenorValue === "2") {
         showInsurance($('input[name="assurance1"]'));
         showInsurance($('input[name="assurance2"]'));
         hideInsurance($('input[name="assurance3"]'));
         hideInsurance($('input[name="assurance4"]'));
-    } else if (tenorValue === 3) {
+    } else if (tenorValue === "3") {
         showInsurance($('input[name="assurance1"]'));
         showInsurance($('input[name="assurance2"]'));
         showInsurance($('input[name="assurance3"]'));
