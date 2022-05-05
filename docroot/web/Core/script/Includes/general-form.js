@@ -25,7 +25,7 @@ let calculationParam = {
 };
 
 const NDFC_TENOR = [12, 24, 36, 48];
-const ASSET_SIZE = 11637;
+const ASSET_SIZE = sessionStorage.getItem("loanType") === "NDFC" ? 11637 : 372;
 const CURRENT_YEAR = new Date().getFullYear();
 
 function retryAjax(_this, xhr) {
@@ -1060,7 +1060,10 @@ function filterAssetType() {
 function filterAssetBrand(category) {
     var dataBrand = [];
     var brand_placeholder = $("#merk_kendaraan").attr("placeholder");
-    rawAssetBrand = dataAssets.filter((e) => e.category === category);
+    rawAssetBrand =
+        sessionStorage.getItem("loanType") === "NDFC"
+            ? dataAssets.filter((e) => e.category === category)
+            : dataAssets;
 
     // remove duplicate
     let assetBrand = rawAssetBrand.filter(
