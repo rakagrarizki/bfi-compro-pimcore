@@ -1828,6 +1828,7 @@ class CreditController extends FrontendController
         $url = $host . WebsiteSetting::getByName('URL_SAVE_MOTORCYCLE_LEADS_1')->getData();
         // $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["name"] = htmlentities(addslashes($request->get('name')));
+        $param["no_ktp"] = htmlentities(addslashes($request->get('no_ktp')));
         $param["email"] = htmlentities(addslashes($request->get('email')));
         $param["phone_number"] = htmlentities(addslashes($request->get('phone_number')));
         $param["utm_source"] = htmlentities(addslashes($request->get('utm_source')));

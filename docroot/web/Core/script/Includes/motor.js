@@ -5,6 +5,7 @@ let dataStep1 = {
     name: undefined,
     email: undefined,
     phone_number: undefined,
+    no_ktp: undefined,
     wa_number: undefined,
     utm_source: undefined,
     utm_campaign: undefined,
@@ -41,6 +42,7 @@ let dataStep2 = {
         asset_ownership_desc_bfi: undefined,
         home_ownership_id_bfi: undefined,
         home_ownership_desc_bfi: undefined,
+        tax_is_active: undefined,
     },
     info_customer: {
         profession_id_bfi: undefined,
@@ -140,13 +142,35 @@ $("#next2").on("click", function (e) {
     if ($(this).closest("form").valid()) {
         pushDataStep2(() => {
             getDupcheck(() => {
-                if (sessionStorage.getItem("submitStep2") === "false") {
-                    window.dataLayer.push({
-                        event: "ValidFormNDFMStep2",
+                getBranchCoverage(() => {
+                    getAssetYear(assetCode, branch_id, () => {
+                        if ((assetYearExists = true)) {
+                            if (
+                                sessionStorage.getItem("submitStep2") ===
+                                "false"
+                            ) {
+                                window.dataLayer.push({
+                                    event: "ValidFormNDFMStep2",
+                                });
+                                sessionStorage.setItem("submitStep2", "true");
+                            }
+                            step("next", 3);
+                            getListHouseOwnership("#kepemilikan_rumah");
+                            getListMaritalStatus("#marital_status");
+                            getMaxFunding();
+                            $("#calcLoan").prop("disabled", false);
+                            $("#brand-caption").text(
+                                $("#merk_kendaraan").val().toString()
+                            );
+                            $("#model-caption").text(
+                                $("#model_kendaraan option:selected").html()
+                            );
+                            $("#year-caption").text(
+                                $("#tahun_kendaraan").val()
+                            );
+                        }
                     });
-                    sessionStorage.setItem("submitStep2", "true");
-                }
-                step("next", 3);
+                });
             });
         });
     }
@@ -186,6 +210,7 @@ $("#next5").on("click", function (e) {
 function pushDataStep1(cb) {
     let result = (dataStep1 = {
         name: $("#nama_lengkap").val(),
+        no_ktp: $("#idnumber").val(),
         email: $("#email_pemohon").val(),
         phone_number: $("#no_handphone").val(),
         utm_source: sessionStorage.getItem("utm_source"),
@@ -251,6 +276,7 @@ function pushDataStep2(cb) {
             home_ownership_desc_bfi: $(
                 "#kepemilikan_rumah option:selected"
             ).html(),
+            tax_is_active: $("input[name='tax_is_active']:checked").val(),
         },
         info_customer: {
             profession_id_bfi: "KRY",
@@ -426,6 +452,7 @@ $("input[name='action-call']").click(function () {
         $(".wa-number-same").attr("hidden", true);
     }
 });
+
 $("input[name='is-wa-number-same']").click(function () {
     var isWaSame = $(this).val();
     if (isWaSame == "false") {
@@ -433,6 +460,14 @@ $("input[name='is-wa-number-same']").click(function () {
     } else {
         $(".wa-numbers").attr("hidden", true);
     }
+});
+
+$("#tenor2").on("change", function () {
+    getMaxFunding();
+});
+
+$("#funding").on("change", function () {
+    getMaxFunding();
 });
 
 $("#provinsi").change(() => {

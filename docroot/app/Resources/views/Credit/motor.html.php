@@ -92,6 +92,11 @@ $this->headScript()
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
+                                            <label for="idnumber"><?= $this->translate('form-idnumber') ?></label>
+                                            <input type="text" class="form-control formIdnumber" name="idnumber" id="idnumber" placeholder="<?= $this->translate('placeholder-idnumber') ?>" maxlength="16">
+                                            <div class="error-wrap"></div>
+                                        </div>
+                                        <div class="form-group">
                                             <label for="no_handphone"><?= $this->translate('form-hp') ?></label>
                                             <input type="tel" pattern="\d*" class="form-control formPhoneNumber" name="no_handphone" id="no_handphone" maxlength="13" placeholder="<?= $this->translate('placeholder-hp') ?>">
                                             <div class="error-wrap"></div>
@@ -240,15 +245,15 @@ $this->headScript()
                                             <div class="radio-button">
                                                 <div class="radio-wrap">
                                                     <input type="radio" class="inputs formRequired" id="action-call"
-                                                        name="action-call" value="true">
+                                                        name="tax_is_active" value="true">
                                                     <label
-                                                        for="action-call"><?=$this->translate('option-text-wa') ?></label>
+                                                        for="action-call"><?=$this->translate('option-text-yes') ?></label>
                                                 </div>
                                                 <div class="radio-wrap">
                                                     <input type="radio" class="inputs formRequired" id="action-call1"
-                                                        name="action-call" value="false">
+                                                        name="tax_is_active" value="false">
                                                     <label
-                                                        for="action-call1"><?=$this->translate('option-text-tlfn') ?></label>
+                                                        for="action-call1"><?=$this->translate('option-text-no') ?></label>
                                                 </div>
                                                 <div class="error-wrap"></div>
                                             </div>
@@ -343,7 +348,7 @@ $this->headScript()
                                             <div class="slidecontainer ">
                                                 <div class="value-left valuemin">Rp 10.000.000</div>
                                                 <div class="value-right valuemax">Rp 64.190.000</div>
-                                                <input id="funding" class="customslide" type="tel" pattern="\d*"
+                                                <input id="funding" class="customslide" type="range"
                                                     data-slider-handle="custom" data-slider-tooltip="hide" />
                                             </div>
                                             <div class="error-wrap"></div>
@@ -357,7 +362,7 @@ $this->headScript()
                                             <div class="slidecontainer ">
                                                 <div class="value-left valuemin">12 Bulan</div>
                                                 <div class="value-right valuemax">18 Bulan</div>
-                                                <input id="tenor2" class="customslide" type="tel" pattern="\d*"
+                                                <input id="tenor2" class="customslide" type="range"
                                                     data-slider-handle="custom" data-slider-tooltip="hide" />
                                             </div>
                                             <div class="error-wrap"></div>
