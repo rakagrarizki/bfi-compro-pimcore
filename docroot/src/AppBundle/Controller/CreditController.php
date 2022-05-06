@@ -1892,6 +1892,7 @@ class CreditController extends FrontendController
         $param["info_assets"]["asset_ownership_desc_bfi"] = htmlentities(addslashes($info_assets['asset_ownership_desc_bfi']));
         $param["info_assets"]["home_ownership_id_bfi"] = htmlentities(addslashes($info_assets['home_ownership_id_bfi']));
         $param["info_assets"]["home_ownership_desc_bfi"] = htmlentities(addslashes($info_assets['home_ownership_desc_bfi']));
+        $param["info_assets"]["tax_is_active"] = htmlentities(addslashes($info_assets['tax_is_active']));
         $param["info_customer"]["profession_id_bfi"] = htmlentities(addslashes($info_customer['profession_id_bfi']));
         $param["info_customer"]["profession_desc_bfi"] = htmlentities(addslashes($info_customer['profession_desc_bfi']));
         $param["info_customer"]["salary"] = htmlentities(addslashes($info_customer['salary']));
