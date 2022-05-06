@@ -320,15 +320,15 @@ $this->headScript()
                                                     <div class="row">
                                                         <div class="col-xs-3">
                                                             <p class="title"><?= $this->translate('brand') ?></p>
-                                                            <p class="subtitle">Honda</p>
+                                                            <p class="subtitle" id="brand-caption">Honda</p>
                                                         </div>
                                                         <div class="col-xs-6">
                                                             <p class="title"><?= $this->translate('model') ?></p>
-                                                            <p class="subtitle">ADV 150</p>
+                                                            <p class="subtitle" id="model-caption">ADV 150</p>
                                                         </div>
                                                         <div class="col-xs-3">
                                                             <p class="title"><?= $this->translate('year') ?></p>
-                                                            <p class="subtitle">2015</p>
+                                                            <p class="subtitle" id="year-caption">2015</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -346,8 +346,8 @@ $this->headScript()
                                                     placeholder="<?= $this->translate('desired-financing') ?>">
                                             </div>
                                             <div class="slidecontainer ">
-                                                <div class="value-left valuemin">Rp 10.000.000</div>
-                                                <div class="value-right valuemax">Rp 64.190.000</div>
+                                                <div class="value-left valuemin min-fund">Rp 10.000.000</div>
+                                                <div class="value-right valuemax max-fund">Rp 64.190.000</div>
                                                 <input id="funding" class="customslide" type="range"
                                                     data-slider-handle="custom" data-slider-tooltip="hide" />
                                             </div>
@@ -360,8 +360,8 @@ $this->headScript()
                                                 aria-describedby="basic-addon1"
                                                 placeholder="<?= $this->translate('desired-tenor') ?>">
                                             <div class="slidecontainer ">
-                                                <div class="value-left valuemin">12 Bulan</div>
-                                                <div class="value-right valuemax">18 Bulan</div>
+                                                <div class="value-left valuemin min-tenor">12 Bulan</div>
+                                                <div class="value-right valuemax max-tenor">18 Bulan</div>
                                                 <input id="tenor2" class="customslide" type="range"
                                                     data-slider-handle="custom" data-slider-tooltip="hide" />
                                             </div>
@@ -370,7 +370,7 @@ $this->headScript()
                                         <div class="form-group  simulasi-group rincian">
                                             <div class="total-estimate">
                                                 <p class="title-angsuran"><?= $this->translate('estimated-monthly-installment') ?></p>
-                                                <p class="total">Rp 0</p>
+                                                <p class="total estimate-installment">Rp 0</p>
                                                 <button class="cta cta-primary cta-big absolutebutcalc" id="calcLoan"
                                                     type="button" disabled><?=$this->translate('hitung') ?></button>
                                             </div>

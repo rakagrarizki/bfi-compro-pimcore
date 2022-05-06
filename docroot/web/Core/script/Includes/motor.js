@@ -1,6 +1,8 @@
 let lang = document.documentElement.lang;
 var submission_id = "";
 
+window.dataLayer = window.dataLayer || [];
+
 let dataStep1 = {
     name: undefined,
     email: undefined,
@@ -115,7 +117,12 @@ $("#occupation").select2({
 });
 
 $("#merk_kendaraan").change(() => {
+    $("#model_kendaraan").empty();
     filterAssetModel($("#merk_kendaraan").val().toString());
+});
+
+$("#calcLoan").on("click", function () {
+    getCalculationParams();
 });
 
 $("#next1").on("click", function (e) {
@@ -134,6 +141,7 @@ $("#next1").on("click", function (e) {
             getListAssets("motor");
             getListBpkbOwnership("#kepemilikan_bpkb");
             getListHouseOwnership("#kepemilikan_rumah");
+            getOccupationList();
         });
     }
 });
@@ -156,7 +164,6 @@ $("#next2").on("click", function (e) {
                             }
                             step("next", 3);
                             getListHouseOwnership("#kepemilikan_rumah");
-                            getListMaritalStatus("#marital_status");
                             getMaxFunding();
                             $("#calcLoan").prop("disabled", false);
                             $("#brand-caption").text(
@@ -243,6 +250,7 @@ function pushDataStep1(cb) {
 }
 
 function pushDataStep2(cb) {
+    assetCode = $("#model_kendaraan").val().toString();
     let result = (dataStep2 = {
         submission_id: submission_id,
         info_address: {
@@ -279,8 +287,8 @@ function pushDataStep2(cb) {
             tax_is_active: $("input[name='tax_is_active']:checked").val(),
         },
         info_customer: {
-            profession_id_bfi: "KRY",
-            profession_desc_bfi: "Karyawan Swasta",
+            profession_id_bfi: $("#occupation").val().toString(),
+            profession_desc_bfi: $("#occupation").val().toString(),
             salary: "12000000",
             dob: "1995-12-28",
         },
@@ -311,9 +319,9 @@ function pushDataStep3(cb) {
     let result = (dataStep3 = {
         submission_id: submission_id,
         info_calculator: {
-            funding: "500000000",
-            tenor: "24",
-            monthly_installment: "40000000",
+            funding: clearDot($("#pembiayaan").val()),
+            tenor: reverseTenorFormatter($("#tenor").val()),
+            monthly_installment: calculationParam.installment_amount,
         },
     });
 
@@ -428,10 +436,68 @@ function getDupcheck(cb) {
                         sessionStorage.getItem("loanType");
                 } else {
                     cb();
-                    console.log(result);
                 }
             }
         },
+    });
+}
+
+function getOccupationList() {
+    var placeholder = $("#occupation").attr("placeholder");
+    let data_occupation = [
+        {
+            id: "Karyawan Swasta",
+            text: "Karyawan Swasta",
+        },
+        {
+            id: "PNS",
+            text: "Pegawai Negeri Sipil",
+        },
+        {
+            id: "Wiraswasta",
+            text: "Wiraswasta",
+        },
+        {
+            id: "Buruh",
+            text: "Buruh",
+        },
+        {
+            id: "Tenaga Kesehatan",
+            text: "Tenaga Kesehatan",
+        },
+        {
+            id: "IRT",
+            text: "Ibu Rumah Tangga",
+        },
+        {
+            id: "Keluarga dari Stakeholder BFI",
+            text: "Keluarga dari Stakeholder BFI",
+        },
+        {
+            id: "Guru",
+            text: "Guru",
+        },
+        {
+            id: "Pelajar/Mahasiswa",
+            text: "Pelajar/Mahasiswa",
+        },
+        {
+            id: "ABRI/Aparat Keamanan/Polisi",
+            text: "ABRI/Aparat Keamanan/Polisi",
+        },
+        {
+            id: "Ojek",
+            text: "Ojek",
+        },
+        {
+            id: "Pejabat Pemerintahan",
+            text: "Pejabat Pemerintahan",
+        },
+    ];
+
+    $("#occupation").select2({
+        placeholder: placeholder,
+        data: data_occupation,
     });
 }
 

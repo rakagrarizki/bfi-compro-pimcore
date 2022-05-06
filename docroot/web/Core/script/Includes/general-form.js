@@ -25,6 +25,11 @@ let calculationParam = {
 };
 
 const NDFC_TENOR = [12, 24, 36, 48];
+const NDFM_TENOR = [6, 12, 18, 24];
+const LOAN_TENOR =
+    sessionStorage.getItem("loanType") === "NDFC" ? NDFC_TENOR : NDFM_TENOR;
+const MIN_FUNDING =
+    sessionStorage.getItem("loanType") === "NDFC" ? 10000000 : 1000000;
 const ASSET_SIZE = sessionStorage.getItem("loanType") === "NDFC" ? 11637 : 372;
 const CURRENT_YEAR = new Date().getFullYear();
 
@@ -1043,6 +1048,9 @@ function filterAssetType() {
             text: val,
         });
     });
+    if (sessionStorage.getItem("loanType") === "NDFM") {
+        filterAssetBrand();
+    }
     $("#type_kendaraan").select2({
         placeholder: type_placeholder,
         dropdownParent: $("#type_kendaraan").parent(),
@@ -1322,11 +1330,11 @@ function getProductDetail() {
     let assetAge = CURRENT_YEAR - assetYear;
     let tenor =
         $("#tenor").val() === ""
-            ? NDFC_TENOR[0]
-            : NDFC_TENOR[$("#tenor").val() - 1];
+            ? LOAN_TENOR[0]
+            : LOAN_TENOR[$("#tenor").val() - 1];
     let amount_funding =
         $("#pembiayaan").val() === ""
-            ? 10000000
+            ? MIN_FUNDING
             : clearDot($("#pembiayaan").val());
     let param = {
         product_id: productIdFilter(rawAssetBrand[0].category),
@@ -1362,11 +1370,11 @@ function getProductBranchDetail() {
     let assetAge = CURRENT_YEAR - assetYear;
     let tenor =
         $("#tenor").val() === ""
-            ? NDFC_TENOR[0]
-            : NDFC_TENOR[$("#tenor").val() - 1];
+            ? LOAN_TENOR[0]
+            : LOAN_TENOR[$("#tenor").val() - 1];
     let amount_funding =
         $("#pembiayaan").val() === ""
-            ? 10000000
+            ? MIN_FUNDING
             : clearDot($("#pembiayaan").val());
     let param = {
         branch_id: branch_id,
@@ -1489,12 +1497,12 @@ function getMaxFunding() {
         );
 
         $("#funding").slider({
-            min: 10000000,
+            min: MIN_FUNDING,
             max: calculationParam.max_ltv,
             step: 100000,
         });
 
-        $(".min-fund").text("Rp " + separatordot(10000000));
+        $(".min-fund").text("Rp " + separatordot(MIN_FUNDING));
         $(".max-fund").text("Rp " + separatordot(calculationParam.max_ltv));
     });
 }
@@ -1667,12 +1675,12 @@ $("#tenor2").slider({
     value: 1,
 });
 
-$(".min-tenor").text(NDFC_TENOR[0] + " Bulan");
-$(".max-tenor").text(NDFC_TENOR[3] + " Bulan");
+$(".min-tenor").text(LOAN_TENOR[0] + " Bulan");
+$(".max-tenor").text(LOAN_TENOR[3] + " Bulan");
 
 $("#tenor2").on("change", function () {
     let selectedTenor = parseInt($(this).val());
-    $("#tenor").val(tenorFormatter(NDFC_TENOR[selectedTenor - 1]));
+    $("#tenor").val(tenorFormatter(LOAN_TENOR[selectedTenor - 1]));
 });
 
 function loginCust(phone) {
