@@ -14,6 +14,8 @@ let min_effective_rate2 = 0;
 let max_funding_percentage = 0;
 let total_ntf = 0;
 
+window.dataLayer = window.dataLayer || [];
+
 let calculationParam = {
     effective_rate: 0,
     flat_rate: 0,
@@ -1270,6 +1272,16 @@ function getBranchCoverage(fn) {
                 }
                 fn();
             } else {
+                loanType = sessionStorage.getItem("loanType");
+                if (loanType == "NDFC") {
+                    window.dataLayer.push({
+                        event: "ValidNDFCAssetNotCover",
+                    });
+                } else {
+                    window.dataLayer.push({
+                        event: "ValidNDFMAssetNotCover",
+                    });
+                }
                 console.log("Data not found");
             }
         },
@@ -1301,6 +1313,16 @@ function getAssetYear(asset_model, branch_id, fn) {
                 });
             } else {
                 assetYears = [];
+                loanType = sessionStorage.getItem("loanType");
+                if (loanType == "NDFC") {
+                    window.dataLayer.push({
+                        event: "ValidNDFCAssetNotCover",
+                    });
+                } else {
+                    window.dataLayer.push({
+                        event: "ValidNDFMAssetNotCover",
+                    });
+                }
                 console.log("Data not found");
             }
             if (assetYears.includes(customerAssetYear)) {
