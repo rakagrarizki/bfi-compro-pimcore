@@ -73,6 +73,10 @@ $(document).ready(function () {
         : $(".nav-item-2.active").find(".nav-step-tag").text("Onprogress");
 
     sessionStorage.setItem("loanType", "NDFM");
+    sessionStorage.setItem("submitStep1", "false");
+    sessionStorage.setItem("submitStep2", "false");
+    sessionStorage.setItem("submitStep3", "false");
+    sessionStorage.setItem("submitStepOtp", "false");
 });
 
 var nearBranch = $("#near_branch").attr("placeholder");
