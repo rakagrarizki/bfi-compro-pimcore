@@ -43,13 +43,11 @@ class SendApi
             'auth' => [USERNAME, PASSWORD]
         ]);
         
-        try {
-            var_dump($name, $url, $method);         
+        try {    
             $data = $client->request($method, $url, [
                 "json" => $params
             ]);
         } catch (ClientException $e) {
-            var_dump($e);
             $response = $e->getResponse();
             return json_decode($response->getBody());
         }

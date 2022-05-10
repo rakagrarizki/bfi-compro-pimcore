@@ -92,6 +92,11 @@ $this->headScript()
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
+                                            <label for="idnumber"><?= $this->translate('form-idnumber') ?></label>
+                                            <input type="text" class="form-control formIdnumber" name="idnumber" id="idnumber" placeholder="<?= $this->translate('placeholder-idnumber') ?>" maxlength="16">
+                                            <div class="error-wrap"></div>
+                                        </div>
+                                        <div class="form-group">
                                             <label for="no_handphone"><?= $this->translate('form-hp') ?></label>
                                             <input type="tel" pattern="\d*" class="form-control formPhoneNumber" name="no_handphone" id="no_handphone" maxlength="13" placeholder="<?= $this->translate('placeholder-hp') ?>">
                                             <div class="error-wrap"></div>
@@ -240,15 +245,15 @@ $this->headScript()
                                             <div class="radio-button">
                                                 <div class="radio-wrap">
                                                     <input type="radio" class="inputs formRequired" id="action-call"
-                                                        name="action-call" value="true">
+                                                        name="tax_is_active" value="true">
                                                     <label
-                                                        for="action-call"><?=$this->translate('option-text-wa') ?></label>
+                                                        for="action-call"><?=$this->translate('option-text-yes') ?></label>
                                                 </div>
                                                 <div class="radio-wrap">
                                                     <input type="radio" class="inputs formRequired" id="action-call1"
-                                                        name="action-call" value="false">
+                                                        name="tax_is_active" value="false">
                                                     <label
-                                                        for="action-call1"><?=$this->translate('option-text-tlfn') ?></label>
+                                                        for="action-call1"><?=$this->translate('option-text-no') ?></label>
                                                 </div>
                                                 <div class="error-wrap"></div>
                                             </div>
@@ -315,15 +320,15 @@ $this->headScript()
                                                     <div class="row">
                                                         <div class="col-xs-3">
                                                             <p class="title"><?= $this->translate('brand') ?></p>
-                                                            <p class="subtitle">Honda</p>
+                                                            <p class="subtitle" id="brand-caption">Honda</p>
                                                         </div>
                                                         <div class="col-xs-6">
                                                             <p class="title"><?= $this->translate('model') ?></p>
-                                                            <p class="subtitle">ADV 150</p>
+                                                            <p class="subtitle" id="model-caption">ADV 150</p>
                                                         </div>
                                                         <div class="col-xs-3">
                                                             <p class="title"><?= $this->translate('year') ?></p>
-                                                            <p class="subtitle">2015</p>
+                                                            <p class="subtitle" id="year-caption">2015</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -341,9 +346,9 @@ $this->headScript()
                                                     placeholder="<?= $this->translate('desired-financing') ?>">
                                             </div>
                                             <div class="slidecontainer ">
-                                                <div class="value-left valuemin">Rp 10.000.000</div>
-                                                <div class="value-right valuemax">Rp 64.190.000</div>
-                                                <input id="funding" class="customslide" type="tel" pattern="\d*"
+                                                <div class="value-left valuemin min-fund">Rp 10.000.000</div>
+                                                <div class="value-right valuemax max-fund">Rp 64.190.000</div>
+                                                <input id="funding" class="customslide" type="range"
                                                     data-slider-handle="custom" data-slider-tooltip="hide" />
                                             </div>
                                             <div class="error-wrap"></div>
@@ -355,9 +360,9 @@ $this->headScript()
                                                 aria-describedby="basic-addon1"
                                                 placeholder="<?= $this->translate('desired-tenor') ?>">
                                             <div class="slidecontainer ">
-                                                <div class="value-left valuemin">12 Bulan</div>
-                                                <div class="value-right valuemax">18 Bulan</div>
-                                                <input id="tenor2" class="customslide" type="tel" pattern="\d*"
+                                                <div class="value-left valuemin min-tenor">12 Bulan</div>
+                                                <div class="value-right valuemax max-tenor">18 Bulan</div>
+                                                <input id="tenor2" class="customslide" type="range"
                                                     data-slider-handle="custom" data-slider-tooltip="hide" />
                                             </div>
                                             <div class="error-wrap"></div>
@@ -365,7 +370,7 @@ $this->headScript()
                                         <div class="form-group  simulasi-group rincian">
                                             <div class="total-estimate">
                                                 <p class="title-angsuran"><?= $this->translate('estimated-monthly-installment') ?></p>
-                                                <p class="total">Rp 0</p>
+                                                <p class="total estimate-installment">Rp 0</p>
                                                 <button class="cta cta-primary cta-big absolutebutcalc" id="calcLoan"
                                                     type="button" disabled><?=$this->translate('hitung') ?></button>
                                             </div>

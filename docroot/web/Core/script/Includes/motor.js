@@ -1,10 +1,13 @@
 let lang = document.documentElement.lang;
 var submission_id = "";
 
+window.dataLayer = window.dataLayer || [];
+
 let dataStep1 = {
     name: undefined,
     email: undefined,
     phone_number: undefined,
+    no_ktp: undefined,
     wa_number: undefined,
     utm_source: undefined,
     utm_campaign: undefined,
@@ -41,6 +44,7 @@ let dataStep2 = {
         asset_ownership_desc_bfi: undefined,
         home_ownership_id_bfi: undefined,
         home_ownership_desc_bfi: undefined,
+        tax_is_active: undefined,
     },
     info_customer: {
         profession_id_bfi: undefined,
@@ -113,7 +117,12 @@ $("#occupation").select2({
 });
 
 $("#merk_kendaraan").change(() => {
+    $("#model_kendaraan").empty();
     filterAssetModel($("#merk_kendaraan").val().toString());
+});
+
+$("#calcLoan").on("click", function () {
+    getCalculationParams();
 });
 
 $("#next1").on("click", function (e) {
@@ -132,6 +141,7 @@ $("#next1").on("click", function (e) {
             getListAssets("motor");
             getListBpkbOwnership("#kepemilikan_bpkb");
             getListHouseOwnership("#kepemilikan_rumah");
+            getOccupationList();
         });
     }
 });
@@ -140,13 +150,34 @@ $("#next2").on("click", function (e) {
     if ($(this).closest("form").valid()) {
         pushDataStep2(() => {
             getDupcheck(() => {
-                if (sessionStorage.getItem("submitStep2") === "false") {
-                    window.dataLayer.push({
-                        event: "ValidFormNDFMStep2",
+                getBranchCoverage(() => {
+                    getAssetYear(assetCode, branch_id, () => {
+                        if ((assetYearExists = true)) {
+                            if (
+                                sessionStorage.getItem("submitStep2") ===
+                                "false"
+                            ) {
+                                window.dataLayer.push({
+                                    event: "ValidFormNDFMStep2",
+                                });
+                                sessionStorage.setItem("submitStep2", "true");
+                            }
+                            step("next", 3);
+                            getListHouseOwnership("#kepemilikan_rumah");
+                            getMaxFunding();
+                            $("#calcLoan").prop("disabled", false);
+                            $("#brand-caption").text(
+                                $("#merk_kendaraan").val().toString()
+                            );
+                            $("#model-caption").text(
+                                $("#model_kendaraan option:selected").html()
+                            );
+                            $("#year-caption").text(
+                                $("#tahun_kendaraan").val()
+                            );
+                        }
                     });
-                    sessionStorage.setItem("submitStep2", "true");
-                }
-                step("next", 3);
+                });
             });
         });
     }
@@ -186,6 +217,7 @@ $("#next5").on("click", function (e) {
 function pushDataStep1(cb) {
     let result = (dataStep1 = {
         name: $("#nama_lengkap").val(),
+        no_ktp: $("#idnumber").val(),
         email: $("#email_pemohon").val(),
         phone_number: $("#no_handphone").val(),
         utm_source: sessionStorage.getItem("utm_source"),
@@ -218,6 +250,7 @@ function pushDataStep1(cb) {
 }
 
 function pushDataStep2(cb) {
+    assetCode = $("#model_kendaraan").val().toString();
     let result = (dataStep2 = {
         submission_id: submission_id,
         info_address: {
@@ -251,10 +284,11 @@ function pushDataStep2(cb) {
             home_ownership_desc_bfi: $(
                 "#kepemilikan_rumah option:selected"
             ).html(),
+            tax_is_active: $("input[name='tax_is_active']:checked").val(),
         },
         info_customer: {
-            profession_id_bfi: "KRY",
-            profession_desc_bfi: "Karyawan Swasta",
+            profession_id_bfi: $("#occupation").val().toString(),
+            profession_desc_bfi: $("#occupation").val().toString(),
             salary: "12000000",
             dob: "1995-12-28",
         },
@@ -285,9 +319,9 @@ function pushDataStep3(cb) {
     let result = (dataStep3 = {
         submission_id: submission_id,
         info_calculator: {
-            funding: "500000000",
-            tenor: "24",
-            monthly_installment: "40000000",
+            funding: clearDot($("#pembiayaan").val()),
+            tenor: reverseTenorFormatter($("#tenor").val()),
+            monthly_installment: calculationParam.installment_amount,
         },
     });
 
@@ -402,10 +436,68 @@ function getDupcheck(cb) {
                         sessionStorage.getItem("loanType");
                 } else {
                     cb();
-                    console.log(result);
                 }
             }
         },
+    });
+}
+
+function getOccupationList() {
+    var placeholder = $("#occupation").attr("placeholder");
+    let data_occupation = [
+        {
+            id: "Karyawan Swasta",
+            text: "Karyawan Swasta",
+        },
+        {
+            id: "PNS",
+            text: "Pegawai Negeri Sipil",
+        },
+        {
+            id: "Wiraswasta",
+            text: "Wiraswasta",
+        },
+        {
+            id: "Buruh",
+            text: "Buruh",
+        },
+        {
+            id: "Tenaga Kesehatan",
+            text: "Tenaga Kesehatan",
+        },
+        {
+            id: "IRT",
+            text: "Ibu Rumah Tangga",
+        },
+        {
+            id: "Keluarga dari Stakeholder BFI",
+            text: "Keluarga dari Stakeholder BFI",
+        },
+        {
+            id: "Guru",
+            text: "Guru",
+        },
+        {
+            id: "Pelajar/Mahasiswa",
+            text: "Pelajar/Mahasiswa",
+        },
+        {
+            id: "ABRI/Aparat Keamanan/Polisi",
+            text: "ABRI/Aparat Keamanan/Polisi",
+        },
+        {
+            id: "Ojek",
+            text: "Ojek",
+        },
+        {
+            id: "Pejabat Pemerintahan",
+            text: "Pejabat Pemerintahan",
+        },
+    ];
+
+    $("#occupation").select2({
+        placeholder: placeholder,
+        data: data_occupation,
     });
 }
 
@@ -426,6 +518,7 @@ $("input[name='action-call']").click(function () {
         $(".wa-number-same").attr("hidden", true);
     }
 });
+
 $("input[name='is-wa-number-same']").click(function () {
     var isWaSame = $(this).val();
     if (isWaSame == "false") {
@@ -433,6 +526,14 @@ $("input[name='is-wa-number-same']").click(function () {
     } else {
         $(".wa-numbers").attr("hidden", true);
     }
+});
+
+$("#tenor2").on("change", function () {
+    getMaxFunding();
+});
+
+$("#funding").on("change", function () {
+    getMaxFunding();
 });
 
 $("#provinsi").change(() => {
