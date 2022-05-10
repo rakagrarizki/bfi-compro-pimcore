@@ -84,13 +84,14 @@ let dataStep4 = {
     submission_id: undefined,
     disclaimer: undefined,
 };
-
+window.onbeforeunload = null;
 $(document).ready(function () {
     lang == "id"
         ? $(".nav-item-2.active").find(".nav-step-tag").text("Sedang Isi")
         : $(".nav-item-2.active").find(".nav-step-tag").text("Onprogress");
 
     getAuthorizationToken();
+    $("#calcLoan").prop("disabled", false);
     sessionStorage.setItem("loanType", "NDFC");
     sessionStorage.setItem("submitStep1", "false");
     sessionStorage.setItem("submitStep2", "false");
@@ -103,7 +104,7 @@ $("input[name='is-wa-number']").click(function () {
     $(".wa-numbers").find("input").removeAttr("disabled");
     if (is_WA == "false") {
         $(".wa-numbers").removeAttr("hidden");
-        $("#email_pemohon").attr("disabled", true);
+        // $("#email_pemohon").attr("disabled", true);
     } else {
         $(".wa-numbers").attr("hidden", true);
         $("#email_pemohon").removeAttr("disabled");
@@ -150,7 +151,7 @@ $("#next1").on("click", function (e) {
     e.preventDefault();
     if ($(this).closest("form").valid()) {
         pushDataStep1(() => {
-            if(sessionStorage.getItem("submitStep1") === "false"){
+            if (sessionStorage.getItem("submitStep1") === "false") {
                 window.dataLayer.push({
                     event: "ValidFormNDFCStep1",
                 });
@@ -179,10 +180,12 @@ $("#next2").on("click", function (e) {
         pushDataStep2(() => {
             getDupcheck(() => {
                 getBranchCoverage(() => {
-                    // TODO: change this parameter below with asset brand & branch coverage from API
-                    getAssetYear("CHEVROLET.SPARK.LS10MT", "401", () => {
+                    getAssetYear(assetCode, branch_id, () => {
                         if ((assetYearExists = true)) {
-                            if(sessionStorage.getItem("submitStep2") === "false"){
+                            if (
+                                sessionStorage.getItem("submitStep2") ===
+                                "false"
+                            ) {
                                 window.dataLayer.push({
                                     event: "ValidFormNDFCStep2",
                                 });
@@ -191,6 +194,8 @@ $("#next2").on("click", function (e) {
                             step("next", 3);
                             getListHouseOwnership("#kepemilikan_rumah");
                             getListMaritalStatus("#marital_status");
+                            getMaxFunding();
+                            $("#calcLoan").prop("disabled", false);
                             $("#brand-caption").text(
                                 $("#merk_kendaraan").val().toString()
                             );
@@ -218,10 +223,15 @@ $("#next3").on("click", function (e) {
         $("#modal-konfirmasi").modal("show");
     }
 });
+
+$("#calcLoan").on("click", function () {
+    getCalculationParams();
+});
+
 $("#confirm-data").on("click", function (e) {
     e.preventDefault();
     pushDataStep3(() => {
-        if(sessionStorage.getItem("submitStep3") === "false"){
+        if (sessionStorage.getItem("submitStep3") === "false") {
             window.dataLayer.push({
                 event: "ValidFormNDFCStep3",
             });
@@ -256,6 +266,7 @@ function pushDataStep1(cb) {
         email: $("#email_pemohon").val(),
         phone_number: $("#no_handphone").val(),
         wa_number: $("#wa_number").val(),
+        no_ktp: $("#idnumber").val(),
         utm_source: sessionStorage.getItem("utm_source"),
         utm_campaign: sessionStorage.getItem("utm_campaign"),
         utm_term: sessionStorage.getItem("utm_term"),
@@ -286,6 +297,7 @@ function pushDataStep1(cb) {
 }
 
 function pushDataStep2(cb) {
+    assetCode = $("#model_kendaraan").val().toString();
     let result = (dataStep2 = {
         submission_id: submission_id,
         info_address: {
@@ -398,12 +410,12 @@ function pushDataStep3(cb) {
         },
         info_calculator: {
             funding: clearDot($("#pembiayaan").val()),
-            tenor: $("#tenor").val().toString(),
+            tenor: reverseTenorFormatter($("#tenor").val()),
             // TODO: change data below
-            monthly_installment: "40000000",
+            monthly_installment: calculationParam.installment_amount,
             vehicle_insurance: "ARS-TLO",
-            ltv_max: 0.9,
-            ntf_max: 100000000,
+            ltv_max: calculationParam.max_ltv,
+            ntf_max: total_ntf,
         },
     });
 
@@ -470,7 +482,8 @@ function pushDataStep5() {
         },
         success: function (result) {
             if (result.message === "success") {
-                if(sessionStorage.getItem("submitStepOtp") === "false"){
+                loginCust(dataStep1.phone_number);
+                if (sessionStorage.getItem("submitStepOtp") === "false") {
                     window.dataLayer.push({
                         event: "ValidFormNDFCStepOTP",
                     });
@@ -544,40 +557,51 @@ function clearPagination() {
     pageContainer.pagination("destroy");
 }
 
+function hideInsurance(element) {
+    element.closest(".form-group").prop("hidden", true);
+    element.prop("checked", false);
+}
+
+function showInsurance(element) {
+    element.closest(".form-group").prop("hidden", false);
+}
+
+$("#tenor2").on("change", function () {
+    let tenorValue = $(this).val();
+    if (tenorValue === "1") {
+        showInsurance($('input[name="assurance1"]'));
+        hideInsurance($('input[name="assurance2"]'));
+        hideInsurance($('input[name="assurance3"]'));
+        hideInsurance($('input[name="assurance4"]'));
+    } else if (tenorValue === "2") {
+        showInsurance($('input[name="assurance1"]'));
+        showInsurance($('input[name="assurance2"]'));
+        hideInsurance($('input[name="assurance3"]'));
+        hideInsurance($('input[name="assurance4"]'));
+    } else if (tenorValue === "3") {
+        showInsurance($('input[name="assurance1"]'));
+        showInsurance($('input[name="assurance2"]'));
+        showInsurance($('input[name="assurance3"]'));
+        hideInsurance($('input[name="assurance4"]'));
+    } else {
+        showInsurance($('input[name="assurance1"]'));
+        showInsurance($('input[name="assurance2"]'));
+        showInsurance($('input[name="assurance3"]'));
+        showInsurance($('input[name="assurance4"]'));
+    }
+    getMaxFunding();
+});
+
+$("#funding").on("change", function () {
+    getMaxFunding();
+});
+
 $("#search-address-btn").on("click", () => {
     $("#pagination-container").pagination({
         dataSource: [
             {
                 subdistrict: "Legok",
                 district: "England",
-            },
-            {
-                subdistrict: "Legok",
-                district: "Belgium",
-            },
-            {
-                subdistrict: "Legok",
-                district: "Ulan Bator",
-            },
-            {
-                subdistrict: "Legok",
-                district: "Wuhan",
-            },
-            {
-                subdistrict: "Legok",
-                district: "Pyongyang",
-            },
-            {
-                subdistrict: "Legok",
-                district: "Bali",
-            },
-            {
-                subdistrict: "Legok",
-                district: "Tangsel",
-            },
-            {
-                subdistrict: "Legok",
-                district: "NTT",
             },
         ],
         pageSize: 5,

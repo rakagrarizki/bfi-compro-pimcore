@@ -2654,7 +2654,7 @@ return [
         "reverse" => "/credit/get-duplicate-leads",
         "module" => "AppBundle",
         "controller" => "@AppBundle\\Controller\\CreditController",
-        "action" => "getDuplicateLeads",
+        "action" => "getAssetYear",
         "variables" => "",
         "defaults" => NULL,
         "siteId" => [
@@ -2721,24 +2721,6 @@ return [
     ],
     156 => [
         "id" => 156,
-        "name" => "get list promo criteria",
-        "pattern" => "/\\/credit\\/get-list-promo-criteria/",
-        "reverse" => "/credit/get-list-promo-criteria",
-        "module" => "AppBundle",
-        "controller" => "@AppBundle\\Controller\\CreditController",
-        "action" => "getListPromoCriteria",
-        "variables" => "",
-        "defaults" => NULL,
-        "siteId" => [
-
-        ],
-        "priority" => 0,
-        "legacy" => FALSE,
-        "creationDate" => 1567583908,
-        "modificationDate" => 1567583948
-    ],
-    157 => [
-        "id" => 157,
         "name" => "get fiducia fee",
         "pattern" => "/\\/credit\\/get-fiducia-fee/",
         "reverse" => "/credit/get-fiducia-fee",
@@ -2755,14 +2737,50 @@ return [
         "creationDate" => 1567583908,
         "modificationDate" => 1567583948
     ],
-    158 => [
-        "id" => 158,
+    157 => [
+        "id" => 157,
         "name" => "get pricelist paging",
-        "pattern" => "/\\/credit\\/get-pricelist-paging/",
-        "reverse" => "/credit/get-pricelist-paging",
+        "pattern" => "/\\/credit\\/get-list-price/",
+        "reverse" => "/credit/get-list-price",
         "module" => "AppBundle",
         "controller" => "@AppBundle\\Controller\\CreditController",
         "action" => "getPricelistPaging",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+    158 => [
+        "id" => 158,
+        "name" => "get estimate installment",
+        "pattern" => "/\\/credit\\/get-estimate-installment/",
+        "reverse" => "/credit/get-estimate-installment",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getEstimateInstallment",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+    153 => [
+        "id" => 153,
+        "name" => "get list data marital status",
+        "pattern" => "/\\/credit\\/get-list-data-marital-status/",
+        "reverse" => "/credit/get-list-data-marital-status",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getListDataMaritalStatus",
         "variables" => "",
         "defaults" => NULL,
         "siteId" => [

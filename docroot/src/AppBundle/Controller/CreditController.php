@@ -850,16 +850,16 @@ class CreditController extends FrontendController
 
             if (empty($data->error)) {
                 return new JsonResponse([
-                'success' => 1,
-                'message' => "success",
-                'data' => $data->data
-            ]);
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
             } else {
                 return new JsonResponse([
-                'success' => 0,
-                'message' => $this->get("translator")->trans("api-error")
-            ]);
-        }
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
         } catch (\Exception $e) {
             throw new \Exception('Something went wrong!');
         }
@@ -869,9 +869,8 @@ class CreditController extends FrontendController
     {
         $token = $this->getTokenBearer();
         $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
-        $param['path'] = WebsiteSetting::getByName('URL_GET_DATALIST_CITY')->getData();
-        $param['query'] = "provinsi=" . rawurlencode($request->get('province'));
-        $url = $host . $param['path'] . "?" . $param['query'];
+        $url = $host . WebsiteSetting::getByName('URL_GET_DATALIST_CITY')->getData();
+        $param['provinsi'] = htmlentities(addslashes($request->get('province')));
 
         try {
             $data = $this->sendAPI->getListCity($url, $param, $token);
@@ -900,26 +899,25 @@ class CreditController extends FrontendController
     {
         $token = $this->getTokenBearer();
         $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
-        $param['path'] = WebsiteSetting::getByName('URL_GET_DATALIST_DISTRICT')->getData();
-        $param['query'] = "provinsi=" . rawurlencode($request->get('province'));
-        $param['query'] .= "&city=" . rawurlencode($request->get('city'));
-        $url = $host . $param['path'] . "?" . $param['query'];
+        $url = $host . WebsiteSetting::getByName('URL_GET_DATALIST_DISTRICT')->getData();
+        $param['provinsi'] = htmlentities(addslashes($request->get('province')));
+        $param['city'] = htmlentities(addslashes($request->get('city')));
 
         try {
             $data = $this->sendAPI->getListDistrict($url, $param, $token);
 
             if (empty($data->error)) {
                 return new JsonResponse([
-                'success' => 1,
-                'message' => "success",
-                'data' => $data->data
-            ]);
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
             } else {
                 return new JsonResponse([
-                'success' => 0,
-                'message' => $this->get("translator")->trans("api-error")
-            ]);
-        }
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
@@ -932,27 +930,26 @@ class CreditController extends FrontendController
     {
         $token = $this->getTokenBearer();
         $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
-        $param['path'] = WebsiteSetting::getByName('URL_GET_DATALIST_SUBDISTRICT')->getData();
-        $param['query'] = "provinsi=" . rawurlencode($request->get('province'));
-        $param['query'] .= "&city=" . rawurlencode($request->get('city'));
-        $param['query'] .= "&kecamatan=" . rawurlencode($request->get('district'));
-        $url = $host . $param['path'] . "?" . $param['query'];
+        $url = $host . WebsiteSetting::getByName('URL_GET_DATALIST_SUBDISTRICT')->getData();
+        $param['provinsi'] = htmlentities(addslashes($request->get('province')));
+        $param['city'] = htmlentities(addslashes($request->get('city')));
+        $param['kecamatan'] = htmlentities(addslashes($request->get('district')));
 
         try {
             $data = $this->sendAPI->getListSubdistrict($url, $param, $token);
 
             if (empty($data->error)) {
                 return new JsonResponse([
-                'success' => 1,
-                'message' => "success",
-                'data' => $data->data
-            ]);
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
             } else {
                 return new JsonResponse([
-                'success' => 0,
-                'message' => $this->get("translator")->trans("api-error")
-            ]);
-        }
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
@@ -965,27 +962,26 @@ class CreditController extends FrontendController
     {
         $token = $this->getTokenBearer();
         $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
-        $param['path'] = WebsiteSetting::getByName('URL_GET_DATALIST_ZIPCODE')->getData();
-        $param['query'] .= "city=" . rawurlencode($request->get('city'));
-        $param['query'] .= "&kecamatan=" . rawurlencode($request->get('district'));
-        $param['query'] .= "&kelurahan=" . rawurlencode($request->get('subdistrict'));
-        $url = $host . $param['path'] . "?" . $param['query'];
+        $url = $host . WebsiteSetting::getByName('URL_GET_DATALIST_ZIPCODE')->getData();
+        $param['city'] = htmlentities(addslashes($request->get('city')));
+        $param['kecamatan'] = htmlentities(addslashes($request->get('district')));
+        $param['kelurahan'] = htmlentities(addslashes($request->get('subdistrict')));
 
         try {
             $data = $this->sendAPI->getListZipcode($url, $param, $token);
 
             if (empty($data->error)) {
                 return new JsonResponse([
-                'success' => 1,
-                'message' => "success",
-                'data' => $data->data
-            ]);
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
             } else {
                 return new JsonResponse([
-                'success' => 0,
-                'message' => $this->get("translator")->trans("api-error")
-            ]);
-        }
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
@@ -998,26 +994,27 @@ class CreditController extends FrontendController
     {
         $token = $this->getTokenBearer();
         $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
-        $param['path'] = WebsiteSetting::getByName('URL_GET_DATALIST_ASSETS')->getData();
-        $param['query'] = "isactive=true";
-        $param['query'] .= "&asset_type=" . rawurlencode($request->get('asset_type'));
-        $url = $host . $param['path'] . "?" . $param['query'];
+        $url = $host . WebsiteSetting::getByName("URL_GET_DATALIST_ASSETS")->getData();
+        $param['isactive'] = htmlentities(addslashes($request->get('isactive')));
+        $param['asset_type'] = htmlentities(addslashes($request->get('asset_type')));
+        $param['page'] = (int) htmlentities(addslashes($request->get('page')));
+        $param['size'] = (int) htmlentities(addslashes($request->get('size')));
 
         try {
             $data = $this->sendAPI->getListAssets($url, $param, $token);
 
             if (empty($data->error)) {
                 return new JsonResponse([
-                'success' => 1,
-                'message' => "success",
-                'data' => $data->data,
-            ]);
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data,
+                ]);
             } else {
                 return new JsonResponse([
-                'success' => 0,
-                'message' => $this->get("translator")->trans("api-error")
-            ]);
-        }
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
@@ -1034,19 +1031,19 @@ class CreditController extends FrontendController
 
         try {
             $data = $this->sendAPI->getListBpkbOwnership($url, $token);
-            
+
             if (empty($data->error)) {
                 return new JsonResponse([
-                'success' => 1,
-                'message' => "success",
-                'data' => $data->data
-            ]);
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
             } else {
                 return new JsonResponse([
-                'success' => 0,
-                'message' => $this->get("translator")->trans("api-error")
-            ]);
-        }
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
@@ -1066,16 +1063,16 @@ class CreditController extends FrontendController
 
             if (empty($data->error)) {
                 return new JsonResponse([
-                'success' => 1,
-                'message' => "success",
-                'data' => $data->data
-            ]);
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
             } else {
                 return new JsonResponse([
-                'success' => 0,
-                'message' => $this->get("translator")->trans("api-error")
-            ]);
-        }
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
@@ -1095,16 +1092,16 @@ class CreditController extends FrontendController
 
             if (empty($data->error)) {
                 return new JsonResponse([
-                'success' => 1,
-                'message' => "success",
-                'data' => $data->data
-            ]);
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
             } else {
                 return new JsonResponse([
-                'success' => 0,
-                'message' => $this->get("translator")->trans("api-error")
-            ]);
-        }
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
@@ -1117,12 +1114,19 @@ class CreditController extends FrontendController
     {
         $token = $this->getTokenBearer();
         $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
-        $param['path'] = WebsiteSetting::getByName('URL_GET_BRANCH_COVERAGE')->getData();
-        $param['query'] = "kelurahan=" . rawurlencode($request->get('kelurahan'));
-        $param['query'] .= "&kecamatan=" . rawurlencode($request->get('kecamatan'));
-        $param['query'] .= "&city=" . rawurlencode($request->get('city'));
-        $param['query'] .= "&zip_code=" . rawurlencode($request->get('zip_code'));
-        $url = $host . $param['path'] . "?" . $param['query'];
+        $url = $host . WebsiteSetting::getByName('URL_GET_BRANCH_COVERAGE')->getData();
+
+        $param["customer_type"] = htmlentities(addslashes($request->get('customer_type')));
+        $param["lead_program_id"] = htmlentities(addslashes($request->get('lead_program_id')));
+        $param["kelurahan"] = htmlentities(addslashes($request->get('kelurahan')));
+        $param["kecamatan"] = htmlentities(addslashes($request->get('kecamatan')));
+        $param["city"] = htmlentities(addslashes($request->get('city')));
+        $param["zipcode"] = htmlentities(addslashes($request->get('zipcode')));
+        $param["is_branch_ho"] = htmlentities(addslashes($request->get('is_branch_ho')));
+        $param["customer_status"] = htmlentities(addslashes($request->get('customer_status')));
+        $param["is_ro_exp"] = htmlentities(addslashes($request->get('is_ro_exp')));
+        $param["lead_id"] = htmlentities(addslashes($request->get('lead_id')));
+        $param["idnumber"] = htmlentities(addslashes($request->get('idnumber')));
 
         try {
             $data = $this->sendAPI->getBranchCoverage($url, $param, $token);
@@ -1141,7 +1145,7 @@ class CreditController extends FrontendController
         }
         } catch (\Exception $e) {
             return new JsonResponse([
-                'success' => "0",
+                'success' => 0,
                 'message' => $e->getMessage()
             ]);
         }
@@ -1151,26 +1155,25 @@ class CreditController extends FrontendController
     {
         $token = $this->getTokenBearer();
         $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
-        $param['path'] = WebsiteSetting::getByName('URL_GET_ASSET_YEAR')->getData();
-        $param['query'] = "asset_code=" . rawurlencode($request->get('asset_code'));
-        $param['query'] .= "&branch_id=" . rawurlencode($request->get('branch_id'));
-        $url = $host . $param['path'] . "?" . $param['query'];
+        $url = $host . WebsiteSetting::getByName('URL_GET_ASSET_YEAR')->getData();
+        $param['asset_code'] = htmlentities(addslashes($request->get('asset_code')));
+        $param['branch_id'] = htmlentities(addslashes($request->get('branch_id')));
 
         try {
             $data = $this->sendAPI->getAssetYear($url, $param, $token);
 
             if (empty($data->error)) {
                 return new JsonResponse([
-                'success' => 1,
-                'message' => "success",
-                'data' => $data->data
-            ]);
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
             } else {
                 return new JsonResponse([
-                'success' => 0,
-                'message' => $this->get("translator")->trans("api-error")
-            ]);
-        }
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
@@ -1183,29 +1186,28 @@ class CreditController extends FrontendController
     {
         $token = $this->getTokenBearer();
         $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
-        $param['path'] = WebsiteSetting::getByName('URL_GET_DUPLICATE_LEADS')->getData();
-        $param['query'] = "is_prospect=" . rawurlencode($request->get('is_prospect'));
-        $param['query'] .= "&lead_program_id=" . rawurlencode($request->get('lead_program_id'));
-        $param['query'] .= "&data_type_2=" . rawurlencode($request->get('data_type_2'));
-        $param['query'] .= "&customer_type=" . rawurlencode($request->get('customer_type'));
-        $param['query'] .= "&license_plate=" . rawurlencode($request->get('license_plate'));
-        $param['query'] .= "&mobile_phone_1=" . rawurlencode($request->get('mobile_phone_1'));
-        $url = $host . $param['path'] . "?" . $param['query'];
+        $url = $host . WebsiteSetting::getByName('URL_GET_DUPLICATE_LEADS')->getData();
+        $param['is_prospect'] = htmlentities(addslashes($request->get('is_prospect')));
+        $param['lead_program_id'] = htmlentities(addslashes($request->get('lead_program_id')));
+        $param['data_type_2'] = htmlentities(addslashes($request->get('data_type_2')));
+        $param['customer_type'] = htmlentities(addslashes($request->get('customer_type')));
+        $param['license_plate'] = htmlentities(addslashes($request->get('license_plate')));
+        $param['mobile_phone_1'] = htmlentities(addslashes($request->get('mobile_phone_1')));
 
         try {
             $data = $this->sendAPI->getDuplicateLeads($url, $param, $token);
             if (empty($data->error)) {
                 return new JsonResponse([
-                'success' => 1,
-                'message' => "success",
-                'data' => $data->data,
-            ]);
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data,
+                ]);
             } else {
                 return new JsonResponse([
-                'success' => 0,
-                'message' => $this->get("translator")->trans("api-error")
-            ]);
-        }
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => "0",
@@ -1217,14 +1219,13 @@ class CreditController extends FrontendController
     public function getProductDetailAction(Request $request){
         $token = $this->getTokenBearer();
         $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
-        $param['path'] = WebsiteSetting::getByName('URL_GET_PRODUCT_DETAIL')->getData();
-        $param['query'] = "product_id=" . rawurlencode($request->get('product_id'));
-        $param['query'] .= "&asset_group=" . rawurlencode($request->get('asset_group'));
-        $param['query'] .= "&customer_rating=" . rawurlencode($request->get('customer_rating'));
-        $param['query'] .= "&asset_age=" . rawurlencode($request->get('asset_age'));
-        $param['query'] .= "&tenor=" . rawurlencode($request->get('tenor'));
-        $param['query'] .= "&amount_funding_to=" . rawurlencode($request->get('amount_funding_to'));
-        $url = $host . $param['path'] . "?" . $param['query'];
+        $url = $host . WebsiteSetting::getByName('URL_GET_PRODUCT_DETAIL')->getData();
+        $param['product_id'] = htmlentities(addslashes($request->get('product_id')));
+        $param['asset_group'] = htmlentities(addslashes($request->get('asset_group')));
+        $param['customer_rating'] = htmlentities(addslashes($request->get('customer_rating')));
+        $param['asset_age'] = htmlentities(addslashes($request->get('asset_age')));
+        $param['tenor'] = htmlentities(addslashes($request->get('tenor')));
+        $param['amount_funding_to'] = htmlentities(addslashes($request->get('amount_funding_to')));
 
         try{
             $data = $this->sendAPI->getProductDetail($url, $param, $token);
@@ -1251,15 +1252,14 @@ class CreditController extends FrontendController
     public function getProductBranchDetailAction(Request $request){
         $token = $this->getTokenBearer();
         $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
-        $param['path'] = WebsiteSetting::getByName('URL_GET_PRODUCT_BRANCH_DETAIL')->getData();
-        $param['query'] = "branch_id=" . rawurlencode($request->get('branch_id'));
-        $param['query'] .= "&product_id=" . rawurlencode($request->get('product_id'));
-        $param['query'] .= "&asset_group=" . rawurlencode($request->get('asset_group'));
-        $param['query'] .= "&customer_rating=" . rawurlencode($request->get('customer_rating'));
-        $param['query'] .= "&asset_age=" . rawurlencode($request->get('asset_age'));
-        $param['query'] .= "&tenor=" . rawurlencode($request->get('tenor'));
-        $param['query'] .= "&amount_funding_to=" . rawurlencode($request->get('amount_funding_to'));
-        $url = $host . $param['path'] . "?" . $param['query'];
+        $url = $host . WebsiteSetting::getByName('URL_GET_PRODUCT_BRANCH_DETAIL')->getData();
+        $param['branch_id'] = htmlentities(addslashes($request->get('branch_id')));
+        $param['product_id'] = htmlentities(addslashes($request->get('product_id')));
+        $param['asset_group'] = htmlentities(addslashes($request->get('asset_group')));
+        $param['customer_rating'] = htmlentities(addslashes($request->get('customer_rating')));
+        $param['asset_age'] = htmlentities(addslashes($request->get('asset_age')));
+        $param['tenor'] = htmlentities(addslashes($request->get('tenor')));
+        $param['amount_funding_to'] = htmlentities(addslashes($request->get('amount_funding_to')));
 
         try{
             $data = $this->sendAPI->getProductBranchDetail($url, $param, $token);
@@ -1283,50 +1283,14 @@ class CreditController extends FrontendController
         }
     }
 
-    public function getListPromoCriteriaAction(Request $request){
-        $token = $this->getTokenBearer();
-        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
-        $param['path'] = WebsiteSetting::getByName('URL_GET_LIST_PROMO_CRITERIA')->getData();
-        $param['query'] = "branch_id=" . rawurlencode($request->get('branch_id'));
-        $param['query'] .= "&manufacturing_year=" . rawurlencode($request->get('manufacturing_year'));
-        $param['query'] .= "&funding=" . rawurlencode($request->get('funding'));
-        $param['query'] .= "&age=" . rawurlencode($request->get('age'));
-        $param['query'] .= "&otr=" . rawurlencode($request->get('otr'));
-        $param['query'] .= "&tenor=" . rawurlencode($request->get('tenor'));
-        $param['query'] .= "&asset_category=" . rawurlencode($request->get('asset_category'));
-        $url = $host . $param['path'] . "?" . $param['query'];
-
-        try{
-            $data = $this->sendAPI->getListPromoCriteria($url, $param, $token);
-            if (empty($data->error)) {
-                return new JsonResponse([
-                    'success' => 1,
-                    'message' => "success",
-                    'data' => $data->data,
-                ]);
-            } else {
-                return new JsonResponse([
-                    'success' => 0,
-                    'message' => $this->get("translator")->trans("api-error")
-                ]);
-            }
-        } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => $e->getMessage()
-            ]);
-        }
-    }
-
     public function getFiduciaFeeAction(Request $request){
         $token = $this->getTokenBearer();
         $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
-        $param['path'] = WebsiteSetting::getByName('URL_GET_FIDUCIA_FEE')->getData();
-        $param['query'] = "branch_id=" . rawurlencode($request->get('branch_id'));
-        $param['query'] .= "&asset_type_id=" . rawurlencode($request->get('asset_type_id'));
-        $param['query'] .= "&category_id=" . rawurlencode($request->get('category_id'));
-        $param['query'] .= "&otr=" . rawurlencode($request->get('otr'));
-        $url = $host . $param['path'] . "?" . $param['query'];
+        $url = $host . WebsiteSetting::getByName('URL_GET_FIDUCIA_FEE')->getData();
+        $param['branch_id'] = htmlentities(addslashes($request->get('branch_id')));
+        $param['asset_type_id'] = htmlentities(addslashes($request->get('asset_type_id')));
+        $param['category_id'] = htmlentities(addslashes($request->get('category_id')));
+        $param['otr'] = htmlentities(addslashes($request->get('otr')));
 
         try{
             $data = $this->sendAPI->getFiduciaFee($url, $param, $token);
@@ -1353,9 +1317,10 @@ class CreditController extends FrontendController
     public function getPricelistPagingAction(Request $request){
         $token = $this->getTokenBearer();
         $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
-        $param['path'] = WebsiteSetting::getByName('URL_GET_PRICELIST_PAGING')->getData();
-        $param['query'] = "asset_code=" . rawurlencode($request->get('asset_code'));
-        $url = $host . $param['path'] . "?" . $param['query'];
+        $url = $host . WebsiteSetting::getByName('URL_GET_PRICELIST_PAGING')->getData();
+        $param['asset_code'] = htmlentities(addslashes($request->get('asset_code')));
+        $param['manufacturing_year'] = htmlentities(addslashes($request->get('manufacturing_year')));
+        $param['branch_id'] = htmlentities(addslashes($request->get('branch_id')));
 
         try{
             $data = $this->sendAPI->getPricelistPaging($url, $param, $token);
@@ -1363,7 +1328,7 @@ class CreditController extends FrontendController
                 return new JsonResponse([
                     'success' => 1,
                     'message' => "success",
-                    'data' => $data->data,
+                    'data' => $data->data
                 ]);
             } else {
                 return new JsonResponse([
@@ -1374,7 +1339,54 @@ class CreditController extends FrontendController
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => 0,
-                'message' => $e->getMessage()
+                'message' => $e
+            ]);
+        }
+    }
+
+    public function getEstimateInstallmentAction(Request $request){
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_ESTIMATE_INSTALLMENT')->getData();
+
+        $param['funding_amount'] = (int) htmlentities(addslashes($request->get('funding_amount')));
+        $param['tenor'] = (int) htmlentities(addslashes($request->get('tenor')));
+        $param['effective_rate'] = (double) htmlentities(addslashes($request->get('effective_rate')));
+        $param['flat_rate'] = (double) htmlentities(addslashes($request->get('flat_rate')));
+        $param['installment_type'] = (int) htmlentities(addslashes($request->get('installment_type')));
+        $param['payment_fequency'] = (int) htmlentities(addslashes($request->get('payment_fequency')));
+        $param['calcualte_by'] = (int) htmlentities(addslashes($request->get('calcualte_by')));
+        $param['grace_periode_type'] = (int) htmlentities(addslashes($request->get('grace_periode_type')));
+        $param['grace_periode'] = (int) htmlentities(addslashes($request->get('grace_periode')));
+        $param['nilai_taksaksi'] = (int) htmlentities(addslashes($request->get('nilai_taksaksi')));
+        $param['max_ltv'] = (int) htmlentities(addslashes($request->get('max_ltv')));
+        $param['admin_fee'] = (int) htmlentities(addslashes($request->get('admin_fee')));
+        $param['fiducia_fee'] = (int) htmlentities(addslashes($request->get('fiducia_fee')));
+        $param['provisi_fee'] = (int) htmlentities(addslashes($request->get('provisi_fee')));
+        $param['other_fee'] = (int) htmlentities(addslashes($request->get('other_fee')));
+        $param['survey_fee'] = (int) htmlentities(addslashes($request->get('survey_fee')));
+        $param['notary_fee'] = (int) htmlentities(addslashes($request->get('notary_fee')));
+        $param['round'] = (int) htmlentities(addslashes($request->get('round')));
+
+        try{
+            $data = $this->sendAPI->getEstimateInstallment($url, $param, $token);
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data,
+                    'inputan' => $param
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => 0,
+                'message' => $e
             ]);
         }
     }
@@ -1395,6 +1407,7 @@ class CreditController extends FrontendController
         $param["email"] = htmlentities(addslashes($request->get('email')));
         $param["phone_number"] = htmlentities(addslashes($request->get('phone_number')));
         $param["wa_number"] = htmlentities(addslashes($request->get('wa_number')));
+        $param["no_ktp"] = htmlentities(addslashes($request->get('no_ktp')));
         $param["utm_source"] = htmlentities(addslashes($request->get('utm_source')));
         $param["utm_campaign"] = htmlentities(addslashes($request->get('utm_campaign')));
         $param["utm_term"] = htmlentities(addslashes($request->get('utm_term')));
@@ -1815,6 +1828,7 @@ class CreditController extends FrontendController
         $url = $host . WebsiteSetting::getByName('URL_SAVE_MOTORCYCLE_LEADS_1')->getData();
         // $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["name"] = htmlentities(addslashes($request->get('name')));
+        $param["no_ktp"] = htmlentities(addslashes($request->get('no_ktp')));
         $param["email"] = htmlentities(addslashes($request->get('email')));
         $param["phone_number"] = htmlentities(addslashes($request->get('phone_number')));
         $param["utm_source"] = htmlentities(addslashes($request->get('utm_source')));
@@ -1878,6 +1892,7 @@ class CreditController extends FrontendController
         $param["info_assets"]["asset_ownership_desc_bfi"] = htmlentities(addslashes($info_assets['asset_ownership_desc_bfi']));
         $param["info_assets"]["home_ownership_id_bfi"] = htmlentities(addslashes($info_assets['home_ownership_id_bfi']));
         $param["info_assets"]["home_ownership_desc_bfi"] = htmlentities(addslashes($info_assets['home_ownership_desc_bfi']));
+        $param["info_assets"]["tax_is_active"] = htmlentities(addslashes($info_assets['tax_is_active']));
         $param["info_customer"]["profession_id_bfi"] = htmlentities(addslashes($info_customer['profession_id_bfi']));
         $param["info_customer"]["profession_desc_bfi"] = htmlentities(addslashes($info_customer['profession_desc_bfi']));
         $param["info_customer"]["salary"] = htmlentities(addslashes($info_customer['salary']));

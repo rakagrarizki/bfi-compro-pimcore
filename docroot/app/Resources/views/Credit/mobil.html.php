@@ -98,6 +98,15 @@ $this->headScript()
                                     <label for="no_handphone"><?= $this->translate('form-hp') ?></label>
                                     <input type="tel" pattern="\d*" class="form-control formPhoneNumber" name="no_handphone" id="no_handphone" maxlength="13" placeholder="<?= $this->translate('placeholder-hp') ?>">
                                     <div class="error-wrap"></div>
+                                    <label for="idnumber"><?= $this->translate('form-idnumber') ?></label>
+                                    <input type="text" class="form-control formIdnumber" name="idnumber" id="idnumber" placeholder="<?= $this->translate('placeholder-idnumber') ?>" maxlength="16">
+                                    <div class="error-wrap"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="no_handphone"><?= $this->translate('form-hp') ?></label>
+                                    <input type="tel" pattern="\d*" class="form-control formPhoneNumber" name="no_handphone" id="no_handphone" maxlength="13" placeholder="<?= $this->translate('placeholder-hp') ?>">
+                                    <div class="error-wrap"></div>
+                                    <span><?=$this->translate('form-handphone-helper') ?></span>
                                 </div>
                                 <div class="form-group radio-group">
                                     <label><?= $this->translate('is-wa-number') ?></label>
@@ -399,15 +408,15 @@ $this->headScript()
                                             <div class="row">
                                                 <div class="col-xs-3">
                                                     <p class="title"><?= $this->translate('brand') ?></p>
-                                                    <p class="subtitle" id="brand-caption">Toyota</p>
+                                                    <p class="subtitle" id="brand-caption"><?= $this->translate('brand') ?></p>
                                                 </div>
                                                 <div class="col-xs-6">
                                                     <p class="title"><?= $this->translate('model') ?></p>
-                                                    <p class="subtitle" id="model-caption">TOYOTA-AGYA-G 1.0 AT</p>
+                                                    <p class="subtitle" id="model-caption"><?= $this->translate('model') ?></p>
                                                 </div>
                                                 <div class="col-xs-3">
                                                     <p class="title"><?= $this->translate('year') ?></p>
-                                                    <p class="subtitle" id="year-caption">2015</p>
+                                                    <p class="subtitle" id="year-caption"><?= $this->translate('year') ?></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -425,9 +434,9 @@ $this->headScript()
                                             placeholder="<?= $this->translate('desired-financing') ?>">
                                     </div>
                                     <div class="slidecontainer ">
-                                        <div class="value-left valuemin">Rp 10.000.000</div>
-                                        <div class="value-right valuemax">Rp 64.190.000</div>
-                                        <input id="funding" class="customslide" type="tel" pattern="\d*"
+                                        <div class="value-left valuemin min-fund">Rp 10.000.000</div>
+                                        <div class="value-right valuemax max-fund">Rp 64.190.000</div>
+                                        <input id="funding" class="customslide" type="range"
                                             data-slider-handle="custom" data-slider-tooltip="hide" />
                                     </div>
                                     <div class="error-wrap"></div>
@@ -439,15 +448,15 @@ $this->headScript()
                                         aria-describedby="basic-addon1"
                                         placeholder="<?= $this->translate('desired-tenor') ?>">
                                     <div class="slidecontainer ">
-                                        <div class="value-left valuemin">12 Bulan</div>
-                                        <div class="value-right valuemax">18 Bulan</div>
-                                        <input id="tenor2" class="customslide" type="tel" pattern="\d*"
+                                        <div class="value-left valuemin min-tenor">12 Bulan</div>
+                                        <div class="value-right valuemax max-tenor">18 Bulan</div>
+                                        <input id="tenor2" class="customslide" type="range"
                                             data-slider-handle="custom" data-slider-tooltip="hide" />
                                     </div>
                                     <div class="error-wrap"></div>
                                 </div>
                                 <div class="form-group radio-group">
-                                    <label>Asuransi Tahun 1</label>
+                                    <label><?= $this->translate('assurance-year') ?> 1</label>
                                     <div class="radio-button">
                                         <div class="radio-wrap">
                                             <input type="radio" class="inputs formRequired" id="allRisk1"
@@ -465,7 +474,7 @@ $this->headScript()
                                     </div>
                                 </div>
                                 <div class="form-group radio-group">
-                                    <label>Asuransi Tahun 2</label>
+                                    <label><?= $this->translate('assurance-year') ?> 2</label>
                                     <div class="radio-button">
                                         <div class="radio-wrap">
                                             <input type="radio" class="inputs formRequired" id="allRisk2"
@@ -483,7 +492,7 @@ $this->headScript()
                                     </div>
                                 </div>
                                 <div class="form-group radio-group">
-                                    <label>Asuransi Tahun 3</label>
+                                    <label><?= $this->translate('assurance-year') ?> 3</label>
                                     <div class="radio-button">
                                         <div class="radio-wrap">
                                             <input type="radio" class="inputs formRequired" id="allRisk3"
@@ -501,7 +510,7 @@ $this->headScript()
                                     </div>
                                 </div>
                                 <div class="form-group radio-group">
-                                    <label>Asuransi Tahun 4</label>
+                                    <label><?= $this->translate('assurance-year') ?> 4</label>
                                     <div class="radio-button">
                                         <div class="radio-wrap">
                                             <input type="radio" class="inputs formRequired" id="allRisk4"
@@ -521,7 +530,7 @@ $this->headScript()
                                 <div class="form-group  simulasi-group rincian">
                                     <div class="total-estimate">
                                         <p class="title-angsuran"><?= $this->translate('estimated-monthly-installment') ?></p>
-                                        <p class="total">Rp 0</p>
+                                        <p class="total estimate-installment">Rp 0</p>
                                         <button class="cta cta-primary cta-big absolutebutcalc" id="calcLoan"
                                             type="button" disabled><?=$this->translate('hitung') ?></button>
                                     </div>
@@ -667,7 +676,7 @@ $this->headScript()
                                             <span>082342423432423</span></a>
                                     </div>
                                     <div class="button-area text-center">
-                                        <a href="/id/" class="cta cta-primary-outline cta-big ">
+                                        <a href="/id/user/dashboard" class="cta cta-primary-outline cta-big ">
                                             <span>CEK STATUS PENGAJUAN</span></a>
                                     </div>
                                     <div class="button-area text-center">

@@ -3,6 +3,31 @@ var retryLimit = 3;
 let currentToken = undefined;
 let expiredDate = undefined;
 
+let dataAssets = [];
+let rawAssetBrand = [];
+let assetCode = "";
+let branch_id = "";
+let admin_fee = 0;
+let admin_fee2 = 0;
+let min_effective_rate = 0;
+let min_effective_rate2 = 0;
+let max_funding_percentage = 0;
+let total_ntf = 0;
+
+let calculationParam = {
+    effective_rate: 0,
+    flat_rate: 0,
+    nilai_transaksi: 0,
+    max_ltv: 0,
+    admin_fee: 0,
+    fiducia_fee: 0,
+    installment_amount: 0,
+};
+
+const NDFC_TENOR = [12, 24, 36, 48];
+const ASSET_SIZE = 11637;
+const CURRENT_YEAR = new Date().getFullYear();
+
 function retryAjax(_this, xhr) {
     if (xhr.status == 500) {
         _this.tryCount++;
@@ -681,16 +706,16 @@ $("input[type='radio'], input[type='checkbox']").on("change", function () {
     nextEl.removeAttr("disabled");
 });
 
-inputDisabled();
-function inputDisabled() {
-    $("input, select, textarea").addClass("input-step");
-    $(".form-body--credit")
-        .find(".input-step:not(:eq(0))")
-        .attr("disabled", true);
-    $(".form-body--credit .otp-number")
-        .find(".input-step")
-        .removeAttr("disabled");
-}
+// inputDisabled();
+// function inputDisabled() {
+//     $("input, select, textarea").addClass("input-step");
+//     $(".form-body--credit")
+//         .find(".input-step:not(:eq(0))")
+//         .attr("disabled", true);
+//     $(".form-body--credit .otp-number")
+//         .find(".input-step")
+//         .removeAttr("disabled");
+// }
 
 function step(action, val) {
     scrollToTop();
@@ -955,22 +980,25 @@ function getListZipcode() {
                 $.each(result.data, function (id, val) {
                     $("#kode_pos").val(val.zip_code);
                 });
+            } else {
+                console.log("Data not found");
             }
         },
     });
 }
 
-let dataAssets = [];
-let rawAssetBrand = [];
-let assetCode = "";
-let branch_id = "";
-
 function getListAssets(assetType) {
+    // TODO : add paging to fetch all data
     $.ajax({
         type: "POST",
         url: "/credit/get-list-assets",
         headers: { Authorization: "Basic " + currentToken },
-        data: { asset_type: assetType },
+        data: {
+            isactive: true,
+            asset_type: assetType,
+            page: 1,
+            size: ASSET_SIZE,
+        },
         dataType: "json",
         error: function (xhr) {
             retryAjax(this, xhr);
@@ -992,9 +1020,9 @@ function getListAssets(assetType) {
                         asset_type_id: val.asset_type_id,
                     });
                 });
-                assetType === "motor"
-                    ? filterAssetBrand("")
-                    : filterAssetType();
+                filterAssetType();
+            } else {
+                console.log("Data not found");
             }
         },
     });
@@ -1032,10 +1060,7 @@ function filterAssetType() {
 function filterAssetBrand(category) {
     var dataBrand = [];
     var brand_placeholder = $("#merk_kendaraan").attr("placeholder");
-    rawAssetBrand =
-        category != ""
-            ? dataAssets.filter((e) => e.category === category)
-            : dataAssets;
+    rawAssetBrand = dataAssets.filter((e) => e.category === category);
 
     // remove duplicate
     let assetBrand = rawAssetBrand.filter(
@@ -1065,7 +1090,7 @@ function filterAssetBrand(category) {
 function filterAssetModel(brand) {
     var dataModel = [];
     var model_placeholder = $("#model_kendaraan").attr("placeholder");
-    let assetModel = dataAssets.filter((e) => e.brand === brand);
+    let assetModel = rawAssetBrand.filter((e) => e.brand === brand);
 
     $.each(assetModel, function (id, val) {
         dataModel.push({
@@ -1217,10 +1242,17 @@ function getBranchCoverage(fn) {
         url: "/credit/get-branch-coverage",
         headers: { Authorization: "Basic " + currentToken },
         data: {
+            customer_type: "P",
+            lead_program_id: 1,
             kelurahan: kelurahan,
             kecamatan: kecamatan,
             city: city,
-            zip_code: zipcode,
+            zipcode: zipcode,
+            is_branch_ho: true,
+            customer_status: "NEW",
+            is_ro_exp: false,
+            lead_id: 0,
+            idnumber: $("#idnumber").val(),
         },
         dataType: "json",
         error: function (xhr) {
@@ -1232,9 +1264,13 @@ function getBranchCoverage(fn) {
         success: function (result) {
             if (result.message === "success") {
                 if (result.data !== null) {
-                    branch_id = result.data[0].branch_id;
+                    branch_id = result.data.branch_booking_id;
+                } else {
+                    console.log("Branch not coverage");
                 }
                 fn();
+            } else {
+                console.log("Data not found");
             }
         },
     });
@@ -1250,7 +1286,7 @@ function getAssetYear(asset_model, branch_id, fn) {
         url: "/credit/get-asset-year",
         headers: { Authorization: "Basic " + currentToken },
         // asset_code still static and need to be changed to parameter asset_model
-        data: { asset_code: "CHEVROLET.SPARK.LS10MT", branch_id: branch_id },
+        data: { asset_code: asset_model, branch_id: branch_id },
         dataType: "json",
         error: function (xhr) {
             retryAjax(this, xhr);
@@ -1259,9 +1295,14 @@ function getAssetYear(asset_model, branch_id, fn) {
             retryAjax(this, xhr);
         },
         success: function (result) {
-            $.each(result.data.data, (i, val) => {
-                assetYears.push(val.manufacturing_year);
-            });
+            if (result.message === "success" && result.data !== null) {
+                $.each(result.data.data, (i, val) => {
+                    assetYears.push(val.manufacturing_year);
+                });
+            } else {
+                assetYears = [];
+                console.log("Data not found");
+            }
             if (assetYears.includes(customerAssetYear)) {
                 assetYearExists = true;
                 fn();
@@ -1274,16 +1315,26 @@ function getAssetYear(asset_model, branch_id, fn) {
 }
 
 function getProductDetail() {
+    let assetYear = parseInt($("#tahun_kendaraan").val());
+    let assetAge = CURRENT_YEAR - assetYear;
+    let tenor =
+        $("#tenor").val() === ""
+            ? NDFC_TENOR[0]
+            : NDFC_TENOR[$("#tenor").val() - 1];
+    let amount_funding =
+        $("#pembiayaan").val() === ""
+            ? 10000000
+            : clearDot($("#pembiayaan").val());
     let param = {
-        product_id: "2221",
+        product_id: productIdFilter(rawAssetBrand[0].category),
         asset_group: rawAssetBrand[0].asset_group,
         customer_rating: "2",
-        asset_age: "5",
-        tenor: "12",
-        amount_funding_to: "200000",
+        asset_age: assetAge,
+        tenor: tenor,
+        amount_funding_to: amount_funding,
     };
 
-    $.ajax({
+    return $.ajax({
         type: "POST",
         url: "/credit/get-list-product-detail",
         headers: { Authorization: "Basic " + currentToken },
@@ -1296,23 +1347,35 @@ function getProductDetail() {
             retryAjax(this, xhr);
         },
         success: function (result) {
-            console.log(result);
+            if (result.message !== "success") {
+                console.log("Failed to fetch data");
+            }
         },
     });
 }
 
 function getProductBranchDetail() {
+    let assetYear = parseInt($("#tahun_kendaraan").val());
+    let assetAge = CURRENT_YEAR - assetYear;
+    let tenor =
+        $("#tenor").val() === ""
+            ? NDFC_TENOR[0]
+            : NDFC_TENOR[$("#tenor").val() - 1];
+    let amount_funding =
+        $("#pembiayaan").val() === ""
+            ? 10000000
+            : clearDot($("#pembiayaan").val());
     let param = {
-        branch_id: "401",
-        product_id: "2221",
+        branch_id: branch_id,
+        product_id: productIdFilter(rawAssetBrand[0].category),
         asset_group: rawAssetBrand[0].asset_group,
         customer_rating: "2",
-        asset_age: "5",
-        tenor: "12",
-        amount_funding_to: "200000",
+        asset_age: assetAge,
+        tenor: tenor,
+        amount_funding_to: amount_funding,
     };
 
-    $.ajax({
+    return $.ajax({
         type: "POST",
         url: "/credit/get-list-product-branch-detail",
         headers: { Authorization: "Basic " + currentToken },
@@ -1325,39 +1388,22 @@ function getProductBranchDetail() {
             retryAjax(this, xhr);
         },
         success: function (result) {
-            console.log(result);
-        },
-    });
-}
-
-function getListPromoCriteria() {
-    $.ajax({
-        type: "POST",
-        url: "/credit/get-list-promo-criteria",
-        headers: { Authorization: "Basic " + currentToken },
-        data: { branch_id: "401" },
-        dataType: "json",
-        error: function (xhr) {
-            retryAjax(this, xhr);
-        },
-        fail: function (xhr, textStatus, error) {
-            retryAjax(this, xhr);
-        },
-        success: function (result) {
-            console.log(result);
+            if (result.message !== "success") {
+                console.log("Failed to fetch data");
+            }
         },
     });
 }
 
 function getFiduciaFee() {
     let param = {
-        branch_id: "401",
+        branch_id: branch_id,
         asset_type_id: rawAssetBrand[0].asset_type_id,
         category_id: rawAssetBrand[0].category,
-        otr: "12000000",
+        otr: calculationParam.nilai_transaksi,
     };
 
-    $.ajax({
+    return $.ajax({
         type: "POST",
         url: "/credit/get-fiducia-fee",
         headers: { Authorization: "Basic " + currentToken },
@@ -1370,17 +1416,31 @@ function getFiduciaFee() {
             retryAjax(this, xhr);
         },
         success: function (result) {
-            console.log(result);
+            if (result.success === 1) {
+                if (result.data !== null) {
+                    calculationParam.fiducia_fee =
+                        result.data.data[0].fiducia_fee;
+                } else {
+                    console.log("Data not found");
+                }
+            } else {
+                console.log("Failed to fetch data");
+            }
         },
     });
 }
 
 function getPricelistPaging() {
-    $.ajax({
+    let assetYear = $("#tahun_kendaraan").val();
+    return $.ajax({
         type: "POST",
-        url: "/credit/get-pricelist-paging",
+        url: "/credit/get-list-price",
         headers: { Authorization: "Basic " + currentToken },
-        data: { asset_code: "MTRBAJAJ.PULSAR.220DTS" },
+        data: {
+            asset_code: assetCode,
+            manufacturing_year: assetYear,
+            branch_id: branch_id,
+        },
         dataType: "json",
         error: function (xhr) {
             retryAjax(this, xhr);
@@ -1389,9 +1449,149 @@ function getPricelistPaging() {
             retryAjax(this, xhr);
         },
         success: function (result) {
-            console.log(result);
+            if (result.success === 1) {
+                if (result.data !== null) {
+                    calculationParam.nilai_transaksi =
+                        result.data.data[0].price;
+                } else {
+                    console.log("Data not found");
+                }
+            } else {
+                console.log("Failed to fetch data");
+            }
         },
     });
+}
+
+function getMaxFunding() {
+    $.when(
+        getPricelistPaging(),
+        getProductBranchDetail(),
+        getProductDetail()
+    ).then(function (res1, res2, res3) {
+        admin_fee = res2[0].data.data[0].admin_fee;
+        min_effective_rate = res2[0].data.data[0].min_effective_rate;
+        admin_fee2 = res3[0].data.data[0].admin_fee;
+        min_effective_rate2 = res3[0].data.data[0].min_effective_rate;
+
+        calculationParam.nilai_transaksi = res1[0].data.data[0].price;
+        max_funding_percentage =
+            res2[0].data.data[0].max_funding_percentage +
+            res3[0].data.data[0].max_funding_percentage;
+        calculationParam.max_ltv =
+            (max_funding_percentage / 100) * calculationParam.nilai_transaksi;
+
+        $(".ndfc-simulasi .total").text(
+            "Rp " + separatordot(calculationParam.max_ltv)
+        );
+
+        $("#funding").slider({
+            min: 10000000,
+            max: calculationParam.max_ltv,
+            step: 100000,
+        });
+
+        $(".min-fund").text("Rp " + separatordot(10000000));
+        $(".max-fund").text("Rp " + separatordot(calculationParam.max_ltv));
+    });
+}
+
+function getCalculationParams() {
+    let tenor = reverseTenorFormatter($("#tenor").val());
+    $.when(getFiduciaFee()).then(function (res1) {
+        calculationParam.effective_rate =
+            (min_effective_rate2 + min_effective_rate) / 100;
+        calculationParam.admin_fee = admin_fee2 + admin_fee;
+        calculationParam.flat_rate =
+            ((pmt(calculationParam.effective_rate / 12, tenor, 1, 0, 0) *
+                -1 *
+                tenor -
+                1) *
+                12) /
+            tenor;
+        getEstimateInstallment();
+    });
+}
+
+function getEstimateInstallment() {
+    let param = {
+        funding_amount: clearDot($("#pembiayaan").val()),
+        tenor: reverseTenorFormatter($("#tenor").val()),
+        effective_rate: calculationParam.effective_rate,
+        flat_rate: calculationParam.flat_rate,
+        installment_type: 0,
+        payment_fequency: 1,
+        calcualte_by: 1,
+        grace_periode_type: 0,
+        grace_periode: 0,
+        nilai_taksaksi: calculationParam.nilai_transaksi,
+        max_ltv: calculationParam.max_ltv,
+        admin_fee: calculationParam.admin_fee,
+        fiducia_fee: calculationParam.fiducia_fee,
+        provisi_fee: 0,
+        other_fee: 0,
+        survey_fee: 0,
+        notary_fee: 0,
+        round: 500,
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "/credit/get-estimate-installment",
+        headers: { Authorization: "Basic " + currentToken },
+        data: param,
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            if (result.message === "success") {
+                calculationParam.installment_amount = result.data.installment;
+                total_ntf = result.data.total_ntf;
+                $("p.estimate-installment").text(
+                    "Rp " + separatordot(calculationParam.installment_amount)
+                );
+            } else {
+                console.log("Data not found");
+            }
+        },
+    });
+}
+
+function productIdFilter(category) {
+    const categorySJMB = ["SEDAN", "JEEP", "MNBUS"];
+    if (sessionStorage.getItem("loanType") === "NDFM") {
+        return "3178";
+    }
+    return categorySJMB.includes(category) ? "2221" : "2222";
+}
+
+function pmt(
+    rate_per_period,
+    number_of_payments,
+    present_value,
+    future_value,
+    type
+) {
+    future_value = typeof future_value !== "undefined" ? future_value : 0;
+    type = typeof type !== "undefined" ? type : 0;
+
+    if (rate_per_period != 0.0) {
+        // Interest rate exists
+        var q = Math.pow(1 + rate_per_period, number_of_payments);
+        return (
+            -(rate_per_period * (future_value + q * present_value)) /
+            ((-1 + q) * (1 + rate_per_period * type))
+        );
+    } else if (number_of_payments != 0.0) {
+        // No interest rate, but number of payments exists
+        return -(future_value + present_value) / number_of_payments;
+    }
+
+    return 0;
 }
 
 $(".go-to-home").on("click", () => {
@@ -1432,10 +1632,6 @@ function maritalStatusTranslate(status) {
             return status;
     }
 }
-function productCarFilter(category) {
-    const categorySJMB = ["SEDAN", "JEEP", "MNBUS"];
-    return categorySJMB.includes(category) ? "2221" : "2222";
-}
 
 function clearDot(x) {
     let removeDot = x.replace(/\./g, "");
@@ -1446,4 +1642,54 @@ function clearDot(x) {
 function validNumber(value) {
     var clearVal = "";
     return Number.isInteger(value) == true ? value : clearVal;
+}
+
+function tenorFormatter(x) {
+    x = x + " Bulan";
+    return x;
+}
+
+function reverseTenorFormatter(x) {
+    try {
+        x = parseInt(x.replace(" Bulan", ""));
+    } catch (e) {
+        x = 0;
+    }
+    return x;
+}
+
+$("#tenor2").slider({
+    min: 1,
+    max: 4,
+    value: 1,
+});
+
+$(".min-tenor").text(NDFC_TENOR[0] + " Bulan");
+$(".max-tenor").text(NDFC_TENOR[3] + " Bulan");
+
+$("#tenor2").on("change", function () {
+    let selectedTenor = parseInt($(this).val());
+    $("#tenor").val(tenorFormatter(NDFC_TENOR[selectedTenor - 1]));
+});
+
+function loginCust(phone) {
+    var dataPhone = {
+        phone_number: phone,
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "/user/login",
+        data: dataPhone,
+        dataType: "json",
+        error: function (data) {
+            // console.log("error" + data);
+        },
+        fail: function (xhr, textStatus, error) {
+            // console.log("request failed");
+        },
+        success: function (dataObj) {
+            console.log(dataObj);
+        },
+    });
 }
