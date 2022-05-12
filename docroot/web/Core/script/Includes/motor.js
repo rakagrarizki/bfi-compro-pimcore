@@ -213,8 +213,6 @@ $("#next5").on("click", function (e) {
     e.preventDefault();
     if ($(this).closest("form").valid()) {
         verificationOTP();
-        $("#menu5").removeClass("active");
-        $("#success").addClass("active");
     }
 });
 
