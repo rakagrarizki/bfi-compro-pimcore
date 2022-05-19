@@ -742,4 +742,9 @@ class SendApi
     {
         return $this->executeApi('api-list-spouse-profession', $url, $params, "POST");
     }
+
+    public function sendDataZeals($url, $params)
+    {
+        return $this->executeApi('api-zeals', $url , $params, "POST");
+    }
 }

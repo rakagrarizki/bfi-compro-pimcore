@@ -1541,6 +1541,7 @@ class CreditController extends FrontendController
         $param["name"] = htmlentities(addslashes($request->get('name')));
         $param["email"] = htmlentities(addslashes($request->get('email')));
         $param["phone_number"] = htmlentities(addslashes($request->get('phone_number')));
+        $param["encrypt_code_zeals"] = htmlentities(addslashes($request->get('encrypt_code_zeals')));
         $param["utm_source"] = htmlentities(addslashes($request->get('utm_source')));
         $param["utm_campaign"] = htmlentities(addslashes($request->get('utm_campaign')));
         $param["utm_term"] = htmlentities(addslashes($request->get('utm_term')));
@@ -1554,6 +1555,7 @@ class CreditController extends FrontendController
                 'success' => "1",
                 'message' => "success",
                 'data' => $data->data,
+                'param' => $param,
             ]);
             } else {
                 return new JsonResponse([
@@ -2916,6 +2918,37 @@ class CreditController extends FrontendController
             ]);
         }
 
+
+    }
+
+    public function sendTransactionZealsAction(Request $request)
+    {
+        $url = WebsiteSetting::getByName('URL_CALLBACK_TRANS_ZEALS')->getData();
+        $param["encrypted_code"] = htmlentities(addslashes($request->get('encrypted_code')));
+        $param["aff_id"] = htmlentities(addslashes($request->get('aff_id')));
+        $param["campaign_id"] = htmlentities(addslashes($request->get('campaign_id')));
+        $param["unique_random_code"] = htmlentities(addslashes($request->get('unique_random_code')));
+
+        try {
+            $data = $this->sendAPI->sendDataZeals($url, $param);
+            if ($data->status === "success") {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->status,
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $data->status,
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                 'success' => 0,
+                 'message' => $e->getMessage()
+            ]);
+        }
 
     }
 }

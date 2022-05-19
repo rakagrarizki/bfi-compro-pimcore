@@ -1,7 +1,9 @@
 <div class="container">
     <div id="accordion-pembiayaan" class="accordion pembiayaan">
         <div class="sect-title text-center">
-            <h2 class=""><?= $this->input('title');?></h2>
+            <?php if (!$this->input("title")->isEmpty()) { ?>
+                <h2 class=""><?= $this->input('title');?></h2>
+            <?php } ?>
             <p><?= $this->textarea('text'); ?></p>
         </div>
 

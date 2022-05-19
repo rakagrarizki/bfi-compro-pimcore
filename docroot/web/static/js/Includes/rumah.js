@@ -11,6 +11,7 @@ let dataStep1 = {
     name: undefined,
     phone_number: undefined,
     email: undefined,
+    encrypt_code_zeals: undefined,
     utm_source: undefined,
     utm_campaign: undefined,
     utm_term: undefined,
@@ -310,6 +311,7 @@ function pushDataStep1(cb) {
         name: $("#nama_lengkap").val(),
         email: $("#email_pemohon").val(),
         phone_number: $("#no_handphone").val(),
+        encrypt_code_zeals: sessionStorage.getItem("encrypted_code"),
         utm_source: sessionStorage.getItem("utm_source"),
         utm_campaign: sessionStorage.getItem("utm_campaign"),
         utm_term: sessionStorage.getItem("utm_term"),
@@ -558,6 +560,7 @@ function pushDataStep5() {
                 window.dataLayer.push({
                     event: "ValidFormStepOTP",
                 });
+                CbTransactionZeals();
                 $("#menu5").removeClass("active");
                 $("#success").addClass("active");
             }

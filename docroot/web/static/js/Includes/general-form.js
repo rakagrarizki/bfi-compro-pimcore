@@ -1,5 +1,12 @@
 var retryLimit = 3;
 
+let dataZeals = {
+    encrypted_code: undefined,
+    aff_id: undefined,
+    campaign_id: undefined,
+    unique_random_code: undefined,
+};
+
 function retryAjax(_this, xhr) {
     if (xhr.status == 500) {
         _this.tryCount++;
@@ -647,3 +654,42 @@ $("input.form-control").on("keyup change", function () {
         ? $(this).prev("label").addClass("valids")
         : $(this).prev("label").removeClass("valids");
 });
+
+function CbTransactionZeals() {
+    const loanType = sessionStorage.getItem("loanType");
+    if (loanType == "PBF") {
+        campaign_id = "30092";
+    } else if (loanType == "NDFC") {
+        campaign_id = "82771";
+    } else {
+        campaign_id = "98392";
+    }
+
+    let result = (dataZeals = {
+        encrypted_code: sessionStorage.getItem("encrypted_code"),
+        aff_id: "89621771",
+        campaign_id: campaign_id,
+        unique_random_code: "encrypt_code_zeal",
+    });
+
+    $.ajax({
+        type: "POST",
+        url: "/credit/data-zeals",
+        data: result,
+        dataType: "json",
+        tryCount: 0,
+        retryLimit: retryLimit,
+        error: (xhr, textStatus, err) => {
+            retryAjax(this, xhr);
+        },
+        fail: (xhr, textStatus, err) => {
+            retryAjax(this, xhr);
+        },
+        success: (res) => {
+            if (res.status === "success") {
+                console.log(res);
+            }
+            console.log("sukses");
+        },
+    });
+}

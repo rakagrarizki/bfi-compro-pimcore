@@ -2448,5 +2448,21 @@ return [
         "legacy" => FALSE,
         "creationDate" => 1581494082,
         "modificationDate" => 1581224171
+    ],
+    141 => [
+        "id" => 141,
+        "name" => "Callback Transaction Zeals",
+        "pattern" => "/\\/credit\\/data-zeals/",
+        "reverse" => "/credit/data-zeals",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "sendTransactionZeals",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1581494082,
+        "modificationDate" => 1581224171
     ]
 ];
