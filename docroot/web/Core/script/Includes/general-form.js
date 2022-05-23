@@ -1695,15 +1695,15 @@ $("#tenor2").on("change", function () {
     $("#tenor").val(tenorFormatter(NDFC_TENOR[selectedTenor - 1]));
 });
 
-function loginCust(phone) {
-    var dataPhone = {
-        phone_number: phone,
+function submissionRegister(submission_id) {
+    var submissionId = {
+        submission_id: submission_id,
     };
 
     $.ajax({
         type: "POST",
-        url: "/user/login",
-        data: dataPhone,
+        url: "/submission-register",
+        data: submissionId,
         dataType: "json",
         error: function (data) {
             // console.log("error" + data);
@@ -1711,8 +1711,40 @@ function loginCust(phone) {
         fail: function (xhr, textStatus, error) {
             // console.log("request failed");
         },
-        success: function (dataObj) {
-            console.log(dataObj);
+        success: function (data) {
+            if (data.success === "1") {
+                phone_number = data.data.phone_number;
+            }
+        },
+    });
+}
+
+function submissionLogin(phone) {
+    var lang = document.documentElement.lang;
+    var phoneNumber = {
+        phone_number: phone,
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "/submission-login",
+        data: phoneNumber,
+        dataType: "json",
+        error: function (data) {
+            // console.log("error" + data);
+        },
+        fail: function (xhr, textStatus, error) {
+            // console.log("request failed");
+        },
+        success: function (data) {
+            if (data.success === "1") {
+                var token = data.data.customer_token;
+                localStorage.setItem("token", token);
+                getCustomer(token);
+                window.location = "/" + lang + "/user/dashboard";
+            } else {
+                // console.log(data);
+            }
         },
     });
 }
