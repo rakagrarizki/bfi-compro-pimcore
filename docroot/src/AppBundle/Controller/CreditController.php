@@ -1555,7 +1555,6 @@ class CreditController extends FrontendController
                 'success' => "1",
                 'message' => "success",
                 'data' => $data->data,
-                'param' => $param,
             ]);
             } else {
                 return new JsonResponse([

@@ -1,6 +1,7 @@
 var lang = document.documentElement.lang;
 var submission_id = "";
 var phoneNumber = "";
+var encrypted_code = "";
 
 window.dataLayer = window.dataLayer || [];
 
@@ -307,11 +308,14 @@ $("#back4").on("click", function (e) {
 });
 
 function pushDataStep1(cb) {
+    encrypted_code = sessionStorage.getItem("encrypted_code");
+
     let result = (dataStep1 = {
         name: $("#nama_lengkap").val(),
         email: $("#email_pemohon").val(),
         phone_number: $("#no_handphone").val(),
-        encrypt_code_zeals: sessionStorage.getItem("encrypted_code"),
+        encrypt_code_zeals:
+            encrypted_code === "undefined" ? null : encrypted_code,
         utm_source: sessionStorage.getItem("utm_source"),
         utm_campaign: sessionStorage.getItem("utm_campaign"),
         utm_term: sessionStorage.getItem("utm_term"),
@@ -560,7 +564,9 @@ function pushDataStep5() {
                 window.dataLayer.push({
                     event: "ValidFormStepOTP",
                 });
-                CbTransactionZeals();
+                if (encrypted_code != "undefined") {
+                    CbTransactionZeals();
+                }
                 $("#menu5").removeClass("active");
                 $("#success").addClass("active");
             }
