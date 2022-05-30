@@ -12,7 +12,9 @@ let admin_fee2 = 0;
 let min_effective_rate = 0;
 let min_effective_rate2 = 0;
 let max_funding_percentage = 0;
+let ntf = 0;
 let total_ntf = 0;
+let provision_fee = 0;
 
 let calculationParam = {
     effective_rate: 0,
@@ -22,8 +24,10 @@ let calculationParam = {
     admin_fee: 0,
     fiducia_fee: 0,
     installment_amount: 0,
+    provisi_fee: 0,
 };
 
+let loanTenor = null;
 const NDFC_TENOR = [12, 24, 36, 48];
 const NDFM_TENOR = [6, 12, 18, 24];
 const LOAN_TENOR =
@@ -1430,7 +1434,9 @@ function getFiduciaFee() {
             if (result.success === 1) {
                 if (result.data !== null) {
                     calculationParam.fiducia_fee =
-                        result.data.data[0].fiducia_fee;
+                        sessionStorage.getItem("loanType") === "NDFM"
+                            ? result.data.data[0].fiducia_fee
+                            : result.data.data[0].notary_fee;
                 } else {
                     console.log("Data not found");
                 }
@@ -1487,8 +1493,10 @@ function getMaxFunding() {
 
         calculationParam.nilai_transaksi = res1[0].data.data[0].price;
         max_funding_percentage =
-            res2[0].data.data[0].max_funding_percentage +
-            res3[0].data.data[0].max_funding_percentage;
+            sessionStorage.getItem("loanType") === "NDFC"
+                ? res2[0].data.data[0].max_funding_percentage +
+                  res3[0].data.data[0].max_funding_percentage
+                : $("#ndfm_max_fund").val();
         calculationParam.max_ltv =
             (max_funding_percentage / 100) * calculationParam.nilai_transaksi;
 
@@ -1520,6 +1528,15 @@ function getCalculationParams() {
                 1) *
                 12) /
             tenor;
+        ntf =
+            clearDot($("#pembiayaan").val()) +
+            calculationParam.admin_fee +
+            calculationParam.fiducia_fee;
+
+        sessionStorage.getItem("loanType") === "NDFM"
+            ? getProvisionAmout()
+            : "";
+
         getEstimateInstallment();
     });
 }
@@ -1539,10 +1556,16 @@ function getEstimateInstallment() {
         max_ltv: calculationParam.max_ltv,
         admin_fee: calculationParam.admin_fee,
         fiducia_fee: calculationParam.fiducia_fee,
-        provisi_fee: 0,
+        provisi_fee: calculationParam.provisi_fee,
         other_fee: 0,
         survey_fee: 0,
         notary_fee: 0,
+        admin_on_loan: true,
+        fiducia_on_loan: true,
+        provisi_on_loan: true,
+        other_on_loan: true,
+        survey_on_loan: true,
+        notary_on_loan: true,
         round: 500,
     };
 

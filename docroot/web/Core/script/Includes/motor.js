@@ -73,6 +73,7 @@ $(document).ready(function () {
         : $(".nav-item-2.active").find(".nav-step-tag").text("Onprogress");
 
     sessionStorage.setItem("loanType", "NDFM");
+    loanTenor = NDFM_TENOR;
     sessionStorage.setItem("submitStep1", "false");
     sessionStorage.setItem("submitStep2", "false");
     sessionStorage.setItem("submitStep3", "false");
@@ -169,6 +170,7 @@ $("#next2").on("click", function (e) {
                             step("next", 3);
                             getListHouseOwnership("#kepemilikan_rumah");
                             getMaxFunding();
+                            getProductOffering();
                             $("#calcLoan").prop("disabled", false);
                             $("#brand-caption").text(
                                 $("#merk_kendaraan").val().toString()
@@ -444,6 +446,46 @@ function getDupcheck(cb) {
     });
 }
 
+function getProductOffering() {
+    let param = {
+        branch_id: branch_id,
+        asset_type_id: "MOTOR",
+        product_id: "3178",
+        product_offering_id: "31780621A1",
+        is_active: "true",
+    };
+    $.ajax({
+        type: "POST",
+        url: "/credit/get-product-offering",
+        headers: { Authorization: "Basic " + currentToken },
+        data: param,
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            if (result.success === 1) {
+                if (result.data !== null) {
+                    provision_fee = result.data.data[0].provision_fee;
+                } else {
+                    console.log("Data not found");
+                }
+            } else {
+                console.log("Failed to fetch data");
+            }
+        },
+    });
+}
+
+function getProvisionAmout() {
+    let tenor = loanTenor[$("#tenor").val() - 1];
+    let provisi_fee_percentage = ((tenor / 12) * provision_fee) / 100;
+    calculationParam.provisi_fee = provisi_fee_percentage * ntf;
+}
+
 function getOccupationList() {
     var placeholder = $("#occupation").attr("placeholder");
     let data_occupation = [
@@ -452,7 +494,7 @@ function getOccupationList() {
             text: "Karyawan Swasta",
         },
         {
-            id: "PNS",
+            id: "Pegawai Negeri Sipil",
             text: "Pegawai Negeri Sipil",
         },
         {
@@ -468,7 +510,7 @@ function getOccupationList() {
             text: "Tenaga Kesehatan",
         },
         {
-            id: "IRT",
+            id: "Ibu Rumah Tangga",
             text: "Ibu Rumah Tangga",
         },
         {
