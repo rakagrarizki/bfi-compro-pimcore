@@ -2773,14 +2773,14 @@ return [
         "creationDate" => 1567583908,
         "modificationDate" => 1567583948
     ],
-    153 => [
-        "id" => 153,
-        "name" => "get list data marital status",
-        "pattern" => "/\\/credit\\/get-list-data-marital-status/",
-        "reverse" => "/credit/get-list-data-marital-status",
+    159 => [
+        "id" => 159,
+        "name" => "get list product offering",
+        "pattern" => "/\\/credit\\/get-product-offering/",
+        "reverse" => "/credit/get-product-offering",
         "module" => "AppBundle",
         "controller" => "@AppBundle\\Controller\\CreditController",
-        "action" => "getListDataMaritalStatus",
+        "action" => "getProductOffering",
         "variables" => "",
         "defaults" => NULL,
         "siteId" => [

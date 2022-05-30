@@ -42,6 +42,8 @@ class CreditController extends FrontendController
 
     public function motorAction(Request $request)
     {
+        $maxFundPercentage = WebsiteSetting::getByName('NDFM_MAX_FUND_PERCENTAGE')->getData();
+        $this->view->maxFundPercentage = $maxFundPercentage;
     }
 
     public function rumahAction(Request $request)
@@ -1283,6 +1285,38 @@ class CreditController extends FrontendController
         }
     }
 
+    public function getProductOfferingAction(Request $request){
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_PRODUCT_OFFERING')->getData();
+        $param['branch_id'] = htmlentities(addslashes($request->get('branch_id')));
+        $param['product_id'] = htmlentities(addslashes($request->get('product_id')));
+        $param['product_offering_id'] = htmlentities(addslashes($request->get('product_offering_id')));
+        $param['asset_type_id'] = htmlentities(addslashes($request->get('asset_type_id')));
+        $param['is_active'] = htmlentities(addslashes($request->get('is_active')));
+
+        try{
+            $data = $this->sendAPI->getProductOffering($url, $param, $token);
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data,
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
     public function getFiduciaFeeAction(Request $request){
         $token = $this->getTokenBearer();
         $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
@@ -1358,15 +1392,21 @@ class CreditController extends FrontendController
         $param['calcualte_by'] = (int) htmlentities(addslashes($request->get('calcualte_by')));
         $param['grace_periode_type'] = (int) htmlentities(addslashes($request->get('grace_periode_type')));
         $param['grace_periode'] = (int) htmlentities(addslashes($request->get('grace_periode')));
-        $param['nilai_taksaksi'] = (int) htmlentities(addslashes($request->get('nilai_taksaksi')));
-        $param['max_ltv'] = (int) htmlentities(addslashes($request->get('max_ltv')));
-        $param['admin_fee'] = (int) htmlentities(addslashes($request->get('admin_fee')));
-        $param['fiducia_fee'] = (int) htmlentities(addslashes($request->get('fiducia_fee')));
-        $param['provisi_fee'] = (int) htmlentities(addslashes($request->get('provisi_fee')));
-        $param['other_fee'] = (int) htmlentities(addslashes($request->get('other_fee')));
-        $param['survey_fee'] = (int) htmlentities(addslashes($request->get('survey_fee')));
-        $param['notary_fee'] = (int) htmlentities(addslashes($request->get('notary_fee')));
+        $param['nilai_taksaksi'] = (double) htmlentities(addslashes($request->get('nilai_taksaksi')));
+        $param['max_ltv'] = (double) htmlentities(addslashes($request->get('max_ltv')));
+        $param['admin_fee'] = (double) htmlentities(addslashes($request->get('admin_fee')));
+        $param['fiducia_fee'] = (double) htmlentities(addslashes($request->get('fiducia_fee')));
+        $param['provisi_fee'] = (double) htmlentities(addslashes($request->get('provisi_fee')));
+        $param['other_fee'] = (double) htmlentities(addslashes($request->get('other_fee')));
+        $param['survey_fee'] = (double) htmlentities(addslashes($request->get('survey_fee')));
+        $param['notary_fee'] = (double) htmlentities(addslashes($request->get('notary_fee')));
         $param['round'] = (int) htmlentities(addslashes($request->get('round')));
+        $param['admin_on_loan'] = htmlentities(addslashes($request->get('admin_on_loan')));
+        $param['fiducia_on_loan'] = htmlentities(addslashes($request->get('fiducia_on_loan')));
+        $param['provisi_on_loan'] = htmlentities(addslashes($request->get('provisi_on_loan')));
+        $param['other_on_loan'] = htmlentities(addslashes($request->get('other_on_loan')));
+        $param['survey_on_loan'] = htmlentities(addslashes($request->get('survey_on_loan')));
+        $param['notary_on_loan'] = htmlentities(addslashes($request->get('notary_on_loan')));
 
         try{
             $data = $this->sendAPI->getEstimateInstallment($url, $param, $token);
@@ -1374,8 +1414,7 @@ class CreditController extends FrontendController
                 return new JsonResponse([
                     'success' => 1,
                     'message' => "success",
-                    'data' => $data->data,
-                    'inputan' => $param
+                    'data' => $data->data
                 ]);
             } else {
                 return new JsonResponse([
