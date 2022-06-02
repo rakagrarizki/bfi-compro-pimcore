@@ -896,6 +896,21 @@ class SendApi
         return $this->executeApiSignature('getPricelistPaging', false, $url, $param, "GET", $token);
     }
 
+    public function getLifeInsuranceRateNew($url, $param, $token)
+    {
+        return $this->executeApiSignature('getLifeInsuranceRateNew', false, $url, $param, "GET", $token);
+    }
+
+    public function getLifeInsuranceRate($url, $param, $token)
+    {
+        return $this->executeApiSignature('getLifeInsurance', false, $url, $param, "GET", $token);
+    }
+
+    public function getLifeInsuranceCoyBranch($url, $param, $token)
+    {
+        return $this->executeApiSignature('getLifeInsuranceCoyBranch', false, $url, $param, "GET", $token);
+    }
+
     public function getEstimateInstallment($url, $param, $token){
         return $this->executeApiSignature('getEstimateInstallment', true, $url, $param, "POST", $token);
     }

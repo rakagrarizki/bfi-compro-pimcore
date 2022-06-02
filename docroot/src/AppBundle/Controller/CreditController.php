@@ -1378,6 +1378,98 @@ class CreditController extends FrontendController
         }
     }
 
+    public function getLifeInsuranceRateNewAction(Request $request){
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_LIFE_INSURANCE_RATE_NEW')->getData();
+        $param['branch_id'] = htmlentities(addslashes($request->get('branch_id')));
+        $param['age'] = htmlentities(addslashes($request->get('age')));
+        $param['si'] = htmlentities(addslashes($request->get('si')));
+        $param['tenor'] = htmlentities(addslashes($request->get('tenor')));
+
+        try{
+            $data = $this->sendAPI->getLifeInsuranceRateNew($url, $param, $token);
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => 0,
+                'message' => $e
+            ]);
+        }
+    }
+
+    public function getLifeInsuranceRateAction(Request $request){
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_LIFE_INSURANCE_RATE')->getData();
+        $param['branch_id'] = htmlentities(addslashes($request->get('branch_id')));
+        $param['age'] = htmlentities(addslashes($request->get('age')));
+        $param['tenor'] = htmlentities(addslashes($request->get('tenor')));
+        $param['insurance_branch_active'] = htmlentities(addslashes($request->get('insurance_branch_active')));
+        $param['asset_type_id'] = htmlentities(addslashes($request->get('asset_type_id')));
+
+        try{
+            $data = $this->sendAPI->getLifeInsuranceRate($url, $param, $token);
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => 0,
+                'message' => $e
+            ]);
+        }
+    }
+
+    public function getLifeInsuranceCoyBranchAction(Request $request){
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_LIFE_INSURANCE_COY_BRANCH')->getData();
+        $param['branch_id'] = htmlentities(addslashes($request->get('branch_id')));
+        $param['is_active'] = htmlentities(addslashes($request->get('is_active')));
+
+        try{
+            $data = $this->sendAPI->getLifeInsuranceCoyBranch($url, $param, $token);
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => 0,
+                'message' => $e
+            ]);
+        }
+    }
+
     public function getEstimateInstallmentAction(Request $request){
         $token = $this->getTokenBearer();
         $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
@@ -1400,6 +1492,7 @@ class CreditController extends FrontendController
         $param['other_fee'] = (double) htmlentities(addslashes($request->get('other_fee')));
         $param['survey_fee'] = (double) htmlentities(addslashes($request->get('survey_fee')));
         $param['notary_fee'] = (double) htmlentities(addslashes($request->get('notary_fee')));
+        $param['total_life_insurance_capitalize'] = (double) htmlentities(addslashes($request->get('total_life_insurance_capitalize')));
         $param['round'] = (int) htmlentities(addslashes($request->get('round')));
         $param['admin_on_loan'] = htmlentities(addslashes($request->get('admin_on_loan')));
         $param['fiducia_on_loan'] = htmlentities(addslashes($request->get('fiducia_on_loan')));

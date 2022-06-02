@@ -2791,4 +2791,58 @@ return [
         "creationDate" => 1567583908,
         "modificationDate" => 1567583948
     ],
+    160 => [
+        "id" => 160,
+        "name" => "get life insurance rate new",
+        "pattern" => "/\\/credit\\/get-life-insurance-rate-new/",
+        "reverse" => "/credit/get-life-insurance-rate-new",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getLifeInsuranceRateNew",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+    161 => [
+        "id" => 161,
+        "name" => "get life insurance rate",
+        "pattern" => "/\\/credit\\/get-life-insurance-rate/",
+        "reverse" => "/credit/get-life-insurance-rate",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getLifeInsuranceRate",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+    162 => [
+        "id" => 162,
+        "name" => "get life insurance coy branch",
+        "pattern" => "/\\/credit\\/get-life-insurance-coy-branch/",
+        "reverse" => "/credit/get-life-insurance-coy-branch",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getLifeInsuranceCoyBranch",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
 ];

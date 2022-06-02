@@ -25,7 +25,11 @@ let calculationParam = {
     fiducia_fee: 0,
     installment_amount: 0,
     provisi_fee: 0,
+    total_life_insurance_capitalize: 0,
 };
+
+let lifeInsuranceRate = [];
+let lifeInsuranceCoy = [];
 
 let loanTenor = null;
 const NDFC_TENOR = [12, 24, 36, 48];
@@ -1480,6 +1484,108 @@ function getPricelistPaging() {
     });
 }
 
+function getLifeInsuranceCoy() {
+    let param = {
+        branch_id: branch_id,
+        is_active: true,
+    };
+
+    return $.ajax({
+        type: "POST",
+        url: "/credit/get-life-insurance-coy-branch",
+        headers: {
+            Authorization: "Basic " + currentToken,
+        },
+        data: param,
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            if (result.success === 1) {
+                if (result.data !== null) {
+                    lifeInsuranceCoy = result.data.data;
+                } else {
+                    lifeInsuranceCoy = null;
+                }
+            } else {
+                console.log("Failed to fetch data");
+            }
+        },
+    });
+}
+
+function getLifeInsuranceRate() {
+    let fund = clearDot($("#pembiayaan").val());
+    let paramInsuranceRateNew = {
+        branch_id: branch_id,
+        age: 25,
+        si: clearDot($("#pembiayaan").val()),
+        tenor: reverseTenorFormatter($("#tenor").val()),
+    };
+
+    let paramInsuranceRate = {
+        branch_id: branch_id,
+        age: 25,
+        tenor: reverseTenorFormatter($("#tenor").val()),
+        insurance_branch_active: true,
+        asset_type_id: rawAssetBrand[0].asset_type_id,
+    };
+
+    let param = fund > 20000000 ? paramInsuranceRate : paramInsuranceRateNew;
+    let url =
+        fund > 20000000
+            ? "/credit/get-life-insurance-rate"
+            : "/credit/get-life-insurance-rate-new";
+
+    return $.ajax({
+        type: "POST",
+        url: url,
+        headers: { Authorization: "Basic " + currentToken },
+        data: param,
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            if (result.success === 1) {
+                if (result.data !== null) {
+                    lifeInsuranceRate = result.data.data;
+                } else {
+                    lifeInsuranceRate = null;
+                }
+            } else {
+                console.log("Failed to fetch data");
+            }
+        },
+    });
+}
+
+function getLifeInsuranceAmount() {
+    let fund = clearDot($("#pembiayaan").val());
+    if (lifeInsuranceRate !== null) {
+        let result = lifeInsuranceRate.filter(function (arr1) {
+            return lifeInsuranceCoy.some(function (arr2) {
+                return (
+                    arr1.life_insurance_coy_id === arr2.life_insurance_coy_id &&
+                    arr1.life_insurance_coy_branch_id ===
+                        arr2.life_insurance_coy_branch_id
+                );
+            });
+        });
+        calculationParam.total_life_insurance_capitalize =
+            fund > 20000000
+                ? result[0].ins_rate_to_cust
+                : result[0].ins_amount_to_cust;
+    }
+}
+
 function getMaxFunding() {
     $.when(
         getPricelistPaging(),
@@ -1517,28 +1623,30 @@ function getMaxFunding() {
 
 function getCalculationParams() {
     let tenor = reverseTenorFormatter($("#tenor").val());
-    $.when(getFiduciaFee()).then(function (res1) {
-        calculationParam.effective_rate =
-            (min_effective_rate2 + min_effective_rate) / 100;
-        calculationParam.admin_fee = admin_fee2 + admin_fee;
-        calculationParam.flat_rate =
-            ((pmt(calculationParam.effective_rate / 12, tenor, 1, 0, 0) *
-                -1 *
-                tenor -
-                1) *
-                12) /
-            tenor;
-        ntf =
-            clearDot($("#pembiayaan").val()) +
-            calculationParam.admin_fee +
-            calculationParam.fiducia_fee;
+    $.when(getFiduciaFee(), getLifeInsuranceRate(), getLifeInsuranceCoy()).then(
+        function (res1, res2, res3) {
+            calculationParam.effective_rate =
+                (min_effective_rate2 + min_effective_rate) / 100;
+            calculationParam.admin_fee = admin_fee2 + admin_fee;
+            calculationParam.flat_rate =
+                ((pmt(calculationParam.effective_rate / 12, tenor, 1, 0, 0) *
+                    -1 *
+                    tenor -
+                    1) *
+                    12) /
+                tenor;
+            ntf =
+                clearDot($("#pembiayaan").val()) +
+                calculationParam.admin_fee +
+                calculationParam.fiducia_fee;
 
-        sessionStorage.getItem("loanType") === "NDFM"
-            ? getProvisionAmout()
-            : "";
-
-        getEstimateInstallment();
-    });
+            sessionStorage.getItem("loanType") === "NDFM"
+                ? getProvisionAmout()
+                : "";
+            getLifeInsuranceAmount();
+            getEstimateInstallment();
+        }
+    );
 }
 
 function getProvisionAmout() {
@@ -1563,6 +1671,8 @@ function getEstimateInstallment() {
         admin_fee: calculationParam.admin_fee,
         fiducia_fee: calculationParam.fiducia_fee,
         provisi_fee: calculationParam.provisi_fee,
+        total_life_insurance_capitalize:
+            calculationParam.total_life_insurance_capitalize,
         other_fee: 0,
         survey_fee: 0,
         notary_fee: 0,
