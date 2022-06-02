@@ -3277,10 +3277,10 @@ var urlLocation = window.location;
         showDefaultButton();
         change_addres = true;
 
-        if ($(".nav-item-2").hasClass("done")) {
-            $(".nav-item-2").removeClass("done");
-            $(".nav-item-2").addClass("disabled");
-        }
+        // if ($(".nav-item-2").hasClass("done")) {
+        //     $(".nav-item-2").removeClass("done");
+        //     $(".nav-item-2").addClass("disabled");
+        // }
         if ($(".nav-item-3").hasClass("done")) {
             $(".nav-item-3").removeClass("done");
             $(".nav-item-3").addClass("disabled");
@@ -3465,10 +3465,10 @@ var urlLocation = window.location;
         showDefaultButton();
         change_addres = true;
 
-        if ($(".nav-item-2").hasClass("done")) {
-            $(".nav-item-2").removeClass("done");
-            $(".nav-item-2").addClass("disabled");
-        }
+        // if ($(".nav-item-2").hasClass("done")) {
+        //     $(".nav-item-2").removeClass("done");
+        //     $(".nav-item-2").addClass("disabled");
+        // }
         if ($(".nav-item-3").hasClass("done")) {
             $(".nav-item-3").removeClass("done");
             $(".nav-item-3").addClass("disabled");
@@ -3694,10 +3694,10 @@ var urlLocation = window.location;
         // console.log("===#kelurahan select ganti2");
         showDefaultButton();
         change_addres = true;
-        if ($(".nav-item-2").hasClass("done")) {
-            $(".nav-item-2").removeClass("done");
-            $(".nav-item-2").addClass("disabled");
-        }
+        // if ($(".nav-item-2").hasClass("done")) {
+        //     $(".nav-item-2").removeClass("done");
+        //     $(".nav-item-2").addClass("disabled");
+        // }
         if ($(".nav-item-3").hasClass("done")) {
             $(".nav-item-3").removeClass("done");
             $(".nav-item-3").addClass("disabled");
@@ -3817,10 +3817,10 @@ var urlLocation = window.location;
         resetSameAddress();
         showDefaultButton();
         change_addres = true;
-        if ($(".nav-item-2").hasClass("done")) {
-            $(".nav-item-2").removeClass("done");
-            $(".nav-item-2").addClass("disabled");
-        }
+        // if ($(".nav-item-2").hasClass("done")) {
+        //     $(".nav-item-2").removeClass("done");
+        //     $(".nav-item-2").addClass("disabled");
+        // }
         if ($(".nav-item-3").hasClass("done")) {
             $(".nav-item-3").removeClass("done");
             $(".nav-item-3").addClass("disabled");

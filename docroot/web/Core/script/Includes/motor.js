@@ -480,12 +480,6 @@ function getProductOffering() {
     });
 }
 
-function getProvisionAmout() {
-    let tenor = loanTenor[$("#tenor").val() - 1];
-    let provisi_fee_percentage = ((tenor / 12) * provision_fee) / 100;
-    calculationParam.provisi_fee = provisi_fee_percentage * ntf;
-}
-
 function getOccupationList() {
     var placeholder = $("#occupation").attr("placeholder");
     let data_occupation = [

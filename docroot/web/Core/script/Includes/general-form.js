@@ -1541,6 +1541,12 @@ function getCalculationParams() {
     });
 }
 
+function getProvisionAmout() {
+    let tenor = reverseTenorFormatter($("#tenor").val());
+    let provisi_fee_percentage = ((tenor / 12) * provision_fee) / 100;
+    calculationParam.provisi_fee = provisi_fee_percentage * ntf;
+}
+
 function getEstimateInstallment() {
     let param = {
         funding_amount: clearDot($("#pembiayaan").val()),
