@@ -36,6 +36,9 @@ $this->headMeta()->appendName('twitter:title', $promo->getTitle());
 $this->headMeta()->appendName('twitter:url', BASEURL . '/' . $lang . $url . $promo->getSlug());
 $this->headMeta()->appendName('twitter:image', BASEURL . $promo->getImage());
 $this->headMeta()->appendName('twitter:description', $promo->getDescription());
+if($promo->getProperty('url_canonical')){
+    $this->headLink(['rel' => 'canonical', 'href' => $promo->getProperty('url_canonical')]);
+}
 ?>
 
 <div class="blog-promo detail">

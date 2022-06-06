@@ -46,6 +46,9 @@ $this->headMeta()->appendName('twitter:title',$news->getTitle());
 $this->headMeta()->appendName('twitter:url', BASEURL . '/' . $lang . $url . $news->getSlug());
 $this->headMeta()->appendName('twitter:image', BASEURL . $news->getImage());
 $this->headMeta()->appendName('twitter:description', $news->getDescription());
+if($news->getProperty('url_canonical')){
+    $this->headLink(['rel' => 'canonical', 'href' => $news->getProperty('url_canonical')]);
+}
 
 ?>
 

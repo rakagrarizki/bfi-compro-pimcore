@@ -1,5 +1,7 @@
 <div class="container container-profesi">
-    <div class="page-title"><?= $this->input("title"); ?></div>
+    <?php if (!$this->input("title")->isEmpty()) { ?>
+        <div class="page-title"><?= $this->input("title"); ?></div>
+    <?php } ?>
     <div class="row">
         <?php while ($this->block("contentblock")->loop()) { ?>
             <div class="col-md-6 profesi-box">

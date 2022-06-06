@@ -6224,14 +6224,11 @@ $(".blog-promo .card-img img").each(function () {
     image = $(this);
 
     if ($(image).width() / $(image).height() > 1) {
-        console.log($(this).parent("picture"));
     } else {
         $(this).css("width", "inherit");
         $(this).css("height", "100%");
         $(this).parent("picture").css("width", "inherit");
         $(this).parent("picture").css("height", "100%");
-
-        console.log("Tall");
     }
 });
 

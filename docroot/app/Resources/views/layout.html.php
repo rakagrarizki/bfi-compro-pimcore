@@ -21,6 +21,12 @@
     <?php
     $site = $this->document->getProperty("site");
     $hal = $this->document->getProperty("hal");
+
+    $desc = "";
+    if(isset($_GET['page'])){
+        $desc = " | {$this->translate('page')} {$_GET['page']}";
+    }
+
     if ($this->document instanceof \Pimcore\Model\Document\Page) {
         $slug = $this->getParam("slug");
         $year = $this->getParam("year");
@@ -28,8 +34,8 @@
         if (!$slug && !$year) {
             if ($this->document->getTitle()) {
                 // use the manually set title if available
-                $this->headTitle()->set($this->document->getTitle());
-                $this->headMeta()->appendName('title', $this->document->getTitle());
+                $this->headTitle()->set($this->document->getTitle() . $desc);
+                $this->headMeta()->appendName('title', $this->document->getTitle() . $desc);
             }
         }
     }
@@ -42,7 +48,7 @@
 
     if ($this->document instanceof \Pimcore\Model\Document\Page && $this->document->getDescription()) {
         // use the manually set description if available
-        $this->headMeta()->appendName('description', $this->document->getDescription());
+        $this->headMeta()->appendName('description', $this->document->getDescription() . $desc);
     }
 
     echo $this->headTitle();

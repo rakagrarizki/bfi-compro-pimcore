@@ -41,7 +41,7 @@ $this->headMeta()->appendName('twitter:description', $award->getDescription());
     </div>
 </div>
 <div class="container main-card">
-    <div class="page-title"><?= $this->t("award-title"); ?></div>
+    <h1 class="page-title"><?= $this->t("award-title"); ?></h1>
     <div class="page-sub-title"><?= $this->translate("year"); ?> <?= $award->getYear(); ?></div>
 </div>
 

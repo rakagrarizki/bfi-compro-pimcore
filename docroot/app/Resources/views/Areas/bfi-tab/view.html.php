@@ -10,11 +10,9 @@ $this->headScript()->offsetSetFile(100, '/static/js/Includes/tabbing.js');
 <div class="tabs-accor">
     <div class="container">
         <article class="sect-title text-center">
-            <?php 
-            if($this->input('title') == '') { ?>
-            <?php } else {?>
-            <h2 class=""><?= $this->input('title');?></h2>
-            <?php }?>
+            <?php if (!$this->input("title")->isEmpty()) { ?>
+                <h2 class=""><?= $this->input('title');?></h2>
+            <?php } ?>
         </article>
         <div id="<?= $this->select("group")->getData(); ?>" class="tabs-outer">
             <ul class="nav nav-tabs" role="tablist" id="outer-choice">
@@ -55,7 +53,6 @@ $this->headScript()->offsetSetFile(100, '/static/js/Includes/tabbing.js');
                         </h2>
                     </a>
                 </li>
-
                 <?php } ?>
             </ul>
             <div class="arrow-wrapper">
@@ -78,7 +75,7 @@ $this->headScript()->offsetSetFile(100, '/static/js/Includes/tabbing.js');
 
                 $id = $this->block("tab")->getCurrent();
                 $active = "";
-                ?>
+            ?>
             <?php if ($tab == "") {
                     if ($queryStr) {
                         if ($id == $queryStr) {
@@ -98,7 +95,6 @@ $this->headScript()->offsetSetFile(100, '/static/js/Includes/tabbing.js');
                 <?= $this->snippet("teaserSnipet"); ?>
             </div>
             <?php } ?>
-
         </div>
     </div>
 </div>
