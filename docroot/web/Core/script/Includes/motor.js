@@ -73,11 +73,20 @@ $(document).ready(function () {
         : $(".nav-item-2.active").find(".nav-step-tag").text("Onprogress");
 
     sessionStorage.setItem("loanType", "NDFM");
-    loanTenor = NDFM_TENOR;
     sessionStorage.setItem("submitStep1", "false");
     sessionStorage.setItem("submitStep2", "false");
     sessionStorage.setItem("submitStep3", "false");
     sessionStorage.setItem("submitStepOtp", "false");
+    loanTenor = NDFM_TENOR;
+
+    $("#tenor2").slider({
+        min: 1,
+        max: loanTenor.length,
+        value: 1,
+    });
+
+    $(".min-tenor").text(loanTenor[0] + " Bulan");
+    $(".max-tenor").text(loanTenor.slice(-1) + " Bulan");
 });
 
 var nearBranch = $("#near_branch").attr("placeholder");
@@ -169,9 +178,14 @@ $("#next2").on("click", function (e) {
                             }
                             step("next", 3);
                             getListHouseOwnership("#kepemilikan_rumah");
-                            getMaxFunding();
+                            getPricelistPaging();
                             getProductOffering();
+
                             $("#calcLoan").prop("disabled", false);
+                            $("#tenor").val(tenorFormatter(loanTenor[0]));
+                            $("#tenor2").val(1);
+                            $("#pembiayaan").val(separatordot(MIN_FUNDING));
+
                             $("#brand-caption").text(
                                 $("#merk_kendaraan").val().toString()
                             );
@@ -450,8 +464,9 @@ function getProductOffering() {
     let param = {
         branch_id: branch_id,
         asset_type_id: "MOTOR",
-        product_id: "3178",
-        product_offering_id: "31780621A1",
+        product_id: NDFM_PRODUCT_ID,
+        // product_offering_id: "31780621A1",
+        product_offering_id: NDFM_PRODUCT_OFFERING_ID,
         is_active: "true",
     };
     $.ajax({

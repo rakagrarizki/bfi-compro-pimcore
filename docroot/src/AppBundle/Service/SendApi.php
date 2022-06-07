@@ -886,6 +886,10 @@ class SendApi
         return $this->executeApiSignature('getProductOffering', false, $url, $param, "GET", $token);
     }
 
+    public function getProductOfferingDetail($url, $param, $token){
+        return $this->executeApiSignature('getProductOfferingDetail', false, $url, $param, "GET", $token);
+    }
+
     public function getFiduciaFee($url, $param, $token)
     {
         return $this->executeApiSignature('getFiduciaFee', false, $url, $param, "GET", $token);

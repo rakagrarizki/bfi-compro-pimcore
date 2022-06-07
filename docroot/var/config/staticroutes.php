@@ -2845,4 +2845,22 @@ return [
         "creationDate" => 1567583908,
         "modificationDate" => 1567583948
     ],
+    163 => [
+        "id" => 163,
+        "name" => "get product offering detail",
+        "pattern" => "/\\/credit\\/get-product-offer-detail/",
+        "reverse" => "/credit/get-product-offer-detail",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getProductOfferingDetail",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
 ];
