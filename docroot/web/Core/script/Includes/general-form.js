@@ -1620,7 +1620,7 @@ function getLifeInsuranceAmount() {
         });
         calculationParam.total_life_insurance_capitalize =
             fund > 20000000
-                ? result[0].ins_rate_to_cust
+                ? result[0].ins_rate_to_cust * fund
                 : result[0].ins_amount_to_cust;
     }
 }

@@ -320,8 +320,8 @@ function pushDataStep2(cb) {
         info_customer: {
             profession_id_bfi: $("#occupation").val().toString(),
             profession_desc_bfi: $("#occupation").val().toString(),
-            salary: "",
-            dob: "",
+            salary: "100000000",
+            dob: "1992-02-23",
         },
     });
 
