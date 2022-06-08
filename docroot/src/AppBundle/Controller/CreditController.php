@@ -1500,6 +1500,189 @@ class CreditController extends FrontendController
         }
     }
 
+    public function getAssetCategoryAction(Request $request){
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_ASSET_CATEGORY')->getData();
+        $param['asset_type_id'] = htmlentities(addslashes($request->get('asset_type_id')));
+        $param['category_id'] = htmlentities(addslashes($request->get('category_id')));
+
+        try{
+            $data = $this->sendAPI->getAssetCategory($url, $param, $token);
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => 0,
+                'message' => $e
+            ]);
+        }
+    }
+
+    public function getAssetInsuranceRateCategoryAction(Request $request){
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_ASSET_INSURANCE_RATE_CATEGORY')->getData();
+        $param['ins_rate_category_id'] = htmlentities(addslashes($request->get('ins_rate_category_id')));
+        $param['asset_type_id'] = htmlentities(addslashes($request->get('asset_type_id')));
+
+        try{
+            $data = $this->sendAPI->getAssetInsuranceRateCategory($url, $param, $token);
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => 0,
+                'message' => $e
+            ]);
+        }
+    }
+
+    public function getAssetInsuranceRateAction(Request $request){
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_ASSET_INSURANCE_RATE')->getData();
+        $param['insurance_coy_id'] = htmlentities(addslashes($request->get('insurance_coy_id')));
+        $param['insurance_coy_branch_id'] = htmlentities(addslashes($request->get('insurance_coy_branch_id')));
+        $param['branch_id'] = htmlentities(addslashes($request->get('branch_id')));
+        $param['otr'] = htmlentities(addslashes($request->get('otr')));
+        $param['insurance_type'] = htmlentities(addslashes($request->get('insurance_type')));
+        $param['coverage_type'] = htmlentities(addslashes($request->get('coverage_type')));
+        $param['tenor'] = htmlentities(addslashes($request->get('tenor')));
+        $param['usage_id'] = htmlentities(addslashes($request->get('usage_id')));
+        $param['new_used'] = htmlentities(addslashes($request->get('new_used')));
+        $param['year_num'] = htmlentities(addslashes($request->get('year_num')));
+        $param['is_active'] = htmlentities(addslashes($request->get('is_active')));
+
+        try{
+            $data = $this->sendAPI->getAssetInsuranceRate($url, $param, $token);
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => 0,
+                'message' => $e
+            ]);
+        }
+    }
+
+    public function getAssetInsuranceCoyBranchAction(Request $request){
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_ASSET_INSURANCE_COY_BRANCH')->getData();
+        $param['branch_id'] = htmlentities(addslashes($request->get('branch_id')));
+        $param['is_active'] = htmlentities(addslashes($request->get('is_active')));
+
+        try{
+            $data = $this->sendAPI->getAssetInsuranceCoyBranch($url, $param, $token);
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => 0,
+                'message' => $e
+            ]);
+        }
+    }
+
+    public function getRsaCoyBranchAction(Request $request){
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_RSA_COY_BRANCH')->getData();
+        $param['branch_id'] = htmlentities(addslashes($request->get('branch_id')));
+
+        try{
+            $data = $this->sendAPI->getRsaCoyBranch($url, $param, $token);
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => 0,
+                'message' => $e
+            ]);
+        }
+    }
+
+    public function getRsaFeeAction(Request $request){
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_RSA_FEE')->getData();
+        $param['branch_id'] = htmlentities(addslashes($request->get('branch_id')));
+        $param['rsa_insurance_coy_branch_id'] = htmlentities(addslashes($request->get('rsa_insurance_coy_branch_id')));
+        $param['tenor'] = htmlentities(addslashes($request->get('tenor')));
+
+        try{
+            $data = $this->sendAPI->getRsaFee($url, $param, $token);
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => 0,
+                'message' => $e
+            ]);
+        }
+    }
+
     public function getEstimateInstallmentAction(Request $request){
         $token = $this->getTokenBearer();
         $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();

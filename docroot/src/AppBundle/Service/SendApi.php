@@ -916,6 +916,36 @@ class SendApi
         return $this->executeApiSignature('getLifeInsuranceCoyBranch', false, $url, $param, "GET", $token);
     }
 
+    public function getAssetCategory($url, $param, $token)
+    {
+        return $this->executeApiSignature('getAssetCategory', false, $url, $param, "GET", $token);
+    }
+
+    public function getAssetInsuranceRateCategory($url, $param, $token)
+    {
+        return $this->executeApiSignature('getAssetInsuranceRateCategory', false, $url, $param, "GET", $token);
+    }
+
+    public function getAssetInsuranceRate($url, $param, $token)
+    {
+        return $this->executeApiSignature('getAssetInsuranceRate', false, $url, $param, "GET", $token);
+    }
+
+    public function getAssetInsuranceCoyBranch($url, $param, $token)
+    {
+        return $this->executeApiSignature('getAssetInsuranceCoyBranch', false, $url, $param, "GET", $token);
+    }
+
+    public function getRsaCoyBranch($url, $param, $token)
+    {
+        return $this->executeApiSignature('getRsaCoyBranch', false, $url, $param, "GET", $token);
+    }
+
+    public function getRsaFee($url, $param, $token)
+    {
+        return $this->executeApiSignature('getRsaFee', false, $url, $param, "GET", $token);
+    }
+
     public function getEstimateInstallment($url, $param, $token){
         return $this->executeApiSignature('getEstimateInstallment', true, $url, $param, "POST", $token);
     }

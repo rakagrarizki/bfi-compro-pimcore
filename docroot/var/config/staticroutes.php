@@ -2867,4 +2867,118 @@ return [
         "creationDate" => 1567583908,
         "modificationDate" => 1567583948
     ],
+
+    164 => [
+        "id" => 164,
+        "name" => "get asset category",
+        "pattern" => "/\\/credit\\/get-asset-category/",
+        "reverse" => "/credit/get-asset-category",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getAssetCategory",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+
+    165 => [
+        "id" => 165,
+        "name" => "get asset insurance rate category",
+        "pattern" => "/\\/credit\\/get-asset-insurance-rate-category/",
+        "reverse" => "/credit/get-asset-insurance-rate-category",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getAssetInsuranceRateCategory",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+
+    166 => [
+        "id" => 166,
+        "name" => "get asset insurance rate",
+        "pattern" => "/\\/credit\\/get-insurance-rate-asset/",
+        "reverse" => "/credit/get-insurance-rate-asset",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getAssetInsuranceRate",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+
+    167 => [
+        "id" => 167,
+        "name" => "get asset insurance coy branch",
+        "pattern" => "/\\/credit\\/get-asset-insurance-coy-branch/",
+        "reverse" => "/credit/get-asset-insurance-coy-branch",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getAssetInsuranceCoyBranch",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+
+    168 => [
+        "id" => 168,
+        "name" => "get rsa coy branch",
+        "pattern" => "/\\/credit\\/get-rsa-coy-branch/",
+        "reverse" => "/credit/get-rsa-coy-branch",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getRsaCoyBranch",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+    
+    169 => [
+        "id" => 169,
+        "name" => "get rse fee",
+        "pattern" => "/\\/credit\\/get-rsa-fee/",
+        "reverse" => "/credit/get-rsa-fee",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getRsaFee",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
 ];
