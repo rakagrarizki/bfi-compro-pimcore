@@ -97,6 +97,16 @@ $(document).ready(function () {
     sessionStorage.setItem("submitStep2", "false");
     sessionStorage.setItem("submitStep3", "false");
     sessionStorage.setItem("submitStepOtp", "false");
+    loanTenor = NDFC_TENOR;
+
+    $("#tenor2").slider({
+        min: 1,
+        max: loanTenor.length,
+        value: 1,
+    });
+
+    $(".min-tenor").text(loanTenor[0] + " Bulan");
+    $(".max-tenor").text(loanTenor.slice(-1) + " Bulan");
 });
 
 $("input[name='is-wa-number']").click(function () {
@@ -194,7 +204,9 @@ $("#next2").on("click", function (e) {
                             step("next", 3);
                             getListHouseOwnership("#kepemilikan_rumah");
                             getListMaritalStatus("#marital_status");
-                            getMaxFunding();
+                            getPricelistPaging();
+                            getProductOffering();
+
                             $("#calcLoan").prop("disabled", false);
                             $("#brand-caption").text(
                                 $("#merk_kendaraan").val().toString()
@@ -526,6 +538,43 @@ function getDupcheck(cb) {
                 } else {
                     cb();
                 }
+            }
+        },
+    });
+}
+
+function getProductOffering() {
+    let param = {
+        branch_id: branch_id,
+        asset_type_id: "MOBIL",
+        product_id: productIdFilter(rawAssetBrand[0].category),
+        product_offering_id: productOfferingIdFilter(
+            productIdFilter(rawAssetBrand[0].category)
+        ),
+        is_active: "true",
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "/credit/get-product-offering",
+        headers: { Authorization: "Basic " + currentToken },
+        data: param,
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            if (result.success === 1) {
+                if (result.data !== null) {
+                    provision_fee = result.data.data[0].provision_fee;
+                } else {
+                    console.log("Data not found");
+                }
+            } else {
+                console.log("Failed to fetch data");
             }
         },
     });

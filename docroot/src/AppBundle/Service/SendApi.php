@@ -883,6 +883,14 @@ class SendApi
         return $this->executeApiSignature('getProductBranchDetail', false, $url, $param, "GET", $token);
     }
 
+    public function getProductOffering($url, $param, $token){
+        return $this->executeApiSignature('getProductOffering', false, $url, $param, "GET", $token);
+    }
+
+    public function getProductOfferingDetail($url, $param, $token){
+        return $this->executeApiSignature('getProductOfferingDetail', false, $url, $param, "GET", $token);
+    }
+
     public function getFiduciaFee($url, $param, $token)
     {
         return $this->executeApiSignature('getFiduciaFee', false, $url, $param, "GET", $token);
@@ -891,6 +899,21 @@ class SendApi
     public function getPricelistPaging($url, $param, $token)
     {
         return $this->executeApiSignature('getPricelistPaging', false, $url, $param, "GET", $token);
+    }
+
+    public function getLifeInsuranceRateNew($url, $param, $token)
+    {
+        return $this->executeApiSignature('getLifeInsuranceRateNew', false, $url, $param, "GET", $token);
+    }
+
+    public function getLifeInsuranceRate($url, $param, $token)
+    {
+        return $this->executeApiSignature('getLifeInsurance', false, $url, $param, "GET", $token);
+    }
+
+    public function getLifeInsuranceCoyBranch($url, $param, $token)
+    {
+        return $this->executeApiSignature('getLifeInsuranceCoyBranch', false, $url, $param, "GET", $token);
     }
 
     public function getEstimateInstallment($url, $param, $token){

@@ -8,26 +8,42 @@ let rawAssetBrand = [];
 let assetCode = "";
 let branch_id = "";
 let admin_fee = 0;
-let admin_fee2 = 0;
 let min_effective_rate = 0;
-let min_effective_rate2 = 0;
 let max_funding_percentage = 0;
+let ntf = 0;
 let total_ntf = 0;
+let provision_fee = 0;
 
 window.dataLayer = window.dataLayer || [];
 
 let calculationParam = {
     effective_rate: 0,
     flat_rate: 0,
-    nilai_transaksi: 0,
+    nilai_taksaksi: 0,
     max_ltv: 0,
     admin_fee: 0,
     fiducia_fee: 0,
     installment_amount: 0,
+    provisi_fee: 0,
+    total_life_insurance_capitalize: 0,
+    total_asset_insurance_capitalize: 0,
 };
 
+let lifeInsuranceRate = [];
+let lifeInsuranceCoy = [];
+let loanTenor = [];
+
+const NDFM_PRODUCT_ID = "3138";
+const NDFC_PRODUCT_ID_SJMB = "2221";
+const NDFC_PRODUCT_ID_NON = "2222";
+const NDFM_PRODUCT_OFFERING_ID = "31380218QC";
+const NDFC_PRODUCT_OFFERING_ID_SJMB = "200103183K";
+const NDFC_PRODUCT_OFFERING_ID_NON = "200203183K";
 const NDFC_TENOR = [12, 24, 36, 48];
-const ASSET_SIZE = 11637;
+const NDFM_TENOR = [6, 12, 18];
+const MIN_FUNDING =
+    sessionStorage.getItem("loanType") === "NDFC" ? 10000000 : 1000000;
+const ASSET_SIZE = sessionStorage.getItem("loanType") === "NDFC" ? 11637 : 372;
 const CURRENT_YEAR = new Date().getFullYear();
 
 function retryAjax(_this, xhr) {
@@ -1339,10 +1355,7 @@ function getAssetYear(asset_model, branch_id, fn) {
 function getProductDetail() {
     let assetYear = parseInt($("#tahun_kendaraan").val());
     let assetAge = CURRENT_YEAR - assetYear;
-    let tenor =
-        $("#tenor").val() === ""
-            ? NDFC_TENOR[0]
-            : NDFC_TENOR[$("#tenor").val() - 1];
+    let tenor = loanTenor[$("#tenor2").val() - 1];
     let amount_funding =
         $("#pembiayaan").val() === ""
             ? 10000000
@@ -1379,10 +1392,7 @@ function getProductDetail() {
 function getProductBranchDetail() {
     let assetYear = parseInt($("#tahun_kendaraan").val());
     let assetAge = CURRENT_YEAR - assetYear;
-    let tenor =
-        $("#tenor").val() === ""
-            ? NDFC_TENOR[0]
-            : NDFC_TENOR[$("#tenor").val() - 1];
+    let tenor = loanTenor[$("#tenor2").val() - 1];
     let amount_funding =
         $("#pembiayaan").val() === ""
             ? 10000000
@@ -1422,7 +1432,7 @@ function getFiduciaFee() {
         branch_id: branch_id,
         asset_type_id: rawAssetBrand[0].asset_type_id,
         category_id: rawAssetBrand[0].category,
-        otr: calculationParam.nilai_transaksi,
+        otr: calculationParam.nilai_taksaksi,
     };
 
     return $.ajax({
@@ -1473,8 +1483,8 @@ function getPricelistPaging() {
         success: function (result) {
             if (result.success === 1) {
                 if (result.data !== null) {
-                    calculationParam.nilai_transaksi =
-                        result.data.data[0].price;
+                    calculationParam.nilai_taksaksi = result.data.data[0].price;
+                    getMaxFunding();
                 } else {
                     console.log("Data not found");
                 }
@@ -1485,54 +1495,181 @@ function getPricelistPaging() {
     });
 }
 
+function getLifeInsuranceCoy() {
+    let param = {
+        branch_id: branch_id,
+        is_active: true,
+    };
+
+    return $.ajax({
+        type: "POST",
+        url: "/credit/get-life-insurance-coy-branch",
+        headers: {
+            Authorization: "Basic " + currentToken,
+        },
+        data: param,
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            if (result.success === 1) {
+                if (result.data !== null) {
+                    lifeInsuranceCoy = result.data.data;
+                } else {
+                    lifeInsuranceCoy = null;
+                }
+            } else {
+                console.log("Failed to fetch data");
+            }
+        },
+    });
+}
+
+function getLifeInsuranceRate() {
+    let fund = clearDot($("#pembiayaan").val());
+    let paramInsuranceRateNew = {
+        branch_id: branch_id,
+        age: 25,
+        si: clearDot($("#pembiayaan").val()),
+        tenor: reverseTenorFormatter($("#tenor").val()),
+    };
+
+    let paramInsuranceRate = {
+        branch_id: branch_id,
+        age: 25,
+        tenor: reverseTenorFormatter($("#tenor").val()),
+        insurance_branch_active: true,
+        asset_type_id: rawAssetBrand[0].asset_type_id,
+    };
+
+    let param = fund > 20000000 ? paramInsuranceRate : paramInsuranceRateNew;
+    let url =
+        fund > 20000000
+            ? "/credit/get-life-insurance-rate"
+            : "/credit/get-life-insurance-rate-new";
+
+    return $.ajax({
+        type: "POST",
+        url: url,
+        headers: { Authorization: "Basic " + currentToken },
+        data: param,
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            if (result.success === 1) {
+                if (result.data !== null) {
+                    lifeInsuranceRate = result.data.data;
+                } else {
+                    lifeInsuranceRate = null;
+                }
+            } else {
+                console.log("Failed to fetch data");
+            }
+        },
+    });
+}
+
+function getLifeInsuranceAmount() {
+    let fund = clearDot($("#pembiayaan").val());
+    if (lifeInsuranceRate !== null) {
+        let result = lifeInsuranceRate.filter(function (arr1) {
+            return lifeInsuranceCoy.some(function (arr2) {
+                return (
+                    arr1.life_insurance_coy_id === arr2.life_insurance_coy_id &&
+                    arr1.life_insurance_coy_branch_id ===
+                        arr2.life_insurance_coy_branch_id
+                );
+            });
+        });
+        calculationParam.total_life_insurance_capitalize =
+            fund > 20000000
+                ? result[0].ins_rate_to_cust * fund
+                : result[0].ins_amount_to_cust;
+    }
+}
+
 function getMaxFunding() {
     $.when(
-        getPricelistPaging(),
+        getProductOfferingDetail(),
         getProductBranchDetail(),
         getProductDetail()
     ).then(function (res1, res2, res3) {
-        admin_fee = res2[0].data.data[0].admin_fee;
-        min_effective_rate = res2[0].data.data[0].min_effective_rate;
-        admin_fee2 = res3[0].data.data[0].admin_fee;
-        min_effective_rate2 = res3[0].data.data[0].min_effective_rate;
+        admin_fee =
+            res1[0].data.data[0].admin_fee +
+            res2[0].data.data[0].admin_fee +
+            res3[0].data.data[0].admin_fee;
 
-        calculationParam.nilai_transaksi = res1[0].data.data[0].price;
+        min_effective_rate =
+            res1[0].data.data[0].min_effective_rate +
+            res2[0].data.data[0].min_effective_rate +
+            res3[0].data.data[0].min_effective_rate;
+
         max_funding_percentage =
-            res2[0].data.data[0].max_funding_percentage +
-            res3[0].data.data[0].max_funding_percentage;
+            sessionStorage.getItem("loanType") === "NDFC"
+                ? res1[0].data.data[0].max_funding_percentage +
+                  res2[0].data.data[0].max_funding_percentage +
+                  res3[0].data.data[0].max_funding_percentage
+                : $("#ndfm_max_fund").val();
+
         calculationParam.max_ltv =
-            (max_funding_percentage / 100) * calculationParam.nilai_transaksi;
+            (max_funding_percentage / 100) * calculationParam.nilai_taksaksi;
 
         $(".ndfc-simulasi .total").text(
             "Rp " + separatordot(calculationParam.max_ltv)
         );
 
         $("#funding").slider({
-            min: 10000000,
+            min: MIN_FUNDING,
             max: calculationParam.max_ltv,
             step: 100000,
         });
 
-        $(".min-fund").text("Rp " + separatordot(10000000));
+        $(".min-fund").text("Rp " + separatordot(MIN_FUNDING));
         $(".max-fund").text("Rp " + separatordot(calculationParam.max_ltv));
     });
 }
 
 function getCalculationParams() {
     let tenor = reverseTenorFormatter($("#tenor").val());
-    $.when(getFiduciaFee()).then(function (res1) {
-        calculationParam.effective_rate =
-            (min_effective_rate2 + min_effective_rate) / 100;
-        calculationParam.admin_fee = admin_fee2 + admin_fee;
-        calculationParam.flat_rate =
-            ((pmt(calculationParam.effective_rate / 12, tenor, 1, 0, 0) *
-                -1 *
-                tenor -
-                1) *
-                12) /
-            tenor;
-        getEstimateInstallment();
-    });
+    $.when(getFiduciaFee(), getLifeInsuranceRate(), getLifeInsuranceCoy()).then(
+        function (res1, res2, res3) {
+            calculationParam.effective_rate = min_effective_rate / 100;
+            calculationParam.admin_fee = admin_fee;
+            calculationParam.flat_rate =
+                ((pmt(calculationParam.effective_rate / 12, tenor, 1, 0, 0) *
+                    -1 *
+                    tenor -
+                    1) *
+                    12) /
+                tenor;
+            ntf =
+                clearDot($("#pembiayaan").val()) +
+                calculationParam.admin_fee +
+                calculationParam.fiducia_fee;
+
+            sessionStorage.getItem("loanType") === "NDFM"
+                ? getProvisionAmout()
+                : "";
+
+            getLifeInsuranceAmount();
+            getEstimateInstallment();
+        }
+    );
+}
+
+function getProvisionAmout() {
+    let tenor = reverseTenorFormatter($("#tenor").val());
+    let provisi_fee_percentage = ((tenor / 12) * provision_fee) / 100;
+    calculationParam.provisi_fee = provisi_fee_percentage * ntf;
 }
 
 function getEstimateInstallment() {
@@ -1546,14 +1683,24 @@ function getEstimateInstallment() {
         calcualte_by: 1,
         grace_periode_type: 0,
         grace_periode: 0,
-        nilai_taksaksi: calculationParam.nilai_transaksi,
+        nilai_taksaksi: calculationParam.nilai_taksaksi,
         max_ltv: calculationParam.max_ltv,
         admin_fee: calculationParam.admin_fee,
         fiducia_fee: calculationParam.fiducia_fee,
-        provisi_fee: 0,
+        provisi_fee: calculationParam.provisi_fee,
+        total_life_insurance_capitalize:
+            calculationParam.total_life_insurance_capitalize,
+        total_asset_insurance_capitalize:
+            calculationParam.total_asset_insurance_capitalize,
         other_fee: 0,
         survey_fee: 0,
         notary_fee: 0,
+        admin_on_loan: true,
+        fiducia_on_loan: true,
+        provisi_on_loan: true,
+        other_on_loan: true,
+        survey_on_loan: true,
+        notary_on_loan: true,
         round: 500,
     };
 
@@ -1586,9 +1733,20 @@ function getEstimateInstallment() {
 function productIdFilter(category) {
     const categorySJMB = ["SEDAN", "JEEP", "MNBUS"];
     if (sessionStorage.getItem("loanType") === "NDFM") {
-        return "3178";
+        return NDFM_PRODUCT_ID;
     }
-    return categorySJMB.includes(category) ? "2221" : "2222";
+    return categorySJMB.includes(category)
+        ? NDFC_PRODUCT_ID_SJMB
+        : NDFC_PRODUCT_ID_NON;
+}
+
+function productOfferingIdFilter(productId) {
+    if (productId === NDFM_PRODUCT_ID) {
+        return NDFM_PRODUCT_OFFERING_ID;
+    } else if (productId === NDFC_PRODUCT_ID_SJMB) {
+        return NDFC_PRODUCT_OFFERING_ID_SJMB;
+    }
+    return NDFC_PRODUCT_ID_NON;
 }
 
 function pmt(
@@ -1680,15 +1838,6 @@ function reverseTenorFormatter(x) {
     }
     return x;
 }
-
-$("#tenor2").slider({
-    min: 1,
-    max: 4,
-    value: 1,
-});
-
-$(".min-tenor").text(NDFC_TENOR[0] + " Bulan");
-$(".max-tenor").text(NDFC_TENOR[3] + " Bulan");
 
 $("#tenor2").on("change", function () {
     let selectedTenor = parseInt($(this).val());
