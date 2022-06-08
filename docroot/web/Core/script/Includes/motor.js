@@ -89,6 +89,18 @@ $(document).ready(function () {
     $(".max-tenor").text(loanTenor.slice(-1) + " Bulan");
 });
 
+$("input[name='is-wa-number']").click(function () {
+    var is_WA = $(this).val();
+    $(".wa-numbers").find("input").removeAttr("disabled");
+    if (is_WA == "false") {
+        $(".wa-numbers").removeAttr("hidden");
+        // $("#email_pemohon").attr("disabled", true);
+    } else {
+        $(".wa-numbers").attr("hidden", true);
+        $("#email_pemohon").removeAttr("disabled");
+    }
+});
+
 var nearBranch = $("#near_branch").attr("placeholder");
 $("#near_branch").select2({
     placeholder: nearBranch,
@@ -238,6 +250,7 @@ function pushDataStep1(cb) {
         no_ktp: $("#idnumber").val(),
         email: $("#email_pemohon").val(),
         phone_number: $("#no_handphone").val(),
+        wa_number: $("#wa_number").val(),
         utm_source: sessionStorage.getItem("utm_source"),
         utm_campaign: sessionStorage.getItem("utm_campaign"),
         utm_term: sessionStorage.getItem("utm_term"),
@@ -307,8 +320,8 @@ function pushDataStep2(cb) {
         info_customer: {
             profession_id_bfi: $("#occupation").val().toString(),
             profession_desc_bfi: $("#occupation").val().toString(),
-            salary: "12000000",
-            dob: "1995-12-28",
+            salary: "",
+            dob: "",
         },
     });
 
@@ -569,15 +582,6 @@ $("input[name='action-call']").click(function () {
         $(".wa-number-same").removeAttr("hidden");
     } else {
         $(".wa-number-same").attr("hidden", true);
-    }
-});
-
-$("input[name='is-wa-number-same']").click(function () {
-    var isWaSame = $(this).val();
-    if (isWaSame == "false") {
-        $(".wa-numbers").removeAttr("hidden");
-    } else {
-        $(".wa-numbers").attr("hidden", true);
     }
 });
 

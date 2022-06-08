@@ -103,6 +103,29 @@ $this->headScript()
                                             <div class="error-wrap"></div>
                                             <span><?=$this->translate('form-handphone-helper') ?></span>
                                         </div>
+                                        <div class="form-group radio-group">
+                                            <label><?= $this->translate('is-wa-number') ?></label>
+                                            <div class="radio-button">
+                                                <div class="radio-wrap">
+                                                    <input type="radio" class="inputs formRequired" id="is-wa-number"
+                                                        name="is-wa-number" value="true">
+                                                    <label
+                                                        for="is-wa-number"><?=$this->translate('option-text-yes') ?></label>
+                                                </div>
+                                                <div class="radio-wrap">
+                                                    <input type="radio" class="inputs formRequired" id="is-wa-number1"
+                                                        name="is-wa-number" value="false">
+                                                    <label
+                                                        for="is-wa-number1"><?=$this->translate('option-text-no') ?></label>
+                                                </div>
+                                                <div class="error-wrap"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group wa-numbers" hidden>
+                                            <label for="wa_number"><?= $this->translate('label-wa-number') ?></label>
+                                            <input type="tel" pattern="\d*" class="form-control formPhoneNumber" name="wa-number" id="wa_number" maxlength="13" placeholder="<?= $this->translate('placeholder-wa-number') ?>">
+                                            <div class="error-wrap"></div>
+                                        </div>
                                         <div class="form-group">
                                             <label for="email"><?= $this->translate('form-email') ?></label>
                                             <input type="email" class="form-control formRequired formEmail" name="email" id="email_pemohon" placeholder="<?= $this->translate('placeholder-email') ?>">
@@ -275,29 +298,6 @@ $this->headScript()
                                                 name="occupation" placeholder="<?=$this->translate('placeholder-work') ?>" multiple="multiple">
                                                 <option value="" disabled selected><?=$this->translate('placeholder-work') ?></option>
                                             </select>
-                                            <div class="error-wrap"></div>
-                                        </div>
-                                        <div class="form-group radio-group wa-number-same" hidden>
-                                            <label><?= $this->translate('is-wa-number-same') ?></label>
-                                            <div class="radio-button">
-                                                <div class="radio-wrap">
-                                                    <input type="radio" class="inputs formRequired" id="is-wa-number-same"
-                                                        name="is-wa-number-same" value="true">
-                                                    <label
-                                                        for="is-wa-number-same"><?=$this->translate('option-text-yes') ?></label>
-                                                </div>
-                                                <div class="radio-wrap">
-                                                    <input type="radio" class="inputs formRequired" id="is-wa-number-same1"
-                                                        name="is-wa-number-same" value="false">
-                                                    <label
-                                                        for="is-wa-number-same1"><?=$this->translate('option-text-no') ?></label>
-                                                </div>
-                                                <div class="error-wrap"></div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group wa-numbers" hidden>
-                                            <label for="wa_number"><?= $this->translate('label-wa-number') ?></label>
-                                            <input type="tel" pattern="\d*" class="form-control formPhoneNumber" name="wa-number" id="wa_number" maxlength="13" placeholder="<?= $this->translate('placeholder-wa-number') ?>">
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group form-btn space-btn">

@@ -2001,6 +2001,7 @@ class CreditController extends FrontendController
         $param["no_ktp"] = htmlentities(addslashes($request->get('no_ktp')));
         $param["email"] = htmlentities(addslashes($request->get('email')));
         $param["phone_number"] = htmlentities(addslashes($request->get('phone_number')));
+        $param["wa_number"] = htmlentities(addslashes($request->get('wa_number')));
         $param["utm_source"] = htmlentities(addslashes($request->get('utm_source')));
         $param["utm_campaign"] = htmlentities(addslashes($request->get('utm_campaign')));
         $param["utm_term"] = htmlentities(addslashes($request->get('utm_term')));
