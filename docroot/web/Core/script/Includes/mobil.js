@@ -84,6 +84,26 @@ let dataStep4 = {
     submission_id: undefined,
     disclaimer: undefined,
 };
+
+let amount_to_cust = 0;
+let assetInsuranceParam = {
+    insurance_coy_id: "",
+    insurance_coy_branch_id: "",
+    ins_rate_category_id: "",
+    rsa_insurance_coy_id: "",
+    rsa_insurance_coy_branch_id: "",
+    insurance_type: "",
+};
+
+let assetInsuranceAmount = {
+    srcc_rate: 0,
+    ts_rate: 0,
+    earthquake_rate: 0,
+    flood_rate: 0,
+    authorized_workshop: 0,
+    premium2_insco: 0,
+};
+
 window.onbeforeunload = null;
 $(document).ready(function () {
     lang == "id"
@@ -585,6 +605,236 @@ function getProductOffering() {
     });
 }
 
+function getAssetCategory() {
+    let param = {
+        asset_type_id: "MOBIL",
+        category_id: rawAssetBrand[0].category,
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "/credit/get-asset-category",
+        headers: { Authorization: "Basic " + currentToken },
+        data: param,
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            if (result.success === 1) {
+                if (result.data !== null) {
+                    assetInsuranceParam.ins_rate_category_id =
+                        result.data.data[0].ins_rate_category_id;
+                } else {
+                    console.log("Data not found");
+                }
+            } else {
+                console.log("Failed to fetch data");
+            }
+        },
+    });
+}
+
+function getAssetInsuranceRateCategory() {
+    let param = {
+        ins_rate_category_id: assetInsuranceParam.ins_rate_category_id,
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "/credit/get-asset-insurance-rate-category",
+        headers: { Authorization: "Basic " + currentToken },
+        data: param,
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            if (result.success === 1) {
+                if (result.data !== null) {
+                    assetInsuranceParam.insurance_type =
+                        result.data.data[0].category;
+                } else {
+                    console.log("Data not found");
+                }
+            } else {
+                console.log("Failed to fetch data");
+            }
+        },
+    });
+}
+
+function getAssetInsuranceCoyBranch() {
+    let param = {
+        branch_id: branch_id,
+        is_active: true,
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "/credit/get-asset-insurance-coy-branch",
+        headers: { Authorization: "Basic " + currentToken },
+        data: param,
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            if (result.success === 1) {
+                if (result.data !== null) {
+                    assetInsuranceParam.insurance_coy_id =
+                        result.data.data[0].insurance_coy_id;
+                    assetInsuranceParam.insurance_coy_branch_id =
+                        result.data.data[0].insurance_coy_branch_id;
+                } else {
+                    console.log("Data not found");
+                }
+            } else {
+                console.log("Failed to fetch data");
+            }
+        },
+    });
+}
+
+function getAssetInsuranceRate() {
+    let fund = clearDot($("#pembiayaan").val());
+    let param = {
+        branch_id: branch_id,
+        otr: calculationParam.nilai_taksaksi,
+        insurance_type: assetInsuranceParam.insurance_type,
+        coverage_type: "",
+        tenor: reverseTenorFormatter($("#tenor").val()),
+        usage_id: "N",
+        new_used: "U",
+        year_num: 1,
+        is_active: true,
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "/credit/get-insurance-rate-asset",
+        headers: { Authorization: "Basic " + currentToken },
+        data: param,
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            if (result.success === 1) {
+                if (result.data !== null) {
+                    assetInsuranceAmount.srcc_rate +=
+                        result.data.data[0].srcc_rate * fund;
+                    assetInsuranceAmount.earthquake_rate +=
+                        result.data.data[0].earthquake_rate * fund;
+                    assetInsuranceAmount.flood_rate +=
+                        result.data.data[0].flood_rate * fund;
+                    assetInsuranceAmount.authorized_workshop +=
+                        result.data.data[0].authorized_workshop * fund;
+                    assetInsuranceAmount.ts_rate +=
+                        result.data.data[0].ts_rate * fund;
+                    assetInsuranceAmount.premium2_insco +=
+                        result.data.data[0].premium2_insco * fund;
+                } else {
+                    console.log("Data not found");
+                }
+            } else {
+                console.log("Failed to fetch data");
+            }
+        },
+    });
+}
+
+function getRsaCoyBranch() {
+    let param = {
+        branch_id: branch_id,
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "/credit/get-rsa-coy-branch",
+        headers: { Authorization: "Basic " + currentToken },
+        data: param,
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            if (result.success === 1) {
+                if (result.data !== null) {
+                    assetInsuranceParam.rsa_insurance_coy_branch_id =
+                        result.data.data[0].insurance_coy_branch_id;
+                    assetInsuranceParam.rsa_insurance_coy_id =
+                        result.data.data[0].insurance_coy_id;
+                } else {
+                    console.log("Data not found");
+                }
+            } else {
+                console.log("Failed to fetch data");
+            }
+        },
+    });
+}
+
+function getRsaFee() {
+    let param = {
+        branch_id: branch_id,
+        rsa_insurance_coy_branch_id:
+            assetInsuranceParam.rsa_insurance_coy_branch_id,
+        tenor: reverseTenorFormatter($("#tenor").val()),
+        id_insurance_asset_category: assetInsuranceParam.ins_rate_category_id,
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "/credit/get-rsa-fee",
+        headers: { Authorization: "Basic " + currentToken },
+        data: param,
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            if (result.success === 1) {
+                if (result.data !== null) {
+                    amount_to_cust = result.data.data[0].amount_to_cust;
+                } else {
+                    console.log("Data not found");
+                }
+            } else {
+                console.log("Failed to fetch data");
+            }
+        },
+    });
+}
+
+function getAssetInsuranceRatePerYear() {
+    let insuranceCount = $(".fillable-insurance")
+        .map(function (e, i) {
+            console.log(e, i);
+            return $(`input[name=assurance]`).val();
+        })
+        .get();
+    console.log(insuranceCount);
+}
+
 function paginationList(data) {
     var html = "<ul>";
     $.each(data, function (index, item) {
@@ -608,11 +858,13 @@ function clearPagination() {
 
 function hideInsurance(element) {
     element.closest(".form-group").prop("hidden", true);
+    element.closest(".form-group").removeClass("fillable-insurance");
     element.prop("checked", false);
 }
 
 function showInsurance(element) {
     element.closest(".form-group").prop("hidden", false);
+    element.closest(".form-group").addClass("fillable-insurance");
 }
 
 $("#tenor2").on("change", function () {
