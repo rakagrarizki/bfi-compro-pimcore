@@ -98,6 +98,7 @@ $(document).ready(function () {
     sessionStorage.setItem("submitStep3", "false");
     sessionStorage.setItem("submitStepOtp", "false");
     loanTenor = NDFC_TENOR;
+    assetSize = 11637;
 
     $("#tenor2").slider({
         min: 1,
@@ -208,6 +209,10 @@ $("#next2").on("click", function (e) {
                             getProductOffering();
 
                             $("#calcLoan").prop("disabled", false);
+                            $("#tenor").val(tenorFormatter(loanTenor[0]));
+                            $("#tenor2").val(1);
+                            $("#pembiayaan").val(separatordot(MIN_FUNDING));
+
                             $("#brand-caption").text(
                                 $("#merk_kendaraan").val().toString()
                             );

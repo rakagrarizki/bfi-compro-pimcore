@@ -32,9 +32,10 @@ let calculationParam = {
 let lifeInsuranceRate = [];
 let lifeInsuranceCoy = [];
 let loanTenor = [];
+let assetSize = 10;
 
 const NDFM_PRODUCT_ID = "3138";
-const NDFC_PRODUCT_ID_SJMB = "2221";
+const NDFC_PRODUCT_ID_SJMB = "2001";
 const NDFC_PRODUCT_ID_NON = "2222";
 const NDFM_PRODUCT_OFFERING_ID = "31380218QC";
 const NDFC_PRODUCT_OFFERING_ID_SJMB = "200103183K";
@@ -1015,7 +1016,7 @@ function getListAssets(assetType) {
             isactive: true,
             asset_type: assetType,
             page: 1,
-            size: ASSET_SIZE,
+            size: assetSize,
         },
         dataType: "json",
         error: function (xhr) {
@@ -1427,6 +1428,50 @@ function getProductBranchDetail() {
     });
 }
 
+function getProductOfferingDetail() {
+    let assetYear = parseInt($("#tahun_kendaraan").val());
+    let assetAge = CURRENT_YEAR - assetYear;
+    let tenor = loanTenor[$("#tenor2").val() - 1];
+    let amount_funding =
+        $("#pembiayaan").val() === ""
+            ? MIN_FUNDING
+            : clearDot($("#pembiayaan").val());
+
+    let param = {
+        branch_id: branch_id,
+        product_id: productIdFilter(rawAssetBrand[0].category),
+        product_offering_id: productOfferingIdFilter(
+            productIdFilter(rawAssetBrand[0].category)
+        ),
+        asset_group: rawAssetBrand[0].asset_group,
+        customer_rating: 3,
+        asset_age: assetAge,
+        tenor: tenor,
+        amount_funding_to: amount_funding,
+        is_current_setting_value: true,
+        is_active: true,
+    };
+
+    return $.ajax({
+        type: "POST",
+        url: "/credit/get-product-offer-detail",
+        headers: { Authorization: "Basic " + currentToken },
+        data: param,
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            if (result.message !== "success") {
+                console.log("Failed to fetch data");
+            }
+        },
+    });
+}
+
 function getFiduciaFee() {
     let param = {
         branch_id: branch_id,
@@ -1451,7 +1496,9 @@ function getFiduciaFee() {
             if (result.success === 1) {
                 if (result.data !== null) {
                     calculationParam.fiducia_fee =
-                        result.data.data[0].fiducia_fee;
+                        sessionStorage.getItem("loanType") === "NDFM"
+                            ? result.data.data[0].fiducia_fee
+                            : result.data.data[0].notary_fee;
                 } else {
                     console.log("Data not found");
                 }
