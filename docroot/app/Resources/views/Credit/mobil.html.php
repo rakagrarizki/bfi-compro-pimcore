@@ -457,13 +457,13 @@ $this->headScript()
                                     <div class="radio-button">
                                         <div class="radio-wrap">
                                             <input type="radio" class="inputs formRequired" id="allRisk1"
-                                                name="assurance1" value="All Risk">
+                                                name="assurance1" value="ARK">
                                             <label
                                                 for="allRisk1">All Risk</label>
                                         </div>
                                         <div class="radio-wrap">
                                             <input type="radio" class="inputs formRequired" id="totalLost1"
-                                                name="assurance1" value="Total Lost Only">
+                                                name="assurance1" value="TLO">
                                             <label
                                                 for="totalLost1">Total Lost Only</label>
                                         </div>
@@ -475,13 +475,13 @@ $this->headScript()
                                     <div class="radio-button">
                                         <div class="radio-wrap">
                                             <input type="radio" class="inputs formRequired" id="allRisk2"
-                                                name="assurance2" value="All Risk">
+                                                name="assurance2" value="ARK">
                                             <label
                                                 for="allRisk2">All Risk</label>
                                         </div>
                                         <div class="radio-wrap">
                                             <input type="radio" class="inputs formRequired" id="totalLost2"
-                                                name="assurance2" value="Total Lost Only">
+                                                name="assurance2" value="TLO">
                                             <label
                                                 for="totalLost2">Total Lost Only</label>
                                         </div>
@@ -493,13 +493,13 @@ $this->headScript()
                                     <div class="radio-button">
                                         <div class="radio-wrap">
                                             <input type="radio" class="inputs formRequired" id="allRisk3"
-                                                name="assurance3" value="All Risk">
+                                                name="assurance3" value="ARK">
                                             <label
                                                 for="allRisk3">All Risk</label>
                                         </div>
                                         <div class="radio-wrap">
                                             <input type="radio" class="inputs formRequired" id="totalLost3"
-                                                name="assurance3" value="Total Lost Only">
+                                                name="assurance3" value="TLO">
                                             <label
                                                 for="totalLost3">Total Lost Only</label>
                                         </div>
@@ -511,13 +511,13 @@ $this->headScript()
                                     <div class="radio-button">
                                         <div class="radio-wrap">
                                             <input type="radio" class="inputs formRequired" id="allRisk4"
-                                                name="assurance4" value="All Risk">
+                                                name="assurance4" value="ARK">
                                             <label
                                                 for="allRisk4">All Risk</label>
                                         </div>
                                         <div class="radio-wrap">
                                             <input type="radio" class="inputs formRequired" id="totalLost4"
-                                                name="assurance4" value="Total Lost Only">
+                                                name="assurance4" value="TLO">
                                             <label
                                                 for="totalLost4">Total Lost Only</label>
                                         </div>

@@ -85,7 +85,6 @@ let dataStep4 = {
     disclaimer: undefined,
 };
 
-let amount_to_cust = 0;
 let assetInsuranceParam = {
     insurance_coy_id: "",
     insurance_coy_branch_id: "",
@@ -119,6 +118,7 @@ $(document).ready(function () {
     sessionStorage.setItem("submitStepOtp", "false");
     loanTenor = NDFC_TENOR;
     assetSize = 11637;
+    tlpAmount = 5000000;
 
     $("#tenor2").slider({
         min: 1,
@@ -227,11 +227,19 @@ $("#next2").on("click", function (e) {
                             getListMaritalStatus("#marital_status");
                             getPricelistPaging();
                             getProductOffering();
+                            getRsaCoyBranch();
+                            getAssetInsuranceCoyBranch();
+                            getAssetCategory();
 
                             $("#calcLoan").prop("disabled", false);
                             $("#tenor").val(tenorFormatter(loanTenor[0]));
                             $("#tenor2").val(1);
                             $("#pembiayaan").val(separatordot(MIN_FUNDING));
+
+                            showInsurance($('input[name="assurance1"]'));
+                            hideInsurance($('input[name="assurance2"]'));
+                            hideInsurance($('input[name="assurance3"]'));
+                            hideInsurance($('input[name="assurance4"]'));
 
                             $("#brand-caption").text(
                                 $("#merk_kendaraan").val().toString()
@@ -257,7 +265,9 @@ $("#next3").on("click", function (e) {
 });
 
 $("#calcLoan").on("click", function () {
-    getCalculationParams();
+    $.when(getAssetInsuranceCalc()).then(function (res) {
+        getCalculationParams();
+    });
 });
 
 $("#confirm-data").on("click", function (e) {
@@ -627,8 +637,10 @@ function getAssetCategory() {
             if (result.success === 1) {
                 if (result.data !== null) {
                     assetInsuranceParam.ins_rate_category_id =
-                        result.data.data[0].ins_rate_category_id;
+                        result.data[0].ins_rate_category_id;
+                    getAssetInsuranceRateCategory();
                 } else {
+                    assetInsuranceParam.ins_rate_category_id = "0";
                     console.log("Data not found");
                 }
             } else {
@@ -639,15 +651,10 @@ function getAssetCategory() {
 }
 
 function getAssetInsuranceRateCategory() {
-    let param = {
-        ins_rate_category_id: assetInsuranceParam.ins_rate_category_id,
-    };
-
     $.ajax({
         type: "POST",
         url: "/credit/get-asset-insurance-rate-category",
         headers: { Authorization: "Basic " + currentToken },
-        data: param,
         dataType: "json",
         error: function (xhr) {
             retryAjax(this, xhr);
@@ -659,7 +666,7 @@ function getAssetInsuranceRateCategory() {
             if (result.success === 1) {
                 if (result.data !== null) {
                     assetInsuranceParam.insurance_type =
-                        result.data.data[0].category;
+                        result.data[0].category;
                 } else {
                     console.log("Data not found");
                 }
@@ -691,12 +698,9 @@ function getAssetInsuranceCoyBranch() {
         success: function (result) {
             if (result.success === 1) {
                 if (result.data !== null) {
-                    assetInsuranceParam.insurance_coy_id =
-                        result.data.data[0].insurance_coy_id;
-                    assetInsuranceParam.insurance_coy_branch_id =
-                        result.data.data[0].insurance_coy_branch_id;
+                    assetInsuranceCoy = result.data.data;
                 } else {
-                    console.log("Data not found");
+                    assetInsuranceCoy = null;
                 }
             } else {
                 console.log("Failed to fetch data");
@@ -705,17 +709,16 @@ function getAssetInsuranceCoyBranch() {
     });
 }
 
-function getAssetInsuranceRate() {
-    let fund = clearDot($("#pembiayaan").val());
+function getAssetInsuranceRate(yearNum, coverage) {
     let param = {
         branch_id: branch_id,
         otr: calculationParam.nilai_taksaksi,
-        insurance_type: assetInsuranceParam.insurance_type,
-        coverage_type: "",
+        insurance_type: parseInt(assetInsuranceParam.ins_rate_category_id),
+        coverage_type: coverage,
         tenor: reverseTenorFormatter($("#tenor").val()),
         usage_id: "N",
         new_used: "U",
-        year_num: 1,
+        year_num: yearNum,
         is_active: true,
     };
 
@@ -734,20 +737,11 @@ function getAssetInsuranceRate() {
         success: function (result) {
             if (result.success === 1) {
                 if (result.data !== null) {
-                    assetInsuranceAmount.srcc_rate +=
-                        result.data.data[0].srcc_rate * fund;
-                    assetInsuranceAmount.earthquake_rate +=
-                        result.data.data[0].earthquake_rate * fund;
-                    assetInsuranceAmount.flood_rate +=
-                        result.data.data[0].flood_rate * fund;
-                    assetInsuranceAmount.authorized_workshop +=
-                        result.data.data[0].authorized_workshop * fund;
-                    assetInsuranceAmount.ts_rate +=
-                        result.data.data[0].ts_rate * fund;
-                    assetInsuranceAmount.premium2_insco +=
-                        result.data.data[0].premium2_insco * fund;
+                    assetInsuranceRate = result.data.data;
+                    getAssetInsuranceAmount();
                 } else {
-                    console.log("Data not found");
+                    assetInsuranceRate = null;
+                    getAssetInsuranceAmount();
                 }
             } else {
                 console.log("Failed to fetch data");
@@ -777,9 +771,9 @@ function getRsaCoyBranch() {
             if (result.success === 1) {
                 if (result.data !== null) {
                     assetInsuranceParam.rsa_insurance_coy_branch_id =
-                        result.data.data[0].insurance_coy_branch_id;
+                        result.data[0].insurance_coy_branch_id;
                     assetInsuranceParam.rsa_insurance_coy_id =
-                        result.data.data[0].insurance_coy_id;
+                        result.data[0].insurance_coy_id;
                 } else {
                     console.log("Data not found");
                 }
@@ -799,7 +793,7 @@ function getRsaFee() {
         id_insurance_asset_category: assetInsuranceParam.ins_rate_category_id,
     };
 
-    $.ajax({
+    return $.ajax({
         type: "POST",
         url: "/credit/get-rsa-fee",
         headers: { Authorization: "Basic " + currentToken },
@@ -814,7 +808,8 @@ function getRsaFee() {
         success: function (result) {
             if (result.success === 1) {
                 if (result.data !== null) {
-                    amount_to_cust = result.data.data[0].amount_to_cust;
+                    calculationParam.rsa_fee =
+                        result.data.data[0].amount_to_cust;
                 } else {
                     console.log("Data not found");
                 }
@@ -826,13 +821,40 @@ function getRsaFee() {
 }
 
 function getAssetInsuranceRatePerYear() {
-    let insuranceCount = $(".fillable-insurance")
-        .map(function (e, i) {
-            console.log(e, i);
-            return $(`input[name=assurance]`).val();
-        })
-        .get();
-    console.log(insuranceCount);
+    let insuranceList = $(".fillable-insurance");
+    insuranceList.each(function (index) {
+        getAssetInsuranceRate(
+            index + 1,
+            $(this)
+                .find(`input[name=assurance${index + 1}]:checked`)
+                .val()
+        );
+    });
+}
+
+function getAssetInsuranceAmount() {
+    let fund = clearDot($("#pembiayaan").val());
+    if (assetInsuranceRate !== null) {
+        let result = assetInsuranceRate.filter(function (arr1) {
+            return assetInsuranceCoy.some(function (arr2) {
+                return (
+                    arr1.insurance_coy_id === arr2.insurance_coy_id &&
+                    arr1.insurance_coy_branch_id ===
+                        arr2.insurance_coy_branch_id
+                );
+            });
+        });
+
+        assetInsuranceAmount.premium2_insco += result[0].premium2_insco * fund;
+        calculationParam.total_asset_insurance_capitalize =
+            assetInsuranceAmount.premium2_insco;
+    }
+}
+
+function getAssetInsuranceCalc() {
+    return $.when(getRsaFee()).then(function (res1) {
+        getAssetInsuranceRatePerYear();
+    });
 }
 
 function paginationList(data) {

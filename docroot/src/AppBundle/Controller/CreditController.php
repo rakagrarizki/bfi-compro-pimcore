@@ -1697,15 +1697,25 @@ class CreditController extends FrontendController
         $param['calcualte_by'] = (int) htmlentities(addslashes($request->get('calcualte_by')));
         $param['grace_periode_type'] = (int) htmlentities(addslashes($request->get('grace_periode_type')));
         $param['grace_periode'] = (int) htmlentities(addslashes($request->get('grace_periode')));
-        $param['nilai_taksaksi'] = (int) htmlentities(addslashes($request->get('nilai_taksaksi')));
-        $param['max_ltv'] = (int) htmlentities(addslashes($request->get('max_ltv')));
-        $param['admin_fee'] = (int) htmlentities(addslashes($request->get('admin_fee')));
-        $param['fiducia_fee'] = (int) htmlentities(addslashes($request->get('fiducia_fee')));
-        $param['provisi_fee'] = (int) htmlentities(addslashes($request->get('provisi_fee')));
-        $param['other_fee'] = (int) htmlentities(addslashes($request->get('other_fee')));
-        $param['survey_fee'] = (int) htmlentities(addslashes($request->get('survey_fee')));
-        $param['notary_fee'] = (int) htmlentities(addslashes($request->get('notary_fee')));
+        $param['nilai_taksaksi'] = (double) htmlentities(addslashes($request->get('nilai_taksaksi')));
+        $param['max_ltv'] = (double) htmlentities(addslashes($request->get('max_ltv')));
+        $param['admin_fee'] = (double) htmlentities(addslashes($request->get('admin_fee')));
+        $param['fiducia_fee'] = (double) htmlentities(addslashes($request->get('fiducia_fee')));
+        $param['provisi_fee'] = (double) htmlentities(addslashes($request->get('provisi_fee')));
+        $param['other_fee'] = (double) htmlentities(addslashes($request->get('other_fee')));
+        $param['survey_fee'] = (double) htmlentities(addslashes($request->get('survey_fee')));
+        $param['notary_fee'] = (double) htmlentities(addslashes($request->get('notary_fee')));
+        $param['rsa_fee'] = (double) htmlentities(addslashes($request->get('rsa_fee')));
+        $param['total_life_insurance_capitalize'] = (double) htmlentities(addslashes($request->get('total_life_insurance_capitalize')));
+        $param['total_asset_insurance_capitalize'] = (double) htmlentities(addslashes($request->get('total_asset_insurance_capitalize')));
         $param['round'] = (int) htmlentities(addslashes($request->get('round')));
+        $param['rsa_on_loan'] = htmlentities(addslashes($request->get('rsa_on_loan')));
+        $param['admin_on_loan'] = htmlentities(addslashes($request->get('admin_on_loan')));
+        $param['fiducia_on_loan'] = htmlentities(addslashes($request->get('fiducia_on_loan')));
+        $param['provisi_on_loan'] = htmlentities(addslashes($request->get('provisi_on_loan')));
+        $param['other_on_loan'] = htmlentities(addslashes($request->get('other_on_loan')));
+        $param['survey_on_loan'] = htmlentities(addslashes($request->get('survey_on_loan')));
+        $param['notary_on_loan'] = htmlentities(addslashes($request->get('notary_on_loan')));
 
         try{
             $data = $this->sendAPI->getEstimateInstallment($url, $param, $token);

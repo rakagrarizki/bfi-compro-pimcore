@@ -13,6 +13,7 @@ let max_funding_percentage = 0;
 let ntf = 0;
 let total_ntf = 0;
 let provision_fee = 0;
+let tlpAmount = 0;
 
 window.dataLayer = window.dataLayer || [];
 
@@ -27,10 +28,13 @@ let calculationParam = {
     provisi_fee: 0,
     total_life_insurance_capitalize: 0,
     total_asset_insurance_capitalize: 0,
+    rsa_fee: 0,
 };
 
 let lifeInsuranceRate = [];
 let lifeInsuranceCoy = [];
+let assetInsuranceRate = [];
+let assetInsuranceCoy = [];
 let loanTenor = [];
 let assetSize = 10;
 
@@ -1690,7 +1694,7 @@ function getCalculationParams() {
     $.when(getFiduciaFee(), getLifeInsuranceRate(), getLifeInsuranceCoy()).then(
         function (res1, res2, res3) {
             calculationParam.effective_rate = min_effective_rate / 100;
-            calculationParam.admin_fee = admin_fee;
+            calculationParam.admin_fee = admin_fee + tlpAmount;
             calculationParam.flat_rate =
                 ((pmt(calculationParam.effective_rate / 12, tenor, 1, 0, 0) *
                     -1 *
@@ -1739,6 +1743,7 @@ function getEstimateInstallment() {
             calculationParam.total_life_insurance_capitalize,
         total_asset_insurance_capitalize:
             calculationParam.total_asset_insurance_capitalize,
+        rsa_fee: calculationParam.rsa_fee,
         other_fee: 0,
         survey_fee: 0,
         notary_fee: 0,
@@ -1748,6 +1753,7 @@ function getEstimateInstallment() {
         other_on_loan: true,
         survey_on_loan: true,
         notary_on_loan: true,
+        rsa_on_loan: true,
         round: 500,
     };
 
