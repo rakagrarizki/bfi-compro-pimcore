@@ -1596,6 +1596,7 @@ class CreditController extends FrontendController
         $param["info_assets"]["rw"] = htmlentities(addslashes($info_assets['rw']));
         $param["info_assets"]["zipcode_id"] = htmlentities(addslashes($info_assets['zipcode_id']));
         $param["info_assets"]["address"] = htmlentities(addslashes($info_assets['address']));
+        $param["info_assets"]["disclaimer"] = htmlentities(addslashes($info_assets['disclaimer']));
         $param["profession_id"] = htmlentities(addslashes($request->get('profession_id')));
         $param["salary"] = htmlentities(addslashes($request->get('salary')));
         $param["employee_status_id"] = htmlentities(addslashes($request->get('employee_status_id')));
@@ -1603,6 +1604,7 @@ class CreditController extends FrontendController
         $param["marital_status_id"] = htmlentities(addslashes($request->get('marital_status_id')));
         $param["spouse_name"] = htmlentities(addslashes($request->get('spouse_name')));
         $param["spouse_profession_id"] = htmlentities(addslashes($request->get('spouse_profession_id')));
+        $param["length_of_work"] = htmlentities(addslashes($request->get('length_of_work')));
 
         try {
             $data = $this->sendAPI->savePbfLeads2($url, $param);

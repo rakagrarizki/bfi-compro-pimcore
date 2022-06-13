@@ -40,6 +40,7 @@ let dataStep2 = {
         rt: undefined,
         rw: undefined,
         address: undefined,
+        disclaimer: undefined,
     },
     profession_id: undefined,
     salary: undefined,
@@ -48,6 +49,7 @@ let dataStep2 = {
     marital_status_id: undefined,
     spouse_name: undefined,
     spouse_profession_id: undefined,
+    length_of_work: undefined,
 };
 let dataStep3 = {
     submission_id: undefined,
@@ -107,6 +109,11 @@ $("#occupation").on("change", function () {
     $(this).val() == "0A960193-B704-4FA6-85C1-D3EDAE18B6C2"
         ? $(".employee_status").removeAttr("hidden")
         : $(".employee_status").attr("hidden", true);
+    employeeStatusCheck();
+});
+
+$("#employee_status").on("change", function () {
+    employeeStatusCheck();
 });
 
 $("#marital_status").on("change", function () {
@@ -128,6 +135,11 @@ $("#employee_status").select2({
     placeholder: employee_status,
     dropdownParent: $("#employee_status").parent(),
 });
+var years_service = $("#years_service").attr("placeholder");
+$("#years_service").select2({
+    placeholder: years_service,
+    dropdownParent: $("#years_service").parent(),
+});
 var marital_status = $("#marital_status").attr("placeholder");
 $("#marital_status").select2({
     placeholder: marital_status,
@@ -148,6 +160,11 @@ var certificate_status = $("#certificate_status").attr("placeholder");
 $("#certificate_status").select2({
     placeholder: certificate_status,
     dropdownParent: $("#certificate_status").parent(),
+});
+var asset_type = $("#asset_type").attr("placeholder");
+$("#asset_type").select2({
+    placeholder: asset_type,
+    dropdownParent: $("#asset_type").parent(),
 });
 var certificate_by_name = $("#certificate_by_name").attr("placeholder");
 $("#certificate_by_name").select2({
@@ -184,6 +201,7 @@ $("#next1").on("click", function (e) {
                 step("next", 1);
                 getProfesion();
                 getEmployeeStatus();
+                getYearsOfService();
                 getMaritalStatus();
                 getPropertyType();
                 window.dataLayer.push({
@@ -199,7 +217,6 @@ $("#next2").on("click", function (e) {
     e.preventDefault();
     if ($(this).closest("form").valid()) {
         pushDataStep2(function (result) {
-            // console.log(result);
             if (
                 result.data.leads_status == "UNPROSPECT" ||
                 result.data.leads_status == "RAW"
@@ -401,6 +418,10 @@ function pushDataStep2(cb) {
                 addres_same == "false"
                     ? $("#alamat_sertificate").val()
                     : $("#alamat_lengkap").val(),
+            disclaimer:
+                $("input[name='disclaimer-1']:checked").val() == "true"
+                    ? true
+                    : false,
         },
         profession_id: $("#occupation").val().toString(),
         salary: clearDot($("#penghasilan").val()),
@@ -422,6 +443,10 @@ function pushDataStep2(cb) {
         marital_status_id: $("#marital_status").val().toString(),
         spouse_name: $("#spouse_name").val(),
         spouse_profession_id: $("#spouse_job").val().toString(),
+        length_of_work:
+            $("#years_service").val().toString() === ""
+                ? 0
+                : $("#years_service").val().toString(),
     });
     $.ajax({
         type: "POST",
@@ -447,7 +472,7 @@ function pushDataStep2(cb) {
 function pushDataStep3(cb) {
     let result = (dataStep3 = {
         submission_id: submission_id,
-        property_type_id: $("input[name='asset_type']:checked").val(),
+        property_type_id: $("#asset_type").val().toString(),
         certificate_type_id: $("#certificate_status").val().toString(),
         certificatie_in_the_name_id: $("#certificate_by_name").val().toString(),
         where_certificate: $("input[name='where_certificate']:checked").val(),
@@ -774,17 +799,18 @@ function getPropertyType() {
                             id: val.id,
                             text: val.desc,
                         });
-                        var elmnt =
-                            "<div class='radio-wrap'><input type='radio' class='inputs' class='formRequired' id='asset_type" +
-                            val.desc +
-                            "' name='asset_type' value='" +
-                            val.id +
-                            "'><label for='asset_type" +
-                            val.desc +
-                            "'>" +
-                            val.desc +
-                            "</label></div>";
-                        $(".PropertyType").append(elmnt);
+                        $("#asset_type").select2({
+                            placeholder: $("#asset_type").attr("placeholder"),
+                            dropdownParent: $("#asset_type").parent(),
+                            data: typeProperty,
+                            language: {
+                                noResults: function () {
+                                    return lang === "id"
+                                        ? "Tidak Ada Hasil yang Ditemukan"
+                                        : "No Result Found";
+                                },
+                            },
+                        });
                     }
                 });
             }
@@ -907,6 +933,37 @@ function getAssetLocation() {
             },
         },
     });
+}
+
+function getYearsOfService() {
+    var placeholder = $("#years_service").attr("placeholder");
+    let data_occupation = [
+        {
+            id: 0,
+            text: "Kurang dari 1 Tahun",
+        },
+        {
+            id: 1,
+            text: "Lebih dari 1 Tahun",
+        },
+    ];
+
+    $("#years_service").select2({
+        placeholder: placeholder,
+        data: data_occupation,
+    });
+}
+
+function employeeStatusCheck() {
+    let occupation = $("#occupation").val();
+    let employeeStatus = $("#employee_status").val();
+    const KARYAWAN_SWASTA_ID = "5865706C-32D0-4BE0-9395-B50887DC8FF0";
+    const STATUS_KONTRAK_ID = "38A446DA-39A2-445B-A493-D5D2D7CE02DD";
+
+    occupation == KARYAWAN_SWASTA_ID && employeeStatus == STATUS_KONTRAK_ID
+        ? $(".years_service").removeAttr("hidden")
+        : $(".years_service").attr("hidden", true),
+        $("#years_service").val(null);
 }
 
 function getFunding() {

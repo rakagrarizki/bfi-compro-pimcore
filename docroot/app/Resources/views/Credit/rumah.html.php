@@ -130,31 +130,6 @@ $this->headScript()
                                             <span><?=$this->translate('form-email-helper') ?></span>
                                         </div>
                                         <div class="form-group" hidden>
-                                            <label for="utm_source">utm_source</label>
-                                            <input type="utm_source" class="form-control" name="utm_source" id="utm_source" placeholder="utm_source" readonly>
-                                            <div class="error-wrap"></div>
-                                        </div>
-                                        <div class="form-group" hidden>
-                                            <label for="utm_campaign">utm_campaign</label>
-                                            <input type="utm_campaign" class="form-control" name="utm_campaign" id="utm_campaign" placeholder="utm_campaign" readonly>
-                                            <div class="error-wrap"></div>
-                                        </div>
-                                        <div class="form-group" hidden>
-                                            <label for="utm_term">utm_term</label>
-                                            <input type="utm_term" class="form-control" name="utm_term" id="utm_term" placeholder="utm_term" readonly>
-                                            <div class="error-wrap"></div>
-                                        </div>
-                                        <div class="form-group" hidden>
-                                            <label for="utm_medium">utm_medium</label>
-                                            <input type="utm_medium" class="form-control" name="utm_medium" id="utm_medium" placeholder="utm_medium" readonly>
-                                            <div class="error-wrap"></div>
-                                        </div>
-                                        <div class="form-group" hidden>
-                                            <label for="utm_content">utm_content</label>
-                                            <input type="utm_content" class="form-control" name="utm_content" id="utm_content" placeholder="utm_content" readonly>
-                                            <div class="error-wrap"></div>
-                                        </div>
-                                        <div class="form-group" hidden>
                                             <label for="category">category</label>
                                             <input type="category" class="form-control" name="category" id="category" placeholder="category" value="PBF" readonly>
                                             <div class="error-wrap"></div>
@@ -375,6 +350,14 @@ $this->headScript()
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
+                                        <div class="form-group years_service" hidden>
+                                            <label for="years_service"><?=$this->translate('label-years-service') ?></label>
+                                            <select class="form-control inputs formRequired" id="years_service"
+                                                name="years_service" placeholder="<?=$this->translate('placeholder-years-service') ?>" multiple="multiple">
+                                                <option value="" disabled selected><?=$this->translate('placeholder-years-service') ?></option>
+                                            </select>
+                                            <div class="error-wrap"></div>
+                                        </div>
                                         <div class="form-group">
                                             <label for="penghasilan"><?=$this->translate('label-income') ?></label>
                                             <input type="text"
@@ -416,6 +399,13 @@ $this->headScript()
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
+                                        <div class="form-group form-check">
+                                            <input class="form-check-input formRequired" type="checkbox" value="true"
+                                                id="disclaimer-1" name="disclaimer-1">
+                                            <label class="form-check-label" for="disclaimer-1"> <?= $this->translate('disclaimer-step') ?>
+                                                <div class="error-wrap"></div>
+                                            </label>
+                                        </div> 
                                         <div class="form-group form-btn space-btn">
                                             <button class="cta cta-primary-outline cta-big cta-back buttonback"
                                                 id="back2" type="button"><?=$this->translate('before') ?></button>
@@ -434,10 +424,13 @@ $this->headScript()
                                         <div class="text-title-form">
                                             <h3><?= $this->translate('title-asset-information') ?></h3>
                                         </div>
-                                        <div class="form-group radio-group">
-                                            <label><?= $this->translate('label-asset-type') ?></label>
-                                            <div class="radio-button PropertyType">
-                                            </div>
+                                        <div class="form-group">
+                                            <label for="asset_type"><?= $this->translate('label-asset-type') ?></label>
+                                            <select class=" form-control inputs formRequired"
+                                                placeholder="<?= $this->translate('placeholder-asset-type') ?>" id="asset_type"
+                                                name="asset_type" multiple="multiple">
+                                                <option value="" disabled selected><?= $this->translate('placeholder-asset-type') ?></option>
+                                            </select>
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
@@ -702,7 +695,7 @@ $this->headScript()
                                             <div class="input-group">
                                                 <span class="input-group-addon" id="basic-addon1">Rp</span>
                                                 <input type="text" id="estimate_price"
-                                                    class="formatRibuan form-control inputs formRequired addonInput c-input-trans"
+                                                    class="formatRibuan form-control inputs formRequired addonInput c-input-trans minEstimatedPrice"
                                                     placeholder="<?= $this->translate('estimated-house-price') ?>">
                                             </div>
                                             <div class="error-wrap"></div>

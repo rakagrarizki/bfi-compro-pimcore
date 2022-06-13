@@ -763,6 +763,11 @@ var urlLocation = window.location;
             minimumValue: true,
         },
 
+        minEstimatedPrice: {
+            required: true,
+            minEstPrice: 167000000,
+        },
+
         submitHandler: function (form) {
             form.submit();
         },
@@ -781,6 +786,21 @@ var urlLocation = window.location;
             return thisVal === "0" ? true : false;
         },
         leadZero
+    );
+
+    if (lang === "id") {
+        minEstimated = "Estimasi harga rumah minimal Rp167.000.000";
+    } else {
+        minEstimated = "Minimum house price estimate Rp167.000.000";
+    }
+
+    $.validator.addMethod(
+        "minEstPrice",
+        function (value, el, param) {
+            var NewVal = value.replace(/\./g, "");
+            return this.optional(el) || NewVal >= param;
+        },
+        minEstimated
     );
 
     var lang = document.documentElement.lang;

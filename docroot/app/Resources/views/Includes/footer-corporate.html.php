@@ -131,9 +131,13 @@ if ($this->editmode) : ?>
                     <a target="<?= $this->link('whatsapp') != "" ? $this->link('whatsapp')->getTarget() : '' ?>" href="<?= $this->link('whatsapp') != "" ? $this->link('whatsapp')->getHref() : '' ?>"><span><i class="fab fa-whatsapp fa-lg" aria-hidden="true"></i></span></a>
                     <a target="<?= $this->link('email') != "" ? $this->link('email')->getTarget() : '' ?>" href="<?= $this->link('email') != "" ? $this->link('email')->getHref() : '' ?>"><span><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></span></a>
                 </div>
-                <span><?= $this->translate("text-pengawasan") ?>:</span>
-                <?php $asset = $this->image("ojk-image"); ?>
-                <img src="<?= $asset->getImage() ?>" class="img-ojk" alt="<?= $this->input('alt-text-image') ?>">
+                <span><?= $this->translate("text-pengawasan") ?></span>
+                <?php
+                    $asset = $this->image("ojk-image");
+                    if($asset) :
+                ?>
+                    <img src="<?= $asset->getImage() ?>" class="img-ojk" alt="<?= $this->input('alt-text-image') ?>">
+                <?php endif; ?>
             </div>
         </div>
     </div>
