@@ -365,6 +365,7 @@ function pushDataStep1(cb) {
 
 function pushDataStep2(cb) {
     var addres_same = $("input[name='addres_same']:checked").val();
+    var employeeStatus = $("#employee_status").val().toString();
     var PNS_ID = "6D91616D-2117-4050-AB4B-0D97FF416732",
         BIDAN_ID = "8757288B-38D1-455F-8365-2B094940A3F9",
         APOTEKER_ID = "2FB41F3A-5856-4BCC-9B29-9B0D843F9B97",
@@ -373,6 +374,19 @@ function pushDataStep2(cb) {
         DOKTER_ID = "0DCAA70F-C7FE-4E39-8AEA-F6D60261F04",
         WIRASWASTA_ID = "0DCAA70F-C7FE-4E39-8AEA-F6D60261F044",
         SET_PERKERJAAN_STATUS_TETAP_ID = "595D0BAA-60E7-45B8-AA6A-6443749D7069";
+
+    if (
+        $("#occupation").val() == PNS_ID ||
+        $("#occupation").val() == BIDAN_ID ||
+        $("#occupation").val() == APOTEKER_ID ||
+        $("#occupation").val() == PERAWAT_ID ||
+        $("#occupation").val() == TNI_ID ||
+        $("#occupation").val() == DOKTER_ID ||
+        $("#occupation").val() == WIRASWASTA_ID
+    ) {
+        employeeStatus = SET_PERKERJAAN_STATUS_TETAP_ID;
+    }
+
     let result = (dataStep2 = {
         submission_id: submission_id,
         info_address: {
@@ -425,20 +439,7 @@ function pushDataStep2(cb) {
         },
         profession_id: $("#occupation").val().toString(),
         salary: clearDot($("#penghasilan").val()),
-        employee_status_id:
-            $("#occupation").val() == PNS_ID
-                ? $("#occupation").val() == BIDAN_ID
-                    ? $("#occupation").val() == APOTEKER_ID
-                    : SET_PERKERJAAN_STATUS_TETAP_ID
-                    ? $("#occupation").val() == PERAWAT_ID
-                    : SET_PERKERJAAN_STATUS_TETAP_ID
-                    ? $("#occupation").val() == TNI_ID
-                    : SET_PERKERJAAN_STATUS_TETAP_ID
-                    ? $("#occupation").val() == DOKTER_ID
-                    : SET_PERKERJAAN_STATUS_TETAP_ID
-                    ? $("#occupation").val() == WIRASWASTA_ID
-                    : SET_PERKERJAAN_STATUS_TETAP_ID
-                : SET_PERKERJAAN_STATUS_TETAP_ID,
+        employee_status_id: employeeStatus,
         age: $("#umur").val(),
         marital_status_id: $("#marital_status").val().toString(),
         spouse_name: $("#spouse_name").val(),
