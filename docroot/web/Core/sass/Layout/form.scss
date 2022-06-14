@@ -2913,16 +2913,6 @@ select::-ms-expand {
     }
 }
 
-.error-wrap {
-    label.error {
-        text-transform: lowercase;
-
-        &::first-letter {
-            text-transform: uppercase;
-        }
-    }
-}
-
 #myModal {
     .modal-dialog {
         height: max-content;

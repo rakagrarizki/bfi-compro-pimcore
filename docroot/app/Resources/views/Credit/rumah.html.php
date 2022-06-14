@@ -400,7 +400,7 @@ $this->headScript()
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group form-check">
-                                            <input class="form-check-input formRequired" type="checkbox" value="true"
+                                            <input class="form-check-input formChecked" type="checkbox" value="true"
                                                 id="disclaimer-1" name="disclaimer-1">
                                             <label class="form-check-label" for="disclaimer-1"> <?= $this->translate('disclaimer-step') ?>
                                                 <div class="error-wrap"></div>
@@ -734,12 +734,9 @@ $this->headScript()
                                             <p class="infotext"><?= $this->translate('estimated-Installments-info-pbf') ?></p>
                                         </div>
                                         <div class="form-group form-check">
-                                            <input class="form-check-input formRequired" type="checkbox" value="true"
+                                            <input class="form-check-input formChecked" type="checkbox" value="true"
                                                 id="disclaimer" name="disclaimer">
-                                            <label class="form-check-label" for="disclaimer"> Data yang saya input
-                                                adalah benar, saya bersedia dilakukan survey dan juga di lakukan
-                                                pengecekan informasi debitur (BI Checking) guna mendukung proses
-                                                pengajuan saya saat ini.
+                                            <label class="form-check-label" for="disclaimer"> <?= $this->translate('disclaimer-end') ?>
                                                 <div class="error-wrap"></div>
                                             </label>
                                         </div>

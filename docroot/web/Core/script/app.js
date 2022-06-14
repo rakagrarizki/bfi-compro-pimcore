@@ -768,6 +768,10 @@ var urlLocation = window.location;
             minEstPrice: 167000000,
         },
 
+        formChecked: {
+            isChecked: true,
+        },
+
         submitHandler: function (form) {
             form.submit();
         },
@@ -786,6 +790,19 @@ var urlLocation = window.location;
             return thisVal === "0" ? true : false;
         },
         leadZero
+    );
+
+    if (lang === "id") {
+        isCheck = "Isian di atas wajib dicentang";
+    } else {
+        isCheck = "The fields above must be checked";
+    }
+    jQuery.validator.addMethod(
+        "isChecked",
+        function (value, element, param) {
+            return value == undefined ? false : true;
+        },
+        isCheck
     );
 
     if (lang === "id") {
@@ -1063,16 +1080,19 @@ var urlLocation = window.location;
                         .find(".error-wrap")
                         .html(error);
                 } else if (
+                    element.attr("name") == "disclaimer" ||
+                    element.attr("name") == "disclaimer-1"
+                ) {
+                    element
+                        .closest(".form-check")
+                        .find(".error-wrap")
+                        .html(error);
+                } else if (
                     element.attr("type") == "radio" ||
                     element.attr("type") == "checkbox"
                 ) {
                     element
                         .closest(".radio-button")
-                        .find(".error-wrap")
-                        .html(error);
-                } else if (element.attr("name") == "disclaimer") {
-                    element
-                        .closest(".form-check")
                         .find(".error-wrap")
                         .html(error);
                 } else {
