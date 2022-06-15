@@ -1643,7 +1643,7 @@ function getLifeInsuranceAmount() {
         });
         calculationParam.total_life_insurance_capitalize =
             fund > 20000000
-                ? result[0].ins_rate_to_cust * fund
+                ? (result[0].ins_rate_to_cust * ntf) / 100
                 : result[0].ins_amount_to_cust;
     }
 }
@@ -1702,14 +1702,17 @@ function getCalculationParams() {
                     1) *
                     12) /
                 tenor;
-            ntf =
-                clearDot($("#pembiayaan").val()) +
-                calculationParam.admin_fee +
-                calculationParam.fiducia_fee;
 
             sessionStorage.getItem("loanType") === "NDFM"
                 ? getProvisionAmout()
                 : "";
+
+            ntf =
+                clearDot($("#pembiayaan").val()) +
+                calculationParam.admin_fee +
+                calculationParam.fiducia_fee +
+                calculationParam.rsa_fee +
+                calculationParam.provisi_fee;
 
             getLifeInsuranceAmount();
             getEstimateInstallment();
@@ -1718,9 +1721,10 @@ function getCalculationParams() {
 }
 
 function getProvisionAmout() {
+    let fund = clearDot($("#pembiayaan").val());
     let tenor = reverseTenorFormatter($("#tenor").val());
     let provisi_fee_percentage = ((tenor / 12) * provision_fee) / 100;
-    calculationParam.provisi_fee = provisi_fee_percentage * ntf;
+    calculationParam.provisi_fee = provisi_fee_percentage * fund;
 }
 
 function getEstimateInstallment() {

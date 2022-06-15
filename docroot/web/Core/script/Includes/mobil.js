@@ -847,7 +847,7 @@ function getAssetInsuranceAmount() {
 
         assetInsuranceAmount.premium2_insco += result[0].premium2_insco * fund;
         calculationParam.total_asset_insurance_capitalize =
-            assetInsuranceAmount.premium2_insco;
+            assetInsuranceAmount.premium2_insco / 100;
     }
 }
 
