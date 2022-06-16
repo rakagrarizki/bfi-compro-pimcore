@@ -1703,9 +1703,7 @@ function getCalculationParams() {
                     12) /
                 tenor;
 
-            sessionStorage.getItem("loanType") === "NDFM"
-                ? getProvisionAmout()
-                : "";
+            getProvisionAmout();
 
             ntf =
                 clearDot($("#pembiayaan").val()) +

@@ -110,7 +110,6 @@ $(document).ready(function () {
         : $(".nav-item-2.active").find(".nav-step-tag").text("Onprogress");
 
     getAuthorizationToken();
-    $("#calcLoan").prop("disabled", false);
     sessionStorage.setItem("loanType", "NDFC");
     sessionStorage.setItem("submitStep1", "false");
     sessionStorage.setItem("submitStep2", "false");
@@ -231,7 +230,6 @@ $("#next2").on("click", function (e) {
                             getAssetInsuranceCoyBranch();
                             getAssetCategory();
 
-                            $("#calcLoan").prop("disabled", false);
                             $("#tenor").val(tenorFormatter(loanTenor[0]));
                             $("#tenor2").val(1);
                             $("#pembiayaan").val(separatordot(MIN_FUNDING));
@@ -265,9 +263,17 @@ $("#next3").on("click", function (e) {
 });
 
 $("#calcLoan").on("click", function () {
-    $.when(getAssetInsuranceCalc()).then(function (res) {
-        getCalculationParams();
-    });
+    if ($(this).closest("form").valid()) {
+        if (lang === "id") {
+            $(this).text("HITUNG ULANG");
+        } else {
+            $(this).text("RECALCULATE");
+        }
+        CalcBtn("hide");
+        $.when(getAssetInsuranceCalc()).then(function (res) {
+            getCalculationParams();
+        });
+    }
 });
 
 $("#confirm-data").on("click", function (e) {
@@ -822,6 +828,7 @@ function getRsaFee() {
 
 function getAssetInsuranceRatePerYear() {
     let insuranceList = $(".fillable-insurance");
+    assetInsuranceAmount.premium2_insco = 0;
     insuranceList.each(function (index) {
         getAssetInsuranceRate(
             index + 1,
@@ -833,7 +840,6 @@ function getAssetInsuranceRatePerYear() {
 }
 
 function getAssetInsuranceAmount() {
-    let fund = clearDot($("#pembiayaan").val());
     if (assetInsuranceRate !== null) {
         let result = assetInsuranceRate.filter(function (arr1) {
             return assetInsuranceCoy.some(function (arr2) {
@@ -845,7 +851,8 @@ function getAssetInsuranceAmount() {
             });
         });
 
-        assetInsuranceAmount.premium2_insco += result[0].premium2_insco * fund;
+        assetInsuranceAmount.premium2_insco +=
+            result[0].premium2_insco * calculationParam.nilai_taksaksi;
         calculationParam.total_asset_insurance_capitalize =
             assetInsuranceAmount.premium2_insco / 100;
     }
@@ -889,7 +896,7 @@ function showInsurance(element) {
     element.closest(".form-group").addClass("fillable-insurance");
 }
 
-$("#tenor2").on("change", function () {
+$("#tenor2").on("change", function (e) {
     let tenorValue = $(this).val();
     if (tenorValue === "1") {
         showInsurance($('input[name="assurance1"]'));
@@ -912,10 +919,29 @@ $("#tenor2").on("change", function () {
         showInsurance($('input[name="assurance3"]'));
         showInsurance($('input[name="assurance4"]'));
     }
+    tenorValue == 0 || tenorValue == "" ? CalcBtn("hide") : CalcBtn("show");
+    e.preventDefault();
     getMaxFunding();
 });
 
-$("#funding").on("change", function () {
+$(document).on("change", ".fillable-insurance input[type=radio]", function () {
+    console.log($(this).val());
+    CalcBtn("show");
+});
+
+$("#pembiayaan").on("change", function (e) {
+    e.preventDefault();
+    $(this).val() == 0 || $(this).val() == ""
+        ? CalcBtn("hide")
+        : CalcBtn("show");
+    getMaxFunding();
+});
+
+$("#funding").on("change", function (e) {
+    e.preventDefault();
+    $("#pembiayaan").val() == 0 || $("#pembiayaan").val() == ""
+        ? CalcBtn("hide")
+        : CalcBtn("show");
     getMaxFunding();
 });
 
@@ -962,3 +988,9 @@ $("body").on("click", ".data-list", (e) => {
     $("#kelurahan2").focus();
     $("#address-btn").parent().attr("hidden", true);
 });
+
+function CalcBtn(action) {
+    if (action == "hide") {
+        $("#calcLoan").attr("disabled", "disabled");
+    } else $("#calcLoan").removeAttr("disabled");
+}
