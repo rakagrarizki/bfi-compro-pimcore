@@ -365,26 +365,16 @@ function pushDataStep1(cb) {
 
 function pushDataStep2(cb) {
     var addres_same = $("input[name='addres_same']:checked").val();
-    var employeeStatus = $("#employee_status").val().toString();
-    var PNS_ID = "6D91616D-2117-4050-AB4B-0D97FF416732",
-        BIDAN_ID = "8757288B-38D1-455F-8365-2B094940A3F9",
-        APOTEKER_ID = "2FB41F3A-5856-4BCC-9B29-9B0D843F9B97",
-        PERAWAT_ID = "C54B778B-975B-4F51-B444-ABAE706BFA14",
-        TNI_ID = "4E0BD352-286B-4D43-B6AE-E1C0FB640DE7",
-        DOKTER_ID = "0DCAA70F-C7FE-4E39-8AEA-F6D60261F04",
-        WIRASWASTA_ID = "0DCAA70F-C7FE-4E39-8AEA-F6D60261F044",
+    var KARYAWAN_SWASTA_ID = "5865706C-32D0-4BE0-9395-B50887DC8FF0",
+        KARYAWAN_BUMN_ID = "0A960193-B704-4FA6-85C1-D3EDAE18B6C2",
         SET_PERKERJAAN_STATUS_TETAP_ID = "595D0BAA-60E7-45B8-AA6A-6443749D7069";
+    var employeeStatus = SET_PERKERJAAN_STATUS_TETAP_ID;
 
     if (
-        $("#occupation").val() == PNS_ID ||
-        $("#occupation").val() == BIDAN_ID ||
-        $("#occupation").val() == APOTEKER_ID ||
-        $("#occupation").val() == PERAWAT_ID ||
-        $("#occupation").val() == TNI_ID ||
-        $("#occupation").val() == DOKTER_ID ||
-        $("#occupation").val() == WIRASWASTA_ID
+        $("#occupation").val() == KARYAWAN_SWASTA_ID ||
+        $("#occupation").val() == KARYAWAN_BUMN_ID
     ) {
-        employeeStatus = SET_PERKERJAAN_STATUS_TETAP_ID;
+        employeeStatus = $("#employee_status").val().toString();
     }
 
     let result = (dataStep2 = {
