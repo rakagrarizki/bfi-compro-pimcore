@@ -34,11 +34,7 @@
         }
     }
 
-
-    //    if ($this->document == '/') {
-    //        $this->headTitle()->set($this->document->getTitle());
-    //
-    //    }
+    $urlCanonical = rtrim("{$this->getUrl()}/{$slug}","/");
 
     if ($this->document instanceof \Pimcore\Model\Document\Page && $this->document->getDescription()) {
         // use the manually set description if available
@@ -60,12 +56,10 @@
         $this->headLink()->appendStylesheet('/static/css/editmode.css');
     }
 
-
     $this->headLink()->appendStylesheet('/static/css/pages/homepage.css');
-
     echo $this->headLink();
     ?>
-
+    <link rel="canonical" href="<?= $urlCanonical ?>" />
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
