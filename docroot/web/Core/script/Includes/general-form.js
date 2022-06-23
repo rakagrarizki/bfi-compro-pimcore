@@ -10,7 +10,9 @@ let branch_id = "";
 let admin_fee = 0;
 let min_effective_rate = 0;
 let max_funding_percentage = 0;
-let ntf = 0;
+let ntfLifeInsurance = 0;
+let ntfProvisi = 0;
+let life_insurance_rate = 0;
 let total_ntf = 0;
 let provision_fee = 0;
 let tlpAmount = 0;
@@ -1653,10 +1655,14 @@ function getLifeInsuranceAmount() {
                 );
             });
         });
-        calculationParam.total_life_insurance_capitalize =
+        life_insurance_rate =
             fund > 20000000
-                ? (result[0].ins_rate_to_cust * ntf) / 100
+                ? result[0].ins_rate_to_cust
                 : result[0].ins_amount_to_cust;
+        //     calculationParam.total_life_insurance_capitalize =
+        //         fund > 20000000
+        //             ? (result[0].ins_rate_to_cust * ntf) / 100
+        //             : result[0].ins_amount_to_cust;
     }
 }
 
@@ -1703,6 +1709,7 @@ function getMaxFunding() {
 
 function getCalculationParams() {
     let tenor = reverseTenorFormatter($("#tenor").val());
+    let fund = clearDot($("#pembiayaan").val());
     $.when(getFiduciaFee(), getLifeInsuranceRate(), getLifeInsuranceCoy()).then(
         function (res1, res2, res3) {
             calculationParam.effective_rate = min_effective_rate / 100;
@@ -1714,17 +1721,34 @@ function getCalculationParams() {
                     1) *
                     12) /
                 tenor;
+
             getLifeInsuranceAmount();
-            ntf =
-                clearDot($("#pembiayaan").val()) +
-                calculationParam.admin_fee +
-                calculationParam.fiducia_fee +
-                calculationParam.rsa_fee +
-                calculationParam.provisi_fee +
-                calculationParam.total_life_insurance_capitalize;
 
-            getProvisionAmout();
+            if (fund > 20000000) {
+                ntfLifeInsurance =
+                    (fund +
+                        calculationParam.admin_fee +
+                        calculationParam.fiducia_fee +
+                        calculationParam.rsa_fee) /
+                    (1 - provision_fee / 100 + life_insurance_rate / 100);
+            } else {
+                ntfLifeInsurance =
+                    (fund +
+                        calculationParam.admin_fee +
+                        calculationParam.fiducia_fee +
+                        calculationParam.rsa_fee +
+                        life_insurance_rate) /
+                    (1 - provision_fee / 100);
+            }
 
+            calculationParam.total_life_insurance_capitalize =
+                fund > 20000000
+                    ? (life_insurance_rate / 100) * ntfLifeInsurance
+                    : life_insurance_rate;
+            calculationParam.provisi_fee =
+                ntfLifeInsurance * (provision_fee / 100);
+
+            // getProvisionAmout();
             getEstimateInstallment();
         }
     );
@@ -1734,7 +1758,7 @@ function getProvisionAmout() {
     let fund = clearDot($("#pembiayaan").val());
     let tenor = reverseTenorFormatter($("#tenor").val());
     let provisi_fee_percentage = ((tenor / 12) * provision_fee) / 100;
-    calculationParam.provisi_fee = provisi_fee_percentage * ntf;
+    // calculationParam.provisi_fee = provisi_fee_percentage * ntf;
 }
 
 function getEstimateInstallment() {
