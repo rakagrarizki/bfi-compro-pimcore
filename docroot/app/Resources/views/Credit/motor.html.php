@@ -265,7 +265,7 @@ $this->headScript()
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group radio-group">
-                                            <label>Pajak</label>
+                                            <label><?= $this->translate('is-tax-active') ?></label>
                                             <div class="radio-button">
                                                 <div class="radio-wrap">
                                                     <input type="radio" class="inputs formRequired" id="action-call"

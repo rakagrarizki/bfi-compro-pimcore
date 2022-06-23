@@ -1714,17 +1714,17 @@ function getCalculationParams() {
                     1) *
                     12) /
                 tenor;
-
-            getProvisionAmout();
-
+            getLifeInsuranceAmount();
             ntf =
                 clearDot($("#pembiayaan").val()) +
                 calculationParam.admin_fee +
                 calculationParam.fiducia_fee +
                 calculationParam.rsa_fee +
-                calculationParam.provisi_fee;
+                calculationParam.provisi_fee +
+                calculationParam.total_life_insurance_capitalize;
 
-            getLifeInsuranceAmount();
+            getProvisionAmout();
+
             getEstimateInstallment();
         }
     );
@@ -1734,7 +1734,7 @@ function getProvisionAmout() {
     let fund = clearDot($("#pembiayaan").val());
     let tenor = reverseTenorFormatter($("#tenor").val());
     let provisi_fee_percentage = ((tenor / 12) * provision_fee) / 100;
-    calculationParam.provisi_fee = provisi_fee_percentage * fund;
+    calculationParam.provisi_fee = provisi_fee_percentage * ntf;
 }
 
 function getEstimateInstallment() {
