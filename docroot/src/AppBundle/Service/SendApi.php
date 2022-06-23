@@ -42,8 +42,8 @@ class SendApi
             'handler' => $stack,
             'auth' => [USERNAME, PASSWORD]
         ]);
-
-        try {
+        
+        try {    
             $data = $client->request($method, $url, [
                 "json" => $params
             ]);
@@ -77,6 +77,31 @@ class SendApi
                         'Authorization' => 'Bearer ' . $token,
                     ],
                     "json" => $params
+                ]
+            );
+        } catch (ClientException $e) {
+            $response = $e->getResponse();
+            return json_decode($response->getBody());
+        }
+
+        return $this->getData($data);
+    }
+
+    public function getGatewayToken($url)
+    {
+        $client = new Client([
+            "base_uri" => $url,
+            "verify" => false
+        ]);
+
+        try {
+            $data = $client->request(
+                'POST',
+                $url,
+                [
+                    RequestOptions::HEADERS => [
+                        'Authorization' => 'Basic ' . Authorization
+                    ]
                 ]
             );
         } catch (ClientException $e) {
@@ -743,6 +768,187 @@ class SendApi
         return $this->executeApi('api-list-spouse-profession', $url, $params, "POST");
     }
 
+    public function executeApiSignature($name, $withBody, $url, $param, $method, $token)
+    {
+        $logger = new Logger($name);
+        $logger->pushHandler(new StreamHandler(PIMCORE_LOG_DIRECTORY . DIRECTORY_SEPARATOR . date('d') . date('m') . date("Y") . "-" . $name . ".log"), Logger::DEBUG);
+        $stack = HandlerStack::create();
+        $stack->push(Middleware::log(
+            $logger,
+            new MessageFormatter('{url} - {req_body} - {res_body}')
+        ));
+
+        $client = new Client([
+            "base_uri" => $url,
+            "verify" => false,
+            'handler' => $stack
+        ]);
+        try {
+            if($withBody == true){
+                $data = $client->request(
+                    $method,
+                    $url,
+                    [
+                        RequestOptions::HEADERS => [
+                            'Authorization' => 'Bearer ' . $token,
+                        ],
+                        'json' => $param
+                    ]
+                );
+            }else{
+                $data = $client->request(
+                    $method,
+                    $url,
+                    [
+                        RequestOptions::HEADERS => [
+                            'Authorization' => 'Bearer ' . $token
+                        ],
+                        'query' => $param
+                    ]
+                );
+            }
+        } catch (ClientException $e) {
+           $response = $e->getResponse();
+           return json_decode($response->getBody());
+        }
+        return $this->getData($data);
+    }
+
+    public function getListProvince($url, $token)
+    {  
+        return $this->executeApiSignature('getListProvince', false, $url, '', "GET", $token);
+    }
+
+    public function getListCity($url, $param, $token)
+    {
+        return $this->executeApiSignature('getListCity', false, $url, $param, "GET", $token);
+    }
+
+    public function getListDistrict($url, $param, $token)
+    {
+        return $this->executeApiSignature('getListDistrict', false, $url, $param, "GET", $token);
+    }
+
+    public function getListSubdistrict($url, $param, $token)
+    {
+        return $this->executeApiSignature('getListSubdistrict', false, $url, $param, "GET", $token);
+    }
+
+    public function getListZipcode($url, $param, $token)
+    {
+        return $this->executeApiSignature('getListZipcode', false, $url, $param, "GET", $token);
+    }
+
+    public function getListAssets($url, $param, $token)
+    {
+        return $this->executeApiSignature('getListAssets', false, $url, $param, "GET", $token);
+    }
+
+    public function getListBpkbOwnership($url, $token)
+    {
+        return $this->executeApiSignature('getListBpkbOwnership', false, $url, '', "GET", $token);
+    }
+
+    public function getListHouseOwnership($url, $token)
+    {
+        return $this->executeApiSignature('getListHouseOwnership', false, $url, '', "GET", $token);
+    }
+
+    public function getListDataMaritalStatus($url, $token)
+    {
+        return $this->executeApiSignature('getListDataMaritalStatus', false, $url, '', "GET", $token);
+    }
+
+    public function getAssetYear($url, $param, $token)
+    {
+        return $this->executeApiSignature('getAssetYear', false, $url, $param, "GET", $token);
+    }
+
+    public function getBranchCoverage($url, $param, $token)
+    {
+        return $this->executeApiSignature('getBranchCoverage', true, $url, $param, "PATCH", $token);
+    }
+
+    public function getDuplicateLeads($url, $param, $token)
+    {
+        return $this->executeApiSignature('getDuplicateLeads', false, $url, $param, "GET", $token);
+    }
+
+    public function getProductDetail($url, $param, $token){
+        return $this->executeApiSignature('getProductDetail', false, $url, $param, "GET", $token);
+    }
+
+    public function getProductBranchDetail($url, $param, $token){
+        return $this->executeApiSignature('getProductBranchDetail', false, $url, $param, "GET", $token);
+    }
+
+    public function getProductOffering($url, $param, $token){
+        return $this->executeApiSignature('getProductOffering', false, $url, $param, "GET", $token);
+    }
+
+    public function getProductOfferingDetail($url, $param, $token){
+        return $this->executeApiSignature('getProductOfferingDetail', false, $url, $param, "GET", $token);
+    }
+
+    public function getFiduciaFee($url, $param, $token)
+    {
+        return $this->executeApiSignature('getFiduciaFee', false, $url, $param, "GET", $token);
+    }
+
+    public function getPricelistPaging($url, $param, $token)
+    {
+        return $this->executeApiSignature('getPricelistPaging', false, $url, $param, "GET", $token);
+    }
+
+    public function getLifeInsuranceRateNew($url, $param, $token)
+    {
+        return $this->executeApiSignature('getLifeInsuranceRateNew', false, $url, $param, "GET", $token);
+    }
+
+    public function getLifeInsuranceRate($url, $param, $token)
+    {
+        return $this->executeApiSignature('getLifeInsurance', false, $url, $param, "GET", $token);
+    }
+
+    public function getLifeInsuranceCoyBranch($url, $param, $token)
+    {
+        return $this->executeApiSignature('getLifeInsuranceCoyBranch', false, $url, $param, "GET", $token);
+    }
+
+    public function getAssetCategory($url, $param, $token)
+    {
+        return $this->executeApiSignature('getAssetCategory', false, $url, $param, "GET", $token);
+    }
+
+    public function getAssetInsuranceRateCategory($url, $param, $token)
+    {
+        return $this->executeApiSignature('getAssetInsuranceRateCategory', false, $url, $param, "GET", $token);
+    }
+
+    public function getAssetInsuranceRate($url, $param, $token)
+    {
+        return $this->executeApiSignature('getAssetInsuranceRate', false, $url, $param, "GET", $token);
+    }
+
+    public function getAssetInsuranceCoyBranch($url, $param, $token)
+    {
+        return $this->executeApiSignature('getAssetInsuranceCoyBranch', false, $url, $param, "GET", $token);
+    }
+
+    public function getRsaCoyBranch($url, $param, $token)
+    {
+        return $this->executeApiSignature('getRsaCoyBranch', false, $url, $param, "GET", $token);
+    }
+
+    public function getRsaFee($url, $param, $token)
+    {
+        return $this->executeApiSignature('getRsaFee', false, $url, $param, "GET", $token);
+    }
+
+    public function getEstimateInstallment($url, $param, $token){
+        return $this->executeApiSignature('getEstimateInstallment', true, $url, $param, "POST", $token);
+    }
+    
     public function sendDataZeals($url, $params)
     {
         return $this->executeApi('api-zeals', $url , $params, "POST");

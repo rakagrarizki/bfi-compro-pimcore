@@ -216,7 +216,9 @@
                 }
             }
             &.active {
-                flex: 1;
+                @include breakpoint(mobile) {
+                    flex: 1;
+                }
                 a {
                     .nav-icon {
                         background-color: $orange-color;
@@ -314,14 +316,12 @@
     }
 
     .cta-primary-outline {
-        height: 50px;
         width: 185px;
         padding: 13px 0px;
         font-size: 16px;
         text-transform: uppercase;
 
         @include breakpoint(mobile) {
-            margin-bottom: 1.5rem;
             font-size: 14px;
             height: 48px;
             padding: 13px 28px 13px 28px;

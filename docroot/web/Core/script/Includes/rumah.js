@@ -97,11 +97,16 @@ $(document).ready(function () {
 
 $("input[name$='addres_same']").click(function () {
     var addresSameVal = $(this).val();
-    {
-        addresSameVal == "false"
-            ? $(".same-address").removeAttr("hidden")
-            : $(".same-address").attr("hidden", true);
+    if (addresSameVal == "false") {
+        $(".same-address").removeAttr("hidden");
+        $(".same-address")
+            .find(".input-step:eq(0), textarea.input-step")
+            .removeAttr("disabled");
+    } else {
+        $(".same-address").attr("hidden", true);
+        $(".same-address").find(".input-step:eq(0)").attr("disabled", true);
     }
+    $("#occupation").removeAttr("disabled");
 });
 
 $("#occupation").on("change", function () {
@@ -276,7 +281,6 @@ $("#tenorPbf").on("change", function (e) {
 });
 
 $("#calcLoan").on("click", function (e) {
-    console.log("calcLoan");
     e.preventDefault();
     if (lang === "id") {
         $(this).text("HITUNG ULANG");
@@ -285,12 +289,11 @@ $("#calcLoan").on("click", function (e) {
     }
     CalcBtn("hide");
     PostCalculate();
+    $("#disclaimer").removeAttr("disabled");
 });
 
 $("#estimate_price").on("change", function () {
     getFunding();
-    // console.log($(this).val());
-    console.log("test");
 });
 
 $("#next4").on("click", function (e) {
@@ -988,6 +991,7 @@ function getFunding() {
                     step: 100000,
                 });
             }
+            $("#PengajuanBiaya").removeAttr("disabled");
             $("#PengajuanBiaya").val(currency(rawMinPrice));
             $(".valuemin").text("Rp " + currency(rawMinPrice));
             $(".valuemax").text("Rp " + currency(rawMaxPrice));
@@ -1020,6 +1024,7 @@ function getTenor() {
                         });
                     }
                 });
+                $("#tenorPbf").removeAttr("disabled");
                 $("#tenorPbf").select2({
                     placeholder: $("#tenorPbf").attr("placeholder"),
                     dropdownParent: $("#tenorPbf").parent(),
@@ -1063,72 +1068,6 @@ function PostCalculate() {
             }
         },
     });
-}
-
-function step(action, val) {
-    scrollToTop();
-    if (action == "next") {
-        $(".nav-item-" + val).removeClass("active");
-        $(".nav-item-" + val).addClass("done");
-        $(`.nav-item-${val + 1}`).addClass("active");
-
-        lang == "id"
-            ? $(".nav-item-" + val)
-                  .find(".nav-step-tag")
-                  .text("Selesai")
-            : $(".nav-item-" + val)
-                  .find(".nav-step-tag")
-                  .text("Done");
-
-        lang == "id"
-            ? $(`.nav-item-${val + 1}`)
-                  .find(".nav-step-tag")
-                  .text("Sedang Isi")
-            : $(`.nav-item-${val + 1}`)
-                  .find(".nav-step-tag")
-                  .text("Onprogress");
-
-        $("#menu" + val).removeClass("active");
-        $(`#menu${val + 1}`)
-            .addClass("active")
-            .fadeIn();
-    } else {
-        $(`.nav-item-${val + 1}`).removeClass("active");
-        $(".nav-item-" + val).removeClass("done");
-        $(".nav-item-" + val).addClass("active");
-
-        lang == "id"
-            ? $(`.nav-item-${val + 1}`)
-                  .find(".nav-step-tag")
-                  .text("Belum Isi")
-            : $(`.nav-item-${val + 1}`)
-                  .find(".nav-step-tag")
-                  .text("Pending");
-
-        lang == "id"
-            ? $(".nav-item-" + val)
-                  .find(".nav-step-tag")
-                  .text("Sedang Isi")
-            : $(".nav-item-" + val)
-                  .find(".nav-step-tag")
-                  .text("Onprogress");
-
-        $("#menu" + val)
-            .addClass("active")
-            .fadeIn();
-        $(`#menu${val + 1}`).removeClass("active");
-    }
-}
-
-function clearDot(x) {
-    let removeDot = x.replace(/\./g, "");
-    let result = validNumber(parseInt(removeDot));
-    return result;
-}
-
-function validNumber(value) {
-    var clearVal = "";
-    return Number.isInteger(value) == true ? value : clearVal;
 }
 
 function currency(x) {

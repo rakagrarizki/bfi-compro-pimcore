@@ -26,6 +26,12 @@ class CreditController extends FrontendController
         $this->isDev = ENV === 'dev';
     }
 
+    public function getToken()
+    {
+        $token = $this->get('session')->get('token');
+        return $token;
+    }
+
     public function mobilAction(Request $request)
     {
     }
@@ -36,6 +42,8 @@ class CreditController extends FrontendController
 
     public function motorAction(Request $request)
     {
+        $maxFundPercentage = WebsiteSetting::getByName('NDFM_MAX_FUND_PERCENTAGE')->getData();
+        $this->view->maxFundPercentage = $maxFundPercentage;
     }
 
     public function rumahAction(Request $request)
@@ -802,14 +810,960 @@ class CreditController extends FrontendController
         }
     }
 
+    // new api 
+
+    public function getGatewayTokenAction(Request $request)
+    {
+        $host = WebsiteSetting::getByName("HOST")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_AUTH_BASIC_TOKEN')->getData();
+
+        try {
+            $data = $this->sendAPI->getGatewayToken($url);
+            if ($data->header->status == 200) {
+                $this->get('session')->set('tokenBearer', $data->data->access_token);
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ], + ($this->isDev ? ['message' => $data->data] : []));
+            }
+        } catch (\Exception $e) {
+             return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+        
+    }
+
+    public function getListProvinceAction(Request $request)
+    {
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_DATALIST_PROVINCE')->getData();
+
+        try {
+            $data = $this->sendAPI->getListProvince($url, $token);
+
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            throw new \Exception('Something went wrong!');
+        }
+    }
+
+    public function getListCityAction(Request $request)
+    {
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_DATALIST_CITY')->getData();
+        $param['provinsi'] = htmlentities(addslashes($request->get('province')));
+
+        try {
+            $data = $this->sendAPI->getListCity($url, $param, $token);
+
+            if (empty($data->error)) {
+                return new JsonResponse([
+                'success' => 1,
+                'message' => "success",
+                'data' => $data->data
+            ]);
+            } else {
+                return new JsonResponse([
+                'success' => 0,
+                'message' => $this->get("translator")->trans("api-error")
+            ]);
+        }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
+    public function getListDistrictAction(Request $request)
+    {
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_DATALIST_DISTRICT')->getData();
+        $param['provinsi'] = htmlentities(addslashes($request->get('province')));
+        $param['city'] = htmlentities(addslashes($request->get('city')));
+
+        try {
+            $data = $this->sendAPI->getListDistrict($url, $param, $token);
+
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
+    public function getListSubdistrictAction(Request $request)
+    {
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_DATALIST_SUBDISTRICT')->getData();
+        $param['provinsi'] = htmlentities(addslashes($request->get('province')));
+        $param['city'] = htmlentities(addslashes($request->get('city')));
+        $param['kecamatan'] = htmlentities(addslashes($request->get('district')));
+
+        try {
+            $data = $this->sendAPI->getListSubdistrict($url, $param, $token);
+
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
+    public function getListZipcodeAction(Request $request)
+    {
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_DATALIST_ZIPCODE')->getData();
+        $param['city'] = htmlentities(addslashes($request->get('city')));
+        $param['kecamatan'] = htmlentities(addslashes($request->get('district')));
+        $param['kelurahan'] = htmlentities(addslashes($request->get('subdistrict')));
+
+        try {
+            $data = $this->sendAPI->getListZipcode($url, $param, $token);
+
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
+    public function getListAssetsAction(Request $request)
+    {
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $url = $host . WebsiteSetting::getByName("URL_GET_DATALIST_ASSETS")->getData();
+        $param['isactive'] = htmlentities(addslashes($request->get('isactive')));
+        $param['asset_type'] = htmlentities(addslashes($request->get('asset_type')));
+        $param['page'] = (int) htmlentities(addslashes($request->get('page')));
+        $param['size'] = (int) htmlentities(addslashes($request->get('size')));
+
+        try {
+            $data = $this->sendAPI->getListAssets($url, $param, $token);
+
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data,
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
+    public function getListBpkbOwnershipAction(Request $request)
+    {
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_DATALIST_BPKB_OWNERSHIP')->getData();
+
+        try {
+            $data = $this->sendAPI->getListBpkbOwnership($url, $token);
+
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
+    public function getListHouseOwnershipAction(Request $request)
+    {
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_DATALIST_HOUSE_OWNERSHIP')->getData();
+
+        try {
+            $data = $this->sendAPI->getListHouseOwnership($url, $token);
+
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
+    public function getListDataMaritalStatusAction(Request $request)
+    {
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_DATALIST_MARITAL_STATUS')->getData();
+
+        try {
+            $data = $this->sendAPI->getListDataMaritalStatus($url, $token);
+
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
+    public function getBranchCoverageAction(Request $request)
+    {
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_BRANCH_COVERAGE')->getData();
+
+        $param["customer_type"] = htmlentities(addslashes($request->get('customer_type')));
+        $param["lead_program_id"] = htmlentities(addslashes($request->get('lead_program_id')));
+        $param["kelurahan"] = htmlentities(addslashes($request->get('kelurahan')));
+        $param["kecamatan"] = htmlentities(addslashes($request->get('kecamatan')));
+        $param["city"] = htmlentities(addslashes($request->get('city')));
+        $param["zipcode"] = htmlentities(addslashes($request->get('zipcode')));
+        $param["is_branch_ho"] = htmlentities(addslashes($request->get('is_branch_ho')));
+        $param["customer_status"] = htmlentities(addslashes($request->get('customer_status')));
+        $param["is_ro_exp"] = htmlentities(addslashes($request->get('is_ro_exp')));
+        $param["lead_id"] = htmlentities(addslashes($request->get('lead_id')));
+        $param["idnumber"] = htmlentities(addslashes($request->get('idnumber')));
+
+        try {
+            $data = $this->sendAPI->getBranchCoverage($url, $param, $token);
+
+            if (empty($data->error)) {
+                return new JsonResponse([
+                'success' => 1,
+                'message' => "success",
+                'data' => $data->data
+            ]);
+            } else {
+                return new JsonResponse([
+                'success' => 0,
+                'message' => $this->get("translator")->trans("api-error")
+            ]);
+        }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => 0,
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
+    public function getAssetYearAction(Request $request)
+    {
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_ASSET_YEAR')->getData();
+        $param['asset_code'] = htmlentities(addslashes($request->get('asset_code')));
+        $param['branch_id'] = htmlentities(addslashes($request->get('branch_id')));
+
+        try {
+            $data = $this->sendAPI->getAssetYear($url, $param, $token);
+
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
+    public function getDuplicateLeadsAction(Request $request)
+    {
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_DUPLICATE_LEADS')->getData();
+        $param['is_prospect'] = htmlentities(addslashes($request->get('is_prospect')));
+        $param['lead_program_id'] = htmlentities(addslashes($request->get('lead_program_id')));
+        $param['data_type_2'] = htmlentities(addslashes($request->get('data_type_2')));
+        $param['customer_type'] = htmlentities(addslashes($request->get('customer_type')));
+        $param['license_plate'] = htmlentities(addslashes($request->get('license_plate')));
+        $param['mobile_phone_1'] = htmlentities(addslashes($request->get('mobile_phone_1')));
+
+        try {
+            $data = $this->sendAPI->getDuplicateLeads($url, $param, $token);
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data,
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
+    public function getProductDetailAction(Request $request){
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_PRODUCT_DETAIL')->getData();
+        $param['product_id'] = htmlentities(addslashes($request->get('product_id')));
+        $param['asset_group'] = htmlentities(addslashes($request->get('asset_group')));
+        $param['customer_rating'] = htmlentities(addslashes($request->get('customer_rating')));
+        $param['asset_age'] = htmlentities(addslashes($request->get('asset_age')));
+        $param['tenor'] = htmlentities(addslashes($request->get('tenor')));
+        // $param['amount_funding_to'] = htmlentities(addslashes($request->get('amount_funding_to')));
+
+        try{
+            $data = $this->sendAPI->getProductDetail($url, $param, $token);
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data,
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
+    public function getProductBranchDetailAction(Request $request){
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_PRODUCT_BRANCH_DETAIL')->getData();
+        $param['branch_id'] = htmlentities(addslashes($request->get('branch_id')));
+        $param['product_id'] = htmlentities(addslashes($request->get('product_id')));
+        $param['asset_group'] = htmlentities(addslashes($request->get('asset_group')));
+        $param['customer_rating'] = htmlentities(addslashes($request->get('customer_rating')));
+        $param['asset_age'] = htmlentities(addslashes($request->get('asset_age')));
+        $param['tenor'] = htmlentities(addslashes($request->get('tenor')));
+        // $param['amount_funding_to'] = htmlentities(addslashes($request->get('amount_funding_to')));
+
+        try{
+            $data = $this->sendAPI->getProductBranchDetail($url, $param, $token);
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data,
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
+    public function getProductOfferingAction(Request $request){
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_PRODUCT_OFFERING')->getData();
+        $param['branch_id'] = htmlentities(addslashes($request->get('branch_id')));
+        $param['product_id'] = htmlentities(addslashes($request->get('product_id')));
+        $param['product_offering_id'] = htmlentities(addslashes($request->get('product_offering_id')));
+        $param['asset_type_id'] = htmlentities(addslashes($request->get('asset_type_id')));
+        $param['is_active'] = htmlentities(addslashes($request->get('is_active')));
+
+        try{
+            $data = $this->sendAPI->getProductOffering($url, $param, $token);
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
+    public function getProductOfferingDetailAction(Request $request){
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_PRODUCT_OFFERING_DETAIL')->getData();
+        $param['branch_id'] = htmlentities(addslashes($request->get('branch_id')));
+        $param['product_id'] = htmlentities(addslashes($request->get('product_id')));
+        $param['product_offering_id'] = htmlentities(addslashes($request->get('product_offering_id')));
+        $param['customer_rating'] = htmlentities(addslashes($request->get('customer_rating')));
+        $param['asset_group'] = htmlentities(addslashes($request->get('asset_group')));
+        $param['asset_age'] = htmlentities(addslashes($request->get('asset_age')));
+        $param['tenor'] = htmlentities(addslashes($request->get('tenor')));
+        $param['amount_funding_to'] = htmlentities(addslashes($request->get('amount_funding_to')));
+        $param['is_current_setting_value'] = htmlentities(addslashes($request->get('is_current_setting_value')));
+        $param['is_active'] = htmlentities(addslashes($request->get('is_active')));
+
+        try{
+            $data = $this->sendAPI->getProductOfferingDetail($url, $param, $token);
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data,
+                    'param' => $param
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
+    public function getFiduciaFeeAction(Request $request){
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_FIDUCIA_FEE')->getData();
+        $param['branch_id'] = htmlentities(addslashes($request->get('branch_id')));
+        $param['asset_type_id'] = htmlentities(addslashes($request->get('asset_type_id')));
+        $param['category_id'] = htmlentities(addslashes($request->get('category_id')));
+        $param['otr'] = htmlentities(addslashes($request->get('otr')));
+
+        try{
+            $data = $this->sendAPI->getFiduciaFee($url, $param, $token);
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data,
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
+    public function getPricelistPagingAction(Request $request){
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_PRICELIST_PAGING')->getData();
+        $param['asset_code'] = htmlentities(addslashes($request->get('asset_code')));
+        $param['manufacturing_year'] = htmlentities(addslashes($request->get('manufacturing_year')));
+        $param['branch_id'] = htmlentities(addslashes($request->get('branch_id')));
+
+        try{
+            $data = $this->sendAPI->getPricelistPaging($url, $param, $token);
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => 0,
+                'message' => $e
+            ]);
+        }
+    }
+
+    public function getLifeInsuranceRateNewAction(Request $request){
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_LIFE_INSURANCE_RATE_NEW')->getData();
+        $param['branch_id'] = htmlentities(addslashes($request->get('branch_id')));
+        $param['age'] = htmlentities(addslashes($request->get('age')));
+        $param['si'] = htmlentities(addslashes($request->get('si')));
+        $param['tenor'] = htmlentities(addslashes($request->get('tenor')));
+
+        try{
+            $data = $this->sendAPI->getLifeInsuranceRateNew($url, $param, $token);
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => 0,
+                'message' => $e
+            ]);
+        }
+    }
+
+    public function getLifeInsuranceRateAction(Request $request){
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_LIFE_INSURANCE_RATE')->getData();
+        $param['branch_id'] = htmlentities(addslashes($request->get('branch_id')));
+        $param['age'] = htmlentities(addslashes($request->get('age')));
+        $param['tenor'] = htmlentities(addslashes($request->get('tenor')));
+        $param['insurance_branch_active'] = htmlentities(addslashes($request->get('insurance_branch_active')));
+        $param['asset_type_id'] = htmlentities(addslashes($request->get('asset_type_id')));
+
+        try{
+            $data = $this->sendAPI->getLifeInsuranceRate($url, $param, $token);
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => 0,
+                'message' => $e
+            ]);
+        }
+    }
+
+    public function getLifeInsuranceCoyBranchAction(Request $request){
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_LIFE_INSURANCE_COY_BRANCH')->getData();
+        $param['branch_id'] = htmlentities(addslashes($request->get('branch_id')));
+        $param['is_active'] = htmlentities(addslashes($request->get('is_active')));
+
+        try{
+            $data = $this->sendAPI->getLifeInsuranceCoyBranch($url, $param, $token);
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => 0,
+                'message' => $e
+            ]);
+        }
+    }
+
+    public function getAssetCategoryAction(Request $request){
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_ASSET_CATEGORY')->getData();
+        $param['asset_type_id'] = htmlentities(addslashes($request->get('asset_type_id')));
+        $param['category_id'] = htmlentities(addslashes($request->get('category_id')));
+
+        try{
+            $data = $this->sendAPI->getAssetCategory($url, $param, $token);
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => 0,
+                'message' => $e
+            ]);
+        }
+    }
+
+    public function getAssetInsuranceRateCategoryAction(Request $request){
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_ASSET_INSURANCE_RATE_CATEGORY')->getData();
+        $param['ins_rate_category_id'] = htmlentities(addslashes($request->get('ins_rate_category_id')));
+        $param['asset_type_id'] = htmlentities(addslashes($request->get('asset_type_id')));
+
+        try{
+            $data = $this->sendAPI->getAssetInsuranceRateCategory($url, $param, $token);
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => 0,
+                'message' => $e
+            ]);
+        }
+    }
+
+    public function getAssetInsuranceRateAction(Request $request){
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_ASSET_INSURANCE_RATE')->getData();
+        $param['insurance_coy_id'] = htmlentities(addslashes($request->get('insurance_coy_id')));
+        $param['insurance_coy_branch_id'] = htmlentities(addslashes($request->get('insurance_coy_branch_id')));
+        $param['branch_id'] = htmlentities(addslashes($request->get('branch_id')));
+        $param['otr'] = htmlentities(addslashes($request->get('otr')));
+        $param['insurance_type'] = htmlentities(addslashes($request->get('insurance_type')));
+        $param['coverage_type'] = htmlentities(addslashes($request->get('coverage_type')));
+        $param['tenor'] = htmlentities(addslashes($request->get('tenor')));
+        $param['usage_id'] = htmlentities(addslashes($request->get('usage_id')));
+        $param['new_used'] = htmlentities(addslashes($request->get('new_used')));
+        $param['year_num'] = htmlentities(addslashes($request->get('year_num')));
+        $param['is_active'] = htmlentities(addslashes($request->get('is_active')));
+
+        try{
+            $data = $this->sendAPI->getAssetInsuranceRate($url, $param, $token);
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => 0,
+                'message' => $e
+            ]);
+        }
+    }
+
+    public function getAssetInsuranceCoyBranchAction(Request $request){
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_ASSET_INSURANCE_COY_BRANCH')->getData();
+        $param['branch_id'] = htmlentities(addslashes($request->get('branch_id')));
+        $param['is_active'] = htmlentities(addslashes($request->get('is_active')));
+
+        try{
+            $data = $this->sendAPI->getAssetInsuranceCoyBranch($url, $param, $token);
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => 0,
+                'message' => $e
+            ]);
+        }
+    }
+
+    public function getRsaCoyBranchAction(Request $request){
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_RSA_COY_BRANCH')->getData();
+        $param['branch_id'] = htmlentities(addslashes($request->get('branch_id')));
+
+        try{
+            $data = $this->sendAPI->getRsaCoyBranch($url, $param, $token);
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => 0,
+                'message' => $e
+            ]);
+        }
+    }
+
+    public function getRsaFeeAction(Request $request){
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_RSA_FEE')->getData();
+        $param['branch_id'] = htmlentities(addslashes($request->get('branch_id')));
+        $param['rsa_insurance_coy_branch_id'] = htmlentities(addslashes($request->get('rsa_insurance_coy_branch_id')));
+        $param['tenor'] = htmlentities(addslashes($request->get('tenor')));
+
+        try{
+            $data = $this->sendAPI->getRsaFee($url, $param, $token);
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => 0,
+                'message' => $e
+            ]);
+        }
+    }
+
+    public function getEstimateInstallmentAction(Request $request){
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_GET_ESTIMATE_INSTALLMENT')->getData();
+
+        $param['funding_amount'] = (int) htmlentities(addslashes($request->get('funding_amount')));
+        $param['tenor'] = (int) htmlentities(addslashes($request->get('tenor')));
+        $param['effective_rate'] = (double) htmlentities(addslashes($request->get('effective_rate')));
+        $param['flat_rate'] = (double) htmlentities(addslashes($request->get('flat_rate')));
+        $param['installment_type'] = (int) htmlentities(addslashes($request->get('installment_type')));
+        $param['payment_fequency'] = (int) htmlentities(addslashes($request->get('payment_fequency')));
+        $param['calcualte_by'] = (int) htmlentities(addslashes($request->get('calcualte_by')));
+        $param['grace_periode_type'] = (int) htmlentities(addslashes($request->get('grace_periode_type')));
+        $param['grace_periode'] = (int) htmlentities(addslashes($request->get('grace_periode')));
+        $param['nilai_taksaksi'] = (double) htmlentities(addslashes($request->get('nilai_taksaksi')));
+        $param['max_ltv'] = (double) htmlentities(addslashes($request->get('max_ltv')));
+        $param['admin_fee'] = (double) htmlentities(addslashes($request->get('admin_fee')));
+        $param['fiducia_fee'] = (double) htmlentities(addslashes($request->get('fiducia_fee')));
+        $param['provisi_fee'] = (double) htmlentities(addslashes($request->get('provisi_fee')));
+        $param['other_fee'] = (double) htmlentities(addslashes($request->get('other_fee')));
+        $param['survey_fee'] = (double) htmlentities(addslashes($request->get('survey_fee')));
+        $param['notary_fee'] = (double) htmlentities(addslashes($request->get('notary_fee')));
+        $param['rsa_fee'] = (double) htmlentities(addslashes($request->get('rsa_fee')));
+        $param['total_life_insurance_capitalize'] = (double) htmlentities(addslashes($request->get('total_life_insurance_capitalize')));
+        $param['total_asset_insurance_capitalize'] = (double) htmlentities(addslashes($request->get('total_asset_insurance_capitalize')));
+        $param['round'] = (int) htmlentities(addslashes($request->get('round')));
+        $param['rsa_on_loan'] = htmlentities(addslashes($request->get('rsa_on_loan')));
+        $param['admin_on_loan'] = htmlentities(addslashes($request->get('admin_on_loan')));
+        $param['fiducia_on_loan'] = htmlentities(addslashes($request->get('fiducia_on_loan')));
+        $param['provisi_on_loan'] = htmlentities(addslashes($request->get('provisi_on_loan')));
+        $param['other_on_loan'] = htmlentities(addslashes($request->get('other_on_loan')));
+        $param['survey_on_loan'] = htmlentities(addslashes($request->get('survey_on_loan')));
+        $param['notary_on_loan'] = htmlentities(addslashes($request->get('notary_on_loan')));
+
+        try{
+            $data = $this->sendAPI->getEstimateInstallment($url, $param, $token);
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => 0,
+                'message' => $e
+            ]);
+        }
+    }
+
+    public function getTokenBearer()
+    {
+        $tokenBearer = $this->get('session')->get('tokenBearer');
+        return $tokenBearer;
+    }
+
+    // end of new api
+
     public function saveCarLeads1Action(Request $request)
     {
         $host = WebsiteSetting::getByName("HOST")->getData();
         $url = $host . WebsiteSetting::getByName('URL_GET_SAVE_CAR_LEADS_1')->getData();
-        $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["name"] = htmlentities(addslashes($request->get('name')));
         $param["email"] = htmlentities(addslashes($request->get('email')));
         $param["phone_number"] = htmlentities(addslashes($request->get('phone_number')));
+        $param["wa_number"] = htmlentities(addslashes($request->get('wa_number')));
+        $param["no_ktp"] = htmlentities(addslashes($request->get('no_ktp')));
         $param["utm_source"] = htmlentities(addslashes($request->get('utm_source')));
         $param["utm_campaign"] = htmlentities(addslashes($request->get('utm_campaign')));
         $param["utm_term"] = htmlentities(addslashes($request->get('utm_term')));
@@ -818,21 +1772,23 @@ class CreditController extends FrontendController
 
         try {
             $data = $this->sendAPI->saveCarLeads1($url, $param);
+            if ($data->header->status == 200) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data,
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ], + ($this->isDev ? ['message' => $data->data] : []));
+            }
         } catch (\Exception $e) {
-            throw new \Exception('Something went wrong!');
-        }
-
-        if ($data->header->status == 200) {
             return new JsonResponse([
-                'success' => "1",
-                'message' => "success",
-                'data' => $data->data
-            ]);
-        } else {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => $this->get("translator")->trans("api-error")
-            ]);
+                'success' => 0,
+                'message' => $e->getMessage()
+           ]);
         }
     }
 
@@ -840,32 +1796,56 @@ class CreditController extends FrontendController
     {
         $host = WebsiteSetting::getByName("HOST")->getData();
         $url = $host . WebsiteSetting::getByName('URL_GET_SAVE_CAR_LEADS_2')->getData();
-        $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
-        $param["province_id"] = htmlentities(addslashes($request->get('province_id')));
-        $param["city_id"] = htmlentities(addslashes($request->get('city_id')));
-        $param["district_id"] = htmlentities(addslashes($request->get('district_id')));
-        $param["subdistrict_id"] = htmlentities(addslashes($request->get('subdistrict_id')));
-        $param["zipcode_id"] = htmlentities(addslashes($request->get('zipcode_id')));
-        $param["address"] = htmlentities(addslashes($request->get('address')));
 
+        $info_address = $request->get('info_address');
+        $info_assets = $request->get('info_assets');
+
+        $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+        $param["info_address"]["province_id_bfi"] = htmlentities(addslashes($info_address['province_id_bfi']));
+        $param["info_address"]["province_desc_bfi"] = htmlentities(addslashes($info_address['province_desc_bfi']));
+        $param["info_address"]["city_id_bfi"] = htmlentities(addslashes($info_address['city_id_bfi']));
+        $param["info_address"]["city_desc_bfi"] = htmlentities(addslashes($info_address['city_desc_bfi']));
+        $param["info_address"]["district_id_bfi"] = htmlentities(addslashes($info_address['district_id_bfi']));
+        $param["info_address"]["district_desc_bfi"] = htmlentities(addslashes($info_address['district_desc_bfi']));
+        $param["info_address"]["subdistrict_id_bfi"] = htmlentities(addslashes($info_address['subdistrict_id_bfi']));
+        $param["info_address"]["subdistrict_desc_bfi"] = htmlentities(addslashes($info_address['subdistrict_desc_bfi']));
+        $param["info_address"]["zipcode_id_bfi"] = htmlentities(addslashes($info_address['zipcode_id_bfi']));
+        $param["info_address"]["zipcode_desc_bfi"] = htmlentities(addslashes($info_address['zipcode_desc_bfi']));
+        $param["info_address"]["full_address"] = htmlentities(addslashes($info_address['full_address']));
+        $param["info_assets"]["type_id_bfi"] = htmlentities(addslashes($info_assets['type_id_bfi']));
+        $param["info_assets"]["type_desc_bfi"] = htmlentities(addslashes($info_assets['type_desc_bfi']));
+        $param["info_assets"]["brand_id_bfi"] = htmlentities(addslashes($info_assets['brand_id_bfi']));
+        $param["info_assets"]["brand_desc_bfi"] = htmlentities(addslashes($info_assets['brand_desc_bfi']));
+        $param["info_assets"]["model_id_bfi"] = htmlentities(addslashes($info_assets['model_id_bfi']));
+        $param["info_assets"]["model_desc_bfi"] = htmlentities(addslashes($info_assets['model_desc_bfi']));
+        $param["info_assets"]["vehicle_year_bfi"] = htmlentities(addslashes($info_assets['vehicle_year_bfi']));
+        $param["info_assets"]["license_plate"] = htmlentities(addslashes($info_assets['license_plate']));
+        $param["info_assets"]["asset_ownership_id_bfi"] = htmlentities(addslashes($info_assets['asset_ownership_id_bfi']));
+        $param["info_assets"]["asset_ownership_desc_bfi"] = htmlentities(addslashes($info_assets['asset_ownership_desc_bfi']));
+        $param["info_assets"]["category_id_bfi"] = htmlentities(addslashes($info_assets['category_id_bfi']));
+        $param["info_assets"]["category_desc_bfi"] = htmlentities(addslashes($info_assets['category_desc_bfi']));
 
         try {
             $data = $this->sendAPI->saveCarLeads2($url, $param);
-        } catch (\Exception $e) {
-            throw new \Exception('Something went wrong!');
-        }
 
-        if ($data->header->status == 200) {
+            if ($data->header->status == 200) {
             return new JsonResponse([
                 'success' => "1",
                 'message' => "success",
                 'data' => $data->data
             ]);
-        } else {
+            } else {
+                return new JsonResponse([
+                    'success' => "0",
+                    'message' => $this->get("translator")->trans("api-error"),
+                    'data' => $data->data
+                ]);
+            }
+        } catch (\Exception $e) {
             return new JsonResponse([
-                'success' => "0",
-                'message' => $this->get("translator")->trans("api-error")
-            ]);
+                'success' => 0,
+                'message' => $e->getMessage()
+           ]);
         }
     }
 
@@ -873,30 +1853,56 @@ class CreditController extends FrontendController
     {
         $host = WebsiteSetting::getByName("HOST")->getData();
         $url = $host . WebsiteSetting::getByName('URL_GET_SAVE_CAR_LEADS_3')->getData();
+
+        $info_customer = $request->get('info_customer');
+        $info_assets = $request->get('info_assets');
+        $info_calculator = $request->get('info_calculator');
+
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
-        $param["car_type_id"] = htmlentities(addslashes($request->get('car_type_id')));
-        $param["car_brand_id"] = htmlentities(addslashes($request->get('car_brand_id')));
-        $param["car_model_id"] = htmlentities(addslashes($request->get('car_model_id')));
-        $param["car_year_id"] = htmlentities(addslashes($request->get('car_year_id')));
-        $param["bpkb_atas_nama"] = htmlentities(addslashes($request->get('bpkb_atas_nama')));
+        $param["info_customer"]["profession_id_bfi"] = htmlentities(addslashes($info_customer['profession_id_bfi']));
+        $param["info_customer"]["profession_desc_bfi"] = htmlentities(addslashes($info_customer['profession_desc_bfi']));
+        $param["info_customer"]["salary"] = htmlentities(addslashes($info_customer['salary']));
+        $param["info_customer"]["dob"] = htmlentities(addslashes($info_customer['dob']));
+        $param["info_customer"]["marital_status_id_bfi"] = htmlentities(addslashes($info_customer['marital_status_id_bfi']));
+        $param["info_customer"]["marital_status_desc_bfi"] = htmlentities(addslashes($info_customer['marital_status_desc_bfi']));
+        $param["info_customer"]["media_contact_option"] = htmlentities(addslashes($info_customer['media_contact_option']));
+        $param["info_assets"]["is_ktp_domicile_same"] = htmlentities(addslashes($info_assets['is_ktp_domicile_same']));
+        $param["info_assets"]["home_ownership_id_bfi"] = htmlentities(addslashes($info_assets['home_ownership_id_bfi']));
+        $param["info_assets"]["home_ownership_desc_bfi"] = htmlentities(addslashes($info_assets['home_ownership_desc_bfi']));
+        $param["info_assets"]["asset_province_id_bfi"] = htmlentities(addslashes($info_assets['asset_province_id_bfi']));
+        $param["info_assets"]["asset_province_desc_bfi"] = htmlentities(addslashes($info_assets['asset_province_desc_bfi']));
+        $param["info_assets"]["asset_city_id_bfi"] = htmlentities(addslashes($info_assets['asset_city_id_bfi']));
+        $param["info_assets"]["asset_city_desc_bfi"] = htmlentities(addslashes($info_assets['asset_city_desc_bfi']));
+        $param["info_assets"]["asset_district_id_bfi"] = htmlentities(addslashes($info_assets['asset_district_id_bfi']));
+        $param["info_assets"]["asset_district_desc_bfi"] = htmlentities(addslashes($info_assets['asset_district_desc_bfi']));
+        $param["info_assets"]["asset_subdistrict_id_bfi"] = htmlentities(addslashes($info_assets['asset_subdistrict_id_bfi']));
+        $param["info_assets"]["asset_subdistrict_desc_bfi"] = htmlentities(addslashes($info_assets['asset_subdistrict_desc_bfi']));
+        $param["info_assets"]["asset_zipcode_id_bfi"] = htmlentities(addslashes($info_assets['asset_zipcode_id_bfi']));
+        $param["info_assets"]["asset_zipcode_desc_bfi"] = htmlentities(addslashes($info_assets['asset_zipcode_desc_bfi']));
+        $param["info_assets"]["asset_full_address"] = htmlentities(addslashes($info_assets['asset_full_address']));
+        $param["info_calculator"]["funding"] = htmlentities(addslashes($info_calculator['funding']));
+        $param["info_calculator"]["tenor"] = htmlentities(addslashes($info_calculator['tenor']));
+        $param["info_calculator"]["monthly_installment"] = htmlentities(addslashes($info_calculator['monthly_installment']));
+        $param["info_calculator"]["vehicle_insurance"] = htmlentities(addslashes($info_calculator['vehicle_insurance']));
+        $param["info_calculator"]["ltv_max"] = htmlentities(addslashes($info_calculator['ltv_max']));
+        $param["info_calculator"]["ntf_max"] = htmlentities(addslashes($info_calculator['ntf_max']));
 
         try {
             $data = $this->sendAPI->saveCarLeads3($url, $param);
+            if ($data->header->status == 200) {
+                return new JsonResponse([
+                    'success' => "1",
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => "0",
+                    'message' => $this->get("translator")->trans("api-error"),
+                ]);
+            }
         } catch (\Exception $e) {
             throw new \Exception('Something went wrong!');
-        }
-
-        if ($data->header->status == 200) {
-            return new JsonResponse([
-                'success' => "1",
-                'message' => "success",
-                'data' => $data->data
-            ]);
-        } else {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => $this->get("translator")->trans("api-error")
-            ]);
         }
     }
 
@@ -905,24 +1911,24 @@ class CreditController extends FrontendController
         $host = WebsiteSetting::getByName("HOST")->getData();
         $url = $host . WebsiteSetting::getByName('URL_GET_SAVE_CAR_LEADS_4')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+        $param["disclaimer"] = htmlentities(addslashes($request->get('disclaimer')));
 
         try {
             $data = $this->sendAPI->saveCarLeads4($url, $param);
+            if ($data->header->status == 200) {
+                return new JsonResponse([
+                    'success' => "1",
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => "0",
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
         } catch (\Exception $e) {
             throw new \Exception('Something went wrong!');
-        }
-
-        if ($data->header->status == 200) {
-            return new JsonResponse([
-                'success' => "1",
-                'message' => "success",
-                'data' => $data->data
-            ]);
-        } else {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => $this->get("translator")->trans("api-error")
-            ]);
         }
     }
 
@@ -934,21 +1940,20 @@ class CreditController extends FrontendController
 
         try {
             $data = $this->sendAPI->saveCarLeads5($url, $param);
+            if ($data->header->status == 200) {
+                return new JsonResponse([
+                    'success' => "1",
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => "0",
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
         } catch (\Exception $e) {
             throw new \Exception('Something went wrong!');
-        }
-
-        if ($data->header->status == 200) {
-            return new JsonResponse([
-                'success' => "1",
-                'message' => "success",
-                'data' => $data->data
-            ]);
-        } else {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => $this->get("translator")->trans("api-error")
-            ]);
         }
     }
 
@@ -1177,10 +2182,12 @@ class CreditController extends FrontendController
     {
         $host = WebsiteSetting::getByName("HOST")->getData();
         $url = $host . WebsiteSetting::getByName('URL_SAVE_MOTORCYCLE_LEADS_1')->getData();
-        $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+        // $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
         $param["name"] = htmlentities(addslashes($request->get('name')));
+        $param["no_ktp"] = htmlentities(addslashes($request->get('no_ktp')));
         $param["email"] = htmlentities(addslashes($request->get('email')));
         $param["phone_number"] = htmlentities(addslashes($request->get('phone_number')));
+        $param["wa_number"] = htmlentities(addslashes($request->get('wa_number')));
         $param["utm_source"] = htmlentities(addslashes($request->get('utm_source')));
         $param["utm_campaign"] = htmlentities(addslashes($request->get('utm_campaign')));
         $param["utm_term"] = htmlentities(addslashes($request->get('utm_term')));
@@ -1189,20 +2196,22 @@ class CreditController extends FrontendController
         
         try {
             $data = $this->sendAPI->saveMotorcycleLeads1($url, $param);
+            if ($data->header->status == 200) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data,
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
         } catch (\Exception $e) {
-            throw new \Exception('Something went wrong!');
-        }
-
-        if ($data->header->status == 200) {
             return new JsonResponse([
-                'success' => "1",
-                'message' => "success",
-                'data' => $data->data
-            ]);
-        } else {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => $this->get("translator")->trans("api-error")
+                'success' => 0,
+                'message' => $e->getMessage()
             ]);
         }
     }
@@ -1211,30 +2220,59 @@ class CreditController extends FrontendController
     {
         $host = WebsiteSetting::getByName("HOST")->getData();
         $url = $host . WebsiteSetting::getByName('URL_SAVE_MOTORCYCLE_LEADS_2')->getData();
+
+        $info_address = $request->get('info_address');
+        $info_assets = $request->get('info_assets');
+        $info_customer = $request->get('info_customer');
+
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
-        $param["province_id"] = htmlentities(addslashes($request->get('province_id')));
-        $param["city_id"] = htmlentities(addslashes($request->get('city_id')));
-        $param["district_id"] = htmlentities(addslashes($request->get('district_id')));
-        $param["subdistrict_id"] = htmlentities(addslashes($request->get('subdistrict_id')));
-        $param["zipcode_id"] = htmlentities(addslashes($request->get('zipcode_id')));
-        $param["address"] = htmlentities(addslashes($request->get('address')));
+        $param["info_address"]["province_id_bfi"] = htmlentities(addslashes($info_address['province_id_bfi']));
+        $param["info_address"]["province_desc_bfi"] = htmlentities(addslashes($info_address['province_desc_bfi']));
+        $param["info_address"]["city_id_bfi"] = htmlentities(addslashes($info_address['city_id_bfi']));
+        $param["info_address"]["city_desc_bfi"] = htmlentities(addslashes($info_address['city_desc_bfi']));
+        $param["info_address"]["district_id_bfi"] = htmlentities(addslashes($info_address['district_id_bfi']));
+        $param["info_address"]["district_desc_bfi"] = htmlentities(addslashes($info_address['district_desc_bfi']));
+        $param["info_address"]["subdistrict_id_bfi"] = htmlentities(addslashes($info_address['subdistrict_id_bfi']));
+        $param["info_address"]["subdistrict_desc_bfi"] = htmlentities(addslashes($info_address['subdistrict_desc_bfi']));
+        $param["info_address"]["zipcode_id_bfi"] = htmlentities(addslashes($info_address['zipcode_id_bfi']));
+        $param["info_address"]["zipcode_desc_bfi"] = htmlentities(addslashes($info_address['zipcode_desc_bfi']));
+        $param["info_address"]["full_address"] = htmlentities(addslashes($info_address['full_address']));
+        $param["info_assets"]["type_id_bfi"] = htmlentities(addslashes($info_assets['type_id_bfi']));
+        $param["info_assets"]["type_desc_bfi"] = htmlentities(addslashes($info_assets['type_desc_bfi']));
+        $param["info_assets"]["brand_id_bfi"] = htmlentities(addslashes($info_assets['brand_id_bfi']));
+        $param["info_assets"]["brand_desc_bfi"] = htmlentities(addslashes($info_assets['brand_desc_bfi']));
+        $param["info_assets"]["model_id_bfi"] = htmlentities(addslashes($info_assets['model_id_bfi']));
+        $param["info_assets"]["model_desc_bfi"] = htmlentities(addslashes($info_assets['model_desc_bfi']));
+        $param["info_assets"]["vehicle_year_bfi"] = htmlentities(addslashes($info_assets['vehicle_year_bfi']));
+        $param["info_assets"]["license_plate"] = htmlentities(addslashes($info_assets['license_plate']));
+        $param["info_assets"]["asset_ownership_id_bfi"] = htmlentities(addslashes($info_assets['asset_ownership_id_bfi']));
+        $param["info_assets"]["asset_ownership_desc_bfi"] = htmlentities(addslashes($info_assets['asset_ownership_desc_bfi']));
+        $param["info_assets"]["home_ownership_id_bfi"] = htmlentities(addslashes($info_assets['home_ownership_id_bfi']));
+        $param["info_assets"]["home_ownership_desc_bfi"] = htmlentities(addslashes($info_assets['home_ownership_desc_bfi']));
+        $param["info_assets"]["tax_is_active"] = htmlentities(addslashes($info_assets['tax_is_active']));
+        $param["info_customer"]["profession_id_bfi"] = htmlentities(addslashes($info_customer['profession_id_bfi']));
+        $param["info_customer"]["profession_desc_bfi"] = htmlentities(addslashes($info_customer['profession_desc_bfi']));
+        $param["info_customer"]["salary"] = htmlentities(addslashes($info_customer['salary']));
+        $param["info_customer"]["dob"] = htmlentities(addslashes($info_customer['dob']));
 
         try {
             $data = $this->sendAPI->saveMotorcycleLeads2($url, $param);
+            if ($data->header->status == 200) {
+                return new JsonResponse([
+                    'success' => "1",
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => "0",
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
         } catch (\Exception $e) {
-            throw new \Exception('Something went wrong!');
-        }
-
-        if ($data->header->status == 200) {
             return new JsonResponse([
-                'success' => "1",
-                'message' => "success",
-                'data' => $data->data
-            ]);
-        } else {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => $this->get("translator")->trans("api-error")
+                'success' => 0,
+                'message' => $e->getMessage()
             ]);
         }
     }
@@ -1243,29 +2281,32 @@ class CreditController extends FrontendController
     {
         $host = WebsiteSetting::getByName("HOST")->getData();
         $url = $host . WebsiteSetting::getByName('URL_SAVE_MOTORCYCLE_LEADS_3')->getData();
+
+        $info_calculator = $request->get('info_calculator');
+
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
-        $param["motorcycle_type_id"] = htmlentities(addslashes($request->get('motorcycle_type_id')));
-        $param["motorcycle_brand_id"] = htmlentities(addslashes($request->get('motorcycle_brand_id')));
-        $param["motorcycle_model_id"] = htmlentities(addslashes($request->get('motorcycle_model_id')));
-        $param["motorcycle_year_id"] = htmlentities(addslashes($request->get('motorcycle_year_id')));
-        $param["bpkb_atas_nama"] = htmlentities(addslashes($request->get('bpkb_atas_nama')));
+        $param["info_calculator"]["funding"] = htmlentities(addslashes($info_calculator['funding']));
+        $param["info_calculator"]["tenor"] = htmlentities(addslashes($info_calculator['tenor']));
+        $param["info_calculator"]["monthly_installment"] = htmlentities(addslashes($info_calculator['monthly_installment']));
 
         try {
             $data = $this->sendAPI->saveMotorcycleLeads3($url, $param);
+            if ($data->header->status == 200) {
+                return new JsonResponse([
+                    'success' => "1",
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => "0",
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
         } catch (\Exception $e) {
-            throw new \Exception('Something went wrong!');
-        }
-
-        if ($data->header->status == 200) {
             return new JsonResponse([
-                'success' => "1",
-                'message' => "success",
-                'data' => $data->data
-            ]);
-        } else {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => $this->get("translator")->trans("api-error")
+                'success' => 0,
+                'message' => $e->getMessage()
             ]);
         }
     }
@@ -1275,23 +2316,26 @@ class CreditController extends FrontendController
         $host = WebsiteSetting::getByName("HOST")->getData();
         $url = $host . WebsiteSetting::getByName('URL_SAVE_MOTORCYCLE_LEADS_4')->getData();
         $param["submission_id"] = htmlentities(addslashes($request->get('submission_id')));
+        $param["disclaimer"] = htmlentities(addslashes($request->get('disclaimer')));
 
         try {
             $data = $this->sendAPI->saveMotorcycleLeads4($url, $param);
+            if ($data->header->status == 200) {
+                return new JsonResponse([
+                    'success' => "1",
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => "0",
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
         } catch (\Exception $e) {
-            throw new \Exception('Something went wrong!');
-        }
-
-        if ($data->header->status == 200) {
             return new JsonResponse([
-                'success' => "1",
-                'message' => "success",
-                'data' => $data->data
-            ]);
-        } else {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => $this->get("translator")->trans("api-error")
+                'success' => 0,
+                'message' => $e->getMessage()
             ]);
         }
     }
@@ -1304,20 +2348,22 @@ class CreditController extends FrontendController
 
         try {
             $data = $this->sendAPI->saveMotorcycleLeads5($url, $param);
+            if ($data->header->status == 200) {
+                return new JsonResponse([
+                    'success' => "1",
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => "0",
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
         } catch (\Exception $e) {
-            throw new \Exception('Something went wrong!');
-        }
-
-        if ($data->header->status == 200) {
             return new JsonResponse([
-                'success' => "1",
-                'message' => "success",
-                'data' => $data->data
-            ]);
-        } else {
-            return new JsonResponse([
-                'success' => "0",
-                'message' => $this->get("translator")->trans("api-error")
+                'success' => 0,
+                'message' => $e->getMessage()
             ]);
         }
     }

@@ -2464,5 +2464,534 @@ return [
         "legacy" => FALSE,
         "creationDate" => 1581494082,
         "modificationDate" => 1581224171
-    ]
+    ],
+    142 => [
+        "id" => 142,
+        "name" => "get list province",
+        "pattern" => "/\\/credit\\/get-list-province/",
+        "reverse" => "/credit/get-list-province",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getListProvince",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+    143 => [
+        "id" => 143,
+        "name" => "get list city",
+        "pattern" => "/\\/credit\\/get-list-city/",
+        "reverse" => "/credit/get-list-city",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getListCity",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+    144 => [
+        "id" => 144,
+        "name" => "get list district",
+        "pattern" => "/\\/credit\\/get-list-district/",
+        "reverse" => "/credit/get-list-district",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getListDistrict",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+    145 => [
+        "id" => 145,
+        "name" => "get list subdistrict",
+        "pattern" => "/\\/credit\\/get-list-subdistrict/",
+        "reverse" => "/credit/get-list-subdistrict",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getListSubdistrict",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+    146 => [
+        "id" => 146,
+        "name" => "get list zipcode",
+        "pattern" => "/\\/credit\\/get-list-zipcode/",
+        "reverse" => "/credit/get-list-zipcode",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getListZipcode",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+    147 => [
+        "id" => 147,
+        "name" => "get list assets",
+        "pattern" => "/\\/credit\\/get-list-assets/",
+        "reverse" => "/credit/get-list-assets",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getListAssets",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+    148 => [
+        "id" => 148,
+        "name" => "get list bpkb ownership",
+        "pattern" => "/\\/credit\\/get-list-bpkb-ownership/",
+        "reverse" => "/credit/get-list-bpkb-ownership",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getListBpkbOwnership",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+    149 => [
+        "id" => 149,
+        "name" => "get list house ownership",
+        "pattern" => "/\\/credit\\/get-list-house-ownership/",
+        "reverse" => "/credit/get-list-house-ownership",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getListHouseOwnership",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+    150 => [
+        "id" => 150,
+        "name" => "get asset year",
+        "pattern" => "/\\/credit\\/get-asset-year/",
+        "reverse" => "/credit/get-asset-year",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getAssetYear",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+    151 => [
+        "id" => 151,
+        "name" => "get branch coverage",
+        "pattern" => "/\\/credit\\/get-branch-coverage/",
+        "reverse" => "/credit/get-branch-coverage",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getBranchCoverage",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+    152 => [
+        "id" => 152,
+        "name" => "get duplicate leads",
+        "pattern" => "/\\/credit\\/get-duplicate-leads/",
+        "reverse" => "/credit/get-duplicate-leads",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getDuplicateLeads",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+    153 => [
+        "id" => 153,
+        "name" => "get list data marital status",
+        "pattern" => "/\\/credit\\/get-list-data-marital-status/",
+        "reverse" => "/credit/get-list-data-marital-status",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getListDataMaritalStatus",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+    154 => [
+        "id" => 154,
+        "name" => "get list product detail",
+        "pattern" => "/\\/credit\\/get-list-product-detail/",
+        "reverse" => "/credit/get-list-product-detail",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getProductDetail",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+    155 => [
+        "id" => 155,
+        "name" => "get list product branch detail",
+        "pattern" => "/\\/credit\\/get-list-product-branch-detail/",
+        "reverse" => "/credit/get-list-product-branch-detail",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getProductBranchDetail",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+    156 => [
+        "id" => 156,
+        "name" => "get fiducia fee",
+        "pattern" => "/\\/credit\\/get-fiducia-fee/",
+        "reverse" => "/credit/get-fiducia-fee",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getFiduciaFee",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+    157 => [
+        "id" => 157,
+        "name" => "get pricelist paging",
+        "pattern" => "/\\/credit\\/get-list-price/",
+        "reverse" => "/credit/get-list-price",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getPricelistPaging",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+    158 => [
+        "id" => 158,
+        "name" => "get estimate installment",
+        "pattern" => "/\\/credit\\/get-estimate-installment/",
+        "reverse" => "/credit/get-estimate-installment",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getEstimateInstallment",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+    159 => [
+        "id" => 159,
+        "name" => "get list product offering",
+        "pattern" => "/\\/credit\\/get-product-offering/",
+        "reverse" => "/credit/get-product-offering",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getProductOffering",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+    160 => [
+        "id" => 160,
+        "name" => "get life insurance rate new",
+        "pattern" => "/\\/credit\\/get-life-insurance-rate-new/",
+        "reverse" => "/credit/get-life-insurance-rate-new",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getLifeInsuranceRateNew",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+    161 => [
+        "id" => 161,
+        "name" => "get life insurance rate",
+        "pattern" => "/\\/credit\\/get-life-insurance-rate/",
+        "reverse" => "/credit/get-life-insurance-rate",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getLifeInsuranceRate",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+    162 => [
+        "id" => 162,
+        "name" => "get life insurance coy branch",
+        "pattern" => "/\\/credit\\/get-life-insurance-coy-branch/",
+        "reverse" => "/credit/get-life-insurance-coy-branch",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getLifeInsuranceCoyBranch",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+    163 => [
+        "id" => 163,
+        "name" => "get product offering detail",
+        "pattern" => "/\\/credit\\/get-product-offer-detail/",
+        "reverse" => "/credit/get-product-offer-detail",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getProductOfferingDetail",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+
+    164 => [
+        "id" => 164,
+        "name" => "get asset category",
+        "pattern" => "/\\/credit\\/get-asset-category/",
+        "reverse" => "/credit/get-asset-category",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getAssetCategory",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+
+    165 => [
+        "id" => 165,
+        "name" => "get asset insurance rate category",
+        "pattern" => "/\\/credit\\/get-asset-insurance-rate-category/",
+        "reverse" => "/credit/get-asset-insurance-rate-category",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getAssetInsuranceRateCategory",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+
+    166 => [
+        "id" => 166,
+        "name" => "get asset insurance rate",
+        "pattern" => "/\\/credit\\/get-insurance-rate-asset/",
+        "reverse" => "/credit/get-insurance-rate-asset",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getAssetInsuranceRate",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+
+    167 => [
+        "id" => 167,
+        "name" => "get asset insurance coy branch",
+        "pattern" => "/\\/credit\\/get-asset-insurance-coy-branch/",
+        "reverse" => "/credit/get-asset-insurance-coy-branch",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getAssetInsuranceCoyBranch",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+
+    168 => [
+        "id" => 168,
+        "name" => "get rsa coy branch",
+        "pattern" => "/\\/credit\\/get-rsa-coy-branch/",
+        "reverse" => "/credit/get-rsa-coy-branch",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getRsaCoyBranch",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+    
+    169 => [
+        "id" => 169,
+        "name" => "get rse fee",
+        "pattern" => "/\\/credit\\/get-rsa-fee/",
+        "reverse" => "/credit/get-rsa-fee",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getRsaFee",
+        "variables" => "",
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+
+    170 => [
+        "id" => 170,
+        "name" => "get gateway token",
+        "pattern" => "/\\/credit\\/get_gateway_token/",
+        "reverse" => "/credit/get_gateway_token",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getGatewayToken",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
 ];

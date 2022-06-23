@@ -58,7 +58,7 @@
     }
 
     p {
-        font-size: 18px;
+        font-size: 16px;
         color: #565656;
         @include breakpoint(mobile) {
             font-size: 13px;
@@ -895,6 +895,10 @@
                         font-size: 0.8em;
                     }
                 }
+
+                #warning-text {
+                    display: inline-block !important;
+                }
             }
             .total-estimate-travel {
                 margin-top: 0px;
@@ -1019,6 +1023,12 @@
             }
 
             .input-group {
+                label {
+                    z-index: 4;
+                    &.valids::before {
+                        right: 4.8rem;
+                    }
+                }
                 .input-group-addon:first-child {
                     font-family: $font_default;
                     padding: 20px;
@@ -1033,18 +1043,21 @@
 
                 .form-control:last-child {
                     font-family: $font_default;
-                    padding: 25px;
+                    padding: 25px 25px 25px 14px;
                     height: 60px;
                     border-radius: 2px;
                     -webkit-border-radius: 2px;
                     -moz-border-radius: 2px;
                     -ms-border-radius: 2px;
                     -o-border-radius: 2px;
+                    &#pembiayaan {
+                        border-radius: 0 6px 6px 0 !important;
+                    }
                 }
             }
 
             .slidecontainer {
-                margin-top: 20px;
+                margin-top: 8px;
                 overflow: hidden;
                 padding-right: 10px;
                 padding-left: 10px;
@@ -1072,7 +1085,12 @@
 
                 .slider-horizontal {
                     width: 100%;
-
+                    .slider-track {
+                        border-radius: 8px;
+                    }
+                    .slider-track-high {
+                        background-color: #eef1f3;
+                    }
                     @include breakpoint(mobile) {
                         margin: 0 0px 10px;
                         width: 100%;
@@ -1145,6 +1163,35 @@
                         font-size: 21pt;
                         margin-bottom: 1rem;
                     }
+                }
+            }
+            .ndfc-simulasi {
+                background-color: #ebf5fe;
+                border-color: $blue-dark-color;
+                .simulasi-header {
+                    border-bottom: 1px solid #04559f;
+                    margin-bottom: 16px;
+                }
+                h4 {
+                    margin-top: 0;
+                    font-size: 16px;
+                    font-weight: bold;
+                    color: $blue-dark-color;
+                }
+                p {
+                    font-size: 14px;
+                    text-align: left;
+                    &.title {
+                        margin-bottom: 0 !important;
+                    }
+                    &.subtitle,
+                    &.title-angsuran {
+                        color: $blue-dark-color;
+                        font-weight: bold;
+                    }
+                }
+                .col-xs-6 {
+                    padding: 0;
                 }
             }
             .infotext {
@@ -1589,7 +1636,7 @@
             height: 64px;
             width: 100%;
             font-size: 16px;
-            border-radius: 4px;
+            border-radius: 6px !important;
             padding: 20px 15px;
             border-color: $blue-dark-color;
             box-shadow: inset 0px 0.5px 4px rgba(100, 100, 100, 0.32);
@@ -2161,6 +2208,37 @@
             }
         }
     }
+
+    .modal-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 32px 24px;
+        text-align: center;
+        .modal-body-title {
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 32px;
+            letter-spacing: 0.15px;
+            color: $blue-dark-color;
+        }
+        .modal-body-text {
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 20px;
+        }
+    }
+
+    .modal-footer {
+        display: flex;
+        justify-content: space-between;
+        border: none;
+
+        button {
+            margin: 5px;
+        }
+    }
 }
 
 .chosen-container {
@@ -2301,19 +2379,21 @@ select::-ms-expand {
         .form-control {
             width: calc(100% - 60px);
             border-right: 0;
+            border-radius: 6px 0 0 6px !important;
             // padding-top: 20px !important;
             // padding-bottom: 20px !important;
         }
 
         button.ui-datepicker-trigger {
             width: 60px;
-            height: 70px;
+            height: 64px;
             background: transparent url("/static/images/calendar.png") center
                 center no-repeat;
-            border-top: 1px #ccc solid;
-            border-bottom: 1px #ccc solid;
-            border-right: 1px #ccc solid;
+            border-top: 1px #0069aa solid;
+            border-bottom: 1px #0069aa solid;
+            border-right: 1px #0069aa solid;
             box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+            border-radius: 0 6px 6px 0;
             outline: none;
 
             @include breakpoint(tablet) {
@@ -2884,23 +2964,31 @@ select::-ms-expand {
 }
 
 .ui-datepicker {
-    z-index: 5 !important;
+    z-index: 99 !important;
 }
 
 .select2-search__field {
     &::placeholder {
-        font-style: italic;
+        font-style: normal;
     }
 }
 
 .absolutebutcalc {
     width: 100%;
 }
+.modal {
+    padding-right: 0 !important;
+}
 .modal-dialog {
     height: 100%;
-    width: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
+    width: calc(80%);
+    margin: auto;
+    @include breakpoint(mobile) {
+        width: 100%;
+    }
 }
 
 .modal-content.branch {
@@ -2992,7 +3080,99 @@ select::-ms-expand {
         margin: auto;
     }
 }
+#addressModal {
+    .modal-dialog {
+        justify-content: center;
+        @include breakpoint(mobile) {
+            margin: 30px auto;
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: none;
+            padding: 24px 24px 0 24px;
+            h5 {
+                color: $blue-dark-color;
+                font-weight: bold;
+                font-size: 15px;
+                width: 100%;
+            }
+            span {
+                font-size: 24px;
+            }
+        }
+        .modal-content {
+            background-color: #fff;
+            border: none;
+            box-shadow: 0 3px 9px rgba(255, 255, 255, 0.4);
+            width: calc(40%);
+            @include breakpoint(mobile) {
+                width: calc(90%);
+            }
+            .form-group {
+                margin-bottom: unset;
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                .form-control {
+                    height: 60px;
+                    width: 90%;
+                    margin-right: 6px;
+                    font-size: 16px;
+                    border-radius: 4px;
+                    padding: 20px 15px;
+                    border-color: $blue-dark-color;
+                    box-shadow: inset 0px 0.5px 4px rgba(100, 100, 100, 0.32);
 
+                    &.valid {
+                        background-color: #e7f5e6;
+                        border-color: #007f00;
+                        position: relative;
+                        &::before {
+                            content: "\f00c";
+                            font-size: 1.2rem;
+                            font-family: "FontAwesome";
+                            font-weight: 900;
+                            color: rgb(40, 167, 69);
+                            display: block;
+                            position: absolute;
+                            right: 1rem;
+                            background: #e7f5e6;
+                            width: 24px;
+                            height: 24px;
+                        }
+                    }
+
+                    &:disabled {
+                        background: #f7f7f7;
+                        border: 1px solid #acacac;
+
+                        &::placeholder {
+                            font-style: normal;
+                            color: #acacac;
+                            opacity: 1;
+                        }
+                    }
+
+                    &:focus {
+                        padding: 20px 15px !important;
+                    }
+
+                    &::placeholder {
+                        font-style: normal;
+                        color: #333;
+                        opacity: 1;
+                    }
+
+                    &.error {
+                        border-color: red;
+                    }
+                }
+            }
+        }
+    }
+}
 #box-document {
     display: flex;
     flex-direction: column;
@@ -3110,6 +3290,79 @@ select::-ms-expand {
     }
 }
 
+#warning-calc {
+    margin-top: 12px;
+}
+
+#warning-text {
+    background-color: #f0cdd1;
+}
+
 .select2-selection__choice {
     background-color: #e7f5e6 !important;
+}
+
+.result-address {
+    margin-top: 16px;
+    width: 100%;
+    .col-xs-12 {
+        padding: 0;
+    }
+    #data-container {
+        ul {
+            list-style: none;
+            width: 100%;
+            text-align: left;
+            li {
+                font-weight: bold;
+                padding: 10px 8px;
+                margin: 8px auto;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.075);
+                cursor: pointer;
+                &:hover {
+                    background-color: #f7f7f7;
+                }
+                p {
+                    font-weight: normal;
+                    color: #8b8b8b;
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+    #pagination-container {
+        .paginationjs-pages {
+            width: 100%;
+            margin-top: 20px;
+        }
+        ul {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            li {
+                border: none;
+                &.paginationjs-prev,
+                &.paginationjs-next {
+                    & > a {
+                        border-radius: 4px;
+                        padding: 10px;
+                        background-color: $blue-dark-color;
+                        opacity: 1;
+                        color: #ffffff;
+                    }
+                }
+                &.paginationjs-page {
+                    &.active > a {
+                        color: #000000;
+                        background: none;
+                        font-weight: bold;
+                    }
+                    & > a {
+                        padding: 10px;
+                        color: #8b8b8b;
+                    }
+                }
+            }
+        }
+    }
 }

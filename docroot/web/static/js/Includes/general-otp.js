@@ -88,7 +88,7 @@ function verificationOTP() {
         },
         success: function (data) {
             if (data.success == 0) {
-                // $("#wrongOtp").modal("show");
+                $("#wrongOtp").modal("show");
             } else if (data.success == 1) {
                 pushDataStep5();
             }

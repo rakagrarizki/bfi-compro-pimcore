@@ -443,7 +443,7 @@ $this->headScript()
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="certificate_by_name"><?= $this->translate('label-atasnama-sertifikat') ?>a</label>
+                                            <label for="certificate_by_name"><?= $this->translate('label-atasnama-sertifikat') ?></label>
                                             <select class=" form-control inputs formRequired"
                                                 placeholder=<?= $this->translate('placeholder-atasnama-sertifikat') ?>" id="certificate_by_name"" name="
                                                 certificate_by_name"" multiple="multiple">
@@ -691,9 +691,9 @@ $this->headScript()
                                             <h3><?= $this->translate('title-estimate-installment') ?></h3>
                                         </div>
                                         <div class="form-group simulasi-group">
-                                            <label for="estimasi_harga"><?= $this->translate('estimated-house-price') ?></label>
                                             <div class="input-group">
                                                 <span class="input-group-addon" id="basic-addon1">Rp</span>
+                                                <label for="estimasi_harga"><?= $this->translate('estimated-house-price') ?></label>
                                                 <input type="text" id="estimate_price"
                                                     class="formatRibuan form-control inputs formRequired addonInput c-input-trans minEstimatedPrice"
                                                     placeholder="<?= $this->translate('estimated-house-price') ?>">

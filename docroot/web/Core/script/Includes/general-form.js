@@ -1,5 +1,54 @@
 var retryLimit = 3;
 
+let currentToken = undefined;
+let expiredDate = undefined;
+
+let dataAssets = [];
+let rawAssetBrand = [];
+let assetCode = "";
+let branch_id = "";
+let admin_fee = 0;
+let min_effective_rate = 0;
+let max_funding_percentage = 0;
+let ntf = 0;
+let total_ntf = 0;
+let provision_fee = 0;
+let tlpAmount = 0;
+
+window.dataLayer = window.dataLayer || [];
+
+let calculationParam = {
+    effective_rate: 0,
+    flat_rate: 0,
+    nilai_taksaksi: 0,
+    max_ltv: 0,
+    admin_fee: 0,
+    fiducia_fee: 0,
+    installment_amount: 0,
+    provisi_fee: 0,
+    total_life_insurance_capitalize: 0,
+    total_asset_insurance_capitalize: 0,
+    rsa_fee: 0,
+};
+
+let lifeInsuranceRate = [];
+let lifeInsuranceCoy = [];
+let assetInsuranceRate = [];
+let assetInsuranceCoy = [];
+let loanTenor = [];
+let assetSize = 10;
+let minFunding = 1000000;
+
+const NDFM_PRODUCT_ID = "3138";
+const NDFC_PRODUCT_ID_SJMB = "2001";
+const NDFC_PRODUCT_ID_NON = "2222";
+const NDFM_PRODUCT_OFFERING_ID = "31380218QC";
+const NDFC_PRODUCT_OFFERING_ID_SJMB = "200103183K";
+const NDFC_PRODUCT_OFFERING_ID_NON = "200203183K";
+const NDFC_TENOR = [12, 24, 36, 48];
+const NDFM_TENOR = [6, 12, 18];
+const CURRENT_YEAR = new Date().getFullYear();
+
 let dataZeals = {
     encrypted_code: undefined,
     aff_id: undefined,
@@ -452,6 +501,11 @@ function scrollToTop() {
         parent.find(".file-input").click();
     });
 
+    $(".formLicensePlate").on("keyup", () => {
+        let elm = $(".formLicensePlate");
+        elm.val(elm.val().toUpperCase());
+    });
+
     // PHONE NUMBER formPhoneNumber
     $(".formPhoneNumber").focus(function () {
         if ($.trim($(this).val()) == "") {
@@ -643,17 +697,1272 @@ function scrollToTop() {
 
 $(".form-control").on("select2:select", function (e) {
     var data = e.params.data;
-    data.selected == true
-        ? $(this).next().find(".select2-selection").addClass("valid")
-        : {};
+    var nextEl = $(this)
+        .parent()
+        .nextAll(".form-group:eq(0)")
+        .find(".input-step");
+    if (data.selected == true) {
+        $(this).next().find(".select2-selection").addClass("valid");
+        nextEl.removeAttr("disabled");
+    } else {
+        {
+        }
+        nextEl.attr("disabled", true);
+    }
 });
 
-$("input.form-control").on("keyup change", function () {
+$("input.form-control, textarea.form-control").on("keyup change", function () {
     var data = $(this).valid();
-    data == true
-        ? $(this).prev("label").addClass("valids")
-        : $(this).prev("label").removeClass("valids");
+    var nextEl = $(this)
+        .parent()
+        .nextAll(".form-group:eq(0)")
+        .find(".input-step");
+    if (data == true) {
+        $(this).prev("label").addClass("valids");
+        nextEl.removeAttr("disabled");
+    } else {
+        $(this).prev("label").removeClass("valids");
+        nextEl.attr("disabled", true);
+    }
 });
+
+$("input[type='radio'], input[type='checkbox']").on("change", function () {
+    var nextEl = $(this)
+        .closest(".form-group")
+        .next(".form-group")
+        .find(".input-step");
+    nextEl.removeAttr("disabled");
+});
+
+// inputDisabled();
+// function inputDisabled() {
+//     $("input, select, textarea").addClass("input-step");
+//     $(".form-body--credit")
+//         .find(".input-step:not(:eq(0))")
+//         .attr("disabled", true);
+//     $(".form-body--credit .otp-number")
+//         .find(".input-step")
+//         .removeAttr("disabled");
+// }
+
+function step(action, val) {
+    scrollToTop();
+    if (action == "next") {
+        $(".nav-item-" + val).removeClass("active");
+        $(".nav-item-" + val).addClass("done");
+        $(`.nav-item-${val + 1}`).addClass("active");
+
+        lang == "id"
+            ? $(".nav-item-" + val)
+                  .find(".nav-step-tag")
+                  .text("Selesai")
+            : $(".nav-item-" + val)
+                  .find(".nav-step-tag")
+                  .text("Done");
+
+        lang == "id"
+            ? $(`.nav-item-${val + 1}`)
+                  .find(".nav-step-tag")
+                  .text("Sedang Isi")
+            : $(`.nav-item-${val + 1}`)
+                  .find(".nav-step-tag")
+                  .text("Onprogress");
+
+        $("#menu" + val).removeClass("active");
+        $(`#menu${val + 1}`)
+            .addClass("active")
+            .fadeIn();
+    } else {
+        $(`.nav-item-${val + 1}`).removeClass("active");
+        $(".nav-item-" + val).removeClass("done");
+        $(".nav-item-" + val).addClass("active");
+
+        lang == "id"
+            ? $(`.nav-item-${val + 1}`)
+                  .find(".nav-step-tag")
+                  .text("Belum Isi")
+            : $(`.nav-item-${val + 1}`)
+                  .find(".nav-step-tag")
+                  .text("Pending");
+
+        lang == "id"
+            ? $(".nav-item-" + val)
+                  .find(".nav-step-tag")
+                  .text("Sedang Isi")
+            : $(".nav-item-" + val)
+                  .find(".nav-step-tag")
+                  .text("Onprogress");
+
+        $("#menu" + val)
+            .addClass("active")
+            .fadeIn();
+        $(`#menu${val + 1}`).removeClass("active");
+    }
+}
+
+function getAuthorizationToken() {
+    if (!currentToken || new Date(expiredDate).getTime() < Date.now()) {
+        $.ajax({
+            type: "POST",
+            url: "/credit/get_gateway_token",
+            tryCount: 0,
+            retryLimit: retryLimit,
+            error: function (xhr, textStatus, errorThrown) {
+                retryAjax(this, xhr);
+            },
+            fail: function (xhr, textStatus, error) {
+                retryAjax(this, xhr);
+            },
+            success: function (result) {
+                currentToken = result.data.access_token;
+                expiredDate = result.data.expired_date;
+
+                sessionStorage.setItem("token", currentToken);
+                sessionStorage.setItem("expiredDate", expiredDate);
+            },
+        });
+    }
+    return currentToken;
+}
+
+function getListProvinsi(element) {
+    dataProvinsi = [];
+    $(element).empty();
+    var provinsi_placeholder = $("#provinsi").attr("placeholder");
+
+    $.ajax({
+        type: "GET",
+        url: "/credit/get-list-province",
+        headers: { Authorization: "Basic " + currentToken },
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            $.each(result.data, function (id, val) {
+                dataProvinsi.push({
+                    id: val.id,
+                    text: val.description,
+                });
+            });
+            $(element).select2({
+                placeholder: provinsi_placeholder,
+                dropdownParent: $(element).parent(),
+                data: dataProvinsi,
+                language: {
+                    noResults: function () {
+                        return lang === "id"
+                            ? "Tidak Ada Hasil yang Ditemukan"
+                            : "No Result Found";
+                    },
+                },
+            });
+        },
+    });
+}
+
+function getListCity(element) {
+    dataCity = [];
+    $(element).empty();
+    var city_placeholder = $("#kota").attr("placeholder");
+    var prov = $("#provinsi").val().toString();
+    $.ajax({
+        type: "POST",
+        url: "/credit/get-list-city",
+        headers: { Authorization: "Basic " + currentToken },
+        data: { province: prov },
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            $.each(result.data, function (id, val) {
+                dataCity.push({
+                    id: val.city,
+                    text: val.city,
+                });
+            });
+            $(element).select2({
+                placeholder: city_placeholder,
+                dropdownParent: $(element).parent(),
+                data: dataCity,
+                language: {
+                    noResults: function () {
+                        return lang === "id"
+                            ? "Tidak Ada Hasil yang Ditemukan"
+                            : "No Result Found";
+                    },
+                },
+            });
+        },
+    });
+}
+
+function getListDistrict(element) {
+    dataDistrict = [];
+    $(element).empty();
+    var district_placeholder = $(element).attr("placeholder");
+    var prov = $("#provinsi").val().toString();
+    var city = $("#kota").val().toString();
+    $.ajax({
+        type: "POST",
+        url: "/credit/get-list-district",
+        headers: { Authorization: "Basic " + currentToken },
+        data: { province: prov, city: city },
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            $.each(result.data, function (id, val) {
+                dataDistrict.push({
+                    id: val.kecamatan,
+                    text: val.kecamatan,
+                });
+            });
+            $(element).select2({
+                placeholder: district_placeholder,
+                dropdownParent: $(element).parent(),
+                data: dataDistrict,
+                language: {
+                    noResults: function () {
+                        return lang === "id"
+                            ? "Tidak Ada Hasil yang Ditemukan"
+                            : "No Result Found";
+                    },
+                },
+            });
+        },
+    });
+}
+
+function getListSubdistrict(element) {
+    dataSubdistrict = [];
+    $(element).empty();
+    var subdistrict_placeholder = $(element).attr("placeholder");
+    var prov = $("#provinsi").val().toString();
+    var city = $("#kota").val().toString();
+    var district = $("#kecamatan").val().toString();
+    $.ajax({
+        type: "POST",
+        url: "/credit/get-list-subdistrict",
+        headers: { Authorization: "Basic " + currentToken },
+        data: { province: prov, city: city, district: district },
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            $.each(result.data, function (id, val) {
+                dataSubdistrict.push({
+                    id: val.kelurahan,
+                    text: val.kelurahan,
+                });
+            });
+            $(element).select2({
+                placeholder: subdistrict_placeholder,
+                dropdownParent: $(element).parent(),
+                data: dataSubdistrict,
+                language: {
+                    noResults: function () {
+                        return lang === "id"
+                            ? "Tidak Ada Hasil yang Ditemukan"
+                            : "No Result Found";
+                    },
+                },
+            });
+        },
+    });
+}
+
+function getListZipcode() {
+    var city = $("#kota").val().toString();
+    var district = $("#kecamatan").val().toString();
+    var subdistrict = $("#kelurahan").val().toString();
+    $.ajax({
+        type: "POST",
+        url: "/credit/get-list-zipcode",
+        headers: { Authorization: "Basic " + currentToken },
+        data: { city: city, district: district, subdistrict: subdistrict },
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            if (result.message === "success") {
+                $.each(result.data, function (id, val) {
+                    $("#kode_pos").val(val.zip_code);
+                });
+            } else {
+                console.log("Data not found");
+            }
+        },
+    });
+}
+
+function getListAssets(assetType) {
+    // TODO : add paging to fetch all data
+    $.ajax({
+        type: "POST",
+        url: "/credit/get-list-assets",
+        headers: { Authorization: "Basic " + currentToken },
+        data: {
+            isactive: true,
+            asset_type: assetType,
+            page: 1,
+            size: assetSize,
+        },
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            if (result.message === "success") {
+                $.each(result.data.data, (i, val) => {
+                    dataAssets.push({
+                        category: val.category_id,
+                        model: val.model,
+                        model_desc: val.model_desc,
+                        brand: val.brand,
+                        brand_desc: val.brand_desc,
+                        asset_code: val.asset_code,
+                        asset_group: val.asset_group,
+                        asset_type_id: val.asset_type_id,
+                    });
+                });
+                filterAssetType();
+            } else {
+                console.log("Data not found");
+            }
+        },
+    });
+}
+
+function filterAssetType() {
+    var dataType = [];
+    var type_placeholder = $("#type_kendaraan").attr("placeholder");
+
+    // remove duplicate
+    let assetType = dataAssets
+        .map((item) => item.category)
+        .filter((val, i, e) => e.indexOf(val) === i);
+
+    $.each(assetType, function (id, val) {
+        dataType.push({
+            id: val,
+            text: val,
+        });
+    });
+    if (sessionStorage.getItem("loanType") === "NDFM") {
+        filterAssetBrand();
+    }
+    $("#type_kendaraan").select2({
+        placeholder: type_placeholder,
+        dropdownParent: $("#type_kendaraan").parent(),
+        data: dataType,
+        language: {
+            noResults: function () {
+                return lang === "id"
+                    ? "Tidak Ada Hasil yang Ditemukan"
+                    : "No Result Found";
+            },
+        },
+    });
+}
+
+function filterAssetBrand(category) {
+    var dataBrand = [];
+    var brand_placeholder = $("#merk_kendaraan").attr("placeholder");
+    rawAssetBrand =
+        sessionStorage.getItem("loanType") === "NDFC"
+            ? dataAssets.filter((e) => e.category === category)
+            : dataAssets;
+
+    // remove duplicate
+    let assetBrand = rawAssetBrand.filter(
+        (val, i, e) => i === e.findIndex((t) => t.brand === val.brand)
+    );
+
+    $.each(assetBrand, function (id, val) {
+        dataBrand.push({
+            id: val.brand,
+            text: val.brand_desc,
+        });
+    });
+    $("#merk_kendaraan").select2({
+        placeholder: brand_placeholder,
+        dropdownParent: $("#merk_kendaraan").parent(),
+        data: dataBrand,
+        language: {
+            noResults: function () {
+                return lang === "id"
+                    ? "Tidak Ada Hasil yang Ditemukan"
+                    : "No Result Found";
+            },
+        },
+    });
+}
+
+function filterAssetModel(brand) {
+    var dataModel = [];
+    var model_placeholder = $("#model_kendaraan").attr("placeholder");
+    let assetModel = rawAssetBrand.filter((e) => e.brand === brand);
+
+    $.each(assetModel, function (id, val) {
+        dataModel.push({
+            id: val.model,
+            text: val.model_desc,
+        });
+    });
+    $("#model_kendaraan").select2({
+        placeholder: model_placeholder,
+        dropdownParent: $("#model_kendaraan").parent(),
+        data: dataModel,
+        language: {
+            noResults: function () {
+                return lang === "id"
+                    ? "Tidak Ada Hasil yang Ditemukan"
+                    : "No Result Found";
+            },
+        },
+    });
+}
+
+function getListBpkbOwnership(element) {
+    dataBpkbOwnership = [];
+    $(element).empty();
+    var bpkb_placeholder = $(element).attr("placeholder");
+
+    $.ajax({
+        type: "GET",
+        url: "/credit/get-list-bpkb-ownership",
+        headers: { Authorization: "Basic " + currentToken },
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            $.each(result.data, function (id, val) {
+                dataBpkbOwnership.push({
+                    id: val.id,
+                    text: bpkbOwnershipTranslate(val.description),
+                });
+            });
+            $(element).select2({
+                placeholder: bpkb_placeholder,
+                dropdownParent: $(element).parent(),
+                data: dataBpkbOwnership,
+                language: {
+                    noResults: function () {
+                        return lang === "id"
+                            ? "Tidak Ada Hasil yang Ditemukan"
+                            : "No Result Found";
+                    },
+                },
+            });
+        },
+    });
+}
+
+function getListHouseOwnership(element) {
+    dataHouseOwnership = [];
+    $(element).empty();
+    var house_placeholder = $(element).attr("placeholder");
+
+    $.ajax({
+        type: "GET",
+        url: "/credit/get-list-house-ownership",
+        headers: { Authorization: "Basic " + currentToken },
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            $.each(result.data.data, function (id, val) {
+                if (val.is_active === true) {
+                    dataHouseOwnership.push({
+                        id: val.an_bkr_id,
+                        text: val.description,
+                    });
+                }
+            });
+            $(element).select2({
+                placeholder: house_placeholder,
+                dropdownParent: $(element).parent(),
+                data: dataHouseOwnership,
+                language: {
+                    noResults: function () {
+                        return lang === "id"
+                            ? "Tidak Ada Hasil yang Ditemukan"
+                            : "No Result Found";
+                    },
+                },
+            });
+        },
+    });
+}
+
+function getListMaritalStatus(element) {
+    dataMaritalStatus = [];
+    $(element).empty();
+    var marital_status_placeholder = $(element).attr("placeholder");
+
+    $.ajax({
+        type: "GET",
+        url: "/credit/get-list-data-marital-status",
+        headers: { Authorization: "Basic " + currentToken },
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            $.each(result.data, function (id, val) {
+                dataMaritalStatus.push({
+                    id: val.id,
+                    text: maritalStatusTranslate(val.description),
+                });
+            });
+            $(element).select2({
+                placeholder: marital_status_placeholder,
+                dropdownParent: $(element).parent(),
+                data: dataMaritalStatus,
+                language: {
+                    noResults: function () {
+                        return lang === "id"
+                            ? "Tidak Ada Hasil yang Ditemukan"
+                            : "No Result Found";
+                    },
+                },
+            });
+        },
+    });
+}
+
+function getBranchCoverage(fn) {
+    let kelurahan = $("#kelurahan").val().toString();
+    let kecamatan = $("#kecamatan").val().toString();
+    let city = $("#kota").val().toString();
+    let zipcode = $("#kode_pos").val();
+
+    $.ajax({
+        type: "POST",
+        url: "/credit/get-branch-coverage",
+        headers: { Authorization: "Basic " + currentToken },
+        data: {
+            customer_type: "P",
+            lead_program_id: 1,
+            kelurahan: kelurahan,
+            kecamatan: kecamatan,
+            city: city,
+            zipcode: zipcode,
+            is_branch_ho: true,
+            customer_status: "NEW",
+            is_ro_exp: false,
+            lead_id: 0,
+            idnumber: $("#idnumber").val(),
+        },
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            if (result.message === "success") {
+                if (result.data !== null) {
+                    branch_id = result.data.branch_booking_id;
+                    fn();
+                } else {
+                    $("#modal-branch").modal("show");
+                }
+            } else {
+                loanType = sessionStorage.getItem("loanType");
+                if (loanType == "NDFC") {
+                    window.dataLayer.push({
+                        event: "ValidNDFCAssetNotCover",
+                    });
+                } else {
+                    window.dataLayer.push({
+                        event: "ValidNDFMAssetNotCover",
+                    });
+                }
+                $("#modal-branch").modal("show");
+            }
+        },
+    });
+}
+
+function getAssetYear(asset_model, branch_id, fn) {
+    let assetYears = [];
+    let customerAssetYear = parseInt($("#tahun_kendaraan").val());
+    var assetYearExists;
+
+    $.ajax({
+        type: "POST",
+        url: "/credit/get-asset-year",
+        headers: { Authorization: "Basic " + currentToken },
+        // asset_code still static and need to be changed to parameter asset_model
+        data: { asset_code: asset_model, branch_id: branch_id },
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            if (result.message === "success" && result.data !== null) {
+                $.each(result.data.data, (i, val) => {
+                    assetYears.push(val.manufacturing_year);
+                });
+            } else {
+                assetYears = [];
+                loanType = sessionStorage.getItem("loanType");
+                if (loanType == "NDFC") {
+                    window.dataLayer.push({
+                        event: "ValidNDFCAssetNotCover",
+                    });
+                } else {
+                    window.dataLayer.push({
+                        event: "ValidNDFMAssetNotCover",
+                    });
+                }
+                assetYearExists = false;
+                $("#modal-not-cover").modal("show");
+            }
+            if (assetYears.includes(customerAssetYear)) {
+                assetYearExists = true;
+                fn();
+            } else {
+                assetYearExists = false;
+                $("#modal-not-cover").modal("show");
+            }
+        },
+    });
+}
+
+function getProductDetail() {
+    let assetYear = parseInt($("#tahun_kendaraan").val());
+    let assetAge = CURRENT_YEAR - assetYear;
+    let tenor = loanTenor[$("#tenor2").val() - 1];
+    let amount_funding =
+        $("#pembiayaan").val() === ""
+            ? minFunding
+            : clearDot($("#pembiayaan").val());
+    let param = {
+        product_id: productIdFilter(rawAssetBrand[0].category),
+        asset_group: rawAssetBrand[0].asset_group,
+        customer_rating: "2",
+        asset_age: assetAge,
+        tenor: tenor,
+        amount_funding_to: amount_funding,
+    };
+
+    return $.ajax({
+        type: "POST",
+        url: "/credit/get-list-product-detail",
+        headers: { Authorization: "Basic " + currentToken },
+        data: param,
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            if (result.message !== "success") {
+                console.log("Failed to fetch data");
+            }
+        },
+    });
+}
+
+function getProductBranchDetail() {
+    let assetYear = parseInt($("#tahun_kendaraan").val());
+    let assetAge = CURRENT_YEAR - assetYear;
+    let tenor = loanTenor[$("#tenor2").val() - 1];
+    let amount_funding =
+        $("#pembiayaan").val() === ""
+            ? minFunding
+            : clearDot($("#pembiayaan").val());
+    let param = {
+        branch_id: branch_id,
+        product_id: productIdFilter(rawAssetBrand[0].category),
+        asset_group: rawAssetBrand[0].asset_group,
+        customer_rating: "2",
+        asset_age: assetAge,
+        tenor: tenor,
+        amount_funding_to: amount_funding,
+    };
+
+    return $.ajax({
+        type: "POST",
+        url: "/credit/get-list-product-branch-detail",
+        headers: { Authorization: "Basic " + currentToken },
+        data: param,
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            if (result.message !== "success") {
+                console.log("Failed to fetch data");
+            }
+        },
+    });
+}
+
+function getProductOfferingDetail() {
+    let assetYear = parseInt($("#tahun_kendaraan").val());
+    let assetAge = CURRENT_YEAR - assetYear;
+    let tenor = loanTenor[$("#tenor2").val() - 1];
+    let amount_funding =
+        $("#pembiayaan").val() === ""
+            ? minFunding
+            : clearDot($("#pembiayaan").val());
+    let param = {
+        branch_id: branch_id,
+        product_id: productIdFilter(rawAssetBrand[0].category),
+        product_offering_id: productOfferingIdFilter(
+            productIdFilter(rawAssetBrand[0].category)
+        ),
+        asset_group: rawAssetBrand[0].asset_group,
+        customer_rating: "2",
+        asset_age: assetAge,
+        tenor: tenor,
+        amount_funding_to: amount_funding,
+        is_current_setting_value: true,
+        is_active: true,
+    };
+
+    return $.ajax({
+        type: "POST",
+        url: "/credit/get-product-offer-detail",
+        headers: { Authorization: "Basic " + currentToken },
+        data: param,
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            if (result.message !== "success") {
+                console.log("Failed to fetch data");
+            }
+            provision_fee = result.data.data[0].provision_fee;
+        },
+    });
+}
+
+function getFiduciaFee() {
+    let param = {
+        branch_id: branch_id,
+        asset_type_id: rawAssetBrand[0].asset_type_id,
+        category_id: rawAssetBrand[0].category,
+        otr: calculationParam.nilai_taksaksi,
+    };
+
+    return $.ajax({
+        type: "POST",
+        url: "/credit/get-fiducia-fee",
+        headers: { Authorization: "Basic " + currentToken },
+        data: param,
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            if (result.success === 1) {
+                if (result.data !== null) {
+                    calculationParam.fiducia_fee =
+                        sessionStorage.getItem("loanType") === "NDFM"
+                            ? result.data.data[0].fiducia_fee
+                            : result.data.data[0].notary_fee;
+                } else {
+                    calculationParam.fiducia_fee = 0;
+                }
+            } else {
+                console.log("Failed to fetch data");
+            }
+        },
+    });
+}
+
+function getPricelistPaging() {
+    let assetYear = $("#tahun_kendaraan").val();
+    $.ajax({
+        type: "POST",
+        url: "/credit/get-list-price",
+        headers: { Authorization: "Basic " + currentToken },
+        data: {
+            asset_code: assetCode,
+            manufacturing_year: assetYear,
+            branch_id: branch_id,
+        },
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            if (result.success === 1) {
+                if (result.data !== null) {
+                    calculationParam.nilai_taksaksi = result.data.data[0].price;
+                    getMaxFunding();
+                } else {
+                    $("#modal-pricing").modal("show");
+                }
+            } else {
+                console.log("Failed to fetch data");
+            }
+        },
+    });
+}
+
+function getLifeInsuranceCoy() {
+    let param = {
+        branch_id: branch_id,
+        is_active: true,
+    };
+
+    return $.ajax({
+        type: "POST",
+        url: "/credit/get-life-insurance-coy-branch",
+        headers: {
+            Authorization: "Basic " + currentToken,
+        },
+        data: param,
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            if (result.success === 1) {
+                if (result.data !== null) {
+                    lifeInsuranceCoy = result.data.data;
+                } else {
+                    lifeInsuranceCoy = null;
+                }
+            } else {
+                console.log("Failed to fetch data");
+            }
+        },
+    });
+}
+
+function getLifeInsuranceRate() {
+    let fund = clearDot($("#pembiayaan").val());
+    let paramInsuranceRateNew = {
+        branch_id: branch_id,
+        age: 25,
+        si: clearDot($("#pembiayaan").val()),
+        tenor: reverseTenorFormatter($("#tenor").val()),
+    };
+
+    let paramInsuranceRate = {
+        branch_id: branch_id,
+        age: 25,
+        tenor: reverseTenorFormatter($("#tenor").val()),
+        insurance_branch_active: true,
+        asset_type_id: rawAssetBrand[0].asset_type_id,
+    };
+
+    let param = fund > 20000000 ? paramInsuranceRate : paramInsuranceRateNew;
+    let url =
+        fund > 20000000
+            ? "/credit/get-life-insurance-rate"
+            : "/credit/get-life-insurance-rate-new";
+
+    return $.ajax({
+        type: "POST",
+        url: url,
+        headers: { Authorization: "Basic " + currentToken },
+        data: param,
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            if (result.success === 1) {
+                if (result.data !== null) {
+                    lifeInsuranceRate = result.data.data;
+                } else {
+                    lifeInsuranceRate = null;
+                }
+            } else {
+                console.log("Failed to fetch data");
+            }
+        },
+    });
+}
+
+function getLifeInsuranceAmount() {
+    let fund = clearDot($("#pembiayaan").val());
+    if (lifeInsuranceRate !== null) {
+        let result = lifeInsuranceRate.filter(function (arr1) {
+            return lifeInsuranceCoy.some(function (arr2) {
+                return (
+                    arr1.life_insurance_coy_id === arr2.life_insurance_coy_id &&
+                    arr1.life_insurance_coy_branch_id ===
+                        arr2.life_insurance_coy_branch_id
+                );
+            });
+        });
+        calculationParam.total_life_insurance_capitalize =
+            fund > 20000000
+                ? (result[0].ins_rate_to_cust * ntf) / 100
+                : result[0].ins_amount_to_cust;
+    }
+}
+
+function getMaxFunding() {
+    $.when(
+        getProductOfferingDetail(),
+        getProductBranchDetail(),
+        getProductDetail()
+    ).then(function (res1, res2, res3) {
+        admin_fee =
+            res1[0].data.data[0].admin_fee +
+            res2[0].data.data[0].admin_fee +
+            res3[0].data.data[0].admin_fee;
+
+        min_effective_rate =
+            res1[0].data.data[0].min_effective_rate +
+            res2[0].data.data[0].min_effective_rate +
+            res3[0].data.data[0].min_effective_rate;
+
+        max_funding_percentage =
+            sessionStorage.getItem("loanType") === "NDFC"
+                ? res1[0].data.data[0].max_funding_percentage +
+                  res2[0].data.data[0].max_funding_percentage +
+                  res3[0].data.data[0].max_funding_percentage
+                : $("#ndfm_max_fund").val();
+
+        calculationParam.max_ltv =
+            (max_funding_percentage / 100) * calculationParam.nilai_taksaksi;
+
+        $(".ndfc-simulasi .total").text(
+            "Rp " + separatordot(calculationParam.max_ltv)
+        );
+
+        $("#funding").slider({
+            min: minFunding,
+            max: calculationParam.max_ltv,
+            step: 100000,
+        });
+
+        $(".min-fund").text("Rp " + separatordot(minFunding));
+        $(".max-fund").text("Rp " + separatordot(calculationParam.max_ltv));
+    });
+}
+
+function getCalculationParams() {
+    let tenor = reverseTenorFormatter($("#tenor").val());
+    $.when(getFiduciaFee(), getLifeInsuranceRate(), getLifeInsuranceCoy()).then(
+        function (res1, res2, res3) {
+            calculationParam.effective_rate = min_effective_rate / 100;
+            calculationParam.admin_fee = admin_fee + tlpAmount;
+            calculationParam.flat_rate =
+                ((pmt(calculationParam.effective_rate / 12, tenor, 1, 0, 0) *
+                    -1 *
+                    tenor -
+                    1) *
+                    12) /
+                tenor;
+
+            getProvisionAmout();
+
+            ntf =
+                clearDot($("#pembiayaan").val()) +
+                calculationParam.admin_fee +
+                calculationParam.fiducia_fee +
+                calculationParam.rsa_fee +
+                calculationParam.provisi_fee;
+
+            getLifeInsuranceAmount();
+            getEstimateInstallment();
+        }
+    );
+}
+
+function getProvisionAmout() {
+    let fund = clearDot($("#pembiayaan").val());
+    let tenor = reverseTenorFormatter($("#tenor").val());
+    let provisi_fee_percentage = ((tenor / 12) * provision_fee) / 100;
+    calculationParam.provisi_fee = provisi_fee_percentage * fund;
+}
+
+function getEstimateInstallment() {
+    let param = {
+        funding_amount: clearDot($("#pembiayaan").val()),
+        tenor: reverseTenorFormatter($("#tenor").val()),
+        effective_rate: calculationParam.effective_rate,
+        flat_rate: calculationParam.flat_rate,
+        installment_type: 0,
+        payment_fequency: 1,
+        calcualte_by: 1,
+        grace_periode_type: 0,
+        grace_periode: 0,
+        nilai_taksaksi: calculationParam.nilai_taksaksi,
+        max_ltv: calculationParam.max_ltv,
+        admin_fee: calculationParam.admin_fee,
+        fiducia_fee: calculationParam.fiducia_fee,
+        provisi_fee: calculationParam.provisi_fee,
+        total_life_insurance_capitalize:
+            calculationParam.total_life_insurance_capitalize,
+        total_asset_insurance_capitalize:
+            calculationParam.total_asset_insurance_capitalize,
+        rsa_fee: calculationParam.rsa_fee,
+        other_fee: 0,
+        survey_fee: 0,
+        notary_fee: 0,
+        admin_on_loan: true,
+        fiducia_on_loan: true,
+        provisi_on_loan: true,
+        other_on_loan: true,
+        survey_on_loan: true,
+        notary_on_loan: true,
+        rsa_on_loan: true,
+        round: 500,
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "/credit/get-estimate-installment",
+        headers: { Authorization: "Basic " + currentToken },
+        data: param,
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            if (result.message === "success") {
+                calculationParam.installment_amount = result.data.installment;
+                total_ntf = result.data.total_ntf;
+                $("p.estimate-installment").text(
+                    "Rp " + separatordot(calculationParam.installment_amount)
+                );
+            } else {
+                console.log("Data not found");
+            }
+        },
+    });
+}
+
+function productIdFilter(category) {
+    const categorySJMB = ["SEDAN", "JEEP", "MNBUS"];
+    if (sessionStorage.getItem("loanType") === "NDFM") {
+        return NDFM_PRODUCT_ID;
+    }
+    return categorySJMB.includes(category)
+        ? NDFC_PRODUCT_ID_SJMB
+        : NDFC_PRODUCT_ID_NON;
+}
+
+function productOfferingIdFilter(productId) {
+    if (productId === NDFM_PRODUCT_ID) {
+        return NDFM_PRODUCT_OFFERING_ID;
+    } else if (productId === NDFC_PRODUCT_ID_SJMB) {
+        return NDFC_PRODUCT_OFFERING_ID_SJMB;
+    }
+    return NDFC_PRODUCT_ID_NON;
+}
+
+function pmt(
+    rate_per_period,
+    number_of_payments,
+    present_value,
+    future_value,
+    type
+) {
+    future_value = typeof future_value !== "undefined" ? future_value : 0;
+    type = typeof type !== "undefined" ? type : 0;
+
+    if (rate_per_period != 0.0) {
+        // Interest rate exists
+        var q = Math.pow(1 + rate_per_period, number_of_payments);
+        return (
+            -(rate_per_period * (future_value + q * present_value)) /
+            ((-1 + q) * (1 + rate_per_period * type))
+        );
+    } else if (number_of_payments != 0.0) {
+        // No interest rate, but number of payments exists
+        return -(future_value + present_value) / number_of_payments;
+    }
+
+    return 0;
+}
+
+$(".go-to-home").on("click", () => {
+    window.location.href = "/";
+});
+
+function bpkbOwnershipTranslate(status) {
+    switch (status) {
+        case "Brother/Sister":
+            return "Saudara kandung";
+        case "Children":
+            return "Anak";
+        case "Family":
+            return "Keluarga";
+        case "Owner":
+            return "Sendiri";
+        case "Parent":
+            return "Orang Tua";
+        case "Spouse":
+            return "Pasangan";
+        case "Other":
+            return "Lainnya";
+        default:
+            return status;
+    }
+}
+function maritalStatusTranslate(status) {
+    switch (status) {
+        case "Divorce":
+            return "Cerai";
+        case "Married":
+            return "Menikah";
+        case "Single":
+            return "Belum Menikah";
+        case "Widow":
+            return "Janda";
+        default:
+            return status;
+    }
+}
+
+function clearDot(x) {
+    let removeDot = x.replace(/\./g, "");
+    let result = validNumber(parseInt(removeDot));
+    return result;
+}
+
+function validNumber(value) {
+    var clearVal = "";
+    return Number.isInteger(value) == true ? value : clearVal;
+}
+
+function tenorFormatter(x) {
+    x = x + " Bulan";
+    return x;
+}
+
+function reverseTenorFormatter(x) {
+    try {
+        x = parseInt(x.replace(" Bulan", ""));
+    } catch (e) {
+        x = 0;
+    }
+    return x;
+}
+
+$("#tenor2").on("change", function () {
+    let selectedTenor = parseInt($(this).val());
+    $("#tenor").val(tenorFormatter(loanTenor[selectedTenor - 1]));
+});
+
+function submissionRegister(submission_id) {
+    var submissionId = {
+        submission_id: submission_id,
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "/submission-register",
+        data: submissionId,
+        dataType: "json",
+        error: function (data) {
+            // console.log("error" + data);
+        },
+        fail: function (xhr, textStatus, error) {
+            // console.log("request failed");
+        },
+        success: function (data) {
+            if (data.success === "1") {
+                phone_number = data.data.phone_number;
+            }
+        },
+    });
+}
+
+function submissionLogin(phone) {
+    var lang = document.documentElement.lang;
+    var phoneNumber = {
+        phone_number: phone,
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "/submission-login",
+        data: phoneNumber,
+        dataType: "json",
+        error: function (data) {
+            // console.log("error" + data);
+        },
+        fail: function (xhr, textStatus, error) {
+            // console.log("request failed");
+        },
+        success: function (data) {
+            if (data.success === "1") {
+                var token = data.data.customer_token;
+                localStorage.setItem("token", token);
+                getCustomer(token);
+                window.location = "/" + lang + "/user/dashboard";
+            } else {
+                // console.log(data);
+            }
+        },
+    });
+}
 
 function CbTransactionZeals() {
     const loanType = sessionStorage.getItem("loanType");
