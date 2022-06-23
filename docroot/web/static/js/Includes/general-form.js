@@ -1596,10 +1596,16 @@ function getLifeInsuranceCoy() {
 
 function getLifeInsuranceRate() {
     let fund = clearDot($("#pembiayaan").val());
+    let ntfAwal = (fund +
+            calculationParam.admin_fee +
+            calculationParam.fiducia_fee +
+            calculationParam.rsa_fee) /
+        (1 - provision_fee / 100);
+        
     let paramInsuranceRateNew = {
         branch_id: branch_id,
         age: 25,
-        si: clearDot($("#pembiayaan").val()),
+        si: ntfAwal,
         tenor: reverseTenorFormatter($("#tenor").val()),
     };
 
