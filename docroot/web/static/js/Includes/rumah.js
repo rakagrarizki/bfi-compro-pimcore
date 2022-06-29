@@ -205,15 +205,23 @@ $("#next1").on("click", function (e) {
     e.preventDefault();
     if ($(this).closest("form").valid()) {
         pushDataStep1(function (result) {
-            step("next", 1);
-            getProfesion();
-            getEmployeeStatus();
-            getYearsOfService();
-            getMaritalStatus();
-            getPropertyType();
-            window.dataLayer.push({
-                event: "ValidFormStep1",
-            });
+            if (result.data.is_dupcheck == true) {
+                window.location =
+                    "/" +
+                    lang +
+                    "/credit/pengajuan-gagal?dupcheck=true&product=" +
+                    sessionStorage.getItem("loanType");
+            } else {
+                step("next", 1);
+                getProfesion();
+                getEmployeeStatus();
+                getYearsOfService();
+                getMaritalStatus();
+                getPropertyType();
+                window.dataLayer.push({
+                    event: "ValidFormStep1",
+                });
+            }
         });
     }
 });
@@ -227,32 +235,24 @@ $("#next2").on("click", function (e) {
                 $("#modal-timeout").modal("show");
                 window.location = "/";
             } else {
-                if (result.data.is_dupcheck == true) {
+                if (
+                    result.data.leads_status == "UNPROSPECT" ||
+                    result.data.leads_status == "RAW"
+                ) {
                     window.location =
                         "/" +
                         lang +
-                        "/credit/pengajuan-gagal?dupcheck=true&product=" +
+                        "/credit/pengajuan-gagal?product=" +
                         sessionStorage.getItem("loanType");
                 } else {
-                    if (
-                        result.data.leads_status == "UNPROSPECT" ||
-                        result.data.leads_status == "RAW"
-                    ) {
-                        window.location =
-                            "/" +
-                            lang +
-                            "/credit/pengajuan-gagal?product=" +
-                            sessionStorage.getItem("loanType");
-                    } else {
-                        step("next", 2);
-                        getCertificateType();
-                        getCertificateOnBehalf();
-                        getAssetInHabited();
-                        getAssetLocation();
-                        window.dataLayer.push({
-                            event: "ValidFormStep2",
-                        });
-                    }
+                    step("next", 2);
+                    getCertificateType();
+                    getCertificateOnBehalf();
+                    getAssetInHabited();
+                    getAssetLocation();
+                    window.dataLayer.push({
+                        event: "ValidFormStep2",
+                    });
                 }
             }
         });
