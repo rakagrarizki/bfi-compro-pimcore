@@ -728,6 +728,13 @@ var urlLocation = window.location;
             minlength: 5,
         },
 
+        formIdnumber: {
+            required: true,
+            number: true,
+            minlength: 16,
+            maxlength: 16,
+        },
+
         formAddress: {
             required: true,
             minlength: 15,

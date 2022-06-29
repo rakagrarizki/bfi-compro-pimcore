@@ -10,7 +10,9 @@ let productType = {
 };
 let dataStep1 = {
     name: undefined,
+    no_ktp: undefined,
     phone_number: undefined,
+    wa_number: undefined,
     email: undefined,
     encrypt_code_zeals: undefined,
     utm_source: undefined,
@@ -93,6 +95,18 @@ $(document).ready(function () {
         : $(".nav-item-1.active").find(".nav-step-tag").text("Onprogress");
 
     sessionStorage.setItem("loanType", "PBF");
+});
+
+$("input[name='is-wa-number']").click(function () {
+    var is_WA = $(this).val();
+    $(".wa-numbers").find("input").removeAttr("disabled");
+    if (is_WA == "false") {
+        $(".wa-numbers").removeAttr("hidden");
+        // $("#email_pemohon").attr("disabled", true);
+    } else {
+        $(".wa-numbers").attr("hidden", true);
+        $("#email_pemohon").removeAttr("disabled");
+    }
 });
 
 $("input[name$='addres_same']").click(function () {
@@ -191,23 +205,15 @@ $("#next1").on("click", function (e) {
     e.preventDefault();
     if ($(this).closest("form").valid()) {
         pushDataStep1(function (result) {
-            if (result.data.is_dupcheck == true) {
-                window.location =
-                    "/" +
-                    lang +
-                    "/credit/pengajuan-gagal?dupcheck=true&product=" +
-                    sessionStorage.getItem("loanType");
-            } else {
-                step("next", 1);
-                getProfesion();
-                getEmployeeStatus();
-                getYearsOfService();
-                getMaritalStatus();
-                getPropertyType();
-                window.dataLayer.push({
-                    event: "ValidFormStep1",
-                });
-            }
+            step("next", 1);
+            getProfesion();
+            getEmployeeStatus();
+            getYearsOfService();
+            getMaritalStatus();
+            getPropertyType();
+            window.dataLayer.push({
+                event: "ValidFormStep1",
+            });
         });
     }
 });
@@ -217,24 +223,37 @@ $("#next2").on("click", function (e) {
     e.preventDefault();
     if ($(this).closest("form").valid()) {
         pushDataStep2(function (result) {
-            if (
-                result.data.leads_status == "UNPROSPECT" ||
-                result.data.leads_status == "RAW"
-            ) {
-                window.location =
-                    "/" +
-                    lang +
-                    "/credit/pengajuan-gagal?product=" +
-                    sessionStorage.getItem("loanType");
+            if (result.data.is_timeout == true) {
+                $("#modal-timeout").modal("show");
+                window.location = "/";
             } else {
-                step("next", 2);
-                getCertificateType();
-                getCertificateOnBehalf();
-                getAssetInHabited();
-                getAssetLocation();
-                window.dataLayer.push({
-                    event: "ValidFormStep2",
-                });
+                if (result.data.is_dupcheck == true) {
+                    window.location =
+                        "/" +
+                        lang +
+                        "/credit/pengajuan-gagal?dupcheck=true&product=" +
+                        sessionStorage.getItem("loanType");
+                } else {
+                    if (
+                        result.data.leads_status == "UNPROSPECT" ||
+                        result.data.leads_status == "RAW"
+                    ) {
+                        window.location =
+                            "/" +
+                            lang +
+                            "/credit/pengajuan-gagal?product=" +
+                            sessionStorage.getItem("loanType");
+                    } else {
+                        step("next", 2);
+                        getCertificateType();
+                        getCertificateOnBehalf();
+                        getAssetInHabited();
+                        getAssetLocation();
+                        window.dataLayer.push({
+                            event: "ValidFormStep2",
+                        });
+                    }
+                }
             }
         });
     }
@@ -243,10 +262,15 @@ $("#next3").on("click", function (e) {
     e.preventDefault();
     if ($(this).closest("form").valid()) {
         pushDataStep3(function () {
-            step("next", 3);
-            window.dataLayer.push({
-                event: "ValidFormStep3",
-            });
+            if (result.data.is_timeout == true) {
+                $("#modal-timeout").modal("show");
+                window.location = "/";
+            } else {
+                step("next", 3);
+                window.dataLayer.push({
+                    event: "ValidFormStep3",
+                });
+            }
         });
     }
 });
@@ -297,10 +321,15 @@ $("#next4").on("click", function (e) {
     e.preventDefault();
     if ($(this).closest("form").valid()) {
         pushDataStep4(function () {
-            showOtpVer2();
-            window.dataLayer.push({
-                event: "ValidFormStep4",
-            });
+            if (result.data.is_timeout == true) {
+                $("#modal-timeout").modal("show");
+                window.location = "/";
+            } else {
+                showOtpVer2();
+                window.dataLayer.push({
+                    event: "ValidFormStep4",
+                });
+            }
         });
     }
 });
@@ -329,8 +358,10 @@ function pushDataStep1(cb) {
 
     let result = (dataStep1 = {
         name: $("#nama_lengkap").val(),
+        no_ktp: $("#idnumber").val(),
         email: $("#email_pemohon").val(),
         phone_number: $("#no_handphone").val(),
+        wa_number: $("#wa_number").val(),
         encrypt_code_zeals:
             encrypted_code === "undefined" ? null : encrypted_code,
         utm_source: sessionStorage.getItem("utm_source"),
