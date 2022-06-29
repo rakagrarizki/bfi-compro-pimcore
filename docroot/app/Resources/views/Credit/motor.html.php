@@ -256,6 +256,7 @@ $this->headScript()
                                             <label for="plat-no"><?= $this->translate('label-number-plat') ?></label>
                                             <input type="text" class="form-control formRequired formLicensePlate" name="plat-no" id="plat-no" placeholder="<?= $this->translate('placeholder-number-plat') ?>">
                                             <div class="error-wrap"></div>
+                                            <span><?=$this->translate('form-plat-number-helper') ?></span>
                                         </div>
                                         <div class="form-group">
                                             <label for="kepemilikan_bpkb"><?= $this->translate('label-bpkb-ownership') ?></label>

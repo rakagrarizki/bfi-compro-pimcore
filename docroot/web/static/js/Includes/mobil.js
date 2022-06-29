@@ -7,6 +7,7 @@ let dataStep1 = {
     name: undefined,
     email: undefined,
     phone_number: undefined,
+    no_ktp: undefined,
     wa_number: undefined,
     utm_source: undefined,
     utm_campaign: undefined,
@@ -116,7 +117,7 @@ $(document).ready(function () {
     sessionStorage.setItem("submitStep3", "false");
     sessionStorage.setItem("submitStepOtp", "false");
     loanTenor = NDFC_TENOR;
-    assetSize = 11637;
+    assetSize = 13996;
     minFunding = 10000000;
     tlpAmount = 5000000;
 
@@ -239,10 +240,9 @@ $("#next2").on("click", function (e) {
                             hideInsurance($('input[name="assurance3"]'));
                             hideInsurance($('input[name="assurance4"]'));
 
-                            let brandData = $("#merk_kendaraan").select2('data');
-                            $("#brand-caption").text(
-                                brandData[0].text
-                            );
+                            let brandData =
+                                $("#merk_kendaraan").select2("data");
+                            $("#brand-caption").text(brandData[0].text);
                             $("#model-caption").text(
                                 $("#model_kendaraan option:selected").html()
                             );
@@ -259,7 +259,15 @@ $("#next2").on("click", function (e) {
 $("#next3").on("click", function (e) {
     e.preventDefault();
     if ($(this).closest("form").valid()) {
-        $("#modal-konfirmasi").modal("show");
+        pushDataStep3(() => {
+            if (sessionStorage.getItem("submitStep3") === "false") {
+                window.dataLayer.push({
+                    event: "ValidFormNDFCStep3",
+                });
+                sessionStorage.setItem("submitStep3", "true");
+            }
+            $("#modal-konfirmasi").modal("show");
+        });
     }
 });
 
@@ -279,20 +287,11 @@ $("#calcLoan").on("click", function () {
 
 $("#confirm-data").on("click", function (e) {
     e.preventDefault();
-    pushDataStep3(() => {
-        if (sessionStorage.getItem("submitStep3") === "false") {
-            window.dataLayer.push({
-                event: "ValidFormNDFCStep3",
-            });
-            sessionStorage.setItem("submitStep3", "true");
-        }
-        pushDataStep4(() => {
-            showOtpVer2();
-        });
+    pushDataStep4(() => {
+        showOtpVer2();
     });
-    // step("next", 4);
-    // $(".step-list").attr("hidden", "true");
 });
+
 $("#next5").on("click", function (e) {
     e.preventDefault();
     if ($(this).closest("form").valid()) {
@@ -347,8 +346,8 @@ function pushDataStep1(cb) {
 
 function pushDataStep2(cb) {
     assetCode = $("#model_kendaraan").val().toString();
-    let brandData = $("#merk_kendaraan").select2('data');
-    let modelData = $("#model_kendaraan").select2('data');
+    let brandData = $("#merk_kendaraan").select2("data");
+    let modelData = $("#model_kendaraan").select2("data");
     let result = (dataStep2 = {
         submission_id: submission_id,
         info_address: {
@@ -405,6 +404,11 @@ function pushDataStep2(cb) {
 
 function pushDataStep3(cb) {
     var addres_same = $("input[name='addres_same']:checked").val();
+    let selectedInsurance = [];
+
+    $(".fillable-insurance").each(function () {
+        selectedInsurance.push($(this).find("input[type=radio]:checked").val());
+    });
 
     let result = (dataStep3 = {
         submission_id: submission_id,
@@ -464,7 +468,7 @@ function pushDataStep3(cb) {
             tenor: reverseTenorFormatter($("#tenor").val()),
             // TODO: change data below
             monthly_installment: calculationParam.installment_amount,
-            vehicle_insurance: "ARS-TLO",
+            vehicle_insurance: selectedInsurance.join("-"),
             ltv_max: calculationParam.max_ltv,
             ntf_max: total_ntf,
         },
@@ -928,7 +932,24 @@ $("#tenor2").on("change", function (e) {
 });
 
 $(document).on("change", ".fillable-insurance input[type=radio]", function () {
-    console.log($(this).val());
+    if ($(this).val() === "TLO") {
+        $(this)
+            .closest(".fillable-insurance")
+            .nextAll(".fillable-insurance")
+            .find("input[value=ARK]")
+            .attr("disabled", "disabled");
+        $(this)
+            .closest(".fillable-insurance")
+            .nextAll(".fillable-insurance")
+            .find("input[value=TLO]")
+            .prop("checked", true);
+    } else {
+        $(this)
+            .closest(".fillable-insurance")
+            .next(".fillable-insurance")
+            .find("input[value=ARK]")
+            .removeAttr("disabled");
+    }
     CalcBtn("show");
 });
 
@@ -995,5 +1016,14 @@ $("body").on("click", ".data-list", (e) => {
 function CalcBtn(action) {
     if (action == "hide") {
         $("#calcLoan").attr("disabled", "disabled");
-    } else $("#calcLoan").removeAttr("disabled");
+        $("#next3").removeAttr("disabled");
+        $("#warning-calc").attr("hidden", "hidden");
+    } else {
+        $("#calcLoan").removeAttr("disabled");
+        $("#next3").attr("disabled", "disabled");
+        $("#warning-calc").removeAttr("hidden");
+        $("#warning-calc").html(
+            '<label id="warning-text" class="error" for="calcLoan" style="display: inline-block;"> Anda belum menghitung estimasi angsuran </label>'
+        );
+    }
 }

@@ -279,14 +279,14 @@ $this->headScript()
                                 <div class="form-group">
                                     <label><?= $this->translate('label-merk') ?></label>
                                     <select class="c-custom-select-trans form-control formRequired" placeholder="<?= $this->translate('placeholder-merk') ?>" id="merk_kendaraan" name="merk_kendaraan" multiple="multiple">
-                                        <option value="" disabled selected> <?= $this->translate('placeholder-merk') ?></option>
+                                        <option value="" disabled> <?= $this->translate('placeholder-merk') ?></option>
                                     </select>
                                     <div class="error-wrap"></div>
                                 </div>
                                 <div class="form-group">
                                     <label><?= $this->translate('label-model') ?></label>
                                     <select class="c-custom-select-trans form-control formRequired" placeholder="<?= $this->translate('placeholder-model') ?>" id="model_kendaraan" name="model_kendaraan" multiple="multiple">
-                                        <option value="" disabled selected> <?= $this->translate('placeholder-model') ?></option>
+                                        <option value="" disabled> <?= $this->translate('placeholder-model') ?></option>
                                     </select>
                                     <div class="error-wrap"></div>
                                     <span><?= $this->translate('model-helper') ?></span>
@@ -426,7 +426,7 @@ $this->headScript()
                                         <span class="input-group-addon" id="basic-addon1">Rp</span>
                                         <label for="pembiayaan"><?= $this->translate('desired-financing') ?></label>
                                         <input type="tel" pattern="\d*" id="pembiayaan"
-                                            class="form-control inputs formatRibuan formRequired c-input-trans"
+                                            class="form-control inputs minFundingNdfc formatRibuan formRequired c-input-trans"
                                             aria-describedby="basic-addon1"
                                             placeholder="<?= $this->translate('desired-financing') ?>">
                                     </div>
@@ -443,7 +443,7 @@ $this->headScript()
                                     <input type="tel" pattern="\d*" id="tenor"
                                         class="form-control inputs formRequired c-input-trans"
                                         aria-describedby="basic-addon1"
-                                        placeholder="<?= $this->translate('desired-tenor') ?>">
+                                        placeholder="<?= $this->translate('desired-tenor') ?>" disabled>
                                     <div class="slidecontainer ">
                                         <div class="value-left valuemin min-tenor">12 Bulan</div>
                                         <div class="value-right valuemax max-tenor">18 Bulan</div>
@@ -530,6 +530,7 @@ $this->headScript()
                                         <p class="total estimate-installment">Rp 0</p>
                                         <button class="cta cta-primary cta-big absolutebutcalc" id="calcLoan"
                                             type="button" disabled><?=$this->translate('hitung') ?></button>
+                                        <div class="error-wrap" id="warning-calc" hidden></div>
                                     </div>
                                     <p class="infotext"><?= $this->translate('installment-disclaimer') ?></p>
                                 </div>
@@ -538,7 +539,7 @@ $this->headScript()
                                         id="back3" type="button"><?=$this->translate('before') ?>
                                     </button>
                                     <button class="cta cta-primary cta-big cta-see buttonnext" id="next3"
-                                        type="button"><?=$this->translate('next') ?></button>
+                                        type="button" disabled><?=$this->translate('next') ?></button>
                                 </div>
                             </div>
                         </div>

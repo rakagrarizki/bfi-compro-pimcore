@@ -792,6 +792,11 @@ var urlLocation = window.location;
             minFund: separatordot(1000000),
         },
 
+        minFundingNdfc: {
+            required: true,
+            minFund: separatordot(10000000),
+        },
+
         submitHandler: function (form) {
             form.submit();
         },
