@@ -261,7 +261,7 @@ $("#next2").on("click", function (e) {
 $("#next3").on("click", function (e) {
     e.preventDefault();
     if ($(this).closest("form").valid()) {
-        pushDataStep3(function () {
+        pushDataStep3(function (result) {
             if (result.data.is_timeout == true) {
                 $("#modal-timeout").modal("show");
                 window.location = "/";
@@ -320,7 +320,7 @@ $("#estimate_price").on("change", function () {
 $("#next4").on("click", function (e) {
     e.preventDefault();
     if ($(this).closest("form").valid()) {
-        pushDataStep4(function () {
+        pushDataStep4(function (result) {
             if (result.data.is_timeout == true) {
                 $("#modal-timeout").modal("show");
                 window.location = "/";
@@ -557,7 +557,7 @@ function pushDataStep3(cb) {
         },
         success: function (result) {
             if (result.message === "success") {
-                cb();
+                cb(result);
             }
         },
     });
@@ -586,7 +586,7 @@ function pushDataStep4(cb) {
         },
         success: function (result) {
             if (result.message === "success") {
-                cb();
+                cb(result);
             }
         },
     });
