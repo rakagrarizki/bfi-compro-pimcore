@@ -42,6 +42,9 @@ let dataStep2 = {
         license_plate: undefined,
         asset_ownership_id_bfi: undefined,
         asset_ownership_desc_bfi: undefined,
+        category_id_bfi: undefined,
+        category_desc_bfi: undefined,
+        is_coverage: undefined,
     },
 };
 
@@ -199,6 +202,7 @@ $("#next1").on("click", function (e) {
 
 $("#type_kendaraan").change(() => {
     filterAssetBrand($("#type_kendaraan").val().toString());
+    filterAssetModel($("#merk_kendaraan").val().toString());
 });
 
 $("#merk_kendaraan").change(() => {
@@ -208,11 +212,12 @@ $("#merk_kendaraan").change(() => {
 $("#next2").on("click", function (e) {
     e.preventDefault();
     if ($(this).closest("form").valid()) {
-        pushDataStep2(() => {
-            getDupcheck(() => {
-                getBranchCoverage(() => {
-                    getAssetYear(assetCode, branch_id, () => {
-                        if ((assetYearExists = true)) {
+        assetCode = $("#model_kendaraan").val().toString();
+        getBranchCoverage(() => {
+            getAssetYear(assetCode, branch_id, () => {
+                pushDataStep2(() => {
+                    if (is_coverage === true) {
+                        getDupcheck(() => {
                             if (
                                 sessionStorage.getItem("submitStep2") ===
                                 "false"
@@ -249,8 +254,8 @@ $("#next2").on("click", function (e) {
                             $("#year-caption").text(
                                 $("#tahun_kendaraan").val()
                             );
-                        }
-                    });
+                        });
+                    }
                 });
             });
         });
@@ -378,6 +383,7 @@ function pushDataStep2(cb) {
             asset_ownership_desc_bfi: $(
                 "#kepemilikan_bpkb option:selected"
             ).html(),
+            is_coverage: is_coverage,
         },
     });
 
@@ -587,6 +593,163 @@ function getDupcheck(cb) {
                     cb();
                 }
             }
+        },
+    });
+}
+
+function getListAssets(assetType) {
+    $.ajax({
+        type: "POST",
+        url: "/credit/get-list-assets",
+        headers: { Authorization: "Basic " + currentToken },
+        data: {
+            isactive: true,
+            asset_type: assetType,
+            page: 1,
+            size: assetSize,
+        },
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            if (result.message === "success") {
+                $.each(result.data.data, (i, val) => {
+                    dataAssets.push({
+                        category: val.category_id,
+                        model: val.model,
+                        model_desc: val.model_desc,
+                        brand: val.brand,
+                        brand_desc: val.brand_desc,
+                        asset_code: val.asset_code,
+                        asset_group: val.asset_group,
+                        asset_type_id: val.asset_type_id,
+                    });
+                });
+                filterAssetType();
+            } else {
+                console.log("Data not found");
+            }
+        },
+    });
+}
+
+function filterAssetType() {
+    var dataType = [];
+    $("#type_kendaraan").empty();
+    var type_placeholder = $("#type_kendaraan").attr("placeholder");
+
+    // remove duplicate
+    let assetType = dataAssets
+        .map((item) => item.category)
+        .filter((val, i, e) => e.indexOf(val) === i);
+
+    assetType.push(assetType.shift());
+
+    let assetTypeFiltered = assetType
+        .map((val) =>
+            val.includes("TRU")
+                ? "TRUCK"
+                : val.includes("PU")
+                ? "PICK UP"
+                : val.includes("SDN")
+                ? "SEDAN"
+                : ["ANGKOT", "BUS", "CRANE"].includes(val)
+                ? "Lainnya"
+                : val.includes("MICRO")
+                ? "MNBUS"
+                : val
+        )
+        .filter((val, i, e) => e.indexOf(val) === i);
+
+    $.each(assetTypeFiltered, function (id, val) {
+        dataType.push({
+            id: val,
+            text: val,
+        });
+    });
+
+    $("#type_kendaraan").select2({
+        placeholder: type_placeholder,
+        dropdownParent: $("#type_kendaraan").parent(),
+        data: dataType,
+        language: {
+            noResults: function () {
+                return lang === "id"
+                    ? "Tidak Ada Hasil yang Ditemukan"
+                    : "No Result Found";
+            },
+        },
+    });
+}
+
+function filterAssetBrand(category) {
+    var dataBrand = [];
+    $("#merk_kendaraan").empty();
+    var brand_placeholder = $("#merk_kendaraan").attr("placeholder");
+    rawAssetBrand =
+        category === "TRUCK"
+            ? dataAssets.filter((e) => e.category.includes("TRU"))
+            : category === "Lainnya"
+            ? dataAssets.filter((e) =>
+                  ["ANGKOT", "BUS", "CRANE"].includes(e.category)
+              )
+            : category === "MNBUS"
+            ? dataAssets.filter((e) => ["MICRO", "MNBUS"].includes(e.category))
+            : category === "PICK UP"
+            ? dataAssets.filter((e) => e.category.includes("PU"))
+            : dataAssets.filter((e) => e.category === category);
+
+    // remove duplicate
+    let assetBrand = rawAssetBrand.filter(
+        (val, i, e) => i === e.findIndex((t) => t.brand === val.brand)
+    );
+
+    $.each(assetBrand, function (id, val) {
+        dataBrand.push({
+            id: val.brand,
+            text: val.brand_desc,
+        });
+    });
+    $("#merk_kendaraan").select2({
+        placeholder: brand_placeholder,
+        dropdownParent: $("#merk_kendaraan").parent(),
+        data: dataBrand,
+        language: {
+            noResults: function () {
+                return lang === "id"
+                    ? "Tidak Ada Hasil yang Ditemukan"
+                    : "No Result Found";
+            },
+        },
+    });
+}
+
+function filterAssetModel(brand) {
+    var dataModel = [];
+    $("#model_kendaraan").empty();
+    var model_placeholder = $("#model_kendaraan").attr("placeholder");
+    let assetModel = rawAssetBrand.filter((e) => e.brand === brand);
+
+    $.each(assetModel, function (id, val) {
+        dataModel.push({
+            id: val.model,
+            text: val.model_desc,
+        });
+    });
+    $("#model_kendaraan").select2({
+        placeholder: model_placeholder,
+        dropdownParent: $("#model_kendaraan").parent(),
+        data: dataModel,
+        language: {
+            noResults: function () {
+                return lang === "id"
+                    ? "Tidak Ada Hasil yang Ditemukan"
+                    : "No Result Found";
+            },
         },
     });
 }
@@ -986,20 +1149,28 @@ $("#search-address-btn").on("click", () => {
     });
 });
 
-$("#provinsi").change(() => {
-    getListCity("#kota");
+$("#provinsi").change(function () {
+    if ($(this).valid()) {
+        getListCity("#kota");
+    }
 });
 
-$("#kota").change(() => {
-    getListDistrict("#kecamatan");
+$("#kota").change(function () {
+    if ($(this).valid()) {
+        getListDistrict("#kecamatan");
+    }
 });
 
-$("#kecamatan").change(() => {
-    getListSubdistrict("#kelurahan");
+$("#kecamatan").change(function () {
+    if ($(this).valid()) {
+        getListSubdistrict("#kelurahan");
+    }
 });
 
-$("#kelurahan").change(() => {
-    getListZipcode();
+$("#kelurahan").change(function () {
+    if ($(this).valid()) {
+        getListZipcode();
+    }
 });
 
 $("body").on("click", ".data-list", (e) => {

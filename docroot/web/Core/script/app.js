@@ -4215,64 +4215,6 @@ var urlLocation = window.location;
             model_attr = $(this).val()[0];
 
         var _url = "";
-        var _data = {
-            model_id: model_attr,
-            district_id: kecamatanForCarYear,
-        };
-
-        // console.log(brand_attr, $(this).val())
-        switch (tipe_attr) {
-            case "MOTOR":
-                _url = "/credit/get-motorcycle-year";
-                break;
-        }
-
-        $.ajax({
-            type: "POST",
-            url: _url,
-            data: _data,
-            dataType: "json",
-            error: function (data) {
-                // console.log("error" + data);
-            },
-
-            fail: function (xhr, textStatus, error) {
-                // console.log("request failed");
-            },
-
-            success: function (dataObj) {
-                // console.log("YEAR", dataObj);
-                if (dataObj.success == "1") {
-                    if (dataObj.data) {
-                        $.each(dataObj.data, function (index, dataYear) {
-                            if (dataYear.year != "") {
-                                dataTahun.push({
-                                    id: dataYear.id,
-                                    text: dataYear.year,
-                                });
-                            }
-                        });
-
-                        $("#tahun_kendaraan").select2({
-                            placeholder: tahun_kendaraan_placeholder,
-                            dropdownParent: $("#tahun_kendaraan").parent(),
-                            data: dataTahun,
-                        });
-
-                        // $('#status_kep').val("");
-                        // var customFormInstance = jcf.getInstance($('#status_kep'));
-                        // customFormInstance.refresh();
-                        // $('#status_kep').empty();
-
-                        // var status_self = $('#status_kep').data('status-self');
-                        // var status_other = $('#status_kep').data('status-other');
-                        // var injectStatusKep = ['<option value="' + status_self.toUpperCase() + '">' + status_self + '</option>', '<option value="' + status_other.toUpperCase() + '">' + status_other + '</option>'];
-                        // $('#status_kep').append(injectStatusKep);
-                        // $('#status_kep').next().removeClass("jcf-disabled");
-                    }
-                }
-            },
-        });
 
         if (
             $("#merk_kendaraan").val() == "" ||

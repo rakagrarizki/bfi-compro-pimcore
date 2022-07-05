@@ -309,9 +309,7 @@ $this->headScript()
                                     </select>
                                     <div class="error-wrap"></div>
                                 </div>
-                                <div class="form-group form-btn space-btn">
-                                    <button class="cta cta-primary-outline cta-big cta-back buttonback"
-                                        id="back2" type="button"><?=$this->translate('before') ?></button>
+                                <div class="form-group form-btn side-right">
                                    <button class="cta cta-primary cta-big cta-see buttonnext" id="next2"
                                         type="button"><?=$this->translate('next') ?></button>
                                 </div>

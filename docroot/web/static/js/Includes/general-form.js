@@ -16,6 +16,7 @@ let life_insurance_rate = 0;
 let total_ntf = 0;
 let provision_fee = 0;
 let tlpAmount = 0;
+let is_coverage = true;
 
 window.dataLayer = window.dataLayer || [];
 
@@ -697,19 +698,21 @@ function scrollToTop() {
     });
 })(jQuery);
 
-$(".form-control").on("select2:select", function (e) {
-    var data = e.params.data;
+$("select.form-control").on("select2:select change", function (e) {
+    // var data = e.params.data;
+    var isValid = $(this).valid();
     var nextEl = $(this)
         .parent()
-        .nextAll(".form-group:eq(0)")
-        .find(".input-step");
-    if (data.selected == true) {
+        .nextAll(".form-group")
+        .find("select.form-control");
+    if (isValid == true) {
         $(this).next().find(".select2-selection").addClass("valid");
-        nextEl.removeAttr("disabled");
+        $(this).nextAll("div").html("");
+        // nextEl.removeAttr("disabled");
     } else {
-        {
-        }
-        nextEl.attr("disabled", true);
+        nextEl.next().find(".select2-selection").removeClass("valid");
+        $(this).next().find(".select2-selection").removeClass("valid");
+        // nextEl.attr("disabled", true);
     }
 });
 
@@ -1017,137 +1020,6 @@ function getListZipcode() {
     });
 }
 
-function getListAssets(assetType) {
-    // TODO : add paging to fetch all data
-    $.ajax({
-        type: "POST",
-        url: "/credit/get-list-assets",
-        headers: { Authorization: "Basic " + currentToken },
-        data: {
-            isactive: true,
-            asset_type: assetType,
-            page: 1,
-            size: assetSize,
-        },
-        dataType: "json",
-        error: function (xhr) {
-            retryAjax(this, xhr);
-        },
-        fail: function (xhr, textStatus, error) {
-            retryAjax(this, xhr);
-        },
-        success: function (result) {
-            if (result.message === "success") {
-                $.each(result.data.data, (i, val) => {
-                    dataAssets.push({
-                        category: val.category_id,
-                        model: val.model,
-                        model_desc: val.model_desc,
-                        brand: val.brand,
-                        brand_desc: val.brand_desc,
-                        asset_code: val.asset_code,
-                        asset_group: val.asset_group,
-                        asset_type_id: val.asset_type_id,
-                    });
-                });
-                filterAssetType();
-            } else {
-                console.log("Data not found");
-            }
-        },
-    });
-}
-
-function filterAssetType() {
-    var dataType = [];
-    var type_placeholder = $("#type_kendaraan").attr("placeholder");
-
-    // remove duplicate
-    let assetType = dataAssets
-        .map((item) => item.category)
-        .filter((val, i, e) => e.indexOf(val) === i);
-
-    $.each(assetType, function (id, val) {
-        dataType.push({
-            id: val,
-            text: val,
-        });
-    });
-    if (sessionStorage.getItem("loanType") === "NDFM") {
-        filterAssetBrand();
-    }
-    $("#type_kendaraan").select2({
-        placeholder: type_placeholder,
-        dropdownParent: $("#type_kendaraan").parent(),
-        data: dataType,
-        language: {
-            noResults: function () {
-                return lang === "id"
-                    ? "Tidak Ada Hasil yang Ditemukan"
-                    : "No Result Found";
-            },
-        },
-    });
-}
-
-function filterAssetBrand(category) {
-    var dataBrand = [];
-    var brand_placeholder = $("#merk_kendaraan").attr("placeholder");
-    rawAssetBrand =
-        sessionStorage.getItem("loanType") === "NDFC"
-            ? dataAssets.filter((e) => e.category === category)
-            : dataAssets;
-
-    // remove duplicate
-    let assetBrand = rawAssetBrand.filter(
-        (val, i, e) => i === e.findIndex((t) => t.brand === val.brand)
-    );
-
-    $.each(assetBrand, function (id, val) {
-        dataBrand.push({
-            id: val.brand,
-            text: val.brand_desc,
-        });
-    });
-    $("#merk_kendaraan").select2({
-        placeholder: brand_placeholder,
-        dropdownParent: $("#merk_kendaraan").parent(),
-        data: dataBrand,
-        language: {
-            noResults: function () {
-                return lang === "id"
-                    ? "Tidak Ada Hasil yang Ditemukan"
-                    : "No Result Found";
-            },
-        },
-    });
-}
-
-function filterAssetModel(brand) {
-    var dataModel = [];
-    var model_placeholder = $("#model_kendaraan").attr("placeholder");
-    let assetModel = rawAssetBrand.filter((e) => e.brand === brand);
-
-    $.each(assetModel, function (id, val) {
-        dataModel.push({
-            id: val.model,
-            text: val.model_desc,
-        });
-    });
-    $("#model_kendaraan").select2({
-        placeholder: model_placeholder,
-        dropdownParent: $("#model_kendaraan").parent(),
-        data: dataModel,
-        language: {
-            noResults: function () {
-                return lang === "id"
-                    ? "Tidak Ada Hasil yang Ditemukan"
-                    : "No Result Found";
-            },
-        },
-    });
-}
-
 function getListBpkbOwnership(element) {
     dataBpkbOwnership = [];
     $(element).empty();
@@ -1345,6 +1217,16 @@ function getAssetYear(asset_model, branch_id, fn) {
                 $.each(result.data.data, (i, val) => {
                     assetYears.push(val.manufacturing_year);
                 });
+                if (assetYears.includes(customerAssetYear)) {
+                    assetYearExists = true;
+                    is_coverage = true;
+                    fn();
+                } else {
+                    assetYearExists = false;
+                    is_coverage = false;
+                    fn();
+                    $("#modal-not-cover").modal("show");
+                }
             } else {
                 assetYears = [];
                 loanType = sessionStorage.getItem("loanType");
@@ -1358,13 +1240,8 @@ function getAssetYear(asset_model, branch_id, fn) {
                     });
                 }
                 assetYearExists = false;
-                $("#modal-not-cover").modal("show");
-            }
-            if (assetYears.includes(customerAssetYear)) {
-                assetYearExists = true;
+                is_coverage = false;
                 fn();
-            } else {
-                assetYearExists = false;
                 $("#modal-not-cover").modal("show");
             }
         },
@@ -1596,12 +1473,13 @@ function getLifeInsuranceCoy() {
 
 function getLifeInsuranceRate() {
     let fund = clearDot($("#pembiayaan").val());
-    let ntfAwal = (fund +
+    let ntfAwal =
+        (fund +
             calculationParam.admin_fee +
             calculationParam.fiducia_fee +
             calculationParam.rsa_fee) /
         (1 - provision_fee / 100);
-        
+
     let paramInsuranceRateNew = {
         branch_id: branch_id,
         age: 25,

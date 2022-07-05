@@ -1824,6 +1824,7 @@ class CreditController extends FrontendController
         $param["info_assets"]["asset_ownership_desc_bfi"] = htmlentities(addslashes($info_assets['asset_ownership_desc_bfi']));
         $param["info_assets"]["category_id_bfi"] = htmlentities(addslashes($info_assets['category_id_bfi']));
         $param["info_assets"]["category_desc_bfi"] = htmlentities(addslashes($info_assets['category_desc_bfi']));
+        $param["info_assets"]["is_coverage"] = htmlentities(addslashes($info_assets['is_coverage']));
 
         try {
             $data = $this->sendAPI->saveCarLeads2($url, $param);
