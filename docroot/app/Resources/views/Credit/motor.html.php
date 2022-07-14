@@ -77,7 +77,7 @@ $this->headScript()
                 </nav>
                 <form action="#" id="getCredit" method="POST" class="form-get--credit" role="form">
                             <input type="hidden" id="jenis_form" name="jenis_form" value="MOTOR">
-                            <input type="hidden" id="ndfm_max_fund" name="max_fund" value="<?= $maxFundPercentage; ?>">
+                            <input type="hidden" id="ndf_max_fund" name="max_fund" value="<?= $maxFundPercentage; ?>">
                             <div class="tab-content">
                                 <div id="menu2" class="tab-pane fade in active">
                                     <div class="form-body--credit">
@@ -301,9 +301,7 @@ $this->headScript()
                                             </select>
                                             <div class="error-wrap"></div>
                                         </div>
-                                        <div class="form-group form-btn space-btn">
-                                            <button class="cta cta-primary-outline cta-big cta-back buttonback"
-                                                id="back2" type="button"><?=$this->translate('before') ?></button>
+                                        <div class="form-group form-btn side-right">
                                            <button class="cta cta-primary cta-big cta-see buttonnext" id="next2"
                                                 type="button"><?=$this->translate('next') ?></button>
                                         </div>

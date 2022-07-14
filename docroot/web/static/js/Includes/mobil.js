@@ -1,5 +1,6 @@
 let lang = document.documentElement.lang;
 var submission_id = undefined;
+var encrypted_code = "";
 
 window.dataLayer = window.dataLayer || [];
 
@@ -9,6 +10,7 @@ let dataStep1 = {
     phone_number: undefined,
     no_ktp: undefined,
     wa_number: undefined,
+    encrypt_code_zeals: undefined,
     utm_source: undefined,
     utm_campaign: undefined,
     utm_term: undefined,
@@ -216,7 +218,12 @@ $("#next2").on("click", function (e) {
         getBranchCoverage(() => {
             getAssetYear(assetCode, branch_id, () => {
                 pushDataStep2(() => {
-                    if (is_coverage === true) {
+                    if (is_coverage === false) {
+                        window.dataLayer.push({
+                            event: "ValidNDFCAssetNotCover",
+                        });
+                        $("#modal-not-cover").modal("show");
+                    } else {
                         getDupcheck(() => {
                             if (
                                 sessionStorage.getItem("submitStep2") ===
@@ -314,12 +321,16 @@ $("#back3").on("click", function (e) {
 });
 
 function pushDataStep1(cb) {
+    encrypted_code = sessionStorage.getItem("encrypted_code");
+
     let result = (dataStep1 = {
         name: $("#nama_lengkap").val(),
         email: $("#email_pemohon").val(),
         phone_number: $("#no_handphone").val(),
         wa_number: $("#wa_number").val(),
         no_ktp: $("#idnumber").val(),
+        encrypt_code_zeals:
+            encrypted_code === "undefined" ? null : encrypted_code,
         utm_source: sessionStorage.getItem("utm_source"),
         utm_campaign: sessionStorage.getItem("utm_campaign"),
         utm_term: sessionStorage.getItem("utm_term"),
@@ -475,7 +486,7 @@ function pushDataStep3(cb) {
             // TODO: change data below
             monthly_installment: calculationParam.installment_amount,
             vehicle_insurance: selectedInsurance.join("-"),
-            ltv_max: calculationParam.max_ltv,
+            ltv_max: $("#ndf_max_fund").val() / 100,
             ntf_max: total_ntf,
         },
     });
@@ -548,6 +559,9 @@ function pushDataStep5() {
                         event: "ValidFormNDFCStepOTP",
                     });
                     sessionStorage.setItem("submitStepOtp", "true");
+                }
+                if (encrypted_code != "undefined") {
+                    CbTransactionZeals();
                 }
                 submissionRegister(submission_id);
                 $("#menu5").removeClass("active");
@@ -1090,8 +1104,10 @@ $("#tenor2").on("change", function (e) {
         showInsurance($('input[name="assurance4"]'));
     }
     tenorValue == 0 || tenorValue == "" ? CalcBtn("hide") : CalcBtn("show");
-    e.preventDefault();
-    getMaxFunding();
+    if ($("#pembiayaan").valid()) {
+        e.preventDefault();
+        getMaxFunding();
+    }
 });
 
 $(document).on("change", ".fillable-insurance input[type=radio]", function () {
@@ -1117,11 +1133,13 @@ $(document).on("change", ".fillable-insurance input[type=radio]", function () {
 });
 
 $("#pembiayaan").on("change", function (e) {
-    e.preventDefault();
-    $(this).val() == 0 || $(this).val() == ""
-        ? CalcBtn("hide")
-        : CalcBtn("show");
-    getMaxFunding();
+    if ($(this).valid()) {
+        e.preventDefault();
+        $(this).val() == 0 || $(this).val() == ""
+            ? CalcBtn("hide")
+            : CalcBtn("show");
+        getMaxFunding();
+    }
 });
 
 $("#funding").on("change", function (e) {

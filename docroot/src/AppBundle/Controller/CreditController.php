@@ -34,6 +34,8 @@ class CreditController extends FrontendController
 
     public function mobilAction(Request $request)
     {
+        $maxFundPercentage = WebsiteSetting::getByName('NDFC_MAX_FUND_PERCENTAGE')->getData();
+        $this->view->maxFundPercentage = $maxFundPercentage;
     }
 
     public function defaultAction(Request $request)
@@ -1764,6 +1766,7 @@ class CreditController extends FrontendController
         $param["phone_number"] = htmlentities(addslashes($request->get('phone_number')));
         $param["wa_number"] = htmlentities(addslashes($request->get('wa_number')));
         $param["no_ktp"] = htmlentities(addslashes($request->get('no_ktp')));
+        $param["encrypt_code_zeals"] = htmlentities(addslashes($request->get('encrypt_code_zeals')));
         $param["utm_source"] = htmlentities(addslashes($request->get('utm_source')));
         $param["utm_campaign"] = htmlentities(addslashes($request->get('utm_campaign')));
         $param["utm_term"] = htmlentities(addslashes($request->get('utm_term')));
@@ -2189,6 +2192,7 @@ class CreditController extends FrontendController
         $param["email"] = htmlentities(addslashes($request->get('email')));
         $param["phone_number"] = htmlentities(addslashes($request->get('phone_number')));
         $param["wa_number"] = htmlentities(addslashes($request->get('wa_number')));
+        $param["encrypt_code_zeals"] = htmlentities(addslashes($request->get('encrypt_code_zeals')));
         $param["utm_source"] = htmlentities(addslashes($request->get('utm_source')));
         $param["utm_campaign"] = htmlentities(addslashes($request->get('utm_campaign')));
         $param["utm_term"] = htmlentities(addslashes($request->get('utm_term')));

@@ -64,6 +64,10 @@ var submission_id = "";
 var leavePage = false;
 var isAjaxActive = false;
 var urlLocation = window.location;
+var paramMinFunding = 0;
+var paramMaxFunding = 0;
+const NDFM_MIN_FUNDING = 1000000;
+const NDFC_MIN_FUNDING = 10000000;
 
 (function ($) {
     var lang = document.documentElement.lang;
@@ -691,6 +695,12 @@ var urlLocation = window.location;
         }
     });
 
+    function clearDot(x) {
+        var removeDot = x.replace(/\./g, "");
+        var result = parseInt(removeDot);
+        return result;
+    }
+
     $.validator.addClassRules({
         formRequired: {
             required: true,
@@ -789,12 +799,18 @@ var urlLocation = window.location;
 
         minFundingNdfm: {
             required: true,
-            minFund: separatordot(1000000),
+            minFund: NDFM_MIN_FUNDING,
+            maxFund: function () {
+                return clearDot($(".max-fund").text().replace("Rp ",""));
+            },
         },
 
         minFundingNdfc: {
             required: true,
-            minFund: separatordot(10000000),
+            minFund: NDFC_MIN_FUNDING,
+            maxFund: function () {
+                return clearDot($(".max-fund").text().replace("Rp ",""));
+            },
         },
 
         submitHandler: function (form) {
@@ -846,19 +862,39 @@ var urlLocation = window.location;
     );
 
     if (lang === "id") {
-        minFundingText = "Minimal funding Rp{0}";
+        minFundingText = "Minimal funding Rp";
     } else {
-        minFundingText = "Minimum funding Rp{0}";
+        minFundingText = "Minimum funding Rp";
     }
 
     $.validator.addMethod(
         "minFund",
         function (value, el, param) {
             var NewVal = value.replace(/\./g, "");
-            var NewParam = param.replace(/\./g, "");
-            return this.optional(el) || NewVal >= NewParam;
+            paramMinFunding = separatordot(param);
+            return this.optional(el) || NewVal >= param;
         },
-        minFundingText
+        function () {
+            return minFundingText + paramMinFunding;
+        }
+    );
+
+    if (lang === "id") {
+        maxFundingText = "Maksimal funding Rp";
+    } else {
+        maxFundingText = "Maximum funding Rp";
+    }
+
+    $.validator.addMethod(
+        "maxFund",
+        function (value, el, param) {
+            var NewVal = value.replace(/\./g, "");
+            paramMaxFunding = separatordot(param);
+            return this.optional(el) || NewVal <= param;
+        },
+        function (){
+            return maxFundingText + paramMaxFunding;
+        }
     );
 
     var lang = document.documentElement.lang;

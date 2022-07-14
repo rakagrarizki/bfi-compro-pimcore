@@ -710,7 +710,11 @@ $("select.form-control").on("select2:select change", function (e) {
         $(this).nextAll("div").html("");
         // nextEl.removeAttr("disabled");
     } else {
-        nextEl.next().find(".select2-selection").removeClass("valid");
+        $.each(nextEl, function () {
+            if ($(this).val() == "" || $(this).val() == []) {
+                $(this).next().find(".select2-selection").removeClass("valid");
+            }
+        });
         $(this).next().find(".select2-selection").removeClass("valid");
         // nextEl.attr("disabled", true);
     }
@@ -822,7 +826,7 @@ function getAuthorizationToken() {
                 currentToken = result.data.access_token;
                 expiredDate = result.data.expired_date;
 
-                sessionStorage.setItem("token", currentToken);
+                sessionStorage.setItem("gatewayToken", currentToken);
                 sessionStorage.setItem("expiredDate", expiredDate);
             },
         });
@@ -1220,30 +1224,16 @@ function getAssetYear(asset_model, branch_id, fn) {
                 if (assetYears.includes(customerAssetYear)) {
                     assetYearExists = true;
                     is_coverage = true;
-                    fn();
                 } else {
                     assetYearExists = false;
                     is_coverage = false;
-                    fn();
-                    $("#modal-not-cover").modal("show");
                 }
             } else {
                 assetYears = [];
-                loanType = sessionStorage.getItem("loanType");
-                if (loanType == "NDFC") {
-                    window.dataLayer.push({
-                        event: "ValidNDFCAssetNotCover",
-                    });
-                } else {
-                    window.dataLayer.push({
-                        event: "ValidNDFMAssetNotCover",
-                    });
-                }
                 assetYearExists = false;
                 is_coverage = false;
-                fn();
-                $("#modal-not-cover").modal("show");
             }
+            fn();
         },
     });
 }
@@ -1566,12 +1556,7 @@ function getMaxFunding() {
             res2[0].data.data[0].min_effective_rate +
             res3[0].data.data[0].min_effective_rate;
 
-        max_funding_percentage =
-            sessionStorage.getItem("loanType") === "NDFC"
-                ? res1[0].data.data[0].max_funding_percentage +
-                  res2[0].data.data[0].max_funding_percentage +
-                  res3[0].data.data[0].max_funding_percentage
-                : $("#ndfm_max_fund").val();
+        max_funding_percentage = $("#ndf_max_fund").val();
 
         calculationParam.max_ltv =
             (max_funding_percentage / 100) * calculationParam.nilai_taksaksi;

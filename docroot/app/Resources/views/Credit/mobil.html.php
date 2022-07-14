@@ -80,6 +80,7 @@ $this->headScript()
                 </nav>
                 <form action="#" id="getCredit" method="POST" class="form-get--credit" role="form">
                     <input type="hidden" id="jenis_form" name="jenis_form" value="MOBIL">
+                    <input type="hidden" id="ndf_max_fund" name="max_fund" value="<?= $maxFundPercentage; ?>">
                     <div class="tab-content">
                         <div id="menu2" class="tab-pane fade in active">
                             <div class="form-body--credit">

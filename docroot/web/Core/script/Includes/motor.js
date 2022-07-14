@@ -1,5 +1,6 @@
 let lang = document.documentElement.lang;
 var submission_id = "";
+var encrypted_code = "";
 
 window.dataLayer = window.dataLayer || [];
 
@@ -72,6 +73,7 @@ $(document).ready(function () {
         ? $(".nav-item-2.active").find(".nav-step-tag").text("Sedang Isi")
         : $(".nav-item-2.active").find(".nav-step-tag").text("Onprogress");
 
+    getAuthorizationToken();
     sessionStorage.setItem("loanType", "NDFM");
     sessionStorage.setItem("submitStep1", "false");
     sessionStorage.setItem("submitStep2", "false");
@@ -172,7 +174,6 @@ $("#next1").on("click", function (e) {
                 sessionStorage.setItem("submitStep1", "true");
             }
             step("next", 2);
-            getAuthorizationToken();
             getListProvinsi("#provinsi");
             getListAssets("motor");
             getListBpkbOwnership("#kepemilikan_bpkb");
@@ -188,7 +189,12 @@ $("#next2").on("click", function (e) {
             getDupcheck(() => {
                 getBranchCoverage(() => {
                     getAssetYear(assetCode, branch_id, () => {
-                        if ((assetYearExists = true)) {
+                        if (is_coverage === false) {
+                            window.dataLayer.push({
+                                event: "ValidNDFMAssetNotCover",
+                            });
+                            $("#modal-not-cover").modal("show");
+                        } else {
                             if (
                                 sessionStorage.getItem("submitStep2") ===
                                 "false"
@@ -207,12 +213,11 @@ $("#next2").on("click", function (e) {
                             $("#pembiayaan").val(separatordot(minFunding));
                             $("p.estimate-installment").text("Rp 0");
                             $("#calcLoan").removeAttr("disabled");
-                            $("#next3").attr("disabled","disabled");
+                            $("#next3").attr("disabled", "disabled");
 
-                            let brandData = $("#merk_kendaraan").select2('data');
-                            $("#brand-caption").text(
-                                brandData[0].text
-                            );
+                            let brandData =
+                                $("#merk_kendaraan").select2("data");
+                            $("#brand-caption").text(brandData[0].text);
                             $("#model-caption").text(
                                 $("#model_kendaraan option:selected").html()
                             );
@@ -259,12 +264,16 @@ $("#next5").on("click", function (e) {
 });
 
 function pushDataStep1(cb) {
+    encrypted_code = sessionStorage.getItem("encrypted_code");
+
     let result = (dataStep1 = {
         name: $("#nama_lengkap").val(),
         no_ktp: $("#idnumber").val(),
         email: $("#email_pemohon").val(),
         phone_number: $("#no_handphone").val(),
         wa_number: $("#wa_number").val(),
+        encrypt_code_zeals:
+            encrypted_code === "undefined" ? null : encrypted_code,
         utm_source: sessionStorage.getItem("utm_source"),
         utm_campaign: sessionStorage.getItem("utm_campaign"),
         utm_term: sessionStorage.getItem("utm_term"),
@@ -296,9 +305,9 @@ function pushDataStep1(cb) {
 
 function pushDataStep2(cb) {
     assetCode = $("#model_kendaraan").val().toString();
-    let brandData = $("#merk_kendaraan").select2('data');
-    let modelData = $("#model_kendaraan").select2('data');
-    let occupationData = $("#occupation").select2('data');
+    let brandData = $("#merk_kendaraan").select2("data");
+    let modelData = $("#model_kendaraan").select2("data");
+    let occupationData = $("#occupation").select2("data");
     let result = (dataStep2 = {
         submission_id: submission_id,
         info_address: {
@@ -442,6 +451,9 @@ function pushDataStep5() {
                         event: "ValidFormNDFMStepOTP",
                     });
                     sessionStorage.setItem("submitStepOtp", "true");
+                }
+                if (encrypted_code != "undefined") {
+                    CbTransactionZeals();
                 }
                 submissionRegister(submission_id);
                 $("#menu5").removeClass("active");
@@ -687,7 +699,7 @@ $("input[name='action-call']").click(function () {
 });
 
 $("#tenor2").on("change", function (e) {
-    if ($(this).closest("form").valid()) {
+    if ($("#pembiayaan").valid()) {
         let tenorValue = $(this).val();
         tenorValue == 0 || tenorValue == "" ? CalcBtn("hide") : CalcBtn("show");
         e.preventDefault();
@@ -696,17 +708,15 @@ $("#tenor2").on("change", function (e) {
 });
 
 $("#funding").on("change", function (e) {
-    if ($(this).closest("form").valid()) {
-        e.preventDefault();
-        $("#pembiayaan").val() == 0 || $("#pembiayaan").val() == ""
-            ? CalcBtn("hide")
-            : CalcBtn("show");
-        getMaxFunding();
-    }
+    e.preventDefault();
+    $("#pembiayaan").val() == 0 || $("#pembiayaan").val() == ""
+        ? CalcBtn("hide")
+        : CalcBtn("show");
+    getMaxFunding();
 });
 
 $("#pembiayaan").on("change", function (e) {
-    if ($(this).closest("form").valid()) {
+    if ($(this).valid()) {
         e.preventDefault();
         $(this).val() == 0 || $(this).val() == ""
             ? CalcBtn("hide")
@@ -715,26 +725,26 @@ $("#pembiayaan").on("change", function (e) {
     }
 });
 
-$("#provinsi").change(function() {
-    if($(this).valid()){
+$("#provinsi").change(function () {
+    if ($(this).valid()) {
         getListCity("#kota");
     }
 });
 
-$("#kota").change(function() {
-    if($(this).valid()){
+$("#kota").change(function () {
+    if ($(this).valid()) {
         getListDistrict("#kecamatan");
     }
 });
 
-$("#kecamatan").change(function() {
-    if($(this).valid()){
+$("#kecamatan").change(function () {
+    if ($(this).valid()) {
         getListSubdistrict("#kelurahan");
     }
 });
 
-$("#kelurahan").change(function() {
-    if($(this).valid()){
+$("#kelurahan").change(function () {
+    if ($(this).valid()) {
         getListZipcode();
     }
 });
@@ -751,7 +761,7 @@ function CalcBtn(action) {
         $("#warning-calc").html(
             '<label id="warning-text" class="error" for="calcLoan" style="display: inline-block;"> Anda belum menghitung estimasi angsuran </label>'
         );
-    };
+    }
 }
 
 $("#btn-check").on("click", () => {
