@@ -13,7 +13,7 @@ $site = $this->document->getProperty("site");
                         <a href="/<?php echo $this->getLocale() ?>/corporate" class="backtohome"><?= $this->translate("backtohome") ?></a>
                     <?php } ?>
                 <?php else : ?>
-                    <a href="/<?php echo $this->getLocale() ?>" class="backtohome"><?= $this->translate("backtohome") ?></a>
+                    <a href="/<?= $this->getLocale() == 'en' ? $this->getLocale() : ''; ?>" class="backtohome"><?= $this->translate("backtohome") ?></a>
                 <?php endif; ?>
             </div>
         </div>
@@ -23,7 +23,7 @@ $site = $this->document->getProperty("site");
                 <img src="/static/images/logo-bfi.png" alt="logo-bfi" class="img-responsive header-image-product">
             </a>
             <?php else : ?>
-            <a class="navbar-brand col-xs-12" href="<?php echo "/".$this->getLocale(); ?>">
+            <a class="navbar-brand col-xs-12" href="/<?= $this->getLocale() == 'en' ? $this->getLocale() : ''; ?>">
                 <img src="/static/images/logo-bfi.png" alt="logo-bfi" class="img-responsive header-image-product">
             </a>
             <?php endif; ?>

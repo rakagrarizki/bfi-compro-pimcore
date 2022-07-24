@@ -21,7 +21,7 @@ $lang = $this->getLocale();
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 col-sm-4 left-side-top">
-                        <a id="" class="_grup" href="/<?php echo $this->getLocale() ?>"><?= $this->translate("personal") ?></a>
+                        <a id="" class="_grup" href="/<?= $this->getLocale() == 'en' ? $this->getLocale() : ''; ?>"><?= $this->translate("personal") ?></a>
                         <a class="_grup" href="<?= $this->translate("bfiConnectUrl") ?>"><?= $this->translate("Bisnis") ?></a>
                         
                     </div>

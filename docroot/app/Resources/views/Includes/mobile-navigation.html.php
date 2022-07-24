@@ -25,7 +25,7 @@ if($_COOKIE["customer"] != "null") {
             </div>
         </div>
         <div class="navbar-header">
-            <a class="navbar-brand" href="<?php echo "/" . $this->getLocale(); ?>">
+            <a class="navbar-brand" href="/<?= $this->getLocale() == 'en' ? $this->getLocale() : ''; ?>">
                 <img src="/static/images/logo-bfi.png" alt="logo-bfi" class="img-responsive">
             </a>
             <div class="header-button-wrapper">

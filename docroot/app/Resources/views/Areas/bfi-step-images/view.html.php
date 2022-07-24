@@ -14,7 +14,7 @@
                 <div class="sect-step__item">
                     <div class="row">
                         <div class="col-md-4">
-                            <a href="<?= $asset->getImage()?>" target="_blank"><img src="<?= $asset->getImage()?>" alt="<?= $this->input("alt-img")?>"></a>
+                            <img src="<?= $asset->getImage()?>" alt="<?= $this->input("alt-img")?>">
                         </div>
                         <div class="col-md-8">
                             <div class="text-wrap">
@@ -26,7 +26,7 @@
             <?php } ?>
         </div>
         <?php if($this->checkbox("show-btn")->isChecked()) { ?>
-             <div class="btn-ajukan margin-bottom-85 margin-top-70">
+            <div class="btn-ajukan margin-bottom-85 margin-top-70">
             <a href="<?= $this->link('url')->getHref(); ?>" class="cta cta-orange <?= $this->link('url')->getClass(); ?>" id="<?= $this->link('url')->getParameters()?>"><?= $this->link('url')->getText(); ?></a>
         </div>
             <?php } ?>
