@@ -953,4 +953,9 @@ class SendApi
     {
         return $this->executeApi('api-zeals', $url , $params, "POST");
     }
+
+    public function getHouseOwnership($url, $params)
+    {
+        return $this->executeApi('api-new-house-ownership', $url, $params, "POST");
+    }
 }

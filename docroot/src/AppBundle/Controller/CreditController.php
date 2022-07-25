@@ -1085,6 +1085,36 @@ class CreditController extends FrontendController
         }
     }
 
+    public function getHouseOwnershipAction(Request $request)
+    {
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOST")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_DIGITAL_HOUSE_OWNERSHIP')->getData();
+        $param['category'] = htmlentities(addslashes($request->get('category')));
+
+        try {
+            $data = $this->sendAPI->getHouseOwnership($url, $param);
+
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => "0",
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
     public function getListDataMaritalStatusAction(Request $request)
     {
         $token = $this->getTokenBearer();
@@ -2255,6 +2285,7 @@ class CreditController extends FrontendController
         $param["info_assets"]["home_ownership_id_bfi"] = htmlentities(addslashes($info_assets['home_ownership_id_bfi']));
         $param["info_assets"]["home_ownership_desc_bfi"] = htmlentities(addslashes($info_assets['home_ownership_desc_bfi']));
         $param["info_assets"]["tax_is_active"] = htmlentities(addslashes($info_assets['tax_is_active']));
+        $param["info_assets"]["is_coverage"] = htmlentities(addslashes($info_assets['is_coverage']));
         $param["info_customer"]["profession_id_bfi"] = htmlentities(addslashes($info_customer['profession_id_bfi']));
         $param["info_customer"]["profession_desc_bfi"] = htmlentities(addslashes($info_customer['profession_desc_bfi']));
         $param["info_customer"]["salary"] = htmlentities(addslashes($info_customer['salary']));

@@ -122,7 +122,7 @@ $(document).ready(function () {
     sessionStorage.setItem("submitStep3", "false");
     sessionStorage.setItem("submitStepOtp", "false");
     loanTenor = NDFC_TENOR;
-    assetSize = 13996;
+    assetSize = 15000;
     minFunding = 10000000;
     tlpAmount = 5000000;
 
@@ -164,6 +164,12 @@ var model_kendaraan = $("#model_kendaraan").attr("placeholder");
 $("#model_kendaraan").select2({
     placeholder: model_kendaraan,
     dropdownParent: $("#model_kendaraan").parent(),
+});
+
+var tahun_kendaraan = $("#tahun_kendaraan").attr("placeholder");
+$("#tahun_kendaraan").select2({
+    placeholder: tahun_kendaraan,
+    dropdownParent: $("#tahun_kendaraan").parent(),
 });
 
 var kepemilikan_bpkb = $("#kepemilikan_bpkb").attr("placeholder");
@@ -211,63 +217,62 @@ $("#merk_kendaraan").change(() => {
     filterAssetModel($("#merk_kendaraan").val().toString());
 });
 
+$("#model_kendaraan").change(function () {
+    if ($(this).valid()) {
+        const vehicleModel = $(this).val().toString();
+        getAssetYear(vehicleModel, branch_id);
+    }
+});
+
 $("#next2").on("click", function (e) {
     e.preventDefault();
     if ($(this).closest("form").valid()) {
-        assetCode = $("#model_kendaraan").val().toString();
-        getBranchCoverage(() => {
-            getAssetYear(assetCode, branch_id, () => {
-                pushDataStep2(() => {
-                    if (is_coverage === false) {
-                        window.dataLayer.push({
-                            event: "ValidNDFCAssetNotCover",
-                        });
-                        $("#modal-not-cover").modal("show");
-                    } else {
-                        getDupcheck(() => {
-                            if (
-                                sessionStorage.getItem("submitStep2") ===
-                                "false"
-                            ) {
-                                window.dataLayer.push({
-                                    event: "ValidFormNDFCStep2",
-                                });
-                                sessionStorage.setItem("submitStep2", "true");
-                            }
-                            step("next", 3);
-                            getListHouseOwnership("#kepemilikan_rumah");
-                            getListMaritalStatus("#marital_status");
-                            getPricelistPaging();
-                            getProductOffering();
-                            getRsaCoyBranch();
-                            getAssetInsuranceCoyBranch();
-                            getAssetCategory();
-
-                            $("#tenor").val(tenorFormatter(loanTenor[0]));
-                            $("#tenor2").val(1);
-                            $("#pembiayaan").val(separatordot(minFunding));
-
-                            showInsurance($('input[name="assurance1"]'));
-                            hideInsurance($('input[name="assurance2"]'));
-                            hideInsurance($('input[name="assurance3"]'));
-                            hideInsurance($('input[name="assurance4"]'));
-
-                            let brandData =
-                                $("#merk_kendaraan").select2("data");
-                            $("#brand-caption").text(brandData[0].text);
-                            $("#model-caption").text(
-                                $("#model_kendaraan option:selected").html()
-                            );
-                            $("#year-caption").text(
-                                $("#tahun_kendaraan").val()
-                            );
-                        });
-                    }
+        pushDataStep2(() => {
+            if (!is_coverage) {
+                window.dataLayer.push({
+                    event: "ValidNDFCAssetNotCover",
                 });
-            });
+                $("#modal-not-cover").modal("show");
+            } else {
+                getDupcheck(() => {
+                    if (sessionStorage.getItem("submitStep2") === "false") {
+                        window.dataLayer.push({
+                            event: "ValidFormNDFCStep2",
+                        });
+                        sessionStorage.setItem("submitStep2", "true");
+                    }
+                    step("next", 3);
+                    getListHouseOwnership("#kepemilikan_rumah");
+                    getListMaritalStatus("#marital_status");
+                    getPricelistPaging();
+                    getProductOffering();
+                    getRsaCoyBranch();
+                    getAssetInsuranceCoyBranch();
+                    getAssetCategory();
+
+                    $("#tenor").val(tenorFormatter(loanTenor[0]));
+                    $("#tenor2").val(1);
+                    $("#pembiayaan").val(separatordot(minFunding));
+
+                    showInsurance($('input[name="assurance1"]'));
+                    hideInsurance($('input[name="assurance2"]'));
+                    hideInsurance($('input[name="assurance3"]'));
+                    hideInsurance($('input[name="assurance4"]'));
+
+                    let brandData = $("#merk_kendaraan").select2("data");
+                    $("#brand-caption").text(brandData[0].text);
+                    $("#model-caption").text(
+                        $("#model_kendaraan option:selected").html()
+                    );
+                    $("#year-caption").text(
+                        $("#tahun_kendaraan").val().toString()
+                    );
+                });
+            }
         });
     }
 });
+
 $("#next3").on("click", function (e) {
     e.preventDefault();
     if ($(this).closest("form").valid()) {
@@ -388,8 +393,10 @@ function pushDataStep2(cb) {
             brand_desc_bfi: brandData[0].text,
             model_id_bfi: modelData[0].id,
             model_desc_bfi: modelData[0].text,
-            vehicle_year_bfi: $("#tahun_kendaraan").val(), // setelah dupcheck baru cek pricelist
-            license_plate: $("#plat-no").val(), // cek update dupcheck dulu
+            vehicle_year_bfi: is_coverage
+                ? $("#tahun_kendaraan").val().toString()
+                : $("#tahun_kendaraan_text").val(),
+            license_plate: $("#plat-no").val(),
             asset_ownership_id_bfi: $("#kepemilikan_bpkb").val().toString(),
             asset_ownership_desc_bfi: $(
                 "#kepemilikan_bpkb option:selected"
@@ -1216,3 +1223,8 @@ function CalcBtn(action) {
         );
     }
 }
+
+$("#btn-check").on("click", (e) => {
+    e.preventDefault();
+    submissionLogin(dataStep1.phone_number);
+});

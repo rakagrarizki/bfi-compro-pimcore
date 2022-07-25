@@ -292,9 +292,16 @@ $this->headScript()
                                     <div class="error-wrap"></div>
                                     <span><?= $this->translate('model-helper') ?></span>
                                 </div>
-                                 <div class="form-group">
-                                    <label for="tahun_kendaraan"><?= $this->translate('label-tahun') ?></label>
-                                    <input type="text" class="form-control formYear formRequired" maxlength="4" name="tahun_kendaraan" id="tahun_kendaraan" maxlength="4" placeholder="<?= $this->translate('placeholder-tahun') ?>">
+                                <div class="form-group">
+                                    <label><?= $this->translate('label-tahun') ?></label>
+                                    <select class="c-custom-select-trans form-control formRequired" placeholder="<?= $this->translate('placeholder-tahun') ?>" id="tahun_kendaraan" name="tahun_kendaraan" multiple="multiple">
+                                        <option value="" disabled> <?= $this->translate('placeholder-tahun') ?></option>
+                                    </select>
+                                    <div class="error-wrap"></div>
+                                </div>
+                                <div class="form-group" hidden>
+                                    <label for="tahun_kendaraan_text"><?= $this->translate('label-tahun') ?></label>
+                                    <input type="text" class="form-control formYear formRequired" maxlength="4" name="tahun_kendaraan_text" id="tahun_kendaraan_text" maxlength="4" placeholder="<?= $this->translate('placeholder-tahun') ?>">
                                     <div class="error-wrap"></div>
                                 </div>
                                 <div class="form-group">
@@ -673,7 +680,7 @@ $this->headScript()
                                             <span>082342423432423</span></a>
                                     </div>
                                     <div class="button-area text-center">
-                                        <a href="/id/user/dashboard" class="cta cta-primary-outline cta-big ">
+                                        <a href="#" id="btn-check" class="cta cta-primary-outline cta-big ">
                                             <span>CEK STATUS PENGAJUAN</span></a>
                                     </div>
                                     <div class="button-area text-center">

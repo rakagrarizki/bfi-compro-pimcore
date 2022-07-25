@@ -1017,6 +1017,7 @@ function getListZipcode() {
                 $.each(result.data, function (id, val) {
                     $("#kode_pos").val(val.zip_code);
                 });
+                getBranchCoverage(() => {});
             } else {
                 console.log("Data not found");
             }
@@ -1100,6 +1101,48 @@ function getListHouseOwnership(element) {
                     },
                 },
             });
+        },
+    });
+}
+
+function getHouseOwnership(element, category) {
+    let dataHouseOwnership = [];
+    $(element).empty();
+    var house_placeholder = $(element).attr("placeholder");
+
+    $.ajax({
+        type: "GET",
+        url: "/credit/get-house-ownership",
+        data: { category: category },
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            if (result.success === 1) {
+                $.each(result.data, function (id, val) {
+                    dataHouseOwnership.push({
+                        id: val.id,
+                        text: val.desc,
+                    });
+                });
+
+                $(element).select2({
+                    placeholder: house_placeholder,
+                    dropdownParent: $(element).parent(),
+                    data: dataHouseOwnership,
+                    language: {
+                        noResults: function () {
+                            return lang === "id"
+                                ? "Tidak Ada Hasil yang Ditemukan"
+                                : "No Result Found";
+                        },
+                    },
+                });
+            }
         },
     });
 }
@@ -1198,16 +1241,16 @@ function getBranchCoverage(fn) {
     });
 }
 
-function getAssetYear(asset_model, branch_id, fn) {
-    let assetYears = [];
-    let customerAssetYear = parseInt($("#tahun_kendaraan").val());
-    var assetYearExists;
+function getAssetYear(asset_model, branch_id) {
+    const dropdownYears = $("#tahun_kendaraan");
+    const dropdownPlaceholder = dropdownYears.attr("placeholder");
+    let listYears = [];
+    dropdownYears.empty();
 
     $.ajax({
         type: "POST",
         url: "/credit/get-asset-year",
         headers: { Authorization: "Basic " + currentToken },
-        // asset_code still static and need to be changed to parameter asset_model
         data: { asset_code: asset_model, branch_id: branch_id },
         dataType: "json",
         error: function (xhr) {
@@ -1219,27 +1262,36 @@ function getAssetYear(asset_model, branch_id, fn) {
         success: function (result) {
             if (result.message === "success" && result.data !== null) {
                 $.each(result.data.data, (i, val) => {
-                    assetYears.push(val.manufacturing_year);
+                    listYears.push({
+                        id: val.manufacturing_year,
+                        text: val.manufacturing_year,
+                    });
                 });
-                if (assetYears.includes(customerAssetYear)) {
-                    assetYearExists = true;
-                    is_coverage = true;
-                } else {
-                    assetYearExists = false;
-                    is_coverage = false;
-                }
+
+                dropdownYears.select2({
+                    placeholder: dropdownPlaceholder,
+                    dropdownParent: dropdownYears.parent(),
+                    data: listYears,
+                    language: {
+                        noResults: function () {
+                            return lang === "id"
+                                ? "Tidak Ada Hasil yang Ditemukan"
+                                : "No Result Found";
+                        },
+                    },
+                });
+                is_coverage = true;
             } else {
-                assetYears = [];
-                assetYearExists = false;
+                listYears = [];
                 is_coverage = false;
             }
-            fn();
+            toggleInputYear(is_coverage);
         },
     });
 }
 
 function getProductDetail() {
-    let assetYear = parseInt($("#tahun_kendaraan").val());
+    let assetYear = parseInt($("#tahun_kendaraan").val().toString());
     let assetAge = CURRENT_YEAR - assetYear;
     let tenor = loanTenor[$("#tenor2").val() - 1];
     let amount_funding =
@@ -1276,7 +1328,7 @@ function getProductDetail() {
 }
 
 function getProductBranchDetail() {
-    let assetYear = parseInt($("#tahun_kendaraan").val());
+    let assetYear = parseInt($("#tahun_kendaraan").val().toString());
     let assetAge = CURRENT_YEAR - assetYear;
     let tenor = loanTenor[$("#tenor2").val() - 1];
     let amount_funding =
@@ -1314,7 +1366,7 @@ function getProductBranchDetail() {
 }
 
 function getProductOfferingDetail() {
-    let assetYear = parseInt($("#tahun_kendaraan").val());
+    let assetYear = parseInt($("#tahun_kendaraan").val().toString());
     let assetAge = CURRENT_YEAR - assetYear;
     let tenor = loanTenor[$("#tenor2").val() - 1];
     let amount_funding =
@@ -1395,7 +1447,7 @@ function getFiduciaFee() {
 }
 
 function getPricelistPaging() {
-    let assetYear = $("#tahun_kendaraan").val();
+    let assetYear = $("#tahun_kendaraan").val().toString();
     $.ajax({
         type: "POST",
         url: "/credit/get-list-price",
@@ -1802,6 +1854,18 @@ $("#tenor2").on("change", function () {
     let selectedTenor = parseInt($(this).val());
     $("#tenor").val(tenorFormatter(loanTenor[selectedTenor - 1]));
 });
+
+function toggleInputYear(isCover) {
+    if (isCover) {
+        $("#tahun_kendaraan").closest(".form-group").removeAttr("hidden");
+        $("#tahun_kendaraan_text")
+            .closest(".form-group")
+            .attr("hidden", "hidden");
+    } else {
+        $("#tahun_kendaraan").closest(".form-group").attr("hidden", "hidden");
+        $("#tahun_kendaraan_text").closest(".form-group").removeAttr("hidden");
+    }
+}
 
 function submissionRegister(submission_id) {
     var submissionId = {
