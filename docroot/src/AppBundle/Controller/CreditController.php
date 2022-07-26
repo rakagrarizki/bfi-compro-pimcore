@@ -1219,14 +1219,16 @@ class CreditController extends FrontendController
     public function getDuplicateLeadsAction(Request $request)
     {
         $token = $this->getTokenBearer();
-        $host = WebsiteSetting::getByName("HOSTGATEWAY")->getData();
-        $url = $host . WebsiteSetting::getByName('URL_GET_DUPLICATE_LEADS')->getData();
+        $host = WebsiteSetting::getByName("HOSTBFICONNECT")->getData();
+        $product = htmlentities(addslashes($request->get('product')));
+        $endpoint = $product == "motor" ? WebsiteSetting::getByName('URL_NDFM_DUPCHECK')->getData() : WebsiteSetting::getByName('URL_NDFC_DUPCHECK')->getData();
+        $url = $host . $endpoint;
+
         $param['is_prospect'] = htmlentities(addslashes($request->get('is_prospect')));
-        $param['lead_program_id'] = htmlentities(addslashes($request->get('lead_program_id')));
-        $param['data_type_2'] = htmlentities(addslashes($request->get('data_type_2')));
+        $param['data_type'] = htmlentities(addslashes($request->get('data_type')));
         $param['customer_type'] = htmlentities(addslashes($request->get('customer_type')));
         $param['license_plate'] = htmlentities(addslashes($request->get('license_plate')));
-        $param['mobile_phone_1'] = htmlentities(addslashes($request->get('mobile_phone_1')));
+        $param['mobile_phone'] = htmlentities(addslashes($request->get('mobile_phone')));
 
         try {
             $data = $this->sendAPI->getDuplicateLeads($url, $param, $token);
@@ -1370,8 +1372,7 @@ class CreditController extends FrontendController
                 return new JsonResponse([
                     'success' => 1,
                     'message' => "success",
-                    'data' => $data->data,
-                    'param' => $param
+                    'data' => $data->data
                 ]);
             } else {
                 return new JsonResponse([

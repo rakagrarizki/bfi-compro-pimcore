@@ -586,6 +586,7 @@ function pushDataStep5() {
                 if (encrypted_code != "undefined") {
                     CbTransactionZeals();
                 }
+                submissionRegister(submission_id);
                 $("#menu5").removeClass("active");
                 $("#success").addClass("active");
             }
@@ -1080,3 +1081,8 @@ function CalcBtn(action) {
         $("#calcLoan").attr("disabled", "disabled");
     } else $("#calcLoan").removeAttr("disabled");
 }
+
+$("#btn-check").on("click", (e) => {
+    e.preventDefault();
+    submissionLogin(dataStep1.phone_number);
+});

@@ -470,14 +470,14 @@ function pushDataStep5() {
 
 function getDupcheck(cb) {
     let license_plate = $("#plat-no").val().replaceAll(" ", "");
-    let phone_number = parseInt(dataStep1.phone_number);
+    let phone_number = dataStep1.phone_number;
     let dataDupcheck = {
-        is_prospect: false,
-        lead_program_id: "2",
-        data_type_2: "Database",
-        customer_type: "P",
+        product: "motor",
+        is_prospect: true,
+        data_type: "leads",
+        customer_type: "p",
         license_plate: license_plate,
-        mobile_phone_1: phone_number,
+        mobile_phone: phone_number,
     };
 
     $.ajax({
