@@ -10,7 +10,7 @@ use Pimcore\Model\Document;
     <div class="container">
         <div class="row top-nav">
             <div class="col-xs-8">
-                <a class="_grup" href="/<?= $lang; ?>" class="cta-top-nav "><?= $this->translate("personal") ?></a>
+                <a class="_grup" href="/<?= $lang == 'en' ? $lang : ''; ?>" class="cta-top-nav "><?= $this->translate("personal") ?></a>
                 <a class="_grup" href="<?= $this->translate("bfiConnectUrl") ?>" target="_blank"><?= $this->translate("Bisnis") ?></a>
             </div>
             <div class="col-xs-4 text-right">

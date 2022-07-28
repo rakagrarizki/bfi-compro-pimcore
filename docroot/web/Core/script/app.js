@@ -5632,7 +5632,6 @@ function loginCustomer() {
             if (dataObj.success === true) {
                 var token = localStorage.getItem("token");
                 if (dataObj.result.header.status == 200) {
-                    // console.log("berhasil login");
                     requestOTP(dataPhone);
                     $("#login").addClass("hide");
                     $("#otp").removeClass("hide");
@@ -5641,16 +5640,15 @@ function loginCustomer() {
                     var lang = document.documentElement.lang;
                     var errorMsg;
                     if (lang == "id") {
-                        errorMsg = "Nomor Handphone Belum Terdaftar.";
+                        errorMsg = "Login gagal, silakan ajukan pembiayaan terlebih dahulu.";
                     } else {
-                        errorMsg = "Phone Number Not Registered.";
+                        errorMsg = "Login failed, please apply for financing first.";
                     }
                     $(".error-wrap").html(
-                        '<label id="login-error" class="error" for="login" style="display: inline-block;">' +
+                        '<label id="phone-input-error" class="error" for="phone-input" style="display: inline-block;">' +
                             errorMsg +
                             "</label>"
                     );
-                    // console.log("gagal login");
                 }
             }
         },

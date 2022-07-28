@@ -29,7 +29,7 @@ if($_COOKIE["customer"] != "null") {
                                 <a href="/<?php echo $this->getLocale() ?>/corporate" class="backtohome"><?= $this->translate("backtohome") ?></a>
                             <?php } ?>
                         <?php else : ?>
-                            <a href="/<?php echo $this->getLocale() ?>" class="backtohome"><?= $this->translate("backtohome") ?></a>
+                            <a href="/<?= $this->getLocale() == 'en' ? $this->getLocale() : ''; ?>" class="backtohome"><?= $this->translate("backtohome") ?></a>
                         <?php endif; ?>
                     </div>
                     <div class="col-md-6 col-sm-6 right-side-top">
@@ -50,7 +50,7 @@ if($_COOKIE["customer"] != "null") {
                                 <img src="/static/images/logo-bfi.png" class="img-responsive" alt="">
                             </a>
                         <?php else : ?>
-                            <a href="<?php echo "/".$this->getLocale(); ?>">
+                            <a href="/<?= $this->getLocale() == 'en' ? $this->getLocale() : ''; ?>">
                                 <img src="/static/images/logo-bfi.png" class="img-responsive" alt="">
                             </a>
                         <?php endif; ?>

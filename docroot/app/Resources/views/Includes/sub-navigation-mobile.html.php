@@ -11,7 +11,7 @@
 <?php endif; ?>
 
 <div class="col-xs-8">
-    <a class="_personal" href="/<?php echo $this->getLocale() ?>" class="cta-top-nav active"><?= $this->translate("personal") ?></a>
+    <a class="_personal" href="/<?= $this->getLocale() == 'en' ? $this->getLocale() : ''; ?>" class="cta-top-nav active"><?= $this->translate("personal") ?></a>
     <a class="_grup" href="<?= $this->translate("bfiConnectUrl") ?>" target="_blank"><?= $this->translate("Bisnis") ?></a>
     <!-- <a class="_grup" href="<?= $this->link('corporate')!= "" ?$this->link('corporate')->getHref() :'#';?>" class="cta-top-nav"><?= $this->translate("corporate") ?></a> -->
 </div>

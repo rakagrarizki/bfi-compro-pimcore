@@ -519,7 +519,10 @@
             font-size: 20px;
             color: $grey-dark-color;
             img {
-                width: 100% !important;
+                width: 100%;
+                @include breakpoint(mobile) {
+                    width: 100% !important;
+                }
             }
             ol {
                 @include breakpoint(mobile) {

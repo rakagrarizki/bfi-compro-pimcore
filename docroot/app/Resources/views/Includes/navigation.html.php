@@ -28,7 +28,7 @@ if($_COOKIE["customer"] != "null") {
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 col-sm-4 left-side-top">
-                        <a id="" class="_personal" href="/<?php echo $this->getLocale() ?>"><?= $this->translate("personal") ?></a>
+                        <a id="" class="_personal" href="/<?= $this->getLocale() == 'en' ? $this->getLocale() : ''; ?>"><?= $this->translate("personal") ?></a>
                         <a class="_grup" href="<?= $this->translate("bfiConnectUrl") ?>" target="_blank"><?= $this->translate("Bisnis") ?></a>
                     </div>
                     <div class="col-md-4 col-sm-4 right-side-top">
@@ -49,7 +49,7 @@ if($_COOKIE["customer"] != "null") {
             <div class="container">
                 <div class="row">
                     <div class="col-md-3 col-sm-3 header-bottom-logo">
-                        <a id="" href="<?php echo "/" . $this->getLocale(); ?>">
+                        <a id="" href="/<?= $this->getLocale() == 'en' ? $this->getLocale() : ''; ?>">
                             <img src="/static/images/logo-bfi.png" class="img-responsive" alt="logo-bfi">
                         </a>
                     </div>

@@ -25,7 +25,7 @@ if($this->editmode) : ?>
         <div class="row">
             <div class="col-md-6 col-sm-6 left-side-top">
                 <a class="_personal"
-                   href="/<?php echo $this->getLocale() ?>"><?= $this->translate("personal") ?></a>
+                   href="/<?= $this->getLocale() == 'en' ? $this->getLocale() : ''; ?>"><?= $this->translate("personal") ?></a>
                 <a class="_grup" target="<?=$this->link('corporate')!= "" ?$this->link('corporate')->getTarget():'' ?>" href="<?=$this->link('corporate')!= "" ?$this->link('corporate')->getHref():'' ?>">
                     <?= $this->translate("corporate") ?></a>
             </div>

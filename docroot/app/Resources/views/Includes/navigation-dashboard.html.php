@@ -25,7 +25,7 @@ if ($_COOKIE["customer"] != "null") {
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 col-sm-6 left-side-top">
-                        <a href="<?php echo "/" . $this->getLocale(); ?>" class="text-btn"><?= $this->translate("backtohome") ?></a>
+                        <a href="/<?= $this->getLocale() == 'en' ? $this->getLocale() : ''; ?>" class="text-btn"><?= $this->translate("backtohome") ?></a>
                     </div>
                     <div class="col-md-6 col-sm-6 right-side-top">
                         <div class="link-log">
@@ -41,7 +41,7 @@ if ($_COOKIE["customer"] != "null") {
                 <div class="row">
 
                     <div class="col-md-3 col-sm-3 header-bottom-logo">
-                        <a href="<?php echo "/" . $this->getLocale() . '/'; ?>">
+                        <a href="/<?= $this->getLocale() == 'en' ? $this->getLocale() : ''; ?>">
                             <img src="/static/images/logo-bfi.png" class="img-responsive" alt="">
                         </a>
                     </div>
