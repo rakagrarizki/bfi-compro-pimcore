@@ -26,6 +26,10 @@
                 <div class="col-sm-8"><?= $this->input("text"); ?></div>
             </div>
             <div class="row">
+                <div class="col-sm-4">Description</div>
+                <div class="col-sm-8"><?= $this->input("desc-step"); ?></div>
+            </div>
+            <div class="row">
                 <div class="col-sm-4">Image - Step</div>
                 <div class="col-sm-8"><?= $this->image('image-step');?></div>
             </div>
@@ -33,19 +37,6 @@
                 <div class="col-sm-4">Alt Image</div>
                 <div class="col-sm-8"><?= $this->input("alt-img"); ?></div>
             </div>
-            <!--<div class="row">
-                <div class="col-sm-4">Icon</div>
-                <div class="col-sm-8"><?php /*echo $this->select("icon", [
-                        "store" => [
-                            ['flaticon-form', 'flaticon-form'],
-                            ['flaticon-network', 'flaticon-network'],
-                            ['flaticon-list', 'flaticon-list'],
-                            ['flaticon-like', 'flaticon-like']
-                        ]
-                    ]); */?>
-                </div>
-            </div>-->
-
         <?php } ?>
     </div>
 </div>

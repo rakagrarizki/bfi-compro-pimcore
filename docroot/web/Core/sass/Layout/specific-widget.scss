@@ -814,3 +814,97 @@ div:nth-child(2) > p:nth-child(1) > span > span > strong .Table {
         margin-top: 10px;
     }
 }
+
+#product-widget {
+    position: relative;
+    background-color: #f5faff;
+
+    .container {
+        position: inherit;
+    }
+    .card-list {
+        padding: 14px 0;
+    }
+    .card {
+        position: relative;
+        background: #ffffff;
+        border: 1px solid #e3e3e3;
+        border-radius: 8px;
+        padding: 16px;
+        max-height: 200px;
+        margin-bottom: 8px;
+        overflow: hidden;
+        @include breakpoint(mobile) {
+            margin-bottom: 16px;
+        }
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        .card-desc {
+            font-size: 14px;
+            color: #646464;
+            span a {
+                color: $blue-dark-color;
+                font-weight: 600;
+            }
+        }
+        .product-img {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+        img {
+            width: 84px;
+        }
+        .button-area {
+            padding: 18px 0;
+            .cta {
+                padding: 12px 20px 12px 10px;
+            }
+            .cta-see:before {
+                right: 6px;
+            }
+        }
+    }
+    .cta-big {
+        font-size: 14px;
+    }
+    @include breakpoint(mobile) {
+        .cta-see:before {
+            right: 10px;
+        }
+        .sub-title {
+            margin-bottom: 0;
+        }
+        .title {
+            margin-top: 12px;
+        }
+    }
+    .custom-shape-divider-top-1658816883 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        overflow: hidden;
+        line-height: 0;
+    }
+
+    .custom-shape-divider-top-1658816883 svg {
+        position: relative;
+        display: block;
+        width: calc(100% + 1.3px);
+        height: 251px;
+    }
+
+    .custom-shape-divider-top-1658816883 .shape-fill {
+        fill: #ffffff;
+        @include breakpoint(mobile) {
+            fill: #f5faff;
+        }
+    }
+}
+
+#apply-step {
+    background-color: #F5FAFF;
+}

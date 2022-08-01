@@ -477,7 +477,7 @@
 
 #herobanner {
     .slick-dots {
-        bottom: 100px;
+        bottom: 40px;
 
         @include breakpoint (mobile) {
             bottom: 15%;

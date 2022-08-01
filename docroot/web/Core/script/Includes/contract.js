@@ -101,7 +101,7 @@ function dateValidChecker(date){
 }
 
 function convertInttoCurrency(int){
-    var currency = int.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&.');
+    var currency = Number(int).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&.');
     return currency
 }
 

@@ -6,7 +6,7 @@
         text-align: center;
         margin-top: 15px;
         margin-bottom: 60px;
-        color:#565656;
+        color: #565656;
         a {
             &:before {
                 @include breakpoint(mobile) {
@@ -19,7 +19,7 @@
             font-size: 40px;
             font-family: $font_default;
             font-weight: bold;
-            color: #04559F;
+            color: #04559f;
 
             @include breakpoint(mobile) {
                 font-size: 20px;
@@ -30,7 +30,7 @@
             font-size: 20px;
             font-family: $font_default;
             margin-bottom: 60px;
-            color:#565656;
+            color: #565656;
 
             @include breakpoint(mobile) {
                 font-size: 13px;
@@ -42,62 +42,56 @@
             display: flex;
             text-align: center;
             flex-wrap: wrap;
-            justify-content: space-between;
+            justify-content: space-evenly;
 
             li {
                 width: 20%;
                 list-style: none;
                 display: inline-block;
                 vertical-align: top;
-                // margin: 20px 50px;
                 text-align: center;
                 cursor: default !important;
 
                 @include breakpoint(mobile) {
-                    // &:first-child{
-                    //     margin-left: 50px;
-                    // }
                     margin: 0;
-                    // width: 15% !important;
                 }
 
                 .img-step {
                     padding: 10px;
-                    transition: all .5s ease-in-out;
+                    transition: all 0.5s ease-in-out;
 
                     img {
                         display: inline-block;
-                        height: 55px;
-                        width: 55px;
-
+                        width: 70%;
                         @include breakpoint(mobile) {
                             height: auto;
                             max-width: 100%;
                         }
                     }
-
                 }
 
                 &:hover {
                     cursor: pointer;
-
-                    // .img-step {
-                    //     padding: 30px;
-                    //     background-color: aliceblue;
-                    //     border-radius: 50%;
-                    //     transition: all .5s ease-in;        
-                    // }
                 }
 
-                p, h3 {
+                p,
+                h3 {
                     font-size: 1.2em;
-                    // max-width: 155px;
-                    // max-height: 85px;
-                    //transform: translateY(20px);
 
                     @include breakpoint(mobile) {
                         font-size: 15px;
                     }
+                }
+
+                .title-step {
+                    font-size: 16px;
+                    color: #333333;
+                    font-weight: 600;
+                }
+
+                .desc-step {
+                    color: #646464;
+                    font-size: 14px;
                 }
 
                 span {
@@ -120,19 +114,16 @@
 }
 
 #slider-cara--kerja {
-
     .list-slider {
         padding: 0 50px;
 
-        >p {
+        > p {
             margin-top: 10px;
             font-size: 18px;
         }
     }
 
-    >button {
+    > button {
         display: none !important;
     }
-
-    // .slick-current.slick-active {}
 }
