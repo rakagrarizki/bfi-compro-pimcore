@@ -3140,10 +3140,6 @@ var urlLocation = window.location;
     }
 
     $("#provinsi").change(function () {
-        // console.log('#provinsi change working...');
-        leavePage = true;
-        // console.log('leavePage', leavePage);
-
         resetSameAddress();
 
         showDefaultButton();

@@ -227,7 +227,6 @@ $("#next1").on("click", function (e) {
 });
 
 $("#next2").on("click", function (e) {
-    window.onbeforeunload = null;
     e.preventDefault();
     if ($(this).closest("form").valid()) {
         pushDataStep2(function (result) {
