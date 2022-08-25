@@ -111,7 +111,7 @@ $this->headScript()
                                 </div>
                                 <div class="form-group">
                                     <label for="idnumber"><?= $this->translate('form-idnumber') ?></label>
-                                    <input type="text" class="form-control formIdnumber" name="idnumber" id="idnumber" placeholder="<?= $this->translate('placeholder-idnumber') ?>" maxlength="16">
+                                    <input type="text" class="form-control inputs formIdnumber" name="idnumber" id="idnumber" placeholder="<?= $this->translate('placeholder-idnumber') ?>" maxlength="16">
                                     <div class="error-wrap"></div>
                                 </div>
                                 <div class="form-group">

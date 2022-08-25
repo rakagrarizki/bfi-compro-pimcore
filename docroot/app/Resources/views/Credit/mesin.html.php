@@ -26,7 +26,7 @@ $blogList->setLimit(4);
         <h3><?= $this->translate('data-name')?></h3>
         <fieldset class="form-body--credit">
           <div class="text-head">
-            <h2 class="text-center"><?= $this->translate('data-name'), $this->translate('data-name-mesin')?></h2>
+            <h1 class="text-center"><?= $this->translate('data-name'), $this->translate('data-name-mesin')?></h1>
             <h2 class="text-center-edit"><?= $this->translate('change-data-name')?></h2>
             <p class="text-center"><?= $this->translate('input-data-name')?></p>
           </div>

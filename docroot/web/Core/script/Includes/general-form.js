@@ -693,3 +693,28 @@ function CbTransactionZeals() {
         },
     });
 }
+
+function errorHandling(element, button) {
+    const errorPos = $(element).find(".inputs.error")[0];
+    const nextBtn = $(`#${button}`);
+
+    $("html, body").animate(
+        {
+            scrollTop: $(errorPos).offset().top - 130,
+        },
+        400
+    );
+
+    nextBtn.addClass("btn-danger").css({
+        width: "185px",
+        padding: "13px 0px",
+        "font-weight": "bold",
+        "font-size": "16px",
+        "text-transform": "uppercase",
+    });
+    nextBtn.removeClass("cta-primary");
+    setTimeout(function () {
+        nextBtn.removeClass("btn-danger");
+        nextBtn.addClass("cta-primary");
+    }, 2000);
+}

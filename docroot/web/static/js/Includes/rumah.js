@@ -223,6 +223,8 @@ $("#next1").on("click", function (e) {
                 });
             }
         });
+    } else {
+        errorHandling("#menu1", this.id);
     }
 });
 
@@ -255,6 +257,8 @@ $("#next2").on("click", function (e) {
                 }
             }
         });
+    } else {
+        errorHandling("#menu2", this.id);
     }
 });
 $("#next3").on("click", function (e) {
@@ -271,6 +275,8 @@ $("#next3").on("click", function (e) {
                 });
             }
         });
+    } else {
+        errorHandling("#menu3", this.id);
     }
 });
 
@@ -330,6 +336,8 @@ $("#next4").on("click", function (e) {
                 });
             }
         });
+    } else {
+        errorHandling("#menu4", this.id);
     }
 });
 $("#next5").on("click", function (e) {
