@@ -3187,10 +3187,6 @@ const NDFC_MIN_FUNDING = 10000000;
     }
 
     $("#provinsi").change(function () {
-        // console.log('#provinsi change working...');
-        leavePage = true;
-        // console.log('leavePage', leavePage);
-
         resetSameAddress();
 
         showDefaultButton();

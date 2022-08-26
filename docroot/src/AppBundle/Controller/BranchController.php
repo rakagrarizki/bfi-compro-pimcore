@@ -28,6 +28,10 @@ class BranchController extends FrontendController
         $maps = [];
         if ($branch) {
             foreach ($branch as $item) {
+                $temp['branch_id'] = $item->getBranchID();
+                $temp['pos_id'] = $item->getPosID();
+                $temp['area'] = $item->getArea();
+                $temp['region'] = $item->getRegion();
                 $temp['name'] = $item->getName();
                 $temp['address'] = $item->getAddress();
                 $temp['telephone'] = $item->getTelephone();
@@ -36,6 +40,7 @@ class BranchController extends FrontendController
                 $temp['longitude'] = $item->getMap() ? $item->getMap()->getLongitude() : '';
                 $maps['data'][] = $temp;
             }
+            $maps['total_rows'] = sizeof($maps['data']);
         }
 
         return new JsonResponse([

@@ -228,11 +228,12 @@ $("#next1").on("click", function (e) {
                 });
             }
         });
+    } else {
+        errorHandling("#menu1", this.id);
     }
 });
 
 $("#next2").on("click", function (e) {
-    window.onbeforeunload = null;
     e.preventDefault();
     if ($(this).closest("form").valid()) {
         pushDataStep2(function (result) {
@@ -261,6 +262,8 @@ $("#next2").on("click", function (e) {
                 }
             }
         });
+    } else {
+        errorHandling("#menu2", this.id);
     }
 });
 $("#next3").on("click", function (e) {
@@ -277,6 +280,8 @@ $("#next3").on("click", function (e) {
                 });
             }
         });
+    } else {
+        errorHandling("#menu3", this.id);
     }
 });
 
@@ -334,6 +339,8 @@ $("#next4").on("click", function (e) {
                 });
             }
         });
+    } else {
+        errorHandling("#menu4", this.id);
     }
 });
 $("#next5").on("click", function (e) {

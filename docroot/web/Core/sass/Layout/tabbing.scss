@@ -842,7 +842,8 @@
     z-index: 100000;
 }
 
-.modal-profile {
+.modal-body.modal-profile {
+    text-align: left;
     .button-box {
         overflow: hidden;
     }

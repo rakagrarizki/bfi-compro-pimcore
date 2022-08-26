@@ -5,14 +5,14 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-push-6 desc-sect">
-                <h1 class="desc-title"><?= $this->input("title"); ?></h1>
+                <h2 class="desc-title"><?= $this->input("title"); ?></h2>
                 <p class="desc-text"><?= $this->input("desc") ?></p>
                 <div class="btn-ajukan" id="desk-btn">
                     <a href="<?= $this->link('url')->getHref(); ?>" class="cta cta-orange <?= $this->link('url')->getClass(); ?>" id="<?= $this->link('url')->getParameters()?>"><?= $this->link('url')->getText(); ?><i class="fa fa-angle-right"></i></a>
                 </div>
             </div>
             <div class="col-md-6 col-md-pull-6 calc-sect">
-                <h1 class="calc-title text-center"><?= $this->input("card-title"); ?></h1>
+                <h2 class="calc-title text-center"><?= $this->input("card-title"); ?></h2>
                 <?php while($this->block("sub-titles")->loop()) { ?>
                     <div class="row">
                         <div class="col-xs-6">
