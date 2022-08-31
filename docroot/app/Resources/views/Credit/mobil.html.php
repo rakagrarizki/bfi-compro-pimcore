@@ -85,9 +85,9 @@ $this->headScript()
                         <div id="menu2" class="tab-pane fade in active">
                             <div class="form-body--credit">
                                 <div class="text-head">
-                                    <h2 class="text-center">
+                                    <h1 class="text-center">
                                         <?= $this->translate('ndfc-title-step-1') ?>
-                                    </h2>
+                                    </h1>
                                     <p class="text-center"><?= $this->translate('data-name-sub') ?></p>
                                 </div>
                                 <div class="form-group">

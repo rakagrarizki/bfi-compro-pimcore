@@ -1977,6 +1977,8 @@ function errorHandling(element, button) {
         "font-weight": "bold",
         "font-size": "16px",
         "text-transform": "uppercase",
+        "margin-bottom": "1.5rem",
+        height: "50px",
     });
     nextBtn.removeClass("cta-primary");
     setTimeout(function () {
