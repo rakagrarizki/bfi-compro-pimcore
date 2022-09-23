@@ -1,4 +1,4 @@
-<section id="bfi-cabang">
+<section class="widget-section" id="bfi-cabang">
     <div class="container">
         <div class="title">
             <h2 class="title-wrapper text-center">

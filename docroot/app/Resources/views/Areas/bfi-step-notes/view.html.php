@@ -1,8 +1,12 @@
 <section class="widget-section" id="apply-step">
     <div class="container cont-cara">
         <div class="cara-kerja">
-            <h2 class="title-cara-kerja"><?= $this->input('title'); ?></h2>
-            <p class="step-cara"><?= $this->input('sub-title'); ?></p>
+            <?php if(!$this->input('title')->isEmpty()) { ?>
+                <h2 class="title-cara-kerja"><?= $this->input('title'); ?></h2>
+            <?php } ?>
+            <?php if(!$this->input('sub-title')->isEmpty()) { ?>
+                <p class="step-cara"><?= $this->input('sub-title'); ?></p>
+            <?php } ?>
             <ul class="list-step">
                 <?php while ($this->block("contentblock")->loop()) { ?>
                     <?php $asset = $this->image("image-step"); ?>
@@ -10,8 +14,10 @@
                         <div class="img-step">
                             <img src="<?= $asset->getImage() ?>" class="img-responsive" alt="<?= $this->input("alt-img")?>">
                         </div>
-                        <p class="title-step"><?= $this->input('text'); ?></p>
-                        <p class="desc-step"><?= $this->input('desc-step') ?></p>
+                        <div class="desc-section">
+                            <p class="title-step"><?= $this->input('text'); ?></p>
+                            <p class="desc-step"><?= $this->input('desc-step') ?></p>
+                        </div>
                     </li>
                 <?php } ?>
             </ul>

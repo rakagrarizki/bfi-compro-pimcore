@@ -2,7 +2,6 @@
     &.point-step {
         .sect-title {
             h2 {
-                margin-top: 85px;
                 font-weight: bold;
             }
 
@@ -14,10 +13,9 @@
                 }
 
                 &.title {
-                    font-size: 50px;
+                    font-size: 40px;
                     font-weight: bold;
                     color: #04559F;
-                    margin-top: 72px;
                     margin-bottom: 10px;
 
                     span {
@@ -40,19 +38,14 @@
     padding: 0;
 
     .sect-title {
-        margin: 0 auto 80px auto;
         @include breakpoint(mobile){
+            padding: 0 10px;
             margin-bottom: 0;
-        }
-        h2 {
-            color: #04559F;
-            font-size: 40px;
-            margin-top: 70px;
         }
 
         p, .sub-title {
             color: #565656 !important;
-            font-size: 30px;
+            font-size: 20px;
             margin-top: 0 !important;
         }
     }
@@ -69,6 +62,22 @@
             flex-flow: row wrap;
             justify-content: space-around;
             text-align: center;
+            &.odd-step {
+                flex-direction: column;
+                padding: 0 10px;
+                .sect-step__item {
+                    width: 100%;
+                    padding: 0 16px;
+                    text-align: left;
+                    .row {
+                        display: flex;
+                        justify-content: flex-start;
+                        .col-md-8 {
+                            flex: 1;
+                        }
+                    }
+                }
+            }
         }
 
         .sect-step__item {
@@ -166,6 +175,5 @@
         color: #E23D31;
         width: 95%;
         margin: 0 auto;
-        margin-bottom: 48px;
     }
 }

@@ -1,8 +1,7 @@
 #promo-article{
     margin: 16px auto;
-    padding-bottom: 72px;
     @include breakpoint(mobile){
-        padding: 42px 0;
+        padding: 0;
     }
     .promo-article-title{
         font-weight: 600;
@@ -27,6 +26,7 @@
         border: none;
         box-shadow: 0px 0px 2px rgba(40, 41, 61, 0.04), 0px 4px 8px rgba(96, 97, 112, 0.16);
         border-radius: 8px;
+        background-color: $white;
         margin: 23px 20px;
         @include breakpoint(mobile){
             margin: 12px 0;
@@ -93,7 +93,11 @@
         margin: 16px auto;
         .cta{
             border-radius: 8px;
-            text-transform: uppercase;
+        }
+        @include breakpoint(mobile) {
+            .cta-see::before {
+                right: 10px;
+            }
         }
     }
 }

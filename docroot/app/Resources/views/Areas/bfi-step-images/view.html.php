@@ -1,14 +1,16 @@
-<div>
+<section class="widget-section">
     <div id="ajukan-sekarang" class="point-step container">
         <div class="sect-title text-center">
-            <h1 class="title"><?= $this->input('title');?>
-            <?php if (!$this->input("additional-title")->isEmpty()) { ?>
-                <span><?= $this->input('additional-title');?></span>
-            <?php } ?>
-            </h1>
+            <?php if(!$this->input("title")->isEmpty()) : ?>
+                <h2 class="title"><?= $this->input('title');?>
+                <?php if (!$this->input("additional-title")->isEmpty()) { ?>
+                    <span><?= $this->input('additional-title');?></span>
+                <?php } ?>
+                </h2>
+            <?php endif; ?>
             <p class="sub-title"><?= $this->input('text'); ?></p>
         </div>
-        <div class="sect-step">
+        <div class="sect-step <?= $this->block("contentblock")->getCount() <= 3 ? 'odd-step' : '' ?>">
             <?php while ($this->block("contentblock")->loop()) { ?>
                 <?php $asset = $this->image("sub-image");?>
                 <div class="sect-step__item">
@@ -31,7 +33,9 @@
         </div>
             <?php } ?>
         <?php if($this->checkbox("show-terms")->isChecked()) { ?>
-            <div class="terms">*<?= $this->input("terms"); ?></div>
+            <a href="#accordion-pembiayaan">
+                <div class="terms">*<?= $this->input("terms"); ?></div>
+            </a>
         <?php } ?>
     </div>
-</div>
+</section>

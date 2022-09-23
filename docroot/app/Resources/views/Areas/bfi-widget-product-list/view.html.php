@@ -9,12 +9,17 @@
             <?php  if(!$this->input('sub-title')->isEmpty()) { ?>
                 <p class="sub-title"><?= $this->input('sub-title'); ?></p>
             <?php } ?>
-            <h1 class="title"><?= $this->input('title');?></h1>
+            <?php if(!$this->input('title')->isEmpty()) { ?>
+                <h1 class="title"><?= $this->input('title');?></h1>
+            <?php } ?>
+            <?php  if(!$this->input('title-desc')->isEmpty()) { ?>
+                <p class="sub-title"><?= $this->input('title-desc'); ?></p>
+            <?php } ?>
         </div>
         <div class="card-list row">
             <?php while ($this->block("contentblock")->loop()) { ?>
                 <?php $asset = $this->image("product-image");?>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="card">
                         <p class="card-title"><?= $this->input("product-title") ?></p>
                         <p class="card-desc"><?= $this->input("product-desc") ?>

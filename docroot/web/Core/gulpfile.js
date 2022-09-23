@@ -74,7 +74,8 @@ var paths = {
                 ],
             includes: 
                 [
-                    path.join(__dirname, 'script/*Includes*/*.js')
+                    path.join(__dirname, 'script/*Includes*/*.js'),
+                    path.join(__dirname, 'script/*Includes*/**/*.js')
                 ]
         }
 }

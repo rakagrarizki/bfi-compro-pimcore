@@ -801,7 +801,7 @@ const NDFC_MIN_FUNDING = 10000000;
             required: true,
             minFund: NDFM_MIN_FUNDING,
             maxFund: function () {
-                return clearDot($(".max-fund").text().replace("Rp ",""));
+                return clearDot($(".max-fund").text().replace("Rp ", ""));
             },
         },
 
@@ -809,7 +809,7 @@ const NDFC_MIN_FUNDING = 10000000;
             required: true,
             minFund: NDFC_MIN_FUNDING,
             maxFund: function () {
-                return clearDot($(".max-fund").text().replace("Rp ",""));
+                return clearDot($(".max-fund").text().replace("Rp ", ""));
             },
         },
 
@@ -892,7 +892,7 @@ const NDFC_MIN_FUNDING = 10000000;
             paramMaxFunding = separatordot(param);
             return this.optional(el) || NewVal <= param;
         },
-        function (){
+        function () {
             return maxFundingText + paramMaxFunding;
         }
     );
@@ -2775,30 +2775,6 @@ const NDFC_MIN_FUNDING = 10000000;
             $("#noFile").text(filename.replace("C:\\fakepath\\", ""));
         }
     });
-
-    if (isMobile) {
-        $("ul.list-step").slick({
-            dots: false,
-            prevArrow: false,
-            nextArrow: false,
-            infinite: false,
-            slidesToShow: 2.5,
-            responsive: [
-                {
-                    breakpoint: 1024,
-                    settings: "unslick",
-                },
-                {
-                    breakpoint: 750,
-                    settings: {
-                        centerMode: true,
-                        slidesToShow: 1.3,
-                        slidesToScroll: 1,
-                    },
-                },
-            ],
-        });
-    }
 
     function requestOtp(params) {
         //var _url = 'https://bfi.staging7.salt.id/otp/send-otp';
@@ -5636,9 +5612,11 @@ function loginCustomer() {
                     var lang = document.documentElement.lang;
                     var errorMsg;
                     if (lang == "id") {
-                        errorMsg = "Login gagal, silakan ajukan pembiayaan terlebih dahulu.";
+                        errorMsg =
+                            "Login gagal, silakan ajukan pembiayaan terlebih dahulu.";
                     } else {
-                        errorMsg = "Login failed, please apply for financing first.";
+                        errorMsg =
+                            "Login failed, please apply for financing first.";
                     }
                     $(".error-wrap").html(
                         '<label id="phone-input-error" class="error" for="phone-input" style="display: inline-block;">' +
@@ -6204,6 +6182,24 @@ $(document).ready(function () {
         $(".select2-search__field").hide();
     });
     masonryLayout();
+    $(".img-slider").slick({
+        dots: true,
+        infinite: true,
+        speed: 300,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        responsive: [
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                },
+            },
+        ],
+    });
 });
 
 // toc
@@ -6255,4 +6251,24 @@ function getAllUrlParams(url) {
     }
 
     return obj;
+}
+
+$(document).ready(function () {
+    $("#tab-btn-0").addClass("active");
+    $("#content-0").addClass("active");
+});
+
+function changeTab(content, btn) {
+    var currentBtn = $("#" + btn);
+    var currentTab = $("#" + content);
+    var btnList = $(".tab-button");
+    var tabList = $(".tab-body div");
+
+    $.each(btnList, function () {
+        $(this).removeClass("active");
+        tabList.removeClass("active");
+    });
+
+    currentBtn.addClass("active");
+    currentTab.addClass("active");
 }

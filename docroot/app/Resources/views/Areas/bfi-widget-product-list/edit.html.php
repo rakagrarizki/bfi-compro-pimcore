@@ -9,6 +9,10 @@
             <div class="col-sm-8"><?= $this->input("sub-title"); ?></div>
         </div>
         <div class="row">
+            <div class="col-sm-4">Title Desc</div>
+            <div class="col-sm-8"><?= $this->input("title-desc"); ?></div>
+        </div>
+        <div class="row">
             <div class="col-sm-4">Link</div>
             <div class="col-sm-8"><?= $this->link("url"); ?></div>
             <div class="row">

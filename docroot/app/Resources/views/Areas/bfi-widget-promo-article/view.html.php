@@ -1,4 +1,4 @@
-<section id="blog-news">
+<section id="blog-news" class="widget-section <?= $this->checkbox('use-bg')->isChecked() ? 'bg-blue' : '' ?>">
     <div class="container" id="promo-article">
         <h2 class="promo-article-title text-center"><?= $this->input("title")->isEmpty() ? "Promo dan Informasi Inspiratif untuk Kehidupan Finansial Anda" : $this->input("title"); ?></h2>
         <p class="subtitle"><?= $this->input("sub-title"); ?></p>
@@ -58,7 +58,9 @@
             </div>
         </div>
         <div class="btn-ajukan">
-            <a href="<?= $this->link('url')->getHref(); ?>" target="<?= $this->link("url")->getTarget(); ?>" class="cta cta-orange <?= $this->link('url')->getClass(); ?>" id="<?= $this->link('url')->getParameters()?>"><?= $this->link('url')->getText(); ?></a>
+            <div class="text-center margin-top-40">
+                <a href="<?= $this->link('url')->getHref(); ?>" class="cta cta-primary-text cta-see cta-big <?= $this->link('url')->getClass(); ?>" id="<?= $this->link('url')->getParameters()?>"><?= $this->link('url')->getText(); ?></a>
+            </div>
         </div>
     </div>
 </section>

@@ -43,7 +43,9 @@
             text-align: center;
             flex-wrap: wrap;
             justify-content: space-evenly;
-
+            @include breakpoint(mobile) {
+                flex-direction: column;
+            }
             li {
                 width: 20%;
                 list-style: none;
@@ -54,18 +56,26 @@
 
                 @include breakpoint(mobile) {
                     margin: 0;
+                    width: 100%;
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    text-align: left;
+                    .title-step {
+                        margin-bottom: 4px;
+                    }
                 }
 
                 .img-step {
                     padding: 10px;
                     transition: all 0.5s ease-in-out;
-
+                    flex: 0 0 132px;
                     img {
                         display: inline-block;
                         width: 70%;
                         @include breakpoint(mobile) {
+                            width: 80%;
                             height: auto;
-                            max-width: 100%;
                         }
                     }
                 }

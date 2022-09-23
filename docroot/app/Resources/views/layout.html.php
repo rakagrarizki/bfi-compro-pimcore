@@ -116,8 +116,12 @@
     <?php $this->headScript()->prependFile('/static/js/app.min.js'); ?>
     <?php $this->headScript()->prependFile('/static/js/plugins.min.js'); ?>
     <?php $this->headScript()->prependFile('/static/js/vendor.min.js'); ?>
-    <script async="" charset="utf-8" src="https://v2.zopim.com/?5baILLmEUPUCClge2ay2fXXPtgbifxof" type="text/javascript"></script>
-
+    <?php
+        $isSyariah = $this->document->getProperty("syariah");
+        if($isSyariah != "syariah") {
+    ?>
+        <script async="" charset="utf-8" src="https://v2.zopim.com/?5baILLmEUPUCClge2ay2fXXPtgbifxof" type="text/javascript"></script>
+    <?php } ?>
     <?php echo $this->headScript(); ?>
 </body>
 

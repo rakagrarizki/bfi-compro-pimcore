@@ -1,15 +1,13 @@
-<?php $asset = $this->image("image");?>
-<section id="credit" style="background-image:url('<?= $asset->getImage()?>')">
+<section class="widget-section" id="credit">
     <div class="container">
-        <div class="credit-body">
-            <p class="text-center launcher-credit-text">
-                <?= $this->input('title');?>
-                <?php $asset = $this->image("image");?>
-                <a id="<?= $this->link('url')->getParameters()?>" href="<?= $this->link('url')->getHref(); ?>" 
-					class="cta cta-primary cta-big <?= $this->link('url')->getClass();?>">
-					<?= $this->input('button');?>
-				</a>
-            </p>
+        <div class="row">
+            <div class="col-md-8 content-text">
+                <p class="title"><?= $this->input('text');?></p>
+            </div>
+            <div class="col-md-4 content-btn">
+                <a href="<?= $this->link('button1')->getHref(); ?>" class="cta cta-orange cta-big" id="<?= $this->link('button1')->getParameters()?>"><?= $this->link('button1')->getText() ?></a>
+                <a href="<?= $this->link('button2')->getHref(); ?>" class="cta cta-orange cta-big" id="<?= $this->link('button2')->getParameters()?>"><?= $this->link('button2')->getText() ?></a>
+            </div>
         </div>
     </div>
 </section>
