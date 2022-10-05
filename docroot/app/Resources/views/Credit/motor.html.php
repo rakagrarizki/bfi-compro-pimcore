@@ -522,7 +522,7 @@ $this->headScript()
                                             <div class="button-area text-center">
                                                 <a href="/id/" class="cta cta-success cta-big">
                                                     <i class="fab fa-whatsapp"></i>
-                                                    <span>082342423432423</span></a>
+                                                    <span><?=$this->translate('wa-number') ?></span></a>
                                             </div>
                                             <div class="button-area text-center">
                                                 <a href="#" class="cta cta-primary-outline cta-big " id="btn-check">
