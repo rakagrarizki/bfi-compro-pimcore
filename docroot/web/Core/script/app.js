@@ -801,7 +801,7 @@ const NDFC_MIN_FUNDING = 10000000;
             required: true,
             minFund: NDFM_MIN_FUNDING,
             maxFund: function () {
-                return clearDot($(".max-fund").text().replace("Rp ",""));
+                return clearDot($(".max-fund").text().replace("Rp ", ""));
             },
         },
 
@@ -809,7 +809,7 @@ const NDFC_MIN_FUNDING = 10000000;
             required: true,
             minFund: NDFC_MIN_FUNDING,
             maxFund: function () {
-                return clearDot($(".max-fund").text().replace("Rp ",""));
+                return clearDot($(".max-fund").text().replace("Rp ", ""));
             },
         },
 
@@ -892,7 +892,7 @@ const NDFC_MIN_FUNDING = 10000000;
             paramMaxFunding = separatordot(param);
             return this.optional(el) || NewVal <= param;
         },
-        function (){
+        function () {
             return maxFundingText + paramMaxFunding;
         }
     );
@@ -5636,9 +5636,11 @@ function loginCustomer() {
                     var lang = document.documentElement.lang;
                     var errorMsg;
                     if (lang == "id") {
-                        errorMsg = "Login gagal, silakan ajukan pembiayaan terlebih dahulu.";
+                        errorMsg =
+                            "Login gagal, silakan ajukan pembiayaan terlebih dahulu.";
                     } else {
-                        errorMsg = "Login failed, please apply for financing first.";
+                        errorMsg =
+                            "Login failed, please apply for financing first.";
                     }
                     $(".error-wrap").html(
                         '<label id="phone-input-error" class="error" for="phone-input" style="display: inline-block;">' +
