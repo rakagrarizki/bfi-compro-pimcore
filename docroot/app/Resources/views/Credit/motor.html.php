@@ -256,7 +256,7 @@ $this->headScript()
                                         </div>
                                         <div class="form-group" hidden>
                                             <label for="tahun_kendaraan_text"><?= $this->translate('label-tahun') ?></label>
-                                            <input type="text" class="form-control formYear formRequired" maxlength="4" name="tahun_kendaraan_text" id="tahun_kendaraan_text" placeholder="<?= $this->translate('placeholder-tahun') ?>">
+                                            <input type="text" class="form-control formYear formRequired" maxlength="4" name="tahun_kendaraan_text" id="tahun_kendaraan_text" placeholder="<?= $this->translate('placeholder-tahun-text') ?>">
                                             <div class="error-wrap"></div>
                                         </div>
                                         <div class="form-group">
@@ -429,12 +429,11 @@ $this->headScript()
                                                 alt="">
                                         </div>
                                         <div class="text-wrap text-center">
-                                            <h3>Terima kasih telah melakukan pengajuan di BFI Finance</h3>
-                                            <p>Anda akan segera dihubungi pada jam 08:00 - 17:00 di hari senin - jumat
-                                                dan jam 08:00 - 11:00 di hari sabtu. </p>
+                                            <h3><?=$this->translate('data-step-finish') ?></h3>
+                                            <p><?=$this->translate('sub-step-finish') ?></p>
                                         </div>
                                         <div id="box-document">
-                                            <p>Berikut Dokumen Persyaratan-nya</p>
+                                            <p><?=$this->translate('dokumen-persyaratan') ?></p>
                                             <div class="row">
                                                 <div class="col-md-6 col-xs-12">
                                                     <div class=" box-item">
@@ -442,7 +441,7 @@ $this->headScript()
                                                             <i class="fa fa-check" aria-hidden="true"></i>
                                                         </div>
                                                         <div class="wrap-text">
-                                                            <p>KTP Pemohon & Pasangan (Jika sudah menikah)</p>
+                                                            <p><?=$this->translate('id-card') ?></p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -452,7 +451,7 @@ $this->headScript()
                                                             <i class="fa fa-check" aria-hidden="true"></i>
                                                         </div>
                                                         <div class="wrap-text">
-                                                            <p>NPWP</p>
+                                                            <p><?=$this->translate('npwp-text') ?></p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -462,7 +461,7 @@ $this->headScript()
                                                             <i class="fa fa-check" aria-hidden="true"></i>
                                                         </div>
                                                         <div class="wrap-text">
-                                                            <p>Kartu Keluarga</p>
+                                                            <p><?=$this->translate('kk-text') ?></p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -472,7 +471,7 @@ $this->headScript()
                                                             <i class="fa fa-check" aria-hidden="true"></i>
                                                         </div>
                                                         <div class="wrap-text">
-                                                            <p>Buku Rekening 3 Bulan Terakhir</p>
+                                                            <p><?=$this->translate('rekening-text') ?></p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -482,7 +481,7 @@ $this->headScript()
                                                             <i class="fa fa-check" aria-hidden="true"></i>
                                                         </div>
                                                         <div class="wrap-text">
-                                                            <p>BPKB & STNK</p>
+                                                            <p><?=$this->translate('bpkb-stnk-text') ?></p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -492,7 +491,7 @@ $this->headScript()
                                                             <i class="fa fa-check" aria-hidden="true"></i>
                                                         </div>
                                                         <div class="wrap-text">
-                                                            <p>Foto selfie Anda</p>
+                                                            <p><?=$this->translate('selfie-text') ?></p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -502,7 +501,7 @@ $this->headScript()
                                                             <i class="fa fa-check" aria-hidden="true"></i>
                                                         </div>
                                                         <div class="wrap-text">
-                                                            <p>Foto Rumah Anda</p>
+                                                            <p><?=$this->translate('foto-rumah-text') ?></p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -512,26 +511,26 @@ $this->headScript()
                                                             <i class="fa fa-check" aria-hidden="true"></i>
                                                         </div>
                                                         <div class="wrap-text">
-                                                            <p>Buku Kepemilikan Rumah</p>
+                                                            <p><?=$this->translate('buku-kepemilikan-rumah-text') ?></p>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="box-button">
-                                            <p>Pertanyaan seputar pengajuan chat via Whatsapp di</p>
+                                            <p><?=$this->translate('pertanyaan-wa') ?></p>
                                             <div class="button-area text-center">
                                                 <a href="/id/" class="cta cta-success cta-big">
                                                     <i class="fab fa-whatsapp"></i>
-                                                    <span>082342423432423</span></a>
+                                                    <span><?=$this->translate('wa-number') ?></span></a>
                                             </div>
                                             <div class="button-area text-center">
                                                 <a href="#" class="cta cta-primary-outline cta-big " id="btn-check">
-                                                    <span>CEK STATUS PENGAJUAN</span></a>
+                                                    <span><?=$this->translate('cek-pengajuan-text') ?></span></a>
                                             </div>
                                             <div class="button-area text-center">
                                                 <a href="<?php echo "/" . $this->getLocale() . '/' . $link; ?>" class="cta cta-primary-text cta-big ">
-                                                    <span>Kembali ke Beranda</span></a>
+                                                    <span><?=$this->translate('backtohome') ?></span></a>
                                             </div>
                                         </div>
                                     </div>
@@ -549,8 +548,8 @@ $this->headScript()
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-body">
-                <h4 class="modal-body-title">Mohon maaf sesi Anda telah berakhir</h4>
-                <p class="modal-body-text">Tapi jangan khawatir data Anda sudah kami terima. Tim kami akan segera menghubungi Anda</p>
+                <h4 class="modal-body-title"><?= $this->translate('timeout-title') ?></h4>
+                <p class="modal-body-text"><?= $this->translate('timeout-description') ?></p>
             </div>
         </div>
     </div>
@@ -561,10 +560,10 @@ $this->headScript()
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-body">
-                <h4 class="modal-body-title">Mohon Maaf Aset Anda tidak tercover</h4>
+                <h4 class="modal-body-title"><?=$this->translate('asset-not-cover-text') ?></h4>
             </div>
              <div class="modal-footer">
-                <button type="button" class="cta cta-primary go-to-home" data-dismiss="modal" >Kembali ke Beranda</button>
+                <button type="button" class="cta cta-primary go-to-home" data-dismiss="modal" ><?=$this->translate('backtohome') ?></button>
             </div>
         </div>
     </div>
@@ -575,12 +574,12 @@ $this->headScript()
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-body">
-                <h4 class="modal-body-title">Apakah Anda yakin semua data yang diisi sudah benar?</h4>
-                <p class="modal-body-text">Cek kembali data Anda sebelum lanjut ke tahap selanjutnya</p>
+                <h4 class="modal-body-title"><?=$this->translate('confirmation-text') ?></h4>
+                <p class="modal-body-text"><?=$this->translate('recheck-text') ?></p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="cta cta-block cta-primary-outline" data-dismiss="modal">Cek Kembali</button>
-                <button type="button" class="cta cta-block cta-primary" data-dismiss="modal" id="confirm-data">Ya, Lanjutkan</button>
+                <button type="button" class="cta cta-block cta-primary-outline" data-dismiss="modal"><?=$this->translate('recheck-btn') ?></button>
+                <button type="button" class="cta cta-block cta-primary" data-dismiss="modal" id="confirm-data"><?=$this->translate('next-step-text') ?></button>
             </div>
         </div>
     </div>

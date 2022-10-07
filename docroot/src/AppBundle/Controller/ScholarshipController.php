@@ -13,6 +13,8 @@ class ScholarshipController extends FrontendController
     public function defaultAction(Request $request)
     {
         $lang = $request->getLocale();
+        $allowedImgExt = array("image/png", "image/jpg", "image/jpeg");
+        $allowedFileExt = array("application/pdf");
 
         if ($request->isMethod('POST')) {
             $data = $request->get('scholarship');
@@ -25,9 +27,11 @@ class ScholarshipController extends FrontendController
             $photoTmp = $_FILES['photo']['tmp_name'];
             $transcriptTmp = $_FILES['transcript']['tmp_name'];
             $photoSize = $_FILES['photo']['size'];
+            $photoExt = $_FILES['photo']['type'];
+            $transcriptExt = $_FILES['transcript']['type'];
 
             if ($email != "" && $name != "") {
-                if ($photoSize <= 300000) {
+                if ($photoSize <= 300000 && in_array($photoExt, $allowedImgExt) && in_array($transcriptExt, $allowedFileExt)) {
                     // check for an existing scholarship with this email
                     $scholarship = DataObject\Scholarship::getByPhone($phone, 1);
                     if (!$scholarship) {

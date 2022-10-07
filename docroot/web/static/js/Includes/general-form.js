@@ -1760,7 +1760,7 @@ function productOfferingIdFilter(productId) {
     } else if (productId === NDFC_PRODUCT_ID_SJMB) {
         return NDFC_PRODUCT_OFFERING_ID_SJMB;
     }
-    return NDFC_PRODUCT_ID_NON;
+    return NDFC_PRODUCT_OFFERING_ID_NON;
 }
 
 function pmt(
