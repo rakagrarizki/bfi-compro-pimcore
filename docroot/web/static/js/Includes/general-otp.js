@@ -35,7 +35,9 @@ function requestOtpPublic() {
         },
         success: function (data) {
             if (data.success == "1") {
-                step("next", 4);
+                sessionStorage.getItem("loanType") === "Syariah"
+                    ? step("next", 3)
+                    : step("next", 4);
                 $(".step-list").attr("hidden", "true");
                 otpStartCountDown();
             }
@@ -62,7 +64,7 @@ function showOtpResend() {
     $(".otp-number__text .otp-wait").hide();
 }
 
-function verificationOTP() {
+function verificationOTP(fn) {
     var _url = "/otp/validate-otp";
 
     var otp1Value = htmlEntities($("input[name=otp1]").val()),
@@ -90,7 +92,7 @@ function verificationOTP() {
             if (data.success == 0) {
                 $("#wrongOtp").modal("show");
             } else if (data.success == 1) {
-                pushDataStep5();
+                fn();
             }
         },
     });

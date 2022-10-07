@@ -2,6 +2,7 @@ var retryLimit = 3;
 
 let currentToken = undefined;
 let expiredDate = undefined;
+let isProvinceLoaded = false;
 
 let dataAssets = [];
 let rawAssetBrand = [];
@@ -856,6 +857,7 @@ function getListProvinsi(element) {
                     id: val.id,
                     text: val.description,
                 });
+                isProvinceLoaded = true;
             });
             $(element).select2({
                 placeholder: provinsi_placeholder,
@@ -1985,4 +1987,14 @@ function errorHandling(element, button) {
         nextBtn.removeClass("btn-danger");
         nextBtn.addClass("cta-primary");
     }, 2000);
+}
+
+function addSelectPlaceholder(elmList) {
+    elmList.forEach((val, i) => {
+        var placeholderText = $(val).attr("placeholder");
+        $(val).select2({
+            placeholder: placeholderText,
+            dropdownParent: $(val).parent(),
+        });
+    })
 }

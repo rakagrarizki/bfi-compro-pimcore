@@ -3013,4 +3013,61 @@ return [
         "creationDate" => 1567583908,
         "modificationDate" => 1567583948
     ],
+
+    172 => [
+        "id" => 172,
+        "name" => "save mytalim step 1",
+        "pattern" => "/\\/syariah\\/save-mytalim-step1/",
+        "reverse" => "/syariah/save-mytalim-step1",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\SyariahController",
+        "action" => "saveMyTalimStep1",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+
+    173 => [
+        "id" => 173,
+        "name" => "save mytalim step 2",
+        "pattern" => "/\\/syariah\\/save-mytalim-step2/",
+        "reverse" => "/syariah/save-mytalim-step2",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\SyariahController",
+        "action" => "saveMyTalimStep2",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+
+    174 => [
+        "id" => 174,
+        "name" => "save mytalim step 3",
+        "pattern" => "/\\/syariah\\/save-mytalim-step3/",
+        "reverse" => "/syariah/save-mytalim-step3",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\SyariahController",
+        "action" => "saveMyTalimStep3",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
 ];

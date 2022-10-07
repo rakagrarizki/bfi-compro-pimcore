@@ -346,7 +346,9 @@ $("#next4").on("click", function (e) {
 $("#next5").on("click", function (e) {
     e.preventDefault();
     if ($(this).closest("form").valid()) {
-        verificationOTP();
+        verificationOTP(() => {
+            pushDataStep5();
+        });
     }
 });
 
