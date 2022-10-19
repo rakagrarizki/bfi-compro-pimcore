@@ -36,9 +36,9 @@ $(document).ready(function () {
         ? $(".nav-item-1.active").find(".nav-step-tag").text("Sedang Isi")
         : $(".nav-item-1.active").find(".nav-step-tag").text("Onprogress");
 
-    $.when(getAuthorizationToken()).then((res) => {
-        getListAssets(1);
-    });
+    // $.when(getAuthorizationToken()).then((res) => {
+    //     getListAssets(1);
+    // });
 
     sessionStorage.setItem("loanType", "Syariah");
     isProvinceLoaded = false;

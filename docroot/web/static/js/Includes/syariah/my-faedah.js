@@ -36,9 +36,9 @@ $(document).ready(function () {
         ? $(".nav-item-1.active").find(".nav-step-tag").text("Sedang Isi")
         : $(".nav-item-1.active").find(".nav-step-tag").text("Onprogress");
 
-    // $.when(getAuthorizationToken()).then((res) => {
-    //     getListAssets(1);
-    // });
+    $.when(getAuthorizationToken()).then((res) => {
+        getListAssets(1);
+    });
 
     sessionStorage.setItem("loanType", "Syariah");
     isProvinceLoaded = false;
@@ -216,7 +216,7 @@ const saveDataStep1 = function (fn) {
 
     $.ajax({
         type: "POST",
-        url: "/syariah/save-mytalim-step1",
+        url: "/syariah/save-myfaedah-step1",
         data: data,
         dataType: "json",
         tryCount: 0,
@@ -261,7 +261,7 @@ const saveDataStep2 = function (fn) {
 
     $.ajax({
         type: "POST",
-        url: "/syariah/save-mytalim-step2",
+        url: "/syariah/save-myfaedah-step2",
         data: data,
         dataType: "json",
         tryCount: 0,
@@ -294,7 +294,7 @@ const saveDataStep3 = function (fn) {
 
     $.ajax({
         type: "POST",
-        url: "/syariah/save-mytalim-step3",
+        url: "/syariah/save-myfaedah-step3",
         data: data,
         dataType: "json",
         tryCount: 0,
