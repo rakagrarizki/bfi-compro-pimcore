@@ -274,10 +274,18 @@ $("#next3").on("click", function (e) {
                 $("#modal-timeout").modal("show");
                 window.location = "/";
             } else {
-                step("next", 3);
-                window.dataLayer.push({
-                    event: "ValidFormStep3",
-                });
+                if (result.data.leads_status == "UNPROSPECT") {
+                    window.location =
+                        "/" +
+                        lang +
+                        "/credit/pengajuan-gagal?product=" +
+                        sessionStorage.getItem("loanType");
+                } else {
+                    step("next", 3);
+                    window.dataLayer.push({
+                        event: "ValidFormStep3",
+                    });
+                }
             }
         });
     } else {
