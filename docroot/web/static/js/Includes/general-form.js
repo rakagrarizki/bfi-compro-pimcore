@@ -17,6 +17,9 @@ let total_ntf = 0;
 let provision_fee = 0;
 let tlpAmount = 0;
 let is_coverage = true;
+let assetTypeId = "";
+let categoryId = "";
+let assetGroup = "";
 
 window.dataLayer = window.dataLayer || [];
 
@@ -1025,6 +1028,147 @@ function getListZipcode() {
     });
 }
 
+function getAssetBrand(element, product) {
+    const ASSET_BRAND = product === "MOBIL" ? CAR_BRAND : MOTOR_BRAND;
+    let dataList = [];
+    $(element).empty();
+    var selectPlaceholder = $(element).attr("placeholder");
+
+    $.each(ASSET_BRAND, function (id, val) {
+        dataList.push({
+            id: val.id,
+            text: val.value,
+        });
+    });
+    $(element).select2({
+        placeholder: selectPlaceholder,
+        dropdownParent: $(element).parent(),
+        data: dataList,
+        language: {
+            noResults: function () {
+                return lang === "id"
+                    ? "Tidak Ada Hasil yang Ditemukan"
+                    : "No Result Found";
+            },
+        },
+    });
+}
+
+function getAssetType(element, product) {
+    var dataAssetType = [];
+    $(element).empty();
+    var elm_placeholder = $(element).attr("placeholder");
+    const assetParent = $("#merk_kendaraan").val().toString();
+
+    $.ajax({
+        type: "POST",
+        url: "/credit/get-list-asset-type",
+        headers: { Authorization: "Basic " + currentToken },
+        data: { asset_type_id: product, asset_parent: assetParent },
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            const filterByType =
+                product === "MOBIL" ? CAR_FILTERED_TYPE : MOTOR_FILTERED_TYPE;
+            $.each(result.data.data, function (id, val) {
+                if (!filterByType.includes(val.id)) {
+                    dataAssetType.push({
+                        id: val.id,
+                        text: val.value,
+                    });
+                }
+            });
+            $(element).select2({
+                placeholder: elm_placeholder,
+                dropdownParent: $(element).parent(),
+                data: dataAssetType,
+                language: {
+                    noResults: function () {
+                        return lang === "id"
+                            ? "Tidak Ada Hasil yang Ditemukan"
+                            : "No Result Found";
+                    },
+                },
+            });
+        },
+    });
+}
+
+function getAssetModel(element, product) {
+    var dataAssetModel = [];
+    $(element).empty();
+    var elm_placeholder = $(element).attr("placeholder");
+    const assetParent = $("#type_kendaraan").val().toString();
+
+    $.ajax({
+        type: "POST",
+        url: "/credit/get-list-asset-model",
+        headers: { Authorization: "Basic " + currentToken },
+        data: { asset_type_id: product, asset_parent: assetParent },
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            const filterByModel =
+                product === "MOBIL" ? CAR_FILTERED_MODEL : MOTOR_FILTERED_MODEL;
+            $.each(result.data.data, function (id, val) {
+                if (!filterByModel.includes(val.id)) {
+                    dataAssetModel.push({
+                        id: val.id,
+                        text: val.value,
+                    });
+                }
+            });
+            $(element).select2({
+                placeholder: elm_placeholder,
+                dropdownParent: $(element).parent(),
+                data: dataAssetModel,
+                language: {
+                    noResults: function () {
+                        return lang === "id"
+                            ? "Tidak Ada Hasil yang Ditemukan"
+                            : "No Result Found";
+                    },
+                },
+            });
+        },
+    });
+}
+
+function getAssetModelDetail(product) {
+    const model = $("#model_kendaraan").val().toString();
+
+    $.ajax({
+        type: "POST",
+        url: "/credit/get-list-asset-detail-model",
+        headers: { Authorization: "Basic " + currentToken },
+        data: { asset_type_id: product, model: model },
+        dataType: "json",
+        error: function (xhr) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, error) {
+            retryAjax(this, xhr);
+        },
+        success: function (result) {
+            if (result.message === "success") {
+                assetTypeId = result.data.data[0].asset_type_id;
+                categoryId = result.data.data[0].category_id;
+                assetGroup = result.data.data[0].asset_group;
+            }
+        },
+    });
+}
+
 function getListBpkbOwnership(element) {
     dataBpkbOwnership = [];
     $(element).empty();
@@ -1299,8 +1443,8 @@ function getProductDetail() {
             ? minFunding
             : clearDot($("#pembiayaan").val());
     let param = {
-        product_id: productIdFilter(rawAssetBrand[0].category),
-        asset_group: rawAssetBrand[0].asset_group,
+        product_id: productIdFilter(categoryId),
+        asset_group: assetGroup,
         customer_rating: "2",
         asset_age: assetAge,
         tenor: tenor,
@@ -1337,8 +1481,8 @@ function getProductBranchDetail() {
             : clearDot($("#pembiayaan").val());
     let param = {
         branch_id: branch_id,
-        product_id: productIdFilter(rawAssetBrand[0].category),
-        asset_group: rawAssetBrand[0].asset_group,
+        product_id: productIdFilter(categoryId),
+        asset_group: assetGroup,
         customer_rating: "2",
         asset_age: assetAge,
         tenor: tenor,
@@ -1375,11 +1519,11 @@ function getProductOfferingDetail() {
             : clearDot($("#pembiayaan").val());
     let param = {
         branch_id: branch_id,
-        product_id: productIdFilter(rawAssetBrand[0].category),
+        product_id: productIdFilter(categoryId),
         product_offering_id: productOfferingIdFilter(
-            productIdFilter(rawAssetBrand[0].category)
+            productIdFilter(categoryId)
         ),
-        asset_group: rawAssetBrand[0].asset_group,
+        asset_group: assetGroup,
         customer_rating: "2",
         asset_age: assetAge,
         tenor: tenor,
@@ -1412,8 +1556,8 @@ function getProductOfferingDetail() {
 function getFiduciaFee() {
     let param = {
         branch_id: branch_id,
-        asset_type_id: rawAssetBrand[0].asset_type_id,
-        category_id: rawAssetBrand[0].category,
+        asset_type_id: assetTypeId,
+        category_id: categoryId,
         otr: calculationParam.nilai_taksaksi,
     };
 
@@ -1534,7 +1678,7 @@ function getLifeInsuranceRate() {
         age: 25,
         tenor: reverseTenorFormatter($("#tenor").val()),
         insurance_branch_active: true,
-        asset_type_id: rawAssetBrand[0].asset_type_id,
+        asset_type_id: assetTypeId,
     };
 
     let param = fund > 20000000 ? paramInsuranceRate : paramInsuranceRateNew;

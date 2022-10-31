@@ -948,6 +948,9 @@ $this->headScript()
                 <h4 class="modal-body-title"><?= $this->translate('timeout-title') ?></h4>
                 <p class="modal-body-text"><?= $this->translate('timeout-description') ?></p>
             </div>
+            <div class="modal-footer">
+                <button type="button" class="cta cta-primary go-to-home" data-dismiss="modal" ><?=$this->translate('backtohome') ?></button>
+            </div>
         </div>
     </div>
 </div>

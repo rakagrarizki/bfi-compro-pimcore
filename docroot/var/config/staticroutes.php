@@ -3013,4 +3013,80 @@ return [
         "creationDate" => 1567583908,
         "modificationDate" => 1567583948
     ],
+
+    172 => [
+        "id" => 172,
+        "name" => "get list asset brand",
+        "pattern" => "/\\/credit\\/get-list-asset-brand/",
+        "reverse" => "/credit/get-list-asset-brand",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\BrandController",
+        "action" => "carBrandListJson",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+
+    173 => [
+        "id" => 173,
+        "name" => "get list asset type",
+        "pattern" => "/\\/credit\\/get-list-asset-type/",
+        "reverse" => "/credit/get-list-asset-type",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getListAssetType",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+
+    174 => [
+        "id" => 174,
+        "name" => "get list asset model",
+        "pattern" => "/\\/credit\\/get-list-asset-model/",
+        "reverse" => "/credit/get-list-asset-model",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getListAssetModel",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+
+    175 => [
+        "id" => 175,
+        "name" => "get list asset model detail",
+        "pattern" => "/\\/credit\\/get-list-asset-detail-model/",
+        "reverse" => "/credit/get-list-asset-detail-model",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getListAssetModelDetail",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
 ];

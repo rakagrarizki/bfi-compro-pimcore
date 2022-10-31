@@ -239,7 +239,6 @@ $("#next2").on("click", function (e) {
         pushDataStep2(function (result) {
             if (result.data.is_timeout == true) {
                 $("#modal-timeout").modal("show");
-                window.location = "/";
             } else {
                 if (
                     result.data.leads_status == "UNPROSPECT" ||
@@ -272,7 +271,6 @@ $("#next3").on("click", function (e) {
         pushDataStep3(function (result) {
             if (result.data.is_timeout == true) {
                 $("#modal-timeout").modal("show");
-                window.location = "/";
             } else {
                 if (result.data.leads_status == "UNPROSPECT") {
                     window.location =
@@ -339,7 +337,6 @@ $("#next4").on("click", function (e) {
         pushDataStep4(function (result) {
             if (result.data.is_timeout == true) {
                 $("#modal-timeout").modal("show");
-                window.location = "/";
             } else {
                 showOtpVer2();
                 window.dataLayer.push({

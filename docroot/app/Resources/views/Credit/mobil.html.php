@@ -241,46 +241,21 @@ $this->headScript()
                                     <textarea class="form-control formRequired formAddress" name="alamat_lengkap" id="alamat_lengkap" placeholder="<?= $this->translate('placeholder-place') ?> Contoh: Jalan Rajawali 1 Blok A no.11 RT 01 RW 02"></textarea>
                                     <div class="error-wrap"></div>
                                 </div>
-                                <!-- <div class="form-group" hidden>
-                                    <label><?= $this->translate('label-provinsi') ?></label>
-                                    <select class="form-control formRequired" id="provinsi" name="provinsi" placeholder="<?= $this->translate('choose-provinsi') ?>" multiple="multiple">
-                                    </select>
-                                    <div class="error-wrap"></div>
-                                </div>
-                                <div class="form-group" hidden>
-                                    <label><?= $this->translate('label-kota') ?></label>
-                                    <select class="form-control formRequired" id="kota" name="kota" placeholder="<?= $this->translate('choose-kota') ?>" multiple="multiple">
-                                        <option value="" class="placeholder" disabled selected><?= $this->translate('choose-kota') ?></option>
-                                    </select>
-                                    <div class="error-wrap"></div>
-                                </div>
-                                <div class="form-group" hidden>
-                                    <label><?= $this->translate('label-kecamatan') ?></label>
-                                    <select class="form-control formRequired" id="kecamatan" name="kecamatan" placeholder="<?= $this->translate('choose-kecamatan') ?>" multiple="multiple">
-                                        <option value="" disabled selected><?= $this->translate('choose-kecamatan') ?></option>
-                                    </select>
-                                    <div class="error-wrap"></div>
-                                </div> -->
-                                <!-- <div class="form-group" hidden>
-                                    <label for="kode_pos"><?= $this->translate('label-postcode') ?></label>
-                                    <input type="text" class="form-control formKodePos" name="kode_pos" id="kode_pos" placeholder="<?= $this->translate('placeholder-postcode') ?>" disabled>
-                                    <div class="error-wrap"></div>
-                                </div> -->
                                 <div class="text-title-form">
                                     <h3><?= $this->translate('data-ndfc-title') ?></h3>
                                     <p><?= $this->translate('data-ndfc-subtitle') ?></p>
                                 </div>
                                 <div class="form-group">
-                                    <label><?= $this->translate('label-type') ?></label>
-                                    <select class="c-custom-select-trans form-control formRequired" placeholder="<?= $this->translate('placeholder-type') ?>" id="type_kendaraan" name="type_kendaraan" multiple="multiple">
-                                        <option value="" disabled selected> <?= $this->translate('placeholder-type') ?></option>
+                                    <label><?= $this->translate('label-merk') ?></label>
+                                    <select class="c-custom-select-trans form-control formRequired" placeholder="<?= $this->translate('placeholder-merk') ?>" id="merk_kendaraan" name="merk_kendaraan" multiple="multiple">
+                                        <option value="" disabled> <?= $this->translate('placeholder-merk') ?></option>
                                     </select>
                                     <div class="error-wrap"></div>
                                 </div>
                                 <div class="form-group">
-                                    <label><?= $this->translate('label-merk') ?></label>
-                                    <select class="c-custom-select-trans form-control formRequired" placeholder="<?= $this->translate('placeholder-merk') ?>" id="merk_kendaraan" name="merk_kendaraan" multiple="multiple">
-                                        <option value="" disabled> <?= $this->translate('placeholder-merk') ?></option>
+                                    <label><?= $this->translate('label-type') ?></label>
+                                    <select class="c-custom-select-trans form-control formRequired" placeholder="<?= $this->translate('placeholder-type') ?>" id="type_kendaraan" name="type_kendaraan" multiple="multiple">
+                                        <option value="" disabled selected> <?= $this->translate('placeholder-type') ?></option>
                                     </select>
                                     <div class="error-wrap"></div>
                                 </div>
@@ -730,6 +705,9 @@ $this->headScript()
                 <h4 class="modal-body-title"><?= $this->translate('timeout-title') ?></h4>
                 <p class="modal-body-text"><?= $this->translate('timeout-description') ?></p>
             </div>
+            <div class="modal-footer">
+                <button type="button" class="cta cta-primary go-to-home" data-dismiss="modal" ><?=$this->translate('backtohome') ?></button>
+            </div>
         </div>
     </div>
 </div>
@@ -741,7 +719,7 @@ $this->headScript()
             <div class="modal-body">
                 <h4 class="modal-body-title"><?=$this->translate('asset-not-cover-text') ?></h4>
             </div>
-             <div class="modal-footer">
+            <div class="modal-footer">
                 <button type="button" class="cta cta-primary go-to-home" data-dismiss="modal" ><?=$this->translate('backtohome') ?></button>
             </div>
         </div>

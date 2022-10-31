@@ -958,4 +958,24 @@ class SendApi
     {
         return $this->executeApi('api-new-house-ownership', $url, $params, "POST");
     }
+
+    public function getListAssetsBrand($url, $param, $token)
+    {
+        return $this->executeApiSignature('getListAssetsBrand', false, $url, $param, "GET", $token);
+    }
+
+    public function getListAssetsType($url, $param, $token)
+    {
+        return $this->executeApiSignature('getListAssetsType', false, $url, $param, "GET", $token);
+    }
+
+    public function getListAssetsModel($url, $param, $token)
+    {
+        return $this->executeApiSignature('getListAssetsModel', false, $url, $param, "GET", $token);
+    }
+
+    public function getListAssetsModelDetail($url, $param, $token)
+    {
+        return $this->executeApiSignature('getListAssetsModelDetail', false, $url, $param, "GET", $token);
+    }
 }
