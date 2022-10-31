@@ -102,11 +102,11 @@ const NDFC_MIN_FUNDING = 10000000;
         var encrypted_code = sessionStorage.getItem("encrypted_code");
         var urlParams = getAllUrlParams(urlLocation.href);
         if (utm_campaign == null || utm_campaign == "undefined") {
-            sessionStorage.setItem("utm_source", urlParams.utm_source);
-            sessionStorage.setItem("utm_campaign", urlParams.utm_campaign);
-            sessionStorage.setItem("utm_term", urlParams.utm_term);
-            sessionStorage.setItem("utm_medium", urlParams.utm_medium);
-            sessionStorage.setItem("utm_content", urlParams.utm_content);
+            sessionStorage.setItem("utm_source", urlParams.utm_source || "ORGANIC");
+            sessionStorage.setItem("utm_campaign", urlParams.utm_campaign || "ORGANIC");
+            sessionStorage.setItem("utm_term", urlParams.utm_term || "ORGANIC");
+            sessionStorage.setItem("utm_medium", urlParams.utm_medium || "ORGANIC");
+            sessionStorage.setItem("utm_content", urlParams.utm_content || "ORGANIC");
         }
         if (encrypted_code == null || encrypted_code == "undefined") {
             sessionStorage.setItem("encrypted_code", urlParams.encrypted_code);
