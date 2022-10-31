@@ -3179,7 +3179,10 @@ const NDFC_MIN_FUNDING = 10000000;
         });
     }
 
-    if (window.location.pathname.includes("agent/form")) {
+    if (
+        window.location.pathname.includes("credit/form") ||
+        window.location.pathname.includes("agent/form")
+    ) {
         getProvinsi($("#provinsi"), $("#provinsi_sertificate"));
     }
 
