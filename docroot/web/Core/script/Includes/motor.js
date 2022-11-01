@@ -112,6 +112,36 @@ $("#near_branch").select2({
     dropdownParent: $("#near_branch").parent(),
 });
 
+var provinsi = $("#provinsi").attr("placeholder");
+$("#provinsi").select2({
+    placeholder: provinsi,
+    dropdownParent: $("#provinsi").parent(),
+});
+
+var kota = $("#kota").attr("placeholder");
+$("#kota").select2({
+    placeholder: kota,
+    dropdownParent: $("#kota").parent(),
+});
+
+var kecamatan = $("#kecamatan").attr("placeholder");
+$("#kecamatan").select2({
+    placeholder: kecamatan,
+    dropdownParent: $("#kecamatan").parent(),
+});
+
+var kelurahan = $("#kelurahan").attr("placeholder");
+$("#kelurahan").select2({
+    placeholder: kelurahan,
+    dropdownParent: $("#kelurahan").parent(),
+});
+
+var type_kendaraan = $("#type_kendaraan").attr("placeholder");
+$("#type_kendaraan").select2({
+    placeholder: type_kendaraan,
+    dropdownParent: $("#type_kendaraan").parent(),
+});
+
 var merk_kendaraan = $("#merk_kendaraan").attr("placeholder");
 $("#merk_kendaraan").select2({
     placeholder: merk_kendaraan,
@@ -148,14 +178,18 @@ $("#occupation").select2({
     dropdownParent: $("#occupation").parent(),
 });
 
+$("#type_kendaraan").change(() => {
+    getAssetModel("#model_kendaraan", "MOTOR");
+});
+
 $("#merk_kendaraan").change(() => {
-    $("#model_kendaraan").empty();
-    filterAssetModel($("#merk_kendaraan").val().toString());
+    getAssetType("#type_kendaraan", "MOTOR");
 });
 
 $("#model_kendaraan").change(function () {
     if ($(this).valid()) {
         const vehicleModel = $(this).val().toString();
+        getAssetModelDetail("MOTOR");
         getAssetYear(vehicleModel, branch_id);
     }
 });
@@ -184,7 +218,7 @@ $("#next1").on("click", function (e) {
             }
             step("next", 2);
             getListProvinsi("#provinsi");
-            getListAssets("motor");
+            getAssetBrand("#merk_kendaraan", "MOTOR");
             getListBpkbOwnership("#kepemilikan_bpkb");
             getHouseOwnership("#kepemilikan_rumah", "motor");
             getOccupationList();
@@ -195,40 +229,44 @@ $("#next1").on("click", function (e) {
 $("#next2").on("click", function (e) {
     e.preventDefault();
     if ($(this).closest("form").valid()) {
-        pushDataStep2(() => {
-            if (!is_coverage) {
-                window.dataLayer.push({
-                    event: "ValidNDFMAssetNotCover",
-                });
-                $("#modal-not-cover").modal("show");
+        pushDataStep2(function (result) {
+            if (result.data.is_timeout == true) {
+                $("#modal-timeout").modal("show");
             } else {
-                getDupcheck(() => {
-                    if (sessionStorage.getItem("submitStep2") === "false") {
-                        window.dataLayer.push({
-                            event: "ValidFormNDFMStep2",
-                        });
-                        sessionStorage.setItem("submitStep2", "true");
-                    }
-                    step("next", 3);
-                    getPricelistPaging();
-                    getProductOffering();
+                if (!is_coverage) {
+                    window.dataLayer.push({
+                        event: "ValidNDFMAssetNotCover",
+                    });
+                    $("#modal-not-cover").modal("show");
+                } else {
+                    getDupcheck(() => {
+                        if (sessionStorage.getItem("submitStep2") === "false") {
+                            window.dataLayer.push({
+                                event: "ValidFormNDFMStep2",
+                            });
+                            sessionStorage.setItem("submitStep2", "true");
+                        }
+                        step("next", 3);
+                        getPricelistPaging();
+                        getProductOffering();
 
-                    $("#tenor").val(tenorFormatter(loanTenor[0]));
-                    $("#tenor2").val(1);
-                    $("#pembiayaan").val(separatordot(minFunding));
-                    $("p.estimate-installment").text("Rp 0");
-                    $("#calcLoan").removeAttr("disabled");
-                    $("#next3").attr("disabled", "disabled");
+                        $("#tenor").val(tenorFormatter(loanTenor[0]));
+                        $("#tenor2").val(1);
+                        $("#pembiayaan").val(separatordot(minFunding));
+                        $("p.estimate-installment").text("Rp 0");
+                        $("#calcLoan").removeAttr("disabled");
+                        $("#next3").attr("disabled", "disabled");
 
-                    let brandData = $("#merk_kendaraan").select2("data");
-                    $("#brand-caption").text(brandData[0].text);
-                    $("#model-caption").text(
-                        $("#model_kendaraan option:selected").html()
-                    );
-                    $("#year-caption").text(
-                        $("#tahun_kendaraan").val().toString()
-                    );
-                });
+                        let brandData = $("#merk_kendaraan").select2("data");
+                        $("#brand-caption").text(brandData[0].text);
+                        $("#model-caption").text(
+                            $("#model_kendaraan option:selected").html()
+                        );
+                        $("#year-caption").text(
+                            $("#tahun_kendaraan").val().toString()
+                        );
+                    });
+                }
             }
         });
     }
@@ -237,25 +275,31 @@ $("#next2").on("click", function (e) {
 $("#next3").on("click", function (e) {
     e.preventDefault();
     if ($(this).closest("form").valid()) {
-        pushDataStep3(() => {
-            if (sessionStorage.getItem("submitStep3") === "false") {
-                window.dataLayer.push({
-                    event: "ValidFormNDFMStep3",
-                });
-                sessionStorage.setItem("submitStep3", "true");
+        pushDataStep3(function (result) {
+            if (result.data.is_timeout == true) {
+                $("#modal-timeout").modal("show");
+            } else {
+                if (sessionStorage.getItem("submitStep3") === "false") {
+                    window.dataLayer.push({
+                        event: "ValidFormNDFMStep3",
+                    });
+                    sessionStorage.setItem("submitStep3", "true");
+                }
+                $("#modal-konfirmasi").modal("show");
             }
-            $("#modal-konfirmasi").modal("show");
         });
     }
 });
 
 $("#confirm-data").on("click", function (e) {
     e.preventDefault();
-    pushDataStep4(() => {
-        showOtpVer2();
+    pushDataStep4(function (result) {
+        if (result.data.is_timeout == true) {
+            $("#modal-timeout").modal("show");
+        } else {
+            showOtpVer2();
+        }
     });
-    // step("next", 4);
-    // $(".step-list").attr("hidden", "true");
 });
 
 $("#next5").on("click", function (e) {
@@ -310,6 +354,7 @@ function pushDataStep1(cb) {
 function pushDataStep2(cb) {
     assetCode = $("#model_kendaraan").val().toString();
     let brandData = $("#merk_kendaraan").select2("data");
+    let typeData = $("#type_kendaraan").select2("data");
     let modelData = $("#model_kendaraan").select2("data");
     let occupationData = $("#occupation").select2("data");
     let result = (dataStep2 = {
@@ -329,8 +374,8 @@ function pushDataStep2(cb) {
         },
 
         info_assets: {
-            type_id_bfi: rawAssetBrand[0].asset_group,
-            type_desc_bfi: rawAssetBrand[0].asset_group,
+            type_id_bfi: typeData[0].id,
+            type_desc_bfi: typeData[0].text,
             brand_id_bfi: brandData[0].id,
             brand_desc_bfi: brandData[0].text,
             model_id_bfi: modelData[0].id,
@@ -431,7 +476,7 @@ function pushDataStep4(cb) {
         },
         success: (res) => {
             if (res.message === "success") {
-                cb();
+                cb(res);
             }
         },
     });

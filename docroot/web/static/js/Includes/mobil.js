@@ -148,6 +148,30 @@ $("input[name='is-wa-number']").click(function () {
     }
 });
 
+var provinsi = $("#provinsi").attr("placeholder");
+$("#provinsi").select2({
+    placeholder: provinsi,
+    dropdownParent: $("#provinsi").parent(),
+});
+
+var kota = $("#kota").attr("placeholder");
+$("#kota").select2({
+    placeholder: kota,
+    dropdownParent: $("#kota").parent(),
+});
+
+var kecamatan = $("#kecamatan").attr("placeholder");
+$("#kecamatan").select2({
+    placeholder: kecamatan,
+    dropdownParent: $("#kecamatan").parent(),
+});
+
+var kelurahan = $("#kelurahan").attr("placeholder");
+$("#kelurahan").select2({
+    placeholder: kelurahan,
+    dropdownParent: $("#kelurahan").parent(),
+});
+
 var type_kendaraan = $("#type_kendaraan").attr("placeholder");
 $("#type_kendaraan").select2({
     placeholder: type_kendaraan,
@@ -202,24 +226,24 @@ $("#next1").on("click", function (e) {
             }
             step("next", 2);
             getListProvinsi("#provinsi");
-            getListAssets("mobil");
+            getAssetBrand("#merk_kendaraan", "MOBIL");
             getListBpkbOwnership("#kepemilikan_bpkb");
         });
     }
 });
 
 $("#type_kendaraan").change(() => {
-    filterAssetBrand($("#type_kendaraan").val().toString());
-    filterAssetModel($("#merk_kendaraan").val().toString());
+    getAssetModel("#model_kendaraan", "MOBIL");
 });
 
 $("#merk_kendaraan").change(() => {
-    filterAssetModel($("#merk_kendaraan").val().toString());
+    getAssetType("#type_kendaraan", "MOBIL");
 });
 
 $("#model_kendaraan").change(function () {
     if ($(this).valid()) {
         const vehicleModel = $(this).val().toString();
+        getAssetModelDetail("MOBIL");
         getAssetYear(vehicleModel, branch_id);
     }
 });
@@ -227,47 +251,51 @@ $("#model_kendaraan").change(function () {
 $("#next2").on("click", function (e) {
     e.preventDefault();
     if ($(this).closest("form").valid()) {
-        pushDataStep2(() => {
-            if (!is_coverage) {
-                window.dataLayer.push({
-                    event: "ValidNDFCAssetNotCover",
-                });
-                $("#modal-not-cover").modal("show");
+        pushDataStep2(function(result) {
+            if (result.data.is_timeout == true) {
+                $("#modal-timeout").modal("show");
             } else {
-                getDupcheck(() => {
-                    if (sessionStorage.getItem("submitStep2") === "false") {
-                        window.dataLayer.push({
-                            event: "ValidFormNDFCStep2",
-                        });
-                        sessionStorage.setItem("submitStep2", "true");
-                    }
-                    step("next", 3);
-                    getListHouseOwnership("#kepemilikan_rumah");
-                    getListMaritalStatus("#marital_status");
-                    getPricelistPaging();
-                    getProductOffering();
-                    getRsaCoyBranch();
-                    getAssetInsuranceCoyBranch();
-                    getAssetCategory();
+                if (!is_coverage) {
+                    window.dataLayer.push({
+                        event: "ValidNDFCAssetNotCover",
+                    });
+                    $("#modal-not-cover").modal("show");
+                } else {
+                    getDupcheck(() => {
+                        if (sessionStorage.getItem("submitStep2") === "false") {
+                            window.dataLayer.push({
+                                event: "ValidFormNDFCStep2",
+                            });
+                            sessionStorage.setItem("submitStep2", "true");
+                        }
+                        step("next", 3);
+                        getListHouseOwnership("#kepemilikan_rumah");
+                        getListMaritalStatus("#marital_status");
+                        getPricelistPaging();
+                        getProductOffering();
+                        getRsaCoyBranch();
+                        getAssetInsuranceCoyBranch();
+                        getAssetCategory();
 
-                    $("#tenor").val(tenorFormatter(loanTenor[0]));
-                    $("#tenor2").val(1);
-                    $("#pembiayaan").val(separatordot(minFunding));
+                        $("#tenor").val(tenorFormatter(loanTenor[0]));
+                        $("#tenor2").val(1);
+                        $("#pembiayaan").val(separatordot(minFunding));
 
-                    showInsurance($('input[name="assurance1"]'));
-                    hideInsurance($('input[name="assurance2"]'));
-                    hideInsurance($('input[name="assurance3"]'));
-                    hideInsurance($('input[name="assurance4"]'));
+                        showInsurance($('input[name="assurance1"]'));
+                        hideInsurance($('input[name="assurance2"]'));
+                        hideInsurance($('input[name="assurance3"]'));
+                        hideInsurance($('input[name="assurance4"]'));
 
-                    let brandData = $("#merk_kendaraan").select2("data");
-                    $("#brand-caption").text(brandData[0].text);
-                    $("#model-caption").text(
-                        $("#model_kendaraan option:selected").html()
-                    );
-                    $("#year-caption").text(
-                        $("#tahun_kendaraan").val().toString()
-                    );
-                });
+                        let brandData = $("#merk_kendaraan").select2("data");
+                        $("#brand-caption").text(brandData[0].text);
+                        $("#model-caption").text(
+                            $("#model_kendaraan option:selected").html()
+                        );
+                        $("#year-caption").text(
+                            $("#tahun_kendaraan").val().toString()
+                        );
+                    });
+                }
             }
         });
     }
@@ -276,14 +304,18 @@ $("#next2").on("click", function (e) {
 $("#next3").on("click", function (e) {
     e.preventDefault();
     if ($(this).closest("form").valid()) {
-        pushDataStep3(() => {
-            if (sessionStorage.getItem("submitStep3") === "false") {
-                window.dataLayer.push({
-                    event: "ValidFormNDFCStep3",
-                });
-                sessionStorage.setItem("submitStep3", "true");
+        pushDataStep3(function(result) {
+            if (result.data.is_timeout == true) {
+                $("#modal-timeout").modal("show");
+            } else {
+                if (sessionStorage.getItem("submitStep3") === "false") {
+                    window.dataLayer.push({
+                        event: "ValidFormNDFCStep3",
+                    });
+                    sessionStorage.setItem("submitStep3", "true");
+                }
+                $("#modal-konfirmasi").modal("show");
             }
-            $("#modal-konfirmasi").modal("show");
         });
     }
 });
@@ -304,8 +336,12 @@ $("#calcLoan").on("click", function () {
 
 $("#confirm-data").on("click", function (e) {
     e.preventDefault();
-    pushDataStep4(() => {
-        showOtpVer2();
+    pushDataStep4(function(result) {
+        if (result.data.is_timeout == true) {
+            $("#modal-timeout").modal("show");
+        } else {
+            showOtpVer2();
+        }
     });
 });
 
@@ -370,6 +406,7 @@ function pushDataStep1(cb) {
 function pushDataStep2(cb) {
     assetCode = $("#model_kendaraan").val().toString();
     let brandData = $("#merk_kendaraan").select2("data");
+    let typeData = $("#type_kendaraan").select2("data");
     let modelData = $("#model_kendaraan").select2("data");
     let result = (dataStep2 = {
         submission_id: submission_id,
@@ -387,10 +424,10 @@ function pushDataStep2(cb) {
             full_address: $("#alamat_lengkap").val(),
         },
         info_assets: {
-            category_id_bfi: rawAssetBrand[0].asset_group,
-            category_desc_bfi: rawAssetBrand[0].asset_group,
-            type_id_bfi: $("#type_kendaraan").val().toString(),
-            type_desc_bfi: $("#type_kendaraan").val().toString(),
+            category_id_bfi: categoryId,
+            category_desc_bfi: categoryId,
+            type_id_bfi: typeData[0].id,
+            type_desc_bfi: typeData[0].text,
             brand_id_bfi: brandData[0].id,
             brand_desc_bfi: brandData[0].text,
             model_id_bfi: modelData[0].id,
@@ -541,7 +578,7 @@ function pushDataStep4(cb) {
         },
         success: function (result) {
             if (result.message === "success") {
-                cb();
+                cb(result);
             }
         },
     });
@@ -781,9 +818,9 @@ function getProductOffering() {
     let param = {
         branch_id: branch_id,
         asset_type_id: "MOBIL",
-        product_id: productIdFilter(rawAssetBrand[0].category),
+        product_id: productIdFilter(categoryId),
         product_offering_id: productOfferingIdFilter(
-            productIdFilter(rawAssetBrand[0].category)
+            productIdFilter(categoryId)
         ),
         is_active: "true",
     };
@@ -817,7 +854,7 @@ function getProductOffering() {
 function getAssetCategory() {
     let param = {
         asset_type_id: "MOBIL",
-        category_id: rawAssetBrand[0].category,
+        category_id: categoryId,
     };
 
     $.ajax({

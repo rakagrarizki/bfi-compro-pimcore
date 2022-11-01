@@ -3016,12 +3016,12 @@ return [
 
     172 => [
         "id" => 172,
-        "name" => "save mytalim step 1",
-        "pattern" => "/\\/syariah\\/save-mytalim-step1/",
-        "reverse" => "/syariah/save-mytalim-step1",
+        "name" => "get list asset brand",
+        "pattern" => "/\\/credit\\/get-list-asset-brand/",
+        "reverse" => "/credit/get-list-asset-brand",
         "module" => "AppBundle",
-        "controller" => "@AppBundle\\Controller\\SyariahController",
-        "action" => "saveMyTalimStep1",
+        "controller" => "@AppBundle\\Controller\\BrandController",
+        "action" => "carBrandListJson",
         "variables" => NULL,
         "defaults" => NULL,
         "siteId" => [
@@ -3035,12 +3035,12 @@ return [
 
     173 => [
         "id" => 173,
-        "name" => "save mytalim step 2",
-        "pattern" => "/\\/syariah\\/save-mytalim-step2/",
-        "reverse" => "/syariah/save-mytalim-step2",
+        "name" => "get list asset type",
+        "pattern" => "/\\/credit\\/get-list-asset-type/",
+        "reverse" => "/credit/get-list-asset-type",
         "module" => "AppBundle",
-        "controller" => "@AppBundle\\Controller\\SyariahController",
-        "action" => "saveMyTalimStep2",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getListAssetType",
         "variables" => NULL,
         "defaults" => NULL,
         "siteId" => [
@@ -3054,12 +3054,12 @@ return [
 
     174 => [
         "id" => 174,
-        "name" => "save mytalim step 3",
-        "pattern" => "/\\/syariah\\/save-mytalim-step3/",
-        "reverse" => "/syariah/save-mytalim-step3",
+        "name" => "get list asset model",
+        "pattern" => "/\\/credit\\/get-list-asset-model/",
+        "reverse" => "/credit/get-list-asset-model",
         "module" => "AppBundle",
-        "controller" => "@AppBundle\\Controller\\SyariahController",
-        "action" => "saveMyTalimStep3",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getListAssetModel",
         "variables" => NULL,
         "defaults" => NULL,
         "siteId" => [
@@ -3073,107 +3073,12 @@ return [
 
     175 => [
         "id" => 175,
-        "name" => "save myhajat step 1",
-        "pattern" => "/\\/syariah\\/save-myhajat-step1/",
-        "reverse" => "/syariah/save-myhajat-step1",
+        "name" => "get list asset model detail",
+        "pattern" => "/\\/credit\\/get-list-asset-detail-model/",
+        "reverse" => "/credit/get-list-asset-detail-model",
         "module" => "AppBundle",
-        "controller" => "@AppBundle\\Controller\\SyariahController",
-        "action" => "saveMyHajatStep1",
-        "variables" => NULL,
-        "defaults" => NULL,
-        "siteId" => [
-
-        ],
-        "priority" => 0,
-        "legacy" => FALSE,
-        "creationDate" => 1567583908,
-        "modificationDate" => 1567583948
-    ],
-
-    176 => [
-        "id" => 176,
-        "name" => "save myhajat step 2",
-        "pattern" => "/\\/syariah\\/save-myhajat-step2/",
-        "reverse" => "/syariah/save-myhajat-step2",
-        "module" => "AppBundle",
-        "controller" => "@AppBundle\\Controller\\SyariahController",
-        "action" => "saveMyHajatStep2",
-        "variables" => NULL,
-        "defaults" => NULL,
-        "siteId" => [
-
-        ],
-        "priority" => 0,
-        "legacy" => FALSE,
-        "creationDate" => 1567583908,
-        "modificationDate" => 1567583948
-    ],
-
-    177 => [
-        "id" => 177,
-        "name" => "save myhajat step 3",
-        "pattern" => "/\\/syariah\\/save-myhajat-step3/",
-        "reverse" => "/syariah/save-myhajat-step3",
-        "module" => "AppBundle",
-        "controller" => "@AppBundle\\Controller\\SyariahController",
-        "action" => "saveMyHajatStep3",
-        "variables" => NULL,
-        "defaults" => NULL,
-        "siteId" => [
-
-        ],
-        "priority" => 0,
-        "legacy" => FALSE,
-        "creationDate" => 1567583908,
-        "modificationDate" => 1567583948
-    ],
-
-    178 => [
-        "id" => 178,
-        "name" => "save myfaedah step 1",
-        "pattern" => "/\\/syariah\\/save-myfaedah-step1/",
-        "reverse" => "/syariah/save-myfaedah-step1",
-        "module" => "AppBundle",
-        "controller" => "@AppBundle\\Controller\\SyariahController",
-        "action" => "saveMyFaedahStep1",
-        "variables" => NULL,
-        "defaults" => NULL,
-        "siteId" => [
-
-        ],
-        "priority" => 0,
-        "legacy" => FALSE,
-        "creationDate" => 1567583908,
-        "modificationDate" => 1567583948
-    ],
-
-    179 => [
-        "id" => 179,
-        "name" => "save myfaedah step 2",
-        "pattern" => "/\\/syariah\\/save-myfaedah-step2/",
-        "reverse" => "/syariah/save-myfaedah-step2",
-        "module" => "AppBundle",
-        "controller" => "@AppBundle\\Controller\\SyariahController",
-        "action" => "saveMyFaedahStep2",
-        "variables" => NULL,
-        "defaults" => NULL,
-        "siteId" => [
-
-        ],
-        "priority" => 0,
-        "legacy" => FALSE,
-        "creationDate" => 1567583908,
-        "modificationDate" => 1567583948
-    ],
-
-    180 => [
-        "id" => 180,
-        "name" => "save myfaedah step 3",
-        "pattern" => "/\\/syariah\\/save-myfaedah-step3/",
-        "reverse" => "/syariah/save-myfaedah-step3",
-        "module" => "AppBundle",
-        "controller" => "@AppBundle\\Controller\\SyariahController",
-        "action" => "saveMyFaedahStep3",
+        "controller" => "@AppBundle\\Controller\\CreditController",
+        "action" => "getListAssetModelDetail",
         "variables" => NULL,
         "defaults" => NULL,
         "siteId" => [

@@ -239,7 +239,6 @@ $("#next2").on("click", function (e) {
         pushDataStep2(function (result) {
             if (result.data.is_timeout == true) {
                 $("#modal-timeout").modal("show");
-                window.location = "/";
             } else {
                 if (
                     result.data.leads_status == "UNPROSPECT" ||
@@ -272,12 +271,19 @@ $("#next3").on("click", function (e) {
         pushDataStep3(function (result) {
             if (result.data.is_timeout == true) {
                 $("#modal-timeout").modal("show");
-                window.location = "/";
             } else {
-                step("next", 3);
-                window.dataLayer.push({
-                    event: "ValidFormStep3",
-                });
+                if (result.data.leads_status == "UNPROSPECT") {
+                    window.location =
+                        "/" +
+                        lang +
+                        "/credit/pengajuan-gagal?product=" +
+                        sessionStorage.getItem("loanType");
+                } else {
+                    step("next", 3);
+                    window.dataLayer.push({
+                        event: "ValidFormStep3",
+                    });
+                }
             }
         });
     } else {
@@ -331,7 +337,6 @@ $("#next4").on("click", function (e) {
         pushDataStep4(function (result) {
             if (result.data.is_timeout == true) {
                 $("#modal-timeout").modal("show");
-                window.location = "/";
             } else {
                 showOtpVer2();
                 window.dataLayer.push({

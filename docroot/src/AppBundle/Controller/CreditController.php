@@ -1027,6 +1027,137 @@ class CreditController extends FrontendController
         }
     }
 
+    public function getListAssetBrandAction(Request $request)
+    {
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTBFICONNECT")->getData();
+        $param['asset_type_id'] = htmlentities(addslashes($request->get('asset_type_id')));
+        $param['size'] = 999;
+        $endpoint = $param['asset_type_id'] == "MOBIL" ? WebsiteSetting::getByName('URL_NDFC_BRAND')->getData() : WebsiteSetting::getByName('URL_NDFM_BRAND')->getData();
+        $url = $host . $endpoint;
+
+        try {
+            $data = $this->sendAPI->getListAssetsBrand($url, $param, $token);
+
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data,
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => 0,
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
+    public function getListAssetTypeAction(Request $request)
+    {
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTBFICONNECT")->getData();
+        $param['asset_type_id'] = htmlentities(addslashes($request->get('asset_type_id')));
+        $param['asset_parent'] = htmlentities(addslashes($request->get('asset_parent')));
+        $param['size'] = 999;
+        $endpoint = $param['asset_type_id'] == "MOBIL" ? WebsiteSetting::getByName('URL_NDFC_TYPE')->getData() : WebsiteSetting::getByName('URL_NDFM_TYPE')->getData();
+        $url = $host . $endpoint;
+
+        try {
+            $data = $this->sendAPI->getListAssetsType($url, $param, $token);
+
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data,
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => 0,
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
+    public function getListAssetModelAction(Request $request)
+    {
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTBFICONNECT")->getData();
+        $param['asset_type_id'] = htmlentities(addslashes($request->get('asset_type_id')));
+        $param['asset_parent'] = htmlentities(addslashes($request->get('asset_parent')));
+        $param['size'] = 999;
+        $endpoint = $param['asset_type_id'] == "MOBIL" ? WebsiteSetting::getByName('URL_NDFC_MODEL')->getData() : WebsiteSetting::getByName('URL_NDFM_MODEL')->getData();
+        $url = $host . $endpoint;
+
+        try {
+            $data = $this->sendAPI->getListAssetsModel($url, $param, $token);
+
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data,
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => 0,
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
+    public function getListAssetModelDetailAction(Request $request)
+    {
+        $token = $this->getTokenBearer();
+        $host = WebsiteSetting::getByName("HOSTBFICONNECT")->getData();
+        $param['asset_type_id'] = htmlentities(addslashes($request->get('asset_type_id')));
+        $param['model'] = htmlentities(addslashes($request->get('model')));
+        $param['size'] = 999;
+        $endpoint = $param['asset_type_id'] == "MOBIL" ? WebsiteSetting::getByName('URL_NDFC_MODEL_DETAIL')->getData() : WebsiteSetting::getByName('URL_NDFM_MODEL_DETAIL')->getData();
+        $url = $host . $endpoint;
+
+        try {
+            $data = $this->sendAPI->getListAssetsModelDetail($url, $param, $token);
+
+            if (empty($data->error)) {
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data,
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error")
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => 0,
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
     public function getListBpkbOwnershipAction(Request $request)
     {
         $token = $this->getTokenBearer();
