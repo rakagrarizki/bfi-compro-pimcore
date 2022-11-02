@@ -12,7 +12,7 @@
                 </div>
             </div>
             <div class="col-md-6 col-md-pull-6 calc-sect">
-                <h2 class="calc-title text-center"><?= $this->input("card-title"); ?></h2>
+                <h2 class="calc-title text-center" id="simulation-title"><?= $this->input("card-title"); ?></h2>
                 <?php while($this->block("sub-titles")->loop()) { ?>
                     <div class="row">
                         <div class="col-xs-6">
