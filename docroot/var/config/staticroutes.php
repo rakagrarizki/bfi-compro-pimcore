@@ -2145,12 +2145,12 @@ return [
     ],
     124 => [
         "id" => 124,
-        "name" => "contract detail",
-        "pattern" => "/\\/user\\/contract-detail/",
-        "reverse" => "/user/contract-detail",
+        "name" => "contract detail transaction",
+        "pattern" => "/\\/user\\/contract-detail-transaction/",
+        "reverse" => "/user/contract-detail-transaction",
         "module" => "AppBundle",
         "controller" => "@AppBundle\\Controller\\UserController",
-        "action" => "contractDetailJson",
+        "action" => "contractDetailTransactionJson",
         "variables" => NULL,
         "defaults" => NULL,
         "siteId" => [
@@ -2163,12 +2163,12 @@ return [
     ],
     125 => [
         "id" => 125,
-        "name" => "contract detail transaction",
-        "pattern" => "/\\/user\\/contract-detail-transaction/",
-        "reverse" => "/user/contract-detail-transaction",
+        "name" => "contract detail",
+        "pattern" => "/\\/user\\/contract-detail/",
+        "reverse" => "/user/contract-detail",
         "module" => "AppBundle",
         "controller" => "@AppBundle\\Controller\\UserController",
-        "action" => "contractDetailTransactionJson",
+        "action" => "contractDetailJson",
         "variables" => NULL,
         "defaults" => NULL,
         "siteId" => [
