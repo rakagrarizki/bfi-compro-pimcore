@@ -10,7 +10,7 @@
 
 $this->extend('layout-credit.html.php');
 $this->headScript()
-    ->offsetSetFile(100, '/static/js/Includes/syariah/my-faedah.js');
+    ->offsetSetFile(100, '/static/js/Includes/syariah/my-cars.js');
 $this->headScript()
     ->offsetSetFile(101, '/static/js/Includes/general-form.js');
 $this->headScript()
@@ -44,7 +44,7 @@ $this->headScript()
                                 </span>
                                 <div class="nav-content">
                                     <span class="nav-step-text">Step 2</span>
-                                    <p class="nav-step-desc"><?= $this->translate('address-asset-data') ?></p>
+                                    <p class="nav-step-desc"><?= $this->translate('step-address-data') ?></p>
                                     <span class="nav-step-tag"><?= $this->translate('state-step') ?></span>
                                 </div>
                             </a>
@@ -57,7 +57,7 @@ $this->headScript()
                                 </span>
                                 <div class="nav-content">
                                     <span class="nav-step-text">Step 3</span>
-                                    <p class="nav-step-desc"><?= $this->translate('financing-data') ?></p>
+                                    <p class="nav-step-desc"><?= $this->translate('step-asset-financing-data') ?></p>
                                     <span class="nav-step-tag"><?= $this->translate('state-step') ?></span>
                                 </div>
                             </a>
@@ -100,9 +100,9 @@ $this->headScript()
                             <div class="form-body--credit">
                                 <div class="text-head">
                                     <h2 class="text-center">
-                                        <?= $this->translate('syariah-title-step-2') ?>
+                                        <?= $this->translate('mycars-title-step-2') ?>
                                     </h2>
-                                    <p class="text-center"><?= $this->translate('syariah-subtitle-step-2') ?></p>
+                                    <p class="text-center"><?= $this->translate('mycars-subtitle-step-2') ?></p>
                                 </div>
                                 <div class="text-title-form">
                                     <h3><?= $this->translate('data-address-title') ?></h3>
@@ -166,33 +166,6 @@ $this->headScript()
                                     <h3><?= $this->translate('data-ndfc-title') ?></h3>
                                     <p><?= $this->translate('data-ndfc-subtitle') ?></p>
                                 </div>
-                                <div class="form-group">
-                                    <label><?= $this->translate('label-merk') ?></label>
-                                    <select class="c-custom-select-trans form-control formRequired" placeholder="<?= $this->translate('placeholder-merk') ?>" id="merk_kendaraan" name="merk_kendaraan" multiple="multiple">
-                                        <option value="" disabled> <?= $this->translate('placeholder-merk') ?></option>
-                                    </select>
-                                    <div class="error-wrap"></div>
-                                </div>
-                                <div class="form-group">
-                                    <label><?= $this->translate('label-model') ?></label>
-                                    <select class="c-custom-select-trans form-control formRequired" placeholder="<?= $this->translate('placeholder-model') ?>" id="model_kendaraan" name="model_kendaraan" multiple="multiple">
-                                        <option value="" disabled selected> <?= $this->translate('placeholder-model') ?></option>
-                                    </select>
-                                    <div class="error-wrap"></div>
-                                    <span><?= $this->translate('model-helper') ?></span>
-                                </div>
-                                <div class="form-group" hidden>
-                                    <label><?= $this->translate('label-tahun') ?></label>
-                                    <select class="c-custom-select-trans form-control formRequired" placeholder="<?= $this->translate('placeholder-tahun') ?>" id="tahun_kendaraan" name="tahun_kendaraan" multiple="multiple">
-                                        <option value="" disabled> <?= $this->translate('placeholder-tahun') ?></option>
-                                    </select>
-                                    <div class="error-wrap"></div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="tahun_kendaraan_text"><?= $this->translate('label-tahun') ?></label>
-                                    <input type="text" class="form-control formYear formRequired" maxlength="4" name="tahun_kendaraan_text" id="tahun_kendaraan_text" placeholder="<?= $this->translate('placeholder-tahun') ?>">
-                                    <div class="error-wrap"></div>
-                                </div>
                                 <div class="form-group form-btn space-btn">
                                     <button class="cta cta-primary-outline cta-big cta-back buttonback"
                                         id="back1" type="button"><?=$this->translate('before') ?>
@@ -206,9 +179,39 @@ $this->headScript()
                             <div class="form-body--credit">
                                 <div class="text-head">
                                     <h1 class="text-center">
-                                        <?= $this->translate('syariah-title-step-3') ?>
+                                        <?= $this->translate('mycars-title-step-3') ?>
                                     </h1>
-                                    <p class="text-center"><?= $this->translate('syariah-subtitle-step-3') ?></p>
+                                    <p class="text-center"><?= $this->translate('mycars-subtitle-step-3') ?></p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="merk_kendaraan_text"><?= $this->translate('label-merk') ?></label>
+                                    <input type="text" class="form-control formRequired" name="merk_kendaraan_text" id="merk_kendaraan_text" placeholder="<?= $this->translate('placeholder-merk') ?>">
+                                    <div class="error-wrap"></div>
+                                    <span class="input-helper"><?=$this->translate('form-asset-brand-helper') ?></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tahun_kendaraan_text"><?= $this->translate('label-tahun') ?></label>
+                                    <input type="text" class="form-control formYear formRequired" maxlength="4" name="tahun_kendaraan_text" id="tahun_kendaraan_text" placeholder="<?= $this->translate('placeholder-tahun') ?>">
+                                    <div class="error-wrap"></div>
+                                </div>
+                                <div class="form-group radio-group">
+                                    <label><?= $this->translate('is-asset-available') ?></label>
+                                    <div class="radio-button">
+                                        <div class="radio-wrap">
+                                            <input type="radio" class="inputs formRequired" id="is-asset-available"
+                                                name="is-asset-available" value="Ya">
+                                            <label
+                                                for="is-asset-available"><?=$this->translate('option-text-yes') ?></label>
+                                        </div>
+                                        <div class="radio-wrap">
+                                            <input type="radio" class="inputs formRequired" id="is-asset-available1"
+                                                name="is-asset-available" value="Tidak">
+                                            <label
+                                                for="is-asset-available1"><?=$this->translate('option-text-no') ?></label>
+                                        </div>
+                                        <div class="error-wrap"></div>
+                                        <span class="input-helper"><?=$this->translate('asset-available-helper') ?></span>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label><?=$this->translate('label-needs') ?></label>
@@ -221,22 +224,38 @@ $this->headScript()
                                     </select>
                                     <div class="error-wrap"></div>
                                 </div>
-                                <div class="form-group simulasi-group sliderGroup inputsimulasi">
-                                    <div class="input-group">
-                                        <span class="input-group-addon" id="basic-addon1">Rp</span>
-                                        <label for="pembiayaan"><?= $this->translate('desired-financing') ?></label>
-                                        <input type="tel" pattern="\d*" id="pembiayaan" name="pembiayaan"
-                                            class="form-control inputs formatRibuan formRequired c-input-trans"
-                                            aria-describedby="basic-addon1"
-                                            placeholder="<?= $this->translate('desired-financing') ?>">
+                                <div class="form-group simulasi-group sliderGroup inputsimulasi row">
+                                    <div class="col-md-6 col-xs-6 min-input">
+                                        <div class="form-group-row">
+                                            <div class="input-group">
+                                                <span class="input-group-addon" id="basic-addon1">Rp</span>
+                                                <label for="minimum"><?= $this->translate('minimum') ?></label>
+                                                <input type="tel" pattern="\d*" id="minimum" name="minimum"
+                                                    class="form-control inputs formatRibuan formRequired c-input-trans"
+                                                    aria-describedby="basic-addon1"
+                                                    placeholder="<?= $this->translate('minimum') ?>">
+                                            </div>
+                                            <div class="error-wrap"></div>
+                                        </div>
                                     </div>
-                                    <div class="slidecontainer ">
-                                        <div class="value-left valuemin min-fund">Rp 40.000.000</div>
-                                        <div class="value-right valuemax max-fund">Rp 500.000.000</div>
-                                        <input id="funding" class="customslide" type="range"
-                                        data-slider-min="40000000" data-slider-max="500000000" data-slider-step="100000" data-slider-value="100000000" data-slider-handle="custom" data-slider-tooltip="hide" />
+                                    <div class="col-md-6 col-xs-6 max-input">
+                                        <div class="form-group-row">
+                                            <div class="input-group">
+                                                <span class="input-group-addon" id="basic-addon2">Rp</span>
+                                                <label for="maksimum"><?= $this->translate('maksimum') ?></label>
+                                                <input type="tel" pattern="\d*" id="maksimum" name="maksimum"
+                                                    class="form-control inputs formatRibuan formRequired c-input-trans"
+                                                    aria-describedby="basic-addon1"
+                                                    placeholder="<?= $this->translate('maksimum') ?>">
+                                            </div>
+                                            <div class="error-wrap"></div>
+                                        </div>
                                     </div>
-                                    <div class="error-wrap"></div>
+                                    <div class="slidecontainer">
+                                        <div class="value-left valuemin">50.000.000</div>
+                                        <div class="value-right valuemax">500.000.000</div>
+                                        <input id="funding" type="text" class="customslide" value="" data-slider-min="50000000" data-slider-max="500000000" data-slider-step="100000" data-slider-value="[50000000,100000000]" data-slider-handle="custom" data-slider-tooltip="hide" />
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label><?=$this->translate('label-tenor') ?></label>
@@ -331,7 +350,7 @@ $this->headScript()
                                     </div>
                                     <div class="button-area text-center">
                                         <a href="<?php echo "/" . $this->getLocale() . '/' . $link; ?>" class="cta cta-primary-text cta-big ">
-                                            <span>Kembali ke Beranda</span></a>
+                                            <span><?=$this->translate('backtohome') ?></span></a>
                                     </div>
                                 </div>
                             </div>

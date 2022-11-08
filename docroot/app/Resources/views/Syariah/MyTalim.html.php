@@ -100,9 +100,9 @@ $this->headScript()
                             <div class="form-body--credit">
                                 <div class="text-head">
                                     <h2 class="text-center">
-                                        <?= $this->translate('ndfc-title-step-2') ?>
+                                        <?= $this->translate('syariah-title-step-2') ?>
                                     </h2>
-                                    <p class="text-center"><?= $this->translate('ndfc-subtitle-step-2') ?></p>
+                                    <p class="text-center"><?= $this->translate('syariah-subtitle-step-2') ?></p>
                                 </div>
                                 <div class="text-title-form">
                                     <h3><?= $this->translate('data-address-title') ?></h3>
@@ -206,9 +206,9 @@ $this->headScript()
                             <div class="form-body--credit">
                                 <div class="text-head">
                                     <h1 class="text-center">
-                                        <?= $this->translate('applicant-data') ?>
+                                        <?= $this->translate('syariah-title-step-3') ?>
                                     </h1>
-                                    <p class="text-center"><?= $this->translate('data-name-sub') ?></p>
+                                    <p class="text-center"><?= $this->translate('syariah-subtitle-step-3') ?></p>
                                 </div>
                                 <div class="form-group">
                                     <label><?=$this->translate('label-needs') ?></label>
@@ -229,6 +229,12 @@ $this->headScript()
                                             class="form-control inputs formatRibuan formRequired c-input-trans"
                                             aria-describedby="basic-addon1"
                                             placeholder="<?= $this->translate('desired-financing') ?>">
+                                    </div>
+                                    <div class="slidecontainer ">
+                                        <div class="value-left valuemin min-fund">Rp 40.000.000</div>
+                                        <div class="value-right valuemax max-fund">Rp 500.000.000</div>
+                                        <input id="funding" class="customslide" type="range"
+                                        data-slider-min="40000000" data-slider-max="500000000" data-slider-step="100000" data-slider-value="100000000" data-slider-handle="custom" data-slider-tooltip="hide" />
                                     </div>
                                     <div class="error-wrap"></div>
                                 </div>

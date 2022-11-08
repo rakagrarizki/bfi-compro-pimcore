@@ -59,15 +59,15 @@ const getTenorList = () => {
     const placeholder = $("#tenor").attr("placeholder");
     const values = [
         {
-            id: 0,
+            id: 24,
             text: "24 Bulan",
         },
         {
-            id: 1,
+            id: 32,
             text: "32 Bulan",
         },
         {
-            id: 2,
+            id: 48,
             text: "48 Bulan",
         },
     ];

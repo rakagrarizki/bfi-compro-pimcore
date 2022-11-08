@@ -181,6 +181,7 @@
         color: $blue-dark-color;
         border-radius: 4px;
         padding: 6px 12px;
+        width: 100%;
     }
 }
 
@@ -232,7 +233,7 @@
             font-size: 14px;
         }
     }
-    
+
     .socmed-group {
         margin-top: 100px;
         p {
@@ -1139,6 +1140,28 @@
 
             .slider-selection {
                 background: $primary;
+            }
+
+            .min-input,
+            .max-input {
+                .input-group-addon {
+                    padding: 6px 12px !important;
+                }
+                .input-group {
+                    label {
+                        &.valids::before {
+                            right: 3rem;
+                        }
+                    }
+                }
+                #minimum,
+                #maksimum {
+                    border-radius: 0 6px 6px 0 !important;
+                }
+            }
+
+            .max-input {
+                transform: translateX(14px);
             }
         }
         &.rincian {

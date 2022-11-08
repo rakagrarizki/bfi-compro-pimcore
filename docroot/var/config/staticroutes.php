@@ -3260,4 +3260,61 @@ return [
         "creationDate" => 1567583908,
         "modificationDate" => 1567583948
     ],
+
+    185 => [
+        "id" => 185,
+        "name" => "save mycars step 1",
+        "pattern" => "/\\/syariah\\/save-mycars-step1/",
+        "reverse" => "/syariah/save-mycars-step1",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\SyariahController",
+        "action" => "saveMyCarsStep1",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+
+    186 => [
+        "id" => 186,
+        "name" => "save mycars step 2",
+        "pattern" => "/\\/syariah\\/save-mycars-step2/",
+        "reverse" => "/syariah/save-mycars-step2",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\SyariahController",
+        "action" => "saveMyCarsStep2",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+
+    187 => [
+        "id" => 187,
+        "name" => "save mycars step 3",
+        "pattern" => "/\\/syariah\\/save-mycars-step3/",
+        "reverse" => "/syariah/save-mycars-step3",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\SyariahController",
+        "action" => "saveMyCarsStep3",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
 ];

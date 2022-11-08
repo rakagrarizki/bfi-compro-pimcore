@@ -1,7 +1,5 @@
 const lang = document.documentElement.lang;
 let appId = null;
-let size = 0;
-let isAssetLoaded = false;
 
 let dataStep1 = {
     appId: null,
@@ -18,13 +16,13 @@ let dataStep2 = {
     subdistrict: "",
     zipcode: "",
     fullAddress: "",
-    assetBrand: "",
-    assetModel: "",
-    assetYear: 2010,
 };
 
 let dataStep3 = {
     appId: null,
+    assetBrand: "",
+    assetYear: 2010,
+    isAvailable: "",
     needs: "",
     funding: "",
     tenor: 0,
@@ -36,9 +34,7 @@ $(document).ready(function () {
         ? $(".nav-item-1.active").find(".nav-step-tag").text("Sedang Isi")
         : $(".nav-item-1.active").find(".nav-step-tag").text("Onprogress");
 
-    // $.when(getAuthorizationToken()).then((res) => {
-    //     getListAssets(1);
-    // });
+    getAuthorizationToken();
 
     sessionStorage.setItem("loanType", "Syariah");
     isProvinceLoaded = false;
@@ -47,12 +43,11 @@ $(document).ready(function () {
         "#kota",
         "#kecamatan",
         "#kelurahan",
-        "#merk_kendaraan",
-        "#model_kendaraan",
-        "#tahun_kendaraan",
         "#tenor",
         "#needs",
     ]);
+
+    $("#funding").slider({});
 });
 
 const getTenorList = () => {
@@ -69,6 +64,10 @@ const getTenorList = () => {
         {
             id: 48,
             text: "48 Bulan",
+        },
+        {
+            id: 60,
+            text: "60 Bulan",
         },
     ];
 
@@ -105,107 +104,6 @@ const getNeedList = () => {
     });
 };
 
-const getListAssets = function (pageSize) {
-    $.ajax({
-        type: "POST",
-        url: "/credit/get-list-assets",
-        headers: { Authorization: "Basic " + currentToken },
-        data: {
-            isactive: true,
-            asset_type: "mobil",
-            page: 1,
-            size: pageSize,
-        },
-        dataType: "json",
-        error: function (xhr) {
-            retryAjax(this, xhr);
-        },
-        fail: function (xhr, textStatus, error) {
-            retryAjax(this, xhr);
-        },
-        success: function (result) {
-            if (result.message === "success") {
-                size = result.data.total_record;
-                if (pageSize !== 1) {
-                    $.each(result.data.data, (i, val) => {
-                        dataAssets.push({
-                            category: val.category_id,
-                            model: val.model,
-                            model_desc: val.model_desc,
-                            brand: val.brand,
-                            brand_desc: val.brand_desc,
-                            asset_code: val.asset_code,
-                            asset_group: val.asset_group,
-                            asset_type_id: val.asset_type_id,
-                        });
-                    });
-                    filterAssetBrand();
-                    isAssetLoaded = true;
-                }
-            } else {
-                console.log("Data not found");
-            }
-        },
-    });
-};
-
-const filterAssetBrand = function () {
-    var dataBrand = [];
-    $("#merk_kendaraan").empty();
-    var brand_placeholder = $("#merk_kendaraan").attr("placeholder");
-    rawAssetBrand = dataAssets;
-
-    // remove duplicate
-    let assetBrand = rawAssetBrand.filter(
-        (val, i, e) => i === e.findIndex((t) => t.brand === val.brand)
-    );
-
-    $.each(assetBrand, function (id, val) {
-        dataBrand.push({
-            id: val.brand,
-            text: val.brand_desc,
-        });
-    });
-    $("#merk_kendaraan").select2({
-        placeholder: brand_placeholder,
-        dropdownParent: $("#merk_kendaraan").parent(),
-        data: dataBrand,
-        language: {
-            noResults: function () {
-                return lang === "id"
-                    ? "Tidak Ada Hasil yang Ditemukan"
-                    : "No Result Found";
-            },
-        },
-    });
-};
-
-const filterAssetModel = function (brand) {
-    var dataModel = [];
-    $("#model_kendaraan").empty();
-    var model_placeholder = $("#model_kendaraan").attr("placeholder");
-    let assetModel = rawAssetBrand.filter((e) => e.brand === brand);
-
-    $.each(assetModel, function (id, val) {
-        dataModel.push({
-            id: val.model,
-            text: val.model_desc,
-        });
-    });
-    $("#model_kendaraan").select2({
-        placeholder: model_placeholder,
-        dropdownParent: $("#model_kendaraan").parent(),
-        data: dataModel,
-        language: {
-            noResults: function () {
-                return lang === "id"
-                    ? "Tidak Ada Hasil yang Ditemukan"
-                    : "No Result Found";
-            },
-        },
-    });
-};
-
 const saveDataStep1 = function (fn) {
     const data = (dataStep1 = {
         appId: appId,
@@ -216,7 +114,7 @@ const saveDataStep1 = function (fn) {
 
     $.ajax({
         type: "POST",
-        url: "/syariah/save-mytalim-step1",
+        url: "/syariah/save-mycars-step1",
         data: data,
         dataType: "json",
         tryCount: 0,
@@ -237,10 +135,6 @@ const saveDataStep1 = function (fn) {
 };
 
 const saveDataStep2 = function (fn) {
-    const assetBrand = $("#merk_kendaraan").select2("data");
-    const assetModel = $("#model_kendaraan").select2("data");
-    // const assetYear = $("#tahun_kendaraan").select2("data");
-
     const data = (dataStep2 = {
         appId: appId,
         province_id: $("#provinsi").val().toString(),
@@ -254,14 +148,11 @@ const saveDataStep2 = function (fn) {
         zipcode_id: $("#kode_pos").val().toString(),
         zipcode: $("#kode_pos").val().toString(),
         fullAddress: $("#alamat_lengkap").val(),
-        assetBrand: assetBrand[0].text,
-        assetModel: assetModel[0].text,
-        assetYear: $("#tahun_kendaraan_text").val(),
     });
 
     $.ajax({
         type: "POST",
-        url: "/syariah/save-mytalim-step2",
+        url: "/syariah/save-mycars-step2",
         data: data,
         dataType: "json",
         tryCount: 0,
@@ -286,15 +177,21 @@ const saveDataStep3 = function (fn) {
 
     const data = (dataStep3 = {
         appId: appId,
+        assetBrand: $("#merk_kendaraan").val(),
+        assetYear: $("#tahun_kendaraan_text").val(),
+        isAvailable: $("input[name='is-asset-available']:checked").val(),
         needs: selectedNeeds[0].text,
-        funding: clearDot($("#pembiayaan").val()),
+        funding:
+            clearDot($("#minimum").val()) +
+            "-" +
+            clearDot($("#maksimum").val()),
         tenor: reverseTenorFormatter(selectedTenor[0].text),
         buyDate: $("#buy-date").val(),
     });
 
     $.ajax({
         type: "POST",
-        url: "/syariah/save-mytalim-step3",
+        url: "/syariah/save-mycars-step3",
         data: data,
         dataType: "json",
         tryCount: 0,
@@ -317,9 +214,6 @@ $("#next1").on("click", function (e) {
     e.preventDefault();
     if ($(this).closest("form").valid()) {
         saveDataStep1(function () {
-            if (!isAssetLoaded) {
-                getListAssets(size);
-            }
             if (!isProvinceLoaded) {
                 getListProvinsi("#provinsi");
             }
@@ -335,6 +229,8 @@ $("#next2").on("click", function (e) {
             step("next", 2);
             getTenorList();
             getNeedList();
+            $("#minimum").val(separatordot(50000000));
+            $("#maksimum").val(separatordot(100000000));
         });
     }
 });
@@ -397,14 +293,10 @@ $("#kelurahan").change(function () {
     }
 });
 
-$("#merk_kendaraan").change(() => {
-    $("#model_kendaraan").empty();
-    filterAssetModel($("#merk_kendaraan").val().toString());
-});
+$("#funding").on("change", function () {
+    const min = separatordot($(this).val().split(",")[0]);
+    const max = separatordot($(this).val().split(",")[1]);
 
-$("#model_kendaraan").change(function () {
-    if ($(this).valid()) {
-        const vehicleModel = $(this).val().toString();
-        // getAssetYear(vehicleModel, branch_id);
-    }
+    $("#minimum").val(min);
+    $("#maksimum").val(max);
 });
