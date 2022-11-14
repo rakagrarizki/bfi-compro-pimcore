@@ -53,6 +53,7 @@ const NDFC_PRODUCT_ID_NON = "2005";
 const NDFC_PRODUCT_OFFERING_ID_NON = "20050121AI";
 const NDFC_TENOR = [12, 24, 36, 48];
 const NDFM_TENOR = [6, 12, 18];
+const NDFM_TENOR_2 = [6, 12, 18, 24, 36];
 const CURRENT_YEAR = new Date().getFullYear();
 
 let dataZeals = {
