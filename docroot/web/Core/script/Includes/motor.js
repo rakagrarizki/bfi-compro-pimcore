@@ -80,6 +80,7 @@ $(document).ready(function () {
     sessionStorage.setItem("submitStep2", "false");
     sessionStorage.setItem("submitStep3", "false");
     sessionStorage.setItem("submitStepOtp", "false");
+    $("#merk_kendaraan").attr("disabled", true);
     assetSize = 1000;
     minFunding = 1000000;
     setTenorValue(minFunding);

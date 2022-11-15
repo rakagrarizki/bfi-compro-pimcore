@@ -1021,7 +1021,9 @@ function getListZipcode() {
                 $.each(result.data, function (id, val) {
                     $("#kode_pos").val(val.zip_code);
                 });
-                getBranchCoverage(() => {});
+                getBranchCoverage(() => {
+                    $("#merk_kendaraan").removeAttr("disabled");
+                });
             } else {
                 console.log("Data not found");
             }
@@ -1743,6 +1745,10 @@ function getMaxFunding() {
         getProductBranchDetail(),
         getProductDetail()
     ).then(function (res1, res2, res3) {
+        if (!res1[0].data || !res2[0].data || !res3[0].data) {
+            $("#modal-pricing").modal("show");
+            return;
+        }
         admin_fee =
             res1[0].data.data[0].admin_fee +
             res2[0].data.data[0].admin_fee +

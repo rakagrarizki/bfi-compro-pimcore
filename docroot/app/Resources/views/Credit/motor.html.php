@@ -562,6 +562,7 @@ $this->headScript()
         <div class="modal-content">
             <div class="modal-body">
                 <h4 class="modal-body-title"><?=$this->translate('asset-not-cover-text') ?></h4>
+                <p class="modal-body-text"><?=$this->translate('asset-not-cover-desc') ?></p>
             </div>
              <div class="modal-footer">
                 <button type="button" class="cta cta-primary go-to-home" data-dismiss="modal" ><?=$this->translate('backtohome') ?></button>
@@ -631,6 +632,7 @@ $this->headScript()
     <div class="modal-content branch">
       <div class="modal-body">
         <h4><?= $this->translate('pricing-not-found')?></h4>
+        <p class="modal-body-text"><?=$this->translate('pricing-not-found-desc') ?></p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary go-to-home" data-dismiss="modal"><?= $this->translate('close')?></button>
