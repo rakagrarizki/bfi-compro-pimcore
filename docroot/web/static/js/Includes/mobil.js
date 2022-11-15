@@ -121,6 +121,7 @@ $(document).ready(function () {
     sessionStorage.setItem("submitStep2", "false");
     sessionStorage.setItem("submitStep3", "false");
     sessionStorage.setItem("submitStepOtp", "false");
+    $("#merk_kendaraan").attr("disabled", true);
     loanTenor = NDFC_TENOR;
     assetSize = 15000;
     minFunding = 10000000;

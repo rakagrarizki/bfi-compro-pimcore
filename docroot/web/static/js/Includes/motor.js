@@ -80,18 +80,10 @@ $(document).ready(function () {
     sessionStorage.setItem("submitStep2", "false");
     sessionStorage.setItem("submitStep3", "false");
     sessionStorage.setItem("submitStepOtp", "false");
-    loanTenor = NDFM_TENOR;
+    $("#merk_kendaraan").attr("disabled", true);
     assetSize = 1000;
     minFunding = 1000000;
-
-    $("#tenor2").slider({
-        min: 1,
-        max: loanTenor.length,
-        value: 1,
-    });
-
-    $(".min-tenor").text(loanTenor[0] + " Bulan");
-    $(".max-tenor").text(loanTenor.slice(-1) + " Bulan");
+    setTenorValue(minFunding);
 });
 
 $("input[name='is-wa-number']").click(function () {
@@ -655,7 +647,6 @@ function getProductOffering() {
         branch_id: branch_id,
         asset_type_id: "MOTOR",
         product_id: NDFM_PRODUCT_ID,
-        // product_offering_id: "31780621A1",
         product_offering_id: NDFM_PRODUCT_OFFERING_ID,
         is_active: "true",
     };
@@ -730,6 +721,18 @@ function getOccupationList() {
     });
 }
 
+function setTenorValue(funding) {
+    loanTenor = funding >= 10000000 ? NDFM_TENOR_2 : NDFM_TENOR;
+    $("#tenor2").slider({
+        min: 1,
+        max: loanTenor.length,
+        value: 1,
+    });
+
+    $(".min-tenor").text(loanTenor[0] + " Bulan");
+    $(".max-tenor").text(loanTenor.slice(-1) + " Bulan");
+}
+
 $("#back2").on("click", function (e) {
     e.preventDefault();
     step("back", 2);
@@ -762,6 +765,7 @@ $("#funding").on("change", function (e) {
     $("#pembiayaan").val() == 0 || $("#pembiayaan").val() == ""
         ? CalcBtn("hide")
         : CalcBtn("show");
+    setTenorValue(clearDot($("#pembiayaan").val()));
     getMaxFunding();
 });
 
@@ -772,6 +776,13 @@ $("#pembiayaan").on("change", function (e) {
             ? CalcBtn("hide")
             : CalcBtn("show");
         getMaxFunding();
+    }
+});
+
+$("#pembiayaan").on("keyup", function (e) {
+    if ($(this).valid()) {
+        e.preventDefault();
+        setTenorValue(clearDot($(this).val()));
     }
 });
 

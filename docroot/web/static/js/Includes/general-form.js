@@ -53,6 +53,7 @@ const NDFC_PRODUCT_ID_NON = "2005";
 const NDFC_PRODUCT_OFFERING_ID_NON = "20050121AI";
 const NDFC_TENOR = [12, 24, 36, 48];
 const NDFM_TENOR = [6, 12, 18];
+const NDFM_TENOR_2 = [6, 12, 18, 24, 36];
 const CURRENT_YEAR = new Date().getFullYear();
 
 let dataZeals = {
@@ -1020,7 +1021,9 @@ function getListZipcode() {
                 $.each(result.data, function (id, val) {
                     $("#kode_pos").val(val.zip_code);
                 });
-                getBranchCoverage(() => {});
+                getBranchCoverage(() => {
+                    $("#merk_kendaraan").removeAttr("disabled");
+                });
             } else {
                 console.log("Data not found");
             }
@@ -1742,6 +1745,10 @@ function getMaxFunding() {
         getProductBranchDetail(),
         getProductDetail()
     ).then(function (res1, res2, res3) {
+        if (!res1[0].data || !res2[0].data || !res3[0].data) {
+            $("#modal-pricing").modal("show");
+            return;
+        }
         admin_fee =
             res1[0].data.data[0].admin_fee +
             res2[0].data.data[0].admin_fee +
