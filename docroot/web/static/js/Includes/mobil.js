@@ -841,7 +841,7 @@ function getProductOffering() {
                 if (result.data !== null) {
                     provision_fee = result.data.data[0].provision_fee;
                 } else {
-                    console.log("Data not found");
+                    $("#modal-pricing").modal("show");
                 }
             } else {
                 console.log("Failed to fetch data");
