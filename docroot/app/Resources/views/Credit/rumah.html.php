@@ -473,7 +473,7 @@ $this->headScript()
                                 <div class="form-group">
                                     <label for="certificate_by_name"><?= $this->translate('label-atasnama-sertifikat') ?>a</label>
                                     <select class=" form-control inputs formRequired"
-                                        placeholder=<?= $this->translate('placeholder-atasnama-sertifikat') ?>" id="certificate_by_name"" name="
+                                        placeholder="<?= $this->translate('placeholder-atasnama-sertifikat') ?>" id="certificate_by_name" name="
                                         certificate_by_name"" multiple="multiple">
                                     </select>
                                     <div class="error-wrap"></div>
