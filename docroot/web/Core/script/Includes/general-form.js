@@ -45,13 +45,13 @@ let loanTenor = [];
 let assetSize = 10;
 let minFunding = 1000000;
 
-const NDFM_PRODUCT_ID = "3138";
-const NDFM_PRODUCT_OFFERING_ID = "31380218QC";
+const NDFM_PRODUCT_ID = "3168";
+const NDFM_PRODUCT_OFFERING_ID = "31681120B0";
 const NDFC_PRODUCT_ID_SJMB = "2001";
-const NDFC_PRODUCT_OFFERING_ID_SJMB = "20010121AI";
+const NDFC_PRODUCT_OFFERING_ID_SJMB = "20010821G1";
 const NDFC_PRODUCT_ID_NON = "2005";
 const NDFC_PRODUCT_OFFERING_ID_NON = "20050121AI";
-const NDFC_TENOR = [12, 24, 36, 48];
+const NDFC_TENOR = [12, 24, 36];
 const NDFM_TENOR = [6, 12, 18];
 const NDFM_TENOR_2 = [6, 12, 18, 24, 36];
 const CURRENT_YEAR = new Date().getFullYear();
