@@ -856,7 +856,7 @@ function getListProvinsi(element) {
         success: function (result) {
             $.each(result.data, function (id, val) {
                 dataProvinsi.push({
-                    id: val.id,
+                    id: val.description,
                     text: val.description,
                 });
             });
