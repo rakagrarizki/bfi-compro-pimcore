@@ -3375,14 +3375,90 @@ return [
         "modificationDate" => 1567583948
     ],
 
-    200 => [
-        "id" => 200,
+    191 => [
+        "id" => 191,
         "name" => "save mycars step 4",
         "pattern" => "/\\/syariah\\/save-mycars-step4/",
         "reverse" => "/syariah/save-mycars-step4",
         "module" => "AppBundle",
         "controller" => "@AppBundle\\Controller\\SyariahController",
         "action" => "saveMyCarsStep4",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+
+    192 => [
+        "id" => 192,
+        "name" => "save mycars step 5",
+        "pattern" => "/\\/syariah\\/save-mycars-step5/",
+        "reverse" => "/syariah/save-mycars-step5",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\SyariahController",
+        "action" => "saveMyCarsStep5",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+
+    193 => [
+        "id" => 193,
+        "name" => "save myfaedah step 5",
+        "pattern" => "/\\/syariah\\/save-myfaedah-step5/",
+        "reverse" => "/syariah/save-myfaedah-step5",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\SyariahController",
+        "action" => "saveMyFaedahStep5",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+
+    194 => [
+        "id" => 194,
+        "name" => "save mytalim step 5",
+        "pattern" => "/\\/syariah\\/save-mytalim-step5/",
+        "reverse" => "/syariah/save-mytalim-step5",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\SyariahController",
+        "action" => "saveMyTalimStep5",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+
+    195 => [
+        "id" => 195,
+        "name" => "save myhajat step 5",
+        "pattern" => "/\\/syariah\\/save-myhajat-step5/",
+        "reverse" => "/syariah/save-myhajat-step5",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\SyariahController",
+        "action" => "saveMyHajatStep5",
         "variables" => NULL,
         "defaults" => NULL,
         "siteId" => [

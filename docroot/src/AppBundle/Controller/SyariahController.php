@@ -222,6 +222,38 @@ class SyariahController extends FrontendController
         }
     }
 
+    public function saveMyTalimStep5Action(Request $request) {
+        $host = WebsiteSetting::getByName("HOST")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_SAVE_MYTALIM_STEP5')->getData();
+        $param['id'] = htmlentities(addslashes($request->get('appId')));
+        
+        try {
+            $data = $this->sendAPI->saveSyariahLeads("my-talim-step-5", $url, $param);
+            if ($data->header->message == "Success") {
+                $myTalim = DataObject\Syariah::getByAppId($param['id'], 1);
+                $myTalim->setLastStep('5');
+                $myTalim->save();
+
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data,
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error"),
+                    'data' => $data
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => 0,
+                'message' => $e->getMessage()
+           ]);
+        }
+    }
+
     // My Hajat
     public function hajatAction(Request $request){
 
@@ -391,6 +423,38 @@ class SyariahController extends FrontendController
             if ($data->header->message == "Success") {
                 $MyHajat = DataObject\Syariah::getByAppId($param['id'], 1);
                 $MyHajat->setLastStep('4');
+                $MyHajat->save();
+
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data,
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error"),
+                    'data' => $data
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => 0,
+                'message' => $e->getMessage()
+           ]);
+        }
+    }
+
+    public function saveMyHajatStep5Action(Request $request) {
+        $host = WebsiteSetting::getByName("HOST")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_SAVE_MYHAJAT_STEP5')->getData();
+        $param['id'] = htmlentities(addslashes($request->get('appId')));
+        
+        try {
+            $data = $this->sendAPI->saveSyariahLeads("my-hajat-step-5", $url, $param);
+            if ($data->header->message == "Success") {
+                $MyHajat = DataObject\Syariah::getByAppId($param['id'], 1);
+                $MyHajat->setLastStep('5');
                 $MyHajat->save();
 
                 return new JsonResponse([
@@ -604,6 +668,38 @@ class SyariahController extends FrontendController
         }
     }
 
+    public function saveMyFaedahStep5Action(Request $request) {
+        $host = WebsiteSetting::getByName("HOST")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_SAVE_MYFAEDAH_STEP5')->getData();
+        $param['id'] = htmlentities(addslashes($request->get('appId')));
+        
+        try {
+            $data = $this->sendAPI->saveSyariahLeads("my-faedah-step-5", $url, $param);
+            if ($data->header->message == "Success") {
+                $MyHajat = DataObject\Syariah::getByAppId($param['id'], 1);
+                $MyHajat->setLastStep('5');
+                $MyHajat->save();
+
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data,
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error"),
+                    'data' => $data
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => 0,
+                'message' => $e->getMessage()
+           ]);
+        }
+    }
+
     // My Cars
     public function carsAction(Request $request){
         
@@ -769,6 +865,38 @@ class SyariahController extends FrontendController
             if ($data->header->message == "Success") {
                 $MyCars = DataObject\Syariah::getByAppId($param['id'], 1);
                 $MyCars->setLastStep('4');
+                $MyCars->save();
+
+                return new JsonResponse([
+                    'success' => 1,
+                    'message' => "success",
+                    'data' => $data->data,
+                ]);
+            } else {
+                return new JsonResponse([
+                    'success' => 0,
+                    'message' => $this->get("translator")->trans("api-error"),
+                    'data' => $data
+                ]);
+            }
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => 0,
+                'message' => $e->getMessage()
+           ]);
+        }
+    }
+
+    public function saveMyCarsStep5Action(Request $request) {
+        $host = WebsiteSetting::getByName("HOST")->getData();
+        $url = $host . WebsiteSetting::getByName('URL_SAVE_MYCARS_STEP5')->getData();
+        $param['id'] = htmlentities(addslashes($request->get('appId')));
+        
+        try {
+            $data = $this->sendAPI->saveSyariahLeads("my-cars-step-5", $url, $param);
+            if ($data->header->message == "Success") {
+                $MyCars = DataObject\Syariah::getByAppId($param['id'], 1);
+                $MyCars->setLastStep('5');
                 $MyCars->save();
 
                 return new JsonResponse([
