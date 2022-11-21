@@ -32,7 +32,7 @@ class SyariahController extends FrontendController
     }
 
     // My Talim
-    public function MyTalimAction(Request $request){
+    public function talimAction(Request $request){
         
     }
 
@@ -223,7 +223,7 @@ class SyariahController extends FrontendController
     }
 
     // My Hajat
-    public function MyHajatAction(Request $request){
+    public function hajatAction(Request $request){
 
     }
 
@@ -414,7 +414,7 @@ class SyariahController extends FrontendController
     }
 
     // My Faedah
-    public function MyFaedahAction(Request $request){
+    public function faedahAction(Request $request){
         
     }
 
@@ -605,7 +605,7 @@ class SyariahController extends FrontendController
     }
 
     // My Cars
-    public function MyCarsAction(Request $request){
+    public function carsAction(Request $request){
         
     }
     
