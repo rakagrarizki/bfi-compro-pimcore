@@ -1104,15 +1104,40 @@ div:nth-child(2) > p:nth-child(1) > span > span > strong .Table {
         .tab-button {
             transition: all 0.3s;
             text-decoration: none;
-            border-radius: 50px;
+            border-radius: 8px;
             padding: 8px 32px;
             margin: 0 4px;
             font-weight: 600;
-            background-color: $grey-light;
             color: $blue-dark-color;
             &.active {
                 background-color: $blue-dark-color;
                 color: $white;
+            }
+        }
+        .button-tab {
+            display: block;
+        }
+        .dropdown-tab {
+            display: none;
+            select {
+                color: $white;
+                background-color: $blue-dark-color;
+                option {
+                    background-color: $white;
+                    color: #333;
+                    &:checked {
+                        color: $white;
+                        background-color: $blue-dark-color;
+                    }
+                }
+            }
+        }
+        @include breakpoint(mobile) {
+            .dropdown-tab {
+                display: block;
+            }
+            .button-tab {
+                display: none;
             }
         }
     }
@@ -1132,8 +1157,87 @@ div:nth-child(2) > p:nth-child(1) > span > span > strong .Table {
         > tbody > tr:nth-of-type(even) {
             background-color: #f7f7f7;
         }
-        th, td {
+        th,
+        td {
             padding: 24px;
+        }
+    }
+}
+
+.cta-button-widget {
+    padding: 12px 0;
+    > div {
+        background-color: $blue-dark-color;
+        padding: 16px 24px;
+        border-radius: 8px;
+        @include breakpoint(mobile) {
+            padding: 16px;
+        }
+        p.cta-text {
+            font-size: 16px !important;
+            color: $white !important;
+            margin: 0;
+        }
+    }
+    .row {
+        display: flex;
+        justify-content: space-between;
+        .cta-desc {
+            display: inherit;
+            align-items: center;
+        }
+        .cta-link {
+            display: inherit;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        @include breakpoint(mobile) {
+            flex-direction: column;
+            .cta-desc {
+                text-align: center;
+                .cta-text {
+                    line-height: 30px !important;
+                }
+            }
+            .cta-link {
+                margin-top: 28px;
+                justify-content: center;
+            }
+        }
+    }
+}
+
+.profile-list-img {
+    .img-list {
+        display: flex;
+        justify-content: center;
+        gap: 128px;
+        @include breakpoint(mobile) {
+            flex-direction: column;
+            gap: 52px;
+        }
+        .item-list {
+            cursor: pointer;
+            .item-img {
+                margin: 0 auto;
+                display: flex;
+                justify-content: center;
+                border-radius: 50%;
+                border: 4px solid $orange-color;
+                width: 240px;
+                height: 240px;
+                overflow: hidden;
+                padding-top: 18px;
+            }
+            .item-desc {
+                text-align: center;
+                margin-top: 12px;
+                .desc-title {
+                    color: $blue-dark-color;
+                    font-size: 18px;
+                    margin-bottom: 0;
+                }
+            }
         }
     }
 }

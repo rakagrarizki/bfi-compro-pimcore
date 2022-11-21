@@ -978,4 +978,9 @@ class SendApi
     {
         return $this->executeApiSignature('getListAssetsModelDetail', false, $url, $param, "GET", $token);
     }
+
+    public function saveSyariahLeads($name, $url, $params)
+    {
+        return $this->executeApi($name, $url, $params, "POST");
+    }
 }

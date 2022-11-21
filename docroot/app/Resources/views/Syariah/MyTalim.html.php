@@ -181,16 +181,11 @@ $this->headScript()
                                     <div class="error-wrap"></div>
                                     <span><?= $this->translate('model-helper') ?></span>
                                 </div>
-                                <div class="form-group" hidden>
+                                <div class="form-group">
                                     <label><?= $this->translate('label-tahun') ?></label>
                                     <select class="c-custom-select-trans form-control formRequired" placeholder="<?= $this->translate('placeholder-tahun') ?>" id="tahun_kendaraan" name="tahun_kendaraan" multiple="multiple">
                                         <option value="" disabled> <?= $this->translate('placeholder-tahun') ?></option>
                                     </select>
-                                    <div class="error-wrap"></div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="tahun_kendaraan_text"><?= $this->translate('label-tahun') ?></label>
-                                    <input type="text" class="form-control formYear formRequired" maxlength="4" name="tahun_kendaraan_text" id="tahun_kendaraan_text" placeholder="<?= $this->translate('placeholder-tahun') ?>">
                                     <div class="error-wrap"></div>
                                 </div>
                                 <div class="form-group form-btn space-btn">
@@ -219,6 +214,11 @@ $this->headScript()
                                     <option value="" disabled>
                                         <?=$this->translate('choose-needs') ?></option>
                                     </select>
+                                    <div class="error-wrap"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="instansi"><?= $this->translate('form-name-instansi') ?></label>
+                                    <input type="text" class="form-control formRequired formAlphabet" name="instansi" id="instansi" placeholder="<?= $this->translate('placeholder-name-instansi') ?>">
                                     <div class="error-wrap"></div>
                                 </div>
                                 <div class="form-group simulasi-group sliderGroup inputsimulasi">

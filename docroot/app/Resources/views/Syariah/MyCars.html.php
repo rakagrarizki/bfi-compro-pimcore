@@ -213,17 +213,6 @@ $this->headScript()
                                         <span class="input-helper"><?=$this->translate('asset-available-helper') ?></span>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label><?=$this->translate('label-needs') ?></label>
-                                    <select class="form-control inputs formRequired" id="needs"
-                                        name="kebutuhan"
-                                        placeholder="<?=$this->translate('placeholder-needs') ?>"
-                                        multiple="multiple" />
-                                    <option value="" disabled>
-                                        <?=$this->translate('choose-needs') ?></option>
-                                    </select>
-                                    <div class="error-wrap"></div>
-                                </div>
                                 <div class="form-group simulasi-group sliderGroup inputsimulasi row">
                                     <div class="col-md-6 col-xs-6 min-input">
                                         <div class="form-group-row">

@@ -5,7 +5,9 @@
                 font-weight: bold;
             }
 
-            p, h1, h2 {
+            p,
+            h1,
+            h2 {
                 font-weight: normal;
                 @include breakpoint(mobile) {
                     font-size: 13px;
@@ -15,7 +17,7 @@
                 &.title {
                     font-size: 40px;
                     font-weight: bold;
-                    color: #04559F;
+                    color: #04559f;
                     margin-bottom: 10px;
 
                     span {
@@ -38,12 +40,13 @@
     padding: 0;
 
     .sect-title {
-        @include breakpoint(mobile){
+        @include breakpoint(mobile) {
             padding: 0 10px;
             margin-bottom: 0;
         }
 
-        p, .sub-title {
+        p,
+        .sub-title {
             color: #565656 !important;
             font-size: 20px;
             margin-top: 0 !important;
@@ -82,17 +85,17 @@
 
         .sect-step__item {
             margin: 16px 0;
-            background-color: #F5FAFF;
+            background-color: #f5faff;
             border-radius: 4px;
             padding: 8px 8px;
             width: 300px;
-            
+
             .text-wrap {
                 max-width: 180px;
                 max-height: 85px;
             }
-            
-            .row{
+
+            .row {
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -100,22 +103,23 @@
             }
 
             @include breakpoint(mobile) {
-                margin-bottom: .4rem;
+                margin-bottom: 0.4rem;
                 padding: 8px 0;
                 height: min-content;
                 width: 45%;
-                .row{
+                .row {
                     display: block;
                 }
             }
         }
 
-        p, h3 {
+        p,
+        h3 {
             font-family: $font_default;
             font-size: 16px;
             line-height: 23px;
-            color:#565656;
-            margin-top: 0 ;
+            color: #565656;
+            margin-top: 0;
             @include breakpoint(mobile) {
                 font-size: 14px;
                 line-height: 140%;
@@ -166,14 +170,21 @@
             }
         }
     }
-    .terms{
+    .terms {
+        border: 1px solid #e23d31;
         padding: 7.5px 14px;
-        background: #FFEBED;
+        background: #ffebed;
         border-radius: 4px;
         font-weight: normal;
         font-size: 12px;
-        color: #E23D31;
+        color: #e23d31;
         width: 95%;
         margin: 0 auto;
+        &::before {
+            content: "\f105";
+            font-family: FontAwesome;
+            position: absolute;
+            right: 36px;
+        }
     }
 }

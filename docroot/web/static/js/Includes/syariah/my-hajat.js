@@ -8,6 +8,11 @@ let dataStep1 = {
     name: "",
     phone_number: "",
     email: "",
+    utm_source: "",
+    utm_campaign: "",
+    utm_term: "",
+    utm_medium: "",
+    utm_content: "",
 };
 
 let dataStep2 = {
@@ -26,9 +31,11 @@ let dataStep2 = {
 let dataStep3 = {
     appId: null,
     needs: "",
+    detailNeeds: "",
     funding: "",
     tenor: 0,
     buyDate: "",
+    disclaimer: null,
 };
 
 $(document).ready(function () {
@@ -82,24 +89,53 @@ const getNeedList = () => {
     const placeholder = $("#needs").attr("placeholder");
     const values = [
         {
-            id: 0,
-            text: "Uang Muka Pendidikan",
+            id: "Sewa Ruko",
+            text: "Sewa Ruko",
         },
         {
-            id: 1,
-            text: "Kursus",
+            id: "Wedding Organizer",
+            text: "Wedding Organizer",
         },
         {
-            id: 2,
-            text: "Pendidikan S1/S2/S3",
+            id: "Biaya sekolah",
+            text: "Biaya sekolah",
         },
         {
-            id: 3,
-            text: "Pesantren/Boarding School",
+            id: "Kursus Keahlian Khusus",
+            text: "Kursus Keahlian Khusus",
+        },
+        {
+            id: "Jasa Arsitek",
+            text: "Jasa Arsitek",
+        },
+        {
+            id: "Jasa Renovasi Rumah",
+            text: "Jasa Renovasi Rumah",
+        },
+        {
+            id: "Lainnya",
+            text: "Lainnya",
         },
     ];
 
     $("#needs").select2({
+        placeholder: placeholder,
+        data: values,
+    });
+};
+
+const getAssetYearList = () => {
+    const placeholder = $("#tahun_kendaraan").attr("placeholder");
+    let values = [];
+
+    for (let i = CURRENT_YEAR; i >= CURRENT_YEAR - 10; i--) {
+        values.push({
+            id: i,
+            text: i,
+        });
+    }
+
+    $("#tahun_kendaraan").select2({
         placeholder: placeholder,
         data: values,
     });
@@ -212,6 +248,11 @@ const saveDataStep1 = function (fn) {
         name: $("#nama_lengkap").val(),
         phone_number: $("#no_handphone").val(),
         email: $("#email_pemohon").val(),
+        utm_source: sessionStorage.getItem("utm_source"),
+        utm_campaign: sessionStorage.getItem("utm_campaign"),
+        utm_term: sessionStorage.getItem("utm_term"),
+        utm_medium: sessionStorage.getItem("utm_medium"),
+        utm_content: sessionStorage.getItem("utm_content"),
     });
 
     $.ajax({
@@ -229,7 +270,7 @@ const saveDataStep1 = function (fn) {
         },
         success: function (res) {
             if (res.message === "success") {
-                appId = res.data.appId;
+                appId = res.data[0].id;
                 fn();
             }
         },
@@ -239,7 +280,7 @@ const saveDataStep1 = function (fn) {
 const saveDataStep2 = function (fn) {
     const assetBrand = $("#merk_kendaraan").select2("data");
     const assetModel = $("#model_kendaraan").select2("data");
-    // const assetYear = $("#tahun_kendaraan").select2("data");
+    const assetYear = $("#tahun_kendaraan").select2("data");
 
     const data = (dataStep2 = {
         appId: appId,
@@ -256,7 +297,7 @@ const saveDataStep2 = function (fn) {
         fullAddress: $("#alamat_lengkap").val(),
         assetBrand: assetBrand[0].text,
         assetModel: assetModel[0].text,
-        assetYear: $("#tahun_kendaraan_text").val(),
+        assetYear: assetYear[0].text,
     });
 
     $.ajax({
@@ -287,14 +328,45 @@ const saveDataStep3 = function (fn) {
     const data = (dataStep3 = {
         appId: appId,
         needs: selectedNeeds[0].text,
+        detailNeeds: $("#detail-financing").val(),
         funding: clearDot($("#pembiayaan").val()),
         tenor: reverseTenorFormatter(selectedTenor[0].text),
         buyDate: $("#buy-date").val(),
+        disclaimer:
+            $("input[name='disclaimer']:checked").val() == "true"
+                ? true
+                : false,
     });
 
     $.ajax({
         type: "POST",
         url: "/syariah/save-myhajat-step3",
+        data: data,
+        dataType: "json",
+        tryCount: 0,
+        retryLimit: retryLimit,
+        error: function (xhr, textStatus, err) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, err) {
+            retryAjax(this, xhr);
+        },
+        success: function (res) {
+            if (res.message === "success") {
+                fn();
+            }
+        },
+    });
+};
+
+const saveDataStep4 = function (fn) {
+    const data = {
+        appId: appId,
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "/syariah/save-myhajat-step4",
         data: data,
         dataType: "json",
         tryCount: 0,
@@ -350,7 +422,9 @@ $("#next3").on("click", function (e) {
 
 $("#confirm-data").on("click", function (e) {
     e.preventDefault();
-    showOtpVer2();
+    saveDataStep4(() => {
+        showOtpVer2();
+    });
 });
 
 $("#next4").on("click", function (e) {
@@ -404,7 +478,6 @@ $("#merk_kendaraan").change(() => {
 
 $("#model_kendaraan").change(function () {
     if ($(this).valid()) {
-        const vehicleModel = $(this).val().toString();
-        // getAssetYear(vehicleModel, branch_id);
+        getAssetYearList();
     }
 });

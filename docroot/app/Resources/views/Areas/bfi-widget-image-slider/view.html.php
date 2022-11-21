@@ -2,7 +2,7 @@
     <div class="container">
         <div class="sect-title text-center">
             <?php if(!$this->input('title')->isEmpty()) { ?>
-                <h1 class="title"><?= $this->input('title');?></h1>
+                <h2 class="title"><?= $this->input('title');?></h2>
             <?php } ?>
             <?php  if(!$this->input('sub-title')->isEmpty()) { ?>
                 <p class="sub-title"><?= $this->input('sub-title'); ?></p>

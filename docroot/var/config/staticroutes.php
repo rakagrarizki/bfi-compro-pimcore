@@ -3149,6 +3149,25 @@ return [
 
     179 => [
         "id" => 179,
+        "name" => "save mytalim step 4",
+        "pattern" => "/\\/syariah\\/save-mytalim-step4/",
+        "reverse" => "/syariah/save-mytalim-step4",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\SyariahController",
+        "action" => "saveMyTalimStep4",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+
+    180 => [
+        "id" => 180,
         "name" => "save myhajat step 1",
         "pattern" => "/\\/syariah\\/save-myhajat-step1/",
         "reverse" => "/syariah/save-myhajat-step1",
@@ -3166,8 +3185,8 @@ return [
         "modificationDate" => 1567583948
     ],
 
-    180 => [
-        "id" => 180,
+    181 => [
+        "id" => 181,
         "name" => "save myhajat step 2",
         "pattern" => "/\\/syariah\\/save-myhajat-step2/",
         "reverse" => "/syariah/save-myhajat-step2",
@@ -3185,8 +3204,8 @@ return [
         "modificationDate" => 1567583948
     ],
 
-    181 => [
-        "id" => 181,
+    182 => [
+        "id" => 182,
         "name" => "save myhajat step 3",
         "pattern" => "/\\/syariah\\/save-myhajat-step3/",
         "reverse" => "/syariah/save-myhajat-step3",
@@ -3204,8 +3223,27 @@ return [
         "modificationDate" => 1567583948
     ],
 
-    182 => [
-        "id" => 182,
+    183 => [
+        "id" => 183,
+        "name" => "save myhajat step 4",
+        "pattern" => "/\\/syariah\\/save-myhajat-step4/",
+        "reverse" => "/syariah/save-myhajat-step4",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\SyariahController",
+        "action" => "saveMyHajatStep4",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+
+    184 => [
+        "id" => 184,
         "name" => "save myfaedah step 1",
         "pattern" => "/\\/syariah\\/save-myfaedah-step1/",
         "reverse" => "/syariah/save-myfaedah-step1",
@@ -3223,8 +3261,8 @@ return [
         "modificationDate" => 1567583948
     ],
 
-    183 => [
-        "id" => 183,
+    185 => [
+        "id" => 185,
         "name" => "save myfaedah step 2",
         "pattern" => "/\\/syariah\\/save-myfaedah-step2/",
         "reverse" => "/syariah/save-myfaedah-step2",
@@ -3242,8 +3280,8 @@ return [
         "modificationDate" => 1567583948
     ],
 
-    184 => [
-        "id" => 184,
+    186 => [
+        "id" => 186,
         "name" => "save myfaedah step 3",
         "pattern" => "/\\/syariah\\/save-myfaedah-step3/",
         "reverse" => "/syariah/save-myfaedah-step3",
@@ -3261,8 +3299,27 @@ return [
         "modificationDate" => 1567583948
     ],
 
-    185 => [
-        "id" => 185,
+    187 => [
+        "id" => 187,
+        "name" => "save myfaedah step 4",
+        "pattern" => "/\\/syariah\\/save-myfaedah-step4/",
+        "reverse" => "/syariah/save-myfaedah-step4",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\SyariahController",
+        "action" => "saveMyFaedahStep4",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+
+    188 => [
+        "id" => 188,
         "name" => "save mycars step 1",
         "pattern" => "/\\/syariah\\/save-mycars-step1/",
         "reverse" => "/syariah/save-mycars-step1",
@@ -3280,8 +3337,8 @@ return [
         "modificationDate" => 1567583948
     ],
 
-    186 => [
-        "id" => 186,
+    189 => [
+        "id" => 189,
         "name" => "save mycars step 2",
         "pattern" => "/\\/syariah\\/save-mycars-step2/",
         "reverse" => "/syariah/save-mycars-step2",
@@ -3299,14 +3356,33 @@ return [
         "modificationDate" => 1567583948
     ],
 
-    187 => [
-        "id" => 187,
+    190 => [
+        "id" => 190,
         "name" => "save mycars step 3",
         "pattern" => "/\\/syariah\\/save-mycars-step3/",
         "reverse" => "/syariah/save-mycars-step3",
         "module" => "AppBundle",
         "controller" => "@AppBundle\\Controller\\SyariahController",
         "action" => "saveMyCarsStep3",
+        "variables" => NULL,
+        "defaults" => NULL,
+        "siteId" => [
+
+        ],
+        "priority" => 0,
+        "legacy" => FALSE,
+        "creationDate" => 1567583908,
+        "modificationDate" => 1567583948
+    ],
+
+    200 => [
+        "id" => 200,
+        "name" => "save mycars step 4",
+        "pattern" => "/\\/syariah\\/save-mycars-step4/",
+        "reverse" => "/syariah/save-mycars-step4",
+        "module" => "AppBundle",
+        "controller" => "@AppBundle\\Controller\\SyariahController",
+        "action" => "saveMyCarsStep4",
         "variables" => NULL,
         "defaults" => NULL,
         "siteId" => [

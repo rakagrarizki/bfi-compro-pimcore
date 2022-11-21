@@ -6,6 +6,11 @@ let dataStep1 = {
     name: "",
     phone_number: "",
     email: "",
+    utm_source: "",
+    utm_campaign: "",
+    utm_term: "",
+    utm_medium: "",
+    utm_content: "",
 };
 
 let dataStep2 = {
@@ -24,9 +29,10 @@ let dataStep3 = {
     assetYear: 2010,
     isAvailable: "",
     needs: "",
-    funding: "",
+    estimatePriceVehicle: "",
     tenor: 0,
     buyDate: "",
+    disclaimer: null,
 };
 
 $(document).ready(function () {
@@ -81,19 +87,19 @@ const getNeedList = () => {
     const placeholder = $("#needs").attr("placeholder");
     const values = [
         {
-            id: 0,
+            id: "Uang Muka Pendidikan",
             text: "Uang Muka Pendidikan",
         },
         {
-            id: 1,
+            id: "Kursus",
             text: "Kursus",
         },
         {
-            id: 2,
+            id: "Pendidikan S1/S2/S3",
             text: "Pendidikan S1/S2/S3",
         },
         {
-            id: 3,
+            id: "Pesantren/Boarding School",
             text: "Pesantren/Boarding School",
         },
     ];
@@ -110,6 +116,11 @@ const saveDataStep1 = function (fn) {
         name: $("#nama_lengkap").val(),
         phone_number: $("#no_handphone").val(),
         email: $("#email_pemohon").val(),
+        utm_source: sessionStorage.getItem("utm_source"),
+        utm_campaign: sessionStorage.getItem("utm_campaign"),
+        utm_term: sessionStorage.getItem("utm_term"),
+        utm_medium: sessionStorage.getItem("utm_medium"),
+        utm_content: sessionStorage.getItem("utm_content"),
     });
 
     $.ajax({
@@ -172,7 +183,6 @@ const saveDataStep2 = function (fn) {
 };
 
 const saveDataStep3 = function (fn) {
-    const selectedNeeds = $("#needs").select2("data");
     const selectedTenor = $("#tenor").select2("data");
 
     const data = (dataStep3 = {
@@ -180,18 +190,47 @@ const saveDataStep3 = function (fn) {
         assetBrand: $("#merk_kendaraan").val(),
         assetYear: $("#tahun_kendaraan_text").val(),
         isAvailable: $("input[name='is-asset-available']:checked").val(),
-        needs: selectedNeeds[0].text,
-        funding:
+        estimatePriceVehicle:
             clearDot($("#minimum").val()) +
             "-" +
             clearDot($("#maksimum").val()),
         tenor: reverseTenorFormatter(selectedTenor[0].text),
         buyDate: $("#buy-date").val(),
+        disclaimer:
+            $("input[name='disclaimer']:checked").val() == "true"
+                ? true
+                : false,
     });
 
     $.ajax({
         type: "POST",
         url: "/syariah/save-mycars-step3",
+        data: data,
+        dataType: "json",
+        tryCount: 0,
+        retryLimit: retryLimit,
+        error: function (xhr, textStatus, err) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, err) {
+            retryAjax(this, xhr);
+        },
+        success: function (res) {
+            if (res.message === "success") {
+                fn();
+            }
+        },
+    });
+};
+
+const saveDataStep4 = function (fn) {
+    const data = {
+        appId: appId,
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "/syariah/save-mycars-step4",
         data: data,
         dataType: "json",
         tryCount: 0,
@@ -228,7 +267,6 @@ $("#next2").on("click", function (e) {
         saveDataStep2(() => {
             step("next", 2);
             getTenorList();
-            getNeedList();
             $("#minimum").val(separatordot(50000000));
             $("#maksimum").val(separatordot(100000000));
         });
@@ -246,7 +284,9 @@ $("#next3").on("click", function (e) {
 
 $("#confirm-data").on("click", function (e) {
     e.preventDefault();
-    showOtpVer2();
+    saveDataStep4(() => {
+        showOtpVer2();
+    });
 });
 
 $("#next4").on("click", function (e) {

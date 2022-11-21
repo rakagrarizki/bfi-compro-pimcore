@@ -15,7 +15,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-12" style="text-align: center;"><p><b>Content accordian : </b></p></div>
-                <div class="col-sm-12"><?php echo $this->areablock("Content-accord"); ?></div>
+                <div class="col-sm-12" style="padding: 36px;"><?php echo $this->areablock("Content-accord"); ?></div>
             </div>
         <?php } ?>
     </div>
