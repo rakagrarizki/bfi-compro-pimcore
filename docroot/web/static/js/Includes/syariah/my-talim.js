@@ -373,6 +373,32 @@ const saveDataStep4 = function (fn) {
     });
 };
 
+const saveDataStep5 = function (fn) {
+    const data = {
+        appId: appId,
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "/syariah/save-mytalim-step5",
+        data: data,
+        dataType: "json",
+        tryCount: 0,
+        retryLimit: retryLimit,
+        error: function (xhr, textStatus, err) {
+            retryAjax(this, xhr);
+        },
+        fail: function (xhr, textStatus, err) {
+            retryAjax(this, xhr);
+        },
+        success: function (res) {
+            if (res.message === "success") {
+                fn();
+            }
+        },
+    });
+};
+
 $("#next1").on("click", function (e) {
     e.preventDefault();
     if ($(this).closest("form").valid()) {
@@ -419,8 +445,10 @@ $("#next4").on("click", function (e) {
     e.preventDefault();
     if ($(this).closest("form").valid()) {
         verificationOTP(() => {
-            $("#menu4").removeClass("active");
-            $("#success").addClass("active");
+            saveDataStep5(() => {
+                $("#menu4").removeClass("active");
+                $("#success").addClass("active");
+            })
         });
     }
 });
