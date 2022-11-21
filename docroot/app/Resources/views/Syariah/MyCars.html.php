@@ -338,7 +338,7 @@ $this->headScript()
                                         </a>
                                     </div>
                                     <div class="button-area text-center">
-                                        <a href="<?php echo "/" . $this->getLocale() . '/' . $link; ?>" class="cta cta-primary-text cta-big ">
+                                        <a href="<?php echo "/" . $this->getLocale() . '/'; ?>" class="cta cta-primary-text cta-big ">
                                             <span><?=$this->translate('backtohome') ?></span></a>
                                     </div>
                                 </div>
