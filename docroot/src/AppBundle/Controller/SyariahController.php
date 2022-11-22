@@ -814,7 +814,7 @@ class SyariahController extends FrontendController
         $host = WebsiteSetting::getByName("HOST")->getData();
         $url = $host . WebsiteSetting::getByName('URL_SAVE_MYCARS_STEP3')->getData();
         $param['id'] = htmlentities(addslashes($request->get('appId')));
-        $param['brandVehicle'] = htmlentities(addslashes($request->get('assetBrand')));
+        $param['modelVehicle'] = htmlentities(addslashes($request->get('assetBrand')));
         $param['yearVehicle'] = htmlentities(addslashes($request->get('assetYear')));
         $param['unitsAvailable'] = htmlentities(addslashes($request->get('isAvailable')));
         $param['estimatePriceVehicle'] = htmlentities(addslashes($request->get('estimatePriceVehicle')));
@@ -826,7 +826,7 @@ class SyariahController extends FrontendController
             $data = $this->sendAPI->saveSyariahLeads("my-cars-step-3", $url, $param);
             if ($data->header->message == "Success") {
                 $MyCars = DataObject\Syariah::getByAppId($param['id'], 1);
-                $MyCars->setAssetBrand($param['brandVehicle']);
+                $MyCars->setAssetModel($param['brandVehicle']);
                 $MyCars->setAssetYear($param['yearVehicle']);
                 $MyCars->setIsAvailable($param['unitsAvailable']);
                 $MyCars->setEstimatePrice($param['estimatePriceVehicle']);

@@ -195,13 +195,13 @@ $this->headScript()
                                     <div class="radio-button">
                                         <div class="radio-wrap">
                                             <input type="radio" class="inputs formRequired" id="is-asset-available"
-                                                name="is-asset-available" value="Ya">
+                                                name="is-asset-available" value="true">
                                             <label
                                                 for="is-asset-available"><?=$this->translate('option-text-yes') ?></label>
                                         </div>
                                         <div class="radio-wrap">
                                             <input type="radio" class="inputs formRequired" id="is-asset-available1"
-                                                name="is-asset-available" value="Tidak">
+                                                name="is-asset-available" value="false">
                                             <label
                                                 for="is-asset-available1"><?=$this->translate('option-text-no') ?></label>
                                         </div>
