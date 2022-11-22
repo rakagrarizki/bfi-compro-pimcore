@@ -162,10 +162,6 @@ $this->headScript()
                                     <textarea class="form-control formRequired formAddress" name="alamat_lengkap" id="alamat_lengkap" placeholder="<?= $this->translate('placeholder-place') ?> Contoh: Jalan Rajawali 1 Blok A no.11 RT 01 RW 02"></textarea>
                                     <div class="error-wrap"></div>
                                 </div>
-                                <div class="text-title-form">
-                                    <h3><?= $this->translate('data-ndfc-title') ?></h3>
-                                    <p><?= $this->translate('data-ndfc-subtitle') ?></p>
-                                </div>
                                 <div class="form-group form-btn space-btn">
                                     <button class="cta cta-primary-outline cta-big cta-back buttonback"
                                         id="back1" type="button"><?=$this->translate('before') ?>
