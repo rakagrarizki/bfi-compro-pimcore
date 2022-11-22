@@ -187,7 +187,7 @@ const saveDataStep3 = function (fn) {
 
     const data = (dataStep3 = {
         appId: appId,
-        assetBrand: $("#merk_kendaraan").val(),
+        assetBrand: $("#merk_kendaraan_text").val(),
         assetYear: $("#tahun_kendaraan_text").val(),
         isAvailable:
             $("input[name='is-asset-available']:checked").val() == "true"
