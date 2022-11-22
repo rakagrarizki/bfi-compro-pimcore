@@ -138,7 +138,7 @@ const saveDataStep1 = function (fn) {
         },
         success: function (res) {
             if (res.message === "success") {
-                appId = res.data[0].id;;
+                appId = res.data[0].id;
                 fn();
             }
         },
@@ -189,7 +189,10 @@ const saveDataStep3 = function (fn) {
         appId: appId,
         assetBrand: $("#merk_kendaraan").val(),
         assetYear: $("#tahun_kendaraan_text").val(),
-        isAvailable: $("input[name='is-asset-available']:checked").val(),
+        isAvailable:
+            $("input[name='is-asset-available']:checked").val() == "true"
+                ? true
+                : false,
         estimatePriceVehicle:
             clearDot($("#minimum").val()) +
             "-" +
@@ -322,7 +325,7 @@ $("#next4").on("click", function (e) {
             saveDataStep5(() => {
                 $("#menu4").removeClass("active");
                 $("#success").addClass("active");
-            })
+            });
         });
     }
 });
