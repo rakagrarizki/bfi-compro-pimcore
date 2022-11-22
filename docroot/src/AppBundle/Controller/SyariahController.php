@@ -826,7 +826,7 @@ class SyariahController extends FrontendController
             $data = $this->sendAPI->saveSyariahLeads("my-cars-step-3", $url, $param);
             if ($data->header->message == "Success") {
                 $MyCars = DataObject\Syariah::getByAppId($param['id'], 1);
-                $MyCars->setAssetModel($param['brandVehicle']);
+                $MyCars->setAssetModel($param['modelVehicle']);
                 $MyCars->setAssetYear($param['yearVehicle']);
                 $MyCars->setIsAvailable($param['unitsAvailable']);
                 $MyCars->setEstimatePrice($param['estimatePriceVehicle']);
