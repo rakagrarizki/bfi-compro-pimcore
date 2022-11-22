@@ -138,7 +138,7 @@ const saveDataStep1 = function (fn) {
         },
         success: function (res) {
             if (res.message === "success") {
-                appId = res.data.appId;
+                appId = res.data[0].id;;
                 fn();
             }
         },
